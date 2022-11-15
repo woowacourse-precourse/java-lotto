@@ -1,9 +1,13 @@
 package lotto.controller;
 
+import lotto.constants.RankMessage;
 import lotto.model.*;
 import lotto.view.OutputView;
 
 import java.util.List;
+
+import static lotto.constants.RankMessage.RANK_FIFTH;
+import static lotto.constants.RankMessage.RANK_SECOND;
 
 public class CountRank {
     ScoreAndRank scoreAndRank;
@@ -22,11 +26,11 @@ public class CountRank {
 
         for (Lotto userLottoNumber : userLottoNumbers) {
             int count = countMatchNumber(userLottoNumber, targetNumber);
-            if(count == 5 && targetNumber.contains(bonusNum)) {
-                scoreBoard.plusScore(scoreAndRank.getScoreRank().get(7));
+            if(count == RankMessage.RANK_THIRD && targetNumber.contains(bonusNum)) {
+                scoreBoard.plusScore(scoreAndRank.getScoreRank().get(RANK_SECOND));
                 continue;
             }
-            if(count >=3 ) {
+            if(count >= RANK_FIFTH ) {
                 scoreBoard.plusScore(scoreAndRank.getScoreRank().get(count));
             }
         }

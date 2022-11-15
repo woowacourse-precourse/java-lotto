@@ -1,12 +1,16 @@
 package lotto.model;
 
+import lotto.constants.RankMessage;
+
+import static lotto.constants.RankMessage.*;
+
 public enum Rank {
 
-    fifth("3개 일치 (5,000원) - ", 5000),
-    fourth("4개 일치 (50,000원) - ", 50000),
-    third("5개 일치 (1,500,000원) - ", 1500000),
-    second("5개 일치, 보너스 볼 일치 (30,000,000원) - ",30000000),
-    first("6개 일치 (2,000,000,000원) - ",2000000000);
+    fifth(FIFTH, FIFTH_PRICE),
+    fourth(FOURTH, FOURTH_PRICE),
+    third(THIRD, THIRD_PRICE),
+    second(SECOND,SECOND_PRICE),
+    first(FIRST,FIRST_PRICE);
 
     final private String matchMessage;
     final private Integer matchMoney;

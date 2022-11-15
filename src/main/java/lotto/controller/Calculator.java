@@ -7,13 +7,13 @@ import lotto.view.OutputView;
 import java.util.Map;
 
 public class Calculator {
-
+    public final static int RANK_COUNT = 0;
     public int calculatePrice(ScoreBoard scoreBoard) {
         Map<String, Integer> ranks = scoreBoard.getRankAndScore();
         int priceSum = 0;
 
         for (String rank : ranks.keySet()) {
-            if (ranks.get(rank) > 0) {
+            if (ranks.get(rank) > RANK_COUNT) {
                 priceSum += ranks.get(rank)* Rank.valueOf(rank).getMatchMoney();
             }
         }

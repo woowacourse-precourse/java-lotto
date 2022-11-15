@@ -1,8 +1,6 @@
 package lotto.model;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ScoreAndRank {
 
@@ -13,7 +11,6 @@ public class ScoreAndRank {
     }
 
     public void initScoreRank() {
-
         scoreRank.put(3, "fifth");
         scoreRank.put(4, "fourth");
         scoreRank.put(5, "third");

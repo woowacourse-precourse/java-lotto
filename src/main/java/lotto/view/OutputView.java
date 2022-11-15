@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.constants.GuideMessage;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 import lotto.model.ScoreAndRank;
@@ -22,8 +23,8 @@ public class OutputView {
     public static void printRank(ScoreBoard scoreBoard) {
         Map<String, Integer> ranks = scoreBoard.getRankAndScore();
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(RANK_STATS);
+        System.out.println(BAR);
         for (String rank : ranks.keySet()) {
             System.out.println(Rank.valueOf(rank).getMatchMessage() + ranks.get(rank)+"개");
         }

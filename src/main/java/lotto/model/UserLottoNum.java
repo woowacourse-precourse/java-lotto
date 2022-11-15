@@ -1,7 +1,13 @@
 package lotto.model;
 
+import lotto.constants.LottoSetting;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.constants.ErrorMessage.ERROR;
+import static lotto.constants.ErrorMessage.ERROR_MESSAGE_SIZE;
+import static lotto.constants.LottoSetting.LOTTO_SIZE;
 
 public class UserLottoNum {
 
@@ -14,8 +20,8 @@ public class UserLottoNum {
 
     private void validate(List<Lotto> userLottoNumbers) {
         for (Lotto userLottoNumber : userLottoNumbers) {
-            if (userLottoNumber.getLotto().size() != 6) {
-                throw new IllegalArgumentException();
+            if (userLottoNumber.getLotto().size() != LOTTO_SIZE) {
+                throw new IllegalArgumentException(ERROR+ERROR_MESSAGE_SIZE);
             }
         }
     }
