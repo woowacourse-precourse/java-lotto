@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Manager {
@@ -41,7 +40,7 @@ public class Manager {
         UserOutput.printLottoCount(user.getMoney());
         UserOutput.printLottoList(user.getLottos());
         compareLotto.inputTargetNumbers();
-        compareLotto.inputBonusNumber();
+        compareLotto.inputBonusNumber(compareLotto.getTargetNumbers());
         compareLotto();
         UserOutput.printWinningStats(winningBoard);
         calculatorReturns();

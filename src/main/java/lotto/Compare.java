@@ -52,9 +52,11 @@ public class Compare {
     public void inputTargetNumbers() {
         this.winningLotto = UserInput.inputTargetNumbers();
     }
-
-    public void inputBonusNumber() {
-        this.bonusNumber = UserInput.inputBonusNumber();
+    public List<Integer> getTargetNumbers() {
+        return this.winningLotto;
+    }
+    public void inputBonusNumber(List<Integer> lotto) {
+        this.bonusNumber = UserInput.inputBonusNumber(lotto);
     }
 
 }
