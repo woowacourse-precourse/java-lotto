@@ -2,7 +2,7 @@
     구현 순서
 
     1. 출력 : "구입금액을 입력해 주세요.\n"
-    2. 입력 : [ 로또를 구입하기 위한 금액 }
+    2. 입력 : [ 로또를 구입하기 위한 금액 ]
     2-1. 예외처리
         1)  입력 받은 금액 % 1000 != 0일 때
         2)  입력 받은 금액이 음수일 때
@@ -50,7 +50,7 @@
         3) 총액 합산
             1) if 당첨 없을시 0원, 0%
             2) else
-                2-1) (double)당첨금 / (double)구입금 * 100.0
+                2-1) 수익률 = (double)당첨금 / (double)구입금 * 100.0
 
     10. 출력 : "당첨 통계\n---\n"
         1) : 출력 : "3개 일치 (5,000원) - rank5 개\n
@@ -58,13 +58,27 @@
                     5개 일치 (1,500,000원) - rank3 개\n
                     5개 일치, 보너스 볼 일치 (30,000,000원) - rank2 개\n
                     6개 일치 (2,000,000,000원) - rank1 개\n"
-        2) : 출력 : "총 수익률은 구입금액 " + String.format("%.2f", 수익률) + "%입니다.\n"
+        2) : 출력 : "총 수익률은 " + String.format("%.2f", 수익률) + "%입니다.\n"
  */
 
 package lotto;
 
+import java.util.Scanner;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        System.out.println("구입 금액을 입력해주세요.");
+        Scanner scanner = new Scanner(System.in);
+        int Money = scanner.nextInt();
+//        if (Money % 1000 != 0)
+//            throw new IllegalArgumentException("Error\n");
+
+        int lotto = Money / 1000;
+        System.out.println("\n" + lotto + "개를 구매하였습니다.\n---");
+
+        
     }
+
+
 }
