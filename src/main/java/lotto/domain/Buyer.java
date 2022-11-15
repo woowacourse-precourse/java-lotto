@@ -13,7 +13,7 @@ public class Buyer {
     private int lottoAmount;
     private int[] myWins;
     private int totalMoney;
-    private int totalRate;
+    private double totalRate;
 
     Buyer(int lottoAmount) {
         purchaseAmountUnit.validDivisionByThousand(lottoAmount);
@@ -27,6 +27,10 @@ public class Buyer {
 
     public void calculateTotalMoney() {
         this.totalMoney = Judgment.calculatePrizeMoney(myWins);
+    }
+
+    public void calculateTotalRate() {
+        totalRate = Math.round((double) totalMoney / lottoAmount);
     }
 
     static void validConsistByNumber(String purchaseAmount) {

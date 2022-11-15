@@ -28,8 +28,8 @@
 - [x] 당첨 개수 목록을 계산한다. - Judgment#calculateWins() 
 - [x] 당첨 개수별 랭크 번호를 계산한다. - Judgment#calculateRank()
 - [x] 당첨 금액을 계산한다. - Judgment#calculatePrizeMoney() 
-- [ ] 로또 구입 금액과 당첨 금액을 토대로 수익률을 계산한다. - Buyer#calculateRate()  
-- [ ] 수익률은 소수 둘째 자리에서 반올림 한다. - Judgment#roundOffRate()  
+- [x] 로또 구입 금액과 당첨 금액을 토대로 수익률을 계산한다. - Buyer#calculateRate()  
+  - [x] 수익률은 소수 둘째 자리에서 반올림 한다. 
 - [ ] 발행한 로또 수량 및 번호를 오름차순 정렬후 출력한다. - Judgment#printLotto()  
 - [ ] 당첨 내역을 출력한다. - Judgment#printResult()
 ---
