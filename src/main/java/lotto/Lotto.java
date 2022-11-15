@@ -35,7 +35,7 @@ public class Lotto {
                 result++;
             }
         }
-        if (result == 0) {
+        if (result == 5) {
             if (numbers.contains(bonusNumber)) {
                 isBonusRight = true;
             }
