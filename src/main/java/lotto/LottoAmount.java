@@ -1,5 +1,7 @@
 package lotto;
 
+
+
 public class LottoAmount {
     private static final int MIN_AMOUNT = 1000;
     private static final String MINIMUM_AMOUNT_ERROR = "[ERROR] " + MIN_AMOUNT + "이상 구매하셔야 합니다." ;
@@ -12,6 +14,11 @@ public class LottoAmount {
         validateAmount(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
     }
+
+    public int getPurchaseAmount(){
+        return purchaseAmount;
+    }
+
     public int countTickets() {
         return (purchaseAmount / MIN_AMOUNT);
     }
