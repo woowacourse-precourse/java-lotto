@@ -15,4 +15,9 @@ public class LottoShop {
             throw new IllegalArgumentException();
         }
     }
+
+    public int LottoCountCalculate(int money) {
+        int LottoCount = money / LOTTO_PRICE;
+        return LottoCount;
+    }
 }
