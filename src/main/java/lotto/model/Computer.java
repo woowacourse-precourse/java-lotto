@@ -7,7 +7,6 @@ import lotto.exception.IllegalArgumentException;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 

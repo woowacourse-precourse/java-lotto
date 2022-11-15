@@ -18,6 +18,7 @@ public class ComputerNumberException {
     }
 
     private void notRightWinningNumberException(){
+        System.out.println(NOT_RIGHT_WINNING_NUMBERS);
         throw new IllegalArgumentException(NOT_RIGHT_WINNING_NUMBERS);
     }
 
