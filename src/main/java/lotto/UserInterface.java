@@ -54,4 +54,10 @@ public class UserInterface {
             inputNumbers.add(Integer.parseInt(onlyNumbersOfWinNumbers[i]));
         }
     }
+
+    public static void checkWinNumbersContainBonusNumber(List <Integer> inputNumbers, int bonusNumber){
+        if(inputNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
+        }
+    }
 }
