@@ -33,4 +33,19 @@ public enum Result {
                 .orElse(DEFAULT);
     }
 
+    public static Result getRank(int numberOfMatch, boolean isContainBounus){
+        if (numberOfMatch == 5)
+            if (isContainBounus)
+                return SECOND;
+
+        return Arrays.stream(values())
+                .filter(ranking -> ranking.correctCount == numberOfMatch)
+                .findFirst()
+                .orElse(DEFAULT);
+    }
+
+    public Integer getPrice()
+    {
+        return this.price;
+    }
 }
