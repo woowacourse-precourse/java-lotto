@@ -24,17 +24,31 @@ public class Application {
     public static void main(String[] args) {
         try {
             Price price = new Price(INPUT_VIEW.askPrice());
-            LottoGenerator lottoGenerator = new LottoGenerator(price);
-            LOTTO_TICKET.addAll(lottoGenerator.generateLotto());
+            
+            getLottoTicket(price);
             OUTPUT_VIEW.printLottoTicketInformation(LOTTO_TICKET);
-            WinningLotto winningLotto = new WinningLotto(INPUT_VIEW.askWinningNumbers(), INPUT_VIEW.askBonusNumber());
-            LottoRating lottoRating = new LottoRating(LOTTO_TICKET, winningLotto);
-            WINNING_COUNT_REPOSITORY.putAll(lottoRating.rate());
-            YieldCalculator yieldCalculator = new YieldCalculator(WINNING_COUNT_REPOSITORY, price.getPurchasePrice());
-            BigDecimal yield = yieldCalculator.calculate();
+            getWinningInformation();
+            BigDecimal yield = getYield(price);
             OUTPUT_VIEW.printWinningStatistics(WINNING_COUNT_REPOSITORY, yield);
         } catch (IllegalArgumentException ignored) {
             System.out.println(ExceptionMessage.APPLICATION_EXIT.getMessage());
         }
+    }
+
+    private static BigDecimal getYield(Price price) {
+        YieldCalculator yieldCalculator = new YieldCalculator(WINNING_COUNT_REPOSITORY, price.getPurchasePrice());
+        BigDecimal yield = yieldCalculator.calculate();
+        return yield;
+    }
+
+    private static void getWinningInformation() {
+        WinningLotto winningLotto = new WinningLotto(INPUT_VIEW.askWinningNumbers(), INPUT_VIEW.askBonusNumber());
+        LottoRating lottoRating = new LottoRating(LOTTO_TICKET, winningLotto);
+        WINNING_COUNT_REPOSITORY.putAll(lottoRating.rate());
+    }
+
+    private static void getLottoTicket(Price price) {
+        LottoGenerator lottoGenerator = new LottoGenerator(price);
+        LOTTO_TICKET.addAll(lottoGenerator.generateLotto());
     }
 }
