@@ -9,8 +9,6 @@ import java.util.EnumMap;
 import java.util.List;
 
 public class Kiosk {
-    static final int LOTTO_PRICE = 1000;
-
     static public void start(Buyer buyer) {
         try {
             int payment = getPayment();
@@ -30,12 +28,12 @@ public class Kiosk {
     }
 
     static private List<Integer> getWinningNumbers() {
-        GuideMessage.printGetWinningNumbers();
+        GuideMessage.printWinningNumbersInput();
         return Input.getWinningNumbers();
     }
 
     static private int getBonusNumber(List<Integer> winningNumbers) {
-        GuideMessage.printGetBonusNumber();
+        GuideMessage.printBonusNumberInput();
         return Input.getBonusNumber(winningNumbers);
     }
 
@@ -45,11 +43,7 @@ public class Kiosk {
     }
 
     static private int getPayment() {
-        GuideMessage.printGetPayment();
+        GuideMessage.printPaymentInput();
         return Input.getPayment();
-    }
-
-    static private int countLottos(int payment) {
-        return payment / LOTTO_PRICE;
     }
 }
