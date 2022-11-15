@@ -227,7 +227,8 @@ public class Lotto {
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 ## 기능 구현 목록
-랜덤 숫자 생성
+
+## 랜덤 숫자 생성
 - 1 ~ 45의 숫자로 이루어진 6자리 랜덤 수 
 - 중복을 허용하지 않는다.
 
