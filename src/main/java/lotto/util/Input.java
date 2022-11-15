@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-    private static final int START_NUMBER = 1;
-    private static final int END_NUMBER = 45;
 
     /**
      * 구입 금액을 입력받는 메소드
@@ -58,31 +56,15 @@ public class Input {
         return numbers.matches("(\\d)+,(\\d)+,(\\d)+,(\\d)+,(\\d)+,(\\d)+");
     }
 
-    public static int inputBonusNumber(List<Integer> winningNumbers) {
-        String number = Console.readLine();
-
-        if (!isValidBonusNumber(number, winningNumbers)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호입니다.");
+    /**
+     * 보너스 번호를 입력받는 메소드
+     */
+    public static int inputBonusNumber() {
+        try {
+            String bonus = Console.readLine();
+            return Integer.parseInt(bonus);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호의 입력이 올바르지 않습니다.");
         }
-
-        return Integer.parseInt(number);
-    }
-
-    private static boolean isValidBonusNumber(String number, List<Integer> winningNumbers) {
-        return isNumeric(number) && isValidRange(number) && !duplicatedWithWinningNumber(number, winningNumbers);
-    }
-
-    /**
-     * 숫자의 범위가 1~ 45 인지 확인하는 메소드
-     */
-    private static boolean isValidRange(String number) {
-        return Integer.parseInt(number) >= START_NUMBER && Integer.parseInt(number) <= END_NUMBER;
-    }
-
-    /**
-     * 보너스 번호가 당첨 번호와 중복되는지 확인하는 메소드
-     */
-    private static boolean duplicatedWithWinningNumber(String number, List<Integer> winningNumbers) {
-        return winningNumbers.contains(Integer.parseInt(number));
     }
 }

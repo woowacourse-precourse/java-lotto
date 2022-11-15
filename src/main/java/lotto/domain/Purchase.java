@@ -27,16 +27,8 @@ public class Purchase {
         winningNumber = draw(inputWinningNumbers());
 
         printInputBonusNumber();
-        inputBonusNumber();
+        winningNumber.addBonus(inputBonusNumber());
 
         //Result.of(lottos, winningNumber).printStatistics(amount);
-    }
-
-
-    /**
-     * 보너스 번호를 입력받는 메서드
-     */
-    private static void inputBonusNumber() {
-        winningNumber.setBonusNumber(Input.inputBonusNumber(winningNumber.getNumbers()));
     }
 }
