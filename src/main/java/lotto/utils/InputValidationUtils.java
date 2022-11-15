@@ -1,5 +1,9 @@
 package lotto.utils;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class InputValidationUtils {
 
 	private static final String ERR_MESSAGE_HEAD
@@ -25,6 +29,7 @@ public class InputValidationUtils {
 
 	public static void validateNumbers(final String[] numbers) {
 		validateSize(numbers);
+		validateDuplicate(numbers);
 		for (String number : numbers) {
 			validateFormat(number);
 			validateNumber(Integer.parseInt(number));
@@ -35,6 +40,16 @@ public class InputValidationUtils {
 		if (splitNumbers.length != MAX_NUMBERS_SIZE) {
 			throw new IllegalArgumentException(
 				ERR_MESSAGE_HEAD + "로또 번호는 6개를 입력해야 합니다."
+			);
+		}
+	}
+
+	private static void validateDuplicate(final String[] numbers) {
+		Set<String> nonDuplicatedNumbers = new HashSet<>(List.of(numbers));
+
+		if (nonDuplicatedNumbers.size() != numbers.length) {
+			throw new IllegalArgumentException(
+				ERR_MESSAGE_HEAD + "당첨 번호는 중복될 수 없습니다."
 			);
 		}
 	}
