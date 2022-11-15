@@ -26,7 +26,7 @@ public class UserController {
     }
 
     public void howMuch(int purchase, LottoController lottoCtrl){
-        int loop = purchase / 1000;
+        int loop = purchase / model.price();
         List<Lotto> lotteries = new ArrayList<Lotto>();
 
         for(int i=0;i<loop;i++){
