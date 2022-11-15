@@ -13,7 +13,7 @@ public class InputException {
 
     public static void validateInputAmount(String input) {
         isAllNumeric(input);
-        if (Integer.parseInt(input) % NumberRule.LOTTO_ONE_PRICE.getValue() != 0) {
+        if ((Integer.parseInt(input) <= 0) || (Integer.parseInt(input) % NumberRule.LOTTO_ONE_PRICE.getValue() != 0)) {
             sb.append(ErrorMessage.EXCEPTION_NOT_UNIT.getValue());
             throw new IllegalArgumentException(sb.toString());
         }
