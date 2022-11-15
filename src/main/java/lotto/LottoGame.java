@@ -109,7 +109,7 @@ public class LottoGame {
         System.out.println("5개 일치 (1,500,000원) - " + statistics.get(2) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + statistics.get(1) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + statistics.get(0) + "개");
-        System.out.println("총 수익률은 "+ Math.abs((double)(proceeds * 100) / (double)purchaseAmount) + "%입니다.");
+        System.out.println("총 수익률은 "+ String.format("%.1f", Math.abs((double)(proceeds * 100) / (double)purchaseAmount)) + "%입니다.");
     }
 
     private void calculateProceeds() {
