@@ -5,7 +5,7 @@ import lotto.Utils.Convert;
 
 public class WinningTicket {
 
-    private Lotto lotto;
+    private final Lotto lotto;
     private int bonus;
 
     public WinningTicket(final String number) {

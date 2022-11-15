@@ -10,12 +10,12 @@ import lotto.View.OutputView;
 
 public class Controll {
 
-    private OutputView outputView = new OutputView();
-    private InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
     private Buyer buyer;
     private WinningTicket winningTicket;
-    private Comparison comparison = new Comparison();
-    private Money money = new Money();
+    private final Comparison comparison = new Comparison();
+    private final Money money = new Money();
 
     public void run() {
         try {

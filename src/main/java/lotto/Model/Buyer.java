@@ -14,7 +14,7 @@ public class Buyer {
     private static final int END_NUM = 45;
     private static final int COUNT = 6;
     private final int money;
-    private List<Lotto> number = new ArrayList<>();
+    private final List<Lotto> number = new ArrayList<>();
 
     public Buyer(final String money) {
         this.money = Convert.StrToInt(money);

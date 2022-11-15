@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Comparison {
 
-    private Map<String, Integer> savedResult = new HashMap<>();
+    private final Map<String, Integer> savedResult = new HashMap<>();
 
     public void compareLotto(final List<Lotto> lottoNumber, final WinningTicket ticket) {
         for (Lotto lotto : lottoNumber) {
