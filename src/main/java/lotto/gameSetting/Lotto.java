@@ -13,6 +13,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> winNumber() {
+        return numbers;
+    }
+
     private void numbersRangeCheck(List<Integer> numbers) {
         for(int i=0; i<numbers.size(); i++) {
             if (numbers.get(i)<1 || numbers.get(i)>45) {
