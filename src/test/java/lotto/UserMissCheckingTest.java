@@ -16,4 +16,10 @@ class UserMissCheckingTest {
         assertThatThrownBy(() -> UserMissChecking.numberChecking("사십사"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    public void 로또금액_첫원단위_미입금(){
+        assertThatThrownBy(()->UserMissChecking.thousandChecking(4200))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
