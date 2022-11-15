@@ -26,6 +26,16 @@ public class UserMoney {
     }
 
 
+    private void canBeDivided(int userMoneyInput){
+        if(userMoneyInput %lottoPrice!=0){
+            printErrorMessage(String.format("%d원 단위로 입력해주세요.",lottoPrice));
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+
+
 
 
 
