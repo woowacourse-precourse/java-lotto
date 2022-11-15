@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.exception.ErrorCode;
+import lotto.exception.PayMoneyException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -28,11 +29,10 @@ class MoneyTest {
     void MoneyTest_throw_IllegalArgumentException() {
         // given
         String payment = "8000원";
-        int expectedEPayment = 8000;
 
         // when && then
         assertThatThrownBy(() -> new Money(payment))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorCode.ERROR.getMessage());
+                .isInstanceOf(PayMoneyException.class)
+                .hasMessage(ErrorCode.ERROR.getMessage() + " Money is Exception !!");
     }
 }
