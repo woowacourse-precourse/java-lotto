@@ -22,6 +22,16 @@ public class LotteryMachine {
 		return new LotteryMachine(numbers);
 	}
 
+	public Lottery checkResult(Lotto lotto) {
+		final int count = (int)lotto.getNumbers()
+				.stream()
+				.filter(numbers::contains)
+				.count();
+		final boolean hasBonusNumber = lotto.getNumbers()
+				.contains(bonusNumber);
+		return Lottery.of(count, hasBonusNumber);
+	}
+
 	public Set<Integer> getNumbers() {
 		return numbers;
 	}
@@ -35,9 +45,12 @@ public class LotteryMachine {
 		this.bonusNumber = bonusNumber;
 	}
 
-	private void validate(Integer number) {
-		if (isInvalidLottoNumber(List.of(number))) {
+	private void validate(Integer bonusNumber) {
+		if (isInvalidLottoNumber(List.of(bonusNumber))) {
 			throw new IllegalArgumentException(ErrorMessage.isInvalidLottoNumber());
+		}
+		if (isDuplicatedNumber(bonusNumber)) {
+			throw new IllegalArgumentException(ErrorMessage.isDuplicatedLottoNumber());
 		}
 	}
 
@@ -48,11 +61,22 @@ public class LotteryMachine {
 		if (isInvalidLottoNumber(numbers)) {
 			throw new IllegalArgumentException(ErrorMessage.isInvalidLottoNumber());
 		}
+		if (isDuplicatedNumber(numbers)) {
+			throw new IllegalArgumentException(ErrorMessage.isDuplicatedLottoNumber());
+		}
+	}
+
+	private boolean isDuplicatedNumber(List<Integer> numbers) {
+		return numbers.size() != numbers.stream().distinct().count();
+	}
+
+	private boolean isDuplicatedNumber(Integer bonusNumber) {
+		return numbers.contains(bonusNumber);
 	}
 
 	private boolean isInvalidLottoNumber(List<Integer> numbers) {
 		return numbers.stream()
-			.anyMatch(number -> number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER);
+				.anyMatch(number -> number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER);
 	}
 
 }
