@@ -26,10 +26,26 @@ public class RankInfoService {
     }
 
     public void checkCondition(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
-        if (matchPoint != CHECK_POINT)
-            updateMatchPoint(matchPoint, rankInfo, userLottoNumbers, bonus);
-        if (matchPoint == CHECK_POINT)
+        if (matchPoint == CHECK_POINT) {
             updateMatchPointWithCondition(matchPoint, rankInfo, userLottoNumbers, bonus);
+            return;
+        }
+        updateMatchPoint(matchPoint, rankInfo, userLottoNumbers, bonus);
+    }
+
+    public void updateMatchPoint(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
+        for (Rank rank : Rank.values()) {
+            if (rank.getMatchCount() == matchPoint)
+                rankInfo.countUp(rank);
+        }
+    }
+
+    public void updateMatchPointWithCondition(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
+        if (isSecond(matchPoint, userLottoNumbers, bonus)) {
+            rankInfo.countUp(Rank.SECOND);
+            return;
+        }
+        rankInfo.countUp(Rank.THIRD);
     }
 
     public int calcMatchPoint(Lotto lotto, List<Integer> userLottoNumbers) {
@@ -42,22 +58,9 @@ public class RankInfoService {
         return matchPoint;
     }
 
-    public void updateMatchPoint(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
-        for (Rank rank : Rank.values()) {
-            if (rank.getMatchCount() == matchPoint && !isSecond(matchPoint, userLottoNumbers, bonus))
-                rankInfo.countUp(rank);
-        }
-    }
-
-    public void updateMatchPointWithCondition(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
-        if (isSecond(matchPoint, userLottoNumbers, bonus))
-            rankInfo.countUp(Rank.SECOND);
-        if (!isSecond(matchPoint, userLottoNumbers, bonus))
-            rankInfo.countUp(Rank.THIRD);
-    }
-
     public boolean isSecond(int matchPoint, List<Integer> userLottoNumbers, Bonus bonus) {
-        return (matchPoint == CHECK_POINT && userLottoNumbers.contains(bonus.getBonusNumber()));
+        return (matchPoint == CHECK_POINT &&
+                userLottoNumbers.contains(bonus.getBonusNumber()));
     }
 
     public double calcYield(RankInfo rankInfo, Money money) {
