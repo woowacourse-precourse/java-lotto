@@ -6,6 +6,7 @@ import lotto.view.Input;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import lotto.view.Output;
 
 public class Person {
     private List<Lotto> lottos = new ArrayList<>();
@@ -40,6 +41,9 @@ public class Person {
         return numbers;
     }
 
+    public void printLottoScoreResult(){
+        Output.outputLottoWinScoreResult(lottoScoreResult);
+    }
     public List<Lotto> getLottos() {
         return lottos;
     }
