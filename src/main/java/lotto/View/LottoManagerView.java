@@ -16,6 +16,16 @@ import static lotto.View.IOMessage.*;
  */
 
 public class LottoManagerView {
+
+    public static String inputBonusNumber(){
+        System.out.println(GET_BONUS_NUMBER_MESSAGE);
+        return readLine();
+    }
+
+    public static String inputWinningNumbers(){
+        System.out.println(GET_WINNING_NUMBERS_MESSAGE);
+        return readLine();
+    }
     public static String inputUserMoney(){
         System.out.println(GET_LOTTO_PRICE_MESSAGE);
         return readLine();

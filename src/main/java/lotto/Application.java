@@ -20,10 +20,21 @@ public class Application {
 
         // 구매 내역 출력하기 -> Lotto View
         printIssuedLotto();
+
         // 당첨, 보너스 번호 입력받기 -> Lotto View, validate 에러 처리 (Lotto 리스트에 담아 Lotto Manager 에 저장)
+        getWinningNumbers();
         // 당첨 내역 구하기 -> LottoManager
         // 수익률 구하기 -> LottoManager
         // 당첨 통계 출력하기 -> Lotto View (Lotto Manager 에서 메서드 호출)
+    }
+
+
+    private static void getWinningNumbers(){
+        String winnings = view.inputWinningNumbers();
+        manager.getWinningNumbers(winnings);
+
+        String bonus = view.inputBonusNumber();
+        manager.getBonusNumber(bonus);
     }
 
     private static void printIssuedLotto() {
