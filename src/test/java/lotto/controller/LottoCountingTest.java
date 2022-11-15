@@ -121,6 +121,7 @@ class LottoCountingTest {
         List<Lotto> getLottoPaperInput(int size){
             return new ArrayList<>(Arrays.asList(lottoPaperInput).subList(0, size));
         }
+
         boolean isDataAllCorrect(List<Lotto> lottoPapers, Lotto winningLotto, Map<Lotto, Integer> countedLotto){
 
             for (Lotto lottoPaper : lottoPapers) {
@@ -132,14 +133,15 @@ class LottoCountingTest {
             }
             return true;
         }
-        @DisplayName("맵에 넣은 데이터들이 모두 올바르게 들어가있는지 테스트하는 메서드.")
+
+        // 맵에 넣은 데이터들이 모두 올바르게 들어가있는지 테스트하는 메서드.
         void testDataIsAllCorrect(int size){
             List<Lotto> lottoPapers = getLottoPaperInput(size);
             Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
             assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
         }
 
-
+        @DisplayName("아무것도 넣지 않았을 때 size check")
         @Test
         void countedLotto_case1_1(){
             List<Lotto> lottoPapers = new ArrayList<>();
@@ -147,6 +149,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
+        @DisplayName("아무것도 넣지 않았을 때, 데이터가 다 맞는지 check")
         @Test
         void countedLotto_case1_2(){
             List<Lotto> lottoPapers = new ArrayList<>();
@@ -154,6 +157,7 @@ class LottoCountingTest {
             assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
         }
 
+        @DisplayName("1개 넣었을 때 size check")
         @Test
         void countedLotto_case2_1(){
             int size = 1;
@@ -162,12 +166,14 @@ class LottoCountingTest {
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
+        @DisplayName("1개 넣었을 때 데이터 다 맞는지 Check")
         @Test
         void countedLotto_case2_2(){
             int size = 1;
             testDataIsAllCorrect(size);
         }
 
+        @DisplayName("3개 넣었을 때 size check")
         @Test
         void countedLotto_case3_1(){
             int size = 3;
@@ -177,12 +183,14 @@ class LottoCountingTest {
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
+        @DisplayName("3개 넣었을 때 데이터 다 맞는지 Check")
         @Test
         void countedLotto_case3_2(){
             int size = 3;
             testDataIsAllCorrect(size);
         }
 
+        @DisplayName("5개 넣었을 때 size check")
         @Test
         void countedLotto_case4_1(){
             int size = 5;
@@ -192,12 +200,14 @@ class LottoCountingTest {
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
+        @DisplayName("5개 넣었을 때 데이터 다 맞는지 Check")
         @Test
         void countedLotto_case4_2(){
             int size = 5;
             testDataIsAllCorrect(size);
         }
 
+        @DisplayName("8개 넣었을 때 size check")
         @Test
         void countedLotto_case5_1(){
             int size = 8;
@@ -207,6 +217,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
+        @DisplayName("8개 넣었을 때 데이터 다 맞는지 Check")
         @Test
         void countedLotto_case5_2(){
             int size = 8;
@@ -228,7 +239,7 @@ class LottoCountingTest {
         }
 
         // 체크해야 되는 부분 : 1등 몇개 2등 몇개 등등 잘 매칭되어 들어갔는지?
-        // index :
+        // LottoPaperInput index :
         // 0 : 1등
         // 1 : 2등
         // 2 : 3등
