@@ -49,4 +49,11 @@ class BonusNumberTest {
         assertThatThrownBy(() -> new BonusNumber("1ks"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("보너스 번호는 1부터 45까지의 숫자가 아니면 예외가 발생한다.")
+    void outOfRangeBonusNumber() {
+        assertThatThrownBy(() -> new BonusNumber("123"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
