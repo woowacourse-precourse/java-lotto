@@ -1,10 +1,6 @@
-package lotto;
+package lotto.domain;
 
 public enum Prize {
-
-
-
-
     FIFTH(5000l,"5,000","3개 일치"),
     FOURTH(50000l,"50,000","4개 일치"),
     THIRD(1500000l,"1,500,000","5개 일치"),
@@ -14,7 +10,7 @@ public enum Prize {
     private long winMoney;
     private String printWinMoney;
     private String printCondition;
-    Prize(long winMoney,String printWinMoney,String printCondition){
+    Prize(long winMoney, String printWinMoney, String printCondition){
         this.winMoney=winMoney;
         this.printWinMoney=printWinMoney;
         this.printCondition=printCondition;

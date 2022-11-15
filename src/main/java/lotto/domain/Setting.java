@@ -1,23 +1,26 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.*;
+import lotto.view.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Setting {
+    //User user;
 
-    User userLotto(){
+    public User userLotto(){
         User user=new User();
-        Comment.inputMoney();
         user.inputMoney();
         user.setLottoQuantity();
         user.printLottoQunantity();
         user.buyingLotto();
         user.printAllBuyingLotto();
+
         return user;
     }
-    WinningLotto winningLotto(){
+    public WinningLotto winningLotto(){
         WinningLotto winLotto;
         Comment.inputWinningNumber();
         winLotto=inputWinningNumber();

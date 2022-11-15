@@ -1,24 +1,29 @@
-package lotto;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
+import lotto.domain.Lotto;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     static final String INPUT_RANGE="[0-9]+";
-    String money;
-    String lottoQuantity;
-    List<Lotto> lottos;
+    private String money;
+    private String lottoQuantity;
+    private List<Lotto> lottos;
 
-    User(){
+    public User(){
         this.lottos=new ArrayList<Lotto>();
     }
 
-    void inputMoney(){
+    public void inputMoney(){
         this.money= Console.readLine();
         validate();
     }
+
+    public String getMoney(){return money;}
+    public List<Lotto> getLottos(){return lottos;}
 
     private void validate(){
         if(checkComposeOfNumbers()){
@@ -39,7 +44,7 @@ public class User {
         return false;
     }
 
-    void setLottoQuantity(){
+    public void setLottoQuantity(){
         lottoQuantity=calculateQuantity();
     }
 
@@ -47,12 +52,12 @@ public class User {
         return money.substring(0,money.length()-3);
     }
 
-    void printLottoQunantity(){
+    public void printLottoQunantity(){
         System.out.println();
         System.out.println(lottoQuantity+"개를 구매했습니다.");
     }
 
-    void buyingLotto(){
+    public void buyingLotto(){
         for(int number=1;number<=Integer.parseInt(lottoQuantity);number++) {
             lottos.add(generateLotto());
         }
@@ -62,7 +67,7 @@ public class User {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
     }
 
-    void printAllBuyingLotto(){
+    public void printAllBuyingLotto(){
         for (Lotto lotto: lottos){
             lotto.printLotto();
         }
