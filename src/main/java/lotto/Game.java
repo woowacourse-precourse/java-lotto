@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class Game {
     static Validation validation = new Validation();
     static int purchase;
     static Lotto winningNumber;
+    static List<Lotto> lottos;
     static int bonusNumber;
     static final int LOTTO_PRICE = 1000;
 
@@ -21,6 +23,14 @@ public class Game {
 
     static int getLottoCount() {
         return (purchase / LOTTO_PRICE);
+    }
+
+    static void generateLottos() {
+        lottos = new ArrayList<>();
+        for (int i = 0; i < getLottoCount(); i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(new Lotto(numbers));
+        }
     }
 
     static void setWinningNumber(String input) throws IllegalArgumentException {
