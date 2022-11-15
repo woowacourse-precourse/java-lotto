@@ -112,6 +112,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 보너스번호_범위테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "0"));
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
