@@ -1,5 +1,6 @@
 package lotto;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,12 +13,14 @@ public class LottoStore {
 	private boolean[] goal;
 	private int bonusNumber;
 	private int[] winLotto;
+	private int yield;
 
 	public LottoStore() {
 		moneyBuyLotto = 0;
 		lottos = new ArrayList<>();
 		bonusNumber = 0;
 		winLotto = new int[Constants.LOTTO_MINIMUM_RANK + 1];
+		yield = 0;
 	}
 
 	public void open() {
@@ -26,6 +29,7 @@ public class LottoStore {
 		win();
 		bonus();
 		checkWin();
+		calcYield();
 	}
 
 	private void buy() {
@@ -76,5 +80,30 @@ public class LottoStore {
 		for (Lotto lotto : lottos) {
 			winLotto[lotto.checkWin(goal, bonusNumber)] += 1;
 		}
+	}
+
+	private void calcYield() {
+		int price = calcPrice(winLotto);
+	}
+
+	private int calcPrice(int[] winLotto) {
+		int price = 0;
+		for (int rank = Constants.LOTTO_HIGHEST_RANK; rank <= Constants.LOTTO_MINIMUM_RANK; rank++) {
+			int numRank = winLotto[rank];
+
+			price += getPrice(numRank);
+		}
+		return price;
+	}
+
+	private int getPrice(int numRank) {
+		int price = 0;
+		for (Rank rank : Rank.values()) {
+			if (numRank == rank.getRanking()) {
+				price = rank.getPrice();
+				break;
+			}
+		}
+		return price;
 	}
 }
