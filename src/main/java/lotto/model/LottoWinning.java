@@ -9,7 +9,7 @@ public class LottoWinning {
     private Lotto winLotto;
     private int winBonus;
 
-    protected LottoWinning() {
+    private LottoWinning() {
     }
 
     public LottoWinning(Builder builder) {
