@@ -31,6 +31,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        List<Integer> temp = new ArrayList<>();
+        for(int n : numbers){
+            if(temp.contains(n)){
+                throw new IllegalArgumentException();
+            }
+            temp.add(n);
+        }
     }
     
     public static Integer read() throws IllegalArgumentException{
@@ -75,11 +82,15 @@ public class Lotto {
     public static List<Integer> validateWin(List<String> input) throws IllegalArgumentException{
         IllegalArgumentException exception = new IllegalArgumentException();
         String[] temp = input.get(0).split(",");
+        if(temp.length > 6){
+            System.out.println("[ERROR]");
+            throw exception;
+        }
         List<Integer> result = new ArrayList<>();
-        for(int n = 0; n < 6; n++){
+        for(int n = 0; n < temp.length; n++){
             int tempNum = val(input, n);
             if (result.contains(tempNum)){
-                System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                System.out.println("[ERROR]");
                 throw exception;
             }
             result.add(tempNum);
