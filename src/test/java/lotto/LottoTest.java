@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +25,15 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    void 범위가_벗어나는_로또번호_확인() throws Exception {
+        //given
+        List<Integer> containOutRange = List.of(1, 2, 3, 4, 5, 6, 55);
+
+        //when
+
+        //then
+        assertThatThrownBy(() -> new Lotto(containOutRange))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
