@@ -44,7 +44,7 @@ public class Calculator {
                 historyMap.put(Rank.SECOND, historyMap.get(Rank.SECOND) + 1);
                 return;
             }
-            historyMap.put(Rank.THIRD, historyMap.get(Rank.SECOND) + 1);
+            historyMap.put(Rank.THIRD, historyMap.get(Rank.THIRD) + 1);
         }
         if (count == 6) {
             historyMap.put(Rank.FIRST, historyMap.get(Rank.FIRST) + 1);
