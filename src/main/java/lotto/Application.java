@@ -21,12 +21,12 @@ public class Application {
 
             int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
             boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
-            int agreementLotto = agreementLotto(lottoStart, bonusAgreement);
-            int prizeMoney = prizeMoney(agreementLotto);
-        }
-    }
+            Rank agreementLotto = agreementLotto(lottoStart, bonusAgreement);
 
-//    int lottoStart;
+        }
+//        DecimalFormat decFormat = new DecimalFormat("###,###");
+//        String prizeMoney2 = decFormat.format(prizeMoney);
+    }
 
     // 구매금액입력
     /**
@@ -188,62 +188,27 @@ public class Application {
      * @param lottoStart
      * @return
      */
-    public static int agreementLotto(int lottoStart, boolean bonusAgreement) {
-        int agreementLotto = 0;
+    public static Rank agreementLotto(int lottoStart, boolean bonusAgreement) {
+        Rank rank = null;
 
         if (lottoStart == 6) {
-            agreementLotto = 1;
+            rank = Rank.FIRST;
         }
         if (lottoStart == 5 && bonusAgreement) {
-            agreementLotto = 2;
+            rank = Rank.SECOND;
         }
         if (lottoStart == 5) {
-            agreementLotto = 3;
+            rank = Rank.THIRD;
         }
         if (lottoStart == 4) {
-            agreementLotto = 4;
+            rank = Rank.FOURTH;
         }
         if (lottoStart == 3) {
-            agreementLotto = 5;
+            rank = Rank.FIFTH;
         }
 
-        System.out.println(agreementLotto);
-        return agreementLotto;
-    }
-
-    // 당첨금
-    /**
-     * 5. prizeMoney (int lottoStart) - (당첨금 출력) 보완중 <br/>
-     * DecimalFormat을 이용한 숫자 세자리마다 ,콤마찍기 <br/>
-     * 따로 DecimalFormat 메서드 만들지 고민
-     * 
-     * @param lottoStart
-     * @return
-     */
-    public static int prizeMoney(int agreementLotto) {
-//        DecimalFormat decFormat = new DecimalFormat("###,###");
-//        String prizeMoney2 = decFormat.format(prizeMoney);
-
-        int prizeMoney = 0;
-
-        for (int i = 1; i < 6; i++) {
-            if (agreementLotto == i) {
-                prizeMoney = 2000000000;
-            }
-            if (agreementLotto == i) {
-                prizeMoney = 30000000;
-            }
-            if (agreementLotto == i) {
-                prizeMoney = 1500000;
-            }
-            if (agreementLotto == i) {
-                prizeMoney = 50000;
-            }
-            if (agreementLotto == i) {
-                prizeMoney = 5000;
-            }
-        }
-        return prizeMoney;
+        System.out.println(rank);
+        return rank;
     }
 
 }
