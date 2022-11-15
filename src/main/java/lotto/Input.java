@@ -12,6 +12,7 @@ public class Input {
     private Input() {}
 
     public static long inputMoney() {
+        Message.INPUT_MONEY.print();
         String str = Console.readLine().trim();
         try {
             Validation.validateMoney(str);
@@ -23,6 +24,7 @@ public class Input {
     }
 
     public static List<Integer> inputLotto() {
+        Message.INPUT_LOTTERY_NUMBER.print();
         String str = Console.readLine();
         List<Integer> numbers = new ArrayList<>();
         String[] splitStr = str.split(DELIMITER);
