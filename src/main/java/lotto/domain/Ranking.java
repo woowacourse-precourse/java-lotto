@@ -1,7 +1,7 @@
 package lotto.domain;
 
 public enum Ranking {
-    NONE(0, 0, "2개 이하로 일치", 0),
+    NONE(0, 2, "2개 이하로 일치", 0),
     FIRST(1, 6,"6개 일치", 2_000_000_000),
     SECOND(2, 5, "5개 일치, 보너스 볼 일치", 30_000_000),
     THIRD(3, 5, "5개 일치", 1_500_000),
