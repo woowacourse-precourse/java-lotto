@@ -26,7 +26,7 @@ public class Calculator {
 
     public double calculateEarningRate(List<Integer> winningTable, double pay) {
         sumJackpot(winningTable);
-        earningRate = Math.round(sum / pay) / 10.0;
+        earningRate = Math.round(sum/pay) / 10.0;
         return earningRate;
     }
 

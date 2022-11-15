@@ -13,8 +13,8 @@ public class Pay {
     }
 
     private void validate(String pay) {
-        for (int index = 0; index < pay.length(); index++) {
-            int eachChar = pay.charAt(index);
+        for (int idx = 0; idx < pay.length(); idx++) {
+            int eachChar = pay.charAt(idx);
             if (!Character.isDigit(eachChar)) {
                 throw new IllegalArgumentException(ErrorMessage.numberType.getValue());
             }

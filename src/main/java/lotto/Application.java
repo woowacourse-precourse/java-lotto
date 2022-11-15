@@ -27,8 +27,8 @@ public class Application {
             double earningRate = calculator.calculateEarningRate(winningTable, pay); //수익률
 
             output.writeDown(winningTable, earningRate);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
         }
     }
 

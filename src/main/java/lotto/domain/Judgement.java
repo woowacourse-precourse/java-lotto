@@ -8,8 +8,8 @@ public class Judgement {
 
     public int rankLotto(List<Integer> lottery, List<Integer> winningNumber) {
         int result = 0;
-        for (int i = 0; i < lottery.size(); i++) {
-            int correctNumber = winningNumber.get(i);
+        for (int idx = 0; idx < lottery.size(); idx++) {
+            int correctNumber = winningNumber.get(idx);
             if (lottery.contains(correctNumber)) {
                 result++;
             }
@@ -31,7 +31,7 @@ public class Judgement {
         for (List<Integer> lottery : lotteries) {
             int result = rankLotto(lottery, winningNumber);
             if (secondPrize(lottery, bonus, result)) {
-                winningTable.add(7);
+                winningTable.add(7); //2등의 경우, 나올 수 없는 갯수로 구분
             }
             winningTable.add(result);
         }

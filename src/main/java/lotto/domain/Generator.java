@@ -16,7 +16,7 @@ public class Generator {
     }
 
     public List<List<Integer>> createLottoByPay(int pay) {
-        for (int i = 0; i < pay; i++) {
+        for (int idx = 0; idx < pay; idx++) {
             lotteries.add(createRandomLotto());
         }
         return lotteries;
