@@ -12,6 +12,7 @@ public class LottoNumber {
         try {
             Lotto.validate(convertStringArrToIntegerList(lottoNumber));
         } catch (IllegalArgumentException e) {
+
             throw new IllegalArgumentException(e.getMessage());
         }
         validate(lottoNumber);
@@ -24,6 +25,7 @@ public class LottoNumber {
 
     private void validate(String request) {
         if (!isRightLottoNumbersType(request)) {
+            System.out.println(ERROR_TYPE_NUMBER);
             throw new IllegalArgumentException(ERROR_TYPE_NUMBER);
         }
     }

@@ -12,9 +12,11 @@ public class LottoBonusNumber {
 
     public void validateNumber(String bonusNumber){
         if(!isDigit(bonusNumber)){
+            System.out.println(Money.ERROR_INPUT_MONEY);
             throw new IllegalArgumentException(Money.ERROR_INPUT_MONEY);
         }
         if(!correctNumber(bonusNumber)){
+            System.out.println(ERROR_RANGE_MONEY);
             throw new IllegalArgumentException(ERROR_RANGE_MONEY);
         }
     }

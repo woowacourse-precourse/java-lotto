@@ -20,9 +20,11 @@ public class Lotto {
 
     public static void validate(List<Integer> numbers) {
         if (!isOverLapNumber(numbers)) {
+            System.out.println(ERROR_OVERLAP_NUMBER);
             throw new IllegalArgumentException(ERROR_OVERLAP_NUMBER);
         }
         if (!isCorrectSize(numbers)) {
+            System.out.println(ERROR_INPUT_NUMBER);
             throw new IllegalArgumentException(ERROR_INPUT_NUMBER);
         }
     }
