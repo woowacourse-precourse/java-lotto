@@ -1,6 +1,8 @@
 package lotto;
 
+import lotto.domain.Buyer;
 import lotto.domain.Lotto;
+import lotto.domain.Validator;
 import lotto.view.OutputView;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -34,6 +36,25 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 46, 5, 7, 9)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void createLottoByNotNum(){
+        assertThatThrownBy(()-> new Validator().validateNumber("1,2,3,4,5,a"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @Test
+    void createWrongBonus(){
+        assertThatThrownBy(()-> Buyer.validatePrice(1500)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void createBonuswithChar(){
+        assertThatThrownBy(()->Buyer.getIntPrice("150a")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 
 
 }
