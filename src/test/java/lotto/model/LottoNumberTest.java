@@ -30,4 +30,12 @@ class LottoNumberTest {
         assertThatThrownBy(() -> new LottoNumber("0")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new LottoNumber("46")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("문자열 1~45 범위로 생성하면 성공한다.")
+    @Test
+    void createBonusNumber() {
+        assertDoesNotThrow(() -> new LottoNumber("1"));
+        assertDoesNotThrow(() -> new LottoNumber("5"));
+        assertDoesNotThrow(() -> new LottoNumber("45"));
+    }
 }
