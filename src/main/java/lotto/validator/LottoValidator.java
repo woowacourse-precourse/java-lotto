@@ -2,6 +2,8 @@ package lotto.validator;
 
 import java.util.List;
 
+import lotto.view.OutputView;
+
 public class LottoValidator {
 	private final WinningNumberValidator winningNumberValidator;
 	private final BonusNumberValidator bonusNumberValidator;
@@ -13,11 +15,21 @@ public class LottoValidator {
 	}
 
 	public List<Integer> validateWinningNumbers(String numbers) {
-		winningNumbers = winningNumberValidator.runWinningNumberValidator(numbers);
+		try {
+			winningNumbers = winningNumberValidator.runWinningNumberValidator(numbers);
+		} catch (IllegalArgumentException e) {
+			OutputView.printErrorMessage(e.getMessage());
+		}
 		return winningNumbers;
 	}
 
 	public Integer validateBonusNumber(String bonus) {
-		return bonusNumberValidator.runBonusNumberValidator(bonus, winningNumbers);
+		int resultBonus = 0;
+		try {
+			resultBonus = bonusNumberValidator.runBonusNumberValidator(bonus, winningNumbers);
+		} catch (IllegalArgumentException e) {
+			OutputView.printErrorMessage(e.getMessage());
+		}
+		return resultBonus;
 	}
 }

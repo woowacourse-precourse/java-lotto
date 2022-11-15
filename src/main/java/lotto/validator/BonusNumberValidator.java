@@ -8,11 +8,11 @@ import java.util.regex.Pattern;
 public class BonusNumberValidator {
 	private static final Pattern pattern = Pattern.compile("[0-9]+");
 
-	public Integer runBonusNumberValidator(String bonus, List<Integer> winningNumbers) {
+	public Integer runBonusNumberValidator(String bonus, List<Integer> winningNumbers) throws IllegalArgumentException {
 		int bonusNumber = Integer.parseInt(bonus);
 
 		if (isNotConsistOneData(bonus)) {
-			throw new IllegalArgumentException(ONE_INPUT.getErrorMessage());
+			throw new IllegalArgumentException(NOT_NUMBER.getErrorMessage());
 		}
 		if (isOutBoundsNumber(bonusNumber)) {
 			throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE.getErrorMessage());
@@ -20,6 +20,7 @@ public class BonusNumberValidator {
 		if (isDuplicateWinningNumbers(bonusNumber, winningNumbers)) {
 			throw new IllegalArgumentException(NOT_DUPLICATED.getErrorMessage());
 		}
+
 		return bonusNumber;
 	}
 

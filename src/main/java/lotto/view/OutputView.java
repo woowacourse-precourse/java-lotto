@@ -8,6 +8,10 @@ import java.util.Map;
 import lotto.controller.WinStatisticsStatus;
 
 public class OutputView {
+	public static void printErrorMessage(String error) {
+		System.out.println(error);
+	}
+
 	public static void printProgress(ProgressStatement statement) {
 		newLine();
 		System.out.println(statement.getProgress());

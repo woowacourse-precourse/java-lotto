@@ -13,7 +13,13 @@ public class InputView {
 
 	public int inputMoney() {
 		String data = readLine();
-		return moneyInputValidator.runMoneyInputValidator(data);
+		int money = 0;
+		try {
+			money = moneyInputValidator.runMoneyInputValidator(data);
+		} catch (IllegalArgumentException e) {
+			OutputView.printErrorMessage(e.getMessage());
+		}
+		return money;
 	}
 
 	public String inputNumbers() {

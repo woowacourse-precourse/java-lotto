@@ -15,7 +15,7 @@ public class MoneyInputValidatorTest {
 
 		assertThatThrownBy(() -> moneyInputValidator.runMoneyInputValidator("1,2,3,4,5,6"))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining(ONE_INPUT.getErrorMessage());
+			.hasMessageContaining(NOT_NUMBER.getErrorMessage());
 	}
 
 	@DisplayName("구입금액 입력값이 1000으로 나누어 떨어지는지 확인")
