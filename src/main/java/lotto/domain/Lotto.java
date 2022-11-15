@@ -5,8 +5,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
-import static lotto.domain.constant.ErrorMessage.LENGTH_OF_LOTTO_NUMBERS_SHOULD_BE_SIX;
-import static lotto.domain.constant.ErrorMessage.LOTTO_NUMBERS_SHOULD_BE_UNIQUE;
+import static lotto.constant.ErrorMessage.LENGTH_OF_LOTTO_NUMBERS_SHOULD_BE_SIX;
+import static lotto.constant.ErrorMessage.LOTTO_NUMBERS_SHOULD_BE_UNIQUE;
 
 public class Lotto {
 

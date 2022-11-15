@@ -1,13 +1,11 @@
 package lotto.participant;
 
-import lotto.domain.constant.ErrorMessage;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static lotto.domain.constant.ErrorMessage.*;
+import static lotto.constant.ErrorMessage.*;
 
 public class Validator {
 

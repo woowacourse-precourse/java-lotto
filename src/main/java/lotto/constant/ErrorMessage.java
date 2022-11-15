@@ -1,4 +1,4 @@
-package lotto.domain.constant;
+package lotto.constant;
 
 public enum ErrorMessage {
     LENGTH_OF_LOTTO_NUMBERS_SHOULD_BE_SIX("[ERROR] 로또 번호들은 6개의 숫자로 구성되어야 합니다."),

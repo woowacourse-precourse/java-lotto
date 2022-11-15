@@ -1,14 +1,14 @@
 package lotto.participant;
 
 import lotto.domain.Lotto;
-import lotto.domain.constant.Rank;
+import lotto.constant.Rank;
 import lotto.domain.WinningLotto;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.domain.constant.Rank.*;
+import static lotto.constant.Rank.*;
 
 public class LottoMatcher {
 
