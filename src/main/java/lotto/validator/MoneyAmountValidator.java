@@ -16,13 +16,13 @@ public class MoneyAmountValidator {
         validateMoneyModThousand(moneyAmount);
     }
 
-    public static void validateMoneyLessThanThousand(int moneyAmount){
+    private static void validateMoneyLessThanThousand(int moneyAmount){
         if (moneyAmount < 1000) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_CANNOT_BUY_LOTTO);
         }
     }
 
-    public static void validateMoneyModThousand(int moneyAmount){
+    private static void validateMoneyModThousand(int moneyAmount){
         if (moneyAmount % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_WRONG_VALUE);
         }
