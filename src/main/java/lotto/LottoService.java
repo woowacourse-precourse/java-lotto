@@ -54,5 +54,68 @@ public class LottoService {
         return result;
     }
 
+    public static int prizeMoney(Rank rank){
+        if (rank.equals(Rank.FIRST)){
+            return 2000000000;
+        }
+        if (rank.equals(Rank.SECOND)){
+            return 30000000;
+        }
+        if (rank.equals(Rank.THIRD)){
+            return 1500000;
+        }
+        if (rank.equals(Rank.FOURTH)){
+            return 50000;
+        }
+        if (rank.equals(Rank.FIFTH)){
+            return 5000;
+        }
+        return 0;
+    }
+    public static Rank matchRank(int number) {
+        if (number == 1) {
+            return Rank.FIRST;
+        }
+        if (number == 2) {
+            return Rank.SECOND;
+        }
+        if (number == 3) {
+            return Rank.THIRD;
+        }
+        if (number == 4) {
+            return Rank.FOURTH;
+        }
+        if (number == 5) {
+            return Rank.FIFTH;
+        }
+        return Rank.OUT_OF_RANK;
+    }
+    public static HashMap<Integer, Integer> calculateRank(HashMap<Integer, List<Integer>> result, int count){
+        HashMap<Integer, Integer> ranks = new HashMap<>();
+        for (int i = 1; i < 6; i++) {
+            ranks.put(i, 0);
+        }
+
+        for (int i = 0; i < count; i++) {
+            if (result.get(i).get(0) == 3){
+                ranks.put(5, ranks.get(5) + 1);
+            }
+            if (result.get(i).get(0) == 4){
+                ranks.put(4, ranks.get(4) + 1);
+            }
+            if (result.get(i).get(0) == 5){
+                ranks.put(3, ranks.get(3) + 1);
+            }
+            if (result.get(i).get(0) == 5 && result.get(i).get(1) == 1){
+                ranks.put(3, ranks.get(3) - 1);
+                ranks.put(2, ranks.get(2) + 1);
+            }
+            if (result.get(i).get(0) == 6){
+                ranks.put(1, ranks.get(1) + 1);
+            }
+        }
+        return ranks;
+    }
+
 
 }
