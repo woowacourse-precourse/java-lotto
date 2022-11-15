@@ -24,10 +24,11 @@ public class Buyer {
         NumberGenerator numberGenerator = new NumberGenerator();
 
         for (int index = 0; index < lottoCount; index++) {
-            List<Integer> lotto = numberGenerator.createLottoNumbers();
+            List<Integer> lotto = new ArrayList<Integer>(numberGenerator.createLottoNumbers());
             sortLotto(lotto);
             lottos.add(lotto);
         }
+        
     }
 
     public List<List<Integer>> getLottos() {
