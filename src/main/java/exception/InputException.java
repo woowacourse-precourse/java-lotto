@@ -71,4 +71,10 @@ public class InputException {
             throw new IllegalArgumentException(sb.toString());
         }
     }
+
+    public static boolean isBonusRange(String input) {
+        if (!(NumberRule.NUMBER_RANGE_START.getValue() <= Integer.parseInt(input) && Integer.parseInt(input) <= NumberRule.NUMBER_RANGE_END.getValue()))
+            return false;
+        return true;
+    }
 }
