@@ -15,7 +15,7 @@ public class Console {
         String replacedInput = input.replaceAll("[^0-9]", "");
         if (input != replacedInput) {
             System.out.println("[ERROR] 숫자를 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 오류");
         }
         int money = Integer.valueOf(replacedInput);
         if (money % 1000 != 0) {
@@ -56,6 +56,7 @@ public class Console {
 
     public void outputResult(HashMap<Rank,Integer> rankMap, double yield){
         System.out.println("당첨 통계\n" + "---");
+
         for (Rank rank: Rank.values()) {
             if (rank.getCount()==0) {
                 break;
@@ -74,7 +75,8 @@ public class Console {
             }
             System.out.println(rank.getCount()+"개 일치 ("+strMoney+"원) - "+cnt+"개");
         }
-        System.out.println("총 수익률은 "+yield+"%입니다.");
-
+//        DecimalFormat yieldFormat = new DecimalFormat("###,###.#");
+//        System.out.println("총 수익률은 "+yieldFormat.format(yield)+"%입니다.");
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", yield));
     }
 }

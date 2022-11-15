@@ -35,11 +35,9 @@ public class Lotto {
         }
     }
 
-
-
-
     public void checkPlusNumber(int plusNumber) {
         if (numbers.contains(plusNumber)) {
+            System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복이 불가능합니다.");
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복이 불가능합니다.");
         }
     }

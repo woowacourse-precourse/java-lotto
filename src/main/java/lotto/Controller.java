@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -62,12 +63,14 @@ public class Controller {
 
     public double getYield(int money, HashMap<Rank,Integer> rankMap) {
         if (rankMap.size() ==0 ){
-            return 0;
+            return 0.0;
         }
         double earnings = 0;
         for (Rank rank: rankMap.keySet()) {
             earnings += rankMap.get(rank) * rank.getMoney();
         }
-        return Math.round(earnings/money * 100 * 10) /10.0;
+
+//        return String.format("%.1f",(double) earnings/(double) money * 100 );
+        return Math.round(earnings/money * 1000) / 10.0;
     }
 }
