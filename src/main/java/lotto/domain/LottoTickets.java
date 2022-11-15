@@ -14,4 +14,14 @@ public class LottoTickets {
     public int totalCount() {
         return lottoTickets.size();
     }
+
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        lottoTickets.forEach(lottoTicket -> {
+            sb.append(lottoTicket.toString());
+            sb.append("\n");
+        });
+
+        return sb.toString();
+    }
 }
