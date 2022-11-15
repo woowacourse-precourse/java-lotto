@@ -43,4 +43,15 @@ public class WinningResult {
         }
         return false;
     }
+    public Long calcReward(){
+        long total=0;
+        for(Result value : Result.values()){
+            total+=(long)value.getPrice()*results.get(value);
+        }
+        return total;
+    }
+    public double calcRateOfReturn(int money){
+        Long totalReword=calcReward();
+        return (double)totalReword/(double)money*100;
+    }
 }

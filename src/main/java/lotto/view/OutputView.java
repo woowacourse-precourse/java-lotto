@@ -1,10 +1,8 @@
 package lotto.view;
 
-import lotto.domain.Result;
-import lotto.domain.SystemMessage;
-import lotto.domain.Lotto;
-import lotto.domain.WinningResult;
+import lotto.domain.*;
 
+import java.util.Collections;
 import java.util.List;
 
 public class OutputView {
@@ -23,5 +21,8 @@ public class OutputView {
             System.out.printf(SystemMessage.OUTPUT_RESULT_LOTTO.print(),
                     result.getPrint(), winningResult.getResults().get(result));
         }
+    }
+    public void printRateOfReturn(WinningResult winningResult, int money){
+        System.out.printf(SystemMessage.OUTPUT_RATE_OF_RETURN.print(), String.format("%.1f",winningResult.calcRateOfReturn(money)));
     }
 }

@@ -31,6 +31,7 @@ public class LottoGame {
         getLottoWinningNumberInput();
         winningResult.calcCorrectCountLottos(userLotto, winningLotto);
         outputView.printLottoResultAll(winningResult);
+        outputView.printRateOfReturn(winningResult, userLotto.getMoney());
     }
     public void getMoneyInput() throws IllegalArgumentException{
         String input=inputView.inputMoney();
