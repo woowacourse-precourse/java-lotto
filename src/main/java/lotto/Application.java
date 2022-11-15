@@ -18,7 +18,7 @@ public class Application {
             BigInteger numberOfLottos = Machine.countNumberOfLottos(money);
             List<Lotto> lottos = Machine.generateLottos(numberOfLottos);
             outputView.announceNumberOfPurchases(numberOfLottos);
-
+            outputView.printLottos(lottos);
 
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());

@@ -1,8 +1,10 @@
 package lotto.view;
 
 import lotto.enums.Announcement;
+import lotto.model.Lotto;
 
 import java.math.BigInteger;
+import java.util.List;
 
 public class OutputView {
     public void printErrorMessage(String message) {
@@ -22,4 +24,9 @@ public class OutputView {
         Announcement.NUMBER_OF_PURCHASES.announce(numberOfLottos);
     }
 
+    public void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
 }

@@ -29,8 +29,8 @@
 ### OutputView
 - [x] 에러 메세지를 출력한다. #printErrorMessage(message)
 - [x] 구입금액 입력 메세지를 출력한다. #announceInsertMoney()
-- [x] lotto를 몇개 구매했는지 출력한다.
-- [ ] 구매한 lotto를 출력한다.
+- [x] lotto를 몇개 구매했는지 출력한다. #announceNumberOfPurchases(numberOfLottos) 
+- [x] 구매한 lotto를 출력한다. #printLottos(lottos)
 - [x] 당첨 번호 입력 메세지를 출력한다. #announceInputWinningNumbers()
 - [x] 보너스 번호 입력 메세지를 출력한다. #announceInputBonusNumber()
 - [ ] 결과에대해 출력한다.
