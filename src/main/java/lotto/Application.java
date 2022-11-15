@@ -63,6 +63,7 @@
 
 package lotto;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Application {
@@ -89,7 +90,7 @@ public class Application {
                     }
                 }
             }
-
+            Arrays.sort(arrLotto[lotto]);
         }
         for (int a = 0; a < lotto; a++) {
             System.out.printf("[");
