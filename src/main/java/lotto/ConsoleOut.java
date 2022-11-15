@@ -22,5 +22,6 @@ public class ConsoleOut {
 
 	public static void printInputGoal() {
 		printEmptyLine();
+		System.out.println(Constants.PRINT_INPUT_GOAL);
 	}
 }
