@@ -11,5 +11,5 @@ public interface LottoService {
 
     List<LottoResult> getLottoResults(WinningLotto winningLotto, List<Lotto> userLottos);
 
-    float calculateRateOfReturn(List<LottoResult> lottoResults);
+    LottoStats getLottoStats(List<LottoResult> lottoResults);
 }

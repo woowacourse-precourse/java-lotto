@@ -33,8 +33,11 @@ public class LottoServiceImpl implements LottoService {
         return lottoAccountant.getLottoResults(winningLotto, userLottos);
     }
 
-    @Override
-    public float calculateRateOfReturn(List<LottoResult> lottoResults) {
-        return lottoAccountant.calculateRateOfReturn(lottoResults, LOTTO_PRICE);
+    public LottoStats getLottoStats(List<LottoResult> lottoResults) {
+        LottoStats lottoStats = lottoAccountant.getNumberMatchStats(lottoResults);
+        Float rateOfReturn = lottoAccountant.getRateOfReturn(lottoStats, LOTTO_PRICE);
+        lottoStats.setRateOfReturn(rateOfReturn);
+
+        return lottoStats;
     }
 }

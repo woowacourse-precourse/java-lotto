@@ -20,15 +20,19 @@ public class LottoAccountant {
         return lottoResults;
     }
 
-    public float calculateRateOfReturn(List<LottoResult> lottoResults, int lottoPrice) {
-        Long winningsSum = 0L;
+    public LottoStats getNumberMatchStats(List<LottoResult> lottoResults) {
+        LottoStats lottoStats = new LottoStats();
 
         for (LottoResult lottoResult : lottoResults) {
-            winningsSum += lottoResult.getWinnings();
+            lottoStats.setNumberMatchCounts(lottoResult.getNumberMatchCount(), lottoResult.isBonusNumberMatch());
         }
 
-        float ratioOfReturn = (float) winningsSum / (float) (lottoResults.size() * lottoPrice) * 100;
+        return lottoStats;
+    }
 
-        return Math.round((ratioOfReturn * 10) / 10.0);
+    public Float getRateOfReturn(LottoStats lottoStats, int lottoPrice) {
+        Long totalWinnings = lottoStats.calculateTotalWinnings();
+
+        return (float) totalWinnings / (float) (lottoStats.getLottoCount() * lottoPrice) * 100;
     }
 }
