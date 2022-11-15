@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Dealer {
 
-    private final List<Integer> winNumbers;
-    private final int bonusNumber;
+    private final Lotto winNumbers;
+    private final Bonus bonusNumber;
     private final List<Integer> result;
     private final float earning;
 
     public Dealer(List<Lotto> lotteries, Lotto winNumbers, Bonus bonus) {
         result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
-        this.winNumbers = winNumbers.getNumbers();
-        this.bonusNumber = bonus.getBonusNumber();
+        this.winNumbers = winNumbers;
+        this.bonusNumber = bonus;
         make(lotteries);
         earning = calculateEarning();
     }
@@ -38,11 +38,9 @@ public class Dealer {
 
     private void make(List<Lotto> lotteries) {
         for (Lotto lotto : lotteries) {
-            long matchingCount = lotto.getNumbers().stream()
-                    .filter(i -> winNumbers.contains(i))
-                            .count();
+            long matchingCount = lotto.countMatchingNumber(winNumbers);
 
-            if (rankingIsSecond(bonusNumber, matchingCount)) {
+            if (rankingIsSecond(matchingCount)) {
                 increaseRankingCount(Ranking.second);
                 continue;
             }
@@ -52,7 +50,7 @@ public class Dealer {
         }
     }
 
-    private boolean rankingIsSecond(int bonusNumber, long matchingCount) {
+    private boolean rankingIsSecond(long matchingCount) {
         return Ranking.second.matchingCount() == matchingCount && winNumbers.contains(bonusNumber);
     }
 
