@@ -29,6 +29,30 @@ public class LottoService {
         }
         return money/1000;
     }
+    public static List<Integer> compare(List<Integer> lotto, List<Integer> winningNumbers, int bonusNumber){
+        List<Integer> result = new ArrayList<>();
+        int count = 0;
+
+        for (int i = 0; i < winningNumbers.size(); i++) {
+            if (lotto.contains(winningNumbers.get(i))){
+                count++;
+            }
+        }
+        result.add(count);
+        result.add(0);
+        if (lotto.contains(bonusNumber)){
+            result.set(1, 1);
+        }
+        return result;
+    }
+
+    public static HashMap<Integer, List<Integer>> calculateCompareResult(int count, HashMap<Integer, List<Integer>> lotties, List<Integer> winningNumbers, int bonusNumber) {
+        HashMap<Integer, List<Integer>> result = new HashMap<>();
+        for (int i = 0; i < count; i++) {
+            result.put(i, compare(lotties.get(i), winningNumbers, bonusNumber));
+        }
+        return result;
+    }
 
 
 }
