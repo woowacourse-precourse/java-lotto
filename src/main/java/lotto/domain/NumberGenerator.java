@@ -9,7 +9,7 @@ public class NumberGenerator {
 
     public void checkValidateNumber(String money){
         for(int i = 0; i < money.length(); i++){
-            if((int)money.charAt(i) < 80 || (int)money.charAt(i) > 89){
+            if((int)money.charAt(i) < 48 || (int)money.charAt(i) > 57){
                 throw new IllegalArgumentException();
             }
         }
