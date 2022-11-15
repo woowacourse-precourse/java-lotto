@@ -21,7 +21,7 @@
 
 ### Diagram
 
-![image](https://user-images.githubusercontent.com/58586537/201909398-ec5524eb-837a-4283-9b2b-b7e6d56f1224.png)
+![image](https://user-images.githubusercontent.com/58586537/201928189-255c809a-572f-4986-a76f-fcf39e2fc0d4.png)
 
 ### InputView
 
@@ -83,7 +83,7 @@
 
 ### 클래스
 
-- [x]  Lotto 번호를 표현하는 LottoNumber 래퍼 클래스 추가
+- [x]  Lotto 번호를 표현하는 LottoNumber 클래스 추가
     - [x] 로또 번호를 반환하는 value 메서드 추가
 - [x]  로또를 표현하는 Lotto 클래스 추가
     - [x] 로또 번호 리스트를 반환하는 value 메서드 추가
@@ -117,7 +117,7 @@
 - [x]  List<Lotto>의 일급 컬렉션인 LottoTicket 클래스 추가
     - [x] 로또 번호 리스트들을 반환하는 value 메서드 추가
     - [x] 로또 결과 확인하는 check 메서드 추가
-- [x]  long의 래퍼 클래스 Money 추가
+- [x]  long의 클래스 Money 추가
 
 ### dto
 
