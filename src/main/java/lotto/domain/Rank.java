@@ -44,4 +44,7 @@ public enum Rank {
         }
     }
 
+    public int getWinningMoney() {
+        return winningMoney;
+    }
 }
