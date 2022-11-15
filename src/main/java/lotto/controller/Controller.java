@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/***
+ * UI로직과 비즈니스로직을 이어주는 클래스
+ */
 public class Controller {
     private InputConsole input = new InputConsole();
     private OutputConsole output = new OutputConsole();
