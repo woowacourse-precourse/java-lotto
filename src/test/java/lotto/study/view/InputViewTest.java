@@ -10,7 +10,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -183,9 +182,6 @@ class InputViewTest {
         String userInput = "1000j";
         InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
-
-        //when
-//        int result = InputView.inputPayment();
 
         //then
         assertThat(output.toString().contains("[ERROR]"));
