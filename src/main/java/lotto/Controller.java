@@ -71,12 +71,12 @@ public class Controller {
     }
 
     public static void Solution() {
-        // 구입 금액 입력
+        // 로또 구입 금액 입력
         View.OutputString("구입금액을 입력해 주세요.");
         String inputLottoAmount = View.Input();
         Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
 
-        // 구입 금액 검증
+        // 로또 구입 금액 검증
         ValidatePurchaseAmount(lottoAmount);
 
         // 로또 개수 계산
@@ -90,7 +90,7 @@ public class Controller {
         View.OutputString(lottoCount+"개를 구매했습니다.");
         View.OutputListIntegerInList(publishedLottoArray);
 
-        // 당첨 번호 입력
+        // 로또 당첨 번호 입력
         View.OutputString("당첨 번호를 입력해 주세요.");
         String inputRealLottoNumber = View.Input();
         View.OutputString(inputRealLottoNumber);
@@ -98,7 +98,7 @@ public class Controller {
         List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
         realLottoNumbers = Model.SortArrayList(realLottoNumbers);
 
-        // 보너스 번호 입력
+        // 로또 보너스 번호 입력
         View.OutputString("보너스 번호를 입력해 주세요.");
         String inputRealLottoBonusNumber = View.Input();
         View.OutputString(inputRealLottoBonusNumber);
@@ -107,14 +107,14 @@ public class Controller {
         // Lotto 클래스 생성
         Lotto lotto = new Lotto(realLottoNumbers);
 
-        // 보너스 번호 추가
+        // 로또 보너스 번호 추가
         realLottoNumbers.add(realLottoBonusNumber);
 
         // 로또 번호 분석
         LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
                 (realLottoNumbers, publishedLottoArray);
 
-        // 당첨 결과 통계 출력
+        // 로또 당첨 결과 통계 출력
         View.OutputString("당첨 통계");
         View.OutputString("---");
         View.PrintResult(lottoResult);
