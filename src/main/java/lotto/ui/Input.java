@@ -10,6 +10,7 @@ public class Input {
     public int getPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String purchaseMoneyInput = Console.readLine();
+        Validator.checkPurchaseMoneyInputForm(purchaseMoneyInput);
 
         int purchaseMoney = Integer.valueOf(purchaseMoneyInput);
         Validator.checkPurchaseMoney(purchaseMoney);
