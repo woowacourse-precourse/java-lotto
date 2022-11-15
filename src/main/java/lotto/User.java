@@ -18,7 +18,7 @@ public class User {
         String input = Console.readLine();
         int lotteryPurchaseAmount = Integer.parseInt(input);
         if (lotteryPurchaseAmount % 1000 != 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1000원 단위로 입력해주세요");
         }
         return (lotteryPurchaseAmount);
     }
@@ -31,7 +31,7 @@ public class User {
         for (String number : splitInput) {
             int lottoNumber = Integer.parseInt(number);
             if (lottoNumber < 1 || lottoNumber > 45){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("1~45 범위 안으로 입력해주세요");
             }
             winningNumber.add(lottoNumber);
         }
@@ -43,7 +43,7 @@ public class User {
         String input = Console.readLine();
         int bonusNumber = Integer.parseInt(input);
         if (bonusNumber < 1 || bonusNumber > 45){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1~45 범위 안으로 입력해주세요");
         }
         return (bonusNumber);
     }

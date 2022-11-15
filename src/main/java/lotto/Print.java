@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Print {
+
+    static final String ERROR_PREFIX = "[ERROR]";
     public void infoLottos(List<Lotto> lottos){
         System.out.println(String.format("%d개를 구매했습니다.", lottos.size()));
         for (Lotto lotto : lottos){
@@ -23,5 +25,9 @@ public class Print {
 
     public void infoProfit(double profit){
         System.out.println(String.format("총 수익률은 %.1f%%입니다", profit));
+    }
+
+    public void infoError(String message){
+        System.out.println(ERROR_PREFIX + message);
     }
 }
