@@ -38,4 +38,13 @@ public class Lotto {
         }
     }
 
+    public void validBonus(Integer bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException("보너스 번호가 이미 로또 당첨번호 중 하나입니다.");
+        }
+        if (bonus < 1 || bonus > 45) {
+            throw new IllegalArgumentException("보너스 번호의 숫자 범위는 1~45 입니다.");
+        }
+    }
+
 }

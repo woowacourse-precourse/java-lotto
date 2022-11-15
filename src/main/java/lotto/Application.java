@@ -21,6 +21,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
         Integer amount;
+        Integer bonus;
         try {
             amount = Integer.valueOf(Console.readLine());
         } catch (Exception e) {
@@ -34,6 +35,15 @@ public class Application {
         //로또 당첨 번호 입력 받기
         System.out.println("당첨 번호를 입력해 주세요.");
         Lotto firstPlace = new Lotto(inputConversion(Console.readLine()));
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            bonus = Integer.valueOf(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("보너스 번호는 Integer이어야 합니다");
+        }
+        //보너스 번호 validity check
+        firstPlace.validBonus(bonus);
+
         
     }
 }
