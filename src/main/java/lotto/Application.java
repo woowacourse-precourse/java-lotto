@@ -20,10 +20,15 @@ public class Application {
             List<Lotto> lottos = receipt.buy();
             print(receipt, lottos);
 
-            //당첨 로또 생성
+            //당첨 로또 및 보너스번호 생성
             List<Integer> winNumbers = askWinNumbers();
             int bonusNumber = askBonusNumber();
-            WinLotto winLotto = new WinLotto(winNumbers, bonusNumber);
+            Lotto winLotto = new Lotto(winNumbers);
+
+            //당첨 결과 계산 및 출력
+            Bank bank = new Bank(winLotto, bonusNumber);
+            long totalMoney = bank.getTotalMoney(lottos);
+            bank.printPayResult();
         } catch (MyIllegalArgumentException e) {
             e.printErrorMessage();
         }
@@ -39,7 +44,7 @@ public class Application {
     /**
      * 사용자 입력 메서드
      */
-    private static int askMoney() {
+    public static int askMoney() {
         System.out.println("구매금액을 입력해 주세요.");
         try {
             return Integer.parseInt(Console.readLine());
