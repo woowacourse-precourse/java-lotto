@@ -4,9 +4,10 @@ import view.Input;
 import model.Data;
 import view.MessagePrint;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class LottoGame {
+public class LottoGame{
 
     public void playLottoGame() {
 
@@ -19,18 +20,15 @@ public class LottoGame {
 
         message.printLottoCount(data.numberOfLotto);
 
-        List<Integer>[] userLotto = new ArrayList[data.numberOfLotto];
+        data.initializeUserLotto();
 
-        for (int i = 0; i < data.numberOfLotto; i++) {
-            userLotto[i] = new ArrayList<Integer>();
+        for(int i=0;i<data.numberOfLotto;i++){
+            data.userLotto[i].addAll(Input.getRandomNumber());
+            Collections.sort(data.userLotto[i]);
+            new Lotto(data.userLotto[i]);
         }
 
-        for (int i = 0; i < data.numberOfLotto; i++) {
-            userLotto[i].addAll(Input.getRandomNumber());
-            new Lotto(userLotto[i]);
-        }
-
-        message.printUserLotto(userLotto, data.numberOfLotto);
+        message.printUserLotto(data.userLotto, data.numberOfLotto);
 
 
         message.printInputWinningNumber();
@@ -54,9 +52,9 @@ public class LottoGame {
 
         data.initializeMap();
 
-        for (int i = 0; i < userLotto.length; i++) {
-            int checkLotto = data.checkLottoNumber(userLotto[i]);
-            data.map(userLotto[i], checkLotto);
+        for (int i = 0; i < data.userLotto.length; i++) {
+            int checkLotto = data.checkLottoNumber(data.userLotto[i]);
+            data.map(data.userLotto[i], checkLotto);
         }
 
         message.printCheckLotto(data.Win);
