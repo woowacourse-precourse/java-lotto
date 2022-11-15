@@ -86,7 +86,6 @@ public class LotteryMachine {
         for (int key : winningCase) {
             settings.put(key, settings.getOrDefault(key, 0) + 1);
         }
-        System.out.println(settings);
     }
 
     private int matchNumber(int number){
