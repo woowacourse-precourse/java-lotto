@@ -1,14 +1,12 @@
-package lotto;
+package controller;
 
-import static lotto.ExceptionHandler.excParseInt;
-import static lotto.ExceptionHandler.validNumberDupplication;
+import static controller.ExceptionHandler.excParseInt;
+import static controller.ExceptionHandler.validNumberDupplication;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.ExceptionHandler;
 
 import model.Host;
-import model.Lotto;
 import view.HostUI;
 
 public class HostController {
