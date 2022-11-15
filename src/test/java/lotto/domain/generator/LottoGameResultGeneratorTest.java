@@ -301,7 +301,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(7);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(2 * FIFTH.prizeMoney());
         }
@@ -313,7 +313,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(1);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(FIFTH.prizeMoney() + FOURTH.prizeMoney());
         }
@@ -325,7 +325,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(10);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(2 * FIFTH.prizeMoney() + SECOND.prizeMoney());
         }
@@ -337,7 +337,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(1);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(FOURTH.prizeMoney() + THIRD.prizeMoney());
         }
@@ -349,7 +349,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(12);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(THIRD.prizeMoney() + SECOND.prizeMoney());
         }
@@ -361,7 +361,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(40);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(FOURTH.prizeMoney() + FIRST.prizeMoney());
         }
@@ -373,7 +373,7 @@ public class LottoGameResultGeneratorTest {
             winningNumbers.registerBonusNumber(12);
 
             lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
-            int profits = lottoGameResultGenerator.calculateProfits();
+            long profits = lottoGameResultGenerator.calculateProfits();
 
             assertThat(profits).isEqualTo(FIRST.prizeMoney());
         }

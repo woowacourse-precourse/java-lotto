@@ -85,12 +85,12 @@ public class LottoGameResultGenerator {
     }
 
     public void calculateEarningRate(int paidMoney) {
-        int profits = calculateProfits();
+        long profits = calculateProfits();
         earningRate = (profits / (double)paidMoney) * 100;
     }
 
-    public int calculateProfits() {
-        int profits = 0;
+    public long calculateProfits() {
+        long profits = 0;
         for (int prizeMoney : winningDetails.keySet()) {
             profits += prizeMoney * winningDetails.get(prizeMoney);
         }
