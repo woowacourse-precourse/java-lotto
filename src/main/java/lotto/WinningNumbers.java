@@ -18,17 +18,27 @@ public class WinningNumbers {
     private void validate(String s){
         StringTokenizer tokenizer= new StringTokenizer(s,",");
         while(tokenizer.hasMoreTokens()){
-            integerCheck(tokenizer.nextToken());
+            String token = tokenizer.nextToken();
+            int number=integerCheck(token);
+            isInRange(number);
         }
     }
 
-    private void integerCheck(String num) {
-        try{
-             int winNum = Integer.parseInt(num);
+    private void isInRange(int number) {
+        if (number < 1 || number > 45) {
+            printErrorMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
         }
-        catch(NumberFormatException e){
+    }
+
+    private int integerCheck(String num) {
+        int winNum = 0;
+        try {
+            winNum = Integer.parseInt(num);
+        } catch (NumberFormatException e) {
             printErrorMessage("[ERROR] 숫자 형식으로만 입력해주세요.");
         }
+        return winNum;
     }
 
     private List<Integer> splitWinningNumbers(String s){
