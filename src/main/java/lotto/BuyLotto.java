@@ -15,6 +15,7 @@ public class BuyLotto {
     BuyLotto(String buyNumber) {
         int buyNum = valid_BuyNum(buyNumber);
         this.buyNum = buyNum;
+        buyCount();
 
     }
 
@@ -27,6 +28,13 @@ public class BuyLotto {
         }
         return num;
     }
+
+    private void buyCount() {
+        int buyCount = buyNum/1000;
+        System.out.println(buyCount+"개를 구매했습니다.");
+        randomPick(buyCount);
+    }
+
 
 
 }
