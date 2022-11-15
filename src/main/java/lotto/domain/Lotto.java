@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Lotto {
-	public final static Map<Integer, Integer> numberCache = new HashMap<>();
+	public static final Map<Integer, Integer> numberCache = new HashMap<>();
 	private final List<Integer> numbers;
 
 	static {
