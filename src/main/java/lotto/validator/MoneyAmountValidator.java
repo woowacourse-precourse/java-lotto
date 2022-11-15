@@ -10,4 +10,10 @@ public class MoneyAmountValidator {
             }
         }
     }
+
+    public static void validateMoneyLessThanThousand(int moneyAmount){
+        if (moneyAmount < 1000) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_CANNOT_BUY_LOTTO);
+        }
+    }
 }
