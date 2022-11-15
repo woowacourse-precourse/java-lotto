@@ -56,6 +56,7 @@ public class ConsoleLottoReader implements LottoReader {
     private void validateAmount(int amount) {
         if (amount % Price.SINGLE_PRICE.getPrice() != 0) {
             String message = "[ERROR] 로또 구입 금액은 " + Price.SINGLE_PRICE.getPrice() + "원 단위여야 합니다.\"";
+            System.out.println(message);
             throw new IllegalArgumentException(message);
         }
     }
@@ -64,6 +65,7 @@ public class ConsoleLottoReader implements LottoReader {
         for (Integer number : numbers) {
             if (number < START_NUMBER.getNumber() || number > END_NUMBER.getNumber()) {
                 String message = "[ERROR] 로또 번호는" + START_NUMBER.getNumber() + "부터" + END_NUMBER.getNumber() + "사이의 숫자여야 합니다.";
+                System.out.println(message);
                 throw new IllegalArgumentException(message);
             }
         }
@@ -72,6 +74,7 @@ public class ConsoleLottoReader implements LottoReader {
     private void validateBonus(int bonus) {
         if (bonus < START_NUMBER.getNumber() || bonus > END_NUMBER.getNumber()) {
             String message = "[ERROR] 보너스 번호는" + START_NUMBER.getNumber() + "부터" + END_NUMBER.getNumber() + "사이의 숫자여야 합니다.";
+            System.out.println(message);
             throw new IllegalArgumentException(message);
         }
     }
@@ -79,13 +82,19 @@ public class ConsoleLottoReader implements LottoReader {
     private void validateCount(Set<Integer> numbers) {
         if (numbers.size() != NUMBER_COUNT.getNumber()) {
             String message = "[ERROR] 로또 번호는 중복되지 않는 " + NUMBER_COUNT.getNumber() + "자리 숫자여야 합니다.";
+            System.out.println(message);
             throw new IllegalArgumentException(message);
         }
     }
 
     private void validateIsNumber(String number) {
         if (!Pattern.matches("^[0-9]*$", number)) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            System.out.println("[ERROR] 숫자만 입력 가능합니다.");
+            try {
+                throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e) {
+                throw new NoSuchElementException();
+            }
         }
     }
 }

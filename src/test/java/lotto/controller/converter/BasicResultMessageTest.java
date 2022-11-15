@@ -20,7 +20,7 @@ class BasicResultMessageTest {
 
         System.out.println(rankMessage);
         assertThat(rankMessage).contains("3개 일치 (5,000원) - 1개");
-        assertThat(rankMessage).contains("5개 일치, 보너스 볼 일치  (30,000,000원) - 0개");
+        assertThat(rankMessage).contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개");
     }
 
     @DisplayName("각 등수에 대한 결과가 출력된다. - 2")
@@ -32,7 +32,7 @@ class BasicResultMessageTest {
 
         System.out.println(rankMessage);
         assertThat(rankMessage).contains("6개 일치 (2,000,000,000원) - 1개 ");
-        assertThat(rankMessage).contains("5개 일치, 보너스 볼 일치  (30,000,000원) - 0개");
+        assertThat(rankMessage).contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개");
     }
 
     @DisplayName("수익률이 반환된다. - 1")

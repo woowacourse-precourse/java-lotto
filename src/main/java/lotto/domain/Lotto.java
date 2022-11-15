@@ -18,6 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR]");
             throw new IllegalArgumentException();
         }
     }
@@ -25,6 +26,7 @@ public class Lotto {
         int size = numbers.size();
         int distinctSize = new HashSet<>(numbers).size();
         if (size > distinctSize) {
+            System.out.println("[ERROR]");
             throw new IllegalArgumentException();
         }
     }
@@ -32,6 +34,7 @@ public class Lotto {
     private void validateLottoNumber(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < START_NUMBER.getNumber() || number > END_NUMBER.getNumber()) {
+                System.out.println("[ERROR]");
                 throw new IllegalArgumentException();
             }
         }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,7 +59,7 @@ class ConsoleLottoReaderTest {
             System.setIn(in);
 
             //then
-            assertThatThrownBy(() -> reader.readAmount()).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> reader.readAmount()).isInstanceOf(NoSuchElementException.class);
         }
     }
 
@@ -108,7 +109,7 @@ class ConsoleLottoReaderTest {
             @Test
             void exceptSplit1() {
                 //then
-                assertThatThrownBy(() -> reader.splitNumber("12,21,34,4a,5,18")).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> reader.splitNumber("12,21,34,4a,5,18")).isInstanceOf(NoSuchElementException.class);
             }
 
             @DisplayName("입력받은 번호에 쉼표와 숫자를 제외한 다른 문자가 있을 경우")
@@ -122,7 +123,7 @@ class ConsoleLottoReaderTest {
                 System.setIn(in);
 
                 //then
-                assertThatThrownBy(() -> reader.readLottoNumber()).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> reader.readLottoNumber()).isInstanceOf(NoSuchElementException.class);
             }
 
             @DisplayName("입력받은 번호 숫자가 1~45 사이의 값이 아닐 경우 - 1")
@@ -212,7 +213,7 @@ class ConsoleLottoReaderTest {
             System.setIn(in);
 
             //then
-            assertThatThrownBy(() ->reader.readBonus()).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() ->reader.readBonus()).isInstanceOf(NoSuchElementException.class);
         }
 
         @DisplayName("입력받은 보너스 번호가 1~45 사이의 숫자가 아닐 경우 예외가 발생한다. - 1")
