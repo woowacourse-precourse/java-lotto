@@ -1,9 +1,8 @@
-package lotto.Model;
+package lotto.Domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.Utils.Validator.BonusValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package lotto.Model;
+package lotto.Domain;
 
-import static lotto.Model.WinningRank.*;
+import static lotto.Domain.WinningRank.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;

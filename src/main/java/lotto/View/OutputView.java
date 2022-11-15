@@ -5,10 +5,10 @@ import static lotto.Utils.Constant.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.Model.Buyer;
-import lotto.Model.Calculator;
-import lotto.Model.Lotto;
-import lotto.Model.WinningRank;
+import lotto.Domain.Buyer;
+import lotto.Domain.Calculator;
+import lotto.Domain.Lotto;
+import lotto.Domain.WinningRank;
 
 public class OutputView {
 

@@ -1,8 +1,8 @@
 package lotto.Controller;
 
-import lotto.Model.Buyer;
-import lotto.Model.Calculator;
-import lotto.Model.WinningLotto;
+import lotto.Domain.Buyer;
+import lotto.Domain.Calculator;
+import lotto.Domain.WinningLotto;
 import lotto.View.InputView;
 
 public class InputController {

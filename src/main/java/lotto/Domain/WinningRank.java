@@ -1,4 +1,4 @@
-package lotto.Model;
+package lotto.Domain;
 
 import java.util.Arrays;
 
