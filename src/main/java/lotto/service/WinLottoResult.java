@@ -8,7 +8,6 @@ import java.util.List;
 
 public class WinLottoResult {
     private final int BONUS_POINT = 10;
-    private final int WINNING_POINT = 1;
     public static int yield;
     InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
@@ -44,6 +43,7 @@ public class WinLottoResult {
             if(randomLottoLists.get(i) == Integer.parseInt(inputBonusNumber.inputBonusNumber)) {
                 count += BONUS_POINT;
             }
+            int WINNING_POINT = 1;
             if(winningNumbers.contains(randomLottoLists.get(i))) count += WINNING_POINT;
         }
 

@@ -1,7 +1,7 @@
 package lotto.Data;
 
 public class UserMoney {
-    private int money;
+    private final int money;
     public UserMoney(int money) {
         this.money = money;
     }

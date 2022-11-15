@@ -7,28 +7,28 @@ import java.text.DecimalFormat;
 
 public class Output {
     public final String ERROR_ORDER = "[ERROR]";
-    private final String INPUTMONEY_ORDER = "구입금액을 입력해 주세요.";
-    private final String PURCHASE_LOTTO_ORDER = "개를 구매했습니다.";
-    private final String WINNING_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
-    private final String BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
-    private final String WIN_STATISTICS = "당첨 통계";
     WinLottoResult winLottoResult = new WinLottoResult();
 
     public void inputMoneyOrder() {
+        String INPUTMONEY_ORDER = "구입금액을 입력해 주세요.";
         System.out.println(INPUTMONEY_ORDER);
     }
 
     public void purchaseLottoOrder(int lottoCount) {
-        System.out.println(lottoCount+PURCHASE_LOTTO_ORDER);
+        String PURCHASE_LOTTO_ORDER = "개를 구매했습니다.";
+        System.out.println(lottoCount+ PURCHASE_LOTTO_ORDER);
     }
     public void winningLottoNumbersOrder() {
+        String WINNING_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
         System.out.println(WINNING_LOTTO_NUMBERS);
     }
     public void bonusLottoNumberOrder() {
+        String BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
         System.out.println(BONUS_LOTTO_NUMBER);
     }
 
     public void winStatistics() {
+        String WIN_STATISTICS = "당첨 통계";
         System.out.println(WIN_STATISTICS);
         System.out.println("---");
     }
@@ -38,7 +38,7 @@ public class Output {
     public void fifthPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");
         System.out.println("3개 일치 ("+formatter.format(PrizeRanking.FIFTH.getNumber())+"원) - "+count+"개");
-        winLottoResult.yield += count * PrizeRanking.FIFTH.getNumber();
+        WinLottoResult.yield += count * PrizeRanking.FIFTH.getNumber();
     }
     public void fourthPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");
