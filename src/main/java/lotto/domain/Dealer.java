@@ -23,8 +23,8 @@ public class Dealer {
         return result;
     }
 
-    public float calculateEarningRate(int purchaseAmount) {
-        return earning / (float)purchaseAmount * 100;
+    public float calculateEarningRate(long purchaseAmount) {
+        return (float) (earning / purchaseAmount * 100.0);
     }
 
     private float calculateEarning() {

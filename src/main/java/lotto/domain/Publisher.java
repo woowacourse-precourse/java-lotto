@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Publisher {
 
     private static final int TICKET_PRICE = 1000;
-    private final int purchaseAmount;
-    private final int ticketQuantity;
+    private final long purchaseAmount;
+    private final long ticketQuantity;
     private final Generator generator;
     private final List<Lotto> lotteries;
 
-    public Publisher(int purchaseAmount) {
+    public Publisher(long purchaseAmount) {
         validate(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.ticketQuantity = purchaseAmount / TICKET_PRICE;
@@ -19,16 +19,13 @@ public class Publisher {
         this.lotteries = issueLotto();
     }
 
-    public int getPurchaseAmount() {
-        return purchaseAmount;
-    }
 
     public List<Lotto> getLotteries() {
         return lotteries;
     }
 
     private List<Lotto> issueLotto() {
-        List<Lotto> lotteries = new ArrayList<Lotto>(ticketQuantity);
+        List<Lotto> lotteries = new ArrayList<Lotto>();
         while (lotteries.size() < ticketQuantity) {
             List<Integer> numbers = generator.createLottoNumbers();
             lotteries.add(new Lotto(numbers));
@@ -36,7 +33,7 @@ public class Publisher {
         return lotteries;
     }
 
-    private void validate(int purchaseAmount) {
+    private void validate(long purchaseAmount) {
         if (purchaseAmount % TICKET_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 숫자여야 합니다.");
         }

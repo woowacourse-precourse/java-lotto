@@ -9,13 +9,13 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            int purchaseAmount = getPurchaseAmount();
+            long purchaseAmount = getPurchaseAmount();
             Publisher publisher = new Publisher(purchaseAmount);
             Output.printLotteries(publisher.getLotteries());
 
             Dealer dealer = new Dealer(publisher.getLotteries(), getWinNumber(), getBonusNumber());
             List<Integer> result = dealer.getResult();
-            float earningRate = dealer.calculateEarningRate(publisher.getPurchaseAmount());
+            float earningRate = dealer.calculateEarningRate(purchaseAmount);
 
             String resultPrintFormat = getPrintResultFormat(result);
             Output.printWinningStatistics(resultPrintFormat, earningRate);
@@ -33,7 +33,7 @@ public class Application {
         return resultPrintFormat.toString();
     }
 
-    private static int getPurchaseAmount() {
+    private static long getPurchaseAmount() {
         try {
             return Input.getAnswerInInteger(Request.purchaseAmount.value());
         } catch (Exception e) {
