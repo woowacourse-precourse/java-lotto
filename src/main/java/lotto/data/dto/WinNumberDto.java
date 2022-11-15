@@ -30,11 +30,10 @@ public class WinNumberDto {
         return new WinNumberDto(Set.copyOf(winNumbers));
     }
 
-    private static void validate(String input) throws IllegalArgumentException {
+    private static void validate(String input) {
         if(hasWrongSplitFormat(input)) {
             throw ExceptionType.FORMAT.getException();
         }
-
     }
 
     private static boolean hasWrongSplitFormat(String input) {

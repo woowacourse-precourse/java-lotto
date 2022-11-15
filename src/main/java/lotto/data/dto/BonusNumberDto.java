@@ -15,12 +15,12 @@ public class BonusNumberDto {
         return bonusNumber;
     }
 
-    public static BonusNumberDto createWithInput(String input) throws IllegalArgumentException{
+    public static BonusNumberDto createWithInput(String input) {
         validate(input);
         return new BonusNumberDto(Integer.parseInt(input));
     }
 
-    private static void validate(String input) throws IllegalArgumentException {
+    private static void validate(String input) {
         if (hasWrongNumberFormat(input)) {
             throw ExceptionType.NUMBER.getException();
         }
