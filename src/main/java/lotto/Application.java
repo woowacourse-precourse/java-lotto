@@ -20,9 +20,9 @@ public class Application {
         new quantityAndNumberOutput(numberOfGame.numberOfGame,randomNumberGenerate.numbers);
         winningNumberInput winningNumberInput = new winningNumberInput();
         bonusNumberInput bonusNumber = new bonusNumberInput(winningNumberInput.winningNumber);
-        calculateResult map = new calculateResult(sortAnswer.answer,winningNumberInput.winningNumber, bonusNumber.bonusNumber);
-        new winningResultOutput(map.calculateResult);
-        calculateProfitability calculateProfitability = new calculateProfitability(map.calculateResult,sortAnswer.answer);
+        calculateResult calculateResult = new calculateResult(sortAnswer.answer,winningNumberInput.winningNumber, bonusNumber.bonusNumber);
+        new winningResultOutput(calculateResult.calculateResult);
+        calculateProfitability calculateProfitability = new calculateProfitability(calculateResult.calculateResult,sortAnswer.answer);
         new profitabilityOutput(calculateProfitability.calculateProfitability);
     }
 }
