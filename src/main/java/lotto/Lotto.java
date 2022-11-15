@@ -21,6 +21,10 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR]");
             }
         }
+
+        if (checkNumberRange(numbers)) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
 
     /* 중복검사 */
@@ -32,6 +36,22 @@ public class Lotto {
         }
         return false;
     }
+
+    private boolean checkNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (!(1 <= number && number <= 45)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
 
     public void hasDuplicatedLottoNumberWithBonusNumber(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
