@@ -3,6 +3,7 @@ package lotto.ui;
 import lotto.domain.WinningNumbers;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,13 @@ public class OutputPrinter {
         System.out.println(lottoBundle.size() + "개를 구매했습니다.");
 
         for (List<Integer> singleLotto : lottoBundle) {
-            Collections.sort(singleLotto);
-            System.out.println(singleLotto);
+            List<Integer> tmp = new ArrayList<>();
+            for (int element : singleLotto) {
+                tmp.add(element);
+            }
+            Collections.sort(tmp);
+
+            System.out.println(tmp);
         }
     }
     public void printFinalResult(Map<WinningNumbers, Long> winningCase, double rawRatio) {
