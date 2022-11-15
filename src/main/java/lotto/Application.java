@@ -99,11 +99,11 @@ public class Application {
 
     public static void printRanking(List<Integer> ranking) {
         System.out.println("당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - " + ranking.get(4) +"개");
-        System.out.println("4개 일치 (50,000원) - " + ranking.get(3) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + ranking.get(2) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + ranking.get(1) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + ranking.get(0) + "개");
+        System.out.println(Rank.FIFTH.getPrinting() + ranking.get(Rank.FIFTH.getValue()) +"개");
+        System.out.println(Rank.FOURTH.getPrinting() + ranking.get(Rank.FOURTH.getValue()) + "개");
+        System.out.println(Rank.THIRD.getPrinting() + ranking.get(Rank.THIRD.getValue()) + "개");
+        System.out.println(Rank.SECOND.getPrinting() + ranking.get(Rank.SECOND.getValue()) + "개");
+        System.out.println(Rank.FIRST.getPrinting() + ranking.get(Rank.FIRST.getValue()) + "개");
     }
 
     public static void printEarningRate(int money, List<Integer> ranking) {
