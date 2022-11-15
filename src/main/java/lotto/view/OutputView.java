@@ -1,9 +1,12 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
+import lotto.domain.Result;
 
 public class OutputView {
     public static void messageAmountInput() {
@@ -32,5 +35,24 @@ public class OutputView {
 
     public static void messageBonusInput() {
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void messageStrategy() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public static void printRankResult(Result result) {
+        StringBuilder stringBuilder = new StringBuilder();
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        for (Rank rank : result.getResults().keySet()) {
+            if (rank == Rank.NONE) {
+                continue;
+            }
+            stringBuilder.append(rank.getMessage());
+            stringBuilder.append(String.format("(%s원)", formatter.format(rank.getMoney())));
+            stringBuilder.append(String.format(" - %s개\n", result.getResults().get(rank)));
+        }
+        System.out.println(stringBuilder.toString());
     }
 }

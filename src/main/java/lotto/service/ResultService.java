@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
@@ -11,17 +12,17 @@ import lotto.domain.WinningLotto;
 
 public class ResultService {
     public static Result addRankResult(User user, WinningLotto winningLotto) {
-        Map<Rank, Integer> results = new HashMap<>();
+        Result result = new Result(new LinkedHashMap<>());
         for (Lotto lotto : user.getLottos()) {
             List<Integer> userNumbers = lotto.getNumbers();
             int count = compareNumbers(userNumbers, winningLotto.getWinningNumbers());
             boolean isBonus = checkBonusNumber(userNumbers, winningLotto.getBounsNumber());
             if (count >= 3) {
                 Rank key = Rank.valueOf(count, isBonus);
-                results.put(key, results.getOrDefault(key, 0) + 1);
+                result.getResults().put(key, result.getResults().getOrDefault(key, 0) + 1);
             }
         }
-        return new Result(results);
+        return result;
     }
 
     private static boolean checkBonusNumber(List<Integer> userNumbers, int bonusNumber) {
