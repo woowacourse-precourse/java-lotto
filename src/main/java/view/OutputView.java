@@ -9,16 +9,17 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
-    private static final String NEW_LINE = "\n";
+    private static final String HOW_MANY_LOTTO = "개를 구매했습니다.";
     private static final String STATISTIC_HEADER = "당첨 통계";
     private static final String STATISTIC_BORDER = "---";
     private static final String HISTORY = "%d개 일치 (%s원) - %d개\n";
     private static final String BONUS_HISTORY = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
-    private static DecimalFormat df = new DecimalFormat("###,###");
     private static final String PROFIT = "총 수익률은 %.1f%%입니다.";
 
+    private static DecimalFormat df = new DecimalFormat("###,###");
+
     public static void showLottos(List <Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+        System.out.println(lottos.size() + HOW_MANY_LOTTO);
 
         lottos.stream().map(Lotto::getNumbers).forEach(System.out::println);
     }
