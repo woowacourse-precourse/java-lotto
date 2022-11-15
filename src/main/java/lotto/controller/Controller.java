@@ -1,0 +1,55 @@
+package lotto.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import lotto.model.Cashier;
+import lotto.model.Lotto;
+import lotto.model.LottoGenerator;
+import lotto.model.Statistics;
+import lotto.view.Input;
+import lotto.view.Output;
+
+public class Controller {
+    Cashier cashier = new Cashier();
+    Statistics statistics = new Statistics();
+    List<Lotto> lottoTicket = new ArrayList<>();
+
+    public void playLotto() {
+        getPlayerInput();
+        Map<String, Integer> prizeSet = calculatePrizeQuantity();
+        float stat = statistics.myStat(cashier.getReceivedMoney());
+        printResult(prizeSet, stat);
+    }
+
+    private Map<String, Integer> calculatePrizeQuantity() {
+        return statistics.checkPrizeQuantity(cashier.getAnswerNumber(), cashier.getBonusNumber(), lottoTicket);
+    }
+
+    private void printResult(Map<String, Integer> PrizeSet, float statistics) {
+        Output.printYourStatistics(
+            PrizeSet,
+            statistics);
+    }
+
+    private void getPlayerInput() {
+        String receivedMoney = Input.getYourMoney();
+        cashier.inputPlayerMoney(receivedMoney);
+        Output.printReceivedMoney(receivedMoney);
+        generateLottoTickets(cashier.getReceivedMoney());
+        List<Integer> answerNumbers = Input.getAnswerNumbers();
+        cashier.inputPlayerAnswerNumber(answerNumbers);
+        int bonusNumber = Input.getBonusNumber();
+        cashier.inputPlayerBonusNumber(bonusNumber, cashier.getAnswerNumber());
+    }
+
+    public List<Lotto> generateLottoTickets(int receivedMoney) {
+        List<List<Integer>> tickets = LottoGenerator.createLottos(receivedMoney);
+        for (List<Integer> value : tickets) {
+            Output.printLotto(value);
+            lottoTicket.add(new Lotto(value));
+        }
+        return lottoTicket;
+    }
+}
