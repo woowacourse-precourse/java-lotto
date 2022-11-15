@@ -39,17 +39,16 @@ public class LottoResultSummary {
     }
 
     private String summaryResult(List<Rank> ranks) {
-        StringBuilder sb = new StringBuilder();
-        addRankSummary(ranks, sb);
-        addYieldSummary(sb);
-        return sb.toString();
+        return getRankSummary(ranks) + getYieldSummary();
     }
 
-    private void addRankSummary(List<Rank> ranks, StringBuilder sb) {
+    private String getRankSummary(List<Rank> ranks) {
+        StringBuilder sb = new StringBuilder();
         Arrays.stream(Rank.values())
                 .filter(rank -> !rank.equals(Rank.NOTHING))
                 .map(rank -> makeSummaryByRank(rank, Collections.frequency(ranks, rank)))
                 .forEach(sb::append);
+        return sb.toString();
     }
 
     private String makeSummaryByRank(Rank rank, int frequency) {
@@ -70,11 +69,11 @@ public class LottoResultSummary {
         }
     }
 
-    private void addYieldSummary(StringBuilder sb) {
+    private String getYieldSummary() {
         DecimalFormat format = new DecimalFormat(YIELD_PATTERN);
         String formattedYield = format.format(yield);
 
-        sb.append(String.format(YIELD, formattedYield));
+        return String.format(YIELD, formattedYield);
     }
 
     public String summaryLottoResult() {
