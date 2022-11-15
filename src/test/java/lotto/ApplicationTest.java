@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +54,41 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @DisplayName("구매금액이 1,000의 배수가 아닐 경우 예외가 발생한다.")
+    @Test
+    void purchaseAmountIsNotMultiple1000() {
+        assertThatThrownBy(() -> Application.salesValidate("10500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구매금액에 숫자가 아닌 문자가 포함되면 예외가 발생한다.")
+    @Test
+    void purchaseAmountInCludeNotNumber() {
+        assertThatThrownBy(() -> Application.salesValidate("6000!"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1보다 작은 경우 예외가 발생한다.")
+    @Test
+    void bonusSmallThan1() {
+        assertThatThrownBy(() -> Application.bonusValidate("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 45보다 큰 경우 예외가 발생한다.")
+    @Test
+    void bonusGreaterThan45() {
+        assertThatThrownBy(() -> Application.bonusValidate("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호에 숫자가 아닌 문자가 포함되면 예외가 발생한다.")
+    @Test
+    void includeNotNumberInBouns() {
+        assertThatThrownBy(() -> Application.bonusValidate("17!"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
