@@ -5,6 +5,7 @@ import lotto.model.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Input {
     private static final String INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
@@ -27,7 +28,8 @@ public class Input {
         try {
             return Integer.parseInt(purchaseAmount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(AMOUNT_ERROR);
+            System.out.println(AMOUNT_ERROR);
+            throw new NoSuchElementException();
         }
     }
 
@@ -55,7 +57,8 @@ public class Input {
         try {
             return Integer.parseInt(eachNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(LOTTO_ERROR);
+            System.out.println(LOTTO_ERROR);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -69,7 +72,8 @@ public class Input {
         try {
             return Integer.parseInt(bonusNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(BONUS_ERROR);
+            System.out.println(BONUS_ERROR);
+            throw new IllegalArgumentException();
         }
     }
 }
