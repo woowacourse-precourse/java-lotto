@@ -53,7 +53,7 @@ public class User {
     }
 
     public void marginRate(int LottoCount, int totalPrice){
-        float plusRate = (float)totalPrice / (float)LottoCount;
+        double plusRate = (float)totalPrice / (float)LottoCount / 10000.0;
         String results = String.format("%.1f", plusRate);
         System.out.println("총 수익률은 " + results + "%입니다.");
     }

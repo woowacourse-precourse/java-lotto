@@ -31,5 +31,7 @@ public class Application {
         gradeList = lotto.saveResult(user.getBoughtLotto());
         lotto.printResult(gradeList);
         totalPrice = lotto.totalPrice(gradeList);
+
+
     }
 }
