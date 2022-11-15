@@ -28,8 +28,8 @@ class PersonTest {
         assertThat(matchResult.get(Rank.FIFTH)).isEqualTo(1);
         assertThat(matchResult.get(Rank.FOURTH)).isEqualTo(1);
         assertThat(matchResult.get(Rank.THIRD)).isEqualTo(1);
-        assertThat(matchResult.get(Rank.SECOND)).isEqualTo(1);
-        assertThat(matchResult.get(Rank.FIFTH)).isEqualTo(1);
+        assertThat(matchResult.get(Rank.SECOND)).isEqualTo(0);
+        assertThat(matchResult.get(Rank.FIRST)).isEqualTo(2);
     }
     
     @DisplayName("수익률 계산 테스트")
@@ -39,14 +39,14 @@ class PersonTest {
         WinningNumbers winningNumbers = generateWinningNumbers();
         Map<Rank, Integer> matchResult = person.matchResult(winningNumbers);
 
-        double expected = (2_000_000_000 + 30_000_000 + 1_500_000 + 50000 + 5000) * 100.0 / 8000;
+        double expected = (2_000_000_000L + 2_000_000_000 + 1_500_000 + 50000 + 5000) * 100.0 / 8000;
         assertThat(person.yield(matchResult)).isEqualTo(expected);
     }
 
     private Person generatePerson() {
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 6, 7)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 5, 6, 10)),
                 new Lotto(List.of(1, 2, 3, 6, 40, 41)),
                 new Lotto(List.of(1, 5, 6, 10, 20, 30)),
