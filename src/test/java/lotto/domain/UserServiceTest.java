@@ -21,13 +21,16 @@ class UserServiceTest {
     @DisplayName("수익률 계산 함수 테스트")
     @Test
     void calculateYieldTest() {
-        double money = 9000.0;
-        user.setMoney(money);
-        double winningAmount = 3000.0;
-        user.setTotalPrize(winningAmount);
+        double[] moneys = {8000.0, 9000.0, 10000.0, 10000.0, 13000.0};
+        double[] totalPrizes = {5000.0, 3000.0, 10000.0, 100000.0, 39000.0};
+        double[] expects = {62.5, 33.3, 100.0, 1000.0, 300.0};
 
-        userService.calculateYield(user);
-        double expect = 33.3;
-        assertThat(user.getYield()).isEqualTo(expect);
+        for (int index = 0; index < moneys.length; index++) {
+            user.setMoney(moneys[index]);
+            user.setTotalPrize(totalPrizes[index]);
+            userService.calculateYield(user);
+
+            assertThat(user.getYield()).isEqualTo(expects[index]);
+        }
     }
 }
