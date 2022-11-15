@@ -12,7 +12,7 @@ public class InputService {
     private static final String WINNING_NUMBER_INPUT_FORMAT = "^[0-9]+(,[0-9]+){5}";
 
     public List<Integer> getWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String input = readLine();
         validateWinningNumbersFormat(input);
         return convertToIntegerList(input);
@@ -46,7 +46,7 @@ public class InputService {
     }
 
     public Integer getBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         String input = readLine();
         return getInteger(input);
     }
