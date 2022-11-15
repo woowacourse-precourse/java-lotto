@@ -14,8 +14,7 @@ public final class Print {
     private static final String PURCHASE_QUANTITY = "개를 구매했습니다.";
     private static final String WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String WINNING_STATS = "당첨 통계";
-    private static final String DIVIDE_LINE = "---";
+    private static final String WINNING_STATS = "당첨 통계%n---";
     private static final String WINNING_RESULT = "%d개 일치 (%s원) - %d개";
     private static final String BONUS_WINNING_RESULT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String YIELD_1 = "총 수익률은 %s";
@@ -49,7 +48,6 @@ public final class Print {
     public static void printLottoResult(Map<LottoRank, Integer> lottoResult) {
         System.out.println();
         System.out.println(WINNING_STATS);
-        System.out.println(DIVIDE_LINE);
 
         for (LottoRank rank : lottoResult.keySet()) {
             Integer count = lottoResult.get(rank);
