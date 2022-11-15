@@ -244,4 +244,22 @@ public class Application {
         }
         return true;
     }
+
+    static boolean isValidBonus(String input)  {
+        //숫자만 입력했는지 확인
+        try{
+            Integer.parseInt(input);
+        }
+        catch (Exception e){
+            return false;
+        }
+        int inputInt = Integer.parseInt(input);
+        //1~45까지의 숫자인지 확인
+        if(inputInt < minLottoNumber || inputInt > maxLottoNumber){
+            return false;
+        }
+        //
+        if()
+        return true;
+    }
 }
