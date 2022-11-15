@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.Constant;
 import lotto.constant.Message;
+import lotto.domain.model.UserMoney;
 import lotto.util.Converter;
 import lotto.util.UserInput;
 

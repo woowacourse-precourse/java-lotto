@@ -1,6 +1,6 @@
 package lotto.constant;
 
-import lotto.domain.Lotto;
+import lotto.domain.model.Lotto;
 import lotto.util.WinningInfo;
 
 import java.text.DecimalFormat;

@@ -1,6 +1,9 @@
 package lotto.domain;
 
 import lotto.constant.Message;
+import lotto.domain.model.BonusNumber;
+import lotto.domain.model.Lotto;
+import lotto.domain.model.WinningNumbers;
 import lotto.util.Converter;
 import lotto.util.ServiceInput;
 import lotto.util.Validator;

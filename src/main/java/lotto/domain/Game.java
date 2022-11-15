@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.Constant;
 import lotto.constant.Message;
+import lotto.domain.model.Lotto;
 import lotto.util.WinningInfo;
 
 import java.util.ArrayList;
