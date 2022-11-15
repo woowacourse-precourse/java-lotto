@@ -7,18 +7,18 @@ import java.util.Map;
 
 public class Result {
 
-    private static Map<ResultType,Integer> allResult = new HashMap<>(){{
-        put(ResultType.THREE,0);
-        put(ResultType.FOUR,0);
-        put(ResultType.FIVE,0);
-        put(ResultType.FIVEPLUS,0);
-        put(ResultType.SIX,0);
-    }};
+    private static Map<ResultType,Integer> allResult = new HashMap<>();
 
+    public void initMap(){
+        for(ResultType resultType:ResultType.values()){
+            allResult.put(resultType,0);
+        }
+    }
 
     public Map<ResultType,Integer> calculateLotto(List<Lotto> input, List<Integer> winning, String bonus){
         int check = 0;
         boolean checkBonus = false;
+        initMap();
         for(int i=0; i<input.size(); i++){
             check = compareLotto(input.get(i), winning);
             checkBonus = compareBonus(input.get(i),bonus);
@@ -86,5 +86,4 @@ public class Result {
                 System.out.println(resultType.getDetail()+ " - "+result.get(resultType)+"개");
         }
     }
-
 }
