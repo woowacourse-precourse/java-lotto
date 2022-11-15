@@ -12,7 +12,8 @@ class LottoGeneratorTest {
     @DisplayName("생성된 로또 번호가 오름차순으로 정렬되었는지 테스트")
     @Test
     void createLottoWithSortedRandomNumbers() {
-        List<Integer> lottoNumbers = LottoGenerator.createLottoNumbers();
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        List<Integer> lottoNumbers = lottoGenerator.createLottoNumbers();
         List<Integer> sortedNumbers = lottoNumbers.stream().sorted()
                 .collect(Collectors.toList());
         assertThat(lottoNumbers).isEqualTo(sortedNumbers);
