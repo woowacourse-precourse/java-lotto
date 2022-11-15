@@ -1,6 +1,5 @@
-package lotto.IOTest;
+package lotto.Domain;
 
-import lotto.Domain.Rank;
 import lotto.IO.LottoIOHandler;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

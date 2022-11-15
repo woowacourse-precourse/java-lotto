@@ -1,4 +1,4 @@
-package lotto.IOTest;
+package lotto.Domain;
 
 import lotto.IO.CashIOHandler;
 import org.junit.jupiter.api.BeforeEach;
