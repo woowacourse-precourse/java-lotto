@@ -16,12 +16,12 @@ public class Application {
 
             Consumer new_consumer = lottoShop.takeOneConsumer();
             consumers.add(new_consumer);
+//            Consumer new_consumer2 = lottoShop.takeOneConsumer();
+//            consumers.add(new_consumer2);
 
-//        추첨
             LottoDrawingMachine.drawLotto();
 
-//        당첨 확인
-            new_consumer.checkPrize();
+            consumers.forEach(Consumer::checkPrizesOfLottoGroup);
 
         } catch(IllegalArgumentException e){
             System.out.println(e.getMessage());

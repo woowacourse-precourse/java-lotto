@@ -1,6 +1,7 @@
 package lotto.LottoShop;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Enum.Statistics;
 import lotto.LottoManagement.Lotto;
 import lotto.LottoManagement.LottoDrawingMachine;
 
@@ -13,8 +14,21 @@ import static lotto.Enum.Constant.*;
 public class Consumer {
     private final Clerk clerk;
     private List<Lotto> lotto_group;
+
+    HashMap<Integer, Integer> prize_count = new HashMap<>();
+    List<Integer> money_of_prize = List.of(
+            ZERO_PRIZE.getIntValue(),
+            ZERO_PRIZE.getIntValue(),
+            ZERO_PRIZE.getIntValue(),
+            FIFTH_GRADE_PRIZE.getIntValue(),
+            FOURTH_GRADE_PRIZE.getIntValue(),
+            THIRD_GRADE_PRIZE.getIntValue(),
+            FIRST_GRADE_PRIZE.getIntValue(),
+            SECOND_GRADE_PRIZE.getIntValue());
+
     private int cost;
     private int profit;
+    private double profit_rate;
 
     public Consumer(Clerk clerk) {
         this.clerk = clerk;
@@ -29,44 +43,27 @@ public class Consumer {
         this.cost = Integer.parseInt(purchaseAmount);
     }
 
-    public void checkPrize() {
-        List<Integer> prizes =
+    public void checkPrizesOfLottoGroup() {
+        List<Integer> prizes_of_lottos =
                 lotto_group.stream()
                         .map(LottoDrawingMachine::calculatePrize)
                         .collect(Collectors.toList());
 
-        printPrizes(prizes);
+        getPrizesStatistics(prizes_of_lottos);
     }
 
-    private void printPrizes(List<Integer> prizes) {
-        HashMap<Integer, Integer> prize_count = new HashMap<>();
-        List<Integer> prize_money = List.of(
-                ZERO_PRIZE.getIntValue(),
-                ZERO_PRIZE.getIntValue(),
-                ZERO_PRIZE.getIntValue(),
-                FIFTH_GRADE_PRIZE.getIntValue(),
-                FOURTH_GRADE_PRIZE.getIntValue(),
-                THIRD_GRADE_PRIZE.getIntValue(),
-                FIRST_GRADE_PRIZE.getIntValue(),
-                SECOND_GRADE_PRIZE.getIntValue());
-
+    private void getPrizesStatistics(List<Integer> prizes) {
         prizes.forEach(prize -> {
                     prize_count.merge(prize, ONE_INDEX.getIntValue(), Integer::sum);
-                    profit += prize_money.get(prize);
+                    this.profit += money_of_prize.get(prize);
                 }
         );
-        printPrizeStatistics(prize_count);
+
+        this.profit_rate = profit / (double) cost * HUNDRED.getIntValue();
+
+        String prize_statistcs = Statistics.getStatistics(prize_count,profit_rate);
+
+        System.out.println(prize_statistcs);
     }
 
-    private void printPrizeStatistics(HashMap<Integer, Integer> prize_count) {
-        System.out.println(
-                "당첨 통계\n" +
-                "---\n" +
-                "3개 일치 (5,000원) - " + prize_count.getOrDefault(FIFTH_GRADE_COUNT.getIntValue(), ZERO_COUNT.getIntValue()) + "개\n" +
-                "4개 일치 (50,000원) - " + prize_count.getOrDefault(FOURTH_GRADE_COUNT.getIntValue(), ZERO_COUNT.getIntValue()) + "개\n" +
-                "5개 일치 (1,500,000원) - " + prize_count.getOrDefault(THIRD_GRADE_COUNT.getIntValue(), ZERO_COUNT.getIntValue()) + "개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + prize_count.getOrDefault(SECOND_GRADE_COUNT.getIntValue(), ZERO_COUNT.getIntValue()) + "개\n" +
-                "6개 일치 (2,000,000,000원) - " + prize_count.getOrDefault(FIRST_GRADE_COUNT.getIntValue(), ZERO_COUNT.getIntValue()) + "개\n" +
-                "총 수익률은 " + String.format("%.1f", profit/(double)cost * HUNDRED.getIntValue()) + "%입니다.");
-    }
 }
