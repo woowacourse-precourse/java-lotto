@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import lotto.utils.Constant;
+import lotto.utils.Grade;
 
 public class OutputView {
     public static void printTickets(List<List<Integer>> tickets){
@@ -13,8 +14,9 @@ public class OutputView {
         System.out.println(Constant.STATISTICS_TITLE);
         System.out.println(Constant.LINE);
     }
-    private static void printReward(){
-
+    public static void printReward(Grade grade, String Message, int count){
+        System.out.println(grade.getCorrectLotto() + "개 일치" + Message +
+                " (" + grade.getRewardFormat()+"원) - "+ count + "개");
     }
 
     public static void printProfitRate(int profit, int cost){

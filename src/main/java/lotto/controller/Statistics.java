@@ -8,6 +8,9 @@ import lotto.utils.Grade;
 import lotto.view.OutputView;
 
 public class Statistics {
+    private static final int LOTTO_COUNT = 6;
+    private static final String BONUS_MESSAGE = ", 보너스 볼 일치";
+    private static final String NON_BONUS_MESSAGE = "";
     public static void print(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){
 
         printReward(tickets, lottoNumbers, bonusNumber);
@@ -26,7 +29,7 @@ public class Statistics {
 
     public static void printReward(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){
         List<Integer> counts = new ArrayList<>();
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i < LOTTO_COUNT; i++){
             counts.add(0);
         }
         for (List<Integer> ticket : tickets){
@@ -37,15 +40,14 @@ public class Statistics {
         }
         for (int i = 4; i > -1; i--){
             Grade grade = Judgement.findGradeByRank(i + 1);
-            System.out.println(grade.getCorrectLotto() + "개 일치" + BonusMessage(i, grade) +
-                    " (" + grade.getRewardFormat()+"원) - "+ counts.get(i) + "개");
+            OutputView.printReward(grade, BonusMessage(i, grade), counts.get(i));
         }
     }
 
     public static String BonusMessage(int i, Grade grade){
         if (i == 1){
-            return ", 보너스 볼 일치";
+            return BONUS_MESSAGE;
         }
-        return "";
+        return NON_BONUS_MESSAGE;
     }
 }
