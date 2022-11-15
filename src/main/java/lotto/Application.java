@@ -19,6 +19,7 @@ public class Application {
             System.out.println("[ERROR] 유효한 구입금액이 아닙니다.");
             throw new IllegalArgumentException();
         }
+        System.out.println();
         return Integer.parseInt(payment) / 1000;
     }
 
@@ -38,6 +39,7 @@ public class Application {
         for (int number: winningNumbers) {
             checkLottoNumber(number);
         }
+        System.out.println();
         return winningNumbers;
     }
 
@@ -45,6 +47,7 @@ public class Application {
         System.out.println("보너스 번호를 입력해주세요.");
         int bonusNumber = Integer.parseInt(readLine());
         checkLottoNumber(bonusNumber);
+        System.out.println();
         return bonusNumber;
     }
 
