@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoService {
 
@@ -47,6 +48,17 @@ public class LottoService {
         return numbersOfWin;
     }
 
+    public double getTotalReturn(String purchaseAmount){
+        int grossEarning = ZERO_INITIALIZATION;
+        List<Integer> moneys = Stream.of(Money.values()).map(m -> m.getAmount()).filter(m->m!=1000).
+                collect(Collectors.toList());
+        for(int i=0; i<numbersOfWin.size();i++){
+            grossEarning+= numbersOfWin.get(i)+moneys.get(i);
+        }
+        return grossEarning/(Double.parseDouble(purchaseAmount))*100;
+    }
+
+
     private void compareLottoNumber(String winNumber, String bonusNumber){
         List<Integer> winNumbers = changeType(winNumber);
         for (Lotto lotto : lottos) {
@@ -55,9 +67,7 @@ public class LottoService {
         }
     }
 
-
-
-    public int findLottoNumbersRight(Lotto lotto, List<Integer> winNumbers, int bonusNumber){
+    private int findLottoNumbersRight(Lotto lotto, List<Integer> winNumbers, int bonusNumber){
         int sameNumber=ZERO_INITIALIZATION;
         for (Integer integer : winNumbers) {
             if (lotto.getNumbers().contains(integer)){
