@@ -21,6 +21,21 @@ public class Controller {
         this.view = view;
     }
 
+    public void run(){
+        try {
+            setBudget();
+            buyLotto();
+            showLottos();
+            setWinningNumbers();
+            setBonus();
+            computeStatistics();
+            showStatistics();
+        }
+        catch (IllegalArgumentException exception){
+            view.printErrorMessage(exception.getMessage());
+        }
+    }
+
 
     public void setBudget(){
         view.print(Text.BUDGET_INPUT);

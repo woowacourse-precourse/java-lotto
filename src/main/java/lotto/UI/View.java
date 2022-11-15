@@ -22,4 +22,7 @@ public class View {
         System.out.printf(Text.PROFIT_RATE.getMessage(), profitRate);
     }
 
+    public void printErrorMessage(String errorMessage){
+        System.out.println(errorMessage);
+    }
 }
