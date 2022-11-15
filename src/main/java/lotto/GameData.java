@@ -21,4 +21,9 @@ public enum GameData {
         this.count += 1;
     }
 
+    public String getPrintWord() {
+        return this.printWord;
+    }
+
+
 }
