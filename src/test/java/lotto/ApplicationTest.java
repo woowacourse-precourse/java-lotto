@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -50,6 +51,63 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또를 10개 구매하고 당첨 결과를 출력한다.")
+    @Test
+    void applicationTest() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("10000", "1, 3, 20, 5, 8, 25", "7");
+                    assertThat(output()).contains(
+                            "10개를 구매했습니다.",
+                            "[7, 28, 31, 35, 37, 44]",
+                            "[8, 9, 15, 26, 27, 30]",
+                            "[10, 12, 16, 31, 37, 44]",
+                            "[5, 8, 20, 34, 37, 38]",
+                            "[10, 17, 32, 33, 38, 42]",
+                            "[6, 20, 23, 25, 33, 34]",
+                            "[5, 8, 25, 32, 41, 42]",
+                            "[1, 3, 20, 26, 30, 33]",
+                            "[3, 16, 17, 25, 34, 38]",
+                            "[10, 24, 27, 29, 30, 41]",
+                            "3개 일치 (5,000원) - 3개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 0개",
+                            "총 수익률은 150.0%입니다."
+                    );
+                },
+                List.of(7, 28, 31, 35, 37, 44),
+                List.of(8, 9, 15, 26, 27, 30),
+                List.of(10, 12, 16, 31, 37, 44),
+                List.of(5, 8, 20, 34, 37, 38),
+                List.of(10, 17, 32, 33, 38, 42),
+                List.of(6, 20, 23, 25, 33, 34),
+                List.of(5, 8, 25, 32, 41, 42),
+                List.of(1, 3, 20, 26, 30, 33),
+                List.of(3, 16, 17, 25, 34, 38),
+                List.of(10, 24, 27, 29, 30, 41)
+        );
+    }
+
+    @DisplayName("구입 금액이 0원 이하면 예외를 발생한다.")
+    @Test
+    void moneyInputByNotMoreThanZero() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("구입 금액이 1000원 단위가 아니면 예외를 발생한다.")
+    @Test
+    void moneyInputByWrongUnit() {
+        assertSimpleTest(() -> {
+            runException("1230");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
