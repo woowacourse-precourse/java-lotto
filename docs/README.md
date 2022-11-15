@@ -15,7 +15,7 @@
     - 3등: 5개 번호 일치 / 1,500,000원
     - 4등: 4개 번호 일치 / 50,000원
     - 5등: 3개 번호 일치 / 5,000원
-- [ ] 당첨 내역을 출력한다. - InputOutput#printWinHistory()
+- [x] 당첨 내역을 출력한다. - InputOutput#printWinHistory()
 - [ ] 수익률을 소수점 둘째 자리까지 계산한다. - calculateRateOfProfit()
 - [ ] 수익률을 출력한다. - InputOutput#printRateOfProfit()
 - [ ] 예외상황 시 에러 문구를 출력한다. - ErrorHandler
