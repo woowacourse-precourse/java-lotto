@@ -56,7 +56,10 @@ public class LotteryMachine {
         String[] winningNumbersInput = readLine().split(",");
         System.out.println();
 
-        NumberValidator.validateWinningNumbers(winningNumbersInput);
+        if (!NumberValidator.isValidWinningNumbers(winningNumbersInput)) {
+            System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException();
+        }
         List<Integer> winningNumbers = new ArrayList<>();
         for (int i = 0; i < winningNumbersInput.length; ++i) {
             winningNumbers.add(Integer.parseInt(winningNumbersInput[i]));
@@ -71,7 +74,10 @@ public class LotteryMachine {
         String bonusNumberInput = readLine();
         System.out.println();
 
-        NumberValidator.validateBonusNumber(bonusNumberInput, winningLotto.getNumbers());
+        if (!NumberValidator.isValidBonusNumber(bonusNumberInput, winningLotto.getNumbers())) {
+            System.out.println(ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(bonusNumberInput);
     }
 
