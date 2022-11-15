@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,8 +26,10 @@ public class Lotto {
         }
     }
 
-    public void sort() {
-        Collections.sort(numbers);
+    public List<Integer> sort() {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public void checkDuplication() {
@@ -38,13 +41,15 @@ public class Lotto {
     }
 
     public String toString() {
+        List<Integer> sortedNumbers = sort();
+
         String sentence= "[";
 
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            sentence += numbers.get(i) + ", ";
+        for (int i = 0; i < sortedNumbers.size() - 1; i++) {
+            sentence += sortedNumbers.get(i) + ", ";
         }
 
-        sentence += numbers.get(5);
+        sentence += sortedNumbers.get(5);
         sentence += "]";
 
         return sentence;
