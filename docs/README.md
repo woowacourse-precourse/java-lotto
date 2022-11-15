@@ -1,25 +1,25 @@
 # 기능 목록
 - [ ] Lotto의 UI구현 => Application
     - [x] 구입금액 입력 후 로또구매 후 구입한 로또 리스트 출력
-    - [ ] 당첨번호 입력, 보너스번호 입력
+    - [x] 당첨번호 입력, 보너스번호 입력
     - [ ] 당첨에 대한 통계를 보여줌
-    - [ ] 잘못된 값을 입력할 경우 "[ERROR]" 로 시작하는 메세지 출력 후 종료
+    - [x] 잘못된 값을 입력할 경우 "[ERROR]" 로 시작하는 메세지 출력 후 종료
       - [x] 구입금액 확인
         - [x] 구입금액 입력 시 정수를 입력하지 않았을 경우
           - IllegalArgumentException, message="[ERROR] 구입금액은 정수여야 합니다"
         - [x] 구입금액 입력 시 1000으로 나누어 떨어지는 0이상의 정수를 입력하지 않았을 경우
           - IllegalArgumentException, message="[ERROR] ~"
           - 클래스 LottoUser에서 검증, LottoUser 설명 참고
-      - [ ] 당첨번호 확인
-        - [ ] 당첨번호 입력 시 정수가 아닌 경우
+      - [x] 당첨번호 확인
+        - [x] 당첨번호 입력 시 정수가 아닌 경우
           - IllegalArgumentException, message="[ERROR] 당첨번호는 정수여야 합니다."
-        - [ ] 당첨번호 설정 시에 개수,범위,중복 확인
+        - [x] 당첨번호 설정 시에 개수,범위,중복 확인
           - IllegalArgumentException, "[ERROR] ~"
           - 클래스 LottoSystem에서 검증, LottoSystem 설명 참고
-      - [ ] 보너스번호 확인       
-        - [ ] 보너스번호 입력 시 정수가 아닌 경우
+      - [x] 보너스번호 확인       
+        - [x] 보너스번호 입력 시 정수가 아닌 경우
           - IllegalArgumentException, message="[ERROR] 보너스번호는 정수여야 합니다."
-        - [ ] 보너스번호 설정 시에 범위 확인
+        - [x] 보너스번호 설정 시에 범위 확인
           - IllegalArgumentException, message="[ERROR] ~"
           - 클래스 LottoSystem에서 검증, LottoSystem 설명 참고
 

@@ -20,6 +20,8 @@ public class Application {
         LottoUser user = buyLottoUI(lottoSystem);
         lottoInfoUI(user.getLottos());
 
+        setWinNumbersUI(lottoSystem);
+        setBonusNumbersUI(lottoSystem);
     }
 
     private static LottoUser buyLottoUI(LottoSystem lottoSystem) {
@@ -50,5 +52,32 @@ public class Application {
             System.out.println(lottoNumbersStr);
         }
     }
+    private static void setWinNumbersUI(LottoSystem lottoSystem){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        String[] inputSplited = input.split(",");
+        List<Integer> numbers = new ArrayList<>();
+        try {
+            for (String i : inputSplited) {
+                numbers.add(Integer.valueOf(i));
+            }
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 정수여야 합니다.");
+        }
 
+        lottoSystem.setWinNumbers(numbers);
+    }
+    private static void setBonusNumbersUI(LottoSystem lottoSystem){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        int bonusNumber;
+        try {
+            bonusNumber = Integer.valueOf(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스번호는 정수여야 합니다");
+        }
+
+        lottoSystem.setBonusNumbers(bonusNumber);
+    }
 }
