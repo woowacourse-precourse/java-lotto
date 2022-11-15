@@ -20,7 +20,7 @@ public class LottoController {
         try {
             isRestart = inputValidator.validateInputPrice(inputPrice);
         } catch (IllegalArgumentException exception) {
-            printLogInfo(exception);
+            printExceptionMessage(exception);
             return;
         }
         determineNextMove(isRestart, Integer.parseInt(inputPrice));
@@ -48,7 +48,7 @@ public class LottoController {
         try {
             printLottoResult(lottoService.createWinResults(new WinningNumber(inputView.inputWinningNumber())));
         } catch (IllegalArgumentException exception) {
-            printLogInfo(exception);
+            printExceptionMessage(exception);
         }
     }
 
@@ -56,8 +56,8 @@ public class LottoController {
         outputView.outputLottoResult(lottoService.createLottoResult(winResults));
     }
 
-    private static void printLogInfo(IllegalArgumentException exception) {
-        System.out.println(exception.getMessage());
+    private void printExceptionMessage(IllegalArgumentException exception) {
+        outputView.outputCustomMessage(exception.getMessage());
     }
 
 }

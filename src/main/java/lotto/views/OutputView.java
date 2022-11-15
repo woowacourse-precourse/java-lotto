@@ -31,4 +31,7 @@ public class OutputView {
         System.out.println(messageGenerator.createEarningsRateMessage((double) lottoResult.get(EARNINGS_RATE)));
     }
 
+    public void outputCustomMessage(String message) {
+        System.out.println(message);
+    }
 }
