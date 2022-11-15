@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.model.Lotto;
-import lotto.model.Lottos;
-import lotto.model.LottosGenerator;
-import lotto.model.Money;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,5 +11,6 @@ public class LottoController {
         OutputView.printLotto(lottos.getLottos());
 
         Lotto winningLotto = new Lotto(InputView.inputWinningNumbers());
+        LottoNumber bonusNumber = LottoNumber.of(InputView.inputBonusNumber());
     }
 }
