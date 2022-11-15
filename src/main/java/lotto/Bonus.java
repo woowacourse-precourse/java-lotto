@@ -28,4 +28,8 @@ public class Bonus {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 겹치지 않아야 합니다.");
         }
     }
+
+    public int count(Lotto lotto) {
+        return lotto.count(this.lotto);
+    }
 }

@@ -52,6 +52,12 @@ public class Lotto {
         return numbers.contains(bonus);
     }
 
+    public int count(Lotto lotto) {
+        return (int) lotto.numbers.stream()
+                .filter(this::checkBonusInWinning)
+                .count();
+    }
+
     @Override
     public String toString() {
         return numbers.toString();

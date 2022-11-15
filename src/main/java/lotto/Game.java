@@ -16,5 +16,16 @@ public class Game {
         Print.bonusNumber();
         int bonusNumber = Input.inputBonusNumber();
         Bonus bonus = new Bonus(winning, bonusNumber);
+        List<Integer> result = countWinNumber(lottos, bonus);
+    }
+
+    public List<Integer> countWinNumber(List<Lotto> lottos, Bonus bonusLotto) {
+        List<Integer> result = new ArrayList<>();
+
+        for (Lotto lotto : lottos) {
+            result.add(bonusLotto.count(lotto));
+        }
+
+        return result;
     }
 }
