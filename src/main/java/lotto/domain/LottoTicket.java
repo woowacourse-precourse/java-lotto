@@ -11,6 +11,10 @@ import java.util.List;
 public class LottoTicket {
     private final List<Lotto> ticket;
 
+    public LottoTicket() {
+        this(List.of());
+    }
+
     public LottoTicket(List<Lotto> ticket) {
         this.ticket = ticket;
     }
