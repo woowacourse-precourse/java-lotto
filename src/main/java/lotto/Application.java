@@ -11,11 +11,12 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Application {
-    final float first = 2000000000;
-    final float second = 30000000;
-    final float third = 1500000;
-    final float fourth = 50000;
-    final float fifth = 5000;
+    static final float first = 2000000000;
+    static final float second = 30000000;
+    static final float third = 1500000;
+    static final float fourth = 50000;
+    static final float fifth = 5000;
+
     public static void main(String[] args) {
         
         
@@ -134,7 +135,7 @@ public class Application {
         return winList;
     }
 
-    void printWinningDetails(ArrayList<Integer> winList){
+    static void printWinningDetails(ArrayList<Integer> winList){
         DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println("당첨 통계");
         System.out.println("---");
