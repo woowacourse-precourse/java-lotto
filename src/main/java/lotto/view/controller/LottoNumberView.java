@@ -15,7 +15,7 @@ public class LottoNumberView {
     }
 
     public static List<Integer> inputLottoNumbers() {
-        System.out.println(INPUT_CORRECT_LOTTO_MONEY);
+        System.out.println(INPUT_CORRECT_LOTTO_MONEY.getMessage());
         String input = Console.readLine();
         validateBlank(input);
         List<Integer> newLottoNumber = convertInputToIntegerList(input);
@@ -23,8 +23,8 @@ public class LottoNumberView {
         return newLottoNumber;
     }
 
-    public static void printTotalLottoCount(int lottoCount) {
-        System.out.println(String.valueOf(lottoCount) + NUMBER_COUNT_UNITS + PRINT_BUY);
+    public static void printTotalLottoCount(Integer lottoCount) {
+        System.out.println(lottoCount + NUMBER_COUNT_UNITS.getMessage() + PRINT_BUY.getMessage());
     }
 
     public static void printLottoNumbers(List<Integer> lotto) {
