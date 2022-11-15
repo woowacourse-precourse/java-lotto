@@ -56,24 +56,6 @@ class LottoPrizeTest {
     }
 
    @Test
-   @DisplayName("당첨 개수에 따라 올바른 당첨 금액을 리턴해야 한다.")
-   void 당첨_금액_테스트() throws Exception {
-       //given
-       LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
-       LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
-       Method method = lottoPrize.getClass().getDeclaredMethod("getTotalWinningAmount");
-       method.setAccessible(true);
-
-       //when
-       LottoResult.THREE_COUNT.addMatchCount();
-       LottoResult.FOUR_COUNT.addMatchCount();
-
-       //then
-       long totalWinningAmount = (long) method.invoke(lottoPrize);
-       assertThat(totalWinningAmount).isEqualTo(55_000);
-   }
-
-   @Test
    @DisplayName("구매 금액과 당첨 금액에 따라 올바른 수익률을 리턴해야 된다.")
    void 수익률_계산_테스트() throws Exception {
        //given
