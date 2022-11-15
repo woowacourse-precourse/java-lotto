@@ -53,4 +53,13 @@ class LottoTest {
         lotto.sortNumbers();
         Assertions.assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
+
+    @DisplayName("다른 로또와 같은 수만을 뽑아내는 기능을 테스트한다.")
+    @Test
+    void getCommonNumbers() {
+        Lotto lotto1 = new Lotto(Arrays.asList(3, 2, 1, 5, 4, 6));
+        Lotto lotto2 = new Lotto(Arrays.asList(3, 2, 1, 5, 9, 10));
+        List<Integer> common = lotto1.getCommonNumbers(lotto2);
+        Assertions.assertThat(common.size()).isEqualTo(4);
+    }
 }
