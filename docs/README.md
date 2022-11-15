@@ -4,16 +4,16 @@
 - [x] 구입 금액 입력 - PurchaseMoney#enterPurchaseMoney
   - [x] 입력 금액 유효성 검사 - PurchaseMoney#validatePurchaseMoney
 - [x] 로또 번호 발행 - LottoGenerator#makeLottoNumber
-- [ ] 당첨 번호(6자리) 입력 - WinNumber#enterWinNumbers
-  - [ ] 당첨 번호(6자리) 유효성 검사 - WinNumber#validateWinNumbers
-- [ ] 보너스 번호(1자리) 입력 - WinNumber#enterBonusNumber
-  - [ ] 보너스 번호(1자리) 유효성 검사 - WinNumber#validateBonusNumber
-- [ ] 당첨 확인 - Lotto#checkResult
-  - [ ] 로또 번호(6자리) & 당첨 번호(6자리) 일치 확인 - Lotto#compareSixNumber
-  - [ ] 로또 번호(6자리) & 보너스 번호(1자리) 일치 확인 - Lotto#compareBonusNumber
-- [ ] 당첨 내역 메세지 생성 - Prize#makeResultMessage
-- [ ] 수익률 계산 - #clacEarningRate
-- [ ] 예외 처리 메세지 출력 - #makeExceptionMessage
+- [x] 당첨 번호(6자리) 입력 - WinNumber#enterWinNumbers
+  - [x] 당첨 번호(6자리) 유효성 검사 - WinNumber#validateWinNumbers
+- [x] 보너스 번호(1자리) 입력 - WinNumber#enterBonusNumber
+  - [x] 보너스 번호(1자리) 유효성 검사 - WinNumber#validateBonusNumber
+- [x] 당첨 확인 - Lotto#checkResult
+  - [x] 로또 번호(6자리) & 당첨 번호(6자리) 일치 확인 - Lotto#compareWinNumber
+  - [x] 로또 번호(6자리) & 보너스 번호(1자리) 일치 확인 - Lotto#compareBonusNumber
+- [x] 당첨 내역 메세지 생성 - Prize#makeResultMessage
+- [x] 수익률 계산 - Purchase#clacEarningRate
+- [x] 예외 처리 메세지 출력 - LottoGame#printStats
 
 
 ## 🚀 기능 요구 사항
