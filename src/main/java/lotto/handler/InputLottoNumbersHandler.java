@@ -1,12 +1,12 @@
 package lotto.handler;
 
-import lotto.service.PickRandomLotto;
+import lotto.service.PickRandomLottoLists;
 import lotto.view.Output;
 
 import java.util.List;
 
 public class InputLottoNumbersHandler   {
-    PickRandomLotto pickRandomLotto = new PickRandomLotto();
+    PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
     Output output = new Output();
 
     public List<Integer> checkException(List<Integer> lottoNumbers) {

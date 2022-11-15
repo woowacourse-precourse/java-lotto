@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.Data.LottoEnum;
+import lotto.Data.PrizeRanking;
 import lotto.service.WinLottoResult;
 
 import java.text.DecimalFormat;
@@ -37,28 +37,28 @@ public class Output {
     }
     public void fifthPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");
-        System.out.println("3개 일치 ("+formatter.format(LottoEnum.FIFTH.getNumber())+"원) - "+count+"개");
-        winLottoResult.profitMoney += count * LottoEnum.FIFTH.getNumber();
+        System.out.println("3개 일치 ("+formatter.format(PrizeRanking.FIFTH.getNumber())+"원) - "+count+"개");
+        winLottoResult.profitMoney += count * PrizeRanking.FIFTH.getNumber();
     }
     public void fourthPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");
-        System.out.println("4개 일치 ("+formatter.format(LottoEnum.FOURTH.getNumber())+"원) - "+count+"개");
-        winLottoResult.profitMoney += count * LottoEnum.FOURTH.getNumber();
+        System.out.println("4개 일치 ("+formatter.format(PrizeRanking.FOURTH.getNumber())+"원) - "+count+"개");
+        winLottoResult.profitMoney += count * PrizeRanking.FOURTH.getNumber();
     }
     public void thirdPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");
-        System.out.println("5개 일치 ("+formatter.format(LottoEnum.THIRD.getNumber())+"원) - "+count+"개");
-        winLottoResult.profitMoney += count * LottoEnum.THIRD.getNumber();
+        System.out.println("5개 일치 ("+formatter.format(PrizeRanking.THIRD.getNumber())+"원) - "+count+"개");
+        winLottoResult.profitMoney += count * PrizeRanking.THIRD.getNumber();
     }
     public void secondPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###,###.#");
-        System.out.println("5개 일치, 보너스 볼 일치 ("+formatter.format(LottoEnum.SECOND.getNumber())+"원) - "+count+"개");
-        winLottoResult.profitMoney += count * LottoEnum.SECOND.getNumber();
+        System.out.println("5개 일치, 보너스 볼 일치 ("+formatter.format(PrizeRanking.SECOND.getNumber())+"원) - "+count+"개");
+        winLottoResult.profitMoney += count * PrizeRanking.SECOND.getNumber();
     }
     public void firstPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");
-        System.out.println("6개 일치 ("+formatter.format(LottoEnum.FIRST.getNumber())+"원) - "+count+"개");
-        winLottoResult.profitMoney += count * LottoEnum.FIRST.getNumber();
+        System.out.println("6개 일치 ("+formatter.format(PrizeRanking.FIRST.getNumber())+"원) - "+count+"개");
+        winLottoResult.profitMoney += count * PrizeRanking.FIRST.getNumber();
     }
     public void totalBenefit(double yield) {
         DecimalFormat formatter = new DecimalFormat("###,###.0");

@@ -1,16 +1,14 @@
 package lotto.service;
 
-import lotto.handler.InputMoneyHandler;
 import lotto.view.Output;
 
-import java.util.Collections;
 import java.util.List;
 
-import static lotto.service.PickRandomLotto.randomLottoLists;
+import static lotto.service.PickRandomLottoLists.randomLottoLists;
 
 public class Lotto {
     private final List<Integer> numbers;
-    PickRandomLotto pickRandomLotto = new PickRandomLotto();
+    PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
     Output output = new Output();
 
     public Lotto(List<Integer> numbers) {

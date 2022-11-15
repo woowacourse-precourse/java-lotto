@@ -7,7 +7,7 @@ import lotto.view.Output;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputLottoNumber {
+public class InputLottoNumbers {
     InputLottoNumbersHandler inputLottoNumbersHandler = new InputLottoNumbersHandler();
     Output output = new Output();
 

@@ -4,7 +4,7 @@ import lotto.view.Output;
 
 import java.util.List;
 
-public class InputBonusLottoNumberHandler{
+public class InputBonusNumberHandler {
     private static final int BONUS_UNITS_COUNT = 1;
     private static final int BONUS_TENS_COUNT = 2;
 

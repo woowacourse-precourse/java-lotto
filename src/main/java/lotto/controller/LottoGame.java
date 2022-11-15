@@ -5,7 +5,7 @@ import lotto.service.*;
 
 import java.util.List;
 
-import static lotto.service.PickRandomLotto.randomLottoLists;
+import static lotto.service.PickRandomLottoLists.randomLottoLists;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
@@ -28,16 +28,16 @@ public class LottoGame {
     }
 
     public void pickRandomLottos(int lottoPapers) {
-        PickRandomLotto pickRandomLotto = new PickRandomLotto();
+        PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
 
         pickRandomLotto.PickRandomNumber(lottoPapers);
     }
 
     public List<Integer> inputLottoNumbers() {
-        InputLottoNumber inputLottoNumber = new InputLottoNumber();
+        InputLottoNumbers inputLottoNumbers = new InputLottoNumbers();
         InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
-        List<Integer> sixLottoNumbers = inputLottoNumber.inputSixNumbers();
+        List<Integer> sixLottoNumbers = inputLottoNumbers.inputSixNumbers();
         sixLottoNumbers.add(inputBonusNumber.inputBonusNumber(sixLottoNumbers));
         return sixLottoNumbers;
     }

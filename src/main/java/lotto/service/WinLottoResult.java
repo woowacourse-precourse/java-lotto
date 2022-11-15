@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.Data.LottoEnum;
+import lotto.Data.PrizeRanking;
 import lotto.Data.UserMoney;
 import lotto.view.Output;
 
@@ -22,7 +22,7 @@ public class WinLottoResult {
     }
 
     private int[] checkWinResult(int[] checkWinPrice) {
-        int[] checkWinResult = new int[LottoEnum.values().length];
+        int[] checkWinResult = new int[PrizeRanking.values().length];
 
         for(int i = 0; i < checkWinPrice.length; i++){
             if(checkWinPrice[i]%10 == 3){ checkWinResult[0] += 1;}

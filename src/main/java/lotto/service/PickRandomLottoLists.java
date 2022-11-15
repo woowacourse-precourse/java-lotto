@@ -6,7 +6,7 @@ import lotto.view.Output;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class PickRandomLotto {
+public class PickRandomLottoLists {
     public final int LIMIT_LOTTO = 6;
     public static List<List<Integer>> randomLottoLists = new ArrayList<>();
     Output output = new Output();
