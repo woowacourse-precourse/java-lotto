@@ -9,6 +9,18 @@ public class Lotto {
 
     private final LuckyLottoNumberException luckyLottoNumberException = new LuckyLottoNumberException();
 
+    public Lotto(List<Integer> numbers, int bonusNumber) {
+        luckyLottoNumberException.checkLottoBonusNumberExceptions(numbers, bonusNumber);
+        luckyLottoNumberException.checkLuckyLottoNumberExceptions(numbers);
+        this.numbers = numbers;
+        this.bonusNumber = bonusNumber;
+    }
+
+    public Lotto(List<Integer> numbers) {
+        validate(numbers);
+        this.numbers = numbers;
+    }
+
 
 
     // TODO: 추가 기능 구현
