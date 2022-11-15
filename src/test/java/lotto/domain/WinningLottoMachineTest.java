@@ -15,7 +15,8 @@ class WinningLottoMachineTest {
         String input = "2,56,22,1,144,2";
 
         assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoNumber(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 숫자중 범위 밖의 숫자가 있습니다.");
     }
 
 

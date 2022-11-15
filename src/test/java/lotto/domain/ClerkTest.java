@@ -9,8 +9,9 @@ class ClerkTest {
 
     private final Clerk clerk = new Clerk();
 
+    @DisplayName("빈 문자열이 입력되면 예외를 발생시킨다.")
     @Test
-    void 빈_문자열_입력_테스트() {
+    void inputMoneyByBlank() {
         String input = "";
 
         assertThatThrownBy(() -> clerk.calculateLottoQuantity(input))
@@ -18,8 +19,9 @@ class ClerkTest {
                 .hasMessageContaining("빈 문자열이 입력되었습니다.");
     }
 
+    @DisplayName("숫자가 아닌 입력이 있으면 예외를 발생시킨다.")
     @Test
-    void 수가아닌_입력_테스트() {
+    void inputMoneyByNoneNumeric() {
         String input = "aa";
 
         assertThatThrownBy(() -> clerk.calculateLottoQuantity(input))
@@ -38,7 +40,8 @@ class ClerkTest {
     }
 
     @Test
-    void 나누어_떨어지지않는_입력_테스트() {
+    @DisplayName("돈의 나머지가 발생하면 예외를 발생시킨다.")
+    void inputMoneyHaveRest() {
         String input = "1100";
 
         assertThatThrownBy(() -> clerk.calculateLottoQuantity(input))
@@ -46,8 +49,9 @@ class ClerkTest {
                 .hasMessageContaining("입력금액과 로또 금액이 나누어 떨어지지 않습니다.");
     }
 
+    @DisplayName("로또 수량 계산")
     @Test
-    void 로또_수량_테스트() {
+    void calculateLottosQuantityByInputMoney() {
         String input = "4000";
 
         assertThat(clerk.calculateLottoQuantity(input)).isEqualTo(4);

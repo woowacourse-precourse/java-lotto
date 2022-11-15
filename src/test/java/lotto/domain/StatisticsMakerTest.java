@@ -34,8 +34,7 @@ class StatisticsMakerTest {
         assertThat(ranking.get(5)).isEqualTo(1);
     }
 
-
-    @DisplayName("Ranking")
+    @DisplayName("수익률은 소수 둘째자리에서 반올림하여 출력한다.")
     @Test
     void createYieldByUpdatedRanking() {
         Map<Integer, Integer> ranking = statisticsMaker.makeRankings(winningLotto, lottos);
