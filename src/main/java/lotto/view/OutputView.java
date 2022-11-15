@@ -14,6 +14,12 @@ public class OutputView {
         System.out.println((user.getPrice() / 1000) + "개를 구매했습니다.");
     }
 
+    public void printUserLottoNumbers(User user) {
+        user.getUserLottos().stream().forEach(userLotto -> {
+            System.out.println(userLotto.getLottoNumbers());
+        });
+    }
+
 
 
 
