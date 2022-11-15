@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class LottoConsoleIo {
@@ -30,6 +31,10 @@ public class LottoConsoleIo {
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(3) + "개\n" +
                 "6개 일치 (2,000,000,000원) - " + result.get(4) + "개\n" +
                 "총 수익률은 " + result.get(5) + "%입니다.");
+    }
+
+    static String scanInputValue() {
+        return Console.readLine();
     }
 
 }
