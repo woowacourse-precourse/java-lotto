@@ -29,6 +29,7 @@ class LottoGeneratorTest {
     void REQUEST_TYPE_VALIDATION_CHECK() {
         MoneyRequest moneyRequest1 = new MoneyRequest(1);
         MoneyRequest moneyRequest2 = new MoneyRequest(1200);
+        MoneyRequest moneyRequest3 = new MoneyRequest(5000);
 
         assertAll(
                 () -> assertThatThrownBy(() -> new LottoGenerator(moneyRequest1))
