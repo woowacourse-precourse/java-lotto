@@ -59,4 +59,9 @@ public class SystemMessage {
                         putComma(rank.getPrize()) + "원) - " +
                         winningResult.get(rank) + "개");
     }
+
+    public static void profit(double profit) {
+        String formattedProfit = String.format("%,.1f", profit);
+        System.out.println("총 수익률은 " + formattedProfit + "%입니다.");
+    }
 }
