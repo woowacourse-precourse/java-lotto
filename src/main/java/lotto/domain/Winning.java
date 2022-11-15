@@ -25,11 +25,18 @@ public class Winning {
         }
     }
 
+    private static void checkRange(int inputNumber) {
+        if (inputNumber < 1 || inputNumber > 45) {
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
     public static void addWinning(String input) {
         List<String> inputNumbers = Arrays.asList(input.split(","));
         for (int i = 0; i < inputNumbers.size(); i++) {
             checkInt(inputNumbers.get(i));
             int inputNumber = Integer.valueOf(inputNumbers.get(i));
+            checkRange(inputNumber);
             if (numbers.contains(inputNumber)) {
                 throw new IllegalArgumentException("중복된 숫자가 있습니다.");
             }
@@ -41,9 +48,7 @@ public class Winning {
     public static void addBonus(String input) {
         checkInt(input);
         int inputNumber = Integer.valueOf(input);
-        if (inputNumber < 1 || inputNumber > 45) {
-            throw new IllegalArgumentException("잘못된 값 입력입니다.");
-        }
+        checkRange(inputNumber);
         if (!numbers.contains(inputNumber)) {
             numbers.add(inputNumber);
             return;
