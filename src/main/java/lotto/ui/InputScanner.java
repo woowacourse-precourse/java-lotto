@@ -57,7 +57,7 @@ public class InputScanner {
         }
     }
 
-    private List<Integer> validateWinningNumbers(String input) {
+    public List<Integer> validateWinningNumbers(String input) {
         List<Integer> winningNumbers;
         try {
             winningNumbers = stringToIntegerList(input);
@@ -70,13 +70,16 @@ public class InputScanner {
         if (Collections.min(winningNumbers) < 1 || Collections.max(winningNumbers) > 45) {
             throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_RANGE.getMessage());
         }
-        HashSet filteredWinningNumbers = new HashSet<>(winningNumbers);
-        if (filteredWinningNumbers.size() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_OVERLAP.getMessage());
-        }
+        inspectDuplicatedWinningNumber(winningNumbers);
         return winningNumbers;
     }
 
+    private void inspectDuplicatedWinningNumber(List<Integer> winningNumbers) {
+        HashSet<Integer> filteredWinningNumbers = new HashSet<>(winningNumbers);
+        if (filteredWinningNumbers.size() != LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_OVERLAP.getMessage());
+        }
+    }
 
     private List<Integer> sortWinningNumbers(List<Integer> inputNumbers) {
         Collections.sort(inputNumbers);
