@@ -1,10 +1,10 @@
-package system.process.validation;
+package view.validation;
 
 import constants.LottoConstant;
 import system.process.exception.IllegalArgument;
 import utils.IsCollection;
 
-public class WinningLottoRegisterValidation {
+public class WinningLottoRegisterViewValidation {
     public static void validateLottoNumbersInput(String inputNumbers) {
         if (inputNumbers.length() > LottoConstant.MAX_INPUT_NUMBERS_LENGTH) {
             IllegalArgument.handleException(IllegalArgument.OUT_OF_NUMBERS_LENGTH.getMessage());

@@ -1,11 +1,27 @@
 package view;
 
 import models.Lotto;
+import view.validation.BuyingViewValidation;
+import utils.Input;
 
 import java.util.List;
 
 public class BuyingView {
-    public static void printInputAmountPaidText() {
+   public static int inputBoughtLottos(){
+       String amountPaidInput = inputAmountPaid();
+       return Integer.parseInt(amountPaidInput);
+   }
+
+    private static String inputAmountPaid() {
+        printInputAmountPaidText();
+        String amountPaidInput = Input.input();
+
+        BuyingViewValidation.validateAmountPaidInput(amountPaidInput);
+
+        return amountPaidInput;
+    }
+
+    private static void printInputAmountPaidText() {
         System.out.println("구입 금액을 입력해 주세요.");
     }
 
