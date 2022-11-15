@@ -29,6 +29,9 @@ public class User {
         if (!checkInputNumber(money)) {
             throw new IllegalArgumentException("[ERROR] 금액은 " + LOTTO_PRICE + "원 단위여야 합니다.");
         }
+        if (!checkInputPositive(money)) {
+            throw new IllegalArgumentException("[ERROR] 금액은 양수여야 합니다.");
+        }
     }
 
     public void printLottos() {
@@ -61,7 +64,6 @@ public class User {
     private boolean checkInputInteger(String money) {
         try {
             Integer.parseInt(money);
-
         } catch (Exception exception) {
             return false;
         }
@@ -70,5 +72,9 @@ public class User {
 
     private boolean checkInputNumber(String money) {
         return Integer.parseInt(money) % LOTTO_PRICE == 0;
+    }
+
+    private boolean checkInputPositive(String money) {
+        return Integer.parseInt(money) >= 0;
     }
 }
