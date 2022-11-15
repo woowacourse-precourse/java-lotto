@@ -24,11 +24,15 @@ public class Application {
         }
         return winningNumbers;
     }
+
+    public static int GetBounusNumber(){
+        return Integer.parseInt(Console.readLine());
+    }
     public static void main(String[] args) {
         int customerMoney = Integer.parseInt(Console.readLine());
         int numberOfLottos = BuyLotto(customerMoney);
 
         ArrayList<Integer> winningNumbers = GetWinningNumbers();
-
+        int bounusNumber = GetBounusNumber();
     }
 }
