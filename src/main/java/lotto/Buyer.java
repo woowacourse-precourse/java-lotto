@@ -32,12 +32,4 @@ public class Buyer {
         this.reward = 0;
     }
 
-    public void printResult(){
-
-    }
-
-    private int calYield(){
-        return 100;
-    }
-
 }
