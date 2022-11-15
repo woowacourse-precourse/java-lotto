@@ -8,39 +8,38 @@ public class ResultPrinter {
     public ResultPrinter(List<MatchResult> data){
         winningData = data;
     }
-    public void printResult(int amount){
-        int money = 0;
+    public void printResult(int lottoAmount){
+        int prizeMoney = 0;
         System.out.println("당첨 통계");
         System.out.println("---");
-        printFifthPrize();
-        printFourthPrize();
-        printThirdPrize();
-        printSecondPrize();
-        printFirstPrize();
-        printProfitRate();
+        prizeMoney += printFifthPrize();
+        prizeMoney += printFourthPrize();
+        prizeMoney += printThirdPrize();
+        prizeMoney += printSecondPrize();
+        prizeMoney += printFirstPrize();
+        printProfitRate(prizeMoney, lottoAmount);
     }
 
-    public void printFifthPrize(){
-        System.out.print("3개 일치 :");
+    public int printFifthPrize(){
     }
 
-    public void printFourthPrize(){
-        System.out.print("4개 일치 : ");
-
-    }
-
-    public static void printThirdPrize(){
+    public int printFourthPrize(){
 
     }
 
-    public static void printSecondPrize(){
+    public int printThirdPrize(){
 
     }
 
-    public static void printFirstPrize(){
+    public int printSecondPrize(){
+
     }
 
-    public static void printProfitRate(){
+    public int printFirstPrize(){
+
+    }
+
+    public void printProfitRate(int money, int lottoAmount){
 
     }
 }
