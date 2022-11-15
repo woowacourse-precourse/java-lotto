@@ -12,6 +12,7 @@ import static java.lang.Integer.parseInt;
 
 public class InputView {
     public static int inputLottoAmount() {
+        
         OutputView.printInputAmount();
         String money = Console.readLine();
         if(!money.matches("^[0-9]+$")) {
