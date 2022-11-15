@@ -7,17 +7,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoUI {
-    private LottoUI() {
+    private final Manager manager;
+
+    public LottoUI(Manager manager) {
+        this.manager = manager;
+
     }
 
-    public static List<Integer> getLottoNumber() {
+
+    public static Lotto getLottoNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String[] input = Console.readLine().trim().split(",");
 
-        return Arrays.stream(input)
+        List<Integer> lottoNumbers = Arrays.stream(input)
                 .peek(eachNumber -> validateIsNumber(eachNumber))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
+
+        return new Lotto(lottoNumbers);
     }
 
     private static void validateIsNumber(String each) {
