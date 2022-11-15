@@ -30,13 +30,13 @@ public class ManagementLotto {
     public List<Integer> makeWinNumber(String input) {
         List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
-        validInput.validInputLength(inputNumberList);
+        ValidInput.validInputLength(inputNumberList);
 
         for (Integer number : inputNumberList) {
-            validInput.validIsInputInRange(number);
+            ValidInput.validIsInputInRange(number);
         }
 
-        validInput.validInputHasDuplicatedNumber(inputNumberList);
+        ValidInput.validInputHasDuplicatedNumber(inputNumberList);
 
         inputNumberList.sort(Integer::compareTo);
 
@@ -45,7 +45,7 @@ public class ManagementLotto {
 
     public Integer makeBonusNumber(String input) {
         Integer bonusNumber = Integer.parseInt(input);
-        validInput.validIsInputInRange(bonusNumber);
+        ValidInput.validIsInputInRange(bonusNumber);
 
         return bonusNumber;
     }
