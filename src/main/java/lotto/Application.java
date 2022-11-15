@@ -54,7 +54,8 @@ public class Application {
             }
             return money/lotto_price;
         } catch (Exception e){
-            throw new IllegalArgumentException("[ERROR] 유효한 숫자를 입력해주세요");
+            System.out.println("[ERROR] 유효한 숫자를 입력해주세요.");
+            return 0;
         }
     }
 
