@@ -17,14 +17,16 @@ public class LottoOutStream {
     }
 
     public static void showROR(BigDecimal ror) {
-        DecimalFormat df = new DecimalFormat("###,##0.0");
-        String format = df.format(ror);
+        System.out.print("총 수익률은 " + getFormROR(ror) + "%입니다.");
+    }
 
-        System.out.print("총 수익률은 " + format + "%입니다.");
+    private static String getFormROR(BigDecimal ror) {
+        return new DecimalFormat("###,##0.0").format(ror);
     }
 
     public static void showLottoList(List<Lotto> lottoes) {
         System.out.print("\n" + lottoes.size() + "개를 구매했습니다.\n");
+
         for (Lotto lotto : lottoes) {
             lotto.showNumbers();
         }
