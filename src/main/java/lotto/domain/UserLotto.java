@@ -13,64 +13,64 @@ public class UserLotto {
     private static final int CNT_NUMBER = 6;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
+    private static final int UNIT = 1000;
+    private static final int INIT = 0;
     private static final String REGEX = "[0-9]+";
     private static List<List> userLotto = new ArrayList<>();
 
-    public UserLotto() {}
-
-    public int setPurchaseAmount(){
-        String input = Console.readLine();
-        validateLetter(input);
-        return Integer.parseInt(input);
+    public UserLotto() {
     }
 
-    public List<List> getUserLotto(){
-        return userLotto;
+    public int setPurchaseOfLotto(String purchaseAmount) {
+        int lottoCount = INIT;
+
+        validateLetter(purchaseAmount);
+        validateUnit(Integer.parseInt(purchaseAmount));
+
+        lottoCount = setNumberOfPurchases(Integer.parseInt(purchaseAmount));
+        return lottoCount;
     }
 
-    public void getPurchaseLottoNumbers(){
-        for(int i=0;i<userLotto.size();i++){
-            List<Integer> numbers = new ArrayList<>(userLotto.get(i));
-            printPurchaseLottoNumbers(numbers);
+    public int setNumberOfPurchases(int purchaseAmount) {
+        return purchaseAmount / UNIT;
+    }
+
+    public void setPurchaseLottoNumbers(int lottoCount) {
+        while (lottoCount > INIT) {
+            setRandomLottoNumber();
+            lottoCount--;
         }
     }
 
-    public void printPurchaseLottoNumbers(List<Integer> numbers){
-        String sb2 ="[";
-        for(int i=0;i<numbers.size();i++){
-            sb2 +=  numbers.get(i);
-            if(i!=numbers.size()-1){
-                sb2 += ", ";
-            }
-        }
-        sb2 += "]";
-        System.out.println(sb2);
-    }
-
-    public void validateLetter(String input){
-        if(!input.matches(REGEX)){
-            System.out.println("[ERROR]구입 금액에 숫자외 문자가 존재합니다.");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void validateUnit(int input){
-        if(input % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위가 아닙니다.");
-        }
-    }
-
-    public void setRandomNumber(){
-        List<Integer> lottoNumbers = new ArrayList<>();
-
-        lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,CNT_NUMBER);
+    public void setRandomLottoNumber() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, CNT_NUMBER);
         lottoNumbers = lottoNumbers.stream()
                 .sorted()
                 .collect(Collectors.toList());
 
         new Lotto(lottoNumbers);
 
-        this.userLotto.add(lottoNumbers);
+        userLotto.add(lottoNumbers);
+    }
+
+    public List<List> getUserLotto() {
+        return userLotto;
+    }
+
+    public List<Integer> getPurchaseLottoGroup(int index) {
+        return userLotto.get(index);
+    }
+
+    public void validateLetter(String input) {
+        if (!input.matches(REGEX)) {
+            throw new IllegalArgumentException("[ERROR]구입 금액에 숫자외 문자가 존재합니다.");
+        }
+    }
+
+    public void validateUnit(int amount) {
+        if (amount % UNIT != INIT) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위가 아닙니다.");
+        }
     }
 
 }

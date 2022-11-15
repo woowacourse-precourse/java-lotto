@@ -5,43 +5,41 @@ import lotto.domain.UserLotto;
 import lotto.domain.WinLotto;
 import lotto.domain.WinStatistics;
 import lotto.domain.WinningRank;
+import lotto.view.UserView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LottoGame {
+    private static final int INIT = 0;
     private UserLotto user = new UserLotto();
+    private UserView userView = new UserView();
     private WinLotto winLotto = new WinLotto();
     private WinStatistics winStatistics = new WinStatistics();
     private static List<Integer> countAccord;
     private static int bonusAccord;
-    public LottoGame() {
-    }
+
+    public LottoGame() {}
 
     public void startLotto(){
-        printPurchaseAmount();
+        userView.printPurchaseAmount();
+        String purchaseAmount = Console.readLine();
+        int lottoCount = user.setPurchaseOfLotto(purchaseAmount);
+        userView.printNumberOfPurchases(lottoCount);
+        user.setPurchaseLottoNumbers(lottoCount);
+        getPurchaseLottoNumbers(lottoCount);
 
-        int input = user.setPurchaseAmount();
-        user.validateUnit(input);
-        int lottoCount = setPurchaseAmount(input);
-
-        printNewLine();
-        String sb1 = lottoCount+"개를 구매했습니다.";
-        System.out.println(sb1);
-        setPurchaseAmountLotto(lottoCount);
-
-        user.getPurchaseLottoNumbers();
-        printNewLine();
 
         printWinningNumbers();
         winLotto.setWinningNumbers();
 
-        printNewLine();
+        userView.printNewLine();
         printBounsNumbers();
         winLotto.setBounsNumber();
 
-        printNewLine();
+        userView.printNewLine();
         printWinStatistics();
         System.out.println("---");
         winStatistics.startWinStatistics();
@@ -50,22 +48,19 @@ public class LottoGame {
 
         printResult();
 
-        double rateOfReturn2 = (double)winStatistics.calculationTotalAmount()/(double)input * 100;
+        double rateOfReturn2 = (double)winStatistics.calculationTotalAmount()/Double.parseDouble(purchaseAmount) * 100;
         String rateOfReturn = String.format("%,.1f",rateOfReturn2);
         String sb5 = "총 수익률은 " + rateOfReturn + "%입니다.";
         System.out.println(sb5);
     }
 
-    public void setPurchaseAmountLotto(int input) {
-        while (input > 0) {
-            user.setRandomNumber();
-            input--;
+    public void getPurchaseLottoNumbers(int lottoCount){
+        for(int i=INIT;i<lottoCount;i++){
+            List<Integer> userNumbers = new ArrayList<>(user.getPurchaseLottoGroup(i));
+            userView.printPurchaseLottoNumbers(userNumbers);
         }
     }
 
-    public int setPurchaseAmount(int input) {
-        return input / 1000;
-    }
 
     public void printResult(){
         for(int i=3;i<=6;i++){
@@ -89,11 +84,8 @@ public class LottoGame {
         }
     }
 
-    public void printPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
-    }
-
     public void printWinningNumbers() {
+        userView.printNewLine();
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
@@ -103,10 +95,6 @@ public class LottoGame {
 
     public void printWinStatistics() {
         System.out.println("당첨 통계");
-    }
-
-    public void printNewLine() {
-        System.out.println();
     }
 
 }
