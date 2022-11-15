@@ -30,6 +30,4 @@ public final class ErrorConstant {
     public static final String LOTTO_NOT_NULL = ERROR_HEAD + " " + "로또는 null일 수 없습니다.";
     public static final String LOTTO_NOT_SIZE_6 = ERROR_HEAD + " " + "로또는 6개 이외의 로또번호를 가질 수 없습니다.";
     public static final String LOTTO_NOT_DUPLICATE = ERROR_HEAD + " " + "로또는 로또 번호가 중복일 수 없습니다.";
-
-    public static final String LOTTO_NOT_SORTED = ERROR_HEAD + " " + "로또는 숫자가 정렬되어야 합니다.";
 }

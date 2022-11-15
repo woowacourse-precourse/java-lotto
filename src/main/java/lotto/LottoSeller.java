@@ -13,7 +13,6 @@ public class LottoSeller {
     private final int LOTTO_NUMBER_SIZE = 6;
     private final int LOTTO_NUMBER_MIN = 1;
     private final int LOTTO_NUMBER_MAX = 45;
-    private final boolean NOT_HAVE = false;
     private Lotto winningLotto;
     private Integer bonus;
 

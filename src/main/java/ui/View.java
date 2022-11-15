@@ -33,7 +33,6 @@ public class View {
 
     public static void printWinnigSummary(List<Integer> correctList) {
         System.out.println(RESULT_SUMMARY);
-        String message = "";
         for (int i = 0; i < correctList.size(); i++) {
             System.out.println(Prize.getPrizeMessage(i + 1) + correctList.get(i) + "개");
         }
