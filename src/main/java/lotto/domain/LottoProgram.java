@@ -17,9 +17,13 @@ public class LottoProgram {
     WinLotto winLotto;
 
     public LottoProgram() {
-        int buyAmount = buyLotto();
-        getWinLotto();
-        winStats(buyAmount);
+        try {
+            int buyAmount = buyLotto();
+            getWinLotto();
+            winStats(buyAmount);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private int buyLotto() {
