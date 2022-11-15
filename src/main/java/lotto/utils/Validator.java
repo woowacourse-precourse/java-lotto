@@ -25,4 +25,10 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
     }
+
+    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if(numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 발행번호와 일치하지 않아야 합니다.");
+        }
+    }
 }
