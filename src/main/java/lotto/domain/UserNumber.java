@@ -11,13 +11,12 @@ public class UserNumber {
     private static int countingNumber = 1000;
 
     public static int inputPrice() {
-        int price;
         try {
-            price = Integer.valueOf(Console.readLine());
-        } catch(Exception e){
+            int price = Integer.valueOf(Console.readLine());
+            return price;
+        } catch(IllegalArgumentException e){
             throw new IllegalArgumentException(Print.priceError());
         }
-        return price;
     }
 
     public int lottoCount(int price){
@@ -54,5 +53,4 @@ public class UserNumber {
             throw new IllegalArgumentException(Print.priceError());
         }
     }
-
 }
