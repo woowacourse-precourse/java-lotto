@@ -2,6 +2,7 @@ package lotto.controllers;
 
 import lotto.applications.GameService;
 import lotto.view.Input;
+import lotto.view.Output;
 
 public class GameController {
     private static GameController INSTANCE;
@@ -20,5 +21,10 @@ public class GameController {
     public void startGame() {
         final int money = Input.inputPurchaseLottoValue();
         final int numberOfLotto = gameService.getNumberOfLotto(money);
+        opening(numberOfLotto);
+    }
+
+    private void opening(int numberOfLotto) {
+        Output.printNumberOfPurChase(numberOfLotto);
     }
 }
