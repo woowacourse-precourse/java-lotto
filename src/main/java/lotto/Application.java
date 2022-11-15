@@ -127,6 +127,13 @@ public class Application {
         }
     }
 
+    public static int getBonusNumber() {
+        System.out.println(BONUS_NUMBER_REQUEST_MESSAGE.getMessage());
+        String userInput = Console.readLine();
+        int bonusNumber = Integer.parseInt(userInput);
+        return bonusNumber;
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -138,5 +145,6 @@ public class Application {
         if (winningNumbers == null) {
             return;
         }
+        int bonusNumber = getBonusNumber();
     }
 }
