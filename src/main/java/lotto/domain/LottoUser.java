@@ -25,6 +25,10 @@ public class LottoUser {
         purchaseRandomLottos(purchaseCost);
     }
 
+    public List<Lotto> getRandomLottos() {
+        return new ArrayList<>(randomLottos);
+    }
+
     private void purchaseRandomLottos(final int purchaseCost) {
         final int purchaseLottoCount = purchaseCost / LOTTO_BASIC_COST;
         for (int i = 0; i < purchaseLottoCount; i++) {
