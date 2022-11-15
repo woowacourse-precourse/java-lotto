@@ -18,8 +18,8 @@ public class StoreTest {
     @Test
     @DisplayName("금액 입력 테스트")
     void getMoney(){
-        int money = Integer.parseInt("8000");
-        User user = new User(money);
+        int money = 8000;
+        User user = new User(String.valueOf(money));
 
         assertThat(user.getMoney()).isEqualTo(money);
     }
@@ -27,9 +27,9 @@ public class StoreTest {
     @Test
     @DisplayName("금액 입력 예외 테스트")
     void getMoneyException(){
-        int money = Integer.parseInt("8100");
+        int money = 8100;
 
-        assertThatThrownBy(() -> new User(money))
+        assertThatThrownBy(() -> new User(String.valueOf(money)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -53,7 +53,7 @@ public class StoreTest {
     @DisplayName("로또 구매 개수 테스트2")
     void numberOfLotto2(){
         int money = 8000;
-        User user = new User(money);
+        User user = new User(String.valueOf(money));
         userController.buyLotto(user);
 
         assertThat(user.getLotto().size())
@@ -64,7 +64,7 @@ public class StoreTest {
     @DisplayName("로또 구매 view 테스트")
     void buyingLottoView(){
         int money = 8000;
-        User user = new User(money);
+        User user = new User(String.valueOf(money));
         String buyingMsg=String.valueOf(money / LottoInfo.PRICE.getValue())
                 + Message.BUYING_MSG;
 

@@ -77,7 +77,7 @@ public class RankTest {
         String bonus = "7";
         List<Lotto> lottos = testLottos();
 
-        User user = new User(lottos.size() * 1000);
+        User user = new User(String.valueOf(lottos.size() * 1000));
         buylotto(lottos, user);
 
         WinLotto winLotto = rankService.generateWinningLotto(winningNumber, bonus);
@@ -96,7 +96,7 @@ public class RankTest {
         String bonus = "7";
         List<Lotto> lottos = testLottos();
 
-        User user = new User(lottos.size() * 1000);
+        User user = new User(String.valueOf(lottos.size() * 1000));
         buylotto(lottos, user);
 
         String rankingView = rankController.statistics(user, winningNumber, bonus);
