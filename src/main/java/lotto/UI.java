@@ -41,11 +41,11 @@ public class UI {
 
     }
 
-    public Integer Bonus_Number() {
+    public Integer Bonus_Number_Input() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        String Input = Console.readLine();
-        Bonus_number_validate(Input);
-        Integer Bonus_Number = Integer.valueOf(Input);
+        String Bonus_Input = Console.readLine();
+        Bonus_number B = new Bonus_number(Bonus_Input);
+        Integer Bonus_Number = Integer.valueOf(Bonus_Input);
         return Bonus_Number;
     }
 
