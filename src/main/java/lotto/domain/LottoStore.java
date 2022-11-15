@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import lotto.Utils.Error;
-import lotto.Utils.commonUtil;
+import lotto.Utils.CommonUtil;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class LottoStore {
     public void inputPurchase() {
         String input = Console.readLine();
 
-        purchase = commonUtil.stringToNumber(input);
+        purchase = CommonUtil.stringToNumber(input);
         validate(purchase);
     }
     public List<Lotto> buyLotto() {
