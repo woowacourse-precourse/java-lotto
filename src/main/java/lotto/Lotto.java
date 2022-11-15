@@ -3,6 +3,8 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.Constants.*;
+
 public class Lotto {
     private final List<Integer> winningNumbers;
     private int bonus;
@@ -19,13 +21,13 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != NUM_OF_LOTTO) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리여야 합니다.");
         }
     }
 
     private void validateRangeOfNumber(int number) {
-        if (number < 1 || number > 45) {
+        if (number < MIN_VALUE_OF_LOTTO || number > MAX_VALUE_OF_LOTTO) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
