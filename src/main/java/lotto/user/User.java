@@ -1,7 +1,7 @@
-package user;
+package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.BoughtLotto;
+import lotto.lotto.BoughtLotto;
 
 import java.util.ArrayList;
 import java.util.List;

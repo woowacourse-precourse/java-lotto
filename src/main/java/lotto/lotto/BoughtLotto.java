@@ -1,8 +1,7 @@
-package lotto;
+package lotto.lotto;
 
-import lotto.randomNumber.RandomNumber;
+import lotto.lotto.randomNumber.RandomNumber;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;

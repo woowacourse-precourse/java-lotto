@@ -1,4 +1,4 @@
-package yieldMachine;
+package lotto.yieldMachine;
 
 import java.util.Arrays;
 import java.util.List;

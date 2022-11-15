@@ -1,4 +1,6 @@
-package lotto;
+package lotto.lotto;
+
+import lotto.lotto.validation.ValidationLottoNumbers;
 
 import java.util.List;
 
