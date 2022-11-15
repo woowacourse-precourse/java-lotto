@@ -22,6 +22,11 @@ public class Application {
 
             view.resultInitMsg();
             List<Integer> winnerList = service.countWinner(lottoNumberList, winningNumberInput, luckyNumberInput);
+
+            view.winnerListMsg(winnerList);
+
+            double profit = service.countProfit(moneyInput);
+            view.profitMsg(profit);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
