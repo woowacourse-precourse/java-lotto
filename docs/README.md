@@ -3,22 +3,29 @@
 - [x] 로또 구입
   - [x] 구입 금액 입력 받기 - `getPurchaseMoney`
   - [x] 1장: 1000원으로 계산, 구입개수 구하기 - `purchaseLotto`
+
 - [x] 로또 발행
   - [x] 중복되지 않는 숫자 6개 뽑기 - `generateLottoNumbers`
   - [x] 구입 개수만큼 반복
     - 발행 - `publishLottos`
   - [x] 구입한 로또 정보 출력 - `showLottos`
+  
 - [x] 당첨 번호 추첨
   - [x] 중복되지 않는 숫자 6개 입력 받기 - `getWinningNumbers`
     - [x] 쉼표를 기준으로 입력 - `convertToList`
   - [x] 보너스 번호 숫자 1개 뽑기 - `convertToBonus`
+
 - [x] 당첨 통계
   - [x] 로또 번호와 당첨 번호를 비교 - `compareWithWinningNumbers`
     - [x] Enum Score로 일치하는 개수 관리
   - [x] 일치하는 개수 구하기 - `countMatchingNumber`
   - [x] 각 Score에 대해 통계 출력 - `showResults`
+  
 - [ ] 수익률 계산
-  - [ ] 구입 금액과 수익 금액 비교
+  
+  - [ ] 수익 금액 구하기
+  
+  - [ ] 구입 금액과 비교한 수익률 구하기
 
 
 
@@ -57,7 +64,7 @@
 
 ### 테스트
 
-- [ ] 단위 테스트
+- [x] 단위 테스트
 
   - [x] 각 기능별로 테스트할 수 있어야 한다. - `runTest`
   - [x] 예외 발생 시, "[ERROR]" 문구를 포함해야 한다.
