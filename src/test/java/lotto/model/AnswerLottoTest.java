@@ -19,25 +19,25 @@ class AnswerLottoTest {
 	}
 
 	@Test
-	void 사이즈_예외_테스트1(){
+	void 작은_사이즈_예외_테스트(){
 		Assertions.assertThatThrownBy(() -> new AnswerLotto(List.of(1, 2, 3, 5, 6), 7))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
-	void 사이즈_예외_테스트2(){
+	void 큰_사이즈_예외_테스트(){
 		Assertions.assertThatThrownBy(() -> new AnswerLotto(List.of(1, 2, 3, 4, 5, 6, 7), 8))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
-	void 중복_숫자_예외_테스트1(){
+	void 보너스_중복_숫자_예외_테스트(){
 		Assertions.assertThatThrownBy(() -> new AnswerLotto(List.of(1, 2, 3, 4, 5, 6), 6))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
-	void 중복_숫자_예외_테스트2(){
+	void 정답번호_중복_숫자_예외_테스트(){
 		Assertions.assertThatThrownBy(() -> new AnswerLotto(List.of(1, 2, 3, 4, 5, 3), 6))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
