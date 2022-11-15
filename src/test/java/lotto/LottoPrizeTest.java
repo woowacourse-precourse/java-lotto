@@ -54,25 +54,47 @@ class LottoPrizeTest {
         assertThat(matchCount).isEqualTo(50);
     }
 
-   @Test
-   @DisplayName("구매 금액과 당첨 금액에 따라 올바른 수익률을 리턴해야 된다.")
-   void 수익률_계산_테스트() throws Exception {
-       //given
-       LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
-       LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
-       Method method = lottoPrize.getClass().getDeclaredMethod("computeEarningRate", int.class, long.class);
-       method.setAccessible(true);
+    @Test
+    @DisplayName("당첨 개수에 따라 올바른 당첨 금액을 리턴해야 한다.")
+    void 당첨_금액_테스트() throws Exception {
+        //given
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
+        LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
 
-       //when
-       int purchaseAmount = 80_000;
-       int winningZeroAmount = 0;
-       int winningAmount = 15_000;
+        Method addCountMethod = lottoPrize.getClass().getDeclaredMethod("addMatchCount", int.class);
+        addCountMethod.setAccessible(true);
 
-       //then
-       String zeroRate = (String) method.invoke(lottoPrize, purchaseAmount, winningZeroAmount);
-       assertThat(zeroRate).isEqualTo("0");
+        Method winningAmountMethod = lottoPrize.getClass().getDeclaredMethod("getTotalWinningAmount");
+        winningAmountMethod.setAccessible(true);
 
-       String earningRate = (String) method.invoke(lottoPrize, purchaseAmount, winningAmount);
-       assertThat(earningRate).isEqualTo("18.8");
-   }
+        //when
+        addCountMethod.invoke(lottoPrize, 3);
+        addCountMethod.invoke(lottoPrize, 4);
+
+        //then
+        long totalWinningAmount = (long) winningAmountMethod.invoke(lottoPrize);
+        assertThat(totalWinningAmount).isEqualTo(55_000);
+    }
+
+    @Test
+    @DisplayName("구매 금액과 당첨 금액에 따라 올바른 수익률을 리턴해야 된다.")
+    void 수익률_계산_테스트() throws Exception {
+        //given
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
+        LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
+        Method method = lottoPrize.getClass().getDeclaredMethod("computeEarningRate", int.class, long.class);
+        method.setAccessible(true);
+
+        //when
+        int purchaseAmount = 80_000;
+        int winningZeroAmount = 0;
+        int winningAmount = 15_000;
+
+        //then
+        String zeroRate = (String) method.invoke(lottoPrize, purchaseAmount, winningZeroAmount);
+        assertThat(zeroRate).isEqualTo("0");
+
+        String earningRate = (String) method.invoke(lottoPrize, purchaseAmount, winningAmount);
+        assertThat(earningRate).isEqualTo("18.8");
+    }
 }
