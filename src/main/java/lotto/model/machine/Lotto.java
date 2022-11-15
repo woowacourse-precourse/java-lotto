@@ -1,13 +1,13 @@
 package lotto.model.machine;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.HashSet;
+import java.util.ArrayList;
 
 import lotto.model.lucky.BonusNumber;
 import lotto.model.lucky.WinningNumber;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Lotto implements Comparable<WinningNumber> {
 

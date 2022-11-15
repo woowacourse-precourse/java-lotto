@@ -1,7 +1,9 @@
 package lotto.model.lucky;
 
 import java.util.stream.Stream;
+
 import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.TestInstance;

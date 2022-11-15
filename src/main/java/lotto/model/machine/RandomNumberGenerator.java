@@ -11,6 +11,6 @@ public class RandomNumberGenerator {
 
     public static Lotto createNumbers() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, SIZE_OF_NUMBERS)
-            .stream().sorted().collect(Collectors.toList()));
+                .stream().sorted().collect(Collectors.toList()));
     }
 }

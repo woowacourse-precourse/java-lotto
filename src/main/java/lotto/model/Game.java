@@ -28,7 +28,8 @@ public class Game {
         inputLuckyNumber(ticketMachine);
 
         output.print(Message.STATISTICS);
-        outputStatistics(ticketMachine);
+        ticketMachine.calculateResult();
+        ticketMachine.showResult(output);
     }
 
     public Money inputMoney() {
@@ -39,11 +40,10 @@ public class Game {
         return new TicketMachine(money);
     }
 
-    public void inputLuckyNumber(TicketMachine ticketMachine) {
+    private void inputLuckyNumber(TicketMachine ticketMachine) {
         output.print(Message.WINNING_INPUT);
         WinningNumber winningNumber = inputWinningNumber();
         ticketMachine.setWinningNumber(winningNumber);
-
         output.print(Message.BONUS_INPUT);
         BonusNumber bonusNumber = inputBonusNumber(winningNumber);
         ticketMachine.setBonusNumber(bonusNumber);
@@ -57,12 +57,6 @@ public class Game {
     public BonusNumber inputBonusNumber(WinningNumber winningNumber) {
         String inputBonusNumber = this.input.scan();
         return new BonusNumber(inputBonusNumber, winningNumber);
-    }
-
-
-    public void outputStatistics(TicketMachine ticketMachine) {
-        ticketMachine.calculateResult();
-        ticketMachine.showResult(output);
     }
 
 }

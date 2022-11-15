@@ -2,10 +2,10 @@ package lotto.model.machine;
 
 import java.text.DecimalFormat;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.HashMap;
 import java.util.stream.IntStream;
+import java.util.concurrent.atomic.AtomicReference;
 
 import lotto.io.Message;
 import lotto.io.Output;
@@ -20,6 +20,8 @@ public class NumbersMatchRepository {
     public static int MATCH_NUMBER_BOUNDARY_END = 8;
     public static int PERCENTAGE = 100;
     public static int LUCKY = 7;
+    public static float ZERO_FLOAT = 0;
+    public static float ONE_FLOAT = 1;
     public static Long NONE = 0L;
     public static Long ONE = 1L;
     private final HashMap<Integer, Long> ticketMatchTable;
@@ -74,8 +76,8 @@ public class NumbersMatchRepository {
                 .filter(Rank::isMatchCount)
                 .forEach(rank -> earnedMoney.updateAndGet(v -> v + addEarnedMoney(rank)));
 
-        if (originalMoney == 0) {
-            originalMoney = 1;
+        if (originalMoney == ZERO_FLOAT) {
+            originalMoney = ONE_FLOAT;
         }
         outputComma(output, (earnedMoney.get() / originalMoney) * PERCENTAGE);
     }

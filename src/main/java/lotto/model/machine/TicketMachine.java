@@ -1,10 +1,12 @@
 package lotto.model.machine;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.LongStream;
+
 import lotto.io.Output;
 import lotto.io.Message;
+
 import lotto.model.Money;
 import lotto.model.lucky.BonusNumber;
 import lotto.model.lucky.WinningNumber;
@@ -25,13 +27,13 @@ public class TicketMachine {
 
     public void generateTickets() {
         LongStream.range(0, money.countInThousands())
-            .forEach(i -> lottoTickets.add(new LottoTicket()));
+                .forEach(i -> lottoTickets.add(new LottoTicket()));
     }
 
     public void showAllTickets(Output output) {
         output.print(Message.QUANTITY, money.countInThousands());
         LongStream.range(0, money.countInThousands())
-            .forEach(i -> lottoTickets.get((int) i).showTicketNumbers(output));
+                .forEach(i -> lottoTickets.get((int) i).showTicketNumbers(output));
     }
 
     public void calculateResult() {

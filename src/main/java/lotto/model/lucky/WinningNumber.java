@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.TryCatchException;
 
-
 public class WinningNumber {
 
     private static final int COUNT_OF_WINNING_NUMBERS = 6;
@@ -36,8 +35,8 @@ public class WinningNumber {
 
     private void validateSign(String input) {
         long count = input.chars()
-            .filter(this::isSign)
-            .count();
+                .filter(this::isSign)
+                .count();
 
         try {
             if (count != 0) {
@@ -50,8 +49,8 @@ public class WinningNumber {
 
     private void validateDelimiters(String input) {
         long count = input.chars()
-            .filter(this::isDelimiter)
-            .count();
+                .filter(this::isDelimiter)
+                .count();
 
         try {
             if (count != COUNT_OF_DELIMITER) {
@@ -64,10 +63,10 @@ public class WinningNumber {
 
     private void validateNumbers(String input) {
         long count = transformToInteger(input)
-            .stream()
-            .filter(i -> MIN_LOTTO_NUMBER <= i && i <= MAX_LOTTO_NUMBER)
-            .distinct()
-            .count();
+                .stream()
+                .filter(i -> MIN_LOTTO_NUMBER <= i && i <= MAX_LOTTO_NUMBER)
+                .distinct()
+                .count();
         try {
             if (count != COUNT_OF_WINNING_NUMBERS) {
                 throw new IllegalArgumentException();

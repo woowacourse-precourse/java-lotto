@@ -43,7 +43,6 @@ class WinningNumberTest {
             }
         }
 
-
         @Nested
         @TestInstance(Lifecycle.PER_CLASS)
         @DisplayName("validation for numbers")

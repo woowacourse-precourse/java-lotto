@@ -10,7 +10,7 @@ import lotto.Application;
 import lotto.io.Output;
 import lotto.io.OutputConsole;
 import lotto.model.Money;
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.TestInstance;

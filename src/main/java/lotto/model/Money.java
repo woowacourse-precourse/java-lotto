@@ -1,6 +1,6 @@
 package lotto.model;
 
-import lotto.tryCatchException;
+import lotto.TryCatchException;
 
 public class Money {
 
@@ -21,7 +21,7 @@ public class Money {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            throw new tryCatchException("[ERROR] The money must be positive.");
+            throw new TryCatchException("[ERROR] The money must be positive.");
         }
     }
 
@@ -31,7 +31,7 @@ public class Money {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            throw new tryCatchException("[ERROR] The money must be divided by a thousand");
+            throw new TryCatchException("[ERROR] The money must be divided by a thousand");
         }
     }
 
@@ -42,7 +42,7 @@ public class Money {
             try{
                 throw new IllegalArgumentException();
             }catch (IllegalArgumentException e){
-                throw new tryCatchException("[ERROR] The money must be numeric.");
+                throw new TryCatchException("[ERROR] The money must be numeric.");
             }
         }
     }

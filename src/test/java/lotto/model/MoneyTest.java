@@ -13,7 +13,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-
 class MoneyTest {
 
     @Nested
@@ -42,7 +41,7 @@ class MoneyTest {
                     Arguments.of("abcdef", "alphabet"),
                     Arguments.of("!@#$%^", "special"),
                     Arguments.of("abc!@#$%^", "alphabet and special"),
-                    Arguments.of("      ", "whiteSpace"),
+                    Arguments.of("          ", "whiteSpace"),
                     Arguments.of("!@#30000    %^", "mixed1"),
                     Arguments.of("!  @#30  %6000    %^", "mixed2"),
                     Arguments.of("[]3[]4[]6[]7[]9[]1[]0[]", "mixed3"),
