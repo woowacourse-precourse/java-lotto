@@ -20,6 +20,13 @@ public class Game {
         bonusNumber = Input.inputWinLottoBonusNumber();
     }
 
+
+
+    public int getLottoPrize(String rank){
+        int lottoPrize = LottoPrize.valueOf(rank).getLottoPrize();
+        return lottoPrize;
+    }
+
     public int calculateRank(Lotto lotto) {
         int correctNumbersCount = countCorrectNumbers(lotto);
         if (correctNumbersCount == 6) {//1등
