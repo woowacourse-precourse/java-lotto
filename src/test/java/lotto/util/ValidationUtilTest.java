@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static lotto.constant.ErrorOutputMessage.PURCHASE_REMAINDER;
-import static lotto.constant.ErrorOutputMessage.PURCHASE_TYPE;
+import static lotto.constant.ErrorOutputMessage.*;
 import static org.assertj.core.api.Assertions.*;
 
 class ValidationUtilTest {
@@ -87,5 +86,32 @@ class ValidationUtilTest {
 
         int purchaseAmount = validationUtil.validatePurchase(correctAmount);
         assertThat(purchaseAmount).isEqualTo(8000);
+    }
+
+    @Test
+    @DisplayName("당첨 번호를 6개 입력했는지 테스트")
+    void 당첨_번호_개수_테스트() throws Exception {
+        //given
+        ValidationUtil validationUtil = new ValidationUtil();
+        Method method = validationUtil.getClass().getDeclaredMethod("validateWinningCount", String[].class);
+        method.setAccessible(true);
+
+        //when
+        String[] correctNums = {"1", "2", "3", "4", "5", "6"};
+        String[] wrongNums = {"1", "2", "3", "4", "5"};
+
+        //then
+        assertThatCode(() ->
+                method.invoke(validationUtil, new Object[]{correctNums}))
+                .doesNotThrowAnyException();
+
+        try {
+            method.invoke(validationUtil, new Object[]{wrongNums});
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NUMBER_COUNT);
+        }
+
     }
 }
