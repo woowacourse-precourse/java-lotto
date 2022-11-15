@@ -12,21 +12,23 @@ import org.junit.jupiter.api.Test;
 
 class LottoReaderTest {
     private LottoReader lottoReader;
+    private List<Lotto> publishedLotto;
+    private Lotto winningLotto;
+    private Bonus bonus;
 
     @BeforeEach
     void setUp() {
         lottoReader = new LottoReader();
+        publishedLotto = new ArrayList<>();
+        winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        bonus = new Bonus(10, winningLotto);
     }
 
     @DisplayName("로또 당첨 결과를 구합니다.")
     @Test
     void createLottoResult() {
         // given
-        List<Lotto> publishedLotto = new ArrayList<>();
         publishedLotto.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Bonus bonus = new Bonus(10, winningLotto);
 
         // when
         Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto, bonus);
@@ -39,12 +41,7 @@ class LottoReaderTest {
     @Test
     void calculateYield() {
         // given
-        List<Lotto> publishedLotto = new ArrayList<>();
         publishedLotto.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Bonus bonus = new Bonus(10, winningLotto);
-
         Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto, bonus);
 
         // when
