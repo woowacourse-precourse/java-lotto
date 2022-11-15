@@ -1,8 +1,7 @@
 package lotto.io;
 
-import lotto.Lotto;
+import lotto.numbers.Lotto;
 import lotto.constants.ExceptionMessage;
-import lotto.constants.LottoConstants;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import lotto.lottoGenerator.LottoGenerator;
 import lotto.lottoGenerator.LottoGeneratorImpl;
 import lotto.lottoGenerator.RandomNumbersGenerator;
 import lotto.lottoGenerator.RandomNumbersGeneratorWithMissionUtils;
+import lotto.numbers.Lotto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
