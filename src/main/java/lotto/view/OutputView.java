@@ -28,28 +28,28 @@ public class OutputView {
         System.out.println(LINE_FEED + number + PRINT_PURCHASE_NUM_MESSAGE);
     }
 
+    public static void printResultMainMessage() {
+        System.out.println(PRINT_RESULT_MAIN_MESSAGE);
+    }
+
     public static void printEachWinningResult(WinningType type, Map<WinningType, Integer> winningResults) {
 
         if (type == WinningType.NONE) return;
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String decimatedWinning = decimalFormat.format(type.getWinnings());
 
         System.out.print(type.getEqualCount() + PRINT_RESULT_EQUAL_MESSAGE);
 
-        if (type.getWithBonus())
-            System.out.print(PRINT_RESULT_BONUS_MESSAGE);
+        if (type.getWithBonus()) System.out.print(PRINT_RESULT_BONUS_MESSAGE);
 
-        System.out.print(PRINT_RESULT_WINNING_START_MESSAGE);
-        System.out.print(decimalFormat.format(type.getWinnings()));
-        System.out.print(PRINT_RESULT_WINNING_END_MESSAGE);
-
-        winningResults.putIfAbsent(type, 0);
+        System.out.print(PRINT_RESULT_WINNING_START_MESSAGE + decimatedWinning + PRINT_RESULT_WINNING_END_MESSAGE);
         System.out.println(winningResults.get(type) + PRINT_RESULT_NUM_MESSAGE);
     }
 
     public static void printEarning(double earning) {
         System.out.print(PRINT_EARNING_START_MESSAGE);
         System.out.printf("%.1f", earning * pourcentage);
-        System.out.print(PRINT_EARNING_END_MESSAGE);
+        System.out.println(PRINT_EARNING_END_MESSAGE);
     }
 }
