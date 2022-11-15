@@ -4,7 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.controller.LottoController;
 import lotto.controller.dto.MoneyDto;
 import lotto.controller.dto.WinningNumbersDto;
+import lotto.domain.LottoRank;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class DefaultView implements View {
@@ -60,6 +65,17 @@ public class DefaultView implements View {
     private void renderStatics() {
         System.out.println(Views.STATICS.render());
         System.out.println(Views.DIVIDER.render());
+        EnumMap<LottoRank, Integer> lottoRanks = controller.outputRanks();
+
+        for (Map.Entry<LottoRank, Integer> entry : lottoRanks.entrySet()) {
+            LottoRank rank = entry.getKey();
+            int count = entry.getValue();
+
+            if (rank.getMatchCount() == 0) continue;
+
+            StaticsView view = StaticsView.getView(rank.isHasBonusNumber());
+            System.out.println(view.render(rank, count));
+        }
     }
 
 }

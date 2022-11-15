@@ -30,7 +30,15 @@ public enum LottoRank {
                 .orElse(NOTING);
     }
 
+    public int getMatchCount() {
+        return matchCount;
+    }
+
     public String getPrizeMoney() {
         return NumberFormat.getInstance().format(prizeMoney);
+    }
+
+    public boolean isHasBonusNumber() {
+        return hasBonusNumber;
     }
 }

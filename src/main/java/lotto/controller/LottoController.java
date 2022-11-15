@@ -3,7 +3,10 @@ package lotto.controller;
 import lotto.controller.dto.MoneyDto;
 import lotto.controller.dto.WinningNumbersDto;
 import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
 import lotto.service.LottoGameService;
+
+import java.util.EnumMap;
 
 public class LottoController {
 
@@ -29,6 +32,10 @@ public class LottoController {
     public void inputWinningNumbers(WinningNumbersDto dto) {
         Lotto winningLotto = new Lotto(dto.getWinningNumber());
         int bonusNumber = dto.getBonusNumber();
+        service.checkWinningNumbers(winningLotto, bonusNumber);
+    }
 
+    public EnumMap<LottoRank, Integer> outputRanks() {
+        return service.showLottosRank();
     }
 }
