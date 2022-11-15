@@ -41,8 +41,12 @@ public class PurchasedLotto {
         List<Lotto> lottos = new LinkedList<>();
         for (int i = 0; i < cost / 1000; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
+            List<Integer> mutableCollection = new LinkedList<>();
+            for (Integer integer: numbers){
+                mutableCollection.add(integer);
+            }
+            Collections.sort(mutableCollection);
+            Lotto lotto = new Lotto(mutableCollection);
             lottos.add(lotto);
         }
         return lottos;

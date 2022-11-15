@@ -3,18 +3,44 @@ package lotto;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
+
 import camp.nextstep.edu.missionutils.Console;
 
 //UI(입출력)을 담당하는 클래스
 public class LottoGame {
 
-    public void readWinningLottoNumbersAndBonusNumber() {
+    public void run() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String costString = Console.readLine();
+        Integer cost;
+        try {
+            cost = Integer.valueOf(costString);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자만 입력해주세요.");
+        }
+
+        PurchasedLotto purchasedLotto = new PurchasedLotto(cost);
+        System.out.println(purchasedLotto.getCost() / 1000 + "개를 구매했습니다.");
+        for (Lotto lotto : purchasedLotto.getPurchasedLottoNumbers()) {
+            System.out.println(lotto);
+        }
+        System.out.println();
+
+        System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbersString = Console.readLine();
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumberString = Console.readLine();
+        System.out.println();
         List<Integer> winningNumbers = parseWinningLottoNumbers(winningNumbersString);
         Integer bonusNumber = parseBonusNumber(bonusNumberString);
-
         validateWinningNumbersAndBonusNumber(winningNumbers, bonusNumber);
+
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        WinResult result = new WinResult(purchasedLotto, winningNumbers, bonusNumber);
+        System.out.println(result);
     }
 
     //입력받은 당첨 번호 문자열을 파싱하는 함수
@@ -35,11 +61,11 @@ public class LottoGame {
     }
 
     //보너스 번호를 파싱하는 함수
-    public Integer parseBonusNumber(String bonusNumberString){
+    public Integer parseBonusNumber(String bonusNumberString) {
         Integer bonusNumber;
         try {
             bonusNumber = Integer.parseInt(bonusNumberString);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호 입력 오류입니다.");
         }
         return bonusNumber;
