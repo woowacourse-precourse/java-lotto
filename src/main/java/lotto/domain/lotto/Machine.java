@@ -35,9 +35,13 @@ public class Machine {
 
     public Map<Rank, Integer> checkRanking(WinningNumber winningNumber, Lotto... lottos) {
         Map<Rank, Integer> rankings = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            rankings.put(rank, 0);
+        }
+
         for (Lotto lotto : lottos) {
             Rank rank = checkRanking(winningNumber, lotto);
-            rankings.put(rank, rankings.getOrDefault(rank, 0) + 1);
+            rankings.put(rank, rankings.get(rank) + 1);
         }
         return rankings;
     }

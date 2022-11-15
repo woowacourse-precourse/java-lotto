@@ -1,10 +1,13 @@
 package lotto.domain.ui;
 
 import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Machine;
+import lotto.domain.lotto.Rank;
 import lotto.domain.lotto.WinningNumber;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Console {
@@ -84,4 +87,22 @@ public class Console {
     }
 
 
+    public void printResult(Map<Rank, Integer> rankings, double yieldRate) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println(rankingInfo(Rank.FIFTH, rankings.get(Rank.FIFTH)));
+        System.out.println(rankingInfo(Rank.FOURTH, rankings.get(Rank.FOURTH)));
+        System.out.println(rankingInfo(Rank.THIRD, rankings.get(Rank.THIRD)));
+        System.out.println(rankingInfo(Rank.SECOND, rankings.get(Rank.SECOND)));
+        System.out.println(rankingInfo(Rank.FIRST, rankings.get(Rank.FIRST)));
+        System.out.printf("총 수익률은 %f %%입니다.", yieldRate);
+    }
+
+    private String rankingInfo(Rank rank, int count) {
+        return rank.getName() + " (" + convertAmountNotation(rank.getPrize()) + ") - " + count + "개";
+    }
+
+    private String convertAmountNotation(long money) {
+        return String.valueOf(money).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
+    }
 }

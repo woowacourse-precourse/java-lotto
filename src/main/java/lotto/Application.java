@@ -23,6 +23,9 @@ public class Application {
 
         Map<Rank, Integer> rankings = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
         System.out.println(rankings);
+
+        double yieldRate = machine.calculateYieldRate(rankings);
+        console.printResult(rankings, yieldRate);
     }
 
 
