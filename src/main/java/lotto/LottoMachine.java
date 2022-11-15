@@ -27,6 +27,10 @@ public class LottoMachine {
 		List<Integer> numbers = splitInputNumber(inputNumber);
 		winningLotto = new Lotto(numbers);
 
+		inputBonusNumber();
+	}
+
+	private void inputBonusNumber() {
 		System.out.println(Message.INPUT_BONUS_NUMBER);
 		String inputBonusNumber = readLine();
 		bonusNumber = Integer.parseInt(inputBonusNumber);
