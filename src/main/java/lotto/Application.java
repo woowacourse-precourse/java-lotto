@@ -21,7 +21,9 @@ public class Application {
 
     public static void main(String[] args) {
         int inputMoney = 0;
+        int lottoQuantity = 0;
         List<Lotto> lottos = new ArrayList<>();
+        System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
 
         try {
@@ -34,9 +36,14 @@ public class Application {
             throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
         }
 
-        for (int cnt = 0, lottoQuantity = inputMoney / LOTTO_PRICE; cnt < lottoQuantity; cnt++) {
+        lottoQuantity = inputMoney / LOTTO_PRICE;
+        System.out.printf("%d개를 구매했습니다.\n", lottoQuantity);
+
+        for (int cnt = 0; cnt < lottoQuantity; cnt++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT));
+            lotto.sort();
             lottos.add(lotto);
+            System.out.println(lotto);
         }
 
         userInput = Console.readLine();
