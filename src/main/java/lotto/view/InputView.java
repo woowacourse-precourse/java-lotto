@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
-    public int getMoney() {
+    public static int getMoney() {
         int money = 0;
 
         try {
@@ -20,7 +20,7 @@ public class InputView {
         return money;
     }
 
-    public List<Integer> getLottoNumbers() {
+    public static List<Integer> getLottoNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
         try {
@@ -32,7 +32,7 @@ public class InputView {
         return numbers;
     }
 
-    public int getBonusNumber() {
+    public static int getBonusNumber() {
         int bonus = 0;
 
         try {

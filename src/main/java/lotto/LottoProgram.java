@@ -21,8 +21,6 @@ public class LottoProgram {
     private int bonusNumber;
     private double rateOfReturn;
 
-    private InputView inputView = new InputView();
-
     public void progress() {
         buyLotto();
         makeLotto();
@@ -32,7 +30,7 @@ public class LottoProgram {
 
     public void buyLotto() {
         OutputView.printInputMoneyMessage();
-        int money = this.inputView.getMoney();
+        int money = InputView.getMoney();
         this.numberOfLotto = countLottoQuantity(money);
 
         OutputView.printNumberOfLottoMessage(this.numberOfLotto);
@@ -53,11 +51,11 @@ public class LottoProgram {
 
     public void getWinningLottoNumbers() {
         OutputView.printInputWinningNumbersMessage();
-        List<Integer> numbers = this.inputView.getLottoNumbers();
+        List<Integer> numbers = InputView.getLottoNumbers();
         makeWinningLotto(numbers);
 
         OutputView.printInputBonusNumbersMessage();
-        int bonus = this.inputView.getBonusNumber();
+        int bonus = InputView.getBonusNumber();
         makeBonusNumber(bonus);
         Validation.checkDuplicateLottoNumbersAndBonusNumber(this.winningLotto.getNumbers(), this.bonusNumber);
     }
@@ -92,7 +90,7 @@ public class LottoProgram {
         return ranking;
     }
 
-    private Map<String, Integer> makeDefaultCount(Map<String, Integer> ranking) {
+    public Map<String, Integer> makeDefaultCount(Map<String, Integer> ranking) {
         for (Rank rank : Rank.values()) {
             ranking.put(rank.name(), 0);
         }
@@ -100,7 +98,7 @@ public class LottoProgram {
         return ranking;
     }
 
-    private Map<String, Integer> makeRanking(Map<String, Integer> ranking, int count, int bonusCount) {
+    public Map<String, Integer> makeRanking(Map<String, Integer> ranking, int count, int bonusCount) {
         for (Rank rank: Rank.values()) {
             if (count == 5 && bonusCount == 1 && rank.getMatchCount() == count) {
                 ranking.put(rank.name(), ranking.get(rank.name()) + 1);
@@ -114,7 +112,7 @@ public class LottoProgram {
         return ranking;
     }
 
-    private int[] rankEachLotto(Lotto lotto) {
+    public int[] rankEachLotto(Lotto lotto) {
         int count = 0;
         int bonusCount = 0;
 
@@ -130,7 +128,7 @@ public class LottoProgram {
         return new int[]{count, bonusCount};
     }
 
-    private void calculateRateOfReturn(Map<String, Integer> ranking) {
+    public void calculateRateOfReturn(Map<String, Integer> ranking) {
         int totalReward = 0;
 
         for (Rank rank : Rank.values()) {
