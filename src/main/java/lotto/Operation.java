@@ -5,11 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+
+import static lotto.Instance.*;
 
 public class Operation {
+
     static int buyAmount(int purchaseAmount) {
-        return purchaseAmount / 1000;
+        return purchaseAmount / BASIC_AMOUNT;
     }
 
     static List<Lotto> buyLotto(int purchaseAmount) {
@@ -22,17 +24,17 @@ public class Operation {
     }
 
     static List<Integer> generateNumbers() {
-        List<Integer> result = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        List<Integer> result = new ArrayList<>(Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, NUMBER_OF_NUMBERS));
         result.sort(Comparator.naturalOrder());
         return result;
     }
 
     static int calculateEarning(Match match) {
-        return match.match3 * 5000
-                + match.match4 * 50000
-                + match.match5 * 1500000
-                + match.match5Bonus * 30000000
-                + match.match6 * 2000000000;
+        return match.MATCH_THREE * AMOUNT_THREE
+                + match.MATCH_FOUR * AMOUNT_FOUR
+                + match.MATCH_FIVE * AMOUNT_FIVE
+                + match.MATCH_FIVE_BONUS * AMOUNT_FIVE_BONUS
+                + match.MATCH_SIX * AMOUNT_SIX;
     }
 
     static double calculateEarningRate(int purchaseAmount, int earning) {

@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Match {
-    int match3;
-    int match4;
-    int match5;
-    int match6;
-    int match5Bonus;
+    int MATCH_THREE;
+    int MATCH_FOUR;
+    int MATCH_FIVE;
+    int MATCH_SIX;
+    int MATCH_FIVE_BONUS;
 
     public Match() {
         initialize();
@@ -20,24 +20,24 @@ public class Match {
     }
 
     private void initialize() {
-        match3 = 0;
-        match4 = 0;
-        match5 = 0;
-        match6 = 0;
-        match5Bonus = 0;
+        MATCH_THREE = 0;
+        MATCH_FOUR = 0;
+        MATCH_FIVE = 0;
+        MATCH_SIX = 0;
+        MATCH_FIVE_BONUS = 0;
     }
 
     private void countWinning(Lotto lotto, int bonus, int matchCount) {
         if (matchCount == 3) {
-            match3 += 1;
+            MATCH_THREE += 1;
         } else if (matchCount == 4) {
-            match4 += 1;
+            MATCH_FOUR += 1;
         } else if (!(lotto.matchBonus(bonus)) && (matchCount == 5)) {
-            match5 += 1;
+            MATCH_FIVE += 1;
         } else if ((lotto.matchBonus(bonus)) && (matchCount == 5)) {
-            match5Bonus += 1;
+            MATCH_FIVE_BONUS += 1;
         } else if (matchCount == 6) {
-            match6 += 1;
+            MATCH_SIX += 1;
         }
     }
 
@@ -50,11 +50,11 @@ public class Match {
 
     public HashMap<String, Integer> bundle() {
         HashMap<String, Integer> result = new HashMap<>();
-        result.put("match3", match3);
-        result.put("match4", match4);
-        result.put("match5", match5);
-        result.put("match6", match6);
-        result.put("match5Bonus", match5Bonus);
+        result.put("match3", MATCH_THREE);
+        result.put("match4", MATCH_FOUR);
+        result.put("match5", MATCH_FIVE);
+        result.put("match6", MATCH_SIX);
+        result.put("match5Bonus", MATCH_FIVE_BONUS);
         return result;
     }
 }

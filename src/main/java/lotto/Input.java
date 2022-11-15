@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.ErrorMessage.*;
+import static lotto.Instance.*;
+
 public class Input {
     private static int stringToInt(String input) {
         validNumber(input);
@@ -37,14 +40,14 @@ public class Input {
         validWinning6Numbers(split);
         validWinningRepetition(split);
         List<Integer> numbers = toIntegerList(split);
-        valid1to45(numbers);
+        validRange(numbers);
         return numbers;
     }
 
     public static int getBonusNumber(List<Integer> winning) {
         int input = getInput();
         validBonusRepetition(input, winning);
-        valid1to45(input);
+        validRange(input);
         return input;
     }
 
@@ -52,47 +55,47 @@ public class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력 값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(NOT_A_NUMBER);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 입력 값이 잘못되었습니다.");
+            throw new IllegalArgumentException(WRONG_INPUT);
         }
     }
 
     private static void validPurchase(int input) throws IllegalArgumentException {
-        if (input % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원으로 나누어지는 수가 아닙니다.");
+        if (input % BASIC_AMOUNT != 0) {
+            throw new IllegalArgumentException(CANNOT_DIVIDE_BY_BASIC_AMOUNT);
         }
     }
 
     private static void validWinning6Numbers(String[] split) throws IllegalArgumentException {
-        if (split.length != 6) {
-            throw new IllegalArgumentException("[ERROR] 쉼표로 구분된 6개의 문자가 아닙니다.");
+        if (split.length != NUMBER_OF_NUMBERS) {
+            throw new IllegalArgumentException(CANNOT_SEPARATE);
         }
     }
 
     private static void validWinningRepetition(String[] split) throws IllegalArgumentException {
         HashSet<String> removeDuplication = new HashSet<>(List.of(split));
-        if (removeDuplication.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 중복되는 당첨 번호가 있습니다.");
+        if (removeDuplication.size() != NUMBER_OF_NUMBERS) {
+            throw new IllegalArgumentException(REPETITION_WINNING);
         }
     }
 
     private static void validBonusRepetition(int bonus, List<Integer> winning) throws IllegalArgumentException {
         if (winning.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException(REPETITION_BONUS);
         }
     }
 
-    private static void valid1to45(int number) throws IllegalArgumentException {
-        if ((number > 45) || (number < 1)) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 1에서 45 사이의 값이 아닙니다.");
+    private static void validRange(int number) throws IllegalArgumentException {
+        if ((number < START_RANGE) || (number > END_RANGE)) {
+            throw new IllegalArgumentException(OUT_OF_RANGE);
         }
     }
 
-    private static void valid1to45(List<Integer> numbers) throws IllegalArgumentException {
+    private static void validRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
-            if ((number > 45) || (number < 1)) {
-                throw new IllegalArgumentException("[ERROR] 숫자가 1에서 45 값이 아닙니다.");
+            if ((number < START_RANGE) || (number > END_RANGE)) {
+                throw new IllegalArgumentException(OUT_OF_RANGE);
             }
         }
     }
