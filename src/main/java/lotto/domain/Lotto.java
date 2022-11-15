@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ public class Lotto {
         }
         Set<Integer> set = new HashSet<>();
         set.addAll(numbers);
-        if(set.size() != 6) {
+        if (set.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
@@ -27,8 +27,8 @@ public class Lotto {
     public void sortNumberAscending() {
         Collections.sort(numbers);
     }
-    
-    public List<Integer> getNumbers(){
+
+    public List<Integer> getNumbers() {
         return numbers;
     }
 }
