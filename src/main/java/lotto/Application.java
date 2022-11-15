@@ -19,9 +19,26 @@ public class Application {
         return sheets;
     }
 
+    // 2.로또 발행
+    static void createLotto(int sheets,List<List<Integer>> lottos) {
+        System.out.println("8개를 구매했습니다.");
+
+        for(int idx=0; idx<sheets; idx++) {
+            List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(lottoNums);
+            System.out.println(lottoNums);
+        }
+    }
+
     public static void main(String[] args) {
+
+        List<List<Integer>> lottos = new ArrayList<>();
+
         // 로또 구입
         int sheets = buyLotto();
+
+        // 로또 발행
+        createLotto(sheets,lottos);
     }
 }
 
