@@ -5,7 +5,9 @@ package lotto.type;
  */
 public enum ErrorType {
     NOT_NUMBER_INPUT("[ERROR] 숫자가 아닌 다른 값을 입력하였습니다."),
-    INVALID_UNIT("[ERROR] 유효하지 않은 금액 단위입니다.");
+    INVALID_UNIT("[ERROR] 유효하지 않은 금액 단위입니다."),
+    DUPLICATE_NUMBER("[ERROR] 중복된 숫자로 로또를 생성할 수 없습니다."),
+    OVER_SIZE("[ERROR] 로또 번호는 6개로 구성되어야 합니다.");
 
     private final String error;
 
