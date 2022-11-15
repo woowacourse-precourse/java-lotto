@@ -21,5 +21,18 @@ public class Lotto {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    public int calculateMatchCount(List<Integer> winningNumbers) {
+        int matchCount = 0;
+        for (Integer lottoNumber : numbers) {
+            if (winningNumbers.contains(lottoNumber)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
 
 }
