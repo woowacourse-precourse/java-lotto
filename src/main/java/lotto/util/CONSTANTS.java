@@ -4,7 +4,8 @@ public enum CONSTANTS {
     MINIMUM(1),
     MAXIMUM(45),
     LOTTO_COUNT(6),
-    MONETARY_UNIT(1000);
+    MONETARY_UNIT(1000),
+    RANK(6);
 
     private int numbers;
 

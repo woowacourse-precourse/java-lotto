@@ -50,7 +50,14 @@ class LottoTest {
         assertThat(validateMethod.invoke(inputHandler, "1,2,3")).isEqualTo(actual);
     }
 
-
+    @DisplayName("랜덤한 로또 생성")
+    @Test
+    void generateRandomLotto(){
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        int generate = 5;
+        List<Lotto> generatedLotto = lottoGenerator.generateLotto(generate);
+        assertThat(generatedLotto.size()).isEqualTo(generate);
+    }
 
 
 

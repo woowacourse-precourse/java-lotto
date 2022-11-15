@@ -1,6 +1,7 @@
 package lotto.util;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +34,11 @@ public class InputHandler {
         int bonusNumber = validateNumberType(userInput);
         validateRange(bonusNumber);
         return bonusNumber;
+    }
+
+    public static void validateBonusNumber(Lotto winningLotto, int bonusNumber){
+        if(winningLotto.getLotto().contains(bonusNumber))
+            throw new IllegalArgumentException("[ERROR]");
     }
 
     private static List<Integer> validateListType(String userInput) throws ExceptionHandler {

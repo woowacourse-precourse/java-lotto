@@ -21,6 +21,10 @@ public class Lotto {
         return this.numbers;
     }
 
+    public void print(){
+        System.out.println(this.numbers);
+    }
+
 
 
     // TODO: 추가 기능 구현

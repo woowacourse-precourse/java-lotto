@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.util.CONSTANTS;
 import lotto.util.InputHandler;
 import lotto.util.SystemMessage;
 
@@ -9,10 +10,12 @@ import java.util.List;
 public class LottoMachine {
     private List<Lotto> randomLotto;
     private final LottoGenerator lottoGenerator;
+    private List<Integer> resultRank;
 
     public LottoMachine() {
         randomLotto = new ArrayList<>();
         lottoGenerator = new LottoGenerator();
+        resultRank = new ArrayList<>(CONSTANTS.RANK.getNumbers());
     }
 
     public void run() {
@@ -20,6 +23,9 @@ public class LottoMachine {
         randomLotto = generateLotto(lottoAmount);
         Lotto winningLottery = getWinningNumbers();
         int bonusNumber = getBonusNumber();
+        InputHandler.validateBonusNumber(winningLottery, bonusNumber); // 보너스 번호도 중복되면 안됨.
+
+
     }
 
     private int lottoPurchase() {
@@ -29,6 +35,8 @@ public class LottoMachine {
 
     private List<Lotto> generateLotto(int amount) {
         System.out.println("\n" + amount + SystemMessage.PURCHASE_AMOUNT.getMessage());
+        List<Lotto> generatedLotto = lottoGenerator.generateLotto(amount);
+        generatedLotto.forEach(Lotto::print);
         return lottoGenerator.generateLotto(amount);
     }
 
