@@ -18,11 +18,13 @@ public class Inputer {
             System.out.println("[ERROR] : Invalid argument!");
             throw new IllegalArgumentException();
         }
+        System.out.println("통과1");
         money = Integer.parseInt(input);
         if(!isMultiofThousand(money)) {
             System.out.println("[ERROR] : Invalid argument!");
             throw new IllegalArgumentException();
         }
+        System.out.println("통과2");
         return money;
     }
 
