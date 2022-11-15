@@ -13,13 +13,13 @@ public class Calculator {
     }
 
     public static float calRevenue (List<Integer> result, int amount) {
-        float totalMoney = 0;
+        float revenue = 0;
 
         for (int ret : result) {
             Rank rank = Rank.getRank(result.indexOf(ret));
-            totalMoney += rank.getWinAmount() * ret;
+            revenue += rank.getWinAmount() * ret;
         }
 
-        return Math.round(totalMoney / amount * 100 / 100.0);
+        return Math.round(revenue / amount * 100 / 100.0);
     }
 }
