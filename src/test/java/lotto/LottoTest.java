@@ -9,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+    Game game = new Game();
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -56,5 +57,64 @@ class LottoTest {
         assertThatThrownBy(() -> Lotto.count(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 값을 잘못 입력하였습니다.");
+    }
+
+    @DisplayName("1등을 출력한다.")
+    @Test
+    void printGrade1thTest() {
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> user = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        Assertions.assertThat(game.getGrade(lotto, user, bonus)).isEqualTo(1);
+    }
+
+    @DisplayName("2등을 출력한다.")
+    @Test
+    void printGrade2ndTest() {
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> user = List.of(1, 2, 3, 4, 5, 7);
+        int bonus = 6;
+        Assertions.assertThat(game.getGrade(lotto, user, bonus)).isEqualTo(2);
+    }
+
+    @DisplayName("3등을 출력한다.")
+    @Test
+    void printGrade3rdTest() {
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> user = List.of(1, 2, 3, 4, 5, 8);
+        int bonus = 7;
+        Assertions.assertThat(game.getGrade(lotto, user, bonus)).isEqualTo(3);
+    }
+
+    @DisplayName("4등을 출력한다.")
+    @Test
+    void printGrade4thTest() {
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> user = List.of(1, 2, 3, 4, 8, 9);
+        int bonus = 10;
+        Assertions.assertThat(game.getGrade(lotto, user, bonus)).isEqualTo(4);
+    }
+
+    @DisplayName("5등을 출력한다.")
+    @Test
+    void printGrade5thTest() {
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> user = List.of(1, 2, 3, 7, 8, 9);
+        int bonus = 7;
+        Assertions.assertThat(game.getGrade(lotto, user, bonus)).isEqualTo(5);
+    }
+
+    @Test
+    void resultTest1() {
+        List<List<Integer>> lottoList = List.of(
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7)
+        );
+        List<Integer> user = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        List<Integer> result = List.of(0, 2, 1, 0, 0, 0);
+
+        Assertions.assertThat(game.correctLottoCount(lottoList, user, bonus)).isEqualTo(result);
     }
 }
