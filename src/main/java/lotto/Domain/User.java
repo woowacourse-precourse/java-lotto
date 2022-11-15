@@ -46,10 +46,11 @@ public class User {
         return new User(sortedList,money,bonusNumber);
     }
 ;
-    public WonLotto countLotto(Lotto answer)
+    public List<WonLotto> countLotto(Lotto answer)
     {
-        WonLotto wonLotto = new WonLotto();
+        List<WonLotto> answerSize = new ArrayList<>();
         for(int i=0;i<lottos.size();i++) {
+            WonLotto wonLotto = new WonLotto();
             List<Integer> newList = new ArrayList<>();
             List<Integer> newList2 = new ArrayList<>();
             newList.addAll(answer.getNumbers());
@@ -57,8 +58,9 @@ public class User {
             newList2.retainAll(lottos.get(i).getNumbers());
             newList.retainAll(lottos.get(i).getNumbers());
             wonLotto.addCount(newList.size(), newList2.size());
+            answerSize.add(wonLotto);
         }
-        return wonLotto;
+        return answerSize;
     }
     @Override
     public String toString() {

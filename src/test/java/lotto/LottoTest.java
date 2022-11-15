@@ -72,8 +72,14 @@ class LottoTest {
         Lotto answer = new Lotto(List.of(1,2,3,4,5,6));
         User lottos = new User(List.of(lotto1,lotto2,lotto3),1000,9);
         WonLotto wonLotto = new WonLotto();
+        WonLotto wonLotto2 = new WonLotto();
         wonLotto.addCount(2,1);
-        assertThat(lottos.countLotto(answer)).usingRecursiveComparison().isEqualTo(wonLotto);
+        List<WonLotto> tmp = new ArrayList<>();
+        wonLotto2.addCount(0,0);
+        tmp.add(wonLotto2);
+        tmp.add(wonLotto);
+        tmp.add(wonLotto2);
+        assertThat(lottos.countLotto(answer)).usingRecursiveComparison().isEqualTo(tmp);
     }
     // 아래에 추가 테스트 작성 가능
 }
