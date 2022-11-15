@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Model {
     private final List<Lotto> lottoList;
-    private Lotto winningLotto;
     private int userMoney;
+    private Lotto winningLotto;
 
     public Model() {
         this.lottoList = new ArrayList<>();
