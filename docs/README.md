@@ -15,6 +15,7 @@
     MakeLottoNumber : 1 ~ 45 사이의 로또 넘버를 생성한다.
     MakeLotto : 중복되지 않은 6개의 로또 넘버를 생성한다.
     DrawLotto : 받은 금액에 해당하는만큼의 로또를 발행한다.
+    checkOverlap : 번호 6개가 서로 중복되는지 확인한다.
     getTargetLotto : 당첨번호와 보너스 번호를 얻는다.
     CompareLotto : 당첨번호와 보너스 번호를 발행한 로또와 비교한다.
     getRank : 당첨 통계를 낸다.
