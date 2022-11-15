@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.util.Validate;
+
 import java.util.List;
 
 public class Lotto {
@@ -10,11 +12,25 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
-    // TODO: 추가 기능 구현
+    private void validate(List<Integer> numbers) {
+        Validate.length(numbers,6);
+        Validate.range(numbers, 1, 45);
+        Validate.duplication(numbers);
+    }
+
+    public Rank result(List<Integer> input, int bonusNumber) {
+        int count = (int) input.stream()
+                .filter(e -> numbers.contains(e))
+                .count();
+
+        if (count != 5){
+            return Rank.findByRank(new Result(count, false));
+        }
+
+        return Rank.findByRank(new Result(count, numbers.contains(bonusNumber)));
+    }
 }
