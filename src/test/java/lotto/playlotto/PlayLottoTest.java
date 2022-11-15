@@ -87,6 +87,10 @@ class PlayLottoTest {
 
     @Test
     void cal_revenue() {
+        float except = 100_000_000;
+        game.compare_lottery(user);
+        float result = game.cal_revenue();
+        assertThat(result).isEqualTo(except);
     }
 
     private Lotto create_Lotto(){
