@@ -9,6 +9,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class PurchaseMoneyTest {
     @ParameterizedTest
+    @DisplayName("널값 또는 블랭크가 존재하는 경우")
+    @ValueSource(strings = {" ", "", "   ", " "})
+    void isBlank(String input) {
+        assertThatThrownBy(() -> new PurchaseMoney(input))
+                .hasMessage("[ERROR] 널값 또는 공백은 입력될 수 없습니다.");
+    }
+    @ParameterizedTest
     @DisplayName("구입 금액이 1000원 단위가 아닌 경우")
     @ValueSource(strings = {"1400", "2300", "1700", "2500"})
     void incorrectUnit(String input) {
@@ -17,16 +24,18 @@ class PurchaseMoneyTest {
     }
 
     @ParameterizedTest
-    @DisplayName("널값 또는 블랭크가 존재하는 경우")
-    @ValueSource(strings = {" ", "", "   ", " "})
-    void isBlank(String input) {
+    @DisplayName("숫자열 문자열이 아닌 경우")
+    @ValueSource(strings = {"10k" , "11h", "1h1", "h11"})
+    void incorrectData(String input){
         assertThatThrownBy(() -> new PurchaseMoney(input))
-                .hasMessage("[ERROR] 널값 또는 공백은 입력될 수 없습니다.");
+                .hasMessage("[ERROR] 숫자 문자열이 아닙니다. 숫자 문자열만 입력해 주세요.");
     }
 
-    @Test
-    @DisplayName("구매한 로또 개수")
-    void buyLotto(){
-
+    @ParameterizedTest
+    @DisplayName("최소/최대로 구매할 수 있는 범위를 벗어난 경 ")
+    @ValueSource(strings = {"800" , "900", "500", "350"})
+    void incorrectRangeData(String input){
+        assertThatThrownBy(() -> new PurchaseMoney(input))
+                .hasMessage("[ERROR] 최소 1000원 이상부터 구입이 가능합니다.");
     }
 }
