@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +26,7 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    // Lotto 클래스에서 sort부분을 주석 처리해야 가능하다.
+    // Lotto 클래스에서 sort 부분을 주석 처리해야 가능하다.
 
     @DisplayName("동일한 번호 갯수 확인")
     @Test
