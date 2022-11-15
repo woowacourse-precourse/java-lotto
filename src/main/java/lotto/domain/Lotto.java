@@ -1,9 +1,12 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
+    public static final String LOTTO_UNIT = "개";
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -42,5 +45,15 @@ public class Lotto {
         }
         lottoNumbers.append("]");
         return lottoNumbers.toString();
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public int countMatchingNumbers(List<Integer> winningSixNumbers) {
+        Set<Integer> common = numbers.stream().filter(winningSixNumbers::contains)
+                .collect(Collectors.toSet());
+        return common.size();
     }
 }
