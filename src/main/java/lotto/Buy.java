@@ -10,7 +10,7 @@ public class Buy {
     public static int HowMuch() {
         System.out.println(ASK_PRICE);
         String price = Console.readLine();
-        nLottoPrice = validatePrice(price);
+        nLottoPrice = validatePrice2(price);
         validate1000(nLottoPrice);
         nLotto = nLottoPrice / 1000;
         return nLotto;
