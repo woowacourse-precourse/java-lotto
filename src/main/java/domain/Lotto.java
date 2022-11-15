@@ -47,4 +47,8 @@ public class Lotto {
         return (int) this.numbers.stream().filter(number
                 -> winningNumber.getWinningNumbers().getNumbers().contains(number)).count();
     }
+
+    public boolean containBonusNumber(WinningNumber winningNumber){
+        return this.numbers.contains(winningNumber.getBonusNumber());
+    }
 }
