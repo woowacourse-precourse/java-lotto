@@ -13,9 +13,9 @@ public class Application {
             Publisher publisher = new Publisher(purchaseAmount);
             Output.printLotteries(publisher.getLotteries());
 
-            Dealer dealer = new Dealer(publisher, getWinNumber(), getBonusNumber());
+            Dealer dealer = new Dealer(publisher.getLotteries(), getWinNumber(), getBonusNumber());
             List<Integer> result = dealer.getResult();
-            float earningRate = dealer.getEarningRate();
+            float earningRate = dealer.calculateEarningRate(publisher.getPurchaseAmount());
 
             String resultPrintFormat = getPrintResultFormat(result);
             Output.printResult(resultPrintFormat);
@@ -57,7 +57,6 @@ public class Application {
 
     static Bonus getBonusNumber() {
         int bonusNumber = Input.getAnswerInInteger(Request.bonusNumber.value());
-        Bonus bonus = new Bonus(bonusNumber);
-        return bonus;
+        return new Bonus(bonusNumber);
     }
 }

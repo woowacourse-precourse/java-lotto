@@ -19,16 +19,12 @@ public class Publisher {
         this.lotteries = issueLotto();
     }
 
-    int getPurchaseAmount() {
+    public int getPurchaseAmount() {
         return purchaseAmount;
     }
 
     public List<Lotto> getLotteries() {
         return lotteries;
-    }
-
-    int getTicketQuantity() {
-        return ticketQuantity;
     }
 
     private List<Lotto> issueLotto() {
