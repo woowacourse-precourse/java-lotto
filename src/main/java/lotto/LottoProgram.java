@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
+import lotto.util.Validation;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -55,6 +56,7 @@ public class LottoProgram {
 
         OutputView.printInputBonusNumbersMessage();
         makeBonusNumber(InputView.getBonusNumber());
+        Validation.checkDuplicateLottoNumbersAndBonusNumber(this.winningLotto.getNumbers(), this.bonusNumber);
     }
 
     private void makeWinningLotto(String numbers) {

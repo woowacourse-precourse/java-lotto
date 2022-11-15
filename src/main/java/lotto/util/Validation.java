@@ -11,6 +11,7 @@ public class Validation {
     private static final String INPUT_LOTTO_NUMBER_RANGE_ERROR_MSG = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String INPUT_LOTTO_NUMBER_SIZE_ERROR_MSG = "[ERROR] 로또 번호 6개를 입력해주세요.";
     private static final String INPUT_LOTTO_NUMBER_DUPLICATE_ERROR_MSG = "[ERROR] 로또 번호 6개는 서로 다른 숫자여야 합니다.";
+    private static final String LOTTO_AND_BONUS_NUMBER_DUPLICATE_ERROR_MSG = "[ERROR] 보너스 번호는 로또 번호와 다른 숫자여야 합니다.";
 
 
     public static void validateMoney(String input) {
@@ -37,6 +38,12 @@ public class Validation {
         if (isInteger(input)) {
             int number = Integer.parseInt(input);
             checkInRange(number);
+        }
+    }
+
+    public static void checkDuplicateLottoNumbersAndBonusNumber(List<Integer> lottoNumbers, int number) {
+        if (lottoNumbers.contains(number)) {
+            throw new IllegalArgumentException(LOTTO_AND_BONUS_NUMBER_DUPLICATE_ERROR_MSG);
         }
     }
 
