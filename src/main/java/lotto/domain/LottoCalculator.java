@@ -20,13 +20,19 @@ public class LottoCalculator {
         int bonusNumber = input.getBonusNumber();
         List<Integer> winningNumber = input.getWinningNumber();
         for (Lotto lotto : lottos) {
-            correct = 0;
-            for (int index = 0; index < 6; index++) {
-                if (lotto.getNumbers().get(index).equals(winningNumber.get(index))) {
-                    correct++;
-                }
-                
-            }
+            correct = countCorrectNumber(lotto, winningNumber);
+            
         }
     }
+
+    private int countCorrectNumber(Lotto lotto, List<Integer> winningNumber) {
+        int correct = 0;
+        for (int index = 0; index < 6; index++) {
+            if (lotto.getNumbers().get(index).equals(winningNumber.get(index))) {
+                correct++;
+            }
+        }
+        return correct;
+    }
+
 }
