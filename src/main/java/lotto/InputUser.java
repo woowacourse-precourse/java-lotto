@@ -26,4 +26,9 @@ public class InputUser {
             throw new IllegalArgumentException(ERRMSG.getErrMsg());
         }
     }
+    public static void divideValidate(int price) {
+        if (price % 1000 != 0){
+            throw new IllegalArgumentException(ERRMSG.getErrMsg());
+        }
+    }
 }
