@@ -1,13 +1,20 @@
 package lotto;
 
+import UserInterface.InputValues;
+import Utils.Validator;
+import domain.Generator;
+import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+
 class LottoTest {
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -23,5 +30,77 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("입력된 금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void validatePaymentTest() {
+        String inValidPayment = "14123";
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Validator validator = new Validator();
+        assertThatThrownBy(() -> validator.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @DisplayName("서로 다른 6자리의 로또 번호를 생성한다.")
+    @Test
+    void generateLottoNumber() {
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int theNumberOfLotto = 6;
+        Generator generator = new Generator();
+        List<List<Integer>> generatedLottoNumber = generator.generateLottoNumber(6000);
+        assertThat(generatedLottoNumber.size()).isEqualTo(6);
+
+    }
+
+    @DisplayName("입력된 로또 하나의 점수를 계산하여 점수에 해당하는 인덱스를 리턴한다.")
+    @Test
+    void getIndividualLottoScore() {
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+
+        List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
+        List<Integer> fourNumbersMatch = List.of(1, 2, 3, 4, 10, 11);
+        List<Integer> fiveNumbersMatch = List.of(1, 2, 3, 4, 5, 9);
+        List<Integer> fiveAndBonusNumbersMatch = List.of(1, 2, 3, 4, 5, 7);
+        List<Integer> sixNumbersMatch = List.of(1, 2, 3, 4, 5, 6);
+
+        assertThat(lotto.getIndividualLottoScore(threeNumbersMatch, bonusNumber)).isEqualTo(3);
+        assertThat(lotto.getIndividualLottoScore(fourNumbersMatch, bonusNumber)).isEqualTo(4);
+        assertThat(lotto.getIndividualLottoScore(fiveNumbersMatch, bonusNumber)).isEqualTo(5);
+        assertThat(lotto.getIndividualLottoScore(fiveAndBonusNumbersMatch, bonusNumber)).isEqualTo(7);
+        assertThat(lotto.getIndividualLottoScore(sixNumbersMatch, bonusNumber)).isEqualTo(6);
+    }
+
+    @DisplayName("각 로또의 점수를 계산한 뒤 매칭된 숫자와 보너스 일치 여부를 배열에 담아 리턴한다.")
+    @Test
+    void calculateLottoResult() {
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+
+        List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
+        List<Integer> fourNumbersMatch = List.of(1, 2, 3, 4, 10, 11);
+        List<Integer> fiveNumbersMatch = List.of(1, 2, 3, 4, 5, 9);
+        List<Integer> fiveAndBonusNumbersMatch = List.of(1, 2, 3, 4, 5, 7);
+        List<Integer> sixNumbersMatch = List.of(1, 2, 3, 4, 5, 6);
+        List<List<Integer>> purchaseRecord = List.of(sixNumbersMatch, fiveNumbersMatch, fiveAndBonusNumbersMatch, fourNumbersMatch, threeNumbersMatch);
+
+        assertThat(lotto.calculateLottoResult(purchaseRecord, bonusNumber)).isEqualTo(List.of(1, 1, 1, 1, 1));
+
+    }
+
+    @DisplayName("수익률을 계산한 뒤 그 값을 리턴한다.")
+    @Test
+    void calculateYield() {
+
+        int totalPayment = 8000;
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        List<Integer> result = List.of(1, 0, 0, 0, 0);
+
+        assertThat(lotto.calculateYield(result, totalPayment)).isEqualTo("62.5");
+    }
 }
