@@ -106,4 +106,19 @@ class UserTest {
         assertThat(user.getFourth()).isEqualTo(0);
         assertThat(user.getFifth()).isEqualTo(0);
     }
+
+    @DisplayName("수익률 계산하기")
+    @Test
+    void calculateYield() {
+        User user = new User(1000);
+        List<List<Integer>> lotto = List.of(List.of(1, 2, 3, 4, 5, 6));
+        user.setLottoNumbers(lotto);
+        List<Integer> numbers = List.of(1, 2, 3, 8, 9, 10);
+        int bonus = 7;
+
+        user.checkWinning(numbers, bonus);
+        float yield = user.calculateYield();
+
+        assertThat(yield).isEqualTo(500.0f);
+    }
 }
