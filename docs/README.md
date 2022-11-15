@@ -58,4 +58,11 @@
     - 당첨 정보를 담은 리스트를 출력한다.
   - checkWinnings 메소드
     - 발행된 로또리스트에서 발행 정보를 확인한다.
+    - `computeWinningIndex` 메소드를 호출하여 등수를 계산한다.
+    - 5등부터 내림차순으로 당첨정보를 담은 winningInfo 를 반환한다.
+  - computeWinningIndex 메소드
+    - 발행된 로또가 몇개가 맞는지, 보너스도 맞췄는지 확인한다.
+    - `generateWinningCount` 메소드를 호출하여 해당 인덱스가 몇번인지 반환한다.
+  - generateWinningCount 메소드
+    - 번호를 맞춘 개수와 보너스 여부에 따라 인덱스를 반환한다.
 ---
