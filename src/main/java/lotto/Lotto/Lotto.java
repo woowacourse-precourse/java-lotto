@@ -10,7 +10,7 @@ public class Lotto {
     private static final Integer MINIMUM_RANGE_OF_LOTTO_NUMBER = 1;
     private static final Integer MAXIMUM_RANGE_OF_LOTTO_NUMBER = 45;
 
-    private static final String NOT_NUMERIC_WARNING_MESSAGE = "[ERROR] 로또 번호는 숫자여야 합니다.";
+    private static final String NOT_NUMERIC_WARNING_MESSAGE = "[ERROR] 로또 번호는 숫자여야 합니다.(쉼표 띄어쓰기를 유의해주세요.)";
     private static final String LOTTO_NUMBER_WRONG_LENGTH_WARNING_MESSAGE = "[ERROR] 로또 번호는 6개여야 합니다.";
     private static final String LOTTO_NUMBER_OUT_OF_RANGE_WARNING_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String DUPLICATED_LOTTO_NUMBER_WARNING_MESSAGE = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
@@ -25,7 +25,7 @@ public class Lotto {
 
     private List<Integer> castNumbers(String numbers) {
         List<Integer> newNumbers = new ArrayList<>();
-        String[] partedNumbers = numbers.split(",");
+        String[] partedNumbers = numbers.split(", ");
 
         for (String number : partedNumbers) {
             validateNumeric(number);
