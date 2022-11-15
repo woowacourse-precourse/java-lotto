@@ -32,7 +32,7 @@ public class NumberBox {
             throw new IllegalArgumentException(ErrorMessage.WRONG_LENGTH.getMessage());
         }
         if (!Validator.isInRange(winningNumbers)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE_WINNING.getMessage());
         }
         if (Validator.isDuplicate(winningNumbers)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
@@ -44,7 +44,7 @@ public class NumberBox {
             throw new IllegalArgumentException(ErrorMessage.IN_WINNING_NUMBERS.getMessage());
         }
         if (!Validator.isInRange(bonusNumber)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE_BONUS.getMessage());
         }
     }
 }

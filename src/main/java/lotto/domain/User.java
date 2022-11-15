@@ -24,7 +24,7 @@ public class User {
             throw new IllegalArgumentException(ErrorMessage.NOT_POSITIVE_MONEY.getMessage());
         }
         if (!Validator.isHundredUnit(money)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_UNIT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.WRONG_MONEY_UNIT.getMessage());
         }
     }
 

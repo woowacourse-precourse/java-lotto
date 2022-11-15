@@ -34,7 +34,7 @@ public class Input {
     public static int readBonusNumber() {
         String input = Console.readLine();
         if (!Validator.isNumber(input)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.getMessage());
         }
         return Integer.parseInt(input);
     }
