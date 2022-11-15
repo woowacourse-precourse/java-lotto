@@ -41,6 +41,40 @@ public class MatchLotto {
         return matchMoney;
     }
 
+    private static int countNumber(List<Integer> Lotto_Random_one) {
+        int count = 0;
+
+        for (int number : numbers) {
+            if (Lotto_Random_one.contains(number)) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    private static boolean containBonus(List<Integer> Lotto_Random_one) {
+        boolean bonus = false;
+        if (Lotto_Random_one.contains(bonusNum)) {
+            bonus = true;
+        }
+        return bonus;
+    }
+
+    private static void showStatistics() {
+            for (MatchMoney matches : MatchMoney.values()) {
+                sum += matches.getMoney()*countMatch[matches.ordinal()];
+                DecimalFormat df = new DecimalFormat("###,###");
+                String money = df.format(matches.getMoney());
+                if (matches == MatchMoney.TWO) {
+                    System.out.println(matches.getMatchCount() + "개 일치, 보너스 볼 일치 ("+ money+"원) - "+countMatch[matches.ordinal()]+"개");
+                    continue;
+                }
+                System.out.println(matches.getMatchCount() + "개 일치 ("+ money+"원) - "+countMatch[matches.ordinal()]+"개");
+            }
+    }
+
+
 }
 
 
