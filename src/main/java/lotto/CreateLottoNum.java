@@ -12,10 +12,12 @@ public class CreateLottoNum {
     private static final int MAX_LOTTO_NUM = 45;
     private static final int COUNT_LOTTO_NUM = 6;
 
-    private final List<Lotto> userLottoNumbers = new ArrayList<>();
 
-    public List<Lotto> getGetLottoNumbers(int countTickets) {
-        for (int i = 0; i < countTickets; i++) {
+
+    public static List<Lotto> getLottoNumbers(LottoAmount amount) {
+        List<Lotto> userLottoNumbers = new ArrayList<>();
+
+        for (int i = 0; i < amount.countTickets(); i++) {
             userLottoNumbers.add(new Lotto(generateLottoNumber()));
         }
         return userLottoNumbers;
