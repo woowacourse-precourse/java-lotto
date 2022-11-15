@@ -14,26 +14,28 @@ public class User {
     private List<Lotto> lottos;
 
     public User(){
-        this.lottos=new ArrayList<Lotto>();
+        lottos=new ArrayList<Lotto>();
     }
 
     public void inputMoney(){
-        this.money= Console.readLine();
-        validate();
+        String money=Console.readLine();
+        validate(money);
+        this.money=money;
     }
 
     public String getMoney(){return money;}
     public List<Lotto> getLottos(){return lottos;}
 
-    private void validate(){
-        if(checkComposeOfNumbers()){
+    public void validate(String money){
+        if(checkComposeOfNumbers(money)){
             throw new IllegalArgumentException("입력값은 숫자여야만 합니다.");
         }
-        if(checkDivisibleByThousand(money.substring(money.length()-3))){
+        if(money.length()<3
+                ||checkDivisibleByThousand(money.substring(money.length()-3))){
             throw new IllegalArgumentException("구입금액은 1000원 단위이어야 합니다.");
         }
     }
-    private boolean checkComposeOfNumbers(){
+    private boolean checkComposeOfNumbers(String money){
         return !money.matches(INPUT_RANGE);
     }
 

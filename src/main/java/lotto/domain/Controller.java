@@ -4,10 +4,10 @@ import lotto.model.*;
 import java.util.Map;
 
 public class Controller {
-    private User user;
-    private WinningLotto winLotto;
-    private Map<Prize,Integer> winResult;
-    private long winnings;
+    public User user;
+    public WinningLotto winLotto;
+    public Map<Prize,Integer> winResult;
+    public long winnings;
 
     Setting setting;
     Result result;
@@ -33,7 +33,7 @@ public class Controller {
         printAllPrizeNumber();
         printYield();
     }
-    private void printAllPrizeNumber(){
+    public void printAllPrizeNumber(){
         for(Prize prize:Prize.values()){
             System.out.println(prize.getPrintCondition()+" ("+prize.getPrintWinMoney()+"원) - "+winResult.get(prize)+"개");
         }
@@ -44,7 +44,7 @@ public class Controller {
         System.out.println("총 수익률은 "+String.format("%.1f",yield)+"%입니다.");
     }
 
-    private double calculateYield(){
+    public double calculateYield(){
         double money=Double.parseDouble(user.getMoney());
         return winnings/money*100;
     }

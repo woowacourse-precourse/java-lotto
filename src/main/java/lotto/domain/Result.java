@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class Result {
-    User user;
-    WinningLotto winLotto;
-    Map<Prize,Integer> result;
+    public User user;
+    public WinningLotto winLotto;
+    public Map<Prize,Integer> result;
 
-    Result(User user,WinningLotto winLotto){
+    public Result(User user,WinningLotto winLotto){
         this.user=user;
         this.winLotto=winLotto;
         initializeResult();
@@ -41,7 +41,7 @@ public class Result {
         return winnings;
     }
 
-    private void checkPrize(Lotto lotto){
+    public void checkPrize(Lotto lotto){
         Set<Integer> userNumbers=new HashSet<>(lotto.getNumbers());
         Set<Integer> winningNumbers=new HashSet<>(winLotto.getNumbers());
 

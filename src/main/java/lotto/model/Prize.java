@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 public enum Prize {
     FIFTH(5000l,"5,000","3개 일치"),
