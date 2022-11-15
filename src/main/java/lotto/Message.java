@@ -40,11 +40,11 @@ public enum Message {
 
 	public static void printWinningStatus(ArrayList<Integer> winningInfo){
 		System.out.println(WINNING_STATUS.getMessage());
-		System.out.println(THREE_MATCHES.getMessage() + countWinning(winningInfo.get(0)));
-		System.out.println(FOUR_MATCHES.getMessage() + countWinning(winningInfo.get(1)));
+		System.out.println(THREE_MATCHES.getMessage() + countWinning(winningInfo.get(4)));
+		System.out.println(FOUR_MATCHES.getMessage() + countWinning(winningInfo.get(3)));
 		System.out.println(FIVE_MATCHES.getMessage() + countWinning(winningInfo.get(2)));
-		System.out.println(FIVE_BONUS_MATCHES.getMessage() + countWinning(winningInfo.get(3)));
-		System.out.println(SIX_MATCHES.getMessage() + countWinning(winningInfo.get(4)));
+		System.out.println(FIVE_BONUS_MATCHES.getMessage() + countWinning(winningInfo.get(1)));
+		System.out.println(SIX_MATCHES.getMessage() + countWinning(winningInfo.get(0)));
 	}
 
 	public static String countWinning(int count){
