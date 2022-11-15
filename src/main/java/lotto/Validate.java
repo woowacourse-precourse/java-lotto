@@ -18,13 +18,13 @@ public class Validate {
         }
     }
 
-    private void bonusNumberBelongsNumber(List<Integer> lottoNumber, Integer bonusNumber) {
+    public static void bonusNumberBelongsNumber(List<Integer> lottoNumber, Integer bonusNumber) {
         if (lottoNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호는 달라야 합니다.");
         }
     }
 
-    private void number(String input, String bonusNumber) {
+    public static void number(String input, String bonusNumber) {
         if (!input.matches("^(\\d?,){5}\\d?$")) {
             throw new IllegalArgumentException("[ERROR] 숫자와 ,만 입력해 주세요.");
         }
@@ -32,5 +32,12 @@ public class Validate {
         if (!bonusNumber.matches("^\\d*$")) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
         }
+    }
+
+    public static void inRangeLottoNumber(Integer lottoNumber) {
+        if (lottoNumber >= 1 && lottoNumber <= 45) {
+            return;
+        }
+        throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
