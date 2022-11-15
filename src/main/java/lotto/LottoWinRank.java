@@ -1,12 +1,11 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 public class LottoWinRank {
-  private HashMap<Integer, Integer> win_rank = new HashMap<>();
+  private final HashMap<Integer, Integer> win_rank = new HashMap<>();
 
   public LottoWinRank(List<Lotto> lottos, LottoAnswer lottoAnswer) {
     setWinRank(lottos, lottoAnswer);
@@ -27,9 +26,7 @@ public class LottoWinRank {
 
     while (iter.hasNext()) {
       win = iter.next().winningRanking(lottoAnswer);
-      if (win < 3) {
-        continue;
-      } else {
+      if (win > 2) {
         win_rank.put(win, win_rank.get(win) + 1);
       }
     }
