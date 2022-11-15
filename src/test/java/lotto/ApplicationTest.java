@@ -244,5 +244,17 @@ class ApplicationTest extends NsTest {
 
             assertEquals(expectedRatio, testResult);
         }
+
+        @Test
+        void countWinningCaseTest() {
+            Map<WinningNumbers, Long> correctAnswer = new EnumMap<WinningNumbers, Long>(WinningNumbers.class);
+            correctAnswer.put(WinningNumbers.THREE,1L);
+            correctAnswer.put(WinningNumbers.FOUR,1L);
+            correctAnswer.put(WinningNumbers.FIVE_BONUS,1L);
+            correctAnswer.put(WinningNumbers.SIX,1L);
+            correctAnswer.put(WinningNumbers.NOTHING,1L);
+
+            assertEquals(correctAnswer, lotto.countWinningCase(7,winningNumberCasesTest));
+        }
     }
 }
