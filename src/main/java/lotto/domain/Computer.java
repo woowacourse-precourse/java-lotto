@@ -19,8 +19,9 @@ public class Computer {
 
     public List<Integer> createLottoNumbers(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(STRAT_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
-        Collections.sort(new ArrayList<>(numbers));
-        return numbers;
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 
     public List<List<Integer>> createLottos(int money){
