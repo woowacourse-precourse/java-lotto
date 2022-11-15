@@ -39,4 +39,13 @@ public class OutputView {
             matchCount++;
         }
     }
+
+    public static void printWinningMessage() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public static void printProfitRate(double profitRate) {
+        System.out.println("총 수익률은" + profitRate + "입니다.");
+    }
 }
