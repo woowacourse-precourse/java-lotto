@@ -19,12 +19,14 @@ public class Application {
         int money = Integer.parseInt(Console.readLine());
         int sheets = money / price;
 
+        System.out.println(money);
+
         return sheets;
     }
 
     // 2.로또 발행
     static void createLotto(int sheets,List<Lotto> lottos) {
-        System.out.println("8개를 구매했습니다.");
+        System.out.println(sheets + "개를 구매했습니다.");
 
         for(int idx=0; idx<sheets; idx++) {
             List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -35,9 +37,10 @@ public class Application {
 
     // 3.당첨 번호 입력
     static void createWinningNums(List<Integer> winningNums) {
-        System.out.print("당첨 번호를 입력해 주세요.");
+        System.out.println("당첨 번호를 입력해 주세요.");
 
         String nums = Console.readLine();
+        System.out.println(nums);
         List<String> letters = new ArrayList<String>(Arrays.asList(nums.split(",")));
 
         for (int idx = 0; idx < letters.size(); idx++) {
@@ -53,6 +56,7 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         bonusNum = Integer.parseInt(Console.readLine());
+        System.out.println(bonusNum);
 
         return bonusNum;
     }
@@ -116,8 +120,6 @@ public class Application {
         earningsRate = (double)(totalWinningPrice) / (double)(sheets * 1000) * 100;
         earningsRate = Math.round(earningsRate*100/100.0);
 
-        System.out.println(earningsRate);
-
         return earningsRate;
     }
 
@@ -140,15 +142,19 @@ public class Application {
 
         // 로또 구입
         int sheets = buyLotto();
+        System.out.println();
 
         // 로또 발행
         createLotto(sheets,lottos);
+        System.out.println();
 
         // 당첨 번호
         createWinningNums(winningNums);
+        System.out.println();
 
         // 보너스 번호
         int bonusNum = createBonusNum();
+        System.out.println();
 
         // 당첨 결과
         List<Integer> lottosResult = getLottoResultAll(lottos,winningNums,bonusNum);
