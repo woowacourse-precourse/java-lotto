@@ -1,7 +1,6 @@
 package lotto.model;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,10 +14,6 @@ public class Lotto {
         if (numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public void iterate(Consumer<Integer> consumer) {
-        numbers.forEach(consumer);
     }
 
     public List<Integer> getNumbers() {
