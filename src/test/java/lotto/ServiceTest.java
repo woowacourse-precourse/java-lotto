@@ -1,12 +1,13 @@
 package lotto;
 
 import lotto.service.Service;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +18,7 @@ public class ServiceTest {
     static List<List<Integer>> list = new ArrayList<>();
     static List<Integer> player;
     static int bonus;
-    static Map<String, Integer> map = new HashMap<>();
+    static Map<Integer, Integer> map = new HashMap<>();
 
     @BeforeAll
     static void test () {
@@ -37,9 +38,9 @@ public class ServiceTest {
         bonus = 6;
     }
     static {
-        map.put("30000000",1);
-        map.put("50000",2);
-        map.put("0",1);
+        map.put(30000000,1);
+        map.put(50000,2);
+        map.put(0,1);
     }
 
 
@@ -47,12 +48,12 @@ public class ServiceTest {
     void matchLotteryNumberTest() {
         System.out.println(map.toString());
 
-        Map<String, Integer> expected = service.matchLotteryNumber(list,player,bonus);
+        Map<Integer, Integer> expected = service.matchLotteryNumber(list,player,bonus);
         System.out.println(expected.toString());
 
-        assertThat(map.get("30000000")).isEqualTo(expected.get("30000000"));
-        assertThat(map.get("50000")).isEqualTo(expected.get("50000"));
-        assertThat(map.get("0")).isEqualTo(expected.get("0"));
+        assertThat(map.get(30000000)).isEqualTo(expected.get(30000000));
+        assertThat(map.get(50000)).isEqualTo(expected.get(50000));
+        assertThat(map.get(0)).isEqualTo(expected.get(0));
 
     }
 

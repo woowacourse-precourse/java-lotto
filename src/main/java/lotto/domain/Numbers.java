@@ -17,6 +17,7 @@ public class Numbers {
 
     public List<List<Integer>> publishNumbers(int quantity) {
         lottoPublications = new ArrayList<>();
+
         for (int count = 0; count < quantity; count++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN.getNumber(), LOTTO_MAX.getNumber(), LOTTO_LENGTH.getNumber());
             lottoNumbers = sort(lottoNumbers);

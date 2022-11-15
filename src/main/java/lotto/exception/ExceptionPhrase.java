@@ -2,7 +2,8 @@ package lotto.exception;
 
 public enum ExceptionPhrase {
 
-    EXCEPTION_DUPLICATE_NUMBER("[ERROR] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다."),
+    EXCEPTION_DUPLICATE_NUMBER("[ERROR] 로또 번호에 중복된 숫자가 있습니다."),
+    EXCEPTION_ONLY_SIX_NUMBER_CAN_BE_ENTERED("[ERROR] 숫자는 6개만 입력 가능합니다."),
     EXCEPTION_INVALID_MONEY_UNIT("[ERROR]1000원 단위로 입력해주세요"),
     EXCEPTION_INVALID_INPUT("[ERROR] 숫자만 입력 가능합니다."),
     EXCEPTION_OUT_OF_RANGE("[ERROR] 0 ~45 이하의 숫자만 입력 가능합니다."),

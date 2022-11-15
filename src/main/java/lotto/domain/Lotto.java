@@ -2,8 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.exception.ExceptionPhrase.EXCEPTION_DUPLICATE_NUMBER;
-import static lotto.exception.ExceptionPhrase.EXCEPTION_OUT_OF_RANGE;
+import static lotto.exception.ExceptionPhrase.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEPTION_ONLY_SIX_NUMBER_CAN_BE_ENTERED.getMessage());
         }
         duplicate(numbers);
         lottoRange(numbers);

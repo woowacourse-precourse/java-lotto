@@ -9,7 +9,7 @@ import static lotto.exception.ExceptionPhrase.EXCEPTION_OUT_OF_RANGE;
 
 public class BonusNumber {
 
-    private int bonus;
+    private final int bonus;
 
     private List<Integer> lottoNumbers;
 

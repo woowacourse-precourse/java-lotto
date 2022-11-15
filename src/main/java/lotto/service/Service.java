@@ -12,7 +12,7 @@ import static lotto.exception.ExceptionPhrase.EXCEPTION_INVALID_RESULT;
 
 public class Service {
 
-    public HashMap<String, Integer> rewards= new HashMap<>();
+    public HashMap<Integer, Integer> rewards= new HashMap<>();
      {
         rewards.put(FIRST.getReward(),0);
         rewards.put(SECOND.getReward(),0);
@@ -26,7 +26,7 @@ public class Service {
     }
 
 
-    private BigDecimal multiplyPrize(String reward, Map<String ,Integer> rewards) {
+    private BigDecimal multiplyPrize(Integer reward, Map<Integer ,Integer> rewards) {
         int count = rewards.get(reward);
 
         BigDecimal money = new BigDecimal(reward);
@@ -41,7 +41,7 @@ public class Service {
     }
 
     // 일치하는 로또 개수 구하는 로직
-    public Map<String, Integer> matchLotteryNumber(List<List<Integer>> lottoNumbers, List<Integer> playerNumbers, int bonusNumber) {
+    public Map<Integer, Integer> matchLotteryNumber(List<List<Integer>> lottoNumbers, List<Integer> playerNumbers, int bonusNumber) {
 
         for(List<Integer> lottoNumber : lottoNumbers) {
             int count = countMatchedNumber(lottoNumber, playerNumbers);
@@ -66,7 +66,7 @@ public class Service {
             if(count != THIRD.getCount()) {
                 bonus = false;
             }
-            String prize = prizeCalculate(count, bonus);
+            int prize = prizeCalculate(count, bonus);
             value = rewards.get(prize);
             value += 1;
             rewards.put(prize, value);
@@ -75,17 +75,17 @@ public class Service {
         throw new IllegalArgumentException(EXCEPTION_INVALID_RESULT.getMessage());
     }
 
-    private String prizeCalculate(int count, boolean bonus) {
+    private int prizeCalculate(int count, boolean bonus) {
         return LottoMoney.getRankReward(count, bonus);
     }
 
     //수익률 구하는 로직
 
-    public String sumTotalReward(Map<String , Integer> rewards) {
-        Set<String> reward =  rewards.keySet();
+    public String sumTotalReward(Map<Integer , Integer> rewards) {
+        Set<Integer> reward =  rewards.keySet();
 
         BigDecimal totalPrize = new BigDecimal(BigInteger.ZERO);
-        for (String money : reward) {
+        for (Integer money : reward) {
             BigDecimal price = multiplyPrize(money, rewards);
 
             totalPrize = totalPrize.add(price);
@@ -102,6 +102,6 @@ public class Service {
 
         BigDecimal result = reward.divide(money, 1,RoundingMode.HALF_UP);
 
-        return result + "%";
+        return result.toString();
     }
 }

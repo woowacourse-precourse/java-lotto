@@ -13,13 +13,11 @@ import java.util.Map;
 public class Controller {
     private final Service service;
     private final Numbers numbers;
-    private final Money money;
     private final View view;
 
     public Controller() {
         service = new Service();
-        numbers = new Numbers();
-        money = new Money();
+        numbers = new Numbers(); //
         view = new View();
     }
 
@@ -32,7 +30,7 @@ public class Controller {
 
         BonusNumber bonus = playerBonusNumber(lotto);
 
-        Map<String, Integer> rewards = service.matchLotteryNumber(lottoNumbers,lotto.getNumbers(),bonus.getBonus());
+        Map<Integer, Integer> rewards = service.matchLotteryNumber(lottoNumbers,lotto.getNumbers(),bonus.getBonus());
 
         view.winningDetails(rewards);
         showProfitRate(inputMoney);
@@ -44,6 +42,7 @@ public class Controller {
     }
 
     private int lottoCount(int inputMoney) {
+        Money money = new Money(inputMoney);
         return money.lottoCount(inputMoney);
     }
     private List<List<Integer>> showLottoNumbers(int count) {

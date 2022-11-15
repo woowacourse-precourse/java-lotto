@@ -1,6 +1,5 @@
 package lotto.view;
 
-import lotto.constant.LottoMoney;
 import lotto.constant.LottoPhrases;
 import lotto.view.converter.ConvertMoney;
 import lotto.view.converter.ConvertPlayerNumbers;
@@ -9,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.constant.LottoMoney.*;
 import static lotto.constant.LottoPhrases.*;
-import static lotto.constant.Result.*;
+import static lotto.constant.Profit.PROFIT;
+import static lotto.constant.Result.RESULT;
 
 public class View {
     private final ConvertPlayerNumbers convertPlayerNumbers;
@@ -54,16 +55,17 @@ public class View {
         System.out.println(INPUT_BONUS_NUMBERS.getMessage());
     }
 
-    public void winningDetails(Map<String, Integer> lottoReward) {
-        System.out.println(THREE_MATCH.getValue() + lottoReward.get(LottoMoney.FIFTH.getReward())+COUNT.getValue());
-        System.out.println(FOUR_MATCH.getValue() + lottoReward.get(LottoMoney.FOURTH.getReward())+COUNT.getValue());
-        System.out.println(FIVE_MATCH.getValue() + lottoReward.get(LottoMoney.THIRD.getReward())+COUNT.getValue());
-        System.out.println(FIVE_BONUS_MATCH.getValue() + lottoReward.get(LottoMoney.SECOND.getReward())+COUNT.getValue());
-        System.out.println(SIX_MATCH.getValue() + lottoReward.get(LottoMoney.FIRST.getReward())+COUNT.getValue());
+    public void winningDetails(Map<Integer, Integer> lottoReward) { //
+
+        System.out.println(RESULT.result(3,FIFTH.getReward(),lottoReward.get(FIFTH.getReward())));
+        System.out.println(RESULT.result(4,FOURTH.getReward(),lottoReward.get(FOURTH.getReward())));
+        System.out.println(RESULT.result(5,THIRD.getReward(),lottoReward.get(THIRD.getReward())));
+        System.out.println(RESULT.result(5,SECOND.getReward(),lottoReward.get(SECOND.getReward())));
+        System.out.println(RESULT.result(6,FIRST.getReward(),lottoReward.get(FIRST.getReward())));
     }
 
     public void showProfitRate(String profitRate) {
-        System.out.println(PROFIT_RATE.getValue()+profitRate+IS.getValue());
+        System.out.println(PROFIT.profitRate(profitRate));
     }
 }
 

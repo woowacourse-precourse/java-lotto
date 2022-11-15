@@ -6,7 +6,6 @@ import lotto.view.validation.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -48,13 +47,13 @@ public class ValidationTest {
         assertThat(out.toString()).contains("");
     }
 
-    @DisplayName("int인지 아닌지 확인4")
+    @DisplayName("int인지 아닌지 확인")
     @Test
     void validationNumber4() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         validation1.validateInputIsInteger("1000");
 
-        assertThat(out.toString()).contains("1000");
+        assertThat(out.toString()).contains("");
     }
 }
