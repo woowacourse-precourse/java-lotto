@@ -27,6 +27,14 @@ public class Application {
             .collect(Collectors.toList());
     }
 
+    private static Integer askBonusNumber() {
+        Guide.ASK_BONUS_NUMBER.print();
+
+        String bonusNumber = Console.readLine();
+        validate(bonusNumber);
+        return Integer.parseInt(bonusNumber);
+    }
+
     private static void validate(String bonusNumber) {
         Pattern correctInputPattern = Pattern.compile("^([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-5])$");
         if (!correctInputPattern.matcher(bonusNumber).find()) {
