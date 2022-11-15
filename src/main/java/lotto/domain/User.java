@@ -1,4 +1,4 @@
-package domain;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,8 @@ public class User {
         System.out.println();
 
         System.out.println((buyPrice / 1000) + "개를 구매했습니다.");
-        lottoGame.createLotto(buyPrice/1000);
-        lottoGame.printLotteries(buyPrice/1000);
+        lottoGame.createLotto(buyPrice / 1000);
+        lottoGame.printLotteries(buyPrice / 1000);
         System.out.println();
 
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -47,7 +47,7 @@ public class User {
         try {
             String input = readLine();
             buyPrice = Integer.parseInt(input);
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
     }
