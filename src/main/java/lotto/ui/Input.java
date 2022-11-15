@@ -39,4 +39,11 @@ public class Input {
         Validation.checkNumberRange(numbers);
         Validation.checkDuplicatedNumber(numbers);
     }
+
+    public static String getWiningNumber() {
+        String winingNumber = Console.readLine();
+
+        validateWiningNumber(winingNumber);
+        return winingNumber;
+    }
 }
