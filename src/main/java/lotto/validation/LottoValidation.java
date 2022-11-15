@@ -56,4 +56,10 @@ public class LottoValidation {
             throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
         }
     }
+
+    public static void isContainBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+        if  (winningNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
+        }
+    }
 }

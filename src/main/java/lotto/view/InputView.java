@@ -37,14 +37,14 @@ public class InputView {
     }
 
     private static List<Integer> castToList(String inputWinning) {
-        List<Integer> winningLotto = new ArrayList<>();
+        List<Integer> winningNumbers = new ArrayList<>();
 
         for(String input : inputWinning.split(",")) {
             InputValidation.isValidInput(input);
-            winningLotto.add(Integer.valueOf(input));
+            winningNumbers.add(Integer.valueOf(input));
         }
 
-        return winningLotto;
+        return winningNumbers;
     }
 
     public static int inputBonusNumber() {
