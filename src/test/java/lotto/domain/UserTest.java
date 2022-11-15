@@ -3,6 +3,9 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UserTest {
@@ -12,6 +15,18 @@ class UserTest {
         User user = new User();
         assertThatThrownBy(() -> user.setBudget(500))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    public void profitRateTest(){
+        User user = new User();
+        user.setBudget(1000);
+        user.buyLotto();
+        Lotto lotto = user.getLottos().get(0);
+        List<Integer> winningNumbers = lotto.getNumbers();
+        user.confirmWinning(winningNumbers, 0);
+        assertThat(user.getProfitRate()).isEqualTo(2000000);
     }
 
 }
