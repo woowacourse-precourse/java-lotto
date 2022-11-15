@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class UserInteraction {
 
@@ -25,7 +26,11 @@ public class UserInteraction {
         try {
             changedInput = Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야만 합니다.");
+            NoSuchElementException returnException = new NoSuchElementException();
+            IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 숫자를 입력해야만 합니다.");
+            returnException.initCause(illegalArgumentException);
+            System.out.println(returnException.getCause().getMessage());
+            throw returnException;
         }
         return changedInput;
     }
@@ -38,7 +43,11 @@ public class UserInteraction {
                 numStr = numStr.trim();
                 resultNumbers.add(tryParseInt(numStr));
             } catch (Exception e) {
-                throw new IllegalArgumentException("[ERROR] 숫자를 입력해야만 합니다.");
+                NoSuchElementException returnException = new NoSuchElementException();
+                IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 숫자를 입력해야만 합니다.");
+                returnException.initCause(illegalArgumentException);
+                System.out.println(returnException.getCause().getMessage());
+                throw returnException;
             }
         }
         return resultNumbers;
@@ -46,19 +55,30 @@ public class UserInteraction {
 
     public void checkNumbers(List<Integer> numbers) {
         HashSet<Integer> tempSet = new HashSet<>(numbers);
+        NoSuchElementException returnException = new NoSuchElementException();
         if (tempSet.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 서로 다른 6자리의 숫자를 입력해야 합니다.");
+            IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 서로 다른 6자리의 숫자를 입력해야 합니다.");
+            returnException.initCause(illegalArgumentException);
+            System.out.println(returnException.getCause().getMessage());
+            throw returnException;
         }
         for (int number : tempSet) {
             if (number <= 0 && number > 45) {
-                throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력 해야만 합니다.");
+                IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력 해야만 합니다.");
+                returnException.initCause(illegalArgumentException);
+                System.out.println(returnException.getCause().getMessage());
+                throw returnException;
             }
         }
     }
 
     public void checkBonusNumber(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복 될 수 없습니다.");
+            NoSuchElementException returnException = new NoSuchElementException();
+            IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복 될 수 없습니다.");
+            returnException.initCause(illegalArgumentException);
+            System.out.println(returnException.getCause().getMessage());
+            throw returnException;
         }
     }
 
