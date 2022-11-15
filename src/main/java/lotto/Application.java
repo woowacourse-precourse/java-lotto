@@ -61,5 +61,6 @@ public class Application {
         int baseMoney = haveLottoCount * 1000;
         double upPercent = price * 100 / baseMoney;
         System.out.println("총 수익률은 " + upPercent + "%입니다." );
+
     }
 }
