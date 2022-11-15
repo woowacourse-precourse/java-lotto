@@ -8,12 +8,13 @@ import lotto.view.View;
 
 public class Money {
 
-    private static final int ZERO = 0;
+    private static final int NOT_PURCHASE = 0;
     private static final int LOTTO_PRICE = 1000;
 
     private final int money;
 
     public Money(int money) {
+        validatePositiveInteger(money);
         validatePurchase(money);
         validatePrice(money);
         this.money = money;
@@ -27,8 +28,15 @@ public class Money {
         return this.money;
     }
 
+    private void validatePositiveInteger(int money) {
+        if (money < NOT_PURCHASE) {
+            View.printNotPositiveMoney(LOTTO_PRICE);
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validatePurchase(int money) {
-        if (money == ZERO) {
+        if (money == NOT_PURCHASE) {
             View.printNotPurchase();
             throw new IllegalArgumentException();
         }

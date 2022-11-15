@@ -3,6 +3,7 @@ package lotto.util;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import lotto.Lotto;
 import lotto.view.View;
 
 /*
@@ -14,17 +15,20 @@ public class PlayerInput {
 
     public static int getInteger() {
         String input = Console.readLine().trim();
+        int number;
 
         if (input.isEmpty()) {
             View.printInputIsEmpty();
             throw new IllegalArgumentException();
         }
 
-        if (!isPositiveInteger(input)) {
+        try {
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException ie) {
             View.printNotInteger();
             throw new IllegalArgumentException();
         }
-        return Integer.parseInt(input);
+        return number;
     }
 
     public static List<Integer> getLottoNumbers() {
@@ -39,7 +43,7 @@ public class PlayerInput {
         try {
             numbers = Convertor.StringToInteger(Arrays.asList(input.split("\\s*,\\s*")));
         } catch (IllegalArgumentException ie) {
-            View.printNotInteger();
+            View.printNotLottoNumber(Lotto.getStartNumber(), Lotto.getEndNumber());
             throw new IllegalArgumentException();
         }
 
@@ -47,19 +51,7 @@ public class PlayerInput {
             View.printNotComma();
             throw new IllegalArgumentException();
         }
-
         return numbers;
-    }
-
-    private static boolean isPositiveInteger(String number) {
-        for (int i = 0; i < number.length(); i++) {
-            char needVerify = number.charAt(i);
-
-            if (!Character.isDigit(needVerify)) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }
