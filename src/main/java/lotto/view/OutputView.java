@@ -32,7 +32,7 @@ public class OutputView {
     public static void printStatistic(int[] correct, double earn){
         System.out.println(Message.OUT_STATISTIC.getMessage());
         for (int i=0;i< Range.CORRECT_CASE.get();i++){
-            System.out.println(StatisticMessage.printIdx(i).getMessage()+"개");
+            System.out.println(StatisticMessage.printIdx(i).getMessage()+correct[i]+"개");
         }
         System.out.println(Message.REVENUE.getMessage()+earn+"입니다.");
     }

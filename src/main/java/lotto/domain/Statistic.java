@@ -6,11 +6,12 @@ import lotto.enums.Range;
 import java.util.List;
 
 public class Statistic {
-    private int[] correct;
+    private final int[] correct;
     private int revenue;
 
-    public int getRevenue() {
-        return revenue;
+    public double getRevenue(int price) {
+        addRevenue();
+        return calculateRevenue(price);
     }
 
     public int[] getCorrect() {
@@ -18,15 +19,17 @@ public class Statistic {
     }
 
     public Statistic() {
-        this.correct = new int[Range.CORRECT_CASE.get()];
+        this.correct = new int[]{0,0,0,0,0};
         this.revenue = 0;
     }
 
-    private void countCorrect(List<Integer> winNumbers, List<Lotto> lottos, int bonus){
+    public void countCorrect(List<Integer> winNumbers, List<Lotto> lottos, int bonus){
         for (Lotto lotto: lottos){
             int countEach = compare(lotto, winNumbers);
             lottoResult(countEach, correctBonus(bonus, lotto));
         }
+        addRevenue();
+
     }
 
     private int compare(Lotto lotto, List<Integer> winNumbers){
@@ -58,15 +61,14 @@ public class Statistic {
         }
     }
 
-    private int addRevenue(){
+    private void addRevenue(){
         for (int i=0;i<correct.length;i++){
-            revenue += LottoReward.withCorrectNum(i).getReward() * correct[i];
+            revenue += LottoReward.withIndex(i).getReward() * correct[i];
         }
-        return revenue;
     }
 
 
-    private double calculateRevenue(int price){
+    public double calculateRevenue(int price){
         return (double)revenue/price;
     }
 
