@@ -2,9 +2,9 @@ package model;
 
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
-import static constant.Config.RANGE_ERROR;
 
 public class BonusNumber {
+    private static final String RANGE_ERROR = String.format("보너스 번호는 %d~%d 범위여야 합니다.", MIN_NUMBER, MAX_NUMBER);
     private final int bonusNumber;
 
     public BonusNumber(int bonusNumber) {

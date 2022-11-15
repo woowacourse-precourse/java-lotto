@@ -2,22 +2,19 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static constant.Config.INIT_COUNT;
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
 import static constant.Config.NUMBER_COUNT;
-import static constant.Config.RANGE_ERROR;
 
 public class Lotto {
     private static final String SIZE_ERROR = String.format("로또 번호는 %d개의 숫자여야 합니다.", NUMBER_COUNT);
     private static final String DUPLICATE_ERROR = "로또 번호는 중복되지 않아야 합니다.";
+    private static final String RANGE_ERROR = String.format("로또 번호는 %d~%d 범위여야 합니다.", MIN_NUMBER, MAX_NUMBER);
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
