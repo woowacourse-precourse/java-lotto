@@ -37,5 +37,15 @@ public class LottoController {
         Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
+    static List<List<Integer>> buyLottery(int lottosCount){
+        List<List<Integer>> ownLottos = new ArrayList<>();
+        List<Integer> lottos;
+        for (int i = 0;i<lottosCount;i++) {
+            lottos = createLottoNumber();
+            ownLottos.add(lottos);
+            System.out.println(lottos);
+        }
+        return ownLottos;
+    }
 
 }
