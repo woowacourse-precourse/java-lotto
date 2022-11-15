@@ -88,6 +88,13 @@ public class Player {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해야합니다");
         }
 
+        boolean duplicated = integers.stream()
+                .distinct()
+                .count() != integers.size();
+        if (duplicated) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
+        }
+
         return integers;
     }
 
