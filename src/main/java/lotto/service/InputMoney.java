@@ -16,18 +16,12 @@ public class InputMoney {
         String inputMoney = Console.readLine();
         output.lineSpace();
         inputMoneyHandler.checkException(inputMoney);
-        UserMoney userMoney = new UserMoney(stringToInteger(inputMoney));
+        UserMoney userMoney = new UserMoney(Integer.parseInt(inputMoney));
 
         return userMoney;
     }
 
-    public int stringToInteger(String value) {
-        int number = Integer.parseInt(value);
-
-        return number;
-    }
-
-    public void lottoCount(UserMoney inputMoney) {
+    public void calculateLottoPapers(UserMoney inputMoney) {
         lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
         output.purchaseLottoOrder(lottoCount);
     }

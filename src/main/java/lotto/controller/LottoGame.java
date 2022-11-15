@@ -9,12 +9,12 @@ import static lotto.service.PickRandomLotto.randomLottoLists;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
+    UserMoney userMoney = inputMoney.InputMoney();
     WinLottoResult winLottoResult = new WinLottoResult();
 
     public void run() {
         try {
-            UserMoney userMoney = inputMoney.InputMoney();
-            countLottoPapers(userMoney);
+            countLottos(userMoney);
             pickRandomLottos(inputMoney.lottoCount);
             List<Integer> answerLotto = inputLottoNumbers();
             winLottosResult(answerLotto, randomLottoLists);
@@ -23,8 +23,8 @@ public class LottoGame {
             System.out.println(e.getMessage());
         }
     }
-    public void countLottoPapers(UserMoney userMoney) {
-        inputMoney.lottoCount(userMoney);
+    public void countLottos(UserMoney userMoney) {
+        inputMoney.calculateLottoPapers(userMoney);
     }
 
     public void pickRandomLottos(int lottoPapers) {

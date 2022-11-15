@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 
 public class Output {
     WinLottoResult winLottoResult = new WinLottoResult();
+    public final String ERROR_ORDER = "[ERROR]";
     private final String INPUTMONEY_ORDER = "구입금액을 입력해 주세요.";
     private final String PURCHASE_LOTTO_ORDER = "개를 구매했습니다.";
     private final String USER_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
