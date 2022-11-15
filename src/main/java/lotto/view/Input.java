@@ -27,7 +27,7 @@ public class Input {
 	public static int enterBonusNumber() {
 		System.out.println(INPUT_BONUS_NUMBER);
 		String userInput = Console.readLine();
-		BonusNumber.checkBonusNumber(userInput);
+		BonusNumber.checkBonusNumber(userInput, WinningNumber.getWinningNumber());
 		return Integer.parseInt(userInput);
 	}
 }

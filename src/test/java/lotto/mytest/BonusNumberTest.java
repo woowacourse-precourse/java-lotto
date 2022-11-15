@@ -3,6 +3,7 @@ package lotto.mytest;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,7 +51,7 @@ public class BonusNumberTest {
 	@DisplayName("기존의 로또 번호와 중복되는 경우 예외가 발생")
 	@Test
 	void duplicatedWithWinningNumber() {
-		List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+		Set<Integer> winningNumber = Set.of(1, 2, 3, 4, 5, 6);
 		assertThatThrownBy(() -> {
 			Validator.validateDuplicateBonusNumber("6", winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);

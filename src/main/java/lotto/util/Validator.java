@@ -27,7 +27,7 @@ public class Validator {
 		}
 	}
 
-	public static void validateDuplicateBonusNumber(String input, List<Integer> winningNumber) {
+	public static void validateDuplicateBonusNumber(String input, Set<Integer> winningNumber) {
 		if (winningNumber.contains(Integer.parseInt(input))) {
 			throw new IllegalArgumentException(ERROR_DUPLICATE_WITH_WINNINGNUM);
 		}
