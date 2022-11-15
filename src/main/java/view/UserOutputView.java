@@ -5,8 +5,6 @@ import domain.LottoResult;
 import domain.PurchaseMoney;
 import domain.WinningPrize;
 
-import java.text.DecimalFormat;
-
 public class UserOutputView {
     static final String WINNING_STATICS = "당첨 통계";
     static final String DOT = "---";
@@ -25,11 +23,11 @@ public class UserOutputView {
     public static void printLottoResult(LottoResult lottoResult) {
         System.out.println(WINNING_STATICS);
         System.out.println(DOT);
-        System.out.printf(FIFTH_PRIZE_RESULT, WinningPrize.FIFTH_PRIZE.getStringPrize(), lottoResult.getThreeCount());
-        System.out.printf(FOURTH_PRIZE_RESULT, WinningPrize.FOURTH_PRIZE.getStringPrize(), lottoResult.getFourCount());
-        System.out.printf(THIRD_PRIZE_RESULT, WinningPrize.THIRD_PRIZE.getStringPrize(), lottoResult.getFiveCount());
-        System.out.printf(SECOND_PRIZE_RESULT, WinningPrize.SECOND_PRIZE.getStringPrize(), lottoResult.getFiveAndBonusCount());
-        System.out.printf(FIRST_PRIZE_RESULT, WinningPrize.FIRST_PRIZE.getStringPrize(), lottoResult.getSixCount());
+        System.out.printf(FIFTH_PRIZE_RESULT, WinningPrize.FIFTH_PRIZE.getStringPrize(), lottoResult.getFifthPrizeCount());
+        System.out.printf(FOURTH_PRIZE_RESULT, WinningPrize.FOURTH_PRIZE.getStringPrize(), lottoResult.getFourthPrizeCount());
+        System.out.printf(THIRD_PRIZE_RESULT, WinningPrize.THIRD_PRIZE.getStringPrize(), lottoResult.getThirdPrizeCount());
+        System.out.printf(SECOND_PRIZE_RESULT, WinningPrize.SECOND_PRIZE.getStringPrize(), lottoResult.getSecondPrizeCount());
+        System.out.printf(FIRST_PRIZE_RESULT, WinningPrize.FIRST_PRIZE.getStringPrize(), lottoResult.getFirstPrizeCount());
         System.out.printf(CALCULATE_YIELD_RATE, lottoResult.getYield());
     }
 

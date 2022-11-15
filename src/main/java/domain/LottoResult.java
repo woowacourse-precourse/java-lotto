@@ -7,32 +7,32 @@ public class LottoResult {
     private final List<Lotto> lottoList;
     private final WinningLottoNumber winningLottoNumber;
 
-    private Integer threeCount = 0;
-    private Integer fourCount = 0;
-    private Integer fiveCount = 0;
-    private Integer fiveAndBonusCount = 0;
-    private Integer sixCount = 0;
+    private Integer fifthPrizeCount = 0;
+    private Integer fourthPrizeCount = 0;
+    private Integer thirdPrizeCount = 0;
+    private Integer secondPrizeCount = 0;
+    private Integer firstPrizeCount = 0;
     private Integer totalPrize = 0;
     private Double yield;
 
-    public Integer getThreeCount() {
-        return threeCount;
+    public Integer getFifthPrizeCount() {
+        return fifthPrizeCount;
     }
 
-    public Integer getFourCount() {
-        return fourCount;
+    public Integer getFourthPrizeCount() {
+        return fourthPrizeCount;
     }
 
-    public Integer getFiveCount() {
-        return fiveCount;
+    public Integer getThirdPrizeCount() {
+        return thirdPrizeCount;
     }
 
-    public Integer getFiveAndBonusCount() {
-        return fiveAndBonusCount;
+    public Integer getSecondPrizeCount() {
+        return secondPrizeCount;
     }
 
-    public Integer getSixCount() {
-        return sixCount;
+    public Integer getFirstPrizeCount() {
+        return firstPrizeCount;
     }
 
     public double getYield() {
@@ -58,32 +58,32 @@ public class LottoResult {
         Integer correctCountCalculation = winningLottoNumber.correctCountCalculation(lotto);
         Integer bonusCountCalculation = winningLottoNumber.bonusCountCalculation(lotto);
         if (Objects.equals(correctCountCalculation, 6)) {
-            sixCount++;
+            firstPrizeCount++;
             return;
         }
         if (Objects.equals(correctCountCalculation, 5) && (Objects.equals(bonusCountCalculation, 1))) {
-            fiveAndBonusCount++;
+            secondPrizeCount++;
             return;
         }
         if (Objects.equals(correctCountCalculation, 5) && (Objects.equals(bonusCountCalculation, 0))) {
-            fiveCount++;
+            thirdPrizeCount++;
             return;
         }
         if (Objects.equals(correctCountCalculation, 4)) {
-            fourCount++;
+            fourthPrizeCount++;
             return;
         }
         if (Objects.equals(correctCountCalculation, 3)) {
-            threeCount++;
+            fifthPrizeCount++;
         }
     }
 
     private void setTotalPrize() {
-        this.totalPrize = (sixCount * WinningPrize.FIRST_PRIZE.getPrize())
-                + (fiveAndBonusCount * WinningPrize.SECOND_PRIZE.getPrize())
-                + (fiveCount * WinningPrize.THIRD_PRIZE.getPrize())
-                + (fourCount * WinningPrize.FOURTH_PRIZE.getPrize())
-                + (threeCount * WinningPrize.FIFTH_PRIZE.getPrize());
+        this.totalPrize = (firstPrizeCount * WinningPrize.FIRST_PRIZE.getPrize())
+                + (secondPrizeCount * WinningPrize.SECOND_PRIZE.getPrize())
+                + (thirdPrizeCount * WinningPrize.THIRD_PRIZE.getPrize())
+                + (fourthPrizeCount * WinningPrize.FOURTH_PRIZE.getPrize())
+                + (fifthPrizeCount * WinningPrize.FIFTH_PRIZE.getPrize());
     }
 
     private void yieldCalculation() {
