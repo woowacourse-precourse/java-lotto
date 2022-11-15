@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningLottoTest {
@@ -18,6 +19,15 @@ public class WinningLottoTest {
     void setLotto() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
         this.lotto = new Lotto(numbers);
+    }
+
+    @DisplayName("당첨 로또 생성 성공")
+    @Test
+    void createWinningLottoSuccess() {
+        int bonusNumber = 10;
+
+        assertThatCode(() -> new WinningLotto(lotto, bonusNumber))
+                .doesNotThrowAnyException();
     }
 
     @DisplayName("보너스 번호가 로또 번호와 겹치면 예외가 발생한다.")

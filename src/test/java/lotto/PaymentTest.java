@@ -5,10 +5,16 @@ import lotto.message.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class PaymentTest {
+    @DisplayName("지불 성공")
+    @Test
+    void createPaymentSuccess() {
+        assertThatCode(() -> new Payment(10000))
+                .doesNotThrowAnyException();
+    }
+
     @DisplayName("구입한 로또의 개수는 (구입 금액 / 로또 개당 가격)과 일치한다.")
     @Test
     void createPaymentAndGetLottoAmountSuccess() {

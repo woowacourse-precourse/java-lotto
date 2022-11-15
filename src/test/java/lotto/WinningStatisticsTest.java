@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class WinningStatisticsTest {
     private WinningLotto winningLotto;
@@ -24,11 +25,20 @@ public class WinningStatisticsTest {
         this.winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
+    @DisplayName("당첨 통계 생성 성공")
+    @Test
+    void createWinningStatisticsSuccess() {
+        List<Lotto> lottos = List.of(winningLotto.getLotto());
+        PurchasedLottos purchasedLottos = new PurchasedLottos(lottos);
+
+        assertThatCode(() -> new WinningStatistics(purchasedLottos, winningLotto))
+                .doesNotThrowAnyException();
+    }
+
     @DisplayName("1등에 당첨되면 1등의 count가 증가한다.")
     @Test
     void createWinningStatisticsWhenFirstAward() {
-        List<Lotto> lottos = new ArrayList<>();
-        lottos.add(winningLotto.getLotto());
+        List<Lotto> lottos = List.of(winningLotto.getLotto());
         PurchasedLottos purchasedLottos = new PurchasedLottos(lottos);
         WinningStatistics winningStatistics = new WinningStatistics(purchasedLottos, winningLotto);
 
