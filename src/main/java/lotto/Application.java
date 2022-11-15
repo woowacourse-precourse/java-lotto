@@ -16,7 +16,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.println("구입금액을 입력해주세요.");
         
-        //1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
+        ////todo: 1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
         int buyMoney = sc.nextInt();
 
         //로또 구매및 출력
@@ -53,7 +53,11 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.println("당첨 번호를 입력해 주세요.");
 
+        //todo: 잘못입력시 에러발생
         String inputLuckyNumber[] = sc.next().split(",");
+        for(int i=0; i<inputLuckyNumber.length; i++){
+            luckyList.add(Integer.parseInt(inputLuckyNumber[i]));
+        }
 
         return luckyList;
     }
