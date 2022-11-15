@@ -20,6 +20,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
+            System.out.println(ERROR_MESSAGE + "로또의 크기는 6자리 입니다.");
             throw new IllegalArgumentException();
         }
     }
