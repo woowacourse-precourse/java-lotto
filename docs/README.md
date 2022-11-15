@@ -31,9 +31,9 @@
 > - [x]  로또 생성에는 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange() 활용하기.
  
 - [x]  생성된 로또 정렬
-- [ ]  당첨 통계 생성
-> - [ ]  당첨 결과 계산
-> - [ ]  총 수익률 계산
+- [x]  당첨 통계 생성
+> - [x]  당첨 결과 계산
+> - [x]  총 수익률 계산
 
 ### 출력
 - [x]  구매한 로또 개수를 출력 메세지와 함께 출력하기
