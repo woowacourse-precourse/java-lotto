@@ -10,7 +10,7 @@ public class WinningNumber extends Lotto {
 
     public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         super(winningNumbers);
-        validateBonusNumber(bonusNumber);
+        validateBonusNumber(winningNumbers,bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
@@ -23,7 +23,7 @@ public class WinningNumber extends Lotto {
         return bonusNumber;
     }
 
-    private void validateBonusNumber(int bonusNumber) {
+    private void validateBonusNumber(List<Integer> winningNumbers,int bonusNumber) {
         validateBonusNumbersRange(bonusNumber);
         checkDuplicateBonusNumber(winningNumbers, bonusNumber);
     }
