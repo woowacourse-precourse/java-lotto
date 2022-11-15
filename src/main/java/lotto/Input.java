@@ -22,9 +22,9 @@ public class Input {
         if (!Validation.lottoLength(winningNums)) {
             Output.showError(Error.WINNING_NUMS_LENGTH);
         }
-        if (!Validation.lottoNumDuplicated(winningNums)) {
-            Output.showError(Error.DUPLICATED_NUM);
-        }
+//        if (!Validation.lottoNumDuplicated(winningNums)) {
+//            Output.showError(Error.DUPLICATED_NUM);
+//        }
         return winningNums;
     }
 

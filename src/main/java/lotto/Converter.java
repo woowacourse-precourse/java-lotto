@@ -8,12 +8,13 @@ import java.util.Set;
 public class Converter {
 
     public static int stringToInt(String s) {
+        int output = 0;
         try {
-            return Integer.parseInt(s);
+            output =  Integer.parseInt(s);
         } catch (Exception e) {
             Output.showError(Error.NOT_DIGIT_CHARACTER);
         }
-        throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력");
+        return output;
     }
 
     public static List<Integer> stringToList(String s) {

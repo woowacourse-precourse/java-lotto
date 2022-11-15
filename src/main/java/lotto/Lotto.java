@@ -9,13 +9,24 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateLength(numbers);
+        validateDuplicated(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
             Output.showError(Error.WINNING_NUMS_LENGTH);
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicated(List<Integer> numbers) {
+        int originalSize = numbers.size();
+        Set<Integer> set = new HashSet<>(numbers);
+        if(originalSize != set.size()){
+            Output.showError(Error.DUPLICATED_NUM);
+            throw new IllegalArgumentException();
         }
     }
 

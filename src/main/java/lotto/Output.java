@@ -32,7 +32,6 @@ public class Output {
 
     public static void showError(Error error) {
         System.out.println(error.getDesc());
-        throw new IllegalArgumentException();
     }
 
     private static String getYeild(int benefit, int paid) {
