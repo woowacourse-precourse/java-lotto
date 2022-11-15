@@ -27,7 +27,7 @@ public class LottoStore {
     }
 
     public void printUserLotto() {
-        System.out.printf("%d개를 구미했습니다.", purchaseNumber);
+        System.out.printf("%d개를 구매했습니다.", purchaseNumber);
         for (Lotto lotto : userLotto) {
             System.out.println(lotto.getNumbers());
         }
