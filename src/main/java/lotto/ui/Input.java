@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Input {
     private static final String inputAmountMessage = "구입 금액을 입력해 주세요.";
-    private static final String inputNumbersMessage = "당첨 번호를 입력해 주세요.";
-    private static final String inputBonusMessage = "보너스 번호를 입력해 주세요.";
+    private static final String inputNumbersMessage = "\n당첨 번호를 입력해 주세요.";
+    private static final String inputBonusMessage = "\n보너스 번호를 입력해 주세요.";
 
     public static int inputAmount() {
         System.out.println(inputAmountMessage);
