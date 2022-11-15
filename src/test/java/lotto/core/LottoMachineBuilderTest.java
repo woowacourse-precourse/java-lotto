@@ -1,5 +1,6 @@
 package lotto.core;
 
+import lotto.constants.Message;
 import lotto.models.Lotto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -70,10 +72,10 @@ class LottoMachineBuilderTest {
 		// then
 		assertThat(outputStream.toString()).contains("구입금액을 입력해 주세요")
 				.contains("4개를 구매했습니다")
-				.contains("[11, 12, 3, 4, 5, 6]\n" +
-						"[4, 12, 33, 45, 25, 36]\n" +
-						"[5, 31, 27, 1, 9, 11]\n" +
-						"[7, 8, 30, 10, 15, 45]")
+				.contains("[3, 4, 5, 6, 11, 12]\n" +
+						"[4, 12, 25, 33, 36, 45]\n" +
+						"[1, 5, 9, 11, 27, 31]\n" +
+						"[7, 8, 10, 15, 30, 45]")
 				.contains("당첨 통계\n" +
 						"---\n" +
 						"3개 일치 (5,000원) - 0개\n" +

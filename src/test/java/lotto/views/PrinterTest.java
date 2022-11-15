@@ -47,7 +47,7 @@ class PrinterTest {
 		// then : 출력 결과가 정상적으로 나오는지 확인
 		final String expected = "[1, 2, 3, 4, 5, 6]\n" +
 				"[3, 4, 5, 6, 7, 8]\n" +
-				"[6, 2, 42, 9, 29, 13]\n";
+				"[2, 6, 9, 13, 29, 42]\n";
 		assertThat(outputStream.toString()).isEqualTo(expected);
 	}
 
