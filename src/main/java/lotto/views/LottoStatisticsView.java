@@ -9,4 +9,8 @@ public class LottoStatisticsView {
             System.out.println(rank.toString());
         }
     }
+
+    public static void printLottoYield(double lottoYield){
+        System.out.println("총 수익률은 "+lottoYield+"%입니다.");
+    }
 }
