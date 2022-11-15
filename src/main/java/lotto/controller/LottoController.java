@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.LottoMarket;
-import lotto.domain.LottoTickets;
+import lotto.domain.lotto.LottoTickets;
 import lotto.domain.Wallet;
 
 import lotto.view.InputView;
@@ -31,7 +31,4 @@ public class LottoController {
     private Wallet createWallet() {
         return new Wallet(inputView.readInt());
     }
-
-
-
 }

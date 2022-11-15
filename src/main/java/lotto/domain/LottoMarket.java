@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.lotto.LottoTickets;
 import lotto.utils.LottoNumberGenerator;
 
 public class LottoMarket {
