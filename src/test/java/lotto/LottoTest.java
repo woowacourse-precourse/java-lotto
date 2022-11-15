@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -28,5 +30,13 @@ class LottoTest {
     void createLottoByNumberRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, -2, 3, 4, 5, 6, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("구매 금액이 1000원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void inputBuyMoneyByNot1000Multi() {
+        final Application application = new Application();
+        final int money = 1100;
+        final RuntimeException exception = assertThrows(RuntimeException.class, ()-> Application.checkPayMoney(money));
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 1000원 단위의 금액만 가능합니다.");
     }
 }
