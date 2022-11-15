@@ -1,7 +1,11 @@
 package lotto.model;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Prize {
     THREE_STRIKE(3.0, "3개 일치 (5,000원)", resultCount -> resultCount * 5000),
@@ -29,5 +33,21 @@ public enum Prize {
                 .filter(value -> score.equals(value.prize))
                 .findAny()
                 .orElse(null);
+    }
+
+    public static List<Double> getPrizeCandidates() {
+        List<Double> counts = Stream.of(Prize.values())
+                .map(Prize::getPrize)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+        return counts;
+    }
+
+    public Double getPrize() {
+        return prize;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
