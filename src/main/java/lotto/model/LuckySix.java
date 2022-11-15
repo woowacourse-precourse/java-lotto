@@ -16,11 +16,13 @@ public class LuckySix {
     }
 
     private static void validateInvalidInput(String inputLuckySix) {
-        String withoutComma = inputLuckySix.replaceAll(",", "");
         try {
-            Long.parseLong(withoutComma);
+            String[] separateInputLuckySix = inputLuckySix.split(",");
+            for (String oneNumber : separateInputLuckySix) {
+                int checkValue = Integer.parseInt(oneNumber);
+            }
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.SIX_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ERROR_MESSAGE.getMessage());
         }
     }
 
