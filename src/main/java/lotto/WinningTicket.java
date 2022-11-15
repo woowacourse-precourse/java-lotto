@@ -21,6 +21,13 @@ public class WinningTicket {
     }
 
     private List<Integer> inputNumbers() {
+        String userInput;
+        List<Integer> adjusted;
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        userInput = Console.readLine();
+        adjusted = adjustUserInput(userInput);
+        return adjusted;
     }
 
     private void inputBonusNumber() {
