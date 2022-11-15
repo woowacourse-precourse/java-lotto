@@ -7,6 +7,8 @@ package lotto;
  * 3. 각 결과를 종합한다.
  */
 
+import lotto.controller.LottoController;
+
 public class Application {
     public static void main(String[] args) {
         try {
