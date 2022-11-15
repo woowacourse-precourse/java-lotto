@@ -25,13 +25,6 @@ public class WinningResult {
         this.yield = 0;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public WinningNumber getWinningNumber() {
-        return winningNumber;
-    }
 
     public double getYield() {
         return yield;
@@ -73,7 +66,7 @@ public class WinningResult {
     }
 
     public void calculateYield() {
-        long money = (long) user.getMoney();
+        long money = user.getMoney();
         long profit = 0;
         for (Integer place = 0; place < winningResult.size(); place++) {
             profit += addWinningLottoMoney(place);
