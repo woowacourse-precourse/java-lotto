@@ -9,7 +9,7 @@ public class WinningNumber {
     public static final int LOTTO_NUMBER = 0;
     public static final int BONUS_NUMBER = 1;
 
-    private static final WinnerNumberValidator validator = new WinnerNumberValidator();
+    private final WinningNumberValidator validator = new WinningNumberValidator();
     private final List<Integer> numbers;
     private final int bonusNumber;
 

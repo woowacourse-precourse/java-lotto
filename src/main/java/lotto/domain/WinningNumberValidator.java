@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.List;
 import lotto.constants.message.ExceptionMessage;
 
-public class WinnerNumberValidator {
+public class WinningNumberValidator {
     public static final String LOTTO_NUMBER_CHECK = "^([0-9]*,){5}[0-9]*$";
     public static final String BONUS_NUMBER_CHECK = "^[0-9]*$";
 
