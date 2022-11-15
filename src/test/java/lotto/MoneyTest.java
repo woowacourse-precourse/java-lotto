@@ -178,7 +178,6 @@ class MoneyTest {
                     Arguments.of("9040", "9040")
                 );
             }
-
         }
     }
 }

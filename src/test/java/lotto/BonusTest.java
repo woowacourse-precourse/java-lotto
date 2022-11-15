@@ -25,6 +25,11 @@ class BonusTest extends NsTest {
             runException("1000", "1,2,3,4,5,6", "$");
             assertThat(output()).contains("[ERROR]");
         });
+
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", null);
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
     @DisplayName("입력된 보너스 번호가 정답에 없는지 확인.")
@@ -52,6 +57,17 @@ class BonusTest extends NsTest {
         assertSimpleTest(()-> {
             runException("1000", "1,2,3,4,5,6", "46");
             assertThat(output()).contains("[ERROR]");
+        });
+
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "-4");
+            assertThat(output()).contains("[ERROR]");
+        });
+
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "45");
+            //should be correct case
+            //assertThat(output()).contains("[ERROR]");
         });
     }
 

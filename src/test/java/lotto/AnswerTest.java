@@ -81,6 +81,14 @@ class AnswerTest extends NsTest {
         });
     }
 
+    @DisplayName("당첨 번호에 -0이 있는 경우 2.")
+    @Test
+    void checkAnswerException9() {
+        assertSimpleTest(() -> {
+            runException("1000", "-0,6,7,8,9,10");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

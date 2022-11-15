@@ -60,6 +60,15 @@ class MoneyTest2 extends NsTest {
         Money money2 = new Money("3000000000000000000");
     }
 
+    @DisplayName("입력된 돈이 조건에 맞는지 확인 - 널이 들어올.")
+    @Test
+    void checkMoneyException5() {
+        runException(null, "1,2,3,4,5,6");
+        assertThat(output()).contains("[ERROR]");
+//        Money money1 = new Money(null);
+//        Money money2 = new Money("3000000000000000000");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
