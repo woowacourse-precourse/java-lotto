@@ -17,6 +17,7 @@ public class LottoStore {
 	public void open() {
 		buy();
 		publish();
+		win();
 	}
 
 	private void buy() {
@@ -38,5 +39,11 @@ public class LottoStore {
 					Constants.LOTTO_LENGTH));
 			lottos.add(lotto);
 		}
+	}
+
+	private void win() {
+//		List<Integer> goal = ConsoleIn.readGoal();
+//		Verify.verifyGoal(goal);
+//		checkWin(goal);
 	}
 }
