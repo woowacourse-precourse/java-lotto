@@ -35,10 +35,11 @@ public class OutputImpl implements Output{
         System.out.println(EventMessage.STATISTICS_HEADER.message);
         Map<Rank, BigDecimal> rankCount = statistics.getRankCount();
         for (Rank rank : rankCount.keySet()) {
-            if(!rank.equals(Rank.FAIL)){
-                System.out.println(String.format(EventMessage.STATISTICS_BODY.message,rank.getSameCount(),df.format(rank.getPrize()),rankCount.get(rank).toString()));
+            if(rank.equals(Rank.SECOND)){
+                System.out.println(String.format(EventMessage.STATISTICS_BODY_SECOND.message,rank.getSameCount(),df.format(rank.getPrize()),rankCount.get(rank).toString()));
             }
+            System.out.println(String.format(EventMessage.STATISTICS_BODY.message,rank.getSameCount(),df.format(rank.getPrize()),rankCount.get(rank).toString()));
         }
-        System.out.print(String.format(EventMessage.STATISTICS_FOOTER.message,df.format(statistics.getYield().toString())));
+        System.out.print(String.format(EventMessage.STATISTICS_FOOTER.message,df.format(statistics.getYield())));
     }
 }
