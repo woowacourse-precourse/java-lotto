@@ -56,4 +56,12 @@ public class WinningStatistics {
         }
         return  number;
     }
+
+    private int getBonusScore(List<Integer> lotto,int bonus) {
+        int number = 0;
+        if (lotto.contains(bonus)) {
+            number ++;
+        }
+        return number;
+    }
 }
