@@ -39,11 +39,11 @@ public class OutputView {
         System.out.println(MESSAGE_PROFIT_PREFIX + String.format("%.1f", profit) + MESSAGE_PROFIT_SUFFIX);
     }
 
-    public static void printString(String input){
+    public static void printString(String input) {
         System.out.println(input);
     }
 
-    public static void enterLine(){
+    public static void enterLine() {
         System.out.println();
     }
 }
