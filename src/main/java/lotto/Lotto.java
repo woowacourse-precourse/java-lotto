@@ -17,16 +17,23 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateNumbersCount(numbers);
+        validateNumbersRange(numbers);
+        validateNumbersDuplicate(numbers);
+    }
+    private void validateNumbersCount(List<Integer> numbers){
         if (numbers.size() != NUMBER_CNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 너무 많거나 적습니다.");
         }
-
+    }
+    private void validateNumbersRange(List<Integer> numbers){
         for (int i : numbers) {
             if (i < Lotto.NUMBER_MIN || i > Lotto.NUMBER_MAX) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
-
+    }
+    private void validateNumbersDuplicate(List<Integer> numbers){
         boolean[] duplicate = new boolean[NUMBER_MAX + 1];
         for (int i : numbers) {
             if(duplicate[i]) {
