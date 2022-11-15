@@ -15,9 +15,7 @@ public class LottoConsole {
         String input = Console.readLine();
         int money = stringToInt(input);
 
-        if (money % 1000 != 0)
-            throw new IllegalArgumentException();
-        lottoManager.makeLottos(money / 1000);
+        lottoManager.InputMoney(money);
     }
 
     void inputNumbers(){
@@ -30,6 +28,8 @@ public class LottoConsole {
         input = Console.readLine();
         int bonusNumber = validateNumber(input, numbers);
         lottoManager.setBonusNumber(bonusNumber);
+
+        lottoManager.matchLottos();
     }
 
     void printLottoNumbers(){
