@@ -17,17 +17,26 @@
     2. 당첨 번호에서 콤마로 구분되지 않은 경우 에외 -> winningNumberValidation ; [ERROR] 당첨 번호는 ','로 구분해주세요.
     3. 보너스 번호가 당첨 번호 중 하나일 경우 예외 -> bonusNumberValidation ; [ERROR] 보너스 번호는 당첨 번호와 다른 숫자여야합니다."
     ````
+- LottoValidation class
 
+  > - 로또에 대한 검증
+    ````
+    1.로또 번호는 6개여야한다 numberCountValidation [ERROR] 로또 번호는 6개입니다.
+    2.로또 번호는 1부터 45까지이다. numberRangeValidation [ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.
+    3.로또 번호는 중복될 수 없다 numberDuplicateValidation [ERROR] 로또 번호는 중복될 수 없습니다.
+    4.로또를 구매한 금액은 1000원 단위여야한다. costValidation [ERROR] 구입 금액은 1000원 단위입니다.
+    ````
+  
 - Convert class
-    > 유효성 검증이 끝난 입력을 요구에 맞게 변환
+    > - 유효성 검증이 끝난 입력을 요구에 맞게 변환
     ````
     1. 구매 금액을 Integer 변환
     2. 당첨 번호를 Lotto 변환
     3. 보너스 번호를 Integer 변환
     ````
  
-- Purchase Class
-    > 구매 금액에 맞게 로또를 구매 (구매 번호 생성)
+- Purchase class
+    > - 구매 금액에 맞게 로또를 구매 (구매 번호 생성)
     ````
     1. 구매 금액에 맞게 로또를 구매
     2. 구매 금액 정보를 가지고 있음
