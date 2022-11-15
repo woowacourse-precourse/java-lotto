@@ -1,6 +1,7 @@
 package ui;
 
 import lotto.Lotto;
+import lotto.Prize;
 import user.User;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class View {
         System.out.println(PROMPT_WINNING_NUMBER);
     }
 
-    public static void promptBonusNUmber() {
+    public static void promptBonusNumber() {
         System.out.println(PROMPT_BONUS_NUMBER);
     }
 
@@ -33,16 +34,17 @@ public class View {
     public static void printWinnigSummary(List<Integer> correctList) {
         System.out.println(RESULT_SUMMARY);
         String message = "";
-        for (PrizeMessage value : PrizeMessage.values()) {
-            message = value.getValue();
-            System.out.println(message + correctList.get(value.ordinal()) + "개");
+        for (int i = 0; i < correctList.size(); i++) {
+            System.out.println(Prize.getPrizeMessage(i + 1) + correctList.get(i) + "개");
         }
     }
-    public static void printLottoList(User user){
-        for(Lotto lotto : user.getLottos()){
+
+    public static void printLottoList(User user) {
+        for (Lotto lotto : user.getLottos()) {
             View.printLottoNumber(lotto.toNumberForm());
         }
     }
+
     public static void printLottoNumber(String numberForm) {
         System.out.println(numberForm);
     }
