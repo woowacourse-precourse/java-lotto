@@ -16,9 +16,6 @@ public class Lotto {
         this.winningNumbers = numbers;
     }
 
-    public List<Integer> getWinningNumbers() {
-        return this.winningNumbers;
-    }
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUM_OF_LOTTO) {
@@ -63,5 +60,9 @@ public class Lotto {
 
     public int getBonus() {
         return this.bonus;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
     }
 }
