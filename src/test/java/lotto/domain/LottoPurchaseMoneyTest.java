@@ -15,4 +15,11 @@ class LottoPurchaseMoneyTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 구입금이 1000원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void 로또_구입금이_1000원으로_나누어떨어지지_않도록_생성() {
+        assertThatThrownBy(() -> new LottoPurchaseMoney(1100))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
