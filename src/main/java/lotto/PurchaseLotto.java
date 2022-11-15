@@ -20,4 +20,8 @@ public class PurchaseLotto {
         }
         return myLotto;
     }
+    private static void lottoCount(int inputMoney) {
+        int myCount = inputMoney / 1000;
+        for (int i = 0; i < myCount; i++) ;
+    }
 }

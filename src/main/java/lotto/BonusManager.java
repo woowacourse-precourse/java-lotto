@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class BonusManager {
-    private final List<Integer> bonusnumbers;
+    private List<Integer> bonusnumbers;
 
-    public BonusManager(List<Integer> bonusnumbers) {
+    public void bonusManager(List<Integer> bonusnumbers) {
         validate(bonusnumbers);
         random(bonusnumbers);
         this.bonusnumbers = bonusnumbers;

@@ -30,4 +30,6 @@ public class MyLotto {
         HashSet<Integer> checkmynumbers = new HashSet<Integer>(mynumbers);
         return new ArrayList<Integer>(checkmynumbers);
     }
+
+
 }
