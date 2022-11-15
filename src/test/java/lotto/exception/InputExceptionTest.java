@@ -57,7 +57,7 @@ public class InputExceptionTest {
     @DisplayName("당첨 로또 번호를 입력할 때 콤마로 구분하지 않으면 예외가 발생한다.")
     @Test
     void createWinLottoNumbersBySplitComma() {
-        String winLottoNumbers = "123456";
+        String winLottoNumbers = "1,2,3,4,56";
         assertThatThrownBy(() -> InputException.validatesWinLottoNumber(winLottoNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }

@@ -81,7 +81,8 @@ public class InputException {
     }
 
     private static void validateSplitComma(String number) {
-        if (!number.contains(COMMA)) {
+        int commaNumber = number.chars().filter(ch -> ch == ',').sum();
+        if (commaNumber != number.length()-1) {
             exception(SPLIT_BY_COMMA);
         }
     }
