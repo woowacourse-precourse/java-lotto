@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.Prize;
 import lotto.model.Referee;
 import lotto.model.Lotto.BonusLotto;
 import lotto.model.Lotto.Lotto;
@@ -8,6 +9,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class EventController {
 
@@ -39,5 +41,13 @@ public class EventController {
         lotto = new Lotto(lottoNumbers);
         Integer bonusLottoNumber = InputView.inputBonusNumber(lottoNumbers);
         bonusLotto = new BonusLotto(bonusLottoNumber);
+    }
+
+    public void judgePrize() {
+        referee = new Referee(lotto, bonusLotto);
+        List<List<Integer>> tickets = user.getTickets();
+
+        Map<Prize, Integer> resultPrize =  referee.calculatePrizeOfAllTicket(tickets);
+        OutputView.printPrizeResult(resultPrize);
     }
 }
