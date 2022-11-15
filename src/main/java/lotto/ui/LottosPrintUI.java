@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottosPrintUI {
-    private String format = "%d개를 구매했습니다.";
+    private static final String FORMAT = "%d개를 구매했습니다.";
 
     public void print(List<Lotto> lottos) {
-        System.out.println(String.format(format, lottos.size()));
+        System.out.println(String.format(FORMAT, lottos.size()));
         for (Lotto lotto : lottos) {
             printLotto(lotto);
         }

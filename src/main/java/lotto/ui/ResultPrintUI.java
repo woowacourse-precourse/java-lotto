@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.Map;
 
 public class ResultPrintUI {
-    private static final String title = "당첨 통계";
-    private static final String line = "---";
-    private static final String body = "%d개 일치%s (%s원) - %d개";
-    private static final String bonus = ", 보너스 볼 일치";
-    private static final DecimalFormat decFormat = new DecimalFormat("###,###");
+    private static final String TITLE = "당첨 통계";
+    private static final String LINE = "---";
+    private static final String BODY = "%d개 일치%s (%s원) - %d개";
+    private static final String BONUS = ", 보너스 볼 일치";
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###");
 
     public void print(Map<WinningResult, Integer> results) {
-        System.out.println(title);
-        System.out.println(line);
+        System.out.println(TITLE);
+        System.out.println(LINE);
         for (WinningResult result : printOrder(WinningResult.values())) {
             if (result == WinningResult.NONE) {
                 continue;
@@ -35,9 +35,9 @@ public class ResultPrintUI {
     private String printFormat(WinningResult result, int count) {
         String isBonus = "";
         if (result.getBonus() == 1) {
-            isBonus = bonus;
+            isBonus = BONUS;
         }
-        return String.format(body, result.getWinning(), isBonus, decFormat.format(result.getPrize()), count);
+        return String.format(BODY, result.getWinning(), isBonus, DECIMAL_FORMAT.format(result.getPrize()), count);
     }
 
 }
