@@ -33,11 +33,11 @@ public class WinningResult {
     }
 
     public void compareLotto(Lotto purchaseLotto) {
-        Rank rank = Rank.decide(countCoincide(purchaseLotto), isCoincideBonus(purchaseLotto));
+        Rank rank = Rank.decide(countCoincide(purchaseLotto), hasBonusNumber(purchaseLotto));
         addRank(rank);
     }
 
-    private boolean isCoincideBonus(Lotto purchaseLotto) {
+    private boolean hasBonusNumber(Lotto purchaseLotto) {
         return purchaseLotto.getNumbers().contains(bonusNumber);
     }
 

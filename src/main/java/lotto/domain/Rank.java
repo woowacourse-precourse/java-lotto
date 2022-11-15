@@ -12,12 +12,12 @@ public enum Rank {
 
     int winningAmount;
     int coincideCount;
-    boolean coincideBonus;
+    boolean hasBonus;
 
-    Rank(int winningAmount, int coincideCount, boolean coincideBonus) {
+    Rank(int winningAmount, int coincideCount, boolean hasBonus) {
         this.winningAmount = winningAmount;
         this.coincideCount = coincideCount;
-        this.coincideBonus = coincideBonus;
+        this.hasBonus = hasBonus;
     }
 
     Rank(int winningAmount, int coincideCount) {
@@ -32,11 +32,23 @@ public enum Rank {
         return coincideCount;
     }
 
-    public static Rank decide(long coincideCount, boolean coincideBonus) {
-        return Arrays.stream(Rank.values())
+    public static Rank decide(long coincideCount, boolean hasBonusNumber) {
+        if (isWinningSecond(coincideCount, hasBonusNumber)) {
+            return SECOND;
+        }
+
+        return findRank(coincideCount);
+    }
+
+    private static Rank findRank(long coincideCount) {
+        return Arrays.stream(values())
                 .filter(rank -> rank.coincideCount == coincideCount)
-                .filter(rank -> !rank.equals(SECOND) || coincideBonus)
+                .filter(rank -> !rank.hasBonus)
                 .findAny()
                 .orElse(NONE);
+    }
+
+    private static boolean isWinningSecond(long coincideCount, boolean hasBonusNumber) {
+        return (coincideCount == 5) && hasBonusNumber;
     }
 }
