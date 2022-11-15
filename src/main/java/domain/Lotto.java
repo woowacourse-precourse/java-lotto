@@ -36,7 +36,13 @@ public class Lotto {
         System.out.println(numbers);
     }
 
-    public boolean checkBounsInclude(int bonusNum){
+    public boolean checkBounsInclude(int bonusNum) {
         return numbers.contains(bonusNum);
+    }
+
+    public int checkRaffle(Lotto pickNumber) {
+        List<Integer> tempList = numbers;
+        tempList.retainAll(pickNumber.numbers);
+        return tempList.size();
     }
 }
