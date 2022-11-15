@@ -38,6 +38,7 @@ public class LottoController {
 
         List<List<Integer>> matchCounts = computeMatchCounts(predictionNumbers, bonusNumber);
         recordWinningLog(matchCounts);
+        outputView.printWinningLog(winningLog);
     }
 
     public int computeAmountOfLotto(int purchasePrice) {
