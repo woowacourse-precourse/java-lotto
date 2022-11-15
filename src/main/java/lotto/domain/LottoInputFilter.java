@@ -7,10 +7,13 @@ import java.util.List;
 
 public class LottoInputFilter {
 
+    private static String inputLottoNumberStringFormat = "\n로또 번호를 입력해 주세요.";
+    private static String inputAmountStringFormat = "\n구입금액을 입력해 주세요.";
+    private static String inputBounsNumberStringFormat = "\n보너스 번호를 입력해 주세요.";
     private static LottoValidator validator = LottoValidator.getInstance();
 
     public static List<Integer> readLottoNumber() {
-        System.out.println("로또 번호를 입력해 주세요.");
+        System.out.println(inputLottoNumberStringFormat);
         List<Integer> lottoNumber = new ArrayList<>();
         String input = Console.readLine();
         String[] inputSplit = input.split(",");
@@ -40,7 +43,7 @@ public class LottoInputFilter {
     }
 
     public static int readBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(inputBounsNumberStringFormat);
         String input = Console.readLine();
 
         if (!validator.isPositiveInteger(input)) {
@@ -56,7 +59,7 @@ public class LottoInputFilter {
     }
 
     public static int readPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(inputAmountStringFormat);
         String input = Console.readLine();
         if (!validator.isPositiveInteger(input)) {
             System.out.println(ErrorMessage.NON_POSITIVE_INTEGER_VALUE.getMessage());
