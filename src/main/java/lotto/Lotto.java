@@ -31,11 +31,10 @@ public class Lotto {
 
         for (List<Integer> current : userLottoList) {
             MatchInfo currentResult = this.calculateSingleLottoResult(current, bonusNumber);
-            if (currentResult != null) {
 
+            if (currentResult != null) {
                 int count = calculateResult.get(currentResult);
                 calculateResult.replace(currentResult, count + 1);
-
             }
         }
         return calculateResult;
@@ -48,7 +47,6 @@ public class Lotto {
         calculateResult.put(MatchInfo.MATCH_FOUR, 0);
         calculateResult.put(MatchInfo.MATCH_FIVE, 0);
         calculateResult.put(MatchInfo.MATCH_SIX, 0);
-        calculateResult.put(MatchInfo.MATCH_FIVE_WITH_BONUS, 0);
         calculateResult.put(MatchInfo.MATCH_FIVE_WITH_BONUS, 0);
 
         return calculateResult;
@@ -71,16 +69,19 @@ public class Lotto {
     }
 
     private MatchInfo convertLottoResultToEnum(int count, boolean bonus) {
-        if (count == 3) {
+        if (count == MatchInfo.MATCH_THREE.getMatchNumber()) {
             return MatchInfo.MATCH_THREE;
-        } else if (count == 4) {
+        }
+        if (count == MatchInfo.MATCH_FOUR.getMatchNumber()) {
             return MatchInfo.MATCH_FOUR;
-        } else if (count == 5) {
+        }
+        if (count == MatchInfo.MATCH_FIVE.getMatchNumber()) {
             if (bonus) {
                 return MatchInfo.MATCH_FIVE_WITH_BONUS;
             }
             return MatchInfo.MATCH_FIVE;
-        } else if (count == 6) {
+        }
+        if (count == MatchInfo.MATCH_SIX.getMatchNumber()) {
             return MatchInfo.MATCH_SIX;
         }
         return null;
@@ -90,17 +91,7 @@ public class Lotto {
         BigInteger result = new BigInteger("0");
         for (MatchInfo key : lottoStatistics.keySet()) {
             int value = lottoStatistics.get(key);
-            if (key == MatchInfo.MATCH_THREE) {
-                result = result.add(MatchInfo.MATCH_THREE.getWinningAmount().multiply(BigInteger.valueOf(value)));
-            } else if (key == MatchInfo.MATCH_FOUR) {
-                result = result.add(MatchInfo.MATCH_FOUR.getWinningAmount().multiply(BigInteger.valueOf(value)));
-            } else if (key == MatchInfo.MATCH_FIVE) {
-                result = result.add(MatchInfo.MATCH_FIVE.getWinningAmount().multiply(BigInteger.valueOf(value)));
-            } else if (key == MatchInfo.MATCH_FIVE_WITH_BONUS) {
-                result = result.add(MatchInfo.MATCH_FIVE_WITH_BONUS.getWinningAmount().multiply(BigInteger.valueOf(value)));
-            } else if (key == MatchInfo.MATCH_SIX) {
-                result = result.add(MatchInfo.MATCH_SIX.getWinningAmount().multiply(BigInteger.valueOf(value)));
-            }
+            result = result.add(key.getWinningAmount().multiply(BigInteger.valueOf(value)));
         }
         return result;
     }
