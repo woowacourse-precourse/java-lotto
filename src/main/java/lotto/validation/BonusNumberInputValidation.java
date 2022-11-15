@@ -6,6 +6,12 @@ public class BonusNumberInputValidation {
     public static final int MIN_LOTTO_NUM = 1;
     public static final int MAX_LOTTO_NUM = 45;
 
+    public void validate(List<Integer> predictionNumbers, String userInputBonusNumber) {
+        validateInputIsInteger(userInputBonusNumber);
+        validateNoDuplicationWithPredictionNumbers(predictionNumbers, userInputBonusNumber);
+        validateNumberRange(userInputBonusNumber);
+    }
+
     public void validateInputIsInteger(String userInputBonusNumber) {
         try {
             Integer.parseInt(userInputBonusNumber);
