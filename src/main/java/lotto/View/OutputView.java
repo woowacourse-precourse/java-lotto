@@ -44,4 +44,7 @@ public class OutputView {
         return result;
     }
 
+    public void printEarningRate(double rate) {
+        System.out.print("총 수익률은 " + String.format("%.1f", rate) + "%입니다.");
+    }
 }
