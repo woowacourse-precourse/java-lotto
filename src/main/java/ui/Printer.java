@@ -18,7 +18,7 @@ public class Printer {
 
     public void printLotto(List<Lotto> boughtLotto) {
         for (Lotto lotto : boughtLotto) {
-            Collections.sort(lotto.getNumbers());
+//            Collections.sort(lotto.getNumbers());
             System.out.println(lotto.getNumbers());
         }
     }
@@ -38,7 +38,7 @@ public class Printer {
         System.out.println(UiText.FIVE_MATCHES.getTxt() + dto.getFiveCount() + "개");
         System.out.println(UiText.FIVE_AND_BONUS_MATCHES.getTxt() + dto.getFiveBonusCount() + "개");
         System.out.println(UiText.SIX_MATCHES.getTxt() + dto.getSixCount() + "개");
-        System.out.println(UiText.GROSS_RETURN.getTxt());
+        System.out.println(UiText.GROSS_RETURN.getTxt() + String.format("%.1f", dto.getGrossReturn()) + "%입니다.");
     }
 
     public void printErrorMessage(IllegalArgumentException exception) {
