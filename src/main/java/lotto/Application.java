@@ -5,18 +5,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Application {
     public static int lottoCount = 0;
     public static List<Integer> winningNumber = new ArrayList<>();
+    public static int bonusNumber = 0;
 
     public static void main(String[] args) {
         lottoBuy();
         lottoIssue();
         setWinningNumbers();
         Lotto lotto = new Lotto(winningNumber);
+        setBonusNumber();
     }
 
     public static void lottoBuy() {
@@ -44,6 +44,16 @@ public class Application {
         for (String Number : inputNum.split(",")) {
             winningNumber.add(Integer.parseInt(Number));
         }
+    }
+
+    public static void setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String inputNum = Console.readLine();
+        int bonusNumberCheck = Integer.parseInt(inputNum);
+        if(winningNumber.contains(bonusNumberCheck)){
+            throw new IllegalArgumentException("[ERROR]당첨 번호와 중복되지 않는 보너스 번호를 입력해 주세요.");
+        }
+        bonusNumber =  bonusNumberCheck;
     }
 }
 
