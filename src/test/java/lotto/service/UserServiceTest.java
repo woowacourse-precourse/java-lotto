@@ -27,7 +27,7 @@ public class UserServiceTest {
                 "10!0", "1 00"
         })
         void case1(String inputMoney) {
-            Assertions.assertThatThrownBy(() -> userService.inputMoneyToInteger(inputMoney))
+            Assertions.assertThatThrownBy(() -> userService.setMoneyToUser(inputMoney))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] 구매 금액과 로또 번호는 숫자만 입력이 가능합니다.");
         }
@@ -37,7 +37,7 @@ public class UserServiceTest {
                 "1234", "1001", "11111001"
         })
         void case2(String inputMoney) {
-            Assertions.assertThatThrownBy(() -> userService.inputMoneyToInteger(inputMoney))
+            Assertions.assertThatThrownBy(() -> userService.setMoneyToUser(inputMoney))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] 구매 금액은 1,000원 단위로 입력이 가능합니다.");
         }
@@ -51,7 +51,7 @@ public class UserServiceTest {
                 "1000", "1234000"
         })
         void case1(String inputMoney) {
-            Assertions.assertThatCode(() -> userService.inputMoneyToInteger(inputMoney))
+            Assertions.assertThatCode(() -> userService.setMoneyToUser(inputMoney))
                     .doesNotThrowAnyException();
         }
     }

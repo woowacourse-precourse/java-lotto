@@ -15,13 +15,13 @@ public class UserService {
     InputException inputException = new InputException();
 
     public void setMoneyToUser(String inputMoney) {
-        user = new User(inputMoneyToInteger(inputMoney));
+        moneyValidate(inputMoney);
+        user = new User(Integer.parseInt(inputMoney));
     }
 
-    public int inputMoneyToInteger(String inputMoney) {
-        inputException.notDigitException(inputMoney);
-        inputException.notThousandMoneys(Integer.parseInt(inputMoney));
-        return Integer.parseInt(inputMoney);
+    public void moneyValidate(String money) {
+        inputException.notDigitException(money);
+        inputException.notThousandMoneys(Integer.parseInt(money));
     }
 
     public void setNumbersToUser(String inputNumbers) {
@@ -45,7 +45,12 @@ public class UserService {
         numbers = Arrays.stream(stringNumbers)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+        System.out.println("numbers = " + numbers);
         return numbers;
+    }
+
+    public void numbersValidate(String numbers) {
+
     }
 
     public void setBonusNumber(String inputBonusNumber) {
@@ -53,18 +58,17 @@ public class UserService {
         user.setBonusNumber(Integer.parseInt(inputBonusNumber));
     }
 
-    public int getLottoQuantity() {
-        return user.getMoney() / LOTTERY_PRICE;
+    public void bonusNumberValidate(String bonusNumber) {
+        inputException.notDigitException(bonusNumber);
+        inputException.numbersRangeException(List.of(Integer.parseInt(bonusNumber)));
+        inputException.duplicateBonusNumberException(getUser().getNumbers(), Integer.parseInt(bonusNumber));
     }
-
 
     public User getUser() {
         return user;
     }
 
-    public void bonusNumberValidate(String bonusNumber) {
-        inputException.notDigitException(bonusNumber);
-        inputException.numbersRangeException(List.of(Integer.parseInt(bonusNumber)));
-        inputException.duplicateBonusNumberException(getUser().getNumbers(), Integer.parseInt(bonusNumber));
+    public int getLottoQuantity() {
+        return user.getMoney() / LOTTERY_PRICE;
     }
 }
