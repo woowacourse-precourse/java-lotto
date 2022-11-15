@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static lotto.utils.Constant.LOTTO_END;
 import static lotto.utils.Constant.LOTTO_SIZE;
@@ -36,13 +37,13 @@ public class Lotto {
     }
 
     private static void validateDuplicateNumbers(List<Integer> numbers) {
-        HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         if (hasDuplicateNumbers(uniqueNumbers)) {
             throw new IllegalArgumentException(ERROR_GENERATED_DUPLICATED_LOTTO_NUMBERS);
         }
     }
 
-    private static boolean hasDuplicateNumbers(HashSet<Integer> uniqueNumbers) {
+    private static boolean hasDuplicateNumbers(Set<Integer> uniqueNumbers) {
         return uniqueNumbers.size() != LOTTO_SIZE;
     }
 

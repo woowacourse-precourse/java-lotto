@@ -18,6 +18,7 @@ public enum Prize {
     public static final int SECOND_PRIZE_CRITERION_FOR_WINNING_MATCH = 5;
     public static final int SECOND_PRIZE_CRITERION_FOR_BONUS_MATCH = 1;
     public static final int FIRST_PRIZE_CRITERION_FOR_WINNING_MATCH = 6;
+    public static final String UNIT = "개";
 
     private final int money;
     private final BiPredicate<Integer, Integer> judge;
@@ -54,7 +55,7 @@ public enum Prize {
     }
 
     private static BiPredicate<Integer, Integer> judgeThird() {
-        return (winningMatches, bonusMatches) -> isThird(winningMatches, bonusMatches);
+        return Prize::isThird;
     }
 
     private static boolean isThird(Integer winningMatches, Integer bonusMatches) {
@@ -63,7 +64,7 @@ public enum Prize {
     }
 
     private static BiPredicate<Integer, Integer> judgeSecond() {
-        return (winningMatches, bonusMatches) -> isSecond(winningMatches, bonusMatches);
+        return Prize::isSecond;
     }
 
     private static boolean isSecond(Integer winningMatches, Integer bonusMatches) {
@@ -98,6 +99,7 @@ public enum Prize {
     }
 
     public void printMessageWithCount(Long count) {
-        System.out.println(this.message + count + "개");
+        String countMessage = this.message + count + UNIT;
+        System.out.println(countMessage);
     }
 }

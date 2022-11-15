@@ -16,6 +16,8 @@ public class Result {
     public static final String ENTER_UNIQUE_NUMBER = "[ERROR] 중복된 숫자를 입력하실 수 없습니다.";
     public static final String ENTER_UNIQUE_BONUS_NUMBER = "[ERROR] 보너스 숫자는 당첨 번호와 중복될 수 없습니다.";
     public static final String INPUT_RIGHT_RANGE_NUMBER = "[ERROR] 1 ~ 45 사이의 숫자를 입력해주세요.";
+    public static final int BONUS_NUMBER_MATCH = 1;
+    public static final int BONUS_NUMBER_NOT_MATCH = 0;
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private int bonusNumber;
@@ -106,9 +108,9 @@ public class Result {
 
     private int checkWithBonusNumber(Lotto lotto) {
         if (lotto.contains(bonusNumber)) {
-            return 1;
+            return BONUS_NUMBER_MATCH;
         }
-        return 0;
+        return BONUS_NUMBER_NOT_MATCH;
     }
 
     private int checkWithWinningNumbers(Lotto lotto) {

@@ -11,8 +11,10 @@ import static lotto.model.Prize.NONE;
 import static lotto.utils.Constant.LOTTO_PRICE;
 
 public class Lottos {
-    public static final String INPUT_RIGHT_MONEY = "1000원으로 나누어 떨어지는 금액을 입력해주세요.";
+    public static final String INPUT_RIGHT_MONEY = "[ERROR] 1000원으로 나누어 떨어지는 금액을 입력해주세요.";
     public static final long INITIALIZE_WINNING_RESULT_VALUE = 0L;
+    public static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
+    public static final long RESULT_INITIAL_VALUE = 1L;
 
     private final List<Lotto> lottos = new ArrayList<>();
 
@@ -42,8 +44,8 @@ public class Lottos {
         return new Lottos(money);
     }
 
-    public void printAll() {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+    public void printAllLottos() {
+        System.out.println(lottos.size() + PURCHASE_MESSAGE);
         lottos.forEach(lotto -> System.out.println(lotto.toString()));
     }
 
@@ -74,6 +76,6 @@ public class Lottos {
     }
 
     private static Consumer<Prize> addResult(Map<Prize, Long> winningResult) {
-        return prize -> winningResult.merge(prize, 1L, Long::sum);
+        return prize -> winningResult.merge(prize, RESULT_INITIAL_VALUE, Long::sum);
     }
 }

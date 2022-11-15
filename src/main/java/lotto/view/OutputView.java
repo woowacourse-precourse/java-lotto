@@ -17,7 +17,7 @@ public class OutputView {
 
     public static void printLottosHistory(Lottos lottos) {
         printNewLine();
-        lottos.printAll();
+        lottos.printAllLottos();
     }
 
     public static void printResultMessage(Map<Prize, Long> winningResults) {
