@@ -10,7 +10,7 @@ public class validates {
         return true;
     }
 
-    private boolean valadateLottoBound() {
+    private boolean validateLottoBound() {
         return true;
     }
 
