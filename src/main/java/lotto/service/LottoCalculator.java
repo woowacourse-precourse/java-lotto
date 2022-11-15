@@ -60,15 +60,20 @@ public class LottoCalculator {
         long profit = 0;
 
         for (CalculatedLotto lotto : calculatedLottos) {
-            LottoMatch lottoMatch = LottoMatch.calculatedLottoMapper(lotto);
-            if (lottoMatch != NULL_RESULT) {
-                int curruentCnt = statistics.get(lottoMatch);
-                statistics.put(lottoMatch, curruentCnt + 1);
-                profit += lottoMatch.getProfit();
-            }
+            profit = getProfit(statistics, profit, lotto);
         }
 
         printTotalResult(statistics, calculateProfitRate(profit));
+    }
+
+    private long getProfit(EnumMap<LottoMatch, Integer> statistics, long profit, CalculatedLotto lotto) {
+        LottoMatch lottoMatch = LottoMatch.calculatedLottoMapper(lotto);
+        if (lottoMatch != NULL_RESULT) {
+            int curruentCnt = statistics.get(lottoMatch);
+            statistics.put(lottoMatch, curruentCnt + 1);
+            profit += lottoMatch.getProfit();
+        }
+        return profit;
     }
 
     private float calculateProfitRate(long profit) {
