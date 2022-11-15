@@ -15,7 +15,7 @@ public class Application {
     //region 변수
     public static int lottoNumber;
     private static int bonusNumber;
-    private static Lotto winningLotto;
+    private static Lotto winning;
     private static List<Lotto> lottos;
     private static WinningStats winningStats;
     //endregion
@@ -24,7 +24,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             salesLotto();
-            getWinningNumber();
+            getWinning();
             getBonusNumber();
             checkWinning();
             checkEarningRate();
@@ -37,22 +37,38 @@ public class Application {
     //endregion
 
     //region 메서드
+    public static void salesLotto(){
+        System.out.println(PrintMessage.purchasingAmount);
+        String userInput = getUserInputData();
+        salesValidate(userInput);
+
+        getPurchaseAmount(userInput);
+        purchaseLotto();
+    }
+
+    private static void getWinning() {
+        System.out.println(PrintMessage.winning);
+        String userInput = getUserInputData();
+        castWinningNumberToLotto(userInput);
+    }
+
+    private static void getBonusNumber() {
+        System.out.println(PrintMessage.bonus);
+        String userInput = getUserInputData();
+        bonusValidate(userInput);
+        bonusNumber = Integer.parseInt(userInput);
+    }
+
+    private static void checkWinning() {
+        winningStats = new WinningStats(lottos, winning, bonusNumber);
+        winningStats.printWinningStats();
+    }
+
     private static void checkEarningRate() {
         winningStats.calculateEarningRate(lottoNumber * lottoPrice);
         winningStats.printEarningRate();
     }
 
-    private static void checkWinning() {
-        winningStats = new WinningStats(lottos, winningLotto, bonusNumber);
-        winningStats.printWinningStats();
-    }
-
-    private static void getBonusNumber() {
-        System.out.println(PrintMessage.bonusNumber);
-        String userInput = getUserInputData();
-        bonusValidate(userInput);
-        bonusNumber = Integer.parseInt(userInput);
-    }
 
     public static void bonusValidate(String userInput) {
         checkOnlyNumber(userInput);
@@ -63,7 +79,7 @@ public class Application {
     private static void checkSameNumber(String userInput) {
         int num = Integer.parseInt(userInput);
 
-        if(winningLotto.checkContainNumber(num))
+        if(winning.checkContainNumber(num))
             Error.error(Error.errMsg_ExistSameNumber);
     }
 
@@ -77,11 +93,6 @@ public class Application {
             Error.error(Error.errMsg_WrongLottoNumber);
     }
 
-    private static void getWinningNumber() {
-        System.out.println(PrintMessage.winningNumber);
-        String userInput = getUserInputData();
-        castWinningNumberToLotto(userInput);
-    }
 
     private static void castWinningNumberToLotto(String str){
         List<String> commaSplits = splitString(str);
@@ -92,29 +103,25 @@ public class Application {
             winningNumber.add(Integer.valueOf(commaSplit));
         }
 
-        winningLotto = new Lotto(winningNumber);
+        winning = new Lotto(winningNumber);
     }
 
     private static List<String> splitString(String str){
         return Arrays.asList(str.split(COMMA));
     }
+
     public static String getUserInputData(){
-        String input = Console.readLine();
-        return input;
+        return Console.readLine();
     }
 
-    public static void salesLotto(){
-        System.out.println(PrintMessage.purchasingAmount);
-        String userInput = getUserInputData();
-        salesValidate(userInput);
 
-        calculateNumberLotto(userInput);
-        lottos = Lotto.purchaseLotto(lottoNumber);
-    }
-
-    public static void calculateNumberLotto(String userInput){
+    public static void getPurchaseAmount(String userInput){
         int userPay = Integer.parseInt(userInput);
         lottoNumber = userPay / lottoPrice;
+    }
+
+    private static void purchaseLotto() {
+        lottos = Lotto.purchaseLotto(lottoNumber);
     }
 
     public static void salesValidate(String userInput) {

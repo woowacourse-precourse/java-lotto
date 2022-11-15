@@ -3,8 +3,8 @@ package lotto;
 public class PrintMessage {
     public static final String purchasingAmount = "구입금액을 입력해 주세요.";
     public static final String resultPurchasingAmount = "%d개를 구매했습니다.";
-    public static final String winningNumber = "당첨 번호를 입력해 주세요.";
-    public static final String bonusNumber = "보너스 번호를 입력해 주세요.";
+    public static final String winning = "당첨 번호를 입력해 주세요.";
+    public static final String bonus = "보너스 번호를 입력해 주세요.";
     public static final String winningStats = "당첨 통계";
     public static final String underLine = "---";
     public static final String fifthResult = "3개 일치 (5,000원) - %d개";
