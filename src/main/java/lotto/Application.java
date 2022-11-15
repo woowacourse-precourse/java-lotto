@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.verifier.PurchaseManager;
+import lotto.validator.PurchaseManager;
 
 import java.util.List;
 

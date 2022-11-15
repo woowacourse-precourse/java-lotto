@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.verifier.BonusNumberValidator;
-import lotto.verifier.WinningNumbersValidator;
+import lotto.validator.BonusNumberValidator;
+import lotto.validator.WinningNumbersValidator;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;

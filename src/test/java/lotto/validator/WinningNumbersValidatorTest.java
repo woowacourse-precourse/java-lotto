@@ -1,4 +1,4 @@
-package lotto.verifier;
+package lotto.validator;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
