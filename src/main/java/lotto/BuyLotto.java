@@ -25,4 +25,14 @@ public class BuyLotto {
 
         return sortedNumbers;
     }
+
+    public static List<Integer> makeLotto(List<List<Integer>> userLottoNumbers){
+        List<Integer> eachLottoNumbers = Randoms
+                .pickUniqueNumbersInRange(1, 45, 6);
+
+        eachLottoNumbers = sortingNumbers(eachLottoNumbers);
+        saveEachLottoNumbers(userLottoNumbers,eachLottoNumbers);
+
+        return eachLottoNumbers;
+    }
 }
