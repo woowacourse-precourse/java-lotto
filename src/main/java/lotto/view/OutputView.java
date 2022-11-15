@@ -43,12 +43,12 @@ public class OutputView {
         System.out.println("---");
     }
 
-    public static void printResultMessage(int count, String reword, int winningNumber) {
-        if(count == Rating.SECOND.getCount()) {
-            System.out.printf(RESULT_MESSAGE, count, reword, winningNumber);
+    public static void printResultMessage(Rating rating, int winningNumber) {
+        if(rating.getWrappingReward().equals(Rating.SECOND.getWrappingReward())) {
+            System.out.printf(BONUS_CORRECT_MESSAGE, rating.getCount(), rating.getWrappingReward(), winningNumber);
             return;
         }
-        System.out.printf(RESULT_MESSAGE, count, reword, winningNumber);
+        System.out.printf(RESULT_MESSAGE, rating.getCount(), rating.getWrappingReward(), winningNumber);
     }
 
     public static void printYieldMessage(float yield) {

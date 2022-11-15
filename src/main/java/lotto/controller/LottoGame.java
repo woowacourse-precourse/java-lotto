@@ -31,7 +31,7 @@ public class LottoGame {
         getBonusNumber();
         RatingService.service(result, user.getTickets(), winningNumber);
         printAllRating();
-
+        printYield();
     }
 
     public String init() {
@@ -55,6 +55,7 @@ public class LottoGame {
     }
 
     public void printAllTickets(List<Lotto> tickets) {
+        OutputView.printBlank();
         OutputView.printNotificationMessage(user.getTickets().size());
         for (Lotto ticket : tickets) {
             OutputView.printLottoTickets(ticket.toString());
@@ -62,6 +63,7 @@ public class LottoGame {
     }
 
     public void getWinningNumber() {
+        OutputView.printBlank();
         OutputView.printReceiveWinningMessage();
         String winningNumber = readLine();
         validateWinningNumber(winningNumber);
@@ -90,6 +92,7 @@ public class LottoGame {
     }
 
     public void getBonusNumber() {
+        OutputView.printBlank();
         OutputView.printReceiveBonusMessage();
         String bonus = readLine();
         validatePublic(bonus);
@@ -100,10 +103,17 @@ public class LottoGame {
     }
 
     public void printAllRating() {
+        OutputView.printBlank();
         OutputView.printBeforeResultMessage();
         for (Rating rating : Rating.values()) {
-            OutputView.printResultMessage(rating.getCount(), rating.getWrappingReward(), result.getResult(rating));
+            if(rating.getCount() == Rating.NONE.getCount()) {
+                continue;
+            }
+            OutputView.printResultMessage(rating, result.getResult(rating));
         }
+    }
 
+    public void printYield() {
+        OutputView.printYieldMessage(RatingService.getYield(result, user.getMoney()));
     }
 }
