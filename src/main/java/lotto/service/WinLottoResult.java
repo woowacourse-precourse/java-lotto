@@ -50,7 +50,7 @@ public class WinLottoResult {
         return count;
     }
 
-    public void printWinResult(int[] winResult) {
+    private void printWinResult(int[] winResult) {
         Output output = new Output();
 
         output.fifthPlace(winResult[0]);

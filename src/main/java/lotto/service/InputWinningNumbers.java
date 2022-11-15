@@ -19,11 +19,11 @@ public class InputWinningNumbers {
         return sixWinningNumbers;
     }
 
-    public List<Integer> sixLottoNumbers(String[] userLottoNumbers){
+    private List<Integer> sixLottoNumbers(String[] userLottoNumbers){
         return inputWinningNumbersHandler.checkException(sendDataToList(userLottoNumbers));
     }
 
-    public String[] userReadLine() {
+    private String[] userReadLine() {
         String userLottoNumbers = Console.readLine();
         String[] userLottoNumbersArray = userLottoNumbers.split(",");
 

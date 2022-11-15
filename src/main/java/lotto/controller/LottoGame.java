@@ -17,6 +17,7 @@ public class LottoGame {
             List<Integer> randomLottoLists = inputLottoNumbers();
             winLottosResult(randomLottoLists, PickRandomLottoLists.randomLottoLists);
             winLottoResult.calBenefit(winLottoResult.yield, userMoney);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

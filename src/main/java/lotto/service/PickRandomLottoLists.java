@@ -20,7 +20,7 @@ public class PickRandomLottoLists {
         printRandomLottoLists();
     }
 
-    public void printRandomLottoLists() {
+    private void printRandomLottoLists() {
         for (List<Integer> values : randomLottoLists) {
             System.out.println(values.stream().sorted().collect(Collectors.toList()));
         }

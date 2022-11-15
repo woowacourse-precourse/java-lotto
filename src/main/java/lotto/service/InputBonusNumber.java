@@ -24,13 +24,13 @@ public class InputBonusNumber {
         return Integer.parseInt(inputBonusNumber);
     }
 
-    public String userReadLine() {
+    private String userReadLine() {
         String userLottoNumbers = Console.readLine();
 
         return userLottoNumbers;
     }
 
-    public void bonusLottoNumber(String bonusNumber, List<Integer> sixWinningNumbers){
+    private void bonusLottoNumber(String bonusNumber, List<Integer> sixWinningNumbers){
         inputBonusNumberHandler.checkBonusNumberException(bonusNumber);
         inputBonusNumberHandler.checkAllNumbersException(bonusNumber, sixWinningNumbers);
     }
