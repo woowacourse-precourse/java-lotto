@@ -7,8 +7,8 @@ public class LottoController {
 
     private final String perPrizeStringFormat = "%s - %d개";
     private final String returnRateStringFormat = "총 수익률은 %,.1f%%입니다.";
-    private final LottoMachine lottoMachine;
-    private final Person person;
+    private static LottoMachine lottoMachine;
+    private static Person person;
 
     public LottoController(LottoMachine lottoMachine, Person person) {
         this.lottoMachine = lottoMachine;
