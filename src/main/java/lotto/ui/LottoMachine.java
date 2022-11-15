@@ -39,7 +39,8 @@ public class LottoMachine {
             lottos.add(lotto);
         }
     }
-    private void compareLottos(){
+
+    private void compareLottos() {
         Map<String, Integer> lottoComparisonResults = new HashMap<>(Map.of("fifthPlace", 0,
                 "fourthPlace", 0,
                 "thirdPlace", 0,
@@ -48,7 +49,11 @@ public class LottoMachine {
         lottoComparisonResults.put("fifthPlace", lottoComparator.getNumberMatchesLottoNumber(3));
         lottoComparisonResults.put("fourthPlace", lottoComparator.getNumberMatchesLottoNumber(4));
         lottoComparisonResults.put("thirdPlace", lottoComparator.getNumberMatchesLottoNumber(5));
-        lottoComparisonResults.put("secondPlace", lottoComparator.getNumberMatchesLottoNumber(5, true));
+        int secondPlaceCount = lottoComparator.getNumberMatchesLottoNumber(5, true);
+        //2등과 3등의 중복당첨을 피하기 위한 조치
+        lottoComparisonResults.put("secondPlace", secondPlaceCount);
+        lottoComparisonResults.put("thirdPlace", lottoComparisonResults.get("thirdPlace") - secondPlaceCount);
+
         lottoComparisonResults.put("firstPlace", lottoComparator.getNumberMatchesLottoNumber(6));
 
         System.out.printf("3개 일치 (5,000원) - %d개%n", lottoComparisonResults.get("fifthPlace"));
