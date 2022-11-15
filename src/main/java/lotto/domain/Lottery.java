@@ -13,13 +13,13 @@ public class Lottery {
         this.tickets = tickets;
     }
 
-    public static Lottery buy(int purchaseAmount) {
+    public static Lottery buy(PurchaseAmount purchaseAmount) {
         return new Lottery(generateLottery(purchaseAmount));
     }
 
-    private static List<Lotto> generateLottery(int purchaseAmount) {
+    private static List<Lotto> generateLottery(PurchaseAmount purchaseAmount) {
         List<Lotto> tickets = new ArrayList<>();
-        int lotteryCount = purchaseAmount / LOTTO_PRICE;
+        int lotteryCount = purchaseAmount.countLotterySize();
         while (tickets.size() < lotteryCount) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
                     Lotto.MIN_LOTTO_NUMBER, Lotto.MAX_LOTTO_NUMBER, Lotto.LOTTO_SIZE);

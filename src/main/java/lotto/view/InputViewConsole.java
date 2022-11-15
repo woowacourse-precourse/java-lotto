@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Error;
-import lotto.domain.Lottery;
 
 public class InputViewConsole implements InputView {
     private static final String NUMERIC_PATTERN = "^[0-9]+$";
@@ -15,23 +14,12 @@ public class InputViewConsole implements InputView {
     public int askPurchaseAmount() {
         String userInput = Console.readLine();
         isPurchaseAmountNumeric(userInput);
-        int purchaseAmount = Integer.parseInt(userInput);
-        validatePurchaseAmount(purchaseAmount);
-        return purchaseAmount;
+        return Integer.parseInt(userInput);
     }
 
     private void isPurchaseAmountNumeric(String userInput) {
         if (!userInput.matches(NUMERIC_PATTERN)) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_NUMERIC.getMessage());
-        }
-    }
-
-    private void validatePurchaseAmount(int purchaseAmount) {
-        if (purchaseAmount == 0) {
-            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_ZERO.getMessage());
-        }
-        if (purchaseAmount % Lottery.LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_DIVIDE_LOTTERY_PRICE.getMessage());
         }
     }
 
