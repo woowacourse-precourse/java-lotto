@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +11,9 @@ public class CheckWinningHistory {
     int thirdPlace;
     int fourthPlace;
     int fifthPlace;
+
+    // 각 등수에 따른 상금 정리
+    static final Integer[] prizeMoneys = {2000000000, 30000000, 1500000, 50000, 5000};
 
     CheckWinningHistory(){
         this.firstPlace = 0;
@@ -39,13 +43,13 @@ public class CheckWinningHistory {
     }
     /** 해당 로또의 당첨 내역을 반환하는 기능 */
     private int checkPrizeMoney(List<Integer> diff, int bonusNumber){
-        if (diff.size() == 0){ this.firstPlace++; return 2000000000; }
+        if (diff.size() == 0){ this.firstPlace++; return this.prizeMoneys[0]; }
         if (diff.size() == 1){
-            if (diff.get(0) == bonusNumber) {this.secondPlace++; return 30000000;}
-            this.thirdPlace++; return 1500000;
+            if (diff.get(0) == bonusNumber) {this.secondPlace++; return this.prizeMoneys[1];}
+            this.thirdPlace++; return this.prizeMoneys[2];
         }
-        if (diff.size() == 2){ this.fourthPlace++; return 50000; }
-        if (diff.size() == 3){ this.fifthPlace++; return 5000; }
+        if (diff.size() == 2){ this.fourthPlace++; return this.prizeMoneys[3]; }
+        if (diff.size() == 3){ this.fifthPlace++; return this.prizeMoneys[4]; }
         return 0;
     }
     /** 구입금액과 당첨금을 비교해, 총 수익률을 계산해 반환하는 기능 */
@@ -56,11 +60,11 @@ public class CheckWinningHistory {
     /** 당첨 내역을 출력하는 기능 */
     private void printWinningHistory() {
         System.out.println("\n당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - " + this.fifthPlace + "개");
-        System.out.println("4개 일치 (50,000원) - " + this.fourthPlace + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + this.thirdPlace + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + this.secondPlace + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - 0개" + this.firstPlace + "개");
+        System.out.println("3개 일치 ("+ DecimalFormat.getInstance().format(this.prizeMoneys[4])+"원) - " + this.fifthPlace + "개");
+        System.out.println("4개 일치 ("+ DecimalFormat.getInstance().format(this.prizeMoneys[3])+"원) - " + this.fourthPlace + "개");
+        System.out.println("5개 일치 ("+ DecimalFormat.getInstance().format(this.prizeMoneys[2])+"원) - " + this.thirdPlace + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 ("+ DecimalFormat.getInstance().format(this.prizeMoneys[1])+"원) - " + this.secondPlace + "개");
+        System.out.println("6개 일치 ("+ DecimalFormat.getInstance().format(this.prizeMoneys[0])+"원) - " + this.firstPlace + "개");
     }
     /** 총 수익률을 출력하는 기능 */
     private void printEarningsRate(float earningsRate) {
