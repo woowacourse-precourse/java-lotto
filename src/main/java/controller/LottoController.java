@@ -4,6 +4,7 @@ import domain.Buyer;
 import domain.GenerateLotto;
 import domain.PickBonusNum;
 import domain.PickLottoNum;
+import domain.Profit;
 import domain.Raffle;
 import view.BuyerInputView;
 import view.BuyerOutputView;
@@ -14,6 +15,7 @@ public class LottoController {
     private PickLottoNum pickLottoNum;
     private PickBonusNum pickBonusNum;
     private Raffle raffle;
+    private Profit profit;
 
     public void lottoStart() {
         buyLotto();
@@ -21,6 +23,7 @@ public class LottoController {
         pickLotto();
         pickBonus();
         startRaffle();
+        showMeTheMoney();
     }
 
     private void buyLotto() {
@@ -43,8 +46,14 @@ public class LottoController {
     }
 
     private void startRaffle() {
-        raffle = new Raffle(generateLotto.lottoNumber,buyer.getTicketCount(),pickLottoNum.pickLotto, pickBonusNum.pickBonus);
+        raffle = new Raffle(generateLotto.lottoNumber, buyer.getTicketCount(), pickLottoNum.pickLotto,
+                pickBonusNum.pickBonus);
         BuyerOutputView.showRaffleResult(raffle.prize);
+    }
+
+    private void showMeTheMoney() {
+        profit = new Profit(buyer.inputPrice, raffle.prize);
+        BuyerOutputView.showProfit(profit.profitRate);
     }
 
 

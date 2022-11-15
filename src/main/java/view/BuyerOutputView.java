@@ -27,4 +27,9 @@ public class BuyerOutputView {
         System.out.println(GameMessage.PRIZE_1_MESSAGE.getGameMessage() + raffleResult.get(4) + COUNT);
     }
 
+    public static void showProfit(double profitRate) {
+        System.out.println(GameMessage.PROFIT_PROMPT_MESSAGE.getGameMessage() + String.format("%.1f", profitRate)
+                + GameMessage.PROFIT_TOTAL_MESSAGE.getGameMessage());
+    }
+
 }
