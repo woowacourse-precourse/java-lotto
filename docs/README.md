@@ -1,0 +1,40 @@
+## 추가적으로 판단한 내용
+- 로또 구입 한도는 최대 10만원으로 제한한다.
+- 최소한 1000원 이상의 금액을 입력해야 한다.
+- 당첨 번호를 입력할 때 숫자 옆에 공백이 있는 것은 허용한다.
+
+## 기능 목록
+- [x] 로또 구입 금액을 검증한다.
+  - 예외) 1,000원 미만의 금액을 입력하는 경우 - Money#validateMinimumAmount
+  - 예외) 1,000원으로 나누어 떨어지지 않는 경우 - Money#validateUnitAmount
+  - 예외) 100,000원 초과의 금액을 입력하는 경우 - Money#validateMaximumAmount
+- [x] 1~45 사이의 숫자 6개를 중복되지 않게 생성하여 로또를 발행한다. - LottoPos#issue
+  - [x] 로또 번호와 당첨 번호를 검증한다. 
+    - 예외) 숫자 6개를 생성하지 않은 경우 - Lotto#validateSize
+    - 예외) 숫자에 중복이 있는 경우 - Lotto#validateDuplicates
+    - 예외) 1~45 사이에 없는 숫자가 포함된 경우 - LottoNumber#validateRange
+- [x] 보너스 번호를 검증한다. - LottoNumber
+  - 예외) 당첨 번호에 보너스 번호가 포함된 경우 - WinningResult#validateHasBonusNumber
+  - 예외) 1~45 사이에 없는 숫자가 포함된 경우 - LottoNumber#validateRange
+- [x] 발행한 로또 번호가 몇등에 당첨됬는지 확인한다. - WinningResult#check
+  - [x] 일치한 번호 개수와 보너스 번호 유무에 따라 등수를 알려준다. - Rank#findRank
+    - [x] 6개 번호 일치하면 1등이다.
+    - [x] 5개 번호 + 보너스 번호 일치하면 2등이다.
+    - [x] 5개 번호 + 보너스 번호 불일치면 3등이다.
+    - [x] 4개 번호 일치하면 4등이다.
+    - [x] 3개 번호 일치하면 5등이다.
+  - [x] 발행한 로또 번호와 당첨 번호를 비교한다.
+    - [x] 로또 번호에 특정 수가 있는지 확인한다. - Lotto#hasNumber
+    - [x] 발행한 로또 번호와 보너스 번호를 비교한다. - Lotto#hasNumber
+- [x] 발행한 로또들과 당첨 번호를 비교하여 당첨 통계를 낸다. - WinningResult#compileStatistics
+- [x] 총 상금을 계산한다. - WinningStatistics#calculateTotalPrize
+- [x] 수익률을 계산한다. - Money#calculateYield
+  - 예외) 소수점 둘째 자리에서 반올림되지 않은 경우
+- [x] 로또 구입 수량을 계산한다. - Money#calculateQuantity
+- [x] 로또 구입금액을 입력받는다. - InputView#inputMoney
+- [x] 당첨 번호를 입력받는다. - InputView#inputWinningNumbers
+- [x] 보너스 번호를 입력받는다. - InputView#inputBonusNumber
+- [x] 구매한 로또들의 번호를 출력한다. - OutputView#printLottos
+- [x] 당첨 통계를 출력한다. - OutputView#printWinningStatistics
+- [x] 수익률을 출력한다. - OutputView#printYield
+- [x] 구현한 기능들을 연결해준다. - LottoController#run
