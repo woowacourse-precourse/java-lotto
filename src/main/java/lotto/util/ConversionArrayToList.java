@@ -17,12 +17,12 @@ public class ConversionArrayToList {
     }
 
     private void validate(String[] origin) {
-        for (String str : origin) {
-            if (str.isEmpty()) {
+        for (String number : origin) {
+            if (number.isEmpty()) {
                 System.out.println(ERROR_MESSAGE + "로또 넘버 값이 비어있으면 안됩니다.");
                 throw new IllegalArgumentException();
             }
-            if (str.contains(" ")) {
+            if (number.contains(" ")) {
                 System.out.println(ERROR_MESSAGE + "로또 넘버값을 넣을때 공백이 있으면 안됩니다.");
                 throw new IllegalArgumentException();
             }
