@@ -104,13 +104,13 @@ class LottoTest {
     @Test
     void calculateYield() {
 
-        int totalPayment = 10000;
+        int totalPayment = 8000;
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
-        List<Integer> result = List.of(1, 1, 1, 1, 1);
+        List<Integer> result = List.of(1, 0, 0, 0, 0);
 
-        assertThat(lotto.calculateYield(result, totalPayment)).isEqualTo("203155.5");
+        assertThat(lotto.calculateYield(result, totalPayment)).isEqualTo("62.5");
     }
 
     @DisplayName("로또 번호를 읽어들여 정수 배열로 리턴한다.")
