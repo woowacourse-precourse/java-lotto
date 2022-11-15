@@ -96,6 +96,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 당첨번호_범위테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1000", "0,1,2,3,4,5"));
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
