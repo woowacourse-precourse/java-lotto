@@ -5,6 +5,8 @@ import static lotto.domain.place.MatchResult.FIRST_PLACE;
 import static lotto.domain.place.MatchResult.FOURTH_PLACE;
 import static lotto.domain.place.MatchResult.SECOND_PLACE;
 import static lotto.domain.place.MatchResult.THIRD_PLACE;
+import static lotto.value.PlaceHistoryValue.INIT_VALUE;
+import static lotto.value.PlaceHistoryValue.ONCE;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,8 +15,6 @@ import lotto.domain.place.MatchResult;
 
 public class PlaceHistory {
 
-    public static final int ONCE = 1;
-    public static final int INIT_VALUE = 0;
     Map<MatchResult, Integer> matchResults;
 
     public PlaceHistory() {
@@ -46,15 +46,15 @@ public class PlaceHistory {
     private void fillMatchResults() {
         matchResults = new LinkedHashMap<>();
 
-        matchResults.put(FIFTH_PLACE, INIT_VALUE);
-        matchResults.put(FOURTH_PLACE, INIT_VALUE);
-        matchResults.put(THIRD_PLACE, INIT_VALUE);
-        matchResults.put(SECOND_PLACE, INIT_VALUE);
-        matchResults.put(FIRST_PLACE, INIT_VALUE);
+        matchResults.put(FIFTH_PLACE, INIT_VALUE.getValue());
+        matchResults.put(FOURTH_PLACE, INIT_VALUE.getValue());
+        matchResults.put(THIRD_PLACE, INIT_VALUE.getValue());
+        matchResults.put(SECOND_PLACE, INIT_VALUE.getValue());
+        matchResults.put(FIRST_PLACE, INIT_VALUE.getValue());
     }
 
     private void addCountFor(MatchResult matchResult) {
-        matchResults.merge(matchResult, ONCE, Integer::sum);
+        matchResults.merge(matchResult, ONCE.getValue(), Integer::sum);
     }
 
     private long amountFor(Entry<MatchResult, Integer> entity) {
