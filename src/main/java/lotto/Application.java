@@ -19,9 +19,7 @@ public class Application {
         int payedMoney = getPurchaseAmount();
 
         // phase 2) 구매 개수 & 발행한 로또 번호를 출력하기
-        int lottoCount = payedMoney/1000;
-        System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT.getMessage());
-        List<Lotto> candidateLotto = printSeveralLotto(lottoCount);
+        List<Lotto> candidateLotto = printCountAndLottoNumber(payedMoney);
 
         // phase 3) 당첨 번호 입력받기
         System.out.println("\n" + GET_WINNING_LOTTO.getMessage());
@@ -61,13 +59,6 @@ public class Application {
         return winningLotto;
     }
 
-    public static void validateStringIsInteger(String input){
-        char arr[] = input.toCharArray();
-        for (int i = 0; i<arr.length; i++){
-            if (Character.isDigit(arr[i]) == false)
-                throw new IllegalArgumentException(NO_INTEGER.getMessage());
-        }
-    }
     public static void validateMoneyCanDivideBy1000(int money){
         if (money%1000 != 0){
             System.out.println(NO_DIVIDE_BY_1000.getMessage());
@@ -88,7 +79,7 @@ public class Application {
             Lotto tmpLotto = createLotto();
 
             candidateLotto.add(tmpLotto);
-            System.out.println(tmpLotto);
+            printLotto(tmpLotto);
         }
         return candidateLotto;
     }
@@ -128,5 +119,10 @@ public class Application {
         int payedMoney = getSingleInput();
         validateMoneyCanDivideBy1000(payedMoney);
         return payedMoney;
+    }
+    public static List<Lotto> printCountAndLottoNumber(int payedMoney){
+        int lottoCount = payedMoney/1000;
+        System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT.getMessage());
+        return printSeveralLotto(lottoCount);
     }
 }

@@ -53,4 +53,7 @@ public class Lotto {
             return 3; // index of 5+bonus
         return 2; // index of 5
     }
+    public static void printLotto(Lotto lotto){
+        System.out.println(lotto.numbers);
+    }
 }
