@@ -8,6 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoTest {
+
     @DisplayName("로또 번호의 개수가 5개면 예외가 발생한다.")
     @Test
     void createLottoWithFiveNumbers() {
