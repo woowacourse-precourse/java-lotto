@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -70,5 +71,20 @@ class LottoTest {
                         new Lotto(list1).hashCode() == new Lotto(list2).hashCode()
                 ).isFalse()
         );
+    }
+
+    @DisplayName("로또의 등수를 알 수 있다.")
+    @Test
+    void getLottoRank() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+        int bonusNumber = 6;
+
+        // when
+        LottoRank lottoRank = lotto.findLottoRank(winningLotto, bonusNumber);
+
+        // then
+        assertThat(lottoRank).isEqualTo(LottoRank.SECOND);
     }
 }

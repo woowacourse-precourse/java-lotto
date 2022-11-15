@@ -49,6 +49,13 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    public LottoRank findLottoRank(Lotto winningLotto, int bonusNumber) {
+        int matchCount = (int) winningLotto.numbers.stream()
+                .filter(this::contain)
+                .count();
+        return LottoRank.getRank(matchCount, this.contain(bonusNumber));
+    }
+
     @Override
     public String toString() {
         return numbers.stream()
