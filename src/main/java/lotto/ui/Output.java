@@ -17,4 +17,8 @@ public class Output {
     public static void sortedLotto(List<Lotto> lottos) {
         System.out.println(lottos);
     }
+
+    public static void inputWinningNumberMessage() {
+        System.out.println(OutputMessage.INPUT_WINNING_NUMBER);
+    }
 }
