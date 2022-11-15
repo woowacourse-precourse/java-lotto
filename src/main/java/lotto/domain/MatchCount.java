@@ -24,11 +24,11 @@ public class MatchCount {
         }
     }
 
-    public boolean isSameResult(MatchCount o) {
-        if (winningCount != o.winningCount) {
+    public boolean isSameResult(MatchCount compareObject) {
+        if (winningCount != compareObject.winningCount) {
             return false;
         }
-        if (winningCount != 5 || bonusCount == o.bonusCount) {
+        if (winningCount != 5 || bonusCount == compareObject.bonusCount) {
             return true;
         }
         return false;
