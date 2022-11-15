@@ -17,8 +17,16 @@ public class View {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public static void printLottoAmount(Integer amount) {
+    public static void printLottoAmount(Long amount) {
         System.out.println(String.format("%d개를 구매했습니다.", amount));
+    }
+
+    public static void printWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    public static void printBonusNumbers() {
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public static void printLottoNumbers(List<Lotto> lottos) {
