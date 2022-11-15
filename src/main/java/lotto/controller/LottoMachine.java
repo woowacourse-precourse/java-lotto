@@ -19,7 +19,7 @@ public class LottoMachine {
     }
 
     private static int getBonusNumber() {
-        return InputView.insertBounsNumber();
+        return InputView.insertBonusNumber();
     }
 
     private static Lotto getWinningLotto() {

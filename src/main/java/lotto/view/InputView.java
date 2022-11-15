@@ -63,7 +63,7 @@ public class InputView {
         return separatedNumbers.length != VALID_SIZE;
     }
 
-    public static int insertBounsNumber() {
+    public static int insertBonusNumber() {
         GuidanceMessage.informToInsertBonusNumber();
         String bonusNumber = Console.readLine();
 
