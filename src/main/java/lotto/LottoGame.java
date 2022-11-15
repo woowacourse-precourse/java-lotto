@@ -36,14 +36,14 @@ public class LottoGame {
     }
 
     private void printPurchasedLotto() {
-        for(Lotto l : purchasedLotto)
+        for (Lotto l : purchasedLotto)
             System.out.println("[" + l + "]");
     }
 
     private void getWinnerNumber(String numbersInput) {
         String[] numbers = numbersInput.split(seperator);
         ArrayList<String> values = new ArrayList<>(Arrays.asList(numbers));
-        for(String s : values)
+        for (String s : values)
             winningNumber.add(Integer.parseInt(s));
 
         validate(winningNumber);
@@ -61,14 +61,14 @@ public class LottoGame {
     private void checkSame(List<Integer> winningNumber) {
         Set<Integer> checkSet = new HashSet<>(winningNumber);
 
-        if(winningNumber.size() != checkSet.size())
+        if (winningNumber.size() != checkSet.size())
             throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATED.getMessage());
     }
 
     // 보너스 번호가 당첨 번호와 중복되는지 확인하는 함수
     private void checkBonus(int bonusNumber) {
-        for(int n : winningNumber) {
-            if(n == bonusNumber)
+        for (int n : winningNumber) {
+            if (n == bonusNumber)
                 throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATED.getMessage());
         }
     }
@@ -83,14 +83,18 @@ public class LottoGame {
 
     //입력이 정수인지 확인하는 함수
     private int checkInteger(String moneyInput) {
-        for(int i=0; i<moneyInput.length(); i++) {
+        String value = "";
+        for (int i = 0; i < moneyInput.length(); i++) {
             char digit = moneyInput.charAt(i);
-            if(!(digit >= '0' && digit <= '9')) {
+            if (digit >= '0' && digit <= '9')
+                value += Character.toString(digit);
+            else {
+                System.out.println(ErrorMessage.INPUT_IS_NOT_INTEGER.getMessage());
                 throw new IllegalArgumentException(ErrorMessage.INPUT_IS_NOT_INTEGER.getMessage());
             }
         }
 
-        return Integer.parseInt(moneyInput);
+        return Integer.parseInt(value);
     }
 
     private void printResult() {

@@ -40,11 +40,12 @@ class LottoTest extends NsTest {
         );
     }
 
-    @DisplayName("입력 금액이 정수가 아니면 에러가 발생한다")
+    @DisplayName("당첨 번호에 중복이 있으면 에러가 발생한다")
     @Test
     void inputNotIntegerMoney() {
-        assertThatThrownBy(() -> run("1000j"))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            run("1000", "1,2,2,3,4,5");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
