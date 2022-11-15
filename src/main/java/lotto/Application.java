@@ -1,7 +1,13 @@
 package lotto;
 
+import lotto.controller.GameController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            GameController.runGame();
+        } catch (Exception exception) {
+            GameController.informExitByError(exception);
+        }
     }
 }
