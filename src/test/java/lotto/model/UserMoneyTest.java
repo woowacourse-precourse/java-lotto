@@ -13,4 +13,11 @@ public class UserMoneyTest {
         assertThatThrownBy(() -> new UserMoney(1004))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액이 0일 경우 예외가 발생한다.")
+    @Test
+    void 구입_금액_0인_경우_예외_테스트() {
+        assertThatThrownBy(() -> new UserMoney(0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
