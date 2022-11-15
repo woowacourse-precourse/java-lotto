@@ -6,12 +6,29 @@
 - 5. 당첨 내역을 출력한다.
 
 
+
 ### 도메인 요구사항
 ## Enum 정의
+### LottoPrice
+- 로또 1개당 가격 명시
+
 ### LottoNumber
 - 로또 시작 번호 / 로또 마지막 번호 / 로또 번호 개수 명시
 
+### LottoRank
+- 1등부터 5등까지 당첨 기준과 당첨 금액 명시
+- 로또 번호 일치 카운트와 보너스 수 일치 카운트를 비교하여 등수 반환 메소드 구현
 
+- 당첨 기준과 금액은 다음과 같다.
+
+  ```SHELL
+    1등: 6개 번호 일치 / 2,000,000,000원
+    2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
+    3등: 5개 번호 일치 / 1,500,000원
+    4등: 4개 번호 일치 / 50,000원
+    5등: 3개 번호 일치 / 5,000원
+  ```
+  
 ## User
 - [X] 1. 로또 구입 전, 금액 입력 메세지 출력한다.
 - [X] 2. 로또 구입 금액을 입력한다.
@@ -39,36 +56,41 @@
 - [X] 3. 로또 번호가 1부터 45사이의 숫자가 아닐 경우, `IllegalArgumentException`을 반환한다.
   
 ### LottoWinningNumbers
-- [ ] 1. 당첨 번호 추첨 시, 중복되지 않는 숫자 6개와 보너스 번호 1개를 뽑는다.
+- [X] 1. 당첨 번호 추첨 시, 중복되지 않는 숫자 6개를 입력받는다.
+- [X] 2. 로또 번호가 1부터 45사이의 숫자가 아닐 경우, `IllegalArgumentException`을 반환한다.
+- [X] 3. 로또 번호가 중복될 시, `IllegalArgumentException`을 반환한다.
+- [X] 4. 당첨 번호 입력 메세지 문구 출력
+
 ### LottoBonusNumber
+- [X] 1. 보너스 번호 1개를 입력받는다.
+- [X] 2. 로또 번호가 1부터 45사이의 숫자가 아닐 경우, `IllegalArgumentException`을 반환한다.
+- [X] 3. 보너스 번호 입력 메세지 문구 출력
 
+## LottoScore
+- [X] 1. 로또 번호와 당첨 번호를 비교하여 당첨 내역을 계산한다.
+  
 
-## Winner
-- [ ] 1. 당첨은 1등부터 5등까지 있다.
-- [ ] 2. 당첨 기준과 금액은 다음과 같다.
+## LottoStatistics
+- [X] 1. 1등에서 5등까지 카운트를 세서 Map에 저장한다.
+- [X] 2. 당첨 내역에 관한 메세지와 당첨 정보를 출력한다.
+- [X] 3. 수익률을 출력한다.
 
-  ```SHELL
-    1등: 6개 번호 일치 / 2,000,000,000원
-    2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
-    3등: 5개 번호 일치 / 1,500,000원
-    4등: 4개 번호 일치 / 50,000원
-    5등: 3개 번호 일치 / 5,000원
-  ```
-
-## Score
-- [ ] 1. 로또 번호와 당첨 번호를 비교하여 당첨 내역을 계산한다.
-- [ ] 2. 수익률은 소수점 둘째 자리에서 반올림한다.
 
 ## LottoResult
 - [X] 1. 추첨 기계가 생성한 자동 로또 번호 리스트를 모두 출력한다.
-- [ ] 2. 당첨 내역을 출력한다.
+- [X] 2. 당첨 내역을 반환한다.
+- [X] 3. 수익률을 반환한다.
+  
+### Money
+- [X] 1. 당첨 금액 관리 및 수익률 계산 메소드 기능 구현 
+- [X] 2. 수익률은 소수점 둘째 자리에서 반올림한다.
   
 ## LottoGame
-- [ ] 1. PurchaseUserLotteryTickets (유저 복권 구입 단계)
-- [ ] 2. AutomaticLotteryNumberGeneration(각 복권 별 로또 번호 자동 생성 단계)
-- [ ] 3. EnterWinningAndBonusNumber(당첨 번호와 보너스 번호 입력 단계)
-- [ ] 4. WinStatisticsAndProfitCalculation(당첨 통계 및 수익률 계산)
-- [ ] 5. ReturnLotteryResults(당첨 및 수익률 결과 반환)
+- [X]] 1. PurchaseUserLotteryTickets (유저 복권 구입 단계)
+- [X] 2. AutomaticLotteryNumberGeneration(각 복권 별 로또 번호 자동 생성 단계)
+- [X] 3. EnterWinningAndBonusNumber(당첨 번호와 보너스 번호 입력 단계)
+- [X] 4. WinStatisticsAndProfitCalculation(당첨 통계 및 수익률 계산)
+- [X] 5. ReturnLotteryResults(당첨 및 수익률 결과 반환)
 
 ## Utils
 ### Number 
