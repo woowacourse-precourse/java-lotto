@@ -25,7 +25,7 @@ public class Output {
         System.out.println(Phrases.MONEY.msg);
     }
 
-    public void amount(String amount){
+    public void amount(int amount){
         System.out.println(String.format(Phrases.AMOUNT.msg,amount));
     }
 
@@ -49,7 +49,7 @@ public class Output {
         }
     }
 
-    
+
     public void revenue(double revenue){
         System.out.println(String.format(Phrases.REVENUE.msg,revenue));
     }
