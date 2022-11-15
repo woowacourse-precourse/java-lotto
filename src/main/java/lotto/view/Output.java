@@ -1,13 +1,12 @@
 package lotto.view;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 import lotto.domain.WinningCheck;
 import lotto.domain.WinningNumbersIncludingBonus;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Output {
 	private static final String PRINT_PURCHASE_COUNT = "%d개를 구매했습니다.";
@@ -19,6 +18,7 @@ public class Output {
 	private static final String PRINT_SECOND_PRIZE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
 	private static final String PRINT_FIRST_PRIZE = "6개 일치 (2,000,000,000원) - %d개";
 	private static final String PRINT_RETURN_RATIO = "총 수익률은 %s%%입니다.";
+
 	public static void printLotteries(List<Lotto> lotteries) {
 		printNewLine();
 		System.out.printf(PRINT_PURCHASE_COUNT + "\n", lotteries.size());

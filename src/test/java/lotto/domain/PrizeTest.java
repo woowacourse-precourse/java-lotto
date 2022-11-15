@@ -1,17 +1,13 @@
 package lotto.domain;
 
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class PrizeTest {
-
-
 	@Test
 	void 당첨금_리턴_테스트() {
 		List<Prize> prizes = Arrays.asList(Prize.values());

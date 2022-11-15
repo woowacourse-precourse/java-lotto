@@ -1,15 +1,13 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class WinningNumbersIncludingBonusTest {
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
+class WinningNumbersIncludingBonusTest {
 	@DisplayName("보너스 번호가 1 ~ 45 사이의 숫자가 아니면 예외가 발생한다.")
 	@Test
 	void inputBonusNumberByOutOfRange() {
@@ -36,5 +34,4 @@ class WinningNumbersIncludingBonusTest {
 		assertThat(winnings.getWinningNumbers()).isEqualTo(testLotto);
 		assertThat(winnings.getBonusNumber()).isEqualTo(testBonusNumber);
 	}
-
 }

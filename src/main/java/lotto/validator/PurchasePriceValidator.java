@@ -1,6 +1,7 @@
 package lotto.validator;
 
 import static lotto.validator.CommonValidator.validateIsNumber;
+
 public class PurchasePriceValidator {
 	public static void validatePurchasePrice(String input) {
 		validateIsNumber(input);

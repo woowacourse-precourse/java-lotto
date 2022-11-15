@@ -1,14 +1,12 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 class QuickPickGeneratorTest {
-
 	@Test
 	void 랜덤_로또_번호_생성기_테스트() {
 		List<Integer> lottoNumberCandidates = new ArrayList<>();
