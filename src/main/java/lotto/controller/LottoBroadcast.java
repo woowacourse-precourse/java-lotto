@@ -15,6 +15,11 @@ public class LottoBroadcast {
         drawWinning();
         drawBonus();
     }
+
+    public static LottoBroadcast onAir() {
+        return new LottoBroadcast();
+    }
+
     private void drawWinning() {
         this.winning = new Lotto(getWinningInput());
     }
