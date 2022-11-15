@@ -8,7 +8,11 @@ public class Application {
         LottoController lottoController = new LottoController();
         WinningNumberController winningNumberController = new WinningNumberController();
 
-        lottoController.start();
-        winningNumberController.start();
+        try {
+            lottoController.start();
+            winningNumberController.start();
+        } catch (IllegalArgumentException e) {
+            System.out.print(e.getMessage());
+        }
     }
 }
