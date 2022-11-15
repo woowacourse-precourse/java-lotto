@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import lotto.Exception.ErrorType;
 
 public class UI {
@@ -49,12 +51,82 @@ public class UI {
         }
     }
 
-    public void getWinningNumber() {
+    public List<Integer> getWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
 
         String winningNumbers = Console.readLine();
 
+        validateWinningNumbers(winningNumbers);
+
+        List<Integer> numbersOfWinner = StringToList(winningNumbers);
+
+        return numbersOfWinner;
     }
 
+    public void validateWinningNumbers(String winningNumbers) {
 
+        String[] splitWinningNumbers = winningNumbers.split(",");
+
+        isSixNumbers(splitWinningNumbers);
+
+        isOneToFourtyFive(splitWinningNumbers);
+
+        isDuplicatedNumber(splitWinningNumbers);
+    }
+
+    public void isSixNumbers(String[] splitWinningNumbers) {
+        if (splitWinningNumbers.length != 6) {
+            System.out.println(ErrorType.NOT_SIX_NUMBERS.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void isOneToFourtyFive(String[] splitWinningNumbers) {
+
+        for (String splitWinningNumber : splitWinningNumbers) {
+            isNumber(splitWinningNumber);
+
+            int winningNumber = Integer.parseInt(splitWinningNumber);
+
+            if (winningNumber < 0 || winningNumber > 45) {
+                System.out.println(ErrorType.NOT_ONE_TO_FOURTYFIVE.getErrorMessage());
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public void isDuplicatedNumber(String[] splitWinningNumbers) {
+
+        for (String splitWinningNumber : splitWinningNumbers) {
+            compareNumber(splitWinningNumbers, splitWinningNumber);
+        }
+    }
+
+    public void compareNumber(String[] splitWinningNumbers, String splitWinningNumber) {
+        int count = 0;
+
+        for (String compareWinningNumber : splitWinningNumbers) {
+            if (compareWinningNumber.equals(splitWinningNumber)) {
+                count++;
+            }
+        }
+
+        if (count >= 2) {
+            System.out.println(ErrorType.DUPLICATED_NUMBER.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static List<Integer> StringToList(String winningNumbers) {
+        String[] splitWinningNumbers = winningNumbers.split(",");
+
+        List<Integer> numbersOfWinner = new ArrayList<>();
+        for (String splitWinningNumber : splitWinningNumbers) {
+            int winningNumber = Integer.parseInt(splitWinningNumber);
+
+            numbersOfWinner.add(winningNumber);
+        }
+
+        return numbersOfWinner;
+    }
 }
