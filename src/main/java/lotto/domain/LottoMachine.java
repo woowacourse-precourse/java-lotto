@@ -10,6 +10,7 @@ public class LottoMachine {
     private Money money;
     private LottoStore lottoStore;
     private WinningNumber winningNumber;
+    private int[] lottoResult;
 
 //  돈 입력 기능
     public void inputMoney() throws IllegalArgumentException {
@@ -42,9 +43,26 @@ public class LottoMachine {
         winningNumber.inputBonusNumber(Input.input());
     }
 
-//    당첨 결과 반환 기능
-//    public List<Integer> getLottoResult() {}
+    // 당첨 결과 반환 기능
+    public int[] getLottoResult() {
+        List<List<Integer>> lottos = lottoStore.getLottos();
+        List<Integer> winningNumbers = winningNumber.getWinningNumber();
+        int bonusNumber = winningNumber.getBonusNumber();
+        this.lottoResult = createLottoResult(lottos, winningNumbers, bonusNumber);
+        return lottoResult;
+    }
 
-//    당첨 수익률 반환 기능
-//    public double getYield() {}
+    // 당첨 결과 생성
+    public int[] createLottoResult(List<List<Integer>> lottos, List<Integer> winningNumber, int bonusNumber) {
+        int[] lottoMatchs = new int[6];
+        for (List lotto : lottos) {
+            WinStatus winStatus = getMatchCount(lotto, winningNumber, bonusNumber);
+            lottoMatchs[winStatus.getIndex()] += 1;
+        }
+        return lottoMatchs;
+    }
+
+
+//  당첨 수익률 반환 기능
+    public double getYield() {}
 }
