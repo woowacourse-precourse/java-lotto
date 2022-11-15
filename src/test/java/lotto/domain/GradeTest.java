@@ -15,4 +15,12 @@ public class GradeTest {
         assertThat(Grade.findingGrade(3,0)).isEqualTo(Grade.FIFTH);
         assertThat(Grade.findingGrade(0,0)).isNull();
     }
+
+    @Test
+    @DisplayName("유효하지 않은 Key 값이면 예외가 발생한다.")
+    void findGradeByInvalidKeyThrowError() {
+        assertThatThrownBy(() -> Grade.findGradeByKey("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 Key 입니다.");
+    }
 }
