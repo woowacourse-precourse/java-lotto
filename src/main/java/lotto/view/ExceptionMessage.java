@@ -4,16 +4,16 @@ public class ExceptionMessage {
 
     private static String exception;
 
+    public static String getException() {
+        return exception;
+    }
+
     public static void inputNumberError() {
         exception = "숫자가 아닌 값이 입력되었습니다.";
     }
 
     public static void overlabNumberError() {
         exception = "중복된 번호가 당첨될 수 없습니다.";
-    }
-
-    public static String getException() {
-        return exception;
     }
 
     public static void numberRangeError() {
