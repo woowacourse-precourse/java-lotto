@@ -4,8 +4,8 @@ import lotto.domain.Lottos;
 import lotto.domain.Result;
 
 public class OutputView {
-    private static final String PURCHASE_MESSAGE = "%d개를 구매했습니다.\n%s\n";
-    private static final String RESULT_FORMAT = "당첨 통계\n---\n%s\n총 수익률은 %.1f%%입니다.";
+    private static final String PURCHASE_MESSAGE = "\n%d개를 구매했습니다.\n%s\n";
+    private static final String RESULT_FORMAT = "\n당첨 통계\n---\n%s\n총 수익률은 %.1f%%입니다.";
     private static final String UNEXPECTED_ERROR_MESSAGE = "[ERROR] 예상치 못한 에러로 게임을 종료합니다.";
 
     private OutputView() {
