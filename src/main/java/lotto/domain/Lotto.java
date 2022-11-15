@@ -18,6 +18,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static int countCommonNumber(Lotto winningNums, Lotto lotto) {
+        return  (int) lotto.getNumbers()
+            .stream()
+            .filter(number -> winningNums.getNumbers().contains(number))
+            .count();
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (isDifferentSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTOSIZE_ERROR);
