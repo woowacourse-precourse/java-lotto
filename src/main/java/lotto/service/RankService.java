@@ -6,7 +6,6 @@ import lotto.domain.Rank;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 
 import static lotto.values.Constants.Console.STATISTICS_MESSAGE;
 import static lotto.values.Constants.Digit.*;
@@ -93,7 +92,7 @@ public class RankService {
         return wrongNumbers;
     }
 
-    public Rank getRankByValues(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) { // Value 다른 이름으로 변경
+    public Rank getLottoDrawResult(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) { // Value 다른 이름으로 변ㅎ
         System.out.println(STATISTICS_MESSAGE);
         Rank rank = getLottosRanking(winningLotto, bonusNumber, lottos);
         return rank;

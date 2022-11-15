@@ -6,10 +6,7 @@ import lotto.domain.Rank;
 import lotto.service.LottoService;
 import lotto.service.MoneyService;
 import lotto.service.RankService;
-import lotto.view.MoneyUi;
-import lotto.view.RankUi;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import static lotto.view.LottoUi.*;
@@ -28,10 +25,10 @@ public class LottoUtils {
 
     public void start() {
         Money money = inputMoney();
-        List<Lotto> lottos = inputLottos(money);
+        List<Lotto> lottos = purchaseLotto(money);
         Lotto winningLotto = inputWinningLotto();
         int bonusNumber = inputBonusNumber();
-        Rank rank = rankService.getRankByValues(lottos, winningLotto, bonusNumber);
+        Rank rank = rankService.getLottoDrawResult(lottos, winningLotto, bonusNumber);
         String profitPercentage = lottoService.getProfitPercentage(rank, money.getMoney());
 
         printRanking(rank);

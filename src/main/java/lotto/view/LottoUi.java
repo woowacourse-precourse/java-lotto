@@ -41,7 +41,7 @@ public class LottoUi {
         return bonusNumber;
     }
 
-    public static List<Lotto> inputLottos(Money money) { // 구매 관련 이름으로 리팩터링
+    public static List<Lotto> purchaseLotto(Money money) { // 구매 관련 이름으로 리팩터링
         LottoService lottoService = LottoService.getLottoService();
         int lottoCnt = lottoService.getLottoCntByMoney(money);
         List<Lotto> lottos = lottoService.generateLottos(lottoCnt);
