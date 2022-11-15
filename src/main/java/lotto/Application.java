@@ -23,7 +23,7 @@ public class Application {
         isInt(input);
         buyMoney = Integer.parseInt(input);
         checkPayMoney(buyMoney);
-        System.out.println(input + "개를 구매했습니다.");
+        System.out.println(buyMoney/1000 + "개를 구매했습니다.");
         lottoNum = checkPayMoney(buyMoney);
         lottos = makeLottoNumber(lottos, lottoNum);
         printLottos(lottos);
@@ -72,7 +72,7 @@ public class Application {
 
     public static void printLottos(List<Lotto> lottos){
         for(Lotto lotto : lottos){
-            List<Integer> numbers = lotto.getNumbers();
+            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
             Collections.sort(numbers);
             System.out.println(numbers.toString());
         }
@@ -89,10 +89,9 @@ public class Application {
     }
 
     public static void revenuePrint(long useMoney, long revenue){
-        System.out.println(revenue);
-        double revPercent = revenue/(double)useMoney;
-        String result = String.format("%.2f", revPercent);
-        System.out.println("총 수익률은" + result + "%입니다");
+        double revPercent = revenue/(double)useMoney * 100;
+        revPercent = Math.round(revPercent*100)/100.0;
+        System.out.println("총 수익률은 " + revPercent + "%입니다.");
     }
 
     public static int lottoRank(Lotto lotto,Lotto winningLotto, int bonus){
