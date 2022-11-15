@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class GameService {
     private static GameService INSTANCE;
@@ -62,5 +63,17 @@ public class GameService {
             prizeMap.put(place, prizeMap.get(place) + 1);
         }
         return prizeMap;
+    }
+
+    public double getProfitResult(int money, Map<Place, Integer> prizeMap) {
+        return Calculator.calculateProfit(money, getTotalAmountOfHit(prizeMap));
+    }
+
+    private int getTotalAmountOfHit(Map<Place, Integer> prizeMap) {
+        return Stream.of(prizeMap)
+                .flatMap(prize -> prize.entrySet()
+                        .stream()
+                        .map(Calculator::calculateMoney))
+                .mapToInt(hit -> hit).sum();
     }
 }
