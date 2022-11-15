@@ -28,7 +28,7 @@ public class LottoResultTest {
                 Ranking.FOURTH, Ranking.FIFTH, Ranking.NOTHING);
         LottoResult result = new LottoResult(statistics);
 
-        Map<Ranking, Integer> actual = result.getLottoResult();
+        Map<Ranking, Integer> actual = result.getRanks();
 
         assertThat(actual.get(ranking)).isEqualTo(count);
     }
@@ -46,7 +46,7 @@ public class LottoResultTest {
     void checkProfit(Ranking ranking, double expectedProfit, int numberOfLottoTickets) {
         LottoResult result = new LottoResult(List.of(ranking));
 
-        result.getLottoResult();
+        result.getRanks();
         double profit = result.calculateProfit(numberOfLottoTickets);
 
         assertThat(profit).isEqualTo(expectedProfit);

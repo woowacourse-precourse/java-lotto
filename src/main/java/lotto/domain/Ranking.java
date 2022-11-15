@@ -27,7 +27,7 @@ public enum Ranking {
         }
         return Arrays.stream(values())
                 .filter(ranking -> ranking.count == cnt)
-                .findAny()
+                .findFirst()
                 .orElse(NOTHING);
     }
 

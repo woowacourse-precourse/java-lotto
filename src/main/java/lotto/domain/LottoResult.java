@@ -9,20 +9,20 @@ public class LottoResult {
     private final List<Ranking> lottoStatistics;
     private static final int LOTTO_PRICE = 1000;
 
-    public LottoResult(List<Ranking> rankings) {
+    public LottoResult(List<Ranking> lottoStatistics) {
         init();
-        this.lottoStatistics = rankings;
+        this.lottoStatistics = lottoStatistics;
     }
 
-    public Map<Ranking, Integer> getLottoResult() {
+    public Map<Ranking, Integer> getRanks() {
         for (Ranking ranking : this.lottoStatistics) {
-            lottoResult.put(ranking, lottoResult.getOrDefault(ranking, 0) + 1);
+            lottoResult.put(ranking, lottoResult.get(ranking) + 1);
         }
         return lottoResult;
     }
 
-    public double calculateProfit(int lottoTickets) {
-        int lottoPurchaseAmount = lottoTickets * LOTTO_PRICE;
+    public double calculateProfit(int numberOfLottoTickets) {
+        int lottoPurchaseAmount = numberOfLottoTickets * LOTTO_PRICE;
         double sumOfPrize = 0;
         for (Ranking ranking : lottoResult.keySet()) {
             if (ranking == Ranking.NOTHING) {
