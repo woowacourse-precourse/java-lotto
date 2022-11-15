@@ -4,10 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -53,9 +50,13 @@ public class Application {
         ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
         for(int i=0; i<countPurchase; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            System.out.println(numbers.toString());
-            lottoList.add(new Lotto(numbers));
+
+            Integer tmpList[] = numbers.toArray(new Integer[numbers.size()]);
+            Arrays.sort(tmpList);
+            List<Integer> sorted = Arrays.asList(tmpList);
+
+            System.out.println(sorted);
+            lottoList.add(new Lotto(sorted));
 
         }
         return lottoList;
