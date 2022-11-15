@@ -1,13 +1,17 @@
 package lotto.domain;
 
+import static lotto.constant.ErrorMessage.BONUS_NUMBER_SIZE_ERROR;
+import static lotto.constant.ErrorMessage.BONUS_NUMBER_TYPE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_RANGE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_TYPE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_UNIT_ERROR;
 import static lotto.constant.ErrorMessage.WINNING_NUMBER_RANGE_ERROR;
 import static lotto.constant.ErrorMessage.WINNING_NUMBER_SIZE_ERROR;
 import static lotto.constant.ErrorMessage.WINNING_NUMBER_TYPE_ERROR;
+import static lotto.constant.InputPattern.BONUS_NUMBER_PATTERN;
 import static lotto.constant.InputPattern.PURCHASE_AMOUNT_PATTERN;
 import static lotto.constant.InputPattern.WINNING_NUMBER_PATTERN;
+import static lotto.constant.OutputMessage.PLEASE_WRITE_BONUS_NUMBER;
 import static lotto.constant.OutputMessage.PLEASE_WRITE_PURCHASE_AMOUNT;
 import static lotto.constant.OutputMessage.PLEASE_WRITE_WINNING_NUMBERS;
 
@@ -97,6 +101,13 @@ public class CheckInput {
     public static void checkWinningNumberRange(int winningNumber) {
         if (winningNumber < 1 || winningNumber > 45) {
             throw new IllegalArgumentException(WINNING_NUMBER_RANGE_ERROR);
+        }
+    }
+
+    private static void checkBonusNumberPattern(String input) {
+        Pattern pattern = Pattern.compile(BONUS_NUMBER_PATTERN);
+        if (!pattern.matcher(input).matches()) {
+            throw new IllegalArgumentException(BONUS_NUMBER_TYPE_ERROR);
         }
     }
 
