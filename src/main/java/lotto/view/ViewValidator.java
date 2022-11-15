@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class ViewValidator {
-    static final String EMPTY_VALUE_REGEX = ValidationRegex.EMPTY_VALUE.getRegex();
-    static final String NUMBER_REGEX = ValidationRegex.NUMBER.getRegex();
+    private static final String EMPTY_VALUE_REGEX = ValidationRegex.EMPTY_VALUE.getRegex();
+    private static final String NUMBER_REGEX = ValidationRegex.NUMBER.getRegex();
 
     public static boolean isEmpty (String input) {
         return Pattern.matches(EMPTY_VALUE_REGEX, input);

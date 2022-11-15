@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LotteryCheckService {
-    static final String INVALID_TICKET_ERROR = ErrorMessage.INVALID_TICKET.getErrorMessage();
+    private static final String INVALID_TICKET_ERROR = ErrorMessage.INVALID_TICKET.getErrorMessage();
 
     public void updateUserLotteryResult(User user) throws NoSuchElementException {
         LotteryTicketRepository repository = LotteryTicketRepository.getInstance();

@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    static final String EMPTY_VALUE_ERROR_MESSAGE = ErrorMessage.EMPTY_VALUE.getErrorMessage();
-    static final String NOT_NUMBER_ERROR_MESSAGE = ErrorMessage.NOT_NUMBER.getErrorMessage();
-    static final String MISSING_VALUE_ERROR_MESSAGE = ErrorMessage.MISSING_VALUE.getErrorMessage();
-    static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getPhrase();
-    static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getPhrase();
-    static final String WINNING_NUMBER_DELIMITER = ",";
+    private static final String EMPTY_VALUE_ERROR_MESSAGE = ErrorMessage.EMPTY_VALUE.getErrorMessage();
+    private static final String NOT_NUMBER_ERROR_MESSAGE = ErrorMessage.NOT_NUMBER.getErrorMessage();
+    private static final String MISSING_VALUE_ERROR_MESSAGE = ErrorMessage.MISSING_VALUE.getErrorMessage();
+    private static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getPhrase();
+    private static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getPhrase();
+    private static final String WINNING_NUMBER_DELIMITER = ",";
 
     public static int takeMoneyInput() throws IllegalArgumentException {
         printPurchaseMoneyRequest();

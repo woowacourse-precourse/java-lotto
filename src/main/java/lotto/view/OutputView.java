@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
-    static final String PURCHASE_PHRASE = PurchasePhrase.PURCHASE.getPhrase();
-    static final String LOTTERY_NUMBER_PHRASE = PurchasePhrase.LOTTERY_NUMBER.getPhrase();
-    static final String RANK_PHRASE = ResultPhrase.RANK.getPhrase();
-    static final String SECOND_RANK_PHRASE = ResultPhrase.SECOND_RANK.getPhrase();
-    static final int TOTAL_PERCENT = 100;
+    private static final String PURCHASE_PHRASE = PurchasePhrase.PURCHASE.getPhrase();
+    private static final String LOTTERY_NUMBER_PHRASE = PurchasePhrase.LOTTERY_NUMBER.getPhrase();
+    private static final String RANK_PHRASE = ResultPhrase.RANK.getPhrase();
+    private static final String SECOND_RANK_PHRASE = ResultPhrase.SECOND_RANK.getPhrase();
+    private static final int TOTAL_PERCENT = 100;
 
     static DecimalFormat moneyFormat = new DecimalFormat(Format.MONEY.getFormat());
 

@@ -5,8 +5,8 @@ import lotto.constant.ErrorMessage;
 import java.util.List;
 
 public class WinningNumber extends Lotto {
-    static final String INVALID_RANGE_ERROR_MESSAGE = ErrorMessage.INVALID_RANGE.getErrorMessage();
-    static final String DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE = ErrorMessage.DUPLICATE_BONUS_NUMBER.getErrorMessage();
+    private static final String INVALID_RANGE_ERROR_MESSAGE = ErrorMessage.INVALID_RANGE.getErrorMessage();
+    private static final String DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE = ErrorMessage.DUPLICATE_BONUS_NUMBER.getErrorMessage();
 
     private int bonusNumber;
 
