@@ -29,8 +29,11 @@ public class WinningNumber {
         }
     }
 
-
-    public Lotto getWinningNumbers() {
+    public Lotto getWinningNumbers(){
         return this.winningNumbers;
+    }
+
+    public int getBonusNumber(){
+        return this.bonusNumber;
     }
 }

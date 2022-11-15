@@ -42,4 +42,9 @@ public class Lotto {
     public List<Integer> getNumbers(){
         return Collections.unmodifiableList(numbers);
     }
+
+    public int sameNumberCount(WinningNumber winningNumber){
+        return (int) this.numbers.stream().filter(number
+                -> winningNumber.getWinningNumbers().getNumbers().contains(number)).count();
+    }
 }

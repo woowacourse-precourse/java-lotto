@@ -1,9 +1,6 @@
 package controller;
 
-import domain.LotteryMachine;
-import domain.Lotto;
-import domain.PurchaseMoney;
-import domain.WinningNumber;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -14,13 +11,12 @@ public class LottoController {
         LotteryMachine lotteryMachine = new LotteryMachine(purchaseMoney.getLottoCount());
         OutputView.showLottos(lotteryMachine.getLottos());
         WinningNumber winningNumber = createWinningNumber();
+        LottoResult lottoResult = new LottoResult(lotteryMachine, winningNumber);
     }
 
     private WinningNumber createWinningNumber(){
         Lotto winningNumbers = new Lotto(InputView.inputWinningNumber());
         int bonusNumber = InputView.inputBonusNumber();
-
-        System.out.println(winningNumbers.getNumbers());
 
         return getWinningNumbers(winningNumbers, bonusNumber);
     }
