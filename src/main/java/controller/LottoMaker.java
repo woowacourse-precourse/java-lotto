@@ -19,7 +19,7 @@ public class LottoMaker {
         this.money = Integer.parseInt(money);
         validate(this.money);
         System.out.print(this.money / LOTTO_PRICE);
-        InputGuideData.printData("BUY_LOTTO");
+        InputGuideData.BUY_LOTTO.printData();
     }
 
 

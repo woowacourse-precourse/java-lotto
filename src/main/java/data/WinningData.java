@@ -9,8 +9,8 @@ public class WinningData {
 
 
     public WinningData(int winningCount, boolean isHavingBonus) {
-        this.isHavingBonus = false;
-        this.winningCount = 0;
+        this.isHavingBonus = isHavingBonus;
+        this.winningCount = winningCount;
     }
 
     public void plusBonusNumberCount(){

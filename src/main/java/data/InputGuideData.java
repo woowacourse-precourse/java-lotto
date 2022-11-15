@@ -13,13 +13,7 @@ public enum InputGuideData {
         this.printData = printData;
     }
 
-    public static void printData(String label){
-        String enumField;
-        for(InputGuideData dataField : InputGuideData.values()){
-            enumField = dataField.toString();
-            if(enumField.equals(label)){
-                System.out.println(dataField.printData);
-            }
-        }
+    public void printData(){
+        System.out.println(printData);
     }
 }

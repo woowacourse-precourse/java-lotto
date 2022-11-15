@@ -13,7 +13,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         Set<Integer> numberChecker = new HashSet<>(numbers);
-        if (numbers.size() != NumericData.NUMBER_AMOUNT.getValue()) {
+        if (numbers.size() != NumericData.NUMBER_AMOUNT.getNumericValue()) {
             throw new IllegalArgumentException();
         } else if(numbers.size() != numberChecker.size()){
             throw new IllegalArgumentException();
@@ -28,8 +28,10 @@ public class Lotto {
      */
     public int getNumberOfWins(List<Integer> winningNumbers){
         int count = 0;
-        for(int number : winningNumbers){
+        for(Integer number : winningNumbers){
+            System.out.print(number + " ");
             if(numbers.contains(number)){
+                System.out.print("NUMBERCHECK!");
                 count++;
             }
         }

@@ -19,34 +19,35 @@ public class LottoMachine {
         inputWinningNumbers();
         inputBonusNumber();
         countLottoNumber();
-
+        printWinningDataToPrize();
         printProfitRate();
     }
 
     public void inputCash() {
-        InputGuideData.printData("INPUT_MONEY");
+        InputGuideData.INPUT_MONEY.printData();
         LottoMaker cashReader = new LottoMaker(inputRawData());
         lottos = cashReader.publishLotto();
     }
 
 
     public void inputWinningNumbers() {
-        InputGuideData.printData("INPUT_NUMBER");
+        InputGuideData.INPUT_NUMBER.printData();
         numberParser.setWinningNumbers(inputRawData());
     }
 
     public void inputBonusNumber() {
-        InputGuideData.printData("INPUT_BONUS");
+        InputGuideData.INPUT_BONUS.printData();
         numberParser.setBonusNumber(inputRawData());
     }
 
     public String inputRawData(){
         String rawData = Console.readLine();
+        rawData = rawData.replaceAll("\\s", ""); // 공백 제거
         return rawData;
     }
 
     /**
-     * 로또 당첨 번호 개수 체크
+     * 로또 당첨 번호 개수, 보너스 있는지 체크
      */
     public void countLottoNumber() {
         int winningCount;
