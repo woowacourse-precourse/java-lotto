@@ -1,7 +1,5 @@
 package lotto.model.lotto;
 
-import lotto.model.statistics.LottoResult;
-
 import java.util.List;
 
 public class WinningNumbers {
@@ -15,40 +13,31 @@ public class WinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
-    public LottoResult checkLotto(Lotto lotto) {
+    public int checkMatchCount(Lotto lotto) {
         List<Integer> lottoNumbers = lotto.getNumbers();
 
         int matchCount = 0;
-        boolean doesBonusMatch = false;
         for(int lottoNumber: lottoNumbers) {
-            doesBonusMatch = (lottoNumber == bonusNumber);
-            if(doesBonusMatch) {
-                continue;
-            }
             if(winningLotto.getNumbers().contains(lottoNumber)) {
                 matchCount++;
             }
         }
-        return getLottoResult(matchCount, doesBonusMatch);
+
+        return matchCount;
     }
 
-    private LottoResult getLottoResult(int matchCount, boolean doesBonusMatch) {
-        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH) {
-            return LottoResult.FIRST;
-        }
-        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH - 1) {
+    public boolean checkBonusMatch(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        boolean doesBonusMatch = false;
+        for(int lottoNumber: lottoNumbers) {
+            doesBonusMatch = (lottoNumber == bonusNumber);
             if(doesBonusMatch) {
-                return LottoResult.SECOND;
+                break;
             }
-            return LottoResult.THIRD;
         }
-        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH - 2) {
-            return LottoResult.FOURTH;
-        }
-        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH - 3) {
-            return LottoResult.FIFTH;
-        }
-        return LottoResult.MISS;
+
+        return doesBonusMatch;
     }
 
     private static void validate(Lotto lottoNumbers, int bonusNumber) {

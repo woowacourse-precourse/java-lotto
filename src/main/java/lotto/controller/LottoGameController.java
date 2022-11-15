@@ -7,6 +7,7 @@ import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
 import lotto.model.statistics.LottoStatisticsGenerator;
 import lotto.model.lotto.WinningNumbers;
+
 import lotto.view.ConsoleInputView;
 import lotto.view.ConsoleOutputView;
 
@@ -63,7 +64,11 @@ public class LottoGameController {
 
         List<LottoResult> lottoResults = new ArrayList<>();
         for(Lotto lotto : lottos) {
-            lottoResults.add(winningNumbers.checkLotto(lotto));
+            int matchCount = winningNumbers.checkMatchCount(lotto);
+            boolean doesBonusMatch = winningNumbers.checkBonusMatch(lotto);
+            LottoResult lottoResult = LottoResult.getLottoResult(matchCount, doesBonusMatch);
+
+            lottoResults.add(lottoResult);
         }
 
         LottoStatisticsGenerator lottoStatisticsGenerator = new LottoStatisticsGenerator(payment);
