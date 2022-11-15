@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.controller.io.ConsoleLottoReader;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

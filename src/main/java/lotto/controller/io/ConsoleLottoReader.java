@@ -1,5 +1,5 @@
 
-package lotto.controller;
+package lotto.controller.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.info.Price;
