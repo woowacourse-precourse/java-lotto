@@ -129,7 +129,7 @@ public class LottoService {
         for (int i = 0; i < rankPrice.size(); i++) {
             winningAmount += rankPrice.get(i) * rankCount.get(i);
         }
-        System.out.println(winningAmount);
+
         double yield = roundsYeild( winningAmount * 1000L / (long) purchaseAmount );
         SystemMessage.printYield(yield);
         user.setYield(yield);

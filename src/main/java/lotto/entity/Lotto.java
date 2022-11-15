@@ -25,6 +25,11 @@ public class Lotto {
         if (numbers.size() > LottoInfo.COUNT.getInfo()) {
             Validation.throwException(LottoInfo.COUNT.getInfo()+"개의 숫자를 입력해 주세요.");
         }
+        for (Integer number : numbers) {
+            if (Validation.isValidRange(String.valueOf(number))) {
+                Validation.throwException("[ERROR] "+ LottoInfo.START+"~"+LottoInfo.END+"사이의 번호를 입력해주세요");
+            }
+        }
     }
 
 
