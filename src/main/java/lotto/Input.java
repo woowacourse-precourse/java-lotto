@@ -26,16 +26,4 @@ public class Input {
             throw new IllegalArgumentException("구입금액은 1000원 단위로 입력하세요.");
         }
     }
-
-    public static List<Integer> issueLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        duplicateValidation(lotto);
-        return lotto;
-    }
-
-    private static void duplicateValidation(List<Integer> lotto) {
-        if (lotto.size() != lotto.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        }
-    }
 }
