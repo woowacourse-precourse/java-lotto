@@ -1,14 +1,10 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -28,7 +24,8 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-
+}
+/**
     //예외 처리 테스트
     @DisplayName("예외 처리 에러가 IllegalArgumentException 인지 확인하는 테스트")
     @Test
@@ -72,7 +69,7 @@ class LottoTest {
     }
 
 
-/**
+
     // 당첨 번호 입력 테스트
     @DisplayName("당첨번호는 숫자로만 이뤄져야한다")
     @Test
@@ -119,7 +116,7 @@ class LottoTest {
     }
 
 
- **/
+
     @DisplayName("제공된 Lotto 클래스의 정렬된 번호 넘겨주기")
     @Test
     void lottoTest(){
@@ -205,23 +202,24 @@ class LottoTest {
         System.out.println("profitRate.rankList = " + profitRate.rankList);
     }
 
-    @DisplayName("Game Controller 테스트")
-    @Test
-    void gameControllTest(){
-        String input_cost = "1000";
-        String input_number = "1,2,3,4,5,6";
-        String input_bonus = "7";
-        GameController gameController = new GameController(input_cost,input_number,input_bonus);
-        System.out.println("gameController.cost = " + gameController.cost);
-        System.out.println("gameController.numberOfTickets = " + gameController.numberOfTickets);
-        System.out.println("gameController.ticketList = " + gameController.ticketList);
-        System.out.println("gameController.lottoNumber = " + gameController.lottoNumber);
-        System.out.println("gameController.bonusNumber = " + gameController.bonusNumber);
-        System.out.println("gameController.scoreList = " + gameController.scoreList);
-        System.out.println("gameController.rankList = " + gameController.rankList);
-        System.out.println("gameController.profitRate = " + gameController.profitRate);
+//    @DisplayName("Game Controller 테스트")
+//    @Test
+//    void gameControllTest(){
+//        String input_cost = "1000";
+//        String input_number = "1,2,3,4,5,6";
+//        String input_bonus = "7";
+//        GameController gameController = new GameController(input_cost,input_number,input_bonus);
+//        System.out.println("gameController.cost = " + gameController.cost);
+//        System.out.println("gameController.numberOfTickets = " + gameController.numberOfTickets);
+//        System.out.println("gameController.ticketList = " + gameController.ticketList);
+//        System.out.println("gameController.lottoNumber = " + gameController.lottoNumber);
+//        System.out.println("gameController.bonusNumber = " + gameController.bonusNumber);
+//        System.out.println("gameController.scoreList = " + gameController.scoreList);
+//        System.out.println("gameController.rankList = " + gameController.rankList);
+//        System.out.println("gameController.profitRate = " + gameController.profitRate);
+//
+//    }
+**/
 
-    }
-}
 
 

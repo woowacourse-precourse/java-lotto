@@ -15,6 +15,8 @@ public class BuyPrice {
 
     static Integer buyCost;
 
+    static String ERROR_MESSAGE = "[ERROR]";
+
 
     public BuyPrice(String cost){
         this.cost = cost;
@@ -22,17 +24,29 @@ public class BuyPrice {
     }
     // 구입 가격 입력
     public int checkPrice(){
+        try {
+            Integer.parseInt(cost);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
         int int_price = Integer.parseInt(cost);
         return checkUnit(int_price);
     }
 
     private int checkUnit(int costs) {
         if(costs%thousand != zero ){
-            new Exceptions("[ERROR] 1000원으로 나눠져야 한다");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         numberOfTickets = costs/1000;
         buyCost = costs;
+        checkOver1000(costs);
         return costs/1000;
+    }
+
+    private void checkOver1000(int costs) {
+        if(costs<1000){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
     }
 
 }

@@ -23,7 +23,7 @@ public class CheckScore {
     }
 
     private void goCheck() {
-        System.out.println("go check");
+        System.out.println("size = " + size);
         makeScoreList();
         for(int i=0; i<size; i++){
             List<Integer> ticket = allTickets.get(i);
@@ -32,9 +32,6 @@ public class CheckScore {
     }
 
     private void makeScoreList() {
-        System.out.println("run");
-        System.out.println("scoreList = " + scoreList);
-        System.out.println("scoreList.size() = " + scoreList.size());
         for(int i=0; i<size; i++){
             scoreList.add(0);
         }
@@ -73,12 +70,6 @@ public class CheckScore {
             scoreList.set(i,6);
         }
     }
-
-    //1등 당첨이면 6개 다 당첨임 --> 6개 다 당첨이면 숫자를 맞은 7개로 해줌
-    //2등 당첨이면 5개 + 보너스 넘버 당첨임 --> 5개 맞으면 보너스 확인 메서드 타고, 보너스까지 맞으면 6개로 해줌
-    //3등 당첨이면 5개 + 보너스 당첨 X임 --> 5개 맞으면 보너스 확인 메서드 타고, 틀리면 5개로 해줌
-    //4등 4개
-    //5등 3개
 
 
 }

@@ -58,10 +58,12 @@ public class ProfitRate {
     public float totalProfitRate() {
         float in = input.floatValue();
         float out = profit.floatValue();
-        if(out>=in) {float rate = Math.round(out*100/in);
-        profitRate = rate;
-        return rate;}
-        return 0;
+        float rate = out*100/in;
+        String val = String.format("%.2f", rate);
+        float ans = Float.parseFloat(val);
+        profitRate = ans;
+        return ans;
+
     }
 
 

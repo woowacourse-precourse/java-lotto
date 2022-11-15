@@ -28,14 +28,16 @@ public class Lotto {
     public void checkDuplicatedNumber(List<Integer> numbers) {
         Set<Integer> numSet = new HashSet<>(numbers);
         if (numbers.size() != numSet.size()) {
-            new Exceptions("[ERROR] 중복된 숫자가 없어야 한다");
+            throw new IllegalArgumentException("[ERROR]");
+           // new Exceptions("[ERROR] 중복된 숫자가 없어야 한다");
         }
     }
 
     private void checkNumberRange(List<Integer> numbers) {
         for(int i=0; i>6; i++){
             if(numbers.get(i) >45){
-                new Exceptions("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException("[ERROR]");
+                //new Exceptions("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }
