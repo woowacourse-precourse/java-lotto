@@ -37,6 +37,20 @@ public class ExceptionHandler {
         }
     }
 
+    public void bonusNumberException(List<Integer> winningNum, String bonusNum) {
+        if (bonusNum.isEmpty()) {
+            throw new IllegalArgumentException(error01);
+        } else if (isInteger(bonusNum)) {
+            throw new IllegalArgumentException(error02);
+        }
+        int num = Integer.parseInt(bonusNum);
+        if ((num < 1) || (num > 45)) {
+            throw new IllegalArgumentException(error05);
+        } else if (winningNum.contains(num)) {
+            throw new IllegalArgumentException(error07);
+        }
+    }
+
     public static boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
