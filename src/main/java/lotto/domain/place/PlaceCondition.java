@@ -19,9 +19,8 @@ public enum PlaceCondition {
     }
 
     public static PlaceCondition findByCondition(int matchCount, boolean isBonusMatch) {
-        return Arrays.stream(PlaceCondition.values()).filter(placeCondition -> {
-                    return placeCondition.isEqual(matchCount, isBonusMatch);
-                }).findAny()
+        return Arrays.stream(PlaceCondition.values())
+                .filter(placeCondition -> placeCondition.isEqual(matchCount, isBonusMatch)).findAny()
                 .orElse(NONE_CONDITION);
     }
 
