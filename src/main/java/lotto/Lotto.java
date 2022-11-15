@@ -42,4 +42,14 @@ public class Lotto {
 
     }
 
+    public Ranking checkResult(List<Integer> winningNumbers, int bonusNumber){
+        int count=0;
+        for(int number:numbers){
+            if(winningNumbers.contains(number)){
+                count++;
+            }
+        }
+        return Ranking.findRank(count,numbers.contains(bonusNumber));
+    }
+
 }
