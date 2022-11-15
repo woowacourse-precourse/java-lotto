@@ -30,6 +30,26 @@ public class Lotto {
         return numbers;
     }
 
+    public LottoPrize play(List<Integer> winningNumbers) {
+        long count = 0;
+        boolean bonus = false;
+
+        for (int i = 0; i < winningNumbers.size(); i++) {
+            int cur = winningNumbers.get(i);
+
+            if (numbers.contains(cur)) {
+                count += 1;
+
+                if (i == winningNumbers.size() - 1) {
+                    bonus = true;
+                }
+            }
+        }
+
+        return LottoPrize.checkPrize(count, bonus);
+    }
+
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Lotto) {

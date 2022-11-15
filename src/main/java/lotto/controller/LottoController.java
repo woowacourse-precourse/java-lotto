@@ -2,8 +2,10 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoPrize;
 import lotto.domain.player.Player;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -19,6 +21,24 @@ public class LottoController {
         buyingLottoUsingAllMoney();
 
         getWinningNumbers();
+
+        HashMap<LottoPrize, Long> prizeList = checkLotteryResult();
+    }
+
+    private HashMap<LottoPrize, Long> checkLotteryResult() {
+        HashMap<LottoPrize, Long> playerPrizes = new HashMap<>();
+
+        List<Lotto> playerLotteries = player.getLotteries();
+
+        for (Lotto lotto : playerLotteries) {
+            LottoPrize prize = lotto.play(winningNumbers);
+            
+            long count = playerPrizes.getOrDefault(prize, 0L);
+
+            playerPrizes.put(prize, count + 1);
+        }
+
+        return playerPrizes;
     }
 
     private void getWinningNumbers() {
