@@ -22,6 +22,7 @@ public class InputView {
     }
 
     public static List<Integer> inputWinningNumbers() {
+        OutputView.printWinningNumbers();
         String numberInput = Console.readLine();
         System.out.println(numberInput);
         String[] numbers = numberInput.split(",");
@@ -32,9 +33,9 @@ public class InputView {
         return winningNumbers;
     }
     public static int inputBonusNumber() {
+        OutputView.printBonusNumber();
         String bonusNumber = Console.readLine();
         System.out.println(bonusNumber);
         return parseInt(bonusNumber);
     }
-
 }

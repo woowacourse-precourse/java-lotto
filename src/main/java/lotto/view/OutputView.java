@@ -23,5 +23,12 @@ public class OutputView {
             System.out.println(lotto.getNumbers().toString());
         }
     }
+    public static void printWinningNumbers() {
+        System.out.println(WINNING_NUMBERS_MASSAGE);
+    }
+    public static void printBonusNumber() {
+        System.out.println(BONUS_NUMBER_MASSAGE);
+    }
+
 
 }
