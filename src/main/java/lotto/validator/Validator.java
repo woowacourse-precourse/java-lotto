@@ -33,4 +33,12 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 서로 다른 6개의 수를 입력하세요.");
         }
     }
+
+    public static void checkNumberRange(List<Integer> numbers) {
+        for (int num : numbers) {
+            if (num<1 || num>45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
 }
