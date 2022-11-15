@@ -27,6 +27,7 @@ class WinLottoTest {
         Assertions.assertThat(lottoRankIntegerMap.get(LottoRank.FIRST)).isEqualTo(2);
     }
 
+    @DisplayName("당첨로또들의 수익을 알맞게 집계하는지 확인")
     @Test
     void getProfitByWinLotto() {
         List<Lotto> lotteries = new ArrayList<>();
