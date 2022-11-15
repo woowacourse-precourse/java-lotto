@@ -8,6 +8,16 @@ import java.util.TreeSet;
 import lotto.reward.Reward;
 
 public class LottoService {
+    public void validateLottoAmount(int balance) {
+        if (balance <= 0) {
+            throw new IllegalArgumentException("구입금액은 양수여야 합니다.");
+        }
+
+        if (balance % 1000 != 0) {
+            throw new IllegalArgumentException("구입금액은 1,000원 단위이어야 합니다.");
+        }
+    }
+
     public int getLottoAmount(String number) {
         int balance = 0;
 
@@ -17,9 +27,7 @@ public class LottoService {
             throw new IllegalArgumentException("구입금액으로 입력된 문자열이 올바르지 않습니다.");
         }
 
-        if (balance % 1000 != 0) {
-            throw new IllegalArgumentException("구입금액은 1,000원 단위이어야 합니다.");
-        }
+        validateLottoAmount(balance);
 
         return balance / 1000;
     }
