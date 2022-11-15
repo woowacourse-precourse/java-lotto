@@ -11,10 +11,10 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    private static final String ERROR_INPUT_IS_NOT_NUMBER= "[ERROR] 입력값이 숫자가 아닙니다.";
-    private static final String ERROR_MONEY_NOT_OVER_THOUSAND= "[ERROR] 로또 구입 금액은 1000원 이상이어야합니다. ";
-    private static final String ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND= "[ERROR] 로또 구입 금액은 1000으로 나누어 떨어져야합니다. ";
-    private static final String ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE = "[ERROR] 숫자의 범위는 1에서 45 사이여야합니다.";
+    private static final String ERROR_INPUT_IS_NOT_NUMBER = "[ERROR] 입력값이 숫자가 아닙니다.";
+    private static final String ERROR_MONEY_NOT_OVER_THOUSAND = "[ERROR] 로또 구입 금액은 1000원 이상이어야합니다. ";
+    private static final String ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND = "[ERROR] 로또 구입 금액은 1000으로 나누어 떨어져야합니다. ";
+    private static final String ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FORTY_FIVE = "[ERROR] 숫자의 범위는 1에서 45 사이여야합니다.";
     private static final String ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX = "[ERROR] 6자리로 구성된 숫자가 아닙니다.";
     private static final String ERROR_BONUS_NUMBER_DUPLICATED = "[ERROR] 보너스 번호 중복입니다.";
 
@@ -58,10 +58,11 @@ public class Validator {
 
     private void validateProperRangeOfNumber(int parseInt) {
         if (parseInt < 1 || parseInt > 45) {
-            System.out.println(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
+            System.out.println(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FORTY_FIVE);
             throw new IllegalLottoNumberException();
         }
     }
+
     private void validateConsistOfSixNumbers(List<Integer> numbersInString) {
         if (numbersInString.size() != 6) {
             System.out.println(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
@@ -80,13 +81,6 @@ public class Validator {
         }
         return numbersInInteger;
     }
-    private void validateProperRangeOfMoney(String money) {
-        int moneyInt = Integer.parseInt(money);
-        if (moneyInt % 1000 != 0) {
-            System.out.println(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
-            throw new IllegalMoneyException(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
-        }
-    }
 
     private void validateMoneyOverThousand(String money) {
         int moneyInt = Integer.parseInt(money);
@@ -95,6 +89,7 @@ public class Validator {
             throw new IllegalMoneyException(ERROR_MONEY_NOT_OVER_THOUSAND);
         }
     }
+
     private void validateMoneyDividedByThousand(String money) {
         int moneyInt = Integer.parseInt(money);
         if (moneyInt % 1000 != 0) {

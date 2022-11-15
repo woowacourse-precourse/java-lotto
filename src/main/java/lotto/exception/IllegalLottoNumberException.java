@@ -7,8 +7,8 @@ public class IllegalLottoNumberException extends IllegalArgumentException {
     public IllegalLottoNumberException() {
     }
 
-    public IllegalLottoNumberException(String s) {
-        throw new NoSuchElementException(s);
+    public IllegalLottoNumberException(String message) {
+        throw new NoSuchElementException(message);
     }
 
 }
