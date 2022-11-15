@@ -8,6 +8,7 @@ import java.util.List;
 
 public class InputWinningNumbers {
     static UserInputException userInputException = new UserInputException();
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     public InputWinningNumbers(){}
 
@@ -16,12 +17,12 @@ public class InputWinningNumbers {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String[] input = Console.readLine().split(",");
         if (!userInputException.checkWinningNumberSize(input.length))
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
 
         List<Integer> result = new ArrayList<>();
         for (int i=0;i<input.length;i++) {
             if (!userInputException.checkInputTypeAndRange(input[i]))
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(ERROR_MESSAGE);
             result.add(Integer.valueOf(input[i]));
         }
         return result;
@@ -31,9 +32,9 @@ public class InputWinningNumbers {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         if (!userInputException.checkInputTypeAndRange(input))
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         if(winningNumbers.contains(Integer.valueOf(input))){
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         return Integer.valueOf(input);
     }
