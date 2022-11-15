@@ -1,5 +1,6 @@
-package lotto;
+package lotto.domain.lottocalculator;
 
+import lotto.Hit;
 import lotto.domain.lotto.Lotto;
 
 import java.util.ArrayList;

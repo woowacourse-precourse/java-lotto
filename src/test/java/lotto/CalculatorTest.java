@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.lotto.Lotto;
+import lotto.domain.lottocalculator.Calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
