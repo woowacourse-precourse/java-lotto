@@ -14,8 +14,9 @@ public class Application {
         input = Console.readLine();
         for(int i=0; i<input.length();i++){
             if(!Character.isDigit(input.charAt(i)))
-                throw new IllegalArgumentException("[ERROR] 입력 오류. 정수를 입력하세요.");
+                throw new IllegalArgumentException("[ERROR] 정수의 금액을 입력하시오");
         }
+
         payMoney = Integer.valueOf(input);
         checkError(payMoney);
 
@@ -52,7 +53,7 @@ public class Application {
         for(int i = 0; i < n; i++){
             oneLotto = new ArrayList<>();
             oneLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(oneLotto);
+            //oneLotto.sort(Comparator.naturalOrder());
             lotto = new Lotto(oneLotto);
             userLotto.add(lotto);
         }
@@ -154,13 +155,17 @@ public class Application {
         printUserLotto(userLottoGroup);
         winningLotto = lottoNumber();
         System.out.println("보너스 번호를 입력해 주세요.");
+
         input = Console.readLine();
         for(int i=0; i<input.length();i++){
             if(!Character.isDigit(input.charAt(i)))
                 throw new IllegalArgumentException("[ERROR] 입력 오류. 정수를 입력하세요.");
         }
         bonusNumber = Integer.valueOf(input);
+        if(winningLotto.getNumbers().contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자가 중복되었습니다.");
 
+        }
         winningStatistics(userLottoGroup, winningLotto, bonusNumber, payMoney);
     }
 }
