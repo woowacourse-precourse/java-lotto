@@ -11,6 +11,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean contains(int number){
+        if(numbers.contains(number)){
+            return true;
+        }
+        return false;
+    }
+
     private void validate(List<Integer> numbers) {
         validLottoFalseRange(numbers);
         validCreateLottoByDuplicatedNumber(numbers);

@@ -16,7 +16,7 @@ public class LottoProgram {
         // 로또 추첨 ( 로또 난수 생성 )
         LottoCollection lottoCollection = makeLottoNumber(lottoCount);
         // 당첨 로또 만들기
-
+        WinningNumber winningNumber = makeWinningNumber();
         // 등수 만들기
 
         // 출력하기
@@ -30,12 +30,7 @@ public class LottoProgram {
     private LottoCollection makeLottoNumber(LottoCount lottoCount) {
         return LottoMachine.CreateWinningNumber(lottoCount);
     }
-
     private WinningNumber makeWinningNumber() {
-        //로또 당첨번호 콘솔 입력, 그리고 보너스 번호 입력
-        //뷰, 로또 번호는 List, 보너스는 int
-//        inputWinningNumberView();
-//        inputBonusNumberView();
-        return null;
+        return new WinningNumber(new Lotto(inputWinningNumberView()),inputBonusNumberView());
     }
 }
