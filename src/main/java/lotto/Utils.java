@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,6 +8,10 @@ import java.util.stream.Collectors;
 public class Utils {
 
     public static List<Integer> getParsedNumbers(String input) {
+        if (input.isEmpty() || input.isBlank()) {
+            return new ArrayList<>();
+        }
+
         return Arrays.stream(input.split(","))
                 .map(((String s) -> Integer.parseInt(s)))
                 .collect(Collectors.toList());

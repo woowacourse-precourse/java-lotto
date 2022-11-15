@@ -1,5 +1,6 @@
 package lotto.condition.lottonumber;
 
+import lotto.Utils;
 import lotto.condition.Condition;
 import lotto.domain.lottomachine.LottoMachine;
 
@@ -17,7 +18,7 @@ public class RightFormatCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        return input.split(",").length == LottoMachine.LOTTO_NUMBER_SIZE;
+        return Utils.getParsedNumbers(input).size() == LottoMachine.LOTTO_NUMBER_SIZE;
     }
 
     @Override
