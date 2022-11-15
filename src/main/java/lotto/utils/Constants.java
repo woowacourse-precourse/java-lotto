@@ -10,6 +10,26 @@ public class Constants {
 
     public static final int LOTTO_PRICE = 1_000;
 
+    public static final int FIRST_PRIZE_MONEY = 2_000_000_000;
+
+    public static final int SECOND_PRIZE_MONEY = 30_000_000;
+
+    public static final int THIRD_PRIZE_MONEY = 1_500_000;
+
+    public static final int FOURTH_PRIZE_MONEY = 50_000;
+
+    public static final int FIFTH_PRIZE_MONEY = 5_000;
+
+    public static final String FIRST_PRIZE_MESSAGE = "6개 일치 (2,000,000,000원) - ";
+
+    public static final String SECOND_PRIZE_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+
+    public static final String THIRD_PRIZE_MESSAGE = "5개 일치 (1,500,000원) - ";
+
+    public static final String FOURTH_PRIZE_MESSAGE = "4개 일치 (50,000원) - ";
+
+    public static final String FIFTH_PRIZE_MESSAGE = "3개 일치 (5,000원) - ";
+
     public static final String NUMBER_REGEX = "^[0-9]+$";
 
     public static final String PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
