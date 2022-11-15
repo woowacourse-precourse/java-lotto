@@ -23,9 +23,10 @@ public class LottoGameController {
     }
 
     public void purchaseLotto() {
-        int purchasing = inputView.inputPurchasing();
+        String purchasing = inputView.inputPurchasing();
+        int purchasingAmount = translateStringToInteger(purchasing);
         outputView.printEmptyLine();
-        new PurchasingLotto(purchasing);
+        new PurchasingLotto(purchasingAmount);
         outputView.printTheNumberOfLotto(purchasingLotto.getAmountOfLotto());
         outputView.printLottoNumber(purchasingLotto.getPurchase());
     }
