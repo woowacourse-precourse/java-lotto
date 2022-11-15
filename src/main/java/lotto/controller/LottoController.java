@@ -33,8 +33,12 @@ public class LottoController {
         return lottoService.toLotto(Console.readLine());
     }
 
-    //TODO: 보너스 번호 입력
-    public int inputBonusNumber() {
-        return 7;
+    /**
+     * 보너스 번호 입력
+     * @param winningLotto
+     * @return 보너스 번호
+     */
+    public int inputBonusNumber(Lotto winningLotto) {
+        return lottoService.toBonusNumber(Console.readLine(), winningLotto);
     }
 }

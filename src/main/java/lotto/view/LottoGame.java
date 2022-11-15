@@ -25,7 +25,7 @@ public class LottoGame {
         System.out.println(INPUT_PRIZE_NUMBER);
         Lotto winningLotto = lottoController.inputWinningNumbers();     // 당첨 번호 입력 받기
         System.out.println(INPUT_BONUS_NUMBER);
-        int bonusNumber = lottoController.inputBonusNumber();           // 보너스 번호 입력 받기
+        int bonusNumber = lottoController.inputBonusNumber(winningLotto); // 보너스 번호 입력 받기
         // TODO: 당첨 통계 출력
     }
 

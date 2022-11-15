@@ -23,6 +23,11 @@ public class LottoService {
         return new Lotto(toIntegerList(input));
     }
 
+    public int toBonusNumber(String input, Lotto lotto) {
+        validBonusNumber(input, lotto);
+        return toInteger(input);
+    }
+
     private List<Integer> toIntegerList(String input) {
         List<Integer> winningNumbers = new ArrayList<>();
         Arrays.stream(input.split(","))
@@ -37,6 +42,12 @@ public class LottoService {
     private void validLottoNumbers(String input) {
         Arrays.stream(input.split(","))
                 .forEach(this::checkNumeric);
+    }
+
+    private void validBonusNumber(String input, Lotto lotto) {
+        checkNumeric(input);
+        checkRange(toInteger(input));
+        checkOverlap(toInteger(input), lotto);
     }
 
     private int toInteger(String input) {
@@ -57,6 +68,18 @@ public class LottoService {
     private void checkNumeric(String input) {
         if (!input.matches("[1-9]+[0-9]*")) {
             throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_NOT_INTEGER.getMessage());   // 입력받은 값이 정수로 표현되지 않는 경우
+        }
+    }
+
+    private void checkRange(int bonusNumber) {
+        if (bonusNumber < LottoConstant.LOTTO_RANGE_MIN.getValue() || bonusNumber > LottoConstant.LOTTO_RANGE_MAX.getValue()) {
+            throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_LOTTO_UNCONFORMABLE_NUMBER_RANGE.getMessage());   // 입력받은 값이 로또 번호의 범위를 초과한 경우
+        }
+    }
+
+    private void checkOverlap(int bonusNumber, Lotto winningLotto) {
+        if (winningLotto.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_LOTTO_NUMBER_OVERLAP.getMessage());   // 입력받은 값이 당첨 번호와 중복되는 경우
         }
     }
 }
