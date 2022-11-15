@@ -31,4 +31,8 @@ public enum Rank {
         return message;
     }
 
+    public static boolean isCorrectBonusNumber(Lotto lotto, int bonusNumber){
+        List<Integer> lottoNumber = lotto.getLottoNumber();
+        return lottoNumber.contains(bonusNumber);
+    }
 }
