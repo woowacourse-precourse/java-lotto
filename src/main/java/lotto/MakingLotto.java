@@ -12,14 +12,15 @@ public class MakingLotto {
         return lottoCount;
     }
 
-    public List<Integer> makeLotto(){
+    public Lotto makeLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(numbers);
-        return numbers;
+        Lotto lotto=new Lotto(numbers);
+        return lotto;
     }
 
-    public List<List<Integer>> getAllLotto(int LottoCount){
-        List<List<Integer>> allLotto=new ArrayList<>();
+    public List<Lotto> getAllLotto(int LottoCount){
+        List<Lotto> allLotto=new ArrayList<>();
         for(int index=0;index<LottoCount;index++){
             allLotto.add(makeLotto());
         }
