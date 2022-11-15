@@ -55,4 +55,11 @@ public class ValidUtil {
         return numbers;
     }
 
+    public static String validateOneDigit(String input) {
+        if (!input.matches("^[0-9]$")) {
+            throw new IllegalArgumentException(INVALID_BONUS_NUMBER);
+        }
+        return input;
+    }
+
 }
