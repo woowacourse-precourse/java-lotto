@@ -22,14 +22,13 @@ public class ValidUtil {
     }
 
     public static void validateDuplication(List<Integer> numbers) {
-        for (int i = 0; i<numbers.size(); i++) {
-            List<Integer> subList = numbers.subList(i+1, numbers.size());
+        for (int i = 0; i < numbers.size(); i++) {
+            List<Integer> subList = numbers.subList(i + 1, numbers.size());
             if (subList.contains(numbers.get(i))) {
                 throw new IllegalArgumentException(INVALID_NUMERIC_CONFIGURATION);
             }
         }
     }
-
 
     public static int validAmountUnit(int amount) {
         if (amount % AMOUNTS_UNIT != 0) {
@@ -37,5 +36,15 @@ public class ValidUtil {
         }
         return amount;
     }
+
+
+    public static int validateNumberRange(String number) {
+        if (!number.matches("(^[1-3][0-9]$)|(^[1-9]$)|(^4[0-5]$)")) {
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
+        }
+
+        return Integer.parseInt(number);
+    }
+
 
 }
