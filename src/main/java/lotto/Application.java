@@ -20,7 +20,6 @@ public class Application {
             mylotto.printStatisticsForLotto();                  // 로또 통계 출력
             mylotto.calculateRateOfEarning();                   // 수익률 계산, 출력
         } catch (IllegalArgumentException e){}                  // IllegalArgumentException 예외 정상 종료
-
     }
 
     private static void inputNumbers(List<Integer> numbers) {

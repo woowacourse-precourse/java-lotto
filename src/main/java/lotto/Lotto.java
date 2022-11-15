@@ -24,9 +24,9 @@ public class Lotto {
     }
     private static int number_of_lotto;
     private static List<List<Integer>> purchased_lotto_numbers;
-    private int bonus_number;
-    private List<statistics> win_lotto = new ArrayList<>();
-    private int[] status_of_win = { 0, 0, 0, 0, 0 };
+    private static int bonus_number;
+    private static List<statistics> win_lotto = new ArrayList<>();
+    private static int[] status_of_win = { 0, 0, 0, 0, 0 };
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
