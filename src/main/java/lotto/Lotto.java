@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.Validator.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,7 +10,6 @@ public class Lotto {
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -17,11 +17,24 @@ public class Lotto {
         return this.numbers;
     }
 
+    public ArrayList<Integer> copyLotto() {
+        ArrayList<Integer> lottoCopy = new ArrayList<>(numbers.size());
+        for (int i = 0 ; i< numbers.size(); i++) {
+            lottoCopy.add(numbers.get(i));
+        }
+        return lottoCopy;
+    }
+    public ArrayList<Integer> sortLotto() {
+        ArrayList<Integer> sortedLotto =copyLotto();
+        Collections.sort(sortedLotto);
+        return sortedLotto;
+    }
     public String toString (){
+        ArrayList<Integer> sortedLotto = sortLotto();
         String lottoString="[";
-        for (int i =  0 ; i< numbers.size(); i++){
-            lottoString = lottoString +numbers.get(i);
-            if (i != numbers.size()-1){
+        for (int i =  0 ; i< sortedLotto.size(); i++){
+            lottoString = lottoString +sortedLotto.get(i);
+            if (i != sortedLotto.size()-1){
                 lottoString+= ", ";
             }
         }
@@ -32,10 +45,10 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         try
         {
-            isValidateNumberLength(numbers);
-            isDuplicated(numbers);
             for (int i = 0 ; i< numbers.size() ; i++)
                 isValidateNumberRange(numbers.get(i));
+            isValidateNumberLength(numbers);
+            isDuplicated(numbers);
         }
         catch (IllegalArgumentException e)
         {
@@ -43,8 +56,4 @@ public class Lotto {
             throw new IllegalArgumentException(e);
         }
     }
-
-
-
-
 }
