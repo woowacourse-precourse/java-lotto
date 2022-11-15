@@ -34,13 +34,13 @@ public class ProfitRate {
             Integer corrects = output.get(i);
             if(corrects>=3){
                 calculate(corrects);
-                updateRang(corrects);
+                updateRank(corrects);
             }
         }
         totalProfitRate();
     }
 
-    private void updateRang(Integer corrects) {
+    private void updateRank(Integer corrects) {
         // 3 4 5 6 7 이 들어올 수 있다
         int idx = corrects-3;
         Integer cnt = rankList.get(idx);
@@ -58,16 +58,9 @@ public class ProfitRate {
     public float totalProfitRate() {
         float in = input.floatValue();
         float out = profit.floatValue();
-        System.out.println("profit = " + profit);
-        if(out>=in)
-        {float rate = Math.round(out*100/in);
-        System.out.println("in = " + in);
-        System.out.println("out = " + out);
-        System.out.println("rate = " + rate);
+        if(out>=in) {float rate = Math.round(out*100/in);
         profitRate = rate;
-        return rate;
-        }
-        System.out.println(" 이득 없음 ");
+        return rate;}
         return 0;
     }
 

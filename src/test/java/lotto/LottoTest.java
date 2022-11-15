@@ -204,6 +204,24 @@ class LottoTest {
         System.out.println("profitRate.profitRate = " + profitRate.profitRate);
         System.out.println("profitRate.rankList = " + profitRate.rankList);
     }
+
+    @DisplayName("Game Controller 테스트")
+    @Test
+    void gameControllTest(){
+        String input_cost = "1000";
+        String input_number = "1,2,3,4,5,6";
+        String input_bonus = "7";
+        GameController gameController = new GameController(input_cost,input_number,input_bonus);
+        System.out.println("gameController.cost = " + gameController.cost);
+        System.out.println("gameController.numberOfTickets = " + gameController.numberOfTickets);
+        System.out.println("gameController.ticketList = " + gameController.ticketList);
+        System.out.println("gameController.lottoNumber = " + gameController.lottoNumber);
+        System.out.println("gameController.bonusNumber = " + gameController.bonusNumber);
+        System.out.println("gameController.scoreList = " + gameController.scoreList);
+        System.out.println("gameController.rankList = " + gameController.rankList);
+        System.out.println("gameController.profitRate = " + gameController.profitRate);
+
+    }
 }
 
 
