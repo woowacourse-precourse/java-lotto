@@ -259,9 +259,10 @@ public class Lotto {
 -[x] 중복된 숫자가 들어오면 발생하는 예외 - `validateDuplicate`
 -[x] 숫자 범위를 넘어가면 발생하는 예외 - `validateRange`
 -[x] 숫자가 아닌 것이 들어오면 발생하는 예외 - `validateIsNumber`
--[x] 1000으로 나눠떨어지지 않는 경우 예외 처리
+-[x] 1000으로 나눠떨어지지 않는 경우 예외 처리 - `validatePurchasePrice`
 
 ## 고민하는 것들
 
-- 예외처리르 뺄까 말까?
+- 예외처리를 뺄까 말까?
 - `Lotto class`를 `Manager class`에 주입해서 의존성을 넣어볼까?
+- 클래스끼리 너무 강한 결합을 하고 있는 것은 아닐까?
