@@ -29,7 +29,7 @@ public class Buyer {
 
         try {
             this.money = Long.valueOf(Console.readLine());
-        } catch (Exception exception) {
+        } catch (NumberFormatException exception) {
             ILLEGAL_VALUE.error();
         }
 
@@ -42,10 +42,6 @@ public class Buyer {
 
     public Long getMoney() {
         return money;
-    }
-
-    public Double getRateOfReturn() {
-        return rateOfReturn;
     }
 
     public void calculateWinningResult(Set<Integer> winningNumber, List<Integer> bonusNumber) {
