@@ -29,6 +29,13 @@ public class LottoTest {
 			lotto.getMatchingNumbers(List.of(11, 12, 13, 14, 15, 16))
 		).isEqualTo(0);
 	}
+	
+	@DisplayName("보너스와 로또번호를 비교하여 보너스번호가 포함되어 있는지 알 수 있다.")
+	@Test
+	void containsBonus_보너스번호가_로또번호에_포함되어_있는지_알수있다() {
+		assertThat(lotto.containsBonus(10)).isFalse();
+		assertThat(lotto.containsBonus(1)).isTrue();
+	}
 
 
 }
