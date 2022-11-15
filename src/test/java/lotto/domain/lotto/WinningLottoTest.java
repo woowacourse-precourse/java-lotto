@@ -20,7 +20,6 @@ class WinningLottoTest {
         winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
     }
 
-    //얘를 빼야할듯 LottoTest로??
     @Test
     void 유효성_검사_예외() {
         List<Integer> only6 = List.of(1, 2, 3, 4, 5);

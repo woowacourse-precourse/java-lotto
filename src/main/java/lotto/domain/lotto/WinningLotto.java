@@ -1,10 +1,10 @@
 package lotto.domain.lotto;
 
+import static lotto.domain.place.MatchResult.findByCondition;
 import static lotto.validation.LottoNumberValidation.validateDuplicate;
 
 import java.util.List;
 import lotto.domain.place.MatchResult;
-import lotto.domain.place.PlaceCondition;
 
 public class WinningLotto {
 
@@ -27,10 +27,6 @@ public class WinningLotto {
     }
 
     public MatchResult makeMatchResult(Lotto purchaseLotto) {
-        return MatchResult.findByCondition(makeCondition(purchaseLotto));
-    }
-
-    private PlaceCondition makeCondition(Lotto purchaseLotto) {
-        return PlaceCondition.findByCondition(purchaseLotto.matchCount(lotto), purchaseLotto.isBonusNumMatch(bonusNum));
+        return findByCondition(purchaseLotto.makeCondition(lotto, bonusNum));
     }
 }
