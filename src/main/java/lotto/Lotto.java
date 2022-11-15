@@ -36,4 +36,19 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    @Override
+    public String toString() {
+        String printString="[";
+        for(int index=0;index<numbers.size();index++){
+            printString+=numbers.get(index);
+            if(index==numbers.size()-1){
+                printString+="]";
+            }
+            if(index!=numbers.size()-1) {
+                printString += ", ";
+            }
+        }
+        return printString;
+    }
 }
