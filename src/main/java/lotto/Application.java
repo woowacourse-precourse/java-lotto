@@ -13,33 +13,27 @@ public class Application {
     private static List<Integer> winningCount = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
         int cost = inputCost(Console.readLine());
 
-        // TODO: lottoCount 계산
         int lottoCount = PriceConfig.getLottoCountWithoutChange(cost);
         System.out.println(lottoCount + "개를 구매했습니다.");
-        // TODO: lotto 발행
         publishNewLotto(lottoCount);
 
-        // TODO: 정답 lotto 생성
         System.out.println("당첨 번호를 입력해 주세요.");
         Lotto winningLotto = new Lotto(inputWinningLottoNums(Console.readLine()));
         System.out.println("보너스 번호를 입력해 주세요.");
         int winningBonus = inputWinningBonusNum(Console.readLine());
 
-        // TODO: 통계 계산
         Statistics statistics = new Statistics(winningLotto, winningBonus);
-
 
         for (int i = 0; i < userLottos.size(); i++) {
             int prize = statistics.getPrize(userLottos.get(i));
             if (prize != -1)
-                winningCount.set(prize, winningCount.get(prize) + 1);
+                winningCount.set(prize-1, winningCount.get(prize-1) + 1);
             // TODO: 어떻게 할건지?? 리스트? 맵?
         }
-
+        double yield = statistics.getYield(cost, winningCount);
 
         StringBuilder sb = new StringBuilder();
 
@@ -61,7 +55,7 @@ public class Application {
         sb.append(winningCount.get(0));
         sb.append("개\n" +
                 "총 수익률은 ");
-        sb.append(0);
+        sb.append(String.format("%,.1f", yield));
         sb.append("%입니다.");
 
         System.out.println(sb);
