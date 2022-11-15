@@ -35,4 +35,7 @@ public class OutputView {
         System.out.println("6개 일치 (" + FIRST.getPrize() + "원) -  " + winningLog[FIRST.getWinningLogIdx()] + "개");
     }
 
+    public void printRateOfReturn(double rateOfReturn) {
+        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
+    }
 }
