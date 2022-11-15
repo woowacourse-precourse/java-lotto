@@ -13,7 +13,8 @@ public class Application {
         try {
             int numberOfGame = Budget.getInstance(getMoney()).getLottoNumberByBudget();
             Purchase.getInstance(numberOfGame);
-            System.out.println("\n" + numberOfGame + InputMessage.PURCHASE_NUMBER_OF_GAME.getValue());
+
+
             TargetNumbers.getInstance(getWinNumber());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
