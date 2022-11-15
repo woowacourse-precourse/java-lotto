@@ -33,7 +33,7 @@ public class LottoMachine {
 	private void inputBonusNumber() {
 		System.out.println(Message.INPUT_BONUS_NUMBER);
 		String inputBonusNumber = readLine();
-		bonusNumber = Integer.parseInt(inputBonusNumber);
+		bonusNumber = Valid.isDuplicateWithWinningNumber(winningLotto.getNumbers(), inputBonusNumber);
 	}
 
 	private List<Integer> splitInputNumber(String inputNumber) {

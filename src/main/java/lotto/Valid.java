@@ -69,6 +69,15 @@ public class Valid {
 		}
 	}
 
+	public static int isDuplicateWithWinningNumber(List<Integer> winningNumber, String bonusNumber) {
+		int validNumber = Integer.parseInt(bonusNumber);
+		if (winningNumber.contains(validNumber)) {
+			System.out.println(Message.DUPLICATE_WITH_WINNING_NUMBER);
+			throw new IllegalArgumentException(Message.DUPLICATE_WITH_WINNING_NUMBER);
+		}
+		return validNumber;
+	}
+
 	private static boolean isNumeric(String str) {
 		return str.chars().allMatch(Character::isDigit);
 	}
