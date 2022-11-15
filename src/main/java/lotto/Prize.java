@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Prize extends Lotto{
@@ -15,5 +16,9 @@ public class Prize extends Lotto{
         if(numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복");
         }
+    }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
     }
 }
