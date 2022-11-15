@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+import lotto.exception.IllegalArgumentException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class UserTest {
     void createBuyAmountByWrongForm() {
         User user = new User();
         assertThatThrownBy(() -> user.setBuyAmount("1asd"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("금액의 첫부분이 0으로 시작하면 예외가 발생한다.")

@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
+import lotto.exception.IllegalArgumentException;
 
 public class User {
 
@@ -35,7 +35,7 @@ public class User {
     private void validateBuyAmountForms(String buyAmount) {
         if (!buyAmount.matches(NUMBER_FORMS)) {
             System.out.println(ERROR_MESSAGE + "금액은 숫자로만 이루어져야 합니다.");
-            throw new NoSuchElementException();
+            throw new IllegalArgumentException();
         }
     }
 
