@@ -17,6 +17,11 @@ public class Lotto {
         }
         Collections.sort(sortNumbers);
         this.numbers = sortNumbers;
+        show();
+    }
+
+    public List<Integer> getNumbers(){
+        return numbers;
     }
 
     public static List<Lotto> createLotto(int number){
@@ -33,8 +38,8 @@ public class Lotto {
         }
     }
 
-    private void show(List<Integer> numbers){
-        System.out.println(numbers);
+    private void show(){
+        System.out.println(this.numbers);
     }
 
     public static int calculate(String input){

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -34,10 +35,9 @@ public class Application {
             int totalPrize = 0;
 
             for(int i = 0; i < allLotto.size(); i++){
-                List<Integer> lotto = (List<Integer>) allLotto.get(i);
+                List<Integer> lotto = allLotto.get(i).getNumbers();
                 int matchNumber = compare.matchCount(lotto, Winning.numbers);
                 boolean matchBonus = compare.matchBonus(lotto, Winning.numbers);
-                System.out.println(matchNumber);
 
                 Rank rank = Rank.valueOf(matchNumber, matchBonus);
 

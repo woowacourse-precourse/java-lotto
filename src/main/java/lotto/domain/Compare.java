@@ -5,7 +5,7 @@ import java.util.List;
 public class Compare {
     public int matchCount(List<Integer> lotto, List<Integer> winning){ // 당첨 번호
         int result = 0;
-        for(int i = 0; i < winning.size() - 1; i++){
+        for(int i = 0; i < lotto.size(); i++){
             int winningNumber = winning.get(i);
             if(lotto.contains(winningNumber)){
                 result += 1;
