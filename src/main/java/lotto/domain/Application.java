@@ -34,7 +34,6 @@ public class Application {
 
         // 수익률
         long winningSum = winningPrint.priceSum();
-
         double revenue = (winningSum / (double) init.getMoney()) * 100.0;
         System.out.println("총 수익률은 " + Math.round(revenue * 10) / 10.0 + "%입니다.");
     }
