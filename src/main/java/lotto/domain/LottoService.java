@@ -40,7 +40,7 @@ public class LottoService {
 
         double profitPercentage = gain / buyMoney * 100;
 
-        return Math.round(profitPercentage * 10) / 10;
+        return Math.round(profitPercentage * 10) / 10.0;
     }
 
     public WinningRank checkLottoNumbers(Lotto buyingLotto, WinningLotto winningLotto) {
