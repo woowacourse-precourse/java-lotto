@@ -6,7 +6,7 @@ public class Validation {
 
     // 구입 금액이 1000의 배수인지 검증하는 기능
     public static void validatePurchaseMoney(String money) {
-        if (Integer.parseInt(money) % 1000 != 0) {
+        if (Integer.parseInt(money) % LOTTO_PURCHASE_COST != ZERO) {
             throw new IllegalArgumentException(ERROR_MSG_PURCHASE_MONEY);
         }
     }

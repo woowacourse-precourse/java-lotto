@@ -6,6 +6,9 @@ public class Constant {
     public static final int LOTTO_MAX_NUM = 45;
     public static final int LOTTO_SIZE = 6;
     public static final int LOTTO_PURCHASE_COST = 1000;
+    public static final int INIT_VALUE = 0;
+    public static final int ZERO = 0;
+    public static final int UPDATE_COUNT_VALUE = 1;
 
     public static final String WINNING_NUMBER_REGEX = "^[1-9,]*$";
     public static final String COMMA = ",";

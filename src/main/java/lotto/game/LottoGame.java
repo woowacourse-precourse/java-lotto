@@ -54,7 +54,7 @@ public class LottoGame {
     // 구매된 로또들을 생성하는 기능
     private Lottos makePerchaseLotto(int count) {
         Lottos purchasedLottos = new Lottos();
-        for (int i = 0; i < count; i++) {
+        for (int lottoCount = 1; lottoCount <= count; lottoCount++) {
             Lotto lotto = new Lotto(lottoGenerator.createLotto());
             purchasedLottos.addLotto(lotto);
         }

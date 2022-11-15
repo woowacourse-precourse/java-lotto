@@ -13,7 +13,7 @@ public class Result {
     private Map<Rank, Integer> result;
 
     public Result() {
-        this.prize = 0;
+        this.prize = INIT_VALUE;
         this.result = new LinkedHashMap<>();
     }
 
@@ -29,7 +29,7 @@ public class Result {
     public int checkMatchCount(Lotto lotto, Lotto winningLotto) {
         List<Integer> purchasedLottoNumbers = lotto.getNumbers();
         List<Integer> winningLottoNumbers = winningLotto.getNumbers();
-        int matchCount = 0;
+        int matchCount = INIT_VALUE;
         for (Integer number : purchasedLottoNumbers) {
             if (winningLottoNumbers.contains(number)) {
                 matchCount++;
@@ -47,20 +47,20 @@ public class Result {
     public void updateResult(int matchCount, boolean correctBonus) {
         for (Rank rank : Rank.values()) {
             if (matchCount == rank.getCorrectCount()) {
-                result.put(rank, result.get(rank) + 1);
+                result.put(rank, result.get(rank) + UPDATE_COUNT_VALUE);
             }
         }
         if (matchCount == Rank.SECOND.getCorrectCount() && correctBonus) {
-            result.put(Rank.THIRD, result.get(Rank.THIRD) - 1);
+            result.put(Rank.THIRD, result.get(Rank.THIRD) - UPDATE_COUNT_VALUE);
         } else if (matchCount == Rank.THIRD.getCorrectCount()) {
-            result.put(Rank.SECOND, result.get(Rank.SECOND) - 1);
+            result.put(Rank.SECOND, result.get(Rank.SECOND) - UPDATE_COUNT_VALUE);
         }
     }
 
     // 등수로 결과 map을 초기화 하는 기능
     public void initWinningRank() {
         for (Rank rank : Rank.values()) {
-            result.put(rank, 0);
+            result.put(rank, INIT_VALUE);
         }
     }
 

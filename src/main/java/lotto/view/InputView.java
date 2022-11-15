@@ -38,7 +38,7 @@ public class InputView {
 
     // 문자열을 ,를 기준으로 분리하는 기능
     private static List<String> splitString(String input) {
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(COMMA))
             .collect(Collectors.toList());
     }
 
