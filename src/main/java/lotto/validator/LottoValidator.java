@@ -3,12 +3,9 @@ package lotto.validator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.domain.LottoInfo;
 
 public class LottoValidator {
-
-    private static final int LOTTO_SIZE = 6;
-    private static final int LOTTO_MIN_NUMBER = 1;
-    private static final int LOTTO_MAX_NUMBER = 45;
 
     public static void validateLottoNumbers(List<Integer> numbers) throws IllegalArgumentException {
         validateSize(numbers);
@@ -22,21 +19,21 @@ public class LottoValidator {
     }
 
     private static void validateSize(final List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != LOTTO_SIZE) {
+        if (numbers.size() != LottoInfo.SIZE.value()) {
             throw new IllegalArgumentException("[ERROR] Lotto 번호는 6개입니다.");
         }
     }
 
     private static void validateInRange(final List<Integer> numbers) throws IllegalArgumentException {
         numbers.forEach(number -> {
-            if (number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER) {
+            if (number < LottoInfo.MIN_NUMBER.value() || number > LottoInfo.MAX_NUMBER.value()) {
                 throw new IllegalArgumentException("[ERROR] Lotto 번호는 45 이하의 자연수입니다.");
             }
         });
     }
 
     private static void validateInRange(final int bonusNumber) {
-        if (bonusNumber < LOTTO_MIN_NUMBER || bonusNumber > LOTTO_MAX_NUMBER) {
+        if (bonusNumber < LottoInfo.MIN_NUMBER.value() || bonusNumber > LottoInfo.MAX_NUMBER.value()) {
             throw new IllegalArgumentException("[ERROR] Lotto 번호는 45 이하의 자연수입니다.");
         }
     }
