@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,5 +64,30 @@ class WinInfoTest {
         assertEquals(WinInfo.getByOrder(3),WinInfo.WIN3);
         assertEquals(WinInfo.getByOrder(4),WinInfo.WIN4);
         assertEquals(WinInfo.getByOrder(5),WinInfo.WIN5);
+    }
+
+
+    @DisplayName("getStatistics의 결과를 테스트")
+    @Test
+    void getStatisticsTest() {
+        //given
+        final List<WinInfo> INPUT = List.of(
+                WinInfo.NO_WIN,
+                WinInfo.WIN2,
+                WinInfo.WIN3,
+                WinInfo.WIN3,
+                WinInfo.WIN3,
+                WinInfo.WIN2,
+                WinInfo.WIN1,
+                WinInfo.WIN2,
+                WinInfo.NO_WIN
+        );
+        //when
+        Map<WinInfo,Integer> statistics = WinInfo.getStatistics(INPUT);
+        //then
+        assertEquals(statistics.get(WinInfo.NO_WIN),2);
+        assertEquals(statistics.get(WinInfo.WIN2),3);
+        assertEquals(statistics.get(WinInfo.WIN3),3);
+        assertEquals(statistics.get(WinInfo.WIN1),1);
     }
 }
