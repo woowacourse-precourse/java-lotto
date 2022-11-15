@@ -44,4 +44,14 @@ public class UserInterface {
                     (BuyLotto.makeLotto(userLottoNumbers));
         }
     }
+
+    public static void inputWinNumbers(List<Integer> inputNumbers){
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        String winNumbers = Console.readLine();
+        String[] onlyNumbersOfWinNumbers = winNumbers.split(",");
+
+        for(int i = 0 ; i < onlyNumbersOfWinNumbers.length; i++){
+            inputNumbers.add(Integer.parseInt(onlyNumbersOfWinNumbers[i]));
+        }
+    }
 }
