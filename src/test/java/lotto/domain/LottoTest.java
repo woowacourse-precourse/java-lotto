@@ -30,8 +30,8 @@ class LottoTest {
 
     static Stream<Arguments> invalidLottoNumber() {
         return Stream.of(
-                Arguments.of("숫자가 7개인 경우", List.of(1,2,3,4,5,6,7)),
-                Arguments.of("숫자가 3개인 경우", List.of(1,2,3)),
+                Arguments.of("개수가 6개보다 많은 경우", List.of(1,2,3,4,5,6,7)),
+                Arguments.of("개수가 6개보다 적은 경우", List.of(1,2,3)),
                 Arguments.of("중복된 숫자가 있는 경우", List.of(1,2,3,4,5,5))
         );
     }
