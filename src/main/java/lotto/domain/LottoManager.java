@@ -18,8 +18,8 @@ public class LottoManager {
         return money / 1000;
     }
 
-    public int isNumberic(String inputMoney){
-        if(inputMoney == null || inputMoney.matches("[-+]?\\d*\\.?\\d+") == false){
+    public int isNumberic(String inputMoney) {
+        if (inputMoney == null || inputMoney.matches("[-+]?\\d*\\.?\\d+") == false) {
             System.out.println("[ERROR] 숫자로 입력해주세요");
             throw new NoSuchElementException("[ERROR] 숫자로 입력해주세요");
         }
