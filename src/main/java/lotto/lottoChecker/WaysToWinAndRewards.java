@@ -29,8 +29,22 @@ public enum WaysToWinAndRewards {
         return rank;
     }
 
+    public int getMainNumberMatches() {
+        return mainNumberMatches;
+    }
+
+    public boolean isBonusNumberShouldMatch() {
+        return bonusNumberShouldMatch;
+    }
+
     public int getReward() {
         return reward;
+    }
+    public static WaysToWinAndRewards findByRank(int rank) {
+        return Arrays.stream(WaysToWinAndRewards.values())
+                .filter(way -> way.getRank() == rank)
+                .findAny()
+                .orElse(NONE);
     }
 
     public static WaysToWinAndRewards findByMatches(int[] matchResult) {

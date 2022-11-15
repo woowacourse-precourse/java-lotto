@@ -62,7 +62,7 @@
     - WaysToWinAndReward#checkRankAndReward()
     - 예외) 메인번호 맞춘 수가 0이상 선택하는 수(ex 6)(상수로 지정해놨습니다.) 이하가 아니면 예외발생
     - 예외) 보너스 맞춘 수가 0 또는 1이 아니면 예외 발생
-- [ ] 당첨 결과를 출력할 수 있다.
+- [x] 당첨 결과를 출력할 수 있다.
   - StaffTeller#tellLottoResult()
 - [ ] 수익률을 계산할 수 있다.
   - LottoChecker#calculateROI()
