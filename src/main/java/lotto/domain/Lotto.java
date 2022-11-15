@@ -29,6 +29,16 @@ public class Lotto {
         return new Lotto(sortedLottoNumber);
     }
 
+    public List<Integer> getNumbers() {
+        return new ArrayList<>(numbers);
+    }
+
+    public int getMatchingNumberCount(final Lotto other) {
+        return (int) other.getNumbers().stream()
+                .filter(numbers::contains)
+                .count();
+    }
+
     public boolean existsMatchingNumber(final int number) {
         return numbers.contains(number);
     }
