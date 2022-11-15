@@ -13,8 +13,8 @@ public class LottoIssueImpl implements LottoIssue{
 
     private final BigDecimal count;
 
-    public LottoIssueImpl(BigDecimal count){
-        this.count = count;
+    public LottoIssueImpl(String userInput){
+        this.count = convertMoneyToCount(userInput);
     }
 
     @Override
@@ -42,6 +42,11 @@ public class LottoIssueImpl implements LottoIssue{
         if (randomNumbers.stream().filter(number -> 1 <= number && number <= 45).count() != 6){
             throw new IllegalArgumentException();
         }
+    }
+
+    private BigDecimal convertMoneyToCount(String userInput){
+        BigDecimal money = new BigDecimal(userInput);
+        return money.divide(BigDecimal.valueOf(1000));
     }
 
 
