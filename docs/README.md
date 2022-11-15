@@ -31,7 +31,7 @@
 
 ---
 ## :clipboard: 시스템 구조
-<img src="https://github.com/compasstar/java-lotto/blob/compasstar/docs/%EB%A1%9C%EB%98%90%20%EA%B5%AC%EC%A1%B0%EB%8F%84.png"/>
+<img src="https://github.com/compasstar/java-lotto/blob/compasstar/docs/lotto_architecture.png?raw=true"/>
 
 ---
 ## :dart: 실행 환경
