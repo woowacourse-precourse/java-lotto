@@ -41,7 +41,7 @@ public class LottoService {
     }
 
     // 일치하는 로또 번호 개수와 보너스 번호를 기준으로 Statistic을 선정하고 조건을 만족하면 StatisticAndCount의 value에 1을 추가한다.
-    private static void countStatistic(Lotto inputLotto, int bonus, List<Lotto> issuedLotteries,
+    public static void countStatistic(Lotto inputLotto, int bonus, List<Lotto> issuedLotteries,
                                        HashMap<Statistic, Integer> countStatistic, int index) {
         int matchingNumber = countMatchingNumber(issuedLotteries.get(index), inputLotto);
         boolean bonusFlag = compareBonus(issuedLotteries.get(index), bonus);

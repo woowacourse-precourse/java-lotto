@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.HashMap;
+
 public enum Statistic {
 
     THREE(3, 5_000), FOUR(4, 50_000), FIVE(5, 1_500_000),
@@ -28,5 +30,11 @@ public enum Statistic {
         if (matchingNumber == 5) return FIVE;
         if (matchingNumber == 6) return SIX;
         return null;
+    }
+
+    public static void initializeCountStatistic(HashMap<Statistic, Integer> map) {
+        for (Statistic e : values()){
+            map.put(e, 0);
+        }
     }
 }

@@ -5,14 +5,13 @@ import lotto.domain.Lotto;
 import lotto.domain.Statistic;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static lotto.domain.Statistic.findStatistic;
-import static lotto.exception.InputException.inputMoneyException;
-import static lotto.service.LottoService.compareBonus;
-import static lotto.service.LottoService.countMatchingNumber;
+import static lotto.domain.Statistic.*;
+import static lotto.service.LottoService.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -90,8 +89,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 로또_값이_일치하는_개수() {
         // given
-        Lotto lottoA = new Lotto(List.of(1,2,3,4,5,6));
-        Lotto lottoB = new Lotto(List.of(2,6,7,8,9,10));
+        Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lottoB = new Lotto(List.of(2, 6, 7, 8, 9, 10));
 
         // when
         int count = countMatchingNumber(lottoA, lottoB);
@@ -103,7 +102,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 보너스_포함_여부() {
         // given
-        Lotto lottoA = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonus = 5;
 
         // when
@@ -125,6 +124,28 @@ class ApplicationTest extends NsTest {
         // then
         assertEquals(statistic, Statistic.BONUS);
     }
+
+    @Test
+    void 해당하는_Statistic에_1추가() {
+        // given
+        Lotto inputLotto = new Lotto(List.of(5,6,7,8,9,10));
+        int bonus = 22;
+
+        Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lottoB = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+        List<Lotto> issuedLotteries = List.of(lottoA, lottoB);
+
+        HashMap<Statistic, Integer> countStatistic = new HashMap<>();
+        initializeCountStatistic(countStatistic);
+
+        // when
+        countStatistic(inputLotto, bonus, issuedLotteries, countStatistic, 1);
+
+        // then
+        assertEquals(countStatistic.get(FOUR), 1);
+        assertEquals(countStatistic.get(THREE), 0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
