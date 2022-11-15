@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import lotto.exception.Error;
 
 public class Purchase {
@@ -10,9 +8,6 @@ public class Purchase {
 
     private final int amount;
     private final int count;
-
-    private List<Lotto> lottos;
-    private int bonusNumber;
 
     public Purchase(int amount) {
         validate(amount);
@@ -26,24 +21,6 @@ public class Purchase {
         }
     }
 
-    public List<Lotto> createLottos() {
-        lottos = new ArrayList<>();
-
-        for (int i = 0; i < this.count; i++) {
-            lottos.add(new Lotto(NumberGenerator.createDifferentRandomNumbers()));
-        }
-
-        return lottos;
-    }
-
-    public void createBonusNumber() {
-        bonusNumber =  NumberGenerator.createRandomNumber();
-    }
-
-    public void printLottos() {
-        lottos.forEach(System.out::println);
-    }
-
     public void printCount() {
         System.out.println(count + "개를 구매했습니다.");
     }
@@ -52,11 +29,7 @@ public class Purchase {
         return amount;
     }
 
-    public List<Lotto> getLottos() {
-        return lottos;
-    }
-
-    public int getBonusNumber() {
-        return bonusNumber;
+    public int getCount() {
+        return count;
     }
 }
