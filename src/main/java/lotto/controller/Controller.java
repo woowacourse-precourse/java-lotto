@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.console.InputConsole;
 import lotto.console.OutputConsole;
+import lotto.domain.CompareNumber;
 import lotto.domain.Lotto;
 import lotto.domain.LottoManager;
 
@@ -23,9 +24,10 @@ public class Controller {
         return lottoCount;
     }
 
-    public void makeRandomNum(int lottoCount) {
+    public List<List<Integer>> makeRandomNum(int lottoCount) {
         List<List<Integer>> randomNumbers = lottoManager.makeRandomNumbers(lottoCount);
         output.randomNumbers(randomNumbers);
+        return randomNumbers;
     }
 
     public List<Integer> winingNumber() throws IllegalArgumentException{
@@ -39,9 +41,18 @@ public class Controller {
         return lotto.getNumbers();
     }
 
-    public void bonusNumber(List<Integer> numbers) throws IllegalArgumentException{
+    public int bonusNumber(List<Integer> numbers) throws IllegalArgumentException{
         int bonusNumber = Integer.parseInt(input.bonusNum());
         lotto = new Lotto(numbers, bonusNumber);
+        return bonusNumber;
+    }
+
+    public void compareNumber(List<List<Integer>> lottoNumber, List<Integer> winingNumber, int bonusNumber){
+        CompareNumber compareNumber = new CompareNumber(lottoNumber, winingNumber, bonusNumber);
+        compareNumber.compareLotto();
+        List<Integer> lottoResult = compareNumber.getLottoResult();
+//        output.lottoRank(lottoResult);
+        System.out.println(lottoResult);
     }
 
 }
