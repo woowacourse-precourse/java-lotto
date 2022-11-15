@@ -19,7 +19,7 @@ public class BonusLotto {
         return new BonusLotto(bonusNum, lotto);
     }
 
-    private int validateBonus(String bonus, List<Integer> lotto){
+    private int validateBonus(String bonus, List<Integer> lotto) {
         int tmpBonus = makeBonusNumber(bonus);
         validateDuplicate(tmpBonus, lotto);
         return tmpBonus;

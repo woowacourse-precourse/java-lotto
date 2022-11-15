@@ -18,7 +18,7 @@ public class TotalStat {
 
     public static TotalStat of(TotalWinningLotto totalWinningLotto, LottoComputer lottoComputer) {
         return new TotalStat(
-            lottoComputer.lottoCount(totalWinningLotto.getWinningLotto(), totalWinningLotto.getBonusLotto()));
+                lottoComputer.lottoCount(totalWinningLotto.getWinningLotto(), totalWinningLotto.getBonusLotto()));
     }
 
     public long sumWinnersPrices() {
