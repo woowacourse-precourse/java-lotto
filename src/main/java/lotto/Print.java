@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.LongToDoubleFunction;
 
 public class Print {
 
@@ -31,7 +32,6 @@ public class Print {
 	}
 
 	public static void printCorrectness(List<Integer> correctNumbers) {
-
 		System.out.println("당첨 통계");
 		System.out.println(" ---");
 		System.out.println("3개 일치 (5,000원) - " + correctNumbers.get(0) + "개");
@@ -42,10 +42,11 @@ public class Print {
 	}
 
 	public static void printYield(List<Integer> correctNumbers, Integer lottoCount) {
-		Integer winnings = 0;
-		List<Integer> winningAmount = List.of(5000, 50000, 1500000, 30000000, 2000000000);
+		long winnings = 0;
+		List<LottoWinMoney> winningAmount = List.of(LottoWinMoney.CALC_5, LottoWinMoney.CALC_4, LottoWinMoney.CALC_3, LottoWinMoney.CALC_2, LottoWinMoney.CALC_1);
 		for (int i = 0; i < correctNumbers.size(); i++) {
-			winnings += correctNumbers.get(i) * winningAmount.get(i);
+			winnings += winningAmount.get(i).calculate(correctNumbers.get(i));
+
 		}
 		Float winningPercent = (winnings / (float)(lottoCount * 1000)) * 100;
 		System.out.println("총 수익률은 " + winningPercent + "%입니다.");
