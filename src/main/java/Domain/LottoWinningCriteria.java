@@ -24,4 +24,21 @@ public enum LottoWinningCriteria {
     public int getWinMoney() {
         return winnerMoney;
     }
+
+    public static LottoWinningCriteria getRank(int match, int bonus) {
+        if (match < 3){
+            return null;
+        }
+        if (match == 5 && bonus == 1) {
+            return SECOND_PLACE;
+        }
+        if (match == 5 && bonus == 0) {
+            return THIRD_PLACE;
+        }
+        for (LottoWinningCriteria value : values()) {
+            if (value.match == match)
+                return value;
+        }
+        return null;
+    }
 }
