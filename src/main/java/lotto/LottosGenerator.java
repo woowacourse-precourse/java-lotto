@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.LottoNumberRange.MAX;
 import static lotto.LottoNumberRange.MIN;
+import static lotto.constant.StandardConstant.LOTTO_NUMBERS_COUNT_STANDARD;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class LottosGenerator {
         int number = quantity.getNumber();
         int minRange = MIN.getValue();
         int maxRange = MAX.getValue();
-        int count = 6;
+        int count = LOTTO_NUMBERS_COUNT_STANDARD.getValue();
 
         List<Lotto> lottos = new ArrayList<>();
         while (lottos.size() < number) {
