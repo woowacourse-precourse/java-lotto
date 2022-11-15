@@ -12,7 +12,11 @@ public class Application {
         User user = new User();
 
         System.out.println("구입금액을 입력해 주세요.");
-        user.receiveCostInput();
+        try {
+            user.receiveCostInput();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         int lottoCost = user.getLottoCost();
 
         LottoGame lottoGame = new LottoGame();
@@ -36,6 +40,7 @@ public class Application {
                 "---");
         lottoGame.compareEachLotto(winningLotto);
         lottoGame.setRateOfReturn();
-        System.out.println(lottoGame);
+        System.out.println(lottoGame.rankCountResult());
+        System.out.println(lottoGame.profitRateResult());
     }
 }

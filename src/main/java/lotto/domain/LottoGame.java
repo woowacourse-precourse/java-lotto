@@ -19,6 +19,14 @@ public class LottoGame {
 
     private List<Lotto> lotteries = new ArrayList<>();
 
+    public LottoGame() {
+    }
+
+    public LottoGame(List<Integer> lottoResults, int lottoCount) {
+        this.lottoResults = lottoResults;
+        this.lottoCount = lottoCount;
+    }
+
     public List<Lotto> getLotteries() {
         return lotteries;
     }
@@ -37,7 +45,7 @@ public class LottoGame {
     }
 
     public void compareEachLotto(WinningLotto winningLotto) {
-        for (Lotto lottery:lotteries) {
+        for (Lotto lottery : lotteries) {
             int result = winningLotto.compareLotto(lottery);
 
             setLottoResults(result);
@@ -78,12 +86,15 @@ public class LottoGame {
         return profit;
     }
 
-    public String toString() {
+    public String rankCountResult() {
         return "3개 일치 (5,000원) - " + lottoResults.get(3) + "개\n" +
                 "4개 일치 (50,000원) - " + lottoResults.get(4) + "개\n" +
                 "5개 일치 (1,500,000원) - " + (lottoResults.get(5) - bonusResult) + "개\n" +
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - " + bonusResult + "개\n" +
-                "6개 일치 (2,000,000,000원) - " + lottoResults.get(6) + "개\n" +
-                "총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.";
+                "6개 일치 (2,000,000,000원) - " + lottoResults.get(6) + "개";
+    }
+
+    public String profitRateResult() {
+        return "총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.";
     }
 }
