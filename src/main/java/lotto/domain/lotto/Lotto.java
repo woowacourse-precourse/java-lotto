@@ -46,7 +46,6 @@ public class Lotto {
                 }
             }
         }
-        System.out.println(count);
 
         return LottoPrize.checkPrize(count, bonus);
     }
