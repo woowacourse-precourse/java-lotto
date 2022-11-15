@@ -3,7 +3,8 @@ package lotto.message;
 public enum LottoLine {
     LOTTO_LINE_START("["),
     LOTTO_LINE_END("]"),
-    LOTTO_NUMBER_SEPARATOR(", ");
+    LOTTO_NUMBER_SEPARATOR(", "),
+    LOTTO_CURRENCY_UNIT("원");
 
     private final String value;
 

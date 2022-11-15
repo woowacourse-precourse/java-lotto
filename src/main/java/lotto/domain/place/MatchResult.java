@@ -6,6 +6,7 @@ import static lotto.domain.place.PlaceCondition.FOURTH_PLACE_CONDITION;
 import static lotto.domain.place.PlaceCondition.NONE_CONDITION;
 import static lotto.domain.place.PlaceCondition.SECOND_PLACE_CONDITION;
 import static lotto.domain.place.PlaceCondition.THIRD_PLACE_CONDITION;
+import static lotto.message.LottoLine.LOTTO_CURRENCY_UNIT;
 
 import java.util.Arrays;
 
@@ -18,8 +19,6 @@ public enum MatchResult {
     FOURTH_PLACE(FOURTH_PLACE_CONDITION, 50_000, "4개 일치"),
     FIFTH_PLACE(FIFTH_PLACE_CONDITION, 5_000, "3개 일치"),
     NONE(NONE_CONDITION, 0, "");
-
-    private static String KRW = "원";
 
     private final PlaceCondition placeCondition;
     private final int matchAmount;
@@ -48,6 +47,6 @@ public enum MatchResult {
 
     @Override
     public String toString() {
-        return String.format("%s (%,d%s)", matchMessage, matchAmount, KRW);
+        return String.format("%s (%,d%s)", matchMessage, matchAmount, LOTTO_CURRENCY_UNIT.getValue());
     }
 }
