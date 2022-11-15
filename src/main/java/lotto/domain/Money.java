@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.utils.Utils;
+
 public class Money {
     public static final int MONEY_DIVIDE_UNIT = 1000;
     private final int money;

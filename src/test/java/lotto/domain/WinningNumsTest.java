@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.validator.Validator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -29,7 +30,7 @@ class WinningNumsTest {
     @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "15, 13, 17, 14, 25, 6", "41, 42, 43, 44, 45, 46"})
     void 입력받은_당첨_번호가_중복되지_않는지1(String winNums) {
         WinningNums winningNums = new WinningNums(winNums, "7");
-        assertThat(Validate.isNotDuplicate(winningNums.getWinningNums())).isEqualTo(true);
+        assertThat(Validator.isNotDuplicate(winningNums.getWinningNums())).isEqualTo(true);
     }
 
     @ParameterizedTest
@@ -44,7 +45,7 @@ class WinningNumsTest {
     @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "1, 13, 17, 14, 25, 6", "1, 42, 43, 44, 45, 46"})
     void 당첨_번호와_보너스_번호가_중복되지_않는지1(String winNums) {
         WinningNums winningNums = new WinningNums(winNums, "7");
-        assertThat(Validate.isNotContains(winningNums.getWinningNums(), winningNums.getBonusNum())).isEqualTo(true);
+        assertThat(Validator.isNotContains(winningNums.getWinningNums(), winningNums.getBonusNum())).isEqualTo(true);
     }
 
     @ParameterizedTest
@@ -58,7 +59,7 @@ class WinningNumsTest {
     @Test
     void 당첨_번호가_범위에_있는지1() {
         WinningNums winningNums = new WinningNums("1, 2, 3, 4, 5, 6", "7");
-        assertThat(Validate.isInRangeAll(winningNums.getWinningNums())).isEqualTo(true);
+        assertThat(Validator.isInRangeAll(winningNums.getWinningNums())).isEqualTo(true);
     }
 
     @ParameterizedTest
@@ -72,7 +73,7 @@ class WinningNumsTest {
     @Test
     void 보너스_번호가_범위에_있는지1() {
         WinningNums winningNums = new WinningNums("1, 2, 3, 4, 5, 6", "7");
-        assertThat(Validate.isInRange(winningNums.getBonusNum())).isEqualTo(true);
+        assertThat(Validator.isInRange(winningNums.getBonusNum())).isEqualTo(true);
     }
 
     @ParameterizedTest

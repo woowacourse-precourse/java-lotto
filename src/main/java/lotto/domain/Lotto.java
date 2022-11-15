@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.domain.Validate.*;
+import static lotto.validator.Validator.*;
 
 public class Lotto {
     public static final int LOTTO_NUMS_SIZE = 6;

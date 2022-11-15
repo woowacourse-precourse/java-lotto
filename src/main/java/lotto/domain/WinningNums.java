@@ -1,11 +1,13 @@
 package lotto.domain;
 
+import lotto.utils.Utils;
+
 import java.util.Comparator;
 import java.util.List;
 
-import static lotto.domain.Utils.PATTERN;
-import static lotto.domain.Utils.separateNums;
-import static lotto.domain.Validate.*;
+import static lotto.utils.Utils.PATTERN;
+import static lotto.utils.Utils.separateNums;
+import static lotto.validator.Validator.*;
 
 public class WinningNums {
     private final List<Integer> winningNums;

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.validator.Validator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,6 +23,6 @@ class UserLottosTest {
     void 로또_번호가_잘_생성되는지() {
         UserLottos userLottos = new UserLottos(1);
         Lotto lotto = userLottos.get().get(0);
-        assertThat(Validate.isInRangeAll(lotto.get()) && Validate.isNotDuplicate(lotto.get())).isEqualTo(true);
+        assertThat(Validator.isInRangeAll(lotto.get()) && Validator.isNotDuplicate(lotto.get())).isEqualTo(true);
     }
 }
