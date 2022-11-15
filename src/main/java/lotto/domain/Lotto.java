@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.Game;
 import lotto.Input;
 import lotto.exception.Exception;
-import lotto.check.Validator;
 
 import java.util.*;
 
@@ -16,16 +15,19 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        String luckyNumber = "";
-        for(int item : numbers){
-            luckyNumber += item+",";
-        }
+        String luckyNumber = toString(numbers);
         Validator.isDuplicateLuckyNumber(luckyNumber);
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Exception.WRONG_RANGE.getExceptionMessage());
         }
     }
-
+    public String toString(List<Integer> numbers){
+        String luckyNumber = "";
+        for(int item : numbers){
+            luckyNumber += item+",";
+        }
+        return luckyNumber;
+    }
     public static void myLotto(String cash){
         int myLottoCount = Integer.parseInt(cash) / Validator.UNIT;
         Game.myAutoLotto(myLottoCount);

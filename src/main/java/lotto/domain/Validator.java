@@ -1,4 +1,4 @@
-package lotto.check;
+package lotto.domain;
 
 import lotto.Game;
 import lotto.exception.Exception;
@@ -39,8 +39,8 @@ public class Validator {
     }
     public static void isDuplicateLuckyNumber(String luckyNumber){
         String[] splitNumber = luckyNumber.split(COMMA);
-        for(int i=0;i<splitNumber.length-1;i++){
-            if(splitNumber[i].equals(splitNumber[i+1])){
+        for(int i=0;i<splitNumber.length;i++){
+            if(luckyNumber.contains(splitNumber[i])){
                 throw new IllegalArgumentException(Exception.DUPLICATE_NUMBER.getExceptionMessage());
             }
         }
@@ -48,7 +48,7 @@ public class Validator {
     public static void isRangeNumber(String luckyNumber){
         String[] splitNumber = luckyNumber.split(COMMA);
         for(String number : splitNumber){
-            if(Integer.parseInt(number) < 1 && Integer.parseInt(number) > 45){
+            if(Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45){
                 throw new IllegalArgumentException(Exception.WRONG_RANGE.getExceptionMessage());
             }
         }
@@ -78,13 +78,9 @@ public class Validator {
         }
     }
     public static void isInputNumber(String cash){
-        String[] splitCash = cash.split("");
-        try{
-            for(String item : splitCash){
-                Integer.parseInt(item);
-            }
-        }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException(Exception.NOT_NUMBER.getExceptionMessage());
+        if(!cash.matches("[+-]?\\d*(\\.\\d+)?")){
+            System.out.println("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력");
         }
     }
 

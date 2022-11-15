@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.check.Validator;
+import lotto.domain.Validator;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -49,5 +49,21 @@ class LottoTest {
         String input = "2,3,4,5,6,7,8";
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validator.isLength(input));
+    }
+
+    @DisplayName("1~45 숫자 범위 내에 있지 않으면 예외가 발생한다.")
+    @Test
+    void 숫자_범위_체크(){
+        String input = "2,34,65,88,6,3";
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validator.isRangeNumber(input));
+    }
+
+    @DisplayName("입력한 로또 번호가 중복된 숫자가 있는지")
+    @Test
+    void 로또_번호_중복_숫자_체크(){
+        String input = "1,2,3,4,5,4";
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validator.isDuplicateLuckyNumber(input));
     }
 }
