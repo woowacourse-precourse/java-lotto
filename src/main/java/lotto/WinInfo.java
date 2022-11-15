@@ -19,6 +19,8 @@ public enum WinInfo {
     private long winMoney;
     private int order;
 
+    private static int totalCount = WinInfo.values().length;
+
     WinInfo(int matchCnt, int bonusMatchCnt, long winMoney, int order) {
         this.matchCnt = matchCnt;
         this.bonusMatchCnt = bonusMatchCnt;
@@ -62,6 +64,10 @@ public enum WinInfo {
         return result;
     }
 
+    public static int getTotalCount(){
+        return totalCount;
+    }
+
     public long getWinMoney(){
         return this.winMoney;
     }
@@ -77,5 +83,7 @@ public enum WinInfo {
     public int getOrder() {
         return this.order;
     }
+
+
 
 }
