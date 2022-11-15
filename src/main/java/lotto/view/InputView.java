@@ -13,8 +13,8 @@ public class InputView {
         return winingNumber;
     }
 
-    public int InputBonusNumber() {
+    public String InputBonusNumber() {
         String bonusNumber = readLine();
-        return Integer.parseInt(bonusNumber);
+        return bonusNumber;
     }
 }
