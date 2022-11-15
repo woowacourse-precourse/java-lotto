@@ -9,11 +9,15 @@ import validation.Validator;
 
 public class WinningNumbersInputUtil {
     public static Lotto getWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        printMessage();
 
         List<Integer> numbers = getNumbers();
 
         return new Lotto(numbers);
+    }
+
+    private static void printMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     private static List<Integer> getNumbers() {
