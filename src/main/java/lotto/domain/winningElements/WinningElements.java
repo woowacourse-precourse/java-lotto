@@ -32,4 +32,12 @@ public class WinningElements {
 
         return finalWinningNumbers;
     }
+
+    public static int getBonusNumber() {
+        String receivedBonusNumber = InputView.receiveBonusNumber();
+
+        int bonusNumber = Integer.parseInt(receivedBonusNumber);
+
+        return bonusNumber;
+    }
 }

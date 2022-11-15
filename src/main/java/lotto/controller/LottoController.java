@@ -16,6 +16,7 @@ public class LottoController {
         TotalLottos totalLottos = takeTotalLottos(lottoPurchaseCount);
 
         List<Integer> winningNumbers = WinningElements.getWinningNumbers();
+        int bonusNumber = WinningElements.getBonusNumber();
     }
 
     public static long takeLottoPurchaseCount(long purchaseAmount) {
