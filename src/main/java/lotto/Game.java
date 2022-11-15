@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.Validation.lottoValidate;
-import static lotto.Validation.moneyValidate;
+import static lotto.Validation.*;
 
 public class Game {
     private static List<Lotto> randomLottos;
@@ -26,6 +25,9 @@ public class Game {
 
         // 당첨 번호 입력 및 타당성 검증
         winningLotto = inputWinningLotto();
+
+        // 보너스 번호 입력
+        bonusNumber = inputBonusNumber();
     }
 
     private String inputString(String message){
@@ -70,5 +72,12 @@ public class Game {
         Lotto WinningLotto = lottoValidate(inputLotto);
 
         return WinningLotto;
+    }
+
+    private int inputBonusNumber(){
+        String inputNumber = inputString("보너스 번호를 입력해 주세요.");
+        int bonusNumber = bonusNumberValidate(inputNumber, winningLotto);
+
+        return bonusNumber;
     }
 }
