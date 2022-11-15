@@ -21,8 +21,11 @@
 - [x] 입력받은 로또의 개수 만큼, 로또를 발급할 수 있다.
   - LottoGenerator#issueLottosByInputAmount()
   - 예외) 1이상의 자연수가 아니면 예외 발생
+- [x] 구매한 로또의 숫자를 얻을 수 있다.
+  - Lotto#getNumbers()
+  - 예외) null이면 예외 발생
 - [ ] 입력받은 수만큼 리스트를 출력할 수 있다.
-  - LottoGenerator#printLottos()
+  - StaffTeller#tellLottos()
 
 - [ ] 당첨 번호 입력 받을 수 있다.
   - WinningNumbers#inputWinningMainNumbers()
