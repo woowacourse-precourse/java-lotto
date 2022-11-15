@@ -19,9 +19,6 @@ public enum LottoResult {
     }
 
     public static LottoResult of(int matchingCount, boolean containsBonusNumber) {
-        if (isLastPlace(matchingCount)) {
-            return LAST_PLACE;
-        }
         if (isSecondOrThirdPlace(matchingCount)) {
             if (containsBonusNumber) {
                 return SECOND_PLACE;
@@ -29,10 +26,6 @@ public enum LottoResult {
             return THIRD_PLACE;
         }
         return getResultByMatchingCount(matchingCount);
-    }
-
-    private static boolean isLastPlace(int matchingCount) {
-        return matchingCount < FIFTH_PLACE.getMatchingCount();
     }
 
     private static boolean isSecondOrThirdPlace(int matchingCount) {
@@ -44,7 +37,7 @@ public enum LottoResult {
         return Arrays.stream(results)
                 .filter(result -> result.hasSameMatchingCount(matchingCount))
                 .findFirst()
-                .get();
+                .orElse(LAST_PLACE);
     }
 
     private boolean hasSameMatchingCount(int matchingCount) {
