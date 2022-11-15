@@ -8,12 +8,10 @@ public class Result {
     private float totalEarningsRate;
 
     public Result() {
-        history.put(Rank.FIRST, 0);
-        history.put(Rank.SECOND, 0);
-        history.put(Rank.THIRD, 0);
-        history.put(Rank.FOURTH, 0);
-        history.put(Rank.FIFTH, 0);
-        history.put(Rank.FAIL, 0);
+        Rank[] rank = Rank.values();
+        for (Rank r : rank) {
+            history.put(r, 0);
+        }
     }
 
     public void add(Rank rank) {
@@ -30,12 +28,21 @@ public class Result {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
             bw.write("당첨 통계\n");
             bw.write("---\n");
-            for (Rank r : history.keySet()) {
-                bw.write(r.getMessage() + history.get(r) + "개\n");
-            }
+            printPerRank(bw);
             bw.write("총 수익률은 " + totalEarningsRate + "%입니다.\n");
+            bw.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void printPerRank(BufferedWriter bw) throws IOException {
+        Rank[] rank = Rank.values();
+        for (Rank r : rank) {
+            if (r.equals(Rank.FAIL)) {
+                continue;
+            }
+            bw.write(r.getMessage() + history.get(r) + "개\n");
         }
     }
 
