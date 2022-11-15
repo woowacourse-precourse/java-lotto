@@ -16,9 +16,9 @@ public class LottoController {
             lottoProgress();
 
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 금액은 숫자만 입력 가능합니다.");
+            OutputView.printErrorMessage("[ERROR] 금액은 숫자만 입력 가능합니다.");
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printErrorMessage(e.getMessage());
         }
     }
 
