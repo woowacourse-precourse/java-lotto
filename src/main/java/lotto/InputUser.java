@@ -54,4 +54,9 @@ public class InputUser {
         }
         return params;
     }
+    public static void validateRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(ERRMSG.getErrMsg());
+        }
+    }
 }
