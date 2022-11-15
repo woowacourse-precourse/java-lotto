@@ -27,7 +27,7 @@ public class ViewValidator {
     }
 
     public void validatePrefixZero(String money) {
-        if (money.charAt(0) == '0') {
+        if (money.length() > 0 && money.charAt(0) == '0') {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PREFIX_ZERO.getMessage());
         }
     }
