@@ -10,6 +10,12 @@ public class LottoResult {
         this.ranks = rewards;
     }
 
+    public int countRank(Rank rank) {
+        return (int) ranks.stream()
+                .filter(ranks -> ranks == rank)
+                .count();
+    }
+
     public List<Rank> getRanks() {
         return ranks;
     }
