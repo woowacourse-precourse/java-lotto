@@ -101,4 +101,10 @@ public class LottoMachine {
     public List<Lotto> getIssuedLotto() {
         return this.issuedLotto;
     }
+
+    public void printIssuedLotto() {
+        for (Lotto lotto : this.issuedLotto) {
+            lotto.printLotto();
+        }
+    }
 }
