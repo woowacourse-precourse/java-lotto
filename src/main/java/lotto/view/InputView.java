@@ -42,6 +42,8 @@ public class InputView {
     }
 
     public Integer inputBonusNumber(List<Integer> winningNumbers) {
+        outputView.announceInputBonusNumber();
+
         String input = Console.readLine();
         validateCastInteger(input);
         validateRange(input);

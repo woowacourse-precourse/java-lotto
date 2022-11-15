@@ -12,4 +12,8 @@ public class OutputView {
     public void announceInputWinningNumbers() {
         Announcement.INPUT_WINNING_NUMBERS.announce();
     }
+    public void announceInputBonusNumber() {
+        Announcement.INPUT_BONUS_NUMBERS.announce();
+    }
+
 }

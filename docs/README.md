@@ -32,7 +32,7 @@
 - [ ] lotto를 몇개 구매했는지 출력한다.
 - [ ] 구매한 lotto를 출력한다.
 - [x] 당첨 번호 입력 메세지를 출력한다. #announceInputWinningNumbers()
-- [ ] 보너스 번호 입력 메세지를 출력한다.
+- [x] 보너스 번호 입력 메세지를 출력한다. #announceInputBonusNumber()
 - [ ] 결과에대해 출력한다.
   - 출력 양식에 따른 등수 별 당첨 결과
   - 원금 대비 당첨금의 비율
