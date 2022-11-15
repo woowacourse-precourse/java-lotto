@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -23,5 +24,23 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("1000으로 나누어 떨어지지않을 때")
+    @Test
+    void inputWrongNumber1() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        String test = "1580";
+        assertThatThrownBy(() -> Exeption.inputMoneyExeption(test))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("0을 입력했을 때")
+    @Test
+    void inputWrongNumber2() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        String test = "0";
+        assertThatThrownBy(() -> Exeption.inputMoneyExeption(test))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
