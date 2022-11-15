@@ -2,7 +2,10 @@ package lotto.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -110,6 +113,20 @@ class LottoServiceTest {
 
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+        }
+
+        @Test
+        @DisplayName("[성공]")
+        void success() {
+            // given
+            final String input = "1,2,3,4,5,6";
+            final Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+            // when
+            final Lotto result = LottoService.getWinningNumber(input);
+
+            // then
+            assertTrue(lotto.getNumbers().containsAll(result.getNumbers()));
         }
     }
 }
