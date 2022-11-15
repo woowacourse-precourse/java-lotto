@@ -1,8 +1,11 @@
 package lotto;
 
+import lotto.domain.Result;
+import lotto.view.FinalResult;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Compare {
 
@@ -10,41 +13,54 @@ public class Compare {
     public static HashMap<Integer, List<Integer>> randomLottos; //로또번호들
     public static int correctCount;
     public static HashMap<Integer, Integer> resultCount;
-    public static int bonusNumber;
-    public static HashMap<Integer, Boolean> hasBonusNumber;
-    public static boolean hasOrNot;
+
+    public static ArrayList<Integer> finalResult;
 
     public static void numbers() {
         resultCount = new HashMap<>();
-        hasBonusNumber = new HashMap<>();
         for (int i = 0; i < randomLottos.size(); i++) {
             correctCount =0;
-            hasOrNot = false;
-            List<Integer> check = randomLottos.get(i);
-            for (int j = 0; j < userList.size(); j++) {
-                if(check.contains(userList.get(j))){
-                    correctCount++;
-                }
-                if(check.contains(bonusNumber)){
-                    hasOrNot = true;
-                }
-            }
+            correctCount = checkCount(i);
             resultCount.put(i,correctCount);
-            hasBonusNumber.put(i,hasOrNot);
             System.out.println(i+"번째 "+ resultCount+"개 번호 일치");
-            System.out.println(i+"번째 보너스 번호 일치?" + (hasOrNot==true?"o":"x"));
-
-
         }
-
-
     }
 
+    public static int checkCount(int index){
+        List<Integer> check = randomLottos.get(index);
+        for (int j = 0; j < userList.size(); j++) {
+            if(check.contains(userList.get(j))){
+                correctCount++;
+            }
+        }
+        return correctCount;
+    }
+
+/*
     public static void getResult(){
         for (int i = 0; i < resultCount.size(); i++) {
-            Result.getResult(resultCount.get(i), hasBonusNumber.get(i));
+            Result result = Result.getResult(resultCount.get(i), hasBonusNumber.get(i));
+            String re = String.valueOf(result);
+            System.out.println(result);
+            if(re.equals("FIRST")){
+                FinalResult.first++;
+            }
+            if(re.equals("SECOND")){
+                FinalResult.second++;
+            }
+            if(re.equals("THIRD")){
+                FinalResult.third++;
+            }if(re.equals("FOURTH")){
+                FinalResult.fourth++;
+            }
+            if(re.equals("FIFTH")){
+                FinalResult.fifth++;
+            }
+
         }
 
+
     }
+ */
 
 }
