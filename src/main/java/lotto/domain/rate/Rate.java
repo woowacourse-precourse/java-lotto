@@ -9,15 +9,16 @@ import java.util.List;
 
 public class Rate {
 
-	public static double calculate_rate(HashMap<String,Integer> hashMap){
+	public static String calculate_rate(HashMap<String,Integer> hashMap){
 
-		if (hashMap.isEmpty()) return 0.0;
+		if (hashMap.isEmpty()) return "0.0";
 
 		double money = Integer.parseInt(BuyLotto.USER_MONEY_return());
 		List<Integer> prize_money_list = prize_money_list_return(hashMap);
 		double money_sum = prize_money_sum(prize_money_list);
-		double result_rate = Math.round(((money_sum / money) * 100)*100)/100.0;
-		return result_rate;
+		double result_rate = (money_sum / money) * 100;
+		String result = String.format("%.1f", result_rate);
+		return result;
 	}
 
 	public static List<Integer> prize_money_list_return(HashMap<String,Integer> hashMap){
