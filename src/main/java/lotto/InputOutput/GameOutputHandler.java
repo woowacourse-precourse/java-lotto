@@ -65,12 +65,12 @@ public class GameOutputHandler {
             printMake.append(", 보너스 볼 일치");
         }
 
-        printMake.append(String.format(" (%s원)",insertCommaInMoney(winningMoney)));
+        printMake.append(String.format(" (%s원)", insertCommaInInteger(winningMoney)));
         printMake.append(String.format(" - %d개",amountOfThatRanking));
         System.out.println(printMake);
     }
-    private String insertCommaInMoney(int winningMoney){
-        StringBuilder originalToReverse = new StringBuilder(Integer.toString(winningMoney)).reverse();
+    private String insertCommaInInteger(int input){
+        StringBuilder originalToReverse = new StringBuilder(Integer.toString(input)).reverse();
         StringBuilder forMake = new StringBuilder();
 
         for(int stringIndex = 0; stringIndex < originalToReverse.length(); stringIndex++){
