@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.domain.Lottos;
+import lotto.domain.WinningLotto;
+import lotto.domain.WinningResult;
 import lotto.domain.WinningType;
 
 import java.text.DecimalFormat;
@@ -26,6 +29,17 @@ public class OutputView {
 
     public static void printPurchaseNum(int number) {
         System.out.println(LINE_FEED + number + PRINT_PURCHASE_NUM_MESSAGE);
+    }
+
+    public static void printResult(WinningLotto winningLotto, Lottos lottos, int inputMoney) {
+
+        printResultMainMessage();
+
+        WinningResult result = new WinningResult(winningLotto, lottos);
+        result.print();
+
+        double earning = result.calculateEarning(inputMoney);
+        printEarning(earning);
     }
 
     public static void printResultMainMessage() {

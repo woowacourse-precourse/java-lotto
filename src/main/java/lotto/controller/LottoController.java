@@ -32,14 +32,4 @@ public class LottoController {
         return inputMoney / LOTTO_PRICE;
     }
 
-    public static void printResult(WinningLotto winningLotto, Lottos lottos, int inputMoney) {
-
-        printResultMainMessage();
-
-        WinningResult result = new WinningResult(winningLotto, lottos);
-        result.print();
-
-        double earning = result.calculateEarning(inputMoney);
-        printEarning(earning);
-    }
 }
