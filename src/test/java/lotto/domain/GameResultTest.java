@@ -114,4 +114,20 @@ public class GameResultTest {
 
         assertThat(result).isEqualTo(List.of(0, 0, 0, 0, 1, 0));
     }
+
+    @DisplayName("로또 1개를 구매해서 1등을 하면 수익률은 200_000_000%이다.")
+    @Test
+    void ProfitRateIs200_000_000IfFirstPlaceWithOneLotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Lotto> lottos = new ArrayList<>(List.of(lotto));
+        List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        int numberLotto = lottos.size();
+
+        gameResult.calculateTotalResult(lottos, winningNumber, bonusNumber);
+        gameResult.calculateProfitRate(numberLotto);
+        float profit = gameResult.getProfitRate();
+
+        assertThat(profit).isEqualTo(200_000_000);
+    }
 }
