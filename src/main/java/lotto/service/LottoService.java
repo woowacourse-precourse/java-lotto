@@ -2,9 +2,11 @@ package lotto.service;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
+import lotto.domain.Reward;
 import lotto.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoService {
 
@@ -32,13 +34,21 @@ public class LottoService {
     }
 
     public void saveResultLotto() {
-        for (Lotto lotto : user.getLotties()) {
-            int winningCount = matchLottoCount(lotto.getNumbers(), lottoMachine.getNumbers());
+        final int bonusNumber = lottoMachine.getBonusNumber();
+        final List<Integer> winngingNumbers = lottoMachine.getNumbers();
 
-            if (checkBonusNumber(lottoMachine.getBonusNumber(), winningCount, lotto.getNumbers())) {
-                user.saveResult(RewardFactory.createRewardByLottoCount(winningCount));
-            } else {
+        for (Lotto lotto : user.getLotties()) {
+            final List<Integer> lottoNumbers = lotto.getNumbers();
+            int winningCount = matchLottoCount(lottoNumbers, winngingNumbers);
+
+            if (winningCount < 3) {
+                continue;
+            }
+
+            if ( winningCount == 5 && checkBonusNumber(bonusNumber, lottoNumbers)) {
                 user.saveResult(RewardFactory.createBonusReward());
+            } else {
+                user.saveResult(RewardFactory.createRewardByLottoCount(winningCount));
             }
         }
     }
@@ -53,12 +63,12 @@ public class LottoService {
         return count;
     }
 
-    public boolean checkBonusNumber(int bonusNumber, int lottoCount, List<Integer> lottoNumbers) {
-        if (lottoCount == 5) {
-            return lottoNumbers.contains(bonusNumber);
-        }
+    public boolean checkBonusNumber(int bonusNumber, List<Integer> lottoNumbers) {
+        return lottoNumbers.contains(bonusNumber);
+    }
 
-        return false;
+    public Map<Reward, Integer> getLottiesResult() {
+        return user.getLottiesResult();
     }
 
     //테스트를 위한 메서드
