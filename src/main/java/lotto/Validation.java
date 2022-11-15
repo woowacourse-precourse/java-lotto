@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,21 @@ public class Validation {
             checkDuplicate(winning);
         } catch (IllegalArgumentException E) {
             throw new IllegalArgumentException(Error.DUPLICATE_IN_BONUS.message());
+        }
+    }
+
+    public void checkWinningFormat(String input) throws IllegalArgumentException {
+        try {
+            String[] inputSplit = input.split(",");
+            List<Integer> lottoFormat = new ArrayList<>();
+            for (int i = 0; i < inputSplit.length; i++) {
+                lottoFormat.add(Integer.parseInt(inputSplit[i]));
+            }
+            if (lottoFormat.size() != 6) {
+                throw new IllegalArgumentException(Error.OUT_OF_WINNING_FORMAT.message());
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.OUT_OF_WINNING_FORMAT.message());
         }
     }
 
