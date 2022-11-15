@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+/***
+ * 로또의 갯수와 랜덤수를 구하는 클래스
+ */
 public class LottoManager {
     public LottoManager() {
     }
@@ -35,18 +38,18 @@ public class LottoManager {
         }
     }
 
-    public List<List<Integer>> makeRandomNumbers(int lottoCount) {
-        List<List<Integer>> numbers = new ArrayList<>();
+    public List<List<Integer>> buyerLottoNumbers(int lottoCount) {
+        List<List<Integer>> randomNumbers = new ArrayList<>();
         int cnt = 0;
         while (cnt < lottoCount) {
-            List<Integer> randomNumbers = makeRandomNumber();
-            if (isNotDuplication(randomNumbers)) {
-                Collections.sort(randomNumbers);
-                numbers.add(randomNumbers);
+            List<Integer> randomNumber = makeRandomNumber();
+            if (isNotDuplication(randomNumber)) {
+                Collections.sort(randomNumber);
+                randomNumbers.add(randomNumber);
                 cnt++;
             }
         }
-        return numbers;
+        return randomNumbers;
     }
 
     public List<Integer> makeRandomNumber() {
