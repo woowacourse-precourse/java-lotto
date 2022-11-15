@@ -15,6 +15,10 @@ public class User {
         return countLotto;
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public void inputPrice() {
         String price = Console.readLine();
         inputValidation.validatePrice(price);

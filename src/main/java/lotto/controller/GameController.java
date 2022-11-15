@@ -1,10 +1,10 @@
 package lotto.controller;
 
-import lotto.model.Computer;
-import lotto.model.Lotto;
-import lotto.model.User;
-import lotto.model.WinningNumber;
+import lotto.model.*;
 import lotto.view.Message;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameController {
     private final Message message = new Message();
@@ -34,5 +34,11 @@ public class GameController {
 
     public void getResult() {
         message.startResult();
+
+        Map<Grade, Integer> lottoResult = new HashMap<>();
+        for (Lotto lotto : user.getLottos()) {
+            Grade grade = winningNumber.getResult(lotto);
+            lottoResult.put(grade, lottoResult.getOrDefault(grade, 0) + 1);
+        }
     }
 }
