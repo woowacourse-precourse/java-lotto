@@ -38,5 +38,8 @@ public class LottoGenerator {
     public Stream<Integer> sortLottoNumbers(Lotto lotto){
         return lotto.getLotto().stream().sorted(Comparator.naturalOrder());
     }
-   
+    public String createLottoNumberFormat(Stream<Integer> sortedLottoNumbers){
+        return Arrays.toString(sortedLottoNumbers.toArray());
+    }
+
 }
