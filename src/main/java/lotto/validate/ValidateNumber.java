@@ -45,19 +45,19 @@ public class ValidateNumber {
         }
     }
 
-    public static void validateBonusNumber(int bonusNumber, Lotto lotto) {
+    public static void validateBonusNumber(Integer bonusNumber, Lotto lotto) {
         isInRange(bonusNumber);
         isDuplicate(bonusNumber, lotto);
     }
 
-    private static void isInRange(int bonusNumber) {
+    private static void isInRange(Integer bonusNumber) {
         if (RANGE_START <= bonusNumber && RANGE_END >= bonusNumber) {
             return;
         }
         throw new IllegalArgumentException(NOT_IN_RANGE_MESSAGE);
     }
 
-    private static void isDuplicate(int bonusNumber, Lotto lotto) {
+    private static void isDuplicate(Integer bonusNumber, Lotto lotto) {
         if (lotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
         }
