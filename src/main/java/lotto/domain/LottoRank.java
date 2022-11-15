@@ -7,8 +7,8 @@ public enum LottoRank {
     FOURTH_RANK(4, "4개 일치 (50,000원)"),
     FIFTH_RANK(5, "3개 일치 (5,000원)");
 
-    public final int rankNumber;
-    public final String rankMessage;
+    private final int rankNumber;
+    private final String rankMessage;
 
     LottoRank(int rankNumber, String rankMessage) {
         this.rankNumber = rankNumber;
@@ -32,5 +32,13 @@ public enum LottoRank {
             return FIRST_RANK;
         }
         return null;
+    }
+
+    public int getRankNumber() {
+        return rankNumber;
+    }
+
+    public String getRankMessage() {
+        return rankMessage;
     }
 }

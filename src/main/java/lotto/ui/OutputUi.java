@@ -1,8 +1,10 @@
 package lotto.ui;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 도메인에 관한 출력 UI
@@ -23,6 +25,16 @@ public class OutputUi {
         System.out.println(lotteries.size() + "개를 구매했습니다.");
         for (Lotto lottery : lotteries) {
             System.out.println(lottery.toString());
+        }
+    }
+
+    /**
+     * 사용자 로또 당첨된 개수와 정보 출력
+     */
+    public void printWinLottoAmountsInformation(Map<LottoRank, Integer> lottoWinAmounts) {
+        System.out.println("\n당첨통계\n---");
+        for (LottoRank lottoRank : lottoWinAmounts.keySet()) {
+            System.out.println(lottoRank.getRankMessage() + " - " + lottoWinAmounts.get(lottoRank) + "개");
         }
     }
 }
