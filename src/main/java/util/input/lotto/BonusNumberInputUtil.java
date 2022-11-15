@@ -3,6 +3,7 @@ package util.input.lotto;
 import static util.input.global.InputUtil.getInput;
 
 import lotto.Lotto;
+import validation.Validator;
 
 public class BonusNumberInputUtil {
     public static int getBonusNumber(Lotto winningNumbers) {
@@ -10,6 +11,14 @@ public class BonusNumberInputUtil {
 
         String bonusNumber = getInput();
 
+        validate(bonusNumber, winningNumbers);
+
         return Integer.parseInt(bonusNumber);
+    }
+
+    private static void validate(String bonusNumber, Lotto winningNumbers) {
+        Validator validator = new Validator();
+
+        validator.validateBonusNumber(bonusNumber, winningNumbers);
     }
 }

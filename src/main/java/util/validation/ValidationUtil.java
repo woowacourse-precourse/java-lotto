@@ -3,7 +3,6 @@ package util.validation;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
-import lotto.Lotto;
 
 public class ValidationUtil {
     public static boolean isInteger(String input) {
@@ -64,6 +63,11 @@ public class ValidationUtil {
 
         return sizeOfFiltered == numbers.size();
     }
+
+    public static boolean checkSize(String bonusNumber) {
+        return bonusNumber.length() != 1;
+    }
+
 
     public static boolean isWithinValidRange(String input) {
         int number = Integer.parseInt(input);
