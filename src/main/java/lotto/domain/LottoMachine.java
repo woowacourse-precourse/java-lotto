@@ -7,7 +7,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
-    public List<Lotto> publishLotto(int amount) {
+    public static List<Lotto> publishLotto(int amount) {
         int count = amount / Lotto.lottoPrice;
         List<Lotto> lottos = new ArrayList<>();
 
@@ -18,13 +18,13 @@ public class LottoMachine {
         return lottos;
     }
 
-    public List<Integer> getResult(List<Lotto> lottos, List<Integer> numbers, int bonus) {
+    public static List<Integer> getResult(List<Lotto> lottos, List<Integer> numbers, int bonus) {
         List<Integer> result = Arrays.asList(0, 0, 0, 0, 0);
         Calculator.calRank(result, lottos, numbers, bonus);
         return result;
     }
 
-    private List<Integer> createNumbers() {
+    private static List<Integer> createNumbers() {
         return Randoms.pickUniqueNumbersInRange(Lotto.lottoMinNumber, Lotto.lottoMaxNumber, Lotto.lottoLength);
     }
 }
