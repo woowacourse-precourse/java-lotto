@@ -29,13 +29,15 @@ public class LottoUtil {
         return userLottos;
     }
 
-    public static void checkWin(List<Lotto> userLottos, List<Integer> winNumber) {
+    public static List<Integer> checkWin(List<Lotto> userLottos, List<Integer> winNumber) {
         List<Integer> winStatistics = new ArrayList<>();
 
         for(Lotto lotto : userLottos){
             int cnt = checkWin(lotto, winNumber);
             winStatistics.add(cnt);
         }
+
+        return winStatistics;
     }
 
     public static int checkWin(Lotto lotto, List<Integer> winNumber) {
@@ -48,4 +50,25 @@ public class LottoUtil {
         }
         return cnt;
     }
+
+    public static List<Boolean> checkBonus(List<Lotto> userLottos, int bonusNumber) {
+        List<Boolean> bonusStatistics = new ArrayList<>();
+
+        for(Lotto lotto : userLottos){
+            boolean cnt = checkBonus(lotto, bonusNumber);
+            bonusStatistics.add(cnt);
+        }
+        return bonusStatistics;
+    }
+
+    public static boolean checkBonus(Lotto lotto, int bonusNumber) {
+
+        if(lotto.getNumbers().contains(bonusNumber)){
+            return true;
+        }
+
+        return false;
+    }
+
+
 }

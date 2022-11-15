@@ -17,6 +17,18 @@ public class Application {
 
         int bonusNumber = Util.inputBonusNumber();
 
-        LottoUtil.checkWin(userLottos, winNumber);
+        List<Integer> winStatistics = LottoUtil.checkWin(userLottos, winNumber);
+        List<Boolean> bonusStatistics = LottoUtil.checkBonus(userLottos, bonusNumber);
+
+        for(int i = 0 ; i < winStatistics.size() ; i++){
+            System.out.print(winStatistics.get(i) + " ");
+        }
+
+        System.out.println();
+
+        for(int i = 0 ; i < bonusStatistics.size() ; i++){
+            System.out.print(bonusStatistics.get(i) + " ");
+        }
+
     }
 }
