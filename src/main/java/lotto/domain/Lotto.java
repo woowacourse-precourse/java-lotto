@@ -8,6 +8,8 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import static lotto.domain.Number.*;
+
 public class Lotto {
     private final SortedSet<Integer> numbers;
 
@@ -36,7 +38,7 @@ public class Lotto {
     }
 
     private void validateRange(Set<Integer> unValidatedNumbers) {
-        if (unValidatedNumbers.stream().anyMatch(range -> range < 1 || range > 45)) {
+        if (unValidatedNumbers.stream().anyMatch(range -> range < MIN_LOTTO_NUMBER.getNumber() || range > MAX_LOTTO_NUMBER.getNumber())) {
             throw new IllegalArgumentException(Error.RANGE.getMessage());
         }
     }
@@ -55,7 +57,7 @@ public class Lotto {
     }
 
     private void validateSixCount(Set<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != SIX.getNumber()) {
             throw new IllegalArgumentException(Error.COUNT.getMessage());
         }
     }

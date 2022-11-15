@@ -5,19 +5,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static lotto.domain.Number.*;
 import static lotto.domain.WinningMoney.*;
 
 public class WinningHistory {
-    private Map<WinningMoney,Integer> winningHistory;
+    private static final double TEN = 10.0;
+    private static final long ZERO_L = 0L;
+    private Map<WinningMoney, Integer> winningHistory;
     private double yield;
 
-    public WinningHistory () {
+    public WinningHistory() {
         winningHistory = new HashMap<>();
-        winningHistory.put(FIVE_THOUSAND, 0);
-        winningHistory.put(FIFTY_THOUSAND, 0);
-        winningHistory.put(ONE_MILLION_AND_A_HALF_MILLION, 0);
-        winningHistory.put(THIRTY_MILLION, 0);
-        winningHistory.put(TWO_BILLION, 0);
+        winningHistory.put(FIVE_THOUSAND, ZERO.getNumber());
+        winningHistory.put(FIFTY_THOUSAND, ZERO.getNumber());
+        winningHistory.put(ONE_MILLION_AND_A_HALF_MILLION, ZERO.getNumber());
+        winningHistory.put(THIRTY_MILLION, ZERO.getNumber());
+        winningHistory.put(TWO_BILLION, ZERO.getNumber());
 
     }
 
@@ -28,9 +31,8 @@ public class WinningHistory {
     public void compareLotto(Lotto winningNumber, int bonusNumber, List<Lotto> lottos) {
         validateUnique(bonusNumber, winningNumber);
         for (Lotto lotto : lottos) {
-            int count = 0;
-            Set<Integer> set = lotto.getNumbers(); //발행로또
-            count = (int) winningNumber.getNumbers().stream().filter(a -> set.contains(a)).count();
+            Set<Integer> set = lotto.getNumbers();
+            int count = (int) winningNumber.getNumbers().stream().filter(number -> set.contains(number)).count();
             saveWinningHistory(count, bonusNumber, set);
         }
     }
@@ -42,37 +44,37 @@ public class WinningHistory {
     }
 
     private void saveWinningHistory(int count, int bonusNumber, Set<Integer> set) {
-        if (count == 3) {
-            winningHistory.put(FIVE_THOUSAND, winningHistory.get(FIVE_THOUSAND) + 1);
+        if (count == THREE.getNumber()) {
+            winningHistory.put(FIVE_THOUSAND, winningHistory.get(FIVE_THOUSAND) + ONE.getNumber());
             return;
         }
-        if (count == 4) {
-            winningHistory.put(FIFTY_THOUSAND, winningHistory.get(FIFTY_THOUSAND) + 1);
+        if (count == FOUR.getNumber()) {
+            winningHistory.put(FIFTY_THOUSAND, winningHistory.get(FIFTY_THOUSAND) + ONE.getNumber());
             return;
         }
-        if (count == 5) {
+        if (count == FIVE.getNumber()) {
             if (set.contains(bonusNumber)) {
-                winningHistory.put(THIRTY_MILLION, winningHistory.get(THIRTY_MILLION) + 1);
+                winningHistory.put(THIRTY_MILLION, winningHistory.get(THIRTY_MILLION) + ONE.getNumber());
                 return;
             }
-            winningHistory.put(ONE_MILLION_AND_A_HALF_MILLION, winningHistory.get(ONE_MILLION_AND_A_HALF_MILLION) + 1);
+            winningHistory.put(ONE_MILLION_AND_A_HALF_MILLION, winningHistory.get(ONE_MILLION_AND_A_HALF_MILLION) + ONE.getNumber());
             return;
         }
-        if (count == 6) {
-            winningHistory.put(TWO_BILLION, winningHistory.get(TWO_BILLION) + 1);
+        if (count == SIX.getNumber()) {
+            winningHistory.put(TWO_BILLION, winningHistory.get(TWO_BILLION) + ONE.getNumber());
             return;
         }
     }
 
 
     public void calculateYield(int money) {
-        long sum = 0L;
+        long sum = ZERO_L;
         for (WinningMoney winningMoney : winningHistory.keySet()) {
-            if (winningHistory.get(winningMoney) > 0) {
+            if (winningHistory.get(winningMoney) > ZERO.getNumber()) {
                 sum += winningHistory.get(winningMoney) * winningMoney.getWinningMoney();
             }
         }
-        yield = Math.round((double) sum / money * 1000) / 10.0;
+        yield = Math.round((double) sum / money * THOUSAND.getNumber()) / TEN;
     }
 
     public double getYield() {

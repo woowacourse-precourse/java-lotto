@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.Number.*;
+
 public class BonusNumber {
     private int bonusNumber;
 
@@ -20,7 +22,7 @@ public class BonusNumber {
     }
 
     private void validateRange(int bonusNumber) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
+        if (bonusNumber < MIN_LOTTO_NUMBER.getNumber() || bonusNumber > MAX_LOTTO_NUMBER.getNumber()) {
             throw new IllegalArgumentException(Error.RANGE.getMessage());
         }
     }

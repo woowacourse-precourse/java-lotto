@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.Number.*;
+
 public class LottoMoney {
     private int money;
     private int quantity;
@@ -7,8 +9,8 @@ public class LottoMoney {
     public void inputMoney(String input) {
         validateNumber(input);
         money = toInt(input);
-        validateDivided();
-        quantity = money / 1000;
+        validateDividedNumber();
+        quantity = divideThousand();
     }
 
     private void validateNumber(String input) {
@@ -21,10 +23,14 @@ public class LottoMoney {
         return Integer.parseInt(input);
     }
 
-    private void validateDivided() {
-        if ((money % 1000 != 0) || (money / 1000 == 0)) {
+    private void validateDividedNumber() {
+        if ((money % THOUSAND.getNumber() != ZERO.getNumber()) || (divideThousand() == ZERO.getNumber())) {
             throw new IllegalArgumentException(Error.MONEY.getMessage());
         }
+    }
+
+    private int divideThousand() {
+        return money / THOUSAND.getNumber();
     }
 
     public int getMoney() {

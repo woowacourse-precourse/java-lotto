@@ -1,12 +1,12 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lottos {
+import static lotto.domain.Number.*;
 
+public class Lottos {
     private List<Lotto> lottos;
 
     public Lottos() {
@@ -18,8 +18,8 @@ public class Lottos {
     }
 
     public void buy(int quantity) {
-        for (int count = 0; count < quantity; count++) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+        for (int count = ZERO.getNumber(); count < quantity; count++) {
+            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER.getNumber(), MAX_LOTTO_NUMBER.getNumber(), SIX.getNumber())));
         }
 
     }
