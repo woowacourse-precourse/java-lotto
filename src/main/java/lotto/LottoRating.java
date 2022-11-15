@@ -1,21 +1,25 @@
 package lotto;
 
+import org.mockito.internal.configuration.injection.PropertyAndSetterInjection;
+
+import java.util.Arrays;
+
 public enum LottoRating {
-    FIRST(6, 2000000000, false),
-    SECOND(5, 30000000, true),
-    THIRD(5, 1500000, false),
-    FOURTH(4, 50000, false),
-    FIFTH(3, 5000, false),
+    FIRST(6, 2_000_000_000, false),
+    SECOND(5, 30_000_000, true),
+    THIRD(5, 1_500_000, false),
+    FOURTH(4, 50_000, false),
+    FIFTH(3, 5_000, false),
     NOTHING(0, 0, false);
 
     private final int prizeOfMatch;
     private final int winningMoney;
-    private final boolean bonusNumber;
+    private final boolean bonusMatch;
 
-    LottoRating(int prizeOfMatch, int winningMoney, boolean bonusNumber) {
+    LottoRating(int prizeOfMatch, int winningMoney, boolean bonusMatch) {
         this.prizeOfMatch = prizeOfMatch;
         this.winningMoney = winningMoney;
-        this.bonusNumber = bonusNumber;
+        this.bonusMatch = bonusMatch;
     }
 
     public int getPrizeOfMatch() {
@@ -24,5 +28,20 @@ public enum LottoRating {
 
     public int getWinningMoney() {
         return winningMoney;
+    }
+
+    public boolean isBonusMatch() {
+        return bonusMatch;
+    }
+
+    public static LottoRating find(int winningCount, boolean bonusNumber) {
+        if (winningCount == 5 && bonusNumber) {
+            return SECOND;
+        }
+        return Arrays.stream(values())
+                .filter(lottoRating -> !lottoRating.bonusMatch)
+                .filter(lottoRating -> lottoRating.prizeOfMatch == winningCount)
+                .findAny()
+                .orElse(NOTHING);
     }
 }
