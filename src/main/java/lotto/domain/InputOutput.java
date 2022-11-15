@@ -37,7 +37,7 @@ public class InputOutput {
         System.out.println(LottoResult.FIRTH_WIN + " - " + winHistory.get("FIRTH_WIN") + "개");
         System.out.println(LottoResult.THIRD_WIN + " - " + winHistory.get("THIRD_WIN") + "개");
         System.out.println(LottoResult.SECOND_WIN + " - " + winHistory.get("SECOND_WIN") + "개");
-        System.out.println(LottoResult.FISRT_WIN + " - " + winHistory.get("FISRT_WIN") + "개");
+        System.out.println(LottoResult.FIRST_WIN + " - " + winHistory.get("FIRST_WIN") + "개");
     }
 
 }
