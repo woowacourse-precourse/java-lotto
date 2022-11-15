@@ -6,7 +6,8 @@
 InputOutput 클래스 내에서
 - 입력 받은 번호의 유효성 검사 기능
     - [x] 길이 검사 기능 - validateLength()
-    - [x] 중복 검사 기능 - validateRange() 
+    - [x] 중복 검사 기능 - validateRange()
+    - [x] 문자열 입력시 오류 출력
 - [x] 로또 구입 금액 을 입력받는 기능 - setMoney()
 - [x] 당첨 번호를 입력 받는 기능 - setUserInputNumber()
 - [x] 보너스 번호를 입력 받는 기능 - setUserBonusNumber()
