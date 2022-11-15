@@ -59,6 +59,14 @@ public class LottoController {
             }
             result.add(count);
         }
+        List<Integer> answer = winningResult(result);
+        resultPrint(answer);
+    }
+
+    public void resultPrint(List<Integer> answer){
+        for (int i=0;i<5;i++){
+            System.out.println(Prize.values()[i].getMessage() + answer.get(i)+ "개");
+        }
     }
 
     public List<Integer> winningResult(List<Integer> result){
