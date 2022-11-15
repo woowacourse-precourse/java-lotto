@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -26,7 +27,7 @@ class LottoControllerTest {
         assertThat(result).isEqualTo(size);
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @ValueSource(strings = {"1500000\n1,5,15,40,34,43\n43\n"})
     void 로또_테스트(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());

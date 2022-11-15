@@ -10,7 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class PriceTest {
-    @ParameterizedTest
+    //@ParameterizedTest
     @ValueSource(strings = {"123000\n"})
     void 로또_구입_금액_입력_테스트(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
