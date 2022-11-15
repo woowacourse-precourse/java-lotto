@@ -1,4 +1,4 @@
-package wootech;
+package lotto;
 
 import java.util.List;
 
