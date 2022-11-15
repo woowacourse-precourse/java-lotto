@@ -3,8 +3,8 @@ package lotto;
 public class NumberOfLotto {
     private final int number;
 
-    public NumberOfLotto(Money money) {
-        this.number = computeNumberOfLotto(money.getMoney());
+    public NumberOfLotto(int money) {
+        this.number = computeNumberOfLotto(money);
     }
 
     private int computeNumberOfLotto(int money) {

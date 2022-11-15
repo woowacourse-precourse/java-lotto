@@ -10,7 +10,7 @@ public class Application {
     }
 
     private static NumberOfLotto buyLotto(Money money) {
-        NumberOfLotto numberOfLotto = new NumberOfLotto(money);
+        NumberOfLotto numberOfLotto = new NumberOfLotto(money.getMoney());
         Output.numberOfPurchaseEventMessage(numberOfLotto.getNumberOfLotto());
 
         return numberOfLotto;
