@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,7 +29,6 @@ public class UserLottos {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
             List<Integer> nums = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_NUMS_SIZE);
-            nums.sort(Comparator.naturalOrder());
             lottos.add(new Lotto(nums));
         }
         return lottos;
