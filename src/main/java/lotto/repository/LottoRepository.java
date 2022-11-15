@@ -12,6 +12,10 @@ public class LottoRepository {
         lottos.add(lotto);
     }
 
+    public void initRepository() {
+        lottos.clear();
+    }
+
     public List<Lotto> findAll() {
         return lottos;
     }

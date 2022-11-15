@@ -18,11 +18,6 @@ public class LottoServiceExceptionTest {
 
     private LottoService lottoService;
 
-    void provideInput(String input) {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-    }
-
     @BeforeEach
     void init() {
         this.lottoService = new LottoService();
@@ -31,8 +26,7 @@ public class LottoServiceExceptionTest {
     @Test
     @DisplayName("입력된 돈이 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
     void getMoney_About_Numeric_Test() {
-        provideInput("abc");
-        assertThatThrownBy(() -> lottoService.getMoney())
+        assertThatThrownBy(() -> lottoService.checkMoneyInput("abc"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.MONEY_TYPE_ERROR.getErrorMessage());
     }
@@ -40,10 +34,7 @@ public class LottoServiceExceptionTest {
     @Test
     @DisplayName("입력된 돈이 1000원 단위가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
     void getMoney_About_Correct_Unit_Test() {
-        String input = "5100";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        assertThatThrownBy(() -> lottoService.getMoney())
+        assertThatThrownBy(() -> lottoService.checkMoneyInput("5100"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.MONEY_UNIT_ERROR.getErrorMessage());
     }
