@@ -33,7 +33,8 @@ public class OutputView {
 	}
 
 	public static void printYield(double yield) {
-		System.out.println(START_GROSS_PROFIT.getProgress() + yield + END_GROSS_PROFIT.getProgress());
+		System.out.println(
+			START_GROSS_PROFIT.getProgress() + String.format("%.1f", yield) + END_GROSS_PROFIT.getProgress());
 	}
 
 	public static void newLine() {

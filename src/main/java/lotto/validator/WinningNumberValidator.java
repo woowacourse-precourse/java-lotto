@@ -8,11 +8,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class WinningNumberValidator {
-	private static final Pattern pattern = Pattern.compile("^([1-9]),([1-9]),([1-9]),([1-9]),([1-9]),([1-9])$");
+	private static final Pattern pattern = Pattern.compile("^([1-9]+),([1-9]+),([1-9]+),([1-9]+),([1-9]+),([1-9]+)$");
 
 	public List<Integer> runWinningNumberValidator(String inputData) {
 		List<Integer> winningBalls;
-		System.out.println(inputData.getClass().getName());
 		if (isInvalidInputFormat(inputData)) {
 			throw new IllegalArgumentException(COMMA_CLASSIFICATION.getErrorMessage());
 		}
@@ -32,11 +31,11 @@ public class WinningNumberValidator {
 	}
 
 	private boolean isDuplicatedNumber(List<Integer> winningBalls) {
-		return winningBalls.size() == winningBalls.stream().distinct().count();
+		return winningBalls.size() != winningBalls.stream().distinct().count();
 	}
 
 	private boolean isOutBoundsNumber(List<Integer> winningBalls) {
-		return winningBalls.stream().allMatch(a -> a > 0 && a < 46);
+		return !winningBalls.stream().allMatch(a -> a > 0 && a < 46);
 	}
 
 	public List<Integer> inputNumbersToLottoBalls(String numbers) {

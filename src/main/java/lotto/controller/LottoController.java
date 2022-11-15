@@ -63,6 +63,7 @@ public class LottoController {
 
 	private void getWinStatistics() {
 		WinStatisticsCalculator winStatisticsCalculator = new WinStatisticsCalculator(lotteryTickets, winningNumbers);
+		winStatisticsCalculator.calculateWinningStatus();
 		result = winStatisticsCalculator.getMatchResult();
 
 		OutputView.printProgress(WINNING_STATISTICS);

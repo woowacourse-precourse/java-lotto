@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.controller.WinStatisticsStatus.*;
 import static lotto.model.LotteryInformation.*;
 
 import java.util.HashMap;
@@ -18,6 +19,13 @@ public class WinStatisticsCalculator {
 		this.lotteryTickets = lotteryTickets;
 		this.winningNumbers = winningNumbers;
 		this.bonusNumber = winningNumbers.get(BONUS_NUMBER_DIGIT.getCode());
+		initMatchResult();
+	}
+
+	private void initMatchResult() {
+		for (int key = FOURTH_PLACE.getRank(); key <= BONUS_PLACE.getRank(); key++) {
+			matchResult.put(key, 0);
+		}
 	}
 
 	public void calculateWinningStatus() {
