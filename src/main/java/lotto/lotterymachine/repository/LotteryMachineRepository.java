@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.lotterymachine.domain.LotteryMachine;
 import lotto.lotterymachine.validate.ValidateLotteryMachine;
+import lotto.util.Constant;
 import lotto.view.ValidateError;
 
 public class LotteryMachineRepository {
-    private static final int INIT_NUMBER = 0;
-    private static final List<Integer> INIT_NUMBERS = Collections.singletonList(INIT_NUMBER);
+
+    private static final List<Integer> INIT_NUMBERS = Collections.singletonList(Constant.INIT_ZERO);
 
     public boolean setTargetNumbers(LotteryMachine lotteryMachine) {
         List<Integer> inputNumbers = setInputTargetNumbers();
@@ -24,7 +25,7 @@ public class LotteryMachineRepository {
 
     public boolean setTargetBonusNumber(LotteryMachine lotteryMachine) {
         int inputTargetNumber = setInputTargetBonusNumber();
-        if (inputTargetNumber == INIT_NUMBER) {
+        if (inputTargetNumber == Constant.INIT_ZERO) {
             return false;
         }
         lotteryMachine.setTargetBonusNumber(inputTargetNumber);
@@ -46,7 +47,7 @@ public class LotteryMachineRepository {
     public int setInputTargetBonusNumber() {
         String userInputs = Console.readLine();
         if (!checkInputOnlyNumber(userInputs)) {
-            return INIT_NUMBER;
+            return Constant.INIT_ZERO;
         }
         return Integer.parseInt(userInputs);
     }

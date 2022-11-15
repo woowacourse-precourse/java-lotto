@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import lotto.lotterymachine.domain.LotteryMachine;
 import lotto.user.domain.User;
+import lotto.util.Constant;
 import lotto.util.Score;
 
 public class LotteryMachineService {
@@ -12,7 +13,7 @@ public class LotteryMachineService {
 
     public LotteryMachineService() {
         ScoreBoard = new EnumMap<>(Score.class);
-        for (int i = 0; i < Score.values().length; i++) {
+        for (int i = Constant.INIT_ZERO; i < Score.values().length; i++) {
             ScoreBoard.put(Score.values()[i], Score.ZERO.ordinal());
         }
     }
@@ -65,11 +66,11 @@ public class LotteryMachineService {
     }
 
     public float getIncome(int inputMoney) {
-        return ((getMoneyToLottery()/inputMoney) * 100);
+        return ((getMoneyToLottery() / inputMoney) * 100);
     }
 
     public float getMoneyToLottery() {
-        int prize = 0;
+        int prize = Constant.INIT_ZERO;
         for (int i = Score.THREE.ordinal(); i < Score.SIX.ordinal(); i++) {
             prize += (ScoreBoard.get(Score.values()[i]) * Score.values()[i].getValue());
         }

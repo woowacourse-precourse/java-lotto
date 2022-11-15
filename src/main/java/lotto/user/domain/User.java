@@ -2,18 +2,19 @@ package lotto.user.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.util.Constant;
 
 public class User {
     private int inputMoney;
     private int purchaseAmount;
     private int ticketAmount; // 롯도 장수
     private List<List<Integer>> lottos;
-    private static final int INIT_NUMBER = 0;
+
 
     public User() {
-        this.inputMoney = INIT_NUMBER;
-        this.ticketAmount = INIT_NUMBER;
-        this.purchaseAmount = INIT_NUMBER;
+        this.inputMoney = Constant.INIT_ZERO;
+        this.ticketAmount = Constant.INIT_ZERO;
+        this.purchaseAmount = Constant.INIT_ZERO;
         this.lottos = new ArrayList<>();
     }
 

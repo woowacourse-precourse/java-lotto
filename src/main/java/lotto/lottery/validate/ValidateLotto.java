@@ -4,15 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import lotto.util.Constant;
 
 public class ValidateLotto {
-    private static final String ERROR_MESSAGE = "[ERROR] 잘못된 로또 번호 생성입니다.";
-    private static final int LOTTO_NUMBER_SIZE = 6;
-
 
     public static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+        if (numbers.size() != Constant.LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE_HEAD);
         }
     }
 
@@ -22,7 +20,8 @@ public class ValidateLotto {
                 .filter(n -> !items.add(n))
                 .collect(Collectors.toSet());
         if (items.size() != numbers.size()) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE_HEAD);
         }
     }
+
 }

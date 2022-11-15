@@ -7,6 +7,7 @@ import lotto.lotterymachine.repository.LotteryMachineRepository;
 import lotto.lotterymachine.service.LotteryMachineService;
 import lotto.user.domain.User;
 import lotto.user.repository.UserRepository;
+import lotto.util.Constant;
 import lotto.util.Score;
 import lotto.view.InputView;
 import lotto.view.OutPutView;
@@ -33,26 +34,33 @@ public class LotteryMachineController {
 
     public boolean startGame() {
         inputView.printIntro();
-        if(initUser() == 0) return false;
-        if(!initLotteryMachine()) return false;
+        if (initUser() == Constant.INIT_ZERO) {
+            return false;
+        }
+        if (!initLotteryMachine()) {
+            return false;
+        }
         getLotteryResult();
         getStaticsResult();
         return true;
     }
-    private void getLotteryResult(){
-        ScoreBoard = lotteryMachineService.checkNumbers(user,lotteryMachine);
+
+    private void getLotteryResult() {
+        ScoreBoard = lotteryMachineService.checkNumbers(user, lotteryMachine);
         outPutView.printUserScoreResultIntro();
         outPutView.printUserScoreResult(ScoreBoard);
     }
-    private void getStaticsResult(){
+
+    private void getStaticsResult() {
         float incomeRatio = lotteryMachineService.getIncome(user.getInputMoney());
         outPutView.printUserIncomePercentage(incomeRatio);
         outPutView.printSpace();
     }
+
     public int initUser() {
         int userInput = UserRepository.inputMoney();
-        if(userInput == 0 ) {
-            return 0;
+        if (userInput == Constant.INIT_ZERO) {
+            return Constant.INIT_ZERO;
         }
         user.setInputMoney(userInput);
         UserRepository.buyLotteryTickets(user);
@@ -63,18 +71,18 @@ public class LotteryMachineController {
 
     public boolean initLotteryMachine() {
         inputView.printInputTargetMessageGide();
-        if(!lotteryMachineRepository.setTargetNumbers(lotteryMachine))
+
+        if (!lotteryMachineRepository.setTargetNumbers(lotteryMachine)) {
             return false;
+        }
 
-
-        //inputView.printInputTargetNumbers(lotteryMachine.getTargetNumbers());
         inputView.printInputBonusMessageGide();
 
-        if(!lotteryMachineRepository.setTargetBonusNumber(lotteryMachine))
+        if (!lotteryMachineRepository.setTargetBonusNumber(lotteryMachine)) {
             return false;
+        }
 
-        //System.out.println(lotteryMachine.getTargetBonusNumber());
-        return true;//ok
+        return true;
     }
 
 }

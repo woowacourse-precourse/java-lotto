@@ -2,22 +2,20 @@ package lotto.user.validate;
 
 import java.util.regex.Pattern;
 import lotto.user.domain.User;
+import lotto.util.Constant;
 
 public class ValidateUser {
     public static final Pattern NUMBER_PATTERN = Pattern.compile("^[1-9]+[0-9]*$");
-    private static final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-
-    private static final int UNIT_MONEY = 1000;
 
     public static void validateMinAmount(int inputMoney) {
-        if (inputMoney < UNIT_MONEY) {
-            throw new IllegalArgumentException("[ERROR] 최소 금액은 100원 이상입니다");
+        if (inputMoney < Constant.UNIT_MONEY) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE_HEAD+"최소 금액은 "+Constant.UNIT_MONEY+"원 이상입니다");
         }
     }
 
     public static void validateOnlyNumber(String userInput) {
         if (!NUMBER_PATTERN.matcher(userInput).matches()) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+            throw new IllegalArgumentException(Constant.INPUT_ERROR_MESSAGE);
         }
     }
 
