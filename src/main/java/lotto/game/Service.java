@@ -52,8 +52,8 @@ public class Service {
         for (Lotto lotto : lottos) {
             bonusScore += lotto.calculateBonus(draw, bonus);
         }
-        if (drawScore.get(Constant.FOUR) != null) {
-            drawScore.put(Constant.FOUR, drawScore.get(Constant.FOUR) - bonusScore);
+        if (drawScore.get(Constant.FIVE) != null) {
+            drawScore.put(Constant.FIVE, drawScore.get(Constant.FIVE) - bonusScore);
         }
         return bonusScore;
     }

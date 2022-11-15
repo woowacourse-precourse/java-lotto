@@ -11,7 +11,7 @@ public class Lotto {
     private static final int NUMBERS_SIZE = 6;
     private static final int BONUS_SCORE = 1;
     private static final int BONUS_SCORELESS = 0;
-    private static final int BONUS_COUNT = 4;
+    private static final int FIVE = 5;
 
     private final List<Integer> numbers;
 
@@ -47,7 +47,7 @@ public class Lotto {
         if ((int) numbers
                 .stream()
                 .filter(draw.numbers::contains)
-                .count() == BONUS_COUNT
+                .count() == FIVE
                 && numbers.contains(bonus)) {
             return BONUS_SCORE;
         }
