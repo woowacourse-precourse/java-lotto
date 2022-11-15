@@ -9,20 +9,7 @@ public class NumbersGenerator {
     private final List<Integer> numbers;
 
     public NumbersGenerator() {
-        numbers = new ArrayList<>();
-    }
-
-    private void addNotContainsNumber(int num) {
-        if (!numbers.contains(num)) {
-            numbers.add(num);
-        }
-    }
-
-    private void generateLotto() {
-        while (numbers.size() < 6) {
-            int randomNum = Randoms.pickNumberInRange(1, 45);
-            addNotContainsNumber(randomNum);
-        }
+        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     public List<Integer> getNumbers() {
