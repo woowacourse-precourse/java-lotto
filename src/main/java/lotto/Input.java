@@ -8,6 +8,7 @@ import java.util.List;
 public class Input {
 
     private static final String DELIMITER = ",";
+    private static final int INVALID = -1;
 
     private Input() {}
 
@@ -18,7 +19,7 @@ public class Input {
             Validation.validateMoney(str);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return -1;
+            return INVALID;
         }
         return Long.parseLong(str);
     }
@@ -38,5 +39,18 @@ public class Input {
             return null;
         }
         return numbers;
+    }
+
+    public static int inputBonus() {
+        Message.INPUT_BONUS_NUMBER.print();
+        String str = Console.readLine().trim();
+        try {
+            Validation.validateNumber(str);
+            Validation.validateRange(str);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return INVALID;
+        }
+        return Integer.parseInt(str);
     }
 }
