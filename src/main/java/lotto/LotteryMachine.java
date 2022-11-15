@@ -1,15 +1,20 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static lotto.User.*;
 
 public class LotteryMachine {
     private List<Integer> winningNumbers;
     private List<List<Integer>> userNumbers;
-    private List<Integer> winningCase;
+    public static List<Integer> winningCase;
     private List<Integer> winningPriceByCase;
+    private Map<Integer, Integer> settings;
 
     public LotteryMachine(User user, Lotto lotto){
         this.userNumbers = user.getLotteryOfUser();
@@ -19,7 +24,7 @@ public class LotteryMachine {
     public void countWinningNumber(){
         winningCase = new ArrayList<>();
         for (List<Integer> lottery : userNumbers) {
-            this.winningCase.add(compare(lottery, winningNumbers));
+            winningCase.add(compare(lottery, winningNumbers));
         }
         matchBonusNumber();
     }
@@ -30,9 +35,7 @@ public class LotteryMachine {
             if(lottery.contains(winningNumbers.get(i)))
                 count++;
         }
-        if(count>=3)
-            return count;
-        return 0;
+        return count;
     }
 
     private boolean isBonusNumber(List<Integer> userNums){
@@ -59,7 +62,7 @@ public class LotteryMachine {
         return this.winningPriceByCase;
     }
 
-    private double searchWinningCase(int num){
+    private double searchWinningPrice(int num){
         for(WinningStatus status : WinningStatus.values()){
             if(num == status.getMatchNumber())
                 return status.getWinningPrice();
@@ -71,9 +74,36 @@ public class LotteryMachine {
         winningPriceByCase = new ArrayList<>();
         double sum = 0;
         for(int i=0; i<winningCase.size(); i++){
-            sum += searchWinningCase(winningCase.get(i));
+            sum += searchWinningPrice(winningCase.get(i));
         }
         return sum;
+    }
+    private void settingFormat(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    private void statisticsSetting(){
+        this.settings = new HashMap<>();
+        for (int key : winningCase) {
+            settings.put(key, settings.getOrDefault(key, 0) + 1);
+        }
+        System.out.println(settings);
+    }
+
+    private int matchNumber(int number){
+        if(!settings.containsKey(number))
+            return 0;
+        return settings.get(number);
+    }
+
+    public void showStatistics(){
+        settingFormat();
+        statisticsSetting();
+        for(WinningStatus status: WinningStatus.values()){
+            int result = matchNumber(status.getMatchNumber());
+            System.out.println(status.getFormat() + result + "개");
+        }
     }
 
     public void calculateRate(){

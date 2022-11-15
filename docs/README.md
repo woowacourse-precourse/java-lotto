@@ -11,10 +11,10 @@
     - [X] case3인 경우 보너스 번호와 일치하는 지 확인한다.
   - case4: case3 + 보너스 번호를 포함하여 일치하는 경우
   - case5: 당첨 번호와 복권의 번호 중 6개가 일치하는 경우
-- [ ] Lotto에서 당첨 통계를 보여준다. Lotto#winningStatistics
+- [X] Lotto에서 당첨 통계를 보여준다. Lotto#winningStatistics
 - [X] LotteryMachine이 수익금을 통해 수익률을 계산하여 보여준다. LotteryMachine#calculateRate
 
 
 ## 예외 케이스 추가(예정)
-- [ ] 구입 금액이 1000단위가 아니라면 IllegalArgumentException을 발생시킨다.
+- [X] 구입 금액이 1000단위가 아니라면 IllegalArgumentException을 발생시킨다.
     

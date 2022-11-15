@@ -28,5 +28,4 @@ public enum WinningStatus {
     public String getFormat(){
         return format;
     }
-
 }
