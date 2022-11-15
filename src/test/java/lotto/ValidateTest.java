@@ -77,4 +77,29 @@ class ValidateTest {
 		String numbers1 = "1,2,3,4,5,6";
 		assertThat(Validate.isNotConsistNumeric(numbers1)).isEqualTo(false);
 	}
+
+	@Test
+	void 보너스_숫자_범위_초과(){
+		String bonusNumber = "48";
+		assertThat(Validate.isOutOfRange(bonusNumber)).isEqualTo(true);
+		String bonusNumber1 = "0";
+		assertThat(Validate.isOutOfRange(bonusNumber1)).isEqualTo(true);
+		String bonusNumber2 = "35";
+		assertThat(Validate.isOutOfRange(bonusNumber2)).isEqualTo(false);
+	}
+
+	@Test
+	void 보너스_숫자_중복_확인(){
+		List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+		String bonusNumber = "3";
+		assertThat(Validate.isDuplicated(bonusNumber, winningNumbers)).isEqualTo(true);
+		String bonusNumber1 = "7";
+		assertThat(Validate.isDuplicated(bonusNumber1, winningNumbers)).isEqualTo(false);
+	}
+
+	@Test
+	void 보너스_숫자_문자일때(){
+		String bonusNumber = "a";
+		assertThat(Validate.isNotNumeric(bonusNumber)).isEqualTo(true);
+	}
 }
