@@ -7,28 +7,40 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Auto {
+public class Computer {
 
     private static final int PERCENT = 100;
 
-    public static List<List<Integer>> AUTO_LOTTOS = new ArrayList<>();
-    public static List<Integer> WINNING_NUMBERS = new ArrayList<>();
-    public static String YIELD;
+    private static final List<List<Integer>> AUTO_LOTTOS = new ArrayList<>();
+    private static final List<Integer> WINNING_NUMBERS = new ArrayList<>();
+    private static String YIELD;
 
-    public Auto() {
-    }
-
-    public Auto(int lottoCount) {
+    public Computer(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
-            List<Integer> lotto = new ArrayList<>();
-            lotto = Randoms.pickUniqueNumbersInRange(Resource.MIN_LOTTO_NUMBER, Resource.MAX_LOTTO_NUMBER, Resource.LOTTO_SIZE);
-            try {
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(Resource.MIN_LOTTO_NUMBER, Resource.MAX_LOTTO_NUMBER, Resource.LOTTO_SIZE);
+            /*try {
                 Collections.sort(lotto);
             } catch (UnsupportedOperationException e) {
+            }*/
+            List<Integer> copyOfLotto = new ArrayList<>();
+            for (Integer lottoNumber : lotto) {
+                copyOfLotto.add(lottoNumber);
             }
-
-            AUTO_LOTTOS.add(lotto);
+            Collections.sort(copyOfLotto);
+            AUTO_LOTTOS.add(copyOfLotto);
         }
+    }
+
+    public static List<List<Integer>> getAutoLottos() {
+        return AUTO_LOTTOS;
+    }
+
+    public static List<Integer> getWinningNumbers() {
+        return WINNING_NUMBERS;
+    }
+
+    public static String getYIELD() {
+        return YIELD;
     }
 
     public void makeWinningNumbers(String userInput) {

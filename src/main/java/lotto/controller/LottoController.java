@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Auto;
+import lotto.domain.Computer;
 import lotto.domain.Lotto;
 import lotto.domain.Resource;
 import lotto.domain.User;
@@ -15,7 +15,7 @@ public class LottoController {
 
     UserInterface userInterface = new UserInterface();
     User user;
-    Auto auto;
+    Computer auto;
     Lotto lotto;
 
     public void gameStart() throws IllegalArgumentException {
@@ -31,8 +31,8 @@ public class LottoController {
         user.validateUserMoney(userInput);
         inputMoney = Integer.parseInt(userInput);
         lottoCount = inputMoney / Resource.LOTTO_PRICE;
-        auto = new Auto(lottoCount);
-        userInterface.showAutoLottos(Auto.AUTO_LOTTOS, lottoCount);
+        auto = new Computer(lottoCount);
+        userInterface.showAutoLottos(Computer.getAutoLottos(), lottoCount);
     }
 
     private void getUserWinningNumber() {
@@ -40,13 +40,13 @@ public class LottoController {
         user = new User(Message.WINNING_NUMBER);
         user.validateUserWinningNumber(userInput);
         auto.makeWinningNumbers(userInput);
-        lotto = new Lotto(Auto.WINNING_NUMBERS);
+        lotto = new Lotto(Computer.getWinningNumbers());
     }
 
     private void getUserBonusNumber() {
         userInput = userInterface.getUserInput(Message.BONUS_ENTER);
         user = new User(Message.BONUS_NUMBER);
-        user.validateUserBonusNumber(userInput, Auto.WINNING_NUMBERS);
+        user.validateUserBonusNumber(userInput, Computer.getWinningNumbers());
     }
 
     private void resultCalculation() {
