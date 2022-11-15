@@ -30,4 +30,18 @@ public class LottoUserTest {
         assertThatThrownBy(() -> new LottoUser(purchaseCost))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("올바른 값을 입력 받으면 유저의 로또 구매가 정상적으로 이루어진다.")
+    @Test
+    void lottoPurchaseWithRightValueTest() {
+        // given
+        final int lottoCount = 15;
+        int purchaseCost = lottoCount * LOTTO_BASIC_COST;
+
+        // when
+        LottoUser lottoUser = new LottoUser(purchaseCost);
+
+        // then
+        assertEquals(lottoCount, lottoUser.getRandomLottos().size());
+    }
 }
