@@ -24,6 +24,7 @@ public class Input {
 
     private static List<Integer> inputLotteryNumber() {
         String lotteryWinningNumber = Console.readLine();
+        validateLottoNums(lotteryWinningNumber);
         return Util.separateNumberWithComma(lotteryWinningNumber);
     }
 
@@ -34,8 +35,13 @@ public class Input {
 
     private static int inputNumber() {
         String textNumber = Console.readLine();
-        validateLottoNums(textNumber);
-        return Util.convertStringToInt(textNumber);
+        int result = 0;
+        try {
+            result = Util.convertStringToInt(textNumber);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
+        }
+        return result;
     }
 
     private static void validateLottoNums(String lottoNumbers) {
