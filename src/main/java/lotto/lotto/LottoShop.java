@@ -15,7 +15,7 @@ public class LottoShop {
         this.setting = setting;
     }
 
-    public List<Lotto> buyLottoCreatedAuto(int totalPrice) {
+    public List<Lotto> buyLotto(int totalPrice) {
         int countOfLotto = calculateCountOfLotto(totalPrice);
         return createAutoLotto(countOfLotto);
     }

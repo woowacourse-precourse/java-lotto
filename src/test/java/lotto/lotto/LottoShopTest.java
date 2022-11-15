@@ -16,7 +16,7 @@ public class LottoShopTest {
         LottoSetting lottoSetting = mock(LottoSetting.class);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            new LottoShop(1000, lottoSetting).buyLottoCreatedAuto(5100);
+            new LottoShop(1000, lottoSetting).buyLotto(5100);
         });
     }
 
@@ -25,7 +25,7 @@ public class LottoShopTest {
         LottoSetting lottoSetting = mock(LottoSetting.class);
 
         assertThatCode(() -> {
-            new LottoShop(1000, lottoSetting).buyLottoCreatedAuto(5000);
+            new LottoShop(1000, lottoSetting).buyLotto(5000);
         }).doesNotThrowAnyException();
     }
 
@@ -33,7 +33,7 @@ public class LottoShopTest {
     void buyLottoTest_IsListSizeMatched() {
         LottoSetting lottoSetting = mock(LottoSetting.class);
 
-        List<Lotto> result = new LottoShop(1000, lottoSetting).buyLottoCreatedAuto(5000);
+        List<Lotto> result = new LottoShop(1000, lottoSetting).buyLotto(5000);
 
         assertThat(result.size() == 5).isEqualTo(true);
     }

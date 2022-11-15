@@ -33,7 +33,7 @@ public class LottoApplication {
     private void runApplication() {
         Integer purchasePrice = inputInteger(InputRequestMessage.PURCHASE_AMOUNT);
 
-        List<Lotto> lottos = setting.createLottoShop().buyLottoCreatedAuto(purchasePrice);
+        List<Lotto> lottos = setting.createLottoShop().buyLotto(purchasePrice);
         printLottos(lottos);
 
         List<Integer> winningNumbers = inputIntegerList(InputRequestMessage.WINNING_NUMBER);
