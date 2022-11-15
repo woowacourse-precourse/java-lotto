@@ -26,7 +26,10 @@ public class Validation {
     }
 
     public void isValidWinningNumbersInput(String input) {
-
+        if(!Pattern.matches("^([0-9]+,){5}[0-9]+", input)){
+            System.out.println("[ERROR] 올바른 형식의 입력이 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 올바른 형식의 입력이 아닙니다.");
+        }
     }
 
     public void hasDuplicateNumber(List<Integer> numbers) {
