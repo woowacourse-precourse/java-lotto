@@ -18,7 +18,7 @@ public class Dealer {
     }
 
     public void inputAnswerNumbers() {
-        System.out.println(Message.INPUT_WIN_LOTTO_NUMBER);
+        System.out.print(Message.INPUT_WIN_LOTTO_NUMBER);
         String numbers = Console.readLine();
         DealerValidator.validAnswerNumber(numbers);
         List<Integer> lottoNumbers = Arrays.stream(numbers.split(","))
@@ -29,7 +29,7 @@ public class Dealer {
     }
 
     public void inputBonusNumber() {
-        System.out.println(Message.INPUT_BONUS_LOTTO_NUMBER);
+        System.out.print(Message.INPUT_BONUS_LOTTO_NUMBER);
         String number = Console.readLine();
         DealerValidator.validNumber(number);
         bonusNumber = Integer.parseInt(number);
