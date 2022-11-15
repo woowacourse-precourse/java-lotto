@@ -85,4 +85,14 @@ public class input_numbers {
         check_Duplicate(winNumbers);
         return winNumbers;
     }
+
+    public int input_BonusNumber(List<Integer> select_Number) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input_line = Console.readLine();
+        check_VoidOrSpace(input_line);
+        int bonusNumber = change_StrToInt(input_line);
+        check_BounsInWinNumber(bonusNumber, select_Number);
+        check_Range(bonusNumber);
+        return bonusNumber;
+    }
 }
