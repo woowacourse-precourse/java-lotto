@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.model.LottoRankingType;
+import lotto.domain.LottoRankingType;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
