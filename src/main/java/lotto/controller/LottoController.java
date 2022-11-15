@@ -12,6 +12,7 @@ public class LottoController {
     public void startLotto() {
         try {
             lottoService.buyLotto(InputView.inputMoney());
+            showUserLottoInfo();
             initWinningLotto();
             initBonusNumber();
             lottoProgress();
@@ -26,7 +27,6 @@ public class LottoController {
     public void initWinningLotto() {
         String winningNumber = InputView.inputWinningNumber();
         lottoService.saveWinningLotto(winningNumber);
-        showUserLottoInfo();
     }
 
     public void showUserLottoInfo() {
