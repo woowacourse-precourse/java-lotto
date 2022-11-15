@@ -26,11 +26,11 @@ public class RankingTableSystem {
         return new RankingTable(countFrequencyByRank(tickets));
     }
 
-    private Map<Ranking, Integer> countFrequencyByRank(LottoTickets tickets) {
-        Map<Ranking, Integer> frequenciesByRank = new HashMap<>();
+    private Map<Ranking, Frequency> countFrequencyByRank(LottoTickets tickets) {
+        Map<Ranking, Frequency> frequenciesByRank = new HashMap<>();
         List<String> matchingNumbers = countMatchingNumbersOf(tickets);
         for (Ranking value : Ranking.values()) {
-            int frequency = countFrequency(matchingNumbers, getNumberOfMatchingOf(value));
+            Frequency frequency = countFrequency(matchingNumbers, getNumberOfMatchingOf(value));
             frequenciesByRank.put(value, frequency);
         }
         return frequenciesByRank;
@@ -40,8 +40,12 @@ public class RankingTableSystem {
         return tickets.matchWith(winningNumbers, bonus);
     }
 
-    private int countFrequency(List<String> numbers, String number) {
-        return Collections.frequency(numbers, number);
+    private Frequency countFrequency(List<String> numbers, String number) {
+        return createFrequency(Collections.frequency(numbers, number));
+    }
+
+    private Frequency createFrequency(int number) {
+        return Frequency.from(number);
     }
 
     private String getNumberOfMatchingOf(Ranking value) {

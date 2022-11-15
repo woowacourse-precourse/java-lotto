@@ -18,17 +18,16 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RankingTableTest {
-
     private RankingTable rankingTable;
 
     @BeforeEach
     void setUp() {
-        Map<Ranking, Integer> frequenciesByRank = Map.of(
-                Ranking.FIRST_PLACE, 2,
-                Ranking.SECOND_PLACE, 1,
-                Ranking.THIRD_PLACE, 0,
-                Ranking.FOURTH_PLACE, 2,
-                Ranking.FIFTH_PLACE, 1);
+        Map<Ranking, Frequency> frequenciesByRank = Map.of(
+                Ranking.FIRST_PLACE, Frequency.from(2),
+                Ranking.SECOND_PLACE, Frequency.from(1),
+                Ranking.THIRD_PLACE, Frequency.from(0),
+                Ranking.FOURTH_PLACE, Frequency.from(2),
+                Ranking.FIFTH_PLACE, Frequency.from(1));
         rankingTable = new RankingTable(frequenciesByRank);
     }
 
