@@ -8,8 +8,9 @@ public class Lotto {
     private static final int MINIMUM_NUMBER_OF_LOTTO = 1;
 
     public Lotto(List<Integer> numbers) {
-        numbers = DataInput.WinningNumber();
         validate(numbers);
+        validateRange(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
     private void validate(List<Integer> numbers) {
@@ -22,5 +23,10 @@ public class Lotto {
             if(MAXIMUM_NUMBER_OF_LOTTO > number || MINIMUM_NUMBER_OF_LOTTO < number)
                 throw new IllegalArgumentException();
         }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        if(numbers.size() != numbers.stream().distinct().count())
+            throw new IllegalArgumentException();
     }
 }
