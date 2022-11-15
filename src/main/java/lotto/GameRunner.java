@@ -17,7 +17,6 @@ public class GameRunner {
     private Profit profit;
 
     private List<Integer> numbers;
-    private int lottoBonusNumber;
     private int bonusNumber;
 
     public void start() {
@@ -44,8 +43,7 @@ public class GameRunner {
     private void purchaseLottos() {
         purchase.createLottos();
         purchase.printLottos();
-
-        lottoBonusNumber = purchase.createLottoBonusNumber();
+        purchase.createBonusNumber();
     }
 
     private void inputNumbers() {
@@ -62,7 +60,7 @@ public class GameRunner {
         prizeCount = new PrizeCount();
 
         player = new Player(numbers, bonusNumber);
-        player.compare(prizeCount, purchase.getLottos(), lottoBonusNumber);
+        player.compare(prizeCount, purchase.getLottos(), purchase.getBonusNumber());
 
         profit = new Profit(prizeCount, purchase.getAmount());
         profit.calculate();

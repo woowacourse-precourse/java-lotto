@@ -8,9 +8,11 @@ public class Purchase {
 
     private static final int LOTTO_PRICE = 1_000;
 
-    private List<Lotto> lottos;
     private final int amount;
     private final int count;
+
+    private List<Lotto> lottos;
+    private int bonusNumber;
 
     public Purchase(int amount) {
         validate(amount);
@@ -38,8 +40,8 @@ public class Purchase {
         lottos.forEach(System.out::println);
     }
 
-    public int createLottoBonusNumber() {
-        return NumberGenerator.createRandomNumber();
+    public void createBonusNumber() {
+        bonusNumber =  NumberGenerator.createRandomNumber();
     }
 
     public void printCount() {
@@ -52,5 +54,9 @@ public class Purchase {
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
