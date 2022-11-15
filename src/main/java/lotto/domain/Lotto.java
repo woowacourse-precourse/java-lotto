@@ -25,8 +25,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
-
     private void validateOverlapNumbers(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != LOTTO_SIZE) {
             System.out.println(ERROR_MESSAGE + "로또 번호는 중복이 불가합니다.");
