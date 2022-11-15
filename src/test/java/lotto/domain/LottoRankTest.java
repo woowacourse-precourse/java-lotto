@@ -3,6 +3,7 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -14,6 +15,14 @@ class LottoRankTest {
     void 등수_맞추기(int winningNumberCount, boolean hasBonusNumber, LottoRank correctRank) {
         LottoRank rank = LottoRank.getRank(winningNumberCount, hasBonusNumber);
         assertThat(rank).isEqualTo(correctRank);
+    }
+
+    @Test
+    @DisplayName("당첨 횟수를 알면 수익을 구할 수 있다. ")
+    void 수익_계산() {
+        LottoRank rank = LottoRank.FIFTH;
+        int profit = rank.calculateProfit(3);
+        assertThat(profit).isEqualTo(15000);
     }
 
 }
