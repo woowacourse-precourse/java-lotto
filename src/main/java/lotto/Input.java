@@ -22,4 +22,10 @@ public class Input {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public int bonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine().trim();
+        return Integer.parseInt(input);
+    }
 }
