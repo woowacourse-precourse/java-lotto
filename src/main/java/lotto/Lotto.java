@@ -27,19 +27,19 @@ public class Lotto {
                 Error.error(Error.errMsg_ExistSameNumber);
         }
     }
-    public boolean CheckContainNumber(int num){
+    public boolean checkContainNumber(int num){
         if(numbers.contains(num))
             return true;
 
         return false;
     }
-    public static List<Lotto> PurchaseLotto(int count){
-        List<Lotto> lottos = GetRandomLotto(count);
-        PrintLotto(lottos);
+    public static List<Lotto> purchaseLotto(int count){
+        List<Lotto> lottos = getRandomLotto(count);
+        printLotto(lottos);
         return lottos;
     }
 
-    public static void PrintLotto(List<Lotto> lottos){
+    public static void printLotto(List<Lotto> lottos){
         System.out.println(String.format(PrintMessage.resultPurchasingAmount, lottos.size()));
 
         for(Lotto lotto : lottos){
@@ -47,7 +47,7 @@ public class Lotto {
         }
     }
 
-    private static List<Lotto> GetRandomLotto(int count){
+    private static List<Lotto> getRandomLotto(int count){
         List<Lotto> lottos = new ArrayList<>();
         for(int i =0; i < count; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lottoStart, lottoEnd, lottoCount);
@@ -56,7 +56,7 @@ public class Lotto {
         return lottos;
     }
 
-    public static int CountSameNumber(Lotto target, Lotto winning){
+    public static int countSameNumber(Lotto target, Lotto winning){
         int count = 0;
         for(int num : target.numbers){
             if(winning.numbers.contains(num))
@@ -65,7 +65,7 @@ public class Lotto {
         return count;
     }
 
-    public static boolean CheckBonus(Lotto target, int bonus){
+    public static boolean checkBonus(Lotto target, int bonus){
         if(target.numbers.contains(bonus))
             return true;
 

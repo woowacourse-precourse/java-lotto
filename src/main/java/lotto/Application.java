@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Application {
     //region 상수
-    private static final String EMPTY_STRING = "";
     private static final String COMMA = ",";
     private static final String REGEX = "[0-9]+";
     private static final int lottoPrice = 1000;
@@ -24,11 +23,11 @@ public class Application {
     //region 생성자
     public static void main(String[] args) {
         try {
-            SalesLotto();
-            GetWinningNumber();
-            GetBonusNumber();
-            CheckWinning();
-            CheckEarningRate();
+            salesLotto();
+            getWinningNumber();
+            getBonusNumber();
+            checkWinning();
+            checkEarningRate();
         }
         catch (Exception ex){
             System.out.println(ex.getMessage());
@@ -38,37 +37,37 @@ public class Application {
     //endregion
 
     //region 메서드
-    private static void CheckEarningRate() {
-        winningStats.CalculateEarningRate(lottoNumber * lottoPrice);
-        winningStats.PrintEarningRate();
+    private static void checkEarningRate() {
+        winningStats.calculateEarningRate(lottoNumber * lottoPrice);
+        winningStats.printEarningRate();
     }
 
-    private static void CheckWinning() {
+    private static void checkWinning() {
         winningStats = new WinningStats(lottos, winningLotto, bonusNumber);
-        winningStats.PrintWinningStats();
+        winningStats.printWinningStats();
     }
 
-    private static void GetBonusNumber() {
+    private static void getBonusNumber() {
         System.out.println(PrintMessage.bonusNumber);
         String userInput = getUserInputData();
-        BonusValidate(userInput);
+        bonusValidate(userInput);
         bonusNumber = Integer.parseInt(userInput);
     }
 
-    private static void BonusValidate(String userInput) {
-        CheckOnlyNumber(userInput);
-        CheckNumberSize(userInput);
-        CheckSameNumber(userInput);
+    private static void bonusValidate(String userInput) {
+        checkOnlyNumber(userInput);
+        checkNumberSize(userInput);
+        checkSameNumber(userInput);
     }
 
-    private static void CheckSameNumber(String userInput) {
+    private static void checkSameNumber(String userInput) {
         int num = Integer.parseInt(userInput);
 
-        if(winningLotto.CheckContainNumber(num))
+        if(winningLotto.checkContainNumber(num))
             Error.error(Error.errMsg_ExistSameNumber);
     }
 
-    private static void CheckNumberSize(String userInput) {
+    private static void checkNumberSize(String userInput) {
         int num = Integer.parseInt(userInput);
 
         if(num < 1)
@@ -78,25 +77,25 @@ public class Application {
             Error.error(Error.errMsg_WrongLottoNumber);
     }
 
-    private static void GetWinningNumber() {
+    private static void getWinningNumber() {
         System.out.println(PrintMessage.winningNumber);
         String userInput = getUserInputData();
-        CastWinningNumberToLotto(userInput);
+        castWinningNumberToLotto(userInput);
     }
 
-    private static void CastWinningNumberToLotto(String str){
-        List<String> commaSplits = SplitString(str);
+    private static void castWinningNumberToLotto(String str){
+        List<String> commaSplits = splitString(str);
         List<Integer> winningNumber = new ArrayList<>();
 
         for(String commaSplit : commaSplits){
-            CheckOnlyNumber(commaSplit);
+            checkOnlyNumber(commaSplit);
             winningNumber.add(Integer.valueOf(commaSplit));
         }
 
         winningLotto = new Lotto(winningNumber);
     }
 
-    private static List<String> SplitString(String str){
+    private static List<String> splitString(String str){
         return Arrays.asList(str.split(COMMA));
     }
     public static String getUserInputData(){
@@ -104,13 +103,13 @@ public class Application {
         return input;
     }
 
-    public static void SalesLotto(){
+    public static void salesLotto(){
         System.out.println(PrintMessage.purchasingAmount);
         String userInput = getUserInputData();
-        SalesValidate(userInput);
+        salesValidate(userInput);
 
         calculateNumberLotto(userInput);
-        lottos = Lotto.PurchaseLotto(lottoNumber);
+        lottos = Lotto.purchaseLotto(lottoNumber);
     }
 
     public static void calculateNumberLotto(String userInput){
@@ -118,19 +117,19 @@ public class Application {
         lottoNumber = userPay / lottoPrice;
     }
 
-    private static void SalesValidate(String userInput) {
-        CheckOnlyNumber(userInput);
-        CheckPrice(userInput);
+    private static void salesValidate(String userInput) {
+        checkOnlyNumber(userInput);
+        checkPrice(userInput);
     }
 
-    private static void CheckPrice(String userInput) {
+    private static void checkPrice(String userInput) {
         int userPay = Integer.parseInt(userInput);
 
         if(userPay % lottoPrice != 0)
             Error.error(Error.errMsg_WrongPurchaseAmount);
     }
 
-    public static void CheckOnlyNumber(String str){
+    public static void checkOnlyNumber(String str){
         if(!str.matches(REGEX))
             Error.error(Error.errMsg_ExistNotNumber);
     }

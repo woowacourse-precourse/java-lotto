@@ -52,14 +52,14 @@ class LottoTest {
     @DisplayName("보너스 번호 체크할 때 로또 번호에 보너스 번호가 포함되는 경우")
     @Test
     void existBonusInLotto() {
-        boolean existBonus = Lotto.CheckBonus(new Lotto(List.of(1,2,3,4,5,6)), 1);
+        boolean existBonus = Lotto.checkBonus(new Lotto(List.of(1,2,3,4,5,6)), 1);
         assertThat(existBonus).isEqualTo(true);
     }
 
     @DisplayName("보너스 번호 체크할 때 로또 번호에 보너스 번호가 포함되지 않는 경우")
     @Test
     void nonExistBonusInLotto() {
-        boolean existBonus = Lotto.CheckBonus(new Lotto(List.of(1,2,3,4,5,6)), 7);
+        boolean existBonus = Lotto.checkBonus(new Lotto(List.of(1,2,3,4,5,6)), 7);
         assertThat(existBonus).isEqualTo(false);
     }
 
@@ -68,31 +68,31 @@ class LottoTest {
     void confirmLottoSameNumberInWinning() {
         int same;
         //0개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(7,8,9,10,11,12)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(7,8,9,10,11,12)));
         assertThat(same).isEqualTo(0);
 
         //1개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,8,9,10,11,12)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,8,9,10,11,12)));
         assertThat(same).isEqualTo(1);
 
         //2개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,9,10,11,12)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,9,10,11,12)));
         assertThat(same).isEqualTo(2);
 
         //3개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,10,11,12)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,10,11,12)));
         assertThat(same).isEqualTo(3);
 
         //4개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,4,11,12)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,4,11,12)));
         assertThat(same).isEqualTo(4);
 
         //5개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,4,5,12)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,4,5,12)));
         assertThat(same).isEqualTo(5);
 
         //6개
-        same = Lotto.CountSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,4,5,6)));
+        same = Lotto.countSameNumber(new Lotto(List.of(1,2,3,4,5,6)),new Lotto(List.of(1,2,3,4,5,6)));
         assertThat(same).isEqualTo(6);
     }
 

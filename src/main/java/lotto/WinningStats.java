@@ -27,7 +27,7 @@ public class WinningStats {
             this.printStr = printStr;
         }
 
-        public void Print(){
+        public void print(){
             System.out.println(String.format(printStr, count));
         }
 
@@ -41,8 +41,7 @@ public class WinningStats {
             target.get().count++;
         }
 
-
-        public static void Initialize(){
+        public static void initialize(){
             for(Winning winning : Winning.values()){
                 winning.count = 0;
             }
@@ -50,39 +49,39 @@ public class WinningStats {
     }
 
     public WinningStats(List<Lotto> purchase, Lotto winning, int bonus){
-        Winning.Initialize();
+        Winning.initialize();
 
         for(Lotto selected : purchase){
-            int sameCount = GetSameNumber(selected, winning);
-            Boolean existBonus = CheckBonus(selected, bonus, sameCount);
+            int sameCount = getSameNumber(selected, winning);
+            Boolean existBonus = checkBonus(selected, bonus, sameCount);
             Winning.accumulateWinning(sameCount, existBonus);
         }
     }
 
-    private Boolean CheckBonus(Lotto lotto, int bonus, int sameCount){
+    private Boolean checkBonus(Lotto lotto, int bonus, int sameCount){
         if(sameCount == 5)
-            return Lotto.CheckBonus(lotto, bonus);
+            return Lotto.checkBonus(lotto, bonus);
 
         return null;
     }
 
-    private int GetSameNumber(Lotto lotto, Lotto winning){
-        return Lotto.CountSameNumber(lotto, winning);
+    private int getSameNumber(Lotto lotto, Lotto winning){
+        return Lotto.countSameNumber(lotto, winning);
     }
 
-    public void PrintWinningStats(){
+    public void printWinningStats(){
         System.out.println(PrintMessage.winningStats);
         System.out.println(PrintMessage.underLine);
 
         for(Winning c : Winning.values()){
-            c.Print();
+            c.print();
         }
     }
-    public void PrintEarningRate(){
+    public void printEarningRate(){
         System.out.println(String.format(PrintMessage.earningRate, earningRate));
     }
 
-    public static void CalculateEarningRate(int amount){
+    public static void calculateEarningRate(int amount){
         int sum = 0;
         for(Winning winning : Winning.values()){
             sum += winning.count * winning.reward;

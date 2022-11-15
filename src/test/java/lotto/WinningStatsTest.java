@@ -1,7 +1,7 @@
 package lotto;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -60,7 +60,7 @@ class WinningStatsTest {
     void RightEarningRate(List<Integer> winningNumber, int bonus, double earningRate) {
         Lotto winning = new Lotto(winningNumber);
         WinningStats winningStats = new WinningStats(purchase, winning, bonus);
-        winningStats.CalculateEarningRate(purchase.size() * 1000);
+        winningStats.calculateEarningRate(purchase.size() * 1000);
         assertThat(WinningStats.earningRate).isEqualTo(earningRate);
     }
 
