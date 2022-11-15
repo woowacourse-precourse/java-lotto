@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Map;
 
 public enum Rank {
     BANG(0, 0),
@@ -12,7 +14,7 @@ public enum Rank {
 
     private  int count;
     private int reward;
-
+    private static Map<Rank,Integer> rankCount = new EnumMap<Rank, Integer>(Rank.class);
     Rank(final int count, final int reward) {
         this.count = count;
         this.reward = reward;
@@ -28,4 +30,14 @@ public enum Rank {
 
         return Arrays.stream(Rank.values()).filter(rank -> rank.count == count).findAny().orElseThrow();
     }
+
+    public static void settingRankMap() {
+        for(Rank rank : Rank.values()){
+            rankCount.put(rank,0);
+        }
+    }
+    public static void addRankCount(Rank rank){
+        rankCount.put(rank, rankCount.getOrDefault(rank,0)+1);
+    }
+
 }
