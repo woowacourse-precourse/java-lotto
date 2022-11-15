@@ -15,11 +15,8 @@ public class Game {
     public void gameStart(){
         System.out.println(Resource.greetings);
         showBoughtNumbers();
-        System.out.println(Resource.inputOfWinningNumber);
-        String winNumber = Console.readLine();
 
-        System.out.println(Resource.inputOfBonusNumber);
-        String bonusNumber = Console.readLine();
+        WinningNumber winningNumber = makeWinningNumber();
 
         System.out.println(Resource.resultOfWinning);
         System.out.println(Resource.countOfCorrectNumberFront);
@@ -30,6 +27,14 @@ public class Game {
         System.out.println(Resource.revenuePercentBack);
 
 
+    }
+
+    private WinningNumber makeWinningNumber() {
+        System.out.println(Resource.inputOfWinningNumber);
+        String winNumber = Console.readLine();
+        System.out.println(Resource.inputOfBonusNumber);
+        String bonusNumber = Console.readLine();
+        return new WinningNumber(winNumber,Integer.parseInt(bonusNumber));
     }
 
     private void showBoughtNumbers() {
