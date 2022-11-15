@@ -101,7 +101,7 @@ class WinningCalculatorTest {
         @DisplayName("당첨 번호에 이미 포함된 번호 입력 -> 예외발생")
         @Test
         void should_ThrowIllegalArgumentException_When_IsAlreadyInWinningNumber() {
-            assertThatThrownBy(() -> winningCalculator.setWinningNumbers("6"))
+            assertThatThrownBy(() -> winningCalculator.setBonusNumber("6"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
