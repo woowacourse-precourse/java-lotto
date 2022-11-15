@@ -24,7 +24,7 @@ public class LotteryResult {
 
     private void validate(List<Lotto> lottos) {
         if (lottos.size() == 0)
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 로또를 구매하지 않았습니다.");
     }
 
     public static LotteryResult of(List<Lotto> lottos, WinningNumbers winNumbers) {
