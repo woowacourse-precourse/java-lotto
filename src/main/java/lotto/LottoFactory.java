@@ -16,4 +16,8 @@ public class LottoFactory {
         return lottos;
     }
 
+    public static WinningNumbers createWinNums(List<Integer> lotteryNumber, int bonusNumber) {
+        LottoNumber bonus = LottoNumber.getInstance(bonusNumber);
+        return WinningNumbers.of(Lotto.from(NumberGenerator.generateSixRandomNumber()), bonus);
+    }
 }
