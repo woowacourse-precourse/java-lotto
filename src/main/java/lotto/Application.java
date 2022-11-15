@@ -55,10 +55,50 @@ public class Application {
         return bonusNum;
     }
 
+    // 8.최종 당첨 결과
+    static void getLottoResult(List<Integer> lottosResult, int countResult, int countBonus) {
+
+        if(countResult == 6 || countBonus == 5) {
+            lottosResult.set(countResult,lottosResult.get(countResult)+1);
+            return;
+        }
+
+        countResult += countBonus;
+
+        if(countResult >= 3) {
+            if(countResult == 6) {
+                lottosResult.set(0,lottosResult.get(0)+1);
+                return;
+            }
+
+            lottosResult.set(countResult,lottosResult.get(countResult)+1);
+            return;
+        }
+    }
+
+    // 당첨 결과
+    static List<Integer> getLottoResultAll(List<Lotto> lottos, List<Integer>winningNums, int bonusNum) {
+
+        List<Integer> lottosResult = new ArrayList<>(List.of(0,0,0,0,0,0,0));
+        for(int idx=0; idx<lottos.size(); idx++) {
+
+            int countResult = 0;
+            int countBonus = 0;
+
+            countResult = lottos.get(idx).getLottoResult(winningNums,countResult);
+            countBonus = lottos.get(idx).getIncludingBonus(bonusNum);
+
+            getLottoResult(lottosResult,countResult,countBonus);
+        }
+
+        return lottosResult;
+    }
+
     public static void main(String[] args) {
 
         List<Lotto> lottos = new ArrayList<>();
         List<Integer> winningNums = new ArrayList<>();
+        List<Integer> lottosResult = new ArrayList<>();
 
         // 로또 구입
         int sheets = buyLotto();
@@ -71,6 +111,11 @@ public class Application {
 
         // 보너스 번호
         int bonusNum = createBonusNum();
+
+        // 당첨 결과
+        lottosResult = getLottoResultAll(lottos,winningNums,bonusNum);
+
+        System.out.println(lottosResult);
     }
 }
 
