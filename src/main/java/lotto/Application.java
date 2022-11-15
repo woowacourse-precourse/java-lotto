@@ -10,6 +10,9 @@ public class Application {
         // TODO: 프로그램 구현
         BuyLotto buyLotto = new BuyLotto(InputBuyNum());
         Lotto lotto = new Lotto(InputWinningNum());
+        BonusLotto bonusLotto = new BonusLotto(InputBonusNum(),lotto);
+
+    }
 
         //구매금액 입력
         public static String InputBuyNum() {
@@ -27,5 +30,10 @@ public class Application {
             WinningNum.add(Integer.parseInt(inputNum[i]));
         }
         return WinningNum;
+    }
+    //보너스 번호 입력
+    public static int InputBonusNum() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(readLine());
     }
 }
