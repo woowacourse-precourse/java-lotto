@@ -1,6 +1,9 @@
 package lotto;
 
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,7 +17,28 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> numSet = new HashSet<>(numbers);
+        if(numSet.size() != numbers.size()){
+            throw new IllegalArgumentException();
+        }
+
+        numbers.sort(Comparator.naturalOrder());
     }
 
-    // TODO: 추가 기능 구현
+    public void printNumbers(){
+        System.out.println(numbers);
+    }
+
+    public boolean isContainBounus(Integer bouns){
+        if(this.numbers.contains(bouns)) return true;
+        else return false;
+    }
+
+    public Integer getNumberOfMatch(List<Integer> num){
+        int count=0;
+        for(Integer a : num){
+            if(this.numbers.contains(a)) count++;
+        }
+    return count;
+    }
 }
