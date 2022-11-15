@@ -39,7 +39,7 @@
 - [x] 당첨 결과 문구 출력 (`OutputView`)
     - [x] 당첨 결과 문구 enum 생성
     - [x] 당첨 결과 출력 기능
-- [ ] `UserController` 유저 로또 결과 조회 부분 구현
+- [x] `UserController` 유저 로또 결과 조회 부분 구현
 
 ---
 
