@@ -1,9 +1,10 @@
 package lotto.domain;
 
-import lotto.util.Constant;
 import lotto.util.ErrorHandler;
 import lotto.util.ErrorMessage;
 import lotto.util.Validator;
+
+import static lotto.util.Constant.PURCHASE_UNIT;
 
 public class Purchase {
     private final String purchaseAmount;
@@ -23,11 +24,7 @@ public class Purchase {
     }
 
     public int calculateQuantity() {
-        return Integer.parseInt(purchaseAmount) / Constant.PURCHASE_UNIT;
-    }
-
-    public double calculateEarningsRate(int totalPrize) {
-        return (double) totalPrize / (calculateQuantity() * Constant.PURCHASE_UNIT);
+        return Integer.parseInt(purchaseAmount) / PURCHASE_UNIT;
     }
 
     static class PurchaseValidator extends Validator {
