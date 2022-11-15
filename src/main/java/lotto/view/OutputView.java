@@ -24,12 +24,12 @@ public class OutputView {
                         " - " + result.get(rank) + "개");
                 continue;
             }
-            System.out.println(rank.getMatchCount() + "개 일치 " + rank.getMatchCount() +
+            System.out.println(rank.getMatchCount() + "개 일치 " + rank.getPrizeForPrint() +
                     " - " + result.get(rank)  + "개");
         }
     }
 
-    public static void printRateOfReturn(float rateOfReturn) {
+    public static void printRateOfReturn(double rateOfReturn) {
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 }
