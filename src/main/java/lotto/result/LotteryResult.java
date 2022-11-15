@@ -18,6 +18,10 @@ public class LotteryResult {
         }
     }
 
+    private void add(Rank rank) {
+        result.put(rank, result.getOrDefault(rank, 0) + 1);
+    }
+
 
 
 }
