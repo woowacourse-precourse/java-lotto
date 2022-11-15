@@ -15,7 +15,7 @@ public class Computer {
     private static final List<Integer> WINNING_NUMBERS = new ArrayList<>();
     private static String YIELD;
 
-    public Computer(int lottoCount) {
+    public Computer(long lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(Resource.MIN_LOTTO_NUMBER, Resource.MAX_LOTTO_NUMBER, Resource.LOTTO_SIZE);
             List<Integer> copyOfLotto = new ArrayList<>();
@@ -78,7 +78,7 @@ public class Computer {
         if (win == Rank.FIFTH.getWin()) Rank.FIFTH.plusCount();
     }
 
-    public void yieldCalculation(int inputMoney) {
+    public void yieldCalculation(long inputMoney) {
         long yield = Rank.FIRST.getCount() * Rank.FIRST.getMoney() + Rank.SECOND.getCount() * Rank.SECOND.getMoney() + Rank.THIRD.getCount() * Rank.THIRD.getMoney()
                 + Rank.FOURTH.getCount() * Rank.FOURTH.getMoney() + Rank.FIFTH.getCount() * Rank.FIFTH.getMoney();
         YIELD = String.format("%.1f", yield / (double) inputMoney * PERCENT);

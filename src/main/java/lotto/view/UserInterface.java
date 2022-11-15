@@ -14,7 +14,7 @@ public class UserInterface {
         return Console.readLine();
     }
 
-    public void showAutoLottos(List<List<Integer>> autoLottos, int lottoCount) {
+    public void showAutoLottos(List<List<Integer>> autoLottos, long lottoCount) {
         System.out.println(lottoCount + Message.BUY);
         for (List<Integer> autoLotto : autoLottos) {
             StringBuilder sb = new StringBuilder();

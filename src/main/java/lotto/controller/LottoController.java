@@ -10,8 +10,8 @@ import lotto.view.UserInterface;
 public class LottoController {
 
     private String userInput;
-    private int inputMoney;
-    private int lottoCount;
+    private long inputMoney;
+    private long lottoCount;
 
     UserInterface userInterface = new UserInterface();
     User user;
@@ -29,7 +29,7 @@ public class LottoController {
         userInput = userInterface.getUserInput(Message.PURCHASE_ENTER);
         user = new User(Message.PURCHASE_AMOUNT);
         user.validateUserMoney(userInput);
-        inputMoney = Integer.parseInt(userInput);
+        inputMoney = Long.parseLong(userInput);
         lottoCount = inputMoney / Resource.LOTTO_PRICE;
         auto = new Computer(lottoCount);
         userInterface.showAutoLottos(Computer.getAutoLottos(), lottoCount);
