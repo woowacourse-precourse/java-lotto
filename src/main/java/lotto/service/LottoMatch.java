@@ -2,22 +2,25 @@ package lotto.service;
 
 import java.util.Arrays;
 import lotto.domain.CalculatedLotto;
+import lotto.ui.ConsoleMessage;
 
 public enum LottoMatch {
 
-    SIX_MATCHES(6, 2000000000),
-    FIVE_MATCHES_PLUS_BONUS(5, 30000000),
-    FIVE_MATCHES(5, 1500000),
-    FOUR_MATCHES(4, 50000),
-    THREE_MATCHES(3, 5000),
-    NULL_RESULT(-1, 0);
+    SIX_MATCHES(6, 2000000000, ConsoleMessage.SIX_MATCHES),
+    FIVE_MATCHES_PLUS_BONUS(5, 30000000, ConsoleMessage.FIVE_MATCHES_PLUS_BONUS),
+    FIVE_MATCHES(5, 1500000, ConsoleMessage.FIVE_MATCHES),
+    FOUR_MATCHES(4, 50000, ConsoleMessage.FOUR_MATCHES),
+    THREE_MATCHES(3, 5000, ConsoleMessage.THREE_MATCHES),
+    NULL_RESULT(-1, 0, null);
 
     private final int numberMatchCount;
     private final int profit;
+    private final ConsoleMessage resultMsg;
 
-    LottoMatch(int numberMatchCount, int profit) {
+    LottoMatch(int numberMatchCount, int profit, ConsoleMessage resultMsg) {
         this.numberMatchCount = numberMatchCount;
         this.profit = profit;
+        this.resultMsg = resultMsg;
     }
 
     public static LottoMatch calculatedLottoMapper(CalculatedLotto calculatedLotto) {
@@ -46,4 +49,7 @@ public enum LottoMatch {
         return profit;
     }
 
+    public ConsoleMessage getResultMsg() {
+        return resultMsg;
+    }
 }

@@ -15,7 +15,14 @@ public enum ConsoleMessage {
     // 로또 번호 validation 오류
     INVALID_LOTTO_SIZE("로또 번호 개수는 6개로 제한됩니다."),
     LOTTO_NUMBER_DUPLICATE("로또 번호는 중복될 수 없습니다."),
-    LOTTO_NUMBER_OUT_OF_RANGE("로또 번호는 1 ~ 45 사이의 수여야 합니다.");
+    LOTTO_NUMBER_OUT_OF_RANGE("로또 번호는 1 ~ 45 사이의 수여야 합니다."),
+
+    // 최종 통계 결과 출력
+    SIX_MATCHES("6개 일치"),
+    FIVE_MATCHES_PLUS_BONUS("5개 일치, 보너스 볼 일치"),
+    FIVE_MATCHES("5개 일치"),
+    FOUR_MATCHES("4개 일치"),
+    THREE_MATCHES("3개 일치");
 
     private final String message;
 
@@ -24,8 +31,7 @@ public enum ConsoleMessage {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return message;
     }
 

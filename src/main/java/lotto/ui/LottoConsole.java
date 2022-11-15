@@ -44,7 +44,8 @@ public class LottoConsole {
                 .of(THREE_MATCHES, FOUR_MATCHES, FIVE_MATCHES, FIVE_MATCHES_PLUS_BONUS, SIX_MATCHES);
         for (LottoMatch lottoMatch : lottoMatches) {
             System.out.println(
-                    lottoMatch.getNumberMatchCount() + "개 일치 (" + String.format("%,d", lottoMatch.getProfit()) + "원) - " + statistics
+                    lottoMatch.getResultMsg() + " (" + String.format("%,d", lottoMatch.getProfit()) + "원) - "
+                            + statistics
                             .get(lottoMatch) + "개");
         }
         System.out.println("총 수익률은 " + String.format("%.1f", profitRate) + "%입니다.");

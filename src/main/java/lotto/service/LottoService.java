@@ -6,6 +6,7 @@ import static lotto.ui.ConsoleMessage.INPUT_WINNING_LOTTOS;
 import static lotto.ui.LottoConsole.*;
 import static lotto.util.LottoNumberGenerator.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.BonusNumber;
@@ -54,7 +55,7 @@ public class LottoService {
     }
 
     private void printSingleLotto(Lotto lotto) {
-        List<Integer> lottoNumbers = lotto.getNumbers();
+        List<Integer> lottoNumbers = new ArrayList<>(lotto.getNumbers());
         Collections.sort(lottoNumbers);
         printLottoResult(lottoNumbers);
     }
