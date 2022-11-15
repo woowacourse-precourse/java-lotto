@@ -4,6 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.console.Constants;
+import lotto.player.Host;
+import lotto.player.Store;
+import lotto.player.User;
+import lotto.statistics.Statistics;
+import lotto.ticket.Lotto;
+import lotto.ticket.Winning;
 
 public class Application {
 

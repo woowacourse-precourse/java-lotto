@@ -1,8 +1,10 @@
-package lotto;
+package lotto.player;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.console.Constants;
+import lotto.ticket.Lotto;
 
 public class Store {
 

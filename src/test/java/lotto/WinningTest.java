@@ -3,6 +3,7 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import lotto.ticket.Winning;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

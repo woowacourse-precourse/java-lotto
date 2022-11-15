@@ -1,6 +1,8 @@
-package lotto;
+package lotto.player;
 
 import java.util.List;
+import lotto.console.Constants;
+import lotto.ticket.Lotto;
 
 public class User {
 

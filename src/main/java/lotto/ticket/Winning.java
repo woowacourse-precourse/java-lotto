@@ -1,4 +1,4 @@
-package lotto;
+package lotto.ticket;
 
 public enum Winning {
     FAIL(0, 0),

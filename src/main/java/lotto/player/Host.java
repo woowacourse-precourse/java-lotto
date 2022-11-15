@@ -1,7 +1,10 @@
-package lotto;
+package lotto.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.console.Constants;
+import lotto.ticket.Lotto;
+import lotto.ticket.Winning;
 
 public class Host {
 

@@ -1,6 +1,7 @@
-package lotto;
+package lotto.ticket;
 
 import java.util.List;
+import lotto.console.Constants;
 
 public class Lotto {
 
