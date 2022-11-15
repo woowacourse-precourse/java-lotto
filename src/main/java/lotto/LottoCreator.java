@@ -8,19 +8,23 @@ import java.util.List;
 
 public class LottoCreator {
 
-    public static List<Integer> createNumbers() {
+    private final int LOTTO_MIN_NUM = 1;
+    private final int LOTTO_MAX_NUM = 45;
+    private final int LOTTO_SIZE = 6;
+
+    private List<Integer> createNumbers() {
         List<Integer> numbers;
 
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUM, LOTTO_MAX_NUM, LOTTO_SIZE);
         Collections.sort(numbers);
         return numbers;
     }
 
-    public static List<List<Integer>> createLottos(int amount) {
-        List<List<Integer>> lottos = new ArrayList<>();
+    public List<Lotto> createLottos(int amount) {
+        List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < amount; i++) {
-            lottos.add(createNumbers());
+            lottos.add(new Lotto(createNumbers()));
         }
         return lottos;
     }
