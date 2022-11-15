@@ -7,24 +7,32 @@ import lotto.controller.UserController;
 import lotto.model.Prize;
 
 public class Application {
+    static LottoController lottoCtrl = new LottoController();
+    static UserController userCtrl = new UserController();
+    static HostController hostCtrl = new HostController();
+    static ExceptionHandler excHandler = new ExceptionHandler();
     public static void main(String[] args) {
-        LottoController lottoCtrl = new LottoController();
-        UserController userCtrl = new UserController();
-        HostController hostCtrl = new HostController();
-        ExceptionHandler excHandler = new ExceptionHandler();
 
-        try{
-            userCtrl.purchaseLottery(lottoCtrl);
+        try {
+            buy();
+            draw();
+            prize();
 
-            hostCtrl.makeWinning();
-
-            userCtrl.updateWinningHistory();
-
-            userCtrl.lotteryOfWinners(Prize.getAllOfMessage());
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             excHandler.printErrorMessage(e);
         }
+    }
 
+    public static void buy(){
+        userCtrl.purchaseLottery(lottoCtrl);
+    }
+    public static void draw(){
+        hostCtrl.makeWinning();
+    }
+
+    public static void prize(){
+        userCtrl.updateWinningHistory();
+
+        userCtrl.lotteryOfWinners(Prize.getAllOfMessage());
     }
 }
