@@ -22,8 +22,8 @@ public class LottoGameController {
 
             LottoGameResult lottoGameResult = createLottoGameResult(playerLotto, winningLotto);
             printLottoGameResult(lottoGameResult, lottoPurchaseMoney);
-        } catch (RuntimeException e) {
-            return;
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
         }
     }
 
@@ -32,8 +32,7 @@ public class LottoGameController {
             int money = InputView.lottoPurchaseMoney();
             return new LottoPurchaseMoney(money);
         } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            throw new RuntimeException();
+            throw e;
         }
     }
 
@@ -41,8 +40,7 @@ public class LottoGameController {
         try {
             return new PlayerLotto(lottoPurchaseMoney);
         } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            throw new RuntimeException();
+            throw e;
         }
     }
 
@@ -57,8 +55,7 @@ public class LottoGameController {
 
             return new WinningLotto(winningNumbers, bonusNumber);
         } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            throw new RuntimeException();
+            throw e;
         }
     }
 
