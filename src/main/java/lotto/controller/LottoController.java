@@ -16,13 +16,18 @@ public class LottoController {
     private WinningsCalculationService winningsCalculationService;
 
     public void run() {
-        lottoPurchase();
-        winningsNumberSetting();
-        generateCalculationService();
-        calculate();
+        try {
+            lottoPurchase();
+            winningsNumberSetting();
+            generateCalculationService();
+            calculate();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
-    private void lottoPurchase() {
+    private void lottoPurchase() throws IllegalArgumentException {
         lottoPurchaseService.startLotto();
     }
 

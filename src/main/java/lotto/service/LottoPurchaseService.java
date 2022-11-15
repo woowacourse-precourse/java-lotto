@@ -10,6 +10,8 @@ import lotto.printer.SystemGuidePrinter;
 
 import java.util.List;
 
+import static lotto.error.ErrorMessage.PAYMENT_AMOUNT_NOT_NUMBER;
+
 public class LottoPurchaseService {
 
     private User user;
@@ -18,7 +20,7 @@ public class LottoPurchaseService {
         return user;
     }
 
-    public void startLotto() {
+    public void startLotto() throws IllegalArgumentException {
         int paymentAmount = enterPaymentAmount();
         int lottoGameCount = calculateLottoCount(paymentAmount);
 
@@ -29,9 +31,18 @@ public class LottoPurchaseService {
         user = new User(lottos, amount);
     }
 
-    private Integer enterPaymentAmount() {
+    private Integer enterPaymentAmount() throws IllegalArgumentException {
         RequestInputPrinter.paymentAmountInputGuide();
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        if (!isDigit(input)) {
+            throw new IllegalArgumentException(PAYMENT_AMOUNT_NOT_NUMBER.getMessage());
+        }
+        return Integer.parseInt(input);
+    }
+
+    private boolean isDigit(String paymentAmount) {
+        return paymentAmount.chars()
+            .allMatch(Character::isDigit);
     }
 
     private Integer calculateLottoCount(int amount) {

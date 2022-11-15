@@ -3,6 +3,7 @@ package lotto.error;
 public enum ErrorMessage {
 
     // 지불 금액
+    PAYMENT_AMOUNT_NOT_NUMBER("[ERROR] 입력한 구매금액 값이 숫자가 아닙니다."),
     PAYMENT_AMOUNT_IS_ZERO("[ERROR] 지불 금액이 0원입니다."),
     PAYMENT_AMOUNT_UNIT_MISMATCH("[ERROR] 지불 금액이 1,000원 단위가 아닙니다."),
 
@@ -23,7 +24,7 @@ public enum ErrorMessage {
         this.message = message;
     }
 
-    String getMessage() {
+    public String getMessage() {
         return this.message;
     }
 
