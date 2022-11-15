@@ -13,6 +13,9 @@ public class Application {
         User user = new User(lottoCount);
         Lotto winningNumber = new Lotto(inputWinningNumber());
         int bonus = inputBonusNumber(winningNumber);
+
+        //로또 번호 게임 시작
+        new Game(winningNumber, bonus, user, lottoCount * 1000);
     }
     // 돈을 입력받아서 로또 개수를 반환
     public static int inputMoney() {
