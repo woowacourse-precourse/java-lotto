@@ -24,7 +24,14 @@ public class LottoResult {
         }
         return resultMap;
     }
+    public void addToResultMap(Rank rank, Map<Rank, Integer> resultMap) {
+        if (rank == null) {
+            return;
+        }
 
+        int winningCount = resultMap.getOrDefault(rank, 0);
+        resultMap.put(rank, winningCount + 1);
+    }
 
 
 }
