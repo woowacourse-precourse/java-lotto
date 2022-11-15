@@ -51,5 +51,4 @@ class LottoTest {
         CompareResult compareResult =new CompareResult(lotto, winning, bonus);
         assertThat(compareResult.getType()).isEqualTo(matchType.FOUR);
     }
-
 }

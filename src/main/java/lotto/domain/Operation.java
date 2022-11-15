@@ -31,11 +31,12 @@ public class Operation {
     }
 
     public static int calculateEarning(Match match) {
-        return match.MATCH_THREE * AMOUNT_THREE
-                + match.MATCH_FOUR * AMOUNT_FOUR
-                + match.MATCH_FIVE * AMOUNT_FIVE
-                + match.MATCH_FIVE_BONUS * AMOUNT_FIVE_BONUS
-                + match.MATCH_SIX * AMOUNT_SIX;
+        int result = match.MATCH_THREE * AMOUNT_THREE;
+        result += match.MATCH_FOUR * AMOUNT_FOUR;
+        result += match.MATCH_FIVE * AMOUNT_FIVE;
+        result += match.MATCH_FIVE_BONUS * AMOUNT_FIVE_BONUS;
+        result += match.MATCH_SIX * AMOUNT_SIX;
+        return result;
     }
 
     public static double calculateEarningRate(int purchaseAmount, int earning) {
