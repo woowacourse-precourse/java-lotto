@@ -11,7 +11,7 @@ public class WinningNumberTest {
     @Test
     void createOtherInput() {
         WinningNumber winningNumber = new WinningNumber();
-        assertThatThrownBy(() -> winningNumber.validateNumbers("1,2,3w4,5,6"))
+        assertThatThrownBy(() -> winningNumber.getNumbers("1,2,3w4,5,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
