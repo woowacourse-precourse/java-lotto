@@ -135,37 +135,34 @@ public class Application {
     public static void getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
         Map<Integer, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
         int price = getTotalPrice(prizeMap);
-        printResult(prizeMap);
         float profit = getProfit(price, lottos.size());
         printProfit(profit);
     }
 
     public static int getTotalPrice(Map<Integer, Integer> prizeMap) {
         int total = 0;
-        for (int i = prizeList.size() - 1; i > 0; i--) {
-            int temp = prizeMap.getOrDefault(i, 0);
-            int price = prizeList.get(i).getPrize();
-            total += temp * price;
-        }
-        return total;
-    }
-
-    public static void printResult(Map<Integer, Integer> prizeMap) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = prizeList.size() - 1; i > 0; i--) {
             int temp = prizeMap.getOrDefault(i, 0);
             int winNum = prizeList.get(i).getNumOfLucky();
             int price = prizeList.get(i).getPrize();
+            total += temp * price;
+            String msg = getMessage(temp, winNum, price);
+            System.out.println(msg);
+        }
+        return total;
+    }
+
+    public static String getMessage(int temp, int winNum, int price) {
             String commaNum = NumberFormat.getInstance(Locale.US).format(price);
             String msg = "";
             msg += winNum +"개 일치";
             if (price == 30_000_000) {
                 msg += ", 보너스 볼 일치";
             }
-            msg += " ("+ commaNum + ")원 - " + temp + "개";
-            System.out.println(msg);
-        }
+            msg += " ("+ commaNum + "원) - " + temp + "개";
+            return msg;
     }
     public static float getProfit(Integer totalPrice, Integer numOfLottos) {
         int initialPrice = numOfLottos * lottoPrice;
