@@ -2,6 +2,8 @@ package lotto.generation;
 
 import lotto.exception.IllegalArgument;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -22,6 +24,9 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return this.numbers;
+        List<Integer> numbers = new ArrayList<>();
+        numbers.addAll(this.numbers);
+        Collections.sort(numbers);
+        return numbers;
     }
 }
