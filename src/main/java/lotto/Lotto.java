@@ -10,6 +10,8 @@ public class Lotto {
     private final int ticketNumbers = 6;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        ErrorControl errorControl = new ErrorControl();
+        errorControl.isLottoOverlap(numbers);
         this.numbers = numbers;
     }
 

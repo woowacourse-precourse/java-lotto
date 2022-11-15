@@ -13,10 +13,7 @@ public class Application {
         ErrorControl errorControl = new ErrorControl();
         System.out.println("구입금액을 입력해 주세요");
         String input = Console.readLine();
-        if(!input.equals("-?\\d+")) {
-            throw new IllegalArgumentException("[ERROR]");
-        }
-        //errorControl.ticketPurchaseStrError(input);
+        errorControl.ticketPurchaseStrError(input);
         int purchase = Integer.parseInt(input);
         errorControl.ticketPurchaseThousandError(purchase);
         int ticket = Integer.parseInt(input) / 1000;
@@ -27,16 +24,16 @@ public class Application {
 
         for (int i = 0; i < ticket; i++) {
             lottos[i] = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            System.out.println(lottos[i].getLotto().toString());
             errorControl.isLottoOver(lottos[i]);
             errorControl.isLottoOverlap(lottos[i]);
+            System.out.println(lottos[i].getLotto().toString());
+
+
         }
         System.out.println();
 
         System.out.println("당첨번호를 입력해주세요");
         input = Console.readLine();
-        errorControl.isInputLottoNumberStr(input);
-        errorControl.isInputLottoNumberNotSix(input);
         String[] sp = input.split(",");
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < sp.length; i++) {
