@@ -41,6 +41,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
         int num = amount / 1000;
+        System.out.println(num + "개를 구매했습니다.");
         return num;
     }
 
