@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 import static lotto.view.InputString.*;
 
 public class InputView {
+
     public static int inputMoney(){
         System.out.println(PURCHASE_MONEY_MESSAGE);
         return checkAndConvertToInt(Console.readLine());
@@ -30,8 +32,10 @@ public class InputView {
     private static int checkAndConvertToInt(String input){
         try {
             return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NO_NUMBER_INPUT.toString());
+        } catch (IllegalArgumentException e) {
+            System.out.println(NO_NUMBER_INPUT.toString());
+            //throw new IllegalArgumentException(NO_NUMBER_INPUT.toString());
+            throw new NoSuchElementException();
         }
     }
 
