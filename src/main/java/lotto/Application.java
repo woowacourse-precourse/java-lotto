@@ -15,6 +15,9 @@ public class Application {
     static final float fourth = 50000;
     static final float fifth = 5000;
     static final int lottoPrice = 1000;
+    static final int minLottoNumber = 1;
+    static final int maxLottoNumber = 45;
+    static final int lengthLottoNumber = 6;
     public static void main(String[] args) {
         
         
@@ -193,6 +196,7 @@ public class Application {
 
     static int inputBuyMoney(){
         System.out.println("구입금액을 입력해주세요.");
+
         String input = Console.readLine();
         int buyMoney=0;
 
@@ -218,8 +222,23 @@ public class Application {
         return true;
     }
     static boolean isValidLottery(String input)  {
-
-        //1~45의 숫자
+        String[] inputStringList = input.split(",");
+        //6자리 확인
+        if(inputStringList.length != lengthLottoNumber){
+            return false;
+        }
+        //1~45의 숫자 확인
+        for(int i=0; i<inputStringList.length; i++){
+            if(Integer.parseInt(inputStringList[i]) < minLottoNumber ||
+                    Integer.parseInt(inputStringList[i]) > maxLottoNumber){
+                return false;
+            }
+        }
+        //번호 중복 확인
+        Set<String> set = new HashSet<>(Arrays.asList(inputStringList));
+        if(inputStringList.length != set.size()){
+            return false;
+        }
 
         return true;
     }
