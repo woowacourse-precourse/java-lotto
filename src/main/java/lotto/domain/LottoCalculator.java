@@ -16,8 +16,8 @@ public class LottoCalculator {
         put(7, 1);
     }};
 
-    public int getLottoQuantity(long playerMoney) {
-        return (int) playerMoney / LOTTO_PRICE;
+    public long getLottoQuantity(long playerMoney) {
+        return playerMoney / LOTTO_PRICE;
     }
 
     public double getRate(long rewardMoney, long playerMoney) {

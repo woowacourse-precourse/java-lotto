@@ -30,7 +30,7 @@ class LottoCalculatorTest {
         long playerMoney = 1_800_000 ;
 
         //when
-        int lottoQuantity = calculator.getLottoQuantity(playerMoney);
+        long lottoQuantity = calculator.getLottoQuantity(playerMoney);
 
         //then
         assertThat(lottoQuantity).isEqualTo(1800);

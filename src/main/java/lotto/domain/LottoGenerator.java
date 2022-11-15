@@ -16,7 +16,7 @@ public class LottoGenerator {
         this.converter = new LottoConverter();
     }
 
-    public List<Lotto> getLottos(int playerLottoQuantity) {
+    public List<Lotto> getLottos(long playerLottoQuantity) {
         List<Lotto> playerLotto = new ArrayList<>();
         List<Integer> randomNumbers;
         Lotto lotto;

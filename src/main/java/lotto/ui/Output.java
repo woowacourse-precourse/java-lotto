@@ -12,7 +12,7 @@ public class Output {
         System.out.print(message);
     }
 
-    public void printPlayerLotto(int lottoQuantity, List<Lotto> playerLotto) {
+    public void printPlayerLotto(long lottoQuantity, List<Lotto> playerLotto) {
         System.out.printf("%d개를 구매했습니다.\n", lottoQuantity);
         for (Lotto lotto : playerLotto) {
             System.out.println(lotto.toString());
@@ -21,8 +21,8 @@ public class Output {
     }
 
     public void printStatistic(Map<Integer, Integer> resultBoard) {
-        printMessage(ProcessMessages.NOTICE_WORD.getMessage());
-        printMessage(ProcessMessages.CONTOUR.getMessage());
+        printMessage(ProcessMessages.NOTICE_WORD.getMessage()+ProcessMessages.CONTOUR.getMessage());
+
         printMessage(Result.RANK_FIVE.getMessage());
         printRankQuantity(resultBoard.get(5));
         printMessage(Result.RANK_FOUR.getMessage());

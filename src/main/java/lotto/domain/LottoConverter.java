@@ -1,24 +1,19 @@
 package lotto.domain;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.Lotto;
 
 public class LottoConverter {
     public List<Integer> convertScanNumbersToWinningNumbers(List<String> lottoNumbers) {
-        List<Integer> convertedNumbers = lottoNumbers.stream()
+        return lottoNumbers.stream()
                 .map(s -> Integer.parseInt(s.trim()))
-                .sorted(Comparator.naturalOrder())
+                .sorted()
                 .collect(Collectors.toList());
-        return convertedNumbers;
     }
 
     public Lotto convertRandomNumbersToLotto(List<Integer> lottoNumbers) {
-        List<Integer> convertedNumbers = lottoNumbers.stream()
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
-        return new Lotto(convertedNumbers);
+        return new Lotto(lottoNumbers.stream().sorted().collect(Collectors.toList()));
     }
 
     public Integer convertBonus(String bonusNumber) {

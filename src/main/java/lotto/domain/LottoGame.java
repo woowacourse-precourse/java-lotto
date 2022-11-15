@@ -26,7 +26,7 @@ public class LottoGame {
     public void run() {
         try {
             long playerMoney = numbersConverter.convertMoney(input.scanMoney());
-            int playerLottoQuantity = lottoCalculator.getLottoQuantity(playerMoney);
+            long playerLottoQuantity = lottoCalculator.getLottoQuantity(playerMoney);
 
             List<Lotto> playerLotto = numbersGenerator.getLottos(playerLottoQuantity);
             output.printPlayerLotto(playerLottoQuantity, playerLotto);
