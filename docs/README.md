@@ -4,11 +4,11 @@
 
 #### < 입력 >
 
-[ ] InputMoney : 로또 구입 금액 입력
+[v] InputMoney : 로또 구입 금액 입력
 
-[ ] InputMoneyException : 로또 구입 금액 예외 처리
+[v] InputMoneyException : 로또 구입 금액 예외 처리
 
-- 1000원으로 나누어 떨어지지 않는 경우
+- 1000원으로 나누어 떨어지지 않는 경우 / 정수가 아닌 경우
 
 [ ] InputWinningNum : 당첨 번호 입력
 
