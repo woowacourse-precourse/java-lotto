@@ -3,10 +3,10 @@ package lotto.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo 상수들만 모은 클래스 만들기
+import static lotto.domain.Constants.PRICE;
+
 public class Store {
 	public long count;
-	final int PRICE = 1000;
 
 	public Store(long pay) {
 		count = pay / PRICE;

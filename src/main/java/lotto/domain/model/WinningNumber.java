@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.domain.Constants.*;
+
 public class WinningNumber {
 	private final List<Integer> winningNumbers;
 
@@ -19,7 +21,7 @@ public class WinningNumber {
 
 	private void validateLastCharacter(String winningNumbers) {
 		try {
-			if (winningNumbers.charAt(winningNumbers.length() - 1) == ',') {
+			if (winningNumbers.charAt(winningNumbers.length() - 1) == SPLIT) {
 				new ExceptionHandler(ErrorMessage.ERROR_WRONG_INPUT).tryCatch(ErrorMessage.ERROR_WRONG_INPUT);
 			}
 		} catch (StringIndexOutOfBoundsException exception) {
@@ -37,7 +39,7 @@ public class WinningNumber {
 	}
 
 	private List<Integer> initWinningNumbers(String input) {
-		String[] numbers = input.split(",");
+		String[] numbers = input.split(Character.toString(SPLIT));
 		List<Integer> winningNumber = new ArrayList<>();
 		for (String number : numbers) {
 			winningNumber.add(validateInt(number));
@@ -57,14 +59,14 @@ public class WinningNumber {
 	}
 
 	private void validateCount(List<Integer> winning_numbers) {
-		if (winning_numbers.size() != 6) {
+		if (winning_numbers.size() != SIZE) {
 			new ExceptionHandler(ErrorMessage.ERROR_WRONG_SIZE).tryCatch(ErrorMessage.ERROR_WRONG_SIZE);
 		}
 	}
 
 	private void validateRange(List<Integer> winning_numbers) {
 		for (int number : winning_numbers) {
-			if (number < 1 || 45 < number) {
+			if (number < LOTTO_MIN || LOTTO_MAX < number) {
 				new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
 			}
 		}

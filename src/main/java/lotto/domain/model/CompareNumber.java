@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.domain.Constants.*;
+
 public class CompareNumber {
 	private	final List<Integer> winningNumbers;
 	private	final int bonusBall;
@@ -17,14 +19,13 @@ public class CompareNumber {
 		initResult();
 		compareNumber();
 	}
-
-	// todo 하드코딩..
+// todo ...
 	private void initResult() {
-		result.add(Arrays.asList(3, 5000, 0));
-		result.add(Arrays.asList(4, 50000, 0));
-		result.add(Arrays.asList(5, 1500000, 0));
-		result.add(Arrays.asList(5, 30000000, 0));
-		result.add(Arrays.asList(6, 2000000000, 0));
+		result.add(Arrays.asList(3, FIFTH, 0));
+		result.add(Arrays.asList(4, FOURTH, 0));
+		result.add(Arrays.asList(5, THIRD, 0));
+		result.add(Arrays.asList(5, SECOND, 0));
+		result.add(Arrays.asList(6, FIRST, 0));
 	}
 
 	private void compareNumber() {
@@ -32,8 +33,8 @@ public class CompareNumber {
 
 		for (List<Integer> ticket : this.ticket) {
 			size = matchNumbers(ticket);
-			if (size > 2) {
-				updateResult(size - 3, ticket);
+			if (size >= MINIMUM_FOR_WIN) {
+				updateResult(size - MINIMUM_FOR_WIN, ticket);
 			}
 		}
 	}

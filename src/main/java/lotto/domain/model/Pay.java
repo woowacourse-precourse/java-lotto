@@ -2,6 +2,8 @@ package lotto.domain.model;
 
 import lotto.domain.ErrorMessage;
 
+import static lotto.domain.Constants.PRICE;
+
 public class Pay {
 	private final long pay;
 
@@ -22,7 +24,7 @@ public class Pay {
 	}
 
 	private void validate(long pay) {
-		if (pay % 1000 != 0 || pay < 1000) {
+		if (pay % PRICE != 0 || pay < PRICE) {
 			new ExceptionHandler(ErrorMessage.ERROR_WRONG_PRICE).tryCatch(ErrorMessage.ERROR_WRONG_PRICE);
 		}
 	}

@@ -4,6 +4,9 @@ import lotto.domain.ErrorMessage;
 
 import java.util.List;
 
+import static lotto.domain.Constants.LOTTO_MAX;
+import static lotto.domain.Constants.LOTTO_MIN;
+
 public class BonusBall {
 	private final int bonusBall;
 
@@ -13,7 +16,7 @@ public class BonusBall {
 	}
 
 	private void validateRange(List<Integer> winningNumbers) {
-		if (bonusBall < 1 || 45 < bonusBall) {
+		if (bonusBall < LOTTO_MIN || LOTTO_MAX < bonusBall) {
 			new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
 		}
 		if (winningNumbers.contains(bonusBall)){
