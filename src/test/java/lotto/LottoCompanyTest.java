@@ -44,4 +44,25 @@ public class LottoCompanyTest {
         assertThatThrownBy(() ->  lottoCompany.validateBonus("1", List.of(1,2,3,4,5,6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨번호에 중복이 입력되면 예외 발생.")
+    @Test
+    void checkWinningNumbersDuplicate() {
+        assertThatThrownBy(() ->  lottoCompany.makeWinningNumbers("1,2,3,4,5,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨번호를 쉼표 없이 입력하면 예외 발생.")
+    @Test
+    void checkWinningWithNoComma() {
+        assertThatThrownBy(() ->  lottoCompany.makeWinningNumbers("123456"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨번호에 숫자와 쉼표 외의 값을 입력하면 예외 발생.")
+    @Test
+    void checkWinningNumberType() {
+        assertThatThrownBy(() ->  lottoCompany.makeWinningNumbers("1,2,3,4,5,a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
