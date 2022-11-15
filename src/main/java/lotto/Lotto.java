@@ -1,10 +1,9 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.LottoNumbers.*;
 
 public class Lotto {
     // 매개 변수 없는 생성자 추가 불가
@@ -24,15 +23,16 @@ public class Lotto {
     }
     public Lotto(List<Integer> numbers, int bonusNumber){
         isBonusNumberDuplicated(numbers,bonusNumber);
+        inputValidity(numbers,bonusNumber);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 입력값은 총 6개가 되어야 합니다.");
         }
     }
-
 
     private void checkRangeOfNumbers(List<Integer> numbers){
         if(Collections.max(numbers)>45 || Collections.min(numbers)<1){
@@ -58,7 +58,11 @@ public class Lotto {
         }
     }
 
-    private void isNumber(List<Integer> numbers){
-
+    public void inputValidity(List<Integer> winningNumbers, int bonusNumber){
+        isDuplicated(winningNumbers);
+        isBonusNumberDuplicated(winningNumbers, bonusNumber);
+        checkRangeOfNumbers(winningNumbers);
+        validate(winningNumbers);
     }
+
 }

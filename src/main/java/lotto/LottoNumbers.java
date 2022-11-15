@@ -24,6 +24,7 @@ public class LottoNumbers {
         for (String stringIndex : LottoNumberListInString) {
             LottoNumberInInteger.add(Integer.parseInt(stringIndex));
         }
+
         return LottoNumberInInteger;
     }
 
