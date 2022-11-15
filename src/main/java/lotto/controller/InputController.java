@@ -1,8 +1,12 @@
-package lotto;
+package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import lotto.domain.Bonus;
+import lotto.domain.Lotto;
+import lotto.utils.Constant;
+import lotto.view.InputView;
 
 public class InputController {
     private static final int COUNT_END = 0;

@@ -2,6 +2,11 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.controller.InputController;
+import lotto.controller.Statistics;
+import lotto.domain.Generator;
+import lotto.domain.Lotto;
+import lotto.view.OutputView;
 
 public class Application {
     private static final int END = 0;

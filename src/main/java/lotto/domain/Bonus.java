@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.utils.ExceptionMessage;
 
 public class Bonus {
     private final int number;

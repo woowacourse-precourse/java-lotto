@@ -1,6 +1,7 @@
-package lotto;
+package lotto.controller;
 
 import java.util.List;
+import lotto.utils.Grade;
 
 public class Judgement {
     private static int countSameLotto(List<Integer> lottoNumbers, List<Integer> ticket){

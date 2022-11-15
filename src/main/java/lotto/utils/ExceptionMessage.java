@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 public enum ExceptionMessage {
     NOT_NUMBER("제대로된 숫자가 아닙니다."),

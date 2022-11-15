@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 public enum Grade {
     FIRST(1, 6, 0,2_000_000_000),

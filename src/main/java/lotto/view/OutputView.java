@@ -1,6 +1,7 @@
-package lotto;
+package lotto.view;
 
 import java.util.List;
+import lotto.utils.Constant;
 
 public class OutputView {
     public static void printTickets(List<List<Integer>> tickets){

@@ -1,7 +1,11 @@
-package lotto;
+package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.controller.Judgement;
+import lotto.utils.Constant;
+import lotto.utils.Grade;
+import lotto.view.OutputView;
 
 public class Statistics {
     public static void print(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 public class Constant {
     public static final String STATISTICS_TITLE = "당첨 통계";
