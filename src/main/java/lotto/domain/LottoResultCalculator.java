@@ -1,7 +1,8 @@
 package lotto.domain;
 
-import static java.lang.Math.round;
-
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -11,22 +12,24 @@ public class LottoResultCalculator {
     }
 
 
-    public static Long calculateTotalPrize(Map<Lotto, LottoRank> ranks) {
-        Long totalPrize = 0L;
+    public static BigInteger calculateTotalPrize(Map<Lotto, LottoRank> ranks) {
+        BigInteger totalPrize = BigInteger.ZERO;
         for (Entry<Lotto, LottoRank> rank : ranks.entrySet()) {
             if (rank.getValue() == null) {
                 continue;
             }
-            totalPrize += rank.getValue().getPrize();
+            totalPrize = totalPrize.add(new BigInteger(String.valueOf(rank.getValue().getPrize())));
         }
         return totalPrize;
     }
 
-    public static Double calculateEarningsRatio(Long totalCost, Long totalPrize) {
+    public static BigDecimal calculateEarningsRatio(Long totalCost, BigInteger totalPrize) {
         if (totalCost == 0) {
-            return 0.0d;
+            return BigDecimal.ZERO;
         }
-        return round(((double) totalPrize / totalCost) * 100 * 10) / 10d;
+        BigDecimal earning = new BigDecimal(totalPrize);
+        BigDecimal price = new BigDecimal(totalCost);
+        return earning.multiply(new BigDecimal("100")).divide(price, 1, RoundingMode.HALF_EVEN);
     }
 
 }

@@ -2,6 +2,8 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +16,8 @@ class LottoResultCalculatorTest {
 
     @ParameterizedTest(name = "로또의 당첨결과를 이용해 총 상금을 계산한다")
     @MethodSource("provideLottoRanks")
-    void calculatePrize(Map<Lotto, LottoRank> ranks, Long expected) {
-        Long totalPrize = LottoResultCalculator.calculateTotalPrize(ranks);
+    void calculatePrize(Map<Lotto, LottoRank> ranks, BigInteger expected) {
+        BigInteger totalPrize = LottoResultCalculator.calculateTotalPrize(ranks);
         assertThat(totalPrize).isEqualTo(expected);
     }
 
@@ -48,27 +50,27 @@ class LottoResultCalculatorTest {
         ranks1.put(lotto7, null);
 
         return Stream.of(
-                Arguments.of(ranks1, 2_031_555_000L),
-                Arguments.of(ranks2, 2_000_010_000L),
-                Arguments.of(ranks3, 0L)
+                Arguments.of(ranks1, new BigInteger("2031555000")),
+                Arguments.of(ranks2, new BigInteger("2000010000")),
+                Arguments.of(ranks3, BigInteger.ZERO)
         );
     }
 
 
     @ParameterizedTest(name = "로또의 당첨결과를 이용해 수익률을 계산한다")
     @MethodSource
-    void calculateEarningsRatio(Long totalCost, Long totalPrize, Double expected) {
-        Double actual = LottoResultCalculator.calculateEarningsRatio(totalCost, totalPrize);
+    void calculateEarningsRatio(Long totalCost, BigInteger totalPrize, BigDecimal expected) {
+        BigDecimal actual = LottoResultCalculator.calculateEarningsRatio(totalCost, totalPrize);
         assertThat(actual).isEqualTo(expected);
     }
 
     private static Stream<Arguments> calculateEarningsRatio() {
         return Stream.of(
-                Arguments.of(7000L, 2031555000L, 29022214.3),
-                Arguments.of(3000L, 2000010000L, 66667000d),
-                Arguments.of(2000L, 0L, 0d),
-                Arguments.of(8000L, 5000L, 62.5d),
-                Arguments.of(0L, 0L, 0d)
+                Arguments.of(7000L, new BigInteger("2031555000"), new BigDecimal("29022214.3")),
+                Arguments.of(3000L, new BigInteger("2000010000"), new BigDecimal("66667000.0")),
+                Arguments.of(2000L, BigInteger.ZERO, new BigDecimal("0.0")),
+                Arguments.of(8000L, new BigInteger("5000"), new BigDecimal("62.5")),
+                Arguments.of(0L, BigInteger.ZERO, BigDecimal.ZERO)
         );
     }
 }
