@@ -1,8 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,7 +42,7 @@ public class Lotto {
             hitCount++;
             hitBonus = true;
         }
-        for (int i=0 ; i<numbers.size() ; i++) {
+        for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) == bonusNumber) {
                 continue;
             }
