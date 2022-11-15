@@ -22,8 +22,8 @@ public class WinningLotto {
     public Lotto number(String input) {
         List<Integer> numbers = new ArrayList<>();
         String[] split = input.split(",");
-        for (String s : split) {
-            int number = Integer.parseInt(s);
+        for (String splitNumber : split) {
+            int number = Integer.parseInt(splitNumber);
             numbers.add(number);
         }
 
