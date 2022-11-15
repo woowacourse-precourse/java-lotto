@@ -36,4 +36,8 @@ public class OutputView {
     public static void printLottoProfit(double profit) {
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }
