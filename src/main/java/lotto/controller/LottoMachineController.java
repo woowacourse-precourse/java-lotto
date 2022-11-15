@@ -36,6 +36,15 @@ public class LottoMachineController {
         return lottos;
     }
 
+    public static int comparePrizeNumber(List<Integer> lotto, List<Integer> win){
+        int prizeNumber = 0;
+        List<Integer> result = lotto.stream()
+                .filter(old -> win.stream()
+                        .anyMatch(Predicate.isEqual(old)))
+                .collect(Collectors.toList());
+        prizeNumber = result.size();
+        return prizeNumber;
+    }
 
     public static int[] toListLotto(Lotto lotto){
         int[] lottoArr = new int[lotto.getSize()];
