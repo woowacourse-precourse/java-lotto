@@ -36,4 +36,10 @@ public class Game {
         Lotto userLotto = new Lotto(beforeUserLotto);
         return userLotto;
     }
+    private static int setBonus(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        int bonus = Check.checkBonusNum(input);
+        return bonus;
+    }
 }
