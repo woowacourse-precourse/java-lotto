@@ -7,14 +7,14 @@ public class User {
     private List<List<Integer>> userLottoNumber;
 
 
-    public User(String payMent){
+    public User(String payMent) {
         int pay = validate(payMent);
         this.payAmount = pay;
     }
 
-    private Integer validate(String payAmount){
+    private Integer validate(String payAmount) {
         boolean isNumeric = payAmount.matches("[+-]?\\d*(\\.\\d+)?");
-        if (!isNumeric){
+        if (!isNumeric) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
 
@@ -22,14 +22,16 @@ public class User {
         return returnPay;
 
     }
-    public void setUserLottoNumber(List<List<Integer>> userLottoNumber){
+
+    public void setUserLottoNumber(List<List<Integer>> userLottoNumber) {
         this.userLottoNumber = userLottoNumber;
     }
 
-    public Integer getUserPayAmount(){
+    public Integer getUserPayAmount() {
         return payAmount;
     }
-    public List<List<Integer>> getUserLottoNumber(){
+
+    public List<List<Integer>> getUserLottoNumber() {
         return this.userLottoNumber;
     }
 

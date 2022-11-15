@@ -71,7 +71,7 @@ public class LottoSystemService {
         saveBonusLottoNumbers();
     }
 
-    private void saveBonusLottoNumbers(){
+    private void saveBonusLottoNumbers() {
         lotto.setBonusNumber(bonusNumber);
     }
 
