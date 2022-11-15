@@ -19,8 +19,8 @@ public class LottoGame {
         List<Rank> ranks = publishedLottos.calculateResultRanks(bonusNumber);
         EnumMap<Rank, Integer> ranksResult = new EnumMap<>(Rank.class);
 
-        for (Rank rank :ranks) {
-            ranksResult.put(rank, ranksResult.getOrDefault(rank,0) + 1);
+        for (Rank rank : ranks) {
+            ranksResult.put(rank, ranksResult.getOrDefault(rank, 0) + 1);
         }
 
         return new LottoResult(ranksResult);

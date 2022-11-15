@@ -20,7 +20,7 @@ public class LottoResult {
         for (Rank rank : Rank.values()) {
             totalWinning = totalWinning + (long)rank.getWinningMoney() * ranks.getOrDefault(rank, 0);
         }
-        ratio = PERCENT_CONVERT_NUMBER * (totalWinning / (Float.valueOf(buyPrice)));
+        ratio = PERCENT_CONVERT_NUMBER * (totalWinning / Float.valueOf(buyPrice));
 
         return ratio;
     }
@@ -34,6 +34,7 @@ public class LottoResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LottoResult compareResult = (LottoResult) o;
+
         return Arrays.stream(Rank.values()).allMatch(rank ->
                 this.ranks.get(rank).equals(compareResult.ranks.get(rank)));
     }
