@@ -36,7 +36,22 @@ public class Lotto {
         validateOneTo45(numbers);
     }
 
-    public static List<Integer> createLotto(){
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    public static Lotto createLotto(){
+        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return lotto;
+    }
+
+    public static int countWinningLotto(Lotto winningLotto, Lotto candidate){
+        int count = 0;
+        for (int target : winningLotto.numbers){
+            if (candidate.numbers.contains(target))
+                count += 1;
+        }
+        return count;
+    }
+    public static int checkBonusNumber(int bonusNumber, Lotto candidate){
+        if (candidate.numbers.contains(bonusNumber))
+            return 3; // index of 5+bonus
+        return 2; // index of 5
     }
 }
