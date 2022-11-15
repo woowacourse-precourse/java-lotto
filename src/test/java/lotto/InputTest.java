@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import controller.InputController;
+import domain.WinningNumber;
 import resources.Error;
 import controller.Validator;
 import org.junit.jupiter.api.DisplayName;
@@ -105,6 +106,16 @@ public class InputTest extends NsTest {
         Validator validator = new Validator();
         String bonusNumber = "9999";
         assertThatThrownBy(() -> validator.isCorrectRange(bonusNumber,Error.ONE_SIZE))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호안에 이미 보너스 번호가 있었을 경우 예외가 발생한다.")
+    @Test
+    void includeBonusInWin() {
+        List<Integer> winningNumber = Arrays.asList(1,2,3,4,5,6);
+        WinningNumber winningNumbers = new WinningNumber(winningNumber);
+        int bonusNumber = 5;
+        assertThatThrownBy(() -> winningNumbers.hasBeenBonusNumber(bonusNumber,Error.ONLY_ONE))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
