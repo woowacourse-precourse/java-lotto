@@ -12,15 +12,14 @@ import org.junit.jupiter.api.Test;
 
 class LottoCalculationTest {
     private final Lotto winningLotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
-    private final static int bonusNumber = 10;
+    private final Bonus bonus = new Bonus(10);
 
-    private WinningLotto winning;
     private LottoCalculation lottoCalculation;
+
 
     @BeforeEach
     void setUp() {
-        winning = new WinningLotto(winningLotto, bonusNumber);
-        lottoCalculation = new LottoCalculation(winning);
+        lottoCalculation = new LottoCalculation(winningLotto, bonus);
     }
 
     @DisplayName("당첨 로또와 발행된 각 로또의 일치하는 개수를 계산한다.")

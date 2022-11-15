@@ -1,15 +1,14 @@
 package lotto.service;
 
 import java.util.List;
+import lotto.model.Bonus;
 import lotto.model.Lotto;
 import lotto.model.LottoCalculation;
 import lotto.model.LottoMachine;
 import lotto.model.StatisticsResult;
-import lotto.model.WinningLotto;
 
 public class LottoService {
     private LottoMachine lottoMachine;
-    private WinningLotto winningLotto;
     private LottoCalculation lottoCalculation;
 
     public List<Lotto> publishLottoTickets(int purchaseAmount) {
@@ -22,12 +21,12 @@ public class LottoService {
     }
 
     public void createWinningLotto(List<Integer> winningNumber, int bonusNumber) {
-        Lotto lotto = new Lotto(winningNumber);
-        winningLotto = new WinningLotto(lotto, bonusNumber);
+        Lotto winningLotto = new Lotto(winningNumber);
+        Bonus bonus = new Bonus(bonusNumber);
+        lottoCalculation = new LottoCalculation(winningLotto, bonus);
     }
 
     public StatisticsResult computeWinningResult() {
-        lottoCalculation = new LottoCalculation(winningLotto);
         for (Lotto userLotto : lottoMachine.getLottoTickets()) {
             lottoCalculation.computeWinningScore(userLotto);
         }

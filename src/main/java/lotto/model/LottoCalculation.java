@@ -5,11 +5,13 @@ import java.util.Map;
 
 public class LottoCalculation {
     private StatisticsResult result;
-    private WinningLotto winningLotto;
+    private Lotto winningLotto;
+    private Bonus bonus;
 
-    public LottoCalculation(WinningLotto winningLotto) {
+    public LottoCalculation(Lotto lotto, Bonus bonus) {
         result = new StatisticsResult();
-        this.winningLotto = winningLotto;
+        this.winningLotto = lotto;
+        this.bonus = bonus;
     }
 
     public StatisticsResult getStatisticsResult() {
@@ -40,18 +42,18 @@ public class LottoCalculation {
     }
 
     public WinningScore compareNumber(List<Integer> userNumber) {
-        int count = countSameNumber(userNumber, winningLotto.getWinningLotto().getNumbers());
+        int count = countSameNumber(userNumber);
         if (count < WinningScore.THREE.getScore()) {
             return WinningScore.NONE;
         }
         return WinningScore.getScore(count);
     }
 
-    public int countSameNumber(List<Integer> userNumber, List<Integer> winningNumber) {
-        return (int) userNumber.stream().filter(num -> winningNumber.contains(num)).count();
+    public int countSameNumber(List<Integer> userNumber) {
+        return (int) userNumber.stream().filter(num -> winningLotto.getNumbers().contains(num)).count();
     }
 
     public boolean isBonusScore(WinningScore winningScore, List<Integer> userNumber) {
-        return winningScore == WinningScore.FIVE && userNumber.contains(winningLotto.getBonusNumber());
+        return winningScore == WinningScore.FIVE && userNumber.contains(bonus.getNumber());
     }
 }
