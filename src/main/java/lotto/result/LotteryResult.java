@@ -22,6 +22,14 @@ public class LotteryResult {
         result.put(rank, result.getOrDefault(rank, 0) + 1);
     }
 
+    private void validate(List<Lotto> lottos) {
+        if (lottos.size() == 0)
+            throw new IllegalArgumentException("[ERROR]");
+    }
+
+    public static LotteryResult of(List<Lotto> lottos, WinningNumbers winNumbers) {
+        return new LotteryResult(lottos, winNumbers);
+    }
 
 
 }
