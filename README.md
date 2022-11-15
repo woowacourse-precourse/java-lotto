@@ -36,6 +36,13 @@
     - 각 사용자 로또 번호들이 갖고 있는 `match`의 수를 리스트`matches`로 만들어 반환한다. `LottoResult#getMatches`
     - 각 사용자 로또 번호들의 `hasBonus`의 수를 리스트`hasBonusMatches`로 만들어 반환한다. `LottoResult#getBonusMatches`
 
+- Rank 모델
+
+    - 각 순위와 `match, hasBonus, cashPrize, count, printMessage`를 함께 관리한다.
+    - 새로운 게임을 시작할 때 `count`를 초기화한다. `Rank#initializeRankCount`
+    - `count`를 증가시킨다. `Rank#addCount`
+    - 각 필드를 반환한다. `Rank#getMatch` `Rank#getHasBonus` `Rank#getCashPrize` `Rank#getCount` `Rank#getPrintMessage`
+
 - PlayerRanking 모델
 
     - `LottoResult` 모델에서 반환한 `matches`, `hasBonusMatches`를 입력값으로 받는다.
