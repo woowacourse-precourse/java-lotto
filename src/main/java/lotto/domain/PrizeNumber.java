@@ -20,10 +20,10 @@ public class PrizeNumber {
             prizelotto = numbers.stream()
                     .map(s -> Integer.valueOf(s))
                     .collect(Collectors.toList());
+            return prizelotto;
         } catch(Exception e){
             throw new IllegalArgumentException(Print.lottoNumberError());
         }
-        return prizelotto;
     }
 
     public void sort(List<Integer> prizelotto){
@@ -34,9 +34,9 @@ public class PrizeNumber {
         Integer bonus;
         try{
             bonus = Integer.valueOf(Console.readLine());
+            return bonus;
         } catch(Exception e){
             throw new IllegalArgumentException(Print.bonusNumberError());
         }
-        return bonus;
     }
 }
