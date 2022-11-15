@@ -1,5 +1,6 @@
 package lotto.util;
 
+import lotto.domain.constant.Message;
 import lotto.domain.constant.Number;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExceptionHandler {
-
-    public static final String NOT_NUMBER_REGEX = "\\D";
-    public static final String COMMA = ",";
 
     public static void checkValidationMoney(String input) throws IllegalArgumentException {
         try {
@@ -27,7 +25,7 @@ public class ExceptionHandler {
     }
 
     public static void checkValidationWinningNumber(String input) throws IllegalArgumentException {
-        String[] tokens = input.split(COMMA);
+        String[] tokens = applyTrim(input);
         try {
             isSixNumbers(tokens);
             isOnlyCommaAndNumber(tokens);
@@ -38,6 +36,14 @@ public class ExceptionHandler {
         }
     }
 
+    public static String[] applyTrim(String input) {
+        String[] tokens = input.split(Message.COMMA.getMessage());
+        for (int index = 0; index < tokens.length; index++) {
+            tokens[index] = tokens[index].trim();
+        }
+        return tokens;
+    }
+
     private static void isSixNumbers(String[] tokens) throws IllegalArgumentException {
         if (tokens.length != Number.SIX) {
             throw new IllegalArgumentException();
@@ -45,8 +51,7 @@ public class ExceptionHandler {
     }
 
     private static void isOnlyCommaAndNumber(String[] tokens) throws IllegalArgumentException {
-        Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
-
+        Pattern pattern = Pattern.compile(Message.NOT_NUMBER_REGEX.getMessage());
         for (String number : tokens) {
             Matcher matcher = pattern.matcher(number);
             if (matcher.find()) {
@@ -57,7 +62,6 @@ public class ExceptionHandler {
 
     private static void isAllDifferentNumbers(String[] tokens) throws IllegalArgumentException {
         List<String> container = new ArrayList<>();
-
         for (String number : tokens) {
             if (container.contains(number)) {
                 throw new IllegalArgumentException();
@@ -94,5 +98,4 @@ public class ExceptionHandler {
         }
         throw new IllegalArgumentException();
     }
-
 }

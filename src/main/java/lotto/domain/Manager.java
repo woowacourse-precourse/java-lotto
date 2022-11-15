@@ -10,7 +10,7 @@ public class Manager {
     private int bonusNumber;
 
     public void setWinningNumbers(String input) {
-        String[] numbers = input.split(ExceptionHandler.COMMA);
+        String[] numbers = ExceptionHandler.applyTrim(input);
         for (String number : numbers) {
             winningNumbers.add(Integer.parseInt(number));
         }
