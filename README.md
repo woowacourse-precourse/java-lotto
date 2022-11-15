@@ -161,9 +161,9 @@ BUILD SUCCESSFUL in 0s
 10. [User] 당첨 통계를 출력하는 메서드 구현
 11. [User] user의 수익률을 계산하여 출력하는 메서드 구현
 12. [Lotto] validate 메서드 외에 다른 예외 사항을 throw하는 메서드 구현(아래-예외 사항 리스트)
-    1)
-    2)
-    3)
+    1) 구입 금액의 validity 검사
+    2) 당첨 번호의 validity 검사
+    3) 보너스 번호의 validity 검사
     
     
     
