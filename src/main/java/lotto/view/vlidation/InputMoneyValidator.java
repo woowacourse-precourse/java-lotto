@@ -2,6 +2,7 @@ package lotto.view.vlidation;
 
 import lotto.view.exception.CantBlankOrNullInputException;
 import lotto.view.exception.CantDivideByThousandToZeroException;
+import lotto.view.exception.CantFirstNumberZeroException;
 import lotto.view.exception.OnlyNumberConsistBetweenOneToNineInputException;
 
 import java.util.Objects;
@@ -15,9 +16,11 @@ public class InputMoneyValidator {
 
     private static final Integer ZERO = 0;
     private static final String NUMBER_REGEXP = "\\d+$";
+    private static final String ZERO_AT_FIRST = "0\\d+";
 
     public static void validate(String input) {
         validateBlank(input);
+        validateFirstNumberZero(input);
         validateOnlyNumber(input);
         validateDividedByThousand(input);
         validateNumberBetweenZeroToNine(input);
@@ -54,5 +57,10 @@ public class InputMoneyValidator {
 
     private static boolean isBlank(String input) {
         return Objects.isNull(input) || input.isEmpty();
+    }
+    private static void validateFirstNumberZero(String input) {
+        if (input.matches(ZERO_AT_FIRST)) {
+            throw new CantFirstNumberZeroException();
+        }
     }
 }
