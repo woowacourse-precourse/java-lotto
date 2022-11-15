@@ -8,16 +8,18 @@ import java.util.List;
 
 public class LottoController {
     public void start() {
-        int money = inputMoney();
-        LottoList LottoPaper = OutputView.printQuantity(money);
-
-        List<Integer> lottoList = inputWinningNumber();
-        int bonusNumber = inputBonusNumber();
-        WinningLotto winningLotto = new WinningLotto(new Lotto(lottoList) ,bonusNumber);
-
-        WinningStatistics winningStatistics = OutputView.printWinningStatistics(LottoPaper, winningLotto);
-
-        OutputView.printProfitRate(money, winningStatistics);
+        try {
+            int money = inputMoney();
+            LottoList LottoPaper = OutputView.printQuantity(money);
+            List<Integer> lottoList = inputWinningNumber();
+            int bonusNumber = inputBonusNumber();
+            WinningLotto winningLotto = new WinningLotto(new Lotto(lottoList) ,bonusNumber);
+            WinningStatistics winningStatistics = OutputView.printWinningStatistics(LottoPaper, winningLotto);
+            OutputView.printProfitRate(money, winningStatistics);
+        } catch (IllegalArgumentException e) {
+            OutputView.printException(e);
+            start();
+        }
     }
 
     private int inputBonusNumber() {
