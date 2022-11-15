@@ -89,9 +89,10 @@ public class User {
     }
 
     public static List<Integer> getLottoNumbers() { // 랜덤으로 6개의 숫자 뽑기
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> unsortedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> sortedNumbers = new ArrayList<>(unsortedNumbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 
     public static List<Lotto> getlottos(int numberOfLotto) {
