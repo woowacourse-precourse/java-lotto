@@ -13,31 +13,31 @@ public enum LottoRank {
     DRAW(0, 2, false);
 
     public final long winningPrize;
-    public final int correctWinningNumber;
+    public final int winningNumberMatchCount;
     public final boolean isCorrectBonusNumber;
 
-    LottoRank(int winningPrize, int correctWinningNumber, boolean isCorrectBonusNumber) {
+    LottoRank(int winningPrize, int winningNumberMatchCount, boolean isCorrectBonusNumber) {
         this.winningPrize = winningPrize;
-        this.correctWinningNumber = correctWinningNumber;
+        this.winningNumberMatchCount = winningNumberMatchCount;
         this.isCorrectBonusNumber = isCorrectBonusNumber;
     }
 
-    public static LottoRank winningResult(int correctWinningNumber, boolean isCorrectBonusNumber) {
-        validate(correctWinningNumber);
+    public static LottoRank winningResult(int winningNumberMatchCount, boolean isCorrectBonusNumber) {
+        validate(winningNumberMatchCount);
         return Arrays.stream(LottoRank.values())
-                .filter(rank -> isWin(correctWinningNumber, isCorrectBonusNumber, rank))
+                .filter(rank -> isWin(winningNumberMatchCount, isCorrectBonusNumber, rank))
                 .findFirst()
                 .orElse(DRAW);
     }
 
-    private static void validate(int correctWinningNumber) {
-        if (correctWinningNumber < 0 || correctWinningNumber > 6) {
+    private static void validate(int winningNumberMatchCount) {
+        if (winningNumberMatchCount < 0 || winningNumberMatchCount > 6) {
             throw new IllegalArgumentException(INVALID_CORRECT_WINNING_NUMBER_ERROR);
         }
     }
 
-    private static boolean isWin(int correctWinningNumber, boolean isCorrectBonusNumber, LottoRank rank) {
-        return rank.correctWinningNumber <= correctWinningNumber
+    private static boolean isWin(int winningNumberMatchCount, boolean isCorrectBonusNumber, LottoRank rank) {
+        return rank.winningNumberMatchCount <= winningNumberMatchCount
                 && !(rank.isCorrectBonusNumber && !isCorrectBonusNumber);
     }
 }

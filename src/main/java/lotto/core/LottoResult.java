@@ -11,48 +11,48 @@ import java.util.LinkedHashMap;
 
 public class LottoResult {
     private int purchaseAmount;
-    private Map<LottoRank, Integer> rankResult;
+    private Map<LottoRank, Integer> totalRankingResult;
     private long totalPrize;
     private double totalReturnRatio;
 
     public LottoResult(List<LottoRank> winningResult) {
-        initRankResult();
-        updateRankResult(winningResult);
-        sortRankResult(comparingLong(result -> result.getKey().winningPrize));
+        initTotalRankingResult();
+        updateTotalRankingResult(winningResult);
+        sortTotalRankingResult(comparingLong(result -> result.getKey().winningPrize));
         this.purchaseAmount = winningResult.size() * LotteryPublisher.LOTTO_PRICE;
-        this.totalPrize = calcTotalPrize(this.rankResult);
+        this.totalPrize = calcTotalPrize(this.totalRankingResult);
         this.totalReturnRatio = Math.round((double) totalPrize / purchaseAmount * 10000) / 100.0;
     }
 
-    public void sortRankResult(Comparator<Map.Entry<LottoRank, Integer>> comparator) {
+    public void sortTotalRankingResult(Comparator<Map.Entry<LottoRank, Integer>> comparator) {
         Objects.requireNonNull(comparator);
 
-        List<Map.Entry<LottoRank, Integer>> results = new ArrayList<>(this.rankResult.entrySet());
+        List<Map.Entry<LottoRank, Integer>> results = new ArrayList<>(this.totalRankingResult.entrySet());
         results.sort(comparator);
 
-        Map<LottoRank, Integer> rankResult = new LinkedHashMap<>();
+        Map<LottoRank, Integer> totalRankingResult = new LinkedHashMap<>();
         for (Map.Entry<LottoRank, Integer> result : results) {
-            rankResult.put(result.getKey(), result.getValue());
+            totalRankingResult.put(result.getKey(), result.getValue());
         }
-        this.rankResult = rankResult;
+        this.totalRankingResult = totalRankingResult;
     }
 
-    private void initRankResult() {
-        Map<LottoRank, Integer> rankResult = new LinkedHashMap<>();
+    private void initTotalRankingResult() {
+        Map<LottoRank, Integer> totalRankingResult = new LinkedHashMap<>();
         for (LottoRank rank : LottoRank.values()) {
-            rankResult.put(rank, 0);
+            totalRankingResult.put(rank, 0);
         }
-        this.rankResult = rankResult;
+        this.totalRankingResult = totalRankingResult;
     }
 
-    private void updateRankResult(List<LottoRank> winningResult) {
+    private void updateTotalRankingResult(List<LottoRank> winningResult) {
         for (LottoRank rank : winningResult) {
-            this.rankResult.put(rank, this.rankResult.get(rank) + 1);
+            this.totalRankingResult.put(rank, this.totalRankingResult.get(rank) + 1);
         }
     }
 
-    private long calcTotalPrize(Map<LottoRank, Integer> rankResult) {
-        return rankResult.entrySet().stream()
+    private long calcTotalPrize(Map<LottoRank, Integer> totalRankingResult) {
+        return totalRankingResult.entrySet().stream()
                 .map(result -> result.getKey().winningPrize * result.getValue())
                 .reduce(0L, Long::sum);
     }
@@ -61,8 +61,8 @@ public class LottoResult {
         return purchaseAmount;
     }
 
-    public Map<LottoRank, Integer> getRankResult() {
-        return rankResult;
+    public Map<LottoRank, Integer> getTotalRankingResult() {
+        return totalRankingResult;
     }
 
     public double getTotalReturnRatio() {

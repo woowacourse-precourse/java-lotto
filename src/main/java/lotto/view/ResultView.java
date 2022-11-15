@@ -19,7 +19,7 @@ public class ResultView {
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
-        printRankResult();
+        printTotalRankingResult();
         printTotalReturnRatio();
     }
 
@@ -32,28 +32,28 @@ public class ResultView {
         System.out.println(stringBuilder.toString());
     }
 
-    private void printRankResult() {
-        for (Map.Entry<LottoRank, Integer> result : this.lottoResult.getRankResult().entrySet()) {
-            if (isPrintExclusive(result)) {
-                System.out.println(makeRankResultPrintMessage(result));
+    private void printTotalRankingResult() {
+        for (Map.Entry<LottoRank, Integer> rankResult : this.lottoResult.getTotalRankingResult().entrySet()) {
+            if (isPrintIncluded(rankResult)) {
+                System.out.println(makeTotalRankingResultPrintMessage(rankResult));
             }
         }
     }
 
-    private String makeRankResultPrintMessage(Map.Entry<LottoRank, Integer> result) {
-        LottoRank rank = result.getKey();
+    private String makeTotalRankingResultPrintMessage(Map.Entry<LottoRank, Integer> rankResult) {
+        LottoRank rank = rankResult.getKey();
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(rank.correctWinningNumber).append("개 일치");
+        stringBuilder.append(rank.winningNumberMatchCount).append("개 일치");
         if (rank.isCorrectBonusNumber) {
             stringBuilder.append(", 보너스 볼 일치");
         }
         stringBuilder.append(" (").append(numberFormat.format(rank.winningPrize))
-                .append("원) - ").append(result.getValue()).append("개");
+                .append("원) - ").append(rankResult.getValue()).append("개");
         return stringBuilder.toString();
     }
 
-    private boolean isPrintExclusive(Map.Entry<LottoRank, Integer> result) {
-        return !result.getKey().equals(LottoRank.DRAW);
+    private boolean isPrintIncluded(Map.Entry<LottoRank, Integer> rankResult) {
+        return !rankResult.getKey().equals(LottoRank.DRAW);
     }
 }
