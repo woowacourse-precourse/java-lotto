@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class DrawMachine {
-    List<Integer> numbers;
+    List<Integer> winningNumbers;
     int bonusNumber;
 
     public void drawNumbers() {
@@ -14,7 +14,7 @@ public class DrawMachine {
         System.out.println();
 
         for (String number : userInput.split(",")) {
-            numbers.add(Integer.parseInt(number));
+            winningNumbers.add(Integer.parseInt(number));
         }
     }
 
