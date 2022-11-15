@@ -85,6 +85,15 @@ public class ComputerTest extends NsTest {
         });
     }
 
+    @DisplayName("보너스 번호가 0으로 시작하면 예외가 발생한다.")
+    @Test
+    void ThrowExceptionIfBonusNumberWithLeadingZero() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "07");
+            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
