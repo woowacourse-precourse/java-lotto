@@ -171,12 +171,13 @@ public class Service {
         return correct;
     }
 
-    public double countProfit(int moneyInput) {
+    public double countProfit(String moneyInput) {
+        int money = Integer.parseInt(moneyInput);
         double profit =(double)(5000 * result.get(winner5st) +
                 50000*result.get(winner4st) +
                 1500000*result.get(winner3st) +
                 30000000*result.get(winner2st) +
-                2000000000*result.get(winner1st)) / moneyInput * 100;
+                2000000000*result.get(winner1st)) / money * 100;
         return profit;
     }
 
