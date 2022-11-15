@@ -32,9 +32,7 @@
 4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [x]  당첨 번호 검증 기능 → validateWinningNumber
-
         - [x]  당첨 번호 6개를 입력했는지 검증 기능 → validateSizeOfWinningNumber
-        
         - [x]  당첨 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateWinningNumberBetween1And45
         - [x]  당첨 번호에 중복은 없는지 검증 기능 → validateDuplicateWinningNumber
     - [x]  보너스 번호 검증 기능 → validateBonusNumber
@@ -43,11 +41,12 @@
 5.  ConvertData
     - [x]  문자열을 숫자로 변환해주는 기능 → StringIntoInt
     - [x]  문자열을 리스트로 변환해주는 기능 → StringIntoList
-    - [x]  실수 형식의 문자열의 정수 부분을 변환해주는 기능 → IntegerPartOfNumber
-    - [ ]  정수 부분의 문자열의 사이에 쉼표(,)를 넣어주는 기능 → addCommaToNumber
-    - [x]  실수 형식의 문자열의 소수 부분을 변환해주는 기능 → DecimalPartOfNumber
 
-      당첨 번호를 쉼표 기준으로 입력했는지 검증
+        당첨 번호를 쉼표 기준으로 입력했는지 검증
+    - [x]  숫자를 변환하는 기능 → plainNumberIntoCommaNumber
+        - [x]  실수 형식의 문자열의 정수 부분을 변환해주는 기능 → IntegerPartOfNumber
+        - [x]  정수 부분의 문자열의 사이에 쉼표(,)를 넣어주는 기능 → addCommaToNumber
+        - [x]  실수 형식의 문자열의 소수 부분을 변환해주는 기능 → DecimalPartOfNumber
 
 ### view
 

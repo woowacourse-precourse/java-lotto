@@ -28,11 +28,32 @@ public class ConvertUtil {
         }
     }
 
+    public String plainNumberIntoCommaNumber(String number) {
+        return IntegerPartOfNumber(number) + DecimalPartOfNumber(number);
+    }
+
     private String IntegerPartOfNumber(String number) {
-        return number.chars()
+        String integerPartOfNumber = number.chars()
                 .limit(number.indexOf('.'))
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
+        return addCommaToNumber(integerPartOfNumber);
+    }
+
+    private String addCommaToNumber(String number) {
+        StringBuffer newNumber = new StringBuffer(number);
+
+        int commaIndex = newNumber.length() % COMMA_SPACING.getValue();
+        if (commaIndex == 0) {
+            commaIndex += COMMA_SPACING.getValue();
+        }
+
+        while (commaIndex < newNumber.length()) {
+            newNumber.insert(commaIndex, ",");
+            commaIndex += COMMA_SPACING.getValue() + 1;
+        }
+
+        return newNumber.toString();
     }
 
     private String DecimalPartOfNumber(String number) {
