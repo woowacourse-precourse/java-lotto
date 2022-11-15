@@ -36,4 +36,9 @@ public class Lotto {
             throw new IllegalArgumentException(LOTTO_DUPLICATED_ERROR.getMessage());
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
 }
