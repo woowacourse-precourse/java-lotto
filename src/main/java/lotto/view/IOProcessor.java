@@ -7,8 +7,23 @@ import java.util.List;
 import java.util.Map;
 
 public class IOProcessor {
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR]"; // 에러메시지 앞에 붙이는 접두사
-    private static final String BOUNS_NUMBER_FORMAT = ", 보너스 볼 일치 ";
+    private enum Messages {
+        ERROR_MESSAGE_PREFIX("[ERROR]"),
+        BOUNS_NUMBER_FORMAT(", 보너스 볼 일치 "),
+        PURCHASE("개를 구매했습니다."),
+        STATISTICES_HEADER("당첨 통계\n---"),
+        MARGIN_RATIO_FORMAT("총 수익률은 %.1f%%입니다.\n");
+
+        private final String message;
+
+        Messages(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return this.message;
+        }
+    }
 
     private enum WinningMessageFormat {
         WINNING_FIVE("%d개 일치%s(%,d원) - %d개\n"),
@@ -39,19 +54,19 @@ public class IOProcessor {
     }
 
     public static void printLottoPurchaseInfo(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+        System.out.println(lottos.size() + Messages.PURCHASE.getMessage());
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers().toString());
         }
     }
 
     public static void printWinningStatistics(Map<String, Integer> winningInfo) {
-        System.out.println("당첨 통계\n---");
+        System.out.println(Messages.STATISTICES_HEADER);
 
         for (String key : winningInfo.keySet()) {
             String bonusNumber = " ";
             if (Policy.WinningCriteria.valueOf(key).getBonusNumberCount() == 1) {
-                bonusNumber = BOUNS_NUMBER_FORMAT;
+                bonusNumber = Messages.BOUNS_NUMBER_FORMAT.getMessage();
             }
             System.out.printf(WinningMessageFormat.valueOf(key).getFormat(),
                     Policy.WinningCriteria.valueOf(key).getMatchingCount(),
@@ -62,10 +77,10 @@ public class IOProcessor {
     }
 
     public static void printMarginInfo(double margin) {
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", margin);
+        System.out.printf(Messages.MARGIN_RATIO_FORMAT.getMessage(), margin);
     }
 
     public static void printErrorMessage(String message) {
-        System.out.println(ERROR_MESSAGE_PREFIX + " " + message);
+        System.out.println(Messages.ERROR_MESSAGE_PREFIX.getMessage() + " " + message);
     }
 }
