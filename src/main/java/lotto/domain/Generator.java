@@ -37,7 +37,6 @@ public class Generator {
                     if (bonusNumber == number) {
                         int prevBonusCount = result.get(BONUSCOUNT);
                         result.put(BONUSCOUNT, prevBonusCount + 1);
-
                     }
                 });
     }
@@ -52,7 +51,7 @@ public class Generator {
     }
 
     public static double calculateProfit(int purchased, long totalPrize) {
-        double profit = (double) totalPrize / purchased * 100 * 10;
+        double profit = (double) totalPrize / purchased * NUMBER.HUNDRED * 10;
         double result = Math.round(profit);
         return result / 10;
     }

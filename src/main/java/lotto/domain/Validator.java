@@ -4,14 +4,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 import lotto.Constants.ERROR;
+import lotto.Constants.LOTTO;
 import lotto.Constants.REGEX;
 
 public class Validator {
     public static void lottoFormat(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO.SIZE) {
             throw new IllegalArgumentException(ERROR.LOTTO_SIZE);
         }
-        if ((new HashSet<Integer>(numbers)).size() != 6) {
+        if ((new HashSet<Integer>(numbers)).size() != LOTTO.SIZE) {
             throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATION);
         }
     }
@@ -30,7 +31,7 @@ public class Validator {
 
     public static void winningNumberDuplicate(Integer[] winningNumbers) {
         HashSet<Integer> removeDuplicatedNumbers = new HashSet<Integer>(List.of(winningNumbers));
-        if (removeDuplicatedNumbers.size() != 6) {
+        if (removeDuplicatedNumbers.size() != LOTTO.SIZE) {
             throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATION);
         }
     }
