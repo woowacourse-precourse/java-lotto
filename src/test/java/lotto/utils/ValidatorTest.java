@@ -13,13 +13,13 @@ class ValidatorTest {
 
     Validator validator = new Validator();
 
-    @DisplayName("숫자로 된 문자열을 int로 변환하기")
+    @DisplayName("숫자로 된 문자열을 int로 변환")
     @Test
     void convertToInt() {
         Assertions.assertThat(validator.convertToInt("30")).isEqualTo(30);
     }
 
-    @DisplayName("숫자로만 이루어져있지 않은 문자열을 int로 변환할 때 오류 발생")
+    @DisplayName("예외 - 숫자로만 이루어져있지 않은 문자열을 int로 변환 시 오류 발생")
     @Test
     void convertInvalidValueToInt() {
         assertThatThrownBy(() -> validator.convertToInt("30, 1"))
@@ -33,7 +33,7 @@ class ValidatorTest {
         Assertions.assertThat(validator.convertToIntList("1, 2, 3, 4")).isEqualTo(List.of(1, 2, 3, 4));
     }
 
-    @DisplayName("숫자 리스트로만 이루어져있지 않은 문자열을 List<Integer>로 변환할 때 오류 발생")
+    @DisplayName("예외 - 숫자 리스트로만 이루어져있지 않은 문자열을 List<Integer>로 변환 시 오류 발생")
     @Test
     void convertInvalidValueToIntList() {
         assertThatThrownBy(() -> validator.convertToIntList("1, 2, 삼, 4"))
@@ -41,7 +41,12 @@ class ValidatorTest {
                 .hasMessageContaining("[ERROR]");
     }
 
+    @DisplayName("1000의 배수인지 확인하기")
     @Test
-    void isValidPrice() {
+    void isThousandMultiplesTest() {
+        Assertions.assertThat(validator.isThousandMultiples(3000)).isEqualTo(true);
+        Assertions.assertThat(validator.isThousandMultiples(3023)).isEqualTo(false);
+        Assertions.assertThat(validator.isThousandMultiples(0)).isEqualTo(false);
+        Assertions.assertThat(validator.isThousandMultiples(-1)).isEqualTo(false);
     }
 }
