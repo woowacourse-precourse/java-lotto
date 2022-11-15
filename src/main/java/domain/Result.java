@@ -1,9 +1,13 @@
 package domain;
 
+import dto.WinningNumberDto;
+
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 public class Result {
+    public static final int LOTTO_PRICE = 1000;
     private Map<LottoRank, Integer> statistics;
 
     public Result() {
@@ -14,8 +18,22 @@ public class Result {
     }
 
     public void increment(LottoRank rank) {
-        Integer value=statistics.get(rank);
+        Integer value = statistics.get(rank);
         statistics.put(rank, ++value);
     }
 
+    public Float calcEarningRate() {
+        float sum = 0;
+        float totalLottos = 0;
+
+        for (Map.Entry<LottoRank, Integer> pair : statistics.entrySet()) {
+            LottoRank rank = pair.getKey();
+            Integer number = pair.getValue();
+            totalLottos += number;
+            sum += rank.money * number;
+        }
+        totalLottos *= LOTTO_PRICE;
+
+        return sum/totalLottos;
+    }
 }
