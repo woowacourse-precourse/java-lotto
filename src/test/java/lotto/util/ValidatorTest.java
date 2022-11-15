@@ -32,7 +32,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isInRange {
+    class isInRangeForList {
         @DisplayName("주어진 리스트 중 특정 숫자가 범위 밖에 있는 경우 False를 반환한다.")
         @Test
         void isInRange_범위밖인경우() {
@@ -48,17 +48,48 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isDuplicate {
-        @DisplayName("주어진 리스트에 중복이 존재하지 않는 경우 False를 반환한다.")
+    class isInRangeForInt {
+        @DisplayName("주어진 숫자가 범위 밖에 있는 경우 False를 반환한다.")
+        @Test
+        void isInRange_범위밖인경우() {
+            Assertions.assertThat(Validator.isInRange(140)).isFalse();
+
+        }
+
+        @DisplayName("주어진 숫자가 범위 내인 경우 True를 반환한다.")
+        @Test
+        void isInRange_범위안인경우() {
+            Assertions.assertThat(Validator.isInRange(2)).isTrue();
+        }
+    }
+
+    @Nested
+    class isDuplicateForOneArgument {
+        @DisplayName("주어진 리스트에 중복이 없는 경우 False를 반환한다.")
         @Test
         void isDuplicate_중복없는경우() {
             Assertions.assertThat(Validator.isDuplicate(List.of(1,2,3,4,5,6))).isFalse();
         }
 
-        @DisplayName("주어진 리스트에 중복이 존재하지 않는 경우 True를 반환한다.")
+        @DisplayName("주어진 리스트에 중복이 있는 경우 True를 반환한다.")
         @Test
         void isDuplicate_중복있는경우() {
             Assertions.assertThat(Validator.isDuplicate(List.of(1,2,3,4,5,5))).isTrue();
+        }
+    }
+
+    @Nested
+    class isDuplicateForTwoArguments {
+        @DisplayName("주어진 리스트와 숫자가 중복되지 않는 경우 False를 반환한다.")
+        @Test
+        void isDuplicate_중복없는경우() {
+            Assertions.assertThat(Validator.isDuplicate(List.of(1,2,3,4,5,6), 7)).isFalse();
+        }
+
+        @DisplayName("주어진 리스트와 숫자가 중복되는 경우 True를 반환한다.")
+        @Test
+        void isDuplicate_중복있는경우() {
+            Assertions.assertThat(Validator.isDuplicate(List.of(1,2,3,4,5,6), 1)).isTrue();
         }
     }
 
@@ -74,6 +105,21 @@ public class ValidatorTest {
         @Test
         void isHundredTest_1000원단위아님() {
             Assertions.assertThat(Validator.isHundredUnit(123141)).isFalse();
+        }
+    }
+
+    @Nested
+    class isPositive {
+        @DisplayName("주어진 숫자가 0보다 큰 경우 True를 반환한다.")
+        @Test
+        void isHundredTest_양수() {
+            Assertions.assertThat(Validator.isPositive(123141)).isTrue();
+        }
+
+        @DisplayName("주어진 숫자가 음수인 경우 False를 반환한다.")
+        @Test
+        void isHundredTest_음수() {
+            Assertions.assertThat(Validator.isPositive(-123)).isFalse();
         }
     }
 }
