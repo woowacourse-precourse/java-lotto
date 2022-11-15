@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.validation.BonusNumberInputValidation;
 import lotto.validation.PredictionNumbersInputValidation;
 import lotto.validation.PurchasePriceInputValidation;
 
@@ -13,6 +14,7 @@ import java.util.stream.Stream;
 
 public class InputView {
     OutputView outputView = new OutputView();
+    private List<Integer> predictionNumbers = new ArrayList<>();
 
     public int userInputPurchasePrice() {
         outputView.printPurchasePriceMessage();
@@ -32,7 +34,7 @@ public class InputView {
         PredictionNumbersInputValidation predictionNumbersInputValidation = new PredictionNumbersInputValidation();
         predictionNumbersInputValidation.validateInputFormat(inputPredictionNumbers);
 
-        List<Integer> predictionNumbers = splitStringByCommaAndParseInt(inputPredictionNumbers);
+        predictionNumbers = splitStringByCommaAndParseInt(inputPredictionNumbers);
         predictionNumbersInputValidation.validate(predictionNumbers);
         return predictionNumbers;
     }
@@ -40,6 +42,9 @@ public class InputView {
     public int userInputBonusNumber() {
         outputView.printBonusNumberMessage();
         String userInputBonusNumber = Console.readLine();
+
+        BonusNumberInputValidation bonusNumberInputValidation = new BonusNumberInputValidation();
+        bonusNumberInputValidation.validate(predictionNumbers, userInputBonusNumber);
 
         int bonusNumber = splitStringByCommaAndParseInt(userInputBonusNumber).get(0);
         return bonusNumber;
