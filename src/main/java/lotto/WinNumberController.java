@@ -9,8 +9,6 @@ import java.util.regex.Pattern;
 public class WinNumberController {
 
     public List<Integer> readWinNumber(String userWinNumber) {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
-
         StringTokenizer st = new StringTokenizer(userWinNumber, ",");
         ArrayList<Integer> winNumber = new ArrayList<>();
 
