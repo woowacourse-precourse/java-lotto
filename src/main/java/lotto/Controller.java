@@ -9,12 +9,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 public class Controller {
-    private Game game;
-    private User user;
-    private View view;
+    private final Game game;
+    private final User user;
+    private final View view;
 
     public Controller(Game game, User user, View view){
         this.game = game;
@@ -108,8 +107,7 @@ public class Controller {
 
     private String format(Integer amount){
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
-        String formattedAmount = decimalFormat.format(amount);
-        return formattedAmount;
+        return decimalFormat.format(amount);
     }
 
     private Text selectFormatByRank(Rank rank){
