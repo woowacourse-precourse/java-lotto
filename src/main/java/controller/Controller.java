@@ -17,6 +17,7 @@ public class Controller {
     public void checkLotto() {
         int money = client.getLottoMoney();
         List<Integer> winLottoNumber = client.getWinLottoNumber();
+        new Lotto(winLottoNumber);
         int bonusNumber = 0;
         do {
             bonusNumber = client.getWinBonusNumber();
@@ -26,6 +27,7 @@ public class Controller {
         PrintResult.printBuyLotto(lottoPaper);
         for (int lotto = 0; lotto < lottoPaper; lotto++) {
             List<Integer> lottoNumber = server.publishLotto();
+            new Lotto(lottoNumber);
             PrintResult.printLottoNumber(lottoNumber);
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
             int matchNumber = server.countMatchNumber(common);
