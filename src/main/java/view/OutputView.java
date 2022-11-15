@@ -30,7 +30,8 @@ public class OutputView {
         winningCount = 3;
         for (LottoRank lottoRank : LottoRank.values()) {
             int winningCountByRank = Collections.frequency(winningCountList, winningCount);
-            System.out.println(lottoRank.getValue() + " - " + winningCountByRank + "개");
+            System.out.println(lottoRank.getWinningCount() + " " + lottoRank.getWinningPrice()
+                    + " - " + winningCountByRank + "개");
             changeWinningCount(winningCountList);
         }
     }
