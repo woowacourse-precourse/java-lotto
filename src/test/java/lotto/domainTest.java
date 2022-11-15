@@ -15,7 +15,8 @@ public class domainTest {
     @DisplayName("금액에 맞게 로또 발행")
     @Test
     void 금액에_맞는_로또발행_테스트() {
-        assertThat(LottoIssue.issueLotto("8000")).isEqualTo(8);
+        LottoIssue issue = new LottoIssue();
+        assertThat(issue.issueLotto("8000")).isEqualTo(8);
     }
 
     @DisplayName("금액입력 예외처리")
