@@ -48,6 +48,7 @@ public class Controller {
 
         // 로또 보너스 숫자와 로또 숫자 집합을를 준비한다.
         Integer lottoBonusNumber = numbers.get(6);
+
         List<Integer> lottoNumbers = numbers;
         lottoNumbers.remove(6);
         HashSet<Integer> lottoNumbersSet = Model.MakeListToSet(lottoNumbers);
@@ -60,7 +61,7 @@ public class Controller {
             int size = Model.CountIntersectionSize(lottoNumbersSet, targetLottoNumbers);
 
             // 로또 번호와 일치하는 개수에 따라 등수를 계산한다.
-            Integer rank = Model.AnalyzeRank(size, targetLottoNumbers, lottoBonusNumber);
+            Integer rank = Model.AnalyzeRank(size, list, lottoBonusNumber);
 
             // 등수에 따라 결과에 추가한다.
             result.put(rank, result.get(rank) + 1);

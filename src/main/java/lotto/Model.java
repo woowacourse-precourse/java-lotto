@@ -141,7 +141,7 @@ public class Model {
         return intersectionLottoNumbers.size();
     }
 
-    public static Integer AnalyzeRank(int size, HashSet<Integer> targetLottoNumbers, Integer lottoBonusNumber) {
+    public static Integer AnalyzeRank(int size, List<Integer> publishedLotto, Integer lottoBonusNumber) {
         if (size == 3) {
             return 5;
         }
@@ -149,10 +149,12 @@ public class Model {
             return 4;
         }
         if (size == 5) {
-            if (targetLottoNumbers.contains(lottoBonusNumber)) {
+            int bonusNumber = lottoBonusNumber;
+
+            if (publishedLotto.contains(bonusNumber)) {
                 return 2;
             }
-            if (!targetLottoNumbers.contains(lottoBonusNumber)) {
+            if (!publishedLotto.contains(bonusNumber)) {
                 return 3;
             }
         }
