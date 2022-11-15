@@ -31,7 +31,7 @@ public class Lotto {
                 .distinct()
                 .collect(Collectors.toList());
         if (distinctNumbers.size() != 6) {
-            throw new IllegalArgumentException("중복되 숫자가 있습니다.");
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
 }
