@@ -36,4 +36,7 @@ public class Lotto {
     public void sortByNumber(){
         Collections.sort(numbers);
     }
+    public void printLottoNumber(){
+        System.out.println(numbers.toString());
+    }
 }

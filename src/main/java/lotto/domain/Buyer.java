@@ -21,6 +21,15 @@ public class Buyer {
 
     }
 
+    public void printLotto() {
+        String lottoCount = String.valueOf(purchaseAmountUnit.purchaseAmount(lottoAmount));
+
+        System.out.println(lottoCount+BuyerPrint.PRINT_LOTTO_DATA);
+        for (int i = 0; i < purchaseLotto.size(); i++) {
+            purchaseLotto.get(i).printLottoNumber();
+        }
+    }
+
     public void setMyWins(int[] myWins) {
         this.myWins = myWins;
     }
@@ -32,11 +41,13 @@ public class Buyer {
     public void calculateTotalRate() {
         totalRate = Math.round((double) totalMoney / lottoAmount);
     }
-    public void sortAllLottoNumber(){
+
+    public void sortAllLottoNumber() {
         for (int i = 0; i < purchaseLotto.size(); i++) {
             purchaseLotto.get(i).sortByNumber();
         }
     }
+
     static void validConsistByNumber(String purchaseAmount) {
         try {
             Integer.parseInt(purchaseAmount);
