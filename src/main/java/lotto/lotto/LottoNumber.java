@@ -14,10 +14,27 @@ public class LottoNumber {
         this.number = number;
     }
 
+    public LottoNumber(String number) {
+        int value = convertToInt(number);
+        validate(value);
+        this.number = value;
+    }
+
     private void validate(int number) {
         if (!verifyRange(number)) {
             throw new LottoNumberException();
         }
+    }
+
+    private int convertToInt(String number) {
+        if (!verifyPositiveInteger(number)) {
+            throw new LottoNumberException();
+        }
+        return Integer.parseInt(number);
+    }
+
+    private boolean verifyPositiveInteger(String number) {
+        return number != null && number.matches("^[1-9]\\d*");
     }
 
     private boolean verifyRange(int number) {

@@ -1,6 +1,8 @@
 package lotto.view;
 
+import static lotto.constant.Message.INPUT_BONUS_NUMBER;
 import static lotto.constant.Message.INPUT_PURCHASE_MONEY;
+import static lotto.constant.Message.INPUT_WINNING_NUMBER;
 import static lotto.constant.Message.LOTTO_GENERATED;
 
 import java.util.List;
@@ -17,5 +19,13 @@ public class OutputView {
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
+    }
+
+    public static void printInputWinningNumber() {
+        System.out.println(INPUT_WINNING_NUMBER);
+    }
+
+    public static void printInputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
     }
 }
