@@ -15,7 +15,7 @@ public class InputChecker {
         return true;
     }
     public boolean isMultipleThousand(int money) throws IllegalArgumentException{
-        if(money%1000!=0){
+        if(money%Lotto.LOTTO_PRICE!=0){
             throw new IllegalArgumentException(ErrorMessage.INPUT_IS_NOT_MULTIPLE_THOUSAND_ERROR.print());
         }
         return true;
@@ -35,7 +35,7 @@ public class InputChecker {
         return true;
     }
     public boolean isNumberInRange(Integer bonus) throws IllegalArgumentException{
-        if(bonus<1 || bonus>45){
+        if(bonus<Lotto.MIN_LOTTO_NUMBERS || bonus>Lotto.MAX_LOTTO_NUMBERS){
             throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.print());
         }
         return true;

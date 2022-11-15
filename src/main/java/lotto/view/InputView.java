@@ -6,7 +6,6 @@ import lotto.domain.SystemMessage;
 import lotto.util.InputChecker;
 
 public class InputView {
-
     InputChecker inputChecker;
 
     public InputView(){

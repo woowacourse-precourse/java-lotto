@@ -7,14 +7,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserLotto {
-    public static final int LOTTO_PRICE=1000;
     List<Lotto> lottos;
     private int money;
     private int lottoCount;
 
     public UserLotto(int money){
         this.money=money;
-        this.lottoCount=money/LOTTO_PRICE;
+        this.lottoCount=money/Lotto.LOTTO_PRICE;
         makeLottoNumberList();
     }
     public int getMoney(){ return money;}
@@ -23,7 +22,7 @@ public class UserLotto {
     public void makeLottoNumberList() throws IllegalArgumentException {
         List<Lotto> lottos=new ArrayList<>();
         for(int i=0; i< lottoCount; i++) {
-            List<Integer> randoms=Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> randoms=Randoms.pickUniqueNumbersInRange(Lotto.MIN_LOTTO_NUMBERS, Lotto.MAX_LOTTO_NUMBERS, Lotto.LOTTO_SIZE);
             Lotto lotto = new Lotto(new ArrayList<>(randoms));
             if (!lotto.getLotto().isEmpty()) {
                 Collections.sort(lotto.getLotto());
