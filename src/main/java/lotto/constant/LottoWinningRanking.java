@@ -5,8 +5,8 @@ import java.util.Arrays;
 public enum LottoWinningRanking {
 
     /**
-     * 2, 3등을 제외한 모든 등수는 보너스 번호의 매칭과 상관 없기 때문에 false로 지정한다. 5등 보다 당첨 된 수가 적은 경우(NOTHING) 의미가 없기 때문에 하드코딩 하지 않고 0으로
-     * 지정한다.
+     *  2, 3등을 제외한 모든 등수는 보너스 번호의 매칭과 상관 없기 때문에 false로 지정한다.
+     *  5등 보다 당첨 된 수가 적은 경우(NOTHING) 의미가 없기 때문에 하드코딩 하지 않고 0으로 지정한다.
      */
     NOTHING(0, false, 0),
     FIFTH(3, false, 5_000),
