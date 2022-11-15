@@ -14,12 +14,18 @@ public class Game {
 
     Calculator calculator;
     Lotto lotto;
-
     int bonusNum;
 
     public void init() {
         setCalculator();
+        if (calculator == null) {
+            return;
+        }
         setLotto();
+        if (lotto == null) {
+            return;
+        }
+
     }
 
     private void setCalculator() {
@@ -29,59 +35,9 @@ public class Game {
         }
         calculator = new Calculator(money);
     }
-    private void validateMoney(String input) {
-        long money;
-        try {
-            money = Long.parseLong(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
-        }
-        if (money % MINIMUM_UNIT != ZERO || money == ZERO) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_PROPER_UNIT.printError());
-        }
-    }
 
-    public boolean inputWinningNumber() {
-        Message.INPUT_LOTTERY_NUMBER.print();
-        List numbers;
-        String winningNumber = Console.readLine();
-        try {
-            numbers = validateLotto(winningNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return true;
-        }
+    private void setLotto() {
+        List numbers = Input.inputLotto();
         lotto = new Lotto(numbers);
-        return false;
-    }
-
-    private List validateLotto(String winningNumber) {
-        String[] splitInput = winningNumber.split(DELIMITER);
-        List<Integer> numbers = new ArrayList<>();
-        validateLottoType(splitInput, numbers);
-
-        return numbers;
-    }
-
-    private void validateLottoType(String[] splitInput, List<Integer> numbers) {
-        try {
-            for (int i = 0; i < splitInput.length; i++) {
-                numbers.add(Integer.parseInt(splitInput[i].trim()));
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
-        }
-    }
-
-    public boolean inputBonus() {
-        Message.INPUT_BONUS_NUMBER.print();
-        String bonus = Console.readLine();
-        try {
-            this.bonusNum = lotto.validateBonus(bonus);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return true;
-        }
-        return false;
     }
 }
