@@ -9,6 +9,7 @@ public class LottoNumber {
 
     public static final int MIN_LOTTO_NUMBER = 1;
     public static final int MAX_LOTTO_NUMBER = 45;
+    private static final String NUMBER_PATTERN = "\\d+";
     private static final Map<Integer, LottoNumber> LottoNumbers = new HashMap<>();
 
     static {
@@ -37,6 +38,17 @@ public class LottoNumber {
     public static LottoNumber of(int number) {
         return Optional.ofNullable(LottoNumbers.get(number))
                 .orElseThrow(() -> new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다."));
+    }
+
+    public static LottoNumber of(String lottoNumber) {
+        validateNumber(lottoNumber);
+        return of(Integer.parseInt(lottoNumber));
+    }
+
+    private static void validateNumber(String money) {
+        if (!money.matches(NUMBER_PATTERN)) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
     }
 
     @Override

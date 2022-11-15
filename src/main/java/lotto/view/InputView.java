@@ -23,8 +23,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int inputBonusNumber() {
+    public static String inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
