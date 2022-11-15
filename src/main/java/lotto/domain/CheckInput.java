@@ -111,4 +111,10 @@ public class CheckInput {
         }
     }
 
+    private static void checkBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(BONUS_NUMBER_SIZE_ERROR);
+        }
+    }
+
 }
