@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.constant.LotteryRank;
 import lotto.constant.Status;
 import lotto.constant.LottoProperty;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

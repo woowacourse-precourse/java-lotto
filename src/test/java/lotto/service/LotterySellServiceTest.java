@@ -1,5 +1,10 @@
 package lotto.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mockStatic;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.User;
 import lotto.repository.LotteryTicketRepository;
@@ -7,12 +12,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
 
 public class LotterySellServiceTest {
     static LotterySellService lotterySellService = new LotterySellService();

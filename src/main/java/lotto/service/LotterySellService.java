@@ -5,7 +5,6 @@ import lotto.domain.LotteryTicket;
 import lotto.domain.User;
 import lotto.constant.LottoProperty;
 import lotto.repository.LotteryTicketRepository;
-
 import java.util.List;
 
 public class LotterySellService {

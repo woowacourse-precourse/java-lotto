@@ -4,7 +4,6 @@ import lotto.constant.ErrorMessage;
 import lotto.domain.LotteryTicket;
 import lotto.domain.User;
 import lotto.repository.LotteryTicketRepository;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 

@@ -1,9 +1,9 @@
 package lotto.constant;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class LotteryRankTest {
     @DisplayName("일치 숫자가 5개, 보너스 숫자가 있다고 주어지면 2등을 반환한다.")

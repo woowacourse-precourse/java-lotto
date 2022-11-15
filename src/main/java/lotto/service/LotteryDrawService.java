@@ -4,7 +4,6 @@ import lotto.constant.LotteryRank;
 import lotto.domain.LotteryTicket;
 import lotto.domain.WinningNumber;
 import lotto.repository.LotteryTicketRepository;
-
 import java.util.List;
 
 public class LotteryDrawService {

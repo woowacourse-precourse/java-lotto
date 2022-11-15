@@ -1,17 +1,16 @@
 package lotto.view;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lotto.constant.LotteryRank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class OutputViewTest {
     @DisplayName("구매한 로또 티켓 수량과 각 티켓의 번호를 오름차순으로 출력한다.")

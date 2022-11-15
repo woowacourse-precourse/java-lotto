@@ -2,8 +2,11 @@ package lotto.repository;
 
 import lotto.constant.LotteryRank;
 import lotto.domain.LotteryTicket;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Optional;
 
 public class LotteryTicketRepository {
     private static LotteryTicketRepository instance = new LotteryTicketRepository();

@@ -1,7 +1,6 @@
 package lotto.view;
 
 import lotto.view.constant.ValidationRegex;
-
 import java.util.List;
 import java.util.regex.Pattern;
 

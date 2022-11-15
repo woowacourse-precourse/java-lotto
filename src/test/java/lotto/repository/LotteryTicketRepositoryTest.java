@@ -1,12 +1,11 @@
 package lotto.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lotto.constant.LotteryRank;
 import lotto.domain.LotteryTicket;
 import org.junit.jupiter.api.*;
-
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class LotteryTicketRepositoryTest {
     @AfterEach

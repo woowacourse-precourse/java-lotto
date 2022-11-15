@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.constant.ErrorMessage;
-
 import java.util.List;
 
 public class WinningNumber extends Lotto {

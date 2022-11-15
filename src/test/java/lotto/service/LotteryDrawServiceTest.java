@@ -1,5 +1,7 @@
 package lotto.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lotto.constant.LotteryRank;
 import lotto.domain.LotteryTicket;
 import lotto.domain.WinningNumber;
@@ -7,10 +9,7 @@ import lotto.repository.LotteryTicketRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class LotteryDrawServiceTest {
     @AfterEach

@@ -4,7 +4,6 @@ import lotto.domain.WinningNumber;
 import lotto.service.LotteryDrawService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
 import java.util.List;
 
 public class LotteryController {

@@ -5,7 +5,6 @@ import lotto.constant.LottoProperty;
 import lotto.view.constant.Format;
 import lotto.view.constant.PurchasePhrase;
 import lotto.view.constant.ResultPhrase;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;

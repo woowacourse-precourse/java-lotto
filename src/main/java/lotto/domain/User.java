@@ -4,7 +4,6 @@ import lotto.constant.LotteryRank;
 import lotto.constant.Status;
 import lotto.constant.LottoProperty;
 import lotto.constant.ErrorMessage;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

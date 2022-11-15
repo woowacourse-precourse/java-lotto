@@ -6,7 +6,6 @@ import lotto.service.LotterySellService;
 import lotto.service.UserService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
 import java.util.NoSuchElementException;
 
 public class UserController {

@@ -1,13 +1,12 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lotto.constant.LotteryRank;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.Map;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class LotteryResultTest {
     @DisplayName("LotteryResult Rank별 개수와 상금을 조회한다.")
