@@ -43,7 +43,8 @@ public class Money {
 
     public static void prizeRate(HashMap<Integer, Integer> prize, int num){
         int sum = prize.get(3)*5000 + prize.get(4)*50000 + prize.get(5)*1500000 + prize.get(-1)*30000000 + prize.get(6)*200000000;
-        double rate = (sum / (num*1000)) * 100;
+        int money = num * 1000;
+        double rate = (double) sum / money * 100;
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 
