@@ -6,6 +6,8 @@ import java.util.List;
 import static lotto.domain.messages.ErrorMessages.EXPENSES_RANGE_ERROR_MESSAGE;
 
 public class LottoVendingMachineImple implements LottoVendingMachine{
+
+    private static final Integer MONEY_UNIT = 1000;
     @Override
     public List<Lotto> generateLottos(Integer money) {
         validate(money);
@@ -17,12 +19,12 @@ public class LottoVendingMachineImple implements LottoVendingMachine{
     }
 
     private void validateIsPositiveMultipleOf1000(Integer money) {
-        if (money < 1000 || money % 1000 != 0) {
+        if (money < MONEY_UNIT || money % MONEY_UNIT != 0) {
             throw new IllegalArgumentException(EXPENSES_RANGE_ERROR_MESSAGE);
         }
 
     }
     private Integer calculateTotalAmount(Integer money) {
-        return money / 1000;
+        return money / MONEY_UNIT;
     }
 }
