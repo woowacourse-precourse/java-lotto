@@ -11,8 +11,7 @@ import static lotto.message.LottoLine.LOTTO_CURRENCY_UNIT;
 import java.util.Arrays;
 
 public enum MatchResult {
-    //3,4,5,5+b,6   5e3, 5e4, 15e5, 3e7, 2e9
-    //    int values[] = {5_000, 50_000, 150_000, 3_000_000, 2_000_000_000};
+    
     FIRST_PLACE(FIRST_PLACE_CONDITION, 2_000_000_000, "6개 일치"),
     SECOND_PLACE(SECOND_PLACE_CONDITION, 30_000_000, "5개 일치, 보너스 볼 일치"),
     THIRD_PLACE(THIRD_PLACE_CONDITION, 1_500_000, "5개 일치"),
