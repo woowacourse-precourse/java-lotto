@@ -45,7 +45,7 @@ public class LottoController {
         OutputView.printLottos(lottos);
     }
 
-    public void generateWinningLotto() {
+    private void generateWinningLotto() {
         generateWinningNumber();
         generateBonusNumber();
     }
