@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static constants.Constant.*;
@@ -37,7 +39,6 @@ public class LottoSeller {
 
     private void checkAmount(String inputMoney) {
         if (Integer.parseInt(inputMoney) % PRICE_OF_ONE_TICKET != 0) {
-            System.out.println(ERROR_INPUT_PAY_AMOUNT);
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
@@ -50,7 +51,7 @@ public class LottoSeller {
     public List<List<Integer>> generateTickets() {
         TicketMachine newTickets = new TicketMachine(numberOfTickets);
 
-        newLottos = newTickets.generateTickets();
+        newLottos = newTickets.getTickets();
 
         return newLottos;
     }
