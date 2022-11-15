@@ -1,11 +1,11 @@
 package lotto.view;
 
 import java.util.List;
-import lotto.model.LottoTicketsStorage;
+import lotto.model.LottoStorage;
 
 public class IssuedTicketsPrinter {
 
-    public void printIssuedTickets(LottoTicketsStorage lottoTicketsStorage) {
+    public void printIssuedTickets(LottoStorage lottoTicketsStorage) {
         for (List<Integer> ticket : lottoTicketsStorage.getLottoTickets()) {
             System.out.println(ticket);
         }
