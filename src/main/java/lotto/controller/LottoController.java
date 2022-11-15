@@ -1,9 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
-import lotto.domain.LottoTicket;
 import lotto.domain.WinningNumbers;
 
 import java.util.HashMap;
@@ -15,13 +13,15 @@ import lotto.view.OutputView;
 
 public class LottoController {
     private static final int PERCENTAGE_CONVERTER = 100;
-    private static int LOTTO_ONE_GAME_PRICE = 1000;
+    private static final int LOTTO_ONE_GAME_PRICE = 1000;
     private static final int LOTTO_MIN_NUMBER = 1;
     private static final int LOTTO_MAX_NUMBER = 45;
     private static final int LOTTO_SIZE = 6;
 
-    private final int DEFAULT_EARNING_MONEY = 0;
+    private static int DEFAULT_EARNING_MONEY = 0;
+
     private Map<LottoRank, Integer> lottoResult = new HashMap<>();
+
     public void run() {
         int inputLottoMoney = InputView.inputLottoPurchaseMoney();
         int lottoTickets = generateTickets(inputLottoMoney);

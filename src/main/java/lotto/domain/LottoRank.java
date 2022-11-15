@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
 
 public enum LottoRank {
     FIRST(6, 2_000_000_000, "6개 일치 (2,000,000,000원) - "),
@@ -31,13 +29,11 @@ public enum LottoRank {
                 .findFirst()
                 .orElse(FAILED);
     }
-    public int getWinningNumberCount() {
-        return this.winningNumberCount;
-    }
 
     public int getRewardMoney () {
         return this.rewardMoney;
     }
+
     public String getResultText() {
         return this.resultText;
     }
