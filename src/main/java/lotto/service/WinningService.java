@@ -22,14 +22,16 @@ public class WinningService {
     private static int compareWithWinningNumbers(Lotto lotto, WinningNumber winningNumber) {
         List<Integer> winningNumbers = winningNumber.getNumbers();
         int bonusNumber = winningNumber.getBonusNumber();
-
         int matchingNumberCount = compareWithoutBonusNumber(lotto, winningNumbers);
 
-        if (matchingNumberCount == Ranking.FIRST.getMatchingNumberCount()) {
+        if (isFirstPlace(matchingNumberCount)) {
             return Ranking.FIRST.getPlace();
         }
-        if (matchingNumberCount == Ranking.SECOND.getMatchingNumberCount() && hasBonusNumber(lotto, bonusNumber)) {
+        if (isSecondPlace(matchingNumberCount, lotto, bonusNumber)) {
             return Ranking.SECOND.getPlace();
+        }
+        if (isNonePlace(matchingNumberCount)) {
+            return Ranking.NONE.getPlace();
         }
         return LAST_PLACE + 3 - matchingNumberCount;
     }
@@ -46,5 +48,19 @@ public class WinningService {
 
     private static boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
         return lotto.getNumbers().contains(bonusNumber);
+    }
+
+    private static boolean isFirstPlace(int matchingNumberCount) {
+        return matchingNumberCount == Ranking.FIRST.getMatchingNumberCount();
+    }
+
+    private static boolean isSecondPlace(int matchingNumberCount, Lotto lotto, int bonusNumber) {
+        boolean hasFiveMatchingNumber = matchingNumberCount == Ranking.SECOND.getMatchingNumberCount();
+
+        return hasFiveMatchingNumber && hasBonusNumber(lotto, bonusNumber);
+    }
+
+    private static boolean isNonePlace(int matchingNumberCount) {
+        return matchingNumberCount <= Ranking.NONE.getMatchingNumberCount();
     }
 }
