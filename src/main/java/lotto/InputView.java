@@ -14,6 +14,7 @@ public class InputView {
     }
 
     public static List<Integer> inputWinNumbers() {
+        System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
         return Arrays.stream(Console.readLine().split(","))
                 .map(Integer::parseInt)
@@ -21,6 +22,7 @@ public class InputView {
     }
 
     public static int inputBonusNumber() {
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }

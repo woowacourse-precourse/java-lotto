@@ -6,6 +6,7 @@ import java.util.Map;
 public class OutputView {
 
     public static void printLottos(List<Lotto> lottos, int amount) {
+        System.out.println();
         System.out.println(amount + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
@@ -13,10 +14,13 @@ public class OutputView {
     }
 
     public static void printResult(Map<Result, Integer> resultMap) {
+        System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Result result : Result.values()) {
-            System.out.println(result.getMessage() + resultMap.get(result) + "개");
+            if (result != Result.NO_REWARD) {
+                System.out.println(result.getMessage() + resultMap.get(result) + "개");
+            }
         }
     }
 
