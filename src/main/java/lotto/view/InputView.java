@@ -1,7 +1,7 @@
 package lotto.view;
 
 public class InputView {
-    private static InputView instance = new InputView();
+    private static final InputView instance = new InputView();
 
     private InputView(){}
 

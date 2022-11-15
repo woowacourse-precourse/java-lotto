@@ -7,7 +7,7 @@ import lotto.model.Rank;
 import lotto.model.Result;
 
 public class OutputView {
-    private static OutputView instance = new OutputView();
+    private static final OutputView instance = new OutputView();
 
     private OutputView() {
     }
