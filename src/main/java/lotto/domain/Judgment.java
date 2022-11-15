@@ -14,7 +14,7 @@ public class Judgment {
 
     public RankCounter calculateRank() {
         this.rankCounter = new RankCounter();
-        this.rankCounter.drawLotto(user, winningNumbers);
+        drawLotto();
         return rankCounter;
     }
 
@@ -22,6 +22,14 @@ public class Judgment {
         double investmentMoney = (double) user.getGameMoney();
         double totalPrizeMoney = (double) calculateTotalPrizeMoney();
         return totalPrizeMoney / investmentMoney;
+    }
+
+    private void drawLotto() {
+        for (int indexLotto = 0; indexLotto < user.getLottoCount(); indexLotto++) {
+            Lotto lotto = user.findLotto(indexLotto);
+            Rank rank = winningNumbers.rankingLotto(lotto);
+            rankCounter.addRank(rank);
+        }
     }
 
     private long calculateTotalPrizeMoney() {

@@ -14,16 +14,9 @@ public class RankCounter {
         }
     }
 
-    public void drawLotto(User user, WinningNumbers winningNumbers) {
-        Lotto lotto;
-        int count;
-        Rank rank;
-        for (int indexLottos = 0; indexLottos < user.getLottoCount(); indexLottos++) {
-            lotto = user.findLotto(indexLottos);
-            rank = winningNumbers.rankingLotto(lotto);
-            count = rankCounter.getOrDefault(rank, 0);
-            rankCounter.put(rank, count + 1);
-        }
+    public void addRank(Rank rank) {
+        int count = rankCounter.get(rank);
+        rankCounter.put(rank, count + 1);
     }
 
     public int countRank(Rank rank) {
