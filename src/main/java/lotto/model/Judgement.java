@@ -6,9 +6,6 @@ public class Judgement {
     private int matchCnt = 0;
     private boolean bonusMatch = false;
 
-    public Judgement(){
-    }
-
     public int judgeRank(Lotto userLotto, Lotto wonLotto, int bonusNumber) {
         checkMatch(userLotto, wonLotto, bonusNumber);
         if (matchCnt == 6)

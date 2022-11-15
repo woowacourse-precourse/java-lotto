@@ -27,6 +27,7 @@ public class LottoSystem {
         if (!validator.isThousandMultiples(money)) {
             throw new IllegalArgumentException(INVALID_PRICE.getMessage());
         }
+
         List<Lotto> userLottos = createLotto(money);
         outputView.outputUserLottos(userLottos);
 
