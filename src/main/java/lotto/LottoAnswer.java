@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static constantValue.ErrorMessage.*;
+import static constantValue.LottoUtilNumber.OVER_RANGE;
+import static constantValue.LottoUtilNumber.UNDER_RANGE;
 import static error.ErrorLottoNumbers.isDuplicateInput;
 import static constantValue.RequestMessage.INPUT_BONUS_NUMBER;
 import static constantValue.RequestMessage.INPUT_WINNING_NUMBERS;
@@ -67,6 +69,9 @@ public class LottoAnswer {
     bonus_number = Integer.parseInt(readLine());
     if (isDuplicateInput(lotto_answer, bonus_number)) {
       throw new IllegalArgumentException();
+    }
+    if (bonus_number < UNDER_RANGE || bonus_number > OVER_RANGE) {
+      throw new IllegalArgumentException(IS_NOT_IN_RANGE);
     }
   }
 
