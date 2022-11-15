@@ -14,7 +14,6 @@ public class StatisticsCalculator {
     private WinningLotto winningLotto;
     private Statistics statistics;
 
-
     public StatisticsCalculator(Buying buying, WinningLottoRegister winningLottoRegister) {
         statistics = new Statistics();
         boughtLottos = buying.getBoughtLottos();

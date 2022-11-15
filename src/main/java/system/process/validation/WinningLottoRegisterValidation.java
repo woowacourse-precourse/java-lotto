@@ -15,6 +15,7 @@ public class WinningLottoRegisterValidation {
         if (commaIndex < LottoConstant.LEAST_COMMA_POSITION) {
             IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
         }
+
         if (Character.isDigit(numbersInput.charAt(commaIndex - 1))) {
             return;
         }
@@ -36,11 +37,9 @@ public class WinningLottoRegisterValidation {
         if (numberInput.length() > LottoConstant.MAX_INPUT_BONUS_NUMBER_LENGTH) {
             IllegalArgument.handleException(IllegalArgument.OUT_OF_BONUS_NUMBER_LENGTH.getMessage());
         }
-    }
 
-    public static void validateDigit(String numberInput) {
         if (numberInput.contains(",")) {
-            IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
+            IllegalArgument.handleException(IllegalArgument.WRONG_NUMBER_INPUT.getMessage());
         }
     }
 }

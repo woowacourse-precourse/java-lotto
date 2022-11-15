@@ -27,7 +27,6 @@ public class Buying {
         return amountPaidInput;
     }
 
-
     private int calculateAvailableAmount(String amountPaidInput) {
         int amountPaid = Integer.parseInt(amountPaidInput);
         BuyingValidation.validateAvailableAmount(amountPaid);

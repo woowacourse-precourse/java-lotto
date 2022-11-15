@@ -24,6 +24,10 @@ public class WinningLottoTest {
         assertThatThrownBy(() -> new WinningLotto(lotto.getNumbers(), 46))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(IllegalArgument.NOT_IN_RANGE.getMessage());
+
+        assertThatThrownBy(() -> new WinningLotto(lotto.getNumbers(), 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(IllegalArgument.NOT_IN_RANGE.getMessage());
     }
 
     @DisplayName("보너스 번호와 중복된 로또 번호가 있다면 예외 발생.")

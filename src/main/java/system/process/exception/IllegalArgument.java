@@ -4,10 +4,10 @@ import constants.LottoConstant;
 
 public enum IllegalArgument {
     // Number
-    NOT_SET_SIZE(String.format("숫자의 개수가 %d개가 아닙니다.", LottoConstant.NUMBERS_SIZE)),
-    NOT_IN_RANGE(String.format("숫자 중, %d~%d의 범위를 벗어난 숫자가 있습니다."
+    NOT_SET_SIZE(String.format("번호의 개수가 %d개가 아닙니다.", LottoConstant.NUMBERS_SIZE)),
+    NOT_IN_RANGE(String.format("번호 중, %d~%d의 범위를 벗어난 숫자가 있습니다."
             , LottoConstant.NUMBER_START, LottoConstant.NUMBER_END)),
-    DUPLICATION("중복된 값이 존재합니다."),
+    DUPLICATION("중복되는 번호가 존재합니다."),
 
     // Input
     NOT_DIGIT_OR_COMMA_TEXT("올바른 입력이 아닙니다."),
@@ -20,6 +20,8 @@ public enum IllegalArgument {
     OUT_OF_BONUS_NUMBER_LENGTH(String.format("보너스 번호 입력의 길이가 %d를 넘어갑니다."
             , LottoConstant.MAX_INPUT_BONUS_NUMBER_LENGTH)),
     WRONG_NUMBERS_INPUT("슷자 6개와 쉼표 5개를 번갈아가며 입력해주세요."),
+    WRONG_NUMBER_INPUT("숫자만 1개 입력해주세요."),
+
     EMPTY_INPUT("아무것도 입력하지 않았습니다.");
 
     private final String message;

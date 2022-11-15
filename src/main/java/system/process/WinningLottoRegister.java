@@ -31,7 +31,6 @@ public class WinningLottoRegister {
 
         for (int loop = 0; loop < 5; loop++) {
             int commaIndex = numbersInput.indexOf(",");
-
             WinningLottoRegisterValidation.validateCommaIndex(numbersInput, commaIndex);
 
             numbers.add(Integer.parseInt(numbersInput.substring(0, commaIndex)));
@@ -53,10 +52,7 @@ public class WinningLottoRegister {
     }
 
     private int changeBonusNumberInputToInteger(String numberInput) {
-        WinningLottoRegisterValidation.validateDigit(numberInput);
-
-        int number = Integer.parseInt(numberInput);
-        return number;
+        return Integer.parseInt(numberInput);
     }
 
     public WinningLotto getWinningLotto() {

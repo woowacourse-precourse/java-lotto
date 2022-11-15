@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import system.process.exception.IllegalArgument;
 
 public class Input {
-    public static String input() throws IllegalArgumentException {
+    public static String input() {
         String textInput = Console.readLine();
         validateInput(textInput);
 

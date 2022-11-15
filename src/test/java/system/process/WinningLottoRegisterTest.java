@@ -71,7 +71,7 @@ public class WinningLottoRegisterTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("11,12,13,14,15,16", "1,"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage())
+                        .hasMessage(IllegalArgument.WRONG_NUMBER_INPUT.getMessage())
         );
     }
 
