@@ -21,11 +21,11 @@ public class WinningLottoTest {
     @DisplayName("보너스 번호가 범위를 벗어난다면 예외 발생.")
     @Test
     void createWinningLottoByOutOfRangeBonusNumber() {
-        assertThatThrownBy(() -> new WinningLotto(lotto.getNumbers(), 46))
+        assertThatThrownBy(() -> new WinningLotto(lotto, 46))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(IllegalArgument.NOT_IN_RANGE.getMessage());
 
-        assertThatThrownBy(() -> new WinningLotto(lotto.getNumbers(), 0))
+        assertThatThrownBy(() -> new WinningLotto(lotto, 0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(IllegalArgument.NOT_IN_RANGE.getMessage());
     }
@@ -33,7 +33,7 @@ public class WinningLottoTest {
     @DisplayName("보너스 번호와 중복된 로또 번호가 있다면 예외 발생.")
     @Test
     void createWinningLottoByDuplicatedBonusNumber() {
-        assertThatThrownBy(() -> new WinningLotto(lotto.getNumbers(), 6))
+        assertThatThrownBy(() -> new WinningLotto(lotto, 6))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(IllegalArgument.DUPLICATION.getMessage());
     }

@@ -1,5 +1,6 @@
 package system.process;
 
+import models.Lotto;
 import models.WinningLotto;
 import system.process.validation.WinningLottoRegisterValidation;
 import utils.Input;
@@ -12,9 +13,9 @@ public class WinningLottoRegister {
     private WinningLotto winningLotto;
 
     public WinningLottoRegister() {
-        List<Integer> sixLottoNumbers = changeLottoNumbersInputToIntegers(inputSixLottoNumbers());
+        Lotto lotto = new Lotto(changeLottoNumbersInputToIntegers(inputSixLottoNumbers()));
         int bonusNumber = changeBonusNumberInputToInteger(inputBonusNumber());
-        winningLotto = new WinningLotto(sixLottoNumbers, bonusNumber);
+        winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
     private String inputSixLottoNumbers() {

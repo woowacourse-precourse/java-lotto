@@ -8,8 +8,8 @@ public class WinningLotto {
     private Lotto lotto;
     private int bonusNumber;
 
-    public WinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
-        lotto = new Lotto(lottoNumbers);
+    public WinningLotto(Lotto lotto, int bonusNumber) {
+        this.lotto = lotto;
         WinningLottoValidation.validateBonusNumber(lotto, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
