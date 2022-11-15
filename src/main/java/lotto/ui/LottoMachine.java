@@ -74,7 +74,7 @@ public class LottoMachine {
         lottoComparisonResults.forEach((key, value) -> {
             totalWinningAmount.addAndGet(prizes.get(key) * value);
         });
-        System.out.println(totalWinningAmount);
-        System.out.println(lottoComparator.calculateMargin(totalWinningAmount));
+        double margin = lottoComparator.calculateMargin(totalWinningAmount);
+        Printer.requestMargin(margin);
     }
 }

@@ -23,6 +23,10 @@ public class Printer {
         System.out.println(String.format("\n%d개를 구매했습니다", lottocount));
     }
 
+    public static void requestMargin(double margin) {
+        System.out.println("총 수익률은 " + margin + "%입니다.");
+    }
+
     //구매한 로또 출력
     public static void printPurchasedLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
