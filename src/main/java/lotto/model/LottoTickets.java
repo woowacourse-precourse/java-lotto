@@ -1,12 +1,11 @@
 package lotto.model;
 
-import java.util.List;
 import java.util.Set;
 
 public class LottoTickets {
-    private final Set<List<Integer>> tickets;
+    private final Set<LottoTicket> tickets;
 
-    public LottoTickets(Set<List<Integer>> lottoTickets) {
+    public LottoTickets(Set<LottoTicket> lottoTickets) {
         this.tickets = lottoTickets;
     }
 

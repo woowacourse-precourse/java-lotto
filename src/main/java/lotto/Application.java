@@ -10,19 +10,6 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    static Set<List<Integer>> generateUniqueLottoTickets(int numberOfTickets) {
-        Set<List<Integer>> existentTicket = new HashSet<>();
-        int numberOfGeneratedTickets = 0;
-        while (numberOfGeneratedTickets < numberOfTickets) {
-            List<Integer> generatedTicket = generateRandomLottoTicket();
-            if (existentTicket.contains(generatedTicket))
-                continue;
-            existentTicket.add(generatedTicket);
-            numberOfGeneratedTickets++;
-        }
-        return existentTicket;
-    }
-
     static Map<Integer, Integer> checkTotalRank(Set<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber) {
         Map<Integer, Integer> totalRank = new HashMap<>();
         initializeTotalRank(totalRank);

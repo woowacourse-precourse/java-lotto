@@ -8,11 +8,11 @@ import java.util.List;
 public class LottoTicket {
     private final List<Integer> ticket;
 
-    public LottoTicket(List<Integer> lottoTicket) {
-        this.ticket = lottoTicket;
+    public LottoTicket() {
+        this.ticket = generateRandomLottoTicket();
     }
 
-    private List<Integer> generateRandomLottoTicket() {
+    public List<Integer> generateRandomLottoTicket() {
         List<Integer> LottoTicket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return sortRandomLottoTicket(LottoTicket);
     }
