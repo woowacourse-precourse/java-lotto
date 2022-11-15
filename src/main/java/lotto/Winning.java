@@ -133,7 +133,8 @@ public class Winning {
 
     private static void isValidateWinningNumberSize(List<Integer> winningNumbers) {
         if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_OUT_OF_RANGE_ERROR);
+            System.out.println(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -155,7 +156,8 @@ public class Winning {
 
     private static void isDuplicatedWinningNumber(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
+            System.out.println(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
+            throw new IllegalArgumentException();
         }
     }
 
