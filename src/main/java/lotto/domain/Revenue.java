@@ -33,7 +33,7 @@ public class Revenue {
     }
 
     public void initializeRevenueStatics() {
-        List<String> rankNames = Rank.getRankNames();
+        List<String> rankNames = WinningsTable.getRankNames();
         for (String rankName : rankNames) {
             revenueStatics.put(rankName, ZERO_COUNT);
         }
@@ -53,8 +53,8 @@ public class Revenue {
         int winnings;
         initializeRevenueStatics();
         for (List<Integer> match : matches) {
-            rankName = Rank.getRankNameByMatchState(match);
-            winnings = Rank.getWinningsByMatchState(match);
+            rankName = WinningsTable.getRankNameByMatchState(match);
+            winnings = WinningsTable.getWinningsByMatchState(match);
             updateRevenueStatics(rankName);
             settleRevenue(winnings);
         }
@@ -82,7 +82,7 @@ public class Revenue {
     }
 
     public String getRevenueStaticsReport() {
-        List<String> rankNames = Rank.getRankNames();
+        List<String> rankNames = WinningsTable.getRankNames();
         Collections.reverse(rankNames);
         String winResult;
         int raffleMatchCount;

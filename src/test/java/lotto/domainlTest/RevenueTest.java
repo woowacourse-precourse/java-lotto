@@ -19,7 +19,7 @@ public class RevenueTest {
         revenue.initializeRevenueStatics();
         HashMap<String, Integer> revenueStatics = revenue.getRevenueStatics();
 
-        assertThat(revenueStatics.keySet().toArray()).containsAll(Rank.getRankNames());
+        assertThat(revenueStatics.keySet().toArray()).containsAll(WinningsTable.getRankNames());
     }
 
     @Test
