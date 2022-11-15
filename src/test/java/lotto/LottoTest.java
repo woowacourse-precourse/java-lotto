@@ -1,10 +1,12 @@
 package lotto;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +25,27 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("복권 번호를 받으면 등수를 계산한다.")
+    @Nested
+    class createLottoRank {
+
+        @Test
+        void case1() {
+            List<Integer> example = List.of(1, 2, 3, 4, 5, 6);
+            List<Integer> lottoNumber = List.of(1, 3, 4, 5, 6, 7, 2);
+            Lotto one = new Lotto(example);
+            int result = one.confirmNumbers(lottoNumber);
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test
+        void case2() {
+            List<Integer> example = List.of(1, 2, 3, 4, 5, 6);
+            List<Integer> lottoNumber = List.of(1, 3, 4, 5, 6, 7, 9);
+            Lotto one = new Lotto(example);
+            int result = one.confirmNumbers(lottoNumber);
+            assertThat(result).isEqualTo(3);
+        }
+    }
+
 }

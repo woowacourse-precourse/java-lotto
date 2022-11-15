@@ -1,5 +1,31 @@
 # 미션 - 로또
 
+## 📚 기능 목록
+
+- [v] 받은 돈을 계산하여 몇 개의 6자리 수열을 만들지 계산한다. - Store#countLines 
+  - [v] 받은 돈이 1000원 단위로 떨어지는지 확인한다. - Store#validate
+  - [v] 6자리의 중복이 없는 수열들을 생성한다. - Store#makeNumbers
+- [v] 구매한 로또의 당첨내역을 계산한다. - Lotto#confirmNumbers
+  - [v] 만든 로또 번호가 중복이 있는 지 검사한다. -Lotto#checkRedundancy
+  - [v] 출력을 위해 발행한 로또번호를 전달한다. -Lotto#getNumbers 
+- 입력받은 당첨번호로 구매한 로또의 당첨내역을 판단하고 수익률을 계산한다. - Judge
+  - [v] 당첨내역을 합산하여 받는다. - Judge#setRankCount
+  - [v] 당첨내역으로 총 당첨금을 계산한다. - Judge#countPrizeMoney
+  - [v] 당청금과 구매금으로 수익률을 계산한다. - Judge#countEarningsRate
+
+입력
+- [v] 로또 구입 금액을 입력 받는다. - Input#receiveMoney
+- [v] 당첨번호를 입력 받는다. - Input#receiveWinningNumbers
+- [v] 보너스 번호를 입력 받는다. - Input#receiveBonusNuber
+
+출력
+- [v] 로또 구입 금액을 입력받는 문구를 출력한다. - Output#giveMeMoney
+- [v] 당첨 번호를 입력받는 문구를 출력한다. - Output#giveMeWinningNumbers, giveMeBonusNumber
+- [v] 발행한 로또 수량을 출력한다. - Output#lottoQuantity
+- [v] 발행한 로또 번호를 출력한다. - Output#lotteriesNumbers
+- [v] 당첨 내역을 출력한다. - Output#winningHistory
+- [v] 수익률을 출력한다. - Output#earningRate
+- [v] 예외 메시지를 출력한다. 
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
