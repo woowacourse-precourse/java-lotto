@@ -19,4 +19,9 @@ public class PurchaseAmount {
         }
     }
 
+    public static void exceptionDividePrice(String purchaseAmount) {
+        if (Integer.parseInt(purchaseAmount) % Number.PRICE.getNumber() != 0) {
+            throw new IllegalArgumentException(Error.WRONG_PURCHASE_AMOUNT_UNIT.getMsg());
+        }
+    }
 }
