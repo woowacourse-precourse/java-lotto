@@ -8,24 +8,10 @@ import lotto.ui.Ouput;
 
 public class LottoChecker {
 
-    enum Grade {
-        FIFTH(3),
-        FOURTH(4),
-        THIRD(5),
-        SECOND(5 + 10),
-        FIRST(6);
-
-        private final int count;
-
-        Grade(int count) {
-            this.count = count;
-        }
-    }
-
     public int compare(Lotto purchasedLotto, Lotto winningLotto) {
         int count = 0;
-        for (int column = 0; column < Lotto.NUMBER_OF_NUMBERS; column++) {
-            if (purchasedLotto.getNumbers().contains(winningLotto.getNumbers().get(column))) {
+        for (int ordinal = 0; ordinal < Lotto.NUMBER_OF_NUMBERS; ordinal++) {
+            if (purchasedLotto.getNumbers().contains(winningLotto.getNumbers().get(ordinal))) {
                 count++;
             }
         }
@@ -38,8 +24,8 @@ public class LottoChecker {
         for (int row = 0; row < lottoTable.size(); row++) {
             int count = 0;
             count = compare(lottoTable.get(row), winningLotto);
-            if (count == Grade.THIRD.count && hasBonusNumber(lottoTable.get(row), bonusNumber)) {
-                count = Grade.SECOND.count;
+            if (count == Grade.THIRD.getCount() && hasBonusNumber(lottoTable.get(row), bonusNumber)) {
+                count = Grade.SECOND.getCount();
             }
             countGroup.add(count);
         }
@@ -48,10 +34,10 @@ public class LottoChecker {
 
     public List<Integer> toResult(List<Integer> countGroup) {
         List<Integer> result = new ArrayList<>();
-        for (int count = Grade.FIFTH.count; count <= Grade.FIRST.count; count++) {
+        for (int count = Grade.FIFTH.getCount(); count <= Grade.FIRST.getCount(); count++) {
             result.add(Collections.frequency(countGroup, count));
-            if (count == Grade.THIRD.count) {
-                result.add(Collections.frequency(countGroup, Grade.SECOND.count));
+            if (count == Grade.THIRD.getCount()) {
+                result.add(Collections.frequency(countGroup, Grade.SECOND.getCount()));
             }
         }
         result.add(countGroup.size());
