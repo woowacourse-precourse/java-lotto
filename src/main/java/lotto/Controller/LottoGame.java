@@ -46,6 +46,7 @@ public class LottoGame {
 
     public void getWinningNumber() {
         String input = InputView.getNumbers();
+        LottoValidator.validateWinningNumber(input);
         Lotto lotto = LottoMachine.calculateWinningNumber(input);
         winningNumber = lotto;
     }
