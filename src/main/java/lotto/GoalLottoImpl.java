@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GoalLottoImpl implements GoalLotto{
@@ -19,18 +18,33 @@ public class GoalLottoImpl implements GoalLotto{
 
     private static void addGoalNumbers(String[] split, ArrayList<Integer> result) {
         for (int i = 0; i < split.length; i++) {
-            try {
-            int num = Integer.parseInt(split[i]);
-            result.add(num);
-            }catch (IllegalArgumentException e){
-                throw new IllegalArgumentException("[ERROR] 당첨 번호를 제대로 입력해주세요");
-            }
+            checkGoalNum(result, split[i]);
+        }
+    }
+
+    private static void checkGoalNum(ArrayList<Integer> result, String split) {
+        try {
+        int num = Integer.parseInt(split);
+        result.add(num);
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 제대로 입력해주세요");
         }
     }
 
     @Override
     public int saveBonusNumber() {
-        return 0;
+        System.out.println("보너스 번호를 입력해주세요");
+        String s = Console.readLine();
+        return checkBonusNum(s);
+    }
+
+    private static int checkBonusNum(String s) {
+        try {
+            int result = Integer.parseInt(s);
+            return result;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR]보너스 번호를 제대로 입력해주세요");
+        }
     }
 
     @Override
