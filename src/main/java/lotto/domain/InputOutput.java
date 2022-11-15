@@ -22,4 +22,11 @@ public class InputOutput {
         return numbers;
     }
 
+    public int getLottoBonusNumbers(){
+        String input = Console.readLine();
+        //ErrorHandler#getLottoBonusNumberError()
+        int number = Integer.parseInt(input);
+        return number;
+    }
+
 }
