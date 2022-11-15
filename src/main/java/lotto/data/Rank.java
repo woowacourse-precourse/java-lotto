@@ -8,24 +8,24 @@ public enum Rank {
     FIRST(1, "2,000,000,000원", "6개 일치");
 
     final private int rank;
-    final private String prize;
+    final private String prizeString;
     final private String condition;
 
     public int getRank() {
         return this.rank;
     }
 
-    public String getPrize() {
-        return this.prize;
+    public String getPrizeString() {
+        return this.prizeString;
     }
 
     public String getCondition() {
         return this.condition;
     }
 
-    Rank(int rank, String prize, String condition) {
+    Rank(int rank, String prizeString, String condition) {
         this.rank = rank;
-        this.prize = prize;
+        this.prizeString = prizeString;
         this.condition = condition;
     }
 

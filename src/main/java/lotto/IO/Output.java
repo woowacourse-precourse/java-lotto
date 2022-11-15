@@ -1,5 +1,6 @@
 package lotto.IO;
 
+import lotto.data.OutputConstants;
 import lotto.data.Rank;
 import lotto.domain.Lotto;
 import lotto.domain.StartLotto;
@@ -15,7 +16,7 @@ import static lotto.domain.Result.getCount;
 public class Output {
 
     public static void printLotto() {
-        System.out.println(Lotto.lottoQuantity + "개를 구매했습니다.");
+        System.out.println(Lotto.lottoQuantity + OutputConstants.boughtOutput);
         for (Lotto e : StartLotto.lotto)
             printNumbers(e);
     }
@@ -29,22 +30,22 @@ public class Output {
     }
 
     public static void requestWinNum() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(OutputConstants.inputWinNumOutput);
     }
 
     public static void requestBonusInput() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(OutputConstants.inputBonusNumOutput);
     }
 
     public static void printResult() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(OutputConstants.winResultOutput);
+        System.out.println(OutputConstants.linebreakOutput);
         for (Rank e : Rank.values())
             printRank(e);
-        System.out.println("총 수익률은 " + calculate() + "%입니다.");
+        System.out.println(OutputConstants.totalRevenueOutput1 + calculate() + OutputConstants.totalRevenueOutput2);
     }
 
     public static void printRank(Rank e) {
-        System.out.println(e.getCondition() + " (" + e.getPrize() + ") - " + getCount(e.getRank()) + "개");
+        System.out.println(e.getCondition() + " (" + e.getPrizeString() + ") - " + getCount(e.getRank()) + "개");
     }
 }
