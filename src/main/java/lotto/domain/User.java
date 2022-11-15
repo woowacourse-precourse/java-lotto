@@ -15,7 +15,7 @@ public class User {
 
 
     public User(){
-
+        initWinningCount();
     }
 
     public void setBudget(Integer budget){
@@ -47,12 +47,18 @@ public class User {
                                                 Constants.NUMBER_TO_DRAW.getValue());
     }
 
+    private void initWinningCount(){
+        for (Rank rank : Rank.values()){
+            winningCount.put(rank, 0);
+        }
+    }
+
     public Map<Rank, Integer> getWinningCount(){
         return winningCount;
     }
 
     public Double getProfitRate(){
-        return (1.0) * totalProfit / budget;
+        return (100.0) * totalProfit / budget ;
     }
 
     public void confirmWinning(List<Integer> winningNumbers, Integer bonus){
