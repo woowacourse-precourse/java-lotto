@@ -1,7 +1,8 @@
 package lotto;
 
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
+import lotto.Model.Lotto;
+import lotto.Model.LottoCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
