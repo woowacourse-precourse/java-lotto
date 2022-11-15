@@ -40,7 +40,7 @@ public enum LottoRank {
     }
 
     private static LottoRank getLottoRankByHitCount(int matchCount) {
-        return lottoRankDatas().stream()
+        return lottoRanksOrderByPriceMoneyAsc().stream()
                 .filter(lottoRank -> lottoRank.matchCount == matchCount)
                 .findAny()
                 .orElse(NOTHING);
@@ -53,7 +53,7 @@ public enum LottoRank {
         return lottoRank;
     }
 
-    private static List<LottoRank> lottoRankDatas() {
+    public static List<LottoRank> lottoRanksOrderByPriceMoneyAsc() {
         return Arrays.stream(values())
                 .filter(lottoPrize -> !lottoPrize.equals(NOTHING))
                 .sorted(Comparator.comparingLong(rank -> rank.prizeMoney))
