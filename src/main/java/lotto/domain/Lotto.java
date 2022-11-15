@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -45,5 +45,8 @@ public class Lotto {
         return numbers;
     }
 
+    public boolean contain(int number) {
+        return numbers.contains(number);
+    }
 // TODO: 추가 기능 구현
 }
