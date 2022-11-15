@@ -3,9 +3,7 @@ package lotto;
 import Info.InputException;
 import Info.PrintGameInfo;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -18,6 +16,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         outOfRangeExceptioin(numbers);
+        checkNoDuplicateWinnningLotto(numbers);
         this.numbers = numbers;
     }
 
@@ -32,7 +31,18 @@ public class Lotto {
         return number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER;
     }
 
-    private static List<Integer> getIntNumbers(List<String> userInput) {
+    /**
+     * 로또 당첨 번호 자체 중복 여부 확인
+     * @param numbers
+     */
+    private void checkNoDuplicateWinnningLotto(List<Integer> numbers) {
+        Set<Integer> checkList = new HashSet<>(numbers);
+        if (checkList.size() != numbers.size()) {
+            throw new IllegalArgumentException(PrintGameInfo.getDuplicate());
+        }
+    }
+
+    public static List<Integer> getIntNumbers(List<String> userInput) {
         return userInput.stream().map(Integer::valueOf).collect(Collectors.toList());
     }
 

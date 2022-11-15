@@ -74,14 +74,14 @@ public class LottoList {
         totalMoney = test;
     }
 
-    public void setWinningLotto(Lotto lotto) {
-        checkNoDuplicateWinnningLotto(lotto);
+    public void setWinningNumber(List<Integer> numbers) {
+        Lotto lotto = new Lotto(numbers);
         winningLotto = lotto;
     }
 
     public void setBonnusNumber(int bonnusNumber) {
         if (isContainNumber(winningLotto.getNumbers(), bonnusNumber)) {
-            throw new IllegalArgumentException(PrintGameInfo.BONNUS_NUMBER_EXIST);
+            throw new IllegalArgumentException(PrintGameInfo.getBonnusNumberExist());
         }
         this.bonnusNumber = bonnusNumber;
     }
@@ -119,17 +119,6 @@ public class LottoList {
      */
     public List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(Lotto.LOTTO_MIN_NUMBER,Lotto.LOTTO_MAX_NUMBER, Lotto.LOTTO_NUMBER_COUNT);
-    }
-
-    /**
-     * 로또 당첨 번호 자체 중복 여부 확인
-     * @param lotto
-     */
-    private void checkNoDuplicateWinnningLotto(Lotto lotto) {
-        Set<Integer> checkList = new HashSet<>(lotto.getNumbers());
-        if (checkList.size() != lotto.getNumbers().size()) {
-            throw new IllegalArgumentException(PrintGameInfo.ERROR + PrintGameInfo.DUPLICATE);
-        }
     }
 
     private boolean isContainNumber(List<Integer> originList, int compare) {

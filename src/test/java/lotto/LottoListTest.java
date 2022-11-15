@@ -37,7 +37,8 @@ class LottoListTest extends NsTest{
     @ParameterizedTest
     @ValueSource(ints = {7,9})
     void 보너스번호중복_테스트(int bonnus) {
-        lottos.setWinningLotto(new Lotto(new ArrayList<>(List.of(1,2,3,4,5,6))));
+
+        lottos.setWinningNumber(new ArrayList<>(List.of(1,2,3,4,5,6)));
         lottos.setBonnusNumber(bonnus);
         lottos.checkAllLotto();
         assertThat(lottos.getTotalMoney()).isEqualTo(0);

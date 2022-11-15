@@ -25,7 +25,7 @@ public class Application {
             PrintGameInfo.printNextLine();
 
             PrintGameInfo.winningNumberInfo();
-            userLotto.setWinningLotto(inputLottoWinningNumbers());
+            userLotto.setWinningNumber(inputLottoWinningNumbers());
             PrintGameInfo.printNextLine();
 
             PrintGameInfo.bonnusNumberInfo();
@@ -50,12 +50,12 @@ public class Application {
         return amount;
     }
 
-    public static Lotto inputLottoWinningNumbers() {
+    public static List<Integer> inputLottoWinningNumbers() {
         String userInput = Console.readLine();
         InputException.wrongWinningNumberFormat(userInput);
 
         List<String> winningNumber = Arrays.asList(userInput.split(COMMA));
-        return Lotto.stringListToLotto(winningNumber);
+        return Lotto.getIntNumbers(winningNumber);
     }
 
     public static int inputBonnusNumber() {
