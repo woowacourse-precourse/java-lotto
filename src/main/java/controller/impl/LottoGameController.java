@@ -26,28 +26,38 @@ public class LottoGameController implements GameController {
 
     @Override
     public void doGame() {
-        getLotto();
-        compare();
+        try {
+            getLotto();
+            compare();
+            doPrint();
+        } catch(IllegalArgumentException e) {
+            System.out.println("[ERROR] : Invalid argument!");
+        }
+    }
+
+    private void doPrint() {
+        printer.setMoney(money);
+        printer.setResultList(resultList);
         printer.result();
     }
 
-    private void compare() {
+    private void compare() throws IllegalArgumentException {
         int index;
-        resultList = new ArrayList<>(6);
+        resultList = new ArrayList<Integer>(List.of(0,0,0,0,0,0));
         for(Lotto lotto : lottoList) {
             index = comparator.doIntCompare(this.lotto, lotto.getNumbers());
             resultList.set(index, resultList.get(index)+1);
         }
     }
 
-    private void getLotto() {
+    private void getLotto() throws IllegalArgumentException {
         int count;
         lottoList = new ArrayList<>();
         money = inputer.money();
         count = calCount();
-        for(int i = 0 ; i < count ; i++) {
-            lottoList = LottoMachine.getLotto(count);
-        }
+
+        lottoList = LottoMachine.getLotto(count);
+
         printer.allLottos(lottoList);
         inputer.inputlotto();
         inputer.inputbonus();
