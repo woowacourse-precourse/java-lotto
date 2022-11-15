@@ -35,6 +35,6 @@ class WinningLottoTest {
         int bonusNumber = 7;
         WinningLotto winningLotto = new WinningLotto(winningNumber, bonusNumber);
 
-        Assertions.assertThat(winningLotto.countWinningNumber(userNumber)).isEqualTo(3);
+        Assertions.assertThat(winningLotto.countNumberOfMatching(userNumber)).isEqualTo(3);
     }
 }
