@@ -23,20 +23,40 @@ public class GameManager {
     }
 
     public void play() {
-        Printer.printInfoMoneyInput();
-        String money = Console.readLine();
-
+        String money = getMoney();
         MoneyManager moneyManager = new MoneyManager(money);
 
-        List<Lotto> lottoGroup = publisher.getLottoGroup(money);
+        List<Lotto> lottoGroup = getLottoGroup(money);
 
-        Printer.printLottoGroup(lottoGroup);
         Map<ResultPrice, Integer> totalScore = getTotalScore(lottoGroup);
 
-        Printer.printTotalScore(totalScore);
         Double moneyReturn = moneyManager.getMoneyReturn(totalScore);
 
         Printer.printMoneyReturn(moneyReturn);
+    }
+
+    private String getMoney() {
+        Printer.printInfoMoneyInput();
+        return Console.readLine();
+    }
+
+    private List<Lotto> getLottoGroup(String money) {
+        List<Lotto> lottoGroup = publisher.getLottoGroup(money);
+        Printer.printLottoGroup(lottoGroup);
+        return lottoGroup;
+    }
+
+    private Map<ResultPrice, Integer> getTotalScore(List<Lotto> lottoGroup) {
+        List<Integer> resultNumbers = getResultNumbers();
+        Integer bonusNumber = getBonusNumber();
+
+        LottoResultDto resultDto = new LottoResultDto(resultNumbers, bonusNumber);
+        Checker checker = new Checker(resultDto);
+
+        Map<ResultPrice, Integer> totalScore = checker.getTotalScore(lottoGroup);
+        Printer.printTotalScore(totalScore);
+
+        return totalScore;
     }
 
     private List<Integer> getResultNumbers() {
@@ -56,15 +76,4 @@ public class GameManager {
 
         return Integer.parseInt(bonus);
     }
-
-    private Map<ResultPrice, Integer> getTotalScore(List<Lotto> lottoGroup) {
-        List<Integer> resultNumbers = getResultNumbers();
-        Integer bonusNumber = getBonusNumber();
-
-        LottoResultDto resultDto = new LottoResultDto(resultNumbers, bonusNumber);
-        Checker checker = new Checker(resultDto);
-
-        return checker.getTotalScore(lottoGroup);
-    }
-
 }
