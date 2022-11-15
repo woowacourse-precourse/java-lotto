@@ -87,6 +87,7 @@ public class LottoService {
 
         return false;
     }
+
     public boolean checkLottoNumber(Lotto buyingLotto, int winningLottoNumber) {
 
         for (int buyingLottoNumber : buyingLotto.getNumbers()) {
