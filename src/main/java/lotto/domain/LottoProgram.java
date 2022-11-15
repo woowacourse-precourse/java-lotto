@@ -19,8 +19,8 @@ public class LottoProgram {
 
     public LottoProgram() {
         int buyAmount = buyLotto();
-        getWinLotto();
-        winStats(buyAmount);
+        //getWinLotto();
+        //winStats(buyAmount);
     }
 
     private int buyLotto() {
@@ -35,26 +35,5 @@ public class LottoProgram {
         return buyAmount;
     }
 
-    private void getWinLotto() {
-        System.out.println(InformationLines.WIN_NUMBER_LINE.getLine());
-        List<Integer> winNumbers = inputOutput.getLottoNumbers();
 
-        System.out.println(InformationLines.BONUS_NUMBER_LINE.getLine());
-        int bonusNumber = inputOutput.getLottoBonusNumbers();
-
-        winLotto = new WinLotto(winNumbers, bonusNumber);
-    }
-
-    private void winStats(int buyAmount) {
-        for (Lotto myLotto : lottos) {
-            String compareResult = referee.compare(myLotto.getNumbers(),
-                winLotto.getNumbers(), winLotto.getBonus());
-            winLotto.updateWinHistory(compareResult);
-        }
-        double profit = calculate.calculateRateOfProfit(buyAmount, winLotto.getWinning());
-
-        System.out.println(InformationLines.WIN_STATS_LINE.getLine());
-        inputOutput.printWinHistory(winLotto.getWinHistory());
-        inputOutput.printRateOfProfit(profit);
-    }
 }
