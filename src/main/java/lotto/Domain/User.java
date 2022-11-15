@@ -45,7 +45,23 @@ public class User {
         }
         return new User(sortedList,money,bonusNumber);
     }
+;
+    public WonLotto countLotto(Lotto answer)
+    {
+        WonLotto wonLotto = new WonLotto();
+        for(int i=0;i<lottos.size();i++) {
+            List<Integer> newList = new ArrayList<>();
+            List<Integer> newList2 = new ArrayList<>();
+            newList.addAll(answer.getNumbers());
+            newList2.add(bonusNumber);
+            newList2.retainAll(lottos.get(i).getNumbers());
+            newList.retainAll(lottos.get(i).getNumbers());
+            wonLotto.addCount(newList.size(), newList2.size());
+        }
+        return wonLotto;
+    }
     @Override
     public String toString() {
         return this.lottos.toString();
-    }}
+    }
+}

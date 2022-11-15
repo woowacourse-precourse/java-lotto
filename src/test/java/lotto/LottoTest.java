@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import lotto.Domain.Lotto;
 import lotto.Domain.User;
+import lotto.Domain.WonLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -59,6 +60,20 @@ class LottoTest {
         User lottos = new User(List.of(lotto1,lotto2,lotto3),1000,9);
         assertThat(lottos.lottosSort()).usingRecursiveComparison().isEqualTo(new User(List.of(lotto4,lotto2,lotto3),1000,9));
 
+    }
+
+    @DisplayName("당첨된 번호 확인")
+    @Test
+    void checkNumber()
+    {
+        Lotto lotto1 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
+        Lotto lotto2 = new Lotto(List.of(3, 5, 9, 16, 32, 38));
+        Lotto lotto3 = new Lotto(List.of(7, 11, 16, 35, 36, 44));
+        Lotto answer = new Lotto(List.of(1,2,3,4,5,6));
+        User lottos = new User(List.of(lotto1,lotto2,lotto3),1000,9);
+        WonLotto wonLotto = new WonLotto();
+        wonLotto.addCount(2,1);
+        assertThat(lottos.countLotto(answer)).usingRecursiveComparison().isEqualTo(wonLotto);
     }
     // 아래에 추가 테스트 작성 가능
 }
