@@ -8,6 +8,9 @@ import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static lotto.util.Message.INPUT_INVALID_FORMAT;
+import static lotto.util.Message.INPUT_NOT_NUMBER;
+
 public class InputView {
 
     private static final String PAYMENT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -51,13 +54,13 @@ public class InputView {
 
     private static void validate(String input) {
         if (!input.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException("숫자가 아닌 입력입니다.");
+            throw new IllegalArgumentException(INPUT_NOT_NUMBER);
         }
     }
 
     private static void validateLuckyBalls(String input) {
         if (!PATTERN.matcher(input).matches()) {
-            throw new IllegalArgumentException("잘못된 로또 번호 입력 형식입니다.");
+            throw new IllegalArgumentException(INPUT_INVALID_FORMAT);
         }
     }
 

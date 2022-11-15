@@ -50,5 +50,4 @@ public class Statistic {
         return profitRate;
     }
 
-
 }
