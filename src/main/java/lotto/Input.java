@@ -31,12 +31,12 @@ public class Input {
 
     public static Lotto inputWinningNumber() {
         String winning = Console.readLine();
-        checkSeparator(winning);
         return createWinningLotto(winning);
     }
 
     public static Lotto createWinningLotto(String winning) {
         try {
+            checkSeparator(winning);
             List<Integer> winningLotto = Stream.of(winning.split(","))
                     .map(s -> Integer.parseInt(s))
                     .collect(Collectors.toList());
