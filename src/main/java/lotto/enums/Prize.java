@@ -8,7 +8,7 @@ public enum Prize {
     FOURTH_PRIZE(50000),
     FIFTH_PRIZE(5000);
 
-    private int value;
+    private final int value;
 
     Prize(int value) {
         this.value = value;

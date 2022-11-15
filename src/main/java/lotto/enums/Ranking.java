@@ -5,12 +5,11 @@ public enum Ranking {
     SECOND_RANK(2,5, true),
     THIRD_RANK(3,5, false),
     FOURTH_RANK(4,4, false),
-    FIFTH_RANK(5,3, false),
-    ;
+    FIFTH_RANK(5,3, false);
 
-    private int rank;
-    private int numberMatchCount;
-    private boolean bonusNumberMatchCount;
+    private final int rank;
+    private final int numberMatchCount;
+    private final boolean bonusNumberMatchCount;
 
     Ranking(int rank, int numberMatchCount, boolean bonusNumberMatchCount) {
         this.rank = rank;
