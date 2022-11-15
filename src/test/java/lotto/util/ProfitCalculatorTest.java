@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ProfitCalculatorTest {
 
     @ParameterizedTest(name = "총 수익 계산 테스트 [{index}] : {6} 원")
-    @CsvSource(value = {"5,4,0,1,0,0,1_520_000", "0,4,2,3,1,1,2_034_620_000","0,3,0,1,0,2,4_001_515_000"})
+    @CsvSource(value = {"5,4,0,1,0,0,1_520_000", "0,4,2,3,1,1,2_034_620_000", "0,3,0,1,0,2,4_001_515_000"})
     void totalProfitTest(int nonRankedNum, int fifthRankNum, int fourthRankNum, int thirdRankNum, int secondRankNum,
                          int firstRankNum, long expectedTotalProfit) {
 
@@ -22,7 +22,7 @@ class ProfitCalculatorTest {
 
         Map<WinningRank, Integer> winLottoCount = new HashMap<>();
         int index = 0;
-        for(WinningRank rank : WinningRank.values()){
+        for (WinningRank rank : WinningRank.values()) {
             winLottoCount.put(rank, rankedNumbers.get(index));
             index++;
         }
