@@ -3,9 +3,9 @@ package lotto.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.constants.utils.MessageFormatUtil;
 
 public class WinningNumber {
-    public static final String COMMA = ",";
     public static final int LOTTO_NUMBER = 0;
     public static final int BONUS_NUMBER = 1;
 
@@ -15,13 +15,13 @@ public class WinningNumber {
 
     public WinningNumber(List<String> winnerNumber) {
         validator.validateLottoNumber(winnerNumber.get(LOTTO_NUMBER));
-        this.numbers = creatNumbers(winnerNumber.get(LOTTO_NUMBER));
+        this.numbers = createNumbers(winnerNumber.get(LOTTO_NUMBER));
         validator.validateBonusNumber(winnerNumber.get(BONUS_NUMBER), numbers);
         this.bonusNumber = Integer.parseInt(winnerNumber.get(BONUS_NUMBER));
     }
 
-    private List<Integer> creatNumbers(String lottoNumber) {
-        return Arrays.stream(lottoNumber.split(COMMA))
+    private List<Integer> createNumbers(String lottoNumber) {
+        return Arrays.stream(lottoNumber.split(MessageFormatUtil.COMMA))
                 .map(Integer::parseInt)
                 .sorted()
                 .collect(Collectors.toList());
