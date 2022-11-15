@@ -14,9 +14,14 @@ public class LottoManager {
     private List<Integer> winningPrices;
 
     public void run() {
-        runBuy();
-        runInputWinningNumbers();
-        runPrintStatistics();
+        try {
+            runBuy();
+            runInputWinningNumbers();
+            runPrintStatistics();
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     private void runPrintStatistics() {

@@ -15,18 +15,13 @@ public class BuyConsole {
         System.out.println(INPUT_PRICE);
     }
 
-    public int inputPrice() {
+    public int inputPrice() throws IllegalArgumentException{
         String input = Console.readLine();
-        if (notNumbers(input)) {
-            System.out.println(INPUT_NUMBER_ERROR);
-            return inputPrice();
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
         }
-        return Integer.parseInt(input);
-    }
-
-    private boolean notNumbers(String input) {
-        Pattern p = Pattern.compile("^[0-9]*$");
-        return !p.matcher(input).matches();
     }
 
     public void printLottos(List<Lotto> lottos) {
