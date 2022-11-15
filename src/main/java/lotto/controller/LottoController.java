@@ -63,6 +63,6 @@ public class LottoController {
 
     public void showLottoResult() {
         message.lottoResultMessage();
-        message.lottoProfitMessage(user.getLottoProfit());
+        message.lottoProfitMessage(user.getLottoProfitRate());
     }
 }

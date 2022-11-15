@@ -44,7 +44,7 @@ public class User {
                 .count();
     }
 
-    public String getLottoProfit() {
+    public String getLottoProfitRate() {
         for (LottoGrade lottoGrade : lottoGrades) {
             profit += lottoGrade.getPrize();
         }

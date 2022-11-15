@@ -45,10 +45,10 @@ public class Lotto {
     }
 
     public LottoGrade getLottoGrade(WinningLotto winningLotto) {
-        int correct = compareToWinningLotto(winningLotto);
-        boolean bonus = compareToBonusNumber(winningLotto);
+        int correctCount = compareToWinningLotto(winningLotto);
+        boolean correctBonus = compareToBonusNumber(winningLotto);
 
-        return LottoGrade.getGrade(correct, bonus);
+        return LottoGrade.getGrade(correctCount, correctBonus);
     }
 
     public int compareToWinningLotto(WinningLotto winningLotto) {

@@ -16,13 +16,13 @@ public enum LottoGrade {
         this.correct = correct;
     }
 
-    public static LottoGrade getGrade(int correctOfLotto, boolean bonus) {
+    public static LottoGrade getGrade(int correctCount, boolean correctBonus) {
 
         for (LottoGrade lottoGrade : values()) {
-            if (correctOfLotto == 5 && bonus) {
+            if (correctCount == 5 && correctBonus) {
                 return LottoGrade.second;
             }
-            if (lottoGrade.correct == correctOfLotto) {
+            if (lottoGrade.correct == correctCount) {
                 return lottoGrade;
             }
         }
