@@ -6,15 +6,6 @@ import java.util.List;
 
 public class Compare {
 
-//    private final List<Integer> lottoNumbers;
-//    private final int bonusNumber;
-//
-//    public Compare(List<Integer> lottoNumbers, int bonusNumber) {
-//        validate(lottoNumbers, bonusNumber);
-//        this.lottoNumbers = lottoNumbers;
-//        this.bonusNumber = bonusNumber;
-//    }
-
     public int[] getResult(int inputMoney, List<List<Integer>> computerRandomNumbers, List<Integer> lottoNumbers, int bonusNumber ) {
         validate(lottoNumbers, bonusNumber);
         int[] result = new int[5];
@@ -37,7 +28,6 @@ public class Compare {
     }
 
     private void reflectCountforResult(List<List<Integer>> computerRandomNumbers, int bonusNumber, int[] result, int count, int i) {
-
         if (count == 3) result[0]++;
         if (count == 4) result[1]++;
         if (count == 5) {

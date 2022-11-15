@@ -16,7 +16,6 @@ public class Calculator {
     public String getRate(int inputMoney, int reward) {
         double rateWithPoint = (reward * 1.0 / inputMoney);
 
-        String rate = String.valueOf(Math.round(rateWithPoint * 10000) / 100.0);
-        return rate;
+        return String.valueOf(Math.round(rateWithPoint * 10000) / 100.0);
     }
 }

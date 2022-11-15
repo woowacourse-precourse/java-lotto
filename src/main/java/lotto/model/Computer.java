@@ -9,7 +9,6 @@ import java.util.List;
 public class Computer {
 
     public List<List<Integer>> createRandomNumbers(int inputMoney) {
-
         validate(inputMoney);
         List<List<Integer>> computerRandomNumbers = new ArrayList<>();
 
@@ -22,7 +21,6 @@ public class Computer {
     }
 
     public void validate(int inputMoney) {
-
         if (inputMoney % 1000 != 0) {
             throw new IllegalArgumentException(Exception.INVALID_PURCHASE.getExceptionMessage());
         }

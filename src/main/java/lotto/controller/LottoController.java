@@ -18,7 +18,6 @@ public class LottoController {
     private static final int[] REWARD_LEVEL = {5000, 50000, 1500000, 30000000, 2000000000};
 
     public void init() {
-
         int inputMoney = purchaseLotto();
         List<List<Integer>> computerRandomNumbers = generateRandomNumbers(inputMoney);
         int[] result = compareLottoNumbers(inputMoney, computerRandomNumbers);
@@ -27,9 +26,8 @@ public class LottoController {
 
     private int purchaseLotto() {
         OutputView.printLottoStart();
-        int inputMoney = inputPurchaseMoney();
 
-        return inputMoney;
+        return inputPurchaseMoney();
     }
 
     private int inputPurchaseMoney() {
@@ -41,7 +39,6 @@ public class LottoController {
     }
 
     private List<List<Integer>> generateRandomNumbers(int inputMoney) {
-
         List<List<Integer>> computerRandomNumbers = computer.createRandomNumbers(inputMoney);
         OutputView.printNumberOfLotto(inputMoney);
         OutputView.printRandomNumbers(computerRandomNumbers);
@@ -50,19 +47,16 @@ public class LottoController {
     }
 
     private int[] compareLottoNumbers(int inputMoney, List<List<Integer>> computerRandomNumbers) {
-
         OutputView.printLottoNumbers();
         List<Integer> lottoNumbers = inputLottoNumbers();
         OutputView.printBonusNumber();
         int bonusNumber = inputBonusNumber();
 
-        int[] result = compare.getResult(inputMoney, computerRandomNumbers, lottoNumbers, bonusNumber);
+        return compare.getResult(inputMoney, computerRandomNumbers, lottoNumbers, bonusNumber);
 
-        return result;
     }
 
     private List<Integer> inputLottoNumbers() {
-
         String[] inputNumbers = Console.readLine().split(",");
 
         List<Integer> lottoNumbers = new ArrayList<>();

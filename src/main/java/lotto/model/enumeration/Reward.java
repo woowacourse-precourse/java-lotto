@@ -11,7 +11,6 @@ public enum Reward {
 
     private final String message;
 
-
     Reward(String message) {
         this.message = message;
     }
