@@ -17,7 +17,7 @@ public class Application {
         Lotto myLottoNum = myLottoNum();
         int bonusNum = bonusNum(myLottoNum);
         int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
-
+        boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
     }
 
 //    int lottoStart;
@@ -160,4 +160,16 @@ public class Application {
         System.out.println(agreementCount);
         return agreementCount;
     }
-}
+
+    // 보너스 번호 대조
+    /**
+     * 4-1. bonusAgreement (보너스 번호 대조) 완료 <br/>
+     * bonusNum, lottoRandomNum 전달 return
+     * 
+     * @param bonusNum
+     * @param lottoRandomNum
+     * @return
+     */
+    public static boolean bonusAgreement(int bonusNum, List<Integer> lottoRandomNum) {
+        return lottoRandomNum.contains(bonusNum);
+    }
