@@ -10,9 +10,15 @@ import java.util.ArrayList;
 
 public class LottoGame {
 
-    private final ArrayList<Lotto> lottos = new ArrayList<>();
-    private ArrayList<Integer> WinningNumber = new ArrayList<>();
+    private final ArrayList<Lotto> lottos;
+    private ArrayList<Integer> WinningNumber;
     private int bonusNumber;
+    private Statistic statistic;
+
+    LottoGame(){
+        lottos = new ArrayList<>();
+        WinningNumber = new ArrayList<>();
+    }
 
     public void createLotteGame(String PurchaseMoney) {
         int number = Integer.parseInt(PurchaseMoney)/1000;
@@ -46,10 +52,8 @@ public class LottoGame {
      }
 
      public void compare(){
-        for (int i = 0 ; i< lottos.size() ; i++){
-            lottos.get(i).compare();
-        }
+         statistic = new Statistic();
+         statistic.score(WinningNumber,bonusNumber,lottos);
      }
-
 
 }

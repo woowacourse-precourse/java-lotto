@@ -3,18 +3,19 @@ package lotto;
 import static lotto.Input.*;
 import static lotto.Output.*;
 
-import java.util.ArrayList;
 
 public class LottoGameController {
     private LottoGame lottoGame;
     LottoGameController(LottoGame lottoGame) {
         this.lottoGame = lottoGame;
     }
+
     public void start(){
         getInput();
         compareResult();
         printStatistic();
     }
+
     public void getInput(){
         printPurchaseMoneyMessage();
         lottoGame.createLotteGame(getPurchaseMoney());
