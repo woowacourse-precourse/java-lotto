@@ -73,15 +73,19 @@ public class LottoBank {
         if (winningCountByRank == 4) {
             totalProfit += 50000;
         }
-        if (winningCountByRank == 5) {
-            totalProfit += 1500000;
-        }
         if (winningCountByRank == 6) {
             totalProfit += 2000000000;
+        }
+        bonusMoneyOfFiftyPlace(winningCountByRank);
+        return totalProfit;
+    }
+
+    public void bonusMoneyOfFiftyPlace(int winningCountByRank) {
+        if (winningCountByRank == 5) {
+            totalProfit += 1500000;
         }
         if (winningCountByRank == 7) {
             totalProfit += 30000000;
         }
-        return totalProfit;
     }
 }
