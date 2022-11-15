@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static lotto.enumtype.LottoValidationMsg.NOT_FORMATTING_EXCEPTION;
@@ -21,7 +22,8 @@ public class Parser {
 
     private static void isParsable(String input) {
         if (!validateFormatNumber(input)) {
-            throw new NumberFormatException(NOT_FORMATTING_EXCEPTION.getMessage());
+            System.out.println(NOT_FORMATTING_EXCEPTION.getMessage());
+            throw new NoSuchElementException(NOT_FORMATTING_EXCEPTION.getMessage());
         }
     }
 
