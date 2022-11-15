@@ -21,5 +21,11 @@ public class LottoMoney {
             throw new IllegalArgumentException("[ERROR]");
     }
 
+    public int lotteryCount() {
+        return money / LOTTERY_PRICE_PER_ONE;
+    }
 
+    public int getMoney() {
+        return money;
+    }
 }
