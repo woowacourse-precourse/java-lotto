@@ -23,4 +23,15 @@ public class LottoMachine {
 
         return LottoLine;
     }
+
+    public List<List<Integer>> makeBuyLottoPaper(String inputMoney) {
+        List<List<Integer>> LottoPaper = new ArrayList<>();
+
+        for (int i = 0; i < buyLottoLineNumber(inputMoney); i++) {
+            LottoPaper.add(makeBuyLottoLine());
+        }
+
+        return LottoPaper;
+    }
+
 }
