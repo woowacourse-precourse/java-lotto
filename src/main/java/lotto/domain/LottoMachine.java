@@ -54,7 +54,7 @@ public class LottoMachine {
 
     public void printLottos(){
         int createdNum = paid/LOTTO_PRICE;
-        System.out.println(createdNum +"개를 구매했습니다.");
+        System.out.println("\n"+createdNum +"개를 구매했습니다.");
         for(Lotto lotto:lottos){
             System.out.println(lotto.getNumbers());
         }
@@ -97,7 +97,7 @@ public class LottoMachine {
 
     public void printResult(){
         String rate = String.format("%.1f", (double) revenue * 100 / paid);
-        System.out.println("당첨 통계");
+        System.out.println("\n당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - "+ countRanking[5]+"개");
         System.out.println("4개 일치 (50,000원) - "+ countRanking[4]+"개");

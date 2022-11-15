@@ -15,7 +15,7 @@ public class User {
     public User(){};
 
     public void inputWinningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         List<String> numbers = List.of(input.split(","));
 
@@ -31,7 +31,7 @@ public class User {
     }
 
     public void inputBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonusInput = Console.readLine();
         validate.validateBonusNum(bonusInput, winningNumber);
         bonusNumber = Integer.parseInt(bonusInput);
