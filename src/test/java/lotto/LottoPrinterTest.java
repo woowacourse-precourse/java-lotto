@@ -19,6 +19,7 @@ class LottoPrinterTest {
     class PrintGeneratedLottoTest extends NsTest {
         List<Lotto> mockLotto = new ArrayList<>();
 
+        @DisplayName("랜덤으로 발행된 번호들이 그대로 출력된다.")
         @Test
         public void printLotto() {
             assertRandomUniqueNumbersInRangeTest(
@@ -44,6 +45,35 @@ class LottoPrinterTest {
                     List.of(7, 11, 30, 40, 42, 43),
                     List.of(2, 13, 22, 32, 38, 45),
                     List.of(1, 3, 5, 14, 22, 45)
+            );
+        }
+
+        @DisplayName("랜덤으로 발행된 번호들이 오름차순으로 출력된다.")
+        @Test
+        public void printLottoByAscendOrder() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run();
+                        assertThat(output()).contains(
+                                "8개를 구매했습니다.",
+                                "[8, 21, 23, 41, 42, 43]",
+                                "[3, 5, 11, 16, 32, 38]",
+                                "[7, 11, 16, 35, 36, 44]",
+                                "[1, 8, 11, 31, 41, 42]",
+                                "[13, 14, 16, 38, 42, 45]",
+                                "[7, 11, 30, 40, 42, 43]",
+                                "[2, 13, 22, 32, 38, 45]",
+                                "[1, 3, 5, 14, 22, 45]"
+                        );
+                    },
+                    List.of(21, 23, 41, 42, 43, 8),
+                    List.of(3, 11, 38, 16, 5, 32),
+                    List.of(7, 44, 16, 35, 11, 36),
+                    List.of(31, 1, 8, 41, 11, 42),
+                    List.of(38, 13, 16, 42, 14, 45),
+                    List.of(7, 40, 11, 43, 42, 30),
+                    List.of(45, 13, 32, 2, 38, 22),
+                    List.of(14, 5, 45, 1, 22, 3)
             );
         }
 

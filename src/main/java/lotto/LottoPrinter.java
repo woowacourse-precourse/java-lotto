@@ -1,6 +1,8 @@
 package lotto;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -17,8 +19,9 @@ public class LottoPrinter {
         System.out.printf(PURCHASED_ALERT_FORMAT, lottos.size());
 
         lottos.forEach(lotto -> {
-            String lottoNumbersJoinByDelimiter = lotto
-                    .getNumbers().stream().map(String::valueOf)
+            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(numbers);
+            String lottoNumbersJoinByDelimiter = numbers.stream().map(String::valueOf)
                     .collect(Collectors.joining(", "));
 
             System.out.printf(BRACKET_FORMAT, lottoNumbersJoinByDelimiter);
