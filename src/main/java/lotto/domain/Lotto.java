@@ -8,11 +8,11 @@ import lotto.constants.enums.WinResultStatus;
 import lotto.constants.messages.ExceptionMessage;
 import lotto.constants.utils.MessageFormatUtil;
 import lotto.constants.utils.NumberUtil;
+import lotto.constants.utils.WinResultUtil;
 
 public class Lotto {
     public static final int HIT_THREE = 3;
     public static final int HIT_FIVE = 5;
-    public static final int SECOND_PLACE_COUNT = 7;
 
     private final List<Integer> numbers;
 
@@ -73,7 +73,7 @@ public class Lotto {
 
     private WinResultStatus convertHitCountToWinResult(int hitCount, WinningNumber winningNumber) {
         if (isSecondPlace(hitCount, winningNumber)) {
-            return WinResultStatus.getWinResultStatus(SECOND_PLACE_COUNT);
+            return WinResultStatus.getWinResultStatus(WinResultUtil.SECOND_PLACE_COUNT);
         }
         return WinResultStatus.getWinResultStatus(hitCount);
     }
