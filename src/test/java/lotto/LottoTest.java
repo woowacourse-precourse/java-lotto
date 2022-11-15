@@ -37,7 +37,7 @@ class LottoTest {
     @Test
     void create2stPrize() {
         assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6))
-                .raffle(List.of(1, 2, 3, 4, 5, 8), 6))
+                .raffle(List.of(1, 2, 3, 4, 5, 8), 8))
                 .isEqualTo(Prize.SECOND);
     }
     @DisplayName("로또 번호가 입력 번호와 5개 일치하면 3등이다")
