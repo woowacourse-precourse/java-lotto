@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -28,17 +29,12 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
     public static Lotto generateLottoAuto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
-    }
-
-    @Override
-    public String toString() {
-        return numbers.toString();
     }
 
     public int containsCount(Lotto lotto) {
