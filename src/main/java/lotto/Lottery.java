@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.*;
-
 public class Lottery {
     public void start() {
         Buyer buyer = new Buyer();
@@ -10,8 +8,9 @@ public class Lottery {
         WinningNumber winningNumber = Generator.getWinningNumber();
 
         Drawing drawing = new Drawing(buyer, winningNumber);
-        drawing.getResult();
+
+        Result result = drawing.getResult();
+
+        result.showHistory();
     }
-
-
 }
