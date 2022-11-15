@@ -45,7 +45,7 @@ class LottoManagerTest {
     @DisplayName("랜덤 숫자에 중복이 없는지 확인")
     void isDuplication(){
         LottoManager lottoManager = new LottoManager();
-        List<List<Integer>> lists = lottoManager.makeRandomNumbers(1000);
+        List<List<Integer>> lists = lottoManager.buyerLottoNumbers(1000);
         for (List<Integer> list : lists) {
             Set<Integer> numberSet = new HashSet<>(list);
             Assertions.assertEquals(numberSet.size(),list.size());
