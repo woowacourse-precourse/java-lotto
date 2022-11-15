@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Collections;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -46,7 +47,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
+     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
