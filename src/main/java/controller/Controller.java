@@ -27,9 +27,7 @@ public class Controller {
         int lottoPaper = server.decideToBuyLotto(money);
         PrintResult.printBuyLotto(lottoPaper);
         for (int lotto = 0; lotto < lottoPaper; lotto++) {
-            List<Integer> lottoNumber = new ArrayList<>(server.publishLotto());
-            new Lotto(lottoNumber);
-            PrintResult.printLottoNumber(lottoNumber);
+            List<Integer> lottoNumber = setLottoNumber();
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
             int matchNumber = server.countMatchNumber(common);
             if(isMatchNumberUnderThree(matchNumber)){
@@ -81,5 +79,12 @@ public class Controller {
             matchNumber = 7;
         }
         return matchNumber;
+    }
+
+    private List<Integer> setLottoNumber(){
+        List<Integer> lottoNumber = new ArrayList<>(server.publishLotto());
+        new Lotto(lottoNumber);
+        PrintResult.printLottoNumber(lottoNumber);
+        return lottoNumber;
     }
 }
