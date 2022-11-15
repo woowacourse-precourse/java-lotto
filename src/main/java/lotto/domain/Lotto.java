@@ -3,21 +3,20 @@ package lotto.domain;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
-    private final int START_LOTTO_NUMBER = 1;
-    private final int END_LOTTO_NUMBER = 45;
-    private final int LOTTO_NUMBERS_LENGTH = 6;
+    private final List<Integer> NUMBERS;
+    private static final int START_LOTTO_NUMBER = 1;
+    private static final int END_LOTTO_NUMBER = 45;
+    private static final int LOTTO_NUMBERS_LENGTH = 6;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.NUMBERS = numbers;
     }
 
     public List<Integer> getLottoNumber() {
-        return numbers;
+        return NUMBERS;
     }
 
-    // TODO: 추가 기능 구현
     private void validate(List<Integer> numbers) {
         if (!isValidSize(numbers)) {
             throw new IllegalArgumentException("총 6개의 숫자를 입력해주세요.");
@@ -31,14 +30,17 @@ public class Lotto {
     }
 
     private boolean isValidSize(List<Integer> numbers) {
-        return numbers.size() == 6;
+        return numbers.size() == LOTTO_NUMBERS_LENGTH;
     }
 
     private boolean isValidRange(List<Integer> numbers) {
-        return numbers.stream().noneMatch(number -> number < START_LOTTO_NUMBER || END_LOTTO_NUMBER < number);
+        return numbers.stream()
+                        .noneMatch(number -> number < START_LOTTO_NUMBER || END_LOTTO_NUMBER < number);
     }
 
     private boolean isValidUnique(List<Integer> numbers) {
-        return numbers.stream().distinct().count() == LOTTO_NUMBERS_LENGTH;
+        return numbers.stream()
+                        .distinct()
+                        .count() == LOTTO_NUMBERS_LENGTH;
     }
 }
