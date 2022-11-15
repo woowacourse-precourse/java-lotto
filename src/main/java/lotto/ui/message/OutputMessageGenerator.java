@@ -14,8 +14,8 @@ public enum OutputMessageGenerator {
     INSTANCE;
 
     private static final String PURCHASE_LOTTO_MESSAGE_FORMAT = "%d개를 구매했습니다.";
-    private static final String RANK_RESULT_MESSAGE_FORMAT = "%d개 일치 (%s) - %d개";
-    private static final String SECOND_RANK_RESULT_MESSAGE_FORMAT = "%d개 일치, 보너스 볼 일치 (%s) - %d개";
+    private static final String RANK_RESULT_MESSAGE_FORMAT = "%d개 일치 (%s원) - %d개";
+    private static final String SECOND_RANK_RESULT_MESSAGE_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final DecimalFormat rewardFormat = new DecimalFormat("###,###");
 
     private static final String YIELD_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.";
