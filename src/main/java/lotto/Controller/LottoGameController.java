@@ -33,10 +33,10 @@ public class LottoGameController {
 
     private List<Integer> translateStringToIntegerList(String text) {
         List<Integer> integerList = new ArrayList<>();
+        String[] lottoNumberArray = text.split(",");
 
-        for (int i = 0; i < text.length(); i++) {
-            int indexChar = text.charAt(i);
-            integerList.add(indexChar - '0');
+        for (String indexString : lottoNumberArray) {
+            integerList.add(translateStringToInteger(indexString));
         }
 
         return integerList;
