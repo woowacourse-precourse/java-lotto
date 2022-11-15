@@ -15,10 +15,8 @@ public class WinningNumberInputImpl implements WinningNumberInput {
 
     @Override
     public List<Integer> inputWinningLottoNumbers() {
-        List<Integer> inputLottoNumbers = new ArrayList<>();
         System.out.println("\n당첨 번호를 입력해주세요.");
-        inputLottoNumbers.addAll(inputAgent.inputWinningNumbers());
 
-        return inputLottoNumbers;
+        return new ArrayList<>(inputAgent.inputWinningNumbers());
     }
 }
