@@ -9,6 +9,7 @@ public enum WinInfo {
     WIN4(4, 0, 50000, 4),
     WIN5(3, 0, 5000, 5);
 
+
     private int matchCnt;
     private int bonusMatchCnt;
     private long winMoney;
@@ -39,6 +40,18 @@ public enum WinInfo {
 
     public long getWinMoney(){
         return this.winMoney;
+    }
+
+    public int getMatchCnt() {
+        return this.matchCnt;
+    }
+
+    public int getBonusMatchCnt() {
+        return this.bonusMatchCnt;
+    }
+
+    public int getOrder() {
+        return this.order;
     }
 
 }
