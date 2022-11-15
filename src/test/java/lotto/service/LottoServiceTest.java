@@ -129,4 +129,21 @@ class LottoServiceTest {
             assertTrue(lotto.getNumbers().containsAll(result.getNumbers()));
         }
     }
+
+    @Nested
+    @DisplayName("로또 보너스 번호 입력 테스트")
+    class BonusNumberInputValueTest {
+
+        @Test
+        @DisplayName("입력 받은 값이 숫자가 아닌 경우")
+        void isNotNumber() {
+            // given
+            final String input = "INVALID";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getBonusNumber(input));
+        }
+    }
 }
