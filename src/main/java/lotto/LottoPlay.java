@@ -21,6 +21,7 @@ public class LottoPlay {
             LottoPrize lottoPrize = new LottoPrize(winningNumbersInfo);
             lottoPrize.getLottoStats(purchaseInfo.getUserLottos(), purchaseInfo.getPurchaseAmount());
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

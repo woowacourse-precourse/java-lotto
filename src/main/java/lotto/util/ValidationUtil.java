@@ -26,7 +26,6 @@ public class ValidationUtil {
         String regex = "[0-9]+";
 
         if (!Pattern.matches(regex, amount)) {
-            System.out.println(PURCHASE_TYPE);
             throw new IllegalArgumentException(PURCHASE_TYPE);
         }
     }
@@ -39,7 +38,6 @@ public class ValidationUtil {
     private int validateRemainder(String amount) {
         int purchaseAmount = Integer.parseInt(amount);
         if (purchaseAmount % PURCHASE_AMOUNT_COND.getNumber() != 0) {
-            System.out.println(PURCHASE_REMAINDER);
             throw new IllegalArgumentException(PURCHASE_REMAINDER);
         }
 
@@ -67,7 +65,6 @@ public class ValidationUtil {
      */
     private void validateWinningCount(String[] inputNums) {
         if (inputNums.length != MAX_COUNT.getNumber()) {
-            System.out.println(NUMBER_COUNT);
             throw new IllegalArgumentException(NUMBER_COUNT);
         }
     }
@@ -81,7 +78,6 @@ public class ValidationUtil {
                 .noneMatch(str -> str.equals(" ") || str.equals(""));
 
         if (!result) {
-            System.out.println(NUMBER_BLANK);
             throw new IllegalArgumentException(NUMBER_BLANK);
         }
     }
@@ -92,7 +88,6 @@ public class ValidationUtil {
      */
     private void validateDuplicate(String[] inputNums) {
         if (Arrays.stream(inputNums).distinct().count() != MAX_COUNT.getNumber()) {
-            System.out.println(NUMBER_DUPLICATE);
             throw new IllegalArgumentException(NUMBER_DUPLICATE);
         }
     }
@@ -107,7 +102,6 @@ public class ValidationUtil {
                 .noneMatch(this::isNotCorrectRange);
 
         if (!result) {
-            System.out.println(NUMBER_RANGE);
             throw new IllegalArgumentException(NUMBER_RANGE);
         }
     }
@@ -118,7 +112,6 @@ public class ValidationUtil {
      */
     public void validateBonusRange(int bonusNum) {
         if (isNotCorrectRange(bonusNum)) {
-            System.out.println(NUMBER_RANGE);
             throw new IllegalArgumentException(NUMBER_RANGE);
         }
     }
