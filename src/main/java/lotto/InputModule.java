@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class inputModule {
+public class InputModule {
     public static final String ErrorMessage_InputNumber = "[ERROR] 금액을 정확히 입력해 주세요.";
     public static final String ErrorMessage_NumberForm = "[ERROR] 로또 번호를 정확히 입력해 주세요.";
     public static final String ErrorMessage_BonusNumber = "[ERROR] 보너스 번호를 정확히 입력해 주세요.";
