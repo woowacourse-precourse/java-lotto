@@ -19,7 +19,8 @@ public class Lottos {
 
     public void buy(int quantity) {
         for (int count = ZERO.getNumber(); count < quantity; count++) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER.getNumber(), MAX_LOTTO_NUMBER.getNumber(), SIX.getNumber())));
+            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(
+                    MIN_LOTTO_NUMBER.getNumber(), MAX_LOTTO_NUMBER.getNumber(), SIX.getNumber())));
         }
 
     }

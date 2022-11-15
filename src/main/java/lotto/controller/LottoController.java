@@ -37,7 +37,8 @@ public class LottoController {
         winningNumber.inputWinningNumber(Console.readLine());
         inputView.printBonusNumber();
         bonusNumber.inputBonusNumber(Console.readLine());
-        winningHistory.compareLotto(winningNumber.getWinningNumber(), bonusNumber.getBonusNumber(), lottos.getLottos());
+        winningHistory.compareLotto(
+                winningNumber.getWinningNumber(), bonusNumber.getBonusNumber(), lottos.getLottos());
         winningHistory.calculateYield(lottoMoney.getMoney());
         outputView.printWinningHistory(winningHistory.getWinningHistory());
         outputView.printYield(winningHistory.getYield());
