@@ -13,10 +13,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorPrint.lottoSize.getErrorMessage());
         }
         if (new HashSet<>(numbers).size() != 6){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorPrint.lottoOverlap.getErrorMessage());
         }
     }
 
