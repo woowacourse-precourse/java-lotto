@@ -36,7 +36,7 @@ public class LottoStore {
     public void printProfits() {
         Map<String, List<Integer>> countMatchingMoney = lottoStatistics.getCountMatchingMoney();
         profits = lottoStatistics.getProfits(userLotto, winningLotto, bonusNumber, money);
-        System.out.println("탕첨 통계");
+        System.out.println("당첨 통계");
         System.out.println("---");
         System.out.printf("3개 일치 (5,000원) - %d개",countMatchingMoney.get("3").get(1));
         System.out.println();
@@ -48,7 +48,7 @@ public class LottoStore {
         System.out.println();
         System.out.printf("6개 일치 (2,000,000,000원) - %d개",countMatchingMoney.get("6").get(1));
         System.out.println();
-        System.out.printf("총 수익률은 %.1f입니다.", profits);
+        System.out.printf("총 수익률은 %.1f%%입니다.", profits);
     }
 
     public void makePurchaseNumber(int money) {
