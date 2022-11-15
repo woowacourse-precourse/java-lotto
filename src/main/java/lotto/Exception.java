@@ -54,7 +54,13 @@ public class Exception {
             }
     }
 
-
+    public void winningNumberRange(String winningNumber){
+        for(int i=0;i<winningNumber.length();i++){
+            if(!(winningNumber.charAt(i)>='0'&&winningNumber.charAt(i)<='9')){
+                throw new IllegalArgumentException(Message.ERRROR_NUMBER_RANGE.getMessage());
+            }
+        }
+    }
 
 
 }
