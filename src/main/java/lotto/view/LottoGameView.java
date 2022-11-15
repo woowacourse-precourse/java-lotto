@@ -22,6 +22,7 @@ public class LottoGameView {
         InformationMessage.INPUT_PRICE.print();
         String money = Console.readLine();
 
+        viewValidator.validateEmptyString(money);
         viewValidator.validateNumberType(money);
         viewValidator.validateMoneyIsZero(money);
         viewValidator.validateUnitOf1000(money);

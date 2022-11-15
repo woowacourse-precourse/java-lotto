@@ -8,6 +8,12 @@ public class ViewValidator {
     private static final String INVALID_NUMBER_TYPE_REGEX = "\\D";
     private static final int UNIT_OF_MONEY = 1000;
 
+    public void validateEmptyString(String number) {
+        if (number.equals("")) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_TYPE.getMessage());
+        }
+    }
+
     public void validateNumberType(String number) {
         if (Pattern.compile(INVALID_NUMBER_TYPE_REGEX).matcher(number).find()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_TYPE.getMessage());
