@@ -28,6 +28,15 @@ public class InputException {
         isDuplicate(input);
     }
 
+    public static int validateBonusNumber(String input) {
+        isAllNumeric(input);
+        if (!isBonusRange(input)) {
+            sb.append(ErrorMessage.EXCEPTION_RANGE.getValue());
+            throw new IllegalArgumentException(sb.toString());
+        }
+        return Integer.parseInt(input);
+    }
+
     public static void isAllNumeric(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             sb.append(ErrorMessage.EXCEPTION_ONLY_NUMERIC.getValue());
