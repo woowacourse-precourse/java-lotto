@@ -28,6 +28,10 @@ public enum LottoPrize {
         return reward;
     }
 
+    public int getSum(int countOfMatchedLottoNumbers) {
+        return reward * countOfMatchedLottoNumbers;
+    }
+
     public static LottoPrize getPrize(int matchCount, boolean isMatchBonusNumber) {
         return Arrays.stream(LottoPrize.values())
                 .filter(prize -> prize.matchCount == matchCount && prize.isMatchBonusNumber == isMatchBonusNumber)

@@ -14,10 +14,6 @@ public class Money {
         return new Money(money);
     }
 
-    public static Money empty() {
-        return new Money(0);
-    }
-
     public int exchangeLotto() {
         validateLottoUnit(money);
         return money / LottoConstant.LOTTO_PRICE;
