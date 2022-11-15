@@ -6,6 +6,8 @@ public class Constants {
     public static final int NUMBER_RANGE_END = 45;
     public static final int PRICE = 1000;
     public static final int LOTTO_LENGTH = 6;
+
+    public static final int SECOND_PRIZE = 30000000;
     public static final String INPUT_REQUEST_PAY = "구입금액을 입력해 주세요.";
     public static final String INPUT_REQUEST_BONUS_NUM = "보너스 번호를 입력해 주세요.";
     public static final String INPUT_REQUEST_WINNING_NUM = "당첨 번호를 입력해 주세요.";
