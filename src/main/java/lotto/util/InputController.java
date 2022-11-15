@@ -9,11 +9,11 @@ public class InputController {
 
     public Integer getBuyAmount(String strNumber) {
         if (!validateInteger(strNumber)) {
-            throw new IllegalStateException("[ERROR] 숫자가 입력되지 않았습니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자가 입력되지 않았습니다.");
         }
         Integer number = Integer.parseInt(strNumber);
         if (!validatethousand(number)) {
-            throw new IllegalStateException("[ERROR] 1000원 단위로 입력되지 않았습니다. ");
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력되지 않았습니다. ");
         }
         return number;
     }
@@ -24,7 +24,7 @@ public class InputController {
         List<Integer> winNumbers = new ArrayList<>();
         for (int i = 0; i < strWinNumbers.length; i++) {
             if (!validateInteger(strWinNumbers[i])) {
-                throw new IllegalStateException("[ERROR] 숫자가 입력되지 않았습니다.");
+                throw new IllegalArgumentException("[ERROR] 숫자가 입력되지 않았습니다.");
             }
             winNumbers.add(Integer.parseInt(strWinNumbers[i]));
         }
@@ -33,7 +33,7 @@ public class InputController {
 
     public Integer getBonusNumber(String strNumber, List<Integer> winNumbers) {
         if (!validateInteger(strNumber)) {
-            throw new IllegalStateException("숫자가 입력되지 않았습니다.");
+            throw new IllegalArgumentException("숫자가 입력되지 않았습니다.");
         }
         Integer number = Integer.parseInt(strNumber);
         validateDupliWithWinNum(number, winNumbers);
@@ -43,7 +43,7 @@ public class InputController {
 
     private void validateDupliWithWinNum(Integer number, List<Integer> winNumbers) {
         if (winNumbers.contains(number)) {
-            throw new IllegalStateException("[ERROR] 당첨 번호와 중복된 숫자가 입력되었습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복된 숫자가 입력되었습니다.");
         }
 
     }
