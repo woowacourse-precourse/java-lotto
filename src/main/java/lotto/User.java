@@ -3,11 +3,19 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    public int inputAmount() {
+    int lottoCount;
+
+    public int inputPrice() {
         String amount = Console.readLine();
         if(!Validator.isNumeric(amount) || !Validator.isThousands(amount)) {
            return -1;
         }
-        return Integer.parseInt(amount);
+        lottoCount = Integer.parseInt(amount) / 1000;
+        return lottoCount;
     }
+
+    public void purchaseLotto(int lottoCount) {
+
+    }
+
 }
