@@ -43,22 +43,23 @@ public class LottoCalculateService {
 
     public void countLottoWinning(User user, List<Integer> numbers, Lotto lotto) {
         int countContainsOfLottoWithoutBonus = countUserNumbersContainLotto(numbers, lotto.getNumbers());
-
         if (isNumberMatchedNormal(countContainsOfLottoWithoutBonus)) {
-            inputCountOfWinning(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus));
-            user.addWinningPrice(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus).getPrice());
+            winLotto(countContainsOfLottoWithoutBonus, user);
             return;
         }
         if (isNumberMatchedFiveWithBonus(countContainsOfLottoWithoutBonus, numbers, lotto)) {
-            inputCountOfWinning(Winning.FIND.valueOf(BONUS_ENUM_LABEL));
-            user.addWinningPrice(Winning.FIND.valueOf(BONUS_ENUM_LABEL).getPrice());
+            winLotto(BONUS_ENUM_LABEL, user);
             return;
         }
         if (isNumberMatchedFive(countContainsOfLottoWithoutBonus, numbers, lotto)) {
-            inputCountOfWinning(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus));
-            user.addWinningPrice(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus).getPrice());
+            winLotto(countContainsOfLottoWithoutBonus, user);
             return;
         }
+    }
+
+    public void winLotto(int value, User user) {
+        inputCountOfWinning(Winning.FIND.valueOf(value));
+        user.addWinningPrice(Winning.FIND.valueOf(value).getPrice());
     }
 
     public int countUserNumbersContainLotto(List<Integer> userNumbers, List<Integer> lottoNumbers) {
@@ -76,7 +77,8 @@ public class LottoCalculateService {
     }
 
     public boolean isNumberMatchedNormal(int countContainsOfLotto) {
-        if (countContainsOfLotto == THREE_NUMBER_MATCHES || countContainsOfLotto == FOUR_NUMBER_MATCHES || countContainsOfLotto == SIX_NUMBER_MATCHES) {
+        if (countContainsOfLotto == THREE_NUMBER_MATCHES || countContainsOfLotto == FOUR_NUMBER_MATCHES
+                || countContainsOfLotto == SIX_NUMBER_MATCHES) {
             return true;
         }
         return false;
