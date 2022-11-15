@@ -21,14 +21,6 @@ public enum ValidationLottoNumbers {
     private String errorMessage;
     private Boolean isThrow;
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public Boolean getIsThrow() {
-        return isThrow;
-    }
-
     ValidationLottoNumbers(Function<List<Integer>, Boolean> expression, String errorMessage, Boolean isThrow) {
         this.expression = expression;
         this.errorMessage = errorMessage;
@@ -40,5 +32,13 @@ public enum ValidationLottoNumbers {
                 .filter(v -> !v.expression.apply(numbers))
                 .findFirst()
                 .orElse(NORMAL);
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public Boolean getIsThrow() {
+        return isThrow;
     }
 }

@@ -1,14 +1,12 @@
 package lotto.user.validation;
 
-import lotto.lotto.validation.ValidationLottoNumbers;
-
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public enum ValidationPurchasePrice {
-    CHECK_PRICE_INTEGER(price -> Pattern.matches("^[0-9]*$", price), "[ERROR] 금액은 자연수여야 합니다.", true),
+    CHECK_PRICE_INTEGER(price -> Pattern.matches("^[0-9]*$", price),
+            "[ERROR] 금액은 자연수여야 합니다.", true),
     CHECK_PRICE_NUMBER(money -> Integer.parseInt(money) % 1000 == 0,
             "[ERROR] 로또 번호는 중복값이 없어야 합니다.", true),
     CHECK_PRICE_POSITIVE(money -> Integer.parseInt(money) >= 0,
@@ -18,14 +16,6 @@ public enum ValidationPurchasePrice {
     private Function<String, Boolean> expression;
     private String errorMessage;
     private Boolean isThrow;
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public Boolean getIsThrow() {
-        return isThrow;
-    }
 
     ValidationPurchasePrice(Function<String, Boolean> expression, String errorMessage, Boolean isThrow) {
         this.expression = expression;
@@ -38,5 +28,13 @@ public enum ValidationPurchasePrice {
                 .filter(v -> !v.expression.apply(price))
                 .findFirst()
                 .orElse(NORMAL);
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public Boolean getIsThrow() {
+        return isThrow;
     }
 }

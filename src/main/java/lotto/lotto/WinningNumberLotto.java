@@ -7,10 +7,10 @@ import java.util.List;
 
 public class WinningNumberLotto extends Lotto {
 
-    private int bonusNumber;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
 
+    private int bonusNumber;
 
     public WinningNumberLotto() {
         super(InputNumber.createNumber());
