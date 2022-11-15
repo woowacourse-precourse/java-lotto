@@ -2,6 +2,10 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        new Manager().init();
+        try {
+            new Manager().init();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
