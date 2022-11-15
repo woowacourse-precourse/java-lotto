@@ -1,8 +1,7 @@
 package lotto.ui;
 
-import lotto.domain.lottoData.Lotto;
 import lotto.domain.Rank;
-import lotto.domain.lottoData.TotalWinnerLotto;
+import lotto.domain.lottoData.Lotto;
 
 import java.util.List;
 import java.util.Map;

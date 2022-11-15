@@ -9,7 +9,7 @@ public class WinnerLotto {
 
     public WinnerLotto(List<Integer> lottoNumbers) {
         validateBonusNumber(lottoNumbers.subList(0, 6), lottoNumbers.get(6));
-        this.normalNumbers = lottoNumbers.subList(0,6);
+        this.normalNumbers = lottoNumbers.subList(0, 6);
         this.bonusNumber = lottoNumbers.get(6);
     }
 

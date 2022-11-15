@@ -29,6 +29,7 @@ public class InputUI {
 
         return normalNumbers;
     }
+
     private List<Integer> getNormalNumbers() {
         outputUI.printMessage(NORMAL_NUMBER_INPUT_MESSAGE);
         String normalNumbers = Console.readLine();

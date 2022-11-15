@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class RaffleResultCalculator {
 
+    private final double PERCENTAGE_CORRECTION = 100.0;
     private final int LOTTO_PRICE = 1000;
-    private static final double PERCENTAGE_CORRECTION = 100.0;
 
     public double getProfitRate(Map<Rank, Integer> lottoResult, int lottosSize) {
         int totalWinningMoney = 0;

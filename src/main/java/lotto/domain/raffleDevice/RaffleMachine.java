@@ -3,7 +3,9 @@ package lotto.domain.raffleDevice;
 import lotto.domain.Rank;
 import lotto.domain.lottoData.Lotto;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RaffleMachine {
 

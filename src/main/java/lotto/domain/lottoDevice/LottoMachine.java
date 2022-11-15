@@ -11,9 +11,6 @@ public class LottoMachine {
 
     private final int LOTTO_PRICE = 1000;
 
-    public LottoMachine() {
-    }
-
     public List<Lotto> createLottoWithMoney(int money) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 1; i <= money / LOTTO_PRICE; i++) {
