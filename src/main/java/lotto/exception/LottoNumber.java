@@ -15,5 +15,14 @@ public class LottoNumber {
         }
     }
 
+    public static void exceptionRange(List<Integer> lotto) {
+        int rangeStart = Number.RANGE_START.getNumber();
+        int rangeEnd = Number.RANGE_END.getNumber();
+        for (int i = 0; i < lotto.size(); i++) {
+            if (!(rangeStart <= lotto.get(i) && lotto.get(i) <= rangeEnd)) {
+                throw new IllegalArgumentException(Error.WRONG_LOTTOS_RANGE.getMsg());
+            }
+        }
+    }
 
 }
