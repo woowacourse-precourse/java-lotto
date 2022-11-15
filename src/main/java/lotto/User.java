@@ -82,7 +82,7 @@ public class User {
             int coincideCount = result.getCoincideCount();
             int bonus = result.getBonus();
             int bonusCount = 0;
-            if (bonus > 0) {
+            if (bonus > 0 && coincideCount == 5) {
                 bonusCount = 2;
             }
             this.results.get(coincideCount + bonusCount).add(result);
