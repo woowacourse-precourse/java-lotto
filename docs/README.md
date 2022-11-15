@@ -14,7 +14,7 @@
 - [x] 중복되지 않는 6개의 숫자 뽑기 - NumberGenerator
 
 - [ ] 당첨 번호 추첨 (중복되지 않는) - LottoHeadOffice
-    - [ ] 당첨 번호 입력 받기 (6개) - LottoHeadOffice#inputWinningNum
+    - [x] 당첨 번호 입력 받기 (6개) - LottoHeadOffice#inputWinningNum
     - [ ] 보너스 번호 입력 받기 (1개) - LottoHeadOffice#inputBonusNum
 
 - [ ] 당첨 금액 확인 - LottoResult
