@@ -34,19 +34,25 @@ public class OutputUI {
         String bonusMoney = "30,000,000";
         String[] moneys = {"5,000", "50,000", "1,500,000", bonusMoney, "2,000,000,000"};
 
-
         matches = lotto.countWinningResult(userRandomNumber, count, matches, bonusNumber);
 
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = 0; i < matches.length; i++) {
-            if (i == 3) {
-                System.out.println("5개 일치, 보너스 볼 일치 (" + bonusMoney + "원) - " + matches[i] + "개");
-            } else if (i == 4) {
-                System.out.println((i + 2) + "개 일치 (" + moneys[i] + "원) - " + matches[i] + "개");
-            } else {
-                System.out.println((i + 3) + "개 일치 (" + moneys[i] + "원) - " + matches[i] + "개");
-            }
+            printTheNumberOfCases(i, matches, moneys, bonusMoney);
         }
+    }
+
+    public void printTheNumberOfCases(int index, int[] matches, String[] moneys, String bonusMoney) {
+        if (index == 3) {
+            System.out.println("5개 일치, 보너스 볼 일치 (" + bonusMoney + "원) - " + matches[index] + "개");
+            return;
+        }
+        if (index == 4) {
+            System.out.println((index + 2) + "개 일치 (" + moneys[index] + "원) - " + matches[index] + "개");
+            return;
+        }
+
+        System.out.println((index + 3) + "개 일치 (" + moneys[index] + "원) - " + matches[index] + "개");
     }
 }
