@@ -1,15 +1,15 @@
 package lotto.playlotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.playlotto.object.Lotto;
 import lotto.playlotto.object.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PlayLottoTest {
 
@@ -77,7 +77,8 @@ class PlayLottoTest {
     @DisplayName("일치하는 번호갯수와 보너스 일치 갯수를 전달하면 필드에 결과를 반영한다.")
     @Test
     void check_result() {
-    }
+        int correct_num_count = 6;
+        int correct_bonus = 0;
 
 
     }
