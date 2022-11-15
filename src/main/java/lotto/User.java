@@ -65,11 +65,13 @@ public class User {
 		double totalReturn = 0;
 
 		for (Prize prize : result.keySet()) {
-			int prizeMoney = prize.getPrizeMoney();
-			int winningNumber = result.get(prize);
-			totalReturn +=  ((double) prizeMoney / (double) (purchaseAmount / 100)) * winningNumber ;
+			double prizeMoney = (double) prize.getPrizeMoney();
+			double winningNumber = (double) result.get(prize);
+			totalReturn += prizeMoney * winningNumber ;
 		}
-		System.out.println("총 수익률은 "+String.format("%.1f", totalReturn)+"%입니다.");
+
+		totalReturn /= (purchaseAmount / 100);
+		System.out.println("총 수익률은 "+String.format("%,.1f", totalReturn)+"%입니다.");
 	}
 
 	public void start() {
