@@ -4,7 +4,6 @@ import lotto.*;
 import view.InputView;
 import view.OutputView;
 
-import java.util.Collections;
 import java.util.List;
 
 public class MainController {
@@ -26,7 +25,7 @@ public class MainController {
         } catch (IllegalArgumentException e) {
             e.getMessage();
             System.out.println("[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.");
-            new LottoException().inputException(inputMoney);
+            new LottoException().inputMoneyException(inputMoney);
         }
         lottoCount = new LottoStore().calculateLottoCount(inputMoney);
         OutputView.printLottoCount(lottoCount);
@@ -41,7 +40,7 @@ public class MainController {
 
     public void makeWinningLottoController() {
         winningNumber = InputView.inputWinningNumber();
-        new LottoException().WinningException(winningNumber);
+        new LottoException().winningException(winningNumber);
         winningNumbers = new WinningLotto().creteWinningNumbers(winningNumber);
         compareController();
     }

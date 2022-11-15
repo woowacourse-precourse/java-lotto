@@ -14,5 +14,8 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if (!new LottoException().isDuplicate(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoException {
 
-    public void inputException(int inputMoney) throws IllegalArgumentException {
+    public void inputMoneyException(int inputMoney) throws IllegalArgumentException {
         if (!isNumber(inputMoney)) {
             throw new IllegalArgumentException();
         }
@@ -18,7 +18,7 @@ public class LottoException {
         return true;
     }
 
-    public void WinningException(String winningNumber) throws IllegalArgumentException {
+    public void winningException(String winningNumber) throws IllegalArgumentException {
         String[] winningNumbers = winningNumber.split(",");
         for (String number : winningNumbers) {
             int count = Collections.frequency(List.of(winningNumbers), number);
@@ -26,5 +26,15 @@ public class LottoException {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public boolean isDuplicate(List<Integer> numbers) {
+        for (int number : numbers) {
+            int count = Collections.frequency(numbers, number);
+            if (count > 1) {
+                return false;
+            }
+        }
+        return true;
     }
 }
