@@ -24,15 +24,6 @@ public class User {
         return lotto;
     }
 
-    public String getLottoNumbers() {
-        String lottoNumbers = "";
-        for (int index = 0; index < lottoQuantity; index++) {
-            lottoNumbers += lotto.get(index).getNumbers();
-            lottoNumbers += "\n";
-        }
-        return lottoNumbers;
-    }
-
     public User(String money) {
         validate(money);
         this.money = Integer.valueOf(money);
@@ -40,13 +31,13 @@ public class User {
         this.lotto = new ArrayList<>();
     }
 
-    public void validate(String money) {
+    private void validate(String money) {
         validateNumeric(money);
         validateDivided(money);
         validatePositive(money);
     }
 
-    public void validateNumeric(String money) {
+    private void validateNumeric(String money) {
         try {
             Integer inputMoney = Integer.valueOf(money);
         } catch (NumberFormatException e) {
@@ -55,24 +46,33 @@ public class User {
         }
     }
 
-    public void validatePositive(String money) {
+    private void validatePositive(String money) {
         if (Integer.valueOf(money) < 0) {
             ErrorMessage.printNegativeNumberErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
-    public void validateDivided(String money) {
+    private void validateDivided(String money) {
         if (Integer.valueOf(money) % 1000 != 0) {
             ErrorMessage.printMoneyInputErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
+    public String makeLottoNumbers() {
+        String lottoNumbers = "";
+        for (int index = 0; index < lottoQuantity; index++) {
+            lottoNumbers += lotto.get(index).getNumbers();
+            lottoNumbers += "\n";
+        }
+        return lottoNumbers;
+    }
+
     public void buyLotto() {
-        for (int quantity = 0; quantity < this.lottoQuantity; quantity++) {
+        for (int quantity = 0; quantity < lottoQuantity; quantity++) {
             Lotto lottoNumbers = new Lotto(pickUniqueNumbersInRange(1, 45, 6));
-            this.lotto.add(lottoNumbers);
+            lotto.add(lottoNumbers);
         }
     }
 
