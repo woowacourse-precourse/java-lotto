@@ -25,6 +25,16 @@ public class WinningHistory {
         return history.get(key);
     }
 
+    public Long getRevenue() {
+        Long sum = 0L;
+
+        for(WinningAmount winningAmount : history.values()) {
+            sum += winningAmount.getPrize();
+        }
+
+        return sum;
+    }
+
     @Override
     public String toString() {
         List<WinningAmount> amounts = new ArrayList<>(history.values());
