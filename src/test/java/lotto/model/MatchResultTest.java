@@ -2,6 +2,7 @@ package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
@@ -46,5 +47,18 @@ class MatchResultTest {
         assertThat(result.getTotalPrizeMoney())
                 .isEqualTo(MatchType.SIX.getPrizeMoney());
 
+    }
+
+    @DisplayName("1,2,3,4,5 등 상금 계산")
+    @Test
+    void getTotalPrizeMoneyWhenAllMatched() {
+        setMatchResult(1, 1, 1, 1, 1);
+        MatchResult result = new MatchResult(matchResult);
+        assertThat(result.getTotalPrizeMoney()).isEqualTo(
+                Arrays.stream(MatchType.values())
+                        .map(MatchType::getPrizeMoney)
+                        .mapToDouble(Integer::doubleValue)
+                        .sum()
+        );
     }
 }
