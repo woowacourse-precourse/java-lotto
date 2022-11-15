@@ -41,18 +41,26 @@ public class Lotto {
     }
 
     public String createMessage() {
-        // TODO 리팩토링
         StringBuilder lottoResult = new StringBuilder();
         lottoResult.append(MessageFormatUtil.START_BRACKET);
+        appendBuyingLottoMessage(lottoResult);
+        deleteLastSeparator(lottoResult);
+        lottoResult.append(MessageFormatUtil.END_BRACKET);
+        return lottoResult.toString();
+    }
+
+    private void appendBuyingLottoMessage(StringBuilder lottoResult) {
         numbers.stream()
                 .sorted(Integer::compareTo)
                 .forEach(number -> lottoResult.append(number)
                         .append(MessageFormatUtil.COMMA)
                         .append(MessageFormatUtil.SPACE));
-        return lottoResult.delete(lottoResult.lastIndexOf(MessageFormatUtil.COMMA),
+    }
+
+    private void deleteLastSeparator(StringBuilder lottoResult) {
+        lottoResult.delete(lottoResult.lastIndexOf(MessageFormatUtil.COMMA),
                         lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + NumberUtil.ONE)
-                .append(MessageFormatUtil.END_BRACKET)
-                .toString();
+                .append(MessageFormatUtil.END_BRACKET);
     }
 
     public WinResultStatus getWinResult(WinningNumber winningNumber) {
