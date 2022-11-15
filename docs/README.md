@@ -1,0 +1,67 @@
+# 로또
+---
+## 기능 목록 
+- [x] 구매자는 로또를 구매한다.
+    - [x] 문자열로 된 로또 금액을 유효성 검사후 정수형 값으로 반환한다. - Buyer#LottoAmountConversion()    
+      - [x] 금액이 천원으로 나누어 떨어지지 않으면 예외 처리한다. - PurchaseAmountUnit#validDivisionByThousand()  
+      - [x] 금액이 숫자로 구성되어있지 않으면 예외 처리한다. - Buyer#validConsistByNumber()  
+    - [x] 금액에 따라 로또를 생성(구매)한다. Buyer#buyLotto()
+- [x] 문자열로 된 당첨 번호 를 유효성 검사후 알맞은 값으로 변환해서 반환한다.- LottoWinningNumber#winningNumberConversion()  
+- [x] 문자열로 된 보너스 번호를 유효성 검사후 알맞은 값으로 변환해서 반환한다.- LottoWinningNumber#bonusNumberConversion()  
+    - [x] 문자들이 숫자로되어있지 않으면 예외 처리한다. - LottoWinningNumber#validConsistNumbers()    
+    - [x] 문자가 숫자로 되어있지 않으면 예외 처리한다. - LottoWinningNumber#validConsistOneNumber()
+    - [x] 당첨 번호가 6개로 되어있지 않으면 예외 처리한다. - LottoWinningNumber#validSixNumber()    
+    - [x] 입력 된 당첨 번호를 쉼표(,)를 기준으로 분리 시켜야 한다. - LottoWinningNumber#separateByComma()    
+    - [x] 리스트로 된 숫자들이 1~45 사이의 값이 아니면 예외처리를 한다. - LottoWinningNumber#validAllNumberRange()  
+    - [x] 하나의 숫자가 1 ~ 45 사이의 값이 아니면 예외처리를 한다. - LottoWinningNumber#validOneNumberRange()
+    - [x] 당첨 번호와 보너스 번호들중 중복된 값이 존재하면 예외 처리한다. - LottoWinningNumber#validDuplicateNumber()
+- [x] 당첨 번호의 모든 유효성 검사를 진행한다. - LottoWinningNumber#validAllWinningNumber()
+- [x] 보너스 번호의 모든 유효성 검사를 진행한다. - LottoWinningNumber#validAllBonusNumber()
+- [x]  1 ~ 45 사이의 임의의 서로 다른 숫자 6개로 구성된 로또를 생성한다. - Lotto#creatLottoNumbers()  
+- [x] 당첨 번호와 로또번호를 비교 한다. - Judgment#compareToNumber() 
+- [x] 보너스 번호와 로또 번호를 비교한다. - Judgment#compareToBonus()
+  - [x] 3개 일치는 5,000원 이다.  
+  - [x] 4개 일치는 50,000원이다.  
+  - [x] 5개 일치는 1,500,000원이다.  
+  - [x] 5개 일치, 보너스 볼 일치는 30,000,000원이다.  
+  - [x] 6개 일치는 2,000,000,000원이다.  
+- [x] 당첨 개수 목록을 계산한다. - Judgment#calculateWins() 
+- [x] 당첨 개수별 랭크 번호를 계산한다. - Judgment#calculateRank()
+- [x] 당첨 금액을 계산한다. - Judgment#calculatePrizeMoney() 
+- [x] 로또 구입 금액과 당첨 금액을 토대로 수익률을 계산한다. - Buyer#calculateRate()  
+  - [x] 수익률은 소수 둘째 자리에서 반올림 한다. 
+- [x] 구매자가 발행한 로또 수량 및 번호를 출력한다. - Buyer#printLotto()  
+- [x] 로또 번호를 출력 한다. - Lotto.printLottoNumber()
+- [x] 구매자가 발행한 로또 번호 를 오름 차순으로 정렬한다. - Buyer#sortAllLottoNumber()
+- [x] 로또 번호 를 오름 차순으로 정렬한다. - Lotto#sortByNumber()
+- [x] 당첨 내역을 출력한다. - Application#printResult()
+- [x] 예외 발생시 에러 문구를 출력해야한다.
+- [] 수익률을 출력한다.
+---
+## 기능 요구 사항
+로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
+```
+- 로또 번호의 숫자 범위는 1~45까지이다.
+- 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다.
+- 당첨 번호 추첨 시 중복되지 않는 숫자 6개와 보너스 번호 1개를 뽑는다.
+- 당첨은 1등부터 5등까지 있다. 당첨 기준과 금액은 아래와 같다.
+    - 1등: 6개 번호 일치 / 2,000,000,000원
+    - 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
+    - 3등: 5개 번호 일치 / 1,500,000원
+    - 4등: 4개 번호 일치 / 50,000원
+    - 5등: 3개 번호 일치 / 5,000원
+```
+- 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다.  
+- 로또 1장의 가격은 1,000원이다.  
+- 당첨 번호와 보너스 번호를 입력받는다.   
+- 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.  
+- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.  
+- 입력
+  - 로또 구입 금액을 입력 받는다. 1,000 단위로 입력 받으며 나누어 떨어지지 않는 경우 예외 처리한다.
+  - 당첨 번호를 입력 받는다. 번호는 쉼표(,)를 기준으로 구분한다.  
+  - 보너스 번호를 입력 받는다.  
+- 출력
+  - 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다.  
+  - 당첨 내역을 출력한다.  
+  - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)  
+  - 외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "[ERROR]"로 시작해야 한다.  
