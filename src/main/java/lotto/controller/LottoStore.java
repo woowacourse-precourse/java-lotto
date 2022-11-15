@@ -6,6 +6,7 @@ import lotto.domain.PurchaseLottos;
 import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningHistory;
 import lotto.domain.WinningStatisticsCalculator;
+import lotto.domain.ExceptionMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -23,6 +24,8 @@ public class LottoStore {
             purchaseLotto();
             setWinningNumbers();
             showWinningStatics();
+        } catch (NumberFormatException exception) {
+            System.out.println(ExceptionMessage.NUMBER_FORMAT_EXCEPTION);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }

@@ -9,7 +9,8 @@ public enum ExceptionMessage {
     LOTTO_DUPLICATE_VALUE("서로 다른 숫자들을 입력해 주셔야 합니다."),
     BONUS_OUT_OF_RANGE("1 ~ 45 사이의 값을 입력해 주셔야 합니다."),
     BONUS_IS_SEPARATE_CHAR("1 ~ 45 사이의 값을 하나만 입력해 주셔야 합니다."),
-    BONUS_DUPLICATE_VALUE("당첨 번호에 없는 번호를 입력해 주셔야 합니다.");
+    BONUS_DUPLICATE_VALUE("당첨 번호에 없는 번호를 입력해 주셔야 합니다."),
+    NUMBER_FORMAT_EXCEPTION("0보다 크고 2,147,483,647 이하의 값을 입력해 주셔야 합니다.");
 
     private static final String ERROR_TAG = "[ERROR] ";
     private final String message;
