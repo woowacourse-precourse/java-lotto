@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
@@ -25,4 +25,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("시작 범위를 벗어난 로또 번호가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByInvalidBeginRangeNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6)))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("끝 범위를 벗어난 로또 번호가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByInvalidEndRangeNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
