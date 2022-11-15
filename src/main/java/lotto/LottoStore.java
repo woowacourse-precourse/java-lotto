@@ -33,13 +33,6 @@ public class LottoStore {
 
     public int calcLottoNumbers(Integer amount) {
         Integer numOfLotto = amount / LOTTO_AMOUNT_EACH;
-//        announceNumberOfIssuedLotto(numOfLotto);
         return numOfLotto;
     }
-
-    /*
-    private void announceNumberOfIssuedLotto(Integer numOfLotto) {
-        System.out.printf("%d개를 구매했습니다.\n", numOfLotto);
-    }
-     */
 }
