@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.HashMap;
+
 public class Message {
     public static void requestPurchase() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -19,5 +21,9 @@ public class Message {
     public static void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
+    }
+
+    public static void printWinningRatioMessage(double result) {
+        System.out.println("총 수익률은 " + String.format("%.1f", result) + "%입니다.");
     }
 }

@@ -1,39 +1,62 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import static Constant.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        sortLotto(numbers);
         this.numbers = numbers;
+        validate();
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    private void validate() {
+        checkDuplicate();
+        checkRange();
+        checkNumber();
+    }
+
+    private void checkDuplicate() {
+        Set<Integer> set = new HashSet<>(numbers);
+
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException(LOTTO_DUPLICATE);
         }
     }
 
-    public void sortLotto(List<Integer> numbers) {
-        Collections.sort(numbers);
-    }
-    @Override
-    public String toString() {
-        return numbers.toString();
+    private void checkRange() {
+        Utils util = new Utils();
+        List<Integer> outRange = numbers.stream()
+                .filter(util::invalidRange)
+                .collect(Collectors.toList());
+
+        if (outRange.size() != 0) {
+            throw new IllegalArgumentException(OUT_RANGE);
+        }
     }
 
-    public int countWinningHit(Lotto winningNumbers) {
+    private void checkNumber() {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(INVALID_NUMBER);
+        }
+    }
+
+    boolean isHitted(int bonus) {
+        return numbers.contains(bonus);
+    }
+
+    int countMatchedNumber(Lotto winningLotto) {
         return (int) this.numbers.stream()
-                .filter(winningNumbers::isHitted)
+                .filter(winningLotto::isHitted)
                 .count();
     }
 
-    public boolean isHitted(int num) {
-        return numbers.contains(num);
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }

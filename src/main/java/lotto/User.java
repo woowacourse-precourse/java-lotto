@@ -6,13 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
+    int price;
     public int inputPrice() {
         Message.requestPurchase();
         String amount = Console.readLine();
         if(!Validator.isNumeric(amount) || !Validator.isThousands(amount)) {
            return -1;
         }
-        return Integer.parseInt(amount) / 1000;
+        price = Integer.parseInt(amount);
+        return price / 1000;
     }
 
     public Lotto inputWinningNumbers() {

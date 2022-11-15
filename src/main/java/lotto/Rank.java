@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public enum Ranking {
+public enum Rank {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
     THIRD(5, 1_500_000),
@@ -17,31 +17,31 @@ public enum Ranking {
     private int money;
     private int hitCount;
 
-    Ranking(int hitCount, int money){
+    Rank(int hitCount, int money){
         this.hitCount = hitCount;
         this.money = money;
     }
 
-    public static Ranking getRanking(int hitCount, boolean bonusNumberHit) {
-        Ranking rank = getRankingByHitCount(hitCount);
+    public static Rank getRanking(int hitCount, boolean bonusNumberHit) {
+        Rank rank = getRankingByHitCount(hitCount);
         return checkSecondPlace(rank, bonusNumberHit);
     }
 
-    private static Ranking getRankingByHitCount(int hitCount) {
+    private static Rank getRankingByHitCount(int hitCount) {
         return rankingsOrderByPriceMoneyAsc().stream()
                 .filter(lottoRank -> lottoRank.hitCount == hitCount)
                 .findAny()
                 .orElse(NOTHING);
     }
 
-    private static Ranking checkSecondPlace(Ranking ranking, boolean bonusNumberHit) {
-        if (ranking == THIRD && bonusNumberHit) {
+    private static Rank checkSecondPlace(Rank rank, boolean bonusNumberHit) {
+        if (rank == THIRD && bonusNumberHit) {
             return SECOND;
         }
-        return ranking;
+        return rank;
     }
 
-    public static List<Ranking> rankingsOrderByPriceMoneyAsc() {
+    public static List<Rank> rankingsOrderByPriceMoneyAsc() {
         return Arrays.stream(values())
                 .filter(money -> !money.equals(NOTHING))
                 .sorted(Comparator.comparingLong(rank -> rank.money))
@@ -54,5 +54,10 @@ public enum Ranking {
 
     public int getHitCount() {
         return hitCount;
+    }
+
+    public String getDottedWinningAmount(){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(money);
     }
 }

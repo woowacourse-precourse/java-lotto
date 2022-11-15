@@ -8,17 +8,23 @@ public class LottoProgram {
     private LotteryResult lotteryResult;
     private int lottoCount;
     private List<Lotto> userLotto = new ArrayList<>();
+    private UserInterface userInterface;
+    private WinningResult winningResult;
+    private WinningNumber winningNumber;
 
     public LottoProgram() {
         this.user = new User();
         this.lotteryResult = new LotteryResult();
+        this.userInterface = new UserInterface();
+        this.winningNumber = new WinningNumber();
     }
 
     public void start() {
         lottoCount = user.inputPrice();
         Message.printPurchaseAmount(lottoCount);
         generateLotto();
-        inputLottoNumbers();
+//        inputLottoNumbers();
+        enterWinningNumber();
         printResult();
     }
 
@@ -35,18 +41,25 @@ public class LottoProgram {
 
     public void printResult() {
         Message.printResult();
+        winningResult = new WinningResult(winningNumber);
+        userInterface.printWinningHistory(winningResult.winningHistory(userLotto));
+        userInterface.printWinningRate(winningResult.winningRate(user.price));
 //        printStats();
-        printEarningRate();
+//        printEarningRate();
     }
 
-    public void printStats(Ranking ranking) {
+    public void printStats(Rank rank) {
         //lotteryResult의 winningNumber랑 bonusNumber가지고 비교 연산해야함. 한줄씩.
-        ranking = lotteryResult.calcResult(userLotto);
-        System.out.println(ranking);
+        rank = lotteryResult.calcResult(userLotto);
+        System.out.println(rank);
 //        result += ranking.getHitCount() + "개";
     }
 
     public void printEarningRate() {
 
+    }
+
+    private void enterWinningNumber() {
+        winningNumber.getWinningNumber();
     }
 }
