@@ -1,5 +1,6 @@
 package lotto.domain.lottomachine.ranking;
 
+import lotto.domain.lottomachine.frequency.Frequency;
 import lotto.domain.lottomachine.lottoticket.LottoTickets;
 import lotto.domain.lottomachine.winningnumber.WinningNumber;
 import lotto.domain.lottomachine.winningnumber.WinningNumbers;

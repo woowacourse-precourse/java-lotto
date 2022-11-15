@@ -1,5 +1,6 @@
 package lotto.domain.lottomachine.ranking;
 
+import lotto.domain.lottomachine.frequency.Frequency;
 import lotto.domain.lottomachine.payment.Payment;
 
 import java.math.BigDecimal;
