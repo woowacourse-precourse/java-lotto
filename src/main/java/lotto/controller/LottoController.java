@@ -1,11 +1,10 @@
 package lotto.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.domain.LottoNumbers;
 import lotto.domain.PlayerLottoAmount;
 import lotto.domain.Ranking;
