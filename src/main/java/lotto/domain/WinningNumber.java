@@ -57,14 +57,12 @@ public class WinningNumber {
 
     private void addResult(HashMap<Integer, Integer> result, List<Integer> numbers, int count) {
         if (count == WinningNumberStatus.FIRST.getCount()) {
-            result.put(WinningNumberStatus.FIRST.getOrder(),
-                    result.get(WinningNumberStatus.FIRST.getOrder()) + 1);
+            result.put(WinningNumberStatus.FIRST.getOrder(), result.get(WinningNumberStatus.FIRST.getOrder()) + 1);
             return;
         }
 
         if (isSecond(numbers, count)) {
-            result.put(WinningNumberStatus.SECOND.getOrder(),
-                    result.get(WinningNumberStatus.SECOND.getOrder()) + 1);
+            result.put(WinningNumberStatus.SECOND.getOrder(), result.get(WinningNumberStatus.SECOND.getOrder()) + 1);
             return;
         }
 

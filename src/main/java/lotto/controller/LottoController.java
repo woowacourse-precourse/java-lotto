@@ -36,7 +36,7 @@ public class LottoController {
             List<Integer> luckyNumber = inputLuckyNumber();
             String bonusNumberInput = inputBonusNumber(luckyNumber);
 
-            ResultResponse result = checkLotto(issuedLotteries, luckyNumber, bonusNumberInput);
+            ResultResponse result = checkLotto(issuedLotteries, luckyNumber, Integer.parseInt(bonusNumberInput));
             outputView.outputWinningStatistics(result);
             outputView.outputEarningRate(lottoService.getEarningRate(
                     purchasingAmount.getMoney(), lottoService.getEarning(result)));
@@ -51,8 +51,8 @@ public class LottoController {
         return bonusNumberInput;
     }
 
-    private ResultResponse checkLotto(List<Lotto> issuedLotteries, List<Integer> luckyNumber, String bonusNumberInput) {
-        WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), Integer.parseInt(bonusNumberInput));
+    private ResultResponse checkLotto(List<Lotto> issuedLotteries, List<Integer> luckyNumber, int bonusNumber) {
+        WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), bonusNumber);
         return winningNumber.checkLotto(issuedLotteries);
     }
 
