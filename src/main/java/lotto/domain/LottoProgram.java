@@ -16,7 +16,6 @@ public class LottoProgram {
     List<Lotto> lottos = new ArrayList<>();
     WinLotto winLotto;
 
-
     public LottoProgram() {
         int buyAmount = buyLotto();
         getWinLotto();
@@ -47,7 +46,7 @@ public class LottoProgram {
 
     private void winStats(int buyAmount) {
         for (Lotto myLotto : lottos) {
-            String compareResult = referee.compare(myLottob.getNumbers(),
+            String compareResult = referee.compare(myLotto.getNumbers(),
                 winLotto.getNumbers(), winLotto.getBonus());
             winLotto.updateWinHistory(compareResult);
         }
