@@ -41,7 +41,6 @@ public class User {
     }
 
     public List<List<Integer>> findAllLotteryNumbers() {
-        List<List<Integer>> lotteryNumbers = new ArrayList<>();
         return lotteryTickets.stream().map(Lotto::getNumbers)
                 .collect(Collectors.toList());
     }
