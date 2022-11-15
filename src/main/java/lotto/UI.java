@@ -3,23 +3,26 @@ package lotto;
 import static lotto.Constant.*;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Collections;import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UI {
     public static User getUser() {
-        System.out.println(MESSAGE_INIT_LOTTO);
+        System.out.println(MESSAGE_INIT_LOTTO_START);
         String money = Console.readLine();
+        System.out.println();
         User user = new User(money);
+        System.out.println((user.money / 1000) + MESSAGE_INIT_LOTTO_FINISH);
         printUserLotto(user.userLotto);
         return user;
     }
 
     public static void printUserLotto(List<Lotto> userNumbers) {
         for(Lotto lotto : userNumbers) {
-            List<Integer> tempNumbers = lotto.getNumbers();
+            List<Integer> tempNumbers = new ArrayList<>(lotto.getNumbers());
             Collections.sort(tempNumbers);
             System.out.println(tempNumbers);
         }
