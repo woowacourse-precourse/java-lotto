@@ -62,7 +62,7 @@ public class MatchingCondition {
     public Double calculateRateOfReturn(int money, List<Integer> placeResult){
         double profit = 0;
 
-        for(MatchLotto result : MatchLotto.values()){
+        for(ComparisonContents result : ComparisonContents.values()){
             profit +=(result.getPrize() * placeResult.get(result.getMatchNumber()));
         }
         return Math.round(profit/money *100)*1000 / 1000000.0;
