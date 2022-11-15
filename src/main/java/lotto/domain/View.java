@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
 
-import static lotto.domain.Program.setFalse;
 
 
 public class View {
