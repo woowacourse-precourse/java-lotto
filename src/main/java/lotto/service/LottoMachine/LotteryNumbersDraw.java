@@ -5,15 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LotteryNumbersDraw {
-    private final String inputDrawNumbers;
+    private String rawWinningNumbers;
     private List<Integer> drawNumbers;
     private static final String SEPARATOR = ",";
 
     public LotteryNumbersDraw(String inputDrawNumbers) {
-        this.inputDrawNumbers = inputDrawNumbers;
+        setDrawNumbers(inputDrawNumbers);
+        this.drawNumbers = getDrawNumbers();
+
     }
 
-    public void setDrawNumbers() {
+    public void setDrawNumbers(String inputDrawNumbers) {
         try {
             String deletedBlankSpaceString = inputDrawNumbers.replaceAll("\\s", "");
             this.drawNumbers = Arrays.stream(deletedBlankSpaceString.split(SEPARATOR))
@@ -24,10 +26,6 @@ public class LotteryNumbersDraw {
     }
 
     public List<Integer> getDrawNumbers() {
-        return this.drawNumbers;
-    }
-
-    public int getBonusNumber(int bonus) {
-        return bonus;
+        return drawNumbers;
     }
 }

@@ -26,7 +26,7 @@ public class InputView {
 
     public static String drawLotteryNumbers() {
         System.out.println(INPUT_DRAW_LOTTERY_NUMBERS);
-        return Console.readLine();
+        return getInput();
     }
 
     public static int drawBonusNumber() {
@@ -35,11 +35,16 @@ public class InputView {
     }
 
 
+    private static String getInput() {
+        return Console.readLine();
+    }
+
     private static int getNumberInput() {
         try {
-            return Integer.parseInt(Console.readLine());
+            String input = Console.readLine();
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 1 이상 정수를 입력해 주세요.");
         }
     }
 }

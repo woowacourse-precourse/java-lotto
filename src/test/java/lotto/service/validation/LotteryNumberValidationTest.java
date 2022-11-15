@@ -13,9 +13,9 @@ public class LotteryNumberValidationTest {
     @Test
     void lotteryNumberValidation_check_each_number_range() {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 46, 6, 7);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
+        int bonus = 45;
 
-        assertThatThrownBy(validation::isValidWinningNumbers)
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,8 +23,9 @@ public class LotteryNumberValidationTest {
     @Test
     void lotteryNumberValidation_check_size() {
         List<Integer> winningNumbers = List.of(1, 2, 3);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
-        assertThatThrownBy(validation::isValidWinningNumbers)
+        int bonus = 45;
+
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -32,8 +33,9 @@ public class LotteryNumberValidationTest {
     @Test
     void lotteryNumberValidation_check_unique_value() {
         List<Integer> winningNumbers = List.of(1, 2, 3, 3, 4, 5);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
-        assertThatThrownBy(validation::isValidWinningNumbers)
+        int bonus = 45;
+
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,29 +44,29 @@ public class LotteryNumberValidationTest {
     @Test
     void lotteryNumberValidation_check_right_input() {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
-        boolean result = validation.isValidWinningNumbers();
-        boolean EXPECTED_RESULT = true;
-        assertThat(result).isEqualTo(EXPECTED_RESULT);
-    }
+        int bonus = 45;
 
-    @DisplayName("보너스 숫자가 범위 내에 있지만 이미 존재하는 당첨 숫자를 입력한 경우 false 반환")
-    @Test
-    void bonusNumberValidation_check_includesWinningNumber() {
-        int BONUS_NUMBER = 3;
-        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
-        assertThatThrownBy(() -> validation.isValidBonusNumber(BONUS_NUMBER))
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("보너스 숫자가 범위 내에 없고 당첨숫자들과 다른 새로운 숫자를 입력한 경우 false 반환")
+    @DisplayName("보너스 숫자가 범위 내에 있지만 이미 존재하는 당첨 숫자를 입력한 경우 에러 발생")
+    @Test
+    void bonusNumberValidation_check_includesWinningNumber() {
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
+        int bonus = 3;
+
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자가 범위 내에 없고 당첨숫자들과 다른 새로운 숫자를 입력한 경우 에러 발생")
     @Test
     void bonusNumberValidation_check_isRightRange() {
-        int BONUS_NUMBER = 46;
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
-        assertThatThrownBy(() -> validation.isValidBonusNumber(BONUS_NUMBER))
+        int bonus = 45;
+
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -72,11 +74,10 @@ public class LotteryNumberValidationTest {
     @DisplayName("보너스 숫자가 범위 내에 있고, 당첨숫자들과 다른 새로운 숫자를 입력한 경우 true 반환")
     @Test
     void bonusNumberValidation_check() {
-        int BONUS_NUMBER = 8;
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
-        LotteryNumberValidation validation = new LotteryNumberValidation(winningNumbers);
-        boolean result = validation.isValidBonusNumber(BONUS_NUMBER);
-        boolean EXPECTED_RESULT = true;
-        assertThat(result).isEqualTo(EXPECTED_RESULT);
+        int bonus = 45;
+
+        assertThatThrownBy(() -> new LotteryNumberValidation(winningNumbers, bonus))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

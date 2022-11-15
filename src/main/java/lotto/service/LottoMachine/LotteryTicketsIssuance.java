@@ -6,6 +6,7 @@ import lotto.service.validation.AmountValidation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LotteryTicketsIssuance extends IllegalArgumentException{
     private final static int COUNT_LOTTERY_NUMBER_NUMBERS = 6;
@@ -47,9 +48,7 @@ public class LotteryTicketsIssuance extends IllegalArgumentException{
 
     // 랜덤 숫자 배열 1개 뽑음
     private List<Integer> issueLotteryNumbers() {
-        List<Integer> LotteryNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTERY_NUMBER_NUMBERS);
-        Collections.sort(LotteryNumbers);
-
-        return LotteryNumbers;
+        List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTERY_NUMBER_NUMBERS);
+        return lotteryNumbers.stream().sorted().collect(Collectors.toList());
     }
 }

@@ -40,12 +40,12 @@ public class LotteryResult {
 
     public void setYield(Map<Integer, Integer> scores) {
         double totalPrize = totalPrize(scores);
-        double yield = totalPrize / (userLotteries.size());
-        this.yield = Math.round(yield * 10) / 100.0;
+        double yield = totalPrize / (userLotteries.size() * 10);
+        this.yield = Math.round(yield * 10) / 10.0;
     }
 
     public double getYield() {
-        return this.yield;
+        return yield;
     }
 
     private Map<Integer, Integer> initScoreCount() {

@@ -17,7 +17,6 @@ public class LotteryNumbersDrawTest {
         ArrayList<Integer> EXPECTED_RESULT = new ArrayList<>(Arrays.asList(3, 5, 7, 8, 19, 36));
 
         LotteryNumbersDraw draw = new LotteryNumbersDraw(USER_INPUT);
-        draw.setDrawNumbers();
         List<Integer> result = draw.getDrawNumbers();
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }

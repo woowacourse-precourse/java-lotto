@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum PrizeTable {
-    FirstPlace(6, 2000000000),
-    SecondPlace(5, 30000000),
-    SecondPlaceBonus(0, 30000000),
-    ThirdPlace(4, 50000),
-    FourthPlace(3, 5000);
+    FirstPlace(6, 2_000_000_000),
+    SecondPlace(5, 1_500_000),
+    SecondPlaceBonus(0, 30_000_000),
+    ThirdPlace(4, 50_000),
+    FourthPlace(3, 5_000);
 
     public final int prize;
     public final int count;

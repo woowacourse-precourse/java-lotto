@@ -1,4 +1,4 @@
-package lotto.service.LottoMachine;
+package lotto.service.validation;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,22 +28,5 @@ class LottoTest {
     void createLottoByOverRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-    }
-
-    @DisplayName("로또 번호에 포함된 보너스 번호를 넣으면 예외 발생.")
-    @Test
-    void createLottobyBonusIncludes() {
-        int BONUS_NUMBER = 4;
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6)).isValidBonusNumber(BONUS_NUMBER))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 보너스 번호는 로또번호에 포함되지 않은 값이어야 합니다.");
-    }
-
-
-    @DisplayName("범위 내에 없는 보너스 번호를 넣으면 예외 발생.")
-    @Test
-    void createLottobyBonusRange() {
-        int BONUS_NUMBER = 46;
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6)).isValidBonusNumber(BONUS_NUMBER))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
