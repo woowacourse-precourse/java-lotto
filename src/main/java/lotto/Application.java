@@ -10,6 +10,18 @@ public class Application {
 
     public String price = "";
 
+    private static final String HOW_MUCH_LOTTO = "구입금액을 입력해주세요";
+    private static final String YOU_BUY_LOTTO = "개를 구매했습니다.";
+    private static final String INPUT_PRIZENUM = "당첨 번호를 입력해주세요.";
+    private static final String INPUT_BONUSNUM= "보너스 번호를 입력해주세요.";
+
+    private static final String FIRST_WINNER = "6개 일치 (2,000,000,000원) - ";
+    private static final String SECOND_WINNER = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    private static final String THIRD_WINNER = "5개 일치 (1,500,000원) - ";
+    private static final String FOURTH_WINNER = "4개 일치 (50,000원) - ";
+    private static final String FIFTH_WINNER = "3개 일치 (5,000원) - ";
+
+
     public String getPrice() {
         return price;
     }
@@ -17,14 +29,12 @@ public class Application {
     public List<Integer> randomLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
         Collections.sort(numbers);
-//        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers;
     }
 
     public void getLottoPrice(){
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(HOW_MUCH_LOTTO);
         price = Console.readLine();
-
     }
 
     public void wrongPrice(String price){
@@ -36,18 +46,20 @@ public class Application {
     public void buyLotto(){
         int costs = Integer.parseInt(price);
         costs = costs / 1000;
-        System.out.println(costs + "개를 구매했습니다.");
-    }
-
-    public void showLotto(){
-
+        System.out.println(costs + YOU_BUY_LOTTO);
     }
 
     public String[] getPrizeNum(){
-        System.out.println("당첨 번호를 입력해주세요.");
+        System.out.println(INPUT_PRIZENUM);
         String prizeNum = Console.readLine();
         String[] getPrizeNum = prizeNum.split(",");
         return getPrizeNum;
+    }
+
+    public String getBonusNum(){
+        System.out.println(INPUT_BONUSNUM);
+        String bonusNum = Console.readLine();
+        return bonusNum;
     }
 
     public int getCntNum(String[][] allMyLotto, String[] getPrizeNum, int cntEqualNumber, int times, int getPN, int getAML){
@@ -83,11 +95,11 @@ public class Application {
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + fifthPrize + "개");
-        System.out.println("4개 일치 (50,000원) - " + fourthPrize + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + thirdPrize + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + secondPrize + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + firstPrize + "개");
+        System.out.println(FIFTH_WINNER + fifthPrize + "개");
+        System.out.println(FOURTH_WINNER + fourthPrize + "개");
+        System.out.println(THIRD_WINNER + thirdPrize + "개");
+        System.out.println(SECOND_WINNER + secondPrize + "개");
+        System.out.println(FIRST_WINNER + firstPrize + "개");
         System.out.println("총 수익률은 " + (double)winningRate + "%입니다.");
     }
 
@@ -113,6 +125,7 @@ public class Application {
         int[] findPrize = new int[howManyTimes];        //구매한 로또가 각각 몇등인지 담겨있음
         String[][] allMyLotto = new String[howManyTimes][6];
 
+        //구매금액/1000의 개수만큼 무작위 로또 발행 + 오류 발견시 예외처리
         for(int i = 0 ; i < howManyTimes; i ++ ){
             myLotto = application.randomLotto();
             Lotto lotto = new Lotto(myLotto);
@@ -123,9 +136,9 @@ public class Application {
         }
 
         String[] getPrizeNum = application.getPrizeNum();
+        String bonusNum = application.getBonusNum();
 
-        System.out.println("보너스 번호를 입력해주세요.");
-        String bonusNum = Console.readLine();
+        //일치하는 번호의 개수를 구함 + 2등과 3등을 구분
         for(int i = 0 ; i < howManyTimes; i ++){
             int cntEqualNumbers = 0;
 
@@ -136,6 +149,7 @@ public class Application {
             findPrize[i] += cntEqualNumbers;
         }
 
+        //구매한 로또들이 각각 몇등에 해당하는지에 대한 통계
         for(int i = 0 ; i < findPrize.length; i ++){
             if(findPrize[i] == 6){
                 firstPrize += 1;
@@ -154,6 +168,7 @@ public class Application {
             }
         }
 
+        //당첨통계 및 수익률 계산
         application.totalPrize(winningRate,firstPrize,secondPrize,thirdPrize,fourthPrize,fifthPrize,howManyTimes);
     }
 }
