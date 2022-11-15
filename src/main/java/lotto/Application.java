@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 
@@ -57,11 +56,6 @@ public class Application {
         System.out.println("%입니다.");
 
         return;
-    }
-
-    public static float getRateOfReturn(int totalIncome, final int MONEY) {
-        float rateOfReturn = (float) totalIncome / MONEY * 100;
-        return rateOfReturn;
     }
 
     public static int validateBonusNum(String input, List pickedNumbers) {

@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -46,7 +45,7 @@ public class Lotto {
             int selectedNum = numbers.get(i);
 
             int result = matchNumber(selectedNum);
-            if (result > 1){
+            if (result > 1) {
                 return true;
             }
         }
