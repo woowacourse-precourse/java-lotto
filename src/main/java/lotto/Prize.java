@@ -19,7 +19,7 @@ public enum Prize {
         this.numsOfWinner++;
     }
 
-    public static void checkRanking(int numsOfMatchedNumber, boolean containBonus, int prize) {
+    public static void checkRanking(int numsOfMatchedNumber, boolean containBonus) {
         if (numsOfMatchedNumber == 6) {
             Prize.JACKPOT.plusNumsOfWinner();
         }
@@ -37,7 +37,7 @@ public enum Prize {
         }
     }
 
-    public static int computeIncome() {
+    public static int getComputedIncome() {
         int totalIncome = 0;
         for (Prize rank : Prize.values()) {
             totalIncome += rank.numsOfWinner * rank.prize;
@@ -45,8 +45,8 @@ public enum Prize {
         return totalIncome;
     }
 
-    public static float computeIncomeRate(int seedMoney) {
-        int totalIncome = computeIncome();
+    public static float getComputeIncomeRate(int seedMoney) {
+        int totalIncome = getComputedIncome();
         return totalIncome / (float) seedMoney;
     }
 }
