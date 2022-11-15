@@ -3,15 +3,13 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Buyer {
     String inputPurchaseAmount;
     int lottoAmount;
     String inputWinningNum;
+    int purchaseAmount;
 
     List<Integer> winningNum;
     int bonusNum;
@@ -31,21 +29,21 @@ public class Buyer {
     }
 
     public Buyer(String inputPurchaseAmount) {
-        vaildateNull(inputPurchaseAmount);
+        validateNull(inputPurchaseAmount);
         validateNumber(inputPurchaseAmount);
         amountRange(Integer.parseInt(inputPurchaseAmount));
         this.inputPurchaseAmount = inputPurchaseAmount;
     }
-    private void vaildateNull(String inputPurchaseAmount){
+    private void validateNull(String inputPurchaseAmount){
         if(inputPurchaseAmount == null || "0".equals(inputPurchaseAmount)) {
             throw new IllegalArgumentException("[ERROR] 입력금액은 공백이 올수 없습니다.");
         }
     }
-    private int validateNumber(String inputPurchaseAmount) {
+    private void validateNumber(String inputPurchaseAmount) {
         try {
-            return Integer.parseInt(inputPurchaseAmount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력은 숫자만 가능합니다.");
+            Integer.parseInt(inputPurchaseAmount);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 다른 값은 입력할 수 없습니다.");
         }
     }
     private void amountRange(int purchaseAmount){
@@ -60,7 +58,7 @@ public class Buyer {
         this.lottoAmount = purchaseAmount / 1000;
     }
     public void lottoAmountMessage(){
-        System.out.println(lottoAmount + "개를 구매하셨습니다.");
+        System.out.println(lottoAmount + "개를 구매했습니다.");
     }
 
     public int getPurchaseAmount(){
@@ -155,11 +153,11 @@ public class Buyer {
     }
 
     public void printResult(){
-        System.out.println("통계");
+        System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - "+FIFTH+"개");
         System.out.println("4개 일치 (50,000원) - "+FOURTH+"개");
-        System.out.println("5개 일치 (1,500,000원원) - "+THIRD+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+THIRD+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+SECOND+"개");
         System.out.println("6개 일치 (2,000,000,000원) - "+FIRST+"개");
         System.out.println("총 수익률은 " + String.format("%.1f",YIELD) + "%입니다.");
@@ -174,8 +172,10 @@ public class Buyer {
         totalLotto = new ArrayList<>();
         for(int i =0 ; i<lottoAmount ; i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(firstBallNum, LASTBALLNUM, COUNT));
-            Collections.sort(lotto.getNumbers());
-            totalLotto.add(lotto.getNumbers());
+            List<Integer> list = new ArrayList<>();
+            list.addAll((lotto.getNumbers()));
+            Collections.sort(list);
+            totalLotto.add(list);
         }
         return totalLotto;
     }
