@@ -24,7 +24,6 @@ public class Play {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     private void getPlayerInput() {
@@ -41,10 +40,5 @@ public class Play {
             lottoTicket.add(new Lotto(value));
         }
         return lottoTicket;
-    }
-
-    public static void main(String[] args) {
-        new Play().play();
-
     }
 }
