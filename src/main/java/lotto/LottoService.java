@@ -72,10 +72,23 @@ public class LottoService {
 
     private void compareLottoNumber(String winNumber, String bonusNumber){
         List<Integer> winNumbers = changeType(winNumber);
+        validateBonusNumber(bonusNumber);
         for (Lotto lotto : lottos) {
             int lottoNumbersRight = findLottoNumbersRight(lotto,winNumbers, Integer.parseInt(bonusNumber));
             lottoNumberCountRight.add(lottoNumbersRight);
         }
+    }
+
+    private void validateBonusNumber(String bonusNumber) {
+        try {
+            int bonus = Integer.parseInt(bonusNumber);
+            if (bonus<1 || bonus>45){
+                throw new IllegalArgumentException();
+            }
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+
     }
 
     private int findLottoNumbersRight(Lotto lotto, List<Integer> winNumbers, int bonusNumber){
