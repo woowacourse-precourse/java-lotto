@@ -7,12 +7,22 @@ import lotto.domain.User;
 import java.util.List;
 
 public class LottoController {
-    public void start(){
-        User user = new User();
-        Computer computer = new Computer();
+    User user = new User();
+    Computer computer = new Computer();
+    LottoProcess lottoProcess;
 
-        List<List<Integer>> lottos;
+    public void start(){
+        List<List<Integer>> lottos = inputProcess();
         List<Integer> ranks;
+
+        lottoProcess = new LottoProcess(lottos, user.getWinningNumbers(), user.getBonusNumber(), user.getMoney());
+        ranks = lottoProcess.decideRanks(lottos, user.getWinningNumbers());
+        lottoProcess.printStatistics(lottoProcess.countRanks(ranks));
+        lottoProcess.calculateRateOfReturn(lottoProcess.countRanks(ranks));
+    }
+
+    private List<List<Integer>> inputProcess(){
+        List<List<Integer>> lottos;
 
         user.inputMoney();
         lottos = computer.createLottos(user.getMoney());
@@ -20,9 +30,6 @@ public class LottoController {
         user.inputWinningNumbers();
         user.inputBonusNumber();
 
-        LottoProcess lottoProcess = new LottoProcess(lottos, user.getWinningNumbers(), user.getBonusNumber(), user.getMoney());
-        ranks = lottoProcess.decideRanks(lottos, user.getWinningNumbers());
-        lottoProcess.printStatistics(lottoProcess.countRanks(ranks));
-        lottoProcess.calculateRateOfReturn(lottoProcess.countRanks(ranks));
+        return lottos;
     }
 }
