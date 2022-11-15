@@ -17,6 +17,9 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("로또 번호는 6자리 입니다.");
         }
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("로또번호에 중복 번호가 있습니다.");
+        }
     }
 
     public void printLottoNumbers() {
