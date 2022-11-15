@@ -65,4 +65,17 @@ public class Machine {
     private boolean checkBonusNumber(Lotto lotto, int bonusNumber) {
         return lotto.getNumbers().contains(bonusNumber);
     }
+
+    public double calculateYieldRate(Map<Rank, Integer> ranks) {
+        long sum = 0;
+        int totalCount = 0;
+        for (Rank rank : ranks.keySet()) {
+            int count = ranks.get(rank);
+            sum += (count * rank.getPrize());
+            totalCount += count;
+        }
+
+        double yieldRate = sum / ((double) totalCount * Lotto.PRICE) * 100;
+        return yieldRate;
+    }
 }

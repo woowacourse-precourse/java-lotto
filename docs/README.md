@@ -10,7 +10,7 @@
 - [O] 구매한 로또와 당첨 번호를 비교해 일치하는 번호의 개수를 구한다. Machine#compare
 - [O] 5개 일치한 경우, 보너스 번호를 확인 한다. Machine#checkBonusNumber
 - [O] 일치한 개수에 따라 등수를 매긴다. Machine#checkRanking
-- [ ] 수익률을 계산한다. Machine#calculateRate
+- [O] 수익률을 계산한다. Machine#calculateYieldRate
 - [ ] 당첨 결과와 수익률을 출력한다. Console#result
 
 ## 🚀 기능 요구 사항

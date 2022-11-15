@@ -116,5 +116,81 @@ public class MachineTest {
         Assertions.assertThat(ranking.get(Rank.THIRD)).isEqualTo(1);
         Assertions.assertThat(ranking.get(Rank.LOSE)).isEqualTo(1);
     }
+
+
+    @DisplayName("수익률 계산 - 1등")
+    @Test
+    void calculateYieldRateFirst() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lottos.add(lotto1);
+
+        Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
+
+        double yieldRate = machine.calculateYieldRate(ranking);
+        Assertions.assertThat(yieldRate).isEqualTo(2000000);
+    }
+
+    @DisplayName("수익률 계산 - 2등")
+    @Test
+    void calculateYieldRateSecond() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        lottos.add(lotto2);
+
+        Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
+
+        double yieldRate = machine.calculateYieldRate(ranking);
+        Assertions.assertThat(yieldRate).isEqualTo(30000);
+    }
+
+    @DisplayName("수익률 계산 - 미당첨")
+    @Test
+    void calculateYieldRateLose() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+        Lotto lotto2 = new Lotto(List.of(5, 6, 7, 8, 9, 10));
+        lottos.add(lotto2);
+
+        Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
+
+        double yieldRate = machine.calculateYieldRate(ranking);
+        Assertions.assertThat(yieldRate).isEqualTo(0);
+    }
+
+
+    @DisplayName("수익률 계산 - 5등 1개, 미당첨 1개")
+    @Test
+    void calculateYieldRateFive1Lose1() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 8, 9, 10));
+        lottos.add(lotto1);
+        Lotto lotto2 = new Lotto(List.of(5, 6, 7, 8, 9, 10));
+        lottos.add(lotto2);
+
+        Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
+
+        double yieldRate = machine.calculateYieldRate(ranking);
+        Assertions.assertThat(yieldRate).isEqualTo(250);
+    }
 }
+
+
 
