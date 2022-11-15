@@ -14,6 +14,7 @@ public class Referee {
         this.bonusNumber = bonusNumber;
     }
 
+
     public int getWinningNumberMatchCount(Lotto lotto) {
         int winNumberMatchCount = 0;
         for (Integer winningNumber : winningNumbers.getNumbers()) {
@@ -22,5 +23,13 @@ public class Referee {
             }
         }
         return winNumberMatchCount;
+    }
+
+    public int getBonusNumberMatchCount(Lotto lotto) {
+        int bonusNumberMatchCount = 0;
+        if (lotto.getNumbers().contains(bonusNumber)) {
+            bonusNumberMatchCount++;
+        }
+        return bonusNumberMatchCount;
     }
 }
