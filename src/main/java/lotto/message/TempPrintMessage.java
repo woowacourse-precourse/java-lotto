@@ -4,12 +4,6 @@ import java.util.LinkedHashMap;
 import lotto.domain.place.MatchResult;
 
 public class TempPrintMessage {
-    public static final String formatTest = "%d개를 구매했습니다.";
-
-    public static String createPurchaseQuantityMsg(int quantity) {
-        return String.format(formatTest, quantity);
-    }
-
     public static String createPlaceHistoryMsg(LinkedHashMap<MatchResult, Integer> matchResults) {
         StringBuffer stringBuffer = new StringBuffer();
 

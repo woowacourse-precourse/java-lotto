@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import static lotto.message.PurchaseLottosMessage.makePurchaseLottoMessage;
+import static lotto.message.PurchaseMessage.makePurchaseLottoMessage;
 
 import lotto.domain.PurchaseAmount;
 import lotto.domain.User;

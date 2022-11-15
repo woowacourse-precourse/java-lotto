@@ -5,16 +5,16 @@ import static lotto.message.PrintMessage.PURCHASE_QUANTITY;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.PurchaseLottos;
 
-public class PurchaseLottosMessage {
+public class PurchaseMessage {
 
     private final PurchaseLottos purchaseLottos;
 
-    public PurchaseLottosMessage(PurchaseLottos purchaseLottos) {
+    public PurchaseMessage(PurchaseLottos purchaseLottos) {
         this.purchaseLottos = purchaseLottos;
     }
 
-    public static PurchaseLottosMessage makePurchaseLottoMessage(PurchaseLottos purchaseLottos) {
-        return new PurchaseLottosMessage(purchaseLottos);
+    public static PurchaseMessage makePurchaseLottoMessage(PurchaseLottos purchaseLottos) {
+        return new PurchaseMessage(purchaseLottos);
     }
 
     public String getMessage() {

@@ -11,7 +11,7 @@ import lotto.domain.statistics.WinningStatistics;
 import lotto.io.InputControl;
 import lotto.io.OutputControl;
 import lotto.message.PrintMessage;
-import lotto.message.PurchaseLottosMessage;
+import lotto.message.PurchaseMessage;
 
 public class User {
 
@@ -47,7 +47,7 @@ public class User {
         displayMessage(INPUT_BONUS_NUMBER);
         int ret = InputControl.readInt();
         displayLineSeparator();
-        
+
         return ret;
     }
 
@@ -59,7 +59,7 @@ public class User {
         return ret;
     }
 
-    public void displayPurchaseResult(PurchaseLottosMessage purchaseLottosMessage) {
-        OutputControl.println(purchaseLottosMessage.getMessage());
+    public void displayPurchaseResult(PurchaseMessage purchaseMessage) {
+        OutputControl.println(purchaseMessage.getMessage());
     }
 }
