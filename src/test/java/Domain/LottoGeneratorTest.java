@@ -32,4 +32,14 @@ class LottoGeneratorTest {
         assertThatThrownBy(() -> new LottoGenerator(price)) //when
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("구입 금액이 1000원 단위가 아니면 예외가 발생한다.")
+    void divideByThousand() {
+        //given
+        String price = "124";
+        //then
+        assertThatThrownBy(() -> new LottoGenerator(price)) //when
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
