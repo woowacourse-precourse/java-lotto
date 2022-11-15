@@ -10,6 +10,7 @@ public class InputView {
     private static final String ERR_INPUT_NOT_INTEGER = "[ERROR] 숫자를 입력 해야 합니다.";
     private static final String INPUT_LOTTO_PURCHASE_MONEY = "구입금액을 입력해 주세요.";
     private static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public int inputLottoPurchaseMoney() {
         System.out.println(INPUT_LOTTO_PURCHASE_MONEY);
@@ -21,6 +22,11 @@ public class InputView {
         return Arrays.stream(Console.readLine().split(","))
                 .map(i -> convertStringToInt(i))
                 .collect(Collectors.toList());
+    }
+
+    public int inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
+        return convertStringToInt(Console.readLine());
     }
 
     public int convertStringToInt(String input) {
