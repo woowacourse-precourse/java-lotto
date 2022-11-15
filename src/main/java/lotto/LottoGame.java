@@ -14,10 +14,6 @@ public class LottoGame {
     public Input input;
     public Output output;
 
-    public void LottoGame() {
-        this.gameResult = new ArrayList<Integer>(6); // Rank : 1~5
-    }
-
     public void play() {
         this.input = new Input();
         this.output = new Output();
@@ -27,7 +23,7 @@ public class LottoGame {
         this.winningNumber = input.getWinningNumber();
         this.bonusNumber = input.getBonusNumber();
         getGameResult();
-        output.printGameResult(gameResult);
+        output.printGameResult(this.gameResult);
         // TODO: 수익률 계산 및 출력
     }
 
@@ -47,9 +43,14 @@ public class LottoGame {
     }
 
     public void getGameResult() {
+        this.gameResult = new ArrayList<Integer>(6); // Rank : 1~5
+        for (int i=0; i<6; i++) {
+            gameResult.add(0);
+        }
         for (int order=0; order< issuedLotto.size(); order++) {
             Lotto lotto = issuedLotto.get(order);
             int rank = lotto.calculateRank(winningNumber, bonusNumber);
+
             if (rank < 6) {
                 gameResult.set(rank, gameResult.get(rank)+1);
             }
