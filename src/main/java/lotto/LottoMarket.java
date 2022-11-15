@@ -28,6 +28,10 @@ public class LottoMarket {
         }
     }
 
-    public void printLottoInfo() {
+    private void printLottoInfo() {
+        System.out.println(purchaseLottoNum + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 }
