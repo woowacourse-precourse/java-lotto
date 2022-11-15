@@ -25,6 +25,15 @@ class ValidationTest {
 
     }
 
+    @DisplayName("로또 그입 금액이 숫자로 구성되어있지 않으면 에러가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "ㄱㄴㄷ", "12.", "!*%"})
+    void createPurchaseMoneyOtherThanNum(String purchaseMoney) {
+        assertThatThrownBy(() -> Validation.validatePurchaseMoneyConsistOfNum(purchaseMoney))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     @DisplayName("당첨 번호 입력에 숫자와 , 이외의 값이 들어가면 에러가 발생한다,")
     @Test
     void createWinningNumberByOtherThanNumAndComma() {
