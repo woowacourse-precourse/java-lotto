@@ -22,6 +22,14 @@ public class LottoGenerator {
             Lotto lotto = new Lotto(lottoNumbers);
             lottos.add(lotto);
         }
+        printLotto();
+    }
+
+    private void printLotto() {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
     public List<Lotto> getLottos() {
