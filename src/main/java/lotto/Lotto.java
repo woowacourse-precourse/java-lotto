@@ -1,14 +1,19 @@
 package lotto;
 
-import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
+
+
 
 public class Lotto {
     private final List<Integer> numbers;
-
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateNumber(numbers);
         this.numbers = numbers;
+
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -31,5 +36,4 @@ public class Lotto {
         return numbers;
     }
 
-    // TODO: 추가 기능 구현
 }

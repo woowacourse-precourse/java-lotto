@@ -49,4 +49,11 @@ public class BuyLotto {
         return numbers;
     }
 
+    public  List<List<Integer>> getLotto_all() {
+        return Lotto_Random_arr;
+    }
+
+    public int getBuyNum() {
+        return buyNum;
+    }
 }
