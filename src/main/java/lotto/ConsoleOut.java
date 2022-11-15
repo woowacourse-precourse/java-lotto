@@ -24,4 +24,9 @@ public class ConsoleOut {
 		printEmptyLine();
 		System.out.println(Constants.PRINT_INPUT_GOAL);
 	}
+
+	public static void printInputBonus() {
+		printEmptyLine();
+		System.out.println(Constants.PRINT_INPUT_BONUS);
+	}
 }
