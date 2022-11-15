@@ -36,7 +36,7 @@ public class PurchaseTest {
     void getLottoYield() {
         int winAmount = 30010000;
         double lottoYield = purchase.findLottoYield(winAmount);
-        assertThat(lottoYield).isEqualTo(3001000.0);
+        assertThat(lottoYield).isEqualTo(1500500.0);
     }
 
     @DisplayName("구입 금액 숫자 예외 처리 테스트")
