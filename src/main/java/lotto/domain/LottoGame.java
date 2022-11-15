@@ -25,7 +25,7 @@ public class LottoGame {
     public static final int _5th_index = 4;
 
     // 로또 구매 함수
-    public static List<Lotto> buyLotto(int money) {
+    public static List<Lotto> buy(int money) {
         validateMoney(money);
         return generateLotto(calcLottoCount(money));
     }
@@ -58,11 +58,11 @@ public class LottoGame {
     }
 
     // 로또 결과 확인 함수
-    public static int[] getResult(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
+    public static int[] getResult(List<Lotto> lotto, Lotto winningLotto, int bonus) {
         int[] matchTable = initMatchTable();
 
-        for (Lotto lotto : lottoes) {
-            eLottoPlace place = getMatchTable(lotto, winningLotto, bonus);
+        for (Lotto element : lotto) {
+            eLottoPlace place = getMatchTable(element, winningLotto, bonus);
             matchTable = appendPlaceToResult(matchTable, place);
         }
         return matchTable;

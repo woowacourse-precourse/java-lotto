@@ -16,7 +16,7 @@ public class LottoGameTest {
     @Test
     void buyLottoWithNotEnoughMoney() {
         assertThatThrownBy(() -> {
-            LottoGame.buyLotto(999);
+            LottoGame.buy(999);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ public class LottoGameTest {
     @Test
     void buyLottoWithNoMoney() {
         assertThatThrownBy(() -> {
-            LottoGame.buyLotto(0);
+            LottoGame.buy(0);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -32,7 +32,7 @@ public class LottoGameTest {
     @Test
     void buyLottoWithWrongUnitPrice() {
         assertThatThrownBy(() -> {
-            LottoGame.buyLotto(1500);
+            LottoGame.buy(1500);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,7 +42,7 @@ public class LottoGameTest {
         int money = 35000;
         int lottoPrice = 1000;
 
-        List<Lotto> buyLottoes = LottoGame.buyLotto(35000);
+        List<Lotto> buyLottoes = LottoGame.buy(35000);
 
         Assertions.assertThat(buyLottoes.size()).isEqualTo(money / lottoPrice);
     }

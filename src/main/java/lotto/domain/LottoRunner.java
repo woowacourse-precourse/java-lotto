@@ -8,16 +8,16 @@ public class LottoRunner {
     public static void run() {
         try {
             int money = LottoInStream.readAmount();
-            List<Lotto> lottoes = LottoGame.buyLotto(money);
-            LottoOutStream.showLottoList(lottoes);
+            List<Lotto> lotto = LottoGame.buy(money);
+            LottoOutStream.showLottoList(lotto);
 
             Lotto winningLotto = new Lotto(LottoInStream.readLottoNumbers());
             int bonusNumber = LottoInStream.readBonusNumber(winningLotto);
 
-            int[] matches = LottoGame.getResult(lottoes, winningLotto, bonusNumber);
+            int[] matchTable = LottoGame.getResult(lotto, winningLotto, bonusNumber);
 
-            LottoOutStream.showLottoResult(matches);
-            LottoOutStream.showROR(LottoGame.getROR(matches, money));
+            LottoOutStream.showResult(matchTable);
+            LottoOutStream.showROR(LottoGame.getROR(matchTable, money));
         } catch (IllegalArgumentException ex) {
             System.out.print(ex.getMessage());
         }

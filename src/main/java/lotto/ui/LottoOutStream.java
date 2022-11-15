@@ -7,7 +7,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
 
 public class LottoOutStream {
-    public static void showLottoResult(int[] matches) {
+    public static void showResult(int[] matches) {
         System.out.print("\n" + "당첨 통계\n---\n");
         System.out.print("3개 일치 (5,000원) - " + matches[LottoGame._5th_index] + "개\n");
         System.out.print("4개 일치 (50,000원) - " + matches[LottoGame._4th_index] + "개\n");
@@ -24,11 +24,11 @@ public class LottoOutStream {
         return new DecimalFormat("###,##0.0").format(ror);
     }
 
-    public static void showLottoList(List<Lotto> lottoes) {
-        System.out.print("\n" + lottoes.size() + "개를 구매했습니다.\n");
+    public static void showLottoList(List<Lotto> lotto) {
+        System.out.print("\n" + lotto.size() + "개를 구매했습니다.\n");
 
-        for (Lotto lotto : lottoes) {
-            lotto.showNumbers();
+        for (Lotto element : lotto) {
+            element.showNumbers();
         }
     }
 }
