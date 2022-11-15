@@ -52,8 +52,8 @@ public class Account {
         this.winningAmount = 0;
         for (WinningResult winningResult: winningResultTable.keySet()) {
             int winningCount = winningResultTable.get(winningResult);
-            long winningMoney = winningResult.getMoney();
-            this.winningAmount += winningCount * winningMoney;
+            long winningReward = winningResult.getReward();
+            this.winningAmount += winningCount * winningReward;
         }
     }
 }

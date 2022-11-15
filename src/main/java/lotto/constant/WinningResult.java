@@ -10,17 +10,17 @@ public enum WinningResult {
     ;
 
     private final String rank;
-    private final long money;
+    private final long reward;
     private final String announcement;
 
-    WinningResult(String rank, long money, String announcement) {
+    WinningResult(String rank, long reward, String announcement) {
         this.rank = rank;
-        this.money = money;
+        this.reward = reward;
         this.announcement = announcement;
     }
 
-    public long getMoney() {
-        return money;
+    public long getReward() {
+        return reward;
     }
 
     public String getAnnouncement() {
