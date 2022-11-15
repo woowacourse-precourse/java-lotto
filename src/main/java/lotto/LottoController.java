@@ -55,5 +55,10 @@ public class LottoController {
         return winningNumbers;
     }
 
+    private void checkResult(UserMoney money,Result result) {
+        outputView.printResult(result.getResult());
+        outputView.printProfitRate(result.profitRate(money));
+    }
+
 
 }
