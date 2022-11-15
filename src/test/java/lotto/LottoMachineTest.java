@@ -56,4 +56,11 @@ public class LottoMachineTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구입 금액이 10만원을 넘은 경우 예외 발생")
+    @Test
+    void validateLimitException() {
+        assertThatThrownBy(() -> lottoMachine.pickLotteries(101000))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

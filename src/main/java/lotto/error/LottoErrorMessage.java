@@ -6,8 +6,8 @@ public enum LottoErrorMessage {
     RANGE_ERROR("[ERROR] 1~45 사이의 수를 입력해 주시기 바랍니다."),
     NUMERIC_ERROR("[ERROR] 올바른 숫자를 입력해 주시기 바랍니다."),
     DUPLICATE_WIN_AND_BONUS_ERROR("[ERROR] 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다."),
-    UNIT_ERROR("[ERROR] 올바른 단위가 아닙니다.");
-
+    UNIT_ERROR("[ERROR] 올바른 단위가 아닙니다."),
+    LIMIT_ERROR("[ERROR] 구매한도를 초과했습니다.");
     private final String errorMessage;
 
     LottoErrorMessage(String errorMessage) {

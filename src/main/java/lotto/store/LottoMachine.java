@@ -1,7 +1,7 @@
 package lotto.store;
 
-import lotto.error.ValidCheck;
 import lotto.enumeration.LottoInformation;
+import lotto.error.ValidCheck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,7 @@ public class LottoMachine {
 
     public List<Lotto> pickLotteries(int pay) {
         ValidCheck.isPayUnit(pay);
+        ValidCheck.isLimit(pay);
         AtomicInteger startIndex = new AtomicInteger();
         List<Lotto> lotteries = new ArrayList<>();
 
