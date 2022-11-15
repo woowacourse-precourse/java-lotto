@@ -10,19 +10,22 @@ public class WinningNumbers {
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
-    public WinningNumbers(String input){
+    public WinningNumbers(String input) {
         validate(input);
-        this.winningNumbers= splitWinningNumbers(input);
+        this.winningNumbers = splitWinningNumbers(input);
     }
 
-    private void validate(String s){
-        StringTokenizer tokenizer= new StringTokenizer(s,",");
-        while(tokenizer.hasMoreTokens()){
+
+
+    private void validate(String s) {
+        StringTokenizer tokenizer = new StringTokenizer(s, ",");
+        while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            int number=integerCheck(token);
+            int number = integerCheck(token);
             isInRange(number);
         }
     }
+
 
     private void isInRange(int number) {
         if (number < 1 || number > 45) {
@@ -41,15 +44,19 @@ public class WinningNumbers {
         return winNum;
     }
 
-    private List<Integer> splitWinningNumbers(String s){
-        List<Integer> splitInput=new ArrayList<>();
-        StringTokenizer tokenizer= new StringTokenizer(s,",");
-        while(tokenizer.hasMoreTokens()){
-            splitInput.add(Integer.parseInt(tokenizer.nextToken()));
+    private List<Integer> splitWinningNumbers(String s) {
+        List<Integer> splitInput = new ArrayList<>();
+        StringTokenizer tokenizer = new StringTokenizer(s, ",");
+        while (tokenizer.hasMoreTokens()) {
+            int num = Integer.parseInt(tokenizer.nextToken());
+            if (splitInput.contains(num)) {
+                printErrorMessage("[ERROR] 당첨 번호는 중복되서는 안됩니다.");
+                throw new IllegalArgumentException();
+            }
+            splitInput.add(num);
         }
         return splitInput;
     }
-
 
 
 }
