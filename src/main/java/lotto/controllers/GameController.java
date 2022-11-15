@@ -50,5 +50,6 @@ public class GameController {
         Map<Place, Integer> prizeMap = gameService.getRewardMap(lotteries, winningLotto);
         double result = gameService.getProfitResult(money, prizeMap);
         Output.printUserHitInformation(prizeMap);
+        Output.printUserProfit(result);
     }
 }
