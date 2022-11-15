@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.Constant.LottoValidationError;
 
 public class Lotto {
     public static final int PRICE = 1000;
@@ -24,14 +25,14 @@ public class Lotto {
 
     private void validateNumbersCount(List<Integer> numbers) {
         if (numbers.size() != NUMBER_CNT) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 너무 많거나 적습니다.");
+            throw LottoValidationError.COUNT.exception;
         }
     }
 
     private void validateNumbersRange(List<Integer> numbers) {
         for (int i : numbers) {
             if (i < Lotto.NUMBER_MIN || i > Lotto.NUMBER_MAX) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw LottoValidationError.RANGE.exception;
             }
         }
     }
@@ -40,7 +41,7 @@ public class Lotto {
         boolean[] duplicate = new boolean[NUMBER_MAX + 1];
         for (int i : numbers) {
             if (duplicate[i]) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있으면 안됩니다.");
+                throw LottoValidationError.DUPLICATE.exception;
             }
             duplicate[i] = true;
         }
