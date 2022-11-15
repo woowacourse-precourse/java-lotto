@@ -1,14 +1,13 @@
 package lotto.game.view;
 
-import lotto.util.Constant;
-
 import java.util.Map;
+
+import static lotto.util.Constant.*;
 
 public class View {
     private static final String NEWLINE = "\n";
     private static final String TRIPLE_DASH = "---";
     private static final String RESULT_UNIT = "개";
-    private static final int DEFAULT_SCORE = 0;
 
     public View() {
     }
@@ -43,19 +42,19 @@ public class View {
         Console.Out.printLine(TRIPLE_DASH);
         Console.Out.printLine(formatResult(
                         Message.OUTPUT_THREE_MATCHES,
-                        drawScore.getOrDefault(Constant.THREE, DEFAULT_SCORE)));
+                        drawScore.getOrDefault(THREE, DEFAULT_SCORE)));
         Console.Out.printLine(formatResult(
                 Message.OUTPUT_FOUR_MATCHES,
-                drawScore.getOrDefault(Constant.FOUR, DEFAULT_SCORE)));
+                drawScore.getOrDefault(FOUR, DEFAULT_SCORE)));
         Console.Out.printLine(formatResult(
                 Message.OUTPUT_FIVE_MATCHES,
-                drawScore.getOrDefault(Constant.FIVE, DEFAULT_SCORE)));
+                drawScore.getOrDefault(FIVE, DEFAULT_SCORE)));
         Console.Out.printLine(formatResult(
                 Message.OUTPUT_BONUS_MATCHES,
                 bonusScore));
         Console.Out.printLine(formatResult(
                 Message.OUTPUT_SIX_MATCHES,
-                drawScore.getOrDefault(Constant.SIX, DEFAULT_SCORE)));
+                drawScore.getOrDefault(SIX, DEFAULT_SCORE)));
     }
 
     private String formatResult(Message matchMessage, int score) {
