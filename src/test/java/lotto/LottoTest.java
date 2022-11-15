@@ -1,6 +1,5 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -51,12 +50,12 @@ class LottoTest {
     void 보너스_숫자_중복() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        InputView inputView = new InputView();
-        inputView.lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Game game = new Game();
+        game.lotto = new Lotto(List.of(1,2,3,4,5,6));
         String input = "6";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        inputView.inputMoney();
+        Input.inputMoney();
         assertThat(out.toString()).contains(error)
                 .doesNotContain(doNotContain);
     }

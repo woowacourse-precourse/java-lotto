@@ -7,7 +7,7 @@ import java.io.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InputViewTest {
+public class GameTest {
     String error = "[ERROR]";
     String purchase = "개를";
     OutputStream out;
@@ -22,8 +22,7 @@ public class InputViewTest {
         String str = "1001";
         InputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
-        InputView inputView = new InputView();
-        inputView.inputMoney();
+        Input.inputMoney();
         assertThat(out.toString()).contains(error)
                 .doesNotContain(purchase);
     }
@@ -33,8 +32,7 @@ public class InputViewTest {
         String str = "0";
         InputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
-        InputView inputView = new InputView();
-        inputView.inputMoney();
+        Input.inputMoney();
         assertThat(out.toString()).contains(error)
                 .doesNotContain(purchase);
     }
@@ -44,20 +42,8 @@ public class InputViewTest {
         String str = "가";
         InputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
-        InputView inputView = new InputView();
-        inputView.inputMoney();
+        Input.inputMoney();
         assertThat(out.toString()).contains(error)
                 .doesNotContain(purchase);
-    }
-
-    @Test
-    void 정상_입력() {
-        String str = "10000";
-        String ten = "10개";
-        InputStream in = new ByteArrayInputStream(str.getBytes());
-        System.setIn(in);
-        InputView inputView = new InputView();
-        inputView.inputMoney();
-        assertThat(out.toString()).contains(ten);
     }
 }
