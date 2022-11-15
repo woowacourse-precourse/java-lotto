@@ -22,10 +22,6 @@ public enum Rank {
         this.isBonusRequired = isBonusRequired;
     }
 
-    public Integer getWinning() {
-        return winning;
-    }
-
     public String getOutputMessage() {
         StringBuilder sb = new StringBuilder();
         if (minMatchNum == null) {
@@ -34,7 +30,7 @@ public enum Rank {
         if (minMatchNum >= 0) {
             sb.append(String.format("%d개 일치", minMatchNum));
         }
-        if (isBonusRequired != null && isBonusRequired == true) {
+        if (isBonusRequired != null && isBonusRequired) {
             sb.append(", 보너스 볼 일치");
         }
         String commaWinning = NumberFormat.getInstance().format(winning);
