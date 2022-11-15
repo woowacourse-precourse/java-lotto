@@ -38,7 +38,8 @@ public class Lotto {
             System.out.print(numbers.get(i));
             System.out.print(", ");
         }
-        System.out.print(numbers.get(numbers.size()-1)+']');
+        System.out.print(numbers.get(numbers.size()-1));
+        System.out.println("]");
     }
 
     // TODO: 추가 기능 구현
