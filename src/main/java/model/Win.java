@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Optional;
 
 public enum Win {
@@ -34,6 +35,7 @@ public enum Win {
 
     public static Optional<Win> getRanking(int matchCount, boolean containsBonusBall) {
         return Arrays.stream(values())
+                .sorted(Comparator.reverseOrder())
                 .filter(win -> isMatch(win, matchCount, containsBonusBall))
                 .findAny();
     }

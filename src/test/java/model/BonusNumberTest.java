@@ -10,7 +10,6 @@ class BonusNumberTest {
         assertThatThrownBy(() -> new BonusNumber(0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("로또 번호는 1~45 범위여야 합니다.");
-
     }
 
     @Test
