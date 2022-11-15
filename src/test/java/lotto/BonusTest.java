@@ -1,12 +1,8 @@
 package lotto;
 
+import static lotto.util.ConsoleUtility.writeConsole;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.List;
 import lotto.model.Lotto;
 import lotto.util.InputUtility;
@@ -17,12 +13,6 @@ import org.junit.jupiter.api.Test;
 
 public class BonusTest {
 
-    void writeConsole(String input) {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-    }
 
     @DisplayName("보너스 input 확인- 숫자가 아닌 문자열이 들어온 경우")
     @Test

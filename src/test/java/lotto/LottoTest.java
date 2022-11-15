@@ -1,28 +1,15 @@
 package lotto;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import lotto.model.Lotto;
 import lotto.util.InputUtility;
 import lotto.util.Type;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static lotto.util.ConsoleUtility.writeConsole;
 
 class LottoTest {
-    void writeConsole(String input) {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-    }
+
     @DisplayName("Lotto input 확인- ,와 숫자이외의 다른 문자가 들어왔을 경우")
     @Test
     void lottoInputIsNotDigit(){

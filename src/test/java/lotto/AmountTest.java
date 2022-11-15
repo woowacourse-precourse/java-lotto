@@ -1,24 +1,15 @@
 package lotto;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static lotto.util.ConsoleUtility.writeConsole;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import lotto.util.InputUtility;
 import lotto.util.Type;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class AmountTest {
-    void writeConsole(String input) {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-    }
+
     @Test
     void amountIsNotDigit(){
         writeConsole("D");
