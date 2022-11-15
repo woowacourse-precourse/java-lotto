@@ -23,6 +23,23 @@ public class UI {
         for (int i = 0; i < lottoLogic.getLottos().size(); i++){
             System.out.println(lottoLogic.getLottos().get(i).getLottoNumber());
         }
+        System.out.println();
+    }
+
+    public static String WinningNumber(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        System.out.println(input);
+        System.out.println();
+        return input;
+    }
+
+    public static String BonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        System.out.println(input);
+        System.out.println();
+        return input;
     }
 
 }

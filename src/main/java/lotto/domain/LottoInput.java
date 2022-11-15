@@ -20,11 +20,4 @@ public class LottoInput {
 
 
 
-
-    public List<Integer> lottoRandom(int count) {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        System.out.println("랜덤:"+numbers);
-        return numbers;
-
-    }
 }

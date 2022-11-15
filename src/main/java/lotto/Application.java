@@ -16,5 +16,10 @@ public class Application {
         lottoLogic.logic(lottoMoneyInput);
         lottoUI.LottoCountOutput();
         lottoUI.PrintLottoNumber();
+
+        String winningNumberInput = lottoUI.WinningNumber();
+        String bonusNumberInput = lottoUI.BonusNumber();
+
+
     }
 }
