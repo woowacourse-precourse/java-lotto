@@ -11,16 +11,16 @@ public class WinningLotto extends Lotto {
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
+        checkContainsBonusNumber(bonusNumber);
+        checkBonusNumberInRange(bonusNumber);
         this.bonusNumber = bonusNumber;
-        checkContainsBonusNumber();
-        checkBonusNumberInRange();
     }
 
-    private void checkBonusNumberInRange() {
+    private void checkBonusNumberInRange(int bonusNumber) {
         LottoUtils.checkNumberInRange(bonusNumber);
     }
 
-    public void checkContainsBonusNumber() {
+    public void checkContainsBonusNumber(int bonusNumber) {
         if (getNumbers().contains(bonusNumber)) {
             ExceptionMessage.existBonusNumberError();
             throw new IllegalArgumentException();

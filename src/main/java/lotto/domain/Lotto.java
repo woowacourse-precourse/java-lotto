@@ -12,7 +12,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkUniqueNumbers(numbers);
-        checkNumberInRanger(numbers);
+        checkNumberInRange(numbers);
         this.numbers = numbers;
     }
 
@@ -38,7 +38,7 @@ public class Lotto {
         }
     }
 
-    public void checkNumberInRanger(List<Integer> numbers) {
+    public void checkNumberInRange(List<Integer> numbers) {
         for(Integer number : numbers){
             LottoUtils.checkNumberInRange(number);
         }
@@ -53,13 +53,13 @@ public class Lotto {
 
     public int compareToWinningLotto(WinningLotto winningLotto) {
         int result = (int) winningLotto.getNumbers().stream()
-                .filter(number -> getNumbers().stream()
+                .filter(number -> numbers.stream()
                         .anyMatch(Predicate.isEqual(number)))
                 .count();
         return result;
     }
 
     public boolean compareToBonusNumber(WinningLotto winningLotto) {
-        return getNumbers().contains(winningLotto.getBonusNumber());
+        return numbers.contains(winningLotto.getBonusNumber());
     }
 }
