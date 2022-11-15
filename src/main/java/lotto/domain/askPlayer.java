@@ -18,6 +18,7 @@ public  class askPlayer {
         }
         else{
             System.out.println("[ERROR] 로또 번호는 숫자만 입력할수 있습니다.");
+            throw new IllegalArgumentException();
         }
 
         return number/1000;
