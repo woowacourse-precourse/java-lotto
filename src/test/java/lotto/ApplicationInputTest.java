@@ -53,13 +53,13 @@ public class ApplicationInputTest {
 
     @Test
     void WinningBonusNum_문자입력 () {
-        assertThatThrownBy(() -> Application.inputCost("a2")).
+        assertThatThrownBy(() -> Application.inputWinningBonusNum("a2")).
                 isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void WinningBonusNum_숫자범위초과 () {
-        assertThatThrownBy(() -> Application.inputCost("46")).
+        assertThatThrownBy(() -> Application.inputWinningBonusNum("46")).
                 isInstanceOf(IllegalArgumentException.class);
     }
 }
