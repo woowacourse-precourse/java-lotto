@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,7 @@ public class User {
     public int purchasePrice;
     public List<Integer> winningNumbers = new ArrayList<>();
     public int bonusNumber;
+    public float profitRatio;
 
     public User() {
     }
@@ -74,6 +76,13 @@ public class User {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, bonusNumber);
 
         return isNumeric;
+    }
+
+    public float getProfitRatio(int winningPrice) {
+        if (winningPrice == 0) {
+            return 0f;
+        }
+        return (float)winningPrice/purchasePrice*100;
     }
 
     public int getPurchaseNumber() {

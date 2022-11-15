@@ -83,4 +83,12 @@ public class Lottery {
     public HashMap<String, Integer> getGradeCount() {
         return gradeCount;
     }
+
+    public int getWinningPrice() {
+        int winningPrice = 0;
+        for(Grade grade : Grade.values()){
+            winningPrice += gradeCount.get(grade.toString()) * grade.getPrice();
+        }
+        return winningPrice;
+    }
 }
