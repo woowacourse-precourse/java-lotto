@@ -34,4 +34,12 @@ public class Compare {
         }
         return hitCount;
     }
+
+    public static int compareWithBonusNumber(List<Integer> bonusNumber, List<Integer> lottoNumber) {
+        int hitCount = 0;
+        if (lottoNumber.contains(bonusNumber.get(0))) {
+            hitCount++;
+        }
+        return hitCount;
+    }
 }
