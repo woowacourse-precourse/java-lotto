@@ -12,12 +12,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.SIZE_ERROR.getMessage());
         }
         for (Integer number:numbers){
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.INPUT_ERROR.getMessage());
             }
+        }
+        if(numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
     }
 
