@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Player {
-    private final Validation validation = new Validation();
     private final LottoBot lottoBot;
 
     public Player(LottoBot lottoBot) {
@@ -23,14 +22,14 @@ public class Player {
     private int getMoneyPurchased() {
         String money = Console.readLine();
         money = eraseAllBlank(money);
-        validation.checkPurchaseInput(money);
+        Validation.checkPurchaseInput(money);
         return Integer.parseInt(money);
     }
 
     public void selectWinningNumbers() {
         String numbers = Console.readLine();
         numbers = eraseAllBlank(numbers);
-        validation.checkWinningNumberInput(numbers);
+        Validation.checkWinningNumberInput(numbers);
 
         List<String> winningNumbers = new ArrayList<>(Arrays.asList(numbers.split(",")));
         lottoBot.saveWinningNumbers(winningNumbers);
@@ -39,7 +38,7 @@ public class Player {
     public void selectBonusNumber() {
         String number = Console.readLine();
         number = eraseAllBlank(number);
-        validation.checkBonusNumberInput(number);
+        Validation.checkBonusNumberInput(number);
 
         if (!lottoBot.isValidBonusNumber(number)) {
             selectBonusNumber();
