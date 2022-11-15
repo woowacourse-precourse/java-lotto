@@ -14,6 +14,8 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
+import lotto.layer.db.Table;
+import lotto.layer.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;

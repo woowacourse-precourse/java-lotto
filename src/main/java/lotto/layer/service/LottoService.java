@@ -1,4 +1,4 @@
-package lotto.layer;
+package lotto.layer.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
+import lotto.layer.db.Table;
 
 public class LottoService {
 
