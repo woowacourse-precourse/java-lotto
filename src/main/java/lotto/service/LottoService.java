@@ -89,19 +89,42 @@ public class LottoService {
 
     private void updateNumOfPrize(RandomLottoNumber randomList) {
         Winner winningInfo = randomList.winner;
-        if (winningInfo.getCount()==6) {
+        int winningCount = winningInfo.getCount();
+        boolean isBonusNum = winningInfo.isBonusNum();
+
+        update1stPrize(winningCount);
+        update2ndPrize(winningCount, isBonusNum);
+        update3rdPrize(winningCount, isBonusNum);
+        update4thPrize(winningCount);
+        update5thPrize(winningCount);
+    }
+
+    private void update1stPrize(int winningCount) {
+        if (winningCount==6) {
             this.numOf1stPrize += 1;
         }
-        if (winningInfo.getCount()==5 && winningInfo.isBonusNum()) {
+    }
+
+    private void update2ndPrize(int winningCount, boolean isBonusNum) {
+        if (winningCount==5 && isBonusNum) {
             this.numOf2ndPrize += 1;
         }
-        if (winningInfo.getCount()==5 && !winningInfo.isBonusNum()) {
+    }
+
+    private void update3rdPrize(int winningCount, boolean isBonusNum) {
+        if (winningCount==5 && !isBonusNum) {
             this.numOf3rdPrize += 1;
         }
-        if (winningInfo.getCount()==4) {
-            this.numOf4thPrize += 1 ;
+    }
+
+    private void update4thPrize(int winningCount) {
+        if (winningCount==4) {
+            this.numOf4thPrize += 1;
         }
-        if (winningInfo.getCount()==3) {
+    }
+
+    private void update5thPrize(int winningCount) {
+        if (winningCount==3) {
             this.numOf5thPrize += 1;
         }
     }
@@ -125,8 +148,7 @@ public class LottoService {
     private double getProfitRatio() {
         int purchaseAmount = Integer.valueOf(inputPurchaseAmount);
         double profitRatio = ((double) accumulatedWinningPrize / (double) purchaseAmount) * 100;
-        //return Math.round(profitRatio*10/10.0);
-        return profitRatio;
+        return Math.round(profitRatio*10)/10.0;
     }
 
     private void isDuplicate(String input) throws IllegalArgumentException {
