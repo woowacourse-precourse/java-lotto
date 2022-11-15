@@ -13,7 +13,7 @@ public class Constants {
 	public static final String PRINT_INPUT_BONUS = "보너스 번호를 입력해 주세요.";
 	public static final String DELIMITER = ",";
 
-	public static final String ERROR_NOT_NUMBER_FORMAT = "[ERROR] 숫자를 입력해 주십시오.";
+	public static final String ERROR_NOT_NUMBER_FORMAT = "[ERROR] 숫자를 입력해 주십시오. 공백에도 주의해주십시오.";
 	public static final String ERROR_NOT_MONEY_UNIT = "[ERROR] 구매 금액 단위를 맞춰 주십시오.";
 	public static final String ERROR_NOT_LOTTO_LENGTH = "[ERROR] 로또 길이에 적합하지 않습니다.";
 	public static final String ERROR_NOT_IN_BOUNDARY = "[ERROR] 숫자가 로또의 범위 안에 해당하지 않습니다.";
