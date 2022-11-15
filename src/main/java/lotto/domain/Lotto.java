@@ -16,6 +16,11 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        String luckyNumber = "";
+        for(int item : numbers){
+            luckyNumber += item+",";
+        }
+        Validator.isDuplicateLuckyNumber(luckyNumber);
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Exception.WRONG_RANGE.getExceptionMessage());
         }

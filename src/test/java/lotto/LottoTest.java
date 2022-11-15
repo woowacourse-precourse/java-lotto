@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.check.Validator;
+import lotto.domain.Lotto;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +27,27 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 ,가 아닌 다른 구분자가 있으면 예외가 발생한다.")
+    @Test
+    void 콤마_외_구분자_체크(){
+        String input = "1/2/3/ㄴ/5/6";
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validator.isSpliterComma(input));
+    }
+
+    @DisplayName("로또 번호 입력값들이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void 로또_번호_숫자_체크(){
+        String input = "1,g,3,d,g,5";
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validator.isSplitNumber(input));
+    }
+
+    @DisplayName("로또 번호가 6개가 아니면 예외가 발생한다.")
+    @Test
+    void 여섯개_숫자_길이_체크(){
+        String input = "2,3,4,5,6,7,8";
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validator.isLength(input));
+    }
 }

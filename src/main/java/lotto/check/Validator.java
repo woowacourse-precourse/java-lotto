@@ -3,8 +3,11 @@ package lotto.check;
 import lotto.Game;
 import lotto.exception.Exception;
 
+import java.util.List;
+
 public class Validator {
     public static final int UNIT = 1000;
+    public static final int LENGTH = 6;
     public static final String COMMA = ",";
     public static final String ONLY_NUMBER = "^[0-9]*$";
     public static final String EXCEPT_TEXT = "^[0-9A-Za-z,]*$";
@@ -19,6 +22,8 @@ public class Validator {
     public static void validateLuckyNumber(String luckyNumber){
         // 당첨번호가 ,가 아닌 다른 구분자가 있는지
         isSpliterComma(luckyNumber);
+        // 당첨번호가 6개인지
+        isLength(luckyNumber);
         // 구분한 입력값들이 숫자가 맞는지
         isSplitNumber(luckyNumber);
         // 1~45 숫자 범위내에 있는지
@@ -26,10 +31,16 @@ public class Validator {
         // 숫자가 중복되는지
         isDuplicateLuckyNumber(luckyNumber);
     }
+    public static void isLength(String luckyNumber){
+        String[] splitNumber = luckyNumber.split(COMMA);
+        if(splitNumber.length != LENGTH){
+            throw new IllegalArgumentException(Exception.NOT_SIX_NUMBER.getExceptionMessage());
+        }
+    }
     public static void isDuplicateLuckyNumber(String luckyNumber){
         String[] splitNumber = luckyNumber.split(COMMA);
         for(int i=0;i<splitNumber.length-1;i++){
-            if(splitNumber[i] == splitNumber[i+1]){
+            if(splitNumber[i].equals(splitNumber[i+1])){
                 throw new IllegalArgumentException(Exception.DUPLICATE_NUMBER.getExceptionMessage());
             }
         }
@@ -67,8 +78,11 @@ public class Validator {
         }
     }
     public static void isInputNumber(String cash){
+        String[] splitCash = cash.split("");
         try{
-            Integer.parseInt(cash);
+            for(String item : splitCash){
+                Integer.parseInt(item);
+            }
         }catch (IllegalArgumentException e){
             throw new IllegalArgumentException(Exception.NOT_NUMBER.getExceptionMessage());
         }
