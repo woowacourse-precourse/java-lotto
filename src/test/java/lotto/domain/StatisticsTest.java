@@ -26,6 +26,6 @@ class StatisticsTest {
     @Test
     void checkCalculateTotal() {
         Statistics statistics = new Statistics(prizeCntMap);
-        assertThat(statistics.getTotal()).isEqualTo(2031555000);
+        assertThat(statistics.getTotal()).isEqualTo(2_031_555_000);
     }
 }

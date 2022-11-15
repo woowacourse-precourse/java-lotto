@@ -55,7 +55,7 @@ public class UserService {
     public void printBoughtLottos(User user) {
         StringBuilder printBoughtLotto = new StringBuilder();
         printBoughtLotto.append(BLANK_BR); //한줄 공백
-        printBoughtLotto.append(user.getPurchaseLottoPiece()).append(PURCHASE_CNT_MSG).append("\n");
+        printBoughtLotto.append(user.getPurchaseLottoPiece()).append(PURCHASE_CNT_MSG).append(BLANK_BR);
         for (Lotto lotto : user.getPurchaseLotto()) {
             printBoughtLotto.append(lotto).append("\n");
         }

@@ -15,10 +15,10 @@ public class StatisticsService {
 
         List<Lotto> lottos = user.getPurchaseLotto();
         for (Lotto lotto : lottos) {
-            int matchCount = matchCount(lotto.getNumbers(), winningLotto.getNumbers());
-            boolean bonusNum = lotto.getNumbers().contains(winningLotto.getBonusNumber());
+            int catchPoint = matchCount(lotto.getNumbers(), winningLotto.getNumbers());
+            boolean catchBonusPoint = lotto.getNumbers().contains(winningLotto.getBonusNumber());
 
-            Prize prize = Prize.find(matchCount, bonusNum);
+            Prize prize = Prize.find(catchPoint, catchBonusPoint);
             prizeMap.put(prize, prizeMap.getOrDefault(prize, 0) + 1);
         }
         return new Statistics(prizeMap);
@@ -37,11 +37,11 @@ public class StatisticsService {
     public void printTotality(Statistics statistics) {
         StringBuilder printTotalStatus = new StringBuilder(BLANK_BR);
         printTotalStatus.append(PRINT_STATISTICS_MSG).append("\n");
-        String[] value = {"fifth", "fourth", "third", "second", "first"};
+        String[] prizeNames = {"fifth", "fourth", "third", "second", "first"};
         Map<Prize, Integer> prizeMap = statistics.getPrizeMap();
 
-        for (String nowValue : value) {
-            Prize prize = Prize.valueOf(nowValue);
+        for (String nowPrize : prizeNames) {
+            Prize prize = Prize.valueOf(nowPrize);
             int cnt = prizeMap.getOrDefault(prize, 0);
             printTotalStatus.append(printEachCount(prize, cnt)).append("\n");
         }
