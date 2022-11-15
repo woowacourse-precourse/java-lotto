@@ -30,4 +30,7 @@ public class Lotto {
         }
     }
 
+    public boolean hasWinningNumber(Integer winningNumber){
+        return numbers.contains(winningNumber);
+    }
 }
