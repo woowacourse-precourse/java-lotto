@@ -21,6 +21,7 @@ public class RandomLotto {
         for (int i = 0; i < lottoQuantity; i++) {
             randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(randomNumber);
+            System.out.println(randomNumber);
             randomNumbersInMethod.add(randomNumber);
         }
         return randomNumbersInMethod;
