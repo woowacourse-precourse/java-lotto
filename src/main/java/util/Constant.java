@@ -5,6 +5,7 @@ public class Constant {
     public static final int LOTTO_MIN_NUM = 1;
     public static final int LOTTO_MAX_NUM = 45;
     public static final int LOTTO_SIZE = 6;
+    public static final int LOTTO_PURCHASE_COST = 1000;
 
     public static final String WINNING_NUMBER_REGEX = "^[1-9,]*$";
     public static final String COMMA = ",";
@@ -22,4 +23,5 @@ public class Constant {
     public static final String ERROR_MSG_NOT_NUMBER = "[ERROR] 보너스 번호는 숫자여야 합니다.";
     public static final String ERROR_MSG_PURCHASE_MONEY_CONSIST_OF_NUM = "[ERROR] 로또 구입 금액은 숫자여야 합니다.";
 
+    public static final String PURCHASE_LOTTO_TICKETS_MSG = "%n%d개를 구매했습니다.%n";
 }
