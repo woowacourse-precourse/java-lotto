@@ -1,10 +1,12 @@
 package lotto;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +25,38 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("당첨번호와 발행된 로또를 비교하는 기능")
+    @Test
+    void compareWithWinningNumbersTest() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 7, 8, 9);
+        int count = lotto.compareWithWinningNumbers(winningNumbers);
+
+        assertThat(count).isEqualTo(3);
+    }
+
+    @Nested
+    @DisplayName("보너스번호와 발행된 로또를 비교하는 기능")
+    class compareWithBonusNumber {
+
+        @DisplayName("보너스번호를 맞췄을 때")
+        @Test
+        void win() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            boolean isBonusNumberRight = lotto.compareWithBonusNumber(6);
+
+            assertThat(isBonusNumberRight).isEqualTo(true);
+        }
+
+        @DisplayName("보너스번호를 못 맞췄을 때")
+        @Test
+        void lose() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            boolean isBonusNumberRight = lotto.compareWithBonusNumber(7);
+
+            assertThat(isBonusNumberRight).isEqualTo(false);
+        }
+    }
+
+
 }
