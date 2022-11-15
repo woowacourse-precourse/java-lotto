@@ -1,6 +1,8 @@
-package lotto;
+package lotto.Model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,7 +16,14 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> checkError = new HashSet<>(numbers);
+        checkError.retainAll(numbers);
+        if (checkError.size() != numbers.size())
+            throw new IllegalArgumentException();
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
 }
