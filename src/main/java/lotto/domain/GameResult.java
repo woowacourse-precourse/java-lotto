@@ -18,8 +18,4 @@ public class GameResult {
     private static boolean isContained(List<Integer> lotto, int number) {
         return lotto.contains(number);
     }
-
-    public static boolean isContainedBonusNumber(List<Integer> randomLotto, Integer bonusNumber) {
-        return randomLotto.contains(bonusNumber);
-    }
 }

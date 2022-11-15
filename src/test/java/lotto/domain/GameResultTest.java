@@ -41,8 +41,8 @@ class GameResultTest {
         List<Integer> noMatching = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         assertAll(
-                () -> assertThat(GameResult.isContainedBonusNumber(matching, bonusNumber)).isEqualTo(true),
-                () -> assertThat(GameResult.isContainedBonusNumber(noMatching, bonusNumber)).isEqualTo(false)
+                () -> assertThat(GameResult.isContained(matching, bonusNumber)).isEqualTo(true),
+                () -> assertThat(GameResult.isContained(noMatching, bonusNumber)).isEqualTo(false)
         );
     }
 }
