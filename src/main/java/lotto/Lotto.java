@@ -7,42 +7,36 @@ import java.util.List;
 
 public class Lotto {
     private static final String ERROR_NUMBER_COUNT = "로또 번호는 6개여야 합니다.";
-    private static final String ERROR_NUMBER_RANGE = "로또 번호는 1 ~ 45 여야 합니다.";
-    private final List<Integer> numbers;
-    private static final List<Integer> initLottoNumbers = new ArrayList<>();
+
+    private static final List<LottoItem> numbers = new ArrayList<>();
+    private static final List<Lotto> number = new ArrayList<>();
+    private static final List<LottoItem> initLottoNumbers = new ArrayList<>();
     private static final List<Lotto> lottos = new ArrayList<>();
     private static final int lottoPrice = 1000;
 
     static {
         for (int i = 1; i <= 45; i++) {
-            initLottoNumbers.add(i);
+            initLottoNumbers.add(new LottoItem(i));
         }
     }
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<LottoItem> numbers) {
         validate(numbers);
-        validateRange(numbers);
 
-        this.numbers = numbers;
+        this.numbers.addAll(numbers);
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<LottoItem> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_NUMBER_COUNT);
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
-        int max = numbers.stream().max(Comparator.comparingInt(o -> o)).get();
-        int min = numbers.stream().min(Comparator.comparingInt(o -> o)).get();
-        if (min < 1 || 45 < max) {
-            throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
-        }
-    }
 
-    public static List<Integer> generateLottoNumbers() {
+
+    public static List<LottoItem> generateLottoNumbers() {
         Collections.shuffle(initLottoNumbers);
-        List<Integer> lottoNumbers = initLottoNumbers.subList(0, 45);
+        List<LottoItem> lottoNumbers = initLottoNumbers.subList(0, 45);
         Collections.sort(lottoNumbers);
 
         return lottoNumbers;
@@ -56,12 +50,11 @@ public class Lotto {
     }
 
     public static List<Lotto> getLottos() {
-        return Collections.unmodifiableList(lottos);
+        return Collections.unmodifiableList(number);
     }
 
-    public List<Integer> getNumbers() {
+    public static List<LottoItem> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
-
 
 }

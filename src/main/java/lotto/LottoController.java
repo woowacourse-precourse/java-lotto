@@ -16,7 +16,7 @@ public class LottoController {
         System.out.println(lottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
             String numbers = lotto.getNumbers().stream()
-                    .map(i -> Integer.toString(i))
+                    .map(lottoItem -> Integer.toString(lottoItem.get()))
                     .collect(Collectors.joining(", "));
             System.out.printf("[%s]" + System.lineSeparator(), numbers);
         }
