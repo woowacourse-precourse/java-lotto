@@ -7,11 +7,11 @@ import java.util.Map;
 public class WinningStatisticImpl implements WinningStatistic {
 
     private Map<String, Integer> winInformation = new HashMap<>() {{
-        put("three", 0);
-        put("four", 0);
-        put("five", 0);
-        put("fiveContainingBonusNumber", 0);
-        put("six", 0);
+        put("fifth", 0);
+        put("fourth", 0);
+        put("third", 0);
+        put("second", 0);
+        put("first", 0);
     }};
 
     @Override
@@ -22,13 +22,13 @@ public class WinningStatisticImpl implements WinningStatistic {
 
         for (Integer matchResultCount : matchResultNotConsiderBonus) {
             if (matchResultCount == 3) {
-                winInformation.put("three", (winInformation.get("three") + 1));
+                winInformation.put("fifth", (winInformation.get("fifth") + 1));
             } else if (matchResultCount == 4) {
-                winInformation.put("four", (winInformation.get("four") + 1));
+                winInformation.put("fourth", (winInformation.get("fourth") + 1));
             } else if (matchResultCount == 5) {
-                winInformation.put("five", (winInformation.get("five") + 1));
+                winInformation.put("third", (winInformation.get("third") + 1));
             } else if (matchResultCount == 6) {
-                winInformation.put("six", (winInformation.get("six") + 1));
+                winInformation.put("first", (winInformation.get("first") + 1));
             }
         }
         winInformation = considerBonusNumber(bonusMatchingCount);
@@ -39,10 +39,10 @@ public class WinningStatisticImpl implements WinningStatistic {
     public Map<String, Integer> considerBonusNumber(List<Integer> bonusMatchingCount) {
         for (Integer bonusMatchingCountResult : bonusMatchingCount) {
             if (bonusMatchingCountResult == 1) {
-                winInformation.put("fiveContainingBonusNumber", (winInformation.get("fiveContainingBonusNumber") + 1));
+                winInformation.put("second", (winInformation.get("second") + 1));
             }
         }
-        winInformation.put("five", winInformation.get("five") - winInformation.get("fiveContainingBonusNumber"));
+        winInformation.put("third", winInformation.get("third") - winInformation.get("second"));
 
         return winInformation;
     }

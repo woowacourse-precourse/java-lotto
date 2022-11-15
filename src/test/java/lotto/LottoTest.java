@@ -31,7 +31,6 @@ class LottoTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
     @DisplayName("로또 출력 형식 검증 오름차순 정렬이 수행되어야 한다.")
     @Test
     void 로또_출력_형식_검증_오름차순_정렬이_수행되어야_한다() {

@@ -10,11 +10,11 @@ public class YieldCalculatorImpl implements YieldCalculator {
     public double extractYield(Map<String, Integer> winInformation, int purchaseMoney) {
         double yield = 0;
 
-        yield += (double) winInformation.get("three") * (double) (THREE.getWinningMoney());
-        yield += (double) winInformation.get("four") * (double) (FOUR.getWinningMoney());
-        yield += (double) winInformation.get("five") * (double) (FIVE.getWinningMoney());
-        yield += (double) winInformation.get("fiveContainingBonusNumber") * (double) (FIVE_BONUS.getWinningMoney());
-        yield += (double) winInformation.get("six") * (double) (SIX.getWinningMoney());
+        yield += (double) winInformation.get("fifth") * (double) (FIFTH.getWinningMoney());
+        yield += (double) winInformation.get("fourth") * (double) (FOURTH.getWinningMoney());
+        yield += (double) winInformation.get("third") * (double) (THIRD.getWinningMoney());
+        yield += (double) winInformation.get("second") * (double) (SECOND.getWinningMoney());
+        yield += (double) winInformation.get("first") * (double) (FIRST.getWinningMoney());
         yield = Math.round((yield / (double) purchaseMoney) * 1000) / 10.0;
 
         return Math.round(yield * 10) / 10.0;
