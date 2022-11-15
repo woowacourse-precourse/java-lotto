@@ -31,4 +31,8 @@ public class LottoService {
         return new WinningStatistics(resultMap);
     }
 
+    public Double getRateOfReturn(WinningStatistics winningStatistics, MoneyRequest moneyRequest) {
+        return winningStatistics.getRateOfReturn(moneyRequest.getMoney());
+    }
+
 }

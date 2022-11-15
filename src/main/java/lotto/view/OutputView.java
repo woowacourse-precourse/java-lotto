@@ -51,5 +51,8 @@ public class OutputView {
         DecimalFormat df = new DecimalFormat(DECIMAL_FORMAT);
         return df.format(num);
     }
-    
+
+    public static void printRateOfReturn(Double rateOfReturn) {
+        OutputUtils.outputLine("총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.");
+    }
 }

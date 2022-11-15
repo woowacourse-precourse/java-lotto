@@ -14,4 +14,14 @@ public class WinningStatistics {
     public int getCountOfReward(Reward reward) {
         return this.resultMap.get(reward);
     }
+
+    public double getRateOfReturn(int money) {
+        int sum = 0;
+        for (Reward key : resultMap.keySet()) {
+            Integer value = resultMap.get(key);
+            sum += (key.getPrice() * value.intValue());
+        }
+        double rateOfReturn = (sum / (double) money) * 100;
+        return rateOfReturn;
+    }
 }
