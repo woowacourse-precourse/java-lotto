@@ -14,6 +14,7 @@ public class Application {
         resultController.enterWinningNumbers();
         resultController.enterBonusNumber();
         resultController.printLottoResult(userLottoController.getIssuedLotteries());
+        userLottoController.calculateEarningRate();
     }
 
     private static void init() {

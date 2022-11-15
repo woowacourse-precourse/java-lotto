@@ -12,6 +12,7 @@ public class Constants {
     public static final int LOTTO_NUMBERS_SIZE = 6;
     public static final String ASK_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String LOTTO_RESULT_HEADER_MESSAGE = "당첨 통계\n---";
+    public static final String LOTTO_EARNING_RATE_MESSAGE = "총 수익률은 %s%%입니다.";
 
     private static final String PREV_ERROR_MESSAGE = "[Error] ";
     public static final String PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "숫자가 아닙니다.";

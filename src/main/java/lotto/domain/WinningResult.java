@@ -35,6 +35,10 @@ public enum WinningResult {
         return null;
     }
 
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
     @Override
     public String toString() {
         return String.format("%s (%s원) - ", conditionPhrase, NumberFormat.getInstance().format(prizeMoney));
