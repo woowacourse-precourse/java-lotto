@@ -12,7 +12,7 @@ public class InputNumber {
     public static List<Integer> getWinNumbers() throws IllegalArgumentException{
         String playerInput = Console.readLine();
         toMakeWinNumbers(playerInput);
-        //Collections.sort(winNumbers);
+        Collections.sort(winNumbers);
         duplicatedNumbers(winNumbers);
         numberRangeCheck(winNumbers);
         return winNumbers;
