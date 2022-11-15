@@ -4,7 +4,11 @@ import lotto.domain.User;
 
 public class Application {
     public static void main(String[] args) {
-        User user = new User();
-        user.start();
+        try {
+            User user = new User();
+            user.start();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
