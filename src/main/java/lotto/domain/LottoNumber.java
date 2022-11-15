@@ -1,9 +1,13 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.constant.LottoConstant;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.constant.LottoConstant.END_NUMBER;
+import static lotto.constant.LottoConstant.START_NUMBER;
 
 public class LottoNumber {
 
@@ -12,10 +16,12 @@ public class LottoNumber {
 
     public LottoNumber(int lottoCount) {
         this.lottoCount = lottoCount;
+        createCountOfLotto();
+        printUserAllLotto();
     }
 
     public void createLottoNumber() {
-        List<Integer> myLotto = Randoms.pickUniqueNumbersInRange(1,45,6);
+        List<Integer> myLotto = Randoms.pickUniqueNumbersInRange(START_NUMBER.getValue(), END_NUMBER.getValue(),6);
         userAllLotto.add(myLotto);
     }
 
