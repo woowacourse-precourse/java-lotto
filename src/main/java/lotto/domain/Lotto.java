@@ -33,12 +33,4 @@ public class Lotto {
     public List<Integer> getLottoNumber(){
         return Collections.unmodifiableList(numbers);
     }
-
-
-//    public int correctLottoNumber(Lotto winningLotto, Lotto lotto){
-//        int correctCount;
-//        for(int i = 0; i < 6; i++){
-//            if()
-//        }
-//    }
 }
