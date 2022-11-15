@@ -32,7 +32,7 @@ public enum ShowMessage {
     }
 
     public static void showInputLottoNumber() {
-//        System.out.println();
+        System.out.println();
         System.out.println(INPUT_LOTTO_NUMBER_MESSAGE.script);
     }
 
