@@ -48,7 +48,7 @@ public class InputView {
 
     private static List<Integer> toIntegerList(String winningNumbers) {
         try {
-            return Arrays.stream(winningNumbers.split(","))
+            return Arrays.stream(winningNumbers.split("\\s*,\\s*"))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {

@@ -6,9 +6,6 @@ import model.Lottos;
 import model.Win;
 import model.WinningResult;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static constant.Config.NEW_LINE;
