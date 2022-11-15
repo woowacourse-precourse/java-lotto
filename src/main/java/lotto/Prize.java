@@ -6,6 +6,7 @@ public enum Prize {
     FIVE(1500000, "5개 일치 (1,500,000원)"),
     FOUR(50000, "4개 일치 (50,000원)"),
     THREE(5000, "3개 일치 (5,000원)"),
+    UNDER_TWO(0, ""),
     ;
 
     private int money;
@@ -14,6 +15,25 @@ public enum Prize {
     Prize(int i, String s) {
         money = i;
         announce = s;
+    }
+
+    public static Prize getPrize(int result, boolean isBonusRight) {
+        if (result == 6) {
+            return SIX;
+        }
+        if (result == 5) {
+            if (isBonusRight) {
+                return FIVE_BONUS;
+            }
+            return FIVE;
+        }
+        if (result == 4) {
+            return FOUR;
+        }
+        if (result == 3) {
+            return THREE;
+        }
+        return UNDER_TWO;
     }
 
     public int getMoney() {

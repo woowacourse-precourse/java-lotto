@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,6 +17,34 @@ public class Application {
         Lotto targetLotto = new Lotto(targetNumbers); // 당첨번호 자동 검증
         int bonusNumber = inputBonusNumber(targetNumbers);
 
+        printResult(boughtLottos, targetLotto, bonusNumber, money);
+    }
+
+    private static void printResult(List<List<Integer>> boughtLottos, Lotto targetLotto,
+                                    int bonusNumber, int money) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        Map<Prize, Integer> result = calculatePrize(boughtLottos, targetLotto, bonusNumber);
+        List<Prize> prizes = Arrays.asList(Prize.THREE, Prize.FOUR, Prize.FIVE, Prize.FIVE_BONUS, Prize.SIX);
+        float profits = 0;
+        for (Prize p : prizes) {
+            System.out.println(p.getAnnounce() + " - " + result.getOrDefault(p, 0) + "개");
+            profits += result.getOrDefault(p, 0) * p.getMoney();
+        }
+
+        System.out.printf(String.format("총 수익률은 %.1f%%입니다.\n", profits / money * 100));
+    }
+
+    private static Map<Prize, Integer> calculatePrize(List<List<Integer>> boughtLottos,
+                                                      Lotto targetLotto, int bonusNumber) {
+        Map<Prize, Integer> map = new HashMap<>(); // 3개 ~ 6개
+        for (List<Integer> lotto : boughtLottos) {
+            Prize result = targetLotto.calculate(lotto, bonusNumber);
+            map.put(result, map.getOrDefault(result, 0) + 1);
+        }
+
+        return map;
 
     }
 
@@ -55,7 +81,7 @@ public class Application {
 
     private static int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-
+        
         int money = Integer.parseInt(Console.readLine());
         if (money % 1000 != 0) {
             System.out.println("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");

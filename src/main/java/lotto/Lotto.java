@@ -28,4 +28,21 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public Prize calculate(List<Integer> lotto, int bonusNumber) {
+        int result = 0;
+        boolean isBonusRight = false;
+        for (Integer i : lotto) {
+            if (numbers.contains(i)) {
+                result++;
+            }
+        }
+        if (result == 0) {
+            if (numbers.contains(bonusNumber)) {
+                isBonusRight = true;
+            }
+        }
+
+        return Prize.getPrize(result, isBonusRight);
+    }
 }
