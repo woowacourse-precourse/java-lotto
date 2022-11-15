@@ -52,7 +52,6 @@ public class Starter {
             ResultView resultView = new ResultView(matchDto.getRewardTable(), analyzeRevenueDto.getRevenueAverage());
             resultView.print();
         } catch (IllegalArgumentException exception) {
-            System.out.println("[ERROR] " + exception.getMessage());
         } catch (Exception exception) {
             exception.printStackTrace();
         }
