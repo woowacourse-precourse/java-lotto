@@ -50,13 +50,13 @@ public class Statistics {
         return rank.stream().skip(3).collect(Collectors.toList());
     }
 
-    public BigDecimal calculateProfitRate(Buyer buyer) {
+    public double calculateProfitRate(Buyer buyer) {
         int profit = 0;
         List<Integer> cutRank = rank.stream().skip(3).collect(Collectors.toList());
         for (int index = 0; index < reward.size(); index++) {
             profit += cutRank.get(index) * reward.get(index);
         }
-        return new BigDecimal(Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0).setScale(1);
+        return Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0;
     }
 
 }

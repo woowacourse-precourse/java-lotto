@@ -1,6 +1,7 @@
 package lotto.ouput;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class StatisticsOutput {
@@ -14,7 +15,9 @@ public class StatisticsOutput {
         output.append("6개 일치 (2,000,000,000원) - "+winingHistory.get(3)+"개\n");
         System.out.print(output);
     }
-    public void outputProfit(BigDecimal profit){
-        System.out.println("총 수익률은 "+profit+"%입니다.");
+    public void outputProfit(double profit){
+
+        DecimalFormat format = new DecimalFormat("###,###.0");
+        System.out.println("총 수익률은 "+format.format(profit)+"%입니다.");
     }
 }
