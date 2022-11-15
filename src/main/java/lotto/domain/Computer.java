@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Lotto;
 import lotto.util.Validator;
 import lotto.view.InputView;
 

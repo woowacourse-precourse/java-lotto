@@ -2,7 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Computer;
 import lotto.domain.GameResult;
-import lotto.domain.Lotto;
+import lotto.Lotto;
 import lotto.domain.Player;
 
 import java.util.List;

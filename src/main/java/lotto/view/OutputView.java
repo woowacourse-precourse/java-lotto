@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
+import lotto.Lotto;
 
 import static lotto.constant.OutputConstants.*;
 

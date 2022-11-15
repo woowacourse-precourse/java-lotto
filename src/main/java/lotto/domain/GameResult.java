@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.Lotto;
 import lotto.constant.WinningConstants;
 import lotto.view.OutputView;
 

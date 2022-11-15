@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.Lotto;
 import lotto.util.Validator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
