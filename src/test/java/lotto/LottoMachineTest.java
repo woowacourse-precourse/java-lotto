@@ -9,17 +9,17 @@ import java.util.List;
 class LottoMachineTest {
 
     LottoMachine lottoMachine = new LottoMachine();
-
-    @Test
-    public void 로또_발행_오름차순_테스트(){
-        Lotto lotto = lottoMachine.createLotto();
-        List<Integer> numbers = lotto.getNumbers();
-
-        Assertions.assertThat(numbers.get(0))
-                .isLessThan(numbers.get(1));
-        Assertions.assertThat(numbers.get(4))
-                .isLessThan(numbers.get(5));
-    }
+//
+//    @Test
+//    public void 로또_발행_오름차순_테스트(){
+//        Lotto lotto = lottoMachine.createLotto();
+//        List<Integer> numbers = lotto.getNumbers();
+//
+//        Assertions.assertThat(numbers.get(0))
+//                .isLessThan(numbers.get(1));
+//        Assertions.assertThat(numbers.get(4))
+//                .isLessThan(numbers.get(5));
+//    }
 
     @Test
     public void 당첨번호_입력_테스트() {

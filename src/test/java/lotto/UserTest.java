@@ -10,7 +10,7 @@ class UserTest {
     @Test
     public void 단위가_1000원이_아닌경우(){
         int money = 1100;
-        User user = new User();
+        User user = new User(new LottoMachine());
         Assertions.assertThatIllegalArgumentException().isThrownBy(()
                 -> user.isMoneyDividedWith1000(money));
     }

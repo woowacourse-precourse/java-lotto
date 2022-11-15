@@ -23,4 +23,8 @@ public enum Winning {
         this.price = price;
         this.describe = describe;
     }
+
+    public String sumDescribeWithCount(int count) {
+        return describe + " - " + count + "개";
+    }
 }

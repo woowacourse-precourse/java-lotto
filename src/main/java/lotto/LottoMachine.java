@@ -14,9 +14,12 @@ public class LottoMachine {
     private int bonusNumber;
 
     public List<Lotto> buyLotto(int money) {
+        System.out.println(money / 1000 + "개를 구매했습니다.");
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < money / 1000; i++) {
-            lottos.add(createLotto());
+            Lotto lotto = createLotto();
+            lottos.add(lotto);
+            System.out.println(lotto.getNumbers());
         }
 
         return lottos;
@@ -24,11 +27,14 @@ public class LottoMachine {
 
     public Lotto createLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//        Collections.sort(numbers);
         return new Lotto(numbers);
     }
 
     public void setWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
+        System.out.println();
         winningNumber = checkWiningNumber(input);
     }
 
@@ -78,7 +84,9 @@ public class LottoMachine {
     }
 
     public void setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요");
         String bonusNumberInput = Console.readLine();
+        System.out.println();
         this.bonusNumber = checkBonusNumber(bonusNumberInput);
     }
 
@@ -94,5 +102,41 @@ public class LottoMachine {
         if (this.winningNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 넘버가 당첨 번호와 중복이 있으면 안됩니다.");
         }
+    }
+
+    public Winning isLottoWin(Lotto lotto) {
+        int winningNumberCount = getWinningNumberCount(lotto);
+        if(winningNumberCount == 3)
+            return Winning.fifth;
+        if(winningNumberCount == 4)
+            return Winning.fourth;
+        if (winningNumberCount == 5) {
+            if(isBonusNumberInLotto(lotto))
+                return Winning.second;
+            return Winning.third;
+        }
+        if(winningNumberCount == 6)
+            return Winning.first;
+        return null;
+    }
+
+    private boolean isBonusNumberInLotto(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        if (lottoNumbers.contains(bonusNumber)) {
+            return true;
+        }
+
+        return false;
+    }
+    private int getWinningNumberCount(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        int winningNumberCount = 0;
+        for (Integer lottoNumber : lottoNumbers) {
+            if (winningNumber.contains(lottoNumber)) {
+                winningNumberCount++;
+            }
+        }
+        return winningNumberCount;
     }
 }
