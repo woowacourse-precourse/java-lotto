@@ -76,6 +76,8 @@
     - (당첨 번호 일치 개수, 보너스번호 일치 여부)와 WinInfo의 조건이 동등한지 판단
   - [x] get함수 테스트
     - 당첨 번호 일치 개수, 보너스번호 일치 여부가 주어지면 알맞은 WinInfo를 반환하는지
+  - [x] getByOrder 테스트
+    - 순위에 맞는 WinInfo를 잘 반환하는지
 
 - [x] LottoUser 테스트
   - [x] validation 테스트
