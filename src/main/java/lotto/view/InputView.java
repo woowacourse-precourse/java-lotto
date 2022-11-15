@@ -12,5 +12,10 @@ public class InputView {
         return lottoBuyingPrice;
     }
 
+    public String askInputBonusNumber() {
+        String bonusNumber = Console.readLine();
+        return bonusNumber;
+    }
+
 
 }
