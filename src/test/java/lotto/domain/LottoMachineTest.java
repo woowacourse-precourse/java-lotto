@@ -18,7 +18,7 @@ class LottoMachineTest {
     @ParameterizedTest(name = "번호를 비교하여 {1}을 반환한다")
     @MethodSource("lottoTestArgs")
     void matchPrizeTest(List<Integer> numbers, LottoPrize lottoPrize) {
-        LottoMachine lottoMachine = new LottoMachine(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7));
+        LottoMachine lottoMachine = new LottoMachine(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new BonusNumber(7)));
         LottoPrize result = lottoMachine.compareWinningLotto(new Lotto(numbers));
 
         assertThat(result).isEqualTo(lottoPrize);
@@ -39,7 +39,7 @@ class LottoMachineTest {
     @Test
     void prizeCount() {
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoMachine lottoMachine = new LottoMachine(new WinningLotto(winningLotto, 7));
+        LottoMachine lottoMachine = new LottoMachine(new WinningLotto(winningLotto, new BonusNumber(7)));
         Lottos lottos = new Lottos(List.of(winningLotto, winningLotto));
         Map<LottoPrize, Integer> prizeCount = lottoMachine.getPrizeCount(lottos);
 

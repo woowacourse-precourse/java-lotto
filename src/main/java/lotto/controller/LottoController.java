@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import java.util.Map;
+import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCalculator;
 import lotto.domain.LottoMachine;
@@ -27,7 +28,7 @@ public class LottoController {
             List<Integer> winningNumber = InputView.getWinningNumber();
             int bonusNumber = InputView.getBonusNumber();
 
-            WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumber), bonusNumber);
+            WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumber), new BonusNumber(bonusNumber));
             LottoMachine lottoMachine = new LottoMachine(winningLotto);
 
             List<LottoPrize> prizeResult = lottoMachine.getPrizeResult(userLottos);
