@@ -40,12 +40,12 @@ public class LottoSystemService {
 
     private List<List<Integer>> getRandomLottoNumbers(int lottoCount) {
         List<List<Integer>> numbers = new ArrayList<>();
-        List<Integer> number;
 
         for (int i = 0; i < lottoCount; i++) {
-            number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(number);
-            numbers.add(number);
+            List<Integer> number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> dynamicNumber = new ArrayList<>(number);
+            Collections.sort(dynamicNumber);
+            numbers.add(dynamicNumber);
         }
 
         return numbers;
