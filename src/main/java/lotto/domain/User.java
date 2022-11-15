@@ -20,6 +20,11 @@ public class User {
         this.earnTotalMoney = 0;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+
 
 
 
