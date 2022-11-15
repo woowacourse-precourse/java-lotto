@@ -9,10 +9,16 @@ import java.util.List;
 
 public class Output {
 
-    public void printNumberOfLotto(int lottoQuantity){
-        System.out.println(lottoQuantity + "개를 구매했습니다.");
-    }
+    private static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
+    private static final String WINNING_STATISTICS_MESSAGE = "당첨 통계";
+    private static final String LINE = "---";
+    private static final String RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
+    private static final String BONUS_MATCH_PHRASE_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static final String MATCH_PHRASE = "%d개 일치 (%s원) - %d개\n";
 
+    public void printNumberOfLotto(int lottoQuantity){
+        System.out.println(lottoQuantity + PURCHASE_MESSAGE);
+    }
 
     public void printLottoNumbers(List<Lotto> lottoNumbers){
         for(Lotto lotto : lottoNumbers){
@@ -21,8 +27,8 @@ public class Output {
     }
 
     public void printStatisticsMessage(){
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS_MESSAGE);
+        System.out.println(LINE);
     }
 
     public void printStatistics(LinkedHashMap<Rating, Integer> statistics, int money){
@@ -34,16 +40,16 @@ public class Output {
     }
 
     private void printTotalYield(int money, int accumulation) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", ((float)accumulation/money * 100));
+        System.out.printf(RATE_MESSAGE, ((float)accumulation/money * 100));
     }
 
     private int printStatisticsOfEach(Rating rating, int count) {
         if(rating == Rating.SECOND){
-            System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
+            System.out.printf(BONUS_MATCH_PHRASE_MESSAGE,
                     rating.getAccord(), numberFormat(rating.getPrize()), count);
             return rating.getAccord() * count;
         }
-        System.out.printf("%d개 일치 (%s원) - %d개\n", rating.getAccord(), numberFormat(rating.getPrize()), count);
+        System.out.printf(MATCH_PHRASE, rating.getAccord(), numberFormat(rating.getPrize()), count);
         return rating.getPrize() * count;
     }
 
