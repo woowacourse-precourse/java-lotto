@@ -27,6 +27,13 @@ public class WinningNumber {
         setBonusNumber(bonusNumber);
     }
 
+    public int getBonusNumber(){
+        return this.bonusNumber;
+    }
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
     private List<Integer> StringToIntegerList(String string){
         List<Integer> numbers = new ArrayList<>();
         int temporaryNumber = initNumber;
@@ -79,7 +86,7 @@ public class WinningNumber {
     }
 
     private void validate(List<Integer> numbers){
-        if(numbers.size() != Resoure.numberSize){
+        if(numbers.size() != Resource.numberSize){
             throw new IllegalArgumentException(ErrorResource.errorStart+ ErrorResource.numberCountNotFit);
         }
     }
