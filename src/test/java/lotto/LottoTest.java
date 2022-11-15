@@ -25,7 +25,7 @@ class LottoTest {
 
     @DisplayName("로또 번호의 범위가 1~45가 아니면 예외 발생")
     @Test
-    void createLottoByOverNumberRange() {
+    void createLottoByOverWinNumberRange() {
         assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -35,8 +35,16 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
 
         assertThatThrownBy(() -> {
-            lotto.hasDuplicatedLottoNumberWithBonusNumber(List.of(1,2,3,4,5,6), 6);
+            lotto.validateBonusNumber(List.of(1,2,3,4,5,6), 6);
         }).isInstanceOf(IllegalArgumentException.class);
 
+    }
+
+    @DisplayName("보너스 번호의 범위가 1~45가 아니면 예외 발생")
+    @Test
+    void createLottoByOverBonusNumberRange() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThatThrownBy(() -> lotto.validateBonusNumber(List.of(1,2,3,4,5,6),0))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
