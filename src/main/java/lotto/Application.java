@@ -85,6 +85,7 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
+        //예외 발생 1~45, 숫자, 길이확인
         if(!isValidLottery(input)){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 "+minLottoNumber+"부터 "+maxLottoNumber+" 사이의 숫자여야 합니다.");
         }
@@ -97,13 +98,16 @@ public class Application {
         return luckyList;
     }
 
-    static int inputBonusNumber() {
+    static int inputBonusNumber(ArrayList<Integer> luckyList) {
         int bonusNumber=0;
         System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        //예외 발생 1~45, 숫자, 중복확인
+        if(!isValidBonus(input, luckyList)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 "+minLottoNumber+"부터 "+maxLottoNumber+" 사이의 당첨번호와 중복되지 않는 숫자여야 합니다.");
+        }
 
-        //todo: 잘못입력시 에러발생 1~45, 숫자
-        bonusNumber = Integer.parseInt(Console.readLine());
-
+        bonusNumber = Integer.parseInt(input);
         return bonusNumber;
     }
 
@@ -232,6 +236,14 @@ public class Application {
         }
         //1~45의 숫자 확인
         for(int i=0; i<inputStringList.length; i++){
+            //숫자인지 확인
+            try {
+                Integer.parseInt(inputStringList[i]);
+            }
+            catch (Exception e){
+                return false;
+            }
+            //1~45까지 인지 확인
             if(Integer.parseInt(inputStringList[i]) < minLottoNumber ||
                     Integer.parseInt(inputStringList[i]) > maxLottoNumber){
                 return false;
