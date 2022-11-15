@@ -15,6 +15,7 @@ public class LottoGame {
         LottoCount lottoCount = new LottoCount(input.lottoPurchaseAmount());
         List<Lotto> lottoPapers = buyLotto(lottoCount.getLottoCount());
 
+
         input.lottoWinningNumbers();
 
 
