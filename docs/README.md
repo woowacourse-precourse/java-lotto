@@ -71,6 +71,8 @@
 
 로또를 발행하는 ***클래스***
 
+- 로또의 메타데이터를 갖는다.
+  - `private final LottoMetadata lottoMetadata`
 - 로또를 발행한다.
   - `Lotto purchase()`
 - 구입 금액을 입력받아 로또를 발행한다.
@@ -80,6 +82,8 @@
 
 로또의 결과를 계산하는 ***클래스***
 
+- 로또의 메타데이터를 갖는다.
+  - `private final LottoMetadata lottoMetadata`
 - 로또 정보를 받아 로또 결과를 계산한다.
   - `Map<Prize, Integer> countWinningLotto(Lotto target, List<Lotto> lottos>`
 
@@ -130,8 +134,8 @@
 `LottoSystem`을 구현한다.
 
 - 로또의 메타데이터를 갖는다.
-    - `private LottoMetadata lottoMetadata`
+  - `private final LottoMetadata lottoMetadata`
 - 로또 발행기를 갖는다.
-    - `private LottoPublisher lottoPublisher`
+  - `private final LottoPublisher lottoPublisher`
 - 로또 당첨확인기를 갖는다.
-    - `private LottoWinningChecker lottoWinningChecker`
+  - `private final LottoWinningChecker lottoWinningChecker`
