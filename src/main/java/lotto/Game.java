@@ -37,6 +37,9 @@ public class Game {
         user = makeLotto(Amount);
         Win = new ValidLotto(WinNumber(), BonusNumber());
 
+        Map<Prize, Integer> records = new HashMap<>();
+        initRecords(records);
+
     }
 
     public int PurchaseAmount() {
@@ -90,6 +93,12 @@ public class Game {
     private void validateDivisible(int money) {
         if (money % MIN_COST !=0) {
             throw new IllegalArgumentException("[ERROR]구매금액은 1천원 단위입니다.");
+        }
+    }
+
+    private void initRecords(Map<Prize, Integer> records) {
+        for (Prize place : Prize.values()) {
+            records.put(place, 0);
         }
     }
 
