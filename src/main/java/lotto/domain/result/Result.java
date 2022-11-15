@@ -47,7 +47,6 @@ public class Result {
         int totalPrize = 0;
         for (int i = 0; i < totalWin.length; i++) {
             totalPrize += Win.values()[i].prize() * totalWin[i];
-            System.out.println(totalPrize);
         }
         return totalPrize;
     }
