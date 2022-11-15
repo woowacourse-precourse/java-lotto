@@ -66,6 +66,46 @@
 
 ### < 폴더 구조 >
 
+```
+├─main
+│  └─java
+│      └─lotto
+│          │  Application.java        -  로또 게임 애플리케이션 실행 
+│          │
+│          ├─controller
+│          │      LottoGame.java      -  domain-view를 연결하여 게임 순서 결정
+│          │
+│          ├─domain
+│          │      CompareLotto.java   -  구매한 로또 번호와 당첨 번호를 비교
+│          │      Lotto.java          - 로또 클래스
+│          │      LottoResult.java    - 당첨 내역
+│          │      MatchCount.java     - 당첨 개수와 상금 enum 클래스
+│          │      RandomNumbers.java  - 랜덤 6개 숫자 리스트를 만드는 클래스 
+│          │
+│          ├─util
+│          │      Transform.java      - data의 형태를 변환하고 형변환하는 util 함수
+│          │
+│          ├─validator
+│          │      NumbersValidator.java   - 여러개 숫자에 대한 예외 처리
+│          │      NumberValidator.java    - 한 개 숫자에 대한 예외 처리
+│          │
+│          └─view
+│                  InputView.java     - Console에서 Player의 input을 받기
+│                  OutputView.java    - Console에서 Player에게 output 보여주기
+│
+└─test
+    └─java
+        └─lotto
+            │  ApplicationTest.java
+            │  LottoTest.java
+            │
+            ├─domain
+            │      CompareLottoTest.java
+            │
+            └─util
+                    TransformTest.java
+```
+
 ---
 
 > 지금부터는 프로그램을 구현하면서 고민하고 도전한 것들에 대해 소개해드리겠습니다.
