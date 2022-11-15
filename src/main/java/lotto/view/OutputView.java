@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 public class OutputView {
@@ -14,9 +15,7 @@ public class OutputView {
     private static final String STATISTICS_SIX_MATCH = LINE + "6개 일치 (2,000,000,000원) - %d개";
     private static final String OUTPUT_PURCHASE = LINE + "%d개를 구매했습니다." + LINE;
     private static final String OUTPUT_EARNING = LINE + "총 수익률은 %.1f%%입니다.";
-    private static final String LOTTO_OPEN = "[";
-    private static final String LOTTO_CLOSE = "]";
-    private static final String COMMA_AND_SPACE = ", ";
+    private static final String LOTTO_FORMAT = "[{0}, {1}, {2}, {3}, {4}, {5}]";
 
     public void printPurchaseCount(int lottoCount){
         System.out.printf(OUTPUT_PURCHASE,lottoCount);
@@ -36,12 +35,7 @@ public class OutputView {
     }
 
     public void printLottoNumbers(Lotto lotto) {
-        StringBuilder result = new StringBuilder(LOTTO_OPEN);
-        for (int lottoNumber : lotto.get()) {
-            result.append(lottoNumber).append(COMMA_AND_SPACE);
-        }
-        result.delete(result.length() - 2, result.length()).append(LOTTO_CLOSE);
-        System.out.println(result);
+        System.out.println(MessageFormat.format(LOTTO_FORMAT,lotto.get().toArray()));
     }
 
 }
