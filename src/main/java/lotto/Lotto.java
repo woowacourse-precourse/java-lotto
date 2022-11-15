@@ -18,8 +18,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (validateSizeOf(numbers) || validateBoundOf(numbers) || validateDuplicationOf(numbers)) {
-            throw new IllegalArgumentException();
+        if (validateSizeOf(numbers)) {
+            throw new IllegalArgumentException("LOTTO_NUMBERS_SIZE_ERROR");
+        }
+        if (validateBoundOf(numbers)) {
+            throw new IllegalArgumentException("LOTTO_NUMBERS_BOUND_ERROR");
+        }
+        if (validateDuplicationOf(numbers)) {
+            throw new IllegalArgumentException("LOTTO_NUMBERS_DUPLICATE_ERROR");
         }
     }
 

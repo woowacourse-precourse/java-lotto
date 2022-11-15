@@ -41,4 +41,4 @@
    - [x] 숫자의 범위가 1~45를 벗어난 경우
    - [x] 숫자가 6개가 아닌 경우
    - [x] 중복된 숫자가 있는 경우
-- [ ] IllegalArgumentException 발생 후 적절한 메세지 출력
+- [x] IllegalArgumentException 발생 후 적절한 메세지 출력

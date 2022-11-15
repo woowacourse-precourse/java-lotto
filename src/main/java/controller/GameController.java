@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 import lotto.LottoHandler;
 import type.LottoGrade;
+import view.ExceptionView;
 import view.InputView;
 import view.OutputView;
 
@@ -24,8 +25,8 @@ public class GameController {
         }
     }
 
-    private void handleException(String errorMessage) {
-        // TODO : 에러 메시지에 따라 출력 메시지를 다르게 출력한다. 각각의 예외 상황에 따라 에러 메시지 정의해야 함.
+    private void handleException(String errorType) {
+        ExceptionView.printErrorMessage(errorType);
     }
 
     private void getResultOfLotto(Integer purchaseAmount,

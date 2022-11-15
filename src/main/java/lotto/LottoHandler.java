@@ -27,7 +27,7 @@ public class LottoHandler {
 
     public static Double getRateOfReturn(Map<LottoGrade, Integer> resultOfLotto, Integer purchaseAmount) {
         Double totalMoney = 0D;
-        for (LottoGrade lottoGrade: resultOfLotto.keySet()) {
+        for (LottoGrade lottoGrade : resultOfLotto.keySet()) {
             Integer eachNumber = resultOfLotto.get(lottoGrade);
             if (lottoGrade == FIRST) totalMoney += (FIRST_PRIZE_MONEY * eachNumber);
             if (lottoGrade == SECOND) totalMoney += (SECOND_PRIZE_MONEY * eachNumber);
@@ -70,14 +70,23 @@ public class LottoHandler {
     }
 
     private static void preValidate(String inputNumbers) {
-        if (preValidateEmpty(inputNumbers) || preValidateNonDigitIsIn(inputNumbers)) {
-            throw new IllegalArgumentException();
+        if (preValidateEmpty(inputNumbers)) {
+            throw new IllegalArgumentException("EMPTY_INPUT_NUMBERS_ERROR");
+        }
+        if (preValidateNonDigitIsIn(inputNumbers)) {
+            throw new IllegalArgumentException("NON_DIGIT_INPUT_NUMBERS_ERROR");
         }
     }
 
-    private static void validate(List<Integer> numbers) {
-        if (validateSizeOf(numbers) || validateBoundOf(numbers) || validateDuplicationOf(numbers)) {
-            throw new IllegalArgumentException();
+    private static void validate(List<Integer> winningNumbers) {
+        if (validateSizeOf(winningNumbers)) {
+            throw new IllegalArgumentException("WINNING_NUMBERS_SIZE_ERROR");
+        }
+        if (validateBoundOf(winningNumbers)) {
+            throw new IllegalArgumentException("WINNING_NUMBERS_BOUND_ERROR");
+        }
+        if (validateDuplicationOf(winningNumbers)) {
+            throw new IllegalArgumentException("WINNING_NUMBERS_DUPLICATE_ERROR");
         }
     }
 
