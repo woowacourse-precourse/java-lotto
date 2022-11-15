@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.Arrays;
+
 public enum Rank {
     OTHER(0, 0),
     FIFTH(5000, 3),
@@ -14,6 +16,11 @@ public enum Rank {
     Rank(int prize, int same) {
         this.prize = prize;
         this.same = same;
+    }
+    public static Rank ranking(int count){
+        return Arrays.stream(values())
+            .filter(rank->rank.same==count)
+            .findFirst().orElse(OTHER);
     }
 
 }

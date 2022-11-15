@@ -36,4 +36,26 @@ public class Customer {
         this.broadcast = broadcast;
     }
 
+    private Rank getRank(Lotto mine) {
+
+        Rank rank = Rank.ranking(compareLotto(mine, broadcast.getWinning()));
+
+        if (rank.equals(Rank.THIRD)) {
+            if (isContainBonus(mine, broadcast.getBonus())) {
+                return Rank.SECOND;
+            }
+        }
+        return rank;
+    }
+
+    private int compareLotto(Lotto mine, Lotto winning) {
+        return (int) mine.getNumbers().stream().
+            filter(winning::contains).count();
+    }
+
+    private boolean isContainBonus(Lotto mine, int bonus) {
+        return mine.contains(bonus);
+    }
+
+
 }
