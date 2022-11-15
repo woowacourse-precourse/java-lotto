@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.LottoConstant.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +17,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("로또는 6자리를 입력해야 합니다");
         }
     }
@@ -30,8 +32,9 @@ public class Lotto {
     }
 
     private void validateLottoNumber(List<Integer> numbers) {
-        if (Collections.min(numbers) < 1 || Collections.max(numbers) > 45) {
-            throw new IllegalArgumentException("1 ~ 45 사이의 숫자만 입력가능합니다.");
+        if (Collections.min(numbers) < LOTTO_MIN_RANGE || Collections.max(numbers) > LOTTO_MAX_RANGE) {
+            throw new IllegalArgumentException(String.format("로또 번호는 %d ~ %d 사이의 숫자만 입력가능합니다.", LOTTO_MIN_RANGE,
+                    LOTTO_MAX_RANGE));
         }
     }
 
@@ -40,7 +43,7 @@ public class Lotto {
     }
 
     public static Lotto generateLottoAuto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_RANGE, LOTTO_MAX_RANGE, LOTTO_SIZE);
         return new Lotto(numbers);
     }
 

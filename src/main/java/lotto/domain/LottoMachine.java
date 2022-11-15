@@ -16,7 +16,7 @@ public class LottoMachine {
     public LottoPrize compareWinningLotto(Lotto lotto) {
         int count = winningLotto.matchCount(lotto);
         boolean matchBonusNumber = false;
-        if (count == 5) {
+        if (count == LottoPrize.SECOND.getMatchCount()) {
             matchBonusNumber = winningLotto.isMatchBonusNumber(lotto);
         }
         return LottoPrize.getPrize(count, matchBonusNumber);
@@ -33,6 +33,5 @@ public class LottoMachine {
         }
         return prizeResult;
     }
-
 
 }

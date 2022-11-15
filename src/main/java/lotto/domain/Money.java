@@ -20,12 +20,12 @@ public class Money {
 
     public int exchangeLotto() {
         validateLottoUnit(money);
-        return money / 1000;
+        return money / LottoConstant.LOTTO_PRICE;
     }
 
     private void validateLottoUnit(int money) {
-        if (money % 1000 != 0 || money <= 0) {
-            throw new IllegalArgumentException("구입 금액은 1000원 단위로 입력해주세요");
+        if (money % LottoConstant.LOTTO_PRICE != 0 || money <= 0) {
+            throw new IllegalArgumentException(String.format("구입 금액은 %d원 단위로 입력해주세요", LottoConstant.LOTTO_PRICE));
         }
     }
 
