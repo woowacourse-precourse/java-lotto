@@ -23,9 +23,7 @@ public class Lotto {
     public int getCountCorrectNumbers(int[] answerNums) {
         int sameCount = 0;
         for(int i = 0; i < answerNums.length; i++){
-            if(numbers.get(i) == answerNums[i]){
-                sameCount++;
-            }
+            if(numbers.contains(answerNums[i])) sameCount++;
         }
         return sameCount;
     }
@@ -42,5 +40,12 @@ public class Lotto {
             }
         }
         return result;
+    }
+
+    /**
+     * numbers를 출력
+     */
+    public void printNumbers(){
+        System.out.println(numbers);
     }
 }

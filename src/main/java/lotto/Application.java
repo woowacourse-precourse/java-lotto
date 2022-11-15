@@ -11,7 +11,7 @@ public class Application {
     static int bonusNum;    // 보너스 번호
 
     static int cntLotto;    // 로또 수량
-    static List<Lotto> lottoList;  // 생성한 로또들의 목록
+    static List<Lotto> lottoList = new ArrayList<>();  // 생성한 로또들의 목록
 
     // 로또 번호 1개의 결과 타입
     enum compareType{Three, Four, FiveOnly, FiveAndBonus, Six};
@@ -21,7 +21,7 @@ public class Application {
 
     // moneyCompareType[Three] : Three 결과에 해당하는 상금
     static int[] moneyCompareType = {
-            0, 5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000 };
+            5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000 };
 
     /**
      * 중복값 없이 1부터 45 까지의 난수 6개로 이루어진 리스트를 생성해 반환한다.
@@ -35,7 +35,8 @@ public class Application {
      * 입력받은 난수 리스트들을 오름차순으로 정렬해 반환한다.
      */
     static List<Integer> sortRandomNumberList(List<Integer> randomNumberList){
-        Collections.sort(randomNumberList);
+        ArrayList<Integer> sortNumbers = new ArrayList<>(randomNumberList);
+        Collections.sort(sortNumbers);
         return randomNumberList;
     }
 
@@ -63,7 +64,7 @@ public class Application {
     static void printLotto(){
         System.out.println(cntLotto + "개를 구매했습니다.");   // 로또 수량 출력
         for(int i = 0; i < cntLotto; i++){
-            System.out.println(lottoList.get(i).toString());
+            lottoList.get(i).printNumbers();
         }
         System.out.println();
     }
@@ -120,13 +121,16 @@ public class Application {
      * 파라미터로 사용자가 사용한 금액을 입력받는다.
      */
     static double getYield(int money){
-        int sum = 0;    // 총 벌어들인 금액
+        double sum = 0;    // 총 벌어들인 금액
+        System.out.println("countCompareType[compareType.Three.ordinal()] = " + countCompareType[compareType.Three.ordinal()]);
+        System.out.println("compareType.Three.ordinal() = " + compareType.Three.ordinal());
+        System.out.println(" moneyCompareType[compareType.Three.ordinal()] = " +  moneyCompareType[compareType.Three.ordinal()]);
         sum += countCompareType[compareType.Three.ordinal()] * moneyCompareType[compareType.Three.ordinal()];
         sum += countCompareType[compareType.Four.ordinal()] * moneyCompareType[compareType.Four.ordinal()];
         sum += countCompareType[compareType.FiveOnly.ordinal()] * moneyCompareType[compareType.FiveOnly.ordinal()];
         sum += countCompareType[compareType.FiveAndBonus.ordinal()] * moneyCompareType[compareType.FiveAndBonus.ordinal()];
         sum += countCompareType[compareType.Six.ordinal()] * moneyCompareType[compareType.Six.ordinal()];
-        return Math.round((sum / money) * 10000) / 100;
+        return (double)Math.round((sum*10000) / money) / 100;
     }
 
     /**
