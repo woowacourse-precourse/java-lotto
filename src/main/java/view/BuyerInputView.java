@@ -6,17 +6,20 @@ import domain.enums.GameMessage;
 public class BuyerInputView {
     public static String getInputPrice() {
         System.out.println(GameMessage.PROMPT_MESSAGE.getGameMessage());
-        return Console.readLine();
+        String inputNum = Console.readLine();
+        return inputNum;
     }
 
     public static String getPickNum() {
         System.out.println(GameMessage.PICK_MESSAGE.getGameMessage());
-        return Console.readLine();
+        String inputNum = Console.readLine();
+        return inputNum;
     }
 
     public static String getBonusNum() {
         System.out.println(GameMessage.PICK_BONUS_MESSAGE.getGameMessage());
-        return Console.readLine();
+        String inputNum = Console.readLine();
+        return inputNum;
     }
 
 
