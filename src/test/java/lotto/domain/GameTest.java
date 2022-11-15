@@ -28,5 +28,29 @@ class GameTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호의 개수가 6개가 넘어가면 예외가 발생.")
+    @Test
+    void createLottoByOverSize() {
+        Game game = new Game();
+        assertThatThrownBy(() -> game.setWinningNumbers(List.of(1, 2, 3, 4, 5, 6, 7)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByDuplicatedNumber() {
+        Game game = new Game();
+        assertThatThrownBy(() -> game.setWinningNumbers(List.of(1, 2, 3, 4, 5, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호에 1~45 범위를 넘어간 수가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoOutOfRange(){
+        Game game = new Game();
+        assertThatThrownBy(() -> game.setWinningNumbers(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
