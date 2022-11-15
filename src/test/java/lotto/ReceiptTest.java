@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 public class ReceiptTest {
@@ -34,5 +36,17 @@ public class ReceiptTest {
         Receipt receipt = new Receipt("2000");
         List<Lotto> lottos = receipt.buy();
         Assertions.assertThat(lottos.size()).isEqualTo(2);
+    }
+
+    @DisplayName("구매 수량 출력 기능 테스트")
+    @Test
+    void printReceiptTest() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        Receipt receipt = new Receipt("2000");
+        receipt.printReceipt();
+
+        Assertions.assertThat(output.toString()).isEqualTo("2개를 구매했습니다.\n");
     }
 }
