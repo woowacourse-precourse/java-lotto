@@ -6,17 +6,18 @@ import lotto.view.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 public class User {
     private List<Lotto> lottos = new ArrayList<>();
     private List<Integer> winningNumber = new ArrayList<>();
     private Integer bonusNumber;
+    public User() {};
     public User(List<Lotto> lottos) {
         this.lottos = lottos;
     }
     Validate validate = new Validate();
-    public void inputWinningNUmber() {
+    public void inputWinningNumber() {
         Printer.inputWinningNumber();
         String input = Console.readLine();
         List<String> numbers = List.of(input.split(","));
@@ -38,5 +39,4 @@ public class User {
     public Integer getBonusNumber() {
         return bonusNumber;
     }
-
 }

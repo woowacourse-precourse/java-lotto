@@ -14,7 +14,7 @@ public class Executor {
         List<Lotto> lottos = machine.createLottoNumber();
 
         User user = new User(lottos);
-        user.inputWinningNUmber();
+        user.inputWinningNumber();
         user.inputBonusNumber();
 
         machine.printLottos();
