@@ -2,6 +2,7 @@ package lotto.Service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Model.Lotto;
+import lotto.Model.LottoResult;
 import lotto.Model.ValidNumbers;
 import lotto.Model.WinningLotto;
 
@@ -41,16 +42,24 @@ public class LottoService {
         Map<Integer, Integer> resultMap = new HashMap<>();
 
         for (Lotto lotto : totalLotto) {
-            int count = winningLotto.compareAndCount(lotto);
-            Integer value = resultMap.putIfAbsent(count, 1);
+            int winningResult = winningLotto.getWinningResult(lotto);
+            Integer value = resultMap.putIfAbsent(winningResult, 1);
 
             if (value != null) {
-                value = resultMap.get(count);
-                resultMap.put(count, value + 1);
+                value = resultMap.get(winningResult);
+                resultMap.put(winningResult, value + 1);
             }
         }
 
+        removeInvalidValues(resultMap);
+
         return resultMap;
+    }
+
+    private void removeInvalidValues(Map<Integer, Integer> resultMap) {
+        for (int key = 0; key < LottoResult.THREE_WINS.getValue(); key++) {
+            resultMap.remove(key);
+        }
     }
 
     public int countWinning(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
