@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +22,14 @@ public class User {
         try {
             money = Integer.parseInt(inputMoney);
         } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 금액으로 숫자를 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 금액으로 숫자를 입력해주세요.");
         }
     }
 
     private void validateMoney() {
         if ((money % 1000) != 0) {
+            System.out.println("[ERROR] 1000원 단위로 구매해주세요.");
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 구매해주세요.");
         }
     }

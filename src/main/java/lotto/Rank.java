@@ -25,6 +25,7 @@ public class Rank {
                            .collect(Collectors.toList());
 
         if (lottoNum.size() != (LOTTO_NUMBER_SIZE + 1)) {
+            System.out.println("[ERROR] 당첨번호와 중복되지 않는 보너스 번호를 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 보너스 번호를 입력해주세요.");
         }
 
