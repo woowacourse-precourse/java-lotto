@@ -16,15 +16,15 @@ public class Consumer {
     public Map<Rank, Integer> confirmResult(WinningLotto winningLotto) {
         Map<Rank, Integer> result = initResult();
         lottos.stream()
-            .map(winningLotto::compare)
-            .forEach(rank -> result.put(rank, result.getOrDefault(rank, 0) + 1));
+                .map(winningLotto::compare)
+                .forEach(rank -> result.put(rank, result.getOrDefault(rank, 0) + 1));
         return result;
     }
 
     private Map<Rank, Integer> initResult() {
         Map<Rank, Integer> result = new HashMap<>();
         Arrays.stream(Rank.values())
-            .forEach(rank -> result.put(rank, 0));
+                .forEach(rank -> result.put(rank, 0));
         return result;
     }
 

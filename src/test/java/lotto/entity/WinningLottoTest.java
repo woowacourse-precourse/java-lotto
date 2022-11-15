@@ -18,7 +18,7 @@ class WinningLottoTest {
 
         //then
         assertThatThrownBy(() -> new WinningLotto(lotto, bonus)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호가 정해진 끝 범위를 벗어나면 예외가 발생한다.")
@@ -30,7 +30,7 @@ class WinningLottoTest {
 
         //then
         assertThatThrownBy(() -> new WinningLotto(lotto, bonus)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호가 로또 번호와 중복된 숫자를 가지면 예외가 발생한다.")
@@ -42,7 +42,7 @@ class WinningLottoTest {
 
         //then
         assertThatThrownBy(() -> new WinningLotto(lotto, bonus)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
     @DisplayName("로또 번호가 0개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")

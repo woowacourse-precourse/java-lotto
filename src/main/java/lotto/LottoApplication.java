@@ -23,7 +23,7 @@ public class LottoApplication {
     private final Converter<String, List<Integer>> multipleNumericConverter;
 
     public LottoApplication(Converter<String, Integer> numericConverter,
-        Converter<String, List<Integer>> multipleNumericConverter) {
+            Converter<String, List<Integer>> multipleNumericConverter) {
         this.numericConverter = numericConverter;
         this.multipleNumericConverter = multipleNumericConverter;
     }
@@ -57,22 +57,23 @@ public class LottoApplication {
     private void validateUnit(int purchase) {
         if (purchase % PRICE != 0) {
             throw new IllegalArgumentException(
-                String.format("금액은 %d원 단위로 입력해야 합니다. 입력 : %s", PRICE, purchase));
+                    String.format("금액은 %d원 단위로 입력해야 합니다. 입력 : %s", PRICE, purchase));
         }
     }
 
     private void validateNegative(int purchase) {
         if (purchase < 0) {
             throw new IllegalArgumentException(
-                String.format("로또를 구입할 수 없는 금액입니다. 입력 : %d", purchase));
+                    String.format("로또를 구입할 수 없는 금액입니다. 입력 : %d", purchase));
         }
     }
 
     private List<Lotto> buyLottos(int count) {
         List<Lotto> lottos = IntStream.range(0, count)
-            .mapToObj(
-                i -> new Lotto(Randoms.pickUniqueNumbersInRange(RANGE_START, RANGE_END, COUNT)))
-            .collect(Collectors.toList());
+                .mapToObj(
+                        i -> new Lotto(
+                                Randoms.pickUniqueNumbersInRange(RANGE_START, RANGE_END, COUNT)))
+                .collect(Collectors.toList());
         OutputService.printGeneratedLottos(lottos);
         return lottos;
     }

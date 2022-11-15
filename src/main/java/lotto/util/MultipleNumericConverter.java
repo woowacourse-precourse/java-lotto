@@ -12,8 +12,8 @@ public class MultipleNumericConverter implements Converter<String, List<Integer>
     @Override
     public List<Integer> convert(String target) {
         return Arrays.stream(target.split(SEPARATOR))
-            .map(this::convertToNumeric)
-            .collect(Collectors.toList());
+                .map(this::convertToNumeric)
+                .collect(Collectors.toList());
     }
 
     private Integer convertToNumeric(String target) {

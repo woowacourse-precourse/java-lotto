@@ -15,10 +15,10 @@ class ConsumerTest {
     void confirmResult() {
         //given
         List<Lotto> lottos = new ArrayList<>(List.of(
-            new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-            new Lotto(List.of(2, 3, 4, 5, 6, 7)),
-            new Lotto(List.of(3, 4, 5, 6, 7, 8)),
-            new Lotto(List.of(4, 5, 6, 7, 8, 9))
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(2, 3, 4, 5, 6, 7)),
+                new Lotto(List.of(3, 4, 5, 6, 7, 8)),
+                new Lotto(List.of(4, 5, 6, 7, 8, 9))
         ));
         Consumer consumer = new Consumer(lottos);
         Lotto winningNumberLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -26,7 +26,7 @@ class ConsumerTest {
 
         //when
         Map<Rank, Integer> result = consumer.confirmResult(
-            new WinningLotto(winningNumberLotto, bonus));
+                new WinningLotto(winningNumberLotto, bonus));
 
         //then
         assertThat(result.get(Rank.FIRST)).isEqualTo(1);

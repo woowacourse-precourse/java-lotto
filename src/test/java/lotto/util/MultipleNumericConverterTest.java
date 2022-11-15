@@ -33,7 +33,7 @@ class MultipleNumericConverterTest {
 
         //then
         assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
     @DisplayName("한글은 숫자로 변환할 수 없으므로 예외가 발생한다.")
@@ -44,7 +44,7 @@ class MultipleNumericConverterTest {
 
         //then
         assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
     @DisplayName("특수 기호는 숫자로 변환할 수 없으므로 예외가 발생한다.")
@@ -55,7 +55,7 @@ class MultipleNumericConverterTest {
 
         //then
         assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
     @DisplayName("공백은 숫자로 변환할 수 없으므로 예외가 발생한다.")
@@ -66,7 +66,7 @@ class MultipleNumericConverterTest {
 
         //then
         assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
-            IllegalArgumentException.class);
+                IllegalArgumentException.class);
     }
 
 }

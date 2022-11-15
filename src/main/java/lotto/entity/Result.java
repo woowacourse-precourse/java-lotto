@@ -22,16 +22,16 @@ public class Result {
 
     private double getTotalPrize() {
         return result.entrySet()
-            .stream()
-            .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
-            .sum();
+                .stream()
+                .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
+                .sum();
     }
 
     private long getPurchase() {
         long count = result.values()
-            .stream()
-            .mapToLong(i -> i)
-            .sum();
+                .stream()
+                .mapToLong(i -> i)
+                .sum();
         return count * PRICE;
     }
 
@@ -39,11 +39,11 @@ public class Result {
     public String toString() {
         StringJoiner output = new StringJoiner("\n");
         result.entrySet()
-            .stream()
-            .filter(entry -> !entry.getKey().equals(Rank.NONE))
-            .sorted(Comparator.comparingLong(o -> o.getKey().getPrize()))
-            .forEach(
-                entry -> output.add(entry.getKey() + " - " + entry.getValue() + "개"));
+                .stream()
+                .filter(entry -> !entry.getKey().equals(Rank.NONE))
+                .sorted(Comparator.comparingLong(o -> o.getKey().getPrize()))
+                .forEach(
+                        entry -> output.add(entry.getKey() + " - " + entry.getValue() + "개"));
         return output.toString();
     }
 

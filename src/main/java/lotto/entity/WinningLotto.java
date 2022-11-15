@@ -24,8 +24,8 @@ public class WinningLotto {
     private void validateRange(int bonus) {
         if (outOfRange(bonus)) {
             throw new IllegalArgumentException(
-                String.format("보너스 번호는 %d부터 %d사이 숫자여야 합니다. 입력 : %d", RANGE_START, RANGE_END,
-                    bonus));
+                    String.format("보너스 번호는 %d부터 %d사이 숫자여야 합니다. 입력 : %d", RANGE_START, RANGE_END,
+                            bonus));
         }
     }
 
@@ -36,7 +36,7 @@ public class WinningLotto {
     private void validateDuplication(int bonus) {
         if (winningLotto.contains(bonus)) {
             throw new IllegalArgumentException(
-                String.format("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : %d", bonus));
+                    String.format("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : %d", bonus));
         }
     }
 
@@ -44,16 +44,16 @@ public class WinningLotto {
         int count = getMatchCount(lotto);
         boolean bonus = lotto.contains(this.bonus);
         return Arrays.stream(Rank.values())
-            .filter(rank -> rank.win(count, bonus))
-            .findFirst()
-            .orElse(Rank.NONE);
+                .filter(rank -> rank.win(count, bonus))
+                .findFirst()
+                .orElse(Rank.NONE);
     }
 
     private int getMatchCount(Lotto lotto) {
         return (int) lotto.cloneNumbers()
-            .stream()
-            .filter(winningLotto::contains)
-            .count();
+                .stream()
+                .filter(winningLotto::contains)
+                .count();
     }
 
 }
