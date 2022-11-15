@@ -2,6 +2,7 @@ package lotto;
 
 import UserInterface.InputValues;
 import Utils.Validator;
+import domain.Generator;
 import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,7 +47,8 @@ class LottoTest {
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int theNumberOfLotto = 6;
-        List<List<Integer>> generatedLottoNumber = lotto.generateLottoNumber(6);
+        Generator generator = new Generator();
+        List<List<Integer>> generatedLottoNumber = generator.generateLottoNumber(6000);
         assertThat(generatedLottoNumber.size()).isEqualTo(6);
 
     }

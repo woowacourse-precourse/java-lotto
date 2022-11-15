@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Utils.Validator;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -24,15 +23,6 @@ public class Lotto {
         for (Integer number : numbers) {
             validator.checkNumberRange(number);
         }
-    }
-
-    public static List<List<Integer>> generateLottoNumber(int totalPayment) {
-        int theNumberOfLotto = totalPayment / 1000;
-        List<List<Integer>> generatedLottoNumber = new ArrayList<>();
-        for (int i = 0; i < theNumberOfLotto; i++) {
-            generatedLottoNumber.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        }
-        return generatedLottoNumber;
     }
 
     public int getIndividualLottoScore(List<Integer> lotto, int bonus) {
@@ -70,12 +60,14 @@ public class Lotto {
     }
 
     public String calculateYield(List<Integer> result, int totalPayment) {
-        List<Integer> prizeValues = new ArrayList<>(List.of(5000, 50000, 1500000, 2000000000, 30000000));
         int totalPrize = 0;
 
-        for (int i = 0; i < 5; i++) {
-            totalPrize += prizeValues.get(i) * result.get(i);
-        }
+        totalPrize += Prize.FIFTH.getPrize() * result.get(0);
+        totalPrize += Prize.FOURTH.getPrize() * result.get(1);
+        totalPrize += Prize.THIRD.getPrize() * result.get(2);
+        totalPrize += Prize.SECOND.getPrize() * result.get(4);
+        totalPrize += Prize.FIRST.getPrize() * result.get(3);
+
         return String.format("%.1f", (double) totalPrize / totalPayment * 100);
     }
 }
