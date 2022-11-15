@@ -20,9 +20,9 @@ public class Lottos {
         return result;
     }
 
-    public int calculateWinningAmount(WinningNumbers winningNumbers) {
+    public long calculateWinningAmount(WinningNumbers winningNumbers) {
         return lottos.stream()
-                .mapToInt(lotto -> lotto.calculateWinningAmount(winningNumbers))
+                .mapToLong(lotto -> lotto.calculateWinningAmount(winningNumbers))
                 .sum();
     }
 

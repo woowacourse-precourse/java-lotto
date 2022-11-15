@@ -24,7 +24,7 @@ public class PurchaseAmount {
         return purchaseAmount / Lotto.PRICE;
     }
 
-    public double calculateProfitRate(int winningAmount) {
+    public double calculateProfitRate(long winningAmount) {
         return (double) winningAmount / purchaseAmount * PERCENT_CONVERTER;
     }
 }

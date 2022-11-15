@@ -52,7 +52,7 @@ public class LottoController {
     }
 
     private void printLottosProfitRate(PurchaseAmount purchaseAmount, Lottos lottos, WinningNumbers winningNumbers) {
-        int winningAmount = lottos.calculateWinningAmount(winningNumbers);
+        long winningAmount = lottos.calculateWinningAmount(winningNumbers);
         double profitRate = purchaseAmount.calculateProfitRate(winningAmount);
 
         outputView.printProfitRate(profitRate);

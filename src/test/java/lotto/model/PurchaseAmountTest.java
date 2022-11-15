@@ -30,7 +30,7 @@ class PurchaseAmountTest {
 
     @ParameterizedTest(name = "구매 금액 4000원 상금 {0}원, 수익률 {1}%")
     @CsvSource({"2000,50", "2500,62.5", "135000,3375"})
-    void 로또_수익률_계산_기능(int winningAmount, double expected) {
+    void 로또_수익률_계산_기능(long winningAmount, double expected) {
         PurchaseAmount purchaseAmount = new PurchaseAmount(4000);
         assertThat(purchaseAmount.calculateProfitRate(winningAmount)).isEqualTo(expected);
     }
