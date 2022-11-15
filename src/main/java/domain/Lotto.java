@@ -33,7 +33,7 @@ public class Lotto {
         return new LottoDto(numbers);
     }
 
-    public static LottoRank countHit(WinningNumberDto winningNumber) {
+    public LottoRank countHit(WinningNumberDto winningNumber) {
         Integer hit = 0;
         Boolean bonusHit = false;
         for (Integer mainNumber : winningNumber.mainNumbers) {

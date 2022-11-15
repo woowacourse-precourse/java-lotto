@@ -24,7 +24,7 @@ public class Lottos {
     public Result totalResult(WinningNumberDto winningNumberDto){
         Result result = new Result();
         for(Lotto lotto : lottos){
-            LottoRank rank = Lotto.countHit(winningNumberDto);
+            LottoRank rank = lotto.countHit(winningNumberDto);
             result.increment(rank);
         }
         return result;
