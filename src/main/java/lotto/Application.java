@@ -10,33 +10,39 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        OutputView.printPurchaseGuideMessage();
-        PurchaseMoney purchaseMoney = InputView.inputPurchaseMoney();
 
-        int lottoCount = purchaseMoney.getLottoCount();
-        OutputView.printPurchaseResultMessage(lottoCount);
+        try {
+            OutputView.printPurchaseGuideMessage();
+            PurchaseMoney purchaseMoney = InputView.inputPurchaseMoney();
 
-        Lottery lottery = new Lottery(lottoCount);
-        OutputView.printLottoNumbers(lottery);
+            int lottoCount = purchaseMoney.getLottoCount();
+            OutputView.printPurchaseResultMessage(lottoCount);
 
-        OutputView.printWinningNumbersEnteringGuideMessage();
-        List<Integer> winningLottoNumber = InputView.inputWinningNumbers();
+            Lottery lottery = new Lottery(lottoCount);
+            OutputView.printLottoNumbers(lottery);
 
-        OutputView.printBonusNumbersEnteringGuideMessage();
-        int bonusNumber = InputView.inputBonusNumber();
+            OutputView.printWinningNumbersEnteringGuideMessage();
+            List<Integer> winningLottoNumber = InputView.inputWinningNumbers();
 
-        WinningLotto winningLotto = new WinningLotto(new Lotto(winningLottoNumber), bonusNumber);
-        OutputView.printResultMessage(lottery, winningLotto);
+            OutputView.printBonusNumbersEnteringGuideMessage();
+            int bonusNumber = InputView.inputBonusNumber();
+
+            WinningLotto winningLotto = new WinningLotto(new Lotto(winningLottoNumber), bonusNumber);
+            OutputView.printResultMessage(lottery, winningLotto);
 
 
 
-        List<Rank> ranks = new ArrayList<>();
-        lottery.getLottery()
-                .forEach(lotto -> ranks.add(winningLotto.getRank(lotto)));
+            List<Rank> ranks = new ArrayList<>();
+            lottery.getLottery()
+                    .forEach(lotto -> ranks.add(winningLotto.getRank(lotto)));
 
-        Result result = new Result(ranks);
+            Result result = new Result(ranks);
 
-        double yield = result.getYield(purchaseMoney.getPurchaseMoney());
-        OutputView.printYieldMessage(yield);
+            double yield = result.getYield(purchaseMoney.getPurchaseMoney());
+            OutputView.printYieldMessage(yield);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

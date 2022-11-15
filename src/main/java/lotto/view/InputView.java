@@ -7,11 +7,20 @@ import java.util.*;
 
 public class InputView {
 
+    private static final String REGEX_ONLY_NUMBER = "^[0-9]*$";
+    private static final String ERROR_WITH_TEXT_MESSAGE = "[ERROR] 숫자만 입력해야 합니다.";
     private static final String WINNING_NUMBERS_SPLIT_DELIMITER = ",";
 
     public static PurchaseMoney inputPurchaseMoney() {
         String input = Console.readLine();
+        validatePositiveInputPurchaseMoney(input);
         return convertInputPurchaseMoney(input);
+    }
+
+    private static void validatePositiveInputPurchaseMoney(String input) {
+        if (!input.matches(REGEX_ONLY_NUMBER)) {
+            throw new IllegalArgumentException(ERROR_WITH_TEXT_MESSAGE);
+        }
     }
 
     private static PurchaseMoney convertInputPurchaseMoney(String input) {
