@@ -17,6 +17,11 @@ public class Application {
         int lottoCount = OutputView.getLottoCount(purchaseAmount, UNIT);
         List<Lotto> userLotto = publishLotto(lottoCount);
         OutputView.showLottoSheets(userLotto);
+
+        List<Integer> winningNumbers = InputView.getWinningNumber();
+        validateWinningNumbers(winningNumbers);
+        String bonusNumber = InputView.getBonusNumber();
+        validateBonusNumber(bonusNumber);
     }
 
     private static void validatePurchaseAmount(String purchaseAmount) {
@@ -51,5 +56,31 @@ public class Application {
         Collections.sort(numbers);
         Lotto lotto = new Lotto(numbers);
         return lotto;
+    }
+
+
+    private static void validateWinningNumbers(List<Integer> winningNumbers) {
+        if (winningNumbers.size() != COUNT_NUM) {
+            throw new IllegalArgumentException(ERROR + "당첨 번호 숫자는 6개입니다");
+        }
+//        if (isDuplicate(winningNumbers)) {
+//            throw new IllegalArgumentException(ERROR + "당첨 번호에 중복된 숫자가 있습니다");
+//        }
+    }
+
+    private static void validateBonusNumber(String bonusNumber) {
+        if (bonusNumber.length() != 1) {
+            throw new IllegalArgumentException(ERROR + "보너스 번호는 1개입니다");
+        }
+        if (isOutOfRange(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ERROR + "보너스 번호가 범위를 벗어났습니다");
+        }
+    }
+
+    private static boolean isOutOfRange(int number) {
+        if (number < 1 || number > 45) {
+            return false;
+        }
+        return true;
     }
 }
