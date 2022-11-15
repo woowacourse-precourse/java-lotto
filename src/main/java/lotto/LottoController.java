@@ -72,6 +72,7 @@ public class LottoController {
 		int bonusNumber = (int)model.getAttribute("bonusNumber");
 		for (Lotto lotto : lottos) {
 			int corrections = getCorrections(lotto, correctLotto);
+			boolean hasBonus = isThereBonus(lotto, bonusNumber);
 		}
 	}
 
@@ -79,5 +80,10 @@ public class LottoController {
 		List<Integer> input = lotto.getLotto();
 		List<Integer> target = correctLotto.getLotto();
 		return (int)input.stream().filter(i -> target.contains(i)).count();
+	}
+
+	public boolean isThereBonus(Lotto lotto, int bonusNumber) {
+		List<Integer> input = lotto.getLotto();
+		return input.contains(bonusNumber);
 	}
 }

@@ -30,4 +30,14 @@ class LottoControllerTest {
 		Assertions.assertThat(controller.getCorrections(input, target1)).isEqualTo(5);
 		Assertions.assertThat(controller.getCorrections(input, target2)).isEqualTo(0);
 	}
+
+	@DisplayName("두 로또 간 일치하는 숫자의 개수를 세야 한다.")
+	@Test
+	void isThereBonusTest() {
+		Lotto input = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+		int bonus1 = 5;
+		int bonus2 = 7;
+		assertTrue(controller.isThereBonus(input, bonus1));
+		assertFalse(controller.isThereBonus(input, bonus2));
+	}
 }
