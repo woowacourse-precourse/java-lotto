@@ -30,6 +30,10 @@ public class Money {
         return money % MIN_UNIT != 0;
     }
 
+    public static int getQuotient(Money money) {
+        return money.money / MIN_UNIT;
+    }
+
     public int getMoney() {
         return money;
     }
