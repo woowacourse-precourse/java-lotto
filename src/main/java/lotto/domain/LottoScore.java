@@ -10,6 +10,11 @@ import static lotto.config.Score.*;
 
 public class LottoScore {
 
+    private static final int THREE_SCORE = 3;
+    private static final int FOUR_SCORE = 4;
+    private static final int FIVE_SCORE = 5;
+    private static final int SIX_SCORE = 6;
+
     private static final Map<Score, Integer> scoreStore = new HashMap<>();
 
     public static Map<Score, Integer> setInitialSetting() {
@@ -30,35 +35,39 @@ public class LottoScore {
     }
 
     private static void isSix(int score) {
-        if (score == 6) {
+        if (score == SIX_SCORE) {
             Integer count = scoreStore.get(SIX);
             scoreStore.put(SIX, ++count);
         }
     }
 
     private static void isFiveBonus(List<Integer> lottoNumbers, int score, int bonusNumber) {
-        if (score == 5 && lottoNumbers.contains(bonusNumber)) {
+        if (score == FIVE_SCORE && isContainedBonusNumber(lottoNumbers, bonusNumber)) {
             Integer count = scoreStore.get(FIVE_BONUS);
             scoreStore.put(FIVE_BONUS, ++count);
         }
     }
 
+    private static boolean isContainedBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
+        return lottoNumbers.contains(bonusNumber);
+    }
+
     private static void isFive(List<Integer> lottoNumbers, int score, int bonusNumber) {
-        if (score == 5 && !lottoNumbers.contains(bonusNumber)) {
+        if (score == FIVE_SCORE && !isContainedBonusNumber(lottoNumbers, bonusNumber)) {
             Integer count = scoreStore.get(FIVE);
             scoreStore.put(FIVE, ++count);
         }
     }
 
     private static void isFour(int score) {
-        if (score == 4) {
+        if (score == FOUR_SCORE) {
             Integer count = scoreStore.get(FOUR);
             scoreStore.put(FOUR, ++count);
         }
     }
 
     private static void isThree(int score) {
-        if (score == 3) {
+        if (score == THREE_SCORE) {
             Integer count = scoreStore.get(THREE);
             scoreStore.put(THREE, ++count);
         }
