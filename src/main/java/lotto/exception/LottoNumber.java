@@ -25,4 +25,9 @@ public class LottoNumber {
         }
     }
 
+    public static void exceptionSize(List<Integer> lotto) {
+        if (lotto.size() != 6) {
+            throw new IllegalArgumentException(Error.WRONG_LOTTOS_LENGTH.getMsg());
+        }
+    }
 }
