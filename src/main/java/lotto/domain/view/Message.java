@@ -6,9 +6,9 @@ public enum Message {
 	WINNING_NUMBER("당첨 번호를 입력해 주세요.\n"),
 	BONUS_NUMBER("보너스 번호를 입력해 주세요.\n"),
 	RESULT_TITLE("당첨 통계\n---\n"),
-	RESULT("%d개 일치 (%s원) - %d개\n"),
+	RESULT("%d개 일치 (%s원) - %d개\n"), // todo ,d원으로 바꾸기
 	RESULT_FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n"),
-	RESULT_RATE("총 수익률은 %d%%입니다.")
+	RESULT_RATE("총 수익률은 %,.1f%%입니다.")
 	;
 
 	private final String message;

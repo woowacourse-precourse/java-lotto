@@ -8,25 +8,23 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoGame {
 	final private Print print = new Print();
-	WinningNumber winningNumber;
-	BonusBall bonusBall;
-	Store store;
+	private WinningNumber winningNumber;
+	private BonusBall bonusBall;
+	private Pay pay;
+	private Store store;
+	private CompareNumber compareNumber;
 
 	public void start() {
 		buyTicket();
 		getWinningNumber();
 		getBonusNumber();
 		getScore();
-	}
-
-	private void getScore() {
-		CompareNumber compareNumber = new CompareNumber(winningNumber, bonusBall, store.lottoTicket);
-		print.result(compareNumber.result);
+		getRateOfReturn();
 	}
 
 	private void buyTicket() {
 		print.message(Message.START);
-		Pay pay = new Pay(readLine());
+		pay = new Pay(readLine());
 		store = new Store(pay.getPay());
 		print.LottoTicket(store.count, store.lottoTicket.getLottoTicket());
 	}
@@ -42,5 +40,16 @@ public class LottoGame {
 		print.message(Message.BONUS_NUMBER);
 		bonusBall = new BonusBall(readLine());
 	}
+
+	private void getScore() {
+		compareNumber = new CompareNumber(winningNumber, bonusBall, store.lottoTicket);
+		print.result(compareNumber.result);
+	}
+
+	private void getRateOfReturn() {
+		RateOfReturn rateOfReturn = new RateOfReturn(pay.getPay(), compareNumber.result);
+		System.out.printf(Message.RESULT_RATE.getMessage(), rateOfReturn.rateOfReturn);
+	}
+
 
 }
