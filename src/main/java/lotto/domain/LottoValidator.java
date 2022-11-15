@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoValidator {
 
-    public static LottoValidator lottoValidator = new LottoValidator();
+    private static LottoValidator lottoValidator = new LottoValidator();
 
     public static LottoValidator getInstance() {
         return lottoValidator;
