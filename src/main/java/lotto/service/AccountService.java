@@ -11,6 +11,6 @@ public class AccountService {
     }
 
     public Long getNewId() {
-        return accountDao.addNewUser();
+        return accountDao.addNewAccount();
     }
 }

@@ -1,12 +1,11 @@
 package lotto.data.repository;
 
+import java.util.HashMap;
+import lotto.data.entity.Account;
+
 public class AccountRepository {
 
     private static AccountRepository instance;
-
-    private AccountRepository(Long initUserId) {
-        userCount = initUserId;
-    }
 
     public static AccountRepository getInstance() {
         if (instance == null) {
@@ -17,14 +16,21 @@ public class AccountRepository {
 
     private static void assignNewInstance() {
         synchronized (AccountRepository.class) {
-            instance = new AccountRepository(0L);
+            instance = new AccountRepository();
         }
     }
 
-    private Long userCount;
+    private final HashMap<Long, Account> accounts;
 
-    public Long addNewUser() {
-        return userCount++;
+    private AccountRepository() {
+        this.accounts = new HashMap<>();
     }
 
+    public void save(Account account) {
+        accounts.put(account.getUserId(), account);
+    }
+
+    public int count() {
+        return accounts.size();
+    }
 }

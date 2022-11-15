@@ -1,5 +1,6 @@
 package lotto.data.dao;
 
+import lotto.data.entity.Account;
 import lotto.data.repository.AccountRepository;
 
 public class AccountDao {
@@ -10,7 +11,9 @@ public class AccountDao {
         accountRepository = AccountRepository.getInstance();
     }
 
-    public Long addNewUser() {
-        return accountRepository.addNewUser();
+    public Long addNewAccount() {
+        Long newId = (long) accountRepository.count() + 1;
+        accountRepository.save(new Account(newId));
+        return newId;
     }
 }
