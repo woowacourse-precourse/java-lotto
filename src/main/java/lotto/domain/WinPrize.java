@@ -9,11 +9,19 @@ public enum WinPrize {
     FIVE_GRADE(3, 5_000),
     NOTHING(0, 0);
 
-    public long matchCount;
-    public long price;
+    private long matchingCount;
+    private long price;
 
-    WinPrize(long matchCount, long price) {
-        this.matchCount = matchCount;
+    WinPrize(long matchingCount, long price) {
+        this.matchingCount = matchingCount;
         this.price = price;
+    }
+
+    public long getMatchingCount() {
+        return matchingCount;
+    }
+
+    public long getPrice() {
+        return price;
     }
 }

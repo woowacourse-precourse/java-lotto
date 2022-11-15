@@ -17,7 +17,7 @@ public class WinNumberInputController extends InputController {
         long winNumberSize = winNumber.stream().filter(number -> isCorrectLottoNumber(number)).count();
 
         if (winNumberSize != LOTTO_NUMBER_LENGTH)
-            throw new IllegalArgumentException(ErrorMessage.SIX_NUMBER_MESSAGE.message);
+            throw new IllegalArgumentException(ErrorMessage.SIX_NUMBER_MESSAGE.getMessage());
     }
 
     public boolean isCorrectLottoNumber(String number) {

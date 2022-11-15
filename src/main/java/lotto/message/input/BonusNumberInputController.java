@@ -23,7 +23,7 @@ public class BonusNumberInputController extends InputController {
             Integer.parseInt(input);
 
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.message);
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ public class BonusNumberInputController extends InputController {
         int bonusNumber = Integer.parseInt(input);
 
         if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
-            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.message);
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.getMessage());
         }
     }
 
@@ -41,6 +41,6 @@ public class BonusNumberInputController extends InputController {
         List<Integer> winNumber = new LottoMachine().getWinNumber().getLotto();
 
         if (winNumber.contains(bonusNumber))
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS_NUMBER_MESSAGE.message);
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS_NUMBER_MESSAGE.getMessage());
     }
 }

@@ -25,10 +25,10 @@ public class LottoMachine {
         winNumberInputController = new WinNumberInputController();
         bonusNumberInputController = new BonusNumberInputController();
 
-        winPrizeRecording.put(WinPrize.ONE_GRADE.matchCount, WinPrize.ONE_GRADE);
-        winPrizeRecording.put(WinPrize.THREE_GRADE.matchCount, WinPrize.THREE_GRADE);
-        winPrizeRecording.put(WinPrize.FOUR_GRADE.matchCount, WinPrize.FOUR_GRADE);
-        winPrizeRecording.put(WinPrize.FIVE_GRADE.matchCount, WinPrize.FIVE_GRADE);
+        winPrizeRecording.put(WinPrize.ONE_GRADE.getMatchingCount(), WinPrize.ONE_GRADE);
+        winPrizeRecording.put(WinPrize.THREE_GRADE.getMatchingCount(), WinPrize.THREE_GRADE);
+        winPrizeRecording.put(WinPrize.FOUR_GRADE.getMatchingCount(), WinPrize.FOUR_GRADE);
+        winPrizeRecording.put(WinPrize.FIVE_GRADE.getMatchingCount(), WinPrize.FIVE_GRADE);
     }
 
     public List<Lotto> issueLottoNumbers(long count) {
@@ -88,11 +88,11 @@ public class LottoMachine {
         boolean isBonusNumberMatching = checkBonusNumberMatching(buyerLotto);
         WinPrize buyerWinPrize = winPrizeRecording.get(matchingCount);
 
-        if (matchingCount == WinPrize.THREE_GRADE.matchCount && isBonusNumberMatching) {
+        if (matchingCount == WinPrize.THREE_GRADE.getMatchingCount() && isBonusNumberMatching) {
             return WinPrize.TWO_GRADE;
         }
 
-        if (matchingCount >= WinPrize.FIVE_GRADE.matchCount) {
+        if (matchingCount >= WinPrize.FIVE_GRADE.getMatchingCount()) {
             return buyerWinPrize;
         }
 

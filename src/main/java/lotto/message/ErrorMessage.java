@@ -8,9 +8,13 @@ public enum ErrorMessage {
     ONE_THOUSAND_UNIT_MONEY_MESSAGE("[ERROR] 1000원 단위만 입력 가능합니다."),
     SIX_NUMBER_MESSAGE("[ERROR] 정확히 6개의 당첨 번호를 입력해주세요.");
 
-    public String message;
+    private String message;
 
     ErrorMessage(String message) {
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

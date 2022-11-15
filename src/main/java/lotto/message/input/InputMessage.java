@@ -6,9 +6,13 @@ public enum InputMessage {
     PURCHASE_MONEY_MESSAGE("구입금액을 입력해 주세요."),
     BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요");
 
-    public String message;
+    private String message;
 
     InputMessage(String message) {
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

@@ -39,15 +39,15 @@ public class PrintController {
     }
 
     public void printPurchaseMoneyMessage() {
-        System.out.println(InputMessage.PURCHASE_MONEY_MESSAGE.message);
+        System.out.println(InputMessage.PURCHASE_MONEY_MESSAGE.getMessage());
     }
 
     public void printWinNumberMessage() {
-        System.out.println(InputMessage.WIN_NUMBER_MESSAGE.message);
+        System.out.println(InputMessage.WIN_NUMBER_MESSAGE.getMessage());
     }
 
     public void printBonusNumberMessage() {
-        System.out.println(InputMessage.BONUS_NUMBER_MESSAGE.message);
+        System.out.println(InputMessage.BONUS_NUMBER_MESSAGE.getMessage());
     }
 
     public void print(String message) {
