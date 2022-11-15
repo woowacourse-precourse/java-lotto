@@ -16,11 +16,17 @@ public class Application {
 
         System.out.println("구매금액을 입력해 주세요");
         String input = sc.nextLine();
-        validateInput(input);
+        try{
+            validateInput(input);
+        }catch(Throwable e){
+            return ;
+        }
 
         Integer money = Integer.parseInt(input);
         validateMoney(money);
         Integer nums = money/lottoPrice;
+
+        System.out.println(nums+"개를 구매했습니다.");
 
         List<Lotto> lottos = new ArrayList<>();
         for(int num = 0; num<nums; num++) {
@@ -44,16 +50,38 @@ public class Application {
         checkValidationOfNumber(bonusNumber);
         checkDuplicateBonusNumber(bonusNumber, winNumbers);
 
-        List<WinningResult> winningResults = new ArrayList<>();
+        int[] count = new int[6];
         for(Lotto lotto : lottos){
-            winningResults.add(getResult(lotto.getNumbers(),winNumbers,bonusNumber));
+            WinningResult result = getResult(lotto.getNumbers(),winNumbers,bonusNumber);
+            count[result.getRank()]++;
         }
 
-    }
 
-    static WinningResult getResult(List<Integer> lottoNumbers, List<Integer> winNumbers,Integer bonusNumber) {
-        List<Integer> temp = lottoNumbers;
-        lottoNumbers.retainAll(winNumbers);
+        Long earnedMoney = 0L;
+        List<WinningResult> results = Arrays.stream(WinningResult.values())
+                .collect(Collectors.toList());
+
+        for(WinningResult wr : results) {
+            if (wr.getRank() == 0) continue;
+            System.out.println(wr.getContent() + " - " + count[wr.getRank()] + "개");
+            Long temp = Long.valueOf(wr.getReward() * count[wr.getRank()]);
+            earnedMoney += temp;
+        }
+        double rate = Math.round((double) earnedMoney/money*1000);
+        System.out.println("총 수익률은 "+rate/10.00+"%입니다.");
+
+    }
+    static List<Integer> getIntersection(List<Integer> lottoNumbers, List<Integer> winNumbers){
+        List<Integer> temp = new ArrayList<>();
+        for(Integer num : lottoNumbers){
+            if(winNumbers.contains(num)){
+                temp.add(num);
+            }
+        }
+        return temp;
+    }
+    static WinningResult getResult(List<Integer> lottoNums, List<Integer> winNumbers,Integer bonusNumber) {
+        List<Integer> lottoNumbers = getIntersection(lottoNums,winNumbers);
 
         if(lottoNumbers.size()<3){
             return WinningResult.LOSE;
@@ -65,7 +93,7 @@ public class Application {
             return WinningResult.WIN_4TH;
         }
         if(lottoNumbers.size()==5){
-            return isBonusContained(temp,bonusNumber);
+            return isBonusContained(lottoNumbers,bonusNumber);
         }
         return WinningResult.WIN_1ST;
     }
