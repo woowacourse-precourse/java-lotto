@@ -13,6 +13,7 @@ import exception.InvalidLottoSizeException;
 import exception.LottoNumberDuplicatedException;
 import exception.NotInUnitsOf1000WonException;
 import exception.NotIntegerException;
+import exception.UndefinedException;
 import java.util.List;
 import lotto.Lotto;
 
@@ -41,7 +42,7 @@ public class Validator {
 
     public void validateWinningNumbers(List<String> numbers) {
         if (haveUndefinedNumber(numbers)) {
-            throw new IllegalArgumentException();
+            throw new UndefinedException();
         }
 
         if (!areInteger(numbers)) {
