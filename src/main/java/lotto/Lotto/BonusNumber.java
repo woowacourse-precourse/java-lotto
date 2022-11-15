@@ -40,4 +40,7 @@ public class BonusNumber {
         }
     }
 
+    public Integer getBonusNumber() {
+        return bonusNumber;
+    }
 }
