@@ -27,13 +27,13 @@ public class LottoStore {
         validate(purchase);
     }
     public List<Lotto> buyLotto() {
-        List<Lotto> lottoList = new ArrayList<>();
+        List<Lotto> lottos = new ArrayList<>();
 
         int count = purchase / 1000;
         for (int i = 0; i < count; i++) {
-            lottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
-        return lottoList;
+        return lottos;
     }
 
     public int getPurchase() {
