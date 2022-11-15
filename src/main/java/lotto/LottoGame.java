@@ -12,16 +12,18 @@ public class LottoGame {
     public List<Lotto> issuedLotto;
     public List<Integer> gameResult;
     public Input input;
+    public Output output;
 
     public void LottoGame() {
         this.input = new Input();
+        this.output = new Output();
         this.gameResult = new ArrayList<Integer>(6); // Rank : 1~5
     }
 
     public void play() {
         this.purchaseAmount = input.getPurchaseAmount();
         issueLotto();
-        // TODO: 발행된 로또 출력
+        output.printIssuedLotto(issuedLotto);
         this.winningNumber = input.getWinningNumber();
         this.bonusNumber = input.getBonusNumber();
         // TODO: 당첨 통계 계산과 출력
