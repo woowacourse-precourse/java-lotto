@@ -1,5 +1,7 @@
 package lotto.domain;
 
 public class LottoResult {
-    private
+    public static int sumSameNumbers() {
+
+    }
 }
