@@ -23,21 +23,18 @@ public class Application {
     }
 
     private static void run() {
-        PurchasePrice purchasePrice = new PurchasePrice(InputView.inputPurchasePrice());
+        Customer customer = new Customer(new PurchasePrice(InputView.inputPurchasePrice()));
         LottoSeller lottoSeller = new LottoSeller(new LottoNumberGenerator());
-        OutputView.printQuantity(lottoSeller.calculateQuantity(purchasePrice));
+        OutputView.printQuantity(lottoSeller.calculateQuantity(customer.getPurchasePrice()));
 
-        Customer customer = new Customer(purchasePrice);
         lottoSeller.sellLotteriesTo(customer);
         OutputView.printLotteries(customer.getLotteries());
 
-        MatchResult matchResult = customer.checkMyLottoNumbers(generateLottoCompany());
-        OutputView.printResult(matchResult, customer.calculateProfit(matchResult));
-    }
-
-    private static LottoCompany generateLottoCompany() {
         Lotto winningLotto = new WinningLotto(InputView.inputWinningLotto()).toLotto();
         LottoNumber bonusNumber = new LottoNumber(InputView.inputBonusNumber());
-        return new LottoCompany(winningLotto, bonusNumber);
+        LottoCompany lottoCompany = new LottoCompany(winningLotto, bonusNumber);
+
+        MatchResult matchResult = customer.checkMyLottoNumbers(lottoCompany);
+        OutputView.printResult(matchResult, customer.calculateProfit(matchResult));
     }
 }

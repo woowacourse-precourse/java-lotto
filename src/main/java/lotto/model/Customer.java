@@ -15,20 +15,20 @@ public class Customer {
         setLotto(lotteries);
     }
 
-    public PurchasePrice getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public List<Lotto> getLotteries() {
-        return lotteries.stream().collect(Collectors.toList());
-    }
-
     public MatchResult checkMyLottoNumbers(LottoCompany lottoCompany) {
         return lottoCompany.showResultOfCustomerLotteries(lotteries);
     }
 
     public double calculateProfit(MatchResult matchResult) {
         return matchResult.getTotalPrizeMoney() / purchasePrice.getPurchasePrice() * 100;
+    }
+
+    public PurchasePrice getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public List<Lotto> getLotteries() {
+        return lotteries.stream().collect(Collectors.toList());
     }
 
     private void setLotto(List<Lotto> lotteries) {

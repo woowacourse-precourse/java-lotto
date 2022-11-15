@@ -14,10 +14,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public Set<LottoNumber> getNumbers() {
-        return numbers.stream().collect(Collectors.toSet());
-    }
-
     private void validate(Set<LottoNumber> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(LottoExceptionMessage.DUPLICATE_LOTTO_NUMBER.getMessage());
@@ -25,6 +21,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public Set<LottoNumber> getNumbers() {
+        return numbers.stream().collect(Collectors.toSet());
+    }
+
     @Override
     public String toString() {
         return String.valueOf(numbers);

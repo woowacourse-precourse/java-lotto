@@ -11,10 +11,6 @@ public class PurchasePrice {
         this.purchasePrice = Integer.parseInt(purchasePrice);
     }
 
-    public int getPurchasePrice() {
-        return purchasePrice;
-    }
-
     private void validate(String purchasePrice) {
         if (!hasNumber(purchasePrice)) {
             throw new IllegalArgumentException(LottoExceptionMessage.PURCHASE_PRICE_IS_NUMBER.getMessage());
@@ -24,10 +20,6 @@ public class PurchasePrice {
         }
     }
 
-    private boolean correctUnitOfPrice(int purchasePrice) {
-        return purchasePrice > 0 && purchasePrice % UNIT == 0;
-    }
-
     private boolean hasNumber(String purchasePrice) {
         try {
             Integer.parseInt(purchasePrice);
@@ -35,5 +27,13 @@ public class PurchasePrice {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private boolean correctUnitOfPrice(int purchasePrice) {
+        return purchasePrice > 0 && purchasePrice % UNIT == 0;
+    }
+
+    public int getPurchasePrice() {
+        return purchasePrice;
     }
 }
