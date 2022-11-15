@@ -1,4 +1,4 @@
-package lotto.layer;
+package lotto.layer.db;
 
 import java.util.ArrayList;
 import java.util.HashMap;

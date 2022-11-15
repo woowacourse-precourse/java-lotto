@@ -10,6 +10,7 @@ import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
+import lotto.layer.db.Table;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
