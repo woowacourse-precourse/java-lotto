@@ -36,4 +36,9 @@ public class Lotto {
         Set<Integer> numberSet = new HashSet<>(numbers);
         return numberSet.size() != FIX_SIZE;
     }
+
+    @Override
+    public String toString() {
+        return numbers + "";
+    }
 }
