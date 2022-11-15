@@ -14,4 +14,8 @@ public class Input {
         return inputNumber();
     }
 
+    private static int inputNumber() {
+        String money = Console.readLine();
+        return Util.convertStringToInt(money);
+    }
 }
