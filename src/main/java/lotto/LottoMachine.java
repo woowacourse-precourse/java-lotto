@@ -26,10 +26,13 @@ public class LottoMachine implements Runnable {
     public void run() {
         try {
             int count = getCount();
+
             LottoWallet wallet = new LottoWallet(lottoGenerator.createLottos(count));
             output.printLottos(count, wallet.getLottos());
+
             WinningNumber winningNumber = getWinningNumber();
             WinningStatus winningStatus = getWinningStatus(count, wallet, winningNumber);
+
             output.printResult(winningStatus);
         } catch (RuntimeException exception) {
             output.printError(exception);
