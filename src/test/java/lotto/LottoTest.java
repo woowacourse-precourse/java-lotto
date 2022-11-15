@@ -30,4 +30,11 @@ class LottoTest {
     void issuedLottoSize() {
         assertEquals(issueLotto(5).size(), 5);
     }
+
+    @DisplayName("범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void lottoNumberOutOfRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

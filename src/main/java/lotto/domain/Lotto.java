@@ -24,8 +24,14 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
 
+        for (int e : numbers) {
+            if( e <1 || e > 45) {
+                throw new IllegalArgumentException("[ERROR] 1에서 45 사이의 숫자만 입력가능합니다.");
+            }
+        }
+
         Set<Integer> numSet = new HashSet<>(numbers);
-        if(numSet.size()!= numbers.size()){
+        if (numSet.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 입력된 로또 번호에 중복된 번호가 있습니다.");
         }
     }
