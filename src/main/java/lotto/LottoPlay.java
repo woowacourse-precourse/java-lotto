@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.constant.ErrorOutputMessage;
 import lotto.util.MessageUtil;
-
-import static lotto.constant.ErrorOutputMessage.*;
 
 public class LottoPlay {
 
