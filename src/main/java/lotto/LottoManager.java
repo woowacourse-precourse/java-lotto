@@ -20,7 +20,7 @@ public class LottoManager {
     private int bonusNumber;
     private List<Integer> winCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
 
-    void InputMoney(int money) throws IllegalArgumentException{
+    public void InputMoney(int money) throws IllegalArgumentException{
         if (money % 1000 != 0){
             throw new IllegalArgumentException();
         }
@@ -34,7 +34,7 @@ public class LottoManager {
         }
     }
 
-    void matchLottos(){
+    public void matchLottos(){
         for (Lotto lotto : lottos){
             int grade = calculateGrade(lotto);
             winCounts.set(grade, winCounts.get(grade) + 1);
@@ -43,11 +43,11 @@ public class LottoManager {
         calculateTotalPrize();
     }
 
-    float getEarningRate(){
+    public float getEarningRate(){
         return calculateTotalPrize() / inputMoney;
     }
 
-    long calculateTotalPrize(){
+    public long calculateTotalPrize(){
         long total = 0;
 
         for (int i = 1; i < 6; i++){
@@ -90,23 +90,23 @@ public class LottoManager {
         return matchCount;
     }
 
-    void setWinNumbers(List<Integer> numbers){
+    public void setWinNumbers(List<Integer> numbers){
         winNumbers = numbers;
     }
 
-    void setBonusNumber(int bonusNumber){
+    public void setBonusNumber(int bonusNumber){
         this.bonusNumber = bonusNumber;
     }
 
-    int getInputMoney(){
+    public int getInputMoney(){
         return inputMoney;
     }
 
-    int getWinCount(int idx){
+    public int getWinCount(int idx){
         return winCounts.get(idx);
     }
 
-    List<Lotto> getLottos(){
+    public List<Lotto> getLottos(){
         return lottos;
     }
 }

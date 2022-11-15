@@ -10,7 +10,7 @@ public class LottoConsole {
     static final int MIN_LOTTO_NUM = 1;
     static final int MAX_LOTTO_NUM = 45;
     LottoManager lottoManager = new LottoManager();
-    void inputMoney() throws IllegalArgumentException{
+    public void inputMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int money = stringToInt(input);
@@ -22,7 +22,7 @@ public class LottoConsole {
         System.out.println();
     }
 
-    void inputNumbers() throws IllegalArgumentException{
+    public void inputNumbers() throws IllegalArgumentException{
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         System.out.println();
@@ -44,7 +44,7 @@ public class LottoConsole {
         lottoManager.matchLottos();
     }
 
-    void printLottoNumbers(){
+    public void printLottoNumbers(){
         System.out.printf("%d개를 구매했습니다.\n", lottoManager.getInputMoney() / 1000);
         List<Lotto> lottos = lottoManager.getLottos();
 
@@ -55,7 +55,7 @@ public class LottoConsole {
         System.out.println();
     }
 
-    void printResult(){
+    public void printResult(){
         System.out.println("당첨 통계");
         System.out.println("---");
 
@@ -67,7 +67,7 @@ public class LottoConsole {
         System.out.printf("총 수익률은 %.1f%%입니다.\n", lottoManager.getEarningRate());
     }
 
-    void printLottoNumber(Lotto lotto){
+    private void printLottoNumber(Lotto lotto){
         List<Integer> numbers = lotto.getNumbers();
         System.out.print("[");
         for (int i = 0; i < numbers.size(); i++){
@@ -92,7 +92,7 @@ public class LottoConsole {
         return ret;
     }
 
-    int validateNumber(String input, List<Integer> numbers){
+    private int validateNumber(String input, List<Integer> numbers){
         int number = stringToInt(input);
 
         if (isOverRange(number) || isDuplicate(numbers, number)) {
@@ -101,21 +101,21 @@ public class LottoConsole {
         return number;
     }
 
-    boolean isOverRange(int number){
+    private boolean isOverRange(int number){
         if (number >= MIN_LOTTO_NUM && number <= MAX_LOTTO_NUM){
             return false;
         }
         return true;
     }
 
-    boolean isDuplicate(List<Integer> numbers, int number){
+    private boolean isDuplicate(List<Integer> numbers, int number){
         if (numbers.contains(number)){
             return true;
         }
         return false;
     }
 
-    int stringToInt(String input){
+    private int stringToInt(String input){
         long val = 0;
 
         for (int i = 0; i < input.length(); i++){
