@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.*;
 
+import static lotto.Constants.COUNT_DEFAULT_VALUE;
 import static lotto.Rank.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,7 +27,7 @@ class LottoServiceTest {
 
         Map<Rank, Integer> results = lottoService.compare(userLottos, PRIZE_LOTTO, BONUS_NUMBER);
 
-        assertThat(results.getOrDefault(rank, 0)).isEqualTo(1);
+        assertThat(results.getOrDefault(rank, COUNT_DEFAULT_VALUE)).isEqualTo(1);
     }
 
     @Test
