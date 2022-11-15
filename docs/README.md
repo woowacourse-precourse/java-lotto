@@ -46,7 +46,7 @@
     - 소수 둘째자리에서 반올림한다.
 
 ### Lotto
-- [ ] lotto 생성 시 validate 체크한다.
+- [x] lotto 생성 시 validate 체크한다. #validate(numbers)
   - 숫자 갯수는 6개이다.
   - 중복되는 숫자는 불가능하다.
   - 1이상 45 이하의 숫자이다.
