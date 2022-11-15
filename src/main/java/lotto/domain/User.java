@@ -8,16 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<Lotto> lottos = new ArrayList<>();
+
     private List<Integer> winningNumber = new ArrayList<>();
     private Integer bonusNumber;
+    Validate validate = new Validate();
 
     public User(){};
-    public User(List<Lotto> lottos) {
-        this.lottos = lottos;
-    }
 
-    Validate validate = new Validate();
     public void inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
