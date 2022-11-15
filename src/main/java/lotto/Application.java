@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import javax.swing.text.NumberFormatter;
+import java.text.NumberFormat;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -17,19 +17,6 @@ public class Application {
 
     private static List<Lotto> lottories;
 
-    private static int getTotalOutcome() {
-        return totalOutcome;
-
-    }
-
-    private static float getEarningRate() {
-        // TODO : 함수 구현
-        return 0;
-    }
-
-    private static void printWiningStats(List<LotteryHostAgency.WinningCriteria> lotteryResults) {
-        // TODO : 함수 구현
-    }
 
     private static String validateInputAmountString(String inputString) {
 
@@ -40,7 +27,7 @@ public class Application {
     }
 
     private static String validateInputWinningNumbersString(String inputString) {
-        if (!Pattern.matches("^\\s?(\\d+\\s)+\\d+\\s?$", inputString))
+        if (!Pattern.matches("^\\s?(\\d+,)+\\d+\\s?$", inputString))
             throw new IllegalArgumentException("[ERROR] The Winning numbers are invalid.");
         return inputString;
     }
@@ -57,7 +44,7 @@ public class Application {
 
         System.out.println("구입금액을 입력해 주세요.");
         String amountString = validateInputAmountString(readLine());
-        int amount = Integer.parseInt(amountString);
+        amount = Integer.parseInt(amountString);
 
         List<Lotto> results = ls.purchaseLotteries(amount);
         System.out.printf("%d개를 구매했습니다.\n", results.size());
@@ -68,10 +55,9 @@ public class Application {
 
     private static List<Integer> setInputWinningNumbers() {
         List<Integer> results = new ArrayList<>();
-
         System.out.println("당첨 번호를 입력해주세요.");
         String inputNumbersString = validateInputWinningNumbersString(readLine());
-        Arrays.stream(inputNumbersString.split("\\s"))
+        Arrays.stream(inputNumbersString.split(","))
                 .mapToInt(Integer::parseInt)
                 .forEach(x -> results.add(x));
         return results;
@@ -83,9 +69,43 @@ public class Application {
 
     }
 
-    private static void printResults() {
+    private static void printWiningStats(List<LotteryHostAgency.WinningCriteria> lotteryResults) {
+        totalOutcome = lotteryResults.stream().mapToInt(x -> x.amount).sum();
+        printResults(lotteryResults);
+        printEarningRate(lotteryResults);
 
     }
+
+    private static void printResults(List<LotteryHostAgency.WinningCriteria> lotteryResults) {
+        Map<String, Long> resultMap = lotteryResults.parallelStream().collect(
+                Collectors.groupingBy(LotteryHostAgency.WinningCriteria::name, Collectors.counting()));
+
+        System.out.println("당첨 통계\n---");
+        Arrays.stream(LotteryHostAgency.WinningCriteria.values())
+                .forEach((v) -> {
+                    printOneResultByWinningCriteria(resultMap, v);
+                });
+
+    }
+
+    private static void printOneResultByWinningCriteria(Map<String, Long> resultMap, LotteryHostAgency.WinningCriteria v) {
+        NumberFormat currencyFormat = NumberFormat.getInstance(Locale.KOREA);
+        long count = resultMap.getOrDefault(v.name(), 0L);
+        if (v == LotteryHostAgency.WinningCriteria.NOTHING) return;
+        if (v == LotteryHostAgency.WinningCriteria.SECOND) {
+            System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", v.matches, currencyFormat.format(v.amount), count);
+            return;
+        }
+        System.out.printf("%d개 일치 (%s원) - %d개\n", v.matches, currencyFormat.format(v.amount).replace("$", ""), count);
+    }
+
+    private static void printEarningRate(List<LotteryHostAgency.WinningCriteria> lotteryResults) {
+        NumberFormat percentFormat = NumberFormat.getPercentInstance(Locale.KOREA);
+        percentFormat.setMaximumFractionDigits(1);
+        percentFormat.setMinimumFractionDigits(1);
+        System.out.printf("총 수익률은 %s입니다.", percentFormat.format(((float) totalOutcome) / amount));
+    }
+
 
     public static void main(String[] args) {
         LotteryHostAgency lha = new LotteryHostAgency();
@@ -95,7 +115,7 @@ public class Application {
         int inputBonusNumber = setInputBonusNumber();
 
         lha.setDrawalNumbers(inputNumbers, inputBonusNumber);
-        List<LotteryHostAgency.WinningCriteria> results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
+        results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
         printWiningStats(results);
     }
 }
