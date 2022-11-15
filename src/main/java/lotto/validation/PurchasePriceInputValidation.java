@@ -1,5 +1,7 @@
 package lotto.validation;
 
+import static lotto.validation.ErrorMessage.*;
+
 public class PurchasePriceInputValidation {
     public static final int PRICE_OF_LOTTO = 1000;
 
@@ -12,7 +14,7 @@ public class PurchasePriceInputValidation {
         try {
             Integer.parseInt(inputPurchasePrice);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자로만 입력해야 합니다.");
+            throw new IllegalArgumentException(INPUT_PURCHASE_PRICE_IN_INTEGERS.getMessage());
         }
     }
 
@@ -20,7 +22,7 @@ public class PurchasePriceInputValidation {
         int purchasePrice = Integer.parseInt(inputPurchasePrice);
 
         if (purchasePrice % PRICE_OF_LOTTO != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은" + PRICE_OF_LOTTO + "으로 나누어떨어져야 합니다.");
+            throw new IllegalArgumentException(PURCHASE_PRICE_DIVIDED_BY_THOUSAND.getMessage());
         }
     }
 }
