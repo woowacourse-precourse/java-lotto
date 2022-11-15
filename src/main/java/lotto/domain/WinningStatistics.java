@@ -5,7 +5,6 @@ import java.util.EnumMap;
 import java.util.List;
 
 import lotto.constant.WinningRating;
-import lotto.util.Converter;
 
 public class WinningStatistics {
 	private static final int INITIAL_VALUE = 0;
@@ -16,7 +15,6 @@ public class WinningStatistics {
 	private final BonusNumber bonusNumber;
 
 	private EnumMap<WinningRating, Integer> countsOfWins;
-	private long profit;
 
 	public WinningStatistics(List<Lotto> lotteries, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.lotteries = lotteries;
@@ -28,7 +26,6 @@ public class WinningStatistics {
 	private void collect() {
 		init();
 		calculateCountsOfWins();
-		calculateProfit();
 	}
 
 	private void init() {
@@ -45,16 +42,8 @@ public class WinningStatistics {
 		}
 	}
 
-	private void calculateProfit() {
-		countsOfWins.forEach((winningRating, countOfWins) -> profit +=
-			Converter.convertStringOfMoneyToLong(winningRating.getPrizeMoney()) * countOfWins);
-	}
-
 	public EnumMap<WinningRating, Integer> getCountsOfWins() {
 		return countsOfWins;
 	}
 
-	public long getProfit() {
-		return profit;
-	}
 }

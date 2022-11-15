@@ -2,8 +2,8 @@ package lotto.controller;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotteries;
+import lotto.domain.ProfitCalculator;
 import lotto.domain.PurchasingAmount;
-import lotto.domain.RateOfProfitCalculator;
 import lotto.domain.WinningNumbers;
 import lotto.domain.WinningStatistics;
 import lotto.view.InputView;
@@ -60,11 +60,9 @@ public class LottoController {
 		return winningStatistics;
 	}
 
-	private void calculateRateOfProfit(PurchasingAmount purchasingAmount,
-		WinningStatistics winningStatistics) {
-		RateOfProfitCalculator rateOfProfitCalculator = new RateOfProfitCalculator();
-		float rateOfProfit = rateOfProfitCalculator.calculate(purchasingAmount.getPurchasingAmount(),
-			winningStatistics.getProfit());
+	private void calculateRateOfProfit(PurchasingAmount purchasingAmount, WinningStatistics winningStatistics) {
+		ProfitCalculator profitCalculator = new ProfitCalculator();
+		float rateOfProfit = profitCalculator.calculate(purchasingAmount, winningStatistics.getCountsOfWins());
 		outputView.printRateOfProfit(rateOfProfit);
 	}
 
