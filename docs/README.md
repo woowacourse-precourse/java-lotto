@@ -6,16 +6,16 @@
    * 구입한 로또의 개수를 계산하는 기능 (LottoController.computeAmountOfLotto)
    * 구입한 로또 개수만큼 로또 객체 생성하는 기능 (LottoController.generateLotto)
    * 각 로또의 번호와 예측 번호, 보너스 번호를 비교해 맞춘 개수 계산하는 기능 (LottoController.computeMatchCounts)
-   * 당첨 내역 기록하는 기능
-   * 수익률 계산하는 기능
+   * 당첨 내역 기록하는 기능 (LottoController.recordWinningLog)
+   * 수익률 계산하는 기능  (LottoController.computeRateOfReturn)
    
 * 입출력 기능
    * 사용자가 구입 금액을 입력하는 기능 (InputView.userInputPurchasePrice)
    * 사용자가 예측 번호를 입력하는 기능 (InputView.userInputPredictionNumbers)
    * 사용자가 보너스 번호를 입력하는 기능 (InputView.userInputBonusNumber)
    * 문자열 쉼표 기준으로 분리해 정수 리스트로 변환하는 기능 (InputView.splitStringByCommaAndParseInt)
-   * 당첨 내역 출력하는 기능
-   * 수익률 출력하는 기능
+   * 당첨 내역 출력하는 기능 (OutputView.printWinningLog)
+   * 수익률 출력하는 기능 (OutputView.printRateOfReturn)
 
 ### 검증 & 예외 처리 목록
 
