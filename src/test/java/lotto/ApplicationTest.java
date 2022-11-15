@@ -2,12 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.domain.Lotto;
+import lotto.domain.Statistic;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.domain.Statistic.findStatistic;
 import static lotto.exception.InputException.inputMoneyException;
 import static lotto.service.LottoService.compareBonus;
 import static lotto.service.LottoService.countMatchingNumber;

@@ -20,4 +20,13 @@ public enum Statistic {
     public int getPrize() {
         return prize;
     }
+
+    public static Statistic findStatistic(int matchingNumber, boolean bonusFlag) {
+        if (matchingNumber == 3) return THREE;
+        if (matchingNumber == 4) return FOUR;
+        if (matchingNumber == 5 && bonusFlag) return BONUS;
+        if (matchingNumber == 5) return FIVE;
+        if (matchingNumber == 6) return SIX;
+        return null;
+    }
 }
