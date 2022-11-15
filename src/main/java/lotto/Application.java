@@ -17,6 +17,7 @@ public class Application {
         int cost = inputCost(Console.readLine());
 
         int lottoCount = PriceConfig.getLottoCountWithoutChange(cost);
+
         System.out.println(lottoCount + "개를 구매했습니다.");
         publishNewLotto(lottoCount);
 
@@ -30,35 +31,11 @@ public class Application {
         for (int i = 0; i < userLottos.size(); i++) {
             int prize = statistics.getPrize(userLottos.get(i));
             if (prize != -1)
-                winningCount.set(prize-1, winningCount.get(prize-1) + 1);
-            // TODO: 어떻게 할건지?? 리스트? 맵?
+                winningCount.set(prize - 1, winningCount.get(prize - 1) + 1);
         }
         double yield = statistics.getYield(cost, winningCount);
 
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("당첨 통계\n" +
-                "---\n" +
-                "3개 일치 (5,000원) - ");
-        sb.append(winningCount.get(4));
-        sb.append("개\n" +
-                "4개 일치 (50,000원) - ");
-        sb.append(winningCount.get(3));
-        sb.append("개\n" +
-                "5개 일치 (1,500,000원) - ");
-        sb.append(winningCount.get(2));
-        sb.append("개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - ");
-        sb.append(winningCount.get(1));
-        sb.append("개\n" +
-                "6개 일치 (2,000,000,000원) - ");
-        sb.append(winningCount.get(0));
-        sb.append("개\n" +
-                "총 수익률은 ");
-        sb.append(String.format("%,.1f", yield));
-        sb.append("%입니다.");
-
-        System.out.println(sb);
+        printResult(yield);
     }
 
     public static void publishNewLotto(int lottoCount) {
@@ -123,5 +100,31 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
 
         return bonus;
+    }
+
+    private static void printResult(double yield) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("당첨 통계\n" +
+                "---\n" +
+                "3개 일치 (5,000원) - ");
+        sb.append(winningCount.get(4));
+        sb.append("개\n" +
+                "4개 일치 (50,000원) - ");
+        sb.append(winningCount.get(3));
+        sb.append("개\n" +
+                "5개 일치 (1,500,000원) - ");
+        sb.append(winningCount.get(2));
+        sb.append("개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - ");
+        sb.append(winningCount.get(1));
+        sb.append("개\n" +
+                "6개 일치 (2,000,000,000원) - ");
+        sb.append(winningCount.get(0));
+        sb.append("개\n" +
+                "총 수익률은 ");
+        sb.append(String.format("%,.1f", yield));
+        sb.append("%입니다.");
+        System.out.println(sb);
     }
 }
