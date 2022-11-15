@@ -22,14 +22,14 @@ public class User {
     private void validWantByAmountInput(int wantBuyAmount) {
         if (wantBuyAmount % 1000 != 0) {
             System.out.println(Error.IS_NOT_THOUSANDS.getErrorMessage());
-            throw new IllegalArgumentException("[ERROR] 1000단위의 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(Error.IS_NOT_THOUSANDS.getErrorMessage());
         }
     }
 
     private void validWantBuyAmountInputIsNumber(String userInput) {
         if (!NUMBER_PATTERN.matcher(userInput).matches()) {
             System.out.println(Error.IS_NOT_NUMBER.getErrorMessage());
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getErrorMessage());
         }
     }
 
@@ -55,7 +55,7 @@ public class User {
             }
             if (!NUMBER_PATTERN.matcher(String.valueOf(winningNumbersInput.charAt(i))).matches()) {
                 System.out.println(Error.IS_NOT_NUMBER.getErrorMessage());
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getErrorMessage());
             }
         }
     }
@@ -76,7 +76,7 @@ public class User {
     private void validWinningNumbersSize(List<Integer> winningNumbersToList) {
         if (winningNumbersToList.size() != 6) {
             System.out.println(Error.LENGTH_OVER_SIX.getErrorMessage());
-            throw new IllegalArgumentException("6개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(Error.LENGTH_OVER_SIX.getErrorMessage());
         }
     }
 
@@ -84,7 +84,7 @@ public class User {
         for (Integer integer : winningNumbersToList) {
             if (Collections.frequency(winningNumbersToList, integer) > 1) {
                 System.out.println(Error.DUPLICATED.getErrorMessage());
-                throw new IllegalArgumentException("중복된 수는 입력할수 없습니다.");
+                throw new IllegalArgumentException(Error.DUPLICATED.getErrorMessage());
             }
         }
     }
@@ -93,36 +93,37 @@ public class User {
         for (Integer integer : winningNumbersToList) {
             if (integer > 45 || integer < 0) {
                 System.out.println(Error.RANGE_ERROR.getErrorMessage());
-                throw new IllegalArgumentException("1~45 사이의 숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException(Error.RANGE_ERROR.getErrorMessage());
             }
         }
     }
 
-    public int bonusNumberInput() {
+    public int bonusNumberInput(List<Integer> winningNumbersToList) {
         String input = readLine();
         validBonusNumberIsNumber(input);
         validBonusNumberRange(Integer.parseInt(input));
+        validBonusNumberInputContainWinningNumbers(Integer.parseInt(input),winningNumbersToList);
         return Integer.parseInt(input);
     }
 
     public void validBonusNumberInputContainWinningNumbers(int bonusNumber,List<Integer> winningNumbersToList) {
         if (winningNumbersToList.contains(bonusNumber)) {
             System.out.println(Error.DUPLICATED.getErrorMessage());
-            throw new IllegalArgumentException("당첨번호에 이미 입력한 숫자는 보너스 번호로 입력할수 없습니다.");
+            throw new IllegalArgumentException(Error.DUPLICATED.getErrorMessage());
         }
     }
 
     private void validBonusNumberRange(int bonusNumber) {
         if (bonusNumber > 45 || bonusNumber < 0) {
             System.out.println(Error.RANGE_ERROR.getErrorMessage());
-            throw new IllegalArgumentException("1~45 사이의 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(Error.RANGE_ERROR.getErrorMessage());
         }
     }
 
     private void validBonusNumberIsNumber(String input) {
         if (!NUMBER_PATTERN.matcher(input).matches()) {
             System.out.println(Error.IS_NOT_NUMBER.getErrorMessage());
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getErrorMessage());
         }
     }
 }
