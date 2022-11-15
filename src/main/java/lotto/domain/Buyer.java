@@ -11,11 +11,22 @@ public class Buyer {
     private final PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
     private final List<Lotto> purchaseLotto = new ArrayList<>();
     private int lottoAmount;
+    private int[] myWins;
+    private int totalMoney;
+    private int totalRate;
 
     Buyer(int lottoAmount) {
         purchaseAmountUnit.validDivisionByThousand(lottoAmount);
         this.lottoAmount = lottoAmount;
 
+    }
+
+    public void setMyWins(int[] myWins) {
+        this.myWins = myWins;
+    }
+
+    public void calculateTotalMoney() {
+        this.totalMoney = Judgment.calculatePrizeMoney(myWins);
     }
 
     static void validConsistByNumber(String purchaseAmount) {
