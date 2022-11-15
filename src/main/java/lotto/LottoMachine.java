@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.util.CONSTANTS;
 import lotto.util.InputHandler;
+import lotto.util.LOTTERY_REWARD;
 import lotto.util.SystemMessage;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class LottoMachine {
         bonusNumber = getBonusNumber();
         InputHandler.validateBonusNumber(winningLottery, bonusNumber); // 보너스 번호도 중복되면 안됨.
         getResult(randomLotto, winningLottery);
-        System.out.println(resultRank);
+        printResult();
     }
 
     private int lottoPurchase() {
@@ -43,45 +44,59 @@ public class LottoMachine {
         return generatedLotto;
     }
 
-    private Lotto getWinningNumbers(){
+    private Lotto getWinningNumbers() {
         System.out.println("\n" + SystemMessage.WINNING_NUMBER.getMessage());
         return new Lotto(InputHandler.getWinningNumber());
     }
 
-    private int getBonusNumber(){
+    private int getBonusNumber() {
         System.out.println("\n" + SystemMessage.BONUS_NUMBER.getMessage());
         return InputHandler.getBonusNumber();
     }
 
-    private void getResult(List<Lotto> inputLotto, Lotto winningLotto){
-        for (Lotto input:
-             inputLotto) {
+    private void getResult(List<Lotto> inputLotto, Lotto winningLotto) {
+        for (Lotto input :
+                inputLotto) {
             int matches = getMatches(input, winningLotto);
             setResultRank(matches);
         }
     }
 
-    private int getMatches(Lotto inputLotto, Lotto winningLotto){
+    private int getMatches(Lotto inputLotto, Lotto winningLotto) {
         int matches = 0;
-        for (Integer number:
-             inputLotto.getLotto()) {
-            if(winningLotto.getLotto().contains(number))
+        for (Integer number :
+                inputLotto.getLotto()) {
+            if (winningLotto.getLotto().contains(number))
                 matches++;
         }
-        if(matches == CONSTANTS.SECOND_POSITION.getNumbers())
+        if (matches == LOTTERY_REWARD.SECOND_PLACE.getIndex())
             return getBonusRank(inputLotto);
         return matches;
     }
 
-    private void setResultRank(int matches){
-        System.out.println(matches);
+    private void setResultRank(int matches) {
         resultRank.set(matches, resultRank.get(matches) + 1);
     }
 
-    private int getBonusRank(Lotto lotto){
-        if(lotto.getLotto().contains(bonusNumber)){
-            return CONSTANTS.BONUS_POSITION.getNumbers();
+    private int getBonusRank(Lotto lotto) {
+        if (lotto.getLotto().contains(bonusNumber)) {
+            return LOTTERY_REWARD.BONUS_PLACE.getIndex();
         }
-        return CONSTANTS.SECOND_POSITION.getNumbers();
+        return LOTTERY_REWARD.SECOND_PLACE.getIndex();
+    }
+
+    private void printResult() {
+        long totalCredit = 0;
+        for (LOTTERY_REWARD reward :
+                LOTTERY_REWARD.values()) {
+            StringBuilder sb = new StringBuilder();
+            int count = resultRank.get(reward.getIndex());
+            sb.append(reward.getMessage()).append(count).append("개");
+            System.out.println(sb);
+            totalCredit += (long) reward.getCost() * count;
+        }
+    }
+    private void printStatistic(int totalCredit){
+        System.out.println();
     }
 }
