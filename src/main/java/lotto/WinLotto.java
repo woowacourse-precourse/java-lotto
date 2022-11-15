@@ -48,4 +48,39 @@ public class WinLotto extends Lotto {
             throw new IllegalArgumentException(Message.ERROR_LOTTO_INPUT.message);
         }
     }
+
+    public String matches(Lotto lotto) {
+        int matchCount = 0;
+        boolean bonusMatch = false;
+
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        for (Integer number : lottoNumbers) {
+            if (getNumbers().contains(number)) {
+                matchCount++;
+            }
+        }
+        if (matchCount == 5 && lottoNumbers.contains(bonus)) {
+            bonusMatch = true;
+        }
+        return interpretMatchCountAndBonusMatch(matchCount, bonusMatch);
+    }
+
+    private String interpretMatchCountAndBonusMatch(int matchCount, boolean bonusMatch) {
+        if (matchCount == 3) {
+            return Result.Three.message;
+        }
+        if (matchCount == 4) {
+            return Result.Four.message;
+        }
+        if (matchCount == 5 && bonusMatch == false) {
+            return Result.Five.message;
+        }
+        if (matchCount == 5 && bonusMatch == true) {
+            return Result.FiveBonus.message;
+        }
+        if (matchCount == 6) {
+            return Result.Six.message;
+        }
+        return null;
+    }
 }

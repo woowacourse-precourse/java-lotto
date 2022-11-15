@@ -26,8 +26,14 @@ public class Application {
         String bonusInput = getBonusInputFromUser();
         winLotto.validateBonusInput(bonusInput);
         winLotto.setBonus(Integer.parseInt(bonusInput));
+
+        calculateNumberOfWins(lotteries, winLotto);
+
     }
 
+    private static void calculateNumberOfWins(List<Lotto> lotteries, WinLotto winLotto) {
+
+    }
 
 
     private static String getBonusInputFromUser() {
