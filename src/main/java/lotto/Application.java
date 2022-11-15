@@ -1,33 +1,55 @@
 package lotto;
 
+import static lotto.Lotto.printLotto;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import com.sun.nio.sctp.IllegalReceiveException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+
 
 public class Application {
 
 
+    static Map<String, Integer> map = new HashMap<>();
+    static Queue<String> queue = new ArrayDeque<>();
+    static double income = 0;
+
+    private static final String ERROR_MESSAGE = "[ERROR] 구입금액은 숫자만 입력 가능합니다.";
+
     public static int enterPurchaseAmount() {
 
-        System.out.println("구입금액을 입력해 주세요.");
+        String str = "구입금액을 입력해 주세요.";
+        System.out.println(str);
         String strAmount = Console.readLine();
-        int amount = Integer.parseInt(strAmount);
 
-        if (amount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
+        for (int i = 0; i < strAmount.length(); ++i) {
+            if (!Character.isDigit(strAmount.charAt(i))) {
+                throw new IllegalReceiveException(ERROR_MESSAGE);
+
+            }
         }
 
-        return amount;
+        int amount = 0;
 
+        amount = Integer.parseInt(strAmount);
+
+        if (amount % 1000 != 0) {
+            throw new NoSuchElementException("[ERROR] 1000의 배수만 입력 가능합니다.");
+        }
+        return amount;
     }
 
 
     public static int printNumberOfTickets(int amount) {
 
-        int cnt  = amount / 1000;
+        int cnt = amount / 1000;
         System.out.println(cnt + "개를 구매했습니다.");
         return cnt;
 
@@ -42,37 +64,39 @@ public class Application {
 
         for (int i = 0; i < tmpArr.length; ++i) {
 
-            if (tmpArr[i].equals("")) {       // 콤마를 연달아 입력한 경우
-                throw new IllegalReceiveException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
-
-            }
-
             for (char c : tmpArr[i].toCharArray()) {
                 if (!Character.isDigit(c)) {
                     throw new IllegalReceiveException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
-
                 }
             }
-
             winningNums[i] = Integer.parseInt(tmpArr[i]);
         }
 
-        // 입력한 String에 대한 유효성 검사
+        validateLotto(winningNums);
+
+        return winningNums;
+
+    }
+
+    public static boolean validateLotto(int[] winningNums) {
+
         List<Integer> list = new ArrayList<>();
         for (int winningNum : winningNums) {
             list.add(winningNum);
         }
-
         Lotto lotto = new Lotto(list);
-        return winningNums;
+        return true;
 
     }
 
 
     public static int validateBonusNum(int[] winningNums) {
 
-        List<Integer> winningNumsList = List.of(winningNums[0], winningNums[1], winningNums[2],
-            winningNums[3], winningNums[4], winningNums[5]);
+        List<Integer> winningNumsList = new ArrayList<>();
+
+        for (int winningNum : winningNums) {
+            winningNumsList.add(winningNum);
+        }
 
         System.out.println("보너스 번호를 입력해 주세요.");
         String tmp = Console.readLine();
@@ -102,43 +126,110 @@ public class Application {
     }
 
 
-    public static List<Integer> generateLotto() {
+    public static Lotto generateLotto() {
 
         List<Integer> lottoList = new ArrayList<>();
-
-        while (lottoList.size() < 6) {
-
-            int r = Randoms.pickNumberInRange(1, 45);   // 1, 45 포함
-            if (lottoList.contains(r)) {
-                continue;
-            }
-
-            lottoList.add(r);
-//            System.out.println(r);
-        }
-
+        lottoList = Randoms.pickUniqueNumbersInRange(1, 45, 6);   // 1, 45 포함
         Lotto lotto = new Lotto(lottoList); // 생성한 로또에 대해 유효성 검사
-        Collections.sort(lottoList);
-
-        return lottoList;
+        Lotto.sortLotto(lotto);
+        return lotto;
 
     }
 
 
-    public static List<List<Integer>> generateAllLotto(int numberOfTickets){
+    public static List<Lotto> generateAllLotto(int numberOfTickets) {
 
-        List<List<Integer>> allLottoList = new ArrayList<>();
+        List<Lotto> allLottoList = new ArrayList<>();
 
         for (int i = 0; i < numberOfTickets; ++i) {
-            List<Integer> lotto = generateLotto();   // 로또 랜덤으로 생성
+            Lotto lotto = generateLotto();   // 로또 랜덤으로 생성
             allLottoList.add(lotto);
-        }
+            printLotto(lotto);
 
-        for (List<Integer> lotto : allLottoList) {
-            System.out.println(lotto);
         }
 
         return allLottoList;
+    }
+
+
+    public static void insertToMapAndQueue() {
+
+        queue.addAll(List.of("3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)",
+            "5개 일치, 보너스 볼 일치 (30,000,000원)", "6개 일치 (2,000,000,000원)"
+        ));
+
+        map.put("3개 일치 (5,000원)", 0);
+        map.put("4개 일치 (50,000원)", 0);
+        map.put("5개 일치 (1,500,000원)", 0);
+        map.put("5개 일치, 보너스 볼 일치 (30,000,000원)", 0);
+        map.put("6개 일치 (2,000,000,000원)", 0);
+    }
+
+
+    public static double income(List<Lotto> allLotto, int[] winningNums, int bonusNum, int amount) {
+
+        for (Lotto lotto : allLotto) {
+
+            int cnt = 0;
+
+            for (int winningNum : winningNums) {
+
+                if (Lotto.contains(lotto, winningNum)) {
+                    ++cnt;
+
+                }
+            }
+
+            if (cnt == 6) {
+                map.put("6개 일치 (2,000,000,000원)",
+                    map.getOrDefault("6개 일치 (2,000,000,000원)", 0) + 1);
+                income += 2000000000;
+
+
+            } else if (cnt == 5) {
+
+                if (Lotto.contains(lotto, bonusNum)) {
+                    map.put("5개 일치, 보너스 볼 일치 (30,000,000원)",
+                        map.getOrDefault("5개 일치, 보너스 볼 일치 (30,000,000원)", 0) + 1);
+                    income += 30000000;
+                    continue;
+
+                }
+
+                map.put("5개 일치 (1,500,000원)",
+                    map.getOrDefault("5개 일치 (1,500,000원)", 0) + 1);
+                income += 1500000;
+
+            } else if (cnt == 4) {
+                map.put("4개 일치 (50,000원)",
+                    map.getOrDefault("4개 일치 (50,000원)", 0) + 1);
+                income += 50000;
+
+            } else if (cnt == 3) {
+                map.put("3개 일치 (5,000원)",
+                    map.getOrDefault("3개 일치 (5,000원)", 0) + 1);
+                income += 5000;
+
+            }
+
+        }
+        return income;
+    }
+
+    public static void printResult(double rateOfReturn) {
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        while (!queue.isEmpty()) {
+            String key = queue.poll();
+            int value = map.get(key);
+            System.out.println(key + " - " + value + "개");
+        }
+
+        System.out.print("총 수익률은 ");
+        System.out.printf("%.1f", rateOfReturn);
+        System.out.println("%입니다.");
 
     }
 
@@ -147,24 +238,18 @@ public class Application {
 
         int amount = enterPurchaseAmount();      // 구매 금액 입력
         int numberOfTickets = printNumberOfTickets(amount);     // 로또 개수 출력
-
-        List<List<Integer>> allLotto = generateAllLotto(numberOfTickets);
-
+        List<Lotto> allLotto = generateAllLotto(numberOfTickets);       // 모든 로또를 개수 만큼 생성한다.
         int[] winningNums = enterTheWinningNumber();   // 당첨 번호 입력
-        List<Integer> tmp = new ArrayList<>();
-
-        for(int winningNum : winningNums){
-            tmp.add(winningNum);
-
-        }
-
-        Lotto lotto = new Lotto(tmp);
-
-
         int bonusNum = validateBonusNum(winningNums);   // 보너스 번호 입력
 
+        insertToMapAndQueue();
 
+        // 이렇게 말고 각 로또에 대해 하나씩 income구하는 방식으로 쪼갤 수 있음
+        double income = income(allLotto, winningNums, bonusNum, amount);
 
+//         LottoRank rank = new LottoRank();
+
+        printResult((double) (income / amount * 100));
 
     }
 }
