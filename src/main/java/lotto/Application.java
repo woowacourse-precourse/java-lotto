@@ -18,7 +18,7 @@ public class Application {
         bonusNumber = getBonusNumber();
         user.getWinningNumbers(winningNumbers);
         user.getBonusNumbers(bonusNumber);
-
+        user.calculate();
 
     }
     public static List<Integer> getWinningNumbers(){
