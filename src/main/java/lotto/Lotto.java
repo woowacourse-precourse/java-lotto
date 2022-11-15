@@ -23,6 +23,11 @@ public class Lotto {
             System.out.println("[ERROR] 로또 번호는 중복되지 않는 수로 구성되어 있습니다.");
             throw new IllegalArgumentException();
         }
+
+        if (isInRange(numbers)) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -76,5 +81,14 @@ public class Lotto {
         }
 
         return false;
+    }
+
+    private boolean isInRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number > 45 || number < 1)
+                return false;
+        }
+
+        return true;
     }
 }
