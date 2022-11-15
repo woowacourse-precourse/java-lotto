@@ -61,8 +61,11 @@ public class Application {
         return nums;
     }
 
-    public static void revenuePrint(double useMoney, double revenue){
-        System.out.printf("%.2f", revenue/useMoney);
+    public static void revenuePrint(long useMoney, long revenue){
+        System.out.println(revenue);
+        double revPercent = revenue/(double)useMoney;
+        String result = String.format("%.2f", revPercent);
+        System.out.println("총 수익률은" + result + "%입니다");
     }
 
     public static int lottoRank(Lotto lotto,Lotto winningLotto, int bonus){
