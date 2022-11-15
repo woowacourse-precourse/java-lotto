@@ -7,6 +7,7 @@ public class ResultDto {
     private Integer fiveCount;
     private Integer fiveBonusCount;
     private Integer sixCount;
+    private double grossReturn;
 
     public ResultDto() {
         this.threeCount = 0;
@@ -14,6 +15,7 @@ public class ResultDto {
         this.fiveCount = 0;
         this.fiveBonusCount = 0;
         this.sixCount = 0;
+        this.grossReturn = 0;
     }
 
     public Integer getThreeCount() {
@@ -54,6 +56,14 @@ public class ResultDto {
 
     public void setSixCount(Integer sixCount) {
         this.sixCount = sixCount;
+    }
+
+    public Double getGrossReturn() {
+        return grossReturn;
+    }
+
+    public void setGrossReturn(Double grossReturn) {
+        this.grossReturn = grossReturn;
     }
 
 }
