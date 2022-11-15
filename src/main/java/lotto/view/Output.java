@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.List;
 
-import lotto.service.EarningRate;
+import lotto.domain.EarningRate;
 import lotto.service.Lotto;
 import lotto.util.Rank;
 
