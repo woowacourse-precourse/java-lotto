@@ -26,6 +26,17 @@ public class Process {
         savelottoPaper = lottoPaper;
         System.out.println();
         System.out.println(lottoPaper + LOTTO_BUY_CONFIRM_MESSAGE);
+    }
 
+    static void purchaseNumberMessage() {
+        System.out.println();
+        System.out.println(ANSWER_NUMBER_MESSAGE);
+        answerNumber = UserInput.userNumber();
+        System.out.println();
+    }
+    static void bonusNumberMessage(){
+        System.out.println(BONUS_NuMBER_MESSAGE);
+        bonus = UserInput.userBonus();
+        System.out.println();
     }
 }
