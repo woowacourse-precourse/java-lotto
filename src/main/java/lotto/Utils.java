@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.exception.utils.NotNumberException;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -10,11 +12,10 @@ public class Utils {
     private static final String REGEX = ",";
 
     public static int textToNumber(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액에는 숫자만 입력해야 합니다.");
+        if (!input.matches("^[0-9]+")) {
+            throw new NotNumberException();
         }
+        return Integer.parseInt(input);
     }
 
     public static List<Integer> separateNums(String input) {
