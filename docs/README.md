@@ -32,6 +32,8 @@
 - [x] 로또 번호를 정렬하여 반환한다. - RandomNumberGenerator#getSortedNumbers()
 - [x] 테스트를 위해 고정적인 수 6개를 생성한다. - FixedNumberGenerator#generateNumbers()
 
+- [x] 구매 금액의 유효성을 검증한다. - Cost#validate()
+
 - [x] 로또 번호의 유효성을 검증한다. - Lotto#validate()
 - [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다. - Lotto#getMatchCount()
 - [x] 로또 번호와 보너스 번호를 비교한다. - Lotto#hasBonusNumber()
@@ -52,6 +54,7 @@
 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 를 발생시키고, `[ERROR]` 로 시작하는 에러 메시지를 출력 후 종료한다.
 - [x] 로또 구입 금액 예외 처리
   - [x] 구입 금액에 문자가 포함되어 있는 경우 예외 처리한다.
+  - [x] 구입 금액이 0보다 크지 않은 경우 예외 처리한다.
   - [x] 구입 금액이 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
 - [x] 당첨 번호 예외 처리
   - [x] 당첨 번호가 `1,2,3,4,5,6`과 같은 형식이 아닌 경우 예외 처리한다.
