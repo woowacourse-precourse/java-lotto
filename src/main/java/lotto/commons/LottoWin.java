@@ -6,26 +6,25 @@ import java.util.Map;
 
 public class LottoWin {
 
+    private static final Map<String, Integer> winHistory = new HashMap<>();
     private static List<Integer> numbers;
     private static int bonus;
 
-    private static Map<String, Integer> winHistory = new HashMap<>();
-
-    public static LottoWin(List<Integer> num, int b) {
-        numbers = num;
-        bonus = b;
-        setWinHistory();
+    public LottoWin(List<Integer> winNumbers, int bounusNumber) {
+        numbers = winNumbers;
+        bonus = bounusNumber;
+        this.setWinHistory();
     }
 
-    public static List<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public static int getBonus() {
+    public int getBonus() {
         return bonus;
     }
 
-    public static void setWinHistory() {
+    public void setWinHistory() {
         winHistory.put("FIRST_WIN", 0);
         winHistory.put("SECOND_WIN", 0);
         winHistory.put("THIRD_WIN", 0);
@@ -33,11 +32,11 @@ public class LottoWin {
         winHistory.put("FIFTH_WIN", 0);
     }
 
-    public static void updateWinHistory(String win) {
+    public void updateWinHistory(String win) {
         winHistory.put(win, winHistory.get(win) + 1);
     }
 
-    public static int getWinHistoryValue(int rank) throws IllegalArgumentException {
+    public int getWinHistoryValue(int rank) throws IllegalArgumentException {
         validateRank(rank);
 
         String win = "";
@@ -55,7 +54,7 @@ public class LottoWin {
         return winHistory.get(win);
     }
 
-    private static void validateRank(int rank) {
+    private void validateRank(int rank) {
         if (rank < 1 || 5 < rank) {
             throw new IllegalArgumentException("[ERROR] 5등 안에 들지 못했습니다.");
         }
