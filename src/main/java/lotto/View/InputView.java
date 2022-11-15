@@ -10,22 +10,22 @@ public class InputView {
 
     public int inputPurchasing() {
         System.out.println(INPUT_PURCHASING_AMOUNT);
-        String purchasingAmount = Console.readLine();
-        int purchase = Integer.parseInt(purchasingAmount);
-        return purchase;
+        String purchasingAmountUserInput = Console.readLine();
+        int purchasingAmount = Integer.parseInt(purchasingAmountUserInput);
+        return purchasingAmount;
     }
 
     public String inputWinningNumber() {
         System.out.println(INPUT_WINNING_NUMBER);
-        String winningNumber = Console.readLine();
+        String winningNumberUserInput = Console.readLine();
 
-        return winningNumber;
+        return winningNumberUserInput;
     }
 
     public String inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        String bonusNumber = Console.readLine();
+        String bonusNumberUserInput = Console.readLine();
 
-        return bonusNumber;
+        return bonusNumberUserInput;
     }
 }
