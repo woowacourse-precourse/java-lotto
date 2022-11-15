@@ -18,7 +18,6 @@ public class Lotto {
         List<Integer> numbers = change(str);
          checkInput(numbers);
          this.numbers = numbers;
-
     }
 
     private void validate(List<Integer> numbers) {

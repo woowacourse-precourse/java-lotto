@@ -8,8 +8,8 @@ public class Application {
         try {
             LottoController lottoController = new LottoController();
             lottoController.lottoStart();
-        }catch (Exception e){
-            System.out.println("[ERROR]");
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
         }
     }
 }
