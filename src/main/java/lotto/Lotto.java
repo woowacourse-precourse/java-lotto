@@ -19,6 +19,14 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    private void checkOverlap(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++){
+            for(int j = i+1; j < numbers.size(); j++){
+                if (numbers.get(i) == numbers.get(j)) throw new IllegalArgumentException();
+            }
+        }
+    }
     private List<Integer> makeLottoNumber(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lottoNumbers;
