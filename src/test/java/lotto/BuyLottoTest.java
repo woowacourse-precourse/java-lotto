@@ -22,11 +22,4 @@ public class BuyLottoTest {
         assertThatThrownBy(() -> new BuyLotto("5500"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @DisplayName("문자가 들어갈 경우 exception 발생 테스트")
-    @Test
-    void createNotNumber() {
-        assertThatThrownBy(() -> new BuyLotto("5500k"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }
