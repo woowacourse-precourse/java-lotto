@@ -37,6 +37,14 @@ public class InputView {
         return predictionNumbers;
     }
 
+    public int userInputBonusNumber() {
+        outputView.printBonusNumberMessage();
+        String userInputBonusNumber = Console.readLine();
+
+        int bonusNumber = splitStringByCommaAndParseInt(userInputBonusNumber).get(0);
+        return bonusNumber;
+    }
+
     public static List<Integer> splitStringByCommaAndParseInt(String s) {
         String blankRemoved = s.replaceAll(" ", "");
         String[] splitByComma = blankRemoved.split(",");
