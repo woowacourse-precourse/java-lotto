@@ -70,7 +70,10 @@ class ApplicationTest extends NsTest {
     @DisplayName("투자 금액 입력값이 1000원 단위가 아니면 예외를 발생합니다.")
     @Test
     void 투자금액_예외_테스트(){
-
+        assertSimpleTest(() -> {
+            runException("8001");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @Override
