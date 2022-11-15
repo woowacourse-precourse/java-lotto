@@ -27,8 +27,8 @@ public class LottoMachine {
     }
 
     private static void validate(int inputMoney) {
-        boolean isMultipleOfPriceOfLotto = (inputMoney % PRICE_OF_ONE_LOTTO) == 0;
-        if (isMultipleOfPriceOfLotto) {
+        boolean isMultiplePriceOfLotto = (inputMoney % PRICE_OF_ONE_LOTTO) == 0;
+        if (isMultiplePriceOfLotto) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.MONEY_NOT_MULTIPLE_PRICE_OF_LOTTO);
