@@ -14,7 +14,8 @@ public class InputView{
     }
 
     public String requestWinningNumbers(){
-
+        printMessage("당첨 번호를 입력해주세요.");
+        return readLine();
     }
 
     public String requestBonusNumber(){
