@@ -4,6 +4,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.Validation.validateBonus;
 import static lotto.Validation.validatePurchase;
 import static lotto.Validation.validateWinning;
+import static lotto.response.Message.INPUT_BONUS_NUMBER;
+import static lotto.response.Message.INPUT_WINNING_NUMBER;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +31,7 @@ public class Cli {
    * @return list of lotto number.
    */
   public static List<Integer> inputWinningNumbers() {
-    System.out.println("당첨 번호를 입력해 주세요.");
+    System.out.println(INPUT_WINNING_NUMBER);
     String input = readLine();
     String[] numbers = input.split(",");
     validateWinning(numbers);
@@ -44,7 +46,7 @@ public class Cli {
    * @return The number of bonus.
    */
   public static Integer inputBonusNumber() {
-    System.out.println("보너스 번호를 입력해 주세요.");
+    System.out.println(INPUT_BONUS_NUMBER);
     String number = readLine();
     validateBonus(number);
     return Integer.parseInt(number);
