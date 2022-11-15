@@ -2,6 +2,9 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputView {
@@ -12,10 +15,11 @@ public class InputView {
         return Double.parseDouble(payment);
     }
 
-    public void inputWinningNumbers() {
+    public List<Integer> inputWinningNumbers() {
         printWinningNumberMessage();
         String winningNumbers = Console.readLine();
         validateSeparator(winningNumbers);
+        return changeStringToList(winningNumbers);
     }
 
     public void validateNumeric(String input) {
@@ -25,10 +29,20 @@ public class InputView {
     }
 
     public void validateSeparator(String input) {
-        final String REGEX = "^[0-9,]*$";
+        final String REGEX = "^\\d,\\d,\\d,\\d,\\d,\\d$";
         if (!Pattern.matches(REGEX, input)) {
-            throw new IllegalArgumentException("[ERROR] 숫자와 구분자(,)만 입력될 수 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 쉼표(,)로 구분하여 입력하세요.");
         }
+    }
+
+    public List<Integer> changeStringToList(String input) {
+        List<Integer> result = new ArrayList<>();
+        final String SEPARATOR = ",";
+        String[] splitInput = input.split(SEPARATOR);
+        for (int i = 0; i < splitInput.length; i++) {
+            result.add(Integer.valueOf(splitInput[i]));
+        }
+        return result;
     }
 
     private void printPaymentMessage() {
