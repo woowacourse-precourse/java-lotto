@@ -7,7 +7,6 @@ public class IoSystemImpl implements IoSystem {
         return Console.readLine();
     }
 
-
     @Override
     public void print(final Object message) {
         System.out.print(message);

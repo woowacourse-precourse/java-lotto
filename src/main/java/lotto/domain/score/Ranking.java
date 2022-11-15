@@ -25,7 +25,7 @@ public enum Ranking {
         this.score = score;
     }
 
-    public static Ranking calculateScore(Score score) {
+    public static Ranking generateRankByScore(Score score) {
         return Arrays.stream(Ranking.values())
                 .filter(ranking -> ranking.hasScore(score))
                 .findAny()

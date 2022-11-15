@@ -6,12 +6,13 @@ import lotto.domain.lotto.LottoBundle;
 import lotto.domain.money.Money;
 
 public class SettlementSystem {
-   private final static String MESSAGE_ALL_PROFITS = "총 수익률은 %.1f%%입니다.";
+    private final static String MESSAGE_ALL_PROFITS = "총 수익률은 %.1f%%입니다.";
     private final static String MESSAGE_WINNING_STATISTICS = "당첨 통계";
     private final static String MESSAGE_HYPHEN = "---";
+    
     private final IoSystem io;
-
     private final LotteryGroup lotteryGroup;
+
     public SettlementSystem(IoSystem ioSystem) {
         this.io = ioSystem;
         this.lotteryGroup = new LotteryGroup();
@@ -30,8 +31,6 @@ public class SettlementSystem {
         io.printBeforeNextLine(MESSAGE_HYPHEN);
         io.printBeforeNextLine(result);
     }
-
-
 
 
 }

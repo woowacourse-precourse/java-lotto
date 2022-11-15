@@ -23,7 +23,7 @@ public class Score {
     }
 
     public Ranking generateRank() {
-        return Ranking.calculateScore(this);
+        return Ranking.generateRankByScore(this);
     }
 
     public Score plusNormal(final Integer count) {

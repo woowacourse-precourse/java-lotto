@@ -6,8 +6,9 @@ import lotto.domain.lotto.LottoNumber;
 
 public class AnswerLottoSystem {
 
-    private final String MESSAGE_INPUT_ANSWER_NUMBER = "당첨 번호를 입력해 주세요.";
-    private final String MESSAGE_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String MESSAGE_INPUT_ANSWER_NUMBER = "당첨 번호를 입력해 주세요.";
+    private static final String MESSAGE_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    
     private final IoSystem io;
 
     public AnswerLottoSystem(IoSystem ioSystem) {

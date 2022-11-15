@@ -9,7 +9,6 @@ public class LottoNumber implements Comparable<LottoNumber> {
     private static final Integer MAX_SIZE = 45;
     private static final Integer MIN_SIZE = 1;
 
-
     private final Integer number;
 
     public LottoNumber(final Integer input) {

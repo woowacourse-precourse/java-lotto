@@ -26,8 +26,7 @@ class LotteryGroupTest {
     }, delimiterString = ":")
     void 로또묶음과_정답로또를_입력금액과_맞춘_갯수를_반환합니다(final String lottoBundleInput,
                                         final String answerLottInput,
-                                        final String bonusNumberInput,
-                                        final String count) {
+                                        final String bonusNumberInput) {
         var lottoBundle = this.stringToLottoBundle(lottoBundleInput);
         var answerLott = this.stringToAnswerLotto(answerLottInput, bonusNumberInput);
 
