@@ -23,6 +23,7 @@ public class View {
     public static void read_WinningNumbers() {
         System.out.print(MESSAGE_WINNINGNUMBERS_INPUT_FORMAT);
         Game.winningNumbers_Input = Console.readLine();
+
         if(NOT_EXACT_FORMAT) throw new IllegalArgumentException();
     }
 
