@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
+    private final String COMMA = ",";
     private final String INPUT_PURCHASE_NUMBER = "구입금액을 입력해 주세요.";
     private final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     private final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
@@ -45,7 +46,9 @@ public class InputView {
 
     private List<Integer> validSplitDate(String input) {
         try {
-            return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+            return Arrays.stream(input.split(COMMA))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
         } catch (NumberFormatException e) {
             System.out.println("정수를 입력해주셔야 합니다.");
             throw new IllegalArgumentException();
