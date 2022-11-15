@@ -9,7 +9,7 @@ public class OutputView {
 
 
     public static int getLottoCount(String purchaseAmount, int unit) {
-        int lottoCount = Integer.getInteger(purchaseAmount) / unit;
+        int lottoCount = Integer.parseInt(purchaseAmount) / unit;
         System.out.println(lottoCount + OUTPUT_COUNT_MSG);
         return lottoCount;
     }
@@ -24,11 +24,11 @@ public class OutputView {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(
-            "3개 일치 (5,000원) - " +  "개\n" +
-                "4개 일치 (50,000원) - " + "개\n" +
-                "5개 일치 (1,500,000원) - " + "개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + "개\n" +
-                "6개 일치 (2,000,000,000원) - " + "개\n"
+                OUTPUT_MATCH_3 + winningHistory.get(Rank.RANK5) + OUTPUT_COUNT + "\n" +
+                    OUTPUT_MATCH_4 + winningHistory.get(Rank.RANK4) + OUTPUT_COUNT + "\n" +
+                    OUTPUT_MATCH_5 + winningHistory.get(Rank.RANK3) + OUTPUT_COUNT + "\n" +
+                    OUTPUT_MATCH_5_BONUS + winningHistory.get(Rank.RANK2) + OUTPUT_COUNT + "\n" +
+                    OUTPUT_MATCH_6 + winningHistory.get(Rank.RANK1) + OUTPUT_COUNT
         );
     }
 }
