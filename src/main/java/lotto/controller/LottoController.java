@@ -1,8 +1,7 @@
 package lotto.controller;
 
 import static lotto.domain.result.Statistics.makeStatistics;
-import static lotto.view.OutputView.printLottoPurchaseCount;
-import static lotto.view.OutputView.printTotalLottos;
+import static lotto.view.OutputView.*;
 
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.TotalLottos;
@@ -23,6 +22,8 @@ public class LottoController {
         List<Integer> winningNumbers = WinningElements.getWinningNumbers();
         int bonusNumber = WinningElements.getBonusNumber();
         Map<LottoRank, Integer> lottoResult = takeWinningResult(totalLottos, winningNumbers, bonusNumber);
+
+        printStatistics(lottoResult);
     }
 
     public static long takeLottoPurchaseCount(long purchaseAmount) {
