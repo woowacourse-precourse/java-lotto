@@ -132,11 +132,11 @@ public class Application {
         }
     }
 
-    public static float getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
+    public static void getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
         Map<Integer, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
         int result = printResult(prizeMap);
-        float totalPrize = getProfit(result, lottos.size());
-        return totalPrize;
+        float profit = getProfit(result, lottos.size());
+        printProfit(profit);
     }
 
     public static int printResult(Map<Integer, Integer> prizeMap) {
@@ -158,6 +158,11 @@ public class Application {
         profit = Math.round(profit * 10) / 10;
         return profit;
     }
+
+    public static void printProfit(float profit) {
+        System.out.println("총 수익률은 " + profit + "%입니다.");
+    }
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
