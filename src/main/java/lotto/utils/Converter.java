@@ -3,8 +3,9 @@ package lotto.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.utils.Constants.DELIMITER;
+
 public class Converter {
-    private static final String DELIMITER = ",";
 
     public List<Integer> convertToLuckyNumber(String input) {
         List<Integer> luckyNumber = new ArrayList<>();
