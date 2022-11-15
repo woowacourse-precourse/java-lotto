@@ -34,7 +34,7 @@ public class In {
         List<Integer> mainDraw;
         try {
             mainDraw = Arrays.stream(Console.readLine().split(",")).map(Integer::valueOf).collect(Collectors.toList());
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("콤마(',')로 구분된 숫자만 입력해 주세요.");
         }
         return mainDraw;

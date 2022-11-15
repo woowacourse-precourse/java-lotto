@@ -250,7 +250,7 @@ class ApplicationTest extends NsTest {
 
 
     @ParameterizedTest(name = "잘못된 값 입력시 예외 발생 테스트")
-    @CsvSource({"1000j", "2200, 0"})
+    @CsvSource({"1000j", "2200", "0", "1000\n,1,2 ,45,3,2"})
     void 예외_테스트(String input) {
         assertSimpleTest(() -> {
             runException(input);
