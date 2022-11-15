@@ -15,7 +15,16 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        validationLotto(numbers);
         this.numbers = numbers;
+    }
+
+    public void validationLotto(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            validateNumberInRange(number);
+        }
+        validateOverlap(numbers);
+        validateLengthOfLotto(numbers);
     }
 
     public void validateLengthOfLotto(List<Integer> lottoNumber) {
