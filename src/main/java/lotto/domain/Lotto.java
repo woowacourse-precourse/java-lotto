@@ -1,8 +1,7 @@
 package lotto.domain;
 
-import java.util.Iterator;
 import java.util.List;
-import lotto.aspect.LottoValidator;
+import lotto.validator.LottoValidator;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,12 +11,16 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean contains(int number) {
-        return this.numbers.contains(number);
+    public int size() {
+        return this.numbers.size();
     }
 
-    public Iterator<Integer> createIterator() {
-        return this.numbers.iterator();
+    public int get(int index) {
+        return this.numbers.get(index);
+    }
+
+    public boolean contains(int number) {
+        return this.numbers.contains(number);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package lotto.logic;
 
 import java.util.EnumMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -48,9 +47,8 @@ public class LottoService {
     private int compareForSame(WinningInfo target, Lotto lotto) {
         int sameCount = 0;
 
-        Iterator<Integer> lottoNumbers = lotto.createIterator();
-        while (lottoNumbers.hasNext()) {
-            int number = lottoNumbers.next();
+        for (int size = lotto.size(), i = 0; i < size; i++) {
+            int number = lotto.get(i);
 
             if (target.contains(number)) {
                 sameCount++;
