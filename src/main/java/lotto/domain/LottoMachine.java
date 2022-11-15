@@ -19,6 +19,15 @@ public class LottoMachine {
         return lottoNumbers;
     }
 
+    public List<Lotto> makeLottos(int lottoQuantity) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < lottoQuantity; i++) {
+            lottos.add(new Lotto(generateLottoNumber()));
+        }
+
+        return lottos;
+    }
+
     private List<Integer> sortLottoNumbers(List<Integer> numbers) {
         ArrayList<Integer> lottoNumbersCopy = new ArrayList<>(List.copyOf(numbers));
         lottoNumbersCopy.sort(Comparator.naturalOrder());

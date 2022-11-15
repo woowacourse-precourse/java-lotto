@@ -35,10 +35,8 @@ public class LottoController {
     private List<Lotto> getLottos(int lottoQuantity) {
         LottoMachine lottoMachine = new LottoMachine();
 
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < lottoQuantity; i++) {
-            lottos.add(new Lotto(lottoMachine.generateLottoNumber()));
-        }
+        List<Lotto> lottos = lottoMachine.makeLottos(lottoQuantity);
+
         OutputView.printInputMoneyResultMessage(lottoQuantity);
         OutputView.printPurchasedLottos(lottos);
         return lottos;
