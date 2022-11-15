@@ -41,6 +41,7 @@ public class Player {
         int size = playerLottos.size();
         System.out.println(size+ "개를 구매했습니다.");
 
+        playerLottos.forEach(Lotto::ascendingSort);
         playerLottos.stream().map(Lotto::getNumbers).forEach(System.out::println);
     }
 
