@@ -10,9 +10,11 @@ import lotto.domain.Rank;
 public class Statistics {
 
     private final Map<Rank, Integer> statistics;
+    private final Money profit;
 
-    public Statistics(List<Rank> ranks, Money capital) {
+    public Statistics(List<Rank> ranks) {
         this.statistics = createStatistics(ranks);
+        this.profit = sumProfitsOf(ranks);
     }
 
     private Map<Rank, Integer> createStatistics(List<Rank> ranks) {
@@ -33,7 +35,18 @@ public class Statistics {
                 .count());
     }
 
+    private Money sumProfitsOf(List<Rank> ranks) {
+        return ranks.stream()
+                .map(Rank::getPrize)
+                .reduce(Money::add)
+                .orElse(new Money(0));
+    }
+
     public int getCountOf(Rank rank) {
         return statistics.get(rank);
+    }
+
+    public Money getTotalProfit() {
+        return profit;
     }
 }
