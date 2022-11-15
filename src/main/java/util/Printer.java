@@ -4,7 +4,7 @@ import domain.Lotto;
 
 import java.util.List;
 
-public class ResultPrinter {
+public class Printer {
     private List<Integer> resultList;
     private int money;
     private final int FIRST_INCOME = 2000000000;
