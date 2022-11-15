@@ -43,6 +43,11 @@ public class LottoController {
         return new UserMoney(inputView.requestUserMoney());
     }
 
+    private Ticket purchaseLottoTicket(UserMoney money) {
+        Ticket ticket = new Ticket(lottoFactory.purchaseLottos(money));
+        outputView.printLottoTickets(ticket.getTicket());
+        return ticket;
+    }
 
 
 
