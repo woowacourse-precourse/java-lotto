@@ -10,11 +10,15 @@ public class OutputManager {
 
     public OutputManager() {
     }
+
     public void printMessagePurchaseAmount(Lottos lottos) {
         int lottoCount = lottos.getLottos().size();
         System.out.println(lottoCount + OUTPUT_MESSAGE_PURCHASE_AMOUNT);
     }
+
     public void printLottos(Lottos lottos) {
+        printMessagePurchaseAmount(lottos);
+
         List<Lotto> lottoList = lottos.getLottos();
 
         for (Lotto lotto : lottoList) {
