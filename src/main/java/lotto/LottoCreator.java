@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoCreator {
@@ -19,10 +19,8 @@ public class LottoCreator {
     }
 
     private List<Integer> createNumbers() {
-        List<Integer> numbers;
-
-        numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUM, LOTTO_MAX_NUM, LOTTO_SIZE);
-        Collections.sort(numbers);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUM, LOTTO_MAX_NUM, LOTTO_SIZE));
+        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
 
