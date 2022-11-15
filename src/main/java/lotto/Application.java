@@ -14,8 +14,7 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         String amountInput = Console.readLine();
 
-
-
+        calcAmount(amountInput);
         /* 로또 랜덤 발행
         [1, 2, 3, 4, 5, 6]
          */
@@ -55,7 +54,14 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    private static void validateAmountInput(String amountInput) {
-        return;
+    private static Integer calcAmount(String amountInput) {
+
+        try {
+            Integer amount = Integer.parseInt(amountInput);
+            return amount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+        }
+
     }
 }
