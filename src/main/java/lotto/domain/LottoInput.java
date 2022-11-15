@@ -20,6 +20,8 @@ public class LottoInput {
         return count;
     }
 
+
+
     public List<Integer> stringToListIntegar(String winningNumber){
         List<String> winningList = Arrays.asList(winningNumber.split(","));
         List<Integer> winningNumberList = new ArrayList<>();

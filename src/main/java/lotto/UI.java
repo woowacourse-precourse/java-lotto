@@ -53,9 +53,6 @@ public class UI {
         System.out.println(Rank.FIRST.getRanking()+Rank.FIRST.getBonus()+"개 일치 "+Rank.FIRST.getMoney()+" - "+lottoLogic.getSixSame()+"개");
 
 
-        /*3개 일치 (5,000원) - 1개
-
-         */
     }
 
 }
