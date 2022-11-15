@@ -1,3 +1,11 @@
+
+
+# Flow Chart
+
+![FlowChart](https://user-images.githubusercontent.com/79066049/201949612-1613a0ff-4fe3-4867-900d-3f0e88cee9d8.png)
+
+
+
 ## 기능 목록
 
 - [x] 로또 구입
