@@ -74,4 +74,9 @@ public class ExceptionHandler {
         overlapException(numbers);
     }
 
+    public void getLottoBonusNumberException(String input) throws IllegalArgumentException {
+        noNumberException(input);
+        numberRangeException(Integer.parseInt(input));
+    }
+
 }
