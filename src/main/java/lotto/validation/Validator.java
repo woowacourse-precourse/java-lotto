@@ -18,10 +18,9 @@ public class Validator {
     private static final int FIRST_NUMBER = 1;
     private static final int LOTTO_SIZE = 6;
 
-
     public static void validateInputMoney(String money) {
-        isFirstNumberZero(money);
         isCorrectMoneyPattern(money);
+        isFirstNumberZero(money);
     }
 
     private static void isFirstNumberZero(String money) {
