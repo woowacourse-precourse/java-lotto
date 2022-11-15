@@ -33,7 +33,7 @@ public enum Rank {
         } else if (number == FIRST.matchNumber) {
             return FIRST;
         }
-        return null;
+        return NONE;
     }
 
     public int getPriceMoney() {
