@@ -74,6 +74,11 @@ public class WinningsCalculationService {
         if (winningsNumber.length != SIZE) {
             return false;
         }
+        for (int i = 0; i < SIZE; i++) {
+            if (!isDigit(winningsNumber[i])) {
+                return false;
+            }
+        }
         return true;
     }
 
