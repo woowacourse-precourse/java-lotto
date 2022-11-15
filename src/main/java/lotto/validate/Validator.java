@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.validate;
 
 import lotto.config.LottoConfig;
 import lotto.message.ExceptionMessage;
