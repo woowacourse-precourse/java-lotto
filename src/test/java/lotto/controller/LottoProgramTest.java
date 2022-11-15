@@ -1,15 +1,11 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.controller.LottoProgram;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -25,7 +21,7 @@ class LottoProgramTest extends NsTest {
         Assertions.assertThatThrownBy(
                 () -> assertRandomUniqueNumbersInRangeTest(
                         () -> {
-                            run("8000", "1,2,3,4,5,5", "7");
+                            run("1000", "1,2,3,4,5,5", "7");
                             assertThat(output()).contains();
                         },
                         List.of(8, 21, 23, 41, 42, 43))
@@ -51,7 +47,7 @@ class LottoProgramTest extends NsTest {
         Assertions.assertThatThrownBy(
                 () -> assertRandomUniqueNumbersInRangeTest(
                         () -> {
-                            run("8000", "47,2,3,4,5,5", "7");
+                            run("1000", "47,2,3,4,5,5", "7");
                             assertThat(output()).contains();
                         },
                         List.of(8, 21, 23, 41, 42, 43))

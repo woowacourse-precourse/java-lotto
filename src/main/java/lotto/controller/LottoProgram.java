@@ -7,13 +7,13 @@ import lotto.model.LottoWinningAnalyzer;
 import lotto.model.WinningLotto;
 import lotto.model.Lotto;
 
+import java.text.NumberFormat;
 import java.util.EnumMap;
 import java.util.List;
 
 import static lotto.view.LottoSeller.*;
 
 public class LottoProgram {
-
     private List<Lotto> lottoTickets;
     private EnumMap<WinningType, Integer> winningResult;
     private LottoWinningAnalyzer analyzer;
@@ -28,18 +28,21 @@ public class LottoProgram {
 
     private void printWinningResult(List<Integer> numbers, int bonusNumber) {
         WinningLotto winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
+        NumberFormat numberFormat = NumberFormat.getInstance();
 
         initializeWinningResult(winningLotto);
 
         winningResult.forEach((key, value) -> {
-            printMessage(String.format(key.getMessage(), value));
+            printMessage(String.format(key.getMessage(),
+                    numberFormat.format(key.getMoney()), value));
         });
     }
 
     private void printProfit(int purchasePrice) {
         double profit = calculateProfit(purchasePrice);
 
-        printMessage(String.format(MessageType.WINNING_RESULT.getMessage(), profit));
+        printMessage(String.format(
+                MessageType.WINNING_RESULT.getMessage(), profit));
     }
 
     private void buyLotto(int price) {
