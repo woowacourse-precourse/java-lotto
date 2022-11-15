@@ -14,6 +14,7 @@ public class SystemMessage {
     public static final String MULTIPLE_THOUSAND_ERROR_MESSAGE = "구입 금액은 1000원 단위여야 합니다\n";
     public static final String DUPLICATE_BONUS_ERROR_MESSAGE = "로또 번호와 중복된 보너스 번호입니다.\n";
     public static final String WINNING_STATISTICS_MESSAGE = "당첨 통계\n---\n";
+    public static final String END_PROGRAM_MESSAGE = "종료합니다.";
 
 
 }

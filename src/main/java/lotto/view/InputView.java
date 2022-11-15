@@ -107,7 +107,6 @@ public class InputView {
     }
 
     private static void validateAllLottoNumber(List<Integer> splitLotto) {
-        validateLottoNumberDuplicate(splitLotto);
         validateCheckLimit(splitLotto);
     }
 
@@ -115,14 +114,6 @@ public class InputView {
         Pattern PATTERN = Pattern.compile(Validation.PATTERN.getValue());
         if (!PATTERN.matcher(rawLottoNumbers).matches()) {
             throw new IllegalArgumentException(ERROR_MESSAGE + PATTERN_ERROR_MESSAGE);
-        }
-    }
-
-    private static void validateLottoNumberDuplicate(List<Integer> numbers) {
-        Set<Integer> duplicateChecker = new HashSet<>(numbers);
-        if (duplicateChecker.size() != 6) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_ERROR_MESSAGE);
-
         }
     }
 
