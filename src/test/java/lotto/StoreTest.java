@@ -7,9 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.Const.SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static lotto.Const.SIZE;
 public class StoreTest {
 
     @DisplayName("정상적인 로또 번호를 발행")
@@ -25,7 +24,7 @@ public class StoreTest {
         duplicateCheck.addAll(lotto);
 
         // then
-        assertThat(SIZE.equals(lotto.size())).isTrue();
-        assertThat(SIZE.equals(duplicateCheck.size())).isTrue();
+        assertThat(lotto.size()).isEqualTo(SIZE);
+        assertThat(duplicateCheck.size()).isEqualTo(SIZE);
     }
 }

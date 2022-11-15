@@ -3,8 +3,7 @@ package lotto;
 import java.util.HashMap;
 import java.util.Map;
 
-import static lotto.Const.SIZE;
-import static lotto.GuidePhrase.*;
+import static lotto.Const.*;
 
 public class Result {
     private Map<Float, Integer> winBoard;
@@ -42,7 +41,7 @@ public class Result {
             int winSheetCount = winBoard.get(ranks[i].getMatching());
             long reward = getReward(ranks[i].getMatching());
 
-            System.out.println(getOutOfMatching(ranks[i].getMatching()) + " (" + getOutOfPrize(ranks[i].getPrize()) + "원) - " + winSheetCount + COUNT);
+            System.out.println(getOutOfMatching(ranks[i].getMatching()) + " (" + getOutOfPrize(ranks[i].getPrize()) + "원) - " + winSheetCount + "개");
         }
     }
 
@@ -99,7 +98,7 @@ public class Result {
     private int numberOfMatchingNumbers(Lotto winningNumber, Lotto lotto) {
         int matchingCount = 0;
 
-        for (int i = 0; i < SIZE.getNumber(); i++) {
+        for (int i = 0; i < SIZE; i++) {
             if (match(winningNumber, lotto.getNumbers().get(i))) {
                 matchingCount++;
             }

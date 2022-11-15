@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.DuplicateFormatFlagsException;
-
 public enum ErrorPhrase {
     DUPLICATE("[ERROR] 중복된 숫자가 존재합니다."),
     WRONG_LENGTH("[ERROR] 6자리가 아닙니다."),

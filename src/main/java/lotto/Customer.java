@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import static lotto.Const.BILL;
+import static lotto.Const.*;
 import static lotto.ErrorPhrase.DUPLICATE;
 import static lotto.ErrorPhrase.WRONG_PAY;
 import static lotto.ErrorPhrase.WRONG_INPUT;
@@ -21,7 +21,7 @@ public class Customer {
     public int buy(String input) {
         input = removeLeadingAndTrailingSpaces(input);
         payValidate(input);
-        return Integer.parseInt(input) / BILL.getNumber();
+        return Integer.parseInt(input) / BILL;
     }
 
     public void inputWinningNumber(String input) {
@@ -92,7 +92,7 @@ public class Customer {
     private void isNotWrongPay(String pay) {
         int stringToInt = Integer.parseInt(pay);
 
-        if (stringToInt % BILL.getNumber() != 0) {
+        if (stringToInt % BILL != 0) {
             throw new IllegalArgumentException(WRONG_PAY.toString());
         }
     }

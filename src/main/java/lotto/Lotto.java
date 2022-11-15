@@ -23,7 +23,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     private void lengthValidate(List<Integer> numbers) {
-        if (!SIZE.equals(numbers.size())) {
+        if (!(numbers.size() == SIZE)) {
             throw new IllegalArgumentException(WRONG_LENGTH.toString());
         }
     }
@@ -32,7 +32,7 @@ public class Lotto {
         Set<Integer> duplicateCheck = new HashSet<>();
         duplicateCheck.addAll(numbers);
 
-        if (!SIZE.equals(duplicateCheck.size())) {
+        if (!(duplicateCheck.size() == SIZE)) {
             throw new IllegalArgumentException(DUPLICATE.toString());
         }
     }

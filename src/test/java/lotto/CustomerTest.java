@@ -45,7 +45,7 @@ public class CustomerTest {
         Customer customer = new Customer();
 
         // when
-        customer.inputWinningNumber("1 ,2,3,4,5,6");
+        customer.inputWinningNumber("1,2,3,4,5,6");
         boolean wellEntered = true;
         for (int i = 1; i <= 6; i++) {
             if (customer.getWinningNumber().getNumbers().get(i - 1) != i) {
@@ -54,7 +54,7 @@ public class CustomerTest {
         }
 
         // then
-        assertThat(SIZE.equals(customer.getWinningNumber().getNumbers().size())).isTrue();
+        assertThat(customer.getWinningNumber().getNumbers().size()).isEqualTo(SIZE);
         assertThat(wellEntered).isTrue();
     }
 
@@ -86,6 +86,7 @@ public class CustomerTest {
         Customer customer = new Customer();
 
         // when
+        customer.inputWinningNumber("2,3,4,5,6,7");
         customer.inputBonusNumber("1");
 
         // then
