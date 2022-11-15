@@ -28,8 +28,8 @@ public enum LottoPrize {
         this.winningAmount = winningAmount;
     }
 
-    public static LottoPrize toPrize(CompareResult lottoResult) {
-        return compareResultToLottoPrize.getOrDefault(lottoResult, LOSE);
+    public static LottoPrize toPrize(CompareResult compareResult) {
+        return compareResultToLottoPrize.getOrDefault(compareResult, LOSE);
     }
 
     public int getWinningAmount() {
