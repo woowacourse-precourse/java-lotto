@@ -2,10 +2,10 @@ package lotto.domain;
 
 import static lotto.utils.ConsoleUtil.*;
 import static lotto.utils.message.DynamicMessagesUtil.*;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_COUNT;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_MIN;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_PRICE;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_COUNT;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_MAX;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_MIN;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_PRICE;
 import static lotto.utils.message.StaticMessagesUtil.*;
 import static lotto.utils.validate.NumberValidator.validateBuyMoney;
 

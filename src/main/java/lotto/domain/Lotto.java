@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import static lotto.utils.message.NumberMessageUtil.FIVE;
-import static lotto.utils.message.NumberMessageUtil.FOUR;
-import static lotto.utils.message.NumberMessageUtil.SIX;
-import static lotto.utils.message.NumberMessageUtil.THREE;
+import static lotto.utils.message.NumberMessagesUtil.FIVE;
+import static lotto.utils.message.NumberMessagesUtil.FOUR;
+import static lotto.utils.message.NumberMessagesUtil.SIX;
+import static lotto.utils.message.NumberMessagesUtil.THREE;
 import static lotto.utils.validate.NumberValidator.validateNumber;
 import static lotto.utils.validate.NumberValidator.validateNumbersSize;
 

@@ -1,8 +1,8 @@
 package lotto.utils.message;
 
-import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_MIN;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_PRICE;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_MAX;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_MIN;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_PRICE;
 
 public enum ErrorMessagesUtil {
     PREFIX("[ERROR] "),

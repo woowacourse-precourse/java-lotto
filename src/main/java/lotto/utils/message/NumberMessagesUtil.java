@@ -1,6 +1,6 @@
 package lotto.utils.message;
 
-public enum NumberMessageUtil {
+public enum NumberMessagesUtil {
     LOTTO_MIN(1),
     LOTTO_MAX(45),
     LOTTO_COUNT(6),
@@ -12,7 +12,7 @@ public enum NumberMessageUtil {
 
     private final int number;
 
-    NumberMessageUtil(int number) {
+    NumberMessagesUtil(int number) {
         this.number = number;
     }
 

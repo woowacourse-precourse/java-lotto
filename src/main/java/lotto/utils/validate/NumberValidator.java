@@ -1,10 +1,10 @@
 package lotto.utils.validate;
 
 import static lotto.utils.message.ErrorMessagesUtil.*;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_COUNT;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_MIN;
-import static lotto.utils.message.NumberMessageUtil.LOTTO_PRICE;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_COUNT;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_MAX;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_MIN;
+import static lotto.utils.message.NumberMessagesUtil.LOTTO_PRICE;
 
 import java.util.List;
 import java.util.regex.Pattern;
