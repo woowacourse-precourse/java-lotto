@@ -3,11 +3,13 @@ package lotto.ui;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InputScanner {
+    private static final int LOTTO_NUMBER_SIZE = 6;
     private List<Integer> winningNumbers;
 
     public int scanPurchaseAmount() {
@@ -62,14 +64,19 @@ public class InputScanner {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_FORMAT.getMessage());
         }
-        if (winningNumbers.size() != 6) {
+        if (winningNumbers.size() != LOTTO_NUMBER_SIZE) {
             throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_SIZE.getMessage());
         }
         if (Collections.min(winningNumbers) < 1 || Collections.max(winningNumbers) > 45) {
             throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_RANGE.getMessage());
         }
+        HashSet filteredWinningNumbers = new HashSet<>(winningNumbers);
+        if (filteredWinningNumbers.size() != LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_OVERLAP.getMessage());
+        }
         return winningNumbers;
     }
+
 
     private List<Integer> sortWinningNumbers(List<Integer> inputNumbers) {
         Collections.sort(inputNumbers);
