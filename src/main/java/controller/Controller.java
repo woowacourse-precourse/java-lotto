@@ -27,7 +27,12 @@ public class Controller {
             Lotto lottoCheck = new Lotto(lottoNumber);
             lottoNumber = lottoCheck.lottoNumberSort();
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
-            putMatchNumberCount(server.countMatchNumber(common));
+            int matchNumber = server.countMatchNumber(common);
+            if(matchNumber == 5 && server.compareBonusNumber(lottoNumber, bonusNumber)){
+                putMatchNumberCount(7);
+                continue;
+            }
+            putMatchNumberCount(matchNumber);
         }
     }
 
