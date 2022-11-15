@@ -13,6 +13,9 @@ public class Application {
     static final int lottoMin = 1; //로또 번호 최소값
     static final int lottoMax = 45; //로또 번호 최대값
     static List<Lotto> lottoList;
+    static List<Integer> hitNumber;
+    static int bonus;
+
     static int castInt(String str){
         int num = 0;
         try {
@@ -23,10 +26,11 @@ public class Application {
         return num;
     }
 
-    static int payMoney(){
-        int inputMoney = castInt(Console.readLine());
-        return inputMoney;
+    static int singleNumberInput(){
+        int inputNum = castInt(Console.readLine());
+        return inputNum;
     }
+
     static List<Integer> createLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lottoMin, lottoMax, lottoLength);
         Collections.sort(numbers);
@@ -44,12 +48,36 @@ public class Application {
         for (Lotto lotto : lottoList)
             lotto.print();
     }
+
+    static List<String> parsingStringInput(){
+        String hitString = Console.readLine();
+        List<String> hitStringParsed = Arrays.asList(hitString.split(","));
+        return hitStringParsed;
+    }
+
+    static List<Integer> multiNumberInput(){
+        List<String> stringParsed = parsingStringInput();
+        List<Integer> multiNumberList = new ArrayList<>(lottoNum);
+        for (int i = 0; i < lottoLength; i++) {
+            multiNumberList.add(castInt(stringParsed.get(i)));
+        }
+        return multiNumberList;
+    }
+
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
-        money = payMoney();
+        money = singleNumberInput();
+
         lottoNum = money / 1000;
         System.out.println(lottoNum + "개를 구매했습니다.");
+
         lottoList = createLottoList(lottoNum);
         printLottoList(lottoList);
+
+        System.out.println("당첨 번호를 입력해주세요.");
+        hitNumber = multiNumberInput();
+
+        System.out.println("보너스 번호를 입력해주세요.");
+        bonus = singleNumberInput();
     }
 }
