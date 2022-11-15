@@ -1,5 +1,9 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -7,6 +11,13 @@ public class Application {
 
         int userLottoCnt = LottoUtil.numberOfLottoAvailableCount(userMoney);
 
-        System.out.println("userLottoCnt = " + userLottoCnt);
+        List<Lotto> userLottos = LottoUtil.getLottos(userLottoCnt);
+
+        for(Lotto l : userLottos){
+            for(Integer i : l.getNumbers()){
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
     }
 }

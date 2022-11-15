@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        rangeValid(numbers);
         this.numbers = numbers;
     }
 
@@ -14,6 +15,18 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void rangeValid(List<Integer> numbers){
+        numbers.forEach(number -> {
+            if(number < 1 || number > 45){
+                throw new IllegalArgumentException();
+            }
+        });
+    }
+
+    public List<Integer> getNumbers(){
+        return numbers;
     }
 
 }
