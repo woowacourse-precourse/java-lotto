@@ -1,6 +1,7 @@
 package lotto.service;
 
 import static lotto.utils.Constants.LAST_PLACE;
+import static lotto.utils.Constants.MINIMUN_REQUIRED_NUMBER_OF_MATCHING_NUMBER;
 
 import lotto.domain.Lotto;
 import lotto.domain.Ranking;
@@ -33,7 +34,7 @@ public class WinningService {
         if (isNonePlace(matchingNumberCount)) {
             return Ranking.NONE.getPlace();
         }
-        return LAST_PLACE + 3 - matchingNumberCount;
+        return LAST_PLACE + MINIMUN_REQUIRED_NUMBER_OF_MATCHING_NUMBER - matchingNumberCount;
     }
 
     private static int compareWithoutBonusNumber(Lotto lotto, List<Integer> winningNumbers) {
