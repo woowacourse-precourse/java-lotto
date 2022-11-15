@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Utils.SEPERATOR;
+
 public enum Hit {
     THREE(3, false, "5,000"),
     FOUR(4, false, "50,000"),
@@ -40,6 +42,6 @@ public enum Hit {
     }
 
     public static Integer parsePrizeToInt(Hit hit) {
-        return Integer.parseInt(String.join("", hit.prize.split(",")));
+        return Integer.parseInt(String.join("", hit.prize.split(SEPERATOR)));
     }
 }

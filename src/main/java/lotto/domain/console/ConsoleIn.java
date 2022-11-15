@@ -9,6 +9,8 @@ import lotto.validator.Validator;
 
 import java.util.List;
 
+import static lotto.Utils.SEPERATOR;
+
 public class ConsoleIn {
 
     private ConsoleIn() {
@@ -46,7 +48,7 @@ public class ConsoleIn {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getBonusNumberCondition();
 
-        String numbers = Utils.getConcatenatedString(answerNumbers) + "," + input;
+        String numbers = Utils.getConcatenatedString(answerNumbers) + SEPERATOR + input;
 
         Condition notPassCondition = Validator.getNotPassCondition(conditions, numbers);
 
