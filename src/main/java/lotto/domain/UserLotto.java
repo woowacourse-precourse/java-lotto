@@ -9,7 +9,9 @@ public class UserLotto {
         this.lottoNumbers = lottoNumbers;
     }
 
-
+    public List<Integer> getLottoNumbers() {
+        return this.lottoNumbers;
+    }
 
 
 }
