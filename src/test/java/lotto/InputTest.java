@@ -71,6 +71,15 @@ public class InputTest extends NsTest {
         assertThatThrownBy(() -> validator.isCorrectRangeNumber(str,Error.RANGE))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호에 문자가 있을 경우 예외가 발생한다.")
+    @Test
+    void createCharacterInWinningNumber() {
+        Validator validator = new Validator();
+        String winningNumber[] = {"1,2,3,k,4,5"};
+        assertThatThrownBy(() -> validator.isNumericWinningNumber(winningNumber,Error.NUMBER))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     
     @Override
     public void runMain() {
