@@ -50,6 +50,13 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 당첨번호와 중복되면 예외가 발생한다")
+    @Test
+    void createExceptionTest7() {
+        assertThatThrownBy(() -> new Exception().checkBonusNumberOverLap("7","1,2,3,4,5,7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 
