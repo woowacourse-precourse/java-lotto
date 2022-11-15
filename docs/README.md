@@ -88,6 +88,15 @@
                 ├── mvc
                 │   ├── controller
                 │   │   └── LottoGameController.java
+                │   ├── dto
+                │   │   ├── input
+                │   │   │   ├── InputBonusNumberDto.class
+                │   │   │   ├── InputPurchaseAmountDto.class
+                │   │   │   └── InputWinningLottoDto.class
+                │   │   └── output
+                │   │       ├── OutputExceptionMessageDto.class
+                │   │       ├── OutputLottoStatisticsDto.class
+                │   │       └── OutputPlayerInfoDto.class
                 │   ├── model
                 │   │   ├── LottoResult.java
                 │   │   └── LottoStore.java
@@ -101,7 +110,8 @@
                 │   │       ├── InputViewMessageUtils.java
                 │   │       └── LottoRankingMessageUtils.java
                 │   └── view
-                │       └── ConsoleView.java
+                │       ├── InputView.class
+                │       └── OutputView.class
                 └── util
                     ├── message
                     │   ├── CommonMessageConst.java
@@ -122,6 +132,15 @@
 - `mvc`
   - `controller`
     - `LottoGameController` : 플레이어의 요청을 받아 필요한 로직을 수행하고 `View`에게 필요한 메세지를 출력하도록 전달하는 클래스
+  - `dto`
+    - `input`
+      - `InputBonusNumberDto` : `InputView`에서 보너스 번호에 대한 플레이어의 입력을 받아 `LottoGameController`에 입력을 전달하는 `DTO`
+      - `InputPurchaseAmountDto` : `InputView`에서 구입 금액에 대한 플레이어의 입력을 받아 `LottoGameController`에 입력을 전달하는 `DTO`
+      - `InputWinningLottoDto` : `InputView`에서 당첨 번호에 대한 플레이어의 입력을 받아 `LottoGameController`에 입력을 전달하는 `DTO`
+    - `output`
+      - `OutputExceptionMessageDto` : `LottoGameController`에서 예외 발생 시 예외 메세지를 `OutputView`에 전달하는 `DTO`
+      - `OutputLottoStatisticsDto` : `LottoGameController`에서 로또 통계를 `OutputView`에 전달하는 `DTO`
+      - `OutputPlayerInfoDto` : `LottoGameController`에서 플레이어가 구매한 로또를 `OutputView`에 전달하는 `DTO`
   - `model`
     - `LottoResult` : 로또 게임의 결과(로또 등수, 수익률)를 관리하는 클래스
     - `LottoStore` : 로또 게임의 플레이어 정보와 로또 당첨 번호를 관리하는 클래스
@@ -135,7 +154,8 @@
       - `InputViewMessageUtils` : `LottoGameStatus`에 따라 필요한 플레이어 입력 안내 문구를 관리하는 `enum`
       - `LottoRankingMessageUtils` : 로또 당첨 메세지를 관리하는 `enum`
   - `view`
-    - `ConsoleView` : `Console`에 전달받은 메세지를 출력하는 `View`
+    - `InputView` : 입력 안내 문구를 출력하고 플레이어의 입력을 받아 `DTO`를 반환하는 `View`
+    - `OutputView` : `DTO`로부터 플레이어가 구매한 로또, 로또 통계, 예외 메세지를 전달받아 출력하는 `View`
 - `util`
   - `message`
     - `CommonMessageConst` : 예외 메세지 관련 공통 부분을 상수로 정의한 클래스
@@ -154,61 +174,69 @@
                 ├── ApplicationTest.java
                 ├── GameRunnerTest.java
                 ├── common
-                │     └── CommonExceptionTest.java
+                │   ├── CommonExceptionTest.java
+                │   ├── CommonIOTestSettings.java
+                │   └── CommonOutputTestSettings.java
                 ├── domain
-                │     ├── argument
-                │     │     ├── CalculateRevenueArgument.java
-                │     │     ├── LottoResultTestArgument.java
-                │     │     ├── LottoStoreTestArgument.java
-                │     │     ├── LottoTestArgument.java
-                │     │     └── PlayerTestArgument.java
-                │     ├── number
-                │     │     ├── LottoNumberTest.java
-                │     │     └── LottoTest.java
-                │     └── player
-                │         ├── LottoPurchaseAmountTest.java
-                │         └── PlayerTest.java
+                │   ├── argument
+                │   │   ├── CalculateRevenueArgument.java
+                │   │   ├── LottoResultTestArgument.java
+                │   │   ├── LottoStoreTestArgument.java
+                │   │   ├── LottoTestArgument.java
+                │   │   └── PlayerTestArgument.java
+                │   ├── number
+                │   │   ├── LottoNumberTest.java
+                │   │   └── LottoTest.java
+                │   └── player
+                │       ├── LottoPurchaseAmountTest.java
+                │       └── PlayerTest.java
                 ├── helper
-                │     ├── exception
-                │     │     ├── CannotReflectionException.java
-                │     │     └── FieldNotFoundException.java
-                │     ├── factory
-                │     │     └── LottoStoreTestFactory.java
-                │     ├── stub
-                │     │     ├── StubLottoGameController.java
-                │     │     └── StubWinningLotto.java
-                │     └── util
-                │         ├── LottoNumberTestUtils.java
-                │         ├── LottoPurchaseAmountTestUtils.java
-                │         ├── LottoRankingTestUtils.java
-                │         ├── LottoResultTestUtils.java
-                │         ├── LottoStoreTestUtils.java
-                │         ├── LottoTestUtils.java
-                │         ├── PlayerTestUtils.java
-                │         ├── ReflectionFieldUtils.java
-                │         └── TestArgumentUtils.java
+                │   ├── exception
+                │   │   ├── CannotReflectionException.java
+                │   │   └── FieldNotFoundException.java
+                │   ├── factory
+                │   │   └── LottoStoreTestFactory.java
+                │   ├── stub
+                │   │   ├── StubLottoGameController.java
+                │   │   └── StubWinningLotto.java
+                │   └── util
+                │       ├── LottoNumberTestUtils.java
+                │       ├── LottoPurchaseAmountTestUtils.java
+                │       ├── LottoRankingTestUtils.java
+                │       ├── LottoResultTestUtils.java
+                │       ├── LottoStoreTestUtils.java
+                │       ├── LottoTestUtils.java
+                │       ├── PlayerTestUtils.java
+                │       ├── ReflectionFieldUtils.java
+                │       └── TestArgumentUtils.java
                 ├── mvc
-                │     ├── controller
-                │     │     └── LottoGameControllerTest.java
-                │     ├── model
-                │     │     ├── LottoResultTest.java
-                │     │     └── LottoStoreTest.java
-                │     └── util
-                │         ├── LottoGameStatusTest.java
-                │         ├── LottoRankingTest.java
-                │         └── message
-                │             ├── InputViewMessageUtilsTest.java
-                │             └── LottoRankingMessageUtilsTest.java
+                │   ├── controller
+                │   │   └── LottoGameControllerTest.java
+                │   ├── model
+                │   │   ├── LottoResultTest.java
+                │   │   └── LottoStoreTest.java
+                │   ├── util
+                │   │   ├── LottoGameStatusTest.java
+                │   │   ├── LottoRankingTest.java
+                │   │   └── message
+                │   │       ├── InputViewMessageUtilsTest.java
+                │   │       └── LottoRankingMessageUtilsTest.java
+                │   └── view
+                │       ├── InputViewTest.java
+                │       └── OutputViewTest.java
                 └── util
                     ├── message
-                    │     └── LottoExceptionMessageUtilsTest.java
+                    │   └── LottoExceptionMessageUtilsTest.java
                     └── number
                         └── LottoNumberFactoryTest.java
+
 ```
 
 - `lotto`
   - `common`
     - `CommonExceptionTest` : `IllegalArgumentException` 관련 예외 검증 로직을 공통 처리한 클래스
+    - `CommonIOTestSettings` : 입출력을 동시에 테스트해야 할 경우 필요한 설정을 공통 처리한 클래스
+    - `CommonOutputTestSettings` : 출력을 테스트해야 할 경우 필요한 설정을 공통 처리한 클래스
   - `domain`
     - `argument` : `@MethodSource`를 통해 사용할 테스트 매개변수를 정의한 클래스가 위치한 패키지
   - `helper`
