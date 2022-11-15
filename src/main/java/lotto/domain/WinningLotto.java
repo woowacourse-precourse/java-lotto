@@ -40,4 +40,8 @@ public class WinningLotto {
             throw new InvalidRangeLottoNumberException();
         }
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
