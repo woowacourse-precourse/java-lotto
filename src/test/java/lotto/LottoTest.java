@@ -153,4 +153,24 @@ class LottoTest {
         assertThatThrownBy(() -> lottoNumberCreator.createLottoBonusBall(lottoBonusNumber, lottoWinNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사용자 로또 당첨 개수")
+    @Test
+    void UserWinLottoAmount() {
+        List<Lotto> lottoNumbers = new ArrayList<>();
+        lottoNumbers.add(new Lotto(List.of(1,2,10,11,12,13)));
+        lottoNumbers.add(new Lotto(List.of(1,2,3,11,12,13)));
+        lottoNumbers.add(new Lotto(List.of(1,2,3,4,12,13)));
+        lottoNumbers.add(new Lotto(List.of(1,2,3,4,5,13)));
+        lottoNumbers.add(new Lotto(List.of(1,2,3,4,5,7)));
+        lottoNumbers.add(new Lotto(List.of(1,2,3,4,5,6)));
+        List<Integer> lottoWinNumber = List.of(1,2,3,4,5,6);
+        int lottoBonusBall = 7;
+        LottoAnalyzer lottoAnalyzer = new LottoAnalyzer(lottoNumbers, lottoWinNumber, lottoBonusBall);
+
+        Map<LottoRank, Integer> lottoWinAmounts = lottoAnalyzer.analyzeLottoWin();
+        for (LottoRank lottoRank : lottoWinAmounts.keySet()) {
+            assertThat(lottoWinAmounts.get(lottoRank)).isEqualTo(1);
+        }
+    }
 }
