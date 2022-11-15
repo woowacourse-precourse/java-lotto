@@ -18,6 +18,10 @@ public class InputOutput {
         return money / 1000;
     }
 
+    public void printLottoBuyAmount(int amount) {
+        System.out.println(amount + "개를 구매했습니다.");
+    }
+
     public List<Integer> getLottoNumbers() {
         String input = Console.readLine();
         exception.getLottoWinnerNumberException(input);
