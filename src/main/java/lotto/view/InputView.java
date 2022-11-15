@@ -12,6 +12,5 @@ public class InputView {
     }
     static public void bonusNumber() {
         System.out.println(Strings.winnigBonusMessage);
-        
     }
 }
