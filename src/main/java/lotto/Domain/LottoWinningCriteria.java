@@ -1,4 +1,4 @@
-package Domain;
+package lotto.Domain;
 
 public enum LottoWinningCriteria {
     FIFTH_PLACE(3, 5000, 0),
