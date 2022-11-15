@@ -33,7 +33,7 @@ public class Valid {
     private static String under_thousand_Message = "[ERROR] 입력된 값이 1000원 미만의 단위가 포함되어 있습니다 : ";
     private static String empty_Message = "[ERROR] 값이 비어있습니다.";
     public static void check_size(String str){
-        int size = string_to_stringarray(str).length;  //TODO: ChageType을 이용한 리펙토링
+        int size = string_to_stringarray(str).length;
         if(size != 6){
             throw new IllegalArgumentException(size_Message + size);
         }
