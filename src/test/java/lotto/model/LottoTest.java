@@ -48,4 +48,16 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThat(lotto.countBonus(bonus)).isEqualTo(1);
     }
+
+    @DisplayName("로또의 당첨 순위 테스트")
+    @Test
+    public void rankTest(){
+        Game game = new Game();
+        game.setWinningLotto(List.of(1, 2, 3, 4, 5, 6));
+        game.setBonus(7);
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,7));
+        assertThat(lotto.getRank(game.getWinningLotto().getNumbers(), game.getBonus())).isEqualTo(Rank.SECOND);
+    }
+
+
 }
