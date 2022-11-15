@@ -25,7 +25,7 @@ public class OutputView {
         printWinningProfitRate(profitRate);
     }
 
-    public static void printErrorMessage(IllegalArgumentException error){
+    public static void printErrorMessage(IllegalArgumentException error) {
         System.out.println(error.getMessage());
     }
 }

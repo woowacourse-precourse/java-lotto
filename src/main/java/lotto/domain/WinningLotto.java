@@ -23,23 +23,23 @@ public class WinningLotto {
         try {
             Integer.parseInt(bonusNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("보너스 번호는 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력할 수 있습니다.");
         }
         return Integer.parseInt(bonusNumber);
     }
 
     public static void validateBonusNumberDuplicate(Lotto winningLottoNumbers, int bonusNumber) {
         if (winningLottoNumbers.isContain(bonusNumber)) {
-            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 
-    public Map<Rank, Integer> getUserLottoScore(List<Lotto> userLottos) {
+    public Map<Rank, Integer> getUserLottoScore(List<Lotto> userMultipleLotto) {
         Map<Rank, Integer> userLottoScore = new HashMap<>();
         for (Rank rank : Rank.values()) {
             userLottoScore.put(rank, 0);
         }
-        userLottos.forEach(userLotto -> {
+        userMultipleLotto.forEach(userLotto -> {
             Rank rank = Rank.of(winningLottoNumbers.getMatchedCount(userLotto), userLotto.isContain(bonusNumber));
             userLottoScore.put(rank, userLottoScore.get(rank) + 1);
         });

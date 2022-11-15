@@ -16,13 +16,13 @@ public class LottoController {
     WinningLotto winningLotto;
 
     public void runLottoMachine() {
-        try{
+        try {
             userMoney = Money.from(InputView.inputMoneyByUser());
             userMultipleLotto = createUserLottoGenerator().generateMultipleLotto(userMoney.getCountOfLotto());
             OutputView.printUserLottos(userMultipleLotto);
             winningLotto = createWinningLotto();
             showUserWinningStatistics();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e);
         }
     }

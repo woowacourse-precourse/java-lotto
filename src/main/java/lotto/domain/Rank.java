@@ -13,16 +13,8 @@ public enum Rank {
 
     private static final int WINNING_MIN_COUNT = 3;
     private static final int BONUS_RANK_COUNT = 5;
-    private final int matchedCount;
-    private final int prizeMoney;
-
-
-    private Rank(int matchedCount, int prizeMoney){
-        this.matchedCount = matchedCount;
-        this.prizeMoney = prizeMoney;
-    }
-
     private static final Map<Integer, Rank> Ranks = new HashMap<>();
+
     static {
         for (Rank rank : Rank.values()) {
             Ranks.put(rank.matchedCount, rank);
@@ -30,11 +22,19 @@ public enum Rank {
         Ranks.put(THIRD.matchedCount, THIRD);
     }
 
+    private final int matchedCount;
+    private final int prizeMoney;
+
+    Rank(int matchedCount, int prizeMoney) {
+        this.matchedCount = matchedCount;
+        this.prizeMoney = prizeMoney;
+    }
+
     public static Rank of(int matchedCount, boolean isBonus) {
         matchedCount = checkNothing(matchedCount);
         if (!Ranks.containsKey(matchedCount)) {
             throw new IllegalArgumentException(
-                    String.format("로또 번호는 %d개부터 %d개까지만 일치할 수 있습니다.", NOTHING.matchedCount, FIRST.matchedCount)
+                    String.format("[ERROR] 로또는 당첨 로또와 %d개부터 %d개까지의 번호만 일치할 수 있습니다.", NOTHING.matchedCount, FIRST.matchedCount)
             );
         }
         if (isBonus && matchedCount == BONUS_RANK_COUNT) {

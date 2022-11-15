@@ -22,13 +22,13 @@ public class OutputPrinter {
     public static void printWinningPrize(Rank rank, int countOfPrize) {
         NumberFormat numberFormat = NumberFormat.getInstance();
         String prizeMoney = numberFormat.format(rank.getPrizeMoney());
-        if(rank == Rank.SECOND){
+        if (rank == Rank.SECOND) {
             System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개%n", rank.getMatchedCount(), prizeMoney, countOfPrize);
         }
         System.out.printf("%d개 일치 (%s원) - %d개%n", rank.getMatchedCount(), prizeMoney, countOfPrize);
     }
 
     public static void printWinningProfitRate(String profitRate) {
-        System.out.println(String.format("총 수익률은 %s%%입니다.", profitRate));
+        System.out.printf("총 수익률은 %s%%입니다.%n", profitRate);
     }
 }
