@@ -33,9 +33,8 @@ public class LottoMoney {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof LottoMoney))
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass())
             return false;
         LottoMoney that = (LottoMoney) o;
         return getMoney() == that.getMoney();
