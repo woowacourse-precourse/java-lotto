@@ -1,5 +1,7 @@
 package lotto.domain.lotto;
 
+import static lotto.validation.LottoNumberValidation.validateDuplicate;
+
 import java.util.List;
 import lotto.domain.place.MatchResult;
 import lotto.domain.place.PlaceCondition;
@@ -22,12 +24,6 @@ public class WinningLotto {
 
     private void validate(List<Integer> numbers, int bonusNumber) {
         validateDuplicate(numbers, bonusNumber);
-    }
-
-    private void validateDuplicate(List<Integer> numbers, int bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 숫자와 중복이 되는 숫자가 존재합니다.");
-        }
     }
 
     public MatchResult makeMatchResult(Lotto purchaseLotto) {

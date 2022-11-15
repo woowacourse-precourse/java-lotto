@@ -1,5 +1,6 @@
 package lotto.validation;
 
+import static lotto.message.ErrorMessage.DUPLICATE_MESSAGE;
 import static lotto.message.ErrorMessage.OUT_OF_RANGE_MESSAGE;
 import static lotto.value.LottoValues.LOTTO_END_NUMBER;
 import static lotto.value.LottoValues.LOTTO_START_NUMBER;
@@ -17,7 +18,7 @@ public class LottoNumberValidation {
     static public void validateDuplicate(List<Integer> numbers) {
         numbers.forEach((number) -> {
             if (!isOnceAppear(numbers, number)) {
-                throw new IllegalArgumentException("[ERROR] 중복이 되는 숫자가 존재합니다.");
+                throw new IllegalArgumentException(DUPLICATE_MESSAGE.toString());
             }
         });
     }
@@ -32,10 +33,15 @@ public class LottoNumberValidation {
         }
     }
 
+    public static void validateDuplicate(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATE_MESSAGE.toString());
+        }
+    }
+
     static public boolean isOnceAppear(List<Integer> numbers, int number) {
         return numbers.indexOf(number) == numbers.lastIndexOf(number);
     }
-
 
     private static boolean isRanged(int number) {
         return LOTTO_START_NUMBER.getValue() <= number && number <= LOTTO_END_NUMBER.getValue();
