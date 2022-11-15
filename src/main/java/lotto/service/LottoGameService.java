@@ -12,11 +12,11 @@ public class LottoGameService {
         this.lottos = new Lottos(factory.generateLottos(money));
     }
 
-    public int getLottosSize() {
+    public int showLottosSize() {
         return lottos.size();
     }
 
-    public String getLottosToString() {
+    public String showLottosToString() {
         return lottos.toString();
     }
 

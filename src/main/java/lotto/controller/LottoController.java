@@ -19,11 +19,11 @@ public class LottoController {
     }
 
     public String outputLottoSize() {
-        return String.valueOf(service.getLottosSize());
+        return String.valueOf(service.showLottosSize());
     }
 
     public String outputLottos() {
-        return service.getLottosToString();
+        return service.showLottosToString();
     }
 
     public void inputWinningNumbers(WinningNumbersDto dto) {
