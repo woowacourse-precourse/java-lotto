@@ -35,7 +35,7 @@ public class UserInputWinningNumberService {
         return Integer.parseInt(bonusNumber);
     }
     public void checkThisWinningNumberIsValid(String[] winningNumbers) {
-        userInputLottoInfoException.validate(winningNumbers, "로또 번호의 개수는 6개 입니다.");
+        userInputLottoInfoException.checkArrayLength(winningNumbers, "로또 번호의 개수는 6개 입니다.");
         for (String s : winningNumbers) {
             userInputLottoInfoException.checkInputIsEmpty(s,"로또 당첨 번호 입력 중 null 값이 존재합니다.");
             userInputLottoInfoException.verifyExistBlank(s,"로또 당첨 번호 입력 중 공백이 있습니다.");
