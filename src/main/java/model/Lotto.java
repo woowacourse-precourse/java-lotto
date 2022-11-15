@@ -19,9 +19,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
-
-    // 입력되는 당첨번호에 중복값이 있는 경우 유효성 검사
     private void validateDuplicateInputLottoNumbers(List<Integer> numbers) {
         int lottoNumbersCount = getLottoNumbersSet(numbers).size();
 
@@ -38,7 +35,6 @@ public class Lotto {
         }
     }
 
-    // 당첨번호를 Set 으로 반환
     private HashSet<Integer> getLottoNumbersSet(List<Integer> numbers) {
         HashSet<Integer> lottoNumbers = new HashSet<>(numbers);
 

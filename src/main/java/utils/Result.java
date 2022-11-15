@@ -3,7 +3,6 @@ package utils;
 import model.Game;
 import model.Rank;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Result {

@@ -48,7 +48,6 @@ public class Process {
         }
     }
 
-    // 로또 번호 List 오름차순으로 정렬
     public static void sortLottoNumbers() {
         List<List<Integer>> userLottos = game.getUserLottos();
 
@@ -85,15 +84,18 @@ public class Process {
 
     public static void printResult() {
         Map<Rank, Integer> allResult = getResultRank();
+        StringBuilder sb = new StringBuilder();
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + allResult.get(Rank.FIFTH) + "개");
-        System.out.println("4개 일치 (50,000원) - " + allResult.get(Rank.FOURTH) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + allResult.get(Rank.THIRD) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + allResult.get(Rank.SECOND) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + allResult.get(Rank.FIRST) + "개");
-        System.out.println("총 수익률은 " + getProfit(allResult) + "%입니다.");
+        sb.append("당첨 통계\n");
+        sb.append("---\n");
+        sb.append("3개 일치 (5,000원) - " + allResult.get(Rank.FIFTH) + "개\n");
+        sb.append("4개 일치 (50,000원) - " + allResult.get(Rank.FOURTH) + "개\n");
+        sb.append("5개 일치 (1,500,000원) - " + allResult.get(Rank.THIRD) + "개\n");
+        sb.append("5개 일치, 보너스 볼 일치 (30,000,000원) - " + allResult.get(Rank.SECOND) + "개\n");
+        sb.append("6개 일치 (2,000,000,000원) - " + allResult.get(Rank.FIRST) + "개\n");
+        sb.append("총 수익률은 " + getProfit(allResult) + "%입니다.");
+
+        System.out.println(sb);
     }
 
     public static double getProfit(Map<Rank, Integer> allResult) {
