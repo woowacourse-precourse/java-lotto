@@ -10,13 +10,6 @@ import static lotto.util.ResultPrice.*;
 
 public class Printer {
 
-    public static void printLottoGroup(List<Lotto> lottoGroup) {
-        System.out.println(lottoGroup.size() + "개를 구매했습니다.");
-        lottoGroup.forEach(lotto -> {
-            System.out.println(lotto.getLotto());
-        });
-    }
-
     public static void printInfoMoneyInput() {
         System.out.println("구입금액을 입력해 주세요.");
     }
@@ -27,6 +20,13 @@ public class Printer {
 
     public static void printInfoInputBonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void printLottoGroup(List<Lotto> lottoGroup) {
+        System.out.println(lottoGroup.size() + "개를 구매했습니다.");
+        lottoGroup.forEach(lotto -> {
+            System.out.println(lotto.getLotto());
+        });
     }
 
     public static void printTotalScore(Map<ResultPrice, Integer> totalScore) {
