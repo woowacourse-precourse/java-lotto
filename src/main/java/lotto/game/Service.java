@@ -1,17 +1,53 @@
-package lotto.game.service;
+package lotto.game;
 
-import lotto.user.Lotto;
+import lotto.domain.Lotto;
+import lotto.domain.Purchase;
 import lotto.util.Constant;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Service extends Generator {
-    private static final int DEFAULT_SCORE = 0;
+import static lotto.util.Constant.DEFAULT_SCORE;
 
-    public Map<Integer, Integer> calculateDrawScore(List<Lotto> lottos, Lotto draw) {
-        Map<Integer, Integer> drawScore = new HashMap<>();
+public class Service {
+    private int quantity;
+    private List<Lotto> lottos;
+    private Lotto draw;
+    private int bonus;
+    private Map<Integer, Integer> drawScore;
+    private int bonusScore;
+
+    public Service() {
+    }
+
+    public int generateQuantity(String purchaseAmount) {
+        quantity = Purchase
+                .generate(purchaseAmount)
+                .calculateQuantity();
+        return quantity;
+    }
+
+    public List<Lotto> generateLottos() {
+        lottos = new ArrayList<>();
+
+        while (lottos.size() < quantity) {
+            lottos.add(Lotto.generate());
+        }
+        return lottos;
+    }
+
+    public void generateDraw(String numbers) {
+        draw = Lotto.generate(numbers);
+    }
+
+    public void generateBonus(String number) {
+        bonus = Integer.parseInt(number);
+    }
+
+    public Map<Integer, Integer> calculateDrawScore() {
+        drawScore = new HashMap<>();
 
         for (Lotto lotto : lottos) {
             int score = lotto.calculateDraw(draw);
@@ -20,9 +56,7 @@ public class Service extends Generator {
         return drawScore;
     }
 
-    public int calculateBonusScore(Map<Integer, Integer> drawScore, List<Lotto> lottos, Lotto draw, int bonus) {
-        int bonusScore = 0;
-
+    public int calculateBonusScore() {
         for (Lotto lotto : lottos) {
             bonusScore += lotto.calculateBonus(draw, bonus);
         }
@@ -32,7 +66,7 @@ public class Service extends Generator {
         return bonusScore;
     }
 
-    public double calculateEarningsRate(Map<Integer, Integer> drawScore, int bonusScore, int quantity) {
+    public double calculateEarningsRate() {
         int totalPrize = calculateTotalPrize(drawScore, bonusScore);
         return (double) totalPrize / (quantity * Constant.PURCHASE_UNIT);
     }
