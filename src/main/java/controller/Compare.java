@@ -24,4 +24,14 @@ public class Compare {
         }
         throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스번호 내 중복이 있습니다.");
     }
+
+    public static int compareWithWinningNumber(List<Integer> winningNumber, List<Integer> lottoNumber) {
+        int hitCount = 0;
+        for (int lottoNum : lottoNumber) {
+            if (winningNumber.contains(lottoNum)) {
+                hitCount++;
+            }
+        }
+        return hitCount;
+    }
 }
