@@ -33,9 +33,10 @@ public class Lottery {
 
         for (int winningNumberIndex = 0; winningNumberIndex < 6; winningNumberIndex++) {
             if (lotto.getNumbers().contains(winningNumbers.get(winningNumberIndex))) {
-                    matchWinningCount++;
+                matchWinningCount++;
             }
         }
+
         return matchWinningCount;
     }
 
@@ -86,9 +87,11 @@ public class Lottery {
 
     public int getWinningPrice() {
         int winningPrice = 0;
-        for(Grade grade : Grade.values()){
+
+        for (Grade grade : Grade.values()) {
             winningPrice += gradeCount.get(grade.toString()) * grade.getPrice();
         }
+
         return winningPrice;
     }
 }

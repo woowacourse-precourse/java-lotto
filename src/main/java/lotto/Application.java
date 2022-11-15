@@ -4,6 +4,7 @@ public class Application {
     public static void main(String[] args) {
         Notice notice = new Notice();
         User user = new User();
+        Error error = new Error();
 
         purchase(user, notice);
         Lottery lottery = new Lottery(user.getPurchaseNumber());
@@ -11,8 +12,6 @@ public class Application {
         winningNumber(user, notice);
         bonusNumber(user, notice);
         winningResult(user, notice, lottery);
-
-        Error error = new Error();
         error.check();
     }
 
@@ -37,5 +36,4 @@ public class Application {
         notice.winningAnalysis(lottery.getGradeCount());
         notice.profitRatio(user.getProfitRatio(lottery.getWinningPrice()));
     }
-
 }

@@ -5,10 +5,11 @@ public class Error {
 
     public Error() {
     }
+
     public Error(boolean isError) {
         Error.isError = isError;
     }
-    
+
     public void check() {
         if (isError) {
             throw new IllegalArgumentException();

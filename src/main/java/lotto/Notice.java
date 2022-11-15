@@ -37,7 +37,7 @@ public class Notice {
     public void winningAnalysis(Map<String, Integer> winningCount) {
         System.out.println(WINNING_ANALYSIS);
         System.out.println("---");
-        for(Grade grade : Grade.values()){
+        for (Grade grade : Grade.values()) {
             System.out.println(grade.getMatchNumber() + "개 일치" + grade.getBonusBall() + " (" +
                     DECIMAL_FORMAT.format(grade.getPrice()) + "원) - " + winningCount.get(grade.toString()) + "개");
         }
