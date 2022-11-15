@@ -1,11 +1,16 @@
 package lotto.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class MoneyToAmount {
-    private int amount;
+    private final int amount;
+    private final double totalPrice;
 
     public MoneyToAmount(String money) {
         isValid(money);
         this.amount = convertToAmount(money);
+        this.totalPrice = Integer.parseInt(money);
     }
 
     public void isValid(String money) {
@@ -19,6 +24,10 @@ public class MoneyToAmount {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
             }
         }
+    }
+
+    public BigDecimal profitRatio(int totalPrize) {
+        return new BigDecimal(totalPrize / totalPrice).setScale(2, RoundingMode.HALF_UP);
     }
 
     public void isThousands(String input) {
