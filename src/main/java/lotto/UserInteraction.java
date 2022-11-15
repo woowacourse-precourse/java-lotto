@@ -63,15 +63,24 @@ public class UserInteraction {
             throw returnException;
         }
         for (int number : tempSet) {
-            if (number <= 0 && number > 45) {
-                IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력 해야만 합니다.");
-                returnException.initCause(illegalArgumentException);
-                System.out.println(returnException.getCause().getMessage());
-                throw returnException;
-            }
+            isNumberInRange(number, 1,45);
+//            if (number <= 0 && number > 45) {
+//                IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력 해야만 합니다.");
+//                returnException.initCause(illegalArgumentException);
+//                System.out.println(returnException.getCause().getMessage());
+//                throw returnException;
+//            }
         }
     }
-
+    public void isNumberInRange(int number,int startInclusive, int endInclusive){
+        if (number<startInclusive || number>endInclusive){
+            NoSuchElementException returnException = new NoSuchElementException();
+            IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력해야 합니다.");
+            returnException.initCause(illegalArgumentException);
+            System.out.println(returnException.getCause().getMessage());
+            throw returnException;
+        }
+    }
     public void checkBonusNumber(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
             NoSuchElementException returnException = new NoSuchElementException();
