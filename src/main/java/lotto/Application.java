@@ -9,11 +9,12 @@ public class Application {
         // TODO: 프로그램 구현
 
         UI lottoUI = new UI();
-        String lottoMoneyInput = UI.LottoInputMoney();
+        String lottoMoneyInput = lottoUI.LottoInputMoney();
 
         LottoLogic lottoLogic = new LottoLogic();
 
         lottoLogic.logic(lottoMoneyInput);
-
+        lottoUI.LottoCountOutput();
+        lottoUI.PrintLottoNumber();
     }
 }

@@ -14,9 +14,10 @@ public class LottoInput {
         int money = parseStringToInt(StringMoney);
         int count = money/1000;
         // validation 처리 나중에
-        System.out.println(count);
         return count;
     }
+
+
 
 
 
