@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
@@ -9,72 +8,69 @@ import static lotto.Place.*;
 enum Place {
     FIRST(7, 2000000000), SECOND(6, 30000000),
     THIRD(5, 1500000), FOURTH(4, 50000), FIFTH(3, 5000);
-    int count;
-    int winning;
+    private int count;
+    private int prize;
 
-    Place (int count, int winning) {
+    Place (int count, int prize) {
         this.count = count;
-        this.winning = winning;
+        this.prize = prize;
     }
 
     int getCount() {
         return count;
     }
 
-    int getWinning() {
-        return winning;
+    int getPrize() {
+        return prize;
     }
 }
 
 public class WinningPayer {
-    List<Integer> result = new ArrayList<Integer>();
-    float money;
-    float winningRate;
-    EnumMap<Place,Integer> resultMap = new EnumMap<Place, Integer>(Place.class);
+    private final List<Integer> comparisonResult;
+    private final float money;
+    private float profitRate;
+    private EnumMap<Place,Integer> prizeResult = new EnumMap<Place, Integer>(Place.class);
 
     WinningPayer(List<Integer> result, int money) {
-        this.result = result;
+        this.comparisonResult = result;
         this.money = (float) money;
-    }
-
-    void makeEnumMap() {
         for (Place p : Place.values()) {
-            resultMap.put(p, 0);
+            prizeResult.put(p, 0);
         }
     }
 
-    void countResult(int count) {
+    void transformResult(int count) {
         for (Place p : Place.values()) {
             if (count == p.getCount()) {
-                resultMap.put(p, resultMap.get(p) + 1);
+                prizeResult.put(p, prizeResult.get(p) + 1);
             }
         }
     }
 
-    void countPrize() {
-        for (int i : result) {
-            countResult(i);
+    void repeatTransforamtion() {
+        for (int count : comparisonResult) {
+            transformResult(count);
         }
     }
 
     void calculateWinningRate() {
-        float winning = 0;
+        float prizeTotal = 0;
 
         for (Place p : Place.values()) {
-            winning += resultMap.get(p) * p.getWinning();
+            prizeTotal += prizeResult.get(p) * p.getPrize();
         }
-        winningRate = winning / money * 100;
+        profitRate = prizeTotal / money * 100;
     }
 
-    void informResult() {
+    void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + resultMap.get(FIFTH) + "개 입니다.");
-        System.out.println("4개 일치 (50,000원) - " + resultMap.get(FOURTH) + "개 입니다.");
-        System.out.println("5개 일치 (1,500,000원) - " + resultMap.get(THIRD) + "개 입니다.");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + resultMap.get(SECOND) + "개 입니다.");
-        System.out.println("6개 일치 (2,000,000,000원) - " + resultMap.get(FIRST) + "개 입니다.");
-        System.out.println("총 수익률은 " + winningRate + "%입니다.");
+        System.out.println("3개 일치 (5,000원) - " + prizeResult.get(FIFTH) + "개 입니다.");
+        System.out.println("4개 일치 (50,000원) - " + prizeResult.get(FOURTH) + "개 입니다.");
+        System.out.println("5개 일치 (1,500,000원) - " + prizeResult.get(THIRD) + "개 입니다.");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + prizeResult.get(SECOND) + "개 입니다.");
+        System.out.println("6개 일치 (2,000,000,000원) - " + prizeResult.get(FIRST) + "개 입니다.");
+        System.out.println("총 수익률은 " + profitRate + "%입니다.");
     }
 }
 

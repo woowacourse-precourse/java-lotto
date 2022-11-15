@@ -2,23 +2,22 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        LottoSeller seller = new LottoSeller();
+        try {
+            LottoSeller seller = new LottoSeller();
 
-        seller.takeMoney();
-        seller.makeLottoBundle();
-        seller.showBundle();
+            seller.makeLottoBundle();
+            seller.printBundle();
 
-        NumberComparator comparator = new NumberComparator();
+            NumberComparator comparator = new NumberComparator();
+            comparator.compareNumber(seller.getBundle());
 
-        comparator.setWinningNumber();
-        comparator.setBonusNumber();
-        comparator.compareNumbers(seller.get());
-
-        WinningPayer payer = new WinningPayer(comparator.result, seller.money);
-
-        payer.makeEnumMap();
-        payer.countPrize();
-        payer.calculateWinningRate();
-        payer.informResult();
+            WinningPayer payer = new WinningPayer(comparator.getResult(), seller.getMoney());
+            payer.repeatTransforamtion();
+            payer.calculateWinningRate();
+            payer.printResult();
+        }
+        catch(ArithmeticException error) {
+            System.out.println(error.getMessage());
+        }
     }
 }

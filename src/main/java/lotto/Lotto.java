@@ -3,7 +3,6 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,7 +24,7 @@ public class Lotto {
         }
     }
 
-    public void showLotto() {
+    public void print() {
         List<Integer> numbersCopy = new ArrayList<Integer>(numbers);
 
         Collections.sort(numbersCopy);
