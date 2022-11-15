@@ -1,10 +1,16 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.utils.Validator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -19,11 +25,17 @@ public class ValidatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 당첨 번호 확인하는 메서드 체크
-
     // 숫자의 개수 확인하는 메서드 체크
+    @ParameterizedTest
+    @MethodSource("parametersProvider")
+    void 숫자_개수_확인_체크(List<String> numbers, int size){
+        assertThatThrownBy(()->{
+            Validator.validateArraySize(numbers, size);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     //중복 확인하는 메서드 체크
+
 
     // 1000으로 나누어 떨어지는지 확인하는 메서드 체크
     @ParameterizedTest
@@ -33,5 +45,16 @@ public class ValidatorTest {
             Validator.validateBudget(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    private static Stream<Arguments> parametersProvider(){
+        return Stream.of(
+                Arguments.arguments(List.of("15","24","1","2","3"), 6),
+                Arguments.arguments(List.of("15","5","1","2"), 6),
+                Arguments.arguments(List.of("15","5","1","2","3","4"), 5),
+                Arguments.arguments(List.of("15","5","10","2","3","1"), 5),
+                Arguments.arguments(List.of("16","17","18","19","20","21"), 7)
+        );
+    }
+
 
 }
