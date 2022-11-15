@@ -1,15 +1,15 @@
 package lotto;
 
-import OutputView.PrintMsg;
+import OutputView.Print;
 
 import java.util.List;
 
 public class Game {
 
     public void play(int lottoCount) {
-        PrintMsg.numberOfLottoPurchasedMsg(lottoCount);
+        Print.numberOfLottoPurchasedMsg(lottoCount);
         List<Lotto> purchasedLottos = Lotto.generateLottoSet(lottoCount);
-        PrintMsg.purchasedLottosMsg(purchasedLottos);
+        Print.purchasedLottosMsg(purchasedLottos);
         WinningNumber winningNumber = new WinningNumber();
         winningNumber.generator();
         Earning earning = new Earning();
@@ -22,6 +22,6 @@ public class Game {
             earning.RankCalculate(calculator.getSameCmt(), calculator.getBonusCorrect(), winningHistory);
         }
         winningHistory.print();
-        PrintMsg.earningRateMsg(earning.rateCalculate(lottoCount * 1000, earningAmount));
+        Print.earningRateMsg(earning.rateCalculate(lottoCount * 1000, earningAmount));
     }
 }

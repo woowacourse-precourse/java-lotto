@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import static Exception.ErrorMessage.*;
 
 import java.util.*;
 
@@ -30,16 +31,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호 개수가 다릅니다.");
+            throw new IllegalArgumentException(ERROR_HEADER.getMsg() + ERROR_LOTTO_NUMBER.getMsg());
         }
         for (int number : numbers) {
             if (number >= 1 && number <= 45) {
                 continue;
             }
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 로또 번호입니다.");
+            throw new IllegalArgumentException(ERROR_HEADER.getMsg() + ERROR_LOTTO_RANGE.getMsg());
         }
         if (isDuplicated(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호 사이에 중복이 존재합니다.");
+            throw new IllegalArgumentException(ERROR_HEADER.getMsg() + ERROR_LOTTO_DUPLICATE.getMsg());
         }
     }
 

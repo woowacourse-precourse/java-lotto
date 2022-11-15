@@ -1,6 +1,6 @@
 package lotto;
 
-import OutputView.PrintMsg;
+import OutputView.Print;
 import camp.nextstep.edu.missionutils.Console;
 import static Exception.Invalidator.*;
 
@@ -26,7 +26,7 @@ public class WinningNumber {
     }
 
     private Lotto setWinningLotto() {
-        PrintMsg.winningMsg();
+        Print.winningMsg();
         String inputValue = Console.readLine().trim();
         List<Integer> winningLottoNumbers = new ArrayList<>();
         for (String numberValue : inputValue.split(",")) {
@@ -36,7 +36,7 @@ public class WinningNumber {
     }
 
     private int setBonusNumber() {
-        PrintMsg.bonusMsg();
+        Print.bonusMsg();
         String bonusNumber = Console.readLine();
         return isValidBonusNumber(Integer.parseInt(bonusNumber), winningLotto);
     }

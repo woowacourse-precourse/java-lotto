@@ -1,6 +1,6 @@
 package OutputView;
 
-public enum PrintComment {
+public enum PrintMessage {
 
     PURCHASED_MESSAGE("구입금액을 입력해 주세요."),
     LottoCount_MESSAGE("개를 구매했습니다."),
@@ -9,13 +9,13 @@ public enum PrintComment {
     WINNING_MESSAGE("\n당첨 번호를 입력해 주세요."),
     BONUS_MESSAGE("\n보너스 번호를 입력해 주세요.");
 
-    private final String msg;
+    private final String message;
 
-    PrintComment(String msg) {
-        this.msg = msg;
+    PrintMessage(String message) {
+        this.message = message;
     }
 
     public String getMsg() {
-        return msg;
+        return message;
     }
 }

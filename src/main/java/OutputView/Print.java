@@ -4,10 +4,10 @@ import lotto.Lotto;
 
 import java.util.List;
 
-import static OutputView.PrintComment.*;
+import static OutputView.PrintMessage.*;
 
 
-public class PrintMsg {
+public class Print {
 
     public static void purchasedMsg() {
         System.out.println(PURCHASED_MESSAGE.getMsg());

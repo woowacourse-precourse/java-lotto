@@ -2,29 +2,31 @@ package Exception;
 
 import java.util.List;
 
+import static Exception.ErrorMessage.*;
+
 public class Invalidator {
 
     public static int isValidPurchaseAmount(String inputValue) throws ProcessException {
         if (!isNumeric(inputValue)) {
-            throw new ProcessException("[ERROR]");
+            throw new ProcessException(ERROR_HEADER.getMsg() + ERROR_PURCHASED_DATAFORMAT.getMsg());
         }
         int inputNumber = Integer.parseInt(inputValue);
 
         if (inputNumber == 0) {
-            throw new ProcessException("[ERROR] 구매 금액은 0보다 커야합니다.");
+            throw new ProcessException(ERROR_HEADER.getMsg() + ERROR_PURCHASED_RANGE.getMsg());
         }
         if (inputNumber % 1000 != 0) {
-            throw new ProcessException("[ERROR] 구매 금액은 1000단위로 입력해야 합니다.");
+            throw new ProcessException(ERROR_HEADER.getMsg() + ERROR_PURCHASED_UNIT);
         }
         return inputNumber;
     }
 
     public static int isValidBonusNumber(int bonusNumber, List<Integer> winningLotto) throws ProcessException {
         if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
-            throw new ProcessException("[ERROR] 올바르지 않은 보너스 번호입니다.");
+            throw new ProcessException(ERROR_HEADER.getMsg() + ERROR_BONUS_RANGE.getMsg());
         }
         if (winningLotto.contains(bonusNumber)) {
-            throw new ProcessException("[ERROR] 올바르지 않은 보너스 번호입니다.");
+            throw new ProcessException(ERROR_HEADER.getMsg() + ERROR_BONUS_DUPLICATE.getMsg());
         }
         return bonusNumber;
     }
