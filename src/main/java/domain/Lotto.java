@@ -8,12 +8,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private final Validator validator;
+    private final Validator validator = new Validator();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        this.validator = new Validator();;
     }
 
     private void validate(List<Integer> numbers) {
