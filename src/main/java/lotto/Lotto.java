@@ -10,13 +10,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    protected void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    public List<Integer> getNumbers() {
+    protected List<Integer> getNumbers() {
         return numbers;
     }
 
