@@ -14,43 +14,52 @@ public class RankInfoService {
     public RankInfo createRankInfo() {
         return new RankInfo();
     }
+
     public RankInfo putRankInfo(RankInfo rankInfo, Lotto lotto, UserLotto userLotto, Bonus bonus) {
         List<Integer> userLottoNumbers;
         for (int index = 0; index < userLotto.getUserLottoSize(); index++) {
             userLottoNumbers =  userLotto.getOneOfUserLotto(index);
             checkCondition(calcMatchPoint(lotto,userLottoNumbers), rankInfo, userLottoNumbers, bonus);
         }
+
         return rankInfo;
     }
+
     public void checkCondition(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
         if (matchPoint != CHECK_POINT)
             updateMatchPoint(matchPoint, rankInfo, userLottoNumbers, bonus);
         if (matchPoint == CHECK_POINT)
             updateMatchPointWithCondition(matchPoint, rankInfo, userLottoNumbers, bonus);
     }
+
     public int  calcMatchPoint(Lotto lotto, List<Integer> userLottoNumbers) {
         int matchPoint = 0;
 
         for (int index = 0; index < lotto.getLottoSize(); index++) {
             if (userLottoNumbers.contains(lotto.getLottoNumber(index))) matchPoint += 1;
         }
+
         return matchPoint;
     }
+
     public void updateMatchPoint(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
         for (Rank rank : Rank.values()) {
             if (rank.getMatchCount() == matchPoint && !isSecond(matchPoint, userLottoNumbers, bonus))
                 rankInfo.countUp(rank);
         }
     }
+
     public void updateMatchPointWithCondition(int matchPoint, RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus) {
         if (isSecond(matchPoint, userLottoNumbers, bonus))
             rankInfo.countUp(Rank.SECOND);
         if (!isSecond(matchPoint, userLottoNumbers, bonus))
             rankInfo.countUp(Rank.THIRD);
     }
+
     public boolean isSecond(int matchPoint, List<Integer> userLottoNumbers, Bonus bonus) {
         return (matchPoint == CHECK_POINT && userLottoNumbers.contains(bonus.getBonusNumber()));
     }
+
     public double calcYield(RankInfo rankInfo, Money money) {
         double profit = 0.0;
 
@@ -58,6 +67,7 @@ public class RankInfoService {
             if (rankInfo.getMatchNumber(rank) != 0)
                 profit += rank.getReward() * rankInfo.getMatchNumber(rank);
         }
+
         return profit / money.getMoney() * PERCENTAGE;
     }
 }
