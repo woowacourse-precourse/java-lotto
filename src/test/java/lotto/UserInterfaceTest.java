@@ -15,4 +15,10 @@ class UserInterfaceTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 당첨번호에 포함되어있으면 예외가 발생한다.")
+    @Test
+    void createWinNumbersContainBonusNumber() {
+        assertThatThrownBy(() -> UserInterface.checkWinNumbersContainBonusNumber(List.of(1,2,3,4,5,6),6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
