@@ -44,5 +44,11 @@ public class ExceptionHandler {
         }
     }
 
+    public void numberRangeException(int number) throws IllegalArgumentException {
+        if (number < 1 || 45 < number) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 범위가 아닙니다.");
+        }
+    }
+
 
 }

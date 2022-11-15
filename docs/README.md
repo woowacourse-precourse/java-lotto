@@ -28,11 +28,11 @@
   - [ ] 로또 당첨 번호를 입력 받을 때 예외상황 - getLottoWinnerNumberException()
     - [x] 콤마 사이의 글자가 숫자가 아닌 경우 예외처리한다. - splitResultNoNumberException()
     - [x] 로또번호가 6개가 아닐 경우 예외처리한다. - lottoNumberException()
-    - [ ] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeException()
+    - [x] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeException()
     - [x] 서로 다른 수가 아닐 경우 예외처리한다. - overlapException()
   - [ ] 로또 보너스 번호를 입력 받을 때 예외상황 - getLottoBonusNumberException()
     - [x] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberException()
-    - [ ] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeException()
+    - [x] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeException()
 
 ## 📑 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
