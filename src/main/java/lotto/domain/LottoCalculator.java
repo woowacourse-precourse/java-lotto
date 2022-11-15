@@ -20,18 +20,29 @@ public class LottoCalculator {
         int bonusNumber = input.getBonusNumber();
         List<Integer> winningNumber = input.getWinningNumber();
         for (Lotto lotto : lottos) {
-            correct = countCorrectNumber(lotto, winningNumber);
-            
+            correct = countCorrectNumber(lotto, winningNumber, bonusNumber);
+
         }
     }
 
-    private int countCorrectNumber(Lotto lotto, List<Integer> winningNumber) {
+    private void printWinningRecord(int correct) {
+        if (correct == 3) {
+
+        }
+    }
+
+    private int countCorrectNumber(Lotto lotto, List<Integer> winningNumber, int bonusNumber) {
         int correct = 0;
         for (int index = 0; index < 6; index++) {
             if (lotto.getNumbers().get(index).equals(winningNumber.get(index))) {
                 correct++;
             }
         }
+
+        if (correct == 5 && lotto.getNumbers().contains(bonusNumber)) {
+            correct = 0;
+        }
+
         return correct;
     }
 
