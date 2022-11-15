@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.constant.Constant;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCalculator;
 import lotto.domain.LottoGenerator;
@@ -31,7 +32,7 @@ public class LottoController {
     private void buyLotto() {
         InputView.requestAmount();
         moneyAmount = user.inputOfMoneyAmount();
-        int lottoAmount = moneyAmount / 1000;
+        int lottoAmount = moneyAmount / Constant.LOTTO_PRICE;
         OutputView.printAmount(lottoAmount);
         generateLottos(lottoAmount);
     }
