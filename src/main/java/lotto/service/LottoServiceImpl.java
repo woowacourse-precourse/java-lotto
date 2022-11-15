@@ -11,10 +11,11 @@ import java.util.List;
 
 
 public class LottoServiceImpl implements LottoService {
-    LottoResult lottoResult = new LottoResult();
+    final LottoResult lottoResult = new LottoResult();
+    final Game game = new Game();
     @Override
     public void play() throws IOException {
-        Game game = new Game();
+        game.inputLottoCount();
         game.generateLotto();
         game.generateAwardLotto();
         List<Lotto> generatedLotto = game.getGeneratedLotto();

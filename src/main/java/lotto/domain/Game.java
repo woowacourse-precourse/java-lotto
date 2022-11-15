@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Game {
     public final static int PRICE_SIZE = 6;
-    private final int lottoCount;
+    private int lottoCount;
     private Lotto awardLotto;
     private int[] gameCount;
     private int totalPrize;
@@ -19,6 +19,8 @@ public class Game {
     public Game(){
         gameCount = new int[PRICE_SIZE];
         totalPrize = 0;
+    }
+    public void inputLottoCount(){
         lottoCount = InputLotto.moneyInput();
     }
     public void generateLotto(){

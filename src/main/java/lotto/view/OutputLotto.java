@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class OutputLotto{
-    public static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     public static void printResult(Game game) throws IOException {
         printPrefix();
         printGameCount(game);
