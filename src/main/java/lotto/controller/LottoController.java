@@ -6,11 +6,13 @@ import lotto.view.Input;
 import lotto.view.Output;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LottoController {
     private static final int LOTTO_PRICE_DEFAULT_UNIT = 1000;
     private static int price;
     private static int lottoQuantity;
+    private static List<Lotto> lottoContainer;
 
     //로또 프로그램 실행 메서드
     public static void execute() {
@@ -20,6 +22,8 @@ public class LottoController {
         getLottoQuantity(price);
         //입력한 로또에 대한 출력 기능
         Output.printQuantity(lottoQuantity);
+        //입력한 로또에 대한 목록 출력하기
+        getSavedLotto(lottoQuantity);
     }
 
     public static void getPrice() {
@@ -28,5 +32,10 @@ public class LottoController {
 
     public static void getLottoQuantity(int price) {
         lottoQuantity = price / LOTTO_PRICE_DEFAULT_UNIT;
+    }
+
+    public static void getSavedLotto(int lottoQuantity) {
+        lottoContainer = LottoCreator.saveLotto(lottoQuantity);
+        Output.printAllLottoNumber(lottoContainer);
     }
 }
