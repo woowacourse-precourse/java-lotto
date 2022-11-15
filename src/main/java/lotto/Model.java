@@ -60,7 +60,7 @@ public class Model {
         try {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
-            View.Output("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            View.OutputString("[ERROR] 입력된 값이 숫자가 아닙니다.");
             throw new NoSuchElementException();
         }
     }
@@ -88,7 +88,7 @@ public class Model {
 
             return result;
         } catch (NumberFormatException e) {
-            View.Output("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            View.OutputString("[ERROR] 입력된 값이 숫자가 아닙니다.");
             throw new NoSuchElementException("[ERROR] 입력된 값이 숫자가 아닙니다.");
         }
     }

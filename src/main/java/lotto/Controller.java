@@ -14,7 +14,7 @@ public class Controller {
     public static void ValidatePlayerNumber(HashSet<Integer> playerNumbers) {
         // 집합의 크기가 6이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
         if (playerNumbers.size() != 6 || Collections.min(playerNumbers) < 1 || Collections.max(playerNumbers) > 45) {
-            View.Output("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
+            View.OutputString("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
             throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
         }
     }
@@ -26,11 +26,11 @@ public class Controller {
      */
     public static void ValidatePurchaseAmount(Integer purchaseAmount) {
         if (purchaseAmount / 1000 < 1) {
-            View.Output("[ERROR] 구입 금액이 유효하지 않습니다.");
+            View.OutputString("[ERROR] 구입 금액이 유효하지 않습니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
         }
         if (purchaseAmount % 1000 != 0) {
-            View.Output("[ERROR] 구입 금액이 유효하지 않습니다.");
+            View.OutputString("[ERROR] 구입 금액이 유효하지 않습니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
         }
     }
@@ -71,7 +71,7 @@ public class Controller {
 
     public static void Solution() {
         // 구입 금액 입력
-        View.Output("구입금액을 입력해 주세요.");
+        View.OutputString("구입금액을 입력해 주세요.");
         String inputLottoAmount = View.Input();
         Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
 
@@ -85,24 +85,22 @@ public class Controller {
         final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
 
         // 로또 발행 출력
-        View.Output(inputLottoAmount);
-        View.Output(lottoCount+"개를 구매했습니다.");
-        for (List<Integer> list : publishedLottoArray) {
-            View.Output(list.toString());
-        }
+        View.OutputString(inputLottoAmount);
+        View.OutputString(lottoCount+"개를 구매했습니다.");
+        View.OutputListIntegerInList(publishedLottoArray);
 
         // 당첨 번호 입력
-        View.Output("당첨 번호를 입력해 주세요.");
+        View.OutputString("당첨 번호를 입력해 주세요.");
         String inputRealLottoNumber = View.Input();
-        View.Output(inputRealLottoNumber);
+        View.OutputString(inputRealLottoNumber);
         String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
         List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
         realLottoNumbers = Model.SortArrayList(realLottoNumbers);
 
         // 보너스 번호 입력
-        View.Output("보너스 번호를 입력해 주세요.");
+        View.OutputString("보너스 번호를 입력해 주세요.");
         String inputRealLottoBonusNumber = View.Input();
-        View.Output(inputRealLottoBonusNumber);
+        View.OutputString(inputRealLottoBonusNumber);
         Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
         // Lotto 클래스 생성
@@ -116,13 +114,13 @@ public class Controller {
                 (realLottoNumbers, publishedLottoArray);
 
         // 당첨 결과 통계 출력
-        View.Output("당첨 통계");
-        View.Output("---");
+        View.OutputString("당첨 통계");
+        View.OutputString("---");
         View.PrintResult(lottoResult);
 
         // 총 수익률 출력
         Integer incomeSum = Model.CalculateEarningSum(lottoResult);
         Double earningRate = Model.CalculateEarningRate(lottoAmount, incomeSum);
-        View.Output("총 수익률은 "+earningRate+"%입니다.");
+        View.OutputString("총 수익률은 "+earningRate+"%입니다.");
     }
 }
