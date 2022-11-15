@@ -26,7 +26,9 @@ public class Lotto {
     }
 
     public void NumberRange(List<Integer> numbers){
-
+        int RangeCount = (int)numbers.stream().filter(number -> number < 1 && 45 < number).count();
+        if(RangeCount != 0){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
 
