@@ -7,9 +7,9 @@ public class WinningStatisticsResult {
     private final List<LottoWinningEnum> lottoWinningEnum;
     private final double yield;
 
-    public WinningStatisticsResult(List<Integer> countWinning, List<LottoWinningEnum> lottoWinningEnum, int buyPrice) {
-        this.countWinning = countWinning;
-        this.lottoWinningEnum = lottoWinningEnum;
+    public WinningStatisticsResult(WinningStatistics winningStatistics, int buyPrice) {
+        this.countWinning = winningStatistics.getCountWinning();
+        this.lottoWinningEnum = List.of(LottoWinningEnum.values());
         this.yield = getYield(buyPrice);
     }
 

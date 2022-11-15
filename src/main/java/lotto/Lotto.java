@@ -1,7 +1,8 @@
 package lotto;
 
-import java.util.HashSet;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 
 public class Lotto { // Lotto-create-001
     private final List<Integer> numbers;
@@ -16,11 +17,13 @@ public class Lotto { // Lotto-create-001
             System.out.println(Message.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
+        Set<Integer> checkOverlap = new HashSet<>();
         for (Integer winningNumber : numbers){
-            if (winningNumber < 1 || winningNumber > 45) {
+            if (winningNumber < 1 || winningNumber > 45 || checkOverlap.contains(winningNumber)) {
                 System.out.println(Message.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
                 throw new IllegalArgumentException();
             }
+            checkOverlap.add(winningNumber);
         }
     }
 
@@ -47,5 +50,4 @@ public class Lotto { // Lotto-create-001
     public boolean hitBonus(int bonus){ // WinningStatistics-compare-001
         return this.numbers.contains(bonus);
     }
-    // TODO: 추가 기능 구현
 }

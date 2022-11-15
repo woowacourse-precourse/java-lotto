@@ -1,15 +1,21 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class WinningStatistics {
     private final List<Lotto> randomLottos;
-    private final List<LottoWinning> winningLottos;
+    private List<LottoWinning> winningLottos;
 
-    public WinningStatistics(List<Lotto> randomLottos, Lotto winningLotto, int bonusNumber) {
-        this.randomLottos = randomLottos;
+    public WinningStatistics(int payMoney) {
+        this.randomLottos = getLottos(payMoney);
+    }
+
+    public void setWinningLottos(Lotto winningLotto, int bonusNumber) {
         this.winningLottos = getWinningLottos(winningLotto, bonusNumber);
     }
 
@@ -42,8 +48,21 @@ public class WinningStatistics {
                     && lotto.hitBonus(bonusNumber);
 
             LottoWinning lottoWinning = new LottoWinning(lottoCorrectNumber, bonus);
-            winningStatistics.add(lottoWinning);
+            if (lottoCorrectNumber > 2) {
+                winningStatistics.add(lottoWinning);
+            }
         }
         return winningStatistics;
+    }
+
+    private List<Lotto> getLottos(int numberPurchase){ // Lotto-create-001
+        List<Lotto> lottos = new ArrayList<>();
+        int printCount = numberPurchase / 1000;
+        for (int nowPurchase = 0; nowPurchase < printCount; nowPurchase++){
+            List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            lotto.sort(Comparator.naturalOrder());
+            lottos.add(new Lotto(lotto));
+        }
+        return lottos;
     }
 }
