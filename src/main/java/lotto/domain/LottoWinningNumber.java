@@ -15,6 +15,10 @@ public class LottoWinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    private boolean validateNumbersSize(List<Integer> numbers) {
+        return numbers.size() != FIX_SIZE;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
