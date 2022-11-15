@@ -20,7 +20,7 @@ public class Input {
         List<String> winningNumbers = Arrays
                 .stream(Console.readLine().trim().split(","))
                 .collect(Collectors.toList());
-        WinningNumbersExeption.validateWinningNumber(winningNumbers);
+        WinningNumbersExeption.validate(winningNumbers);
         return winningNumbers.stream()
                 .map(number -> Integer.valueOf(number))
                 .collect(Collectors.toList());

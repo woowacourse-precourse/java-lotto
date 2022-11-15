@@ -16,10 +16,6 @@ public class CommonException {
         }
     }
 
-    public static void isEmpty(Integer number) {
-        isEmpty(number.toString());
-    }
-
     public static boolean hasCharacters(String number) {
         if (!number.matches(NUMBER)) {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.CHARACTER_INCLUDED));

@@ -7,7 +7,6 @@ public class LottoException extends CommonException {
         validateNumberLength(numbers);
         checkOrder(numbers);
         for (Integer number : numbers) {
-            isEmpty(number);
             hasDuplicatedNumber(numbers, number);
             validateNumberRange(number);
         }
