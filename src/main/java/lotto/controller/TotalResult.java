@@ -20,17 +20,6 @@ public class TotalResult {
         this.rankCounts = setRankCounts(jackpotBonus, lotteries);
     }
 
-    private static Map<Rank, Integer> setRankCounts(JackpotBonus jackpotBonus, List<Lotto> lotteries) {
-        Map<Rank, Integer> rankCounts = new EnumMap<>(Rank.class);
-
-        for (Lotto lotto : lotteries) {
-            Rank rankOfLotto = RankCalculator.getRankOf(jackpotBonus, lotto);
-            int currentCnt = rankCounts.getOrDefault(rankOfLotto, DEFAULT_RANK_COUNT);
-            rankCounts.put(rankOfLotto, currentCnt + 1);
-        }
-        return rankCounts;
-    }
-
     public Map<Rank, Integer> getRankCounts() {
         return rankCounts;
     }
@@ -46,6 +35,17 @@ public class TotalResult {
 
         double yield = (double) sumOfRewards / (lotteries.size() * LottoIssuer.MONEY_UNIT) * 100;
         return yieldFormat.format(yield);
+    }
+
+    private static Map<Rank, Integer> setRankCounts(JackpotBonus jackpotBonus, List<Lotto> lotteries) {
+        Map<Rank, Integer> rankCounts = new EnumMap<>(Rank.class);
+
+        for (Lotto lotto : lotteries) {
+            Rank rankOfLotto = RankCalculator.getRankOf(jackpotBonus, lotto);
+            int currentCnt = rankCounts.getOrDefault(rankOfLotto, DEFAULT_RANK_COUNT);
+            rankCounts.put(rankOfLotto, currentCnt + 1);
+        }
+        return rankCounts;
     }
 
     private int rewardPerRank(Rank rank) {
