@@ -32,18 +32,72 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해 주세요");
         String winNumberString = sc.nextLine();
+
         List<String> splitWinNumbersString = Arrays.stream(winNumberString.split(","))
                 .collect(Collectors.toList());
         validateSplitWinNumbersString(splitWinNumbersString);
         List<Integer> winNumbers = converseWinNumbersToInteger(splitWinNumbersString);
+        validateWinNumbers(winNumbers);
+
+        System.out.println("보너스 번호를 입력해 주세요");
+        Integer bonusNumber = validateBonusNumber(sc);
+        checkValidationOfNumber(bonusNumber);
+        checkDuplicateBonusNumber(bonusNumber, winNumbers);
+
+        List<WinningResult> winningResults = new ArrayList<>();
+        for(Lotto lotto : lottos){
+            winningResults.add(getResult(lotto.getNumbers(),winNumbers,bonusNumber));
+        }
 
     }
+
+    static WinningResult getResult(List<Integer> lottoNumbers, List<Integer> winNumbers,Integer bonusNumber) {
+        List<Integer> temp = lottoNumbers;
+        lottoNumbers.retainAll(winNumbers);
+
+        if(lottoNumbers.size()<3){
+            return WinningResult.LOSE;
+        }
+        if(lottoNumbers.size()==3){
+            return WinningResult.WIN_5TH;
+        }
+        if(lottoNumbers.size()==4){
+            return WinningResult.WIN_4TH;
+        }
+        if(lottoNumbers.size()==5){
+            return isBonusContained(temp,bonusNumber);
+        }
+        return WinningResult.WIN_1ST;
+    }
+
+    static WinningResult isBonusContained(List<Integer> temp, Integer bonusNumber) {
+        if(temp.contains(bonusNumber)){
+            return WinningResult.WIN_2ND;
+        }
+        return WinningResult.WIN_3RD;
+    }
+
 
     static void validateSplitWinNumbersString(List<String> splitWinNumbersString) {
         if(splitWinNumbersString.size()!=6){
             System.out.println("[ERROR] 당첨 번호를 정확히 입력해 주시기 바랍니다.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호를 정확히 입력해 주시기 바랍니다.");
         }
+    }
+
+    static void checkDuplicateBonusNumber(Integer bonusNumber, List<Integer> winNumbers){
+        if(winNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자는 기존 숫자와 중복될 수 없습니다.");
+        }
+    }
+    static Integer validateBonusNumber(Scanner sc){
+        Integer bonusNumber;
+        try{
+            bonusNumber = Integer.parseInt(sc.nextLine());
+        }catch (Throwable e){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수만 입력 가능합니다.");
+        }
+        return bonusNumber;
     }
 
     static List<Integer> converseWinNumbersToInteger(List<String> splitWinNumbersString ){
