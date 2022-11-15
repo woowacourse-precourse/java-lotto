@@ -1,8 +1,8 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.validation.Validation;
 
+import lotto.validation.Validation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

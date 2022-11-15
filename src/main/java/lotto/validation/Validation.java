@@ -35,7 +35,7 @@ public final class Validation {
     }
 
     public static void validateMultipleNumber(int dividend, int divisor) {
-        if (dividend<divisor || dividend % divisor != 0) {
+        if (dividend < divisor || dividend % divisor != 0) {
             ErrorMessage.multipleNumberError(divisor);
             throw new IllegalArgumentException();
         }

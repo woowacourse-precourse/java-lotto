@@ -55,7 +55,7 @@ public class Service {
         int correctCount = countCorrectLottoNumbers(lottoGame, lotto);
         boolean correctBonusNumber = containsBonusNumber(lottoGame, lotto);
         Rank rank = Rank.values()[correctCount];
-        if(rank==Rank.THIRD && correctBonusNumber){
+        if (rank == Rank.THIRD && correctBonusNumber) {
             return Rank.SECOND;
         }
         return rank;

@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import lotto.domain.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
@@ -8,8 +10,6 @@ import lotto.utils.Utils;
 import lotto.view.InputMessage;
 import lotto.view.OutputMessage;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
     private static final int LOTTO_LEAST_AMOUNT = 1_000;
@@ -30,7 +30,7 @@ public class Controller {
         showBuyingResult();
     }
 
-    private void initLottoGame(){
+    private void initLottoGame() {
         lottoGame = new LottoGame(getInputWinningNumbers(), getInputBonusNumber());
     }
 
