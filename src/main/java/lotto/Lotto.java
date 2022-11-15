@@ -9,7 +9,8 @@ public class Lotto {
     private static final int MAXIMUM_NUMBER = 45;
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> lottoNumbers) {
+        List<Integer> numbers = new ArrayList<Integer>(lottoNumbers);  // 수정 가능한 리스트로 변환
         validate(numbers);
         sortAscNumbers(numbers);
         this.numbers = numbers;
