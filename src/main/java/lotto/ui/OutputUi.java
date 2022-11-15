@@ -37,4 +37,11 @@ public class OutputUi {
             System.out.println(lottoRank.getRankMessage() + " - " + lottoWinAmounts.get(lottoRank) + "개");
         }
     }
+
+    /**
+     * 사용자 로또 수익률 출력 로직
+     */
+    public void printLottoProfitRate(double lottoProfitRate) {
+        System.out.printf("%.1f", lottoProfitRate);
+    }
 }
