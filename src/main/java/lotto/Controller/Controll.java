@@ -1,6 +1,6 @@
 package lotto.Controller;
 
-import lotto.Constant.Message;
+import lotto.Constant.Constants.Message;
 import lotto.Model.Buyer;
 import lotto.Model.Comparison;
 import lotto.Model.Money;
@@ -29,15 +29,15 @@ public class Controll {
     }
 
     private void buyTicket() {
-        outputView.printMessage(Message.START.getMessage());
+        outputView.printMessage(Message.START);
         buyer = new Buyer(inputView.inputNum());
     }
 
     private void winnginTicket() {
-        outputView.printMessage("\n" + Message.WINNING_NUMBER.getMessage());
+        outputView.printMessage("\n" + Message.WINNING_NUMBER);
         winningTicket = new WinningTicket(inputView.inputNum());
 
-        outputView.printMessage("\n" + Message.BONUS_NUMBER.getMessage());
+        outputView.printMessage("\n" + Message.BONUS_NUMBER);
         winningTicket.saveBonus(inputView.inputNum());
     }
 

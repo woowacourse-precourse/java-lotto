@@ -1,6 +1,6 @@
 package lotto.Model;
 
-import lotto.Constant.Message;
+import lotto.Constant.Constants.Error;
 import lotto.Utils.Convert;
 
 public class WinningTicket {
@@ -15,7 +15,7 @@ public class WinningTicket {
     public void saveBonus(final String bonus) {
         int bonusNum = Convert.StrToInt(bonus);
         if (lotto.getNumbers().contains(bonusNum)) {
-            throw new IllegalArgumentException(Message.ERROR_DUPLICATE.getMessage());
+            throw new IllegalArgumentException(Error.DUPLICATE);
         }
         this.bonus = bonusNum;
     }

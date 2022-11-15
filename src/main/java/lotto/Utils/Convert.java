@@ -2,19 +2,18 @@ package lotto.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Constant.Message;
+import lotto.Constant.Constants.Error;
+import lotto.Constant.Constants.Number;
 
 public class Convert {
 
     private static final String COMMA = ",";
-    private static final int MAX_NUM = 45;
-    private static final int MIN_NUM = 1;
 
     public static int StrToInt(final String number) {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_NUMBER.getMessage());
+            throw new IllegalArgumentException(Error.NUMBER);
         }
     }
 
@@ -31,8 +30,8 @@ public class Convert {
     }
 
     private static void isLottoNumber(final int n) {
-        if (!(MIN_NUM <= n && n <= MAX_NUM)) {
-            throw new IllegalArgumentException(Message.ERROR_ONE_TO_FORTYFIVE.getMessage());
+        if (!(Number.START_NUM <= n && n <= Number.END_NUM)) {
+            throw new IllegalArgumentException(Error.ONE_TO_FORTYFIVE);
         }
     }
 

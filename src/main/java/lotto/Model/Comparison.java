@@ -3,6 +3,7 @@ package lotto.Model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lotto.Constant.Constants.Number;
 
 public class Comparison {
 
@@ -12,10 +13,10 @@ public class Comparison {
         for (Lotto lotto : lottoNumber) {
             boolean bonusCheck = false;
             int sum = compareLottoNum(lotto.getNumbers(), ticket.getWinningTicket());
-            if (sum == 5) {
+            if (sum == Number.FIVE_MATCH) {
                 bonusCheck = compareLottoNum(lotto.getNumbers(), ticket.getBonusNum());
             }
-            if (sum > 2) {
+            if (sum > Number.TWO_MATCH) {
                 saveResult(sum, bonusCheck);
             }
         }
@@ -36,7 +37,7 @@ public class Comparison {
     }
 
     private void saveResult(final int sum, final boolean bonusCheck) {
-        if (sum == 5 && bonusCheck) {
+        if (sum == Number.FIVE_MATCH && bonusCheck) {
             savedResult.put("5B", savedResult.getOrDefault("5B", 0) + 1);
             return;
         }

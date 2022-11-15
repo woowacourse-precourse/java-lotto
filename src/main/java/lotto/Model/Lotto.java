@@ -2,7 +2,8 @@ package lotto.Model;
 
 import java.util.Collections;
 import java.util.List;
-import lotto.Constant.Message;
+import lotto.Constant.Constants.Error;
+import lotto.Constant.Constants.Number;
 
 public class Lotto {
 
@@ -15,11 +16,11 @@ public class Lotto {
     }
 
     private void validate(final List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Message.ERROR_SIZE.getMessage());
+        if (numbers.size() != Number.LIST_SIZE) {
+            throw new IllegalArgumentException(Error.SIZE);
         }
-        if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException(Message.ERROR_DUPLICATE.getMessage());
+        if (numbers.stream().distinct().count() != Number.LIST_SIZE) {
+            throw new IllegalArgumentException(Error.DUPLICATE);
         }
     }
 
