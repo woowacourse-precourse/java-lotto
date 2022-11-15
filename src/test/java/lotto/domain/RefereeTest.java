@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 import java.util.List;
+import java.util.Map;
 
 public class RefereeTest {
 
@@ -35,5 +36,21 @@ public class RefereeTest {
         assertThat(referee.calculateGrades()).containsExactly(Grade.SECOND,Grade.THIRD);
     }
 
+    @DisplayName("당첨 번호, 보너스 번호와 비교하여 설정한 Grade가 맞는지 확인한다.")
+    @Test
+    void getStatics() {
+        List<Lotto> lottos = List.of(
+                new Lotto(List.of(1,2,3,4,6,8)),
+                new Lotto(List.of(1,2,3,4,5,8))
+        );
+        Lotto winningNumbers = new Lotto(List.of(1,2,3,4,8,12));
+        Referee referee = new Referee(lottos, winningNumbers, 6);
+        Map<String, Integer> statics = referee.getStatics(referee.calculateGrades());
 
+        assertThat(statics.get(Grade.FIRST.getKey())).isEqualTo(0);
+        assertThat(statics.get(Grade.SECOND.getKey())).isEqualTo(1);
+        assertThat(statics.get(Grade.THIRD.getKey())).isEqualTo(1);
+        assertThat(statics.get(Grade.FOURTH.getKey())).isEqualTo(0);
+        assertThat(statics.get(Grade.FIFTH.getKey())).isEqualTo(0);
+    }
 }
