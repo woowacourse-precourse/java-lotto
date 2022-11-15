@@ -30,5 +30,9 @@ public class Lotto {
             if(numbers.get(i) > 46 || numbers.get(i) < 1) throw new IllegalArgumentException("[ERROR]");
         }
     }
+
+    public static List<Integer> compareWinningNumbers(){
+        return numbers;
+    }
     // TODO: 추가 기능 구현
 }

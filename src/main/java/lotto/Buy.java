@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Buy {
     private final int price;
-    private List<Integer> randomLottos =new ArrayList<>();
+    private static List<Integer> randomLottos =new ArrayList<>();
 
     public Buy(int price) {
         this.price = price;
@@ -48,6 +48,9 @@ public class Buy {
         for (int i = 0; i < randomLottos.size() / 6; i++) {
             result.printSixRange(randomLottos,i);
         }
+    }
+    public static List<Integer> compareRandomLottos(){
+        return randomLottos;
     }
         // 6번 반복, result class로 옮기기.
     }

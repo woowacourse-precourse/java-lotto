@@ -2,22 +2,10 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class result {
-
-
-    // 비교
-    // map을 사용하여 정수,정수로 묶는다.
-    // 구매한 리스트를 반복문을 통해 입력받은 로또의 번호와 비교한다.
-    // 비교하며 count로 수량을 체크한 후 반복문이 끝나면 count의 값(map의 value)를 증가 시킨다.
-    // 이후 출력/
-
-    //수익률 --> (획득 금액 / 구입금액) * 100
-
-
-
-
     public static void printSixRange(List<Integer> randomLottos, int row) {
         List<Integer> seperateRandomLotto = new ArrayList<>();
 
@@ -28,5 +16,42 @@ public class result {
         Collections.sort(seperateRandomLotto);
         System.out.println(seperateRandomLotto);
     }
+    private void getCompareTarget(){
+        List<Integer> randomNumbers = Buy.compareRandomLottos();
+        List<Integer> winningNumbers = Lotto.compareWinningNumbers();
+        comapreNumbers(randomNumbers,winningNumbers);
+    }
+    public void comapreNumbers(List<Integer> randomNumbers,List<Integer> winningNumbers){
+        HashMap<Integer,Integer> result = new HashMap<>();
+        int count = 0;
+        for(int i =1;i<=randomNumbers.size() / 6;i++){
+            result.put(i,0);
+        }
+
+        for(int i =0;i<randomNumbers.size()/6;i++){
+            count = compareSixNumbers(randomNumbers,winningNumbers,i);
+            result.put(count,result.get(count)+1);
+        }
+        for(int i =0;i<randomNumbers.size();i++)
+        System.out.println(result);
+    }
+
+    public int compareSixNumbers(List<Integer> randomNumbers,List<Integer> winningNumbers,int row){
+        int count =0;
+        List<Integer> seperateRandomLotto = new ArrayList<>();
+        for(int j= row*6;j<(row+1)*6;j++){
+            int target = randomNumbers.get(j);
+            seperateRandomLotto.add(target);
+        }
+
+        for(int i =0;i< seperateRandomLotto.size();i++){
+            if(seperateRandomLotto.contains(winningNumbers.get(i))){
+                count ++;
+            }
+        }
+
+        return count;
+    }
+
 
 }
