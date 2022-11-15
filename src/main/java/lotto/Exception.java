@@ -84,4 +84,9 @@ public class Exception {
     }
 
     // TODO: 입력 값(보너스 번호)이 리스트(winningNumber)에 포함되어 있는 숫자일 경우 예외처리한다.
+    private static void isDuplicateNumberInWinningNumber(String bonusNumber) throws IllegalArgumentException{
+        if (Domain.getWinningNumbers().contains(bonusNumber))
+            throw new IllegalArgumentException("[ERROR] The input value contains a number that overlaps the winning number.");
+    }
+
 }
