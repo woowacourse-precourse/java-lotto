@@ -17,7 +17,7 @@ public class Analyse {
         }
 
         if(result==5) {
-            if(winNumber.contains(winBonus)) {
+            if(buyNumber.contains(winBonus)) {
                 result=7;
             }
         }
