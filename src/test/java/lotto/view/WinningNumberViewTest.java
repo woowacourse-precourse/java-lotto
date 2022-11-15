@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.model.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -39,7 +41,7 @@ class WinningNumberViewTest {
         InputStream inputStream = new ByteArrayInputStream(inputBonusNumber.getBytes());
         System.setIn(inputStream);
 
-        assertThatThrownBy(() -> winningNumberView.inputBonusNumber())
+        assertThatThrownBy(() -> winningNumberView.inputBonusNumber(new Lotto(List.of(1,2,3,4,5,6))))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
     }

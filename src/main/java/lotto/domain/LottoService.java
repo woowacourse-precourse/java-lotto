@@ -30,7 +30,7 @@ public class LottoService {
     public double calculateProfit(LottoResult lottoResult, int numberOfLotto) {
 
         double gain = 0;
-        int buyMoney = numberOfLotto * 1000;
+        double buyMoney = numberOfLotto * 1000;
 
         gain += lottoResult.getFifthCount() * WinningRank.FIFTH.getPrice();
         gain += lottoResult.getFourthCount() * WinningRank.FOURTH.getPrice();

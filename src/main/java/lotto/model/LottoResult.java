@@ -13,15 +13,15 @@ public class LottoResult {
 
     public void refreshResult(WinningRank winningRank) {
 
-        if (winningRank.equals(WinningRank.FIFTH)) {
+        if (winningRank == WinningRank.FIRST) {
             firstCount++;
-        } else if (winningRank.equals(WinningRank.SECOND)) {
+        } else if (winningRank == WinningRank.SECOND) {
             secondCount++;
-        } else if (winningRank.equals(WinningRank.THIRD)) {
+        } else if (winningRank == WinningRank.THIRD) {
             thirdCount++;
-        } else if (winningRank.equals(WinningRank.FOURTH)) {
+        } else if (winningRank == WinningRank.FOURTH) {
             fourthCount++;
-        } else if (winningRank.equals(WinningRank.FIFTH)) {
+        } else if (winningRank == WinningRank.FIFTH) {
             fifthCount++;
         }
     }
