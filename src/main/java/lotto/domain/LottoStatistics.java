@@ -53,7 +53,7 @@ public class LottoStatistics {
     }
 
     public String getYield() {
-        return FormatYieldNumber.get(((double) this.first * FIRST.getReward() +
+        return FormatYieldNumber.get((double) (this.first * FIRST.getReward() +
                 this.second * SECOND.getReward() +
                 this.third * THIRD.getReward() +
                 this.fourth * FOURTH.getReward() +

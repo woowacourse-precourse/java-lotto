@@ -8,7 +8,7 @@ public enum LottoReward {
     FIFTH("3개 일치 (5,000원) - ", 5000, 3);
 
     private final String rewardMessage;
-    private final int reward;
+    private final long reward;
     private final int matchCount;
 
     LottoReward(String rewardMessage, int reward, int matchCount) {
@@ -21,7 +21,7 @@ public enum LottoReward {
         return rewardMessage;
     }
 
-    public int getReward() {
+    public long getReward() {
         return reward;
     }
 
