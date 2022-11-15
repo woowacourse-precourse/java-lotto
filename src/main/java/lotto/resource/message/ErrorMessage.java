@@ -1,10 +1,7 @@
 package lotto.resource.message;
 
 public enum ErrorMessage {
-
-    NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE(
-            "입력된 값이 숫자가 아니거나 Integer 범위를 벗어났습니다."
-    ),
+    NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE("입력된 값이 숫자가 아니거나 Integer 범위를 벗어났습니다."),
     NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE("입력된 값이 1,000원 단위가 아닙니다."),
     NOT_BETWEEN_1_AND_45_MESSAGE("1~45 범위를 벗어났습니다."),
     NUMBER_IS_NOT_POSITIVE_MESSAGE("입력된 값이 양수가 아닙니다."),

@@ -13,6 +13,7 @@ public class Winnings {
                 revenue += rankIntegerEntry.getValue() * rankIntegerEntry.getKey().getWinnings();
             }
         }
-        return (double) revenue / (double) payOut.getValueAsInt() * 100;
+
+        return ((double) revenue / (double) payOut.getValueAsInt()) * 100;
     }
 }

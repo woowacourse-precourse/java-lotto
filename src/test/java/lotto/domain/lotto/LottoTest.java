@@ -39,8 +39,6 @@ class LottoTest {
                 () -> assertThat(lotto.contains(new LottoNumber(6))).isTrue(),
                 () -> assertThat(lotto.contains(new LottoNumber(10))).isFalse(),
                 () -> assertThat(lotto.contains(new LottoNumber(45))).isFalse()
-
-
         );
     }
 
