@@ -9,6 +9,7 @@ import java.util.List;
 
 import static lotto.WinningLogic.calculateRate;
 import static lotto.exception.Exception.*;
+import static lotto.option.IntegerOption.*;
 
 public class Game extends View {
     public static List<Lotto> lottos = new ArrayList<>();
@@ -55,12 +56,12 @@ public class Game extends View {
         rateView(rate);
     }
     private static Lotto getRandoms(){
-        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
+        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MIN.option, MAX.option,COUNT.option));
         return lotto;
     }
 
     private static void countMoney(){
-        count = Integer.parseInt(input)/1000;
+        count = Integer.parseInt(input)/BASE_MONEY.option;
     }
 
     private static void makeLottos(){

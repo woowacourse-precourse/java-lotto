@@ -1,13 +1,14 @@
 package lotto;
 
-import static lotto.option.Option.*;
+import static lotto.option.IntegerOption.*;
+import static lotto.option.StringOption.*;
 
 public enum Winning {
-    FIFTH(FIFTH_PRICE.option,FIFTH_MATCH.option,"5,000원",false),
-    FOURTH(FOURTH_PRICE.option,FOURTH_MATCH.option,"50,000원",false),
-    THIRD(THIRD_PRICE.option,THIRD_MATCH.option,"1,500,000원",false),
-    SECOND(SECOND_PRICE.option,SECOND_MATCH.option,"30,000,000원",true),
-    FIRST(FIRST_PRICE.option, FIRST_MATCH.option,"2,000,000,000원",false);
+    FIFTH(FIFTH_PRICE.option,FIFTH_MATCH.option,FIFTH_PRICE_TEXT.option,false),
+    FOURTH(FOURTH_PRICE.option,FOURTH_MATCH.option,FOURTH_PRICE_TEXT.option,false),
+    THIRD(THIRD_PRICE.option,THIRD_MATCH.option,THIRD_PRICE_TEXT.option,false),
+    SECOND(SECOND_PRICE.option,SECOND_MATCH.option,SECOND_PRICE_TEXT.option,true),
+    FIRST(FIRST_PRICE.option, FIRST_MATCH.option,FIRST_PRICE_TEXT.option,false);
     public Integer match;
     public Integer price;
     public String priceText;

@@ -1,6 +1,6 @@
 package lotto.option;
 
-public enum Option {
+public enum IntegerOption {
     MIN(1),
     MAX(45),
     COUNT(6),
@@ -18,7 +18,7 @@ public enum Option {
     BASE_MONEY(1000);
 
     public Integer option;
-    Option(Integer option){
+    IntegerOption(Integer option){
         this.option = option;
     }
 }

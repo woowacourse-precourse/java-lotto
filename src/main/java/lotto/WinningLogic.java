@@ -1,7 +1,7 @@
 package lotto;
 
 import static lotto.Game.*;
-import static lotto.option.Option.*;
+import static lotto.option.IntegerOption.*;
 
 public class WinningLogic {
     private static Integer match;
