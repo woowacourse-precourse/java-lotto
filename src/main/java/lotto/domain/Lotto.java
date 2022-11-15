@@ -9,7 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        isCorrectRange(numbers);
+        isInCorrectRange(numbers);
         isNotDuplication(numbers);
         this.numbers = numbers;
     }
@@ -29,9 +29,9 @@ public class Lotto {
         }
     }
 
-    private void isCorrectRange(List<Integer> numbers){
+    private void isInCorrectRange(List<Integer> numbers){
         for (Integer number : numbers) {
-            if(0 >= number && number > 45){
+            if(0 >= number || number > 45){
                 throw new IllegalArgumentException();
             }
         }
