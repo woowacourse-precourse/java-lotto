@@ -13,8 +13,13 @@ public class InputBonusValidator {
     }
 
     public static void validate(String input) {
-        validateIsNumber(input);
-        validateBlank(input);
+        try {
+            validateIsNumber(input);
+            validateBlank(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private static void validateIsNumber(String input) {

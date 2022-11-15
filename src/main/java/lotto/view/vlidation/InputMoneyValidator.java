@@ -17,10 +17,15 @@ public class InputMoneyValidator {
     private static final String NUMBER_REGEXP = "\\d+$";
 
     public static void validate(String input) {
-        validateOnlyNumber(input);
-        validateDividedByThousand(input);
-        validateNumberBetweenZeroToNine(input);
-        validateBlank(input);
+        try {
+            validateOnlyNumber(input);
+            validateDividedByThousand(input);
+            validateNumberBetweenZeroToNine(input);
+            validateBlank(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private static void validateOnlyNumber(String userAmount) {

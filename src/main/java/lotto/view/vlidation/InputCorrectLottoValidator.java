@@ -1,24 +1,28 @@
 package lotto.view.vlidation;
 
-import lotto.domain.LottoConfig;
-import lotto.view.exception.CantBlankOrNullInputException;
 import lotto.view.exception.CantDuplicatedNumberInputException;
 import lotto.view.exception.NumberIsOutOfRange;
 import lotto.view.exception.OnlySixNumberInputException;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import static lotto.domain.LottoConfig.*;
 
 public class InputCorrectLottoValidator {
 
+    private InputCorrectLottoValidator() {
+    }
+
     public static void validate(List<Integer> inputNumbers) {
-        validateNumberListInRange(inputNumbers);
-        validateNumbersLength(inputNumbers);
-        validateNoDuplicateNumbers(inputNumbers);
+        try {
+            validateNumberListInRange(inputNumbers);
+            validateNumbersLength(inputNumbers);
+            validateNoDuplicateNumbers(inputNumbers);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void validateNumberListInRange(List<Integer> inputNumbers) {
@@ -35,7 +39,7 @@ public class InputCorrectLottoValidator {
 
     private static void validateNoDuplicateNumbers(List<Integer> inputNumbers) {
         HashSet<Integer> inputNoDuplicatedNumbers = (HashSet<Integer>) Set.copyOf(inputNumbers);
-        if (inputNoDuplicatedNumbers.size() != inputNumbers.size()){
+        if (inputNoDuplicatedNumbers.size() != inputNumbers.size()) {
             throw new CantDuplicatedNumberInputException();
         }
     }
