@@ -9,6 +9,7 @@ public class LottoComparator {
     private final Lottos lottos;
     private final WinningLotto winningLotto;
     private final BonusNumber bonusNumber;
+    private final List<LottoResult> results;
 
     public LottoComparator(
             Lottos lottos,
@@ -18,18 +19,17 @@ public class LottoComparator {
         this.lottos = lottos;
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
+        this.results = new ArrayList<>();
     }
 
-    public LottoResults compareLottoNumbers() {
-        List<LottoResult> lottoResults = new ArrayList<>();
-        List<Lotto> lottos = this.lottos.getLottos();
-        for (Lotto lotto : lottos) {
+    public LottoResults compare() {
+        for (Lotto lotto : lottos.getLottos()) {
             List<Integer> lottoNumbers = lotto.getNumbers();
             int matchCount = getMatchCount(lottoNumbers);
             boolean isMatchBonus = isMatchBonusNumber(lottoNumbers);
-            getLottoResult(lottoResults, matchCount, isMatchBonus);
+            addLottoResult(matchCount, isMatchBonus);
         }
-        return new LottoResults(lottoResults);
+        return new LottoResults(results);
     }
 
     private int getMatchCount(List<Integer> lottoNumbers) {
@@ -40,11 +40,10 @@ public class LottoComparator {
         return bonusNumber.isMatchBonusNumber(lottoNumbers);
     }
 
-    private void getLottoResult(
-            List<LottoResult> lottoResults,
+    private void addLottoResult(
             int matchCount,
             boolean isMatchBonus
     ) {
-        lottoResults.add(LottoResult.of(matchCount, isMatchBonus));
+        results.add(LottoResult.of(matchCount, isMatchBonus));
     }
 }

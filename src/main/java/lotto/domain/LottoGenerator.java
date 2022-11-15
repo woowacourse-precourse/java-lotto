@@ -3,18 +3,21 @@ package lotto.domain;
 import lotto.utils.RandomNumbersGenerator;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGenerator {
+    private final LottoQuantity lottoQuantity;
 
-    public LottoGenerator(LottoQuantity lottoCount) {
-        generate(lottoCount.getCount());
+    public LottoGenerator(LottoQuantity lottoQuantity) {
+        this.lottoQuantity = lottoQuantity;
     }
 
-    private Lottos generate(int lottoCount) {
+    public Lottos generate() {
         List<Lotto> lottos = new ArrayList<>();
-        for(int i = 0; i < lottoCount; i++) {
+        int quantity = lottoQuantity.getCount();
+        for(int i = 0; i < quantity; i++) {
             List<Integer> numbers = generateLottoNumbers();
             lottos.add(new Lotto(numbers));
         }
@@ -23,11 +26,12 @@ public class LottoGenerator {
 
     private List<Integer> generateLottoNumbers() {
         List<Integer> numbers = RandomNumbersGenerator.generate();
-        sortNumbers(numbers);
-        return numbers;
+        return sortNumbers(numbers);
     }
 
-    private void sortNumbers(List<Integer> numbers) {
-        Collections.sort(numbers);
+    private List<Integer> sortNumbers(List<Integer> numbers) {
+        return numbers.stream()
+             .sorted(Comparator.comparing(Integer::intValue))
+             .collect(Collectors.toList());
     }
 }

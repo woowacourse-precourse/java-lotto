@@ -2,6 +2,8 @@ package lotto.domain.enums;
 
 import java.util.Arrays;
 
+import static lotto.utils.ErrorMessages.NOT_CONDITION_MATCH;
+
 public enum LottoResult {
     NONE(0, 0),
     THREE_MATCH(3, 5_000),
@@ -27,16 +29,10 @@ public enum LottoResult {
     }
 
     public static LottoResult of(int matchCount, boolean isMatchBonus) {
-        if (matchCount == 0) {
-            return NONE;
-        }
         if (matchCount == 5) {
             return getLottoResultByMatchBonus(isMatchBonus);
         }
-        return Arrays.stream(LottoResult.values())
-                .filter(value -> value.getMatchCount() == matchCount)
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+        return valueOf(matchCount);
     }
 
     private static LottoResult getLottoResultByMatchBonus(boolean isMatchBonus) {
@@ -46,7 +42,14 @@ public enum LottoResult {
         return FIVE_MATCH;
     }
 
-    public boolean isMatchBonusNumber() {
+    private static LottoResult valueOf(int matchCount) {
+        return Arrays.stream(values())
+                .filter(value -> value.getMatchCount() == matchCount)
+                .findFirst()
+                .orElse(NONE);
+    }
+
+    public boolean hasBonusNumber() {
         return this == FIVE_AND_BONUS_MATCH;
     }
 }

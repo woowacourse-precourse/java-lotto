@@ -1,16 +1,24 @@
 package lotto.view;
 
-import lotto.domain.LottoRateOfReturn;
+import lotto.domain.LottoQuantity;
+import lotto.domain.RateOfReturn;
 import lotto.domain.LottoResults;
 import lotto.domain.Lottos;
 import lotto.domain.enums.LottoResult;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 import static lotto.utils.ViewMessages.*;
 
 public class OutputView {
+    static DecimalFormat decimalFormat = new DecimalFormat("###,###");
+
     private OutputView() {
+    }
+
+    public static void printLottoQuantity(LottoQuantity lottoQuantity) {
+        System.out.printf(OUTPUT_LOTTO_QUANTITY, lottoQuantity.getCount());
     }
 
     public static void printLottoNumbers(Lottos lottos) {
@@ -19,12 +27,8 @@ public class OutputView {
         );
     }
 
-    public static void printLottoDone() {
-        System.out.println(OUTPUT_LOTTO_DONE);
-        System.out.println(OUTPUT_LINE);
-    }
-
     public static void printLottoResult(LottoResults results) {
+        printLottoDone();
         Arrays.stream(LottoResult.values())
             .filter(result -> result.getMatchCount() != 0)
             .forEach(result -> {
@@ -41,17 +45,27 @@ public class OutputView {
 
     private static void printResult(LottoResult result, int count) {
         int lottoMatchCount = result.getMatchCount();
-        int lottoAmount = result.getAmount();
+        String lottoAmount = decimalFormat.format(result.getAmount());
 
-        if (result.isMatchBonusNumber()) {
+        if (result.hasBonusNumber()) {
             System.out.printf(OUTPUT_BONUS_MATCH_RESULT, lottoMatchCount, lottoAmount, count);
         }
-        if (!result.isMatchBonusNumber()) {
-            System.out.printf(OUTPUT_MATCH_RESULT, result.getMatchCount(), result.getAmount(), count);
+        if (!result.hasBonusNumber()) {
+            System.out.printf(OUTPUT_MATCH_RESULT, lottoMatchCount, lottoAmount, count);
         }
     }
 
-    public static void printRateOfReturn(LottoRateOfReturn rateOfReturn) {
-        System.out.printf(OUTPUT_RATE_OF_RETURN, rateOfReturn.getRateOfReturn());
+    private static void printLottoDone() {
+        System.out.println(OUTPUT_LOTTO_DONE);
+        System.out.println(OUTPUT_LINE);
+    }
+
+    public static void printRateOfReturn(RateOfReturn rateOfReturn) {
+        double rate = rateOfReturn.getRateOfReturn();
+        System.out.printf(OUTPUT_RATE_OF_RETURN, String.format("%.1f", rate));
+    }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
     }
 }

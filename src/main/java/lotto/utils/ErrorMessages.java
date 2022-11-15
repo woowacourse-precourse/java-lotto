@@ -15,4 +15,6 @@ public class ErrorMessages {
     public static final String MONEY_NOT_INTEGER = "[ERROR] 구입 금액은 숫자여야 합니다.";
     public static final String MONEY_OUT_OF_RANGE = "[ERROR] 1000원 이상 구매해야 합니다.";
     public static final String MONEY_NOT_DIVIDE_UNIT = "[ERROR] 구입 금액은 1000원 단위여야 합니다.";
+
+    public static final String NOT_CONDITION_MATCH = "[ERROR] 조건에 맞지 않는 당첨입니다.";
 }

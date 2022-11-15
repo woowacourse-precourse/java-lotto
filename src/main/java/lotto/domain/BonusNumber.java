@@ -14,7 +14,7 @@ public class BonusNumber {
         int bonusNumber = Integer.parseInt(number);
         validateRange(bonusNumber);
         validateDuplicatedByWinningNumbers(bonusNumber, winningLotto);
-        this.number = Integer.parseInt(number);
+        this.number = bonusNumber;
     }
 
     private void validateInteger(String number) {
