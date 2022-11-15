@@ -32,4 +32,12 @@ public class LottoMachineTest {
         assertThat(numbers).isSorted();
     }
 
+    @DisplayName("지불한 금액에 맞는 로또의 리스트를 만든다.")
+    @Test
+    void generateLottos() {
+        long payment = 8_000L;
+        List<Lotto> lottos = lottoMachine.generateLottos(payment);
+        assertThat(lottos.size()).isEqualTo(payment / LottoInfo.PRICE.value());
+    }
+
 }
