@@ -12,8 +12,9 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(String.valueOf(ErrorCode.INVALID_SIZE));
         }
+        Utils.isUniqueNumbers(numbers);
     }
 
     // TODO: 추가 기능 구현
