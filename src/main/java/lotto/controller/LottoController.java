@@ -1,7 +1,5 @@
 package lotto.controller;
 
-import java.util.List;
-
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -16,8 +14,10 @@ public class LottoController {
 
 	public void start() {
 		int price = InputView.getPrice();
-		List<String> tickets = lottoService.publishTickets(price);
-		OutputView.displayNumberOfTickets(tickets);
+
+		OutputView.displayNumberOfTickets(
+			lottoService.publishTickets(price)
+		);
 
 		OutputView.displayStatistics(
 			lottoService.getWinningStatistics(
