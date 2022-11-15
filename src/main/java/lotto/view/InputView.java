@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.util.Validation;
 
 public class InputView {
-    public int getMoney() {
+    public static String getMoney() {
         String input = Console.readLine();
         try {
             Validation.validateMoney(input);
@@ -12,10 +12,10 @@ public class InputView {
             System.out.println(e.getMessage());
         }
 
-        return Integer.parseInt(input);
+        return input;
     }
 
-    public String getLottoNumbers() {
+    public static String getLottoNumbers() {
         String input = Console.readLine();
 
         try {
@@ -27,7 +27,7 @@ public class InputView {
         return input;
     }
 
-    public String getBonusNumber() {
+    public static String getBonusNumber() {
         String input = Console.readLine();
 
         try {
