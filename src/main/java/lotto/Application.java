@@ -14,15 +14,8 @@ public class Application {
             String inputMoney = Console.readLine();
             Lotto.checkIsInt(inputMoney);
             int lottoCount = Lotto.calculate(inputMoney);
+            List<Lotto> allLotto = Lotto.createLotto(lottoCount);
             countPrint(lottoCount);
-
-            List<List<Integer>> allLotto = new ArrayList<>();
-
-            for(int i = 0; i < lottoCount; i++){
-                List <Integer> numbers = new ArrayList<>();
-                new Lotto(numbers);
-                allLotto.add(Lotto.allNumbers);
-            }
 
             disableWarning();
 
