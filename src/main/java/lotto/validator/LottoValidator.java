@@ -2,7 +2,6 @@ package lotto.validator;
 
 import java.util.List;
 import lotto.constant.LottoConstant;
-import lotto.domain.Money;
 
 public class LottoValidator {
     public static void validateLottoSize(List<Integer> lottoNumbers) {
@@ -32,12 +31,6 @@ public class LottoValidator {
                 .count();
         if (count != LottoConstant.WINNING_NUMBER_SIZE) {
             throw new IllegalArgumentException("[ERROR] 중복된 정수를 입력하면 안됩니다.");
-        }
-    }
-
-    public static void validateLottoMoney(Money money) {
-        if (!money.checkAmountUnit(LottoConstant.AMOUNT_UNIT)) {
-            throw new IllegalArgumentException("[ERROR] 입력금액은 1000원 단위여야 합니다.");
         }
     }
 

@@ -6,6 +6,7 @@ public class Money {
     private final Long amount;
 
     private Money(Long money) {
+        validateLottoMoney(money);
         this.amount = money;
 
     }
@@ -25,7 +26,9 @@ public class Money {
         return amount.intValue() / LottoConstant.AMOUNT_UNIT;
     }
 
-    public boolean checkAmountUnit(int unit) {
-        return this.amount % unit == 0;
+    private void validateLottoMoney(Long money) {
+        if (money % LottoConstant.AMOUNT_UNIT != 0) {
+            throw new IllegalArgumentException("[ERROR] 입력금액은 1000원 단위여야 합니다.");
+        }
     }
 }
