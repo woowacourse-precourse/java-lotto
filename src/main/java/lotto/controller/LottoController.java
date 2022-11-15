@@ -51,9 +51,16 @@ public class LottoController {
         lottoService.initResultLotto();
         lottoService.saveResultLotto();
         showUserLottiesResult();
+
+        lottoService.calculateReward();
+        showProfitResult();
     }
 
     public void showUserLottiesResult() {
         OutputView.printLottoStatistics(lottoService.getLottiesResult());
+    }
+
+    public void showProfitResult() {
+        OutputView.printLottoProfit(lottoService.getProfitRate());
     }
 }
