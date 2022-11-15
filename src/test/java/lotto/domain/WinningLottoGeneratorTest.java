@@ -45,6 +45,7 @@ class WinningLottoGeneratorTest {
         assertThatThrownBy(() -> WinningLottoGenerator.generateWinningLotto(numbers, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("일반 당첨 번호에 중복되는 값이 주어지면 오류 반환")
     @Test
     void givenDuplicateNumberInNormalNumbers_whenCreateWinningLotto_thenThrowError() {

@@ -47,6 +47,4 @@ class InputParserTest {
         //then
         assertThat(parsedNum).isEqualTo(result);
     }
-
-
 }
