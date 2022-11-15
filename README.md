@@ -1,5 +1,46 @@
 # 미션 - 로또
 
+## 💰로또 게임 프로젝트
+
+### 로또 게임 객체 구조도
+
+<img width="600" alt="로또야구" src="https://user-images.githubusercontent.com/68818952/201942164-14b5fc41-7c2a-4752-8c63-6474bd6b8a2c.png">
+
+
+- **Lotto**: 로또 하나는 1~45사이의 번호 6개로 구성되어 있습니다.
+- **User**: 로또 게임에 참여하는 사용자이다.
+- **LottoMachine**: 사용자가 투입한 금액 만큼의 로또를 생성하는 역할을 합니다.
+- **WinningNumber**: 해당 게임 당첨 번호 6개와 보너스 번호 1개를 가질 수 있습니다.
+- **Rank**: 해당 게임에서 사용자의 당첨 현황과 수익률을 계산해 출력합니다.
+
+### 게임 진행 flow
+
+1. 사용자는 구매 단위에 맞춰 원하는 금액을 입력합니다.
+2. 로또 머신은 금액에 해당하는 개수만큼 로또를 생성하여 반환합니다.
+3. 사용자는 해당 게임의 당첨 번호 6개와 보너스 번호 1개를 입력합니다.
+4. 랭크는 사용자가 구매한 로또와, 당첨 번호를 비교하고 계산합니다.
+5. 랭크는 사용자의 당첨 현황과, 수익률을 보여줍니다.
+
+### 로또 게임 기능
+
+- 원하는 금액만큼 **로또를 구입해 수익을 얻을 수 있습니다.**
+    - 🥇 1등: 20억 (번호 6개 일치)
+    - 🥈 2등: 3천만원 (번호 5개 + 보너스 번호 일치)
+    - 🥉 3등: 150만원 (번호 5개 일치)
+    - 🎖️ 4등: 5만원 (번호 4개 일치)
+    - 🏅 5등: 5천원 (번호 3개 일치)
+
+
+- 구매할 **로또 번호는 로또 머신이 자동으로 생성**하므로 지정할 수 없습니다.
+- **1,000원 당 1장**의 로또를 구매할 수 있습니다.
+- 로또 머신은 **잔돈을 반환하지 않으므로 반드시 1,000원 단위의 금액을 투입**하셔야 합니다.
+
+- **당첨 번호와 보너스 숫자는 사용자가 직접 입력**할 수 있습니다.
+    - 당첨 번호도 1~45 사이의 중복되지 않는 번호 6개 입니다.
+    - 보너스 번호는 당첨 번호와 중복될 수 없습니다.
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -179,14 +220,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
