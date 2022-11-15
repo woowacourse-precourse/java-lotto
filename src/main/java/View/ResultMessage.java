@@ -4,7 +4,6 @@ import enumCollections.RankNumber;
 import enumCollections.ResultStatistics;
 import lotto.Lotto;
 
-import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.List;
 
@@ -23,10 +22,9 @@ public class ResultMessage {
     }
 
     public static void printYield(double yield) {
-        BigDecimal yieldIncludeZeros = new BigDecimal(Double.toString(yield));
         print(
                 ResultStatistics.YIELD,
-                yieldIncludeZeros.toPlainString()
+                String.format("%.1f", yield)
         );
     }
 
