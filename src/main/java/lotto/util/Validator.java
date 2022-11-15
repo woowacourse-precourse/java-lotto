@@ -40,7 +40,11 @@ public class Validator {
         return numbers.contains(number);
     }
 
+    public static boolean isPositive(int money) {
+        return money > 0;
+    }
+
     public static boolean isHundredUnit(int money) {
-        return money > 0 && (money % UNIT == 0);
+        return money % UNIT == 0;
     }
 }
