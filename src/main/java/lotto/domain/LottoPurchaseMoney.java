@@ -9,7 +9,13 @@ public class LottoPurchaseMoney {
     private int lottoPurchaseMoney;
 
     public LottoPurchaseMoney(int lottoPurchaseMoney) {
+        validateLottoPurchaseMoney(lottoPurchaseMoney);
         this.lottoPurchaseMoney = lottoPurchaseMoney;
+    }
+
+    public void validateLottoPurchaseMoney(int lottoPurchaseMoney) {
+        validateMoneyMoreThanLottoPrice(lottoPurchaseMoney);
+        validateMoneyIsMultipleLottoPrice(lottoPurchaseMoney);
     }
 
     public void validateMoneyMoreThanLottoPrice(int lottoPurchaseMoney) {
