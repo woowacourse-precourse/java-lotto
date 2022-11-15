@@ -23,6 +23,12 @@ public class UserInputWinningNumberService {
         }
         return winningNumberList;
     }
+    public int setBonusNumbers() {
+        outputView.printBonusNumberQuestion();
+        String bonusNumber = inputView.inputBonusNumber();
+        checkThisBonusNumberIsValid(bonusNumber);
+        return Integer.parseInt(bonusNumber);
+    }
     public void checkThisWinningNumberIsValid(String[] winningNumbers) {
         userInputLottoInfoException.validate(winningNumbers, "로또 번호의 개수는 6개 입니다.");
         for (String s : winningNumbers) {
