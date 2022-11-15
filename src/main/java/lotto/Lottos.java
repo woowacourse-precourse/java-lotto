@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Lottos {
-    private final List<Lotto> lottos;
+    private static List<Lotto> lottos;
 
     public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;
@@ -17,7 +17,7 @@ public class Lottos {
         return Collections.unmodifiableList(lottos);
     }
 
-    public Map<LottoPrize, Integer> checkWinning(WinningNumbers winningNumbers) {
+    public static Map<LottoPrize, Integer> checkWinning(WinningNumbers winningNumbers) {
         Map<LottoPrize, Integer> result = new HashMap<>();
         for (LottoPrize prize : LottoPrize.values()) {
             result.put(prize, 0);

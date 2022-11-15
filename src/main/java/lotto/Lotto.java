@@ -12,10 +12,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 public class Lotto {
     private static final String ERROR_NUMBER_COUNT = "로또 번호는 6개여야 합니다.";
 
-    private static List<Integer> numbers;
-    private static final List<Lotto> number = new ArrayList<>();
-    private static final List<Lotto> lottos = new ArrayList<>();
-    private static final Money lottoPrice = new Money(1000);
+    private final List<Integer> numbers ;
 
 
     public Lotto(List<Integer> numbers) {
@@ -32,25 +29,18 @@ public class Lotto {
     }
 
     public static Lotto generateLottoNumbers() {
-        List<Integer> numbers = new ArrayList<>(pickUniqueNumbersInRange(1, 45, 6));
+        List<Integer> numbers = pickUniqueNumbersInRange(1, 45, 6);
 
         return new Lotto(numbers);
     }
 
-    public static void buy(Money money) {
-        int countLottos = money.lottoAccount(lottoPrice);
-        for (int i = 0; i < countLottos; i++) {
-            lottos.add(generateLottoNumbers());
-        }
-    }
 
-
-
-    public static List<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public static LottoPrize confirmWinning(WinningNumbers winningNumbers) {
+
+    public LottoPrize confirmWinning(WinningNumbers winningNumbers) {
         int lottoNumberMatches = (int) numbers.stream()
                 .filter(winningNumbers::hasLottoNumber)
                 .count();
@@ -60,7 +50,6 @@ public class Lotto {
 
         return LottoPrize.match(lottoNumberMatches, bonusNumberMatches);
     }
-
 
 
     @Override

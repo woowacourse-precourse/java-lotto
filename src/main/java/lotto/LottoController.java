@@ -26,7 +26,7 @@ public class LottoController {
             String numbers = lotto.getNumbers().stream()
                     .map(i -> Integer.toString(i))
                     .collect(Collectors.joining(", "));
-            System.out.printf("[%s]" + System.lineSeparator(), numbers);
+            System.out.printf("[%s] \n", numbers);
         }
         System.out.println();
     }
