@@ -67,7 +67,7 @@ public class UserInterface {
 
         String numbers = getConcatenatedString(answerNumbers, input);
 
-        Condition notPassCondition = validator.getNotPassCondition(conditions, input);
+        Condition notPassCondition = validator.getNotPassCondition(conditions, numbers);
 
         if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
