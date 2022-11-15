@@ -6,4 +6,12 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 수를 입력하세요.");
         }
     }
+
+    public static void checkWinningNumber(String winningNumberInput) {
+        if (winningNumberInput.contains(",") == false) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 쉼표로 구분해주세요.");
+        } else if (winningNumberInput.contains(" ") == true) {
+            throw new IllegalArgumentException("[ERROR] 공백을 포함할 수 없습니다.");
+        }
+    }
 }
