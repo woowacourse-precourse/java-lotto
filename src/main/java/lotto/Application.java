@@ -27,6 +27,11 @@ public class Application {
         //수익률 출력
 
     }
+    static int countPurchaseLotto(int buyMoney) {
+        int countPurase=0;
+
+        return countPurase;
+    }
 
     static ArrayList<Lotto> buyLotto(){
 
