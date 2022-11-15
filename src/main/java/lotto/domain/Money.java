@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import static lotto.exception.MoneyException.isDivideByThousand;
 import static lotto.exception.MoneyException.isPositive;

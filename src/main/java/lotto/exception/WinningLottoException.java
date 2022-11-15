@@ -1,7 +1,7 @@
 package lotto.exception;
 
 import java.util.regex.Pattern;
-import lotto.model.Lotto;
+import lotto.domain.Lotto;
 
 public class WinningLottoException {
     public static final String INVALID_INPUT_PATTERN = "[ERROR] 입력 형식과 맞지 않습니다.";

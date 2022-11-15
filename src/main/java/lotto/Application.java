@@ -1,11 +1,11 @@
 package lotto;
 
-import lotto.model.LottoCount;
+import lotto.domain.LottoCount;
 import lotto.util.LottoNumberGenerator;
-import lotto.model.Lottos;
-import lotto.model.Money;
-import lotto.model.Result;
-import lotto.model.WinningLotto;
+import lotto.domain.Lottos;
+import lotto.domain.Money;
+import lotto.domain.result.Result;
+import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 

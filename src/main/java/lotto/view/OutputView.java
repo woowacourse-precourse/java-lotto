@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.model.Lotto;
-import lotto.model.LottoCount;
-import lotto.model.Lottos;
-import lotto.model.Money;
-import lotto.model.Rank;
-import lotto.model.Result;
+import lotto.domain.Lotto;
+import lotto.domain.LottoCount;
+import lotto.domain.Lottos;
+import lotto.domain.Money;
+import lotto.domain.result.Rank;
+import lotto.domain.result.Result;
 
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator();

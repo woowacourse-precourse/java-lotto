@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 public class LottoCount {
     private static final String DEFAULT_UNIT = "1000";
