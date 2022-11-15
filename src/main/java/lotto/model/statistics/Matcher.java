@@ -5,6 +5,6 @@ import lotto.model.WinningNumbers;
 
 
 public interface Matcher {
-    Integer getCorrectMatch(WinningNumbers winningNumbers, Lotto IssuedNumber);
-    Boolean getBonusMatch(WinningNumbers winningNumbers, Lotto IssuedNumber);
+    void match();
+    Statistics getStatistics();
 }

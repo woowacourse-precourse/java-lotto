@@ -2,7 +2,6 @@ package lotto.model.Issue;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
-import lotto.model.converter.ConverterImpl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
