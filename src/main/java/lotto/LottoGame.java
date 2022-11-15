@@ -24,7 +24,6 @@ public class LottoGame {
             showStatistics(lottos, winningLotto, money);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            throw e;
         }
     }
 
