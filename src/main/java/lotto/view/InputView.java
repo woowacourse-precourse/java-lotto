@@ -39,12 +39,15 @@ public class InputView {
     public static int readBonusNumber() {
         System.out.println(LINE_FEED + READ_BONUS_NUMBER_MESSAGE);
 
+        int bonusMoney;
         try {
-            return convertStrToInt(Console.readLine());
+            bonusMoney = convertStrToInt(Console.readLine());
+            validateLottoNumber(bonusMoney);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw new NoSuchElementException();
         }
+        return bonusMoney;
     }
 
     public static int convertStrToInt(String input) {
@@ -68,7 +71,6 @@ public class InputView {
         } catch (Exception e) {
             throw new IllegalArgumentException(ERROR_WINNING_MESSAGE);
         }
-
         return integers;
     }
 

@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,9 +10,9 @@ import java.util.NoSuchElementException;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.domain.Preset.ERROR_FORMAT_MESSAGE;
 import static lotto.domain.Preset.ERROR_WINNING_MESSAGE;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class CustomTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -54,7 +55,7 @@ public class CustomTest extends NsTest {
                                     () -> {
                                         run("3000", "1|2,3,4,5,6");
                                         assertThat(output()).contains(
-                                                "8개를 구매했습니다.",
+                                                "3개를 구매했습니다.",
                                                 "[8, 21, 23, 41, 42, 43]",
                                                 "[3, 5, 11, 16, 32, 38]",
                                                 "[7, 11, 16, 35, 36, 44]"
@@ -78,7 +79,7 @@ public class CustomTest extends NsTest {
                                     () -> {
                                         run("3000", "1,100,3,4,5,6");
                                         assertThat(output()).contains(
-                                                "8개를 구매했습니다.",
+                                                "3개를 구매했습니다.",
                                                 "[8, 21, 23, 41, 42, 43]",
                                                 "[3, 5, 11, 16, 32, 38]",
                                                 "[7, 11, 16, 35, 36, 44]"
@@ -102,7 +103,7 @@ public class CustomTest extends NsTest {
                                     () -> {
                                         run("3000", "1,a,3,4,5,6");
                                         assertThat(output()).contains(
-                                                "8개를 구매했습니다.",
+                                                "3개를 구매했습니다.",
                                                 "[8, 21, 23, 41, 42, 43]",
                                                 "[3, 5, 11, 16, 32, 38]",
                                                 "[7, 11, 16, 35, 36, 44]"
@@ -115,6 +116,45 @@ public class CustomTest extends NsTest {
                         }
                 );
         assertThat(output()).contains(ERROR_WINNING_MESSAGE);
+    }
+
+    // 단위테스트 - 보너스 번호를 입력받는 기능
+    @DisplayName("보너스 번호가 로또 번호 범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void 단위_테스트_3_1() {
+        assertThatThrownBy(() -> new WinningLotto(List.of(1,2,3,4,5,6), 56))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void 단위_테스트_3_2() {
+        assertThatExceptionOfType(NoSuchElementException.class)
+                .isThrownBy(() -> {
+                            assertRandomUniqueNumbersInRangeTest(
+                                    () -> {
+                                        run("3000", "1,2,3,4,5,6", "a");
+                                        assertThat(output()).contains(
+                                                "3개를 구매했습니다.",
+                                                "[8, 21, 23, 41, 42, 43]",
+                                                "[3, 5, 11, 16, 32, 38]",
+                                                "[7, 11, 16, 35, 36, 44]"
+                                        );
+                                    },
+                                    List.of(8, 21, 23, 41, 42, 43),
+                                    List.of(3, 5, 11, 16, 32, 38),
+                                    List.of(7, 11, 16, 35, 36, 44)
+                            );
+                        }
+                );
+        assertThat(output()).contains(ERROR_FORMAT_MESSAGE);
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복이면 예외가 발생한다.")
+    @Test
+    void 단위_테스트_3_3() {
+        assertThatThrownBy(() -> new WinningLotto(List.of(1,2,3,4,5,6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
