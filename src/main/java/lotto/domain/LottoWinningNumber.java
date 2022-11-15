@@ -19,4 +19,8 @@ public class LottoWinningNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    public String[] separateByComma(String inputNumbers) {
+        return inputNumbers.split(",");
+    }
 }
