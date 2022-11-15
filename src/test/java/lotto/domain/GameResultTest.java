@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class GameResultTest {
     static final List<Integer> winningLotto = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+    static final Integer bonusNumber = 7;
 
     @DisplayName("로또가 당첨 번호와 몇 개 일치하는지 비교한다.")
     @Test
@@ -30,6 +31,18 @@ class GameResultTest {
                 () -> assertThat(GameResult.getMatchingCount(fourMatching, winningLotto)).isEqualTo(4),
                 () -> assertThat(GameResult.getMatchingCount(fiveMatching, winningLotto)).isEqualTo(5),
                 () -> assertThat(GameResult.getMatchingCount(sixMatching, winningLotto)).isEqualTo(6)
+        );
+    }
+
+    @DisplayName("로또가 보너스 번호와 일치하는 번호가 있는지 비교한다.")
+    @Test
+    void isContainedBonusNumber() {
+        List<Integer> matching = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10, 11));
+        List<Integer> noMatching = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+
+        assertAll(
+                () -> assertThat(GameResult.isContainedBonusNumber(matching, bonusNumber)).isEqualTo(true),
+                () -> assertThat(GameResult.isContainedBonusNumber(noMatching, bonusNumber)).isEqualTo(false)
         );
     }
 }
