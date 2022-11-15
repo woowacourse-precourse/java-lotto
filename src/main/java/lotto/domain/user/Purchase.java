@@ -12,8 +12,15 @@ public class Purchase {
         this.amount = amount;
     }
 
-    public static Purchase create(int amount) {
-        return new Purchase(amount);
+    public static Purchase create(String amount) {
+        hasDigitsOnly(amount);
+        return new Purchase(Integer.parseInt(amount));
+    }
+
+    private static void hasDigitsOnly(String purchaseAmount) {
+        if (!purchaseAmount.matches(Constant.REG_XP_DIGITS)) {
+            throw new IllegalArgumentException(InputException.MONEY_NOT_DIGIT.message());
+        }
     }
 
     private static void isDividedByLottoAmount(int purchaseAmount) {

@@ -10,21 +10,9 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private static final String REG_XP_DIGITS = "^[0-9,]+$";
-
-    private static final String SPLIT_STANDARD = ",";
-
-    public static int inputLottoPurchaseAmount() {
+    public static String inputLottoPurchaseAmount() {
         System.out.println(View.INPUT_PURCHASE.message());
-        String input = Console.readLine();
-        hasDigitsOnly(input);
-        return Integer.parseInt(input);
-    }
-
-    private static void hasDigitsOnly(String purchaseAmount) {
-        if (!purchaseAmount.matches(REG_XP_DIGITS)) {
-            throw new IllegalArgumentException(InputException.MONEY_NOT_DIGIT.message());
-        }
+        return Console.readLine();
     }
 
     public static List<Integer> inputUserWinNumber() {
@@ -35,13 +23,13 @@ public class InputView {
     }
 
     private static void isDigitAndSplitByStandard(String winNumbers) {
-        if (!winNumbers.matches(REG_XP_DIGITS)) {
+        if (!winNumbers.matches(Constant.REG_XP_DIGITS)) {
             throw new IllegalArgumentException(InputException.LOTTO_INVALID_FORM.message());
         }
     }
 
     private static List<Integer> mapToList(String winNumbers) {
-        return Arrays.stream(winNumbers.split(SPLIT_STANDARD))
+        return Arrays.stream(winNumbers.split(Constant.SPLIT_STANDARD))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
     }
@@ -55,7 +43,7 @@ public class InputView {
 
     private static void isBonusNumberDigit(String bonusNumber) {
         if (bonusNumber.length() != Constant.BONUS_NUMBER_SIZE
-                || !bonusNumber.matches(REG_XP_DIGITS)) {
+                || !bonusNumber.matches(Constant.REG_XP_DIGITS)) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }

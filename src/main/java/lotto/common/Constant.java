@@ -6,4 +6,6 @@ public class Constant {
     public static final int MIN_LOTTO_RANGE = 1;
     public static final int MAX_LOTTO_RANGE = 45;
     public static final int BONUS_NUMBER_SIZE = 1;
+    public static final String REG_XP_DIGITS = "^[0-9,]+$";
+    public static final String SPLIT_STANDARD = ",";
 }

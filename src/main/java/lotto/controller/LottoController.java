@@ -30,7 +30,7 @@ public class LottoController {
     }
 
     protected void issueLotto() {
-        int amount = InputView.inputLottoPurchaseAmount();
+        String amount =  InputView.inputLottoPurchaseAmount();
         purchase = Purchase.create(amount);
         lotties = createLottiesByPurchaseAmount(purchase.getLottoPublishCount());
     }

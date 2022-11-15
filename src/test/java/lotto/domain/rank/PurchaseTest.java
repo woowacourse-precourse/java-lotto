@@ -2,7 +2,6 @@ package lotto.domain.rank;
 
 import lotto.domain.user.Purchase;
 import lotto.exception.InputException;
-import lotto.view.InputView;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +19,7 @@ public class PurchaseTest {
 
     @BeforeEach
     void init() {
-        int purchaseCount = 2000;
+        String purchaseCount = "2000";
         purchase = Purchase.create(purchaseCount);
     }
 
@@ -47,9 +46,9 @@ public class PurchaseTest {
         @DisplayName("구입 금액이 1000원 단위가 아닌 경우 예외를 터트린다.")
         @Test
         void isDividedByLottoAmount() {
-            int purchase = 11003;
+            String purchase = "11003";
 
-            Assertions.assertThatThrownBy( () -> Purchase.create(purchase))
+            Assertions.assertThatThrownBy(() -> Purchase.create(purchase))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.MONEY_NOT_DIVIDE_BY_LOTTO_UNIT.message());
         }
@@ -65,7 +64,7 @@ public class PurchaseTest {
             String purchase = "3!@# A";
             System.setIn(generateUserInput(purchase));
 
-            Assertions.assertThatThrownBy(InputView::inputLottoPurchaseAmount)
+            Assertions.assertThatThrownBy(() -> Purchase.create(purchase))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.MONEY_NOT_DIGIT.message());
         }

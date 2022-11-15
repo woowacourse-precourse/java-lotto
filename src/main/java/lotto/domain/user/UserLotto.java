@@ -14,13 +14,13 @@ public final class UserLotto {
 
     public UserLotto(List<Integer> winNumbers, int bonusNumber) {
         this.winNumbers = new Lotto(List.copyOf(winNumbers));
-        validate(bonusNumber);
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    private void validate(int bonusNumber) {
-        isValidBonusLottoRange(bonusNumber);
-        isBonusNotDuplicateWithWinNumbers(bonusNumber);
+    private void validateBonusNumber(int  bonusNum) {
+        isValidBonusLottoRange(bonusNum);
+        isBonusNotDuplicateWithWinNumbers(bonusNum);
     }
 
     private void isValidBonusLottoRange(int bonusNumber) {
