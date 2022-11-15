@@ -10,7 +10,7 @@ public class ExceptionCase {
         try{
             buyingAmount = Integer.parseInt(buyingAmountString);
         } catch (Exception e){
-            System.out.println("[ERROR] 구입 금액은 항상 정수로만 입력해야 합니다.");
+            System.out.println("[ERROR] 구입 금액은 항상 정수로만 입력해야 합니다. 다른 문자나 공백은 입력이 불가합니다.");
             throw new IllegalArgumentException();
         }
         return buyingAmount;
