@@ -20,19 +20,28 @@ public class LottoService {
         input = new Input();
     }
 
-    public void create(){
+    final public void start(){
+        create();
+        showHistory();
+        createWinNum();
+        createBonusNum();
+        winStatistics();
+        revenue();
+    }
+
+    private void create(){
         output.moneyInform();
         issue = new Issue(input.money());
         history = issue.lotto();
     }
 
-    public void showHistory(){
+    private void showHistory(){
         output.amount(history.size());
         output.lottoHistory(history);
     }
 
 
-    public void createWinNum(){
+    private void createWinNum(){
         output.winningNum();
         Integer[] numbers = Stream.of(input.winningNum().split(","))
                 .mapToInt(Integer::parseInt)
@@ -41,12 +50,12 @@ public class LottoService {
         win = new Lotto(Arrays.asList(numbers));
     }
 
-    public void createBonusNum(){
+    private void createBonusNum(){
         output.bonusNum();
         win.addBonusNum(input.bonusNum());
     }
 
-    public void winStatistics(){
+    private void winStatistics(){
         for(Lotto numbers : history) {
             int count = win.compare(numbers);
             if(count == 5 && numbers.hasBonusNum(win)){
@@ -61,7 +70,7 @@ public class LottoService {
         output.winStatistics();
     }
 
-    public void revenue() {
+    private void revenue() {
         double revenue = 0;
         for (CoincideNumber coincideNumber : CoincideNumber.values()){
             if(coincideNumber.count()!=0) {
@@ -70,4 +79,6 @@ public class LottoService {
         }
         output.revenue(issue.revenue(revenue));
     }
+
+
 }
