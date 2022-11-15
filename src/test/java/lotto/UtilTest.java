@@ -32,4 +32,12 @@ public class UtilTest {
         assertThat(origin).isEqualTo(false);
 
     }
+
+    @DisplayName("isUnitsOf1000WonTest")
+    @Test
+    void isUnitsOf1000WonTest() {
+        boolean origin = ValidationUtil.isUnitsOf1000Won("1000");
+
+        assertThat(origin).isEqualTo(true);
+    }
 }
