@@ -28,6 +28,9 @@ public class GameController {
 
         final List<Lotto> userBoughtLotteries = gameService.createLotteries(numberOfLotto);
         buyLotto(userBoughtLotteries);
+
+        final List<Integer> winningNumbers = Input.inputWinningNumber();
+        final int bonusNumber = Input.inputBonusNumber();
     }
 
     private void opening(int numberOfLotto) {
