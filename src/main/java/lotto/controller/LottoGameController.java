@@ -1,11 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.LottoFactory;
-import lotto.domain.Lottos;
-import lotto.domain.Money;
-import lotto.domain.Result;
-import lotto.domain.WinLotto;
-import lotto.domain.Yield;
+import lotto.domain.lotto.LottoFactory;
+import lotto.domain.lotto.Lottos;
+import lotto.domain.statistics.Money;
+import lotto.domain.statistics.Result;
+import lotto.domain.lotto.WinLotto;
+import lotto.domain.statistics.Yield;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -17,6 +17,7 @@ public class LottoGameController {
         OutputView.printLottos(lottos);
 
         WinLotto winLotto = getWinLotto();
+
         Result result = Result.of(lottos, winLotto);
         Yield  yield  = Yield.of(money.get(),result.getPrize());
         OutputView.printResult(result);

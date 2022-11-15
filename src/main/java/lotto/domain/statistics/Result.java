@@ -1,7 +1,10 @@
-package lotto.domain;
+package lotto.domain.statistics;
 
 import java.util.HashMap;
 import java.util.Map;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.WinLotto;
 
 public class Result {
 

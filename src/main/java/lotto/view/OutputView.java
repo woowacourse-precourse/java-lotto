@@ -1,10 +1,10 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.Rank;
-import lotto.domain.Result;
-import lotto.domain.Yield;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Lottos;
+import lotto.domain.statistics.Rank;
+import lotto.domain.statistics.Result;
+import lotto.domain.statistics.Yield;
 
 public class OutputView {
     private static final String PURCHASE_INFO = "\n%d개를 구매했습니다.\n";
