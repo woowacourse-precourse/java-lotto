@@ -25,7 +25,13 @@ public class InputView {
 
         return castToList(input);
     }
+    public int getBonusNumbers() {
+        System.out.println(MESSAGE_TO_GET_BONUS_NUMBER);
+        String input = Console.readLine().trim(); //띄어쓰기 고려
 
+        isNumber(input);
+        return Integer.parseInt(input);
+    }
 
 
 }
