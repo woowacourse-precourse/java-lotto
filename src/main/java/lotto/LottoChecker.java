@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LotteryChecker {
+public class LottoChecker {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
-    public LotteryChecker() {
+    public LottoChecker() {
         winningNumbers = inputWinningNumbers();
         bonusNumber = inputBonusNumber();
     }
