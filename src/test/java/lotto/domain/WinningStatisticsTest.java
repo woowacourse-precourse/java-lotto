@@ -48,4 +48,11 @@ public class WinningStatisticsTest {
         assertThat(winningAmount).isEqualTo(2031555000);
     }
 
+    @DisplayName("총 수익률을 구한다.")
+    @Test
+    void getLottoYieldTest() {
+        double lottoYield;
+        lottoYield = WinningStatistics.getLottoYield(5000, 8000);
+        assertThat(lottoYield).isEqualTo(62.5);
+    }
 }
