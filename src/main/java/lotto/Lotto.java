@@ -1,13 +1,17 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private Integer bonusNumber = 0;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        System.out.println(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -15,6 +19,4 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    // TODO: 추가 기능 구현
 }
