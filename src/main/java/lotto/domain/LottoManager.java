@@ -16,6 +16,7 @@ public class LottoManager {
     private static final int LOTTOLASTNUMBER = 45;
     private static final int LOTTOCOUNT = 6;
     private static final int LOTTOPRICE = 1000;
+
     public LottoManager() {
     }
 
