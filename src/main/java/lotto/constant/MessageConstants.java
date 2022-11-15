@@ -22,6 +22,12 @@ public final class MessageConstants {
     public static final String WRONG_DELIMITER_MESSAGE = "당첨 번호는 쉼표로 구분되어야 합니다.";
     public static final String BONUS_DUPLICATE_MESSAGE = "보너스 번호는 당첨 번호와 중복되면 안됩니다.";
 
+    public static final String FIRST_PLACE_MESSAGE = "6개 일치 (2,000,000,000원) - ";
+    public static final String SECOND_PLACE_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    public static final String THIRD_PLACE_MESSAGE = "5개 일치 (1,500,000원) - ";
+    public static final String FOURTH_PLACE_MESSAGE = "4개 일치 (50,000원) - ";
+    public static final String FIFTH_PLACE_MESSAGE = "3개 일치 (5,000원) - ";
+
 }
 
 
