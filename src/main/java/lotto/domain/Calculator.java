@@ -9,10 +9,10 @@ public class Calculator {
     private static final double ROUND_TO_ONE_DOUBLE = 10.0;
 
     public static double getEarningRate(List<Integer> result) {
-        if(!validateSize(result)) {
+        if (!validateSize(result)) {
             System.out.println("[ERROR] 잘못된 결과가 전달됐습니다. ");
             throw new IllegalArgumentException();
-        };
+        }
 
         try {
             double numberOfLotto = result.stream().mapToInt(Integer::intValue).sum();
