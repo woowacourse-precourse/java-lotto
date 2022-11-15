@@ -18,7 +18,7 @@ public class Cashier {
     }
 
     public int sellLotto(int userValue) {
-        int lottoAmount = checkInputPrice(userValue);
+        int lottoAmount = checkInputPrice(userValue) / 1000;
         System.out.println(lottoAmount + "개를 구매했습니다.");
         return lottoAmount;
     }
