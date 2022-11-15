@@ -30,23 +30,4 @@ public class WinningLotto extends Lotto {
     public int getBonusNumber() {
         return bonusNumber;
     }
-
-    public LottoGrade getLottoGrade(Lotto lotto) {
-        int correct = compareToWinningLotto(lotto);
-        boolean bonus = compareToBonusNumber(lotto);
-
-        return LottoGrade.getGrade(correct, bonus);
-    }
-
-    public int compareToWinningLotto(Lotto lotto) {
-        int result = (int) lotto.getNumbers().stream()
-                .filter(number -> getNumbers().stream()
-                        .anyMatch(Predicate.isEqual(number)))
-                .count();
-        return result;
-    }
-
-    public boolean compareToBonusNumber(Lotto lotto) {
-        return lotto.getNumbers().contains(getBonusNumber());
-    }
 }

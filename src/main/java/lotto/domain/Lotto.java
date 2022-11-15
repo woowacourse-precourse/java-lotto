@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import lotto.util.LottoUtils;
 import lotto.view.ExceptionMessage;
@@ -17,7 +18,8 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.");
+            ExceptionMessage.inputNumberSizeError();
+            throw new IllegalArgumentException();
         }
     }
 
@@ -40,5 +42,24 @@ public class Lotto {
         for(Integer number : numbers){
             LottoUtils.checkNumberInRange(number);
         }
+    }
+
+    public LottoGrade getLottoGrade(WinningLotto winningLotto) {
+        int correct = compareToWinningLotto(winningLotto);
+        boolean bonus = compareToBonusNumber(winningLotto);
+
+        return LottoGrade.getGrade(correct, bonus);
+    }
+
+    public int compareToWinningLotto(WinningLotto winningLotto) {
+        int result = (int) winningLotto.getNumbers().stream()
+                .filter(number -> getNumbers().stream()
+                        .anyMatch(Predicate.isEqual(number)))
+                .count();
+        return result;
+    }
+
+    public boolean compareToBonusNumber(WinningLotto winningLotto) {
+        return getNumbers().contains(winningLotto.getBonusNumber());
     }
 }

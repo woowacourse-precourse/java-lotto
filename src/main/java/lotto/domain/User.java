@@ -31,7 +31,7 @@ public class User {
         lottoGrades = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
-            LottoGrade lottoGrade = winningLotto.getLottoGrade(lotto);
+            LottoGrade lottoGrade = lotto.getLottoGrade(winningLotto);
             if (lottoGrade != null) {
                 lottoGrades.add(lottoGrade);
             }

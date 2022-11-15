@@ -27,4 +27,8 @@ public class ExceptionMessage {
     public static void existBonusNumberError() {
         exception = "입력한 보너스 번호가 이미 당첨 번호에 존재합니다.";
     }
+
+    public static void inputNumberSizeError() {
+        exception = "로또 번호는 6개의 숫자여야 합니다.";
+    }
 }
