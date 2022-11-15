@@ -3,12 +3,14 @@ package lotto;
 import lotto.exception.ErrorCode;
 import lotto.exception.MyIllegalArgumentException;
 
+import java.util.Collections;
 import java.util.List;
 
+import static lotto.LottoConfiguration.END_NUMBER;
+import static lotto.LottoConfiguration.START_NUMBER;
+import static lotto.LottoConfiguration.SIZE;
+
 public class Lotto {
-    private static final int SIZE = 6;
-    private static final int START_NUMBER = 1;
-    private static final int END_NUMBER = 45;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -42,5 +44,9 @@ public class Lotto {
 
     public void printNumbers() {
         System.out.println(this.numbers);
+    }
+
+    public void sortNumbers() {
+        Collections.sort(numbers);
     }
 }
