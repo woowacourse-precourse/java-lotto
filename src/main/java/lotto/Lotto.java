@@ -16,9 +16,33 @@ public class Lotto {
             System.out.println(ErrorType.NOT_SIX_NUMBERS.getErrorMessage());
             throw new IllegalArgumentException();
         }
+
+        isDuplicatedNumber(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    public static void isDuplicatedNumber(List<Integer> numbers) {
+
+        for (int number : numbers) {
+            compareNumber(numbers, number);
+        }
+    }
+
+    public static void compareNumber(List<Integer> numbers, int number) {
+        int count = 0;
+
+        for (int compareNumber : numbers) {
+            if (compareNumber == number) {
+                count++;
+            }
+        }
+
+        if (count >= 2) {
+            System.out.println(ErrorType.DUPLICATED_NUMBER.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+
     public int compareLotto(List<Integer> numbersOfWinner, int bonusNumber) {
         int generalCount = 0;
         int bonusCount = 0;
