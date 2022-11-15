@@ -13,5 +13,6 @@ public class RandomNumbers {
         List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
         Collections.sort(randomNumbers);
         return randomNumbers;
+        
     }
 }
