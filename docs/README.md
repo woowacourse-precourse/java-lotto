@@ -54,3 +54,5 @@
 - Lotto 클래스를 Model과 View의 기능으로 분리
 - stati final String 변수들과 이 변수들을 부르는 모든 함수는 View로 이전
 - static variable들은 Controller로 이전
+- Model은 Controller와 View에 의존하지 않는다.
+- View는 Model에만 의존해야 하고, Controller에는 의존하면 안된다. 
