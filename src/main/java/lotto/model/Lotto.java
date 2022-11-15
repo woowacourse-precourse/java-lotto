@@ -1,13 +1,16 @@
 package lotto.model;
 
 import lotto.model.enums.ErrorMessage;
-import lotto.validator.Validator;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Lotto {
+    private static final int LOTTO_NUMBER_SIZE = 6;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 45;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -18,34 +21,25 @@ public class Lotto {
     }
 
     private void validateLength(List<Integer> numbers) {
-        try {
-            Validator.validateLength(numbers);
-        } catch (IllegalArgumentException lengthError) {
-            ErrorMessage.LENGTH_ERROR_MESSAGE.printMessage();
-            throw lengthError;
+        if (numbers.size() != LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(ErrorMessage.LENGTH_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
-        try {
-            Validator.validateRange(numbers);
-        } catch (IllegalArgumentException rangeError) {
-            ErrorMessage.RANGE_ERROR_MESSAGE.printMessage();
-            throw rangeError;
+        if (numbers.stream().anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER)) {
+            throw new IllegalArgumentException(ErrorMessage.RANGE_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        try {
-            Validator.validateDuplicate(numbers);
-        } catch (IllegalArgumentException duplicateError) {
-            ErrorMessage.DUPLICATE_ERROR_MESSAGE.printMessage();
-            throw duplicateError;
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_ERROR_MESSAGE.getMessage());
         }
     }
 
-    public List<Integer> getLotto() {
-        return numbers;
+    public void printLotto() {
+        System.out.println(numbers);
     }
 
     public boolean isIncludeBonus(int luckyBonus) {
