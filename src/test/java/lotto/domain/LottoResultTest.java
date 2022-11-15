@@ -14,6 +14,6 @@ class LottoResultTest {
                         List.of(1, 2, 3, 7, 8, 9), List.of(1, 2, 3, 4, 5, 42)), 42);
 
         Assertions.assertEquals(List.of(6, 5, 4, 3, 5), result.getMatches());
-        Assertions.assertEquals(List.of(0, 0, 0, 0, 1), result.getBonusMatches());
+        Assertions.assertEquals(List.of(false, false, false, false, true), result.getBonusMatches());
     }
 }
