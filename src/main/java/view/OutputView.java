@@ -12,7 +12,7 @@ import static constant.Config.NEW_LINE;
 
 public class OutputView {
     private static final String LOTTOS_COUNT = NEW_LINE + "%d개를 구매했습니다." + NEW_LINE;
-    private static final String WINNING_STATISTICS = NEW_LINE + "당첨 통계" + NEW_LINE + "---" + NEW_LINE;
+    private static final String WINNING_STATISTICS = NEW_LINE + "당첨 통계" + NEW_LINE + "---";
     private static final String RANK = "%d개 일치%s (%,d원) - %d개" + NEW_LINE;
     private static final String CONTAINS_BONUS_BALL = ", 보너스 볼 일치";
     private static final String EXCEPT_BONUS_BALL = "";
@@ -33,22 +33,19 @@ public class OutputView {
     }
 
     public static void printWinningResult(WinningResult winningResult) {
-        System.out.print(getResultMessage(winningResult));
+        System.out.println(WINNING_STATISTICS);
+        printRankingResult(winningResult);
     }
 
-    private static String getResultMessage(WinningResult winningResult) {
-        StringBuilder result = new StringBuilder();
-        result.append(WINNING_STATISTICS);
-
+    private static void printRankingResult(WinningResult winningResult) {
         List<Win> reverseWins = Win.getReverseWins();
 
         for (Win win : reverseWins) {
             String bonusBallMatch = isBonusBallMatch(win);
 
-            result.append(String.format(RANK, win.getMatchCount(), bonusBallMatch,
-                    win.getWinningAmount(), winningResult.getCount(win)));
+            System.out.printf(RANK, win.getMatchCount(), bonusBallMatch,
+                    win.getWinningAmount(), winningResult.getCount(win));
         }
-        return result.toString();
     }
 
     private static String isBonusBallMatch(Win win) {
@@ -62,7 +59,7 @@ public class OutputView {
         System.out.printf(EARNINGS_RATE, earningsRate.getEarningRate());
     }
 
-    public static void printErrorMessage(IllegalArgumentException e) {
-        System.out.println(ERROR + e.getMessage());
+    public static void printErrorMessage(IllegalArgumentException exception) {
+        System.out.println(ERROR + exception.getMessage());
     }
 }
