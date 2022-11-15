@@ -20,7 +20,7 @@ public class LottoMachine {
     private static void cycleLottos(Lotto winningNums, Lottos lottos, Bonus bonus,
         Map<Prize, Integer> prizeBoard) {
         for (Lotto lotto : lottos.lottos) {
-            boolean isBonus = isBonus(lotto, bonus.getBonusNum());
+            boolean isBonus = isBonus(lotto, bonus);
             int count = countPerRank(winningNums, lotto);
             Prize prize = Prize.valueOf(count, isBonus);
             putPrize(prizeBoard, prize);
@@ -39,7 +39,7 @@ public class LottoMachine {
         return prizeBoard.get(prize) + COUNT;
     }
 
-    private static boolean isBonus(Lotto lotto, int bonus) {
+    private static boolean isBonus(Lotto lotto, Bonus bonus) {
         return Lotto.isBonus(lotto, bonus);
     }
 
