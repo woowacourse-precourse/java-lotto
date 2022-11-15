@@ -43,6 +43,13 @@ public class Domain {
         initializationBonusNumber();
     }
 
+    // TODO: 당첨 통계, 총 수익률을 출력하는 루틴을 실행한다.
+    public void printPrize(){
+        lotteryComparison();
+        printWinStatistics();
+        printYield();
+    }
+
     // TODO: 구매 티켓의 번호를 비교하여 당첨 내역, 수익률을 출력하는 루틴을 실행한다.
 
     // TODO: 로또 금액 문장 출력 후 로또 금액을 입력 받는다.
