@@ -1,7 +1,9 @@
 package lotto.model;
 
 import static lotto.model.Rank.FIFTH_PLACE;
+import static lotto.model.Rank.SECOND_PLACE;
 import static lotto.model.Rank.findCountWithRank;
+import static lotto.model.Rank.findIntroMessageWithRank;
 import static lotto.model.Rank.findRewardWithRank;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -46,5 +48,18 @@ public class RankTest {
 
         //then
         assertThat(reward).isEqualTo(5000);
+    }
+
+    @Test
+    @DisplayName("순위에 따라 알맞는 메시지를 반환한다.")
+    void checkFindIntroMessageWithRank() {
+        //given
+        Rank rank = SECOND_PLACE;
+
+        //when
+        String introMessage = findIntroMessageWithRank(rank);
+
+        //then
+        assertThat(introMessage).contains("5개");
     }
 }
