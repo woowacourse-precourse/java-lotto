@@ -32,7 +32,7 @@ public class LottoResultTest {
             lottoInHand.add(lottoIssuer.issueLotto(Arrays.asList(5, 6, 7, 8, 9, 10)));
             lottoInHand.add(lottoIssuer.issueLotto(Arrays.asList(6, 7, 8, 9, 10, 11)));
             lottoInHand.add(lottoIssuer.issueLotto(Arrays.asList(7, 8, 9, 10, 11, 12)));
-            assertThat(getResult(lottoInHand, winningNumbers, bonusNumber)).isEqualTo(Arrays.asList(0, 1, 1, 1, 1, 1, 2));
+            assertThat(getResult(lottoInHand, winningNumbers, bonusNumber)).isEqualTo(Arrays.asList(0, 1, 1, 0, 1, 1, 3));
         }
     }
 
