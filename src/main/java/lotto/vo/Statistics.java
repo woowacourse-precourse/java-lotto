@@ -27,9 +27,6 @@ public class Statistics {
     }
 
     private int countRank(List<Rank> ranks, Rank targetRank) {
-        if (targetRank == Rank.NONE) {
-            return 0;
-        }
         return Math.toIntExact(ranks.stream()
                 .filter(rank -> rank == targetRank)
                 .count());
