@@ -1,4 +1,5 @@
 package lotto;
+import java.util.LinkedList;
 
 import lotto.lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;

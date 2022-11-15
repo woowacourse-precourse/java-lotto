@@ -29,4 +29,8 @@ public class LottoPrinter {
         else if (matchedBalls == 6)
             matched[4] += 1;
     }
+
+    public int[] getMatched() {
+        return matched;
+    }
 }
