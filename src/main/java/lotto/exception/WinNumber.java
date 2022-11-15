@@ -15,5 +15,20 @@ public class WinNumber {
         }
     }
 
+    public static void exceptionNoNumbers(String input) {
+        String[] winNumber = input.split(",");
+        for (int i = 0; i < winNumber.length; i++) {
+            exceptionNoNumber(winNumber[i]);
+        }
+    }
+
+    public static void exceptionNoNumber(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException(Error.WRONG_LOTTO_NUM.getMsg());
+            }
+        }
+    }
+
 
 }
