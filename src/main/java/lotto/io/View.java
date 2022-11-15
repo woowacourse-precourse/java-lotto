@@ -54,28 +54,13 @@ public class View {
         showYield(lottoResult.getYield());
     }
 
+    private void showAllResult(Map.Entry<LottoRank, Integer> result) {
+        output.printOutput(result.getKey().getMessage() + result.getValue() + Message.COUNT);
+    }
+
     private void showYield(double yield) {
         output.printOutput(
                 String.format(Message.YIELD_RESULT.toString(), yield));
     }
-
-    private void showAllResult(Map.Entry<LottoRank, Integer> result) {
-        if (result.getKey().getReward() == 30000000) {
-            showBonus(result);
-            return;
-        }
-        showCommon(result);
-    }
-
-    private void showBonus(Map.Entry<LottoRank, Integer> result) {
-        output.printOutput(
-                String.format(Message.BONUS_RESULT.toString(), result.getKey().getMatchCount(),
-                        result.getKey().getReward(), result.getValue()));
-    }
-
-    private void showCommon(Map.Entry<LottoRank, Integer> result) {
-        output.printOutput(
-                String.format(Message.EACH_RESULT.toString(), result.getKey().getMatchCount(),
-                        result.getKey().getReward(), result.getValue()));
-    }
 }
+

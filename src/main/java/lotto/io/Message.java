@@ -6,8 +6,7 @@ public enum Message {
     GET_LOTTO_NUMBER("당첨 번호를 입력해 주세요."),
     GET_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     RESULT_INFO("당첨 통계\n---"),
-    EACH_RESULT("%d개 일치 (%,d원) - %d개"),
-    BONUS_RESULT("%d개 일치, 보너스 볼 일치 (%,d원) - %d개"),
+    COUNT("개"),
     YIELD_RESULT("총 수익률은 %.1f%%입니다.");
 
     private final String message;
@@ -21,3 +20,4 @@ public enum Message {
         return message;
     }
 }
+
