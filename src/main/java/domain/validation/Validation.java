@@ -1,14 +1,27 @@
-package lotto;
+package domain.validation;
 
-import lotto.message.ErrorMessage;
+import view.message.ErrorMessage;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Validation {
 
     public static void validateAmount(int amount) {
         if (amount % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessage.AMOUNT_ERROR_MESSAGE);
+        }
+    }
+
+    public static void validateWinningNumbersInput(String input) {
+        try {
+            List<Integer> collect = Arrays.stream(input.split(","))
+                    .mapToInt(Integer::parseInt)
+                    .boxed()
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT_MESSAGE);
         }
     }
 
@@ -30,7 +43,17 @@ public class Validation {
         }
     }
 
+    public static void validateInput(String input) {
+
+        try {
+            int number = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT_MESSAGE);
+        }
+    }
+
     public static void validateBonusNumber(int bonusNumber) {
+
         if (!isValidNumber(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUM_ERROR_MESSAGE);
         }
