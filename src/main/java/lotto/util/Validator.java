@@ -1,31 +1,31 @@
 package lotto.util;
 
+import lotto.constant.ExceptionConstants;
+import lotto.constant.GameConstants;
+
 import java.util.List;
 import java.util.regex.Pattern;
-
-import static lotto.constant.ExceptionConstants.*;
-import static lotto.constant.GameConstants.*;
 
 public class Validator {
 
     public static void validateRange(List<Integer> numbers, int length) {
         if (length != numbers.stream()
-                .filter(number -> MIN_NUMBER <= number)
-                .filter(number -> number <= MAX_NUMBER)
+                .filter(number -> GameConstants.MIN_NUMBER <= number)
+                .filter(number -> number <= GameConstants.MAX_NUMBER)
                 .count()) {
-            throw new IllegalArgumentException(RANGE_EXCEPTION.toString());
+            throw new IllegalArgumentException(ExceptionConstants.RANGE_EXCEPTION.toString());
         }
     }
 
     public static void validateRange(int number) {
-        if (number < MIN_NUMBER || MAX_NUMBER < number) {
-            throw new IllegalArgumentException(RANGE_EXCEPTION.toString());
+        if (number < GameConstants.MIN_NUMBER || GameConstants.MAX_NUMBER < number) {
+            throw new IllegalArgumentException(ExceptionConstants.RANGE_EXCEPTION.toString());
         }
     }
 
     public static void validateLength(List<Integer> numbers, int length) {
         if (numbers.size() != length) {
-            throw new IllegalArgumentException(String.format(LENGTH_EXCEPTION.toString(), length));
+            throw new IllegalArgumentException(String.format(ExceptionConstants.LENGTH_EXCEPTION.toString(), length));
         }
     }
 
@@ -33,19 +33,19 @@ public class Validator {
         if (length != numbers.stream()
                 .distinct()
                 .count()) {
-            throw new IllegalArgumentException(DUPLICATED_EXCEPTION.toString());
+            throw new IllegalArgumentException(ExceptionConstants.DUPLICATED_EXCEPTION.toString());
         }
     }
 
     public static void validateNaturalNumber(String number) {
-        if (!Pattern.matches(NATURAL_NUMBER_REGEX, number)) {
-            throw new IllegalArgumentException(NOT_NATURAL_NUMBER_EXCEPTION.toString());
+        if (!Pattern.matches(GameConstants.NATURAL_NUMBER_REGEX, number)) {
+            throw new IllegalArgumentException(ExceptionConstants.NOT_NATURAL_NUMBER_EXCEPTION.toString());
         }
     }
 
     public static void validateLeadingZero(String number) {
-        if (!Pattern.matches(NO_LEADING_ZERO_REGEX, number)) {
-            throw new IllegalArgumentException(LEADING_ZERO_EXCEPTION.toString());
+        if (!Pattern.matches(GameConstants.NO_LEADING_ZERO_REGEX, number)) {
+            throw new IllegalArgumentException(ExceptionConstants.LEADING_ZERO_EXCEPTION.toString());
         }
     }
 }
