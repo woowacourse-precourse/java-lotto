@@ -3,6 +3,9 @@ package lotto.view;
 import lotto.controller.LottoController;
 import lotto.model.Lotto;
 import lotto.service.LottoService;
+import lotto.util.LottoRandom;
+
+import java.util.List;
 
 /**
  * @Author : Jeeseob
@@ -17,6 +20,7 @@ public class LottoGame {
     public void start() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
         int purchaseAmount = lottoController.inputPurchaseAmount();     // 구입 금액 입력 받기
+        // TODO: g구매한 로또 출력
         System.out.println(purchaseAmount + NUMBER_OF_BOUGHT_LOTTO);    // 구매한 로또 개수 출력
         System.out.println(INPUT_PRIZE_NUMBER);
         Lotto winningLotto = lottoController.inputWinningNumbers();     // 당첨 번호 입력 받기
