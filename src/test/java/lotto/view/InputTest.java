@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputTest {
 
+    private Input input;
 
     @Test
     @DisplayName("조건에 맞는 로또 구입 금액을 입력받은 case.")
@@ -20,7 +21,7 @@ class InputTest {
         final byte[] buf = String.join("\n", amount).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertEquals(Input.inputPurchasingAmount().getMoney(),
+        assertEquals(input.inputPurchasingAmount().getMoney(),
                 new Amounts(Integer.parseInt(amount)).getMoney());
     }
 
@@ -31,14 +32,14 @@ class InputTest {
         byte[] buf = String.join("\n", winningNumber).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertThatThrownBy(() -> Input.inputWinningNumber())
+        assertThatThrownBy(() -> input.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class);
 
         String winningNumber2 = "1,2,3,4,5";    // 6자리 수가 아닌 경우
         buf = String.join("\n", winningNumber2).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertThatThrownBy(() -> Input.inputWinningNumber())
+        assertThatThrownBy(() -> input.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -47,18 +48,18 @@ class InputTest {
         String winningNumber = "1,2,3,4,5,6";       // 당첨 번호를 생성.
         byte[] buf = String.join("\n", winningNumber).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
-        List<Integer> numbers = Input.inputWinningNumber();
+        List<Integer> numbers = input.inputWinningNumber();
 
         buf = String.join("\n", "6").getBytes();    // 당첨 번호와 중복
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertThatThrownBy(() -> Input.inputBonusNumber(numbers))
+        assertThatThrownBy(() -> input.inputBonusNumber(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
 
         buf = String.join("\n", "47").getBytes();    // 잘못된 보너스 번호 입력
         System.setIn(new ByteArrayInputStream(buf));
 
-        assertThatThrownBy(() -> Input.inputBonusNumber(numbers))
+        assertThatThrownBy(() -> input.inputBonusNumber(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
