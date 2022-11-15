@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.constants.LottoConstants;
-import lotto.constants.InputExceptionConstants;
+import lotto.enums.LottoConstants;
+import lotto.enums.InputExceptionConstants;
 
 public class Clerk {
 

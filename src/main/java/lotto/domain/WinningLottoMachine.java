@@ -2,9 +2,9 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.constants.LottoConstants;
-import lotto.constants.InputExceptionConstants;
-import lotto.constants.LottoExceptionConstants;
+import lotto.enums.LottoConstants;
+import lotto.enums.InputExceptionConstants;
+import lotto.enums.LottoExceptionConstants;
 
 public class WinningLottoMachine {
 

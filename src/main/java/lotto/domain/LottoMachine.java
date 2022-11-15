@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
-import lotto.constants.LottoConstants;
-import lotto.constants.LottoExceptionConstants;
+import lotto.enums.LottoConstants;
+import lotto.enums.LottoExceptionConstants;
 
 public class LottoMachine {
 

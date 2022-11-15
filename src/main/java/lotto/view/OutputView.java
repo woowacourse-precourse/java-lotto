@@ -2,7 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import java.util.Map;
-import lotto.constants.LottoConstants;
+import lotto.enums.LottoConstants;
 import lotto.domain.Lotto;
 import lotto.domain.Statistics;
 

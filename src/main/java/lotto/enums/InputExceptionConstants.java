@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.enums;
 
 public enum InputExceptionConstants {
     INPUT_NONE_SPLIT("분할될 수 없는 입력입니다."),

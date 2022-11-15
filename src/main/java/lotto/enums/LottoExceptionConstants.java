@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.enums;
 
 public enum LottoExceptionConstants {
     LOTTO_NUMBER_LENGTH("6개의 숫자가 아닙니다."),

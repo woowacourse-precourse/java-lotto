@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.enums;
 
 public enum LottoConstants {
     LOTTO_NUMBERS_LENGTH(6),
