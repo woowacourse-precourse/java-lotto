@@ -5,6 +5,8 @@ import java.util.Map.Entry;
 
 public class Profit {
 
+    private static final double DECIMAL = 10.0;
+    private static final int RATIO = 100;
     private final long profit;
     private final double earningsRate;
 
@@ -27,7 +29,7 @@ public class Profit {
     }
 
     public double calculateEarningsRate(int purchaseCost) {
-        double earningsRate = ((double) profit / purchaseCost) * 100;
-        return (double) Math.round(earningsRate * 10) / 10;
+        double earningsRate = ((double) profit / purchaseCost) * RATIO;
+        return Math.round(earningsRate * DECIMAL) / DECIMAL;
     }
 }
