@@ -17,7 +17,7 @@ public class WinningNumber extends Lotto {
         if (getNumbers().contains(bonusNumber)) {
             throw new DuplicatedBonusNumberException();
         }
-        if (bonusNumber > 45 || bonusNumber < 1) {
+        if (bonusNumber > LOTTO_NUMBER_UPPER_BOUND || bonusNumber < LOTTO_NUMBER_LOWER_BOUND) {
             throw new IllegalLottoNumberRangeException();
         }
     }

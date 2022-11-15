@@ -6,7 +6,8 @@ import java.util.List;
 public class RandomLottoGenerator implements LottoGenerator {
     @Override
     public Lotto generate() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(Lotto.LOTTO_NUMBER_LOWER_BOUND,
+                Lotto.LOTTO_NUMBER_UPPER_BOUND, Lotto.LOTTO_MAX_SIZE);
 
         return new Lotto(randomNumbers);
     }

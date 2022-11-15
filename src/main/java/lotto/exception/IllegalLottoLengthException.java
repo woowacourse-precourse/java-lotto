@@ -1,7 +1,9 @@
 package lotto.exception;
 
+import lotto.lotto.Lotto;
+
 public class IllegalLottoLengthException extends IllegalArgumentException {
     public IllegalLottoLengthException() {
-        super("로또 번호는 6개여야 합니다.");
+        super(String.format("로또 번호는 %d개여야 합니다.", Lotto.LOTTO_MAX_SIZE));
     }
 }
