@@ -3,8 +3,17 @@ package lotto.view;
 import java.text.DecimalFormat;
 import lotto.domain.Lottery;
 import lotto.domain.Rank;
+import lotto.dto.RankDto;
 
 public class OutputViewConsole implements OutputView {
+    private final String[] winningHistoryPrintTemplate = {
+            "3개 일치 (5,000원) - %d개\n",
+            "4개 일치 (50,000원) - %d개\n",
+            "5개 일치 (1,500,000원) - %d개\n",
+            "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",
+            "6개 일치 (2,000,000,000원) - %d개\n"
+    };
+
     @Override
     public void printGeneratedLottery(Integer purchaseAmount, String lotteryInfo) {
         int lotterySize = purchaseAmount / Lottery.LOTTO_PRICE;
@@ -14,25 +23,21 @@ public class OutputViewConsole implements OutputView {
 
     @Override
     public void printWinningHistory() {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (Rank rank : Rank.values()) {
-            System.out.print(rank.getMatchCount() + "개 일치");
-            if (rank.isBonusMatch()) {
-                System.out.print(", 보너스 볼 일치");
-            }
-            System.out.printf(" (%s원) - %d개\n", decimalFormat.format(rank.getPrize()), rank.getCount());
+        RankDto[] rankDtos = Rank.values();
+        for (int i = 0; i < winningHistoryPrintTemplate.length; i++) {
+            System.out.printf(winningHistoryPrintTemplate[i], rankDtos[i].getCount());
         }
     }
 
     @Override
     public void printProfitRatio(Integer purchaseAmount) {
-        DecimalFormat ratioFormat = new DecimalFormat("###,###.0%");
+        DecimalFormat ratioFormat = new DecimalFormat("###,##0.0%");
         double profitRatio;
         double profit = 0;
-        for (Rank rank : Rank.values()) {
-            profit += rank.getCount() * rank.getPrize();
+        for (RankDto rank : Rank.values()) {
+            profit += rank.getTotalPrize();
         }
         profitRatio = profit / purchaseAmount;
         System.out.printf("총 수익률은 %s입니다.", ratioFormat.format(profitRatio));

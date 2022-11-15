@@ -2,8 +2,9 @@ package lotto.domain;
 
 import java.util.Arrays;
 import java.util.Optional;
+import lotto.dto.RankDto;
 
-public enum Rank {
+public enum Rank implements RankDto {
     FIFTH_PLACE(3, false, 5_000),
     FOURTH_PLACE(4, false, 50_000),
     THIRD_PLACE(5, false, 1_500_000),
@@ -28,10 +29,10 @@ public enum Rank {
     }
 
     public static boolean checkRank(Rank rank, int matchCount, boolean bonusMatch) {
-        if(matchCount != rank.matchCount){
+        if (matchCount != rank.matchCount) {
             return false;
         }
-        if (matchCount == SECOND_PLACE.matchCount){
+        if (matchCount == SECOND_PLACE.matchCount) {
             return rank.bonusMatch == bonusMatch;
         }
         return true;
@@ -45,16 +46,12 @@ public enum Rank {
         return count;
     }
 
-    public int getMatchCount() {
-        return matchCount;
-    }
-
-    public boolean isBonusMatch() {
-        return bonusMatch;
-    }
-
     public void plusCount() {
         this.count += 1;
+    }
+
+    public int getTotalPrize() {
+        return prize * count;
     }
 
     public static void clearCount() {
