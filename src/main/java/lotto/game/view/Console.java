@@ -1,5 +1,6 @@
 package lotto.game.view;
 
+import lotto.util.ErrorMessage;
 import lotto.util.Validator;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -20,6 +21,10 @@ public interface Console {
 
         public static void printLine(String message) {
             System.out.println(message);
+        }
+
+        public static void printError(ErrorMessage errorMessage) {
+            System.out.println(errorMessage.text());
         }
     }
 
