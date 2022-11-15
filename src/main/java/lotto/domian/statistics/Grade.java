@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Grade {
 
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
     public Grade(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
@@ -24,12 +24,15 @@ public class Grade {
         if (correctNumbers == 6) {
             return Prize.FIRST;
         }
+
         if (correctNumbers == 4) {
             return Prize.FOURTH;
         }
+
         if (correctNumbers == 3) {
             return Prize.FIFTH;
         }
+
         return null;
     }
 

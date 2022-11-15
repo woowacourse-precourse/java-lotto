@@ -11,10 +11,8 @@ import java.util.Map;
 public class LottoResult {
 
     private LottoView lottoView = new LottoView();
-    private Statistics statistics;
     private List<List<Integer>> lottos = new ArrayList<>();
     private List<Integer> winningNumber;
-    private int money;
     private int bonusNumber;
 
     public void printAllResult() {
@@ -24,7 +22,7 @@ public class LottoResult {
     }
 
     public void buyNewLottos() {
-        money = lottoView.getMoney();
+        int money = lottoView.getMoney();
         System.out.println();
         printLottosNumbers(money / 1000);
     }
@@ -40,7 +38,7 @@ public class LottoResult {
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
-        statistics = new Statistics(winningNumber, bonusNumber);
+        Statistics statistics = new Statistics(winningNumber, bonusNumber);
         Map<Integer, Integer> numberOfEachGrade = statistics.getNumberOfEachGrade(lottos);
         printNumberOfEachGrade(numberOfEachGrade);
         System.out.println("총 수익률은 " + statistics.getProfit(lottos) + "%입니다.");
@@ -60,7 +58,7 @@ public class LottoResult {
         System.out.println(count + "개를 구매했습니다.");
         LottoGenerator lottoGenerator = new LottoGenerator();
         lottos = lottoGenerator.generateLotto(count);
-        for (List lotto : lottos) {
+        for (List<Integer> lotto : lottos) {
             System.out.println(lotto);
         }
     }

@@ -17,8 +17,7 @@ public class Statistics {
 
     public Map<Integer, Integer> getNumberOfEachGrade(List<List<Integer>> lottosNumber) {
         List<Prize> grades = getEachLottoGrade(lottosNumber);
-        Map<Integer, Integer> numberOfGrades = countEachGrade(grades);
-        return numberOfGrades;
+        return countEachGrade(grades);
     }
 
     public double getProfit(List<List<Integer>> lottosNumber) {
@@ -39,7 +38,7 @@ public class Statistics {
         List<Prize> grades = new ArrayList<>();
         Grade grade = new Grade(winningNumbers, bonusNumber);
 
-        for (List numbers : lottosNumber) {
+        for (List<Integer> numbers : lottosNumber) {
             Prize eachGrade = grade.returnLottoGrade(numbers);
             if (eachGrade != null) {
                 grades.add(eachGrade);

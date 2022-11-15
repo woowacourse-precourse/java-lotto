@@ -7,8 +7,8 @@ import java.util.List;
 
 public class LottoGenerator {
 
-    List<Lotto> lottos = new ArrayList<>();
-    List<List<Integer>> lottosNumber = new ArrayList<>();
+    private final List<Lotto> lottos = new ArrayList<>();
+    private final List<List<Integer>> lottosNumber = new ArrayList<>();
 
     public List<List<Integer>> generateLotto(int count) {
         getNewLottes(count);

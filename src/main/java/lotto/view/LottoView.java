@@ -1,10 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import jdk.jshell.spi.ExecutionControl;
-import lotto.domian.lotto.LottoGenerator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
