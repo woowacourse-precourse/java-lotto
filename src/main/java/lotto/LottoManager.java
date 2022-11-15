@@ -45,19 +45,19 @@ public class LottoManager {
     public void validateInsertMoney(String stringMoney) {
         try {
             money = Integer.parseInt(stringMoney);
-        } catch (IllegalArgumentException e) {
+        } catch (NoSuchElementException e) {
             System.out.println("[ERROR] 숫자가 아닌 값을 입력했습니다.");
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 입력했습니다.");
+            throw new NoSuchElementException("[ERROR] 숫자가 아닌 값을 입력했습니다.");
         }
 
         if (money <= 0) {
             System.out.println("[ERROR] 자연수 값이여야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 자연수 값이여야 합니다.");
+            throw new NoSuchElementException("[ERROR] 자연수 값이여야 합니다.");
         }
 
         if (money % 1000 != 0) {
             System.out.println("[ERROR] 1,000원 단위로 입력해야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
+            throw new NoSuchElementException("[ERROR] 1,000원 단위로 입력해야 합니다.");
         }
     }
 
@@ -126,7 +126,7 @@ public class LottoManager {
 
         if (splitList.length != 6) {
             System.out.println("[ERROR] 당첨 번호 6개를 입력해야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 당첨 번호 6개를 입력해야 합니다.");
+            throw new NoSuchElementException("[ERROR] 당첨 번호 6개를 입력해야 합니다.");
         }
 
         for (String stringNumber : splitList) {
@@ -142,11 +142,11 @@ public class LottoManager {
 
             if (!(1 <= intNumber && intNumber <= 45)) {
                 System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
-                throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
+                throw new NoSuchElementException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
             }
-        } catch (IllegalArgumentException e) {
+        } catch (NoSuchElementException e) {
             System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
+            throw new NoSuchElementException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
         }
     }
 
@@ -156,7 +156,7 @@ public class LottoManager {
         List<String> uniqueList = splitList.stream().distinct().collect(Collectors.toList());
         if (uniqueList.size() != 6) {
             System.out.println("[ERROR] 각 당첨 번호는 중복되지 않는 값이여야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 중복되지 않는 값이여야 합니다.");
+            throw new NoSuchElementException("[ERROR] 각 당첨 번호는 중복되지 않는 값이여야 합니다.");
         }
     }
 
@@ -194,16 +194,16 @@ public class LottoManager {
 
             if (!(1 <= bonusNumber && bonusNumber <= 45)) {
                 System.out.println("[ERROR] 보너스 번호는 1~45 의 자연수여야 합니다.");
-                throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 의 자연수여야 합니다.");
+                throw new NoSuchElementException("[ERROR] 보너스 번호는 1~45 의 자연수여야 합니다.");
             }
 
             if (winningNumber.contains(bonusNumber)) {
                 System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
-                throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+                throw new NoSuchElementException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
             }
-        } catch (IllegalArgumentException e) {
+        } catch (NoSuchElementException e) {
             System.out.println("[ERROR] 보너스 번호는 정수를 입력해야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수를 입력해야 합니다.");
+            throw new NoSuchElementException("[ERROR] 보너스 번호는 정수를 입력해야 합니다.");
         }
     }
 
