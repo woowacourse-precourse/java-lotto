@@ -39,7 +39,7 @@ public class InputView {
     public static void isValidFormat(String winNumberInput) {
         String[] numbers = winNumberInput.split(",");
 
-        if (numbers.length > 6)
+        if (numbers.length != 6)
             throw new IllegalArgumentException(ErrorType.OVER_SIZE_WIN_NUMBER.getError());
 
         for (String number : numbers) {

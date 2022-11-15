@@ -8,5 +8,6 @@ public class Application {
         LottoGame game = new LottoGame();
         game.start();
         game.play();
+        game.result();
     }
 }

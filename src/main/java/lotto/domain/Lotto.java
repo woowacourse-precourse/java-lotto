@@ -31,4 +31,20 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int matchNumber(List<Integer> winNumbers) {
+        int count = 0;
+
+        for (Integer number : numbers) {
+            if (winNumbers.contains(number)) count++;
+        }
+
+        return count;
+    }
+
+    public boolean hasBonusNumber(List<Integer> winNumbers) {
+        int bonusNumber = winNumbers.get(winNumbers.size() - 1);
+
+        return numbers.contains(bonusNumber);
+    }
 }
