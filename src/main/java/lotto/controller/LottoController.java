@@ -22,7 +22,7 @@ public class LottoController {
     public void run() {
         PurchaseAmountDto purchaseAmountDto = getPurchaseAmountDto();
         User user = new User(purchaseAmountDto);
-        OutputView.printLottoInformation(user.getLottos());
+        showPurchaseHistory(user);
         WinningLotto winningLotto = createWinningLotto();
 
         lottoService.calculateLottoRanks(user, winningLotto);
@@ -51,5 +51,9 @@ public class LottoController {
         Integer bonusNumber = Converter.toInteger(Console.readLine());
         Validator.validateLottoNumber(winningNumbers, bonusNumber);
         return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private void showPurchaseHistory(User user) {
+        OutputView.printLottoInformation(user.getLottos());
     }
 }
