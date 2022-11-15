@@ -4,6 +4,7 @@ import lotto.message.ExceptionMessage;
 import lotto.setting.LottoSetting;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoShop {
 
@@ -33,5 +34,14 @@ public class LottoShop {
             lottos.add(setting.createAutoLotto());
         }
         return lottos;
+    }
+
+    public String getLottoInfo(List<Lotto> lottos) {
+        String lottosInfo = lottos.stream()
+                .map(lotto -> lotto.getNumbers())
+                .collect(Collectors.joining("\n"));
+
+        return "\n" + lottos.size() + "개를 구매했습니다."
+                + lottosInfo;
     }
 }

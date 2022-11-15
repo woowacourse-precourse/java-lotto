@@ -3,6 +3,7 @@ package lotto;
 import device.input.Input;
 import device.output.Output;
 import lotto.lotto.Lotto;
+import lotto.lotto.LottoShop;
 import lotto.message.InputRequestMessage;
 import lotto.reward.RewardCoordinator;
 import lotto.setting.LottoApplicationSetting;
@@ -33,8 +34,10 @@ public class LottoApplication {
     private void runApplication() {
         Integer purchasePrice = inputInteger(InputRequestMessage.PURCHASE_AMOUNT);
 
-        List<Lotto> lottos = setting.createLottoShop().buyLotto(purchasePrice);
-        printLottos(lottos);
+        LottoShop lottoShop = setting.createLottoShop();
+        List<Lotto> lottos = lottoShop.buyLotto(purchasePrice);
+        String lottosInfo = lottoShop.getLottoInfo(lottos);
+        output.print(lottosInfo);
 
         List<Integer> winningNumbers = inputIntegerList(InputRequestMessage.WINNING_NUMBER);
         List<Integer> bonusNumbers = inputIntegerList(InputRequestMessage.BONUS_NUMBER);
@@ -53,14 +56,5 @@ public class LottoApplication {
     private List<Integer> inputIntegerList(InputRequestMessage message) {
         output.print(message);
         return input.enterIntegerList();
-    }
-
-    private void printLottos(List<Lotto> lottos) {
-        String lottosNumber = lottos.stream()
-                .map(lotto -> lotto.getNumbers())
-                .collect(Collectors.joining("\n"));
-
-        output.print("\n" + lottos.size() + "개를 구매했습니다.");
-        output.print(lottosNumber);
     }
 }
