@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.exception.Exception.validateIsNumeric;
-import static lotto.exception.Exception.validateIsThousandUnit;
-import static lotto.exception.Exception.validateIsLessThanThousand;
+import static lotto.exception.Exception.*;
 
 public class User {
     private LottoGame lottoGame;
@@ -70,7 +68,12 @@ public class User {
     }
 
     private void inputBonusNumber() {
-        bonusNumber = Integer.parseInt(readLine());
+        try {
+            bonusNumber = Integer.parseInt(readLine());
+            validateIsDuplicatedWithWinningLotto(winningLotto, bonusNumber);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[Error] 보너스번호가 우승 번호와 중복됩니다.");
+        }
     }
 
 }
