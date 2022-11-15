@@ -1,11 +1,11 @@
 package lotto.utils;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -23,7 +23,7 @@ class ValidatorTest {
     @Test
     void convertInvalidValueToInt() {
         assertThatThrownBy(() -> validator.convertToInt("30, 1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("[ERROR]");
     }
 
@@ -37,7 +37,7 @@ class ValidatorTest {
     @Test
     void convertInvalidValueToIntList() {
         assertThatThrownBy(() -> validator.convertToIntList("1, 2, 삼, 4"))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("[ERROR]");
     }
 
