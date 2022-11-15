@@ -45,12 +45,4 @@ public class WinningLottoNumber {
         }
         return count;
     }
-
-    public Lotto getWinningLottoNumber() {
-        return WinningLottoNumber;
-    }
-
-    public BonusNumber getBonusNumber() {
-        return bonusNumber;
-    }
 }
