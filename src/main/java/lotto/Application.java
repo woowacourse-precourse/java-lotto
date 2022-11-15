@@ -22,15 +22,42 @@ public class Application {
         randomPickLotteries(lotteries, numberOfLotteries);
 
         printInputWinLotto();
-        WinLotto winLotto = getWinLottoInputFromUser();
+        WinLotto input = getWinLottoInputFromUser();
     }
 
     private static WinLotto getWinLottoInputFromUser() {
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        //TODO: 입력 검증 후 보너스 번호 입력
+        String[] input = scanner.nextLine().split(",");
+        WinLotto winLotto = validateWinLottoInput(input);
 
+
+        //TODO:보너스 번호 입력 및 검증
         return null;
+    }
+
+    private static WinLotto validateWinLottoInput(String[] input) {
+        for (String lottoNumber : input) {
+            if (!isInteger(lottoNumber) || !inLottoRange(lottoNumber)) {
+                throw new IllegalArgumentException(Message.ERROR_LOTTO_INPUT.message);
+            }
+        }
+        return convertStringToWinLotto(input);
+    }
+
+    private static WinLotto convertStringToWinLotto(String[] input) {
+        List<Integer> lottoNumbers = new LinkedList<>();
+        for (String numberString : input) {
+            lottoNumbers.add(Integer.parseInt(numberString));
+        }
+        return new WinLotto(lottoNumbers);
+    }
+
+    private static boolean inLottoRange(String input) {
+        int lottoNumber = Integer.parseInt(input);
+        if (lottoNumber >= 1 && lottoNumber <= 45) {
+            return true;
+        }
+        return false;
     }
 
     private static void printInputWinLotto() {

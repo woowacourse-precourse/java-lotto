@@ -1,16 +1,26 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class WinLotto {
-    final List<Integer> numbers;
+public class WinLotto extends Lotto {
     int bonus;
 
     public WinLotto(List<Integer> numbers) {
-        this.numbers = numbers;
+        super(numbers);
+        validate(numbers);
     }
 
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
+    private void validate(List<Integer> numbers) {
+        validateWinLottoNumbersRange(numbers);
+    }
+
+    public void validateWinLottoNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < Application.LOTTO_START || number > Application.LOTTO_END) {
+                throw new IllegalArgumentException(Message.ERROR_LOTTO_INPUT.message);
+            }
+        }
     }
 }

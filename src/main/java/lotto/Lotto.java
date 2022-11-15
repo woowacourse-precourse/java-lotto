@@ -13,6 +13,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    @Override
+    public String toString() {
+        String returnedString = "[" + String.valueOf(numbers.get(0));
+        for (int idx = 1; idx < numbers.size(); idx++) {
+            returnedString += ", " + numbers.get(idx);
+        }
+        return returnedString + "]";
+    }
+
     private void validate(List<Integer> numbers) {
         validateLottoNumbersSize(numbers);
         validateLottoNumbersUniqueness(numbers);
@@ -24,22 +38,13 @@ public class Lotto {
             set.add(number);
         }
         if (set.size() < numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_LOTTO_DUPLICATE.message);
         }
     }
 
     private void validateLottoNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_LOTTO_NUMBERS_SIZE.message);
         }
-    }
-
-    @Override
-    public String toString() {
-        String returnedString = "[" + String.valueOf(numbers.get(0));
-        for (int idx = 1; idx < numbers.size(); idx++) {
-            returnedString += ", " + numbers.get(idx);
-        }
-        return returnedString + "]";
     }
 }
