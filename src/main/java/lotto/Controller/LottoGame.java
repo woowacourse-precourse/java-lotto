@@ -20,8 +20,7 @@ public class LottoGame {
         showUserLotto();
         getWinningNumber();
         showWinningNumber();
-
-        bonusNumber = InputView.getBonusNumber(winningNumber);
+        getBonusNumber();
         showStatistics();
     }
 
@@ -51,6 +50,12 @@ public class LottoGame {
 
     public void showWinningNumber() {
         OutputView.printWinningNumber();
+    }
+
+    public void getBonusNumber() {
+        int input = Integer.parseInt(InputView.getInput());
+        LottoValidator.validateBonusNumber(winningNumber, input);
+        bonusNumber = input;
     }
 
     public void showStatistics() {
