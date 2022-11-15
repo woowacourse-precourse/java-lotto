@@ -45,15 +45,11 @@ public class LottoService {
         return statistics.getWinningHistory();
     }
 
-    public String computeRateReturn(Long purchaserId) {
+    public double computeRateReturn(Long purchaserId) {
         Purchaser purchaser = purchaserRepository.findById(purchaserId);
         Statistics statistics = statisticsRepository.findByPurchaserId(purchaserId);
 
-        Long profit = computeProfit(statistics.getWinningHistory());
-        int money = purchaser.getMoney();
-        double rateReturn = (double) profit / money * 100;
-
-        return String.valueOf(rateReturn);
+        return statistics.computeRateReturn(purchaser.getMoney());
     }
 
     public List<Integer> generateWinningLottoNumbers(String numbers) {
@@ -65,19 +61,6 @@ public class LottoService {
     public int generateBonusNumber(String number) {
         Bonus bonus = new Bonus(number);
         return bonus.getNumber();
-    }
-
-    private Long computeProfit(Map<PrizeMoney, Integer> winningHistory) {
-        Long profit = 0L;
-
-        for (Entry<PrizeMoney, Integer> entry : winningHistory.entrySet()) {
-            PrizeMoney prizeMoney = entry.getKey();
-            int countOfWinning = entry.getValue();
-
-            profit = profit + (long) prizeMoney.getIntegerMoney() * countOfWinning;
-        }
-
-        return profit;
     }
 
 }

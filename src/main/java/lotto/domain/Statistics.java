@@ -24,6 +24,25 @@ public class Statistics {
         }
     }
 
+    public double computeRateReturn(int money) {
+        long profit = computeProfit();
+        double rateReturn = (double) profit / money * 100;
+        return rateReturn;
+    }
+
+    private Long computeProfit() {
+        long profit = 0L;
+
+        for (Map.Entry<PrizeMoney, Integer> entry : winningHistory.entrySet()) {
+            PrizeMoney prizeMoney = entry.getKey();
+            int countOfWinning = entry.getValue();
+
+            profit = profit + (long) prizeMoney.getIntegerMoney() * countOfWinning;
+        }
+
+        return profit;
+    }
+
     private void addPrizeMoney(int countOfMatch, boolean matchBonusNumber) {
         PrizeMoney prizeMoney = PrizeMoney.valueOf(countOfMatch, matchBonusNumber);
         if (isPrize(prizeMoney)) {
