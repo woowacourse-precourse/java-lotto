@@ -48,111 +48,31 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_범위_예외_테스트() {
+    void 기능2_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("1000");
-                    assertThat(output()).contains(ERROR_MESSAGE);
+                    run("4000", "1,2,33,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "4개를 구매했습니다.",
+                            "[3, 14, 16, 33, 42, 45]",
+                            "[1, 2, 4, 5, 6, 33]",
+                            "[1, 2, 4, 5, 7, 33]",
+                            "[1, 2, 5, 14, 22, 45]",
+                            "3개 일치 (5,000원) - 1개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 5.0750125E7%입니다."
+                    );
                 },
-                List.of(8, 21, 23, 41, 42,-1)
+                List.of(14, 3, 16, 33, 42, 45),
+                List.of(4, 5, 6, 1, 2, 33),
+                List.of(1, 2, 5, 7, 33, 4),
+                List.of(1, 2, 5, 14, 22, 45)
         );
     }
 
-    @Test
-    void 기능_크기_예외_테스트() {
-        assertRandomUniqueNumbersInRangeTest(
-                () -> {
-                    run("1000");
-                    assertThat(output()).contains(ERROR_MESSAGE);
-                },
-                List.of(8, 21, 23, 41, 42, 44, 32)
-        );
-    }
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() -> {
-            runException("1000j");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
-    }
-
-    @Test
-    void 예외_천단위_가격_테스트() {
-        assertSimpleTest(() -> {
-            runException("1200");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
-    }
-
-    @Test
-    void 예외_최소_가격_테스트() {
-        assertSimpleTest(() -> {
-            runException("-3000");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
-    }
-
-    @DisplayName("당첨 번호가 6개가 아닌경우 예외가 발생한다.")
-    @Test
-    void createWinningByIsNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertRandomUniqueNumbersInRangeTest(
-                () -> {
-                    runException("1000","1");
-                    assertThat(output()).contains(ERROR_MESSAGE);
-                },
-                List.of(8, 21, 23, 41, 42, 44)
-        );
-    }
-
-    @DisplayName("당첨 번호에 숫자로 변환할 수 없는 입력값이 있으면 예외가 발생한다.")
-    @Test
-    void createWinningByIsNumbers() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertRandomUniqueNumbersInRangeTest(
-                () -> {
-                    runException("1000","1 2 3 a s d");
-                    assertThat(output()).contains(ERROR_MESSAGE);
-                },
-                List.of(8, 21, 23, 41, 42, 44)
-        );
-    }
-    @DisplayName("보너스 번호가 숫자로 변환할 수 없는 입력값이면 예외가 발생한다.")
-    @Test
-    void createBonusByIsNumbers() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertRandomUniqueNumbersInRangeTest(
-                () -> {
-                    runException("1000","1,2,3,4,5,6","a");
-                    assertThat(output()).contains(ERROR_MESSAGE);
-                },
-                List.of(8, 21, 23, 41, 42, 44)
-        );
-    }
-    @DisplayName("보너스 번호가 범위에 벗어난 입력값이면 예외가 발생한다.")
-    @Test
-    void createBonusByOutOfRange() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertRandomUniqueNumbersInRangeTest(
-                () -> {
-                    runException("1000","1,2,3,4,5,6","46");
-                    assertThat(output()).contains(ERROR_MESSAGE);
-                },
-                List.of(8, 21, 23, 41, 42, 44)
-        );
-    }
-    @DisplayName("보너스 번호가 당첨번호에 중복된 입력값이면 예외가 발생한다.")
-    @Test
-    void createBonusByDuplicateNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertRandomUniqueNumbersInRangeTest(
-                () -> {
-                    runException("1000","1,2,3,4,5,6","6");
-                    assertThat(output()).contains(ERROR_MESSAGE);
-                },
-                List.of(8, 21, 23, 41, 42, 44)
-        );
-    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
