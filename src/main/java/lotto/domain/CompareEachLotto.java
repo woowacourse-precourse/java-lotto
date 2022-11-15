@@ -31,10 +31,10 @@ public class CompareEachLotto {
         lottoCount += ADD_COUNT;
         int matchingCount = lotto.countMatchingNumbers(winningNumbers.getSixNumbers());
         if (matchingCount == FIVE_NUMBERS && lotto.contains(winningNumbers.getBonusNumber())) {
-            winningCountMapByRank.put(Rank.FIVE_NUMBERS_AND_BONUS_NUMBERS_MATCHING,
-                    winningCountMapByRank.get(Rank.FIVE_NUMBERS_AND_BONUS_NUMBERS_MATCHING)
+            winningCountMapByRank.put(Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING,
+                    winningCountMapByRank.get(Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING)
                             + ADD_COUNT);
-            sumWinningMoney += Rank.FIVE_NUMBERS_AND_BONUS_NUMBERS_MATCHING.getWinningMoney();
+            sumWinningMoney += Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING.getWinningMoney();
         }
         if (matchingCount == SIX_NUMBERS) {
             winningCountMapByRank.put(Rank.SIX_NUMBERS_MATCHING,
@@ -75,8 +75,8 @@ public class CompareEachLotto {
         Rank.ONLY_FIVE_NUMBERS_MATCHING.printRank();
         System.out.println(winningCountMapByRank.get(Rank.ONLY_FIVE_NUMBERS_MATCHING) + "개");
 
-        Rank.FIVE_NUMBERS_AND_BONUS_NUMBERS_MATCHING.printRank();
-        System.out.println(winningCountMapByRank.get(Rank.FIVE_NUMBERS_AND_BONUS_NUMBERS_MATCHING) + "개");
+        Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING.printRank();
+        System.out.println(winningCountMapByRank.get(Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING) + "개");
 
         Rank.SIX_NUMBERS_MATCHING.printRank();
         System.out.println(winningCountMapByRank.get(Rank.SIX_NUMBERS_MATCHING) + "개");
