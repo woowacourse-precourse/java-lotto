@@ -9,23 +9,22 @@ import static lotto.view.InputView.requestUserAmount;
 
 public class LottoController {
     public void start(){
-        LottoCount amount = requestUserAmount();
-        LottoTicket lottoTicket = buyTickets(amount);
-        LuckyNumbers luckyNumbers = getInputLuckyNumbers();
-        Result result = getResult(lottoTicket,luckyNumbers);
-        printResult(amount, result);
+        try {
+            LottoCount amount = requestUserAmount();
+            LottoTicket lottoTicket = buyTickets(amount);
+            LuckyNumbers luckyNumbers = getInputLuckyNumbers();
+            Result result = getResult(lottoTicket, luckyNumbers);
+            printResult(amount, result);
+        } catch(IllegalArgumentException e){
+            OutputView.printException(e);
+        }
 
 
     }
 
     private LottoCount requestUserAmount(){
         int amount = InputView.requestUserAmount();
-        try {
-            return new LottoCount(amount);
-        } catch(IllegalArgumentException e){
-            OutputView.printException(e);
-            throw new IllegalArgumentException();
-        }
+        return new LottoCount(amount);
     }
 
     private LottoTicket buyTickets(LottoCount amount){
@@ -37,13 +36,7 @@ public class LottoController {
     }
 
     private LuckyNumbers getInputLuckyNumbers(){
-        try{
-            return new LuckyNumbers(new Lotto(InputView.requestWinNumbers()), requestBonusNumber());
-        } catch(IllegalArgumentException e){
-            OutputView.printException(e);
-            throw new IllegalArgumentException();
-        }
-
+        return new LuckyNumbers(new Lotto(InputView.requestWinNumbers()), requestBonusNumber());
     }
 
     private Result getResult(LottoTicket lottoTicket, LuckyNumbers luckyNumbers){

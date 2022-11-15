@@ -40,11 +40,7 @@ public class LuckyNumbers {
 
     public LottoRank calculateRanking(Lotto lotto) {
         int cnt = luckyNumbers.countSameNum(lotto);
-        try {
-            return LottoRank.valueOf(cnt, lotto.contains(bonusNumber));
-        } catch(IllegalArgumentException e){
-            OutputView.printException(e);
-            throw new IllegalArgumentException();
-        }
+        return LottoRank.valueOf(cnt, lotto.contains(bonusNumber));
+
     }
 }

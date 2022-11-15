@@ -19,12 +19,8 @@ public class LottoTicket {
         for(int i=0;i<count;i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
-            try {
-                lottoTickets.add(new Lotto(numbers));
-            } catch(IllegalArgumentException e){
-                OutputView.printException(e);
-                throw new IllegalArgumentException();
-            }
+            lottoTickets.add(new Lotto(numbers));
+
         }
     }
 

@@ -12,12 +12,7 @@ import static lotto.utils.Message.*;
 public class InputView {
     public static int requestUserAmount(){
         System.out.println(REQUEST_USER_AMOUNT);
-        try{
-            return stringToInt(Console.readLine());
-        } catch (IllegalArgumentException e){
-            OutputView.printException(e);
-            throw new IllegalArgumentException();
-        }
+        return stringToInt(Console.readLine());
 
     }
 
