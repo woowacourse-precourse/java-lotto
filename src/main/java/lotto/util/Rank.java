@@ -3,6 +3,7 @@ package lotto.util;
 import java.util.Arrays;
 
 public enum Rank {
+
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
     THIRD(5, false, 1_500_000),

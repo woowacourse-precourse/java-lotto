@@ -13,6 +13,7 @@ import java.util.TreeMap;
 import static lotto.util.Message.*;
 
 public class LottoGame {
+
     private User user = new User();
     private Dealer dealer = new Dealer();
     private Map<Rank, Integer> matchResult = new TreeMap<>(Comparator.reverseOrder());
