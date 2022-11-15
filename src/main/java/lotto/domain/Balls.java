@@ -2,6 +2,7 @@ package lotto.domain;
 
 import constants.ExceptionMessage;
 import lotto.domain.dto.MatchResultDTO;
+import lotto.presentation.view.LottoExceptionPrinter;
 
 public class Balls {
 
@@ -16,6 +17,7 @@ public class Balls {
 
     private void validate(WinningBalls winningBalls, BonusBall bonusBall) {
         if (winningBalls.containsBonusNumber(bonusBall)) {
+            LottoExceptionPrinter.throwContainBonus();
             throw new IllegalArgumentException(ExceptionMessage.CONTAIN_BONUS);
         }
     }

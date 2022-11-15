@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import lotto.domain.dto.MatchResultDTO;
+import lotto.presentation.view.LottoExceptionPrinter;
 
 public class Lotto {
 
@@ -18,14 +19,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            LottoExceptionPrinter.throwMustSixDigit();
             throw new IllegalArgumentException(ExceptionMessage.MUST_SIX_DIGIT);
         }
 
         if (Set.copyOf(numbers).size() != numbers.size()) {
+            LottoExceptionPrinter.throwDuplicateNumbers();
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBERS);
         }
 
         if(isWithinRange(numbers)) {
+            LottoExceptionPrinter.throwWithinRange();
             throw new IllegalArgumentException(ExceptionMessage.WITHIN_RANGE);
         }
     }

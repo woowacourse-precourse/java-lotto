@@ -4,6 +4,7 @@ import constants.ExceptionMessage;
 import constants.LottoGame;
 import java.util.List;
 import java.util.Set;
+import lotto.presentation.view.LottoExceptionPrinter;
 
 public class WinningBalls {
 
@@ -16,14 +17,17 @@ public class WinningBalls {
 
     public void validate(List<Integer> generalWinNumbers) {
         if (generalWinNumbers.size() != 6) {
+            LottoExceptionPrinter.throwMustSixDigit();
             throw new IllegalArgumentException(ExceptionMessage.MUST_SIX_DIGIT);
         }
 
         if (isWithinRange(generalWinNumbers)) {
+            LottoExceptionPrinter.throwWithinRange();
             throw new IllegalArgumentException(ExceptionMessage.WITHIN_RANGE);
         }
 
         if (Set.copyOf(generalWinNumbers).size() != generalWinNumbers.size()) {
+            LottoExceptionPrinter.throwDuplicateNumbers();
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBERS);
         }
     }

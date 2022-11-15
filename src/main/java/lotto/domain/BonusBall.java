@@ -2,6 +2,7 @@ package lotto.domain;
 
 import constants.ExceptionMessage;
 import constants.LottoGame;
+import lotto.presentation.view.LottoExceptionPrinter;
 
 public class BonusBall {
 
@@ -14,6 +15,7 @@ public class BonusBall {
 
     public void validate(int bonusNumber) {
         if (!(bonusNumber >= LottoGame.LOTTO_MIN_RANGE && bonusNumber <= LottoGame.LOTTO_MAX_RANGE)) {
+            LottoExceptionPrinter.throwWithinRange();
             throw new IllegalArgumentException(ExceptionMessage.WITHIN_RANGE);
         }
     }
