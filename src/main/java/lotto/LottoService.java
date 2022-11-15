@@ -1,9 +1,12 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import jdk.jshell.execution.Util;
+import lotto.util.InputUtil;
 
 import java.util.*;
 import static lotto.constant.Constant.*;
+import static lotto.util.InputUtil.*;
 
 public class LottoService {
 
@@ -27,20 +30,18 @@ public class LottoService {
         printRandomLottos(lottos);
 
         System.out.println( WINNING );
-        String input = Console.readLine();
 
-        String[] winningNumber = input.split(",");
+        String winningInput = Console.readLine();
+        String[] winningNumber = winningInput.split(",");
         List<Integer> win = new ArrayList<>();
         for(String s : winningNumber){
-            //try catch
-            win.add(Integer.parseInt(s));
-            //try catch
+            win.add(InputUtil.stringToInt(s));
         }
+
+
         player.setWinningNumber(win);
         System.out.println( BONUS );
-        //try catch
-        int bonus = Integer.parseInt(Console.readLine());
-        //try catch
+        int bonus = InputUtil.stringToInt(Console.readLine());
         player.setBonusNumber(bonus);
 
 
