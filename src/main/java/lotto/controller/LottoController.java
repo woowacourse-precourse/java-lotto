@@ -37,12 +37,16 @@ public class LottoController {
             String bonusNumberInput = inputBonusNumber(luckyNumber);
 
             ResultResponse result = checkLotto(issuedLotteries, luckyNumber, Integer.parseInt(bonusNumberInput));
-            outputView.outputWinningStatistics(result);
-            outputView.outputEarningRate(lottoService.getEarningRate(
-                    purchasingAmount.getMoney(), lottoService.getEarning(result)));
+            outputResult(purchasingAmount, result);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
+    }
+
+    private void outputResult(PurchasingAmount purchasingAmount, ResultResponse result) {
+        outputView.outputWinningStatistics(result);
+        outputView.outputEarningRate(lottoService.getEarningRate(
+                purchasingAmount.getMoney(), lottoService.getEarning(result)));
     }
 
     private String inputBonusNumber(List<Integer> luckyNumber) {
