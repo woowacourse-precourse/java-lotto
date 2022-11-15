@@ -149,7 +149,11 @@ public class Application {
     }
     static ArrayList<Float> inputReward(){
         ArrayList<Float> rewardList = new ArrayList<Float>();
-
+        rewardList.add(fifth);
+        rewardList.add(fourth);
+        rewardList.add(third);
+        rewardList.add(second);
+        rewardList.add(first);
         return rewardList;
     }
     static void calcLotteryYield(ArrayList<Integer> winList, int buyMoney){
