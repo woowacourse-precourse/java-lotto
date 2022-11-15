@@ -50,5 +50,13 @@ public class Exception {
             throw new IllegalArgumentException("[ERROR] Duplicate number exists in input value.");
     }
 
+    // TODO: 문자열을 1~45와 비교하여 일치하지 않는 경우 예외 처리한다.
+    private static void isMatchFromOneToFortyFive(String number) throws IllegalArgumentException{
+        if ( !(MIN_VALUE_OF_WINNING_NUMBER <= isContainCharacter(number)
+                && isContainCharacter(number) <= MAX_VALUE_OF_WINNING_NUMBER))
+            throw new IllegalArgumentException("[ERROR] An out-of-range number or character exists in the input value.");
+
+    }
+
     // TODO: 입력 값(보너스 번호)이 리스트(winningNumber)에 포함되어 있는 숫자일 경우 예외처리한다.
 }
