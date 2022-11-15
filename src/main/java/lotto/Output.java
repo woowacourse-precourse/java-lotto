@@ -12,4 +12,12 @@ public class Output {
             System.out.println(lotto.getNumbers().toString());
         }
     }
+    public void lottoMatchResult(List<Integer> result){
+        System.out.println("당첨통계\n" + "------");
+        for(MatchLotto matchLotto : MatchLotto.values()){
+            System.out.println(matchLotto.getResult() + result.get(matchLotto.getMatchNumber())+ "개");
+        }
+    }
+
+
 }
