@@ -176,6 +176,9 @@ public class Application {
 
     static int inputBuyMoney(){
         System.out.println("구입금액을 입력해주세요.");
+        String input = Console.readLine();
+        // TODO: 유효성 검사
+
         int buyMoney=0;
         ////todo: 1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
         try {
@@ -184,7 +187,16 @@ public class Application {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-
+        return buyMoney;
+    }
+    static boolean isValidNumber(String input){
+        try{
+            Integer.parseInt(input);
+        }
+        catch (NumberFormatException e){
+            return false;
+        }
+        return true;
     }
 
 }
