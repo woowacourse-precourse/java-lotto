@@ -3,10 +3,11 @@ package lotto.view;
 import java.util.List;
 
 import static lotto.domain.Rank.*;
+import static lotto.view.GuideMessage.*;
 
 public class OutputView {
     public void printPurchasePriceMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(INPUT_PURCHASE_PRICE.getMessage());
     }
 
     public void printWinningNumbers(List<Integer> winningNumbers) {
@@ -14,11 +15,11 @@ public class OutputView {
     }
 
     public void printPredictionNumbersMessage() {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_PREDICTION_NUMBERS.getMessage());
     }
 
     public void printBonusNumberMessage() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUS_NUMBER.getMessage());
     }
 
     public void printAmountOfLottoMessage(int amountOfLotto) {
