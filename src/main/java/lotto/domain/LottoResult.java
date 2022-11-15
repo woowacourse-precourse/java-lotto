@@ -36,4 +36,9 @@ public class LottoResult {
     private double calculateRateOfProfit(int profit, int purchaseLottoMoney) {
         return ((double) profit / purchaseLottoMoney) * 100;
     }
+
+    public Map<LottoRank, Integer> get() {
+        return lottoResult;
+    }
+
 }
