@@ -68,4 +68,14 @@ public class Main_Service {
         return index_map.get(match_cnt).get(0);
     }
 
+    public int[] organize_Details(List<Lotto> all_Lotto, List<Integer> winNumbers, int bonusNumber) {
+        int[] lotto_cnt = new int[5];
+        for (Lotto eachLotto : all_Lotto) {
+            int matchIndex = get_Index(change_LottoToList(eachLotto), winNumbers, bonusNumber);
+            if (matchIndex != -1) {
+                lotto_cnt[matchIndex] += 1;
+            }
+        }
+        return lotto_cnt;
+    }
 }
