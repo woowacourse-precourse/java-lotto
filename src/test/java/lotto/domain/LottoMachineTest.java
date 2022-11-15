@@ -1,24 +1,13 @@
 package lotto.domain;
 
-import lotto.Lotto;
-import lotto.utils.Validate;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.math.BigInteger;
-import java.util.List;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoMachineTest {
 
@@ -55,12 +44,12 @@ class LottoMachineTest {
     @CsvSource({"1,1,1,1,2,2031560000","20,0,0,0,0,40000000000","0,0,1,0,3,1515000","0,0,5,0,0,7500000"})
     void calculateRevenue(int rank1, int rank2, int rank3, int rank4, int rank5 , long output) throws Exception{
         LottoMachine lottoMachine = new LottoMachine();
-        Field result = lottoMachine.getClass().getDeclaredField("result");
+        Field countRanking = lottoMachine.getClass().getDeclaredField("countRanking");
         Field revenue = lottoMachine.getClass().getDeclaredField("revenue");
-        result.setAccessible(true);
+        countRanking.setAccessible(true);
         revenue.setAccessible(true);
 
-        result.set(lottoMachine,new int[]{0,rank1,rank2,rank3,rank4,rank5});
+        countRanking.set(lottoMachine,new int[]{0,rank1,rank2,rank3,rank4,rank5});
         lottoMachine.calculateRevenue();
         long allRevenue = (long) revenue.get(lottoMachine);
 
