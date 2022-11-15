@@ -1,8 +1,8 @@
 package lotto.validation;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ class ValidatorTest {
 
     @Test
     @DisplayName("음수값 price 범위(양수)는 예외 발생")
-    void 음수_입력(){
+    void 음수_입력() {
         // given
         int price = -1000;
         // when
@@ -72,7 +72,7 @@ class ValidatorTest {
 
     @Test
     @DisplayName("일치하지 않는 List 사이즈 검증")
-    void 사이즈_검증(){
+    void 사이즈_검증() {
         // given
         List<Integer> lst = List.of(1, 2, 3);
         // when
@@ -85,22 +85,22 @@ class ValidatorTest {
 
     @Test
     @DisplayName("범위를 벗어난 숫자는 예외 발생")
-    void 숫자_범위_검증(){
+    void 숫자_범위_검증() {
         // given
-        List<Integer> lst = List.of(1,2, 48);
+        List<Integer> lst = List.of(1, 2, 48);
         // when
         int startRange = 1;
         int endRange = 45;
         // then
-        assertThatThrownBy(() -> Validator.validateNumbersRange(lst, startRange, endRange))
+        assertThatThrownBy(() -> Validator.validateNumbersRange(lst))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("중복된 리스트는 예외 발생")
-    void 중복_리스트_검증(){
+    void 중복_리스트_검증() {
         // given
-        List<Integer> lst = List.of(1,1,2);
+        List<Integer> lst = List.of(1, 1, 2);
         // when
         // then
         assertThatThrownBy(() -> Validator.validateNonDuplicatedList(lst))

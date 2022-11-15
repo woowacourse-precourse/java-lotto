@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.util.RankingType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -58,20 +59,20 @@ class LottoTest {
 
     @Nested
     @DisplayName("당첨 번호와 비교해서 몇 등인지 출력하는 로직 검증")
-    class GetRanking{
+    class GetRanking {
         WinningLotto winningLotto;
 
         @BeforeEach
-        void 로또_초기화(){
-            winningLotto = new WinningLotto(List.of(1,2,3,4,5,6));
+        void 로또_초기화() {
+            winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6));
             winningLotto.updateBonus(7);
         }
 
         @Test
         @DisplayName("1등")
-        void 일등(){
+        void 일등() {
             // given
-            Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             // when
             RankingType result = lotto.getRankingType(winningLotto);
             // then
@@ -80,9 +81,9 @@ class LottoTest {
 
         @Test
         @DisplayName("2등")
-        void 이등(){
+        void 이등() {
             // given
-            Lotto lotto = new Lotto(List.of(1,2,3,4,5,7));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
             // when
             RankingType result = lotto.getRankingType(winningLotto);
             // then
@@ -91,9 +92,9 @@ class LottoTest {
 
         @Test
         @DisplayName("3등")
-        void 삼등(){
+        void 삼등() {
             // given
-            Lotto lotto = new Lotto(List.of(1,2,3,4,5,8));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
             // when
             RankingType result = lotto.getRankingType(winningLotto);
             // then
@@ -102,9 +103,9 @@ class LottoTest {
 
         @Test
         @DisplayName("4등")
-        void 사등(){
+        void 사등() {
             // given
-            Lotto lotto = new Lotto(List.of(1,2,3,4,8,9));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 8, 9));
             // when
             RankingType result = lotto.getRankingType(winningLotto);
             // then
@@ -113,9 +114,9 @@ class LottoTest {
 
         @Test
         @DisplayName("5등")
-        void 오등(){
+        void 오등() {
             // given
-            Lotto lotto = new Lotto(List.of(1,2,3,8,9,10));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 10));
             // when
             RankingType result = lotto.getRankingType(winningLotto);
             // then
@@ -124,13 +125,30 @@ class LottoTest {
 
         @Test
         @DisplayName("탈락")
-        void 탈락(){
+        void 탈락() {
             // given
-            Lotto lotto = new Lotto(List.of(1,2,8,9,10,11));
+            Lotto lotto = new Lotto(List.of(1, 2, 8, 9, 10, 11));
             // when
             RankingType result = lotto.getRankingType(winningLotto);
             // then
             assertThat(result).isEqualTo(RankingType.DROP_OUT);
+        }
+    }
+
+    @Nested
+    @DisplayName("로또 번호 String화 로직 검증")
+    class LottoToString {
+
+        @Test
+        @DisplayName("정렬 검증 [6,3,4,1,2,5] -> \"[1, 2, 3, 4, 5, 6]\"")
+        void 로또_번호_정렬_검증() {
+            // given
+            List<Integer> integers = Arrays.asList(6, 3, 4, 1, 2, 5);
+            // when
+            Lotto lotto = new Lotto(integers);
+            String result = lotto.getSortedNumbersString();
+            // then
+            assertThat(result).isEqualTo("[1, 2, 3, 4, 5, 6]");
         }
     }
 
