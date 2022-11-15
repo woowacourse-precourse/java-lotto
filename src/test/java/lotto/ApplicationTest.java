@@ -76,6 +76,44 @@ class ApplicationTest extends NsTest {
             .isEqualTo(Rank.SECOND);
     }
 
+    @Test
+    void 당첨_등수_테스트2() {
+        assertThat(getResult(List.of(1,2,3,4,5,6), 7, List.of(12,13,14,15,16,17)))
+            .isEqualTo(Rank.NONE);
+    }
+
+    @Test
+    void 당첨번호_5개_입력시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_범위_벗어날시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,50,60");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_중복시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_보너스번호_중복시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
