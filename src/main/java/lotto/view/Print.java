@@ -70,7 +70,7 @@ public class Print {
     }
 
     public static void printYield(double yield) {
-        DecimalFormat yieldFormat = new DecimalFormat("###,###.0%");
+        DecimalFormat yieldFormat = new DecimalFormat("###,##0.0%");
         String yieldRound = yieldFormat.format(yield);
         System.out.printf(MESSAGE_TOTAL_YIELD, yieldRound);
         System.out.println();
