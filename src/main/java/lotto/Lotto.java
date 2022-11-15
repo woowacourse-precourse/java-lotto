@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.view.ErrorMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +16,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println("[ERROR] 6개의 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.lottoIndex.getValue());
         }
     }
 
@@ -23,8 +24,7 @@ public class Lotto {
         List<Integer> inputNumber = new ArrayList<>();
         for (int eachNumber : numbers) {
             if (inputNumber.contains(eachNumber)) {
-                System.out.println("[ERROR] 중복된 숫자를 입력했습니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.lottoRepeatation.getValue());
             } else {
                 inputNumber.add(eachNumber);
             }
