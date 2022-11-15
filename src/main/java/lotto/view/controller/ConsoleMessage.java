@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.controller;
 
 public enum ConsoleMessage {
     INPUT_BUY_MONEY("구입금액을 입력해 주세요."),

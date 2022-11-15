@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.view.vlidation.InputCorrectLottoValidator;
@@ -8,9 +8,9 @@ import java.util.List;
 import static lotto.utils.ConvertUtil.convertInputToIntegerList;
 import static lotto.view.vlidation.InputMoneyValidator.validateBlank;
 
-public class LottoNumberController {
+public class LottoNumberView {
 
-    private LottoNumberController() {
+    private LottoNumberView() {
     }
 
     public static List<Integer> inputLottoNumbers() {

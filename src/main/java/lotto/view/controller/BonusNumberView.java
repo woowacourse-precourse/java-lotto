@@ -1,10 +1,10 @@
-package lotto.view;
+package lotto.view.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.view.vlidation.InputBonusValidator;
 
-public class BonusNumberController {
-    private BonusNumberController() {
+public class BonusNumberView {
+    private BonusNumberView() {
     }
 
     public static Integer inputBonusNumber() {
