@@ -3,17 +3,18 @@ package lotto.domain;
 import lotto.util.errorMessage.ErrorMessage;
 
 public class Bonus {
-    private final int bonusNum;
-    private final Lotto lotto;
 
-    public Bonus(int bonusNum, Lotto lotto) {
-        validateBonusNumisDuplicate(bonusNum,lotto);
+    private final int bonusNum;
+    private final Lotto winninglotto;
+
+    public Bonus(int bonusNum, Lotto winninglotto) {
+        validateBonusNumisDuplicate(bonusNum, winninglotto);
         this.bonusNum = bonusNum;
-        this.lotto = lotto;
+        this.winninglotto = winninglotto;
     }
 
-    private void validateBonusNumisDuplicate(int bonusNum, Lotto lotto){
-        if (Lotto.isWinningLottoHasBouns(bonusNum,lotto)){
+    private void validateBonusNumisDuplicate(int bonusNum, Lotto winninglotto) {
+        if (Lotto.isWinningLottoHasBouns(bonusNum, winninglotto)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUSNUM);
         }
     }
