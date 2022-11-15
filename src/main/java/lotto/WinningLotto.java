@@ -21,7 +21,7 @@ public class WinningLotto extends Lotto {
         validateNumberRange(bonusNumber);
         List<Integer> numbers = this.getNumbers();
         if(numbers.contains(bonusNumber)){
-            throw new IllegalArgumentException("[ERROR] 로또 번호와 보너스 번호는 모두 달라야 합니다.");
+            throw new IllegalArgumentException("로또 번호와 보너스 번호는 모두 달라야 합니다.");
         }
     }
 

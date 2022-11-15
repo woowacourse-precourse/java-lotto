@@ -15,10 +15,10 @@ public class IOController {
         try {
             buyingMoney = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 숫자입니다.");
+            throw new IllegalArgumentException("로또 구입 금액은 숫자입니다.");
         }
         if (buyingMoney % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위입니다.");
+            throw new IllegalArgumentException("로또 구입 금액은 1000원 단위입니다.");
         }
         return buyingMoney / 1000;
     }
@@ -28,7 +28,7 @@ public class IOController {
         String input = Console.readLine();
         String pattern = "^([1-9]?[0-9],){5}[1-9]?[0-9]$";
         if (!Pattern.matches(pattern, input)) {
-            throw new IllegalArgumentException("[ERROR] 쉼표로 구분된 6개의 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException("쉼표로 구분된 6개의 숫자를 입력해야 합니다.");
         }
         String[] splitedInputs = input.split(",");
         List<Integer> lottoNumbers = new ArrayList<>();
@@ -45,7 +45,7 @@ public class IOController {
         String input = Console.readLine();
         String pattern = "^[1-9]?[0-9]$";
         if (!Pattern.matches(pattern, input)) {
-            throw new IllegalArgumentException("[ERROR] 최대 두자리 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException("최대 두자리 숫자를 입력해야 합니다.");
         }
         validateNumberRange(Integer.parseInt(input));
         return Integer.parseInt(input);
@@ -72,13 +72,13 @@ public class IOController {
     }
 
     public static void printExceptionMessage(IllegalArgumentException e){
-        System.out.println(e.getMessage());
+        System.out.println("[ERROR] "+e.getMessage());
     }
 
 
     private static void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 }

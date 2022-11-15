@@ -1,8 +1,8 @@
 package lotto;
 
 public class MatchPair {
-    private int matchNumbers;
-    private boolean matchBonusNumber;
+    private final int matchNumbers;
+    private final boolean matchBonusNumber;
 
 
 
@@ -23,7 +23,7 @@ public class MatchPair {
         if (this.matchNumbers == 6) {
             return 1;
         }
-        if (this.matchNumbers == 5 && this.matchBonusNumber == true) {
+        if (this.matchNumbers == 5 && this.matchBonusNumber) {
             return 2;
         }
         if (this.matchNumbers <= 5 && this.matchNumbers >= 3) {

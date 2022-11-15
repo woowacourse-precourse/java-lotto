@@ -36,7 +36,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개이여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 6개이여야 합니다.");
         }
         for (int number : numbers) {
             validateNumberRange(number);
@@ -46,13 +46,13 @@ public class Lotto {
 
     protected void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 모두 달라야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 모두 달라야 합니다.");
         }
     }
 

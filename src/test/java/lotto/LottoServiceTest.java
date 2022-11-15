@@ -16,12 +16,16 @@ class LottoServiceTest {
         lottoService.makeRandomLottos(5);
         Assertions.assertThat(lottoService.getLottos().size()).isEqualTo(5);
     }
+
     @Test
-    void calculateEarningRateTest(){
+    void calculateEarningRateTest() {
         LottoService lottoService = new LottoService();
-        List<Integer> allRankings = new ArrayList<>(Arrays.asList(0,1,2,3,4,5));
-        float expected = 10323625f;
-        Assertions.assertThat(lottoService.calculateEarningRate(allRankings,20))
-                .isCloseTo(expected,Percentage.withPercentage(0.1));
+        List<Integer> allRankings = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5));
+        float expected = MoneyConstant.FIRST_PRIZE.getValue() + 2 * MoneyConstant.SECOND_PRIZE.getValue()
+                + 3 * MoneyConstant.THIRD_PRIZE.getValue() + 4 * MoneyConstant.FOURTH_PRIZE.getValue()
+                +5 * MoneyConstant.FIFTH_PRIZE.getValue();
+        expected = (expected/(MoneyConstant.LOTTO_PRICE.getValue()*20))*100;
+        Assertions.assertThat(lottoService.calculateEarningRate(allRankings, 20))
+                .isCloseTo(expected, Percentage.withPercentage(0.1));
     }
 }

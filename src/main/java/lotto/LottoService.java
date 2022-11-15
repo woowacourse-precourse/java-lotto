@@ -40,13 +40,13 @@ public class LottoService {
     }
     public Float calculateEarningRate(List<Integer> allRankings, Integer buyingLottoNumber){
         Float allPrizes = 0f;
-        allPrizes += allRankings.get(1)*2_000_000_000;
-        allPrizes += allRankings.get(2)*30_000_000;
-        allPrizes += allRankings.get(3)*1_500_000;
-        allPrizes += allRankings.get(4)*50_000;
-        allPrizes += allRankings.get(5)*5_000;
-        Float buyingMoney = Float.valueOf(buyingLottoNumber*1000);
-        return allPrizes*100/buyingMoney;
+        allPrizes += allRankings.get(1)* MoneyConstant.FIRST_PRIZE.getValue();
+        allPrizes += allRankings.get(2)* MoneyConstant.SECOND_PRIZE.getValue();
+        allPrizes += allRankings.get(3)* MoneyConstant.THIRD_PRIZE.getValue();
+        allPrizes += allRankings.get(4)* MoneyConstant.FOURTH_PRIZE.getValue();
+        allPrizes += allRankings.get(5)* MoneyConstant.FIFTH_PRIZE.getValue();
+        Float buyingMoney = Float.valueOf(buyingLottoNumber*MoneyConstant.LOTTO_PRICE.getValue());
+        return allPrizes/buyingMoney*100;
     }
 
 

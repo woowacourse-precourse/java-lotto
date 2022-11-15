@@ -15,8 +15,7 @@ public class Application {
             lottoService.setWinningLotto(winningLotto);
             List<Integer> allRankings = lottoService.caculateAllRankings();
             IOController.printPrizeResult(allRankings, buyinglottoNumber);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             IOController.printExceptionMessage(e);
         }
     }
