@@ -9,7 +9,7 @@ import java.util.*;
 
 public class TotalResult {
     private static final int DEFAULT_RANK_COUNT = 0;
-    private static final DecimalFormat yieldFormat = new DecimalFormat("###,###.#");
+    private static final DecimalFormat yieldFormat = new DecimalFormat("###,##0.0");
     private final JackpotBonus jackpotBonus;
     private final List<Lotto> lotteries;
     private final Map<Rank, Integer> rankCounts;
