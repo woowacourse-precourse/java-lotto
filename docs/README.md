@@ -21,8 +21,8 @@
     - [x]  로또와 당첨 번호 비교 기능 → compareLottoAndWinningNumber
 
         당첨 기준 1등~5등 enum으로 선언
-    - [x]  당첨 내역 저장 기능 → setWinningResult
-    - [ ]  수익률 저장 기능 → setLottoYield
+    - [x]  당첨 내역 저장 기능 → registerWinningResult
+    - [ ]  수익률 저장 기능 → registerLottoYield
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [x]  로또 개수만큼 발행 기능 → issueLotto

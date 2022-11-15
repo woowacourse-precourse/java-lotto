@@ -63,7 +63,7 @@ public class ApplicationController {
     }
 
     public void control_WinningResult() {
-        player.setWinningResult();
+        player.registerWinningResult();
         List<Ranking> winningResult = Arrays.stream(Ranking.values())
                 .filter(ranking -> ranking.getMatchingNumbers() > Ranking.NOTHING.getMatchingNumbers())
                 .collect(Collectors.toList());

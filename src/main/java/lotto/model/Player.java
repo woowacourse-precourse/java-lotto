@@ -47,7 +47,7 @@ public class Player {
         this.bonusNumber = bonusNumber;
     }
 
-    public void setWinningResult() {
+    public void registerWinningResult() {
         for (Lotto lottonumber : lottoNumbers) {
             int matchingNumbers = compareLottoAndWinningNumber(lottonumber);
             Ranking lottoResult = Ranking.getRankByMatchingNumbers(matchingNumbers);
