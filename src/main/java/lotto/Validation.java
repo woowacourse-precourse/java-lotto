@@ -22,7 +22,10 @@ public class Validation {
     }
 
     public void isValidSize(List<Integer> numbers) {
-
+        if(numbers.size() != LOTTO_SIZE) {
+            System.out.println("[ERROR] 6개의 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자가 아닙니다.");
+        }
     }
 
     public void isValidWinningNumbersInput(String input) {
