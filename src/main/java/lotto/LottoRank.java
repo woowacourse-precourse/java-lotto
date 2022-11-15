@@ -31,6 +31,10 @@ public enum LottoRank {
             return SECOND_PLACE;
         }
 
+        return remainValueOf(matchCount);
+    }
+
+    private static LottoRank remainValueOf(int matchCount) {
         if (isThirdPlace(matchCount)) {
             return THIRD_PLACE;
         }
@@ -39,6 +43,10 @@ public enum LottoRank {
             return FOURTH_PLACE;
         }
 
+        return firstOrFifthValueOf(matchCount);
+    }
+
+    private static LottoRank firstOrFifthValueOf(int matchCount) {
         if (isFifthPlace(matchCount)) {
             return FIFTH_PLACE;
         }
