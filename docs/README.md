@@ -32,8 +32,8 @@
 - [x] 구매 금액 입력하는 메시지를 출력한다.  -Print#inputPrice()
 
 ## 6. 예외 처리
-- [x] 입력 금액이 0인지 판단한다.
-- [x] 입력 금액이 1000으로 나누어 떨어지는데 판단한다.
+- [x] 입력 금액이 0인지 판단한다.  -UserNumber#inputPriceZero()
+- [x] 입력 금액이 1000으로 나누어 떨어지는데 판단한다.  -UserNumber#inputPriceThousand()
 - [x] 입력 금액 값의 형식이 맞는지 판단한다.  -UserNumber#inputPrice()
 - [x] 당첨 번호 입력 값의 숫자가 6개인지 판단한다.  -Lotto#validate()
 - [x] 당첨 번호 입력 값의 숫자중 중복값이 있는지 판단한다.  -Lotto#sameNumber()
