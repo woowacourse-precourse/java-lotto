@@ -1,18 +1,16 @@
-package lotto.controller;
+package lotto.service;
 
 import java.util.List;
-import lotto.domain.GradingMachine;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAnswer;
 import lotto.domain.LottoGrade;
 import lotto.domain.LottoResult;
-import lotto.domain.RankingMachine;
 
-public class LottoResultController {
+public class LottoResultService {
     private LottoAnswer lottoAnswer;
     private List<Lotto> lottos;
-    private GradingMachine gradingMachine;
-    private RankingMachine rankingMachine = new RankingMachine();
+    private GradeService gradeService;
+    private RankService rankService = new RankService();
     private LottoResult lottoResult = new LottoResult();
     private List<LottoGrade> lottoGrades;
     private double yield;
@@ -20,27 +18,27 @@ public class LottoResultController {
     private final double price;
     private int totalWinning;
 
-    public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos, int price) {
+    public LottoResultService(LottoAnswer lottoAnswer, List<Lotto> lottos, int price) {
         this.lottoAnswer = lottoAnswer;
         this.lottos = lottos;
-        this.gradingMachine = new GradingMachine(lottoAnswer, lottos);
+        this.gradeService = new GradeService(lottoAnswer, lottos);
         this.price = price;
     }
 
     public void run() {
         createLottoGrades();
         createLottoResult();
-        totalWinning = rankingMachine.getTotalWinning();
+        totalWinning = rankService.getTotalWinning();
     }
 
     public void createLottoGrades() {
-        gradingMachine.run();
-        lottoGrades = gradingMachine.getLottoGrades();
+        gradeService.run();
+        lottoGrades = gradeService.getLottoGrades();
     }
 
     public void createLottoResult() {
         for (LottoGrade lottoGrade : lottoGrades) {
-            int ranking = rankingMachine.getRank(lottoGrade);
+            int ranking = rankService.getRank(lottoGrade);
             lottoResult.putRanking(ranking);
         }
     }

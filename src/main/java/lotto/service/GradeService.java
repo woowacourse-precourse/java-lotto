@@ -1,14 +1,17 @@
-package lotto.domain;
+package lotto.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoAnswer;
+import lotto.domain.LottoGrade;
 
-public class GradingMachine {
+public class GradeService {
     private LottoAnswer lottoAnswer;
     private List<Lotto> lottos;
     private List<LottoGrade> lottoGrades = new ArrayList<>();
 
-    public GradingMachine(LottoAnswer lottoAnswer, List<Lotto> lottos) {
+    public GradeService(LottoAnswer lottoAnswer, List<Lotto> lottos) {
         this.lottoAnswer = lottoAnswer;
         this.lottos = lottos;
     }

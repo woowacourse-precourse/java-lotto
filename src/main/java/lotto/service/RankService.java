@@ -1,13 +1,14 @@
-package lotto.domain;
+package lotto.service;
 
 import java.util.List;
 import lotto.constant.Rank;
+import lotto.domain.LottoGrade;
 
-public class RankingMachine {
+public class RankService {
     private final List<Rank> ranks;
     public static int totalWinning = 0;
 
-    public RankingMachine() {
+    public RankService() {
         this.ranks = List.of(Rank.values());
     }
 

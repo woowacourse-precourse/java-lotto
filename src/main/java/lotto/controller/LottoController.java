@@ -8,6 +8,7 @@ import lotto.constant.Constant;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAnswer;
 import lotto.domain.LottoResult;
+import lotto.service.LottoResultService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,7 +16,7 @@ public class LottoController {
     private List<Lotto> lottos = new ArrayList<>();
     private LottoAnswer lottoAnswer;
     private LottoResult lottoResult;
-    private LottoResultController lottoResultController;
+    private LottoResultService lottoResultService;
     private final InputView inputView = new InputView();
     private int price;
     private int lottoCount;
@@ -28,13 +29,12 @@ public class LottoController {
         OutputView.printLottos(lottoCount, lottos);
 
         LottoAnswer lottoAnswer = inputView.getLottoAnswer();
-        lottoResultController = new LottoResultController(lottoAnswer, lottos, price);
-        lottoResultController.run();
-        LottoResult lottoResult = lottoResultController.getLottoResult();
-        double yield = lottoResultController.getYield();
+        lottoResultService = new LottoResultService(lottoAnswer, lottos, price);
+        lottoResultService.run();
+        LottoResult lottoResult = lottoResultService.getLottoResult();
+        double yield = lottoResultService.getYield();
         OutputView.printResult(lottoResult, yield);
     }
-
 
     private void generateLottos(int repeat) throws Exception {
         for (int i = 0; i < repeat; i++) {
