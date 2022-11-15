@@ -19,7 +19,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void validationLotto(List<Integer> numbers) {
+    private void validationLotto(List<Integer> numbers) {
         for (Integer number : numbers) {
             validateNumberInRange(number);
         }
@@ -27,7 +27,7 @@ public class Lotto {
         validateLengthOfLotto(numbers);
     }
 
-    public void validateLengthOfLotto(List<Integer> lottoNumber) {
+    private void validateLengthOfLotto(List<Integer> lottoNumber) {
         if (lottoNumber.size() != LENGTH_OF_WINNING_NUMBER) {
             throw new IllegalArgumentException(ERR_WRONG_LENGTH_OF_LOTTO);
         }
@@ -39,7 +39,7 @@ public class Lotto {
         }
     }
 
-    public void validateOverlap(List<Integer> numbers) {
+    private void validateOverlap(List<Integer> numbers) {
         numbers = numbers.stream().distinct().collect(Collectors.toList());
         if (numbers.size() != LENGTH_OF_WINNING_NUMBER) {
             throw new IllegalArgumentException(ERR_UNLIKE_NUMBER);
