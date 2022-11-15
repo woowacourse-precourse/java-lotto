@@ -9,6 +9,7 @@ import java.util.*;
 
 public class InputPrice {
     static UserInputException userInputException = new UserInputException();
+    private static final String ERROR_MESSAGE = "[ERROR]";
     final static int minimumUnitOfAmount = 1000;
     final static int lottoNumLength = 6;
     final static int numSizeStart = 1;
@@ -24,15 +25,15 @@ public class InputPrice {
     private static int inputPurchasingAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String purchasingAmount = Console.readLine();
-        if (!userInputException.checkInputIsInteger(purchasingAmount)){
-            throw new IllegalArgumentException("[ERROR]");
+        if (!userInputException.checkInputIsNum(purchasingAmount)){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         return Integer.parseInt(purchasingAmount);
     }
     /** 구입금액에 따른 로또 구매 개수 처리 기능 */
     private static int countingLottoCounts(int purchasingAmount) {
         if (!userInputException.checkMultipleOfThousand(purchasingAmount)){
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
         // 구매한 로또 개수를 출력한다.
         System.out.println(purchasingAmount / minimumUnitOfAmount + "개를 구매했습니다.");
