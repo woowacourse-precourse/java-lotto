@@ -34,17 +34,28 @@ public class Service {
 
     public String getWinningNumberInput() {
         String input = Console.readLine().trim();
-        if(!input.contains(",")){
+        if (!input.contains(",")) {
             throw new IllegalArgumentException("[ERROR] 올바른 형식이 아닙니다.");
         }
         String[] winningNumbers = input.split(",");
-        if(winningNumbers.length != 6){
+        if (winningNumbers.length != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.");
         }
         Set<String> winningNumberSet = new HashSet<>(Arrays.asList(winningNumbers));
-        if(winningNumberSet.size() != winningNumbers.length){
+        if (winningNumberSet.size() != winningNumbers.length) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
+        checkWinningNumber(winningNumbers);
         return input;
+    }
+
+    private void checkWinningNumber(String[] winningNumbers) {
+        for (String winningNumber : winningNumbers) {
+            try {
+                Integer.parseInt(winningNumber);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+            }
+        }
     }
 }
