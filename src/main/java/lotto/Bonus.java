@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Bonus {
-    private final int bonus;
+    public static int bonus;
 
     public Bonus(int userBonus){
 
