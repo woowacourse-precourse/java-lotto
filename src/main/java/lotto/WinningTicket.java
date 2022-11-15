@@ -4,12 +4,20 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 
-public class WinningTicket extends Lotto {
-    private int bonusNumber = 0;
+public class WinningTicket {
+    private List<Integer> numbers;
+    private int bonusNumber;
 
     public WinningTicket() {
-        inputBonusNumber();
-        super(inputNumbers());
+    }
+
+    void setNumbers() {
+        List<Integer> lottoNumbers;
+
+        lottoNumbers = inputNumbers();
+        Lotto.validateLottoNumbers(lottoNumbers);
+        Collections.sort(lottoNumbers);
+        this.numbers = lottoNumbers;
     }
 
     private List<Integer> inputNumbers() {
