@@ -34,6 +34,12 @@ public class Domain {
         printLottoNumbers();
     }
 
+    // TODO: 우승번호, 보너스번호 입력 루틴을 실행한다.
+    public void receiveWinningNumber(){
+        initializationWinningNumbers();
+        initializationBonusNumber();
+    }
+
 
     // TODO: 로또 금액 문장 출력 후 로또 금액을 입력 받는다.
     private static int inputLottoAmount(){
