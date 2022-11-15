@@ -1,10 +1,12 @@
 package lotto;
 
 import java.io.BufferedReader;
+import camp.nextstep.edu.missionutils.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.*;
 
 public class Util {
 
@@ -18,10 +20,10 @@ public class Util {
             String userInput = br.readLine();
 
             if(isNumber(userInput)) userMoney = Integer.parseInt(userInput);
-            if(!isDivisionByThousand(userMoney)) throw new IllegalArgumentException();
+            if(!isDivisionByThousand(userMoney)) throw new IllegalArgumentException(ErrorMsg.IO_ERR_MSG.getErrorMsg());
 
             return userMoney;
-        } catch (IOException e){ throw new IllegalArgumentException(); }
+        } catch (IOException e){ throw new IllegalArgumentException(ErrorMsg.IO_ERR_MSG.getErrorMsg()); }
     }
 
     public static boolean isNumber(String str){
@@ -30,7 +32,7 @@ public class Util {
             Integer.parseInt(str);
             return true;
         }catch(NumberFormatException e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
         }
     }
 
@@ -42,7 +44,7 @@ public class Util {
             }
             return true;
         }catch(NumberFormatException e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
         }
     }
 
@@ -61,10 +63,10 @@ public class Util {
         try {
             String[] inputStr = br.readLine().split(",");
 
-            if(!isNumber(inputStr)) throw new IllegalArgumentException();
+            if(!isNumber(inputStr)) throw new IllegalArgumentException(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
 
             winNumbers = strArrChangeIntList(inputStr);
-        } catch (IOException e) {throw new IllegalArgumentException(e);}
+        } catch (IOException e) {throw new IllegalArgumentException(ErrorMsg.IO_ERR_MSG.getErrorMsg());}
         return winNumbers;
     }
 
@@ -84,14 +86,14 @@ public class Util {
 
         try {
             String str = br.readLine();
-            if(!isNumber(str)) throw new IllegalArgumentException();
+            if(!isNumber(str)) throw new IllegalArgumentException(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
 
             bonusNumber = Integer.parseInt(str);
 
-            if(winNumber.contains(bonusNumber)) throw new IllegalArgumentException();
+            if(winNumber.contains(bonusNumber)) throw new IllegalArgumentException(ErrorMsg.NUM_CONTAIN_MSG.getErrorMsg());
 
             return bonusNumber;
-        } catch (IOException e) {throw new IllegalArgumentException(e);}
+        } catch (IOException e) {throw new IllegalArgumentException(ErrorMsg.IO_ERR_MSG.getErrorMsg());}
     }
 
 }

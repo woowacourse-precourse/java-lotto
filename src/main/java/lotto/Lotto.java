@@ -14,21 +14,21 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMsg.SIZE_UP_MSG.getErrorMsg());
         }
     }
 
     private void rangeValid(List<Integer> numbers){
         numbers.forEach(number -> {
             if(number < 1 || number > 45){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMsg.NUM_RANGE_MSG.getErrorMsg());
             }
         });
     }
 
     private void duplicatedValid(List<Integer> numbers){
         if(numbers.size() != numbers.stream().distinct().count()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMsg.NUM_CONTAIN_MSG.getErrorMsg());
         }
     }
 
