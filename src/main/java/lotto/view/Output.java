@@ -14,7 +14,9 @@ public class Output {
     private static final String FIVE_CORRECT = "5개 일치 (1,500,000원) - ";
     private static final String FIVE_AND_BONUS_CORRECT = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String SIX_CORRECT = "6개 일치 (2,000,000,000원) - ";
-    private static final String TOTAL_PROFIT = "총 수익률은 .%1f%입니다.";
+    private static final String PROFIT_FORMAT = "%.1f";
+    private static final String PROFIT_START_SENTENCE = "총 수익률은 ";
+    private static final String PROFIT_END_SENTENCE = "%입니다.";
 
     private Output() {
     }
@@ -51,6 +53,8 @@ public class Output {
     }
 
     public static void printRateOfReturn(double rateOfReturn) {
-        System.out.println(String.format(TOTAL_PROFIT, rateOfReturn));
+        System.out.printf(PROFIT_START_SENTENCE);
+        System.out.printf(String.format(PROFIT_FORMAT, rateOfReturn));
+        System.out.println(PROFIT_END_SENTENCE);
     }
 }
