@@ -22,6 +22,12 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @DisplayName("보너스 번호가 1~45값이 아니면 예외가 발생한다")
+    @Test
+    void createLottoByNotInteger() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> Lotto.bonuscheck(0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     // 아래에 추가 테스트 작성 가능
 }

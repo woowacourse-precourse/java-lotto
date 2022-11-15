@@ -67,7 +67,7 @@ public class Lotto {
 
         }
 
-    private static void bonuscheck(int bonus) {
+    public static void bonuscheck(int bonus) {
         if(bonus<=0 || bonus>=45){
         System.out.println("[ERROR] 금액이 올바르지 않습니다.");
         throw new IllegalArgumentException();}
