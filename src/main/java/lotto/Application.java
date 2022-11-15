@@ -245,7 +245,7 @@ public class Application {
         return true;
     }
 
-    static boolean isValidBonus(String input)  {
+    static boolean isValidBonus(String input, ArrayList<Integer> luckyList)  {
         //숫자만 입력했는지 확인
         try{
             Integer.parseInt(input);
@@ -258,8 +258,11 @@ public class Application {
         if(inputInt < minLottoNumber || inputInt > maxLottoNumber){
             return false;
         }
-        //
-        if()
+        //당첨 로또 번호와 중복인 경우
+        if(luckyList.contains(inputInt)){
+            return false;
+        }
+
         return true;
     }
 }
