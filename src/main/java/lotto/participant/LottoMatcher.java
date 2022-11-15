@@ -40,16 +40,18 @@ public class LottoMatcher {
     }
 
     private void saveResult(int numberOfMatchedLottoNumber, boolean bonus) {
+        Rank rank = null;
         if (numberOfMatchedLottoNumber == 6) {
-            rankCounts.put(Rank.FIRST_SIX_MATCHED, rankCounts.getOrDefault(Rank.FIRST_SIX_MATCHED, 0) + 1);
+            rank = Rank.FIRST_SIX_MATCHED;
         } else if (numberOfMatchedLottoNumber == 5 && bonus) {
-            rankCounts.put(Rank.SECOND_FIVE_WITH_BONUS, rankCounts.getOrDefault(Rank.SECOND_FIVE_WITH_BONUS, 0) + 1);
+            rank = Rank.SECOND_FIVE_WITH_BONUS;
         } else if (numberOfMatchedLottoNumber == 5) {
-            rankCounts.put(Rank.THIRD_FIVE_MATCHED, rankCounts.getOrDefault(Rank.THIRD_FIVE_MATCHED, 0) + 1);
+            rank = Rank.THIRD_FIVE_MATCHED;
         } else if (numberOfMatchedLottoNumber == 4) {
-            rankCounts.put(Rank.FOURTH_FOUR_MATCHED, rankCounts.getOrDefault(Rank.FOURTH_FOUR_MATCHED, 0) + 1);
+            rank = Rank.FOURTH_FOUR_MATCHED;
         } else if (numberOfMatchedLottoNumber == 3) {
-            rankCounts.put(Rank.FIFTH_THREE_MATCHED, rankCounts.getOrDefault(Rank.FIFTH_THREE_MATCHED, 0) + 1);
+            rank = Rank.FIFTH_THREE_MATCHED;
         }
+        rankCounts.put(rank, rankCounts.getOrDefault(rank, 0) + 1);
     }
 }
