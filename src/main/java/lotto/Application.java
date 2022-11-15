@@ -103,4 +103,14 @@ public class Application {
             return Yield / 100 + "." + (Yield / 10) % 10;
     }
 
+    public static void Winning(List<Integer> winning){
+        for(int correct_Num : winning){
+            if(correct_Num == 6) Rank.first.count++;
+            else if(correct_Num == 7) Rank.second.count++;
+            else if (correct_Num == 5) Rank.third.count++;
+            else if (correct_Num == 4) Rank.fourth.count++;
+            else if (correct_Num == 3) Rank.fifth.count++;
+        }
+    }
+
 }
