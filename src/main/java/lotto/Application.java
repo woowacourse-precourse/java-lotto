@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 public class Application {
     static List<Lotto> lottos = new ArrayList<>();
+    static HashMap<String,Integer> win_list = new HashMap<>();
     final static int lotto_price = 1000;
     final static int min_number = 1;
     final static int max_number = 45;
@@ -15,6 +17,7 @@ public class Application {
         String inputmoney = InputMoney();
         int lotto_count = CheckUnit(inputmoney);
         LottoNumber(lotto_count);
+        PrintLotto(lottos);
         List<Integer> win_numbers = InputNumber();
         int bonus_number = BonusNumber();
     }
@@ -44,7 +47,11 @@ public class Application {
             lottos.add(lotto);
         }
     }
-
+    public static void PrintLotto(List<Lotto> lottos){
+        for(Lotto lotto : lottos){
+            System.out.println(lotto.GetNumbers());
+        }
+    }
     public static List<Integer> InputNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] win_number = Console.readLine().split(",");
@@ -59,7 +66,7 @@ public class Application {
         String bonus = Console.readLine();
         return Integer.valueOf(bonus);
     }
-    public static List<Integer> CompareNumber(){
+    public static List<Integer> CompareNumber(List<Integer> lotto, List<Integer> win_number){
 
     }
 
