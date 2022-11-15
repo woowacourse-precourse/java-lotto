@@ -26,6 +26,7 @@ public class OutputView {
         for (List<Integer> lotteryTicket : lotteryTickets) {
             showLotteryNumbers(lotteryTicket);
         }
+        insertLineBreak();
     }
 
     private static void showLotteryNumbers (List<Integer> lotteryTicket) {
@@ -70,5 +71,9 @@ public class OutputView {
         int purchaseMoney = numberOfAllTickets * LottoProperty.PRICE.getProperty();
         double profitRate = (double) totalReward / purchaseMoney * TOTAL_PERCENT;
         return String.format(Format.PROFIT_RATE.getFormat(), profitRate);
+    }
+
+    public static void insertLineBreak() {
+        System.out.println();
     }
 }

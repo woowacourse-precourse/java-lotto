@@ -18,6 +18,7 @@ public class UserController {
 
     public static void buyLotteryTicket() throws IllegalArgumentException {
         int money = InputView.takeMoneyInput();
+        OutputView.insertLineBreak();
         user = userService.createUser(money);
         lotterySellService.sell(user);
         OutputView.showPurchaseList(user.findAllLotteryNumbers());
