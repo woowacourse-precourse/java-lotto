@@ -254,11 +254,10 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        try {
             initializeNumberType();
             initializeNoOfLottoWinAt();
             initializePrizesAtPlaces();
-
+        try {
             purchaseLottos();
             getWinningNumbers();
             getBonusNumber();
