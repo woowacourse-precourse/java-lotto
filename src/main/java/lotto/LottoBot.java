@@ -70,4 +70,8 @@ public class LottoBot {
 
         return price;
     }
+
+    public boolean isValidBonusNumber(String bonusNumber) {
+        return !winningNumbers.contains(bonusNumber);
+    }
 }

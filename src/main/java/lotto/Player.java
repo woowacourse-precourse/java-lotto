@@ -41,6 +41,11 @@ public class Player {
         number = eraseAllBlank(number);
         validation.checkBonusNumberInput(number);
 
+        if (!lottoBot.isValidBonusNumber(number)) {
+            selectBonusNumber();
+            return;
+        }
+
         lottoBot.saveBonusNumber(number);
     }
 

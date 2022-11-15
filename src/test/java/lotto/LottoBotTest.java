@@ -62,4 +62,18 @@ class LottoBotTest {
         List<Integer> ranks = new ArrayList<>(List.of(0, 0, 0, 0, 1));
         Assertions.assertThat(lottoBot.calculateYield(ranks)).isEqualTo(500f);
     }
+
+    @Test
+    @DisplayName("보너스 숫자가 당첨번호와 안 겹치는지 확인하는 테스트")
+    void checkNotDuplicatedBonusNumber() {
+        lottoBot.saveWinningNumbers(new ArrayList<>(List.of("1","2","3","4","5","6")));
+        Assertions.assertThat(lottoBot.isValidBonusNumber("7")).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("보너스 숫자가 당첨번호와 겹치는지 확인하는 테스트")
+    void checkDuplicatedBonusNumber() {
+        lottoBot.saveWinningNumbers(new ArrayList<>(List.of("1","2","3","4","5","6")));
+        Assertions.assertThat(lottoBot.isValidBonusNumber("1")).isEqualTo(false);
+    }
 }
