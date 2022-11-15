@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.LottoGenerator;
 import lotto.domain.NumberOfLottos;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -10,6 +11,7 @@ public class LottoController {
         try {
             NumberOfLottos numberOfLottos = getPriceAmount();
             LottoGenerator lottoGenerator = getLottos(numberOfLottos);
+            OutputView.printLottos(numberOfLottos, lottoGenerator);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
