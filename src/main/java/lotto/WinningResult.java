@@ -7,6 +7,9 @@ import java.util.Map;
 
 public class WinningResult {
     private Map<LottoRating, Integer> totalResult;
+    public final int DEFAULT_VALUE = 0;
+    public final int PERCENTAGE_REFERENCE_VALUE = 100;
+    public final int ADD = 1;
 
     public WinningResult(WinningLotto winningNumber, List<Lotto> lottos) {
         this.totalResult = conversionLotto(winningNumber, lottos);
@@ -14,16 +17,16 @@ public class WinningResult {
 
     private Map<LottoRating, Integer> conversionLotto(WinningLotto winningNumber, List<Lotto> lottos) {
         Map<LottoRating, Integer> totalResult = new EnumMap<>(LottoRating.class);
-        totalResult.put(LottoRating.FIFTH, 0);
-        totalResult.put(LottoRating.FOURTH, 0);
-        totalResult.put(LottoRating.THIRD, 0);
-        totalResult.put(LottoRating.SECOND, 0);
-        totalResult.put(LottoRating.FIRST, 0);
+        totalResult.put(LottoRating.FIFTH, DEFAULT_VALUE);
+        totalResult.put(LottoRating.FOURTH, DEFAULT_VALUE);
+        totalResult.put(LottoRating.THIRD, DEFAULT_VALUE);
+        totalResult.put(LottoRating.SECOND, DEFAULT_VALUE);
+        totalResult.put(LottoRating.FIRST, DEFAULT_VALUE);
 
         List<LottoRating> lottoResult = checkAllLotto(winningNumber, lottos);
         for (LottoRating lottoGrade : lottoResult) {
             if (lottoGrade != LottoRating.NOTHING) {
-                totalResult.put(lottoGrade, totalResult.get(lottoGrade) + 1);
+                totalResult.put(lottoGrade, totalResult.get(lottoGrade) + ADD);
             }
         }
 
@@ -55,7 +58,7 @@ public class WinningResult {
     }
 
     public Integer getCount(LottoRating lottoRating) {
-        return totalResult.getOrDefault(lottoRating, 0);
+        return totalResult.getOrDefault(lottoRating, DEFAULT_VALUE);
     }
 
     public double createProfit(String purchaseAmount) {
@@ -65,6 +68,6 @@ public class WinningResult {
             sum += totalResult.get(key) * key.getWinningMoney();
         }
 
-        return sum / money * 100;
+        return sum / money * PERCENTAGE_REFERENCE_VALUE;
     }
 }
