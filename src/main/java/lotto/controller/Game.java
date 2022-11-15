@@ -11,6 +11,7 @@ import lotto.domain.Seller;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.view.StatisticsView;
+import lotto.vo.Statistics;
 
 public class Game {
 
@@ -21,19 +22,10 @@ public class Game {
 
             List<Rank> ranks = getPicker().pick(lottos);
 
-            Money profit = sumProfitsOf(ranks);
-            double profitRate = capital.calculateProfitRateOf(profit);
-            StatisticsView.printStatistics(ranks, profitRate);
+            StatisticsView.printStatistics(new Statistics(ranks), capital);
         } catch (IllegalArgumentException exception) {
             OutputView.printException(exception.getMessage());
         }
-    }
-
-    private Money sumProfitsOf(List<Rank> ranks) {
-        return ranks.stream()
-                .map(Rank::getPrize)
-                .reduce(Money::add)
-                .orElse(new Money(0));
     }
 
     private Picker getPicker() {

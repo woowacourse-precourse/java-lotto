@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import lotto.domain.Money;
 import lotto.domain.Rank;
+import lotto.vo.Statistics;
 
 public class StatisticsView {
 
@@ -17,12 +18,12 @@ public class StatisticsView {
     private static final String STATISTIC_FORMAT_WITH_BONUS_NUMBER = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String PROFIT_RATE_FORMAT = "총 수익률은 %.1f%%입니다.";
 
-    public static void printStatistics(List<Rank> ranks, double profitRate) {
+    public static void printStatistics(Statistics statistics, Money capital) {
         System.out.println(STATISTICS_BEGIN_MESSSAGE);
         for (Rank rank : getRanksToPrint()) {
-            printStatistic(rank, countRanks(ranks, rank));
+            printStatistic(rank, statistics.getCountOf(rank));
         }
-        printProfitRate(profitRate);
+        printProfitRate(capital, statistics.getTotalProfit());
     }
 
     private static List<Rank> getRanksToPrint() {
@@ -44,18 +45,13 @@ public class StatisticsView {
         System.out.println();
     }
 
-    public static void printProfitRate(double profitRate) {
+    private static void printProfitRate(Money capital, Money profit) {
+        double profitRate = capital.calculateProfitRateOf(profit);
         System.out.printf(PROFIT_RATE_FORMAT, convertRateToPercentage(profitRate));
     }
 
     private static double convertRateToPercentage(double rate) {
         return rate * PERCENT_MULTIPLIER;
-    }
-
-    private static int countRanks(List<Rank> ranks, Rank targetRank) {
-        return Math.toIntExact(ranks.stream()
-                .filter(rank -> rank == targetRank)
-                .count());
     }
 
     private static String formatWithComma(Money prize) {
