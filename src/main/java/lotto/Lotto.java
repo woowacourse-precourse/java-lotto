@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static lotto.Lotto.Ranking.getRank;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -38,7 +40,7 @@ public class Lotto {
             for (int j = 0; j < numbers.size(); j++) {
                 count = compareNumbers(numbers.get(j), lottoNumbers[i]);
                 bonus = compareBonusNumber(lottoNumbers[i], bonusNumber);
-                getRanking(countWinning, count, bonus);
+                Ranking.getRank(count);
             }
         }
     }
@@ -60,33 +62,29 @@ public class Lotto {
         return false;
     }
 
-    public void getRanking(List<Integer> countWinning, int count, boolean bonus) {
-        int rankingCount;
-        if (count == 6) {
-            rankingCount = countWinning.get(4) + 1;
-            countWinning.set(4, rankingCount);
-            return;
+    public enum Ranking {
+        THREE(3, false, 5000),
+        FOUR(4, false, 50_000),
+        FIVE(5, false, 1_500_000),
+        BONUS(5, true, 30_000_000),
+        SIX(6, false, 2_000_000_000);
+
+        private final int rightNumber;
+        private final boolean bonus;
+        private final int prize;
+
+        Ranking(int rightNumber, boolean bonus, int prize) {
+            this.rightNumber = rightNumber;
+            this.bonus = bonus;
+            this.prize = prize;
         }
-        if (count == 5) {
-            if (bonus) {
-                rankingCount = countWinning.get(3) + 1;
-                countWinning.set(3, rankingCount);
-                return;
-            }
-            rankingCount = countWinning.get(2) + 1;
-            countWinning.set(2, rankingCount);
-            return;
+
+        public static Ranking getRank(int countWinner, boolean bonus) {
+            return Arrays.stream(values())
+                    .filter(ranking -> ranking.rightNumber == countWinner)
+                    .filter(ranking -> ranking.bonus == bonus)
+                    .findAny()
+                    .orElseThrow();
         }
-        if (count == 4) {
-            rankingCount = countWinning.get(1) + 1;
-            countWinning.set(1, rankingCount);
-            return;
-        }
-        if (count == 3) {
-            rankingCount = countWinning.get(0) + 1;
-            countWinning.set(0, rankingCount);
-            return;
-        }
-        return;
     }
 }
