@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-    private static final int COMMA_COUNT = 5;
-    private static final int LOTTO_COUNT = 6;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
 
@@ -37,49 +35,27 @@ public class Input {
     public static List<Integer> inputWinningNumbers() {
         String numbers = Console.readLine();
 
-        if (!isValidWinningNumbers(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 당첨 번호입니다.");
-        }
+        validateWinningNumbers(numbers);
 
         return Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    private static boolean isValidWinningNumbers(String numbers) {
-        return isSeparatedByComma(numbers) && isNumerics(numbers) && isValidCount(numbers) && isValidRanges(numbers);
+    /**
+     * 당첨 번호의 입력 형식에 대한 예외 처리를 하는 메소드
+     */
+    private static void validateWinningNumbers(String numbers) {
+        if (!isSeparatedByCommaAndNumerics(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 입력 형식이 올바르지 않습니다.");
+        }
     }
 
     /**
      * 쉼표 5개로 구분되어 있는 숫자들의 입력인지 확인하는 메소드
      */
-    private static boolean isSeparatedByComma(String numbers) {
-        return numbers.chars()
-                .filter(character -> character == ',')
-                .count() == COMMA_COUNT;
-    }
-
-    /**
-     * 쉼표로 분리한 입력들이 숫자인지 확인하는 메소드
-     */
-    private static boolean isNumerics(String numbers) {
-        return Arrays.stream(numbers.split(","))
-                .allMatch(Input::isNumeric);
-    }
-
-    /**
-     * 분리한 숫자들의 개수가 6개인지 확인하는 메소드
-     */
-    private static boolean isValidCount(String numbers) {
-        return numbers.split(",").length == LOTTO_COUNT;
-    }
-
-    /**
-     * 분리한 숫자들의 범위가 1~45 인지 확인하는 메소드
-     */
-    private static boolean isValidRanges(String numbers) {
-        return Arrays.stream(numbers.split(","))
-                .allMatch(Input::isValidRange);
+    private static boolean isSeparatedByCommaAndNumerics(String numbers) {
+        return numbers.matches("(\\d)+,(\\d)+,(\\d)+,(\\d)+,(\\d)+,(\\d)+");
     }
 
     public static int inputBonusNumber(List<Integer> winningNumbers) {
@@ -90,6 +66,14 @@ public class Input {
         }
 
         return Integer.parseInt(number);
+    }
+
+    /**
+     * 분리한 숫자들의 범위가 1~45 인지 확인하는 메소드
+     */
+    private static boolean isValidRanges(String numbers) {
+        return Arrays.stream(numbers.split(","))
+                .allMatch(Input::isValidRange);
     }
 
     private static boolean isValidBonusNumber(String number, List<Integer> winningNumbers) {

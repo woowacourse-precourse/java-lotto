@@ -16,14 +16,16 @@ public class Purchase {
     private static WinningNumber winningNumber;
 
     public static void lotto() {
-
         printAmountInputText();
         amount = pay(inputAmount());
 
         lottos = createLottos(amount.getCount());
         printLottos(lottos);
 
-        inputNumbers();
+        printInputWinningNumber();
+        inputWinningNumbers();
+
+        printInputBonusNumber();
         inputBonusNumber();
 
         //Result.of(lottos, winningNumber).printStatistics(amount);
@@ -32,16 +34,14 @@ public class Purchase {
     /**
      * 당첨 번호를 입력받는 메서드
      */
-    private static void inputNumbers() {
-        printInputWinningNumber();
-        winningNumber = new WinningNumber(inputWinningNumbers());
+    private static void inputWinningNumbers() {
+        winningNumber = new WinningNumber(Input.inputWinningNumbers());
     }
 
     /**
      * 보너스 번호를 입력받는 메서드
      */
     private static void inputBonusNumber() {
-        printInputBonusNumber();
         winningNumber.setBonusNumber(Input.inputBonusNumber(winningNumber.getNumbers()));
     }
 }
