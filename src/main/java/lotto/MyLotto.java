@@ -32,4 +32,8 @@ public class MyLotto {
         }
         return boughtLotto;
     }
+
+    public List<List<Integer>> getMyPocket(){
+        return this.myPocket;
+    }
 }
