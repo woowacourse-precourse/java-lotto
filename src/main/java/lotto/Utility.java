@@ -21,6 +21,7 @@ public abstract class Utility {
     public static final String separateLine = "---";
 
     public static final long divisorNumber = 1000;
+    public static final int fiveNumbersCorrect = 5;
     public static final int noWinIndex = 5;
 
     public static List <String> winEnumNames = Arrays.asList("WIN60", "WIN51", "WIN50", "WIN40", "WIN30");
@@ -89,7 +90,7 @@ public abstract class Utility {
         _winningNumbers.retainAll(lotto);
         int cntCorrectNum = _winningNumbers.size();
         int checkBonus = 0;
-        if(lotto.contains(bonusNumber)){
+        if(lotto.contains(bonusNumber) && cntCorrectNum==fiveNumbersCorrect){
             checkBonus = 1;
         }
         int index;
