@@ -21,7 +21,9 @@ public class LottoStatistics {
     private static final int numberSix = 6;
 
     private static final int lottoSixNumber = 0;
-    private static final int lottoBonusNumber = 1 ;
+    private static final int lottoBonusNumber = 1;
+
+    private static final int initZero = 0;
 
     private static final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
 
@@ -30,12 +32,12 @@ public class LottoStatistics {
     }
 
     private void initLottoResultMap(){
-        lottoResultMap.put(THREE,0);
-        lottoResultMap.put(FOUR,0);
-        lottoResultMap.put(FIVE,0);
-        lottoResultMap.put(FIVE_BONUS,0);
-        lottoResultMap.put(SIX,0);
-        lottoResultMap.put(LOSING,0);
+        lottoResultMap.put(THREE,initZero);
+        lottoResultMap.put(FOUR,initZero);
+        lottoResultMap.put(FIVE,initZero);
+        lottoResultMap.put(FIVE_BONUS,initZero);
+        lottoResultMap.put(SIX,initZero);
+        lottoResultMap.put(LOSING,initZero);
     }
 
     public void calculation(List<Lotto> lottoTicketList, WinningNumbers winningNumbers){
@@ -50,7 +52,7 @@ public class LottoStatistics {
         List<Integer> lottoTicket = oneLottoTicket.get();
         List<Integer> winningSixNumbers = winningNumbers.getWinNumbers();
         int winningBonusNumber = winningNumbers.getBonus();
-        List<Integer> count  = new ArrayList<>(Arrays.asList(lottoSixNumber,0));
+        List<Integer> count  = new ArrayList<>(Arrays.asList(initZero,initZero));
         for (Integer number : lottoTicket) count = countContain(number,winningSixNumbers,winningBonusNumber,count);
         return findRanking(count,oneLottoTicket);
     }
