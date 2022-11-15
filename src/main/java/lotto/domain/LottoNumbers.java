@@ -17,13 +17,13 @@ public class LottoNumbers {
         return lottos;
     }
     public List<Integer> generateLotto(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
-        return numbers;
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 
     public void displayLotto(List<Lotto> numbers){
-        for(int i=0; i<numbers.size(); i++){
-            System.out.println(numbers.get(i).getLotto());
+        for(Lotto lotto: numbers){
+            System.out.println(lotto.getLotto());
         }
 
     }
