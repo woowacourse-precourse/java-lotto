@@ -7,18 +7,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoRandom {
-    private final int MIN_LOTTO_NUM = 1;
-    private final int MAX_LOTTO_NUM = 45;
-    private final int LOTTO_COUNT = 6;
-    private final int PURCHASE_AMOUNT_UNIT = 1000;
 
     public int calculatePurchaseCount(int purchaseAmount) {
         validatePurchaseAmount(purchaseAmount);
-        return purchaseAmount / PURCHASE_AMOUNT_UNIT;
+        return purchaseAmount / LottoUtil.LottoNumberPromise.PURCHASE_AMOUNT_UNIT.getValue();
     }
 
     private void validatePurchaseAmount(int purchaseAmount) {
-        if (purchaseAmount % PURCHASE_AMOUNT_UNIT != 0)
+        if (purchaseAmount % LottoUtil.LottoNumberPromise.PURCHASE_AMOUNT_UNIT.getValue() != 0)
             throw new IllegalArgumentException("구매 금액이 1000원 단위가 아닙니다.");
     }
 
@@ -27,7 +23,9 @@ public class LottoRandom {
         List<Integer> numbers;
 
         for (int i = 0; i < purchaseCount; i++) {
-            numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_COUNT);
+            numbers = Randoms.pickUniqueNumbersInRange(LottoUtil.LottoNumberPromise.MIN_LOTTO_NUM.getValue(),
+                    LottoUtil.LottoNumberPromise.MAX_LOTTO_NUM.getValue(),
+                    LottoUtil.LottoNumberPromise.LOTTO_COUNT.getValue());
             if (!LottoUtil.isSorted(numbers)) {
                 Collections.sort(numbers);
             }

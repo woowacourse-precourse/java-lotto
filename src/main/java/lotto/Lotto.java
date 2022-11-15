@@ -18,7 +18,8 @@ public class Lotto {
             throw new IllegalArgumentException("로또 번호가 6자리가 아닙니다.");
         }
         this.isDuplicateNumberExist(numbers);
-        this.isInRange(numbers, 1, 45);
+        this.isInRange(numbers, LottoUtil.LottoNumberPromise.MIN_LOTTO_NUM.getValue(),
+                LottoUtil.LottoNumberPromise.MAX_LOTTO_NUM.getValue());
     }
 
     private void isDuplicateNumberExist(List<Integer> input) {

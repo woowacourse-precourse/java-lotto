@@ -38,4 +38,23 @@ public class LottoUtil {
     public static boolean isSorted(List<Integer> input) {
         return IntStream.range(0, input.size() - 1).noneMatch(i -> input.get(i) > input.get(i+1));
     }
+
+    public enum LottoNumberPromise {
+        MIN_LOTTO_NUM(1),
+        MAX_LOTTO_NUM(45),
+        LOTTO_COUNT(6),
+        PURCHASE_AMOUNT_UNIT(1000);
+
+        private final int value;
+
+        LottoNumberPromise(int value){
+            this.value = value;
+        }
+
+        public int getValue(){
+            return value;
+        }
+    }
 }
+
+
