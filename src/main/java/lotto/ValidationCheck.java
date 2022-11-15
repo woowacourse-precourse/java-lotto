@@ -15,14 +15,15 @@ public class ValidationCheck {
     public static void checkValidMoneyInput(String gamblerInput){
         boolean isDividedBy1000 = Pattern.matches("^[1-9]+\\d*000$", gamblerInput);
         if (!isDividedBy1000) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1000으로 나누어지는 숫자이어야 합니다.");
         }
     }
 
     public static void checkDigitAndComma(String winningNumbers) {
-        boolean isRightLottoNumbers = Pattern.matches("^[0-9,]*$", winningNumbers);
+        String regexPattern = "^[0-9]+,[0-9]+,[0-9]+,[0-9]+,[0-9]+,[0-9]+$";
+        boolean isRightLottoNumbers = Pattern.matches(regexPattern, winningNumbers);
         if (!isRightLottoNumbers){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자와 콤마로만 이루어진 \"숫자,숫자,숫자,숫자,숫자,숫자\"형태 이어야 합니다.");
         }
     }
 
@@ -32,11 +33,10 @@ public class ValidationCheck {
      */
     public static void checkOverlapAndSize(String winningNumbers) {
         List<String> temp = Arrays.asList(winningNumbers.split(","));
-        boolean isSizeSix = temp.size() == 6;
         Set<String> delOverlap = new HashSet<>(temp);
         boolean isNoOverlap = delOverlap.size() == 6;
-        if (!(isSizeSix && isNoOverlap)){
-            throw new IllegalArgumentException();
+        if (!(isNoOverlap)){
+            throw new IllegalArgumentException("6개의 숫자를 중복없이 입력해야 합니다.");
         }
     }
 
@@ -48,10 +48,11 @@ public class ValidationCheck {
      */
     public static void isBetweenCertainNumbers(String winningNumbers, int start, int end){
         String[] target = winningNumbers.split(",");
+        System.out.println(Arrays.toString(target));
         for (String num: target){
             int current = Integer.parseInt(num);
             if (current < start || current > end){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("숫자는 1이상 45이하이어야 합니다.");
             }
         }
     }
@@ -59,13 +60,13 @@ public class ValidationCheck {
     public static void isDigit(String bonusNumber){
         boolean isDigit = Pattern.matches("^[0-9]{1,2}$", bonusNumber);
         if (!isDigit) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("보너스번호는 숫자로만 이루어져야 합니다.");
         }
     }
 
     public static void isNotOverlap(String bonusNumber, List<Integer> winningNumbers) {
         if (winningNumbers.contains(Integer.valueOf(bonusNumber))){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("보너스번호와 중복되는 번호가 존재합니다.");
         }
     }
 
