@@ -1,10 +1,10 @@
 package lotto.util;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lotto.exception.Error;
 
 public class NumberValidator {
@@ -13,6 +13,22 @@ public class NumberValidator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Error.NOT_INT.getMessage());
+        }
+    }
+
+    public static String checkNotComma(String input) {
+        if (input.split(",").length != 6) {
+            throw new IllegalArgumentException(Error.NOT_COMMA.getMessage());
+        }
+        return input;
+    }
+
+    public static List<Integer> checkNumbersNotInt(String input) {
+        try {
+            return Arrays.stream(input.split(",")).mapToInt(Integer::valueOf).boxed().collect(
+                    Collectors.toList());
+        } catch (Exception e) {
             throw new IllegalArgumentException(Error.NOT_INT.getMessage());
         }
     }
