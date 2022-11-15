@@ -20,7 +20,7 @@ public enum Grade {
         this.prizeMoney = prizeMoney;
     }
 
-    public static Grade findingGrade(int matchCount, int bonusCount) {
+    public static Grade findGrade(int matchCount, int bonusCount) {
         if ((THIRD.matchCount == matchCount) && (bonusCount == 0)) {
             return THIRD;
         }

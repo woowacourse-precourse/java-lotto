@@ -21,7 +21,7 @@ public class Referee {
         for(Lotto lotto : lottos) {
             int matchCount = getWinningNumberMatchCount(lotto);
             int bonusCount = getBonusNumberMatchCount(lotto);
-            Grade grade = Grade.findingGrade(matchCount, bonusCount);
+            Grade grade = Grade.findGrade(matchCount, bonusCount);
             if (grade != null) {
                 grades.add(grade);
             }
