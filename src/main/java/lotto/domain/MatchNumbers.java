@@ -26,11 +26,11 @@ public class MatchNumbers {
     maps.put(count, maps.getOrDefault(count, 0) + 1);
   }
 
-  public void resultOfMatchValue(List<Lotto> countLotto, List<Integer> numbers, int validBonusNumber) {
+  public void resultOfMatchValue(List<Lotto> countLotto, List<Integer> winningNumber, int validBonusNumber) {
     for (int j = 0; j < Money.count; j++) {
       Lotto lotto = countLotto.get(j);
-      List<Integer> numbers1 = lotto.getNumbers();
-      matchCount(numbers1, numbers, validBonusNumber);
+      List<Integer> lottoNumbers = lotto.getNumbers();
+      matchCount(lottoNumbers, winningNumber, validBonusNumber);
     }
   }
 
