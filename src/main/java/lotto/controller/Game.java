@@ -25,6 +25,7 @@ public class Game {
 
         Referee referee = new Referee(lottos,winningNumbers,bonusNumber);
         List<Grade> grades = referee.calculateGrades();
+        OutputView.printLottoStatics(referee.getStatics(grades));
 
     }
 

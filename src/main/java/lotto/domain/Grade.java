@@ -32,6 +32,11 @@ public enum Grade {
                 .findAny().orElse(null);
     }
 
+    public static Grade findGradeByKey(String key) {
+        return Arrays.stream(values()).filter(grade -> grade.key == key)
+                .findAny().orElseThrow(() -> new IllegalArgumentException("[ERROR] 유효하지 않은 Key 입니다."));
+    }
+
     public String getKey() {
         return key;
     }

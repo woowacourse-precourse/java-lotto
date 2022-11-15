@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Referee {
     private final List<Lotto> lottos;
@@ -25,6 +27,20 @@ public class Referee {
             }
         }
         return grades;
+    }
+
+    public Map<String, Integer> getStatics(List<Grade> grades) {
+        Map<String, Integer> map = new LinkedHashMap();
+        map.put("3",0);
+        map.put("4",0);
+        map.put("5",0);
+        map.put("5+B",0);
+        map.put("6",0);
+        for(Grade grade: grades) {
+            int value = map.get(grade.getKey());
+            map.put(grade.getKey(), value+1);
+        }
+        return map;
     }
 
     public int getWinningNumberMatchCount(Lotto lotto) {
