@@ -23,15 +23,14 @@ public class Lotto {
     }
 
     public int compareWithWinningNumber(List<Integer> winningNumber) {
-        this.numbers.sort(Comparator.naturalOrder());
-        winningNumber.sort(Comparator.naturalOrder());
         int sameNumberCount = 0;
 
-        for (int i=0; i<6; i++) {
-            if (numbers.get(i) == winningNumber.get(i)) {
+        for (int i=0; i<46; i++) {
+            if (numbers.contains(i) && winningNumber.contains(i)){
                 sameNumberCount++;
             }
         }
+
         return sameNumberCount;
     }
 
