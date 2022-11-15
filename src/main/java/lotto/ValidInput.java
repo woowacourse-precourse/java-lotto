@@ -19,7 +19,7 @@ public class ValidInput {
     }
 
     public void validIsInputInRange(List<Integer> number) {
-        if (!((number < LottoEnum.END_NUM.getValue()) && (number > LottoEnum.START_NUM.getValue()))) {
+        if (number < LottoEnum.START_NUM.getValue() || number > LottoEnum.END_NUM.getValue()) {
             throw new IllegalArgumentException(
                 "[ERROR] 로또 번호가 " + LottoEnum.START_NUM.getValue() + "과 " +
                     LottoEnum.END_NUM.getValue() + "사이에 있지 않습니다!");
