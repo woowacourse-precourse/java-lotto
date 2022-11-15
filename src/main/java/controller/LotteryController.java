@@ -11,5 +11,6 @@ public class LotteryController {
     }
 
 
-
+    public void run() {
+    }
 }

@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        LotteryController.create();
+        LotteryController lotteryController = LotteryController.create();
+        lotteryController.run();
         // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
