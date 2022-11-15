@@ -19,4 +19,18 @@ public class Display {
         System.out.println(GameData.FOURTH.getPrintWord() +  GameData.FOURTH.getCount() + "개");
         System.out.println(GameData.FIFTH.getPrintWord() +  GameData.FIFTH.getCount() + "개");
     }
+
+    static void displayRate(String inputMoney) {
+        Long totalIncome = 0L;
+
+        totalIncome += GameData.FIRST.getIncome();
+        totalIncome += GameData.SECOND.getIncome();
+        totalIncome += GameData.THIRD.getIncome();
+        totalIncome += GameData.FOURTH.getIncome();
+        totalIncome += GameData.FIFTH.getIncome();
+
+        float rate = (float) ((totalIncome / Double.parseDouble(inputMoney)) * 100);
+
+        System.out.println("총 수익률은 " + String.format("%.1f" , rate) + "%입니다.");
+    }
 }
