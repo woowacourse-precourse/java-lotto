@@ -1,5 +1,7 @@
 package lotto.utils;
 
+import java.util.Arrays;
+
 public enum WinningType {
     NOTHING("없음", 0, 0),
     FIVE_PLACE("3개 일치 (5,000원)", 3, 5_000),
@@ -18,6 +20,15 @@ public enum WinningType {
         this.winningAmount = winningAmount;
     }
 
+    public static WinningType of(long matchCount, boolean matchBonus) {
+        if (matchCount == 5) {
+            return ofMatchBonus(matchBonus);
+        }
+        return Arrays.stream(values())
+                .filter(winningType -> winningType.matchCount == matchCount)
+                .findFirst()
+                .orElse(NOTHING);
+    }
 
     private static WinningType ofMatchBonus(boolean matchBonus) {
         if (matchBonus) {
