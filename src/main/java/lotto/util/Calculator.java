@@ -48,6 +48,6 @@ public class Calculator {
         if (money == 0 || earn == 0) {
             return 0;
         }
-        return  ((double) earn / (double) money) * 100;
+        return ((double) earn / (double) money) * 100;
     }
 }
