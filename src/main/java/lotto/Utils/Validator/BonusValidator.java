@@ -11,13 +11,15 @@ public class BonusValidator {
     private static final String NOT_RANGE_STATE = "보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String NOT_OVERLAP_STATE = "보너스 번호는 중복되지 않아야 합니다.";
 
+    protected final List<Integer> WinningLotto;
     protected final String BonusLotto;
 
     public BonusValidator(List<Integer> WinningLotto, String BonusLotto) {
+        this.WinningLotto = WinningLotto;
         this.BonusLotto = BonusLotto;
         isInteger();
         isValidRange();
-        isOverlap(WinningLotto);
+        isOverlap(this.WinningLotto);
     }
 
     ;
