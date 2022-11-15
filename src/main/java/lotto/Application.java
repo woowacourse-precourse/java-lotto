@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 import static lotto.Utils.*;
 
 
@@ -9,6 +11,8 @@ public class Application {
         try{
             int purchase = getPurchase();
             Buyer buyer = new Buyer(purchase);
+
+            Lotto winningLotto = new Lotto(getWinningNums());
 
 
 
