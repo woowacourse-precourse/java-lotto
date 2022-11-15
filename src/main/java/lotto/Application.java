@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.InputStream;
@@ -18,11 +19,10 @@ public class Application {
         
         
         //구입금액
-        Scanner sc = new Scanner(System.in);
         System.out.println("구입금액을 입력해주세요.");
         
         ////todo: 1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
-        int buyMoney = sc.nextInt();
+        int buyMoney = Integer.parseInt(Console.readLine());
 
         //로또 구매및 출력
         ArrayList<Lotto> lottoList = buyLotto(countPurchaseLotto(buyMoney));
@@ -64,11 +64,11 @@ public class Application {
 
     static ArrayList<Integer> inputLuckyNumber(){
         ArrayList<Integer> luckyList = new ArrayList<Integer>();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("당첨 번호를 입력해 주세요.");
 
+        System.out.println("당첨 번호를 입력해 주세요.");
         //todo: 잘못입력시 에러발생 1~45, 숫자
-        String inputLuckyNumber[] = sc.next().split(",");
+        String inputLuckyNumber[] = Console.readLine().split(",");
+
         for(int i=0; i<inputLuckyNumber.length; i++){
             luckyList.add(Integer.parseInt(inputLuckyNumber[i]));
         }
@@ -78,11 +78,10 @@ public class Application {
 
     static int inputBonusNumber() {
         int bonusNumber=0;
-        Scanner sc = new Scanner(System.in);
         System.out.println("보너스 번호를 입력해 주세요.");
 
         //todo: 잘못입력시 에러발생 1~45, 숫자
-        bonusNumber = sc.nextInt();
+        bonusNumber = Integer.parseInt(Console.readLine());
 
         return bonusNumber;
     }
