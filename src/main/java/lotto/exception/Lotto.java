@@ -3,6 +3,7 @@ package lotto.exception;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,7 +16,9 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private void validateNumber(List<Integer> numbers) {
