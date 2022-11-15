@@ -7,7 +7,7 @@ public class OutputView {
     private static final String LOTTO_PURCHASE_MESSAGE = "%d개를 구매했습니다.";
     private static final String RANK_STATISTICS_MESSAGE = "당첨 통계";
     private static final String HYPHEN = "---";
-    private static final String TOTAL_EARNING_RATIO_MESSAGE = "총 수익률은 %s 입니다.";
+    private static final String TOTAL_EARNING_RATIO_MESSAGE = "총 수익률은 %s%%입니다.";
     private static final String SECOND_REWARD_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String COMMON_REWARD_MESSAGE = "%d개 일치 (%s원) - %d개";
 

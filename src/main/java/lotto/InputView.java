@@ -19,7 +19,7 @@ public class InputView {
         System.out.println(INPUT_MONEY_MESSAGE);
         String input = Console.readLine();
         validateIsDigit(input);
-        return Integer.parseInt(Console.readLine());
+        return Integer.parseInt(input);
     }
 
     public static List<Integer> inputWinningLotto() {

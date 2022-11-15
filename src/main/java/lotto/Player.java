@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -9,7 +10,7 @@ public class Player {
     private Map<Rank, Integer> statistics;
 
     public Player() {
-        this.statistics = new TreeMap<>();
+        this.statistics = new TreeMap<>(Collections.reverseOrder());
     }
 
     public Map<Rank, Integer> getStatistics() {
