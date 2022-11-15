@@ -42,11 +42,11 @@ public class Manager {
 
     public double calculator(int[] matchCounts) {
         double totalWinnings = 0;
-        totalWinnings += matchCounts[0] * LottoConst.WINNING_MATCH_3;
-        totalWinnings += matchCounts[1] * LottoConst.WINNING_MATCH_4;
-        totalWinnings += matchCounts[2] * LottoConst.WINNING_MATCH_5;
-        totalWinnings += matchCounts[3] * LottoConst.WINNING_MATCH_5_AND_BONUS;
-        totalWinnings += matchCounts[4] * LottoConst.WINNING_MATCH_6;
+        totalWinnings += matchCounts[0] * WinningPrice.MATCH_3.getPrice();
+        totalWinnings += matchCounts[1] * WinningPrice.MATCH_4.getPrice();
+        totalWinnings += matchCounts[2] * WinningPrice.MATCH_5.getPrice();
+        totalWinnings += matchCounts[3] * WinningPrice.MATCH_5_AND_BONUS.getPrice();
+        totalWinnings += matchCounts[4] * WinningPrice.MATCH_6.getPrice();
         return Math.round(totalWinnings * 1000 / (double) purchasePrice) / (double) 10;
     }
 }
