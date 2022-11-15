@@ -76,4 +76,10 @@ class UserInteractionTest {
         assertThatThrownBy(() -> testUserInteraction.checkBonusNumber(List.of(1, 2, 3, 4, 5, 6), 2))
                 .isInstanceOf(NoSuchElementException.class);
     }
+    @DisplayName("(isNumberInRange) 번호가 범위안에 있는지 에러 확인")
+    @Test
+    void isNumberInRange_exception_test() {
+        assertThatThrownBy(() -> testUserInteraction.isNumberInRange(-10, 1,45))
+                .isInstanceOf(NoSuchElementException.class);
+    }
 }
