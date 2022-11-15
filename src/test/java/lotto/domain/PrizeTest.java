@@ -18,9 +18,7 @@ class PrizeTest {
     @Test
     void generateFirstPrize() {
         //given
-        for (int i = 0; i < 6; i++) {
-            result.increaseMatchCount();
-        }
+        result = generateResult(6, false);
         //when
         Prize prize = Prize.generatePrize(result);
         //then
@@ -32,10 +30,7 @@ class PrizeTest {
     @Test
     void generateSecondPrize() {
         //given
-        for (int i = 0; i < 5; i++) {
-            result.increaseMatchCount();
-        }
-        result.matchBonus();
+        result = generateResult(5, true);
         //when
         Prize prize = Prize.generatePrize(result);
         //then
@@ -47,9 +42,7 @@ class PrizeTest {
     @Test
     void generateThirdPrize() {
         //given
-        for (int i = 0; i < 5; i++) {
-            result.increaseMatchCount();
-        }
+        result = generateResult(5, false);
         //when
         Prize prize = Prize.generatePrize(result);
         //then
@@ -61,9 +54,7 @@ class PrizeTest {
     @Test
     void generateFourthPrize() {
         //given
-        for (int i = 0; i < 4; i++) {
-            result.increaseMatchCount();
-        }
+        result = generateResult(4, false);
         //when
         Prize prize = Prize.generatePrize(result);
         //then
@@ -75,9 +66,7 @@ class PrizeTest {
     @Test
     void generateFifthPrize() {
         //given
-        for (int i = 0; i < 3; i++) {
-            result.increaseMatchCount();
-        }
+        result = generateResult(3, false);
         //when
         Prize prize = Prize.generatePrize(result);
         //then
@@ -89,13 +78,22 @@ class PrizeTest {
     @Test
     void generateNothingPrize() {
         //given
-        for (int i = 0; i < 2; i++) {
-            result.increaseMatchCount();
-        }
+        result = generateResult(2, false);
         //when
         Prize prize = Prize.generatePrize(result);
         //then
         assertThat(prize)
                   .isEqualTo(Prize.NOTHING);
+    }
+
+    Result generateResult(int number, boolean isBonus) {
+        Result result = new Result();
+        for (int i = 0; i < number; i++) {
+            result.increaseMatchCount();
+        }
+        if (isBonus) {
+            result.matchBonus();
+        }
+        return result;
     }
 }
