@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Model {
@@ -10,6 +11,8 @@ public class Model {
     private int userMoney;
     private Lotto winningLotto;
     private int bonus;
+    private List<Integer> sameNumbers = Arrays.asList(0, 0, 0, 0, 0);
+    private double returnRate;
 
     public Model() {
         this.lottoList = new ArrayList<>();
@@ -53,5 +56,32 @@ public class Model {
             bonus += 1;
         }
         return num + bonus;
+    }
+
+    public void compare() {
+        for (int i = 0; i < this.lottoList.size(); i++) {
+            PrizeNumber prizeNumber = PrizeNumber.getSameNumber(this.compareWithIndex(i) - 3);
+            if (prizeNumber != null) {
+                this.sameNumbers.set(
+                        prizeNumber.ordinal(),
+                        this.sameNumbers.get(prizeNumber.ordinal()) + 1
+                );
+            }
+        }
+    }
+
+    public List<Integer> getSameNumbers() {
+        return this.sameNumbers;
+    }
+
+    public void calculateReturn() {
+        long returnPrize = 0;
+        for(PrizeNumber prizeNumber : PrizeNumber.values()) {
+            returnPrize += this.sameNumbers.get(prizeNumber.ordinal()) * prizeNumber.prize();
+        }
+        this.returnRate = (returnPrize / (double)this.userMoney) * 100;
+    }
+    public double getReturnRate() {
+        return this.returnRate;
     }
 }
