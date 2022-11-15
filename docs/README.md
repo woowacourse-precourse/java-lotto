@@ -34,10 +34,10 @@
   - StaffListener#listenWinningBonusNumber()
 - [x] 입력 받은 값으로부터 WinningNumbers를 생성할 수 있다
   - WinningNumbersGenerator#generateWinningNumbers()
-  - [ ] 입력 받은 문자를 Integer리스트로 변환할 수 있다.
+  - [x] 입력 받은 문자를 Integer리스트로 변환할 수 있다.
     - 예외) Integer타입으로 변환할 수 없으면 예외 발생
     - WinningNumbersGenerator#convertToIntegerList()
-  - [ ] 입력 받은 문자를 Integer로 변환할 수 있다.
+  - [x] 입력 받은 문자를 Integer로 변환할 수 있다.
     - 예외) Integer타입으로 변환할 수 없으면 예외 발생
     - WinningNumbersGenerator#convertToInteger()
 - [x] 정상적인 WinningNumbers를 생성할 수 있다.
