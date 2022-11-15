@@ -1,6 +1,6 @@
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import domain.PickLottoNum;
+import lotto.domain.PickLottoNum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

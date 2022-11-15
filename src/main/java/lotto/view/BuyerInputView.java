@@ -1,7 +1,7 @@
-package view;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import domain.enums.GameMessage;
+import lotto.domain.enums.GameMessage;
 
 public class BuyerInputView {
     public static String getInputPrice() {

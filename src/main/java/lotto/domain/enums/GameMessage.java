@@ -1,4 +1,4 @@
-package domain.enums;
+package lotto.domain.enums;
 
 public enum GameMessage {
     PROMPT_MESSAGE("구입금액을 입력해 주세요."),

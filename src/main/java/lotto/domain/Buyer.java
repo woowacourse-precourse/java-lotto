@@ -1,6 +1,6 @@
-package domain;
+package lotto.domain;
 
-import domain.enums.ErrorMessage;
+import lotto.domain.enums.ErrorMessage;
 
 public class Buyer {
     public int inputPrice;

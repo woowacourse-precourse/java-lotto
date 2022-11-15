@@ -1,13 +1,13 @@
-package controller;
+package lotto.controller;
 
-import domain.Buyer;
-import domain.GenerateLotto;
-import domain.PickBonusNum;
-import domain.PickLottoNum;
-import domain.Profit;
-import domain.Raffle;
-import view.BuyerInputView;
-import view.BuyerOutputView;
+import lotto.domain.Buyer;
+import lotto.domain.GenerateLotto;
+import lotto.domain.PickBonusNum;
+import lotto.domain.PickLottoNum;
+import lotto.domain.Profit;
+import lotto.domain.Raffle;
+import lotto.view.BuyerInputView;
+import lotto.view.BuyerOutputView;
 
 public class LottoController {
     private Buyer buyer;

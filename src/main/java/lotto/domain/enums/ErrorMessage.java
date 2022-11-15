@@ -1,4 +1,4 @@
-package domain.enums;
+package lotto.domain.enums;
 
 public enum ErrorMessage {
     DATA_TYPE_ERR_MESSAGE("[ERROR] 숫자만 입력 가능합니다."),

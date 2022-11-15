@@ -1,7 +1,7 @@
-package view;
+package lotto.view;
 
-import domain.Lotto;
-import domain.enums.GameMessage;
+import lotto.domain.Lotto;
+import lotto.domain.enums.GameMessage;
 import java.util.List;
 
 public class BuyerOutputView {
