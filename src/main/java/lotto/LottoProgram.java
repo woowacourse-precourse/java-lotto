@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoProgram {
@@ -36,8 +37,15 @@ public class LottoProgram {
 
     private void alertUserLottos(List<Lotto> userLottos) {
         for (Lotto userLotto : userLottos) {
-            System.out.println(userLotto.getNumbers());
+            List<Integer> sortedNumbers = sortInAscending(userLotto.getNumbers());
+            System.out.println(sortedNumbers);
         }
+    }
+
+    private List<Integer> sortInAscending(List<Integer> numbers) {
+        List<Integer> numbersInArrayList = new ArrayList<>(numbers);
+        Collections.sort(numbersInArrayList);
+        return numbersInArrayList;
     }
 
     public List<Lotto> createUserLottos() {
@@ -94,7 +102,6 @@ public class LottoProgram {
                 _5_LOTTO_NUMBERS_AND_BONUS_NUMBER_MATCH_MESSAGE,
                 lottoStats.getCountOf5NumbersAndBonusNumberMatch());
         System.out.printf(_6_LOTTO_NUMBERS_MATCH_MESSAGE, lottoStats.getCountOf6NumbersMatch());
-
     }
 
 

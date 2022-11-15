@@ -13,22 +13,16 @@ public class LottoFactory {
 
     public Lotto createLotto() {
         List<Integer> lottoNumbers = createLottoNumbers();
-        sortInAscending(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
 
     // overload
     public Lotto createLotto(List<Integer> lottoNumbers) {
-        sortInAscending(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
 
     private List<Integer> createLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT);
-    }
-
-    private void sortInAscending(List<Integer> numbers) {
-        Collections.sort(numbers);
     }
 
     public List<Lotto> createLottos(int quantity) {
