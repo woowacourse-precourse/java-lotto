@@ -24,4 +24,8 @@ public class Print {
                     matchFrequency.get(i)));
         }
     }
+
+    public void profitRate(float profit){
+        System.out.println(String.format("총 수익률은 %.1f", profit) + "%입니다.");
+    }
 }

@@ -24,7 +24,7 @@
 - [x] 로또 구매 갯수를 출력한다.  -Print#lottoCount
 - [x] 구매한 로또들의 번호를 출력한다.  -Print#lottoNumber
 - [x] 당첨 내역을 출력한다.  -Print#winningMoney
-- [] 수익률을 출력한다.  -Print#profitRate
+- [x] 수익률을 출력한다.  -Print#profitRate
 - [] 예외 상황에 따른 에러를 출력한다.  -Print#Error
 
 ## 6. 예외 처리  - Errors()
