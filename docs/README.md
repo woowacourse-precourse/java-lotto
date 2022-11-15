@@ -31,10 +31,10 @@
 
 [v] RandomPicked : 로또 랜덤 출력 
 
-[ ] CompareLotto : 당첨 내역
+[v] CompareLotto : 당첨 내역
 
-[ ] PrintWinning : 당첨 내역 출력
+[v] PrintWinning : 당첨 내역 출력
 
-[ ] CalculateProfit : 수익률 계산
+[v] CalculateProfit : 수익률 계산
 
-[ ] PrintProfit : 수익률 출력
+[v] PrintProfit : 수익률 출력
