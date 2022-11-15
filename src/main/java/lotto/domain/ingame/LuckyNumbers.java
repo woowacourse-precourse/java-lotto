@@ -1,9 +1,5 @@
 package lotto.domain.ingame;
 
-import lotto.exception.BallValueDuplicateException;
-import lotto.exception.BallValueOutOfRangeException;
-import lotto.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,12 +13,7 @@ public class LuckyNumbers {
 
     public LuckyNumbers(List<Integer> luckyBalls, int bonus) {
 
-        try {
-            validate(luckyBalls, bonus);
-        } catch (Exception exception) {
-            OutputView.showError(exception);
-            throw new IllegalArgumentException();
-        }
+        validate(luckyBalls, bonus);
 
         Collections.sort(luckyBalls);
 
@@ -40,7 +31,7 @@ public class LuckyNumbers {
 
     private static void validateBallsUnique(List<Integer> balls) {
         if (balls.size()!= balls.stream().distinct().count()) {
-            throw new BallValueDuplicateException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
     }
 
@@ -59,7 +50,7 @@ public class LuckyNumbers {
 
         for (Integer ball : balls) {
             if (ball < LOTTO_MIN || ball > LOTTO_MAX) {
-                throw new BallValueOutOfRangeException();
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }

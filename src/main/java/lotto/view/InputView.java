@@ -1,11 +1,10 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.exception.InvalidNumbersFormatException;
-import lotto.exception.NotNumberInputException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -22,12 +21,7 @@ public class InputView {
 
         String input = Console.readLine();
 
-        try {
-            validate(input);
-        } catch (Exception exception) {
-            OutputView.showError(exception);
-            throw new IllegalArgumentException("[ERROR]");
-        }
+        validate(input);
 
         return Integer.parseInt(input);
     }
@@ -37,12 +31,8 @@ public class InputView {
 
         String input = Console.readLine();
 
-        try {
-            validateLuckyBalls(input);
-        } catch (Exception exception) {
-            OutputView.showError(exception);
-            throw new IllegalArgumentException();
-        }
+        validateLuckyBalls(input);
+
 
         return separate(input);
     }
@@ -52,12 +42,8 @@ public class InputView {
 
         String input = Console.readLine();
 
-        try {
-            validate(input);
-        } catch (Exception exception) {
-            OutputView.showError(exception);
-            throw new IllegalArgumentException();
-        }
+        validate(input);
+
 
         return Integer.parseInt(input);
     }
@@ -65,13 +51,13 @@ public class InputView {
 
     private static void validate(String input) {
         if (!input.matches("^[0-9]+$")) {
-            throw new NotNumberInputException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 입력입니다.");
         }
     }
 
     private static void validateLuckyBalls(String input) {
         if (!PATTERN.matcher(input).matches()) {
-            throw new InvalidNumbersFormatException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 로또 번호 입력 형식입니다.");
         }
     }
 

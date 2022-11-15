@@ -6,6 +6,7 @@ import lotto.domain.result.Statistic;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -22,9 +23,10 @@ public class OutputView {
         System.out.printf(PAYMENT_MESSAGE,ticketCount);
 
         for (Lotto lotto : userLotto) {
+            System.out.println(lotto.getNumbers().stream().sorted().collect(Collectors.toList()));
 
-            String format = lotto.getNumbers().toString();
-            System.out.println(format);
+//            String format = lotto.getNumbers().toString();
+//            System.out.println(format);
         }
 
 
@@ -52,7 +54,4 @@ public class OutputView {
         return formatter.format(number);
     }
 
-    public static void showError(Exception exception) {
-        System.out.printf(ERROR_MESSAGE,exception.getMessage());
-    }
 }

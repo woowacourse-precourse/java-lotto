@@ -1,8 +1,5 @@
 package lotto.domain.ingame;
 
-import lotto.exception.InvalidPaymentException;
-import lotto.view.OutputView;
-
 public class Payment {
 
     private final int amount;
@@ -11,12 +8,7 @@ public class Payment {
 
     public Payment(int amount) {
 
-        try {
-            validate(amount);
-        } catch (Exception exception) {
-            OutputView.showError(exception);
-            throw new IllegalArgumentException();
-        }
+        validate(amount);
 
         this.amount = amount;
         ticket = amount / 1000;
@@ -25,7 +17,7 @@ public class Payment {
     private void validate(int amount) {
 
         if (amount == 0 || amount % LOTTO_PRICE != 0) {
-            throw new InvalidPaymentException();
+            throw new IllegalArgumentException("[ERROR] 적절하지 않은 구입금액입니다.");
         }
     }
 

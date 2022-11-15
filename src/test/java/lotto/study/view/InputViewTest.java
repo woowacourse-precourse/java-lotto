@@ -1,11 +1,15 @@
 package lotto.study.view;
 
 import lotto.view.InputView;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +17,6 @@ import static org.assertj.core.api.Assertions.*;
 
 
 class InputViewTest {
-    private final InputView inputView = new InputView();
-
 
     @DisplayName("구입금액 공백 입력")
     @Test
@@ -26,7 +28,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputPayment();
+            InputView.inputPayment();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -40,7 +42,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputPayment();
+            InputView.inputPayment();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -54,7 +56,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         //when
-        int result = inputView.inputPayment();
+        int result = InputView.inputPayment();
 
         //then
         assertThat(result).isEqualTo(12000);
@@ -70,7 +72,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputLuckyBalls();
+            InputView.inputLuckyBalls();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -84,7 +86,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputLuckyBalls();
+            InputView.inputLuckyBalls();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -98,7 +100,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputLuckyBalls();
+            InputView.inputLuckyBalls();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -112,7 +114,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         //when
-        List<Integer> result = inputView.inputLuckyBalls();
+        List<Integer> result = InputView.inputLuckyBalls();
 
         //then
         assertThat(result).containsExactly(1,2,3,4,5,6);
@@ -128,7 +130,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputBonus();
+            InputView.inputBonus();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -142,7 +144,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputBonus();
+            InputView.inputBonus();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -156,10 +158,37 @@ class InputViewTest {
         System.setIn(inputStream);
 
         //when
-        int result = inputView.inputBonus();
+        int result = InputView.inputBonus();
 
         //then
         assertThat(result).isEqualTo(12);
+    }
+
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+    @BeforeEach
+    void setUpOutputStream() {
+        System.setOut(new PrintStream(output));
+    }
+    @AfterEach
+    void resotreOutputStream() {
+        System.setOut(System.out);
+        output.reset();
+    }
+
+    @DisplayName("에러 로그 확인")
+    @Test
+    void 에러_로그_테스트(){
+        //given
+        String userInput = "1000j";
+        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inputStream);
+
+        //when
+        int result = InputView.inputPayment();
+
+        //then
+        assertThat(output.toString().contains("[ERROR]"));
     }
 
 }
