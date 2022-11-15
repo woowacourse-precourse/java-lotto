@@ -17,7 +17,8 @@ class IssueTest {
     private final Issue issue = new IssueImpl();
 
     @ParameterizedTest
-    @CsvSource({"1100", "0", "500"})
+    @DisplayName("구입 금액이 1,000원 단위가 아니면 예외가 발생한다.")
+    @CsvSource({"1100","0", "500"})
     void amountException(int amount) {
         assertThatThrownBy(() -> issue.createLottos(amount))
                 .isInstanceOf(IllegalArgumentException.class)
