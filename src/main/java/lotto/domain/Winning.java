@@ -34,4 +34,10 @@ public class Winning {
     private boolean isInvalidNumbersSize(List<Integer> numbers, int numberSize) {
         return numbers.size() != numberSize;
     }
+
+    private boolean includeDuplicates() {
+        List<Integer> deduplicated = winningNumbers.stream()
+                .distinct().collect(Collectors.toList());
+        return winningNumbers.size() != deduplicated.size();
+    }
 }
