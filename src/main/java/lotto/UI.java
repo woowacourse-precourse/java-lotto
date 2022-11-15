@@ -15,19 +15,19 @@ public class UI {
         return money;
     }
 
-    public List<Integer> Answer_Number() {
-        List<Integer> Answer_numbers = new ArrayList();
+    public List<Integer> Lotto_Number_Input() {
         System.out.println("당첨 번호를 입력해 주세요.");
+        String Lotto_Number_Input = Console.readLine();
 
-        String Input = Console.readLine();
-        String[] Input_Array = Input.split(",");
+        List<Integer> Lotto_numbers = new ArrayList();
+        String[] Input_Array = Lotto_Number_Input.split(",");
         for (int index = 0; index < Input_Array.length; index++) {
-            Answer_number_validate(Input_Array[index]);
+            Number_validate(Input_Array[index]);
             Integer number = Integer.valueOf(Input_Array[index]);
-            Answer_numbers.add(number);
+            Lotto_numbers.add(number);
         }
-        Lotto L = new Lotto(Answer_numbers);
-        return Answer_numbers;
+        Lotto L = new Lotto(Lotto_numbers);
+        return Lotto_numbers;
     }
 
     private void Answer_number_validate(String Input) {
