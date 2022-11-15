@@ -17,6 +17,7 @@ public class ManageLotto {
         numberOfLotto(budget);
         makeMyLotto(lottoNum);
     }
+
     public void makeMyLotto(int number) {
         myLotto.clear();
         for (int count = 0; count < number; count++) {
@@ -28,7 +29,7 @@ public class ManageLotto {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    private void numberOfLotto (int budget) {
+    private void numberOfLotto(int budget) {
         this.budget = budget;
         lottoNum = this.budget / LOTTOPRICE;
     }

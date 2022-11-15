@@ -10,7 +10,7 @@ import java.util.List;
 public class UserOutput {
     public static void viewLotto(ManageLotto manageLotto) {
         System.out.println(String.format("%d개를 구매했습니다.", manageLotto.getLottoNum()));
-        for (Lotto newLotto: manageLotto.getMyLotto()) {
+        for (Lotto newLotto : manageLotto.getMyLotto()) {
             List<Integer> tmpNumbers = new ArrayList<>(newLotto.getLottoNumbers());
             tmpNumbers.sort(Comparator.naturalOrder());
             System.out.println(tmpNumbers);
@@ -19,8 +19,8 @@ public class UserOutput {
     }
 
     public static void viewLottoResult(ManageLotto manageLotto, WinningNumber winningNumber) {
-        int[] ranks  = {0,0,0,0,0,0};
-        for (Lotto newLotto: manageLotto.getMyLotto()) {
+        int[] ranks = {0, 0, 0, 0, 0, 0};
+        for (Lotto newLotto : manageLotto.getMyLotto()) {
             int index = LottoCalculator.rankOfThisLotto
                     (newLotto.getLottoNumbers(), winningNumber.getLottoNumbers(), winningNumber.getBonusNumber());
             ranks[index]++;

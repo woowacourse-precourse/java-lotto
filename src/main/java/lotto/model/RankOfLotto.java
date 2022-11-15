@@ -9,7 +9,12 @@ public enum RankOfLotto {
     FIFTHPRIZE(5000);
 
     private final int money;
-    RankOfLotto(int money) {this.money = money;}
 
-    public int getMoney() {return money;}
+    RankOfLotto(int money) {
+        this.money = money;
+    }
+
+    public int getMoney() {
+        return money;
+    }
 }

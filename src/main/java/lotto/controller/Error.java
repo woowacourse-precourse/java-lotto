@@ -45,7 +45,7 @@ public class Error {
         List<Integer> tmpNumbers = new ArrayList<>(numbers);
         tmpNumbers.sort(Comparator.naturalOrder());
         for (int index = 1; index < tmpNumbers.size(); index++) {
-            if (tmpNumbers.get(index) == tmpNumbers.get(index-1)) {
+            if (tmpNumbers.get(index) == tmpNumbers.get(index - 1)) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않는 6개의 숫자여야 합니다.");
             }
         }
