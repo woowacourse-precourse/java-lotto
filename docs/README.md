@@ -28,26 +28,26 @@
 ``` 
 
 ## ✅ 기능 목록
-- [x] 1부터 45까지의 서로 다른 임의의 수 6개를 랜덤으로 생성한다. - RandomNumberGenerator#generateNumbers()
-- [x] 로또 번호를 정렬하여 반환한다. - RandomNumberGenerator#getSortedNumbers()
-- [x] 테스트를 위해 고정적인 수 6개를 생성한다. - FixedNumberGenerator#generateNumbers()
+- [x] 1부터 45까지의 서로 다른 임의의 수 6개를 랜덤으로 생성한다.
+- [x] 로또 번호를 정렬하여 반환한다.
+- [x] 테스트를 위해 고정적인 수 6개를 생성한다.
 
-- [x] 구매 금액의 유효성을 검증한다. - Cost#validate()
+- [x] 구매 금액의 유효성을 검증한다.
 
-- [x] 로또 번호의 유효성을 검증한다. - Lotto#validate()
-- [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다. - Lotto#getMatchCount()
-- [x] 로또 번호와 보너스 번호를 비교한다. - Lotto#hasBonusNumber()
+- [x] 로또 번호의 유효성을 검증한다.
+- [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다.
+- [x] 로또 번호와 보너스 번호를 비교한다.
 
-- [x] 보너스 번호의 유효성을 검증한다. - BonusNumber#validate()
+- [x] 보너스 번호의 유효성을 검증한다.
 
-- [x] 여러 개의 로또들로 묶음을 생성한다. - LottoGroup#makeLottoGroup()
+- [x] 여러 개의 로또들로 묶음을 생성한다.
 
-- [x] 당첨 번호의 유효성을 검증한다. - WinningLotto#validate()
+- [x] 당첨 번호의 유효성을 검증한다.
 
-- [x] 당첨 결과를 계산한다. - HitResult#calculate()
+- [x] 당첨 결과를 계산한다.
 
-- [x] 총 수익을 계산한다. - Profit#calculateProfit()
-- [x] 수익률을 계산한다. - Profit#calculateEarningsRate()
+- [x] 총 수익을 계산한다.
+- [x] 수익률을 계산한다.
   - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
 
 ### 예외 상황
