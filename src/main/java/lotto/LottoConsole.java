@@ -66,7 +66,7 @@ public class LottoConsole {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoManager.getWinCount(3));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoManager.getWinCount(2));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoManager.getWinCount(1));
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", lottoManager.getEarningRate());
+        System.out.printf("총 수익률은 %,.1f%%입니다.\n", lottoManager.getEarningRate());
     }
 
     private void printLottoNumber(Lotto lotto){
