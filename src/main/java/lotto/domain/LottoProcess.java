@@ -33,11 +33,11 @@ public class LottoProcess {
         this.money = money;
     }
 
-    public int compareWinningNumbers(List<Integer> lotto, List<Integer> winningNumbers){
+    public int compareWinningNumbers(List<Integer> lotto){
         int countMatchingNumber=START_COUNT;
 
         for(int number : lotto){
-            if(winningNumbers.contains(number)) countMatchingNumber++;
+            if(this.winningNumbers.contains(number)) countMatchingNumber++;
         }
 
         return countMatchingNumber;
@@ -47,18 +47,18 @@ public class LottoProcess {
         List<Integer> ranks = new ArrayList<>();
 
         for(List<Integer> lotto : this.lottos){
-            ranks.add(decideRank(compareWinningNumbers(lotto,this.winningNumbers),lotto));
+            ranks.add(decideRank(compareWinningNumbers(lotto),lotto));
         }
 
         return ranks;
     }
 
-    public int decideRank(int countMachingNumber, List<Integer> lotto){
-        if(countMachingNumber == SIX_CORRECT) return FIRST;
-        if(countMachingNumber == FIVE_CORRECT && lotto.contains(this.bonusNumber)) return SECOND;
-        if(countMachingNumber == FIVE_CORRECT) return THIRD;
-        if(countMachingNumber == FOUR_CORRECT) return FOURTH;
-        if(countMachingNumber == THREE_CORRECT) return FIFTH;
+    public int decideRank(int countMatchingNumber, List<Integer> lotto){
+        if(countMatchingNumber == SIX_CORRECT) return FIRST;
+        if(countMatchingNumber == FIVE_CORRECT && lotto.contains(this.bonusNumber)) return SECOND;
+        if(countMatchingNumber == FIVE_CORRECT) return THIRD;
+        if(countMatchingNumber == FOUR_CORRECT) return FOURTH;
+        if(countMatchingNumber == THREE_CORRECT) return FIFTH;
         return REST;
     }
 
