@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Machine {
     public Lotto draw() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(Randoms.pickUniqueNumbersInRange(Lotto.MIN, Lotto.MAX, Lotto.COUNT));
     }
 
     public List<Lotto> draw(int count) {
@@ -34,6 +34,7 @@ public class Machine {
     }
 
     public Map<Rank, Integer> checkRanking(WinningNumber winningNumber, Lotto... lottos) {
+        // Rank 의 모든 값을 Key 로 가지고 있는 맵 초기화
         Map<Rank, Integer> rankings = new HashMap<>();
         for (Rank rank : Rank.values()) {
             rankings.put(rank, 0);
@@ -43,26 +44,24 @@ public class Machine {
             Rank rank = checkRanking(winningNumber, lotto);
             rankings.put(rank, rankings.get(rank) + 1);
         }
+
         return rankings;
     }
 
     public Rank checkRanking(WinningNumber winningNumber, Lotto lotto) {
         int count = compare(winningNumber.lotto, lotto);
-        if (count == 6) {
+        if (count == Lotto.COUNT)
             return Rank.FIRST;
-        }
-        if (count == 5) {
-            if (checkBonusNumber(lotto, winningNumber.bonusNumber)) {
+        if (count == Lotto.COUNT - 1) {
+            if (checkBonusNumber(lotto, winningNumber.bonusNumber))
                 return Rank.SECOND;
-            }
             return Rank.THIRD;
         }
-        if (count == 4) {
+        if (count == Lotto.COUNT - 2)
             return Rank.FOURTH;
-        }
-        if (count == 3) {
+        if (count == Lotto.COUNT - 3)
             return Rank.FIFTH;
-        }
+
         return Rank.LOSE;
     }
 
@@ -71,15 +70,14 @@ public class Machine {
     }
 
     public double calculateYieldRate(Map<Rank, Integer> ranks) {
-        long sum = 0;
-        int totalCount = 0;
+        long sum = 0, totalCount = 0;
         for (Rank rank : ranks.keySet()) {
             int count = ranks.get(rank);
             sum += (count * rank.getPrize());
             totalCount += count;
         }
+        double yield = sum / ((double) totalCount * Lotto.PRICE) * 100;
 
-        double yieldRate = sum / ((double) totalCount * Lotto.PRICE) * 100;
-        return yieldRate;
+        return yield;
     }
 }

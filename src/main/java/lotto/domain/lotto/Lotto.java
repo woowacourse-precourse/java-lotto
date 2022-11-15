@@ -3,15 +3,12 @@ package lotto.domain.lotto;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.StringJoiner;
 
-/**
- * - `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
- * - `numbers`의 접근 제어자인 private을 변경할 수 없다.
- * - `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
- */
 public class Lotto {
-    public static int PRICE = 1000;
+    public static final int PRICE = 1000;
+    public static final int COUNT = 6;
+    public static final int MIN = 1;
+    public static final int MAX = 45;
 
     private final List<Integer> numbers;
 
@@ -21,15 +18,20 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+        Set<Integer> set = new HashSet<>();
+        for (Integer number : numbers) {
+            validNumberSize(number);
+            set.add(number);
         }
 
-        Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != 6) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]: 정확한 숫자를 입력하세요.");
+        }
+    }
+
+    void validNumberSize(int number) {
+        if (number < 1 && number > 45) {
+            throw new IllegalArgumentException("[ERROR]: 1 ~ 45 사이의 숫자를 입력하세요");
         }
     }
 

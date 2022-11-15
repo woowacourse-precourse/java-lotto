@@ -1,33 +1,25 @@
 package lotto.domain.ui;
 
 import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.Machine;
 import lotto.domain.lotto.Rank;
 import lotto.domain.lotto.WinningNumber;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Console {
     public int inputCellCount() {
         int amount = inputCellAmount();
-        return calculateCount(amount);
+        int count = calculateCount(amount);
+        return count;
     }
 
     private int calculateCount(int amount) {
-        int count;
-        try {
-            if (amount % Lotto.PRICE != 0) {
-                throw new IllegalArgumentException();
-            }
-            count = amount / Lotto.PRICE;
-        } catch (Exception e) {
-            System.out.println("[ERROR] 1장에 " + Lotto.PRICE + "원 입니다. 딱 맞게 입력해 주세요.");
-            throw new IllegalArgumentException();
+        if (amount % Lotto.PRICE != 0 || amount == 0) {
+            throw new IllegalArgumentException("[ERROR] 1장에 " + Lotto.PRICE + "원 입니다. 딱 맞게 입력해 주세요.");
         }
-        return count;
+        return amount / Lotto.PRICE;
     }
 
     private int inputCellAmount() {
@@ -37,9 +29,8 @@ public class Console {
         int amount;
         try {
             amount = Integer.parseInt(line);
-        } catch (Exception e) {
-            System.out.println("[ERROR] : 숫자를 입력해 주세요.");
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] : 숫자를 입력해 주세요.");
         }
         return amount;
     }
@@ -51,6 +42,10 @@ public class Console {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = inputBonusNumber();
+        if (lottoNumber.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR]: 중복 되는 번호 입니다.");
+        }
+
         System.out.println();
         return new WinningNumber(lottoNumber, bonusNumber);
     }
@@ -61,9 +56,7 @@ public class Console {
         try {
             bonusNumber = Integer.parseInt(line);
         } catch (Exception e) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
-
+            throw new IllegalArgumentException("[ERROR]: 정확한 숫자를 입력하세요.");
         }
 
         return bonusNumber;
@@ -72,21 +65,19 @@ public class Console {
     private Lotto inputLottoNumber() {
         String line = camp.nextstep.edu.missionutils.Console.readLine();
 
-        List<Integer> numbers;
-        try {
-            String[] data = line.split(",");
-            numbers = Arrays.stream(data).mapToInt(Integer::parseInt)
-                    .boxed()
-                    .collect(Collectors.toList());
-
-        } catch (Exception e) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+        List<Integer> numbers = new ArrayList<>();
+        for (String data : line.split(",")) {
+            int number = Integer.parseInt(data);
+            if (number < 0 || number > 45) {
+                throw new IllegalArgumentException("[ERROR]: 0 ~ 45 사이의 숫자를 입력해 주세요");
+            }
+            if (numbers.contains(number)) {
+                throw new IllegalArgumentException("[ERROR]: 중복 되지 않는 숫자를 입력하세요.");
+            }
+            numbers.add(number);
         }
-
         return new Lotto(numbers);
     }
-
 
     public void printResult(Map<Rank, Integer> rankings, double yieldRate) {
         System.out.println("당첨 통계");

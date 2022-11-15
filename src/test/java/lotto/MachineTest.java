@@ -107,10 +107,8 @@ public class MachineTest {
         Lotto lotto4 = new Lotto(List.of(7, 8, 9, 10, 11, 12));
         lottos.add(lotto4);
 
-
         Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
-        Assertions.assertThat(ranking.size()).isEqualTo(4);
-
+        Assertions.assertThat(ranking.size()).isEqualTo(6);
         Assertions.assertThat(ranking.get(Rank.FIRST)).isEqualTo(1);
         Assertions.assertThat(ranking.get(Rank.SECOND)).isEqualTo(1);
         Assertions.assertThat(ranking.get(Rank.THIRD)).isEqualTo(1);
@@ -133,7 +131,7 @@ public class MachineTest {
         Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
 
         double yieldRate = machine.calculateYieldRate(ranking);
-        Assertions.assertThat(yieldRate).isEqualTo(2000000);
+        Assertions.assertThat(yieldRate).isEqualTo(200000000);
     }
 
     @DisplayName("수익률 계산 - 2등")
@@ -151,7 +149,7 @@ public class MachineTest {
         Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
 
         double yieldRate = machine.calculateYieldRate(ranking);
-        Assertions.assertThat(yieldRate).isEqualTo(30000);
+        Assertions.assertThat(yieldRate).isEqualTo(3000000);
     }
 
     @DisplayName("수익률 계산 - 미당첨")
