@@ -28,4 +28,22 @@ public class Lotto {
         }
         return lottoNumbers;
     }
+
+    public void compareLotto(List<Integer> numbers, List<Integer>[] lottoNumbers) {
+        int count;
+        for (int i = 0; i < lottoNumbers.length; i++) {
+            for (int j = 0; j < numbers.size(); j++) {
+                count = compareNumbers(numbers.get(j), lottoNumbers[i]);
+            }
+        }
+    }
+    public int compareNumbers(int numbers, List<Integer> lottoNumbers) {
+        int count = 0;
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            if (numbers == lottoNumbers.get(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
