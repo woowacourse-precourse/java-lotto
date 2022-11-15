@@ -39,14 +39,13 @@ public class LottoService {
     }
 
     public LottoResult getResult(List<Lotto> lottos, String winns, String bonus) {
-        validator.isValidWinnings(winns);
+        validator.isValidWinAndBonus(winns, bonus);
         String[] split = winns.split(",");
         List<Integer> a = new ArrayList<>();
         for (String s:split) {
             a.add(Integer.parseInt(s));
         }
         List<Integer> result = computer.getResult(lottos, a, Integer.parseInt(bonus));
-        LottoResult lottoResult = new LottoResult(money, result);
-        return lottoResult;
+        return new LottoResult(money, result);
     }
 }
