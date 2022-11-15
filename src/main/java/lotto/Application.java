@@ -28,7 +28,6 @@ public class Application {
         // phase 3) 당첨 번호 입력받기
         System.out.println("\n" + GET_WINNING_LOTTO);
         Lotto winningLotto = new Lotto(getSixInput());
-        validateNotDuplicate(winningLotto);
         validateNumberVariation(winningLotto);
 
         // phase 4) 보너스 번호 입력받기

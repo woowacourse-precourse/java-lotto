@@ -13,6 +13,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateNotDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -21,8 +22,7 @@ public class Lotto {
             throw new IllegalArgumentException(String.valueOf(LENGTH_MUST_BE_SIX));
         }
     }
-    public static void validateNotDuplicate(Lotto lotto) {
-        List<Integer> numbers = lotto.numbers;
+    public static void validateNotDuplicate(List<Integer> numbers) {
         List<Integer> appearedNumList = new ArrayList<>();
         for (int index = 0; index < 6; index++){
             int tmpNum = numbers.get(index);
