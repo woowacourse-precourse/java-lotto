@@ -26,5 +26,23 @@ public class Buyer {
     }
 
     public void createLotteryTickets() {
+        setTicketCount();
+        initLottoTickets();
+        for (int i = 0; i < ticketCount; i++) {
+            List<Integer> numbers = createNumbers();
+            lottoTickets.add(new Lotto(numbers));
+        }
+    }
+
+    private void setTicketCount() {
+        this.ticketCount = money / 1000;
+    }
+
+    private void initLottoTickets() {
+        lottoTickets = new ArrayList<>(ticketCount);
+    }
+
+    private List<Integer> createNumbers() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
