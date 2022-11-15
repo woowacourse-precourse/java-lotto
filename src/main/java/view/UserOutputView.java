@@ -2,6 +2,7 @@ package view;
 
 import lotto.Lotto;
 import lotto.LottoResult;
+import lotto.PurchaseMoney;
 
 public class UserOutputView {
 
@@ -20,4 +21,10 @@ public class UserOutputView {
         System.out.println();
         System.out.println("총 수익률은 " + lottoResult.getYield() + "%입니다.");
     }
+
+    public static void printPurchaseNumber(PurchaseMoney purchaseMoney){
+        System.out.println();
+        System.out.println(purchaseMoney.getNumberLotteryPurchasesAvailable() + "개를 구매했습니다.");
+    }
+
 }

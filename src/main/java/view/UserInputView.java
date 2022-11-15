@@ -29,6 +29,7 @@ public class UserInputView {
     }
 
     public static Lotto getWinningLottoNumber() {
+        System.out.println();
         System.out.println(INPUT_WINNING_NUMBER);
         String winNumber = Console.readLine();
         try {
@@ -43,8 +44,10 @@ public class UserInputView {
     }
 
     public static BonusNumber getBonusLottoNumber() {
+        System.out.println();
         System.out.println(INPUT_BONUS);
         String bonusNumber = Console.readLine();
+        System.out.println();
         return new BonusNumber(bonusNumber);
     }
 }
