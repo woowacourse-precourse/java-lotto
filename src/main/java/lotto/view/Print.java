@@ -48,7 +48,15 @@ public final class Print {
     public static void printLottoResult(Map<LottoRank, Integer> lottoResult) {
         System.out.println();
         System.out.println(WINNING_STATS);
+        separatePrint(lottoResult);
+    }
 
+    public static void printYield(double lottoYield) {
+        String formattedYield = String.format("%,.1f", lottoYield);
+        System.out.println(String.format(YIELD_1, formattedYield) + YIELD_2);
+    }
+
+    private static void separatePrint(Map<LottoRank, Integer> lottoResult) {
         for (LottoRank rank : lottoResult.keySet()) {
             Integer count = lottoResult.get(rank);
             int matchingCount = rank.getMatchingCount();
@@ -64,11 +72,6 @@ public final class Print {
 
             System.out.printf((WINNING_RESULT) + "%n", matchingCount, winningAmount, count);
         }
-    }
-
-    public static void printYield(double lottoYield) {
-        String formattedYield = String.format("%,.1f", lottoYield);
-        System.out.println(String.format(YIELD_1, formattedYield) + YIELD_2);
     }
 
     private static String convertToComma(int winningAmount) {
