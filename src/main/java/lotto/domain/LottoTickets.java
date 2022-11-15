@@ -1,7 +1,4 @@
-package lotto;
-
-import domain.Ranking;
-import domain.WinningTicket;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package view;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -14,7 +14,6 @@ public class InputView {
     private static final String INPUT_WINNING_NUMBER_ERROR_MESSAGE = "[ERROR] 당첨 번호는 쉼표를 구분자로 6개의 숫자를 입력해야 합니다.";
     private static final String WINNING_NUMBER_TYPE_ERROR_MESSAGE = "[ERROR] 당첨 번호는 숫자여야만 합니다.";
     private static final String BONUS_NUMBER_TYPE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 숫자여야만 합니다.";
-    private static final String LOTTO_HAS_DUPLICATED_NUMBER_ERROR_MESSAGE = "[ERROR] 로또 번호는 중복될 수 없습니다.";
     private static final String DELIMITER = ",";
 
     public static int inputMoney() {
@@ -28,11 +27,9 @@ public class InputView {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
         String winningNumbers = Console.readLine();
         checkDelimiter(winningNumbers);
-        List<Integer> winningNumber = Stream.of(winningNumbers.split(DELIMITER))
+        return Stream.of(winningNumbers.split(DELIMITER))
                 .map(c -> convertToInt(c, WINNING_NUMBER_TYPE_ERROR_MESSAGE))
                 .collect(Collectors.toList());
-        checkDuplicated(winningNumber);
-        return winningNumber;
     }
 
     public static int inputBonusNumber() {
@@ -53,12 +50,6 @@ public class InputView {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(errorMessage);
-        }
-    }
-
-    private static void checkDuplicated(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException(LOTTO_HAS_DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
 }

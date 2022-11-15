@@ -1,6 +1,6 @@
 package domain;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

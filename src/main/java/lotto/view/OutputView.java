@@ -1,12 +1,12 @@
-package view;
+package lotto.view;
 
-import domain.Ranking;
+import lotto.domain.Ranking;
 
 import java.text.DecimalFormat;
 import java.util.Map;
 
-import lotto.Lotto;
-import lotto.LottoTickets;
+import lotto.domain.Lotto;
+import lotto.domain.LottoTickets;
 
 public class OutputView {
     public static final String TICKET_PURCHASED_MESSAGE = "개를 구매했습니다.";

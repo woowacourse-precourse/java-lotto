@@ -1,9 +1,8 @@
-package controller;
+package lotto.controller;
 
-import domain.*;
-import lotto.LottoTickets;
-import view.InputView;
-import view.OutputView;
+import lotto.domain.*;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.List;
 import java.util.Map;
