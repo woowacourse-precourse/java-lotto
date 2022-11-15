@@ -12,6 +12,8 @@ public class Application {
     	game.purchaseRandomNumbers(input);
     	game.printLottoNumbers();
     	outputPurchase(game, input);
+    	game.setWinningNumber(inputWinningNumber());
+    	
     }
     
     public static String purchase(){
@@ -28,8 +30,14 @@ public class Application {
     }
     
     public static String[] inputWinningNumber() {
+    	System.out.println();
     	System.out.println(Game.INPUTNUMBER_MESSAGE);
     	return Console.readLine().split(", ");
     }
 
+    public static String inputBonusNumber() {
+    	System.out.println();
+    	System.out.println(Game.INPUTBONUSNUMBER_MESSAGE);
+    	return Console.readLine();
+    }
 }
