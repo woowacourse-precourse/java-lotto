@@ -43,16 +43,23 @@ public class OutputView {
     }
 
     public static void printRankResult(Result result) {
-        StringBuilder stringBuilder = new StringBuilder();
         DecimalFormat formatter = new DecimalFormat("###,###");
         for (Rank rank : result.getResults().keySet()) {
             if (rank == Rank.NONE) {
                 continue;
             }
+            StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(rank.getMessage());
             stringBuilder.append(String.format("(%s원)", formatter.format(rank.getMoney())));
-            stringBuilder.append(String.format(" - %s개\n", result.getResults().get(rank)));
+            stringBuilder.append(String.format(" - %s개", result.getResults().get(rank)));
+            System.out.println(stringBuilder.toString());
         }
+    }
+
+    public static void printProfitRate(double profitRate) {
+        StringBuilder stringBuilder = new StringBuilder();
+        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        stringBuilder.append(String.format("총 수익률은 %s%%입니다.", formatter.format(profitRate)));
         System.out.println(stringBuilder.toString());
     }
 }

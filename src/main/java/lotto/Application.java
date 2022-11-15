@@ -16,6 +16,7 @@ public class Application {
             Result result = ResultService.addRankResult(user, winningLotto);
             OutputView.messageStrategy();
             OutputView.printRankResult(result);
+            OutputView.printProfitRate(ResultService.getProfitRate(user, result));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
