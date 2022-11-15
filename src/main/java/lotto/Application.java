@@ -12,5 +12,6 @@ public class Application {
         check.LottoResult(myLottoNumber.getNumbers());
         check.print();
         check.printPercent();
+        
     }
 }
