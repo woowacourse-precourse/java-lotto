@@ -9,11 +9,13 @@ import static constant.Config.INIT_COUNT;
 public class WinningResult {
     private final static int RATIO = 100;
     private final static double DECIMAL = 10.0;
-    private final Map<Win, Integer> winningResult;
+    private final Map<Win, Integer> winningResult = new EnumMap<>(Win.class);
 
     public WinningResult() {
-        this.winningResult = new EnumMap<>(Win.class);
+        setInitWinningResult();
+    }
 
+    private void setInitWinningResult() {
         for (Win win : Win.values()) {
             this.winningResult.put(win, INIT_COUNT);
         }
@@ -28,13 +30,13 @@ public class WinningResult {
     }
 
     public void putWinningResult(Win win) {
-        int count = winningResult.getOrDefault(win, INIT_COUNT);
+        int count = getCount(win);
         winningResult.put(win, ++count);
     }
 
-    public void sumWinningResult(WinningResult result) {
-        Map<Win, Integer> winningResult = result.getWinningResult();
-        winningResult.forEach((win, count) -> this.winningResult.merge(win, count, Integer::sum));
+    public void sumWinningResult(WinningResult winningResult) {
+        Map<Win, Integer> winningResults = winningResult.getWinningResult();
+        winningResults.forEach((win, count) -> this.winningResult.merge(win, count, Integer::sum));
     }
 
     public EarningsRate getEarningsRate(Money money) {
@@ -50,7 +52,7 @@ public class WinningResult {
         double sum = 0;
         for (Map.Entry<Win, Integer> result : winningResult.entrySet()) {
             Win win = result.getKey();
-            Integer count = result.getValue();
+            int count = result.getValue();
 
             sum += win.getWinningAmount() * count;
         }
