@@ -62,19 +62,19 @@ public class LottoController {
     }
 
     protected static WinningLotto getWinningLotto() throws IllegalArgumentException {
-        Lotto lotto = getWinningLottoNumber(inputWinningLotto());
+        List<Integer> numbers = getWinningLottoNumber(inputWinningLotto());
         try {
             int bonus = Integer.parseInt(inputWinningBonus());
-            return new WinningLotto(lotto, bonus);
+            return new WinningLotto(numbers, bonus);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호로 숫자가 아닌 값을 입력했습니다.");
         }
     }
 
-    protected static Lotto getWinningLottoNumber(String inputString) {
+    protected static List<Integer> getWinningLottoNumber(String inputString) {
         List<String> str = Arrays.asList(inputString.split(","));
-        List<Integer> number = str.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        return new Lotto(number);
+        List<Integer> numbers = str.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        return numbers;
     }
     private static String inputWinningLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");

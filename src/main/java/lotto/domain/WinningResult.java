@@ -43,10 +43,9 @@ public class WinningResult {
     private void countLottoOne(Lotto lotto) {
         boolean bonusFlag = false;
         int count = 0;
-        Lotto win = winningLotto.getLotto();
         List<Integer> numbers = lotto.getNumbers();
         for(Integer num : numbers) {
-            if(win.getNumbers().contains(num))
+            if(winningLotto.getNumbers().contains(num))
                 count++;
             if(winningLotto.getBonus() == num)
                 bonusFlag = true;
