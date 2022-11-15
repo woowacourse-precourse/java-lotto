@@ -56,4 +56,8 @@ public class Winning {
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
