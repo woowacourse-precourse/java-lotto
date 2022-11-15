@@ -8,6 +8,18 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO: 프로그램 구현
 		
+		try {
+			playLotto();
+		}
+		
+		catch (IllegalArgumentException e) {
+			
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static void playLotto() {
+	
 		int payment = User.getPayment();
 		int purchaseQuantity = payment / Constant.PAYMENT_UNIT.value;
 

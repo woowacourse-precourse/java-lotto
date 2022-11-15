@@ -15,7 +15,7 @@ public class Verification {
 			throwException(ErrorMessage.ERROR.value + message);
 		}
 	}
-	
+
 	public static void verifyNumbers(List<Integer> winningNumbers) {
 
 		verifyLength(winningNumbers);
@@ -56,14 +56,14 @@ public class Verification {
 		for (Integer number : winningNumbers) {
 
 			if (uniqueNumbers.contains(number)) {
-				
+
 				String message = "중복되지 않는 숫자들로 입력해야 합니다.";
 				throwException(ErrorMessage.ERROR.value + message);
 			}
 			uniqueNumbers.add(number);
 		}
 	}
-	
+
 	public static void verifyNumber(Integer bonusNumber, List<Integer> winningNumbers) {
 
 		List<Integer> transformedNumber = new ArrayList<Integer>(1);
@@ -72,22 +72,14 @@ public class Verification {
 
 		boolean isOverlap = winningNumbers.contains(bonusNumber);
 		if (isOverlap) {
-			
+
 			String message = "보너스 번호는 당첨 번호와 다른 숫자를 입력해야 합니다.";
 			throwException(ErrorMessage.ERROR.value + message);
 		}
 	}
-	
-	public static void throwException(String message) {
 
-		try {
-			throw new IllegalArgumentException(message);			
-		}
-		
-		catch (IllegalArgumentException e) {
-			
-			System.out.println(e.getMessage());
-			throw new IllegalArgumentException(message);
-		}
+	public static void throwException(String message) throws IllegalArgumentException {
+
+		throw new IllegalArgumentException(message);
 	}
 }
