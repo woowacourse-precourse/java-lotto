@@ -1,7 +1,7 @@
 package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Model.*;
+import lotto.DB.*;
 import lotto.View.*;
 
 import java.util.ArrayList;
