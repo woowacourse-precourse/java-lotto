@@ -53,6 +53,23 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @Test
+    void 예외_테스트2() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "1,2,3,4,5,60", "7");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 43)
+        );
+    }
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
 
     @Override
     public void runMain() {
