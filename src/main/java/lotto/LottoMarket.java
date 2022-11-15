@@ -44,4 +44,8 @@ public class LottoMarket {
     public List<Lotto> getLottos() {
         return lottos;
     }
+
+    public int getPurchasePrice() {
+        return purchasePrice;
+    }
 }

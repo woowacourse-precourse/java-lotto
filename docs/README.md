@@ -26,7 +26,7 @@
           - [x] 4등: 4개 번호 일치 / 50,000원
           - [x] 5등: 3개 번호 일치 / 5,000원
     - [x] 당첨 내역 출력 - LottoResult#printResult
-    - [ ] 수익률 계산 (소수점 둘째 자리에서 반올림) - LottoResult#calculateRateOfReturn
+    - [x] 수익률 계산 (소수점 둘째 자리에서 반올림) - LottoResult#calculateRateOfReturn
 
 - [ ] 예외 처리 : 잘못된 값 입력 (IllegalArgumentException발생 + "[ERROR]"로 시작하는 에러 메시지를 출력)
     - 입력이 숫자가 아닐때 (쉼표 제외)
