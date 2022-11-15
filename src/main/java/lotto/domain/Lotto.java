@@ -4,7 +4,6 @@ import lotto.domain.exception.IllegalArgumentException;
 
 import java.util.List;
 
-import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 import static lotto.domain.exception.ErrorType.*;
 
@@ -19,7 +18,6 @@ public class Lotto {
         validateLottoSize(numbers);
         validateEachNumberInRange(numbers, LOTTO_START_NUMBER, LOTTO_END_NUMBER);
         validateHasDuplicate(numbers);
-        ascendingSort(numbers);
         this.numbers = numbers;
     }
 
@@ -44,10 +42,6 @@ public class Lotto {
         if (removedDuplicates.size() < LOTTO_SIZE) {
             throw new IllegalArgumentException(ERROR_LOTTO_HAS_DUPLICATE.getErrorMessage());
         }
-    }
-
-    private void ascendingSort(List<Integer> numbers) {
-        sort(numbers);
     }
 
     public boolean containsBonusNumber(int bonusNumber) {
