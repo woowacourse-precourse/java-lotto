@@ -51,7 +51,7 @@
 2. OutputView
     - [x]  구입한 로또 개수 출력 기능 → printLottoCount
     - [x]  구매한 로또 번호 출력 기능 → printLottoNumber
-    - [ ]  당첨 내역 출력 기능 → printWinningResult
+    - [x]  당첨 내역 출력 기능 → printWinningResult
     - [ ]  수익률 출력 기능 → printLottoYield
 
 ### controller
@@ -64,7 +64,7 @@
     - [x]  로또 발행을 제어하는 기능 호출 → control_IssueingLotto
     - [x]  당첨 번호 정하는 과정을 제어하는 기능 호출 → control_WinningNumber
     - [x]  보너스 번호 정하는 과정을 제어하는 기능 호출 → control_BonusNumber
-    - [ ]  당첨 내역 과정을 제어하는 기능 호출 → control_WinningResult
+    - [x]  당첨 내역 과정을 제어하는 기능 호출 → control_WinningResult
     - [ ]  수익률 계산 과정을 제어하는 기능 호출 → control_LottoYield
    
 

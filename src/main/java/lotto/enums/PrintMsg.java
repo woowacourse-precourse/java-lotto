@@ -6,6 +6,8 @@ public enum PrintMsg {
     INPUT_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
     INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     OUTPUT_PURCHASE_LOTTO("개를 구매했습니다."),
+    OUTPUT_WINNING_RESULT("당첨 통계\n---"),
+    OUTPUT_COUNT("개"),
     ERROR_PREFIX("[ERROR] "),
     ERROR_INPUT_VALUE_IS_NOT_NUMBER("입력은 숫자 형식이어야 합니다."),
     ERROR_PURCHASE_AMOUNT_IS_NOT_DIVIDED_BY_1000("구입 금액은 1,000원 단위로 입력해야 합니다."),

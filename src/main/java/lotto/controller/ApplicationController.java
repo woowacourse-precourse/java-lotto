@@ -6,8 +6,11 @@ import lotto.model.Seller;
 import lotto.model.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+import lotto.enums.Ranking;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ApplicationController {
     Seller seller = new Seller();
@@ -60,11 +63,11 @@ public class ApplicationController {
     }
 
     public void control_WinningResult() {
-        //TODO
-        //  - [x] 당첨 결과 계산
-        //  - [x] 당첨 내역 저장
-        //  - [ ] 당첨 내역 출력
         player.setWinningResult();
+        List<Ranking> winningResult = Arrays.stream(Ranking.values())
+                .filter(ranking -> ranking.getMatchingNumbers() > Ranking.NOTHING.getMatchingNumbers())
+                .collect(Collectors.toList());
+        outputView.printWinningResult(winningResult);
 
         //TODO: 수익률 계산 과정 제어 기능 호출
     }
