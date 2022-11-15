@@ -1,9 +1,9 @@
 package lotto.view;
 
 import java.util.List;
-import lotto.model.Lotto;
 import lotto.model.Calculator;
 import lotto.model.Comparison;
+import lotto.model.Lotto;
 
 public class Output {
     public static void printPurchaseAmount() {

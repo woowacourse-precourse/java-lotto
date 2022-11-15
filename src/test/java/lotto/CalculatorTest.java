@@ -1,10 +1,8 @@
 package lotto;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import lotto.model.Calculator;
-import lotto.model.Generator;
-import lotto.model.InputException;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {

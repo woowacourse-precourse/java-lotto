@@ -1,13 +1,8 @@
 package lotto;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
-import java.util.ArrayList;
-import java.util.List;
 import lotto.model.InputException;
-import lotto.model.Lotto;
 import org.junit.jupiter.api.Test;
 
 class InputExceptionTest {
@@ -52,7 +47,7 @@ class InputExceptionTest {
 
     @Test
     void isValidWinningNumberRange() {
-        final int[] input = {2,3,67,122,400,159};
+        final int[] input = {2, 3, 67, 122, 400, 159};
         assertThatThrownBy(() -> InputException.isValidWinningNumberRange(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1~45 숫자를 입력하세요.");
