@@ -41,6 +41,7 @@ public class LottoUser {
 
     //소유한 모든 로또의 결과 확인
     public void checkWin(){
+        this.winInfomations.clear();
         for(Lotto lotto : this.lottos){
             this.winInfomations.add(lottoSystem.judgeWin(lotto));
         }
