@@ -53,4 +53,9 @@ public class LottoView {
         }
     }
 
+    // 수익률 보여주는 기능
+    public void displayYield(double yield) {
+        System.out.println(String.format(Message.WIN_YIELD, yield));
+    }
+
 }
