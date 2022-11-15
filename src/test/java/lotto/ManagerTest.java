@@ -98,4 +98,18 @@ class ManagerTest {
         //Then
         assertThat(matchCount).isEqualTo(new int[]{3, 0, 0, 3});
     }
+
+    @DisplayName("예시에 나온 수익율에 대한 테스트")
+    @Test
+    void calcWinningPrice() throws Exception {
+        //Given
+        Manager manager = new Manager();
+        manager.getPurchasePrice(8000);
+
+        //When
+        double rate = manager.calculator(new int[]{1, 0, 0, 0, 0});
+
+        //Then
+        assertThat(rate).isEqualTo(62.5);
+    }
 }
