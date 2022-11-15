@@ -1,26 +1,39 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class WinningNumbers {
     private final List<Integer> lottos;
     private final Integer bonusNumber;
 
     public WinningNumbers(List<Integer> lottos, Integer lottoItem) {
+        validate(lottos);
+        validateBonusNumberDuplicate(lottos, lottoItem);
+        validateLottoNumberDuplicate(lottos);
+
         this.lottos = lottos;
         this.bonusNumber = lottoItem;
     }
 
-    private void validate(List<Lotto> numbers) {
+    private void validateLottoNumberDuplicate(List<Integer> lottos) {
+        Set<Integer> set = new HashSet<>();
+        if (set.size() != lottos.size()) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
+
+    private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
 
     private void validateBonusNumberDuplicate(
-            List<Lotto> lottoItems,
-            Lotto bonusNumber
+            List<Integer> lottoItems,
+            Integer bonusNumber
     ) {
         if (lottoItems.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR]");

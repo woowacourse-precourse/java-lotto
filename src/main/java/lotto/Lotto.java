@@ -3,9 +3,11 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
@@ -17,6 +19,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplicate(numbers);
 
         this.numbers = numbers;
     }
@@ -25,6 +28,13 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_NUMBER_COUNT);
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
