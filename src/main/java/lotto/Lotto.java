@@ -1,18 +1,28 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateInputLength(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateInputLength(List<Integer> numbers) {
         if (numbers.size() != LottoConst.LOTTO_LENGTH) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> deletedDuplicate = new HashSet<>(numbers);
+        if (deletedDuplicate.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         }
     }
 
