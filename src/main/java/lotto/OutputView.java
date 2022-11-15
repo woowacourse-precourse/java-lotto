@@ -12,11 +12,11 @@ public class OutputView {
         }
     }
 
-    public static void printResult(Map<Result, Integer> lottoResult) {
+    public static void printResult(Map<Result, Integer> resultMap) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Result result : Result.values()) {
-            System.out.println(result.getMessage() + lottoResult.get(result) + "개");
+            System.out.println(result.getMessage() + resultMap.get(result) + "개");
         }
     }
 
