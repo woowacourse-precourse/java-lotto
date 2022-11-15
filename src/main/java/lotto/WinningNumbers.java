@@ -11,8 +11,6 @@ public class WinningNumbers {
 
     public WinningNumbers(List<Integer> lottos, Integer lottoItem) {
         validate(lottos);
-        validateBonusNumberDuplicate(lottos, lottoItem);
-        validateLottoNumberDuplicate(lottos);
 
         this.lottos = lottos;
         this.bonusNumber = lottoItem;

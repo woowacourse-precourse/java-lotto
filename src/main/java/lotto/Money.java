@@ -1,5 +1,6 @@
 package lotto;
 
+import java.awt.print.Pageable;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -25,25 +26,23 @@ public class Money {
     public static int init() {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = readLine();
+        isDigitCheck(userInput);
         validateEmpty(userInput);
         return changeInt(userInput);
     }
 
-    private static String checkreadLine() {
-        String input;
-        try {
-            input = readLine();
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException();
+    private static void isDigitCheck(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
+            }
         }
-
-        return input;
     }
 
     public static int changeInt(String userInput) {
         try {
             return Integer.parseInt(userInput);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_NOT_INT_MONEY);
         }
     }
