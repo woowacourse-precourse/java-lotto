@@ -3,10 +3,16 @@ package lotto;
 import java.util.Map;
 
 public class Result {
+
+
     private final Map<Ranking,Integer> result;
 
     public Result(Map<Ranking, Integer> result) {
         this.result = result;
+    }
+
+    public Map<Ranking, Integer> getResult() {
+        return result;
     }
 
     public double profitRate(UserMoney money){
