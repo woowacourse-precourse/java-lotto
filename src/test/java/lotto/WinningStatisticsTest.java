@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -55,6 +56,35 @@ public class WinningStatisticsTest {
         WinningStatistics winningStatistics = new WinningStatistics(purchasedLottos, winningLotto);
 
         assertThat(winningStatistics.getWinningStatistics().get(Rank.FIRST)).isEqualTo(2);
+    }
+
+    @DisplayName("올바른 당첨 현황을 보여주는지 확인")
+    @Test
+    void checkValidWinningStatistics() {
+        Lotto firstAwardLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto secondAwardLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        Lotto thirdAwardLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+        Lotto forthAwardLotto = new Lotto(List.of(1, 2, 3, 4, 8, 9));
+        Lotto fifthAwardLotto = new Lotto(List.of(1, 2, 3, 8, 9, 10));
+        Lotto missedAwardLotto = new Lotto(List.of(1, 2, 8, 9, 10, 11));
+
+        PurchasedLottos purchasedLottos = new PurchasedLottos(
+                List.of(firstAwardLotto, secondAwardLotto,
+                        thirdAwardLotto, forthAwardLotto,
+                        fifthAwardLotto, missedAwardLotto)
+        );
+
+        WinningStatistics winningStatistics = new WinningStatistics(purchasedLottos, winningLotto);
+
+        assertThat(winningStatistics.getWinningStatistics())
+                .isEqualTo(Map.of(
+                        Rank.FIRST, 1,
+                        Rank.SECOND, 1,
+                        Rank.THIRD, 1,
+                        Rank.FORTH, 1,
+                        Rank.FIFTH, 1,
+                        Rank.MISS, 1
+                ));
     }
 
     @DisplayName("1000원을 지불하여 5등에 당첨이 되면 수익률은 500.0%이다.")
