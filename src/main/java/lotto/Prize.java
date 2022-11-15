@@ -49,4 +49,9 @@ public class Prize {
         boolean sameBounusNumber = checkForSameBounusNumber(lotto, bounus);
         return rank(sameWinningNumbers, sameBounusNumber);
     }
+
+    public String print() {
+//        System.out.println(rankResult);
+        return String.valueOf(rankResult);
+    }
 }
