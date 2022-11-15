@@ -27,6 +27,7 @@
 #### Buyer
 - [X] 구매 금액에 맞춰 구매할 수 있는 로또 수만큼 로또 생성 - Buyer#Buyer(int won)
   - [X] 구매 가능한 수만큼 로또 생성 - Randoms#pickUniqueNumbersInRange()
+- [X] 로또 번호 리스트를 오름차순으로 정렬 Buyer#ascendingSort(List<Integer> numbers)
 - [X] 구매 금액을 통해 몇 장의 로또를 구매할 수 있는지 계산 - Buyer#calculateNumberOfLottos(int won)
   - [X] 1,000 미만의 값인 경우 예외처리 - Buyer#validateIsUnderLottoPrice(int won) 
   - [X] 1,000 단위로 나누어 떨어지지 않는 경우, 1,000 단위 아래는 버림 처리 (ex. 1,200 -> 1,000) - Buyer#roundDownLottoPriceUnits(int won)
@@ -38,7 +39,6 @@
   - [X] 로또 번호 리스트의 사이즈가 6인지 검증 Lotto#validateLottoSize(List<Integer> numbers)
   - [X] 로또의 각 번호가 1~45 숫자 범위 내에 있는지 검증 Lotto#validateEachNumberInRange(List<Integer> numbers)
   - [X] 로또의 각 번호가 중복되는지 검증 Lotto#validateHasDuplicate(List<Integer> numbers)
-  - [X] 로또 번호 리스트를 오름차순으로 정렬 Lotto#ascendingSort(List<Integer> numbers)
 - [X] 로또 1장 가격 상수 처리 (1000) 
 - [X] 로또 번호 리스트 사이즈 상수 처리 (6)
 - [X] 로또 각 번호 숫자 범위 상수 처리 (1~45)

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static java.util.Collections.sort;
 import static lotto.domain.exception.ErrorType.ERROR_UNDER_LOTTO_PRICE;
 import static lotto.domain.Lotto.*;
 
@@ -16,7 +17,9 @@ public class Buyer {
         int numberOfLottos = calculateNumberOfLottos(won);
         List<Lotto> lottos = new ArrayList<>();
         for (int count = 0; count < numberOfLottos; count++) {
-            Lotto lotto = new Lotto(pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_SIZE));
+            List<Integer> lottoNumbers = new ArrayList<>(pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_SIZE));
+            ascendingSort(lottoNumbers);
+            Lotto lotto = new Lotto(lottoNumbers);
             lottos.add(lotto);
         }
         this.lottos = lottos;
@@ -37,6 +40,11 @@ public class Buyer {
     private int roundDownLottoPriceUnits(int won) {
         return won - (won % LOTTO_PRICE);
     }
+
+    private void ascendingSort(List<Integer> lottoNumbers) {
+        sort(lottoNumbers);
+    }
+
 
     public List<Lotto> getLottos() {
         return lottos;
