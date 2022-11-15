@@ -40,15 +40,17 @@ public class WinningNumbers {
 
     private void validateBonusNumber(String number) {
         final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
+        final String RANGE_EXCEPTION_MESSAGE = "1-45를 벗어나는 문자를 입력할 수 업습니다.";
+        final String DUPLICATE_EXCEPTION_MESSAGE = "당첨 번호와 중복되는 수를 입력할 수 없습니다.";
 
         boolean isMatch = Pattern.matches(INPUT_PATTERN, number);
 
         if (!isMatch) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
         }
 
         if (this.winningNumbers.contains(Integer.parseInt(number))) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
