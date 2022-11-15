@@ -13,4 +13,7 @@ public interface Constant {
     int FOUR = 4;
     int FIVE = 5;
     int SIX = 6;
+
+    int START_INCLUSIVE = 1;
+    int END_INCLUSIVE = 45;
 }
