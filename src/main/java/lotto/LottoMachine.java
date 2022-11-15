@@ -3,7 +3,7 @@ package lotto;
 import lotto.util.CONSTANTS;
 import lotto.util.InputHandler;
 import lotto.util.LOTTERY_REWARD;
-import lotto.util.SystemMessage;
+import lotto.util.SYSTEM_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,24 +33,24 @@ public class LottoMachine {
     }
 
     private int lottoPurchase() {
-        System.out.println(SystemMessage.PURCHASE_INPUT.getMessage());
+        System.out.println(SYSTEM_MESSAGE.PURCHASE_INPUT.getMessage());
         return InputHandler.getPurchaseAmount();
     }
 
     private List<Lotto> generateLotto(int amount) {
-        System.out.println("\n" + amount + SystemMessage.PURCHASE_AMOUNT.getMessage());
+        System.out.println("\n" + amount + SYSTEM_MESSAGE.PURCHASE_AMOUNT.getMessage());
         List<Lotto> generatedLotto = lottoGenerator.generateLotto(amount);
         generatedLotto.forEach(Lotto::print);
         return generatedLotto;
     }
 
     private Lotto getWinningNumbers() {
-        System.out.println("\n" + SystemMessage.WINNING_NUMBER.getMessage());
+        System.out.println("\n" + SYSTEM_MESSAGE.WINNING_NUMBER.getMessage());
         return new Lotto(InputHandler.getWinningNumber());
     }
 
     private int getBonusNumber() {
-        System.out.println("\n" + SystemMessage.BONUS_NUMBER.getMessage());
+        System.out.println("\n" + SYSTEM_MESSAGE.BONUS_NUMBER.getMessage());
         return InputHandler.getBonusNumber();
     }
 

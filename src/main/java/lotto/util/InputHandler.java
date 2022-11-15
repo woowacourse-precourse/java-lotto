@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputHandler {
-
+    private static final String DEFAULT_ERROR_MESSAGE = "[ERROR]";
     public InputHandler() {
     }
 
@@ -28,7 +28,7 @@ public class InputHandler {
         return validatePurchaseAmount(inputMoney);
     }
 
-    public static int getBonusNumber() throws ExceptionHandler {
+    public static int getBonusNumber() {
         String userInput = Console.readLine();
         int bonusNumber = validateNumberType(userInput);
         validateRange(bonusNumber);
@@ -40,7 +40,7 @@ public class InputHandler {
             throw new IllegalArgumentException("[ERROR]");
     }
 
-    private static List<Integer> validateListType(String userInput) throws ExceptionHandler {
+    private static List<Integer> validateListType(String userInput) {
         List<Integer> validatedNumbers;
         validatedNumbers = Arrays.stream(userInput.split(",")).map(InputHandler::validateNumberType).collect(Collectors.toList());
         return validatedNumbers;
@@ -54,7 +54,7 @@ public class InputHandler {
 
     private static void validateRange(int number) {
         if (number > CONSTANTS.MAXIMUM.getNumbers() || number < CONSTANTS.MINIMUM.getNumbers()) {
-            throw new ExceptionHandler("number exception");
+            throw new IllegalArgumentException("number exception");
         }
     }
 
@@ -63,7 +63,7 @@ public class InputHandler {
         for (Integer number :
                 userInput) {
             if (!numbers.add(number)) {
-                throw new ExceptionHandler("test");
+                throw new IllegalArgumentException("test");
             }
         }
     }

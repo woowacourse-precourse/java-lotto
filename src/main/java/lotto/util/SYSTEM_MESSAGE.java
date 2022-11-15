@@ -1,6 +1,6 @@
 package lotto.util;
 
-public enum SystemMessage {
+public enum SYSTEM_MESSAGE {
     PURCHASE_INPUT("구입금액을 입력해 주세요."),
     PURCHASE_AMOUNT("개를 구매했습니다."),
     WINNING_NUMBER("당첨 번호를 입력해 주세요."),
@@ -10,7 +10,7 @@ public enum SystemMessage {
 
     private String message;
 
-    SystemMessage(String message) {
+    SYSTEM_MESSAGE(String message) {
         this.message = message;
     }
 
