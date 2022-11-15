@@ -42,6 +42,56 @@ class AnswerNumberListTest extends NsTest {
         assertThatThrownBy(() -> new AnswerNumberList(List.of(12L, 3L, 2L, 1L, 4L, 5L), 4L)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("6개 일치할 때")
+    public void checkFirstWinning() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        AnswerNumberList answerNumberList = new AnswerNumberList(List.of(1L, 2L, 3L, 4L, 5L, 6L), 7L);
+        assertThat(answerNumberList.checkLottoWinning(lotto)).isEqualTo(LottoResult.FIRST);
+    }
+
+    @Test
+    @DisplayName("5개 일치하고 보너스 일치할 때")
+    public void checkSecondWinning() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        AnswerNumberList answerNumberList = new AnswerNumberList(List.of(1L, 2L, 3L, 4L, 5L, 6L), 7L);
+        assertThat(answerNumberList.checkLottoWinning(lotto)).isEqualTo(LottoResult.SECOND);
+    }
+
+    @Test
+    @DisplayName("5개 일치할 때")
+    public void checkThirdWinning() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+        AnswerNumberList answerNumberList = new AnswerNumberList(List.of(1L, 2L, 3L, 4L, 5L, 6L), 7L);
+        assertThat(answerNumberList.checkLottoWinning(lotto)).isEqualTo(LottoResult.THIRD);
+    }
+
+    @Test
+    @DisplayName("4개 일치할 때")
+    public void checkFourthWinning() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 9, 8));
+        AnswerNumberList answerNumberList = new AnswerNumberList(List.of(1L, 2L, 3L, 4L, 5L, 6L), 7L);
+        assertThat(answerNumberList.checkLottoWinning(lotto)).isEqualTo(LottoResult.FOURTH);
+    }
+
+    @Test
+    @DisplayName("3개 일치할 때")
+    public void checkFifthWinning() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 11, 9, 8));
+        AnswerNumberList answerNumberList = new AnswerNumberList(List.of(1L, 2L, 3L, 4L, 5L, 6L), 7L);
+        assertThat(answerNumberList.checkLottoWinning(lotto)).isEqualTo(LottoResult.FIFTH);
+    }
+
+    @Test
+    @DisplayName("2개 이하 일치할 때")
+    public void checkNothingWinning() {
+        Lotto lotto = new Lotto(List.of(1, 2, 20, 11, 9, 8));
+        Lotto lotto2 = new Lotto(List.of(1, 23, 20, 11, 9, 8));
+        AnswerNumberList answerNumberList = new AnswerNumberList(List.of(1L, 2L, 3L, 4L, 5L, 6L), 7L);
+        assertThat(answerNumberList.checkLottoWinning(lotto)).isEqualTo(LottoResult.NOTHING);
+        assertThat(answerNumberList.checkLottoWinning(lotto2)).isEqualTo(LottoResult.NOTHING);
+    }
+
     @Override
     protected void runMain() {
 
