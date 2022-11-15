@@ -39,6 +39,15 @@ public class Application {
         }
         return pay;
     }
+    //     로또 번호 입력
+    public static String[] userNum() {
+        System.out.println("당첨 번호 입력: ");
+        String myNum = Console.readLine();
+        String myNums[] = myNum.split(",");
+
+        userNums.add(Integer.valueOf(String.valueOf(myNums)));
+        return myNums;
+    }
 
 
 
