@@ -1,5 +1,6 @@
 package lotto.condition;
 
+import lotto.condition.lottonumber.InSizeCond;
 import lotto.condition.lottonumber.IsAllNumberInRangeCond;
 import lotto.condition.lottonumber.NoDuplicateNumberCond;
 import lotto.condition.lottonumber.RightFormatCond;
@@ -20,6 +21,14 @@ public class ConditionGenerator {
     public static List<Condition> getLottoNumberCondition() {
         return List.of(
                 RightFormatCond.getInstance(),
+                IsAllNumberInRangeCond.getInstance(),
+                NoDuplicateNumberCond.getInstance()
+        );
+    }
+
+    public static List<Condition> getLottoCreationCond() {
+        return List.of(
+                InSizeCond.getInstance(),
                 IsAllNumberInRangeCond.getInstance(),
                 NoDuplicateNumberCond.getInstance()
         );
