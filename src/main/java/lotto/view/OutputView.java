@@ -19,7 +19,7 @@ public class OutputView {
                 " (" + grade.getRewardFormat()+"원) - "+ count + "개");
     }
 
-    public static void printProfitRate(int profit, int cost){
+    public static void printProfitRate(long profit, long cost){
         profit = profit / Constant.PURCHASE_UNIT;
         cost = cost / Constant.PURCHASE_UNIT;
         double result = ((double)(profit * 100)) / ((double)cost);

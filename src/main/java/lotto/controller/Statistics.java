@@ -17,11 +17,11 @@ public class Statistics {
         printProfitRate(tickets, lottoNumbers, bonusNumber);
     }
     public static void printProfitRate(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){
-        int cost = Constant.PURCHASE_UNIT * tickets.size();
-        int profit = 0;
+        long cost = (long)Constant.PURCHASE_UNIT * tickets.size();
+        long profit = 0;
         for (List<Integer> ticket : tickets){
             Grade grade = Judgement.findGradeByCorrectNumber(lottoNumbers, bonusNumber, ticket);
-            profit += grade.getReward();
+            profit += (long)grade.getReward();
         }
         OutputView.guideStatistics();
         OutputView.printProfitRate(profit, cost);
