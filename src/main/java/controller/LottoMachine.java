@@ -69,8 +69,4 @@ public class LottoMachine {
         ResultPrinter resultPrinter = new ResultPrinter(winningData);
         resultPrinter.printResult(lottos.size());
     }
-    /**
-     * 수익률 계산
-     */
-
 }

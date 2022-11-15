@@ -1,9 +1,10 @@
 package lotto;
 
+import data.NumericData;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
-import data.NumericData;
+
 public class Lotto {
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {

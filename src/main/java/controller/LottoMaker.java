@@ -1,6 +1,7 @@
 package controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import data.ExceptionData;
 import data.NumericData;
 import lotto.Lotto;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import data.InputGuideData;
 
 public class LottoMaker {
-    // 로또 가격을 NumericData에서 받아옴
+    // 로또 가격을 NumericData 에서 받아옴
     private static final int LOTTO_PRICE = NumericData.LOTTO_PRICE.getNumericValue();
     private static final int ZERO = 0;
     private int money;
@@ -26,7 +27,7 @@ public class LottoMaker {
             InputGuideData.BUY_LOTTO.printData();
         }
         catch (Exception e){
-            throw new IllegalArgumentException();
+            ExceptionData.NOT_INTEGER.callErrorMessage();
         }
     }
 

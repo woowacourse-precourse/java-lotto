@@ -1,5 +1,6 @@
 package controller;
 
+import data.ExceptionData;
 import data.NumericData;
 import java.util.List;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class NumberParser {
             validate(winningNumbers);
             return winningNumbers;
         }catch(Exception e){
-            System.out.println("임시 에러: 숫자를 입력해야 한다.");
+            ExceptionData.NOT_INTEGER.callErrorMessage();
             throw new IllegalArgumentException();
         }
     }
@@ -46,14 +47,14 @@ public class NumberParser {
             bonusNumber = Integer.parseInt(rawNumber);
             return bonusNumber;
         } catch(Exception e) {
-            System.out.print("임시 에러: 숫자를 입력해야 한다.");
+            ExceptionData.NOT_INTEGER.callErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
     public void validate(List<Integer> winningNumbers) {
         if(winningNumbers.size() != NumericData.NUMBER_AMOUNT.getNumericValue()){
-            System.out.println("임시에러: 숫자 6개만 넣어야한다.");
+            ExceptionData.NOT_SIX_NUMBER.callErrorMessage();
             throw new IllegalArgumentException();
         }
         for(int number : winningNumbers) {
@@ -64,7 +65,7 @@ public class NumberParser {
     public void validate(int number) {
         if(number < NumericData.MIN_NUMBER.getNumericValue()
             || number > NumericData.MAX_NUMBER.getNumericValue()){
-            System.out.println("임시에러: 1부터 45사이의 숫자여야한다.");
+            ExceptionData.NUMBER_RANGE.callErrorMessage();
             throw new IllegalArgumentException();
         }
     }
