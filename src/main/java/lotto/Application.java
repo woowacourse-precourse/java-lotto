@@ -6,7 +6,7 @@ import java.util.List;
 public class Application {
     public static void makeRandomNumber(int lottoTimes,List<List<Integer>> totalNumbers){
         for (int i=0;i<lottoTimes;i++){
-            totalNumbers.add(Randoms.pickUniqueNumbersInRange(Constants.START_NUMBER,Constants.END_NUMBER,Constants.times));
+            totalNumbers.add(Randoms.pickUniqueNumbersInRange(Constants.START_NUMBER,Constants.END_NUMBER,Constants.TIMES));
         }
         System.out.print(lottoTimes);
         System.out.println(Constants.INFO_AMOUNT);
@@ -21,8 +21,8 @@ public class Application {
 
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        InputOutputUI IO = new InputOutputUI();
+
+        InputOutput IO = new InputOutput();
         List<List<Integer>> totalNumbers = new ArrayList<>();
 
         IO.setMoney();
@@ -34,8 +34,14 @@ public class Application {
         IO.setUserInputNumber();
         System.out.println(IO.getUserInputNumber());
 
+        Lotto lotto = new Lotto(IO.getUserInputNumber());
+
         IO.setBonusNumber();
         System.out.println(IO.getBonusNumber());
 
+        Calculate cal = new Calculate(IO.getUserInputNumber(),IO.getBonusNumber(),totalNumbers);
+
+        cal.compareNumber();
+        cal.getMatchCount();
     }
 }

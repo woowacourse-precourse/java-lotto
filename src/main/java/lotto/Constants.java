@@ -5,7 +5,11 @@ public final class Constants {
     public static final int DIV_MONEY = 1000;
     public static final int START_NUMBER = 1;
     public static final int END_NUMBER = 45;
-    public static final int times = 6;
+    public static final int TIMES = 6;
+    public static final int MATCH_TABLE_LENGTH = 8;
+    public static final int BONUS = 5;
+    public static final int FIVE_ADD_BONUS = 2;
+    public static final int FLAG = 1;
     // 에러 코드
     public static final String ERROR_DIV = "[ERROR] 1000단위로 나눠지는 숫자를 입력하세요";
     public static final String ERROR_LENGTH = "[ERROR] 6 자리수로 입력하세요";

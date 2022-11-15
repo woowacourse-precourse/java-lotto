@@ -1,18 +1,38 @@
 package lotto;
 
 import java.util.List;
-import camp.nextstep.edu.missionutils.*;
+import java.util.stream.Collectors;
+
 public class Lotto {
     private final List<Integer> numbers;
-
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateLength(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    private void validateLength(List<Integer> numbers) {
+        try {
+            if (numbers.size() != 6) {
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println(Constants.ERROR_LENGTH);
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers){
+        List<Integer> duplicateCheck = numbers.stream().distinct().collect(Collectors.toList());
+        try {
+            if (duplicateCheck.size() != numbers.size()) {
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println(Constants.ERROR_DUPLICATE);
         }
     }
 }

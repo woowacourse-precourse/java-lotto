@@ -1,11 +1,10 @@
 package lotto;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.*;
 
-class InputOutputUI {
+class InputOutput {
     private int money = 0;
     private int bonusNumber = 0;
     private final ArrayList<Integer> userInputNumber = new ArrayList<>();
@@ -32,15 +31,6 @@ class InputOutputUI {
             validateRange(Integer.valueOf(tmp[i]));
             userInputNumber.add(Integer.valueOf(tmp[i]));
         }
-
-        List<Integer> duplicateCheck = userInputNumber.stream().distinct().collect(Collectors.toList());
-        try {
-            if (duplicateCheck.size() != userInputNumber.size()) {
-                throw new IllegalArgumentException();
-            }
-        }catch (IllegalArgumentException e){
-            System.out.println(Constants.ERROR_DUPLICATE);
-        }
     }
 
     public ArrayList<Integer> getUserInputNumber() {
@@ -64,6 +54,7 @@ class InputOutputUI {
                 throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
             System.out.println(Constants.ERROR_DIV);
+
         }
     }
 
@@ -85,5 +76,4 @@ class InputOutputUI {
             System.out.println(Constants.ERROR_RANGE);
         }
     }
-
 }
