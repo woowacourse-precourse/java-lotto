@@ -21,6 +21,6 @@ public class LotteryMachine {
     }
 
     public List <Lotto> getLottos() {
-        return Collections.unmodifiableList(lottos);
+        return Collections.unmodifiableList(this.lottos);
     }
 }

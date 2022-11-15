@@ -22,6 +22,8 @@ public class Lotto {
         checkDuplication(numbers);
     }
 
+
+    // TODO: 추가 기능 구현
     private void checkNumberRange(List<Integer> numbers){
         for(int number : numbers){
             if(number < 1 || number > 45){
@@ -29,7 +31,7 @@ public class Lotto {
             }
         }
     }
-    // TODO: 추가 기능 구현
+
     private void checkLength(List <Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 복권은 6개의 숫자로 구성되어야 합니다.");
@@ -45,7 +47,7 @@ public class Lotto {
     }
 
     public List <Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return Collections.unmodifiableList(this.numbers);
     }
 
     public int sameNumberCount(WinningNumber winningNumber) {
