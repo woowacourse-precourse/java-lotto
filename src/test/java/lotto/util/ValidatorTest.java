@@ -10,7 +10,7 @@ import java.util.List;
 public class ValidatorTest {
 
     @Nested
-    class isNumber {
+    class IsNumber {
         @DisplayName("주어진 문자열이 숫자가 아닌 경우 예외가 발생한다.")
         @Test
         void isNumberTest_숫자가아닌경우() {
@@ -32,7 +32,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isInRangeForList {
+    class IsInRangeForList {
         @DisplayName("주어진 리스트 중 특정 숫자가 범위 밖에 있는 경우 False를 반환한다.")
         @Test
         void isInRange_범위밖인경우() {
@@ -48,7 +48,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isInRangeForInt {
+    class IsInRangeForInt {
         @DisplayName("주어진 숫자가 범위 밖에 있는 경우 False를 반환한다.")
         @Test
         void isInRange_범위밖인경우() {
@@ -64,7 +64,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isDuplicateForOneArgument {
+    class IsDuplicateForOneArgument {
         @DisplayName("주어진 리스트에 중복이 없는 경우 False를 반환한다.")
         @Test
         void isDuplicate_중복없는경우() {
@@ -79,7 +79,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isDuplicateForTwoArguments {
+    class IsDuplicateForTwoArguments {
         @DisplayName("주어진 리스트와 숫자가 중복되지 않는 경우 False를 반환한다.")
         @Test
         void isDuplicate_중복없는경우() {
@@ -94,7 +94,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isHundredUnit {
+    class IsHundredUnit {
         @DisplayName("주어진 숫자가 1000원 단위인 경우 True를 반환한다.")
         @Test
         void isHundredTest_1000원단위() {
@@ -109,7 +109,7 @@ public class ValidatorTest {
     }
 
     @Nested
-    class isPositive {
+    class IsPositive {
         @DisplayName("주어진 숫자가 0보다 큰 경우 True를 반환한다.")
         @Test
         void isHundredTest_양수() {
