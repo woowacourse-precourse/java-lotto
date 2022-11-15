@@ -51,4 +51,8 @@ public class LottoResult {
         String addingPhrase = phrase + changeType(count) + "개\n";
         winningOutput += addingPhrase;
     }
+
+    private String changeType(int count) {
+        return Integer.toString(count);
+    }
 }
