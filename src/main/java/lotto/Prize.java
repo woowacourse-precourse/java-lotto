@@ -23,4 +23,22 @@ public enum Prize {
     private void plusNumsOfWinner() {
         this.numsOfWinner++;
     }
+
+    public static void checkRanking(int numsOfMatchedNumber, boolean containBonus, int prize) {
+        if (numsOfMatchedNumber == 6) {
+            Prize.JACKPOT.plusNumsOfWinner();
+        }
+        if (numsOfMatchedNumber == 5 && containBonus) {
+            Prize.SECOND.plusNumsOfWinner();
+        }
+        if (numsOfMatchedNumber == 5) {
+            Prize.THIRD.plusNumsOfWinner();
+        }
+        if (numsOfMatchedNumber == 4) {
+            Prize.FOURTH.plusNumsOfWinner();
+        }
+        if (numsOfMatchedNumber == 3) {
+            Prize.FIFTH.plusNumsOfWinner();
+        }
+    }
 }
