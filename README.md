@@ -148,7 +148,53 @@ BUILD SUCCESSFUL in 0s
 ```
 
 ---
+## ✨기능 목록
+### 1. 사용자 금액 입력 (class : Counter) <br><br>
+  - putMoney() : 사용자의 금액 입력을 진행한다. <br><br>
+  - moneyCheck() : 사용자의 입력을 검증한다. <br>
+    - numberCheck() : 사용자 입력 금액을 Integer 형으로 변환, 입력이 숫자가 아닐시 예외 처리한다. <br>
+    - unitCheck() : 입력 금액이 천 원 단위가 아닐 시 예외 처리한다. <br><br>
+  - moneyCount() : 입력 금액을 천 원 단위로 나누어 복권 갯수를 센다.<br><br>
+  - getNumberOfLotto() : 복권 갯수를 반환한다.
+  - getMoney() : 입력한 금액을 반환한다.
+    <br><br>
 
+### 2. 로또 번호 생성 (class : LottoCreator, Lotto) <br><br>
+  - createNumbers() : pickUniqueNumbersInRange() 함수를 사용하여 1 ~ 45 사이 무작위 로또 번호를 생성한다.
+    - pickUniqueNumbersInRange(int a, int b, int c) : 한 리스트에 a ~ b 까지 숫자를 삽입한 후, 그 리스트를 c 크기로 자른 후 Collections.Shuffle() 함수를 사용하여 무작위 구성의 형태로 반환하므로, 중복 없는 무작위 배열이 반환된다.<br><br>
+  - lengthCheck() : 생성된 로또 번호가 6자리가 아닐 시 예외 처리한다. <br><br>
+  - duplicationCheck() : 생성된 로또 넘버가 중복된 숫자를 포함할 시 예외 처리한다. <br><br>
+  - ascendingOrderCheck() : 생성된 로또 넘버가 오름차순이 아닐 시 예외 처리한다. <br><br>
+  - getNumbers() : 로또 번호를 반환한다.<br><br>
+  - printLotto() : 로또 번호를 출력한다.
+    - setPrintMessage() : 로또 번호를 메시지 형태로 변환한다.
+      <br><br>
+
+### 3. 당첨 번호 입력 (class : WinningNumber) <br><br>
+  * createWinningNumbers() : 당첨 번호를 생성한다. <br><br>
+  * createBonusNumber() : 보너스 번호를 생성한다. <br><br>
+  * inputWinningNumbers() : 당첨 번호 입력을 진행한다. <br><br>
+  - inputBonusNumber() : 보너스 번호 입력을 진행한다.<br><br>
+  - transformInputWinningNumbers() : 입력 받은 당첨 번호로부터 숫자 정보를 얻어 당첨 번호 배열을 구성한다.<br><br>
+  - transformBonusNumbers() : 입력 받은 보너스 번호로부터 숫자 정보를 얻어 보너스 번호를 설정한다.<br><br>
+  - winningNumberslengthCheck() : 당첨 번호가 6자리가 아닐 시 예외 처리한다.<br><br>
+  - bonusNumberlengthCheck() : 보너스 번호가 1자리가 아닐 시 예외 처리한다.<br><br>
+  - rangeCheck() : 해당 번호가 1 ~ 45 사이가 아닐 시 예외 처리한다.<br><br>
+  - duplicationCheck() : 당첨 번호가 중복될 시 예외 처리한다.<br><br>
+  - getWinningNumbers() : 당첨 번호를 반환한다.<br><br>
+  - getBonusNumber() : 보너스 번호를 반환한다.<br><br>
+    <br><br>
+
+### 4. 당첨 확인 (class : WinningChecker) <br><br>
+  - checkNumbers() : 로또 번호와 당첨 번호, 보너스 번호를 비교하여 당첨 여부를 반환한다.<br><br>
+  - addWinningRecord() : 당첨 여부에 따라 당첨 내역을 갱신한다. <br><br>
+  - getWinningChart() : 당첨 내역을 반환한다.<br><br>
+    <br><br>
+
+### 5. 결과 출력 (Printer) <br><br>
+  - calculateRateOfReturn() : 당첨 내역을 확인하여 수익률을 계산한다. <br><br>
+  - printWinningChart() : 당첨 내역과 수익률을 출력한다. <br><br>
+---
 ## 🎯 프로그래밍 요구 사항
 
 - JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
