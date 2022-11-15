@@ -12,4 +12,11 @@ public class ArrayAndListTwoSidedConversion {
         }
         return integerList;
     }
+    public static String[] integerListToStringArray(List<Integer> integerList) {
+        String[] stringArray = new String[integerList.size()];
+        for (int i = 0; i < integerList.size(); i++) {
+            stringArray[i] = String.valueOf(integerList.get(i));
+        }
+        return stringArray;
+    }
 }
