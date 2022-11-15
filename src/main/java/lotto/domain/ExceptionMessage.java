@@ -1,7 +1,6 @@
 package lotto.domain;
 
 public enum ExceptionMessage {
-
     PURCHASE_AMOUNT_IS_NOT_NUMBER("금액을 투입해 주셔야 합니다."),
     PURCHASE_AMOUNT_IS_NOT_EXCEED_ZERO("0을 초과한 금액을 투입해 주셔야 합니다."),
     PURCHASE_AMOUNT_IS_NOT_THOUSAND_UNITS("입력 금액은 1,000원 단위여야 합니다."),
