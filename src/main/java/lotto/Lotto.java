@@ -70,5 +70,9 @@ public class Lotto {
         return numbers;
     }
 
+    public Prize getGrade() {
+        return grade;
+    }
+
     // TODO: 추가 기능 구현
 }
