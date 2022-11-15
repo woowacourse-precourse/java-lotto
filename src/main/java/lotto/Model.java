@@ -29,12 +29,12 @@ public class Model {
      * 1에서 45까지 수 중 로또 숫자와 중복되지 않는 보너스 번호 1개를 생성한다.
      * @return 로또 숫자를 Integer로 return 한다.
      */
-    private static Integer CreateLottoBonusNumber(ArrayList<Integer> lottoNumber) {
+    private static List<Integer> CreateLottoBonusNumber(List<Integer> lottoNumber) {
         // 1에서 45까지 로또 숫자와 중복되지 않는 보너스 번호 1개를 생성한다.
-        Integer randomNumber = Randoms.pickNumberInRange(1, 45);
+        List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 1);
 
         while (lottoNumber.contains(randomNumber)) {
-            randomNumber = Randoms.pickNumberInRange(1, 45);
+            randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 1);
         }
 
         return randomNumber;
@@ -106,12 +106,10 @@ public class Model {
     public static Double CalculateEarningRate(Integer spending, Integer income) {
         Double incomeDouble= (double)income;
         Double spendingDouble= (double)spending;
-        Double result = Math.round(incomeDouble / spendingDouble * 100 * 10) / 10.0;
-        return result;
+        return Math.round(incomeDouble / spendingDouble * 100 * 10) / 10.0;
     }
 
     public static Integer CalculateEarningSum(LinkedHashMap<Integer, Integer> analyzedResult) {
-        List<Integer> analyzedResultKeys = new ArrayList<>(analyzedResult.keySet());
 
         Integer sum = 0;
 
