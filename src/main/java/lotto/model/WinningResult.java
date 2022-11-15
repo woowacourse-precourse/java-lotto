@@ -4,29 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningResult {
+    private static int SAME_3 = 3;
+    private static int SAME_4 = 4;
+    private static int SAME_5 = 5;
+    private static int SAME_6 = 6;
+
     public List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0));
 
-    public WinningResult(int ticketAmount, Lottos lottos) {
-        checkWinning(ticketAmount, lottos);
+    public WinningResult(int ticketAmount, List<Lotto> lottos, Lotto luckySix, int luckyBonus) {
+        checkWinning(ticketAmount, lottos, luckySix, luckyBonus);
     }
 
-    private void checkWinning(int ticketAmount, Lottos lottos) {
+    private void checkWinning(int ticketAmount, List<Lotto> lottos, Lotto luckySix, int luckyBonus) {
         for (int index = 0; index < ticketAmount; index++) {
-            int sameNumber = lottos.getLottos(index).hasSameElement(LuckySix.luckySix);
-            if (sameNumber == 3) {
-                winningResult.set(0, winningResult.get(0) + 1);
+            int sameNumber = lottos.get(index).hasSameElement(luckySix);
+            boolean hasBonus = lottos.get(index).isIncludeBonus(luckyBonus);
+            if (sameNumber == SAME_5 && hasBonus) {
+                winningResult.set(3, winningResult.get(3) + 1);
+                continue;
             }
-            if (sameNumber == 4) {
-                winningResult.set(1, winningResult.get(1) + 1);
-            }
-            if (sameNumber == 5 && !lottos.getLottos(index).isIncludeBonus(LuckyBonus.luckyBonus)) {
-                winningResult.set(2, winningResult.get(2) + 1);
-            }
-            if (sameNumber == 5 && lottos.getLottos(index).isIncludeBonus(LuckyBonus.luckyBonus)) {
-                    winningResult.set(3, winningResult.get(3) + 1);
-            }
-            if (sameNumber == 6) {
-                winningResult.set(4, winningResult.get(4) + 1);
+            if (sameNumber >= SAME_3) {
+                winningResult.set(sameNumber - 3, winningResult.get(sameNumber - 3) + 1);
             }
         }
     }
