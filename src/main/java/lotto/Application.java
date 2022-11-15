@@ -54,6 +54,17 @@ public class Application {
         int bonusNum = Integer.parseInt(Console.readLine());
         return bonusNum;
     }
+
+    private static void addNum() {
+        for (Lotto lotto : lottos) {
+            lotto.match(userNums, bonusNumber());
+        }
+    }
+
+    private static Object bonusNumber() {
+        return bounsNumber();
+    }
+
     // 로또 번호 생성
     public static List<Lotto> lottoNumber() {
 //        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
