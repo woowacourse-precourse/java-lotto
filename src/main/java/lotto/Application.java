@@ -23,6 +23,22 @@ public class Application {
             System.out.println("[Error] 숫자만 입력!");
         }
     }
+    public static int buyLotto() {
+        int buyLot = 0;
+        int pay = buyLot / 1000;
+        System.out.println(pay + "개 구매");
+        for (int i = 0; i < pay; i++) {
+            Lotto lotto = new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+            lottos.add(lotto);
+        }
+        try {
+            if (buyLot % 1000 != 0)
+                throw new IllegalArgumentException("[Error] 구입 금액은 1,000원 단위여야 함.");
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
+        }
+        return pay;
+    }
 
 
 
