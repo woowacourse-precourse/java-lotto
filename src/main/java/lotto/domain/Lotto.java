@@ -19,6 +19,12 @@ public class Lotto {
         return numbers;
     }
 
+    public List<Integer> getSortedNumbers() {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
     private void validate(List<Integer> numbers) {
         validateLength(numbers.size());
         validateInRange(numbers);

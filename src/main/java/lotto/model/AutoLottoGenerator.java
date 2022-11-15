@@ -11,16 +11,8 @@ public class AutoLottoGenerator {
     private AutoLottoGenerator() {
     }
 
-    public static List<Lotto> generateLottos(int money) {
-        List<Lotto> lottos = new ArrayList<>();
-        int lottoCnt = getNumberOfLotto(money);
-        while(lottos.size() < lottoCnt) {
-            lottos.add(objectLotto());
-        }
-        return lottos;
-    }
 
-    private static Lotto objectLotto() {
+    public static Lotto objectLotto() {
         return new Lotto(generateLotto());
     }
 
