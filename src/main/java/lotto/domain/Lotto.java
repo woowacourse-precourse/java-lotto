@@ -15,30 +15,31 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.err.println("[ERROR]: OUT OF SIZE");
             throw new IllegalArgumentException("[ERROR]: OUT OF SIZE");
         }
-        if (checkDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException("[ERROR]: DUPLICATION!");
-        }
-        if (checkNotCorrectRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR]: HAVE A NUMBER OUT OF RANGE!");
-        }
+        checkDuplicateNumber(numbers);
+        checkNotCorrectRange(numbers);
     }
 
-    private Boolean checkDuplicateNumber(List<Integer> numbers) throws IllegalArgumentException{
+    private void checkDuplicateNumber(List<Integer> numbers) {
         List<Integer> tempLottoNumber = new ArrayList<>(numbers);
         Set<Integer> numSet = new HashSet<>(tempLottoNumber);
-        return numSet.size() != tempLottoNumber.size();
+
+        if (numSet.size() != tempLottoNumber.size()) {
+            System.err.println("[ERROR]: DUPLICATION!");
+            throw new IllegalArgumentException("[ERROR]: DUPLICATION!");
+        }
     }
 
-    private Boolean checkNotCorrectRange(List<Integer> numbers) throws IllegalArgumentException{
+    private void checkNotCorrectRange(List<Integer> numbers) throws IllegalArgumentException{
         List<Integer> tempLottoNumber = new ArrayList<>(numbers);
         for (Integer eachUnit: tempLottoNumber) {
             if (!(eachUnit > 0 && eachUnit <= 45)) {
-                return false;
+                System.err.println("[ERROR]: HAVE A NUMBER OUT OF RANGE!");
+                throw new IllegalArgumentException("[ERROR]: HAVE A NUMBER OUT OF RANGE!");
             }
         }
-        return true;
     }
 
     public int lottoChecker(List<Integer> winNumbers, int bonusNumber) {
