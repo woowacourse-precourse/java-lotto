@@ -11,9 +11,13 @@ public class LottoGameController {
     }
 
     public void start(){
-        getInput();
-        compareResult();
-        printStatistic();
+        try {
+            getInput();
+            compareResult();
+            printStatistic();
+        }catch (IllegalArgumentException e) {
+            System.out.println("프로그램이 정상적으로 종료되었습니다.");
+        }
     }
 
     public void getInput(){

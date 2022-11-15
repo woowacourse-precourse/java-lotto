@@ -1,24 +1,23 @@
 package lotto;
 
-
 import static lotto.NumberType.*;
 import static lotto.Output.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class LottoGame {
 
     private final ArrayList<Lotto> lottos;
-    private final ArrayList<Integer>  WinningNumber;
+    private Lotto WinningNumber;
     private int bonusNumber;
     private Statistic statistic;
     private int purchasedMoney;
 
     LottoGame(){
         lottos = new ArrayList<>();
-        WinningNumber = new ArrayList<>();
     }
     public void setPurchasedMoney(String PurchaseMoney) {
         this.purchasedMoney = Integer.parseInt(PurchaseMoney);
@@ -42,9 +41,11 @@ public class LottoGame {
 
      public void setWinningNumber(String WinningNum) {
          String winningNumbers[] = WinningNum.split(",");
+         List<Integer> list = new ArrayList<>();
          for (String winningNum : winningNumbers) {
-             this.WinningNumber.add(Integer.parseInt(winningNum));
+             list.add(Integer.parseInt(winningNum));
          }
+         this.WinningNumber = new Lotto(list);
      }
 
      public  void setBonusNumber(String BonusNumber){
@@ -55,6 +56,7 @@ public class LottoGame {
          statistic = new Statistic();
          statistic.score(WinningNumber,bonusNumber,lottos);
      }
+
      public void printStatistic() {
         Statistic.printMatchedCount();
         printProfit(Statistic.getProfit(purchasedMoney));

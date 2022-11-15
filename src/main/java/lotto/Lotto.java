@@ -1,12 +1,10 @@
 package lotto;
 
-import static lotto.NumberType.NUMBER_COUNT;
-import static lotto.NumberType.NUMBER_END;
-import static lotto.NumberType.NUMBER_START;
+import static lotto.Validator.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import
+
 public class Lotto {
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
@@ -15,8 +13,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("숫자 개수가 올바르지 않습니다.");
+        try {
+            isValidateNumberLength(numbers);
+            isDuplicated(numbers);
+            for (int i = 0 ; i< numbers.size() ; i++)
+                isValidateNumberRange(numbers.get(i));
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e);
         }
     }
 

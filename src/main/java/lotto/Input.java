@@ -4,6 +4,8 @@ import static lotto.Validator.*;
 public class Input {
     public static String getPurchaseMoney(){
         String purchasedMoney = Console.readLine();
+        String WinningMoneys[] = purchasedMoney.split(",");
+
         if (!isValidatePurchaseMoney(purchasedMoney))
             purchasedMoney = getPurchaseMoney();
         int purchaseMoney= Integer.parseInt(purchasedMoney);

@@ -27,27 +27,29 @@ public class Statistic {
        MatchedCount.put(number, MatchedCount.getOrDefault(number,0)+1);
     }
 
-    public void score (List<Integer> WinningNumber, int bonusNumber, ArrayList<Lotto> lottos){
+    public void score (Lotto WinningNumber, int bonusNumber, ArrayList<Lotto> lottos){
         for (Lotto lotto : lottos) {
             countEachLottoNumber(lotto, WinningNumber, bonusNumber);
         }
     }
 
-    public int CountEachLottoWinningNumber(Lotto lotto, List<Integer> WinningNumber){
+    public int CountEachLottoWinningNumber(Lotto lotto, Lotto WinningNumber){
         List<Integer> lottoNumber = lotto.getLotto();
         int winningSum =0;
         for (int i = 0 ; i< lottoNumber.size() ; i++) {
-            if(WinningNumber.contains(lottoNumber.get(i))) {
+            if(WinningNumber.getLotto().contains(lottoNumber.get(i))) {
                 winningSum++;
             }
         }
         return winningSum;
     }
+
     public boolean checkEachLottoBonusNumber(Lotto lotto, int bonusNumber){
         List<Integer> lottoNumber = lotto.getLotto();
         return lottoNumber.contains(bonusNumber);
     }
-    public void countEachLottoNumber( Lotto lotto,List<Integer> WinningNumber, int bonusNumber){
+
+    public void countEachLottoNumber( Lotto lotto,Lotto WinningNumber, int bonusNumber){
         int winningSum = CountEachLottoWinningNumber(lotto, WinningNumber);
         if (winningSum == FIVE_MATCH.getMatchNumber() && checkEachLottoBonusNumber(lotto, bonusNumber)) {
             addMatchedCount(FIVE_MATCH_WITH_BONUS.getMatchNumber());
@@ -64,7 +66,6 @@ public class Statistic {
         }
     }
 
-
     public static double getProfit(int purchasedMoney) {
         double profit= 0;
         for (matchedCountMessage message : matchedCountMessage.values()) {
@@ -73,5 +74,4 @@ public class Statistic {
         profit = ( profit / purchasedMoney)  * 100;
         return profit;
     }
-
 }
