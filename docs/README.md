@@ -36,13 +36,13 @@
     - [x] 당첨번호 일치 개수 판단:
     - [x] 보너스 번호 일치 개수 판단
 
-- [ ] 당첨조건, 당첨금액의 정보를 가진 Enum => WinInfo 
+- [x] 당첨조건, 당첨금액의 정보를 가진 Enum => WinInfo 
   - [x] 당첨조건, 당첨금액, 순위 설정
   - [x] 당첨조건에 맞는지 검사
   - [x] 당첨조건에 맞는 WinInfo 반환
   - [x] 순위에 맞는 WinInfo 반환
   - [x] 당첨 금액 반환 가능
-  - [ ] WinInfo 리스트에 대한 당첨 통계 반환
+  - [x] WinInfo 리스트에 대한 당첨 통계 반환
 
 - [ ] 소유한 로또와 얻은 총 수익 정보를 담는 사용자 클래스 => LottoUser
     - [x] validation 추가
@@ -81,8 +81,10 @@
     - 당첨 번호 일치 개수, 보너스번호 일치 여부가 주어지면 알맞은 WinInfo를 반환하는지
   - [x] getByOrder 테스트
     - 순위에 맞는 WinInfo를 잘 반환하는지
+  - [x] getStatistics 테스트
+    - 주어진 WinInfo의 통계를 잘 반환하는지
 
-- [x] LottoUser 테스트
+- [ ] LottoUser 테스트
   - [x] validation 테스트
   - [x] buyLotto 테스트
     - 돈의 양 만큼 로또를 샀는지, Lotto의 검증 형식에 맞춰서 번호를 생성했는지
@@ -90,6 +92,8 @@
     - 주어진 로또에 대해 알맞은 WinInfo를 가지게 되었는지, LottoSystem테스트의 테스트케이스 재활용
   - [x] getReturnRate 테스트
     - 주어진 WinInfo에 대해 수익률을 잘 계산하는지
+  - [ ] getStatistics 테스트
+    - 자신의 로또의 당첨 통계를 잘 반환하는지
 
 - [x] Lotto 테스트
   - [x] validation 테스트   
