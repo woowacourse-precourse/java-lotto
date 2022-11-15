@@ -1,7 +1,6 @@
 package lotto.model;
 
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,5 +35,24 @@ public enum Rank {
         return amount;
     }
 
+    public static List<Rank> asSortedList() {
+        List<Rank> ranks = new ArrayList<>(List.of(Rank.values()));
+        sort(ranks);
+        return ranks;
+    }
+
+    private static void sort(List<Rank> ranks){
+        Collections.sort(ranks, new Comparator<Rank>() {
+            @Override
+            public int compare(Rank rank1, Rank rank2) {
+                if (rank1.getMatchedCount() == rank2.getMatchedCount()) {
+                    return rank1.getBonusCount().compareTo(rank2.getBonusCount());
+                }
+                return rank1.getMatchedCount().compareTo(rank2.getMatchedCount());
+            }
+        });
+
+
+    }
 
 }
