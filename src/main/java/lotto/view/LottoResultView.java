@@ -1,8 +1,40 @@
 package lotto.view;
 
+import lotto.model.BuyingLottoList;
+import lotto.model.Lotto;
 import lotto.model.LottoResult;
 
+import java.util.List;
+
 public class LottoResultView {
+
+    public void printBuyResult(BuyingLottoList buyingLottoList) {
+
+        System.out.println(buyingLottoList.getNumberOfLotto() + "개를 구매했습니다");
+
+        List<Lotto> buyingLottos = buyingLottoList.getLottoList();
+        for (Lotto buyingLotto : buyingLottos) {
+            List<Integer> buyingLottoNumber = buyingLotto.getNumbers();
+            printLottoNumber(buyingLottoNumber);
+        }
+    }
+
+    private void printLottoNumber(List<Integer> buyingLottoNumber) {
+
+        StringBuilder printLottoMessage= new StringBuilder();
+        int lottoSize = buyingLottoNumber.size();
+
+        printLottoMessage.append("[");
+        for (int index = 0; index < lottoSize; index++) {
+            printLottoMessage.append(buyingLottoNumber.get(index));
+            if (index < lottoSize - 1) {
+                printLottoMessage.append(", ");
+            }
+        }
+        printLottoMessage.append("]");
+
+        System.out.println(printLottoMessage.toString());
+    }
 
     public void printResult(LottoResult lottoResult) {
 

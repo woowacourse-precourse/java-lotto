@@ -22,6 +22,7 @@ public class Application {
 
         int numberOfLotto = lottoServiceView.buyLotto();
         BuyingLottoList buyingLottoList = new BuyingLottoList(lottoService.generateLottoList(numberOfLotto));
+        lottoResultView.printBuyResult(buyingLottoList);
         Lotto winningLotto = winningNumberView.inputWinningNumber();
         int bonusNumber = winningNumberView.inputBonusNumber();
         WinningLotto winningLottoInfo = new WinningLotto(winningLotto, bonusNumber);
