@@ -2,7 +2,7 @@ package lotto;
 
 public class PurchaseAmount {
     private static final int ZERO = 0;
-    private static final int THOUSAND_UNITS = 1000;
+    private static final int LOTTO_PRICE = 1000;
     private final int amount;
     private final int numberOfLottoPurchased;
 
@@ -43,7 +43,7 @@ public class PurchaseAmount {
     }
 
     private boolean isThousandUnits(String amount) {
-        return convertStringToInt(amount) % THOUSAND_UNITS == ZERO;
+        return convertStringToInt(amount) % LOTTO_PRICE == ZERO;
     }
 
     private int convertStringToInt(String amount) {
@@ -51,6 +51,6 @@ public class PurchaseAmount {
     }
 
     private int calculateNumberOfLottoPurchasesByAmount(int amount) {
-        return amount / THOUSAND_UNITS;
+        return amount / LOTTO_PRICE;
     }
 }
