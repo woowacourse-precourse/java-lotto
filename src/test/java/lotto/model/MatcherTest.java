@@ -31,7 +31,6 @@ public class MatcherTest {
 
         //when
         Matcher matcher = new MatcherImpl(lottoList,winningNumbers, BigDecimal.valueOf(2000));
-        matcher.match();
         Statistics result = matcher.getStatistics();
         Map<Rank, BigDecimal> rankCount = result.getRankCount();
         BigDecimal prize = result.getPrize();
