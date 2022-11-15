@@ -16,8 +16,8 @@ public class LottoMachine {
     }
 
     public Lottos purchaseLottos() {
-        List<Lotto> lottos = new ArrayList<>();
         validateEnoughCash(cash);
+        List<Lotto> lottos = new ArrayList<>();
         while (cash.afford(LOTTO_PRICE.getSetting())) {
             cash.spend(LOTTO_PRICE.getSetting());
             lottos.add(LottoAutoGenerator.generate());
