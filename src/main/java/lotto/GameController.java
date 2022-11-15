@@ -34,7 +34,6 @@ public class GameController {
         numberChecker.countRanks();
 
         LottoResult result = new LottoResult();
-
         result.printResult(myLottos.size());
     }
 }

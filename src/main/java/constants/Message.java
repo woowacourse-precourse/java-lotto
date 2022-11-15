@@ -11,6 +11,6 @@ public class Message {
     public static final String MESSAGE_RESULT_OF_RANK_3 = "5개 일치 (1,500,000원) - ";
     public static final String MESSAGE_RESULT_OF_RANK_4 = "4개 일치 (50,000원) - ";
     public static final String MESSAGE_RESULT_OF_RANK_5 = "3개 일치 (5,000원) - ";
-    public static final String MESSAGE_RESULT_OF_RETURN_RATE = "총 수익률은 ";
+    public static final String MESSAGE_RESULT_OF_RETURN_RATE = "총 수익률은 %,.1f%%입니다.";
 
 }

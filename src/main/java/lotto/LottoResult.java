@@ -15,8 +15,8 @@ public class LottoResult {
         for (PrizeEnum rank : PrizeEnum.values()) {
             System.out.println(rank.getMessage() + rank.getCount() + "개");
         }
-
-        System.out.println(MESSAGE_RESULT_OF_RETURN_RATE + String.format("%.1f", getReturn(numberOfLottos)) + "%입니다.");
+        getReturn(numberOfLottos);
+        System.out.println(String.format(MESSAGE_RESULT_OF_RETURN_RATE, returnRate));
     }
 
     //수익률 계산
