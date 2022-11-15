@@ -9,10 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class MoneyTest {
-
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    @DisplayName("Money 생성자 예외 테스트")
+    @DisplayName("Money 생성자 예외(1,000원 이하 금액, 1,000원 단위 아닌 금액) 테스트")
     @ParameterizedTest
     @ValueSource(ints = {0, -1000, 1100})
     void moneyConstructorTest(int input) {

@@ -1,11 +1,11 @@
 package lotto;
 
-import static lotto.domain.ErrorMessage.BONUS_NOT_NUMBER_ERROR;
-import static lotto.domain.ErrorMessage.INPUT_EMPTY_ERROR;
-import static lotto.domain.ErrorMessage.SEPARATOR_ERROR;
+import static lotto.utils.ErrorMessage.BONUS_NOT_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.INPUT_EMPTY_ERROR;
+import static lotto.utils.ErrorMessage.SEPARATOR_ERROR;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.domain.Converter;
+import lotto.utils.Converter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;

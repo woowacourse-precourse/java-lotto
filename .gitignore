@@ -33,3 +33,6 @@ out/
 
 ### MAC ###
 .DS_Store
+
+### Java class file ###
+myApplicationTest.java

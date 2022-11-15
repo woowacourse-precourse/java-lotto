@@ -1,10 +1,10 @@
 package lotto;
 
-import static lotto.domain.ErrorMessage.NOT_NUMBER_ERROR;
-import static lotto.domain.ErrorMessage.WINNING_INPUT_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.NOT_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.WINNING_INPUT_NUMBER_ERROR;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.domain.WinningNumberSplit;
+import lotto.utils.WinningNumberSplit;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
