@@ -34,50 +34,39 @@
 ## 💻UI
 #### 입력
 1. class ConsoleUserInput
-- List sixWinnningNumbersAndBonusNumber
-- inputMoneyForLotto()
-- auto_Format()
+- 로또 구매를 위한 비용, 당첨 번호, 보너스 번호 등을 콘솔에서 입력받아 반환한다.
+- inputMoneyForLottos()
 - inputWinningNumbers()
 - inputBounsNumbers()
 #### 출력
 1. class ConsoleUserOutput
-* int NumberOfLottoTickets
-* showLottosUserBought()
-* showTheNumberOfTickets()
-* showTheNumberOfWinningTickets()
-* showWinningRate()
+* 정해진 양식에 따라 콘솔창에서 보여지는 출력부를 담당한다.
+* enum 클래스를 호출해 양식에 맞는 문구를 호출한다.
 #### 예외처리
-1. class ExceptionControl
-* Boolean invalidInput
-
+1. class Validator
+* 중복, 유효하지 않은 문자, 형식{ex)','로 숫자 구분}에 맞지 않는 입력을 체크한다.
+* 로또 당첨 번호와 일치하는 보너스 번호 입력 등 각족 예외 처리 담당
+* 예외 처리 메서드는 try/catch 구문으로 감싸 입력값에 따라 적절한 경고 메세지를 출력하게 만든다.
 
 ## 🎰Domain
-#### 입력처리(로또 번호 맞추기, 가격에 따라 발급하기)
-1. class LottoCounter
-- putWinningNumbers(StringTokenizer)()
-- arrangeWinningNumbers()
-- checkMoneyThousandAsAUnit()
+1. class Lotto
+- 입력처리(입력된 금액, 당첨 번호, 보너스 번호 등의 유효성 확인하기)
+2. class LottoCounter
 
-2. class LottoMachine
-- drawRandomNumbers()
-- putRandomNumbers()
-- arrageRandomNumbers()
+- 당첨 번호와 보너스 번호를 발급된 로또에 대조해 등수를 기록한다. 
+- 당첨된 로또의 개수와 등수를 토대로 총 수익금을 계산한다.
+- 로또 구입액과 수익금을 통해 총 수익률을 계산한다. 수익률은 소수점 둘째 자리에서 반올림해 %로 표현한다.
+
+2. class LottoTicketing
+- 구입 금액에 맞게 1000원당 로또 한 장을 발급한다.
+- 로또를 발급하기 전에는 같은 로또 안에 중복된 번호가 없는지 확인한다.
 
 
 
 ## 🤖enum
-1. class RobotClerk
-- ASK_MONEY_TO_BUY_LOTTO
-- LET_USER_KNOW_THE_NUMBER_OF_TICKETS
-- ASK_WINNING_NUMBERS
-- ASK_BONUS_NUMBER
-- SHOW_WINNING_RATE
-- .done()
+1. class NormalStatements
+- 일반적인 맥락의 출력문을 담당한다.
 
 
-2. class ErrorClerk
-- SHOUT_NOT_NUMBER_ERROR
-- SHOUT_NUMBER_RANGE_ERROR
-- SHOUT_INVALID_FORMAT_ERROR
-- SHOUT_PAYMENT_UNIT_ERROR
-- .alarmed() 
+2. class ErrorStatements
+- 유효하지 않은 값을 입력할 시에 출력할 경고문 목록이다. 
