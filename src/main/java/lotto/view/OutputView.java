@@ -18,4 +18,9 @@ public class OutputView {
                 System.out.println(lotto.getNumbers())
         );
     }
+
+    public static void printLottoDone() {
+        System.out.println(OUTPUT_LOTTO_DONE);
+        System.out.println(OUTPUT_LINE);
+    }
 }
