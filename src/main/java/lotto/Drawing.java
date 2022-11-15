@@ -12,7 +12,7 @@ public class Drawing {
             List<Integer> lottoNumbers = lotto.getNumbers();
             int count = countNumber(lottoNumbers, winningNumber.getNumbers());
             boolean bonus = isBonus(lottoNumbers, winningNumber.getBonusNumber());
-            result.addWinningHistory(calculateRank(count, bonus));
+            result.add(calculateRank(count, bonus));
         }
     }
 
@@ -46,7 +46,7 @@ public class Drawing {
         if (count == 3) {
             return Rank.FIFTH;
         }
-        return null;
+        return Rank.FAIL;
     }
 
     public Result getResult() {
