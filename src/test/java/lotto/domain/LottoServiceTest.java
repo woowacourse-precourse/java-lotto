@@ -5,6 +5,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,6 +25,18 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 번호가 같은것이 있으면 true 리턴하는지 확인하는 단위 테스트")
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,true", "5, true", "6, true", "7, false"})
+    void checkLottoNumberTest(int winningLottoNumbers, boolean expected) {
+
+        Lotto buyingLotto = new Lotto(List.of(1,2,3,4,5,6));
+
+        boolean result = lottoService.checkLottoNumber(buyingLotto, winningLottoNumbers);
+
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
