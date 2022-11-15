@@ -53,7 +53,7 @@
 
 ## 기능 구현 세부사항 List Up
 ### Enum Class
-- WinningPlace
+- Lotto Rank
   - 1등(FIRST_PLACE) : 6개 번호 일치
   - 2등(SECOND_PLACE) : 5개 번호 일치 + 보너스 번호
   - 3등(THIRD_PLACE) : 5개 번호 일치
@@ -80,16 +80,10 @@
   - NOT_IN_WINNING_PLACE
     - "[ERROR] 일치하는 등수에 존재하지 않습니다."
 
-### Application Class
+### ValidationUtil Class
+- 검증과 관련된 메소드들을 제공하는 클래스
 - 사용자 입력 구매금액 숫자만으로 구성되어있는지 검증 : checkUserInputCondition(String input)
   - Character.isDigit() 활용해서 숫자로만 구성되어있는지 검증
-- 사용자 입력 구매금액 검증하고 변환: convertBuyingPriceIntoTicketAmount(int buyingPrice)
-  - 1000으로 나누어지는 단위인지 확인하고 변환
-  - 1000으로 나누어지지 않는 단위이면
-  ```java
-  throw new IllegalArgumentException();
-  ```
-- 사용자 당첨번호 입력 : inputWinnerNumber()
 - 사용자 입력 당첨번호 개수 검증: validateWinnerNumberSize(String userInput)
   - 쉽표(,)로 구분 된 로또 번호가 6개인지 확인
   - 6개가 아닐 시 throw new IllegalArgumentException
@@ -105,6 +99,15 @@
 - 사용자 입력 보너스번호 검증 : validateBonusNumber(int bonusNumber)
   - bonusNumber가 1~45 사이의 수인지 확인.
   - 범위 벗어날 시 throw IllegalArgumentException
+  - 
+### Application Class
+- 사용자 입력 구매금액 검증하고 변환: convertBuyingPriceIntoTicketAmount(int buyingPrice)
+  - 1000으로 나누어지는 단위인지 확인하고 변환
+  - 1000으로 나누어지지 않는 단위이면
+  ```java
+  throw new IllegalArgumentException();
+  ```
+- 사용자 당첨번호 입력 : inputWinnerNumber()
 - 검증된 구매가격에 맞게 랜덤의 로또 번호 발행
   - ArrayList[ArrayList[Integer]] 형태로 저장
 - 사용자 당첨번호 입력 모듈 : inputWinnerNumber()
@@ -112,16 +115,15 @@
 - 사용자 보너스 번호 입력 모듈 : inputBonusNumebr()
   - validateBonusNumberRange() : 보너스번호 범휘 검증
   - 앞서 정의된 검증 함수 및 입출력 형식 코드 구성
-- 구매한 로또 번호에 대한 등수 구하기 : getWinningPlaceByTicket()
+- 구매한 로또 번호에 대한 등수 구하기 : getLottoRankByTicket()
   - iter 통한 ticket 순회
   - 각 ticket당 기록 추가: addToHistory()
   - **Streams 리팩토링**
   - 기록 관리하는 winningHistory map에 기록 추가
 
-- 수익률 계산 : calculateEarningRate(int buyingPrice, Winning winningPlace)
+- 수익률 계산 : printRankOutOfBuyingPrice(int buyingPrice)
   - int buyingPrice : 사용자의 구매
-  - Winning winningPlace : 당첨 금액
-  - 수익률(earningRate) : winningPlace / buyingPrice
+  - 수익률(earningRate) : lottoRank / buyingPrice
   - String.format("%.1f", double) : 소수 둘째 자리에서 반올림
 
 ### Lotto Class
@@ -138,7 +140,17 @@
   ```
 - 번호 일치 확인 : countCorrespondingNumbers(List[Integer] winnerNumber, List[Integer] checkTargetNumber)
   - winnerNumber와 checkTargetNumber 비교해서 일치하는 수 개수 count
-  - Winning(Enum class) : 몇 등인지 반환
+  - LottoRank(Enum class) : 몇 등인지 반환
+
+### LottoException
+- IllegalArgumentException을 상속 받는 LottoException 클래스
+  - ErrorResponse를 인자로 받는 생성자 오버로딩
+  - 위 방식을 통해 단일화된 try-catch 예외 처리 가능
+  ```java
+  public LottoException(ErrorResponse errorMessage){
+    super(errorMessage.getErrorMessage());
+  }
+  ```
 
 ## 과제 진행 요구 사항
 - 기능별 commit을 진행할 것
