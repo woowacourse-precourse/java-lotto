@@ -36,4 +36,12 @@ public class CheckNumber {
         return CountWinLottos;
     }
 
+    static int sum_price(int price,float result){
+        for(RankSystem.RankType r: RankSystem.RankType.values()){
+            if(r.getNum()==result){
+                price += r.getPrice();
+            }
+        }
+        return price;
+    }
 }
