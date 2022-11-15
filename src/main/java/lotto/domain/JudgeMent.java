@@ -8,7 +8,7 @@ public class JudgeMent {
 
     public int compareNumbers(List<Integer> numbers, List<Integer> lottoNumbers) {
         int countCorrect = initNumber;
-        for (int i = 0; i < Resoure.numberSize; i++) {
+        for (int i = 0; i < Resource.numberSize; i++) {
             int number = numbers.get(i);
             if (lottoNumbers.contains(i)) {
                 countCorrect++;
