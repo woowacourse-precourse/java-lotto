@@ -6,6 +6,9 @@ import model.Lottos;
 import model.Win;
 import model.WinningResult;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static constant.Config.NEW_LINE;
@@ -39,7 +42,9 @@ public class OutputView {
         StringBuilder result = new StringBuilder();
         result.append(WINNING_STATISTICS);
 
-        for (Win win : Win.values()) {
+        Win[] wins = Win.getReverseWins();
+
+        for (Win win : wins) {
             String bonusBallMatch = isBonusBallMatch(win);
 
             result.append(String.format(RANK, win.getMatchCount(), bonusBallMatch,

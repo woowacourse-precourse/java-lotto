@@ -1,15 +1,15 @@
 package model;
 
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.Optional;
 
 public enum Win {
-    FIFTH(3, false, 5_000),
-    FOURTH(4, false, 50_000),
-    THIRD(5, false, 1_500_000),
+    FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
-    FIRST(6, false, 2_000_000_000);
+    THIRD(5, false, 1_500_000),
+    FOURTH(4, false, 50_000),
+    FIFTH(3, false, 5_000);
 
     private final int matchCount;
     private final boolean bonusBall;
@@ -35,7 +35,6 @@ public enum Win {
 
     public static Optional<Win> getRanking(int matchCount, boolean containsBonusBall) {
         return Arrays.stream(values())
-                .sorted(Comparator.reverseOrder())
                 .filter(win -> isMatch(win, matchCount, containsBonusBall))
                 .findAny();
     }
@@ -50,5 +49,12 @@ public enum Win {
 
     private static boolean isEqualsMatchCount(Win win, int matchCount) {
         return win.matchCount == matchCount;
+    }
+
+    public static Win[] getReverseWins() {
+        Win[] wins = values();
+        Arrays.sort(wins, Collections.reverseOrder());
+
+        return wins;
     }
 }

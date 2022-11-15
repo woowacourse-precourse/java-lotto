@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.Map;
 
 import static constant.Config.INIT_COUNT;
@@ -9,16 +11,30 @@ public class WinningResult {
     private final static double DECIMAL = 10.0;
     private final Map<Win, Integer> winningResult;
 
-    public WinningResult(Map<Win, Integer> winningResult) {
-        this.winningResult = Map.copyOf(winningResult);
+    public WinningResult() {
+        this.winningResult = new EnumMap<>(Win.class);
+
+        for (Win win : Win.values()) {
+            this.winningResult.put(win, INIT_COUNT);
+        }
     }
 
     public Map<Win, Integer> getWinningResult() {
-        return winningResult;
+        return Collections.unmodifiableMap(winningResult);
     }
 
     public int getCount(Win win) {
         return winningResult.getOrDefault(win, INIT_COUNT);
+    }
+
+    public void putWinningResult(Win win) {
+        int count = winningResult.getOrDefault(win, INIT_COUNT);
+        winningResult.put(win, ++count);
+    }
+
+    public void sumWinningResult(WinningResult result) {
+        Map<Win, Integer> winningResult = result.getWinningResult();
+        winningResult.forEach((win, count) -> this.winningResult.merge(win, count, Integer::sum));
     }
 
     public EarningsRate getEarningsRate(Money money) {

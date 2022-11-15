@@ -46,15 +46,14 @@ public class Lottos {
     }
 
     public WinningResult getTotalWinningResult(WinningLotto winningLotto) {
-        Map<Win, Integer> winningResults = initWinningResults();
+        WinningResult winningResult = new WinningResult();
 
         for (Lotto lotto : lottos) {
             WinningResult result = lotto.getWinningResult(winningLotto);
-            Map<Win, Integer> winningResult = result.getWinningResult();
-            winningResult.forEach((win, count) -> winningResults.merge(win, count, Integer::sum));
+            winningResult.sumWinningResult(result);
         }
 
-        return new WinningResult(winningResults);
+        return winningResult;
     }
 
     private Map<Win, Integer> initWinningResults() {

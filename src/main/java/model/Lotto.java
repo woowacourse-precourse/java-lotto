@@ -90,17 +90,12 @@ public class Lotto {
     }
 
     private WinningResult setWinningResult(int matchCount, boolean containsBonusBall) {
-        Map<Win, Integer> winningResult = new EnumMap<>(Win.class);
+        WinningResult winningResult = new WinningResult();
 
         Optional<Win> ranking = Win.getRanking(matchCount, containsBonusBall);
 
-        ranking.ifPresent(win -> putWinningResult(winningResult, win));
-        return new WinningResult(winningResult);
-    }
-
-    private void putWinningResult(Map<Win, Integer> winningResult, Win win) {
-        int count = winningResult.getOrDefault(win, INIT_COUNT);
-        winningResult.put(win, ++count);
+        ranking.ifPresent(winningResult::putWinningResult);
+        return winningResult;
     }
 
     @Override
