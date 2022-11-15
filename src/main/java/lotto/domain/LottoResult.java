@@ -28,4 +28,8 @@ public class LottoResult {
         }
         return profit;
     }
+
+    private double calculateRateOfProfit(int profit, int purchaseLottoMoney) {
+        return ((double) profit / purchaseLottoMoney) * 100;
+    }
 }
