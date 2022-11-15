@@ -4,9 +4,6 @@ import java.util.List;
 
 public class Record {
 
-    private static final String BUY_MESSAGE = "개를 구매했습니다.";
-    private static final String COUNT_MESSAGE = "개";
-
     public static void printNumberError() {
         System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.IS_NUMBER.getMessage());
     }
@@ -52,7 +49,7 @@ public class Record {
     }
 
     public static String getBuyCounts(int counts) {
-        return counts + BUY_MESSAGE;
+        return String.format(EnterMessage.BUY_THINGS.getMessage(), counts);
     }
 
     public static String getLotto(Lotto lotto) {
@@ -85,7 +82,7 @@ public class Record {
         for (int index = winningStart; index < matchesListSize; index++) {
             int matchesCount = matches.get(index);
             String matchesMessage = getMatchesMessage(index, matchesCount);
-            allMathMessage.append(matchesMessage + COUNT_MESSAGE + ReferenceValue.LINE_BREAK);
+            allMathMessage.append(matchesMessage + ReferenceValue.LINE_BREAK);
         }
         return allMathMessage.toString();
     }
@@ -107,7 +104,7 @@ public class Record {
             }
         }
 
-        matchesMessage += count;
+        matchesMessage = String.format(matchesMessage,count);
 
         return matchesMessage;
     }
@@ -138,6 +135,7 @@ public class Record {
 
     public enum EnterMessage {
         MONEY("구입금액을 입력해 주세요."),
+        BUY_THINGS("%d개를 구매했습니다."),
         WINNING_NUMBER("당첨 번호를 입력해 주세요."),
         BONUS_NUMBER("보너스 번호를 입력해 주세요.");
         private final String message;

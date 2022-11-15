@@ -31,11 +31,11 @@ public class ReferenceValue {
     public enum WinningStats {
 
         BELOW_STANDARD(0, 0, 0, ""),
-        THREE_MATCHES(1, 3, 5_000, "3개 일치 (5,000원) - "),
-        FOUR_MATCHES(2, 4, 50_000, "4개 일치 (50,000원) - "),
-        FIVE_MATCHES(3, 5, 1_500_000, "5개 일치 (1,500,000원) - "),
-        FIVE_BONUS_MATCHES(4, 5, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-        SIX_MATCHES(5, 6, 2_000_000_000, "6개 일치 (2,000,000,000원) - ");
+        THREE_MATCHES(1, 3, 5_000, "3개 일치 (5,000원) - %d개"),
+        FOUR_MATCHES(2, 4, 50_000, "4개 일치 (50,000원) - %d개"),
+        FIVE_MATCHES(3, 5, 1_500_000, "5개 일치 (1,500,000원) - %d개"),
+        FIVE_BONUS_MATCHES(4, 5, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"),
+        SIX_MATCHES(5, 6, 2_000_000_000, "6개 일치 (2,000,000,000원) - %d개");
 
         private final int money;
         private final int index;
