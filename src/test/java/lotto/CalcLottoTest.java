@@ -28,6 +28,6 @@ public class CalcLottoTest {
 
         CalcLotto.calcWinningTimes(lottos);
 
-        assertThat(CalcLotto.getHistory().get(-1).getAmount()).isEqualTo(1);
+        assertThat(CalcLotto.getHistory().getHistory().get(-1).getAmount()).isEqualTo(1);
     }
 }
