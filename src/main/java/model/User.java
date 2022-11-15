@@ -5,6 +5,7 @@ import java.util.List;
 
 public class User {
     private final List<Lotto> lotteries;
+    private final Integer purchase;
     private EnumMap<Prize, Integer> winningHistory;
 
     public List<Lotto> lotteries(){ return lotteries; }
@@ -27,7 +28,13 @@ public class User {
     }
 
 
+    public Integer purchase(){
+        return this.purchase;
+    }
+
+
     public User(List<Lotto> lotteries) {
         this.lotteries = lotteries;
+        this.purchase = lotteries.size() * 1000;
     }
 }
