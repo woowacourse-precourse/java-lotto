@@ -13,8 +13,8 @@ public class Money {
     public Money(String input) throws IllegalArgumentException {
         validateNotNull(input);
         validateConsistOfNumbers(input);
-        validateMoneyZero(input);
-        this.money = validateMoney(input);
+        validateMoneyNotZero(input);
+        this.money = validateMoneyDivideThousand(input);
         this.lottoCount = Math.floorDiv(this.money, STANDARD_WON);
     }
 
@@ -24,7 +24,7 @@ public class Money {
         }
     }
 
-    private long validateMoney(String input) {
+    private long validateMoneyDivideThousand(String input) {
         long money = Long.parseLong(input);
         if (Math.floorMod(money, STANDARD_WON) != 0) {
             throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE.getValue());
@@ -39,7 +39,7 @@ public class Money {
         }
     }
 
-    private void validateMoneyZero(String input) throws IllegalArgumentException {
+    private void validateMoneyNotZero(String input) throws IllegalArgumentException {
         if (String.valueOf(input.charAt(0)).equals("0")) {
             throw new IllegalArgumentException(Message.REJECT_ZERO.getValue());
         }
