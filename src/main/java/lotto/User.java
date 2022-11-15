@@ -11,10 +11,11 @@ public class User {
     private final static String PRICE_PATTERN = "^[0-9]*$";
     private final static int WINNING_NUMBER_SIZE = 6;
     private final static int BONUS_NUMBER_SIZE = 1;
-    private final static String PURCHASE_PRICE_ERROR = "[ERROR] 로또 구입 금액은 숫자이고 1,000원 단위여야 합니다." ;
+    private final static String PURCHASE_PRICE_NUMERIC_ERROR = "[ERROR] 로또 구입 금액은 숫자여야 합니다." ;
+    private final static String PURCHASE_PRICE_THOUSAND_ERROR = "[ERROR] 로또 구입 금액은 1,000원 단위여야 합니다." ;
     private final static String WINNING_NUMBER_SIZE_ERROR = "[ERROR] 당첨 번호는 6개여야 합니다." ;
     private final static String WINNING_NUMBER_NUMERIC_ERROR = "[ERROR] 당첨 번호는 숫자여야 합니다." ;
-    private final static String BONUS_NUMBER스_NUMERIC_ERROR = "[ERROR] 보너 번호는 숫자여야 합니다." ;
+    private final static String BONUS_NUMBER_NUMERIC_ERROR = "[ERROR] 보너스 번호는 숫자여야 합니다." ;
 
     public int purchasePrice;
     public List<Integer> winningNumbers = new ArrayList<>();
@@ -26,18 +27,25 @@ public class User {
 
     public void setPurchasePrice() {
         String purchasePrice = Console.readLine();
-        if (isValidPurchasePrice(purchasePrice)) {
-            this.purchasePrice = Integer.parseInt(purchasePrice);
-            return;
+        if (!isValidPurchasePriceNumeric(purchasePrice)) {
+            throw new IllegalArgumentException(PURCHASE_PRICE_NUMERIC_ERROR);
         }
-        throw new IllegalArgumentException(PURCHASE_PRICE_ERROR);
+        if (!isValidPurchasePriceThousand(purchasePrice)) {
+            throw new IllegalArgumentException(PURCHASE_PRICE_THOUSAND_ERROR);
+        }
+        this.purchasePrice = Integer.parseInt(purchasePrice);
     }
 
-    private boolean isValidPurchasePrice(String purchasePrice) {
+    private boolean isValidPurchasePriceNumeric(String purchasePrice) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, purchasePrice);
+
+        return isNumeric;
+    }
+
+    private boolean isValidPurchasePriceThousand(String purchasePrice) {
         boolean isThousand = (Integer.parseInt(purchasePrice) % 1000 == 0);
 
-        return (isNumeric && isThousand);
+        return isThousand;
     }
 
     public void setWinningNumbers() {
@@ -73,7 +81,7 @@ public class User {
             this.bonusNumber = Integer.parseInt(bonusNumber);
             return;
         }
-        throw new IllegalArgumentException(BONUS_NUMBER스_NUMERIC_ERROR);
+        throw new IllegalArgumentException(BONUS_NUMBER_NUMERIC_ERROR);
     }
 
     private boolean isValidBonusNumber(String bonusNumber) {
