@@ -61,6 +61,19 @@ public abstract class Utility {
         return lotto;
     }
 
+    public static List <String> splitWinningNumbers(String winningNumbers){
+        List<String> _winningNumbers = new ArrayList<String>(Arrays.asList(winningNumbers.split(",")));
+        return _winningNumbers;
+    }
+
+    public static List <Integer> winningNumbersToInt(List <String> winningNumbers){
+        List <Integer> _winningNumbers = new ArrayList <>();
+        for(int i=0; i<winningNumbers.size(); i++){
+            _winningNumbers.add((int)convertStringToLong(winningNumbers.get(i)));
+        }
+        return _winningNumbers;
+    }
+    /*
     public static List <Integer> saveWinningNumbers(String winningNumbers){
         List<String> splitWinningNumber = new ArrayList<String>(Arrays.asList(winningNumbers.split(",")));
         List<Integer> _winningNumbers = new ArrayList<>();
@@ -70,7 +83,7 @@ public abstract class Utility {
             _winningNumbers.add(curNum);
         }
         return _winningNumbers;
-    }
+    }*/
 
     public static List <Integer> findTotalLottoResult(List <Lotto> purchaseLotto, List <Integer> winningNumbers, int bonusNumber){
         List <Integer> result = Arrays.asList(0,0,0,0,0,0);
