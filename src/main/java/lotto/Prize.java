@@ -80,6 +80,7 @@ public class Prize {
         System.out.println(winningNumbers);
 
         for (String number : winningNumbers) {
+            validateLotto(number);
             winningLotto.add(Integer.valueOf(number));
         }
     }
@@ -136,6 +137,14 @@ public class Prize {
         int money = parseInt(moneyValue);
         if ((money % 1000) != 0) {
             throw new IllegalArgumentException("[ERROR] 입력 가능한 최소 단위는 1,000원 입니다.");
+        }
+    }
+
+    private void validateLotto(String lotto) {
+        try {
+            parseInt(lotto);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자만 가능합니다.");
         }
     }
 }
