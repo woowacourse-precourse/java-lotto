@@ -15,10 +15,7 @@ public class GameManager {
 
     public void run() {
         Long price = askPrice();
-
-        List<Lotto> publishedLottos = publishLottos(getCountFromPrice(price));
-        View.printPublishedLottos(publishedLottos);
-
+        List<Lotto> publishedLottos = publishLottosFromPrice(price);
         Lotto winningLotto = askWinningLotto();
         Integer bonusNumber = askBonusNumber();
 
@@ -30,6 +27,12 @@ public class GameManager {
     private Long askPrice() {
         View.printPriceMessage();
         return inputPrice();
+    }
+
+    private List<Lotto> publishLottosFromPrice(long price) {
+        List<Lotto> publishedLottos = publishLottos(getCountFromPrice(price));
+        View.printPublishedLottos(publishedLottos);
+        return publishedLottos;
     }
 
     private List<Lotto> publishLottos(Integer lottoCount) {
