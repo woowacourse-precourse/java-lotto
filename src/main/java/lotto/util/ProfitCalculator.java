@@ -11,6 +11,7 @@ public class ProfitCalculator {
         for (WinningRank rank : WinningRank.values()) {
             totalProfit += (long) winLottoCount.getOrDefault(rank, 0) * rank.getPrizeMoney();
         }
+
         return totalProfit;
     }
 

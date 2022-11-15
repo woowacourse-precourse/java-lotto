@@ -23,6 +23,7 @@ public enum WinningRank {
 
     private static final String DECIMAL_FORMAT = "###,###";
 
+
     private final int prizeMoney;
     private final String winningRule;
     private final BiFunction<Integer, Boolean, Boolean> winningRuleExpression;

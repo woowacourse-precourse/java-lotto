@@ -26,6 +26,7 @@ public class InputUi {
         InputValidator.validateWinningNumbersInput(winningNumbersInput);
 
         List<Integer> winningNumbers = splitNumbersStringToList(winningNumbersInput);
+
         return List.copyOf(winningNumbers);
     }
 

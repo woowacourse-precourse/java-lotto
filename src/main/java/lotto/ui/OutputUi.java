@@ -21,9 +21,7 @@ public class OutputUi {
     }
 
     public static void printPurchasedLottos(List<Lotto> lottos) {
-
         System.out.println(String.format(PURCHASED_LOTTO_COUNT_INFO_MESSAGE_FORMAT, lottos.size()));
-
         for (Lotto lotto : lottos) {
             System.out.println(lotto.toString());
         }
@@ -55,6 +53,7 @@ public class OutputUi {
             }
         }
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
         return stringBuilder.toString();
     }
 

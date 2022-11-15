@@ -13,19 +13,20 @@ import java.util.Map;
 public class LottoController {
 
     public List<Lotto> generateQuickPickLottos(int number) {
-
         List<Lotto> generatedLottos = new ArrayList<>();
 
         while (generatedLottos.size() < number) {
             Lotto lotto = generateQuickPickLotto();
             generatedLottos.add(lotto);
         }
+
         return generatedLottos;
     }
 
     public Lotto generateQuickPickLotto() {
         List<Integer> quickPickNumbers = Randoms
                 .pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_COUNT);
+
         return new Lotto(quickPickNumbers);
     }
 
@@ -55,6 +56,7 @@ public class LottoController {
                 count++;
             }
         }
+
         return count;
     }
 

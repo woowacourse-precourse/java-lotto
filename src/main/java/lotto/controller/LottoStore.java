@@ -44,7 +44,6 @@ public class LottoStore {
     }
 
     private WinningLotto makeWinningLotto() {
-
         OutputUi.printInputWinningNumbersInfoMessage();
         List<Integer> winningNumbers = InputUi.readWinningLottoNumbers();
         Lotto winningNumberLotto = new Lotto(winningNumbers);
@@ -61,7 +60,6 @@ public class LottoStore {
 
         long totalProfit = ProfitCalculator.calculateTotalProfit(winLottoCount);
         double profitRate = ProfitCalculator.calculateProfitRate(totalProfit, purchasedAmount);
-
         OutputUi.printProfitRateMessage(profitRate);
     }
 
