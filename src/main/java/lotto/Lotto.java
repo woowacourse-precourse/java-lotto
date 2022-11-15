@@ -12,8 +12,9 @@ public class Lotto {
     private final List<Integer> numbers;
     private Integer bonusNumber;
     private Integer userAmount;
-    private final ArrayList<List<Integer>> userLottoNumbers;
-    private String lottoWinNumbersInput;
+    private ArrayList<List<Integer>> userLottoNumbers;
+    private List<Integer> lottoWinNumbers;
+    private Integer bonusWinNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -22,6 +23,8 @@ public class Lotto {
         userAmount = UserAmount();
         userLottoNumbers = UserLottoNumbers(userAmount);
         UserLottoNumbersResult(userAmount, userLottoNumbers);
+        lottoWinNumbers = LottoWinNumbers();
+        bonusWinNumber = BonusWinNumber();
     }
 
     private void validate(List<Integer> numbers) {
@@ -45,7 +48,7 @@ public class Lotto {
     }
 
     private ArrayList<List<Integer>> UserLottoNumbers(Integer userAmount) {
-        ArrayList<List<Integer>> userLottoNumbers = new ArrayList<>();
+        userLottoNumbers = new ArrayList<>();
         for (int i = 0; i < userAmount/1000; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             userLottoNumbers.add(numbers);
@@ -62,11 +65,19 @@ public class Lotto {
     }
 
     private List<Integer> LottoWinNumbers() {
+        System.out.println();
         System.out.println("당첨번호를 입력해 주세요.");
-        lottoWinNumbersInput = Console.readLine();
-        List<Integer> lottoWinNumbers = Arrays.stream(lottoWinNumbersInput.split(","))
+        String lottoWinNumbersInput = Console.readLine();
+        lottoWinNumbers = Arrays.stream(lottoWinNumbersInput.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return lottoWinNumbers;
+    }
+
+    private Integer BonusWinNumber() {
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusWinNumber = Integer.parseInt(Console.readLine());
+        return bonusWinNumber;
     }
 }
