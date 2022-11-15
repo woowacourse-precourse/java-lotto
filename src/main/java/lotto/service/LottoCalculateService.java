@@ -58,5 +58,37 @@ public class LottoCalculateService {
         return totalPrice;
     }
 
+    public void calculateOfLottoAndUserNumber(List<Integer> userLottoEach, Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        int bonusNumber = lotto.getBonusNumber();
+
+        int count = 0;
+        for (int i = 0; i < userLottoEach.size(); i++) {
+            if (lottoNumbers.contains(userLottoEach.get(i))) {
+                count++;
+            }
+        }
+
+        if (count == 6) {
+            rankMap.put(Rank.SIX, rankMap.getOrDefault(Rank.SIX, 0) + 1);
+        }
+
+        if (count == 5 && userLottoEach.contains(bonusNumber)) {
+            rankMap.put(Rank.FIVE_WITH_BONUS, rankMap.getOrDefault(Rank.FIVE_WITH_BONUS, 0) + 1);
+        }
+
+        if (count == 5 && !userLottoEach.contains(bonusNumber)) {
+            rankMap.put(Rank.FIVE, rankMap.getOrDefault(Rank.FIVE, 0) + 1);
+        }
+
+        if (count == 4) {
+            rankMap.put(Rank.FOURTH, rankMap.getOrDefault(Rank.FOURTH, 0) + 1);
+        }
+
+        if (count == 3) {
+            rankMap.put(Rank.THIRD, rankMap.getOrDefault(Rank.THIRD, 0) + 1);
+        }
+    }
+
 
 }
