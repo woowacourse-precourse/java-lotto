@@ -17,8 +17,16 @@ public class WinningNumbers {
         }
     }
 
+    public static WinningNumbers of(final Lotto lotto, LottoNumber bonus) {
+        return new WinningNumbers(lotto, bonus);
+    }
+
     public LottoNumber getBonus() {
         return bonus;
     }
 
+    public boolean contains(Integer number) {
+        return lotto.getNumbers().contains(number);
+    }
 }
+
