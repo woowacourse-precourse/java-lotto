@@ -22,6 +22,6 @@ public class Game {
 
         WinningResult winningResult = new WinningResult(winningLotto, lottos);
         ui.printWinningStatistics(winningResult);
-        ui.printTotalProfit(winningResult, purchaseAmount);
+        ui.printTotalProfit(winningResult,purchaseAmount);
     }
 }
