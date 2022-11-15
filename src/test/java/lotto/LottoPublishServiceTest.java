@@ -14,7 +14,7 @@ class LottoPublishServiceTest {
     void moneyNotDivideLottoPrice() {
         LottoPublishService lottoPublishService = new LottoPublishService();
 
-        assertThatThrownBy(() -> lottoPublishService.publish(1010))
+        assertThatThrownBy(() -> lottoPublishService.publish(1010L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,6 +23,6 @@ class LottoPublishServiceTest {
     void publishLotto10000() {
         LottoPublishService lottoPublishService = new LottoPublishService();
 
-        Assertions.assertThat(lottoPublishService.publish(10000).size()).isEqualTo(10);
+        Assertions.assertThat(lottoPublishService.publish(10000L).size()).isEqualTo(10);
     }
 }
