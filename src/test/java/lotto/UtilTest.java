@@ -16,6 +16,9 @@ class UtilTest {
         final String numberic = "123";
         assertThat(Util.isNumberic(numberic)).isTrue();
 
+        final String plusNumberic = "+123";
+        assertThat(Util.isNumberic(plusNumberic)).isTrue();
+
         final String minusNumberic = "-123";
         assertThat(Util.isNumberic(numberic)).isTrue();
 
