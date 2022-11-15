@@ -3,8 +3,12 @@ package lotto;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import java.util.NoSuchElementException;
 
 public class User {
+    static final String NOT_NUMBER_ERROR_MESSAGE = "[ERROR] 숫자가 아닌 문자가 입력되었습니다.";
+    static final String NOT_ONE_THOUSAND_UNIT_MESSAGE = "[ERROR] 1000원 단위로 입력이 가능합니다.";
+    static final String ZERO_TO_NINE = "[0-9]+";
     static final String NUMBER_OF_LOTTO_MESSAGE = "개를 구매했습니다.";
     static final String LOTTO_PRICE_MESSAGE = "구입 금액을 입력해주세요.";
     static final String FIRST_PLACE_MESSAGE = "6개 일치 (2,000,000,000원) - ";
@@ -61,16 +65,27 @@ public class User {
     }
     public static int getNumberOfLotto() {
         String price = readLine();
-
-        // 예외 검사 실시 - 순서대로 - "사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다."
-        // 1. 숫자로만 이루어졌어?
-        // 2. 1000원으로 나누어 떨어져?
-        // 3.  --  또 있나 생각해보기  --
-        // 따로 메서드 만들어서 test하기!! -> 구현할 기능 목록에도 추가하기
+        NumberOfLottoVaildTest(price);
         totalPrice = Integer.parseInt(price);
-
         int numberOfLotto = totalPrice / 1000;
         return numberOfLotto;
+    }
+    public static void NumberOfLottoVaildTest(String price) throws IllegalArgumentException {
+        int priceTest;
+        try {
+             priceTest = Integer.parseInt(price);
+            if (!price.matches(ZERO_TO_NINE)) {
+                System.out.println(NOT_NUMBER_ERROR_MESSAGE);
+                throw new IllegalArgumentException(String.format(NOT_NUMBER_ERROR_MESSAGE));
+            }
+        } catch(Exception e){
+            System.out.println(NOT_NUMBER_ERROR_MESSAGE);
+            throw new NoSuchElementException(NOT_NUMBER_ERROR_MESSAGE);
+        }
+        if(priceTest % 1000 != 0 ){
+            System.out.println(NOT_ONE_THOUSAND_UNIT_MESSAGE);
+            throw new IllegalArgumentException(NOT_ONE_THOUSAND_UNIT_MESSAGE);
+        }
     }
 
     public static List<Integer> getLottoNumbers() { // 랜덤으로 6개의 숫자 뽑기
@@ -102,7 +117,6 @@ public class User {
             lottoNumbers = lotto.getLottoNumbers();
             matchingPoint = countCoincidentNumber(lottoNumbers,winningNumbers);
             matchingBonusPoint = countBonusNumber(lottoNumbers,bonusNumber);
-            // 이제 matchingPoint 에 따라 enumMap의 key에 넣을 값을 결정하면 됨
             countPlaces(matchingPoint,matchingBonusPoint);
         }
     }
@@ -126,7 +140,7 @@ public class User {
         if(matchingPoint == 5 && matchingBonusPoint == false) winnings.put(Application.Places.THIRD,winnings.get(Application.Places.THIRD)+1);
         if(matchingPoint == 4) winnings.put(Application.Places.FOURTH,winnings.get(Application.Places.FOURTH)+1);
         if(matchingPoint == 3) winnings.put(Application.Places.FIFTH,winnings.get(Application.Places.FIFTH)+1);
-        //if(matchingPoint <= 2) winnings.put(Application.Places.OTHERS,winnings.get(Application.Places.OTHERS)+1);
+        if(matchingPoint <= 2) winnings.put(Application.Places.OTHERS,winnings.get(Application.Places.OTHERS)+1);
     }
     public static long calculateWinnings(){
         return (winnings.get(Application.Places.FIRST)*2000000000) + (winnings.get(Application.Places.SECOND) * 30000000)
@@ -134,7 +148,7 @@ public class User {
                 + (winnings.get(Application.Places.FIFTH) * 5000);
     }
     public static double calculateProfitPercentage(){
-        return (totalWinnings / totalPrice ) * 100;
+        return ((double)totalWinnings / totalPrice ) * 100;
     }
     public void getWinningNumbers(List<Integer> winningNumbers){
         this.winningNumbers = winningNumbers;
@@ -151,6 +165,6 @@ public class User {
         System.out.println(FIRST_PLACE_MESSAGE +winnings.get(Application.Places.FIRST) + UNIT_MESSAGE );
     }
     public static void printProfitPercentage(){
-        System.out.println(PROFIT_PERCENTAGE_MESSAGE + profitPercentage + PROFIT_PERCENTAGE_PERCENT_MESSAGE);
+        System.out.println(PROFIT_PERCENTAGE_MESSAGE + Math.round(profitPercentage*10)/10.0 + PROFIT_PERCENTAGE_PERCENT_MESSAGE);
     }
 }
