@@ -10,16 +10,17 @@ public class LottoGame {
     }
 
     private static final int _lotto_price = 1000;
-    public static final int _1st_index = 0;
-    public static final int _2nd_index = 1;
-    public static final int _3rd_index = 2;
-    public static final int _4th_index = 3;
-    public static final int _5th_index = 4;
     private List<Lotto> _lotto;
     private Lotto _winning_lotto;
     private int _bonus_number;
     private int[] _match_table;
     private int _money;
+
+    public static final int _1st_index = 0;
+    public static final int _2nd_index = 1;
+    public static final int _3rd_index = 2;
+    public static final int _4th_index = 3;
+    public static final int _5th_index = 4;
 
     public LottoGame(int money) {
         setMoney(money);
