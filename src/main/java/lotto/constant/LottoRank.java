@@ -19,6 +19,7 @@ public enum LottoRank {
     this.price = price;
   }
 
+  // 리팩터링 필요
   public static LottoRank findRank(Integer matchingCount, Integer bonusMatchingCount) {
 
     if(matchingCount.equals(FIFTH.getMatchingCount()) && bonusMatchingCount.equals(FIFTH
