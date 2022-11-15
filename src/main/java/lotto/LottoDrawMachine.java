@@ -16,6 +16,12 @@ public class LottoDrawMachine {
     private Lotto winningNumbers;
     private final int bonusNumber;
 
+    /**
+     * 당첨번호와 보너스번호 문구를 출력하고 입력 받는다. 당첨번호 입력시 숫자와 ','만 입력할 수 있고 빈 값은 있으면 안된다. 보너스볼은 1개의 숫자만 입력 받는다.
+     * 유효한 값이 아닐 경우 예외 발생시킨다.
+     *
+     * @throws IllegalArgumentException
+     */
     public LottoDrawMachine() throws IllegalArgumentException {
         winningNumbers = createWinningNumbers();
         bonusNumber = createBonusNumber();
@@ -120,6 +126,11 @@ public class LottoDrawMachine {
         }
     }
 
+    /**
+     * 당첨 통계를 내어 출력한다. 총 수익률은 원금을 100%로 계산한다.
+     *
+     * @param lottos 당첨 통계를 낼 로또 리스트
+     */
     public void viewPrizes(List<Lotto> lottos) {
         printWinningStatsStatement();
         int[] rankingCount = compareLottos(lottos);
@@ -132,6 +143,13 @@ public class LottoDrawMachine {
         System.out.println("---");
     }
 
+
+    /**
+     * 맞춘 개수를 반환한다. 0 ~ 5개의 당첨번호를 맞춘 것을 index:0 ~ 5, 5개의 당첨번호 + 보너스볼 : 6, 6개의 당첨번호: 7
+     *
+     * @param lottos 당첨 등수를 낼 로또 리스트
+     * @return 맞춘 개수 리스트
+     */
     private int[] compareLottos(List<Lotto> lottos) {
         int[] result = new int[Division.MAX_VALUE + 2];
         Arrays.fill(result, 0);
@@ -152,6 +170,12 @@ public class LottoDrawMachine {
         return (int) hits;
     }
 
+    /**
+     * 당첨된 등수와 해당 등수의 개수를 출력하고 총 수익금을 반환한다.
+     *
+     * @param rankingCount 맞춘 개수 리스트
+     * @return 총 수익금
+     */
     private int WinningStats(int[] rankingCount) {
         int earnedMoney = 0;
         for (int idx = Division.MIN_VALUE; idx < rankingCount.length; idx++) {
@@ -172,6 +196,12 @@ public class LottoDrawMachine {
         System.out.println(output);
     }
 
+    /**
+     * 원금을 100%로 하여 총 수익률을 게산하여 출력한다.
+     *
+     * @param earnedMoney 총 수익금
+     * @param lottosSize  샀던 로또의 개수 (원금 = 로또의 개수 * 1000)
+     */
     private void printRateOfReturn(int earnedMoney, int lottosSize) {
         Double rateOfReturn;
         rateOfReturn = 100.0;
