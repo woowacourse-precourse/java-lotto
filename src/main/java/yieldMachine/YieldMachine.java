@@ -29,7 +29,7 @@ public class YieldMachine {
 
     public void run(User user) {
         calculateYield(user);
-        printYield();
+        printAllYield();
     }
 
     public void calculateYield(User user) {
@@ -73,23 +73,27 @@ public class YieldMachine {
         return matchingNumber;
     }
 
-    private void printYield() {
+    private void printAllYield() {
         for (Reward reward: Reward.values()) {
             Integer prize = reward.getPrize();
             List<Integer> matchingNumber = reward.getMatchingNumber();
             Integer index = reward.getIndex();
-            if (matchingNumber.get(1) == 1) {
-                String message
-                        = String.format("5개 일치, 보너스 볼 일치 (%,d원) - %d개", prize, countOfRewards.get(index));
-                System.out.printf(message + "\n");
-                continue;
-            }
-            String message
-                    = String.format("%d개 일치 (%,d원) - %d개", matchingNumber.get(0), prize, countOfRewards.get(index));
-            System.out.printf(message + "\n");
+            printOneYield(prize, matchingNumber, index);
         }
         String yieldMessage = String.format("총 수익률은 %.1f%c입니다.", yield, 37);
         System.out.println(yieldMessage);
+    }
+
+    private void printOneYield(Integer prize, List<Integer> matchingNumber, Integer index){
+        if (matchingNumber.get(1) == 1) {
+            String message
+                    = String.format("5개 일치, 보너스 볼 일치 (%,d원) - %d개", prize, countOfRewards.get(index));
+            System.out.printf(message + "\n");
+            return;
+        }
+        String message
+                = String.format("%d개 일치 (%,d원) - %d개", matchingNumber.get(0), prize, countOfRewards.get(index));
+        System.out.printf(message + "\n");
     }
 
     public List<Integer> getCountOfRewards() {
