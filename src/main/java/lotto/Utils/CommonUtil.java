@@ -29,13 +29,13 @@ public class CommonUtil {
     private static void checkDuplicated(List<Integer> numbers) {
         HashSet<Integer> duplicatesExcluded = new HashSet<>(numbers);
         if (duplicatesExcluded.size() != 6) {
-            Error.generate(Message.DUPLICATED);
+            Error.generateIllegalArgumentException(Message.DUPLICATED);
         }
     }
     private static void checkRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                Error.generate(Message.DUPLICATED);
+                Error.generateIllegalArgumentException(Message.DUPLICATED);
             }
         }
     }
