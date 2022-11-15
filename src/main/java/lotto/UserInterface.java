@@ -16,7 +16,7 @@ public class UserInterface {
         System.out.println(tickets.size() + InformMessage.WINNING_NUMBER
                 .toString());
         for (Lotto ticket : tickets) {
-            System.out.println(ticket.toString());
+            System.out.println(ticket.getSortedString());
         }
     }
 

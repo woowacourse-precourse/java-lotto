@@ -54,10 +54,6 @@ public class Lotto {
         validateUniqueness(numbers, LOTTERY_NUMBER_COUNT);
     }
 
-    public void sortNumbers() {
-        Collections.sort(numbers);
-    }
-
     public void validateBonusNumber(int bonusNumber) {
         List<Integer> numbersIncludingBonus = new ArrayList<>(numbers);
 
@@ -84,5 +80,12 @@ public class Lotto {
     @Override
     public String toString() {
         return (numbers.toString());
+    }
+
+    public String getSortedString() {
+        List<Integer> sorted = new ArrayList<>(numbers);
+
+        Collections.sort(sorted);
+        return (sorted.toString());
     }
 }

@@ -55,12 +55,6 @@ public class Buyer {
         }
     }
 
-    private void sortLotteryNumbers(List<Lotto> tickets) {
-        for (Lotto ticket : tickets) {
-            ticket.sortNumbers();
-        }
-    }
-
     public void pickLotteryNumbers(int ticketCount) {
         boughtTickets = new ArrayList<>();
 
@@ -69,7 +63,6 @@ public class Buyer {
                     pickUniqueNumbersInRange(SMALLEST_LOTTERY_NUMBER, BIGGEST_LOTTERY_NUMBER, LOTTERY_NUMBER_COUNT)
             ));
         }
-        sortLotteryNumbers(boughtTickets);
     }
 
     private void checkIfWon(int correctCount, int bonusCount) {
