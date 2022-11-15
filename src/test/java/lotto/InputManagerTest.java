@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.console.InputManager;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -12,7 +13,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class InputManagerTest {
 
     // 사용자 입력
-    void putSystemInput(String input) {
+    static void putSystemInput(String input) {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -76,7 +77,7 @@ public class InputManagerTest {
     void getInput_predictLottoNumber_테스트() {
         String userPredictLottoNumber = "1,2,3,4,5,6";
         putSystemInput(userPredictLottoNumber);
-        assertThat(InputManager.convertStringToIntegerList(userPredictLottoNumber)).isEqualTo(InputManager.getInput_predictLottoNumber());
+        assertThat(InputManager.convertStringToIntegerList(userPredictLottoNumber)).isEqualTo(InputManager.getInput_predictLottoNumbers());
     }
 
     @Test
@@ -84,7 +85,7 @@ public class InputManagerTest {
         String userPredictLottoNumber = "1,앍,3,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumbers)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -93,7 +94,7 @@ public class InputManagerTest {
         String userPredictLottoNumber = "1,2, ,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumbers)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -102,7 +103,7 @@ public class InputManagerTest {
         String userPredictLottoNumber = "1,2,3, 4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumbers)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -111,7 +112,7 @@ public class InputManagerTest {
         String userPredictLottoNumber = "1,23,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumbers)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -120,7 +121,7 @@ public class InputManagerTest {
         String userPredictLottoNumber = "1,2,46,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumbers)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -129,13 +130,20 @@ public class InputManagerTest {
         String userPredictLottoNumber = "1,2,0,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumbers)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
     /**
      * getInput_predictBonusLottoNumber - 보너스 번호 입력
      */
+    @BeforeAll
+    static void init() throws IllegalArgumentException {
+        String userPredictLottoNumbers = "1,2,3,4,5,6";
+        putSystemInput(userPredictLottoNumbers);
+        ProgramManager.userPredictLottoNumbers = InputManager.getInput_predictLottoNumbers();
+    }
+
     @Test
     void getInput_predictBonusLottoNumber_테스트() {
         String userPredictBonusLottoNumber = "22";
@@ -182,6 +190,15 @@ public class InputManagerTest {
     @Test
     void getInput_predictBonusLottoNumber_범위_미만_예외_테스트() {
         String userPredictBonusLottoNumber = "0";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictBonusLottoNumber_당첨_번호_입력값_중복_테스트() {
+        String userPredictBonusLottoNumber = Integer.toString(ProgramManager.userPredictLottoNumbers.get(0));
         putSystemInput(userPredictBonusLottoNumber);
         assertSimpleTest(() ->
                 assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
