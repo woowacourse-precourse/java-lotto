@@ -3,7 +3,6 @@ package lotto.validator;
 import lotto.constant.Constant;
 import lotto.constant.ErrorMessage;
 import lotto.domain.Lotto;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +16,12 @@ public class WinningLottoValidator {
         } catch (RuntimeException e) {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_WRONG_TYPE);
         }
+    }
+
+    public static void validateBonusNumber(Lotto lotto, String userInput) {
+        int userInputNumber = Integer.parseInt(userInput);
+        validateBonusNumberRange(userInputNumber);
+        validateWinningNumberContainBonusNumber(lotto, userInputNumber);
     }
 
     public static void validateBonusNumberRange(int userInputNumber) {
