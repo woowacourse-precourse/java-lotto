@@ -1,37 +1,50 @@
-> ## 기능 정리  
-> 1. ### 로또 번호 구입 금액 입력받기
-> | 함수명                     | 내용                 | 비고                               | 
--------------------------|--------------------|----------------------------------|---------------------|
-> | **setPurchaseAmount()** | 구입 금액을 입력 받기       | validPurchaseAmount() 함수로 유효성 검증 |
-> | **calculateLottoNum()** | 금액을 통해 로또 개수 계산       | -                                |
-> | **pickRandomNumbers()** | 구입한 개수만큼의 로또 번호 생성 | -                                |
->2. ### 당첨 번호 입력하기
-> | 함수명                  | 내용          | 비고                            | 
-> |-------------|-------------------------------|---------------|
-> | **setLottoNumber()** | 로또 당첨 번호 입력 | validLottoNumber() 함수로 유효성 검증 |
-> | **setBonusNumber()**     | 보너스 번호 입력   | validBonusNumber() 함수로 유효성 검증 |
-> 3. ### 당첨 통계 출력
-> | 함수명                       | 내용       | 비고                            | 
-> |----------|-------------------------------|---------------|
-> | **getWinningDetails()** | 당첨 내역 계산 | -                          |
-> | **calculateEarningRatio()** | 수익률 계산   | -                          |
-> | **printWinningDetails()** | 당첨 내역 출력 | - |
-> | **printEarningRatio()** | 수익률 출력   | - |
+> ## 클래쓰 정리  
+> 1. ### Purchase Class 
+>   - 로또 구매자 클래쓰
+>   - 구입 금액 및 금액에 따른 로또 번호들을 저장
+>   
+> 2. ### Lotto Class 로또 클래쓰
+>   - 로또와 관련된 클래쓰
+>   - 구매자의 로또 번호
+>   - 당첨번호의 로또 번호 및 보너스 번호
+>   
+> 3. ### Error enum 
+>   - 해당 로또 어플리케이션과 관련된 Error를 관리하는 열거체
+>   
+> 4. ### Validation Class 
+>   - 모든 유효성 검증 함수들을 관리하는 클래쓰
+>   
+> 5. ### WinningResult enum
+>   - 당첨 결과를 저장하는 열거체
+>   
+> 5. ### Calculations Class
+>   - 당첨 결과를 계산하는 클래쓰
+>   
+> 5. ### Outputs Class
+>   - 당첨 결과를 출력하는 클래쓰
+
+
 --- 
 > ## Application Flow
 > - 아래 번호 순서대로 Application을 실행한다.
 > > ### Purchaser Class
-> > > 1. Purchaser.setPurchaseAmount() : 로또 구입 금액 입력 받기
-> > > 2. Purchaser.validPurchaseAmount() : 구입 금액 유효성 체크
-> > > 3. Purchaser.calculateLottoNum() : 구입한 로또 개수 계산
-> > > 4. Purchaser.pickRandomNumbers() : 구입한 개수만큼의 로또 번호 생성
+> > > 1. Purchaser.setCost() : 로또 구입 금액 입력 받기
+> > >   - Validations.checkCostValid() 입력 금액 유효성 체크
+> > > 2. Purchaser.receiveLottoNumbers() : 로또 번호들 부여받기
+> > >   - 구매한 만큼의 new Lotto() 객체가 구매자의 로또 번호들을 관리하는 클래쓰 변수에 생성됨.
+> > > 3. Purchaser.printLottoNums() : 부여 받은 로또 번호들 출력
 > > ### Lotto Class
-> > > 5. Lotto.setLottoNumber() : 로또 당첨 번호 입력
-> > > 6. Lotto.validLottoNumber() : 로또 당첨 번호 유효성 체크
-> > > 7. Lotto.setBonusNumber() : 로또 보너스 번호 입력
-> > ### Application Class
-> > > 8. Application.getWinningDetails() : 당첨 내역 계산
-> > > 9. Application.calculateEarningRatio() : 수익률 계산
-> > > 10. Application.printWinningDetails() : 당첨 내역 출력
-> > > 11. Application.printEarningRatio() : 수익률 출력
+> > > 4. new Lotto() : 로또 당첨 번호 생성
+> > >   - Validations.checkLength(): 길이 체크
+> > >   - Validations.checkDuplication(): 중복성 체크
+> > > 5. Lotto.setBonusNumber() : 로또 보너스 번호 입력
+> > >   - Validations.checkBonusNumberIsNumeric(): 보너스 번호 숫자 체크
+> > >   - Validations.checkBonusNumberDuplicate(): 보너스 번호 중복 체크
+> > >   - Validations.checkNumberRange(): 보너스 번호 범위(1~45) 체크
+> > ### Calculations Class
+> > > 8. Calculations.calculateWinningDetails() : 당첨 결과 계산
+> > > 9. Calculation.calculateTotalEarns() : 총 당첨 금액 계산
+> > ### Outputs Class
+> > > 10. Outputs.printWinningDetails() : 당첨 내역 출력
+> > > 11. Outputs.printEarningRatio() : 수익률 출력
  
