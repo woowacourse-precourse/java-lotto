@@ -12,12 +12,13 @@ class LottoCountingTest {
 
     LottoCounting lottoCounter = new LottoCounting();
 
-    @DisplayName("테스트를 위해,당첨 숫자는 1,2,3,4,5,6 으로 고정한다.")
+    // 테스트를 위해,당첨 숫자는 1,2,3,4,5,6 으로 고정한다.
     Lotto getWinningLotto(){
         List<Integer> winningNumber = List.of(1,2,3,4,5,6);
         return new Lotto(winningNumber);
     }
 
+    // 로또종이 인풋 모음을 위에서 만들어놓고, 일일이 하드코딩하는 대신 대입하는 식으로 해본다.
     // 위에서부터 6개 일치, 5개 일치 및 보너스번호 일치, 5개 일치, 4개 일치, 3개 일치, 2개 일치, 1개 일치, 0개 일치 2개 순으로 나열했다.
     // 1등,2등,3등,4등,5등,당첨없음 4개 순이다.
     Lotto[] lottoPaperInput = new Lotto[]{
@@ -31,9 +32,10 @@ class LottoCountingTest {
             new Lotto(List.of(10, 20, 30, 40, 42, 44)), // 0, 탈락
             new Lotto(List.of(20, 30, 40, 41, 42, 43)), // 0, 탈락
     };
-
+    // 보너스 넘버도, 테스트를 위해서 8로 고정한다.
     int bonusNumber = 8;
 
+    // ex) input = "1 2 3 4 5" -> 1등 1개, 2등 2개, 3등 3개, 4등 4개, 5등 5개로 매핑하여, 맵을 만든다.
     Map<Integer, Integer> getWinningCountFromInput(String input){
         Map<Integer,Integer> winningCount = new HashMap<>();
         String[] individualCount = input.split(" ");
@@ -48,13 +50,14 @@ class LottoCountingTest {
     @Nested
     class CompareLottoAndCountTest{
 
-        @DisplayName("테스트 방식이 다 똑같아서, 하나의 메서드로 합쳤다.")
+        // 테스트 방식이 같아서, 하나로 합쳤다.
         void getCaseTest(List<Integer> input, int output){
             Lotto oneLottoPaper = new Lotto(input);
             Lotto winningLotto = getWinningLotto();
             assertThat(lottoCounter.compareLottoAndCount(oneLottoPaper,winningLotto)).isEqualTo(output);
         }
 
+        @DisplayName("1등 LottoNumber Case.")
         @Test
         void compareLottoAndCount_case1(){
             List<Integer> oneSetOfNumber = lottoPaperInput[0].getNumbers();
@@ -62,6 +65,7 @@ class LottoCountingTest {
             getCaseTest(oneSetOfNumber,output);
         }
 
+        @DisplayName("2,3등 LottoNumber Case")
         @Test
         void compareLottoAndCount_case2(){
             List<Integer> oneSetOfNumber = lottoPaperInput[1].getNumbers();
@@ -69,6 +73,7 @@ class LottoCountingTest {
             getCaseTest(oneSetOfNumber,output);
         }
 
+        @DisplayName("4등 LottoNumber Case")
         @Test
         void compareLottoAndCount_case3(){
 
@@ -77,6 +82,7 @@ class LottoCountingTest {
             getCaseTest(oneSetOfNumber,output);
         }
 
+        @DisplayName("5등 LottoNumber Case")
         @Test
         void compareLottoAndCount_case4(){
             List<Integer> oneSetOfNumber = lottoPaperInput[4].getNumbers();
@@ -84,12 +90,15 @@ class LottoCountingTest {
             getCaseTest(oneSetOfNumber,output);
         }
 
+        @DisplayName("당첨제외 LottoNumber Case1 : 2개 맞음")
         @Test
         void compareLottoAndCount_case5() {
             List<Integer> oneSetOfNumber = lottoPaperInput[5].getNumbers();
             int output = 2;
             getCaseTest(oneSetOfNumber,output);
         }
+
+        @DisplayName("당첨제외 LottoNumber Case2 : 1개 맞음")
         @Test
         void compareLottoAndCount_case6(){
             List<Integer> oneSetOfNumber = lottoPaperInput[6].getNumbers();
@@ -97,6 +106,7 @@ class LottoCountingTest {
             getCaseTest(oneSetOfNumber,output);
         }
 
+        @DisplayName("당첨제외 LottoNumber Case3 : 0개 맞음")
         @Test
         void compareLottoAndCount_case7(){
             List<Integer> oneSetOfNumber = lottoPaperInput[7].getNumbers();
