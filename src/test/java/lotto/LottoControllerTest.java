@@ -5,9 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class LottoControllerTest {
 
@@ -57,6 +62,25 @@ class LottoControllerTest {
 		corrections = 5;
 		controller.addToAnalysis(analysis, corrections, hasBonus);
 		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 1, 1, 0, 0));
+	}
+
+	@DisplayName("정답에 따른 통계를 저장해야 한다2")
+	@ParameterizedTest
+	@MethodSource("correctionBonusAnswer")
+	void addToAnalysisTest2(int corrections, boolean hasBonus, List<Integer> expected) {
+		List<Integer> analysis = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+		controller.addToAnalysis(analysis, corrections, hasBonus);
+		Assertions.assertThat(analysis).isEqualTo(expected);
+	}
+
+	private static Stream<Arguments> correctionBonusAnswer() {
+		return Stream.of(
+			Arguments.of(3, false, List.of(1, 0, 0, 0, 0)),
+			Arguments.of(4, false, List.of(0, 1, 0, 0, 0)),
+			Arguments.of(5, false, List.of(0, 0, 1, 0, 0)),
+			Arguments.of(5, true, List.of(0, 0, 0, 1, 0)),
+			Arguments.of(6, false, List.of(0, 0, 0, 0, 1))
+		);
 	}
 
 	@DisplayName("입력에 따른 수익률 메시지를 반환해야 한다.")
