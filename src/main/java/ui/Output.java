@@ -3,6 +3,7 @@ package ui;
 import controller.Lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class Output {
     private static final String PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -15,13 +16,18 @@ public class Output {
     private static final String FIVE_AND_BONUS_WINNING = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String SIX_WINNING = "6개 일치 (2,000,000,000원) - ";
     private static final String UNIT = "개";
+    private static final String FIRST = "FIRST";
+    private static final String SECOND = "SECOND";
+    private static final String THIRD = "THIRD";
+    private static final String FOURTH = "FOURTH";
+    private static final String FIFTH = "FIFTH";
 
     public void printPriceInputMessage() {
         System.out.println(PRICE_INPUT_MESSAGE);
     }
 
     public void printPurchaseQuantity(int purchaseQuantity) {
-        System.out.println(purchaseQuantity + "개를 구매했습니다");
+        System.out.println(purchaseQuantity + "개를 구매했습니다.");
     }
 
     public void printLottoNumber(List<Lotto> lottos) {
@@ -39,16 +45,16 @@ public class Output {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
     }
 
-    public void printWinningStatistics(List<Integer> winningCount){
+    public void printWinningStatistics(Map<String, Integer> winningCount) {
         System.out.println(STATISTICS);
-        System.out.println(THREE_WINNING + winningCount.get(0) + UNIT);
-        System.out.println(FOUR_WINNING + winningCount.get(1) + UNIT);
-        System.out.println(FIVE_WINNING + winningCount.get(2) + UNIT);
-        System.out.println(FIVE_AND_BONUS_WINNING + winningCount.get(3) + UNIT);
-        System.out.println(SIX_WINNING + winningCount.get(4) + UNIT);
+        System.out.println(THREE_WINNING + winningCount.get(FIFTH) + UNIT);
+        System.out.println(FOUR_WINNING + winningCount.get(FOURTH) + UNIT);
+        System.out.println(FIVE_WINNING + winningCount.get(THIRD) + UNIT);
+        System.out.println(FIVE_AND_BONUS_WINNING + winningCount.get(SECOND) + UNIT);
+        System.out.println(SIX_WINNING + winningCount.get(FIRST) + UNIT);
     }
 
-    public void printYield(String yield){
-        System.out.println("총 수익률은 "+yield+"입니다.");
+    public void printYield(String yield) {
+        System.out.println("총 수익률은 " + yield + "입니다.");
     }
 }
