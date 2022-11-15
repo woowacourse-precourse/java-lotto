@@ -1,10 +1,10 @@
-package lotto;
+package lotto.model;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.Error.*;
+import static lotto.model.Error.*;
 
 public class WinNumber {
     public List<Integer> winNumbers;

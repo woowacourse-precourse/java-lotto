@@ -1,9 +1,9 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
 
-import static lotto.Error.BONUS_NUMBER_DUPLICATED_ERROR;
-import static lotto.Error.BONUS_NUMBER_RANGE_ERROR;
+import static lotto.model.Error.BONUS_NUMBER_DUPLICATED_ERROR;
+import static lotto.model.Error.BONUS_NUMBER_RANGE_ERROR;
 
 public class BonusNumber {
     public int bonusNumber;

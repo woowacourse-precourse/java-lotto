@@ -1,10 +1,10 @@
-package lotto;
+package lotto.model;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.Result.*;
+import static lotto.model.Result.*;
 
 public class LottoResult {
     private int equalCount;

@@ -1,6 +1,6 @@
-package lotto;
+package lotto.model;
 
-import static lotto.Error.EQUAL_COUNT_ERROR;
+import static lotto.model.Error.EQUAL_COUNT_ERROR;
 
 public enum Result {
 

@@ -1,6 +1,6 @@
-package lotto;
+package lotto.model;
 
-import static lotto.Error.PRICE_UNIT_ERROR;
+import static lotto.model.Error.PRICE_UNIT_ERROR;
 
 public class LottoPrice {
 

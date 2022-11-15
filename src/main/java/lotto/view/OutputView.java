@@ -1,4 +1,7 @@
-package lotto;
+package lotto.view;
+
+import lotto.model.Lotto;
+import lotto.model.Result;
 
 import java.util.List;
 import java.util.Map;
