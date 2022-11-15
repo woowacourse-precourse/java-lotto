@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.enums.ExceptionErrorType;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class InputView {
     private static final OutputView outputView = new OutputView();
@@ -18,6 +21,34 @@ public class InputView {
         return new BigInteger(input);
     }
 
+    public List<Integer> inputWinningNumbers() {
+        String input = Console.readLine();
+        validateCommaSplit(input);
+        validateDuplicateNumber(input);
+        return convertList(input);
+    }
+    private List<Integer> convertList(String input) {
+        List<Integer> arrayList = new ArrayList<>();
+
+        for (String number :
+                input.split(",")) {
+            validateCastInteger(number);
+            validateRange(number);
+            arrayList.add(Integer.parseInt(number));
+        }
+        return arrayList;
+
+    }
+
+    private void validateCastInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException(
+                    ExceptionErrorType.INPUT_NUMBER.getDescription()
+            );
+        }
+    }
     private void validateCastPositiveBigInteger(String input) {
         try {
             BigInteger target = new BigInteger(input);
@@ -49,6 +80,32 @@ public class InputView {
         if (!hundreds.equals("000")) {
             throw new IllegalArgumentException(
                     ExceptionErrorType.INPUT_NUMBER_MULTIPLE_OF_1000.getDescription()
+            );
+        }
+    }
+
+    private void validateCommaSplit(String input) {
+        try {
+            input.split(",");
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException(
+                    ExceptionErrorType.INPUT_NUMBER_SPLIT_BY_COMMA.getDescription()
+            );
+        }
+    }
+    private void validateDuplicateNumber(String input) {
+        if (6 != Arrays.stream(input.split(",")).distinct().count()) {
+            throw new IllegalArgumentException(
+                    ExceptionErrorType.INPUT_NOT_DUPLICATE_NUMBER.getDescription()
+            );
+        }
+    }
+
+    private void validateRange(String input) {
+        int number = Integer.parseInt(input);
+        if (number < 1 || 45 < number) {
+            throw new IllegalArgumentException(
+                    ExceptionErrorType.INPUT_NUMBER_BETWEEN_1_45.getDescription()
             );
         }
     }
