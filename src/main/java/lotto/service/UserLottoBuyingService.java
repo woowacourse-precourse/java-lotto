@@ -23,4 +23,8 @@ public class UserLottoBuyingService {
         userInputLottoInfoException.isInputValueOnlyNumber(buyingPrice,"금액 입력 값으로는 숫자만 가능합니다.");
         userInputLottoInfoException.isDividedByThousand(buyingPrice, "입력 금액의 최소 단위는 천원입니다.");
     }
+    public void setUserTotalLotto(User user) {
+        outputView.printUserLottoQuantity(user.getUserLottoQuantity());
+        user.createLottoNumbers(user.getUserLottoQuantity());
+    }
 }
