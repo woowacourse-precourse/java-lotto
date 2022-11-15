@@ -18,7 +18,7 @@ public class Extraction {
                     .collect(Collectors.toList());
             InputException.validateWinningNumbers(winningNumbers);
             return winningNumbers;
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             StringBuilder sb = new StringBuilder(ErrorMessage.EXCEPTION_START.getValue());
             sb.append(ErrorMessage.EXCEPTION_ONLY_NUMERIC.getValue());
             throw new IllegalArgumentException(sb.toString());
