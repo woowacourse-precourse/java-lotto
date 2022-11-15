@@ -24,8 +24,9 @@
 - [x] 구매한 로또의 숫자를 얻을 수 있다.
   - Lotto#getNumbers()
   - 예외) null이면 예외 발생
-- [ ] 입력받은 수만큼 리스트를 출력할 수 있다.
-  - StaffTeller#tellLottos()
+- [ ] 입력받은 로또들을 출력할 수 있다.
+  - StaffTeller#tellLottos()현
+  - 예외) 입력 값이 null 이면 예외 발생
 
 - [ ] 당첨 번호 입력 받을 수 있다.
   - WinningNumbers#inputWinningMainNumbers()

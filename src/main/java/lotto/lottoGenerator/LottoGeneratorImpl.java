@@ -26,9 +26,4 @@ public class LottoGeneratorImpl implements LottoGenerator{
         }
         return lottos;
     }
-
-    @Override
-    public List<Lotto> printLottos(List<Lotto> lottos) {
-        return null;
-    }
 }
