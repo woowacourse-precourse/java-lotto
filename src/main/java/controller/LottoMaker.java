@@ -1,16 +1,19 @@
 package controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import data.NumericData;
 import lotto.Lotto;
 import java.util.List;
 import java.util.ArrayList;
 import data.InputGuideData;
 
 public class LottoMaker {
-    private static final int LOTTO_PRICE = 1000;
+    // 로또 가격을 NumericData에서 받아옴
+    private static final int LOTTO_PRICE = NumericData.LOTTO_PRICE.getNumericValue();
+    private static final int ZERO = 0;
     private int money;
     private void validate(int money){
-        if(money % LOTTO_PRICE != 0){
+        if(money % LOTTO_PRICE != ZERO){
             throw new IllegalArgumentException();
         }
     }
@@ -21,7 +24,6 @@ public class LottoMaker {
         System.out.print(this.money / LOTTO_PRICE);
         InputGuideData.BUY_LOTTO.printData();
     }
-
 
     /**
      * 로또를 발행하는 메서드

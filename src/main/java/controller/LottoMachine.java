@@ -67,7 +67,5 @@ public class LottoMachine {
     /**
      * 수익률 계산
      */
-    public void printProfitRate(){
-        int money = 0;
-    }
+
 }
