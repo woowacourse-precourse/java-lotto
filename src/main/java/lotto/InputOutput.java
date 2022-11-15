@@ -13,9 +13,14 @@ class InputOutput {
 
     public void setMoney() {
         System.out.println(Constants.INFO_MONEY);
-        int number = Integer.valueOf(Console.readLine());
-        validate(number);
-        money = number;
+        try {
+            int number = Integer.valueOf(Console.readLine());
+            validate(number);
+            money = number;
+        }catch (IllegalArgumentException e){
+            System.out.println(Constants.ERROR_CHAR);
+        }
+
     }
 
     public int getMoney() {
@@ -60,7 +65,7 @@ class InputOutput {
 
     void validateLength(String[] array) {
         try {
-            if (array.length != 6)
+            if (array.length != Constants.TIMES)
                 throw new IllegalArgumentException();
             } catch(IllegalArgumentException e){
                 System.out.println(Constants.ERROR_LENGTH);
@@ -70,10 +75,48 @@ class InputOutput {
 
     void validateRange(int number){
         try{
-            if(0 > number || 46 < number)
+            if(Constants.START_NUMBER > number || Constants.END_NUMBER < number)
                 throw new IllegalArgumentException();
         }catch(IllegalArgumentException e){
             System.out.println(Constants.ERROR_RANGE);
         }
+    }
+
+    int printResult(int [] matchTable){
+        System.out.println(Constants.INFO_STATICS_TITLE);
+        System.out.println(Constants.INFO_LINE);
+        int totalPrice=0;
+        for(int i=1;i< matchTable.length;i++){
+            totalPrice = checkMatchCount(matchTable,i,totalPrice);
+
+        }
+        return totalPrice;
+    }
+
+    int checkMatchCount(int [] matchTable,int index,int totalPrice){
+        if(index == 3) {
+            System.out.printf(Constants.INFO_MATCH_THREE + matchTable[index] + "개\n");
+            totalPrice+=Constants.REWORD_THREE*matchTable[index];
+        }
+        if(index == 4) {
+            System.out.printf(Constants.INFO_MATCH_FOUR+matchTable[index]+"개\n");
+            totalPrice+=Constants.REWORD_FOUR*matchTable[index];
+
+        }
+        if(index == 5) {
+            System.out.printf(Constants.INFO_MATCH_FIVE+matchTable[index]+"개\n");
+            totalPrice+=Constants.REWORD_FIVE*matchTable[index];
+
+        }
+        if(index == 6) {
+            System.out.printf(Constants.INFO_MATCH_SIX+matchTable[index]+"개\n");
+            totalPrice+=Constants.REWORD_SIX*matchTable[index];
+
+        }
+        if(index == 7) {
+            System.out.printf(Constants.INFO_MATCH_BONUS+matchTable[index]+"개\n");
+            totalPrice+=Constants.REWORD_BONUS*matchTable[index];
+        }
+        return totalPrice;
     }
 }

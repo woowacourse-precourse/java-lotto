@@ -24,24 +24,29 @@ public class Application {
 
         InputOutput IO = new InputOutput();
         List<List<Integer>> totalNumbers = new ArrayList<>();
+        try{
+            IO.setMoney();
+            int lottoTimes = IO.getMoney();
 
-        IO.setMoney();
-        int lottoTimes = IO.getMoney();
+            makeRandomNumber(lottoTimes,totalNumbers);
+            print(totalNumbers);
 
-        makeRandomNumber(lottoTimes,totalNumbers);
-        print(totalNumbers);
+            IO.setUserInputNumber();
+            System.out.println(IO.getUserInputNumber());
 
-        IO.setUserInputNumber();
-        System.out.println(IO.getUserInputNumber());
+            Lotto lotto = new Lotto(IO.getUserInputNumber());
 
-        Lotto lotto = new Lotto(IO.getUserInputNumber());
+            IO.setBonusNumber();
+            System.out.println(IO.getBonusNumber());
 
-        IO.setBonusNumber();
-        System.out.println(IO.getBonusNumber());
+            Calculate cal = new Calculate(IO.getUserInputNumber(),IO.getBonusNumber(),totalNumbers);
 
-        Calculate cal = new Calculate(IO.getUserInputNumber(),IO.getBonusNumber(),totalNumbers);
+            cal.compareNumber();
+            int totalPrice = IO.printResult(cal.getMatchCount());
+            cal.rateOfReturn(totalPrice,lottoTimes*Constants.DIV_MONEY);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
-        cal.compareNumber();
-        cal.getMatchCount();
     }
 }

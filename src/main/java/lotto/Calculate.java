@@ -55,8 +55,11 @@ public class Calculate {
     }
 
     public int[] getMatchCount() {
-        System.out.println(Arrays.toString(matchCount));
         return matchCount;
+    }
+
+    public void rateOfReturn(int totalPrice,int investMoney){
+        System.out.printf("총 수익률은 %.1f%%입니다.",(totalPrice/(float)investMoney)*100);
     }
 }
 

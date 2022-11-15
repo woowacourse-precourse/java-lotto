@@ -16,23 +16,15 @@ public class Lotto {
     }
 
     private void validateLength(List<Integer> numbers) {
-        try {
-            if (numbers.size() != 6) {
-                throw new IllegalArgumentException();
-            }
-        }catch (IllegalArgumentException e){
-            System.out.println(Constants.ERROR_LENGTH);
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers){
+    private void validateDuplicate(List<Integer> numbers) {
         List<Integer> duplicateCheck = numbers.stream().distinct().collect(Collectors.toList());
-        try {
-            if (duplicateCheck.size() != numbers.size()) {
-                throw new IllegalArgumentException();
-            }
-        }catch (IllegalArgumentException e){
-            System.out.println(Constants.ERROR_DUPLICATE);
+        if (duplicateCheck.size() != numbers.size()) {
+            throw new IllegalArgumentException();
         }
     }
 }
