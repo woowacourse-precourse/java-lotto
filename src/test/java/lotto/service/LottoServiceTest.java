@@ -43,6 +43,28 @@ public class LottoServiceTest {
     }
 
     @Test
+    @DisplayName("로또 번호 결과 저장 테스트 2등 하나 3등 하나")
+    void saveLottoResultTestWith2And3() {
+
+        User user = lottoService.getUserForTest();
+
+        user.addLottoForTest(List.of(30, 24, 13, 4, 1, 6));
+        user.addLottoForTest(List.of(30, 5, 13, 2, 24, 1));
+        user.addLottoForTest(List.of(30, 5, 13, 2, 24, 6));
+
+        lottoService.saveWinningLotto("30,5,13,2,24,7");
+        lottoService.saveBonusNumber("6");
+        lottoService.initResultLotto();
+        lottoService.saveResultLotto();
+
+        Reward expectedRewardOne = Reward.THIRD_REWARD;
+        Reward expectedRewardTwo = Reward.SECOND_REWARD;
+
+        assertThat(user.getLottiesResult().get(expectedRewardOne)).isEqualTo(1);
+        assertThat(user.getLottiesResult().get(expectedRewardTwo)).isEqualTo(1);
+    }
+
+    @Test
     @DisplayName("로또 수익률 계산 테스트")
     void lottoProfitRateTest() {
 
