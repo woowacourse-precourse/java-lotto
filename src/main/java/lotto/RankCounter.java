@@ -10,7 +10,7 @@ public class RankCounter {
 
     public RankCounter() {
         rankCount = new LinkedHashMap<>();
-        for (LottoRanking rank: LottoRanking.values()) {
+        for (LottoRanking rank : LottoRanking.values()) {
             if (rank.equals(LottoRanking.LOSE)) continue;
             rankCount.put(rank, 0);
         }
@@ -20,8 +20,7 @@ public class RankCounter {
         LottoChecker lottoChecker = new LottoChecker();
         for (Lotto lotto : lottos) {
             LottoRanking rank = lottoChecker.check(lotto);
-            if (!rank.equals(LottoRanking.LOSE))
-                continue;
+            if (rank.equals(LottoRanking.LOSE)) continue;
             rankCount.put(rank, rankCount.get(rank) + 1);
         }
     }
