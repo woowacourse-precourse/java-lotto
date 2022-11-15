@@ -9,10 +9,10 @@ public enum LottoResult {
     FIRST("6개 일치 (2,000,000,000원) - ", 2_000_000_000);
 
 
-    String result;
-    int prize;
-    int count;
-    int profit;
+    private String result;
+    private int prize;
+    private int count;
+    private int profit;
 
     LottoResult(String result, int prize) {
         this.result = result;
@@ -28,8 +28,8 @@ public enum LottoResult {
         return result;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void updateCount() {
+        this.count++;
     }
     public int getCount() {
         return count;

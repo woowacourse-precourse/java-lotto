@@ -8,26 +8,25 @@ import static lotto.domain.LottoResult.*;
 
 public class LottoResultJudge {
     public static final LottoResultJudge getInstance = new LottoResultJudge();
-    private int count[] = new int[5];
 
     public void judgeLotto(List<Integer> userLotto, List<Integer> lotto, int bonus) {
         int correctNum = correspondNumber(userLotto, lotto);
         boolean correspondBonus = correspondBonus(userLotto, bonus);
 
         if (correctNum == 3) {
-            FIFTH.setCount(++count[4]);
+            FIFTH.updateCount();
         }
         if (correctNum == 4) {
-            FOURTH.setCount(++count[3]);
+            FOURTH.updateCount();
         }
         if (correctNum == 5) {
-            THIRD.setCount(++count[2]);
+            THIRD.updateCount();
         }
         if (correctNum == 5 && correspondBonus) {
-            SECOND.setCount(++count[1]);
+            SECOND.updateCount();
         }
         if (correctNum == 6) {
-            FIRST.setCount(++count[0]);
+            FIRST.updateCount();
         }
     }
 
