@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 public class StringToIntDataStructure {
     public static int convertStringToInteger(String str){
         try {
-            int ret = Integer.parseInt(str);
-            return ret;
+            return Integer.parseInt(str);
         } catch(NumberFormatException e){
             throw new IllegalArgumentException("[ERROR] 정수를 입력해야 합니다.");
         }
@@ -17,10 +16,9 @@ public class StringToIntDataStructure {
     public static List<Integer> splitStringByComma(String str){
         List<String> splitted = Arrays.asList(str.split(","));
         try{
-            List<Integer> ret = splitted.stream()
+            return splitted.stream()
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-            return ret;
         } catch(NumberFormatException e){
             throw new IllegalArgumentException("[ERROR] 당첨번호는 쉼표를 기준으로 구분되고 정수를 입력해야합니다.");
         }
