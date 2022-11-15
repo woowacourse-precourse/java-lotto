@@ -11,7 +11,8 @@
 - [O] 5개 일치한 경우, 보너스 번호를 확인 한다. Machine#checkBonusNumber
 - [O] 일치한 개수에 따라 등수를 매긴다. Machine#checkRanking
 - [O] 수익률을 계산한다. Machine#calculateYieldRate
-- [ ] 당첨 결과와 수익률을 출력한다. Console#result
+- [O] 당첨 결과와 수익률을 출력한다. Console#result
+- [ ] 출력 형식에 맞게 출력한다. Console#~
 
 ## 🚀 기능 요구 사항
 
@@ -107,5 +108,5 @@
 - [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
   API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-      List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다. List<Integer> numbers =
+      Randoms.pickUniqueNumbersInRange(1, 45, 6);

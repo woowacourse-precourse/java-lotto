@@ -33,7 +33,7 @@ public class Console {
     private int inputCellAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String line = camp.nextstep.edu.missionutils.Console.readLine();
-
+        System.out.println();
         int amount;
         try {
             amount = Integer.parseInt(line);
@@ -47,10 +47,11 @@ public class Console {
     public WinningNumber inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         Lotto lottoNumber = inputLottoNumber();
+        System.out.println();
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = inputBonusNumber();
-
+        System.out.println();
         return new WinningNumber(lottoNumber, bonusNumber);
     }
 
@@ -95,14 +96,22 @@ public class Console {
         System.out.println(rankingInfo(Rank.THIRD, rankings.get(Rank.THIRD)));
         System.out.println(rankingInfo(Rank.SECOND, rankings.get(Rank.SECOND)));
         System.out.println(rankingInfo(Rank.FIRST, rankings.get(Rank.FIRST)));
-        System.out.printf("총 수익률은 %f %%입니다.", yieldRate);
+        System.out.printf("총 수익률은 %.1f%%입니다.", yieldRate);
     }
 
     private String rankingInfo(Rank rank, int count) {
-        return rank.getName() + " (" + convertAmountNotation(rank.getPrize()) + ") - " + count + "개";
+        return rank.getName() + " (" + convertAmountNotation(rank.getPrize()) + "원) - " + count + "개";
     }
 
     private String convertAmountNotation(long money) {
         return String.valueOf(money).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
+    }
+
+    public void printBuyLottos(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
+        }
+        System.out.println();
     }
 }

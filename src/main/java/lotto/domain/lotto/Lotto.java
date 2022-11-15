@@ -35,9 +35,7 @@ public class Lotto {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Lotto.class.getSimpleName() + "[", "]")
-                .add("numbers=" + numbers)
-                .toString();
+        return numbers.toString();
     }
 
     public List<Integer> getNumbers() {

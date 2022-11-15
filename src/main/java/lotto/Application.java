@@ -16,13 +16,11 @@ public class Application {
 
         int count = console.inputCellCount();
         List<Lotto> lottos = machine.draw(count);
-        System.out.println(lottos);
+        console.printBuyLottos(lottos);
 
         WinningNumber winningNumber = console.inputWinningNumber();
-        System.out.println(winningNumber);
 
         Map<Rank, Integer> rankings = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
-        System.out.println(rankings);
 
         double yieldRate = machine.calculateYieldRate(rankings);
         console.printResult(rankings, yieldRate);
