@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 public class Profit {
 
-    private final int profit;
+    private final long profit;
     private final double earningsRate;
 
     public Profit(int purchaseCost, HitResult result) {
@@ -17,11 +17,11 @@ public class Profit {
         return earningsRate;
     }
 
-    public int calculateProfit(HitResult matchResults) {
-        int profit = 0;
+    public long calculateProfit(HitResult matchResults) {
+        long profit = 0;
         Map<Rank, Integer> result = matchResults.getHitResultExceptNone();
         for (Entry<Rank, Integer> entry : result.entrySet()) {
-            profit += entry.getKey().getPrize() * entry.getValue();
+            profit += (long) entry.getKey().getPrize() * entry.getValue();
         }
         return profit;
     }
