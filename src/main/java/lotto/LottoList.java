@@ -128,7 +128,7 @@ public class LottoList {
     private void checkNoDuplicateWinnningLotto(Lotto lotto) {
         Set<Integer> checkList = new HashSet<>(lotto.getNumbers());
         if (checkList.size() != lotto.getNumbers().size()) {
-            throw new IllegalArgumentException(PrintGameInfo.DUPLICATE);
+            throw new IllegalArgumentException(PrintGameInfo.ERROR + PrintGameInfo.DUPLICATE);
         }
     }
 
