@@ -1,28 +1,37 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoNumber;
-import lotto.domain.LottoTickets;
-import lotto.domain.Validator;
+import lotto.domain.*;
 import lotto.view.View;
+
+import java.util.List;
 
 public class LottoController {
     private static final View view = new View();
     private static final Validator  validator= new Validator();
     public void lottoGame(){
         String input = view.startLottoView();
-
-        try{
-        validator.validateInputAmount(input);
-        }catch(IllegalArgumentException e){
-            System.out.println(e.getMessage());
+        if(!validator.validateInputAmount(input)){
             return;
         }
-
-        int lottoCount  = Integer.parseInt(input) / 1000;
-        LottoTickets lottoTickets = new LottoTickets(lottoCount);
-
-        view.lottoListView(lottoCount, lottoTickets);
+        LottoTickets lottoTickets = purchaseLotto(input);
+        String winningNumber = view.winningNumberInputView();
+        if(!validator.validateWinningNumber(winningNumber)){
+            return;
+        }
+        Lotto WinningLotto = new Lotto(LottoNumber.winningNumberToList(winningNumber));
+        String bonusNumber = view.bonusNumberInputView();
+        if(!validator.validateBonusNumber(WinningLotto, bonusNumber)){
+            return;
+        }
+        int[] result = Calculator.calculateRank(lottoTickets, WinningLotto, Integer.parseInt(bonusNumber));
+        double rateOfReturn = Calculator.calculateRateOfReturn(result, lottoTickets.length());
+        view.resultView(result, rateOfReturn);
     }
 
+    private LottoTickets purchaseLotto(String input){
+        int lottoCount  = Integer.parseInt(input) / 1000;
+        LottoTickets lottoTickets = new LottoTickets(lottoCount);
+        view.lottoListView(lottoTickets);
+        return lottoTickets;
+    }
 }
