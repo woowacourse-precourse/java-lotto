@@ -1,5 +1,196 @@
 # 미션 - 로또
 
+## MVC 모델을 적용한 기능 설명
+
+아래 규칙을 지키며 MVC 패턴을 적용하려 노력했습니다.
+
+- [x] Model 내부에 Controller와 View에 관련된 코드가 있으면 안 된다.
+- [x] View는 내부에 Model의 코드만 있을 수 있고, Controller의 코드가 있으면 안 된다.
+- [x] View가 Model로부터 데이터를 받을 때는, 사용자마다 다르게 보여줘야 하는 데이터에 대해서만 받아야 한다.
+- [x] Controller 내부에는 Model과 View의 코드가 있어도 된다.
+- [x] View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.
+
+--- 
+
+- 저의 모델에서 각 Model이 매개변수로 받는 값과 getter를 통해 반환하는 필드를 나타낸 **도식**입니다.
+- 모든 숫자는 단순 예시이며, 아래에 자세한 설명을 함꼐 읽어주시면서 로직을 이해해 주시면 감사하겠습니다.
+
+![lotto](https://user-images.githubusercontent.com/107979804/201913373-b3b3cbc3-4d94-4cb5-a0cc-ef47aed6055d.png)
+
+### Model
+
+- Purchase 모델
+
+    - 총 구매액`totalBudget`을 받아 구매할 로또 티켓 수`ticketNumber`를 계산한다. `Purchase#calculateTicketNumber`
+    - 구매한 로또 티켓 수를 반환한다. `Purchase#getTicketNumber`
+
+- Player 모델
+
+    - 구매한 티켓 수`ticketNumber`를 입력받아 그 수만큼 사용자의 로또 번호를 랜덤으로 생성한다. `Player#createAllPlayerNumbers`
+    - 모든 사용자 로또 번호`allPlayerNumbers`를 반환한다. `Player#getAllPlayerNumbers`
+
+- Lotto 모델
+
+    - "1,2,3,4,5,6"과 같이 쉼표로 구분된 `numbers`를 입력값으로 받는다.
+    - 입력값의 유효성을 검증한다. `Lotto#validate`
+    - 입력값을 통해 생성된 6개의 당첨 번호`winningNumbers`를 반환한다. `Lotto#getWinningNumbers`
+
+- Bonus 모델
+
+    - 하나의 숫자`input`를 입력받는다.
+    - 입력값의 유효성을 검증한다. `Bonus#validateBonusNumber`
+    - `Lotto` 모델과 `Bonus` 모델을 통해 생성된 7개의 숫자 중 중복되는 숫자가 있는지 확인한다. `Bonus#validateDuplicates`
+    - 입력값을 통해 생성된 1개의 보너스 번호`bonusNumber`를 반환한다. `Bonus#getBonusNumber`
+
+- LottoResult 모델
+
+    - `winningNumbers`, `bonusNumber`, `allPlayerNumbers`를 입력값으로 받는다.
+    - `winningNumbers`와 `allPlayerNumbers`를 비교해 일치하는 숫자의 개수`match`를 계산한다. `LottoResult#calculateMatch`
+    - `bonusNumber`와 `allPlayerNumbers`를 비교해 보너스 숫자를 가지고 있는지 여부`hasBonus`를 판정한다. `LottoResult#hasBonusNumber`
+    - 위에서 나온 결과를 구매한 티켓의 개수만큼 반복해 리스트에 차례대로 저장한다.
+    - 각 사용자 로또 번호들이 갖고 있는 `match`의 수를 리스트`matches`로 만들어 반환한다. `LottoResult#getMatches`
+    - 각 사용자 로또 번호들의 `hasBonus`의 수를 리스트`hasBonusMatches`로 만들어 반환한다. `LottoResult#getBonusMatches`
+
+- Rank 모델
+
+    - 각 순위와 `match, hasBonus, cashPrize, count, printMessage`를 함께 관리한다.
+    - 새로운 게임을 시작할 때 `count`를 초기화한다. `Rank#initializeRankCount`
+    - `count`를 증가시킨다. `Rank#addCount`
+    - 각 필드를 반환한다. `Rank#getMatch` `Rank#getHasBonus` `Rank#getCashPrize` `Rank#getCount` `Rank#getPrintMessage`
+
+- PlayerRanking 모델
+
+    - `LottoResult` 모델에서 반환한 `matches`, `hasBonusMatches`를 입력값으로 받는다.
+    - 입력값을 `Rank`(Enum)의 인스턴스 변수인 `match`, `hasBonus`와 비교해 각 최종 순위를 찾는다. `PlayerRanking#findPlayerRanking`
+    - 최종 순위를 구매한 티켓의 개수만큼 반복해 리스트`playerRankings`에 자례대로 저장한다. `PlayerRanking#setPlayerRankings`
+    - 사용자의 티켓 별 최종 순위를 저장한 리스트`playerRankings`를 반환한다. `PlayerRanking#getPlayerRankings`
+
+- Statistics 모델
+
+    - 사용자의 티켓 별 최종 순위를 저장한 리스트`rankings`를 입력받는다.
+    - `Rank`(Enum)의 `count` 필드를 모두 0으로 초기화한다. `Statistics#initializeCountsInRank`
+    - `rankings` 리스트를 바탕으로 `Rank`(Enum)의 `count` 필드에 사용자의 당첨 통계를 집계한다. `Statistics#aggregateRankingStatistics`
+    - 당첨 통계를 반영한 `Rank`를 리스트 형태로 반환한다. `Statistics#getStatistics`
+
+- Yield 모델
+
+    - `totalBudget`, `Rank.values()`를 입력받아 총수익을 계산한다. `Yield#calculateTotalRevenue`
+    - `totalBudget`과 `totalRevenue`로 수익률을 계산한다. `Yield#calculateYield`
+    - 수익률을 반환한다. `Yield#getYield`
+
+### View
+
+- InputView
+
+    - User에게 입력값을 받는다. `InputView#getInput`
+
+- OutputView
+
+    - 예외 상황 발생 시 에러 문구를 출력한다. `OutputView#printErrorMessage`
+    - 총 구매액`totalBudget` 입력 문구를 출력한다. `OutputView#printCashInput`
+    - 구매하는 티켓의 개수`ticketNumber`를 출력한다. `OutputView#printTicketNumber`
+    - 당첨 번호 입력 문구를 출력한다. `OutputView#printWinningNumberInput`
+    - 보너스 번호 입력 문구를 출력한다. `OutputView#printBonusNumberInput`
+    - 사용자의 모든 로또 번호`allPlayerNumbers`를 구매한 티켓 수`ticketNumber` 만큼 반복해 출력한다. `OutputView#printAllPlayerNumbers`
+    - 사용자의 당첨 통계를 출력한다. `OutputView#printStatistics`
+    - 사용자의 수익률을 출력한다. `OutputView#printYield`
+
+### Controller
+
+- LottoController
+
+    - 로또를 구매한다. `LottoController#purchaseLottoTickets`
+    - 사용자의 로또 번호를 생성해 로또를 발행한다. `LottoController#publishPlayerNumbers`
+    - 당첨 번호와 보너스 번호를 결정한다. `LottoController#determineWinningNumbersAndBonusNumber`
+    - 사용자의 로또 당첨 결과를 집계한다. `LottoController#aggregateStatisticResults`
+    - 사용자의 수익률을 계산한다. `LottoController#calculateYield`
+
+---
+
+## 기능 목록
+
+**로또 구입**
+
+- [x] 로또 구입 금액을 입력 받는다. `Purchase`
+    - [x] 입력값이 숫자가 아니면 예외 처리한다. `Purchase#validateInputType()`
+    - [x] 구입 금액이 1,000원으로 나누어 떨어지지 않으면 예외 처리한다. `Purchase#verifyUnitOfBudget()`
+    - [x] 구입 금액이 1,000원보다 작으면 예외 처리한다. `Purchase#verifyMinimumBudget()`
+- [x] 구입 금액을 1,000원으로 나누어 발행할 로또 수를 구한다. `Purchase#calculateTicketNumber()`
+
+**로또 발행**
+
+- [x] 구입한 로또 수 만큼 랜덤으로 숫자를 생성한다. `Player#createAllPlayerNumbers(ticketNumber)`
+    - [x] 로또 번호는 오름차순으로 정렬한다. `Player#sortInAscendingOrders()`
+
+**당첨 번호 생성**
+
+- [x] 6개의 당첨 번호를 입력받는다. `InputView#getInput()`
+    - [x] 당첨번호 입력값에서 공백을 모두 제거한다. `Util#removeSpace()`
+    - [x] 쉼표를 기준으로 구분한다. `Lotto#separateStringByComma()`
+    - [x] 구분된 당첨번호의 개수가 6개가 아니면 예외 처리한다. `Lotto#validate()`
+    - [x] 구분된 당첨번호가 1~45 사이의 숫자가 아니면 예외 처리한다. `Util#verifyRangeOfLottoNumber()`
+    - [x] 중복되는 숫자가 있으면 예외 처리한다. `Lotto#validate()`
+- [x] 보너스 번호 1개를 입력받는다. `Bonus`
+    - [x] 보너스 번호가 1~45 사이의 숫자가 아니면 예외 처리한다. `Util#verifyRangeOfLottoNumber()`
+- [x] 보너스 번호가 당첨번호와 중복되면 예외 처리한다. `Bonus#validateDuplicates()`
+
+**로또 결과 계산**
+
+- [x] 당첨 번호, 나의 번호, 보너스 번호를 입력받는다. `LottoResult`
+- [x] 나의 번호와 당첨번호 중 겹치는 개수를 구한다. `LottoResult#calculateMatch()`
+- [x] 나의 번호에 보너스 번호가 포함되는 지 구한다. `LottoResult#hasBonusNumber()`
+
+**로또 순위 계산**
+
+- [x] 겹치는 번호 개수, 보너스 여부로 순위를 구한다. `PlayerRanking#findPlayerRanking()`
+
+**당첨 통계 계산**
+
+- [x] 나의 당첨 내역을 받아 각 순위별 개수를 구한다. `Statistics`
+- [x] 당첨 통계를 출력한다. `OutputView#printStatistics()`
+
+**수익률 계산**
+
+- [x] 상금 총액을 로또 총액으로 나누어 수익률을 구한다. `Yield#calculateYield()`
+- [x] 수익률을 소수 둘째 자리에서 반올림해 출력한다. `Util#formatYield()`
+
+
+- [x] 입출력 시에 함께 요구사항의 문구를 함께 출력한다. `Outputview`
+- [x] 예외 처리 시에 [ERROR]와 함께 에러 문구를 출력한다. `OutputView#printErrorMessage()`
+
+## 프로그래밍 요구사항
+
+- [x] 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
+- [x] else 예약어 및 switch/case를 쓰지 않는다.
+- [x] Java Enum을 적용한다.
+- [x] 도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
+    - [x] 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
+    - [x] 단위 테스트 작성이 익숙하지 않다면 test/java/lotto/LottoTest를 참고하여 학습한 후 테스트를 구현한다.
+- [x] 값을 하드코딩하지 않는다.
+- [x] 클래스는 상수, 멤버 변수, 생성자, 메소드 순으로 작성한다.
+- [x] 변수 이름에 자료형은 사용하지 않는다.
+- [x] Java 버전이 11인지 확인한다.
+- [x] 외부 라이브러리를 사용하지 않는다.
+- [x] Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다.
+    - [x] 블럭 들여쓰기: +4 스페이스
+    - [x] 열 제한: 120
+    - [x] 들여쓰기 지속은 최소 +8 스페이스
+    - [x] 수직 빈 줄
+- [x] indent depth를 3이 넘지 않도록 구현한다.
+- [x] 3항 연산자를 쓰지 않는다.
+- [x] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만든다.
+- [x] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
+
+## 체크 리스트
+
+- [x] 요구 사항에 명시된 출력값 형식을 지킨다.
+- [x] 모든 테스트가 성공하는지 확인한다.
+- [x] Pull Request에 회고록을 작성한 링크를 함께 보낸다.
+- [x] 지원 플랫폼에서 과제를 제출한다.
+- [x] 테스트를 작성하는 이유에 대해 나의 경험을 토대로 정리해본다.
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -179,14 +370,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
