@@ -72,6 +72,6 @@ public class OutputManager {
     }
 
     public void printRevenue(double revenue) {
-        System.out.println(OUTPUT_MESSAGE_REVENUE + revenue + "%입니다");
+        System.out.println(OUTPUT_MESSAGE_REVENUE + revenue + "%입니다.");
     }
 }

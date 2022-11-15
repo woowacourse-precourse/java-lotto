@@ -31,7 +31,7 @@ public class WinningStatistic {
 
         double revenue = (double)WinningAmount / (double)amount;
 
-        return Math.round(revenue * 10)/10.0;
+        return Math.round(revenue * 1000)/10.0;
     }
     private Long calcWinningAmount(List<Integer> winningResult) {
         long total = 0;
