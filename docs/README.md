@@ -15,7 +15,7 @@
 - ### 보너스 번호를 입력 받을 수 있다. [ # LottoProgram.getBonusNumber() ]
   - 보너슨 번호는 담청 번호와 중복되지 않는 1개의 번호이다.
 - ### 당첨 로또는 6개의 당첨 번호와 1개의 보너스 번호로 이루어진다. [ # WinningLotto ]
-- ## [ # LottoAccountant.calculateWinnings ] 당첨 내역을 계산할 수 있다.
+- ## [ # LottoAccountant.getLottoResults ] 당첨 내역을 계산할 수 있다.
   - 당첨 숫자와 사용자 로또 숫자의 일치하는 숫자 갯수를 계산할 수 있다. [ # LottoResultMaker.countLottoNumberMatch ]
   - 보너스 숫자와 사용자 로또 숫자 사이에 일치하는 숫자가 있는지 확인할 수 있다. [ # LottoResultMaker.countBonusNumberMatch ]
   [ # LottoWinnings ]
