@@ -1,9 +1,12 @@
 package lotto.controller;
 
 import java.util.List;
+import lotto.domain.GameResult;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoResult;
 import lotto.domain.NumberOfLottos;
+import lotto.domain.Ranking;
+import lotto.domain.RankingCalculator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,6 +18,7 @@ public class LottoController {
             LottoGenerator lottoGenerator = getLottos(numberOfLottos);
             OutputView.printLottos(numberOfLottos, lottoGenerator);
             LottoResult lottoResult = getLottoResult();
+            GameResult gameResult = getGameResult(lottoGenerator, lottoResult);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -36,5 +40,11 @@ public class LottoController {
         int bonusNumber = InputView.getBonusNumbers();
 
         return new LottoResult(winningNumbers, bonusNumber);
+    }
+
+    private GameResult getGameResult(LottoGenerator lottoGenerator, LottoResult lottoResult) {
+        List<Ranking> lottoRanking = RankingCalculator.getLottoRanking(lottoGenerator, lottoResult);
+
+        return new GameResult(lottoRanking);
     }
 }
