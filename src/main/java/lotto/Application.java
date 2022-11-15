@@ -1,4 +1,5 @@
 package lotto;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.internal.Doubles;
@@ -20,16 +21,21 @@ public class Application {
         List<Integer> myLotto = getMyBonusNumbers(getMyLottoNumbers());
 
         HashMap<String, List<Integer>> result = new HashMap<>();
-        List<Integer> myLottoPriceList = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        List<Integer> myLottoPriceList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         List<Integer> prize = new ArrayList<>(Arrays.asList(0));
 
         result.put("myLotto", myLotto);
         result.put("myLottoPriceList", myLottoPriceList);
         result.put("prize", prize);
 
-        for (Lotto l: lottos) {
+        for (Lotto l : lottos) {
             l.checkWinLotto(result);
         }
+        
+        List<Integer> lottoResult = result.get("myLottoPriceList");
+        List<Integer> prizeResult = result.get("prize");
+
+        printResult(lottoResult, prizeResult);
 
     }
 
@@ -61,7 +67,7 @@ public class Application {
 
     public static boolean validateMoneyRange(String money) {
         // 오류가 있으면 true
-        if(Integer.parseInt(money) % 1000 != 0) {
+        if (Integer.parseInt(money) % 1000 != 0) {
             return true;
         }
 
@@ -75,7 +81,7 @@ public class Application {
     }
 
     public static void printLottos(List<Lotto> lottos) {
-        for (Lotto lotto: lottos) {
+        for (Lotto lotto : lottos) {
             lotto.printLotto();
         }
     }
@@ -137,7 +143,7 @@ public class Application {
     public static boolean validateMyLottoElementDuplication(String[] lotto) {
         List<String> tempLotto = new ArrayList<>();
 
-        for (String s: lotto) {
+        for (String s : lotto) {
             if (tempLotto.contains(s)) {
                 return true;
             }
@@ -195,6 +201,22 @@ public class Application {
         }
 
         return false;
+    }
+
+    public static void printResult(List<Integer> lottoResult, List<Integer> prizeResult) {
+        System.out.println(String.format(
+                "당첨 통계" + "\n"
+                        + "3개 일치 (5,000원) - %d" + "\n"
+                        + "4개 일치 (50,000원) - %d" + "\n"
+                        + "5개 일치 (1,500,000원) - %d" + "\n"
+                        + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d" + "\n"
+                        + "6개 일치 (2,000,000,000원) - %d" + "\n"
+                , lottoResult.get(0),
+                lottoResult.get(1),
+                lottoResult.get(2),
+                lottoResult.get(4),
+                lottoResult.get(3))
+        );
     }
 
 
