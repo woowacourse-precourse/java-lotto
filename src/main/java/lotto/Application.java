@@ -32,7 +32,7 @@ public class Application {
         try {
             purchase_price = Integer.parseInt(temp);
         }
-        catch(NumberFormatException e){
+        catch(IllegalArgumentException e){
             System.out.println("[ERROR] '숫자' 를 입력해 주세요.");
             throw new NoSuchElementException("[ERROR] '숫자' 를 입력해 주세요.");
         }
