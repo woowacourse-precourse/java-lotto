@@ -29,19 +29,19 @@ public class Application {
 
 
         // 당첨 번호 입력 받기 ( include validation )
-
+        System.out.println("당첨 번호를 입력해 주세요.");
         LottoWinningCreate lottoWinningCreate = new LottoWinningCreate(readLine());
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        lottoWinningCreate.setBonusNumber(readLine());
         LottoManager lottoManager = new LottoManager(lottoWinningCreate);
 
         // Lotto create
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        List<Integer> results = lottos.stream().map(lotto -> lottoManager.evaluate(lotto)).collect(Collectors.toList());
-        double earningRate = (double) results.stream().reduce(0, Integer::sum) / purchaseAmount;
-
-        System.out.println("총 수익률은 " + earningRate + "%입니다.");
-
+        lottos.forEach(lottoManager::evaluate);
+        lottoManager.print();
 
     }
 }
