@@ -40,4 +40,10 @@ public class WinningStatistics {
         }
     }
 
+    private int getStatistics(List<Integer> lotto,List<Integer> winningNumber, int bonus) {
+        int winningScore = getWinningScore(lotto,winningNumber);
+        int bonusScore = getBonusScore(lotto,bonus);
+        return winningScore * 1000 + bonusScore * 100;
+    }
+
 }
