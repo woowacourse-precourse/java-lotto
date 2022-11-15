@@ -54,6 +54,19 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 최대_수익률_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "총 수익률은 200,000,000.0%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
