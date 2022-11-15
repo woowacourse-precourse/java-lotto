@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -7,7 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
     static final int SMALLEST_LOTTO_NUMBER = 1;
     static final int BIGGEST_LOTTO_NUMBER = 45;
     static final int LOTTO_NUMBER_COUNT = 6;
@@ -26,13 +28,14 @@ public class Lotto {
     }
 
     public Lotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(SMALLEST_LOTTO_NUMBER, BIGGEST_LOTTO_NUMBER,
-                LOTTO_NUMBER_COUNT);
+        List<Integer> numbers = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(SMALLEST_LOTTO_NUMBER, BIGGEST_LOTTO_NUMBER,
+                        LOTTO_NUMBER_COUNT));
         countValidate(numbers);
         duplicateValidate(numbers);
         duplicateValidate(numbers);
         inRangeValidate(numbers);
-        numbers.sort(Comparator.naturalOrder());
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
