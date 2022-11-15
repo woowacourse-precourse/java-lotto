@@ -13,6 +13,16 @@ public class UserInputWinningNumberService {
     OutputView outputView = new OutputView();
     UserInputLottoInfoException userInputLottoInfoException = new UserInputLottoInfoException();
 
+    public List<Integer> setWinningNumbers() {
+        outputView.printWinningNumberQuestion();
+        String[] winningNumbers = inputView.inputWinningNumber();
+        checkThisWinningNumberIsValid(winningNumbers);
+        List<Integer> winningNumberList = new ArrayList<>();
+        for (String number : winningNumbers) {
+            winningNumberList.add(Integer.parseInt(number));
+        }
+        return winningNumberList;
+    }
     public void checkThisWinningNumberIsValid(String[] winningNumbers) {
         userInputLottoInfoException.validate(winningNumbers, "로또 번호의 개수는 6개 입니다.");
         for (String s : winningNumbers) {
