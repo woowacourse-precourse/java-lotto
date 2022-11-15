@@ -1,5 +1,3 @@
-package domain;
-
 import lotto.Lotto;
 import lotto.WinningTicket;
 import org.junit.jupiter.api.DisplayName;
