@@ -10,5 +10,13 @@ public class PurchaseAmount {
         }
     }
 
+    public static void exceptionNoNumber(String purchaseAmount) {
+        char check[] = purchaseAmount.toCharArray();
+        for (int i = 0; i < check.length; i++) {
+            if (!Character.isDigit(check[i])) {
+                throw new IllegalArgumentException(Error.WRONG_PURCHASE_AMOUNT_NUM.getMsg());
+            }
+        }
+    }
 
 }
