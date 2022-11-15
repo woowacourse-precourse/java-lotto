@@ -4,12 +4,12 @@ import lotto.utils.ErrorMessage;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Statistics {
 
-    private final Map<Rank, BigDecimal> rankCount = new HashMap<>();
+    private final Map<Rank, BigDecimal> rankCount = new LinkedHashMap<>();
     private BigDecimal prize = new BigDecimal(0);
     private BigDecimal yield = new BigDecimal(0);
 
