@@ -11,13 +11,23 @@ public class LottoSystem {
     }
 
     public void setWinNumbers(List<Integer> winNumbers) {
+        validateWinNumbers(winNumbers);
         this.winNumbers = winNumbers;
     }
 
     public void setBonusNumbers(int bonusNumbers) {
+        validateBonusNumbers(bonusNumbers);
         this.bonusNumbers = bonusNumbers;
     }
 
+    private void validateWinNumbers(List<Integer> winNumbers){
+        Lotto lotto = new Lotto(winNumbers);
+    }
+    private void validateBonusNumbers(int bonusNumbers){
+        if(bonusNumbers < Lotto.NUMBER_MIN || bonusNumbers > Lotto.NUMBER_MAX){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
 
     public WinInfo judgeWin(Lotto target) {
         int matchedCnt = getMatchedCnt(target.getNumbers());

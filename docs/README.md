@@ -6,11 +6,11 @@
     - [ ] 잘못된 값을 입력할 경우 "[ERROR]" 로 시작하는 메세지 출력 후 종료
 
 
-- [ ] 로또의 당첨번호,보너스번호를 가지고 당첨여부를 알려주는 클래스 => LottoSystem
-    - [ ] validation 추가
-      - [ ] 당첨 번호 설정 시에 개수,범위,중복 확인(Lotto에 위임)
+- [x] 로또의 당첨번호,보너스번호를 가지고 당첨여부를 알려주는 클래스 => LottoSystem
+    - [x] validation 추가
+      - [x] 당첨 번호 설정 시에 개수,범위,중복 확인(Lotto에 위임)
         - IllegalArgumentException
-      - [ ] 보너스번호 범위가 1~45사이인지
+      - [x] 보너스번호 범위가 1~45사이인지
         - IllegalArgumentException, message="[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
     - [x] 당첨번호, 보너스번호 설정
     - [x] 입력받은 로또와 비교 후 WinInfo 반환
