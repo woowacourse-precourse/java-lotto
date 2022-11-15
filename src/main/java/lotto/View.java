@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import lotto.LottoEnum.LottoReward;
