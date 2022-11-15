@@ -18,7 +18,7 @@ public class LottoController {
         lottoProcess = new LottoProcess(lottos, user.getWinningNumbers(), user.getBonusNumber(), user.getMoney());
         ranks = lottoProcess.decideRanks();
         lottoProcess.printStatistics(lottoProcess.countRanks(ranks));
-        lottoProcess.calculateRateOfReturn(lottoProcess.countRanks(ranks));
+        lottoProcess.printCalculateRateOfReturn(lottoProcess.countRanks(ranks));
     }
 
     private List<List<Integer>> inputProcess() {

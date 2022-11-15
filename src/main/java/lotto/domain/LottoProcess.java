@@ -83,7 +83,7 @@ public class LottoProcess {
         }
     }
 
-    public void calculateRateOfReturn(Map<String, Integer> ranking) {
+    public void printCalculateRateOfReturn(Map<String, Integer> ranking) {
         float totalPrize = START_TOTAL_PRIZE;
 
         for (Rank rank : Rank.values()) {
