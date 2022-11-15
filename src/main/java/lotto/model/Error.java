@@ -2,6 +2,7 @@ package lotto.model;
 
 public enum Error {
 
+    NUMBER_FORMAT_ERROR("[ERROR] 입력값은 1부터 45 사이의 숫자여야 합니다."),
     PRICE_UNIT_ERROR("[ERROR] 구입 금액은 1,000원 단위여야 합니다."),
     LOTTO_SIZE_ERROR("[ERROR] 로또 번호는 6개의 숫자여야 합니다."),
     LOTTO_RANGE_ERROR("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),

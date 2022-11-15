@@ -6,11 +6,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.model.Error.NUMBER_FORMAT_ERROR;
+
 public class InputView {
 
     public static int inputPrice() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        int input = 0;
+        try {
+            input = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(NUMBER_FORMAT_ERROR.getMessage());
+        }
+        return input;
     }
 
     public static List<Integer> inputWinNumbers() {
