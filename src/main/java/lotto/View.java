@@ -7,20 +7,18 @@ import java.util.*;
 import static lotto.Rank.*;
 
 public class View {
-
     private final static int LOTTO_PRICE = 1000;
     private final static int LOTTO_NUMBER_AMOUNT = 6;
 
     public int enterMoneyFromCustomer() {
         System.out.println("구입금액을 입력해 주세요.");
-        int money;
+        int money = 0;
         try {
             money = Integer.parseInt(Console.readLine());
-        }catch(NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 구입금액입니다.");
+            validateMoney(money);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 잘못된 형식의 입력입니다");
         }
-        validateMoney(money);
-
         System.out.println();
         return money;
     }
