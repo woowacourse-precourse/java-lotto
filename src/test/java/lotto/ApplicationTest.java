@@ -59,6 +59,15 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @Test
+    void 로또번호_자동생성_테스트() {
+        //given
+        int price = 8000;
+        //when
+        List<List<Integer>> lists = InputUser.lottoNumber(price);
+        //then
+        assertThat(lists.size()).isEqualTo(8000 / 1000);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
