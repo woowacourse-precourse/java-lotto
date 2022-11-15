@@ -1,6 +1,9 @@
 package lotto;
 
-import java.util.List;
+import static lotto.Enum.Errors.*;
+import static lotto.Enum.Values.*;
+
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,9 +15,31 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_CORRECT_SIZE.getName());
+        }
+        checkDuplicatedNumber(numbers);
+        isCorrectRange(numbers);
+    }
+
+    private void isCorrectRange(List<Integer> numbers) {
+        numbers.stream().forEach(x -> {
+            if(x < MIN_VALUE.getValue() || x > MAX_VALUE.getValue()){
+                throw new IllegalArgumentException(NOT_CORRECT_RANGE.getName());
+            }
+        });
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    private void checkDuplicatedNumber(List<Integer> numbers) {
+        if(numbers.stream().distinct().count() != 6) {
+            throw new IllegalArgumentException(IS_NOT_UNIQUE.getName());
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void printSortedNumbers() {
+        System.out.println(numbers);
+    }
 }
