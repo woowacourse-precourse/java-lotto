@@ -60,4 +60,54 @@ public class LottoResultTest {
         assertThat(lottoResult.getTotalEarnedMoney()).isEqualTo(totalPrice);
 
     }
+
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void getEarnedRatio() {
+
+        List<Lotto> lottos = new ArrayList<>();
+
+        lottos.add(new Lotto(List.of(5, 7, 9, 11, 13, 15)));
+        lottos.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        lottos.add(new Lotto(List.of(3, 4, 6, 7, 9, 10)));
+
+        LotteryTickets lotteryTickets = new LotteryTickets(0);
+        lotteryTickets.setLottoTickets(lottos);
+
+        WinningNumber winningNumber = new WinningNumber(List.of(5, 7, 9, 3, 4, 30));
+        winningNumber.setBonusNum(8);
+
+        LottoResult lottoResult = new LottoResult();
+
+        lottoResult.calculateLottoRanks(lotteryTickets, winningNumber);
+
+        assertThat(String.format("%.1f", lottoResult.calcEarnedRatio(3000) * 100)).isEqualTo("1833.3");
+
+    }
+
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void getEarnedRatio2() {
+
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(7, 8, 9, 10, 11, 12)));
+        lottos.add(new Lotto(List.of(13, 14, 15, 16, 17, 18)));
+        lottos.add(new Lotto(List.of(19, 20, 21, 22, 23, 24)));
+        lottos.add(new Lotto(List.of(25, 26, 27, 28, 29, 30)));
+        lottos.add(new Lotto(List.of(31, 32, 33, 34, 35, 36)));
+
+        LotteryTickets lotteryTickets = new LotteryTickets(0);
+        lotteryTickets.setLottoTickets(lottos);
+
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 7, 8, 9));
+        winningNumber.setBonusNum(33);
+
+        LottoResult lottoResult = new LottoResult();
+
+        lottoResult.calculateLottoRanks(lotteryTickets, winningNumber);
+
+        assertThat(String.format("%.1f", lottoResult.calcEarnedRatio(6000) * 100)).isEqualTo("166.7");
+
+    }
 }
