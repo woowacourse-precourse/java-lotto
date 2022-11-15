@@ -18,12 +18,10 @@ public class UserLottoInfo {
 
     private void validateLottoPrice(String lottoPrice) {
         if (!isLottoPriceNumeric(lottoPrice)) {
-            printErrorMessage(INVALID_INPUT_PRICE.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_PRICE.toString());
         }
         if (!isLottoPriceMultiplesof1000(Integer.parseInt(lottoPrice))) {
-            printErrorMessage(INVALID_INPUT_PRICE.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_PRICE.toString());
         }
     }
 

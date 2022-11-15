@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import static lotto.ui.ConsoleMessage.*;
-import static lotto.ui.LottoConsole.*;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -24,8 +23,7 @@ public class WinningLotto {
     private void validateInputFormat(String winningLotto) {
         if (!winningLotto
                 .matches("[1-9]?[0-9]\\,[1-9]?[0-9]\\,[1-9]?[0-9]\\,[1-9]?[0-9]\\,[1-9]?[0-9]\\,[1-9]?[0-9]")) {
-            printErrorMessage(INVALID_INPUT_WINNING_LOTTO.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_WINNING_LOTTO.toString());
         }
     }
 
