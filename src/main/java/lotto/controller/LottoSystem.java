@@ -49,9 +49,12 @@ public class LottoSystem {
         Lotto wonLotto = (Lotto) wonLottoInfo.get(0);
         int bonusNumber = (int) wonLottoInfo.get(1);
 
-        Calculator calculator = new Calculator(wonLotto, bonusNumber);
+        Calculator calculator = new Calculator(wonLotto, bonusNumber, userLottos);
         int[] ranks = calculator.countLottoRanks(userLottos);
         outputView.outputLottoResult(ranks);
+
+        float earningRate = calculator.calculateEarningRate();
+        System.out.println(earningRate);
     }
 
     private List<Lotto> createLotto(int money) {
