@@ -38,7 +38,7 @@ public class Application {
             PrintGameInfo.lottoResultInfo(userLotto);
             PrintGameInfo.lottoProfitInfo(userLotto.getProfit());
         } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
+            System.out.println(exception.getMessage());
         }
 
     }
