@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.enums.BuyerPrint;
 import lotto.domain.enums.PurchaseAmountUnit;
 import lotto.domain.enums.WinningAmount;
 
@@ -23,9 +21,6 @@ public class Buyer {
     }
 
     public void printLotto() {
-        String lottoCount = String.valueOf(purchaseAmountUnit.purchaseAmount(lottoAmount));
-
-        System.out.println(lottoCount + BuyerPrint.PRINT_LOTTO_DATA);
         for (int i = 0; i < purchaseLotto.size(); i++) {
             purchaseLotto.get(i).printLottoNumber();
         }

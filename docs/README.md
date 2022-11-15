@@ -34,8 +34,9 @@
 - [x] 로또 번호를 출력 한다. - Lotto.printLottoNumber()
 - [x] 구매자가 발행한 로또 번호 를 오름 차순으로 정렬한다. - Buyer#sortAllLottoNumber()
 - [x] 로또 번호 를 오름 차순으로 정렬한다. - Lotto#sortByNumber()
-- [x] 당첨 내역을 출력한다. - Judgment#printResult()
-- [ ] 수익률을 출력한다. - Judgment#printResult()
+- [x] 당첨 내역을 출력한다. - Buyer#printResult()
+- [ ] 예외 발생시 에러 문구를 출력해야한다.
+- [] 수익률을 출력한다.
 ---
 ## 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
