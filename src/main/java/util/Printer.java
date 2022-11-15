@@ -24,12 +24,12 @@ public class Printer {
     public void result() {
         System.out.printf("당첨 통계\n" +
                 "---\n" +
-                "3개 일치 (5,000원) : %d개\n" +
-                "4개 일치 (50,000원) : %d개\n" +
-                "5개 일치 (1,500,000원) : %d개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) : %d개\n" +
-                "6개 일치 (2,000,000,000원) : %d개\n" +
-                "총 수익률은 %lf.1% 입니다.", resultList.get(RankType.FIFTH.ordinal()),
+                "3개 일치 (5,000원) - %d개\n" +
+                "4개 일치 (50,000원) - %d개\n" +
+                "5개 일치 (1,500,000원) - %d개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
+                "6개 일치 (2,000,000,000원) - %d개\n" +
+                "총 수익률은 %.1f%%입니다.", resultList.get(RankType.FIFTH.ordinal()),
                 resultList.get(RankType.FOURTH.ordinal()),
                 resultList.get(RankType.THIRD.ordinal()),
                 resultList.get(RankType.SECCOND.ordinal()),
@@ -49,6 +49,6 @@ public class Printer {
                 resultList.get(RankType.THIRD.ordinal())*THIRD_INCOME+
                 resultList.get(RankType.SECCOND.ordinal())*SECCOND_INCOME+
                 resultList.get(RankType.FIRST.ordinal())*FIRST_INCOME;
-        return (double)sumofincome / money;
+        return (double)sumofincome / money * 100.0;
     }
 }
