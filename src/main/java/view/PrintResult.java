@@ -2,6 +2,7 @@ package view;
 
 import lotto.NumberMatch;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class PrintResult {
     }
 
     public static void printLottoNumber(List<Integer> lottoNumber){
+        lottoNumber.sort(Comparator.naturalOrder());
         System.out.println(lottoNumber);
     }
 
