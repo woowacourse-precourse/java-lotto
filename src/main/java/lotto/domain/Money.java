@@ -11,8 +11,12 @@ public class Money {
     private int money;
 
     public Money(String inputmoney) {
-
-        this.money = convertToInt(inputmoney);
+        try {
+            this.money = convertToInt(inputmoney);
+        }catch(IllegalArgumentException e){
+            System.out.println(ERROR_INPUT_MONEY);
+            throw new NoSuchElementException(ERROR_INPUT_MONEY);
+        }
         validateMoney(this.money);
     }
 
@@ -28,8 +32,7 @@ public class Money {
         try {
             return Integer.parseInt(money);
         } catch (NumberFormatException e) {
-            System.out.println(ERROR_INPUT_MONEY);
-            throw new NoSuchElementException(ERROR_INPUT_MONEY);
+            throw new IllegalArgumentException(ERROR_INPUT_MONEY);
         }
     }
 
