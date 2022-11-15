@@ -1,6 +1,6 @@
 package lotto;
 
-public enum RankEnum {
+public enum Rank {
 
     RANK1(2_000_000_000, 6, false, 0),
     RANK2(30_000_000, 5, true, 1),
@@ -14,15 +14,15 @@ public enum RankEnum {
     private final boolean isBonus;
     private final int index;
 
-    RankEnum(int prize, int match, boolean isBonus, int index) {
+    Rank(int prize, int match, boolean isBonus, int index) {
         this.prize = prize;
         this.match = match;
         this.isBonus = isBonus;
         this.index = index;
     }
 
-    public static RankEnum getRanking(int match, boolean isBonus) {
-        for (RankEnum rank : RankEnum.values()) {
+    public static Rank getRanking(int match, boolean isBonus) {
+        for (Rank rank : Rank.values()) {
             if (rank.match == match && rank.isBonus == isBonus) {
                 return rank;
             }

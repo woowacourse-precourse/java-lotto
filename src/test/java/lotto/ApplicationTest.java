@@ -94,17 +94,17 @@ class ApplicationTest extends NsTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         String bonus = "7";
 
-        Map<RankEnum, Integer> history = calculateWinning(lottoTickets, winningNumbers, bonus);
+        Map<Rank, Integer> history = calculateWinning(lottoTickets, winningNumbers, bonus);
 
-        Map<RankEnum, Integer> result = new HashMap<>();
-        result.put(RankEnum.RANK1, 1);
-        result.put(RankEnum.RANK2, 1);
-        result.put(RankEnum.RANK3, 2);
-        result.put(RankEnum.RANK4, 0);
-        result.put(RankEnum.RANK5, 0);
-        result.put(RankEnum.NOTHING, 1);
+        Map<Rank, Integer> result = new HashMap<>();
+        result.put(Rank.RANK1, 1);
+        result.put(Rank.RANK2, 1);
+        result.put(Rank.RANK3, 2);
+        result.put(Rank.RANK4, 0);
+        result.put(Rank.RANK5, 0);
+        result.put(Rank.NOTHING, 1);
 
-        for (RankEnum rank : history.keySet()){
+        for (Rank rank : history.keySet()){
             assertThat(history.get(rank)).isEqualTo(result.get(rank));
         }
     }

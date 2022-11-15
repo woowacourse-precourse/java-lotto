@@ -20,7 +20,7 @@ public class OutputView {
         }
     }
 
-    public static void showWinningHistory(Map<RankEnum, Integer> winningHistory){
+    public static void showWinningHistory(Map<Rank, Integer> winningHistory){
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(

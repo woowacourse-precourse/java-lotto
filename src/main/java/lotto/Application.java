@@ -18,22 +18,22 @@ public class Application {
         String purchaseAmount = InputView.getPurchaseAmount();
 
         int lottoCount = OutputView.getLottoCount(purchaseAmount, UNIT);
-        List<Lotto> userLotto = publishLotto(lottoCount);
-        OutputView.showLottoSheets(userLotto);
+        List<Lotto> lottoTickets = publishLotto(lottoCount);
+        OutputView.showLottoSheets(lottoTickets);
 
         List<Integer> winningNumbers = InputView.getWinningNumber();
         String bonusNumber = InputView.getBonusNumber();
-        Map<RankEnum, Integer> winningHistory
-                = calculateWinning(userLotto, winningNumbers, bonusNumber);
+        Map<Rank, Integer> winningHistory
+                = calculateWinning(lottoTickets, winningNumbers, bonusNumber);
         OutputView.showWinningHistory(winningHistory);
     }
 
     private static List<Lotto> publishLotto(int lottoCount) {
-        List<Lotto> userLotto = new ArrayList<>();
+        List<Lotto> lottoTickets = new ArrayList<>();
         for (int count = 0; count < lottoCount; count++) {
-            userLotto.add(createLotto());
+            lottoTickets.add(createLotto());
         }
-        return userLotto;
+        return lottoTickets;
     }
 
     private static Lotto createLotto() {
@@ -43,21 +43,21 @@ public class Application {
         return lotto;
     }
 
-    public static Map<RankEnum, Integer> calculateWinning(List<Lotto> lottoTickets,
+    public static Map<Rank, Integer> calculateWinning(List<Lotto> lottoTickets,
             List<Integer> winningNumbers, String bonusNumber) {
-        Map<RankEnum, Integer> winningHistory = initWinningHistory();
+        Map<Rank, Integer> winningHistory = initWinningHistory();
         for (int count = 0; count < lottoTickets.size(); count++) {
             int match = matchCount(lottoTickets.get(count), winningNumbers);
             boolean isBonus = matchBonus(lottoTickets.get(count), bonusNumber);
-            RankEnum rank = RankEnum.getRanking(match, isBonus);
+            Rank rank = Rank.getRanking(match, isBonus);
             winningHistory.put(rank, winningHistory.get(rank) + 1);
         }
         return winningHistory;
     }
 
-    private static Map<RankEnum, Integer> initWinningHistory() {
-        Map<RankEnum, Integer> winningHistory = new HashMap<>();
-        Arrays.stream(RankEnum.values())
+    private static Map<Rank, Integer> initWinningHistory() {
+        Map<Rank, Integer> winningHistory = new HashMap<>();
+        Arrays.stream(Rank.values())
                 .map(history -> winningHistory.put(history, 0)).collect(Collectors.toList());
         return winningHistory;
     }
