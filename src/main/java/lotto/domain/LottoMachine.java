@@ -26,6 +26,15 @@ public class LottoMachine {
     }
 
     public Map<Rank, Integer> makeRankResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
+        Map<Rank, Integer> rankResult = createRankMap();
+        for (int i = 0; i < lottos.size(); i++) {
+            Rank rank = lottos.get(i).matchRank(winningNumber, bonusNumber);
+            rankResult.put(rank, rankResult.get(rank) + 1);
+        }
+        return rankResult;
+    }
+
+    private Map<Rank, Integer> createRankMap() {
         Map<Rank, Integer> rankResult = new LinkedHashMap<Rank, Integer>() {
             {
                 put(Rank.FIFTH, 0);
@@ -36,10 +45,6 @@ public class LottoMachine {
                 put(Rank.NOTHING, 0);
             }
         };
-        for (int i = 0; i < lottos.size(); i++) {
-            Rank rank = lottos.get(i).matchRank(winningNumber, bonusNumber);
-            rankResult.put(rank, rankResult.get(rank) + 1);
-        }
         return rankResult;
     }
 }
