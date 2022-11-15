@@ -18,9 +18,9 @@ public class LottoMachine {
         inputCash();
         inputWinningNumbers();
         inputBonusNumber();
-        checkLottoNumber();
-        
-        calculateProfitRate();
+        countLottoNumber();
+
+        printProfitRate();
     }
 
     public void inputCash() {
@@ -46,9 +46,9 @@ public class LottoMachine {
     }
 
     /**
-     * 로또 당첨 번호 개수 계산
+     * 로또 당첨 번호 개수 체크
      */
-    public void checkLottoNumber() {
+    public void countLottoNumber() {
         int winningCount;
         boolean isHavingBonus;
         for(Lotto lotto : lottos){
@@ -58,11 +58,16 @@ public class LottoMachine {
         }
     }
 
+    /**
+     * 당첨 내역을 출력
+     */
+    public void printWinningDataToPrize(){
 
+    }
     /**
      * 수익률 계산
      */
-    public void calculateProfitRate(){
+    public void printProfitRate(){
         int money = 0;
     }
 }

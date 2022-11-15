@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import data.InputGuideData;
 
 public class LottoMaker {
-    private static final int price = 1000;
+    private static final int LOTTO_PRICE = 1000;
     private int money;
     private void validate(int money){
-        if(money % price != 0){
+        if(money % LOTTO_PRICE != 0){
             throw new IllegalArgumentException();
         }
     }
@@ -18,7 +18,7 @@ public class LottoMaker {
     public LottoMaker(String money) {
         this.money = Integer.parseInt(money);
         validate(this.money);
-        System.out.print(this.money / price);
+        System.out.print(this.money / LOTTO_PRICE);
         InputGuideData.printData("BUY_LOTTO");
     }
 
@@ -28,7 +28,7 @@ public class LottoMaker {
      * @return 발행된 메서드 리턴
      */
     public List<Lotto> publishLotto(){
-        int amount = money / price;
+        int amount = money / LOTTO_PRICE;
         List<Lotto> lottos = new ArrayList<>();
 
         for(int lotto = 0; lotto < amount; lotto ++ ){
