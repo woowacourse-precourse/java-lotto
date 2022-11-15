@@ -1,11 +1,13 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Institution {
 
+    private final DecimalFormat yieldFormatter = new DecimalFormat("#.##%");
     private static Institution institution = new Institution();
 
     private Institution() {};
@@ -69,9 +71,20 @@ public class Institution {
         return prizeMoneySum;
     }
 
+    public Double calculateYield(Integer prizeMoneySum, Integer userMoney) {
+        Double yield = (prizeMoneySum.doubleValue()/userMoney);
+
+        return yield;
+    }
+
     public void announceWinnerResult(List<PrizeWinner> prizeWinners, User user) {
         for(PrizeWinner prizeWinner : prizeWinners) {
             System.out.println(prizeWinner.toString());
         }
+
+        Integer prizeMoneySum = calculateSumOfPrizeMoney(prizeWinners);
+        Double yield = calculateYield(prizeMoneySum, user.getMoney());
+
+        System.out.println("총 수익률은 " + yieldFormatter.format(yield) +"입니다.");
     }
 }
