@@ -6,19 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.common.constant.NumberConstant.LOTTO_BONUS_LENGTH;
-import static lotto.domain.LottoResult.FOUR;
-import static lotto.domain.LottoResult.THREE;
-import static lotto.domain.LottoResult.FIVE;
-import static lotto.domain.LottoResult.FIVE_BONUS;
-import static lotto.domain.LottoResult.SIX;
-import static lotto.domain.LottoResult.LOSING;
+import static lotto.domain.LottoResult.*;
 
 public class LottoStatistics {
     private static final int numberThree = 3;
-    private static final int numberFour = 4;
     private static final int numberFive = 5;
-    private static final int numberSix = 6;
 
     private static final int lottoSixNumber = 0;
     private static final int lottoBonusNumber = 1;
@@ -63,12 +55,13 @@ public class LottoStatistics {
         return count;
     }
 
-    protected LottoResult findRanking(List<Integer> count, Lotto oneLottoTicket){
-        if (count.get(lottoSixNumber) == numberThree) oneLottoTicket.setLottoResult(THREE);
-        if (count.get(lottoSixNumber) == numberFour) oneLottoTicket.setLottoResult(FOUR);
-        if (count.get(lottoSixNumber) == numberFive && count.get(lottoBonusNumber) == 0) oneLottoTicket.setLottoResult(FIVE);
-        if (count.get(lottoSixNumber) == numberFive && count.get(lottoBonusNumber)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
-        if (count.get(lottoSixNumber) == numberSix) oneLottoTicket.setLottoResult(SIX);
+    public LottoResult findRanking(List<Integer> count, Lotto oneLottoTicket){
+        if (count.get(lottoSixNumber) == numberFive){
+            oneLottoTicket.setLottoResult(fromBonus(count.get(lottoBonusNumber)));
+        }
+        if (count.get(lottoSixNumber) >= numberThree && count.get(lottoSixNumber) != numberFive){
+            oneLottoTicket.setLottoResult(fromSix(count.get(lottoSixNumber)));
+        }
         return oneLottoTicket.getLottoResult();
     }
 
