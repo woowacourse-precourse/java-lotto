@@ -11,10 +11,22 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        Application.lotteryValidationCheck(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    public Prize getPrize(List<Integer> winningNumbers, int bonus) {
+        int counter = 0;
+        for (Integer num : numbers) {
+            if (winningNumbers.contains(num)) {
+                counter++;
+            }
+        }
+        boolean bonusRight = numbers.contains(bonus);
+        return Prize.getPrize(counter, bonusRight);
+    }
+
+    public String toString() {
+        return numbers.toString();
+    }
 }
+
