@@ -1,8 +1,13 @@
 package lotto.view;
 
+import lotto.controller.Result;
 import lotto.domain.Lotto;
+import lotto.domain.Win;
 
 import java.util.List;
+import java.util.Map;
+
+import static lotto.domain.Win.*;
 
 public class Messages {
     // Inputs
@@ -12,6 +17,14 @@ public class Messages {
 
     // Results
     private static final String RESULT_BUY_LOTTO = "개를 구매했습니다.";
+    private static final String RESULT_LOTTO_WIN = "당첨 통계\n" +
+            "---\n" +
+            "3개 일치 (5,000원) - %d개\n" +
+            "4개 일치 (50,000원) - %d개\n" +
+            "5개 일치 (1,500,000원) - %d개\n" +
+            "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
+            "6개 일치 (2,000,000,000원) - %d개\n" +
+            "총 수익률은 %.2f%%입니다.";
 
     // ERROR
     public static final String  ERROR_NOT_DIVDE1000 = "[ERROR] 금액은 1,000원 단위로 입력할 수 있습니다.";
@@ -38,5 +51,11 @@ public class Messages {
             sb.append(Messages.PRINT_LOTTO(lotto)+"\n");
         }
         return String.valueOf(sb);
+    }
+
+    /** 로또 결과 출력 메시지 반환 메서드 */
+    public static final String PRINT_RESULT (Map<Win, Integer> wins, double winningsRate) {
+        String result = String.format(RESULT_LOTTO_WIN, wins.get(FIFTH), wins.get(FOURTH), wins.get(THIRD), wins.get(SECOND), wins.get(FIRST), winningsRate);
+        return result;
     }
 }
