@@ -63,11 +63,8 @@ public class WinningNumber {
     }
 
     private void validateNumbers(String input) {
-        List<Integer> inputNumbers = new ArrayList<>();
-        for (String s : input.split(Character.toString(DELIMITER))) {
-            inputNumbers.add(Integer.parseInt(s));
-        }
-        long count = inputNumbers.stream()
+        long count = transformToInteger(input)
+            .stream()
             .filter(i -> MIN_LOTTO_NUMBER <= i && i <= MAX_LOTTO_NUMBER)
             .distinct()
             .count();
@@ -78,6 +75,18 @@ public class WinningNumber {
         } catch (IllegalArgumentException e) {
             throw new TryCatchException("[ERROR] The winning number must consists validate numbers.");
         }
+    }
+
+    public static List<Integer> transformToInteger(String input) {
+        List<Integer> inputNumbers = new ArrayList<>();
+        try {
+            for (String s : input.split(Character.toString(DELIMITER))) {
+                inputNumbers.add(Integer.parseInt(s));
+            }
+        } catch (NumberFormatException e) {
+            throw new TryCatchException("[ERROR] The winning number must consists validate numbers.");
+        }
+        return inputNumbers;
     }
 
     private void initializeWinningNumbers(String winningNumber) {
