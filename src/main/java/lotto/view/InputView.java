@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.util.Validation;
+import lotto.validation.Validation;
 
 public class InputView {
 

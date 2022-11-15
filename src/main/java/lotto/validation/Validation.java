@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.validation;
 
 import static lotto.util.Constant.*;
 
