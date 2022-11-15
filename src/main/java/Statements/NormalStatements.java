@@ -16,7 +16,6 @@ public enum NormalStatements {
     SHOW_WINNING_RATE1("총 수익률은 "),
     SHOW_WINNING_RATE2("%입니다.");
 
-
     private final String saying;
 
     NormalStatements(String saying){
@@ -26,8 +25,5 @@ public enum NormalStatements {
     public String done(){
         return saying;
     }
-
-
-
 
 }

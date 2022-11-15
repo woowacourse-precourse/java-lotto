@@ -10,6 +10,7 @@ public class Application {
     public static ConsoleUserInput in = new ConsoleUserInput();
     public static ConsoleUserOutput out = new ConsoleUserOutput();
     public static void main(String[] args) {
+        //완료
         int theNumberOfTickets;
         int bonusNumber;
         float principal=0;
@@ -50,8 +51,7 @@ public class Application {
         out.showTheNumberOfSixMatchedTickets(lottoCounter.getSixMatchedTickets());
         out.showLottoYield(principal, lottoCounter.addAllPrizeMoney());
         }catch (IllegalArgumentException exit){
-            System.out.println(ErrorStatements.SHOUT_INVALID_FORMAT_ERROR.alarmed());
-            System.out.println(ErrorStatements.EXIT_PROGRAM.alarmed());
+            System.out.print(ErrorStatements.EXIT_PROGRAM.alarmed());
         }
     }
 }

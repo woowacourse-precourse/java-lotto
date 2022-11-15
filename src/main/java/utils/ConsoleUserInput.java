@@ -4,57 +4,53 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
-
-import static java.lang.Integer.valueOf;
 
 public class ConsoleUserInput {
-    private List<Integer> sixWinningNumbers = new ArrayList<>();
-    String userInput="nothing";
+    // 입력부 제외 유효성 체크 완전히 빼서 lotto 내 메서드로 구현
 
-    public ConsoleUserInput() {
-
-    }
-
-    public static String inputWinningNumbers(){
+    public String inputWinningNumbers(){
         String userInput = Console.readLine();
-        String useTrim = new String();
-        userInput=useTrim.trim();
-        Validator.isValidLength(userInput, 11);
-        Validator.isValidFormatWithComma(userInput);
-        Validator.isValidInput(userInput);
+        userInput=userInput.trim();
+        userInput=userInput.replaceAll(" ","");
+        validateWinningNumbers(userInput);
         return userInput;
     }
 
+    public void validateWinningNumbers(String userInput){
+        Validator.tryAndCatchIsValidLength(userInput, 18);
+        Validator.tryAndCatchIsValidFormatWithComma(userInput);
+    }
+
     public List<Integer> toIntegerNumbersWithoutComma(String userInput){
-        StringTokenizer winningNumbers = new StringTokenizer(userInput,",");
-        while(winningNumbers.hasMoreTokens()) {
-            Validator.isInValidRange(Integer.valueOf(winningNumbers.nextToken()));
-            putSixNumbersInRow(Integer.valueOf(winningNumbers.nextToken()));
+        List<Integer> sixWinningNumbers = new ArrayList<>();
+        String[] numbersToStringsForValidation = userInput.split(",");
+        for(int index=0; index<numbersToStringsForValidation.length; index++) {
+            Validator.tryAndCatchIsInValidRange(Integer.valueOf(numbersToStringsForValidation[index]));
         }
+        for(int index=0; index<numbersToStringsForValidation.length; index++) {
+            sixWinningNumbers.add(Integer.valueOf(numbersToStringsForValidation[index]));
+        }
+        Validator.tryAndCatchHasNoDuplication(sixWinningNumbers);
         return sixWinningNumbers;
     }
 
-    public List<Integer> putSixNumbersInRow(int winningNumbers){
-        sixWinningNumbers.add(winningNumbers);
-        return sixWinningNumbers;
-    }
-
-    public static int inputBonusNumber(){
+    public static int inputBonusNumber(List<Integer> winningNumbers){
         String bonusNumber = Console.readLine();
         if(bonusNumber.length()>2){
-            Validator.isValidLength(bonusNumber,2);
+            Validator.tryAndCatchIsValidLength(bonusNumber,2);
         }
-        Validator.isValidInput(bonusNumber);
-        Validator.isInValidRange(Integer.parseInt(bonusNumber));
+        Validator.tryAndCatchIsValidInput(bonusNumber);
+        Validator.tryAndCatchIsInValidRange(Integer.parseInt(bonusNumber));
         int bonus = Integer.parseInt(bonusNumber);
+        Validator.tryAndCatchIsBonusDifferentWithWinningNumbers(winningNumbers, bonus);
         return bonus;
     }
 
     public static int inputMoneyForLottos(){
         String moneyForLottos = Console.readLine();
-        Validator.isValidUnitForPayment(moneyForLottos);
-        Validator.isValidInputForPayment(moneyForLottos);
+        Validator.tryAndCatchIsValidInputForPayment(moneyForLottos);
+        Validator.tryAndCatchIsValidUnitForPayment(moneyForLottos);
+        Validator.tryAndCatchHasNoMoney(moneyForLottos);
         return Integer.parseInt(moneyForLottos);
     }
 }
