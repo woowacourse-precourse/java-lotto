@@ -10,6 +10,7 @@ public class WinLotto {
     static String totalrateMessage = "총 수익률은 %s%%입니다.";
 
     WinLotto(String inputLotto,String bonusLotto){
+        validate(inputLotto,bonusLotto);
         this.inputLottto = convertLottos(inputLotto);
         this.bonusLotto = convertBonus(bonusLotto);
     }
@@ -61,6 +62,11 @@ public class WinLotto {
             getPrizeMoney+=lottowinner.prizeValue()*winLottos.get(lottowinner.ordinal());
         }
         return (getPrizeMoney / (numberOflottos*1000.0))*100;
+    }
+    private void validate(String inputLotto,String bonusLotto) throws IllegalArgumentException {
+        if (inputLotto.contains(bonusLotto)) {
+            throw new IllegalArgumentException("[ERROR] 로또번호와 보너스번호가 중복됩니다.");
+        }
     }
 
 
