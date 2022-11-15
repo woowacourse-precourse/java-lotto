@@ -42,8 +42,10 @@ public class DrawLottoService {
                 correctCount++;
             }
         }
+
         isFirstWiningLotto();
         isSecondWiningLotto(myLotto.getLotto(), bonusNumber);
+
         correctNumberCount.put(correctCount, correctNumberCount.getOrDefault(correctCount, 0) + 1);
     }
 
