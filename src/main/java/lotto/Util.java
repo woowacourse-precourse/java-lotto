@@ -16,7 +16,7 @@ public class Util {
             String userInput = br.readLine();
 
             if(isNumber(userInput)) userMoney = Integer.parseInt(userInput);
-            if(isDivisionByThousand(userMoney)) throw new IllegalArgumentException();
+            if(!isDivisionByThousand(userMoney)) throw new IllegalArgumentException();
 
             return userMoney;
         } catch (IOException e){ throw new IllegalArgumentException(); }

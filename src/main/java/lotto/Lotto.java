@@ -16,5 +16,7 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public static int numberOfLottoAvailable(int userMoney) {
+        return userMoney/1000;
+    }
 }
