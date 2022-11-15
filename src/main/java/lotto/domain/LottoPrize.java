@@ -43,7 +43,7 @@ public enum LottoPrize {
         DecimalFormat df = new DecimalFormat("###,###");
         if (lottoNumberCount > 0) info += String.format("%d개 일치",lottoNumberCount);
         if (bonusNumberCount > 0) info += String.format(", 보너스 볼 일치");
-        if (prize > 0) info += String.format(" (%s)원", df.format(prize));
+        if (prize > 0) info += String.format(" (%s원)", df.format(prize));
         return info;
     }
 
