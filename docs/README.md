@@ -7,12 +7,14 @@
 - [x] 로또 당첨 번호 6개를 입력 받는다. - InputOutput#getLottoNumbers()
 - [x] 로또 보너스 번호 1개를 입력 받는다. - InputOutput#getLottoBonusNumber()
 - [ ] 당첨번호와 로또번호를 비교할 수 있다. - Referee#compare()
-  - [x] LottoResult
-  - 1등: 6개 번호 일치 / 2,000,000,000원
-  - 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
-  - 3등: 5개 번호 일치 / 1,500,000원
-  - 4등: 4개 번호 일치 / 50,000원
-  - 5등: 3개 번호 일치 / 5,000원
+  - [ ] 몇 개의 수가 같은지 알 수 있다. - Judgement#sameNumberCount()
+  - [ ] 보너스 숫자가 포함되어 있는지 알 수 있다. - Judgement#containBonusNumber()
+    - [x] LottoResult
+    - 1등: 6개 번호 일치 / 2,000,000,000원
+    - 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
+    - 3등: 5개 번호 일치 / 1,500,000원
+    - 4등: 4개 번호 일치 / 50,000원
+    - 5등: 3개 번호 일치 / 5,000원
 - [ ] 당첨 내역을 출력한다. - InputOutput#printWinHistory()
 - [ ] 수익률을 소수점 둘째 자리까지 계산한다. - calculateRateOfProfit()
 - [ ] 수익률을 출력한다. - InputOutput#printRateOfProfit()
