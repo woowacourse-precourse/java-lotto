@@ -2,8 +2,6 @@ package lotto.domain;
 
 public class LottoPieces {
 
-    private static final int MIN_UNIT = 1000;
-
     public final int pieces;
 
     public LottoPieces(Money money) {
@@ -16,6 +14,6 @@ public class LottoPieces {
     }
 
     private static int getQuotient(Money money) {
-        return Money.getQuotient(money);
+        return Money.calculateQuotient(money);
     }
 }
