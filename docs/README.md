@@ -86,9 +86,9 @@ ex) 총 수익률은 62.5%입니다.
 ex) [ERROR] 로또 번호는 1부터 45 사이의 숫자여야 한다.
 
 ### ChageType
--[ ] String to Int로 타입 변환
--[ ] String을 `,` 기준으로 나누고 String[] 반환
--[ ] String을 `,` 기준으로 List<Integer> 반환
+-[x] String to Int로 타입 변환
+-[x] String을 `,` 기준으로 나누고 String[] 반환
+-[x] String을 `,` 기준으로 List<Integer> 반환
 
 
 ### Reward
