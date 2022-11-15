@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Sample {
@@ -53,7 +50,7 @@ public class Sample {
             throw new IllegalArgumentException();
         }
     }
-    public void validWinningNumbers(List<Integer> winningNumbers){
+    public void validWinningNumbers(List<Integer> winningNumbers){ // WinningStatistics-valid-001
         if (winningNumbers.size() != 6){
             System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
@@ -66,7 +63,7 @@ public class Sample {
         }
     }
 
-    public int getBonusNumber(String line){
+    public int getBonusNumber(String line){ // WinningStatistics-valid-002
         try{
             int bonusNumber = Integer.parseInt(line);
             validBonusNumber(bonusNumber);
@@ -76,10 +73,35 @@ public class Sample {
             throw new IllegalArgumentException();
         }
     }
-    public void validBonusNumber(int bonusNumber){
+    public void validBonusNumber(int bonusNumber){ // WinningStatistics-valid-002
         if (bonusNumber < 1 || bonusNumber > 45){
             System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<LottoWinning> getWinningStatistics(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber){ // WinningStatistics-compare-001
+        List<LottoWinning> winningStatistics = new ArrayList<>();
+        for (Lotto lotto : lottos){
+            int lottoCorrectNumber = getCorrectNumber(lotto, winningNumbers);
+            boolean bonus = hitBonus(lotto, bonusNumber);
+            LottoWinning lottoWinning = new LottoWinning(lottoCorrectNumber, bonus);
+            winningStatistics.add(lottoWinning);
+        }
+        return winningStatistics;
+    }
+    public int getCorrectNumber(Lotto lotto, List<Integer> winningNumbers){ // WinningStatistics-compare-001
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        int correctTime = 0;
+        for (Integer winningNumber : winningNumbers){
+            if (lottoNumbers.contains(winningNumber)){
+                correctTime += 1;
+            }
+        }
+        return correctTime;
+    }
+
+    public boolean hitBonus(Lotto lotto, int bonus){ // WinningStatistics-compare-001
+        return lotto.getNumbers().contains(bonus);
     }
 }

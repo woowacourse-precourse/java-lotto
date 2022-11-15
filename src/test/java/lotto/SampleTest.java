@@ -109,4 +109,22 @@ class SampleTest {
         assertThatThrownBy(() -> sample.getBonusNumber("0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void getWinningStatisticsTest1(){
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(new ArrayList<>(List.of(8, 21, 23, 41, 42, 43))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(3, 5, 11, 16, 32, 38))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(1, 8, 11, 31, 41, 42))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(13, 14, 16, 38, 42, 45))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(7, 11, 30, 40, 42, 43))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(2, 13, 22, 32, 38, 45))));
+        lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
+
+        assertThat(sample.getWinningStatistics(lottos, new ArrayList<>(List.of(7, 11, 16, 35, 36, 44)), 5))
+                .contains(
+                        new LottoWinning(6, false)
+                );
+    }
 }
