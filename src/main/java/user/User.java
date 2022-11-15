@@ -11,8 +11,8 @@ public class User {
     private final int ONE_HUNDRED_PERCENT = 100;
     private final boolean HAVE = true;
     private List<Lotto> lottos;
-    private int seedMoney;
-    private int prizeMoney;
+    private long seedMoney;
+    private long prizeMoney;
 
     public User() {
         lottos = new ArrayList<>();
@@ -21,7 +21,7 @@ public class User {
     }
 
     public int getLottoMount() {
-        return seedMoney / BASE_MONEY;
+        return (int)seedMoney / BASE_MONEY;
     }
 
     public void addLottos(Lotto lotto) {
@@ -30,8 +30,7 @@ public class User {
         }
     }
 
-    public void setPrizeMoney(int prize) {
-        NumberValidator.checkMoneyThousand(prize);
+    public void setPrizeMoney(long prize) {
         prizeMoney = prize;
     }
 
@@ -42,8 +41,10 @@ public class User {
     }
 
     public boolean hasLotto(Lotto lotto){
-        return lottos.contains(lotto);
+//        return lottos.contains(lotto);
+        return false;
     }
+
     public List<Lotto> getLottos() {
         return lottos;
     }

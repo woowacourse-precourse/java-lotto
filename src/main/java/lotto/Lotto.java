@@ -29,6 +29,7 @@ public class Lotto {
     }
 
     private List<Integer> stringToList(String input) {
+        NumberValidator.validateWinningLotto(input);
         List<Integer> result = new ArrayList<>();
         String[] inputToArray = input.split(",");
         for (String str : inputToArray) {
@@ -40,8 +41,9 @@ public class Lotto {
     private void validateLotto(List<Integer> numbers) {
         validateLottoNull(numbers);
         validateLottoSize(numbers);
-        validateLottoDuplicate(numbers);
+        validateLottoNumberNull(numbers);
         validateOutRange(numbers);
+        validateLottoDuplicate(numbers);
     }
 
     private void validateLottoNull(List<Integer> numbers) {
@@ -49,10 +51,21 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorConstant.LOTTO_NOT_NULL);
         }
     }
-
     private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorConstant.LOTTO_NOT_SIZE_6);
+        }
+    }
+    private void validateLottoNumberNull(List<Integer> numbers){
+        for(Integer number : numbers){
+            if(number == null){
+                throw new IllegalArgumentException(ErrorConstant.LOTTO_NOT_NUMBER_NULL);
+            }
+        }
+    }
+    private void validateOutRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            NumberValidator.validateWinningLottoRange(number);
         }
     }
 
@@ -63,11 +76,7 @@ public class Lotto {
         }
     }
 
-    private void validateOutRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            NumberValidator.checkLottoNumber(number);
-        }
-    }
+
 
     public String toNumberForm() {
         String message = "[%d, %d, %d, %d, %d, %d]";
@@ -75,14 +84,14 @@ public class Lotto {
                 numbers.get(2), numbers.get(3), numbers.get(4), numbers.get(5));
     }
 
-    public boolean hasBonus(int bonus) {
-        return numbers.contains(bonus);
+    public boolean hasLottoNumber(int lottoNumber) {
+        return numbers.contains(lottoNumber);
     }
 
     public int compareLotto(Lotto userLotto) {
         int correctCount = 0;
         for (int number : numbers) {
-            if (userLotto.hasBonus(number)) {
+            if (userLotto.hasLottoNumber(number)) {
                 correctCount++;
             }
         }

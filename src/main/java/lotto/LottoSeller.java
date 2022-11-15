@@ -35,8 +35,7 @@ public class LottoSeller {
     }
 
     private void makeWinningLottos() {
-        View.promptWinningNumber();
-        String lottoNumbers = Console.readLine();
+        String lottoNumbers = NumberValidator.makeLotto();
         winningLotto = new Lotto(lottoNumbers);
     }
 
@@ -47,14 +46,14 @@ public class LottoSeller {
     }
 
     private void validateBonusNotInLotto(int bonus) {
-        if (winningLotto.hasBonus(bonus)) {
+        if (winningLotto.hasLottoNumber(bonus)) {
             throw new IllegalArgumentException();
         }
     }
 
     private int winnigCheck(Lotto userLotto) {
         int correctCount = winningLotto.compareLotto(userLotto);
-        if (correctCount == 5 && userLotto.hasBonus(bonus)) {
+        if (correctCount == 5 && userLotto.hasLottoNumber(bonus)) {
             correctCount++;
         } else if (correctCount == 6) {
             correctCount++;
@@ -75,8 +74,8 @@ public class LottoSeller {
         return winningCount;
     }
 
-    private int prizeCalculate(List<Integer> winningCount) {
-        int result = 0;
+    private long prizeCalculate(List<Integer> winningCount) {
+        long result = 0;
         for (int i = 0; i < winningCount.size(); i++) {
             result += Prize.getPrizeValue(i + 3, winningCount.get(i));
         }
@@ -84,7 +83,7 @@ public class LottoSeller {
     }
 
     public void givePrize(User user) {
-        int prize = prizeCalculate(winningCount(user));
+        long prize = prizeCalculate(winningCount(user));
         user.setPrizeMoney(prize);
     }
 }
