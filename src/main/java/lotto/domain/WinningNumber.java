@@ -12,8 +12,10 @@ public class WinningNumber {
         winningNumber = Arrays.stream(input.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
+        Lotto lotto = new Lotto(winningNumber);
         return winningNumber;
     }
+
     public void checkBonus(String bonus){
         validateBonusNumber(bonus);
         validateBonusRange(Integer.parseInt(bonus));
@@ -23,7 +25,7 @@ public class WinningNumber {
         if(bonus<1 || bonus>45)
             throw new IllegalArgumentException("[ERROR] 숫자는 1부터 45 중에서 입력하셔야 합니다.");
     }
-    private void validateDuplicateBonus(int bonus, List<Integer> winningNumber){
+    public void validateDuplicateBonus(int bonus, List<Integer> winningNumber){
         if(winningNumber.contains(bonus))
             throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복되면 안됩니다.");
     }
