@@ -9,12 +9,12 @@ public class WonAnalysis {
 
     }
 
-    public List<Rank> createLottoResult(List<Integer> lotto, List<List<Integer>> userLotto) {
+    public List<Rank> Result(List<Integer> lotto, List<List<Integer>> userLotto) {
         List<Rank> lottoResult = new ArrayList<>();
 
         for (List<Integer> numbers : userLotto) {
-            int count = countMatchNumber(lotto, numbers);
-            boolean bonusNumber = checkBonusNumber(count, numbers);
+            int count = cntMatchNumber(lotto, numbers);
+            boolean bonusNumber = checkBonus(count, numbers);
 
             lottoResult.add(rankLotto(count, bonusNumber));
         }
@@ -22,7 +22,7 @@ public class WonAnalysis {
         return lottoResult;
     }
 
-    public int countMatchNumber(List<Integer> lotto, List<Integer> userLotto) {
+    public int cntMatchNumber(List<Integer> lotto, List<Integer> userLotto) {
         int count = 0;
 
         for (int number : userLotto) {
@@ -33,7 +33,7 @@ public class WonAnalysis {
         return count;
     }
 
-    public boolean checkBonusNumber(int matchNumber, List<Integer> userLotto) {
+    public boolean checkBonus(int matchNumber, List<Integer> userLotto) {
         if (matchNumber == Rank.SECOND.getRANK_NUMBER()) {
             if (userLotto.contains(BonusNumber.BONUS_NUMBER.getNumber())) {
                 return true;
@@ -59,7 +59,7 @@ public class WonAnalysis {
         return amount;
     }
 
-    public int calculateProfit(List<Rank> lottoResult) {
+    public int Profit(List<Rank> lottoResult) {
         int profit = 0;
 
         for (Rank rank : lottoResult) {
@@ -69,8 +69,8 @@ public class WonAnalysis {
         return profit;
     }
 
-    public String calculatePercent(List<Rank> lottoResult) {
-        long profit = calculateProfit(lottoResult);
+    public String Percent(List<Rank> lottoResult) {
+        long profit = Profit(lottoResult);
         int inputMoney = lottoResult.size() * 1000;
 
         double result = (profit * 100) / (double) inputMoney;
