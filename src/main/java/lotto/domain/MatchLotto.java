@@ -11,6 +11,24 @@ public class MatchLotto {
     private static int rank5 = 0;
     private static double revenue = 0;
 
+    public int getRank(Lotto lotto, List<Integer> winningNumber, int bonusNumber) {
+        int count = 0;
+        boolean matchBonus = false;
+
+        for (int i = 0; i < 6; i++) {
+            if(winningNumber.contains(lotto.getNumber(i))) {
+                count++;
+            }
+            if(bonusNumber == lotto.getNumber(i)) {
+                matchBonus = true;
+            }
+        }
+        if (count > 2) {
+            return getRankDetail(count, matchBonus);
+        }
+        return 0;
+    }
+
     public int getRankDetail(int count, boolean matchBonus) {
         if (count == 6) {
             return 1;
