@@ -17,5 +17,16 @@ public class Lotto {
         }
     }
 
+    private void validateNumber(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("가능 숫자 범위를 벗어났습니다!");
+            }
+            if (numbers.size() != numbers.stream().distinct().count()) {
+                throw new IllegalArgumentException("중복된 숫자가 있습니다!");
+            }
+        }
+    }
+
     // TODO: 추가 기능 구현
 }
