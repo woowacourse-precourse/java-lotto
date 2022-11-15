@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateUserLottoNumbers {
+인
+    public static final String DO_NOT_PERMIT_SAME_LOTTONUMBERS = "구매한 로또번호가 하나 이상 완전히 같은 수 없습니다.";
     List<Lotto> userBuyLottosGroup;
 
     public CreateUserLottoNumbers() {
