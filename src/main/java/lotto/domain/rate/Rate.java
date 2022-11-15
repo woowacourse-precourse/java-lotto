@@ -10,6 +10,9 @@ import java.util.List;
 public class Rate {
 
 	public static double calculate_rate(HashMap<String,Integer> hashMap){
+
+		if (hashMap.isEmpty()) return 0.0;
+
 		double money = Integer.parseInt(BuyLotto.USER_MONEY_return());
 		List<Integer> prize_money_list = prize_money_list_return(hashMap);
 		System.out.println("prize_money_list = " + prize_money_list);
