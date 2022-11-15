@@ -63,4 +63,14 @@ class LottoTest {
         //then
         assertThat(matchItemCount).isEqualTo(1);
     }
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void calcBenefit() {
+        //given
+        Lotto lotto =  new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        //when
+        double benefit = lotto.printBenefit(1, 0, 0, 0, 0, 8000);
+        //then
+        assertThat(benefit).isEqualTo(62.5);
+    }
 }
