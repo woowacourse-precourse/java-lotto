@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Lotto {
 
+    private static final String WRONG_LOTTO_COUNT_ERROR_MESSAGE = "[ERROR] 로또의 번호는 6개이어야 합니다.";
     private static final int LOTTO_NUMBER_COUNT = 6;
 
     private final List<Integer> numbers;
@@ -17,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(WRONG_LOTTO_COUNT_ERROR_MESSAGE);
         }
     }
 

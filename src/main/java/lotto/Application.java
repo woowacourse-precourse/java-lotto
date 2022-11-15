@@ -22,12 +22,12 @@ public class Application {
             OutputView.printLottoNumbers(lottery);
 
             OutputView.printWinningNumbersEnteringGuideMessage();
-            List<Integer> winningLottoNumber = InputView.inputWinningNumbers();
+            Lotto winningLottoNumbers = new Lotto(InputView.inputWinningNumbers());
 
             OutputView.printBonusNumbersEnteringGuideMessage();
             int bonusNumber = InputView.inputBonusNumber();
 
-            WinningLotto winningLotto = new WinningLotto(new Lotto(winningLottoNumber), bonusNumber);
+            WinningLotto winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
             OutputView.printResultMessage(lottery, winningLotto);
 
 
