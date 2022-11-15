@@ -8,8 +8,6 @@ import static lotto.engine.NextstepNumberGenerator.START_RANGE_NUMBER;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
