@@ -16,7 +16,7 @@ class LottoCountTest {
     void createPurchaseAmountUnvalidateType() {
         assertThatThrownBy(() -> new LottoCount("12,"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[Error] 숫자만 입력해야 합니다.");
+                .hasMessage("[ERROR] 숫자만 입력해야 합니다.");
     }
 
     @DisplayName("구입 금액은 1000원 미만의 수를 입력할 시 에러 발생")
@@ -24,7 +24,7 @@ class LottoCountTest {
     void createPurchaseAmountUnvalidateRange() {
         assertThatThrownBy(() -> new LottoCount("999"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[Error] 1000원 이상 구매해야 합니다.");
+                .hasMessage("[ERROR] 1000원 이상 구매해야 합니다.");
     }
 
     @DisplayName("구입 금액은 1000원 단위의 수를 입력하지 않을 시 에러 발생")
@@ -32,7 +32,7 @@ class LottoCountTest {
     void createPurchaseAmountUnvalidateUnit() {
         assertThatThrownBy(() -> new LottoCount("1500"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[Error] 1000원 단위로 구매해야 합니다.");
+                .hasMessage("[ERROR] 1000원 단위로 구매해야 합니다.");
     }
 
     @DisplayName("기준에 맞는 구입 금액이 입력될 시 정상적으로 리턴")

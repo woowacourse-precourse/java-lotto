@@ -7,7 +7,7 @@ public class HandlingInputException {
             char number = purchaseAmount.charAt(i);
 
             if (number < '0' || number >'9') {
-                throw new IllegalArgumentException("[Error] 숫자만 입력해야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
             }
         }
     }
@@ -15,13 +15,13 @@ public class HandlingInputException {
     public void checkRightRange(int purchaseAmount) {
 
         if (purchaseAmount / 1000 < 1) {
-            throw new IllegalArgumentException("[Error] 1000원 이상 구매해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 1000원 이상 구매해야 합니다.");
         }
     }
 
     public void checkRightUnit(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException("[Error] 1000원 단위로 구매해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 구매해야 합니다.");
         }
     }
 }
