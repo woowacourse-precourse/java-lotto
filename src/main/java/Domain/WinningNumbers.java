@@ -17,7 +17,7 @@ public class WinningNumbers {
     public List<Integer> getWinningNumbers(String readWinningNumbers){
         String[] splitWinningNumber = readWinningNumbers.split(Constant.SEPARATOR);
         List<Integer> winningNumbers = new ArrayList<>();
-        for(int index=0; index<Constant.LOTTO_LENGTH; index++){ //상수
+        for(int index=0; index<Constant.LOTTO_LENGTH; index++){
             winningNumbers.add(Integer.parseInt(splitWinningNumber[index]));
         }
         return winningNumbers;

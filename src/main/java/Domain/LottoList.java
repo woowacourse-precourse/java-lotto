@@ -8,7 +8,6 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LottoList {
-
     private int availableLottoPlayNumber;
     private final List<Lotto> lottoList;
 
