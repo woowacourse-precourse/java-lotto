@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -29,6 +31,15 @@ public enum Prize {
 
     public static Prize prizeOfHit(Double hit){
         return BY_HIT.get(hit);
+    }
+
+    public List<String> getPrizeMessages(){
+        List<String> messages = new ArrayList<String>();
+        for(Prize prize: Prize.values()){
+            messages.add(prize.MESSAGE());
+        }
+
+        return messages;
     }
 
     Prize(double hit, int money, String message) {
