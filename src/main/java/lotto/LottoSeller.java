@@ -32,8 +32,7 @@ public class LottoSeller {
 
     private void checkRange(String inputMoney) {
         if (!inputMoney.matches(REG_EXP_NUMBER_ONLY)) {
-            System.out.println(ERROR_INPUT_PAY_AMOUNT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
 
