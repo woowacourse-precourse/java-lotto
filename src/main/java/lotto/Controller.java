@@ -8,9 +8,11 @@ import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.User;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
     private Game game;
@@ -78,7 +80,6 @@ public class Controller {
     public void buyLotto(){
         Integer howMany = user.getBudget()/ Game.price;
         view.printBuyLotto(howMany);
-        viewLottos();
     }
 
     private void viewLottos(){
@@ -87,6 +88,28 @@ public class Controller {
             numbers.sort(Comparator.naturalOrder());
             view.print(numbers);
         }
+    }
+
+    public void computeStatistics(){
+        user.confirmWinning(game.getWinningNumbers(), game.getBonus());
+    }
+
+    public void showStatistics(){
+        view.print(Text.WINNING_STATISTICS_TITLE);
+
+        for (Rank rank : user.getWinningCount().keySet()){
+            if (rank != Rank.NONE) {
+                view.printWinningStatisticsDetail(rank.getMatchedCount(), format(rank.getAmount()), user.getWinningCount().get(rank));
+            }
+        }
+
+        view.printProfitRate(user.getProfitRate());
+    }
+
+    private String format(Integer amount){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String formattedAmount = decimalFormat.format(amount);
+        return formattedAmount;
     }
 
 
