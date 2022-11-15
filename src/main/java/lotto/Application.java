@@ -8,7 +8,8 @@ public class Application {
         Game game = new Game();
         try{
             game.startLottoGame();
-        }catch (IllegalArgumentException ex) {
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
