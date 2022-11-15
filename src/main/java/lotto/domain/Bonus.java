@@ -4,7 +4,7 @@ import lotto.util.errorMessage.ErrorMessage;
 
 public class Bonus {
 
-    private final int bonusNum;
+    public final int bonusNum;
     private final Lotto winninglotto;
 
     public Bonus(int bonusNum, Lotto winninglotto) {
@@ -17,9 +17,5 @@ public class Bonus {
         if (Lotto.isWinningLottoHasBouns(bonusNum, winninglotto)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUSNUM);
         }
-    }
-
-    public int getBonusNum() {
-        return bonusNum;
     }
 }
