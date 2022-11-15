@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static lotto.Application.printHowManyMatches;
+import static lotto.Application.rateOfReturn;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
@@ -57,6 +59,21 @@ class ApplicationTest extends NsTest {
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
                 "6개 일치 (2,000,000,000원) - 0개"
         );
+    }
+
+    @Test
+    void 수익률_테스트(){
+        int lottery_cnt = 8;
+        HashMap<Integer,Integer> lottery_ranks = new HashMap<>();
+        lottery_ranks.put(1, 0);
+        lottery_ranks.put(2, 0);
+        lottery_ranks.put(3, 0);
+        lottery_ranks.put(4, 0);
+        lottery_ranks.put(5, 1);
+
+        double result = 62.5;
+
+        assertThat(result).isEqualTo(rateOfReturn(lottery_cnt, lottery_ranks));
     }
     @Test
     void 기능_테스트() {
