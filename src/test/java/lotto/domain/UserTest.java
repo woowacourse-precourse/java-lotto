@@ -26,7 +26,7 @@ class UserTest {
         Lotto lotto = user.getLottos().get(0);
         List<Integer> winningNumbers = lotto.getNumbers();
         user.confirmWinning(winningNumbers, 0);
-        assertThat(user.getProfitRate()).isEqualTo(2000000);
+        assertThat(user.getProfitRate()).isEqualTo(200000000.0);
     }
 
 }
