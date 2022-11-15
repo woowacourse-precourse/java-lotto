@@ -26,6 +26,9 @@ public class Output {
         System.out.println();
         System.out.println(STATISTICS_MESSAGE);
         for(Rank rank: Rank.values()) {
+            if(rank == Rank.DEFAULT){
+                continue;
+            }
             if(rank == Rank.SECOND) {
                 System.out.printf((BONUS_STATISTICS), rank.getRank().get(1), ranking.get(rank));
                 continue;
@@ -33,6 +36,6 @@ public class Output {
             System.out.printf((WINNING_STATISTICS),
                     rank.getRank().get(0), rank.getRank().get(1), ranking.get(rank));
         }
-        System.out.printf((PROFIT_MESSAGE) + "%n", profit*100);
+        System.out.printf((PROFIT_MESSAGE) + "%n", profit);
     }
 }
