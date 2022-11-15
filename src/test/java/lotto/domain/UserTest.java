@@ -7,6 +7,8 @@ import static org.assertj.core.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class UserTest {
     
@@ -24,24 +26,14 @@ class UserTest {
         assertThat(user.getBuyAmount()).isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("구매 비용이 로또 가격으로 나눠지지 않으면 예외가 발생한다.")
-    void 구매_비용이_로또_가격으로_나눠지지_않으면_예외가_발생한다() {
-        setInput("1500");
+    @DisplayName("구매 비용이 로또 가격 단위가 아니라면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1500", "1000aaa"})
+    void 구매_비용이_로또_가격_단위가_아니라면_예외가_발생한다(String input) {
+        setInput(input);
 
         assertThatThrownBy(() -> new User().buyLotto())
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_DIVIDE.getMessage());
-    }
-
-    @Test
-    @DisplayName("구매 비용에 문자가 입력되면 예외가 발생한다.")
-    void 구매_비용에_문자가_입력되면_예외가_발생한다() {
-        setInput("1000abc");
-
-        assertThatThrownBy(() -> new User().buyLotto())
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ONLY_NUMBERS.getMessage());
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

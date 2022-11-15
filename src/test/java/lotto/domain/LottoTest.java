@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,17 +34,11 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호가 1보다 작으면 예외가 발생한다.")
-    @Test
-    void 로또_번호가_1보다_작으면_예외가_발생한다() {
-        assertThatThrownBy(() -> new Lotto(List.of(-1, 0, 2, 3, 4, 5, 6)))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("로또 번호가 45보다 크면 예외가 발생한다.")
-    @Test
-    void 로또_번호가_45보다_크면_예외가_발생한다() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 46, 55, 7)))
+    @DisplayName("로또 번호가 범위를 벗어나면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 46})
+    void 로또_번호가_범위를_벗어나면_예외가_발생한다(int number) {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, number)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
