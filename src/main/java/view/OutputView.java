@@ -42,9 +42,9 @@ public class OutputView {
         StringBuilder result = new StringBuilder();
         result.append(WINNING_STATISTICS);
 
-        Win[] wins = Win.getReverseWins();
+        List<Win> reverseWins = Win.getReverseWins();
 
-        for (Win win : wins) {
+        for (Win win : reverseWins) {
             String bonusBallMatch = isBonusBallMatch(win);
 
             result.append(String.format(RANK, win.getMatchCount(), bonusBallMatch,

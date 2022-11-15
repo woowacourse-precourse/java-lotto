@@ -2,7 +2,10 @@ package model;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public enum Win {
     FIRST(6, false, 2_000_000_000),
@@ -51,10 +54,9 @@ public enum Win {
         return win.matchCount == matchCount;
     }
 
-    public static Win[] getReverseWins() {
-        Win[] wins = values();
-        Arrays.sort(wins, Collections.reverseOrder());
-
-        return wins;
+    public static List<Win> getReverseWins() {
+        return Arrays.stream(values())
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
     }
 }
