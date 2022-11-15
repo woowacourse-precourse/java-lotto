@@ -7,25 +7,23 @@ import java.util.List;
 public class JudgmentImpl implements Judgment {
 
     @Override
-    public int correctCount(List<Integer> userNumbers, List<Integer> priceNumber) {
-        int count = 0;
-
-        for (Integer userNumber : userNumbers) {
-            if (priceNumber.contains(userNumber)) {
-                count++;
-            }
-        }
-
-        return count;
+    public int correctCount(List<Integer> userNumbers, List<Integer> priceNumbers) {
+        return (int) userNumbers.stream()
+                .filter(priceNumbers::contains)
+                .count();
     }
 
     @Override
     public boolean hasBonusNumber(List<Integer> userNumbers, int bonusNumber) {
         for (int userNumber : userNumbers) {
-            if (userNumber == bonusNumber) {
+            if (isNumberEq(userNumber, bonusNumber)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private boolean isNumberEq(int number1, int number2) {
+        return number1 == number2;
     }
 }
