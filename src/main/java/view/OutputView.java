@@ -27,7 +27,7 @@ public class OutputView {
         int matchCount = 3;
         for (LottoRank lottoRank : LottoRank.values()) {
             int rankMatchCount = Collections.frequency(winningNumberMatchCounts, matchCount);
-            System.out.println(lottoRank.getValue() + " - " + rankMatchCount);
+            System.out.println(lottoRank.getValue() + " - " + rankMatchCount + "개");
             if (matchCount == 5) {
                 matchCount = 7;
                 continue;
@@ -46,6 +46,6 @@ public class OutputView {
     }
 
     public static void printProfitRate(double profitRate) {
-        System.out.println("총 수익률은" + profitRate + "입니다.");
+        System.out.println("총 수익률은 " + profitRate + "%입니다.");
     }
 }
