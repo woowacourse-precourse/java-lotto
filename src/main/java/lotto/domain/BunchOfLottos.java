@@ -35,7 +35,7 @@ public class BunchOfLottos {
         return sb.toString();
     }
 
-    public static BunchOfLottos of(List<Lotto> bunchOfLottos) {
+    public static BunchOfLottos from(List<Lotto> bunchOfLottos) {
         return new BunchOfLottos(bunchOfLottos);
     }
 }

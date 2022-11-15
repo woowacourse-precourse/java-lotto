@@ -13,7 +13,7 @@ public class Money {
         return money;
     }
 
-    public static Money of(int money) {
+    public static Money from(int money) {
         return new Money(money);
     }
 }

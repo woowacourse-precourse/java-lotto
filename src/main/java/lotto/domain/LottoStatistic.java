@@ -30,7 +30,7 @@ public class LottoStatistic {
         }
     }
 
-    public static LottoStatistic of(Map<LottoAward, Integer> bunchOfLottoAwards) {
+    public static LottoStatistic from(Map<LottoAward, Integer> bunchOfLottoAwards) {
         return new LottoStatistic(bunchOfLottoAwards);
     }
 }

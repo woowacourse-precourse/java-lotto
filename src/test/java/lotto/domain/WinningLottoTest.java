@@ -94,7 +94,7 @@ class WinningLottoTest {
         winningNumber.put(5, false);
         winningNumber.put(6, false);
         winningNumber.put(7, true);
-        WinningLotto winningLotto = WinningLotto.of(winningNumber);
+        WinningLotto winningLotto = WinningLotto.from(winningNumber);
 
         //when
         LottoResult result = winningLotto.compare(numbers);
@@ -117,7 +117,7 @@ class WinningLottoTest {
         winningNumber.put(7, false);
         winningNumber.put(8, false);
         winningNumber.put(6, true);
-        WinningLotto winningLotto = WinningLotto.of(winningNumber);
+        WinningLotto winningLotto = WinningLotto.from(winningNumber);
 
         //when
         LottoResult result = winningLotto.compare(numbers);
@@ -140,7 +140,7 @@ class WinningLottoTest {
         winningNumber.put(7, false);
         winningNumber.put(8, false);
         winningNumber.put(6, true);
-        WinningLotto winningLotto = WinningLotto.of(winningNumber);
+        WinningLotto winningLotto = WinningLotto.from(winningNumber);
 
         //when
         LottoResult result = winningLotto.compare(numbers);

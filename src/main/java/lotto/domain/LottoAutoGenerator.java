@@ -35,6 +35,6 @@ public class LottoAutoGenerator {
 
         Collections.sort(numbers);
 
-        return Lotto.of(numbers);
+        return Lotto.from(numbers);
     }
 }

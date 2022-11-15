@@ -19,7 +19,7 @@ public class WinningLottoGenerator {
         }
         winningNumbers.put(eventBall, true);
 
-        return WinningLotto.of(winningNumbers);
+        return WinningLotto.from(winningNumbers);
     }
 
     private static void validate(int size) {

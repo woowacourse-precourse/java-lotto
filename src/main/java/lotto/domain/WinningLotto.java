@@ -42,7 +42,7 @@ public class WinningLotto {
         return 0;
     }
 
-    public static WinningLotto of(Map<Integer, Boolean> winningNumbers) {
+    public static WinningLotto from(Map<Integer, Boolean> winningNumbers) {
         return new WinningLotto(winningNumbers);
     }
 }

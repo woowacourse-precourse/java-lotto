@@ -16,7 +16,7 @@ class LottoStatisticTest {
         //given
         Map<LottoAward, Integer> awardCount = new HashMap<>();
         awardCount.put(LottoAward.FIFTH, 1);
-        LottoStatistic statistic = LottoStatistic.of(awardCount);
+        LottoStatistic statistic = LottoStatistic.from(awardCount);
 
         //when
         double answer = 62.5;
@@ -33,7 +33,7 @@ class LottoStatisticTest {
         //given
         Map<LottoAward, Integer> awardCount = new HashMap<>();
         awardCount.put(LottoAward.FIRST, Integer.MAX_VALUE / 1000);
-        LottoStatistic statistic = LottoStatistic.of(awardCount);
+        LottoStatistic statistic = LottoStatistic.from(awardCount);
 
         //when
         double answer = 2.0E8;
@@ -50,7 +50,7 @@ class LottoStatisticTest {
         //given
         Map<LottoAward, Integer> awardCount = new HashMap<>();
         awardCount.put(LottoAward.NONE, Integer.MAX_VALUE / 1000);
-        LottoStatistic statistic = LottoStatistic.of(awardCount);
+        LottoStatistic statistic = LottoStatistic.from(awardCount);
 
         //when
         double answer = 0.0;
@@ -71,7 +71,7 @@ class LottoStatisticTest {
         awardCount.put(LottoAward.FOURTH, 3);
         awardCount.put(LottoAward.SECOND, 4);
 
-        LottoStatistic statistic = LottoStatistic.of(awardCount);
+        LottoStatistic statistic = LottoStatistic.from(awardCount);
 
         //when
         int fifthResult = 1;

@@ -13,7 +13,7 @@ class MoneyTest {
         //given
         int money = 1300;
         //when //then
-        assertThatThrownBy(() -> Money.of(money))
+        assertThatThrownBy(() -> Money.from(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,7 +23,7 @@ class MoneyTest {
         //given
         int money = -1000;
         //when //then
-        assertThatThrownBy(() -> Money.of(money))
+        assertThatThrownBy(() -> Money.from(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -34,7 +34,7 @@ class MoneyTest {
         int money = 2000;
 
         //when
-        Money buyer = Money.of(money);
+        Money buyer = Money.from(money);
 
         //then
         assertThat(buyer).isInstanceOf(Money.class);

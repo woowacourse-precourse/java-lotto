@@ -18,11 +18,11 @@ public class LottoApplicationService {
 
     public void inputMoney() {
         consoleOutput.printDirectiveAboutInputMoney();
-        money = Money.of(InputParser.parseToInteger(consoleInput.readInput()));
+        money = Money.from(InputParser.parseToInteger(consoleInput.readInput()));
     }
 
     public void createBunchOfLottos() {
-        bunchOfLottos = BunchOfLottos.of(
+        bunchOfLottos = BunchOfLottos.from(
                 LottoAutoGenerator.generateBunchOfLottos(money.getMoney())
         );
         consoleOutput.printInformationAboutAmountOfLotto(money.getMoney());
@@ -41,7 +41,7 @@ public class LottoApplicationService {
     }
 
     public void getStatisticOfLotto() {
-        statistic = LottoStatistic.of(bunchOfLottos.countLottoAward(winningLotto));
+        statistic = LottoStatistic.from(bunchOfLottos.countLottoAward(winningLotto));
         consoleOutput.printInformationAboutStatisticOfWinningLotto(statistic, money.getMoney());
     }
 }
