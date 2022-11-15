@@ -14,19 +14,19 @@ public class OutputView {
     }
 
     public void printPredictionNumbersMessage() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
     }
 
     public void printBonusNumberMessage() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
     }
 
     public void printAmountOfLottoMessage(int amountOfLotto) {
-        System.out.println(amountOfLotto + "개를 구매했습니다.");
+        System.out.println("\n" + amountOfLotto + "개를 구매했습니다.");
     }
 
     public void printWinningLog(int[] winningLog) {
-        System.out.println("당첨 통계");
+        System.out.println("\n당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (" + FIFTH.getPrize() + "원) -  " + winningLog[FIFTH.getWinningLogIdx()] + "개");
         System.out.println("4개 일치 (" + FOURTH.getPrize() + "원) -  " + winningLog[FOURTH.getWinningLogIdx()] + "개");
