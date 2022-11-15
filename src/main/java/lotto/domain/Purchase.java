@@ -1,18 +1,14 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Validation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Purchase {
-    private final int money;
     private final List<Lotto> lottoes;
 
-    public Purchase(String input) {
-        Validation.money(input);
-        this.money = Integer.parseInt(input);
+    public Purchase(int money) {
         this.lottoes = buyLottoes(money);
     }
 
@@ -34,7 +30,7 @@ public class Purchase {
         }
     }
 
-    public int getLottoAmount(int money) {
+    private int getLottoAmount(int money) {
         return money / 1000;
     }
 
