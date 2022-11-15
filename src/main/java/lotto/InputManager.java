@@ -55,7 +55,7 @@ public class InputManager {
         String pattern = "^[0-9]+$";
         if (!Pattern.matches(pattern, inputStirng)) {
             System.out.println("[ERROR] input including other characters");
-            // throw new IllegalArgumentException();
+            // throw new IllegalArgumentException("[ERROR] input including other characters");
             return false;
         }
         return true;

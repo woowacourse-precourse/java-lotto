@@ -17,9 +17,7 @@ public class LottoMachine {
         for (Integer numbers_ : numbers) {
             lottoNumber.add(numbers_);
         }
-        // lottoNumber.sort(Comparator.naturalOrder());
         Collections.sort(lottoNumber);
-        // System.out.println(numbers.toString());
         return lottoNumber;
     }
 
