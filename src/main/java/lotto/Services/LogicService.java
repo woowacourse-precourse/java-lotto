@@ -24,7 +24,7 @@ public class LogicService {
             int count = checkWinningNumber(lotto,winningNumbers.getNumbers());
             if(count >=3){
                 if(count == 5 && lotto.contains(bonusNumber)){
-                    winningSize.put("5bonusNumber",winningSize.get("5bonusNumber")+1);
+                    winningSize.put("5BonusNumber",winningSize.get("5BonusNumber")+1);
                     continue;
                 }
                 winningSize.put(String.valueOf(count),winningSize.get(String.valueOf(count))+1);
@@ -49,7 +49,7 @@ public class LogicService {
             put(String.valueOf(3),0);
             put(String.valueOf(4),0);
             put(String.valueOf(5),0);
-            put("5bonusNumber",0);
+            put("5BonusNumber",0);
             put(String.valueOf(6),0);
         }
         };
