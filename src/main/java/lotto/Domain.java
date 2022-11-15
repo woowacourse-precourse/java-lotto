@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Domain {
     private static final String INPUT_LOTTO_AMOUNT = "로또금액을 입력해 주세요.";
+    private static final String ENTER = "\n";
+
+    private static final String OUTPUT_LOTTO_PURCHASE_COUNT = "개를 구매했습니다.";
 
     private static final int TICKET_PRICE = 1000;
     private static final int MAX_VALUE_OF_LOTTO_NUMBER = 45;
