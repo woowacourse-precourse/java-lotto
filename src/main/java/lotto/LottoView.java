@@ -14,11 +14,17 @@ public class LottoView {
     private static final String WINNING_RESULT_NOT_BONUS = "%d개 일치 (%s원) - %d개\n";
     private static final String WINNING_RESULT_BONUS = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String PROFIT_RESULT = "총 수익률은 %s%%입니다.";
-    private static final String ERROR_NOT_NUMBER = "[ERROR] 금액은 숫자로 입력하세요.";
+    private static final String ERROR_INVALID = "[ERROR] 유효하지 않은 입력입니다.";
 
     public static int inputMoney(){
         System.out.println(PURCHASE);
-        return convertInputToInt(Console.readLine());
+        try{
+            return convertInputToInt(Console.readLine());
+        }
+        catch (IllegalArgumentException e){
+            //System.out.println(e.getMessage());
+            return 0;
+        }
     }
     public static void printNumber_of_Purchase(int Number_of_Purchase){
         System.out.printf(NUMBER_OF_PURCHASE,Number_of_Purchase);
@@ -34,13 +40,11 @@ public class LottoView {
     public static void printInputBonusNumber(){
         System.out.println(INPUT_BONUS_NUMBER);
     }
-    private static int convertInputToInt(String input){
-        try{
-            return Integer.parseInt(input);
+    private static int convertInputToInt(String input) throws IllegalArgumentException{
+        if (!input.matches("^[0-9]*$")){
+            throw new IllegalArgumentException(ERROR_INVALID);
         }
-        catch (IllegalArgumentException e){
-            throw new IllegalArgumentException(ERROR_NOT_NUMBER);
-        }
+        return Integer.parseInt(input);
     }
 
     public static void printWinningResult(HashMap<Rank,Integer> result){

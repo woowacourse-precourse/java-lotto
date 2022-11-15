@@ -9,15 +9,16 @@ public class LottoController {
     public void start(){
         Number_of_Lotto number_of_lotto = inputMoney();
         int Number_of_Purchase = number_of_lotto.Count_Number_of_Lotto();
-        LottoView.printNumber_of_Purchase(Number_of_Purchase);
-        List<Lotto> lottos = generateLottoNumbers.generate(Number_of_Purchase);
-        LottoView.printLottos(lottos);
-        WinningNumbers winningNumbers = createWinningNumber();
-        List<Rank> ranking = initialRank(winningNumbers, lottos);
-        HashMap<Rank,Integer> resultRank = resultRank(ranking);
-        LottoView.printWinningResult(resultRank);
-        resultProfit(resultRank, number_of_lotto);
-
+        if(Number_of_Purchase > 0){
+            LottoView.printNumber_of_Purchase(Number_of_Purchase);
+            List<Lotto> lottos = generateLottoNumbers.generate(Number_of_Purchase);
+            LottoView.printLottos(lottos);
+            WinningNumbers winningNumbers = createWinningNumber();
+            List<Rank> ranking = initialRank(winningNumbers, lottos);
+            HashMap<Rank,Integer> resultRank = resultRank(ranking);
+            LottoView.printWinningResult(resultRank);
+            resultProfit(resultRank, number_of_lotto);
+        }
     }
     private Number_of_Lotto inputMoney(){
         return new Number_of_Lotto(LottoView.inputMoney());
