@@ -2,6 +2,8 @@ package player;
 
 import java.util.List;
 
+import confirm.Confirm;
+
 public class Player {
 	public static void start() {
 		try {
@@ -9,6 +11,7 @@ public class Player {
 			CoinErrorCheck.CEC(coin);
 			int chance = Chance.run(coin);
 			List<List<Integer>> playerPick = PlayerChoose.run(chance);
+			Confirm.start(playerPick);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
