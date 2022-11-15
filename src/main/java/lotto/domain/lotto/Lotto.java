@@ -1,6 +1,10 @@
 package lotto.domain.lotto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private static final String NOT_SIX_NUMBERS_ERROR = "[ERROR] 로또 번호는 6개의 수로만 이루어져야 합니다.";
@@ -32,7 +36,6 @@ public class Lotto {
         Set<Integer> tempSet = new HashSet<>(numbers);
 
         if (tempSet.size() != 6) {
-            System.out.println(HAS_DUPLICATED_NUMBERS_ERROR);
             throw new IllegalArgumentException(HAS_DUPLICATED_NUMBERS_ERROR);
         }
     }

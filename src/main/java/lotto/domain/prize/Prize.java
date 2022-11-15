@@ -47,14 +47,12 @@ public class Prize {
         String regex = "^[0-9]+$";
 
         if (!input.matches(regex)) {
-            System.out.println(NOT_INTEGER_ERROR);
-            throw new NoSuchElementException(NOT_INTEGER_ERROR);
+            throw new IllegalArgumentException(NOT_INTEGER_ERROR);
         }
     }
 
     private void validateDuplicatedNumber(int number) {
         if (this.numbers.contains(number)) {
-            System.out.println(DUPLICATED_NUMBER_ERROR);
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR);
         }
     }
@@ -63,14 +61,12 @@ public class Prize {
         String[] number = input.split(",");
 
         if (number.length != 6) {
-            System.out.println(PRIZE_NUMBER_FORMAT_ERROR);
             throw new IllegalArgumentException(PRIZE_NUMBER_FORMAT_ERROR);
         }
     }
 
     private void validateNumberRange(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
-            System.out.println(INPUT_NUMBER_RANGE_ERROR);
             throw new IllegalArgumentException(INPUT_NUMBER_RANGE_ERROR);
         }
     }
