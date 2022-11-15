@@ -9,17 +9,17 @@ import java.util.List;
 import static lotto.constant.MessageConstant.*;
 
 public class OutputView {
-    public static void printBlankLine() {
+    public void printBlankLine() {
         System.out.println();
     }
 
-    public static void printCountOfPurchasedLotto(UserLotto userLotto) {
+    public void printCountOfPurchasedLotto(UserLotto userLotto) {
         int countOfPurchasedLotto = userLotto.countOfPurchasedLotto();
         printBlankLine();
         System.out.println(countOfPurchasedLotto + MESSAGE_OUTPUT_COUNT);
     }
 
-    public static void printSortedLottos(UserLotto userLotto) {
+    public void printSortedLottos(UserLotto userLotto) {
         List<Lotto> lottos = userLotto.getUserLottos();
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
@@ -27,12 +27,12 @@ public class OutputView {
         printBlankLine();
     }
 
-    public static void printLottoResult(LottoResult lottoResult) {
+    public void printLottoResult(LottoResult lottoResult) {
         System.out.println(MESSAGE_OUTPUT_WIN_STATISTICS);
         System.out.println(lottoResult.getLottoResultString());
     }
 
-    public static void printLottoProfit(LottoResult lottoResult) {
+    public void printLottoProfit(LottoResult lottoResult) {
         System.out.printf(MESSAGE_OUTPUT_TOTAL_PROFIT,lottoResult.getTotalProfitRate());
     }
 }

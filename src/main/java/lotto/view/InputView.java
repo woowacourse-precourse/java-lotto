@@ -11,7 +11,9 @@ import java.util.List;
 import static lotto.constant.MessageConstant.*;
 
 public class InputView {
-    public static UserLotto inputUserMoney() {
+
+    private final OutputView outputView = new OutputView();
+    public UserLotto inputUserMoney() {
         printRequestMoneyInputMessage();
         String inputMoney = Console.readLine();
 
@@ -19,11 +21,11 @@ public class InputView {
         return new UserLotto(Integer.parseInt(inputMoney));
     }
 
-    private static void printRequestMoneyInputMessage() {
+    private void printRequestMoneyInputMessage() {
         System.out.println(MESSAGE_INPUT_MONEY);
     }
 
-    public static List<Integer> inputWinningNumbers() {
+    public List<Integer> inputWinningNumbers() {
         printRequestWinningNumbersMessage();
         String inputWinning = Console.readLine();
         List<Integer> winningNumbers = castToList(inputWinning);
@@ -32,11 +34,11 @@ public class InputView {
         return winningNumbers;
     }
 
-    private static void printRequestWinningNumbersMessage() {
+    private void printRequestWinningNumbersMessage() {
         System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
     }
 
-    private static List<Integer> castToList(String inputWinning) {
+    private List<Integer> castToList(String inputWinning) {
         List<Integer> winningNumbers = new ArrayList<>();
 
         for(String input : inputWinning.split(",")) {
@@ -47,8 +49,8 @@ public class InputView {
         return winningNumbers;
     }
 
-    public static int inputBonusNumber() {
-        OutputView.printBlankLine();
+    public int inputBonusNumber() {
+        outputView.printBlankLine();
         printRequestBonusNumberMessage();
         String inputBonus = Console.readLine();
 
@@ -58,7 +60,7 @@ public class InputView {
         return Integer.parseInt(inputBonus);
     }
 
-    private static void printRequestBonusNumberMessage() {
+    private void printRequestBonusNumberMessage() {
         System.out.println(MESSAGE_INPUT_BONUS_NUMBER);
     }
 }
