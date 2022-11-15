@@ -1,13 +1,11 @@
 package view;
 
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,9 +14,9 @@ import org.junit.jupiter.api.Test;
 
 import model.Lotto;
 
-public class LottoOutputTest {
+public class LottoOutputViewTest {
 
-	private LottoOutput lottoOutput = new LottoOutput();
+	private LottoOutputView lottoOutputView = new LottoOutputView();
 
 	@Nested
 	class SuccessTest {
@@ -37,10 +35,10 @@ public class LottoOutputTest {
 
 			// when
 			Lotto lotto = new Lotto(randomNumbers);
-			String expectedLottoNumbers = "[1, 34, 32, 11, 10, 9]";
+			String expectedLottoNumbers = "[1, 9, 10, 11, 32, 34]";
 
 			// then
-			lottoOutput.showLotto(lotto);
+			lottoOutputView.showLotto(lotto);
 			assertThat(output.toString()).contains(expectedLottoNumbers);
 		}
 
