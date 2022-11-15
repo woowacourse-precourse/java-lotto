@@ -7,18 +7,18 @@ import java.util.List;
 
 public class Input {
 
-    int getMoney() {
+    public int getMoney() {
         int money = Integer.parseInt(Console.readLine());
         return money;
     }
 
-    List<Integer> getWinningNumber() {
+    public List<Integer> getWinningNumber() {
         String userInput = Console.readLine();
         List<Integer> winningNumber = InputNumber.parseWinningNumber(userInput);
         return winningNumber;
     }
 
-    List<Integer> getBonusNumber() {
+    public List<Integer> getBonusNumber() {
         String userInput = Console.readLine();
         List<Integer> bonusNumber = InputNumber.parseBonusNumber(userInput);
         return bonusNumber;

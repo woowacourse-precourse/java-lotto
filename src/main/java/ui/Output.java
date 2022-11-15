@@ -16,30 +16,30 @@ public class Output {
     private static final String SIX_WINNING = "6개 일치 (2,000,000,000원) - ";
     private static final String UNIT = "개";
 
-    void printPriceInputMessage() {
+    public void printPriceInputMessage() {
         System.out.println(PRICE_INPUT_MESSAGE);
     }
 
-    void printPurchaseQuantity(int purchaseQuantity) {
+    public void printPurchaseQuantity(int purchaseQuantity) {
         System.out.println(purchaseQuantity + "개를 구매했습니다");
     }
 
-    void printLottoNumber(List<Lotto> lottos) {
+    public void printLottoNumber(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumber = lotto.getNumbers();
             System.out.println(lottoNumber);
         }
     }
 
-    void printWinningNumberInputMessage() {
+    public void printWinningNumberInputMessage() {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
     }
 
-    void printBonusNumberInputMessage() {
+    public void printBonusNumberInputMessage() {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
     }
 
-    void printWinningStatistics(List<Integer> winningCount){
+    public void printWinningStatistics(List<Integer> winningCount){
         System.out.println(STATISTICS);
         System.out.println(THREE_WINNING + winningCount.get(0) + UNIT);
         System.out.println(FOUR_WINNING + winningCount.get(1) + UNIT);
@@ -48,7 +48,7 @@ public class Output {
         System.out.println(SIX_WINNING + winningCount.get(4) + UNIT);
     }
 
-    void printYield(String yield){
+    public void printYield(String yield){
         System.out.println("총 수익률은 "+yield+"입니다.");
     }
 }
