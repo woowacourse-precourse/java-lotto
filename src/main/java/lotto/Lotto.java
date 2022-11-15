@@ -40,7 +40,6 @@ public class Lotto {
         Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         return lotto;
     }
-
     public static int countWinningLotto(Lotto winningLotto, Lotto candidate){
         int count = 0;
         for (int target : winningLotto.numbers){

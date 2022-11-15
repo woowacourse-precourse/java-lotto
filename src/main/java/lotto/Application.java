@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Code.LottoCode;
 
 import java.util.ArrayList;
@@ -93,7 +92,7 @@ public class Application {
         return totalPrize;
     }
     public static void printYield(int totalPrize, int payedMoney){
-        System.out.println(String.format("%.2f", totalPrize/payedMoney*100) + "%");
+        System.out.println("총 수익률은 " + String.format("%.2f", totalPrize/payedMoney*100) + "%입니다.");
     }
     public static List<Integer> countScoreCandidate(List<Lotto> candidateLotto,
                                          Lotto winningLotto,
