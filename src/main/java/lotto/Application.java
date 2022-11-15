@@ -87,6 +87,8 @@ public class Application {
     public static List<Integer> getMyBonusNumbers(List<Integer> myLotto) {
         String bonus = Console.readLine();
 
+        bonusNumberValidate(bonus, myLotto);
+
         int bonusNumber = Integer.parseInt(bonus);
 
         myLotto.add(bonusNumber);
@@ -95,8 +97,10 @@ public class Application {
     }
 
     public static void myLottoValidate(String[] lotto) {
-        if (validateMyLottoLength(lotto) || validateMyLottoElement(lotto)
-                || validateMyLottoElementDuplication(lotto) || validateMyLottoElementRange(lotto)) {
+        if (validateMyLottoLength(lotto)
+                || validateMyLottoElement(lotto)
+                || validateMyLottoElementDuplication(lotto)
+                || validateMyLottoElementRange(lotto)) {
             System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
@@ -111,8 +115,6 @@ public class Application {
     }
 
     public static boolean validateMyLottoElement(String[] lotto) {
-//        List<String> tempLotto = new ArrayList<>(Arrays.asList(lotto));
-
         for (String s : lotto) {
             if (!s.chars().allMatch(Character::isDigit)) {
                 return true;
@@ -136,8 +138,6 @@ public class Application {
     }
 
     public static boolean validateMyLottoElementRange(String[] lotto) {
-        List<Integer> myLotto = new ArrayList();
-
         for (String l : lotto) {
             int n = Integer.parseInt(l);
             if (n > 45 || n < 1) {
@@ -147,5 +147,45 @@ public class Application {
 
         return false;
     }
+
+    public static void bonusNumberValidate(String bonusNumber, List<Integer> lotto) {
+        if (validateBonusElement(bonusNumber)
+                || validateBonusDuplication(bonusNumber, lotto)
+                || validateBonusElementRange(bonusNumber)) {
+            System.out.println("[ERROR] 보너스 번호는 로또 번호와 중복되지 않는, 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    public static boolean validateBonusElement(String bonusNumber) {
+
+        if (!bonusNumber.chars().allMatch(Character::isDigit)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean validateBonusDuplication(String bonusNumber, List<Integer> lotto) {
+        int bonus = Integer.parseInt(bonusNumber);
+
+        if (lotto.contains(bonus)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean validateBonusElementRange(String bonusNumber) {
+        int bonus = Integer.parseInt(bonusNumber);
+
+        if (bonus > 45 || bonus < 1) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 }
