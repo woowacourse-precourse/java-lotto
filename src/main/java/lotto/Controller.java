@@ -2,7 +2,6 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.constant.Constant;
 import lotto.model.BonusNumber;
 import lotto.model.Money;
 import lotto.model.Service;
@@ -50,7 +49,7 @@ public class Controller {
     }
 
     private int getLottoAmount(int money) {
-        return money / Constant.LOTTO_PRICE;
+        return money / Money.getLottoPrice();
     }
 
     private List<List<Integer>> getLottoNumbers(int lottoAmount) {

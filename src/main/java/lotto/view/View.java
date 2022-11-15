@@ -73,8 +73,8 @@ public class View {
         System.out.println(NOT_PURCHASE_MESSAGE);
     }
 
-    public static void printNotLottoPrice() {
-        System.out.printf(NOT_LOTTO_PRICE_MESSAGE, Constant.LOTTO_PRICE);
+    public static void printNotLottoPrice(int lottoPrice) {
+        System.out.printf(NOT_LOTTO_PRICE_MESSAGE, lottoPrice);
     }
 
     public static void printNotComma() {

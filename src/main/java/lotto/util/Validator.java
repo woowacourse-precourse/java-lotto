@@ -26,10 +26,6 @@ public class Validator {
         return true;
     }
 
-    public static boolean isLottoPrice(int number) {
-        return number % Constant.LOTTO_PRICE == 0;
-    }
-
     public static boolean isValidSize(List<Integer> numbers) {
         return numbers.size() == Constant.LOTTO_SIZE;
     }
