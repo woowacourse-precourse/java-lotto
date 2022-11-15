@@ -10,6 +10,7 @@ import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
+import lotto.ui.LottoGameUi;
 
 public class LottoGame {
     private static final int TICKET_PRICE = 1000;
@@ -17,6 +18,7 @@ public class LottoGame {
     private static final int LOTTO_MAX_NUMBER = 45;
     private static final int LOTTO_MIN_NUMBER = 1;
     private static final int PERCENTAGE = 100;
+    private final LottoGameUi lottoGameUi = new LottoGameUi();
 
     public void start() {
         int lottoAmount = getLottoAmount();
@@ -36,7 +38,7 @@ public class LottoGame {
     }
 
     private int getPayment(){
-        System.out.println("구입 금액을 입력해 주세요.");
+        lottoGameUi.printPaymentRequestMessage();
         String payment = readLine();
 
         if(!isValidPayment(payment)){
@@ -73,7 +75,7 @@ public class LottoGame {
     }
 
     private List<Lotto> createLottos(int lottoAmount) {
-        System.out.println(lottoAmount +"개를 구매했습니다.");
+        lottoGameUi.printPurchaseHistory(lottoAmount);
 
         List<Lotto> lottos = new ArrayList<>();
 
@@ -86,18 +88,11 @@ public class LottoGame {
     private Lotto createLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBERS_SIZE);
 
-        printLottoNumbers(lottoNumbers);
+        LottoGameUi.printLottoNumbers(lottoNumbers);
 
         return new Lotto(lottoNumbers);
     }
 
-    private void printLottoNumbers(List<Integer> lottoNumbers) {
-        System.out.print("[");
-        for(int idx = 0; idx < lottoNumbers.size() - 1; idx++){
-            System.out.print(lottoNumbers.get(idx) + ", ");
-        }
-        System.out.println(lottoNumbers.get(lottoNumbers.size() - 1) + "]");
-    }
 
     private WinningLotto createWinningLotto() {
         Lotto lotto = new Lotto(getWinningNumbers());
@@ -108,7 +103,7 @@ public class LottoGame {
     }
 
     private List<Integer> getWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요");
+        lottoGameUi.printWinningNumberRequestMessage();
 
         List<Integer> winningNumbers = new ArrayList<>();
         String winningNumbersWithComma = readLine();
@@ -142,7 +137,7 @@ public class LottoGame {
     }
 
     private int getBonusNumber() {
-        System.out.println("보너스 볼을 입력해 주세요.");
+        lottoGameUi.printBonusNumberRequestMessage();
         
         String bonusNumber = readLine();
         if(!isValidBonusNumber(bonusNumber))
@@ -161,14 +156,13 @@ public class LottoGame {
         Map<Rank, Integer> result = setResult();
         Rank rank;
 
-        System.out.println("당첨 통계");
-        System.out.println("===");
+
         for(int idx = 0; idx < lottos.size(); idx++){
             rank = winningLotto.match(lottos.get(idx));
             result.put(rank, result.get(rank) + 1);
         }
 
-        printResult(result);
+        LottoGameUi.printResult(result);
 
         int lottoAmount = lottos.size();
         printYieldRate(result, lottoAmount);
@@ -183,12 +177,6 @@ public class LottoGame {
         return result;
     }
 
-    private void printResult(Map<Rank, Integer> result) {
-        for(int i = Rank.values().length - 1; i >= 0; i--){
-            Rank.values()[i].printMessage(result.get(Rank.values()[i]));
-        }
-    }
-
     private void printYieldRate(Map<Rank, Integer> result, int lottoAmount) {
         double yieldRate = 0;
 
@@ -197,7 +185,6 @@ public class LottoGame {
         }
         yieldRate = (yieldRate / (lottoAmount * TICKET_PRICE)) * PERCENTAGE;
 
-
-        System.out.println("총 수익률은 " + String.format("%.1f", yieldRate) + "%입니다.");
+        lottoGameUi.printYield(yieldRate);
     }
 }
