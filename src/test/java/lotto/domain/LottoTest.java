@@ -2,8 +2,12 @@ package lotto.domain;
 
 import lotto.utils.ErrorMessage;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -49,64 +53,24 @@ class LottoTest {
         assertThat(lotto.countMatchingNumbers(winningLotto)).isEqualTo(3);
     }
 
-    @DisplayName("로또에 당첨됐을 때")
-    @Nested
-    class WhenWinningLottery {
-        Lotto winningLotto;
-        int bonusNumber = 7;
+    @DisplayName("맞춘 번호의 갯수에 따라 당첨 결과를 반환한다.")
+    @ParameterizedTest(name = "로또 번호 : {0}, 보너스 번호: {1}, 결과 : {2}")
+    @MethodSource("lottoResultSources")
+    void createLottoResultTest(Lotto purchasedLotto, int bonusNumber, LottoResult result) {
+        Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
 
-        @BeforeEach
-        void setUp() {
-            winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
-        }
+        assertThat(purchasedLotto.getResult(winningLotto, bonusNumber)).isEqualTo(result);
+    }
 
-        @DisplayName("숫자 6개가 모두 일치하면 1등")
-        @Test
-        void createFirstPlaceLotto() {
-            Lotto lotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
-
-            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.FIRST_PLACE);
-        }
-
-        @DisplayName("숫자 5개가 일치하고 보너스 숫자가 일치하면 2등")
-        @Test
-        void createSecondPlaceLotto() {
-            Lotto lotto = Lotto.of(List.of(1, 2, 3, 4, 5, 7));
-
-            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.SECOND_PLACE);
-        }
-
-        @DisplayName("숫자 5개가 일치하고 보너스 숫자가 일치하지 않으면 3등")
-        @Test
-        void createThirdPlaceLotto() {
-            Lotto lotto = Lotto.of(List.of(1, 2, 3, 4, 5, 8));
-
-            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.THIRD_PLACE);
-        }
-
-        @DisplayName("숫자 4개가 일치하면 4등")
-        @Test
-        void createFourthPlaceLotto() {
-            Lotto lotto = Lotto.of(List.of(1, 2, 3, 4, 7, 8));
-
-            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.FOURTH_PLACE);
-        }
-
-        @DisplayName("숫자 3개가 일치하면 5등")
-        @Test
-        void createFifthPlaceLotto() {
-            Lotto lotto = Lotto.of(List.of(1, 2, 3, 7, 8, 9));
-
-            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.FIFTH_PLACE);
-        }
-
-        @DisplayName("숫자가 3개 이상 일치하지 않으면 꼴등")
-        @Test
-        void createLastPlaceLotto() {
-            Lotto lotto = Lotto.of(List.of(1, 2, 7, 8, 9, 10));
-
-            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.LAST_PLACE);
-        }
+    public static Stream<Arguments> lottoResultSources() {
+        return Stream.of(
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 6)), 7, LottoResult.FIRST_PLACE),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 7)), 7, LottoResult.SECOND_PLACE),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 8)), 7, LottoResult.THIRD_PLACE),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 7, 8)), 7, LottoResult.FOURTH_PLACE),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 7, 8, 9)), 7, LottoResult.FIFTH_PLACE),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 7, 8, 9, 10)), 7, LottoResult.LAST_PLACE)
+        );
     }
 
     @DisplayName("로또 번호를 문자열로 출력하는 기능")
