@@ -6,10 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-
 
 class JudgmentTest {
 
@@ -39,6 +39,7 @@ class JudgmentTest {
                 Arguments.arguments(new ArrayList<Integer>(List.of(6, 5, 4, 3, 2, 1)), 6, true)
         );
     }
+
     @DisplayName("보너스 번호가 로또 번호에 포함되어 있는지 확인")
     @MethodSource("setLottoNumbers2")
     @ParameterizedTest(name = "[{index}] 로또 번호 : {0}, 보너스 번호 : {1}, 포함여부 : {2}")
