@@ -45,6 +45,19 @@ public class Game {
         return (money);
     }
 
+    public List<Integer> WinNumber(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = input();
+        List<String> splits = List.of(input.split(","));
+        return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    public int BonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = input();
+        return Integer.parseInt(input);
+    }
+
     public List<Lotto> makeLotto(int Amount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int index = 0; index < Amount; ++index) {
@@ -77,4 +90,5 @@ public class Game {
             throw new IllegalArgumentException("[ERROR]구매금액은 1천원 단위입니다.");
         }
     }
+
 }
