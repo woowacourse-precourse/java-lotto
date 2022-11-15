@@ -35,10 +35,20 @@
 
 
 ## 🚀 기능 상세 기술
+<br>
+
+![구현흐름도](https://user-images.githubusercontent.com/109144975/201814058-9541cab2-9739-4a23-9614-97a575a6c707.jpg)
 
 <br>
 
-- 사용된 클래스 리스트
+**핵심기능**
+> - 로또 정답 숫자, 보너스 숫자와 로또 발행 숫자를 비교하여 케이스별 로또 결과 출력 기능
+> - 수익률을 계산 출력 기능
+> - 오입력시 예외처리 기능
+
+<br>
+
+- 사용된 클래스 리스트 (18개)
   - Application
   - BonusNumberCalculatorGenerator
   - BonusNumberGenerator
@@ -60,58 +70,168 @@
 
 <br>
 
-
-**핵심기능**
-> - 로또 정답 숫자와 로또 발행 숫자를 비교하여 케이스별 로또 결과 출력 기능
-> - 수익률을 계산 출력 기능
-> - 오입력시 예외처리 기능
-
 <br>
 
-**구현 흐름도**
-
-구입 금액 숫자를 입력받음 -> 구입한 개수 만큼 로또 발행 및 번호 출력 -> 로또 정답 숫자 입력
-
--> 로또 정답 숫자와 로또 발행 숫자를 모두 비교 -> 로또 결과 저장 -> 로또 결과 반환
-
-<br>
-
+---
 
 ### Application
 메인 함수
 <br>
 
 중요 메소드들을 선언하여 핵심기능들을 동작시키는 클래스
-Input된 구입금액 - 수익률 계산을 위해 재할당
 
 <br>
 
-### BonusNumberCalculatorGenerator
-보너스 숫자
+## 구입 금액 숫자를 입력
 
+### InputUserMoney
 
+"구입금액을 입력해주세요." 를 출력합니다.
 
+구입 금액을 readline();로  입력 받습니다.
 
+입력받은 String 형식의 숫자를 int형식으로 반환합니다.
 
+### JudgmentInputNumberGenerator
 
+입력시 숫자로 이루어져있지 않을 경우는 `Character.isDigit` 메서드를 통해 예외처리 하였습니다.
 
+### DivideInputMoneyGenerator
+
+입력된 숫자가 1000으로 나눈 나머지가 존재할 경우 "1000" 단위의 값을 입력해주세요.
+문구가 출력되도록 하고 IllegalArgumentException 예외를 발생시켰습니다.
+
+### PrintInputMoneyGenerator
+
+inputUserMoney 를 실행시켜 예외 발생될 경우 try catch문을 통해 예외처리를 잡아줍니다.
+
+DivideInputMoneyGenerator 를 실행시켜 예외가 발생될 경우 try catch문을 통해 예외처리를 잡아줍니다.
+
+로또 발행개수를 printf("%d개를 구매했습니다", inputMoney); 를 통해 출력하고
+개수를 int 형식으로 반환합니다.
+
+---
+
+## 구입한 개수 만큼 로또 발행 및 번호 출력
+
+### UserNumberGenerator
+
+1부터 45까지의 랜덤한 숫자를 pickUniqueNumbersInRange 메서드를 통해 List<Integer> 형식으로 생성합니다.
+생성된 List<Integer>을 출력합니다.
+
+### FinalUserNumberGenerator
+
+로또 발행 개수만큼 for문을 돌며 UserNumberGenerator를 실행시켜 반환된 List 결과값을
+2차원 List에 저장하여 반환합니다.
+
+---
+
+## 로또 정답 숫자, 보너스 숫자 입력
+
+### InputCorrectNumberGenerator
+"당첨 번호를 입력해 주세요." 문구를 출력합니다.
+
+입력된 숫자를 readline().split(","); 을 통해 String[] 형식으로 입력받습니다.
+
+입력받은 값을 배열에 int 값으로 변환하여 저장한 후 반환합니다.
+
+### CorrectNumberGenerator
+사용자가 잘못된 입력(1-45사이의 숫자가 아닐경우)을 하였을 경우 [ERROR] 문구출력으로 로깅과 함께 
+IllegalArgumentException 예외를 발생시켰습니다.
+
+### Lotto
+
+CorrectNumberGenerator 를 실행시켜 사용자에게 정답 숫자를 입력받아 List 형식으로 저장합니다.
+
+입력받은 숫자를 Lotto 클래스의 validate 메서드를 통해 size()를 확인하여 아닐 경우 IllegalArgumentException 예외를 발생시켰습니다. 
+
+입력받은 올바른 형식을 경우 List<Integet> 형식으로 반환합니다. 
 
 ### BonusNumberGenerator
-### CalculateTotalEarningGenerator
+
+"보너스 번호를 입력해 주세요." 문구를 출력합니다.
+사용자에게 readLine(); 으로 입력을 받습니다.
+
+String 을 int 형식으로 변환합니다.
+
+입력된 숫자를 반환합니다. 만약 정답 숫자와 중복된다면 while(true) 문을 통해 정답 숫자와 중복이 아닐때까지 반복합니다.
+
+---
+
+## 모든 로또 발행 숫자와 정답 숫자, 보너스 숫자를 비교
+
 ### CompareNumber
-### CompareNumberWithBonus
-### CorrectNumberGenerator
-### DivideInputMoneyGenerator
-### EarningRateGenerator
-### FinalUserNumberGenerator
-### InputCorrectNumberGenerator
-### InputUserMoney
+인자 - (List<Integer> UserPickNumber, List<Integer> CorrectNumber)
+
+인자로 입력된 CorrectNumber(로또 정답 숫자) 와 UserPickNumber(로또 발행 숫자)를 for 문을 통해 비교하며
+각 발행 로또 케이스 별로 동일한 숫자의 개수를 returnNumber로 반환합니다. 
+
 ### JudgmentBonusNumberGenerator
-### JudgmentInputNumberGenerator
-### Lotto
-### PrintInputMoneyGenerator
+
+returnNumber 가 5일 경우 보너스 숫자 포함 여부를 판단하였습니다.
+포함한다면 +1 그렇지 않으면 그대로 return 하여 판단합니다.
+
+### BonusNumberCalculatorGenerator
+
+2등과 3등을 가리기 위한 보너스 숫자 계산입니다.
+(returnNumber가 클수록 상위 등수 입니다.)
+
+returnNumber 가 5일 경우 JudgmentBonusNumberGenerator 를 실행시켜 케이스별로 +1 실행여부를 판단하여 반환합니다.
+
+1등의 경우 returnNumber가 6이므로 2등과 구별을 위해 returnNumber를 7로 설정하였습니다
+
+### CompareNumberWithBonus
+
+FinalUserNumberGenerator 를 실행시켜 2차원 배열의 로또 발행 숫자를 생성합니다.
+
+Lotto의 CorrectLottoNumber 를 실행시켜 로또 정답 숫자를 생성합니다.
+
+BonusNumberGenerator 를 실행시켜 보너스 숫자를 생성합니다.
+
+BonusNumberCalculatorGenerator 를 실행시켜 생성된 returnNumber를 List<Integer> 형식을 반환합니다.
+
+---
+
+## 로또 비교 결과 저장 및 출력
+
 ### PrintWinnerStatisticsGenerator
-### UserNumberGenerator
+
+인자 - List<Integer> resultNumber
+
+CompareNumberWithBonus에서 반환된 로또 정답 개수 List<Integer> 를 입력받아 케이스별로 출력합니다.
+
+Collections.frequency() 메서드를 통해 정답의 개수를 List에 저장하였습니다.
+
+정답 개수별로 저장된 List<Integer> 을 통해 케이스별로 결과를 출력하였습니다.
+
+### EarningRateGenerator
+인자 - List<Integer> resultNumber
+
+
+총 수익률 계산을 위한 클래스입니다.
+
+int[] 형식으로 각 정답 개수별로 당첨 금액을 넣어 생성하였습니다.
+
+입력된 인자인 resultNumber 을 통해 for문을 돌며 정답 개수별로 당첨 금액을 totalEarningMoney에 더하도록 하였습니다.
+
+int 형의 totalEarningMoney 를 반환합니다.
+
+### CalculateTotalEarningGenerator
+
+tatalEarningMoney를 에 대해 구입금액과 당첨금액을 계산하여 수익률을 출력합니다.
+
+입력된 totalEarningMoney 계산시 int 형으로는 당첨금이 20억이 넘어갈 경우 에러가 발생되어 Long 타입으로 변환하여 계산하도록 하였습니다.
+
+
+
+
+<br>
+
+**구현 흐름도**
+
+> 구입 금액 숫자를 입력 -> 구입한 개수 만큼 로또 발행 및 번호 출력 -> 로또 정답 숫자, 보너스 숫자 입력
+> -> 모든 로또 발행 숫자와 정답 숫자, 보너스 숫자를 비교 -> 로또 비교 결과 저장 -> 로또 비교 결과 반환
+
 
 
 
