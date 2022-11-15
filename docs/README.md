@@ -4,7 +4,7 @@
 - [ ] User클래스 구현(User는 여러개의 로또리스트를 가질수있다.)
   - [X] Money, Lottos리스트
   - [X] 입력돈이 1000원단위로 안떨어지는 경우 예외처리
-  - [ ] Lottos리스트 정렬하기
+  - [X] Lottos리스트 정렬하기
   - [X] Lottos리스트 출력하기
   - [ ] Lotto리스트와 Lottos 리스트와 비교하고 맞는 갯수 return해주기
 - [ ] java enum으로 당첨 금액 만들기

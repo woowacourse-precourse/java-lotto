@@ -25,16 +25,17 @@ public class User {
     }
     public User printLottosList()
     {
-        for(Lotto lotto:this.lottos) {
+        User sortedUser = lottosSort();
+        for(Lotto lotto:sortedUser.lottos) {
             System.out.println(lotto);
         }
-        return new User(this.lottos,money,bonusNumber);
+        return new User(sortedUser.lottos,money,bonusNumber);
     }
-    public User lottosSort(User user)
+    public User lottosSort()
     {
 
         List<Lotto> sortedList = new ArrayList<>();
-        for(int i=0;i<user.lottos.size();i++)
+        for(int i=0;i<lottos.size();i++)
         {
             List<Integer> newNumList  = new ArrayList<>();
             newNumList.addAll(lottos.get(i).getNumbers());

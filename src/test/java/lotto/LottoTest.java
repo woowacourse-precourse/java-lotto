@@ -40,11 +40,12 @@ class LottoTest {
     @Test
     void printLottosList()
     {
-        Lotto lotto1 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
+        Lotto lotto1 = new Lotto(List.of(21, 8, 23, 41, 42, 43));
+        Lotto lotto4 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
         Lotto lotto2 = new Lotto(List.of(3, 5, 11, 16, 32, 38));
         Lotto lotto3 = new Lotto(List.of(7, 11, 16, 35, 36, 44));
         User lottos = new User(List.of(lotto1,lotto2,lotto3),1000,9);
-        assertThat(lottos.printLottosList()).usingRecursiveComparison().isEqualTo(new User(List.of(lotto1,lotto2,lotto3),1000,9));
+        assertThat(lottos.printLottosList()).usingRecursiveComparison().isEqualTo(new User(List.of(lotto4,lotto2,lotto3),1000,9));
     }
 
     @DisplayName("사용자가 가진 로또 리스트를 정렬한다")
@@ -56,7 +57,7 @@ class LottoTest {
         Lotto lotto2 = new Lotto(List.of(3, 5, 11, 16, 32, 38));
         Lotto lotto3 = new Lotto(List.of(7, 11, 16, 35, 36, 44));
         User lottos = new User(List.of(lotto1,lotto2,lotto3),1000,9);
-        assertThat(lottos.lottosSort(lottos)).usingRecursiveComparison().isEqualTo(new User(List.of(lotto4,lotto2,lotto3),1000,9));
+        assertThat(lottos.lottosSort()).usingRecursiveComparison().isEqualTo(new User(List.of(lotto4,lotto2,lotto3),1000,9));
 
     }
     // 아래에 추가 테스트 작성 가능
