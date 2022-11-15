@@ -33,13 +33,13 @@ public class Validation {
     }
 
     public static void validateBonusNumber(String number, List<Integer> userNumber) {
-        if (!isNumeric(number)) {
+        if (isNumeric(number)) {
             throwException("숫자를 입력해 주세요.");
         }
         if (isValidRange(number)) {
             throwException(LottoInfo.START+"~"+LottoInfo.END+"사이의 번호를 입력해주세요");
         }
-        if (!isUnique(Parser.unionUserNumber(userNumber,number))) {
+        if (isUnique(Parser.unionUserNumber(userNumber,number))) {
             throwException("당첨번호와 중복되는 보너스 번호는 입력할 수 없습니다.");
         }
     }
@@ -62,8 +62,5 @@ public class Validation {
         Set<String> numberSet = new HashSet<>(inputList);
         return numberSet.size() != inputList.size();
     }
-    public static boolean isValidLength(int input) {
 
-        return true;
-    }
 }

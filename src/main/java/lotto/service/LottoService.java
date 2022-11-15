@@ -12,6 +12,7 @@ import lotto.view.SystemMessage;
 import lotto.view.UserRequest;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class LottoService {
 
@@ -21,18 +22,23 @@ public class LottoService {
 
 
     public void getPurchaseMoney() {
+        SystemMessage.whenPurchase();
         String input = UserRequest.userInput();
         if (Validation.validatePurchaseAmount(input)) {
             user.setPurchaseMoney(Parser.StringToInt(input));
         }
     }
     public void getLottoCount() {
-        user.setLottoAmount(Parser.countLotto(user.getPurchaseMoney()));
+        int count = Parser.countLotto(user.getPurchaseMoney());
+        SystemMessage.printAmount(count);
+        user.setLottoAmount(count);
     }
 
     public void getRandomLottos() {
         int lottoCount = user.getLottoAmount();
-        generatedLottos.setAllLottos(generateLottos(lottoCount));
+        List<Lotto> generated = generateLottos(lottoCount);
+        SystemMessage.printLottoNumber(generated);
+        generatedLottos.setAllLottos(generated);
     }
 
     public List<Lotto> generateLottos(int lottoCount) {
@@ -47,11 +53,13 @@ public class LottoService {
         return allLottos;
     }
     public void getUserNumber() {
+        SystemMessage.whenRaffle();
         String input = UserRequest.userInput();
         user.setUserNumber(Parser.seperateCommas(input));
     }
 
     public void getBounsNumber() {
+        SystemMessage.whenBonus();
         String input = UserRequest.userInput();
         Validation.validateBonusNumber(input,user.getUserNumber());
         user.setBonusNumber(Parser.StringToInt(input));
@@ -61,20 +69,20 @@ public class LottoService {
         List<Integer> userNumber = user.getUserNumber();
         int bonusNumber = user.getBonusNumber();
         List<Lotto> lottoNumbers = generatedLottos.getAllLottos();
-
+        matchWinning(lottoNumbers,userNumber,bonusNumber);
     }
     // Refactoring need
     public void matchWinning(List<Lotto> lottoNumbers, List<Integer> userNumber, int bonusNumber) {
         HashMap<Integer,Integer> winningHistory = user.getWinning();
-
         for (Lotto lottoNumber : lottoNumbers) {
             List<Integer> lotto = lottoNumber.getNumbers();
             int accordance = getAccordance(lotto, userNumber);
             boolean bonus = matchBonusNumber(lotto, bonusNumber);
             int rank = getRank(accordance, bonus);
-            winningHistory.put(rank, winningHistory.get(rank) + 1);
+            if (rank > 0) {
+                winningHistory.put(rank, winningHistory.get(rank) + 1);
+            }
         }
-
         printWinningHistory(winningHistory);
         user.setWinning(winningHistory);
     }
@@ -90,13 +98,20 @@ public class LottoService {
     }
 
     public int getRank(int accordance, boolean Bonus) {
-        if (Bonus && accordance == 5) { return 5; }
+        if (Bonus && accordance == 5) { return 2; }
         if (accordance == 6) { return 1; }
-        return (8 - accordance);
+        if (accordance == 5) { return 3; }
+        if (accordance == 4) { return 4; }
+        if (accordance == 3) { return 5; }
+        return 0;
     }
 
     public static void printWinningHistory(HashMap<Integer, Integer> winningHistory) {
-        for (Map.Entry<Integer,Integer> entry: winningHistory.entrySet()) {
+        List<Map.Entry<Integer,Integer>> sortedWinningHistory =
+                winningHistory.entrySet().stream()
+                        .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+                        .collect(Collectors.toList());
+        for (Map.Entry<Integer,Integer> entry: sortedWinningHistory) {
             SystemMessage.printWinningHistory(entry.getKey(), entry.getValue());
         }
     }
@@ -110,14 +125,17 @@ public class LottoService {
             rankPrice.add(winningPrice.getPrice());
         }
         List<Integer> rankCount = new ArrayList<>(user.getWinning().values());
-
+        rankCount.sort(Comparator.reverseOrder());
         for (int i = 0; i < rankPrice.size(); i++) {
             winningAmount += rankPrice.get(i) * rankCount.get(i);
         }
-        user.setYield((double) (winningAmount / purchaseAmount));
+        System.out.println(winningAmount);
+        double yield = roundsYeild( winningAmount * 1000L / (long) purchaseAmount );
+        SystemMessage.printYield(yield);
+        user.setYield(yield);
     }
 
     public double roundsYeild(Long yield) {
-        return Math.round(yield * 10) / 10.0;
+        return Math.round(yield) / 10.0;
     }
 }

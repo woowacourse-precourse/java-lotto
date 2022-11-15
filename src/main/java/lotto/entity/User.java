@@ -11,11 +11,11 @@ public class User {
     private double yield;
     private HashMap<Integer, Integer> winning = new HashMap<>(){
         {
-            put(5, 0);
-            put(4, 0);
-            put(3, 0);
-            put(2, 0);
             put(1, 0);
+            put(2, 0);
+            put(3, 0);
+            put(4, 0);
+            put(5, 0);
         }
     };
 

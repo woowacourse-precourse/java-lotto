@@ -40,11 +40,19 @@ public class SystemMessage {
         }
     }
 
+    public static void whenRaffle() {
+        System.out.println("당첨번호를 입력해 주세요.");
+    }
+
+    public static void whenBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
     public static void printWinningHistory(int rank, int count) {
         System.out.println(rankType.get(rank-1) + "("+rankPrice.get(rank-1)+")"+" - "+count+"개");
     }
 
     public static void printYield(double yield) {
-        System.out.println("총 수익률은 "+yield+"입니다.");
+        System.out.println("총 수익률은 "+yield+"%입니다.");
     }
 }
