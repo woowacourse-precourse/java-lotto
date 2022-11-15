@@ -24,11 +24,7 @@ public class OutputView {
 
         for (Lotto lotto : userLotto) {
             System.out.println(lotto.getNumbers().stream().sorted().collect(Collectors.toList()));
-
-//            String format = lotto.getNumbers().toString();
-//            System.out.println(format);
         }
-
 
     }
 

@@ -171,7 +171,7 @@ class InputViewTest {
         System.setOut(new PrintStream(output));
     }
     @AfterEach
-    void resotreOutputStream() {
+    void restoreOutputStream() {
         System.setOut(System.out);
         output.reset();
     }
