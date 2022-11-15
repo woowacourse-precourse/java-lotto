@@ -1,4 +1,6 @@
 package lotto.view;
+import lotto.domain.Rating;
+
 import java.lang.Enum;
 import java.sql.SQLOutput;
 
@@ -8,8 +10,9 @@ public class OutputView {
     private static final String RECEIVE_MESSAGE = "를 입력해 주세요.";
     private static final String WINNING_MESSAGE = "당첨 번호";
     private static final String BONUS_MESSAGE = "보너스 번호";
-    private static final String RESULT_MESSAGE = "%d개 일치 (%s원) - %d개";
-    private static final String YIELD_MESSAGE = "총 수익률은 %f%입니다.";
+    private static final String RESULT_MESSAGE = "%d개 일치 (%s원) - %d개\n";
+    private static final String BONUS_CORRECT_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static final String YIELD_MESSAGE = "총 수익률은 %s%%입니다.";
 
     public static void printBlank() {
         System.out.println();
@@ -41,10 +44,15 @@ public class OutputView {
     }
 
     public static void printResultMessage(int count, String reword, int winningNumber) {
+        if(count == Rating.SECOND.getCount()) {
+            System.out.printf(RESULT_MESSAGE, count, reword, winningNumber);
+            return;
+        }
         System.out.printf(RESULT_MESSAGE, count, reword, winningNumber);
     }
 
     public static void printYieldMessage(float yield) {
-        System.out.printf(YIELD_MESSAGE, yield);
+        String profit = String.format("%.1f", yield);
+        System.out.printf(YIELD_MESSAGE, profit);
     }
 }
