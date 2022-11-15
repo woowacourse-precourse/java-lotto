@@ -70,8 +70,15 @@ public class LottoService {
         }
     }
 
+    public void saveBonusNumber(String number) {
+
+    }
+
     private void validateBonusNumber(String number) {
         checkBonusNumberFormat(number);
+
+        int bonusNumber = Integer.parseInt(number);
+        checkBonusNumberInWinningNumber(bonusNumber);
     }
 
     private void checkBonusNumberFormat(String number) {
@@ -79,6 +86,14 @@ public class LottoService {
 
         if (!Pattern.matches(bonusNumber.getRegex(), number)) {
             throw new IllegalArgumentException(Error.BONUS_NUMBER_FORMAT.getText());
+        }
+    }
+
+    private void checkBonusNumberInWinningNumber(int number) {
+        List<Integer> winningNumbers = lottoRepository.getWinningNumbers();
+
+        if (winningNumbers.contains(number)) {
+            throw new IllegalArgumentException(Error.BONUS_NUMBER_IN_WINNING_NUMBER.getText());
         }
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 public class LottoRepository {
     private final List<Lotto> publishedLotto = new ArrayList<>();
     private final List<Integer> winningNumbers = new ArrayList<>();
+    private int bonusNumber;
 
     public void save(Lotto lotto) {
         publishedLotto.add(lotto);
@@ -19,5 +20,13 @@ public class LottoRepository {
 
     public void saveWinningNumbers(List<Integer> numbers) {
         this.winningNumbers.addAll(numbers);
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
+    }
+
+    public void saveBonusNumber(int number) {
+        this.bonusNumber = number;
     }
 }
