@@ -21,7 +21,7 @@ public class Printer {
     }
 
     public static void requestLottoCount(int lottocount) {
-        System.out.println(String.format("\n%d개를 구매했습니다", lottocount));
+        System.out.printf("\n%d개를 구매했습니다.%n", lottocount);
     }
 
     public static void requestMargin(double margin) {
