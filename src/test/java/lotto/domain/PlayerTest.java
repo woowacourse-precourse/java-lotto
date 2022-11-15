@@ -69,6 +69,37 @@ class PlayerTest extends NsTest {
         }
     }
 
+    @Nested
+    @DisplayName("보너스 번호 입력 유효성 검사 테스트")
+    class BonusNumberInputTest {
+        @DisplayName("보너스 번호가 숫자가 아닐 때 예외가 발생한다.")
+        @Test
+        void inputBonusNumberWithNonNumeric() {
+            assertSimpleTest(() -> {
+                runException("3000", "1,2,3,4,5,6", "woowacourse");
+                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+            });
+        }
+
+        @DisplayName("보너스 번호가 범위를 벗어날 때 예외가 발생한다.")
+        @Test
+        void inputBonusNumberOutOfRange() {
+            assertSimpleTest(() -> {
+                runException("3000", "1,2,3,4,5,6", "58");
+                assertThat(output()).contains(ERROR + WRONG_RANGE_MESSAGE);
+            });
+        }
+
+        @DisplayName("보너스 번호가 당첨 번호와 중복될 때 예외가 발생한다.")
+        @Test
+        void inputBonusNumberDuplicated() {
+            assertSimpleTest(() -> {
+                runException("3000", "1,11,13,24,35,41", "35");
+                assertThat(output()).contains(ERROR + BONUS_DUPLICATE_MESSAGE);
+            });
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
