@@ -301,6 +301,19 @@ public class Lotto {
 
 
 ### 테스트 코드
+1. InputManagerTest
+   * 입력한 로또 구입 금액이 유효한가?
+   * 입력한 당첨 번호가 유효한가?
+   * 입력한 보너스 번호가 유효한가?
+
+
+2. LottoTest
+   * 로또와 일치하는 숫자의 개수를 정상적으로 반환하는가?
+
+
+3. LottoManagerTest
+   1. generateLottoTest: 로또 발행 확인
+   2. getLottoRankResultTest: 당첨 내역 계산 확인
 
 
 ---
