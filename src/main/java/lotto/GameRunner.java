@@ -1,6 +1,8 @@
 package lotto;
 
+import static lotto.util.NumberValidator.checkNotComma;
 import static lotto.util.NumberValidator.checkNotInt;
+import static lotto.util.NumberValidator.checkNumbersNotInt;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 
@@ -52,12 +54,12 @@ public class GameRunner {
 
     private void inputNumbers() {
         askNumbers();
-        numbers = getNumbers();
+        numbers = checkNumbersNotInt(checkNotComma(input()));
     }
 
     private void inputBonusNumber() {
         askBonusNumber();
-        bonusNumber = getInt();
+        bonusNumber = checkNotInt(input());
     }
 
     private void makeResult() {
