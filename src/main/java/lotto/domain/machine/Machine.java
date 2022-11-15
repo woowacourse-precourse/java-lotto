@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.domain.lotto.Lotto;
-import lotto.domain.utils.Input;
 
 public class Machine {
   private final Integer count;
@@ -22,11 +21,11 @@ public class Machine {
   }
 
   public void printTicketCount() {
-    Input.emptyBuffer();
+    System.out.println();
     System.out.printf(OUTPUT_MESSAGE_OF_LOTTO_TICKETS, count);
   }
 
-  private void generateLottoNumberListByCount() {
+  public void generateLottoNumberListByCount() {
     for(int count : countList()) {
       List<Integer> autoNumberList = new Lotto(createDistinctLottoNumbers()).getNumberList();
       numbers.add(autoNumberList);
@@ -38,7 +37,10 @@ public class Machine {
   }
 
   public void printEveryLottoNumberList() {
-    String result = makeStringResultOfEveryLottoList(numbers);
-    System.out.println(result);
+    makeStringResultOfEveryLottoList(numbers);
+  }
+
+  public List<List<Integer>> getNumbers() {
+    return numbers;
   }
 }
