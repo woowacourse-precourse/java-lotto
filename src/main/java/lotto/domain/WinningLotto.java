@@ -1,6 +1,7 @@
-package lotto.UI;
+package lotto.domain;
 
 import lotto.Lotto;
+import lotto.Utils.Error;
 
 import java.util.*;
 import java.util.stream.Collectors;

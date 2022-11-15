@@ -8,7 +8,7 @@ public class commonUtil {
         try {
             number = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            return 0;
+            Error.amountInput();
         }
         return number;
     }
@@ -20,7 +20,7 @@ public class commonUtil {
                     .map(Integer::valueOf)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            new Error().outOfRange();
+            Error.outOfRange();
         }
         return result;
     }

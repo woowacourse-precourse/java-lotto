@@ -1,4 +1,4 @@
-package lotto.UI;
+package lotto.domain;
 
 public class Purchase {
     private final Integer count;
