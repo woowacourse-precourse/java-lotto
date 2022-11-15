@@ -21,7 +21,7 @@ public class InputNumberTest {
     @DisplayName("보너스 번호가 제대로 파싱되는지 확인")
     @Test
     void 보너스번호_파싱_확인_테스트() {
-        assertThat(InputNumber.parseWinningNumber("7")).isEqualTo(List.of(7));
+        assertThat(InputNumber.parseBonusNumber("7")).isEqualTo(List.of(7));
     }
 
     @DisplayName("당첨번호가 6개가 아닐 때 예외 발생하는지 확인")
