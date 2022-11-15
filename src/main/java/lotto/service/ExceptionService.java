@@ -25,6 +25,7 @@ public class ExceptionService {
     }
 
     public void exceptionHandlingOfBonusNumber(List<Integer> winningNumbers, String bonusNumber){
+        bonusNumberException.checkIfBonusNumberIsNumeric(bonusNumber);
         bonusNumberException.checkIfTheScopeIsCorrect(bonusNumber);
     }
 }
