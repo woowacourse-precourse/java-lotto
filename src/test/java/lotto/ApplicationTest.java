@@ -110,6 +110,15 @@ class ApplicationTest extends NsTest {
                 "[ERROR] 6개의 숫자를 입력해주세요"
         );
     }
+    @ParameterizedTest
+    @DisplayName("로또 승리 조건 예외 테스트(중복)")
+    @ValueSource(strings = {"1,1,3,4,5,5", "1,2,2,4,5,7"})
+    void 승리_조건_로또_중복_테스트(String numbers) {
+        run("8000", numbers);
+        assertThat(output()).contains(
+                "[ERROR] 중복되지 않은 숫자들을 넣어주세요"
+        );
+    }
 
     @Override
     public void runMain() {
