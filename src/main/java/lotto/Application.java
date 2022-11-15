@@ -34,7 +34,6 @@ public class Application {
 
     static List<Integer> MakeNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
         return numbers;
     }
 
