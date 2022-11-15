@@ -14,22 +14,44 @@ public class Game {
         this.service = service;
     }
 
-    public void start() throws IllegalArgumentException {
+    public List<Lotto> generateLottos() {
         String balance = ui.inputBalance();
         int lottoAmount = service.getLottoAmount(balance);
 
         List<Lotto> lottos = service.generateLottos(lottoAmount);
         ui.printLottos(lottos);
 
-        String inputMatchNumbers = ui.inputMatchNumbers();
-        List<Integer> matchNumbers = service.getMatchNumbers(inputMatchNumbers);
-        String inputBonusNumber = ui.inputBonusNumber();
-        int bonusNumber = service.getBonusNumber(inputBonusNumber, matchNumbers);
+        return lottos;
+    }
 
+    public void calculateProfit(List<Lotto> lottos, List<Integer> matchNumbers, int bonusNumber) {
         int[] rewards = service.calculateRewards(lottos, matchNumbers, bonusNumber);
         ui.printInfo(rewards);
 
-        double profitRate = service.getProfitRate(rewards, lottoAmount);
+        double profitRate = service.getProfitRate(rewards, lottos.size());
         ui.printProfitRate(profitRate);
+    }
+
+    public List<Integer> getMatchNumbers() {
+        String inputMatchNumbers = ui.inputMatchNumbers();
+        List<Integer> matchNumbers = service.getMatchNumbers(inputMatchNumbers);
+
+        return matchNumbers;
+    }
+
+    public int getBonusNumber(List<Integer> matchNumbers){
+        String inputBonusNumber = ui.inputBonusNumber();
+        int bonusNumber = service.getBonusNumber(inputBonusNumber, matchNumbers);
+
+        return bonusNumber;
+    }
+
+    public void start() throws IllegalArgumentException {
+        List<Lotto> lottos = generateLottos();
+
+        List<Integer> matchNumbers = getMatchNumbers();
+        int bonusNumber = getBonusNumber(matchNumbers);
+
+        calculateProfit(lottos, matchNumbers, bonusNumber);
     }
 }
