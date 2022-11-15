@@ -4,7 +4,10 @@ import lotto.models.Lotto;
 import lotto.models.LottoResult;
 import lotto.models.Rank;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static lotto.constants.Constant.*;
@@ -24,7 +27,11 @@ public class Printer {
 	}
 
 	public static void showUserLottoNumbers(List<Lotto> lotteries) {
-		lotteries.forEach(lotto -> System.out.println(lotto.toString()));
+		lotteries.forEach(lotto -> {
+			List<Integer> sortedLottoNumber = new ArrayList<>(lotto.getLottoNumber());
+			Collections.sort(sortedLottoNumber);
+			System.out.println(sortedLottoNumber);
+		});
 	}
 
 	public static void showUserPurchasedLottoCount(int purchaseAmount) {
