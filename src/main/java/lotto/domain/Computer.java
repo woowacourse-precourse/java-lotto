@@ -18,14 +18,12 @@ public class Computer {
     public Computer(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(Resource.MIN_LOTTO_NUMBER, Resource.MAX_LOTTO_NUMBER, Resource.LOTTO_SIZE);
-            /*try {
-                Collections.sort(lotto);
-            } catch (UnsupportedOperationException e) {
-            }*/
             List<Integer> copyOfLotto = new ArrayList<>();
+
             for (Integer lottoNumber : lotto) {
                 copyOfLotto.add(lottoNumber);
             }
+
             Collections.sort(copyOfLotto);
             AUTO_LOTTOS.add(copyOfLotto);
         }

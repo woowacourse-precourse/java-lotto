@@ -21,7 +21,7 @@ public class User {
         validateNotZero(userInput);
         validateNoSpace(userInput);
         validateNumber(userInput);
-        validateNoChange(Integer.parseInt(userInput));
+        validateNoChange(Long.parseLong(userInput));
     }
 
     public void validateUserWinningNumber(String userInput) {
@@ -59,15 +59,15 @@ public class User {
         }
     }
 
-    private int validateNumber(String userInput) {
+    private void validateNumber(String userInput) {
         try {
-            return Integer.parseInt(userInput);
+            Long.parseLong(userInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(changeWord + Message.NOTNUMBER);
         }
     }
 
-    private void validateNoChange(int userMoney) {
+    private void validateNoChange(long userMoney) {
         if (userMoney % Resource.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(changeWord + Message.HASCHARGE);
         }
@@ -86,13 +86,13 @@ public class User {
         }
     }
 
-    private void validateRange(int userInput) {
+    private void validateRange(long userInput) {
         if (userInput < Resource.MIN_LOTTO_NUMBER || userInput > Resource.MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException(changeWord + Message.NOTRANGE);
         }
     }
 
-    private void validateDuplicate(int userInput, List<Integer> winningNumbers) {
+    private void validateDuplicate(long userInput, List<Integer> winningNumbers) {
         if (winningNumbers.contains(userInput)) {
             throw new IllegalArgumentException(changeWord + Message.ISDUPLICATE);
         }
