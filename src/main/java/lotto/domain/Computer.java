@@ -14,6 +14,8 @@ public class Computer {
     static final int END_RANGE = 45;
     static final int LOTTO_NUMBER_LENGTH = 6;
     static final int LOTTO_CHARGE = 1000;
+    static final int VALID_TIME_CRITERIA = 0;
+    static final int PASS_TURN = -1;
 
     public List<Integer> createLottoNumbers(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(STRAT_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
@@ -26,10 +28,10 @@ public class Computer {
 
         List<List<Integer>> lottos = new ArrayList<>();
 
-        while(times>0){
+        while(times>VALID_TIME_CRITERIA){
             List<Integer> lotto = new Lotto(createLottoNumbers()).getNumbers();
             lottos.add(lotto);
-            times -= 1;
+            times -= PASS_TURN;
         }
         printLottos(lottos);
         return lottos;
