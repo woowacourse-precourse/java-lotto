@@ -9,19 +9,19 @@ public class Application {
 
     }
 
-    public static List<Integer> LottoNumber(){
-
-    }
-
     public static int InputMoney(){
-
-    }
+        System.out.println("구매금액을 입력해 주세요.");
+        String Money = Console.readLine();
 
     public static void CheckUnit(){
 
     }
 
     public static int CountLotto(int Money){
+
+    }
+
+    public static List<Integer> LottoNumber(){
 
     }
 
