@@ -36,12 +36,8 @@ public class Validation {
         }
     }
 
-    public void checkBonusDuplicate(List<Integer> winning, int bonus)
-        throws IllegalArgumentException {
-        winning.add(bonus);
-        try {
-            checkDuplicate(winning);
-        } catch (IllegalArgumentException E) {
+    public void checkBonusDuplicate(Lotto winning, int bonus) {
+        if (winning.hasNumber(bonus)) {
             throw new IllegalArgumentException(Error.DUPLICATE_IN_BONUS.message());
         }
     }
