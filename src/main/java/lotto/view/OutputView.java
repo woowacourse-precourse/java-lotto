@@ -14,7 +14,11 @@ public class OutputView {
         int count = userLottos.getLottoCount();
         System.out.println("\n" + count + MESSAGE_TO_PRINT_COUNT);
     }
-
+    public void printResult(LottoResult lottoResult) {
+        System.out.println(MESSAGE_TO_PRINT_RESULT);
+        System.out.println(lottoResult.getResultString());
+        System.out.println(MESSAGE_TO_PRINT_YIELD_A + lottoResult.getYield() + MESSAGE_TO_PRINT_YIELD_B);
+    }
 
 
 
