@@ -20,11 +20,13 @@ import org.junit.jupiter.api.Test;
 
 class AccountTest {
     WinningCalculator winningCalculator = new WinningCalculator();
+    Account account;
 
     @BeforeEach
     void initWinningCalculator() {
         winningCalculator.setWinningNumbers("1,2,3,4,5,6");
         winningCalculator.setBonusNumber("7");
+        account = new Account(winningCalculator);
     }
 
     @DisplayName("당첨 결과 내역을 가져온다.")
@@ -35,26 +37,16 @@ class AccountTest {
         // when
         Set<WinningResult> keys = account.getWinningResultTable().keySet();
         // then
-        assertThat(keys).contains(
-                RANK_1,
-                RANK_2,
-                RANK_3,
-                RANK_4,
-                RANK_5,
-                RANK_NONE
-        );
+        assertThat(keys).contains(RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_NONE);
     }
 
     @DisplayName("당첨 결과를 저장한다.")
     @Test
     void shouldBeAdded_WhenSaveResults() {
         // given
-        Account account = new Account(winningCalculator);
         List<Lotto> lottos = new ArrayList<>();
-        Lotto lottoRank2 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7)));
-        Lotto lottoRank5 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
-        lottos.add(lottoRank2);
-        lottos.add(lottoRank5);
+        lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7))));
+        lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
         // when
         account.saveResult(lottos);
         // then
@@ -65,16 +57,14 @@ class AccountTest {
     @DisplayName("수익률을 가져온다.")
     @Nested
     class ShouldGetYield {
+
         @DisplayName("2등과 5등 당첨")
         @Test
         void winRank2AndRank5() {
             // given
-            Account account = new Account(winningCalculator);
             List<Lotto> lottos = new ArrayList<>();
-            Lotto lottoRank2 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7)));
-            Lotto lottoRank5 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
-            lottos.add(lottoRank2);
-            lottos.add(lottoRank5);
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7))));
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
             // when
             account.saveResult(lottos);
             // then
@@ -85,12 +75,9 @@ class AccountTest {
         @Test
         void winRank5AndRankNone() {
             // given
-            Account account = new Account(winningCalculator);
             List<Lotto> lottos = new ArrayList<>();
-            Lotto lottoRank5 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
-            Lotto lottoRankNone = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14)));
-            lottos.add(lottoRank5);
-            lottos.add(lottoRankNone);
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));
             // when
             account.saveResult(lottos);
             // then
@@ -101,14 +88,10 @@ class AccountTest {
         @Test
         void winRank5And2RankNone() {
             // given
-            Account account = new Account(winningCalculator);
             List<Lotto> lottos = new ArrayList<>();
-            Lotto lottoRank5 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
-            Lotto lottoFirstRankNone = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14)));
-            Lotto lottoSecondRankNone = new Lotto(new ArrayList<>(Arrays.asList(11, 12, 13, 14, 5, 6)));
-            lottos.add(lottoRank5);
-            lottos.add(lottoFirstRankNone);
-            lottos.add(lottoSecondRankNone);
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(11, 12, 13, 14, 5, 6))));
             // when
             account.saveResult(lottos);
             // then
@@ -119,12 +102,9 @@ class AccountTest {
         @Test
         void winRankNoneTwice() {
             // given
-            Account account = new Account(winningCalculator);
             List<Lotto> lottos = new ArrayList<>();
-            Lotto lottoRankNone1 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14)));
-            Lotto lottoRankNone2 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 21, 22, 23, 24)));
-            lottos.add(lottoRankNone1);
-            lottos.add(lottoRankNone2);
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));
+            lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 21, 22, 23, 24))));
             // when
             account.saveResult(lottos);
             // then
