@@ -1,7 +1,7 @@
 package lotto.rank;
 
 import static lotto.constant.Message.MATCH;
-import static lotto.constant.Message.MATCH_NO_BONUS;
+import static lotto.constant.Message.MATCH_BONUS;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -10,14 +10,14 @@ import lotto.money.Money;
 public enum Rank {
 
     FIRST(6, false, 2_000_000_000),
-    SECOND(5, true, 30_000_000),
-    THIRD(5, false, 1_500_000) {
+    SECOND(5, true, 30_000_000) {
         public String getMessage(int count) {
-            return String.format(MATCH_NO_BONUS, THIRD.winningBallMatchCount,
-                    THIRD.winningMoney.toString(),
+            return String.format(MATCH_BONUS, SECOND.winningBallMatchCount,
+                    SECOND.winningMoney.toString(),
                     count);
         }
     },
+    THIRD(5, false, 1_500_000),
     FOURTH(4, false, 50_000),
     FIFTH(3, false, 5_000),
     NONE(0, false, 0);
