@@ -11,10 +11,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public int size() {
-        return this.numbers.size();
-    }
-
     public int get(int index) {
         return this.numbers.get(index);
     }

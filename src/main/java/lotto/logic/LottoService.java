@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import lotto.domain.Lotto;
+import lotto.domain.LottoInfo;
 import lotto.domain.Rank;
 import lotto.domain.Winning;
 
@@ -47,7 +48,7 @@ public class LottoService {
     private int compareForSame(Winning target, Lotto lotto) {
         int sameCount = 0;
 
-        for (int size = lotto.size(), i = 0; i < size; i++) {
+        for (int size = LottoInfo.SIZE.value(), i = 0; i < size; i++) {
             int number = lotto.get(i);
 
             if (target.contains(number)) {
