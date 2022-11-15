@@ -29,8 +29,8 @@ public class Lotto {
         return this.numbers;
     }
 
-    public void sortNumbers() {
-        Collections.sort(this.numbers);
+    public boolean contains(int number) {
+        return getNumbers().contains(number);
     }
 
     public static void checkSize(List<Integer> numbers) {
