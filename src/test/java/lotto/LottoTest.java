@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -75,7 +77,14 @@ class LottoTest {
     @Test
     void setBonusNumberTest() {
         // given
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+        Lotto lotto = new Lotto(numbers);
         int bonusNumber = 10;
 
         // when
