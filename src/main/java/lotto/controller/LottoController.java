@@ -29,13 +29,13 @@ public class LottoController {
 
         messagePrinter.printStaticWinningLottoNumbersNotification();
         Lotto winning = new Lotto(numberScanner.inputWinningLottoNumbers());
-
         messagePrinter.printStaticBonusNumberNotification();
         Bonus bonus = new Bonus(numberScanner.inputBonusNumber());
-
         WinningLotto winningLotto = new WinningLotto(winning, bonus);
         checkAndRecord(buyer, winningLotto);
 
+        messagePrinter.printStaticStatisticsTopic();
+        messagePrinter.printStaticParagraphDivision();
         printWinningRecord(statistics);
     }
 
