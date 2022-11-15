@@ -5,10 +5,7 @@ import lotto.domain.LuckyNumber;
 import lotto.domain.Prize;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -62,7 +59,7 @@ class LottoServiceTest {
         LuckyNumber luckyNumber = new LuckyNumber();
         luckyNumber.inputBonusNumber("7");
         luckyNumber.inputLuckyNumber("4,6,1,15,19,39");
-        HashMap<Prize, Integer> history = LottoService.lottoNumberComparison(userNumber, luckyNumber);
+        LinkedHashMap<Prize, Integer> history = LottoService.lottoNumberComparison(userNumber, luckyNumber);
 
         assertThat(5000.0f).isEqualTo(LottoService.totalCalculation(history));
     }

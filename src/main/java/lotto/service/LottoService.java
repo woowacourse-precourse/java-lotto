@@ -5,12 +5,13 @@ import lotto.domain.LuckyNumber;
 import lotto.domain.Prize;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 
 public class LottoService {
-    public static HashMap<Prize, Integer> lottoNumberComparison(List<Lotto> lotteryNumbers, LuckyNumber luckyNumber) {
-        HashMap<Prize, Integer> history = historyInit();
+    public static LinkedHashMap<Prize, Integer> lottoNumberComparison(List<Lotto> lotteryNumbers, LuckyNumber luckyNumber) {
+        LinkedHashMap<Prize, Integer> history = historyInit();
 
         for (Lotto userNumber : lotteryNumbers) {
             List<Integer> userNum = userNumber.getNumbers();
@@ -62,8 +63,8 @@ public class LottoService {
         return total;
     }
 
-    private static HashMap<Prize, Integer> historyInit() {
-        HashMap<Prize, Integer> history = new HashMap<>();
+    private static LinkedHashMap<Prize, Integer> historyInit() {
+        LinkedHashMap<Prize, Integer> history = new LinkedHashMap<>();
         history.put(Prize.FIFTH_PLACE, 0);
         history.put(Prize.FOURTH_PLACE, 0);
         history.put(Prize.THIRD_PLACE, 0);
