@@ -11,12 +11,16 @@ public class LottoGenerator {
     private static final int LOTTO_AMOUNT = 1000;
 
     public static int findLottoCountByMoney(int money) {
-        validateMoney(money);
         return money / LOTTO_AMOUNT;
     }
 
-    private static void validateMoney(int money) {
-        if (money % LOTTO_AMOUNT != 0) {
+    private static void validateMoney(String money) {
+        String expression = "^[0-9]+$";
+        if (!money.matches(expression)) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+
+        if (Integer.parseInt(money) % LOTTO_AMOUNT != 0) {
             throw new IllegalArgumentException("[ERROR] 금액이 " + LOTTO_AMOUNT + "로 나누어 떨어지지 않습니다.");
         }
     }
@@ -24,6 +28,7 @@ public class LottoGenerator {
     public static int enterToBuyLottoForMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
+        validateMoney(money);
         return Integer.parseInt(money);
     }
 

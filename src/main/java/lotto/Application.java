@@ -12,13 +12,17 @@ import lotto.domain.seller.Seller;
 
 public class Application {
     public static void main(String[] args) {
-        List<Lotto> lottos =  buyLottos();
-        Buyer buyer = new User(lottos);
+        try {
+            List<Lotto> lottos = buyLottos();
+            Buyer buyer = new User(lottos);
 
-        WinningLotto winningLotto = LottoGenerator.createWinningLottoWithEnterNumbers();
-        Seller seller = new LottoMachine(winningLotto);
-        LottoGame lottoGame = new LottoGame(buyer, seller);
-        lottoGame.start();
+            WinningLotto winningLotto = LottoGenerator.createWinningLottoWithEnterNumbers();
+            Seller seller = new LottoMachine(winningLotto);
+            LottoGame lottoGame = new LottoGame(buyer, seller);
+            lottoGame.start();
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static List<Lotto> buyLottos() {
