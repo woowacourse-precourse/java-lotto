@@ -20,6 +20,7 @@ public class LottoGameController {
 
     public void LottoSystem(InputMessages inputMessages, OutputMessages outputMessages) {
         setRandomList(inputMessages, outputMessages);
+        setEnterLotto(inputMessages, outputMessages);
     }
 
     public String getInputNumber(InputMessages inputMessages, OutputMessages outputMessages) {
@@ -53,6 +54,17 @@ public class LottoGameController {
             lottoList.add(i, list);
             outputMessages.printLottoList(lottoList.get(i));
         }
+    }
+
+    public List<Integer> getWinNumList(InputMessages inputMessages, OutputMessages outputMessages) {
+        outputMessages.winNumInputMsg();
+        String[] inputList = inputMessages.readLineAsArray();
+        List<Integer> inputNumbers = new ArrayList<>();
+        for (String inputs: inputList) {
+            inputNumbers.add(Integer.parseInt(inputs));
+        }
+
+        return inputNumbers;
     }
 
 
