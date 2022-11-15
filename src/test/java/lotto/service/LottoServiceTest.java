@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class LottoServiceTest {
     @Nested
-    @DisplayName("구매금액 입력 유효성 검증 테스트")
+    @DisplayName("구매금액 입력 테스트")
     class PurchaseAmountInputValueTest {
         @Test
         @DisplayName("[실패] - 숫자가 아닌 입력을 받은 경우")
@@ -65,7 +65,7 @@ class LottoServiceTest {
     }
 
     @Nested
-    @DisplayName("로또 당첨번호 입력 유효성 검증 테스트")
+    @DisplayName("로또 당첨번호 입력 테스트")
     class WinningNumberInputValueTest {
         @Test
         @DisplayName("[실패] - 올바르지 않은 형식이 입력된 경우(문자열)")
