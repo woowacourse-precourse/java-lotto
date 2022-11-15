@@ -16,6 +16,7 @@ public class Lotto {
         Utils.validateUniqueNumbers(numbers);
         Utils.validateNumbersRange(numbers);
     }
+    // TODO: 추가 기능 구현
 
     public boolean contains(int number) {
         return numbers.contains(number);
@@ -32,9 +33,8 @@ public class Lotto {
 
     public String toString() {
         List<String> strNumbers = convertStringList();
-        return "[" + String.join(",", strNumbers) + "]";
+        return "[" + String.join(", ", strNumbers) + "]";
     }
-    // TODO: 추가 기능 구현
 
     private int compareNum(int num) {
         if (numbers.contains(num)) {
