@@ -1,20 +1,22 @@
 package lotto.domain.lottoDevice;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.lottoData.Lotto;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.lottoData.Lotto;
-
 public class LottoMachine {
+
+    private final int LOTTO_PRICE = 1000;
 
     public LottoMachine() {
     }
 
     public List<Lotto> createLottoWithMoney(int money) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 1; i <= money / 1000; i++) {
+        for (int i = 1; i <= money / LOTTO_PRICE; i++) {
             lottos.add(createLotto());
         }
         return lottos;
