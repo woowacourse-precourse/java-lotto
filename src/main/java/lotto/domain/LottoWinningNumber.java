@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoWinningNumber {
-
-
     public List<Integer> winningNumberConversion(String inputWinningNumber) {
         List<Integer> winningNumber = new ArrayList<>();
         String[] separate = separateByComma(inputWinningNumber);
 
         validSixNumber(separate);
-        validConsistNumber(separate);
+        validConsistNumbers(separate);
 
         for (int i = 0; i < separate.length; i++) {
             winningNumber.add(Integer.parseInt(separate[i]));
@@ -28,11 +26,19 @@ public class LottoWinningNumber {
         }
     }
 
-    public void validConsistNumber(String[] inputNumbers) {
+    public void validConsistNumbers(String[] inputNumbers) {
         try {
             for (int i = 0; i < inputNumbers.length; i++) {
                 Integer.parseInt(inputNumbers[i]);
             }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validConsistOneNumber(String inputNumber) {
+        try {
+            Integer.parseInt(inputNumber);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
