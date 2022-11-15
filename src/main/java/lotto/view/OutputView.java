@@ -1,11 +1,11 @@
-package view;
+package lotto.view;
 
-import static util.Constant.*;
+import static lotto.util.Constant.*;
 
 import java.text.DecimalFormat;
-import lotto.Lottos;
-import lotto.Rank;
-import lotto.Result;
+import lotto.domain.Lottos;
+import lotto.domain.Rank;
+import lotto.domain.Result;
 
 public class OutputView {
 

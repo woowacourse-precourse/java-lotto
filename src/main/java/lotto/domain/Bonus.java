@@ -1,6 +1,6 @@
-package lotto;
+package lotto.domain;
 
-import static util.Constant.*;
+import static lotto.util.Constant.*;
 
 import java.util.List;
 

@@ -1,9 +1,6 @@
-package util;
+package lotto.util;
 
-import static util.Constant.*;
-
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import static lotto.util.Constant.*;
 
 public class Validation {
 
