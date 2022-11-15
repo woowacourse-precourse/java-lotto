@@ -4,9 +4,9 @@
   - [X] [예외 처리] 문자열이 입력된 경우
 - [X] 발행 로또 수량 출력
 - [ ] 로또 발행
-  - [ ] 랜던 번호 생성
+  - [X] 랜던 번호 생성
     - [X] [예외 처리] 생성한 숫자가 6개가 아닌 경우
-    - [ ] [예외 처리] 중복되는 숫자가 있는 경우
+    - [X] [예외 처리] 중복되는 숫자가 있는 경우
   - [ ] 오름차순 정리
   - [ ] 발행한 로또 번호 출력
 - [ ] 당첨 번호 입력
@@ -36,3 +36,10 @@
   - test: string to int money test
   - feat: add output class and print the number of lottos
   - style: change variable name
+
+- 2022.11.15
+  - feat: issue lottos
+  - refactor: relocate output methods to print class
+  - refactor: issue lottos
+  - feat: check random lotto numbers validation
+  - refactor: refactoring issue lottos exception validate
