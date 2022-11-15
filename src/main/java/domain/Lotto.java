@@ -1,14 +1,12 @@
 package domain;
 
+import domain.enums.ErrorMessage;
 import java.util.List;
 
 public class Lotto {
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 45;
-    private static final String NUMBER_SIZE_ERR = "[ERROR] 로또 숫자는 6개 입니다";
     private static final String NUMBER_RANGE_ERR = "[ERROR] 로또 숫자는 " + MIN_NUM + " 이상 " + MAX_NUM + "이하의 숫자만 가능합니다";
-    private static final String NUMBER_DUPLICATE_ERR = "[ERROR] 중복된 번호는 사용할 수 없습니다.";
-
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -18,10 +16,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(NUMBER_SIZE_ERR);
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_SIZE_ERR_MESSAGE.getErrorMessage());
         }
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException(NUMBER_DUPLICATE_ERR);
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE_ERR.getErrorMessage());
         }
         for (Integer number : numbers) {
             validateNumberRange(number);
