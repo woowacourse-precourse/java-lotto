@@ -21,6 +21,7 @@ public class LottoController {
         try {
             int money = money();
             List<Lotto> lottos = buy(money);
+            WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumbers()), bonusNumber());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -45,4 +46,21 @@ public class LottoController {
         return lottos;
     }
 
+    private List<Integer> winningNumbers() {
+        inputView.printInputLotto();
+        String input = Console.readLine();
+        InputValidator.checkLottoNumbers(input);
+
+        String[] numbers = input.split(Constants.SPLIT_REGEX);
+
+        return Arrays.stream(numbers).map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    private int bonusNumber() {
+        inputView.printInputBonus();
+        String input = Console.readLine();
+        InputValidator.checkBonusNumber(input);
+
+        return Integer.parseInt(input);
+    }
 }
