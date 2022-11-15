@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,8 +37,13 @@ public class Application {
     static ArrayList<Lotto> buyLotto(int countPurchase){
 
         ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
-        //List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        for(int i=0; i<countPurchase; i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            System.out.println(numbers.toString());
+            lottoList.add(new Lotto(numbers));
 
+        }
         return lottoList;
     }
 
