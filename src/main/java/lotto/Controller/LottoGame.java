@@ -15,9 +15,8 @@ public class LottoGame {
 
     public void startGame() {
         getAmount();
-
-        userLotto = LottoMachine.publishLotto(amount);
-        OutputView.printUserLotto(userLotto);
+        buyLotto();
+        printUserLotto();
 
         winningNumber = InputView.getWinningNumber();
         OutputView.printWinningNumber();
@@ -33,5 +32,13 @@ public class LottoGame {
         int count = InputView.calculateAmount(input);
         OutputView.printAmount(count);
         this.amount = count;
+    }
+
+    public void buyLotto() {
+        userLotto = LottoMachine.publishLotto(amount);
+    }
+
+    public void printUserLotto() {
+        OutputView.printUserLotto(userLotto);
     }
 }
