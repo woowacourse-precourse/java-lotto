@@ -25,7 +25,7 @@ class LottoMachineTest {
                         lottoMachine.getInputMoney())
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
     @ParameterizedTest
     @CsvSource({"1000,1", "2000,2", "3000,3", "5000,5"})
     void createLottoNumber(String input, String size) {
