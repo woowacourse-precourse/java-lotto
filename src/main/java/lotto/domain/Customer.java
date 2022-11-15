@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.constant.LottoConstant.DIGIT;
 import static lotto.domain.Rank.checkRank;
 
 import java.util.List;
@@ -8,9 +9,9 @@ public class Customer {
 
     private List<Lotto> lottos;
 
-    private int[] winnings = new int[6];
+    private int[] winnings = new int[DIGIT];
 
-    private int money = 0;
+    private long money = 0;
 
     public void buyLottos(List<Lotto> lottos) {
         this.lottos = lottos;
