@@ -19,4 +19,8 @@ public class LottoStatistic {
                 .filter(winLottoNumber.getNumbers()::contains)
                 .count();
     }
+
+    private boolean hasBonusNumber(Lotto lotto){
+        return lotto.getNumbers().contains(winLottoNumber.getBonus());
+    }
 }
