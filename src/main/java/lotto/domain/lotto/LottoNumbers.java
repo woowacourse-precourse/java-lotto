@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import static lotto.constant.ErrorMessage.ERROR_MESSAGE_OF_CONSTRUCTOR;
 import static lotto.domain.utils.Number.validateRange;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -9,9 +10,6 @@ import java.util.Set;
 
 
 public class LottoNumbers {
-
-  public static final String ERROR_MESSAGE_OF_CONSTRUCTOR = "[ERROR] 인스턴스를 생성할 수 없습니다.";
-
 
   public LottoNumbers() {
     throw new UnsupportedOperationException(ERROR_MESSAGE_OF_CONSTRUCTOR);
