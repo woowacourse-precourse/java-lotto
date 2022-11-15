@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;

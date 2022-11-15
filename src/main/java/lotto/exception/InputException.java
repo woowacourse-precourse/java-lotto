@@ -69,7 +69,7 @@ public class InputException {
     }
 
     private static void validateNumberOneLength(String number) {
-        if(number.length() != 1) {
+        if (number.length() != 1) {
             exception(NOT_ONE_LENGTH);
         }
     }
@@ -96,7 +96,7 @@ public class InputException {
     }
 
     private static void validateNotSpace(String number) {
-        if(!Pattern.matches(SPACE_REGEX, number)) {
+        if (!Pattern.matches(SPACE_REGEX, number)) {
             exception(NOT_SPACE);
         }
     }

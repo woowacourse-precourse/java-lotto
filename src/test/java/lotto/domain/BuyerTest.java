@@ -14,6 +14,4 @@ public class BuyerTest {
         buyer.buyLotto(amount);
         assertThat(buyer.getLottos().size()).isEqualTo(9);
     }
-
-
 }
