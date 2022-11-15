@@ -56,4 +56,18 @@ class LottoControllerTest {
 		controller.addToAnalysis(analysis, corrections, hasBonus);
 		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 0, 0, 1, 0));
 	}
+
+	@DisplayName("입력에 따른 수익률 메시지를 반환해야 한다.")
+	@Test
+	void getProfitMsgTest() {
+		Lotto lotto1 = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+		Lotto lotto2 = new Lotto(Arrays.asList(1, 2, 3, 4, 6, 7));
+		List<Lotto> lottos = Arrays.asList(lotto1, lotto2);
+
+		List<Integer> analysis = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+		controller.addToAnalysis(analysis, 3, false);
+		String profitMsg = controller.getProfitMsg(lottos, analysis);
+		String expectedMsg = "총 수익률은 250.0%입니다.";
+		Assertions.assertThat(profitMsg).isEqualTo(expectedMsg);
+	}
 }

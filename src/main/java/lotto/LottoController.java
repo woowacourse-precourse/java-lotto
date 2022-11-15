@@ -76,7 +76,9 @@ public class LottoController {
 			boolean hasBonus = isThereBonus(lotto, bonusNumber);
 			addToAnalysis(analysis, corrections, hasBonus);
 		}
+		String profitMsg = getProfitMsg(lottos, analysis);
 		model.addAttribute("analysis", analysis);
+		model.addAttribute("profitMsg", profitMsg);
 		view.printAnalysis();
 	}
 
@@ -96,12 +98,22 @@ public class LottoController {
 			analysis.set(corrections-3, analysis.get(corrections-3)+1);
 			return;
 		}
-		if (corrections == 5 || !hasBonus) {
+		if (corrections == 5 && !hasBonus) {
 			analysis.set(3, analysis.get(3)+1);
 			return;
 		}
-		if (corrections == 5 || hasBonus) {
+		if (corrections == 5 && hasBonus) {
 			analysis.set(4, analysis.get(4)+1);
 		}
+	}
+
+	public String getProfitMsg(List<Lotto> lottos, List<Integer> analysis) {
+		double payment = lottos.size() * 1000;
+		int[] earnings = {5000, 50000, 1500000, 30000000, 2000000000};
+		double sum = 0;
+		for (int i = 0; i < analysis.size(); i++) {
+			sum += analysis.get(i) * earnings[i];
+		}
+		return "총 수익률은 " + Math.round(sum / payment * 1000) / 10.0 + "%입니다.";
 	}
 }
