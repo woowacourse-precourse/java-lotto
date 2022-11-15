@@ -36,4 +36,12 @@ public class UserInterface {
         }
     }
 
+    public static void printNumberOfLotto(List<List<Integer>> userLottoNumbers,int inputMoney){
+        int games = BuyLotto.numberOfLottoGames(inputMoney);
+        System.out.println(games + "개를 구매했습니다.");
+        for(int i = 0; i < games; i++){
+            System.out.println
+                    (BuyLotto.makeLotto(userLottoNumbers));
+        }
+    }
 }
