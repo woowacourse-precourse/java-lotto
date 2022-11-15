@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class UsetTest {
+public class UserTest {
 
     @Test
     @DisplayName("사용자의 지불금액이 1,000원 단위가 아니면 예외를 발생시킨다.")
