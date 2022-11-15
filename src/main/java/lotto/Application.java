@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -17,17 +18,18 @@ public class Application {
         }
         printLottos(lottos);
 
+
     }
 
     public static int getTheNumberOfLotto() {
         String money = Console.readLine();
-        validate(money);
+        MoneyValidate(money);
         int numberOfLotto = Integer.parseInt(money) / 1000;
 
         return numberOfLotto;
     }
 
-    public static void validate(String money) {
+    public static void MoneyValidate(String money) {
         if (validateMoneyType(money) || validateMoneyRange(money)) {
             System.out.println("[ERROR] 구매 금액은 1000원 단위로 입력해야 합니다.");
             throw new IllegalArgumentException();
@@ -64,6 +66,17 @@ public class Application {
         for (Lotto lotto: lottos) {
             lotto.printLotto();
         }
+    }
+
+    public static List<Integer> getMyLottoNumbers() {
+        String[] lotto = Console.readLine().split(",");
+        List<Integer> myLotto = new ArrayList();
+
+        for (String l : lotto) {
+            myLotto.add(Integer.parseInt(l));
+        }
+
+        return myLotto;
     }
 
 }
