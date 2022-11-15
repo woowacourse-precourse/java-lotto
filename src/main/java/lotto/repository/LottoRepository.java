@@ -28,6 +28,21 @@ public class LottoRepository {
         this.bonusNumber = bonusNumber;
     }
 
+    private void createLottoNumber() {
+        for(int i=0;i<lottoQuantity;i++){
+            this.lottoNumbers.add(new Lotto(generateLottoNumbers()));
+        }
+    }
+
+    private void calculateLottoQuantity() {
+        this.lottoQuantity = getMoney() / 1000;
+    }
+
+    private List<Integer> generateLottoNumbers() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return lottoNumbers.stream().sorted().collect(Collectors.toList());
+    }
+
     public int getMoney() {
         return money;
     }
@@ -46,20 +61,5 @@ public class LottoRepository {
 
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    private void createLottoNumber() {
-        for(int i=0;i<lottoQuantity;i++){
-            this.lottoNumbers.add(new Lotto(generateLottoNumbers()));
-        }
-    }
-
-    private void calculateLottoQuantity() {
-        this.lottoQuantity = getMoney() / 1000;
-    }
-
-    private List<Integer> generateLottoNumbers() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lottoNumbers.stream().sorted().collect(Collectors.toList());
     }
 }
