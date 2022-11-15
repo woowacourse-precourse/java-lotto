@@ -28,11 +28,11 @@ public class LottoService {
     private LottoService() {
     }
 
-    public static int amountInputToInteger(String input) {
+    public static long amountInputToInteger(String input) {
         if (!input.chars().allMatch((Character::isDigit))) {
             throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
-        int amount = Integer.parseInt(input);
+        long amount = Long.parseLong(input);
         if (amount < 1000) {
             throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
         }
@@ -43,11 +43,11 @@ public class LottoService {
         return amount;
     }
 
-    public static int getLottoPurchaseCount(int amount) {
+    public static long getLottoPurchaseCount(long amount) {
         return amount / 1000;
     }
 
-    public static List<Lotto> getLottoNumbers(int purchaseCount) {
+    public static List<Lotto> getLottoNumbers(long purchaseCount) {
         List<Lotto> lottos = new ArrayList<>();
         while (lottos.size() < purchaseCount) {
             lottos.add(generateLottoNumber());

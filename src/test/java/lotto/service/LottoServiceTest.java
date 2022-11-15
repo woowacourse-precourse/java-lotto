@@ -57,10 +57,10 @@ class LottoServiceTest {
             final String input = "11000";
 
             // when
-            final int result = LottoService.amountInputToInteger(input);
+            final long result = LottoService.amountInputToInteger(input);
 
             // then
-            assertEquals(Integer.parseInt(input), result);
+            assertEquals(Long.parseLong(input), result);
         }
     }
 

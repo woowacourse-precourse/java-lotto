@@ -16,7 +16,7 @@ public class LottoController {
         return LottoService.getWinningPoint(lottoNumber, winningNumber, bonusNumber);
     }
 
-    public static int gameStartAndGetInput() {
+    public static long gameStartAndGetInput() {
         LottoView.printStartMessage();
         String input = LottoView.readLine();
         return LottoService.amountInputToInteger(input);
@@ -26,7 +26,7 @@ public class LottoController {
         LottoView.printLottoPurchaseResult(amount, lottoNumbers);
     }
 
-    public static int getLottoPurchaseCount(int amount) {
+    public static long getLottoPurchaseCount(int amount) {
         return LottoService.getLottoPurchaseCount(amount);
     }
 
@@ -39,7 +39,7 @@ public class LottoController {
         return LottoService.getWinningNumber(LottoView.readLine());
     }
 
-    public static int getBonusNumber() {
+    public static long getBonusNumber() {
         LottoView.printInputBonusNumberMessage();
         return LottoService.getBonusNumber(LottoView.readLine());
     }
