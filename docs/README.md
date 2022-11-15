@@ -5,44 +5,42 @@
 ### InputView
 
 - [x] 로또 구입 금액을 입력 받는다. -> inputLotteryPurchaseAmount
-    - [x] 입력받은 값이 숫자인지 확인한다.
+    - [x] 입력받은 값이 숫자인지 확인한다. -> validate
 
 - [x] 당첨 번호를 입력받는다. -> inputLottoNumber
-    - [x] 쉼표를 기준으로 입력받아 string을 list로 바꿔준다. .
+    - [x] 쉼표를 기준으로 입력받아 string을 list로 바꿔준다. -> stringToList
 
 - [x] 보너스 번호를 입력받는다. inputBonusNumber
-    - [x] 입력받은 값이 숫자인지 확인한다.
 
 ### OutputView
 
-- [x] Custom된 에러메시지를 출력한다.
-- [x] 발행한 로또 수량 및 번호를 출력한다.
-- [x] 당첨 통계를 출력한다. printStatistics
+- [x] Custom된 에러메시지를 출력한다. -> printException
+- [x] 발행한 로또 수량 및 번호를 출력한다. -> printLottos
+- [x] 당첨 통계를 출력한다. -> printStatistics
+    - [x] 천원단위로 끊어준다 -> toNumFormat
+- [x] 총 수익률을 출력한다. -> printRateOfReturn
 
 ---
 
 ## Model
 
-- [x] 입력받은 금액만큼 만들 수량을 정한다.
-- [x] 로또 수량만큼 랜덤 번호 6개를 생성한다.
-    - [x] 번호의 범위는 1~45까지
-    - [x] 로또 번호는 오름차순으로 정렬한다.
-- [x] 당첨내역을 계산한다.
-- [x] 수익률을 계산한다.
+- [x] 입력받은 금액만큼 만들 수량을 정한다. -> getAvailableQuantity
+    - [x] 구입 금액이 옳바른지 확인하는 기능. -> moneyValidation
+
+- [x] 로또 수량만큼 랜덤 번호 6개를 생성한다. -> createLotto
+- [x] 사용자의 입력, 우승 로또번호와 보너스 번호가 옳바른지 확인 -> validate
+- [x] 당첨내역을 계산한다. -> getRank
+- [x] 수익률을 계산한다. -> getRateOfReturn
 
 ---
 
 ## Controller
 
-- [x] View에서 입력된 돈을 받는다.
-- [x] View에서 입력된 금액을 입력된 로또와 보너스 번호를 받는다.
-- [x] 입력된 값으로 Domain생성을 하며 Validation을 한다
-    - [x] 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. -> isThousandOneUnit
-    - [x] 입력받은 당첨번호가 1~45사이인지 6개인지 validate
-    - [x] 입력받은 보너스 번호가 1~45 사이인지 중복되지는 않은지
-    - [x] 보너스 번호가 로또 번호에 포함되지는 않은지
-- [x] 가공이 완료된 객를를 Service에서 받는다.
-- [x] 가공된 결과값을 View로 넘긴다.
+- [x] View에서 데이터를 입력받게 하는 명령을 하는 기능
+- [x] 입력받은 값을 VO의 생성자에 주입시키는 기능.
+- [x] 생성된 VO를 Service Layer으로 전달하는 기능.
+- [x] 비즈니스 로직으로 가공된 값을 전달 받는 기능.
+- [x] 전달받은 가공된 값을 View에게 출력하도록 명령하는 기능.
 
 ---
 
