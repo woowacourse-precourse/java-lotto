@@ -10,7 +10,7 @@ enum ranking {
     FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH
 }
 public class Application {
-    static int money;
+    static int inputmoney;
     static int lottoNum;
     static final int lottoLength = 6; //로또 길이 상수
     static final int lottoMin = 1; //로또 번호 최소값
@@ -19,6 +19,16 @@ public class Application {
     static List<Integer> hitNumber;
     static int bonus;
     static List<Integer> countHitList;
+    static HashMap<ranking, Integer> lottoRankInfo;
+    static final HashMap<ranking, Integer> cashPrizeInfo = new HashMap<>() {{
+        put(ranking.FIRST, 2000000000);
+        put(ranking.SECOND, 30000000);
+        put(ranking.THIRD, 1500000);
+        put(ranking.FOURTH, 50000);
+        put(ranking.FIFTH, 5000);
+        put(ranking.SIXTH, 0);
+    }};
+
     static int castInt(String str){
         int num = 0;
         try {
@@ -67,12 +77,21 @@ public class Application {
         return multiNumberList;
     }
 
+    static HashMap<ranking, Integer> initRankInfo(){
+        HashMap<ranking, Integer> lottoRankInfo = new HashMap<>(ranking.values().length);
+        for (ranking RANK : ranking.values()){
+            lottoRankInfo.put(RANK, 0);
+        }
+        return lottoRankInfo;
+    }
+
 
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
-        money = singleNumberInput();
+        inputmoney = singleNumberInput();
+//        inputmoney = 8000;
 
-        lottoNum = money / 1000;
+        lottoNum = inputmoney / 1000;
         System.out.println(lottoNum + "개를 구매했습니다.");
 
         lottoList = createLottoList(lottoNum);
@@ -80,9 +99,12 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해주세요.");
         hitNumber = multiNumberInput();
+//        hitNumber = Arrays.asList(1,2,3,4,5,6);
 
         System.out.println("보너스 번호를 입력해주세요.");
         bonus = singleNumberInput();
+//        bonus = 7;
 
+        lottoRankInfo = initRankInfo();
     }
 }
