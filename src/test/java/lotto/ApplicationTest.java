@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 구입금액_숫자테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000j"));
+            runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -66,7 +66,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 구입금액_1000원단위테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1100"));
+            runException("1100");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 구입금액_0원테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("0"));
+            runException("0");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -82,7 +82,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 당첨번호_중복테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,5"));
+            runException("1000", "1,2,3,4,5,5");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -90,7 +90,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 당첨번호_길이테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5"));
+            runException("1000", "1,2,3,4,5");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -98,7 +98,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 당첨번호_범위테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "0,1,2,3,4,5"));
+            runException("1000", "0,1,2,3,4,5");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -106,7 +106,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 보너스번호_중복테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "6"));
+            runException("1000", "1,2,3,4,5,6", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -114,7 +114,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 보너스번호_범위테스트() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "0"));
+            runException("1000", "1,2,3,4,5,6", "0");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
