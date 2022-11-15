@@ -2,8 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LottoManager {
@@ -11,9 +13,10 @@ public class LottoManager {
     private Money benefit;
     private final LottoList lottos = new LottoList();
     private AnswerNumberList answerNumbers;
-    private final Map<LottoResult, Long> lottoResultMap = generateLottoResultMap();
     private final List<LottoResult> kindOfResult = List.of(LottoResult.FIFTH, LottoResult.FOURTH, LottoResult.THIRD,
             LottoResult.SECOND, LottoResult.FIRST);
+    private final Map<String, Long> lottoResultMap = generateLottoResultMap();
+
 
     private Long getAmountOfMoney() {
         String amountOfMoney = Console.readLine();
@@ -36,6 +39,7 @@ public class LottoManager {
         Long amountOfMoney = getAmountOfMoney();
         this.input = new Money(amountOfMoney);
         pickLottoNumbers();
+        lottos.printLottoList();
     }
 
     private List<Long> parseAnswerNumbers(String answerNumberString) {
@@ -50,21 +54,20 @@ public class LottoManager {
         this.answerNumbers = new AnswerNumberList(answerLongNumbers, bonusNumber);
     }
 
-    private Map<LottoResult, Long> generateLottoResultMap() {
-        return new java.util.HashMap<>(Map.of(
-                LottoResult.FIRST, 0L,
-                LottoResult.SECOND, 0L,
-                LottoResult.THIRD, 0L,
-                LottoResult.FOURTH, 0L,
-                LottoResult.FIFTH, 0L
-        ));
+    private Map<String, Long> generateLottoResultMap() {
+        HashMap<String, Long> map = new HashMap<>();
+        for (var kind : Objects.requireNonNull(kindOfResult)) {
+            map.put(kind.name(), 0L);
+        }
+        map.put(LottoResult.NOTHING.name(), 0L);
+        return map;
     }
 
     private void checkWinningsInLottoList() {
         List<Lotto> lottoList = lottos.getLottoList();
         for (var lotto : lottoList) {
             LottoResult lottoResult = answerNumbers.checkLottoWinning(lotto);
-            lottoResultMap.replace(lottoResult, lottoResultMap.get(lottoResult) + 1);
+            lottoResultMap.replace(lottoResult.name(), lottoResultMap.get(lottoResult.name()) + 1);
         }
     }
 
@@ -72,14 +75,14 @@ public class LottoManager {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (var kind : kindOfResult) {
-            System.out.println(kind.getMessage() + " - " + lottoResultMap.get(kind) + "개");
+            System.out.println(kind.getMessage() + " - " + lottoResultMap.get(kind.name()) + "개");
         }
     }
 
     private Long getResultCompensation() {
         long sum = 0L;
         for (var kind : kindOfResult) {
-            sum += kind.getCompensation() * lottoResultMap.get(kind);
+            sum += kind.getCompensation() * lottoResultMap.get(kind.name());
         }
         return sum;
     }
@@ -89,7 +92,7 @@ public class LottoManager {
     }
 
     private void printBenefitRatio() {
-        System.out.println("총 수익률은 " + Math.round(getBenefitRatio()) + "%입니다.");
+        System.out.println("총 수익률은 " + Math.round(getBenefitRatio() * 10) / 10.0 + "%입니다.");
     }
 
     public void printStatistics() {

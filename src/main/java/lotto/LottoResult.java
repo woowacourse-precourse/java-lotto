@@ -9,8 +9,8 @@ public enum LottoResult {
     FOURTH(50000L, "4개 일치 (50,000원)"),
     FIFTH(5000L, "3개 일치 (5,000원)"),
     NOTHING(0L, "");
-    private Long compensation;
-    private String message;
+    private final Long compensation;
+    private final String message;
 
     public Long getCompensation() {
         return compensation;
@@ -21,5 +21,7 @@ public enum LottoResult {
     }
 
     LottoResult(Long compensation, String message) {
+        this.message = message;
+        this.compensation = compensation;
     }
 }
