@@ -13,6 +13,11 @@ public class LottoMachine {
     private static final String SIZE_ERROR_MESSAGE = "[ERROR] 생성된 로또의 번호가 6개가 아닙니다.";
     private static final String OVERLAP_ERROR_MESSAGE = "[ERROR] 로또에 중복된 번호가 있습니다.";
 
+    private int money = 0;
+    List<Lotto> Lottos;
+
+    Map<Rank, Integer> winningBoard;
+
     public Lotto createLotto(){
         List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE);
         Collections.sort(lottoNumber);
@@ -49,4 +54,8 @@ public class LottoMachine {
         throw new IllegalArgumentException(OVERLAP_ERROR_MESSAGE);
     }
 
+    public void inputMoney() {
+        UserInput input = new UserInput();
+        money = input.moneyInput()
+    }
 }
