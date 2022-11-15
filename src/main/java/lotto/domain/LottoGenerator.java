@@ -10,13 +10,11 @@ import java.util.List;
 
 public class LottoGenerator {
 
-    // 당첨 복권 생성
     public Lotto generateWinningLotto(List<Integer> numbers) {
         checkNumbers(numbers);
         return new Lotto(numbers);
     }
 
-    // 입력한 돈만큼 로또를 반환
     public List<Lotto> generateLotto(int money) {
         Validator.validatePrice(money);
         List<Lotto> lotteries = new ArrayList<>();
@@ -34,7 +32,7 @@ public class LottoGenerator {
         return lotteries;
     }
 
-    private void checkNumbers(List<Integer> numbers){
+    private void checkNumbers(List<Integer> numbers) {
         Collections.sort(numbers);
         Validator.validateNumbers(numbers);
     }

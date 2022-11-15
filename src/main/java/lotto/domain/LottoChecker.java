@@ -4,7 +4,6 @@ import lotto.config.LottoConfig;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class LottoChecker {
 
@@ -16,7 +15,6 @@ public class LottoChecker {
         this.bonusNumber = bonusNumber;
     }
 
-    // 당첨 로또가 있는지 살피는 메소드
     public List<LottoReward> calculate(List<Lotto> lottos) {
         List<LottoReward> lottoRewards = new ArrayList<>();
 

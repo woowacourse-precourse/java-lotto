@@ -1,18 +1,14 @@
-package lotto;
+package lotto.ui;
 
 import lotto.domain.*;
-import lotto.ui.InputHandler;
-import lotto.ui.OutputHandler;
 
 import java.util.List;
 
 public class LottoSimulator {
 
-    private LottoChecker lottoChecker;
-    private LottoGenerator lottoGenerator;
-    private InputHandler inputHandler;
-    private OutputHandler outputHandler;
-    private Player player;
+    private final LottoGenerator lottoGenerator;
+    private final InputHandler inputHandler;
+    private final Player player;
 
     public LottoSimulator() {
         player = new Player();
@@ -20,7 +16,7 @@ public class LottoSimulator {
         inputHandler = new InputHandler();
     }
 
-    public void start(){
+    public void start() {
         System.out.println("금액을 입력해 주세요.");
         inputMoney();
 
@@ -39,7 +35,7 @@ public class LottoSimulator {
     }
 
     // 돈 입력
-    private void inputMoney(){
+    private void inputMoney() {
         int money = inputHandler.inputMoney();
         player.setMoney(money);
     }
@@ -72,13 +68,13 @@ public class LottoSimulator {
 
     // 당첨 로또 분석 및 반환
     private List<LottoReward> calculate(Lotto winningLotto, int bonusNumber) {
-        lottoChecker = new LottoChecker(winningLotto, bonusNumber);
+        LottoChecker lottoChecker = new LottoChecker(winningLotto, bonusNumber);
         return lottoChecker.calculate(player.getLottos());
     }
 
     // 통계 출력
     private void showStatistics(List<LottoReward> lottoRewards) {
-        outputHandler = new OutputHandler(lottoRewards, player);
+        OutputHandler outputHandler = new OutputHandler(lottoRewards, player);
         outputHandler.showStatistics();
     }
 }

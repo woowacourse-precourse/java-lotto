@@ -8,9 +8,9 @@ public class Statistics {
 
     private final Player player;
     private final List<LottoReward> lottoRewards;
-    private final Map<LottoReward, Integer> winningHistory; // index 0: 1등
+    private final Map<LottoReward, Integer> winningHistory;
     private int usedMoney;
-    private int awardMoney;
+    private long awardMoney;
     private float rateOfReturn;
 
     public Statistics(List<LottoReward> lottoRewards, Player player) {
@@ -36,7 +36,7 @@ public class Statistics {
         return usedMoney;
     }
 
-    public int getAwardMoney() {
+    public long getAwardMoney() {
         return awardMoney;
     }
 

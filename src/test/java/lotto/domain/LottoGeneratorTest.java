@@ -23,6 +23,14 @@ class LottoGeneratorTest {
     }
 
     @Test
+    void generateLotto_돈이_마이너스_예외() {
+        assertThatThrownBy(()->{
+            int money = -100;
+            List<Lotto> lottos = lottoGenerator.generateLotto(money);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void generateLotto_돈이_없으면_예외() {
         assertThatThrownBy(()->{
             int money = 900;

@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.message.ExceptionMessage;
-
 public enum LottoReward {
 
     FIRST(2000000000, 6),
@@ -19,12 +17,12 @@ public enum LottoReward {
         this.COUNT = COUNT;
     }
 
-    public static LottoReward getAward(int count, boolean hasBonusNumber){
-        if(count == 6) return FIRST;
-        if(count == 5 && hasBonusNumber) return SECOND;
-        if(count == 5) return THIRD;
-        if(count == 4) return FOURTH;
-        if(count == 3) return FIFTH;
+    public static LottoReward getAward(int count, boolean hasBonusNumber) {
+        if (count == 6) return FIRST;
+        if (count == 5 && hasBonusNumber) return SECOND;
+        if (count == 5) return THIRD;
+        if (count == 4) return FOURTH;
+        if (count == 3) return FIFTH;
         return EMPTY;
     }
 
