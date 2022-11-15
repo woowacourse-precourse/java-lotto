@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import lotto.util.Score;
@@ -12,9 +13,13 @@ public class OutPutView {
         printSpace();
         printLottosSize(userLottos.size());
         for (List<Integer> lottery : userLottos) {
-            System.out.println(lottery);
+            Collections.sort(lottery);
+            printSingleLottery(lottery);
         }
         printSpace();
+    }
+    public void printSingleLottery(List<Integer> lottery) {
+        System.out.println(lottery);
     }
     public void printLottosSize(int size) {
         System.out.println(size+"개를 구매했습니다.");
