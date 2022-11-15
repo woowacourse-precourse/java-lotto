@@ -5,32 +5,30 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputView {
+public class Game {
 
     private static final String DELIMITER = ",";
     private static final long MINIMUM_UNIT = 1000L;
     private static final long ZERO = 0L;
+    private static final long INVALID = -1L;
 
     Calculator calculator;
     Lotto lotto;
 
     int bonusNum;
 
-    public boolean inputMoney() {
-        long money = ZERO;
-        Message.INPUT_MONEY.print();
-        String input = Console.readLine();
-        try {
-            validateMoney(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return true;
-        }
-        money = Long.parseLong(input);
-        this.calculator = new Calculator(money);
-        return false;
+    public void init() {
+        setCalculator();
+        setLotto();
     }
 
+    private void setCalculator() {
+        long money = Input.inputMoney();
+        if (money == INVALID) {
+            return;
+        }
+        calculator = new Calculator(money);
+    }
     private void validateMoney(String input) {
         long money;
         try {
@@ -39,7 +37,7 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
         if (money % MINIMUM_UNIT != ZERO || money == ZERO) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_1000.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_PROPER_UNIT.printError());
         }
     }
 
