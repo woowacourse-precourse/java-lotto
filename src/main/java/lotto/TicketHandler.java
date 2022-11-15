@@ -26,4 +26,23 @@ public class TicketHandler {
         }
         return lotto;
     }
+
+    public void compareTickets(List<Integer> winningNum, int bonusNum) {
+        int count;
+        List<Integer> temp = new ArrayList<>();
+        for (Lotto ticket : Application.getLotto()) {
+            temp.clear();
+            temp.addAll(winningNum);
+            temp.removeAll(ticket.getNumbers());
+            count = temp.size();
+            if (((count == 1) && !ticket.getNumbers().contains(bonusNum)) || (count >= 2)) {
+                count++;
+            }
+            this.countTickets(count);
+        }
+    }
+
+    public void countTickets(int count) {
+
+    }
 }
