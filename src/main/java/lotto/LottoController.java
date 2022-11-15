@@ -61,5 +61,16 @@ public class LottoController {
         }
         return winNumbers;
     }
+    static int inputBonus(){
+        String input_num= Console.readLine();
+        int bonus;
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            bonus = Integer.parseInt(input_num);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개의 숫자만 입력하셔야 합니다.");
+        }
+        return bonus;
+    }
 
 }
