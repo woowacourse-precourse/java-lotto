@@ -12,9 +12,7 @@ public class Lotto {
     public Lotto(String inputLottoNumber) {
         List<Integer> numbers = convertNumbers(inputLottoNumber);
 
-        validateLottoNumberCount(numbers);
-        validateLottoNumberRange(numbers);
-        validateLottoNumberDuplicated(numbers);
+        validateLottoNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -34,11 +32,14 @@ public class Lotto {
     }
 
     // 입력된 숫자의 갯수가 6개가 맞는지 확인
-    private void validateLottoNumberCount(List<Integer> numbers) {
+    private void validateLottoNumber(List<Integer> numbers) {
         if (numbers.size() != 6) {
             PrintError.LOTTO_SIZE.print();
             throw new IllegalArgumentException();
         }
+
+        validateLottoNumberRange(numbers);
+        validateLottoNumberDuplicated(numbers);
     }
 
     // 입력된 숫자의 범위가 1~45 이내인지 확인
