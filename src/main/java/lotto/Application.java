@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -33,15 +32,15 @@ public class Application {
         String user_input = Console.readLine();
         int amount = 0;
         exception_how_many_lotto(user_input);
-        amount = Integer.parseInt(user_input)/1000;
+        amount = Integer.parseInt(user_input) / 1000;
         return amount;
     }
 
     //1.사용자의 구입 금액 입력 예외 검사
-    private static void exception_how_many_lotto(String user_input) {
+    private static void exception_how_many_lotto(String userInput) {
         int money = 0;
         try{
-            money = Integer.parseInt(user_input);
+            money = Integer.parseInt(userInput);
         } catch (NumberFormatException e){
             throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.");
         }
@@ -52,9 +51,9 @@ public class Application {
 
     //2.구입 금액만큼의 로또 번호 생성, 출력
     public static List<List> createLotto(int lotto_amount) {
-        System.out.println("\n" + lotto_amount + "개를 구매하였습니다.");
+        System.out.println("\n" + lotto_amount + "개를 구매했습니다.");
         List<List> lotto_list = new ArrayList<>();
-        for(int i=0; i< lotto_amount; i++) {
+        for(int i=0; i < lotto_amount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             new Lotto(numbers);
             System.out.println(numbers);
@@ -65,7 +64,7 @@ public class Application {
 
     //3.당첨 번호 입력
     public static List<Integer> winLotto() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String win_lotto = Console.readLine();
         exception_winLotto(win_lotto);
         List<Integer> winLottoList = new ArrayList<>();
@@ -99,10 +98,11 @@ public class Application {
 
     //4.보너스 번호 입력
     public static int winBonusLotto() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         String n = Console.readLine();
+        int bonusNum = 0;
         exception_winBonusLotto(n);
-        int bonusNum = Integer.parseInt(n);
+        bonusNum = Integer.parseInt(n);
         return bonusNum;
     }
 
@@ -120,9 +120,9 @@ public class Application {
     }
 
     //5.당첨 통계 비교
-    public static List<List> compareLotto(List<List> userLottoList, List<Integer> winLottoList, int bonusNum) {
+    public static List<List> compareLotto(List<List> userLottoList, List<Integer> winLottoList, int bonusNumber) {
         List<List> userLottoResult = new ArrayList<>(); //당첨결과, 금액 저장할 리스트
-        exception_winLottoList_bonusNum(winLottoList, bonusNum);
+        exception_winLottoList_bonusNum(winLottoList, bonusNumber);
 
         int lottoCount = 0;
         int bonusCount = 0;
@@ -130,7 +130,7 @@ public class Application {
             bonusCount = 0;
             lottoCount = existLotto(userLottoList.get(i), winLottoList);
             if(lottoCount != 6){
-                bonusCount = existBonusLotto(userLottoList.get(i), bonusNum);
+                bonusCount = existBonusLotto(userLottoList.get(i), bonusNumber);
             }
             userLottoResult.add(resultLotto(lottoCount, bonusCount));
         }
@@ -166,24 +166,24 @@ public class Application {
     }
 
     //5.당첨로또번호와 보너스 번호를 비교해서 얻은 결과를 등수별로 저장해서 리스트로 반환
-    private static List<Integer> resultLotto(int lottoCount, int bonusCount) {
+    public static List<Integer> resultLotto(int lottoCount, int bonusCount) {
         int[] prize = {0,0,0,0,0}; //순서대로 1등부터 5등
         List<Integer> prizeList = new ArrayList<>();
 
         if(lottoCount == 6){
-            prize[0]+=1; //1등
+            prize[0] += 1; //1등
         }
         if(bonusCount == 1 && lottoCount == 5){
-            prize[1]+=1; //2등
+            prize[1] += 1; //2등
         }
-        if(bonusCount==0 && lottoCount==5){
-            prize[2]+=1; //3등
+        if(bonusCount == 0 && lottoCount == 5){
+            prize[2] += 1; //3등
         }
-        if(lottoCount==4){
-            prize[3]+=1; //4등
+        if(lottoCount == 4){
+            prize[3] += 1; //4등
         }
-        if(lottoCount==3){
-            prize[4]+=1; //5등
+        if(lottoCount == 3){
+            prize[4] += 1; //5등
         }
 
         for (int i = 0; i < prize.length; i++) {
@@ -215,7 +215,7 @@ public class Application {
 
     //5.게임결과 출력
     public static void printPrize(List<Integer> LottoResult) {
-        System.out.println("당첨 통계\n" + "---");
+        System.out.println("\n당첨 통계\n" + "---");
         System.out.println("3개 일치 (5,000원) - " + LottoResult.get(4) + "개");
         System.out.println("4개 일치 (50,000원) - " + LottoResult.get(3) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + LottoResult.get(2) + "개");
@@ -225,14 +225,14 @@ public class Application {
 
     //5.총 상금 계산
     public static void getPrizeMoney(List<Integer> winLottoResult, int lottoAmount){
-        int total_prize = 0;
+        int total = 0;
         int cost = lottoAmount * 1000;
-        total_prize += 2000000000 * winLottoResult.get(0);
-        total_prize += 30000000 * winLottoResult.get(1);
-        total_prize += 1500000 * winLottoResult.get(2);
-        total_prize += 50000 * winLottoResult.get(3);
-        total_prize += 5000 * winLottoResult.get(4);
-        getPrizeRate(total_prize, cost);
+        total += 2000000000 * winLottoResult.get(0);
+        total += 30000000 * winLottoResult.get(1);
+        total += 1500000 * winLottoResult.get(2);
+        total += 50000 * winLottoResult.get(3);
+        total += 5000 * winLottoResult.get(4);
+        getPrizeRate(total, cost);
     }
 
     //5.수익률 계산
