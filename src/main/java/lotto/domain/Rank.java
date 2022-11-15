@@ -21,7 +21,7 @@ public enum Rank {
         this.compare = compare;
     }
 
-    public Rank calculateRank(int count, boolean bonus) {
+    public static Rank calculateRank(int count, boolean bonus) {
         return Arrays.stream(Rank.values()).
                 filter(rank -> rank.compare.test(count, bonus))
                 .findAny().get();
