@@ -36,13 +36,20 @@ public class Player {
         return new Lotto(numbers);
     }
 
-    public int getBonusNumber() {
+    public int getBonusNumber(Lotto winningNumbers) {
         String input = Console.readLine();
+        validateBonusNumber(input, winningNumbers);
         return Integer.parseInt(input);
     }
 
     private void validatePurchaseCost(String purchaseCost) {
         validateNumberFormat(purchaseCost);
         validateDivision(purchaseCost);
+    }
+
+    private void validateBonusNumber(String number, Lotto winningNumbers) {
+        validateNumberFormat(number);
+        validateBonusNumberRange(number);
+        validateDuplicateForBonus(number, winningNumbers);
     }
 }

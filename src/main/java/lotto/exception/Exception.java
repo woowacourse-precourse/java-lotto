@@ -1,5 +1,7 @@
 package lotto.exception;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -59,6 +61,21 @@ public class Exception {
     public static void validateNumberFormatForAll(String numbers) {
         Stream.of(numbers.split(DELIMITER))
                 .forEach(Exception::validateNumberFormat);
+    }
+
+    public static void validateBonusNumberRange(String number) {
+        int bonusNumber = Integer.parseInt(number);
+        if(bonusNumber < MIN || bonusNumber > MAX) {
+            throwException(WRONG_RANGE_MESSAGE);
+        }
+    }
+
+    public static void validateDuplicateForBonus(String bonusNumber, Lotto winningNumbers) {
+        List<Integer> numbers = winningNumbers.getNumbers();
+        int bonus = Integer.parseInt(bonusNumber);
+        if(numbers.contains(bonus)) {
+            throwException(BONUS_DUPLICATE_MESSAGE);
+        }
     }
 
     public static void throwException(String message) {

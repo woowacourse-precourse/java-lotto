@@ -25,6 +25,10 @@ public class Lotto {
         this.numbers = sortedNumbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public static List<Integer> toSortedList(String numbers) {
         return Stream.of(numbers.split(DELIMITER))
                 .map(Integer::parseInt)

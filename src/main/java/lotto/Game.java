@@ -24,6 +24,6 @@ public class Game {
         Lotto winningNumbers = player.getWinningNumbers();
 
         showBonusNumberInputMessage();
-        int bonusNumber = player.getBonusNumber();
+        int bonusNumber = player.getBonusNumber(winningNumbers);
     }
 }
