@@ -1,10 +1,11 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.LottoRandomNumberFactory.LOTTO_COUNT;
+import static lotto.LottoFactory.LOTTO_COUNT;
 
 public class Lotto {
 
@@ -13,20 +14,27 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateLottoNumber(numbers);
-        validate(numbers);
-        this.numbers = numbers;
+        this.numbers = validateLottoNumber(numbers);
     }
 
-    private void validateLottoNumber(List<Integer> numbers) {
+    private List<Integer> validateLottoNumber(List<Integer> numbers) {
         validateEmpty(numbers);
+        validateCount(numbers);
         validateOverlap(numbers);
         validateNumberSize(numbers);
+        Collections.sort(numbers);
+        return numbers;
     }
 
     private void validateEmpty(List<Integer> numbers) {
         if (numbers.size() == LOTTO_NUMBER_LENGTH_ZERO) {
             throw new IllegalArgumentException("[ERROR] 입력값이 없습니다.");
+        }
+    }
+
+    private void validateCount(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 로또 숫자가 모자릅니다.");
         }
     }
 
@@ -39,18 +47,12 @@ public class Lotto {
 
     private void validateNumberSize(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number > LottoRandomNumberFactory.END_INCLUSIVE) {
+            if (number > LottoFactory.END_INCLUSIVE) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호가 범위를 벗어나 너무 큽니다");
             }
-            if (number < LottoRandomNumberFactory.START_INCLUSIVE) {
+            if (number < LottoFactory.START_INCLUSIVE) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호가 범위를 벗어나 너무 작습니다");
             }
-        }
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_COUNT) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자가 모자릅니다.");
         }
     }
 
