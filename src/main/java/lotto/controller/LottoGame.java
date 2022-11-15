@@ -35,5 +35,8 @@ public class LottoGame {
 
     private void calculateResult(List<Lotto> lottoPapers, ProvidNumber providNumber, int purchseAmount) {
         RankCalculator rankCalculator = new RankCalculator(lottoPapers, providNumber);
+        ProfitCalculator profitCalculator = new ProfitCalculator(rankCalculator.getRanks(), purchseAmount);
+        output.printResult(rankCalculator.getRanks());
+        output.printProfit(profitCalculator.getProfit());
     }
 }
