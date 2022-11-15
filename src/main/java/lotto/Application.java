@@ -20,7 +20,7 @@ public class Application {
 		List<Integer> result = compareNumbers(winningNumbers, myLottos, bonusNumber);
 
 		showLottoResult(result);
-		showRateOfReturn(payment, result);
+		System.out.println(getRateOfReturn(payment, result));
 	}
 
 	public static List<List<Integer>> getMyLottos(int purchaseQuantity) {
@@ -56,21 +56,14 @@ public class Application {
 	}
 
 	public static List<Integer> compareNumbers(List<Integer> winningNumbers, List<List<Integer>> myLottos, Integer bonusNumber) {
-
-		int length = Constant.LOTTO_NUMBERS_LENGTH.value + 2;
-		Integer[] numberOfTimes = new Integer[length];
+		Integer[] numberOfTimes = new Integer[Constant.LOTTO_NUMBERS_LENGTH.value + 2];
 		Arrays.fill(numberOfTimes, 0);
-
 		List<Integer> result = new ArrayList<Integer>(Arrays.asList(numberOfTimes));
-
 		for (List<Integer> myLotto : myLottos) {
-
 			int numberOfNumbers = countCorrectNumbers(winningNumbers, myLotto);
-
 			boolean isSecondPlace = numberOfNumbers == Constant.SECOND_PLACE.condition && myLotto.contains(bonusNumber);
 			if (isSecondPlace) {
-
-				updateLottoResult(result, length - 1);
+				updateLottoResult(result, Constant.LOTTO_NUMBERS_LENGTH.value + 1);
 				continue;
 			}
 			updateLottoResult(result, numberOfNumbers);
@@ -120,14 +113,13 @@ public class Application {
 		return "";
 	}
 
-	public static void showRateOfReturn(int payment, List<Integer> result) {
+	public static String getRateOfReturn(int payment, List<Integer> result) {
 
 		int totalPrizeMoney = getTotalPrizeMoney(payment, result);
 
 		double rateOfReturn = (double) totalPrizeMoney / payment * 100;
 		
-		String message = "총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.";
-		System.out.println(message);
+		return "총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.";
 	}
 
 	public static int getTotalPrizeMoney(int payment, List<Integer> result) {
