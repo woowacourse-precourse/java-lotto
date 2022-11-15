@@ -20,17 +20,25 @@ public class Lotto {
         }
     }
 
-    private void validateRange(List<Integer> numbers){
-        for (Integer number : numbers){
-            if (number < 1 || number > 45){
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
+    private void validateRangeOfNumber(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
+    private void validateRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            validateRangeOfNumber(number);
+        }
+    }
+
+    private int getNumsOfUniqueNumber(List<Integer> numbers) {
+        return new HashSet<Integer>(numbers).size();
+    }
+
     private void validateDuplication(List<Integer> numbers) {
-        int numsOfUniqueNumber = new HashSet<>(numbers).size();
-        if (numbers.size() != numsOfUniqueNumber){
+        int numsOfUniqueNumber = getNumsOfUniqueNumber(numbers);
+        if (numbers.size() != numsOfUniqueNumber) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않는 숫자여야 합니다.");
         }
     }
