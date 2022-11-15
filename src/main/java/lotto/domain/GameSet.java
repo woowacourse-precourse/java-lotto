@@ -2,12 +2,19 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.exception.ErrorHandler.unCorrectMoneyInputException;
+import static lotto.exception.ErrorHandler.unCorrectMoneyRangeException;
+import static lotto.utils.GenerateLottoNumbers.generateLottoNumber;
+import static lotto.view.InputLotto.getInput;
 
 public class GameSet {
     final static int PRICE_SIZE = 6;
     Lotto awardLotto;
     int lottoCount;
+    private List<Lotto> generatedLotto = new ArrayList<>();
     private int totalPrize;
     private int bonusNumber;
     private int[] gameCount;
@@ -17,24 +24,32 @@ public class GameSet {
         totalPrize = 0;
         init();
     }
-    public void setAwardLotto(Lotto awardLotto){
-        this.awardLotto = awardLotto;
+    public void generateLotto(){
+        for(int i =0;i<lottoCount;i++) {
+            generatedLotto.add(new Lotto(generateLottoNumber()));
+            System.out.println(generatedLotto.get(i).getNumbers());
+        }
     }
     public void init() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해 주세요.");
         try{
             lottoCount=Integer.parseInt(Console.readLine());
         }catch (NumberFormatException n){
-            System.out.println(message);
-            throw new IllegalArgumentException();
+            unCorrectMoneyRangeException();
         }
-
         if(lottoCount%1000!=0){
-            System.out.println(message);
-            throw new IllegalArgumentException();
+            unCorrectMoneyInputException();
         }
         lottoCount/=1000;
         System.out.println(lottoCount+"개를 구매했습니다.");
+        generateLotto();
+        generateAwardLotto();
+    }
+    public void generateAwardLotto(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        awardLotto= new Lotto(getInput());
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNumber = getInput().get(0);
     }
     public void updateGameSet(LottoProperties lottoProperties){
         gameCount[lottoProperties.getIndex()]++;
@@ -42,9 +57,6 @@ public class GameSet {
     }
     public Lotto getAwardLotto(){
         return awardLotto;
-    }
-    public void setBonusNumber(List<Integer> bonusNumber){
-        this.bonusNumber=bonusNumber.get(0);
     }
     public int getBonusNumber(){
         return bonusNumber;
@@ -57,5 +69,8 @@ public class GameSet {
     }
     public int getLottoCount(){
         return lottoCount;
+    }
+    public List<Lotto> getGeneratedLotto(){
+        return generatedLotto;
     }
 }

@@ -14,8 +14,6 @@ public enum LottoProperties {
     int index;
     int price;
     String sprice;
-
-
     LottoProperties(int correct,int index,int price,String sprice) {
         this.correct=correct;
         this.index =index;
