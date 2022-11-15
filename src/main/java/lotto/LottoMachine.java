@@ -33,7 +33,8 @@ public class LottoMachine extends AbstractLottoMachine {
 
     @Override
     protected void displayLotteries(List<Lotto> lotteries) {
-
+        System.out.printf("\n%d개를 구매했습니다.\n", lotteries.size());
+        lotteries.forEach(System.out::println);
     }
 
     @Override
