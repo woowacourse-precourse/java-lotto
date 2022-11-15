@@ -18,13 +18,14 @@ public class Rank {
     }
 
     public void setEarningRate(int money) {
+        final int ONE_HUNDRED = 100;
         int total = 0;
         for(RankType rankType: rank.keySet()) {
             if(rank.get(rankType) > 0) {
                 total += rankType.getPrizeMoney();
             }
         }
-        this.earningRate = total / (float)money * 100;
+        this.earningRate = total / (float)money * ONE_HUNDRED;
     }
     public float getEarningRate() {
         return this.earningRate;
