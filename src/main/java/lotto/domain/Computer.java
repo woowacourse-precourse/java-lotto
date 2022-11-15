@@ -5,12 +5,12 @@ import static lotto.util.NumberValidator.*;
 import java.util.List;
 import lotto.util.NumberValidator;
 
-public class Player {
+public class Computer {
 
     private final List<Integer> numbers;
     private int bonusNumber;
 
-    public Player(List<Integer> numbers, int bonusNumber) {
+    public Computer(List<Integer> numbers, int bonusNumber) {
         validate(numbers, bonusNumber);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;

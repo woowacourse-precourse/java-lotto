@@ -7,7 +7,7 @@ import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 
 import java.util.List;
-import lotto.domain.Player;
+import lotto.domain.Computer;
 import lotto.domain.PrizeCount;
 import lotto.domain.Profit;
 import lotto.domain.Publisher;
@@ -18,7 +18,7 @@ public class GameRunner {
     private Purchase purchase;
     private Publisher publisher;
     private PrizeCount prizeCount;
-    private Player player;
+    private Computer computer;
     private Profit profit;
 
     private List<Integer> numbers;
@@ -65,8 +65,8 @@ public class GameRunner {
     private void makeResult() {
         prizeCount = new PrizeCount();
 
-        player = new Player(numbers, bonusNumber);
-        player.compare(prizeCount, publisher.getLottos(), publisher.getBonusNumber());
+        computer = new Computer(numbers, bonusNumber);
+        computer.compare(prizeCount, publisher.getLottos(), publisher.getBonusNumber());
 
         profit = new Profit(prizeCount, purchase.getAmount());
         profit.calculate();
