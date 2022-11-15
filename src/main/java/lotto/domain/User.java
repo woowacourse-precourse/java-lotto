@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +11,7 @@ public class User {
     private int rewardMoney;
 
     private List<Lotto> lotties = new ArrayList<>();
-    private Map<Reward, Integer> lottiesResult = new HashMap<>();
+    private Map<Reward, Integer> lottiesResult = new LinkedHashMap<>();
 
     private User(int money) {
         this.money = money;
@@ -81,12 +81,14 @@ public class User {
         return lotties;
     }
 
-    public void saveResult(Reward reward) {
-        if (lottiesResult.containsKey(reward)) {
-            lottiesResult.put(reward, lottiesResult.get(reward) + 1);
-        } else {
-            lottiesResult.put(reward, 1);
+    public void initLottiesResult() {
+        for (Reward reward : Reward.values()) {
+            lottiesResult.put(reward, 0);
         }
+    }
+
+    public void saveResult(Reward reward) {
+        lottiesResult.put(reward, lottiesResult.get(reward) + 1);
     }
 
     public Map<Reward, Integer> getLottiesResult() {
