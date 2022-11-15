@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Model.enums;
 
 public enum Prize {
     FIFTH("3개 일치 (5,000원) - ", 0, 5000),

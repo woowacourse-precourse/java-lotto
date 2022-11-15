@@ -1,4 +1,6 @@
-package lotto;
+package lotto.Model;
+
+import lotto.Model.enums.ErrorMessage;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Model.enums;
 
 public enum ErrorMessage {
     MONEY_NUMBER_ERROR("[ERROR] 금액은 숫자로 입력해야 합니다."),

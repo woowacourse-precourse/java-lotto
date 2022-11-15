@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Model;
 
 public class Purchase {
     private String input;

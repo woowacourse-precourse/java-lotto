@@ -1,4 +1,6 @@
-package lotto;
+package lotto.View;
+
+import lotto.Model.enums.Prize;
 
 import java.util.List;
 
@@ -11,17 +13,17 @@ public class OutputView {
     private final String OUTPUT_PERCENT_MESSAGE = "%입니다.";
 
 
-    void printLottoCount(int lottoCount){
+    public void printLottoCount(int lottoCount){
         System.out.println(lottoCount + OUTPUT_PURCHASE_MESSAGE);
     }
 
-    void printLottoList(List<List<Integer>> lottoes){
+    public void printLottoList(List<List<Integer>> lottoes){
         for(List<Integer> l : lottoes){
             System.out.println(l);
         }
     }
 
-    void printStatistic(List<Integer> prizeCounts, double yeild){
+    public void printStatistic(List<Integer> prizeCounts, double yeild){
         System.out.println(OUTPUT_STATISTIC_MESSAGE);
         System.out.println(OUTPUT_DASH_MESSAGE);
 

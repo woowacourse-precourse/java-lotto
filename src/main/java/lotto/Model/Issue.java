@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

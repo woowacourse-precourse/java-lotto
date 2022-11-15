@@ -1,4 +1,6 @@
-package lotto;
+package lotto.Model;
+
+import lotto.Model.enums.Prize;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class Yeild {
         this.prizeMoney = 0;
     }
 
-    void createStatistic() {
+    public void createStatistic() {
         for (int i = 0; i < prizeCounts.size(); i++) {
             prizeMoney += Prize.values()[i].getMoney() * prizeCounts.get(i);
         }

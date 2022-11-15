@@ -1,4 +1,6 @@
-package lotto;
+package lotto.View;
+
+import lotto.Model.enums.ErrorMessage;
 
 public class Validation {
 
