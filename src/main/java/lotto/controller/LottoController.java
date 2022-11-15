@@ -40,5 +40,11 @@ public class LottoController {
         luckyNumber.inputBonusNumber(Console.readLine());
     }
 
+    public void winStatisticsCheck(){
+        LinkedHashMap<Prize, Integer> history =
+                LottoService.lottoNumberComparison(user.getLotteryNumbers(), luckyNumber);
+        String yield = LottoService.yieldCalculation(history, user.getPurchaseAmount());
+        OutView.winningStatistics(history,yield);
 
+    }
 }
