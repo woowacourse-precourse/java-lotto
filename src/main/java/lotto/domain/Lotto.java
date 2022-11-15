@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.Validator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +20,4 @@ public class Lotto {
         validator.checkNumAll(numbers);
     }
 
-    private void initNumbers(List<Integer> numbers){
-        numbers = new ArrayList<>();
-    }
-
-
-    // TODO: 추가 기능 구현
 }
