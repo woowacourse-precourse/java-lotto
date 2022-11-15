@@ -16,7 +16,7 @@ class LottoRaffleServiceTest {
     /**
      * init Test
      * */
-    int money = 10000;
+    Long money = 10000L;
     LottoPublishService lottoPublishService = new LottoPublishService();
     List<Lotto> lottos = lottoPublishService.publish(money);
 
@@ -35,5 +35,35 @@ class LottoRaffleServiceTest {
         LottoRaffleRecord lottoRaffleRecord = lottoRaffleService.raffle(lottos);
         Assertions.assertThat(lottoRaffleRecord.getPrizeRecord().size()).isEqualTo(5);
     }
+
+
+    @DisplayName("번호 일치, 보너스 일치는 당첨이다")
+    @Test
+    void winNumberWinBonus(){
+        LottoRaffleService lottoRaffleService = new LottoRaffleService(lottoWinning);
+        Assertions.assertThat(lottoRaffleService.findPrize(3, true)).isNotEmpty();
+    }
+
+    @DisplayName("번호 일치, 보너스 불일치 당첨이다")
+    @Test
+    void winNumberLostBonus(){
+        LottoRaffleService lottoRaffleService = new LottoRaffleService(lottoWinning);
+        Assertions.assertThat(lottoRaffleService.findPrize(3, false)).isNotEmpty();
+    }
+
+    @DisplayName("번호 불일치, 보너스 일치 낙첨이다")
+    @Test
+    void LostNumberWinBonus(){
+        LottoRaffleService lottoRaffleService = new LottoRaffleService(lottoWinning);
+        Assertions.assertThat(lottoRaffleService.findPrize(1, true)).isEmpty();
+    }
+
+    @DisplayName("번호 불일치, 보너스 불일치 낙첨이다")
+    @Test
+    void LostNumberLostBonus(){
+        LottoRaffleService lottoRaffleService = new LottoRaffleService(lottoWinning);
+        Assertions.assertThat(lottoRaffleService.findPrize(2, false)).isEmpty();
+    }
+
 
 }
