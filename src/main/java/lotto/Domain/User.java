@@ -8,7 +8,16 @@ public class User {
 
     public User(List<Lotto> Lottos,int money)
     {
+        not1000(money);
         this.money = money;
         this.Lottos = Lottos;
+    }
+
+    public void not1000(int money)
+    {
+        if(money%1000!=0)
+        {
+            throw new IllegalArgumentException();
+        }
     }
 }

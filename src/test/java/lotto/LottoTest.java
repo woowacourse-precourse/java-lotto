@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.Domain.Lotto;
+import lotto.Domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,15 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("머니가 1000원으로 나누어떨어지지 않으면 예외가 발생한다")
+    @Test
+    void createUserMoneyByNot1000()
+    {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(()->new User(List.of(lotto),100))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     // 아래에 추가 테스트 작성 가능
 }
