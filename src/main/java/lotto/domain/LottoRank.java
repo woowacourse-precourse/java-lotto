@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum LottoRank {
     FIFTH(3, false, 5_000),
     FOURTH(4, false, 50_000),
@@ -16,6 +20,16 @@ public enum LottoRank {
         this.count = count;
         this.isSameBonus = isSameBonus;
         this.amount = amount;
+    }
+
+    public static List<LottoRank> getLottoRank() {
+        return Arrays.stream(LottoRank.values())
+                .filter(LottoRank::isNotMiss)
+                .collect(Collectors.toList());
+    }
+
+    private static boolean isNotMiss(LottoRank lottoRank) {
+        return lottoRank != MISS;
     }
 
     public int getCount() {
