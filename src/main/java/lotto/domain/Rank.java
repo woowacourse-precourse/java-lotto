@@ -31,6 +31,16 @@ public enum Rank {
         return message;
     }
 
+    public static Rank getRank(Lotto lotto, Lotto winningNumber, int bonusNumber){
+        int correctCount = calculateCorrectNumber(lotto, winningNumber);
+        Rank candidate = Arrays.stream(Rank.values())
+                .filter(rank -> rank.getCount() == correctCount).findAny().orElse(ZERO);
+        if(candidate.getCount() == 5 && isCorrectBonusNumber(lotto, bonusNumber)){
+            return SECOND;
+        }
+        return candidate;
+    }
+
     public static int calculateCorrectNumber(Lotto lotto, Lotto winningLotto){
         List<Integer> lottoNumber = lotto.getLottoNumber();
         List<Integer> winningNumber = winningLotto.getLottoNumber();
