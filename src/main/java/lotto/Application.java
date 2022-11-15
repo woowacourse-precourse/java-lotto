@@ -85,6 +85,15 @@ public class Application {
         return lottoRankInfo;
     }
 
+    static HashMap<ranking, Integer> getResult(HashMap<ranking, Integer> lottoRankInfo, List<Lotto> lottoList, List<Integer> hitNumber, int bonus){
+        ranking RANK;
+        for (Lotto lotto : lottoList) {
+            RANK = lotto.countHit(hitNumber, bonus);
+            lottoRankInfo.replace(RANK, lottoRankInfo.get(RANK) + 1);
+        }
+        return lottoRankInfo;
+    }
+
     static void printResult(HashMap<ranking, Integer> lottoRankInfo){
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -111,7 +120,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
         inputmoney = singleNumberInput();
-//        inputmoney = 8000;
+        //        inputmoney = 8000;
 
         lottoNum = inputmoney / 1000;
         System.out.println(lottoNum + "개를 구매했습니다.");
@@ -121,13 +130,14 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해주세요.");
         hitNumber = multiNumberInput();
-//        hitNumber = Arrays.asList(1,2,3,4,5,6);
+        //        hitNumber = Arrays.asList(1,2,3,4,5,6);
 
         System.out.println("보너스 번호를 입력해주세요.");
         bonus = singleNumberInput();
-//        bonus = 7;
+        //        bonus = 7;
 
         lottoRankInfo = initRankInfo();
+        lottoRankInfo = getResult(lottoRankInfo, lottoList, hitNumber, bonus);
         printResult(lottoRankInfo);
         printEarningRate(howMuchPrize(lottoRankInfo), inputmoney);
     }
