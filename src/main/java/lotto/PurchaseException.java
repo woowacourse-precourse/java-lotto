@@ -8,7 +8,7 @@ public class PurchaseException {
 
     public static void validatePurchaseAmount(String amount) {
         if (isNumberOnly(amount)) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_ONLY_MESSAGE);
         }
 
         if (isDivide(amount)) {

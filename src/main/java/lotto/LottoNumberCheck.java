@@ -83,8 +83,8 @@ public class LottoNumberCheck {
         }
         combinePrizeMoney(mapTest);
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        Message.printLottoResult();
+        Message.printLine();
         for (String s : mapTest.keySet()) {
             System.out.print(s);
             System.out.print(" - " + mapTest.get(s) + "개");

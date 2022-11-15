@@ -13,17 +13,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.LENGTH_EXCEPTION_MESSAGE);
         }
 
         for (int i = 0; i < numbers.size() - 1; i++) {
             if (hasDuplicatedNumber(i, numbers.get(i), numbers)) {
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_EXCEPTION_MESSAGE);
             }
         }
 
         if (checkWinNumberRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.RANGE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -46,18 +46,13 @@ public class Lotto {
         return false;
     }
 
-
-
-
-
-
     public void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
         if (checkBonusNumberRange(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.RANGE_EXCEPTION_MESSAGE);
         }
 
         if (hasDuplicatedLottoNumberWithBonusNumber(numbers, bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
