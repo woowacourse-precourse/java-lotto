@@ -9,8 +9,7 @@ public class LottoService {
     final static int LOTTO_PAYMENT = 1000;
 
     public int buyLotto(int payment) {
-        int amount = getLottoAmount(payment);
-        return amount;
+        return getLottoAmount(payment);
     }
 
     public int getLottoAmount(int payment) {
@@ -22,14 +21,12 @@ public class LottoService {
     }
 
     public List<Integer> setWinningNumber(String inputWinningNumber) {
-        List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
-        return winningNumber;
+        return LottoUtils.parsingNumberBySeparator(inputWinningNumber);
     }
 
     public int setBonusNumber(String inputBonusNumber) {
         try {
-            int bonusNumber = Integer.parseInt(inputBonusNumber);
-            return bonusNumber;
+            return Integer.parseInt(inputBonusNumber);
         } catch (Exception e) {
             ExceptionMessage.inputNumberError();
             throw e;
