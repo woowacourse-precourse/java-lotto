@@ -3,8 +3,10 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +25,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또구매 금액이 1000원 단위가 아니라면 예외가 발생한다.")
+    @Test
+    void purchaseLotto() {
+        assertThatThrownBy(() -> LottoSystem.purchaseLotto(1500))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
