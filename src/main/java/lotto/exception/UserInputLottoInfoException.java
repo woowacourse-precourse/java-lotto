@@ -47,4 +47,10 @@ public class UserInputLottoInfoException {
             throw new IllegalArgumentException();
         }
     }
+    public void checkLottoNumberRange(String number, String message) {
+        if (!number.matches("^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$")) {
+            System.out.println(ERROR_MESSAGE + message);
+            throw new IllegalArgumentException();
+        }
+    }
 }
