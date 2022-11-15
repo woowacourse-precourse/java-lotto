@@ -47,7 +47,7 @@ public class printResults {
         for(int i=1;i<results.length;i++){
 //            System.out.println(i+":"+results[i]);
             if(results[i] > 0){
-                System.out.println((i+2)+"개 일치 ("+matchMoney(i)+"원) -"+results[i]+"개");
+                System.out.println((i+2)+"개 일치 ("+matchMoney(i)+"원) - "+results[i]+" 개");
             }
         }
 
