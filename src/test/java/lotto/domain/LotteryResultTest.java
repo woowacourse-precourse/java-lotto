@@ -5,6 +5,8 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class LotteryResultTest {
@@ -37,5 +39,24 @@ public class LotteryResultTest {
         result.add("ticket3", LotteryRank.SECOND);
 
         assertThat(result.getTotalReward()).isEqualTo(4_030_000_000L);
+    }
+
+    @DisplayName("당첨 티켓 정보는 5등 이상의 결과만 가지고 있는다.")
+    @Test
+    void findWinningInformation() {
+        LotteryResult result = new LotteryResult();
+        result.add("ticket1", LotteryRank.SECOND);
+        result.add("ticket2", LotteryRank.FIFTH);
+        result.add("ticket3", LotteryRank.LOSE_BY_ONE);
+        result.add("ticket4", LotteryRank.FIFTH);
+
+        Map<LotteryRank, Integer> winningInformation = result.findWinningInformation();
+
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(winningInformation.get(LotteryRank.FIRST)).isEqualTo(0);
+        softAssertions.assertThat(winningInformation.get(LotteryRank.FIFTH)).isEqualTo(2);
+        softAssertions.assertThat(winningInformation.get(LotteryRank.SECOND)).isEqualTo(1);
+        softAssertions.assertThat(winningInformation.containsKey(LotteryRank.LOSE_BY_ONE)).isFalse();
+        softAssertions.assertAll();
     }
 }
