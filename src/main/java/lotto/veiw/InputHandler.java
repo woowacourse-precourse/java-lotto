@@ -1,0 +1,47 @@
+package lotto.veiw;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.domain.constants.ErrorCode.NOT_NUMBER;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class InputHandler {
+
+    public int inputMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
+        return stringToInt(readLine());
+    }
+
+    public List<Integer> inputLotto() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return stringToList(readLine());
+    }
+
+    public int inputBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return stringToInt(readLine());
+    }
+
+    public List<Integer> stringToList(String readLine) {
+        List<String> inputs = List.of(readLine.split(","));
+        List<Integer> numbers = new ArrayList<>();
+
+        for (String input : inputs) {
+            try {
+                numbers.add(Integer.valueOf(input));
+            } catch (Exception e) {
+                throw NOT_NUMBER.getException();
+            }
+        }
+        return numbers;
+    }
+
+    private int stringToInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw NOT_NUMBER.getException();
+        }
+    }
+}
