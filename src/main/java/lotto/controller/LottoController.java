@@ -9,6 +9,7 @@ public class LottoController {
         try {
             Purchase purchase = new Purchase(Input.PURCHASE_MONEY.getInput());
             LottoTicketing lottoTicketing = new LottoTicketing(purchase.getLottoTickets());
+            Output.lottoTicketsOut(purchase.getLottoTickets(), lottoTicketing.getLottoTickets());
             WinningNumbers winningNumbers = new WinningNumbers(
                     Input.WINNING_NUMBERS.getInput(), Input.BONUS_NUMBER.getInput());
             Ranking ranking = new Ranking(lottoTicketing.getLottoTickets(), winningNumbers);
