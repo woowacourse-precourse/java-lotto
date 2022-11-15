@@ -9,9 +9,10 @@ import static lotto.NumberValidate.digitValidate;
 import static lotto.NumberValidate.inRangeValidate;
 
 public class LottoStore {
+    private final int LOTTO_PRICE = 1000;
 
     public List<Lotto> buyLottos(Money money) {
-        int lottoCount = (int)(money.getMoney() / 1000);
+        int lottoCount = (int)(money.getMoney() / LOTTO_PRICE);
 
         ArrayList<Lotto> lottos = new ArrayList<>();
         for (int i=0; i<lottoCount; i++) {
