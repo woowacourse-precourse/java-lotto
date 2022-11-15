@@ -40,7 +40,7 @@ public class MainController {
 
     public void makeWinningLottoController() {
         winningNumbers = InputView.inputWinningNumbers();
-        new LottoException().winningException(winningNumbers);
+        new LottoException().winningNumberException(winningNumbers);
         winningLottery = new WinningLotto().creteWinningNumbers(winningNumbers);
         compareLottoController();
     }

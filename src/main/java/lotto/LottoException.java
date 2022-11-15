@@ -18,11 +18,15 @@ public class LottoException {
         return true;
     }
 
-    public void winningException(String winningNumber) {
+    public void winningNumberException(String winningNumber) {
         String[] winningNumbers = winningNumber.split(",");
         for (String number : winningNumbers) {
             int count = Collections.frequency(List.of(winningNumbers), number);
             if (count > 1) {
+                throw new IllegalArgumentException();
+            }
+            if (winningNumbers.length != 6) {
+                System.out.println("[ERROR]: 당청 번호는 총 6자리를 입력하셔야 합니다.");
                 throw new IllegalArgumentException();
             }
         }
@@ -40,10 +44,11 @@ public class LottoException {
 
     public boolean isOverNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 0 || number > 45) {
+            if (number < 1 || number > 45) {
                 return false;
             }
         }
         return true;
     }
+
 }
