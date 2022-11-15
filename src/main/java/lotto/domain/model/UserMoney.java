@@ -12,6 +12,11 @@ public class UserMoney {
     }
 
     private void validateMoney(int money) {
+        if(!Validator.isNotZeroUserMoney(money)){
+            Message.printInputErrorUserMoney();
+            throw new IllegalArgumentException();
+        }
+
         if(!Validator.isUserMoney(money)){
             Message.printInputErrorUserMoney();
             throw new IllegalArgumentException();

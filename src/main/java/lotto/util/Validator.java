@@ -20,6 +20,10 @@ public class Validator {
         return input.isEmpty();
     }
 
+    public static boolean isNotZeroUserMoney(int userMoney) {
+        return userMoney != 0;
+    }
+
     public static boolean isUserMoney(int userMoney){
         return userMoney % Constant.LOTTO_PRICE == 0;
     }
