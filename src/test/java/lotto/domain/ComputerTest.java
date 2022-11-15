@@ -3,12 +3,12 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
 import lotto.constant.ExceptionConstants;
+import lotto.constant.GameConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static lotto.constant.GameConstants.WINNING_NUMBERS_LENGTH;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest extends NsTest {
 
@@ -36,7 +36,8 @@ public class ComputerTest extends NsTest {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5");
             assertThat(output())
-                    .contains(String.format(ExceptionConstants.WRONG_LENGTH.toString(), WINNING_NUMBERS_LENGTH));
+                    .contains(String.format(ExceptionConstants.WRONG_LENGTH.toString(),
+                            GameConstants.WINNING_NUMBERS_LENGTH));
         });
     }
 
@@ -46,7 +47,8 @@ public class ComputerTest extends NsTest {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6,7");
             assertThat(output())
-                    .contains(String.format(ExceptionConstants.WRONG_LENGTH.toString(), WINNING_NUMBERS_LENGTH));
+                    .contains(String.format(ExceptionConstants.WRONG_LENGTH.toString(),
+                            GameConstants.WINNING_NUMBERS_LENGTH));
         });
     }
 
