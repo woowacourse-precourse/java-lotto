@@ -3,8 +3,10 @@ package lotto.controller;
 import static lotto.view.OutputView.printLottoPurchaseCount;
 import static lotto.view.OutputView.printTotalLottos;
 
+import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.TotalLottos;
 import lotto.domain.purchaseAmount.PurchaseAmount;
+import lotto.domain.result.WinningResult;
 import lotto.domain.winningElements.WinningElements;
 
 import java.util.List;
@@ -17,6 +19,11 @@ public class LottoController {
 
         List<Integer> winningNumbers = WinningElements.getWinningNumbers();
         int bonusNumber = WinningElements.getBonusNumber();
+
+        List<Lotto> lottos = totalLottos.getTotalLottos();
+
+        List<Integer> matchingCountOfAllLottos = WinningResult.getMatchingCountOfAllLottos(lottos, winningNumbers);
+        List<Boolean> bonusNumberMatchingOfAllLottos = WinningResult.getBonusNumberMatchingOfAllLottos(lottos, bonusNumber);
     }
 
     public static long takeLottoPurchaseCount(long purchaseAmount) {
