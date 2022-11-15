@@ -37,7 +37,7 @@ public class InputNumber {
         }
         isAppropriateBonusLength(bonusNumber);
         isInRange(bonusNumber);
-        throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개여야 합니다.");
+        return bonusNumber;
     }
 
     static void isAppropriateLength(List<Integer> winningNumber) throws IllegalArgumentException {

@@ -8,12 +8,13 @@ import java.util.List;
 public class Input {
 
     public int getMoney() {
+        int money;
         try{
-            int money = Integer.parseInt(Console.readLine());
-            return money;
-        } catch (NumberFormatException e){
+            money = Integer.parseInt(Console.readLine());
+        } catch (Exception e){
             throw new IllegalArgumentException("[ERROR] 금액은 숫자로만 이루어져야 합니다");
         }
+        return money;
     }
 
     public List<Integer> getWinningNumber() {
