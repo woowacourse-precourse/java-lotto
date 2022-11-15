@@ -44,7 +44,8 @@ public class UserNumber {
     }
 
     private void validateRange(String number) {
-        if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
+        if (Integer.parseInt(number) < LottoNumber.MIN.getNumber()
+                || Integer.parseInt(number) > LottoNumber.MAX.getNumber()) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_RANGE.getMessage());
         }
     }

@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.Map;
 
 public class ProfitCalculator {
+
+    private static final int PROFIT_UNIT = 100;
     private final double profit;
 
     public ProfitCalculator(Map<Rank, Integer> ranks, int purchaseMoney) {
@@ -20,7 +22,7 @@ public class ProfitCalculator {
     }
 
     private double calculateProfit(int earnMoney, int purchaseMoney) {
-        return ((double) earnMoney / (double) purchaseMoney) * 100;
+        return ((double) earnMoney / (double) purchaseMoney) * PROFIT_UNIT;
     }
 
     public double getProfit() {
