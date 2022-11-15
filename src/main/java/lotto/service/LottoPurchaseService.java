@@ -10,7 +10,7 @@ import lotto.printer.SystemGuidePrinter;
 
 import java.util.List;
 
-import static lotto.error.ErrorMessage.PAYMENT_AMOUNT_NOT_NUMBER;
+import static lotto.error.ErrorMessage.*;
 
 public class LottoPurchaseService {
 
@@ -45,12 +45,12 @@ public class LottoPurchaseService {
             .allMatch(Character::isDigit);
     }
 
-    private Integer calculateLottoCount(int amount) {
+    private Integer calculateLottoCount(int amount) throws IllegalArgumentException {
         if (amount == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PAYMENT_AMOUNT_IS_ZERO.getMessage());
         }
         if (amount % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PAYMENT_AMOUNT_UNIT_MISMATCH.getMessage());
         }
         return amount / 1000;
     }
