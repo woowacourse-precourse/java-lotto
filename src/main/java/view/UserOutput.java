@@ -42,7 +42,7 @@ public class UserOutput {
 
     public void printProfitMoney() {
         System.out.println(ConstantMessage.PROFIT_RATE_MESSAGE.getConstant()
-                + LottoCalculator.calculateProfitRate(Money.getResultMoney(), LottoResultBoard.getProfitMoney())
+                + LottoManager.calculateProfitRate(Money.getResultMoney(), LottoResultBoard.getProfitMoney())
                 + ConstantMessage.PERCENT_MESSAGE.getConstant());
     }
 }
