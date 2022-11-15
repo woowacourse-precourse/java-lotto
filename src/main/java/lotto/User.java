@@ -42,6 +42,7 @@ public class User {
 			}
 		}
 		printResult(result);
+		printTotalReturn(result);
 	}
 
 	private HashMap<Prize, Integer> setResult() {
@@ -59,4 +60,17 @@ public class User {
 			System.out.println(Prize.values()[rank].getMessage() + result.get(Prize.values()[rank]) + "개");
 		}
 	}
+
+	private void printTotalReturn(HashMap<Prize, Integer> result) {
+		double totalReturn = 0D;
+
+		for (Prize prize : result.keySet()) {
+			int prizeMoney = prize.getPrizeMoney();
+			int winningNumber = result.get(prize);
+			totalReturn += (double) ((prizeMoney / purchaseAmount) * winningNumber * 100);
+		}
+		System.out.println("총 수익률은 "+String.format("%.1f", totalReturn)+"%입니다.");
+	}
+
+
 }
