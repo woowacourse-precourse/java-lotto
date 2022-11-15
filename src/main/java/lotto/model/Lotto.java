@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         checkLength(numbers);
         checkRange(numbers);
@@ -38,11 +42,6 @@ public class Lotto {
         if (numbersOverlap.size() != LottoConstant.LOTTO_LENGTH.getValue()) {
             throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_LOTTO_NUMBER_OVERLAP.getMessage());
         }
-    }
-
-    // TODO: 추가 기능 구현
-    public List<Integer> getNumbers() {
-        return this.numbers;
     }
 
     @Override

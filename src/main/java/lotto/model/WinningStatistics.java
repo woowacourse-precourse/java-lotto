@@ -27,14 +27,6 @@ public class WinningStatistics {
         }
     }
 
-    private void init() {
-        this.firstGrade = 0;
-        this.secondGrade = 0;
-        this.thirdGrade = 0;
-        this.fourthGrade = 0;
-        this.fifthGrade = 0;
-    }
-
     private int getCount(Lotto winningLotto, Lotto boughtLotto, int count) {
         for (int number : boughtLotto.getNumbers()) {
             if (winningLotto.getNumbers().contains(number)) {
@@ -42,6 +34,14 @@ public class WinningStatistics {
             }
         }
         return count;
+    }
+
+    private void init() {
+        this.firstGrade = 0;
+        this.secondGrade = 0;
+        this.thirdGrade = 0;
+        this.fourthGrade = 0;
+        this.fifthGrade = 0;
     }
 
     private void addGrade(int bonusNumber, Lotto boughtLotto, int count) {
