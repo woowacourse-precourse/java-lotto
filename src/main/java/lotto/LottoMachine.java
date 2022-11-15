@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
-    private static final String AMOUNT_IS_NOT_UNDER_1000_MESSAGE = "[ERROR] 로또 구입 금액이 1,000원 미만이 될 수 없습니다.";
+    public static final String AMOUNT_IS_NOT_UNDER_1000_MESSAGE = "[ERROR] 로또 구입 금액이 1,000원 미만이 될 수 없습니다.";
     public static final int LOTTO_PER_PRICE = 1000;
 
     private int lottoCount;
