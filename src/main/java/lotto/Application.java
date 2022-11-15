@@ -2,10 +2,15 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
+import lotto.domain.LottoShop;
 import lotto.ui.Guide;
+import lotto.ui.LottoWin;
 
 public class Application {
 
@@ -40,5 +45,10 @@ public class Application {
         if (!correctInputPattern.matcher(bonusNumber).find()) {
             throw new IllegalArgumentException(Error.IS_NOT_CORRECT_NUMBER.getMessage());
         }
+    }
+
+    private static void printWinningDetails(LinkedHashMap<LottoWin, Integer> result) {
+        Guide.WINNING_STATISTICS.print();
+        result.forEach((LottoWin::print));
     }
 }
