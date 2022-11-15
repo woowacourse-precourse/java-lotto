@@ -8,17 +8,21 @@ public class Account {
 
     private Integer purchaseAmount;
 
-    public void validatePurchaseAmount(String purchaseAmount) {
+    public Account(String purchaseAmount) {
+        validatePurchaseAmount(purchaseAmount);
+
+        this.purchaseAmount = Integer.valueOf(purchaseAmount);
+    }
+
+    private void validatePurchaseAmount(String purchaseAmount) {
         Integer numericAmount;
         if (isNotNumeric(purchaseAmount)) {
             throw new IllegalArgumentException(NOT_NUMERIC_WARNING_MESSAGE);
         }
         numericAmount = Integer.valueOf(purchaseAmount);
-
         if (isUnder1000Won(numericAmount)) {
             throw new IllegalArgumentException(UNDER_1000_WON_WARNING_MESSAGE);
         }
-
         if (isNot1000WonUnit(numericAmount)) {
             throw new IllegalArgumentException(NOT_1000_WON_UNIT_WARNING_MESSAGE);
         }
