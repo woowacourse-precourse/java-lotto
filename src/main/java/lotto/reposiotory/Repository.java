@@ -2,17 +2,15 @@ package lotto.reposiotory;
 
 import lotto.Lotto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class Repository {
-    private static final List<Lotto> list = new ArrayList<>();
-    private static final Repository repository = new Repository();
+public abstract class Repository {
+    private List<Lotto> list;
 
-    private Repository() {
-    }
-
-    public static Repository createRepository() {
-        return repository;
+    public Repository(List<Lotto> list) {
+        this.list = list;
     }
 
     public void save(Lotto lotto) {
@@ -27,8 +25,8 @@ public class Repository {
         list.clear();
     }
 
-
     public List<Lotto> findAll() {
         return Collections.unmodifiableList(list);
     }
+
 }

@@ -2,22 +2,22 @@ package lotto.service;
 
 import lotto.Lotto;
 import lotto.LottoGenerator;
+import lotto.reposiotory.LottoRepository;
+import lotto.reposiotory.PrizeRepository;
 import lotto.reposiotory.Repository;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mockStatic;
 
 class ServiceTest {
 
-    private static final Repository repo=Repository.createRepository();
-    private static final Service service=new Service(repo);
+    private static final LottoRepository repo= LottoRepository.createRepository();
+    private static final Service service=new Service(repo, PrizeRepository.createRepository());
     @Test
     void genLottos() {
         try(final MockedStatic<LottoGenerator> mock=mockStatic(LottoGenerator.class)) {
