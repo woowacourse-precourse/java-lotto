@@ -1,13 +1,13 @@
 package lotto;
 
+import java.util.List;
+
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.ProfitCalculator;
 import lotto.domain.LottoChecker;
 import lotto.ui.Input;
 import lotto.ui.Ouput;
-
-import java.util.List;
 
 public class Operator {
     ProfitCalculator profitCalculator = new ProfitCalculator();
