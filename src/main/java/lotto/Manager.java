@@ -5,19 +5,23 @@ import java.util.List;
 
 public class Manager {
 
+	public static String userInputMoney;
 	public static LottoMachine lottoMachine;
 	public static Lotto lotto;
 	public static ArrayList<Integer> winningInfo;
+	public static double totalRevenue;
 
 	public void init(){
-		showGeneratedLottos(buyLottos(userInput()));
-		inputWinningNumbers(userInput());
-		showWinningStatus(lotto.getNumbers(), inputBonusNumber(userInput()), lottoMachine.getLottos());
+		showGeneratedLottos(buyLottos());
+		inputWinningNumbers();
+		showWinningStatus(lotto.getNumbers(), inputBonusNumber(), lottoMachine.getLottos());
+		showRevenueRate();
 	}
 
-	public static int buyLottos(String userInputMoney){
-		int totalBought;
+	public static int buyLottos(){
 		printPurchaseAmount();
+		userInputMoney = userInput();
+		int totalBought;
 		Validate.checkValidMoney(userInputMoney);
 		totalBought = Integer.parseInt(userInputMoney) / Constant.LOTTO_PRICE.getNumber();
 		Message.printBoughtAmount(totalBought);
@@ -28,7 +32,7 @@ public class Manager {
 		System.out.println(Message.INPUT_PURCHASE_AMOUNT.getMessage());
 	}
 
-	public String userInput(){
+	public static String userInput(){
 		return Input.readLine();
 	}
 
@@ -37,8 +41,9 @@ public class Manager {
 		lottoMachine.printLottos();
 	}
 
-	public static void inputWinningNumbers(String winningNumbers){
+	public static void inputWinningNumbers(){
 		printWinningNumbersInput();
+		String winningNumbers = userInput();
 		Validate.initialInputCheck(winningNumbers);
 		lotto = new Lotto(formatting(winningNumbers));
 	}
@@ -55,14 +60,15 @@ public class Manager {
 		return numbers;
 	}
 
-	public int inputBonusNumber(String bonusNumber) {
+	public int inputBonusNumber() {
 		printBonusNumberInput();
+		String bonusNumber = userInput();
 		Validate.checkBonusNumber(bonusNumber, lotto.getNumbers());
 		return Integer.parseInt(bonusNumber);
 	}
 
 	public static void printBonusNumberInput(){
-		System.out.println(Message.INPUT_BONUS_NUMBER.getMessage());
+		System.out.println("\n"+Message.INPUT_BONUS_NUMBER.getMessage());
 	}
 
 	public void showWinningStatus(List<Integer> winningNumbers, int bonusNumber, List<List<Integer>> lottos){
@@ -94,5 +100,34 @@ public class Manager {
 
 	public void updateWinningInfo(int rank){
 		winningInfo.set(rank, winningInfo.get(rank) + 1);
+	}
+
+	public static void showRevenueRate(){
+		checkWinningInfo();
+		Message.printTotalReturn(totalRevenue
+			/ Integer.parseInt(userInputMoney)
+			* Constant.DIVIDE_RATE.getNumber());
+	}
+
+	public static void checkWinningInfo(){
+		for (int rank = 0; rank <= 4; rank++){
+			totalRevenue += calculateRevenue(rank);
+		}
+	}
+
+	public static double calculateRevenue(int rank){
+		if (rank == 0){
+			return winningInfo.get(rank) * Constant.FIRST_PRIZE.getNumber();
+		}
+		if (rank == 1){
+			return winningInfo.get(rank) * Constant.SECOND_PRIZE.getNumber();
+		}
+		if (rank == 2){
+			return winningInfo.get(rank) * Constant.THIRD_PRIZE.getNumber();
+		}
+		if (rank == 3){
+			return winningInfo.get(rank) * Constant.FOURTH_PRIZE.getNumber();
+		}
+		return winningInfo.get(rank) * Constant.FIFTH_PRIZE.getNumber();
 	}
 }
