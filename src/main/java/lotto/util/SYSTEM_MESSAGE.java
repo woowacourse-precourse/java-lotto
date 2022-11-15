@@ -5,8 +5,7 @@ public enum SYSTEM_MESSAGE {
     PURCHASE_AMOUNT("개를 구매했습니다."),
     WINNING_NUMBER("당첨 번호를 입력해 주세요."),
     BONUS_NUMBER("보너스 번호를 입력해 주세요."),
-    RESULT("당첨 통계"),
-    ERROR("[ERROR]");
+    RESULT("당첨 통계\n---");
 
     private String message;
 
