@@ -29,20 +29,31 @@ public class LottoNumberFormValidation {
         }
     }
 
-    private boolean isDigit(String writeBonusNumber) {
-        return writeBonusNumber.chars().allMatch(Character::isDigit);
-    }
-
     private void rangeNumberValid(int bonusNumber) {
         if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
     }
 
-    public void duplicatedValid(List<Integer> numbers) {
+    private boolean isDigit(String writeBonusNumber) {
+        return writeBonusNumber.chars().allMatch(Character::isDigit);
+    }
+
+    public void countValid(List<Integer> numbers) {
         int currentCount = numbers.size();
         int distinctCount = (int) numbers.stream().distinct().count();
 
+        rangeSizeValid(currentCount);
+        duplicateValid(currentCount, distinctCount);
+    }
+
+    private void rangeSizeValid(int currentCount) {
+        if (currentCount != 6) {
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
+        }
+    }
+
+    private void duplicateValid(int currentCount, int distinctCount) {
         if (currentCount != distinctCount) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }

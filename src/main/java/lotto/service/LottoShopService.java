@@ -15,7 +15,7 @@ public class LottoShopService {
         lottoNumberFormValidation.blankIncludeValid(writeLottoNumber, writeBonusNumber);
 
         List<Integer> winningNumbers = getSplitSeparator(writeLottoNumber);
-        lottoNumberFormValidation.duplicatedValid(winningNumbers);
+        lottoNumberFormValidation.countValid(winningNumbers);
         int bonusNumber = lottoNumberFormValidation.getValidBonusNumber(writeBonusNumber);
 
         return WinningLottoNumberDto.createWinningLottoNumber(winningNumbers, bonusNumber);
