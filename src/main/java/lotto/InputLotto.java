@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class InputLotto {
 
@@ -23,12 +24,10 @@ public class InputLotto {
     }
 
     public List<Integer> inputValueSplitCommas(){
-        ExceptionHandling exceptionHandling = new ExceptionHandling();
         String value = inputValueOfUser();
         List<String> stringsNumberList = splitCommas(value); // ,(쉼표)로 나누기
         List<Integer> numberList = toIntList(stringsNumberList);
         Lotto lotto = new Lotto(numberList);
-//        exceptionHandling.removeDuplicateNumber(numberList);
         return numberList;
     }
 
