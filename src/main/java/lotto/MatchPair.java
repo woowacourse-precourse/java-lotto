@@ -4,18 +4,20 @@ public class MatchPair {
     private int matchNumbers;
     private boolean matchBonusNumber;
 
+
+
     public MatchPair(int matchNumbers, boolean matchBonusNumber) {
         this.matchNumbers = matchNumbers;
         this.matchBonusNumber = matchBonusNumber;
+    }
+    public boolean isMatchBonusNumber() {
+        return matchBonusNumber;
     }
 
     public int getMatchNumbers() {
         return matchNumbers;
     }
 
-    public boolean isMatchBonusNumber() {
-        return matchBonusNumber;
-    }
 
     public int calculateRanking() {
         if (this.matchNumbers == 6) {

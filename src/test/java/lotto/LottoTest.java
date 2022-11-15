@@ -35,7 +35,17 @@ class LottoTest {
     void calculateRankingTest(){
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,10,11,12),45);
-        Assertions.assertThat(lotto.calculateMatchNumber(winningLotto)).isEqualTo(3);
+        Assertions.assertThat(lotto.calculateMatchNumber(winningLotto).getMatchNumbers())
+                .isEqualTo(3);
+        Assertions.assertThat(lotto.calculateMatchNumber(winningLotto).isMatchBonusNumber())
+                .isEqualTo(false);
+
+        lotto = new Lotto(List.of(1,2,3,4,5,45));
+        winningLotto = new WinningLotto(List.of(1,2,3,4,5,12),45);
+        Assertions.assertThat(lotto.calculateMatchNumber(winningLotto).getMatchNumbers())
+                .isEqualTo(5);
+        Assertions.assertThat(lotto.calculateMatchNumber(winningLotto).isMatchBonusNumber())
+                .isEqualTo(true);
     }
 
 }

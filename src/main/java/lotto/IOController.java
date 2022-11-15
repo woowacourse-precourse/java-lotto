@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 
 public class IOController {
 
-    public static int readBuyingMoney() {
+    public static int readBuyingMoney() throws IllegalArgumentException{
+        System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int buyingMoney;
         try {
@@ -23,6 +24,7 @@ public class IOController {
     }
 
     public static List<Integer> readWinningNumbers() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String pattern = "^([1-9]?[0-9],){5}[1-9]?[0-9]$";
         if (!Pattern.matches(pattern, input)) {
@@ -39,6 +41,7 @@ public class IOController {
     }
 
     public static int readBonusNumber() throws IllegalArgumentException {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         String pattern = "^[1-9]?[0-9]$";
         if (!Pattern.matches(pattern, input)) {
@@ -48,10 +51,34 @@ public class IOController {
         return Integer.parseInt(input);
     }
 
+    public static void printLottos(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
+        }
+    }
+
+    public static void printPrizeResult(List<Integer> allRankings,Integer buyingLottoNumber) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + allRankings.get(5)+"개");
+        System.out.println("4개 일치 (50,000원) - " + allRankings.get(4)+"개");
+        System.out.println("5개 일치 (1,500,000원) - " + allRankings.get(3)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + allRankings.get(2)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + allRankings.get(1)+"개");
+        LottoService lottoService = new LottoService();
+        Float earningRate = lottoService.calculateEarningRate(allRankings,buyingLottoNumber);
+        System.out.println("총 수익률은 "+String.format("%.1f",earningRate)+"%입니다.");
+    }
+
+    public static void printExceptionMessage(IllegalArgumentException e){
+        System.out.println(e.getMessage());
+    }
+
+
     private static void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
-
 }

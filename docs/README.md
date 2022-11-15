@@ -4,13 +4,13 @@
 3. 입력 값 유효성 검사 (OK)
 4. 입력값(로또 구입 금액) => Lotto Instance 생성 (OK)
 5. Lotto Instance 유효성 검사 (OK)
-6. 생성된 Lotto Instance의 수량 및 번호 출력
+6. 생성된 Lotto Instance의 수량 및 번호 출력 (OK)
 7. 입력값(당첨번호, 보너스 번호) => winning Lotto Instance 생성 (OK)
 8. winning Lotto 유효성 검사 (OK)
 9. Lotto Instance와 winning Lotto 비교 (OK)
-10. (4) => 로또 수량 및 번호 출력
-11. (8) => 당첨 내역 출력
-12. 예외 처리
+10. (4) => 로또 수량 및 번호 출력 (OK)
+11. (8) => 당첨 내역 출력 (OK)
+12. 예외 처리 
 
 # 클래스 설계
 #### 1. Lotto

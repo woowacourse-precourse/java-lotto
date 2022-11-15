@@ -21,6 +21,19 @@ public class Lotto {
         return numbers;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for (int index = 0; index < this.numbers.size() - 1; index++) {
+            stringBuilder.append(numbers.get(index));
+            stringBuilder.append(", ");
+        }
+        stringBuilder.append(numbers.get(numbers.size() - 1));
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+    }
+
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개이여야 합니다.");
@@ -43,12 +56,11 @@ public class Lotto {
         }
     }
 
-    public MatchPair calculateMatchNumber(WinningLotto winningLotto){
-        Stream<Integer> lottoStream = this.numbers.stream();
-        Stream<Integer> winningStream = winningLotto.getNumbers().stream();
-        int matchNumbers = (int)lottoStream.filter(lotto->winningStream.anyMatch(Predicate.isEqual(lotto)))
-                .count();
+    public MatchPair calculateMatchNumber(WinningLotto winningLotto) {
+        int matchNumbers = (int) this.numbers.stream()
+                .filter(lotto -> winningLotto.getNumbers().stream()
+                        .anyMatch(Predicate.isEqual(lotto))).count();
         boolean matchBonusNumber = this.numbers.contains(winningLotto.getBonusNumber());
-        return new MatchPair(matchNumbers,matchBonusNumber);
+        return new MatchPair(matchNumbers, matchBonusNumber);
     }
 }
