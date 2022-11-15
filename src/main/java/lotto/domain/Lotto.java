@@ -1,10 +1,7 @@
 package lotto.domain;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
-import static java.util.Comparator.*;
+import java.util.List;
 
 public class Lotto {
     private static final int NUMBERS_SIZE = 6;
@@ -36,7 +33,7 @@ public class Lotto {
 
     private void validateDigit(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
     }
 
