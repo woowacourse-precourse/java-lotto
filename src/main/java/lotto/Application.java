@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,10 @@ public class Application {
         WinningNumber winningNumber = new WinningNumber();
         winningNumber.inputNumber();
 
+        user.printLotto();
         user.checkWinning(winningNumber);
         user.computeProfit();
+
+
     }
 }
