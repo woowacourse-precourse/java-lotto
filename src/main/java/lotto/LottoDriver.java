@@ -9,15 +9,11 @@ public class LottoDriver {
     private static final int LOTTERY_NUMBER_LIMIT = 6;
     private static int BUYING_AMOUNT = 0;
     public static void startLottoGame(){
-
         int[][] lotteryBundle = readyProcess();
         gameProcess(lotteryBundle);
-
     }
     private static int[][] readyProcess() {
-
-            BUYING_AMOUNT = inputBuyingAmount();
-
+        BUYING_AMOUNT = inputBuyingAmount();
         int countOfLottery =  BUYING_AMOUNT / AMOUNT_UNIT;
         new PrintDriver().printCountOfLotteryMessage(countOfLottery);
         int[][] lotteryBundle = createLotteryBundle(countOfLottery);
@@ -28,27 +24,21 @@ public class LottoDriver {
         InputDriver InputDriver = new InputDriver();
         int bonusNumber;
         int[] inputNumbersArray;
-
-            inputNumbersArray = createLottoNumbers();
-            bonusNumber = InputDriver.inputBonusNumber(Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList()));
-            new Lotto(Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList()));
-
+        inputNumbersArray = createLottoNumbers();
+        bonusNumber = InputDriver.inputBonusNumber(Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList()));
+        new Lotto(Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList()));
         Profit profit = new Profit(inputNumbersArray, bonusNumber);
         int[] countCaseCount = profit.checkWinnings(lotteryBundle,bonusNumber);
         double totalProfitRate = profit.calculateProfitRate(countCaseCount,BUYING_AMOUNT);
         new PrintDriver().printStatusOfWinning(countCaseCount, totalProfitRate);
     }
-
     private static int[] createLottoNumbers(){
         InputDriver InputDriver = new InputDriver();
-
-            int[] inputNumbersArray = InputDriver.inputNumbers();
-            List<Integer> numbers = Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList());
-            new Lotto(numbers);
-            return inputNumbersArray;
-
+        int[] inputNumbersArray = InputDriver.inputNumbers();
+        List<Integer> numbers = Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList());
+        new Lotto(numbers);
+        return inputNumbersArray;
     }
-
     private static int[][] createLotteryBundle(int countOfLottery) {
         int[][] lotteryBundleArray = new int[countOfLottery][LOTTERY_NUMBER_LIMIT];
         int cntForCreateLottery = 0;
@@ -69,12 +59,9 @@ public class LottoDriver {
         Arrays.sort(lotteryNumberArray);
         return lotteryNumberArray;
     }
-
     private static int inputBuyingAmount() {
         InputDriver InputDriver = new InputDriver();
-
-            new PrintDriver().printInputBuyingAmountMessage();
-            return InputDriver.inputBuyingAmount();
-
+        new PrintDriver().printInputBuyingAmountMessage();
+        return InputDriver.inputBuyingAmount();
     }
 }

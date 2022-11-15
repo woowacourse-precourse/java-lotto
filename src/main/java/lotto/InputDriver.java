@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-
 public class InputDriver {
     public int inputBuyingAmount() {
         String buyingAmountString = Console.readLine();
@@ -23,9 +22,7 @@ public class InputDriver {
         int[] inputNumbersArray = new int[inputNumbersString.split(",").length];
         int index = 0;
         for (String inputNumbers : inputNumbersString.split(",")){
-
-            inputNumbersArray[index++] = exceptionCase.checkIfNumberInRightFormat(inputNumbers);
-
+        inputNumbersArray[index++] = exceptionCase.checkIfNumberInRightFormat(inputNumbers);
         }
         return inputNumbersArray;
     }
@@ -34,17 +31,10 @@ public class InputDriver {
         new PrintDriver().printInputBonusNumberMessage();
         String inputBonusNumberString = Console.readLine();
         int bonusNumber;
-
         exceptionCase.validationOfInput(inputBonusNumberString);
         bonusNumber = Integer.parseInt(inputBonusNumberString);
         exceptionCase.validationForNumber(numbers, bonusNumber);
         exceptionCase.validationForRange(bonusNumber);
-
         return Integer.parseInt(inputBonusNumberString);
     }
-
-
-
-
-
 }

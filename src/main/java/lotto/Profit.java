@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Profit {
-
     List<Integer> lottoNumber;
     int bonusNumber;
     public Profit(int[] lottoNumber, int bonusNumber){
@@ -35,7 +34,6 @@ public class Profit {
         }
         return countCaseCount;
     }
-
     private int checkIfContainsBonusPoints(int[] lotteryArray, int bonusNumber) {
         List<Integer> lottery = Arrays.stream(lotteryArray).boxed().collect(Collectors.toList());
         if (lottery.contains(bonusNumber)){
@@ -43,7 +41,6 @@ public class Profit {
         }
         return 0;
     }
-
     public double calculateProfitRate(int[] countCaseCount, int buyingAmount) {
         BigInteger totalWinningPrize = new BigInteger("0");
         for (int index = 3; index <= 7; index++){
@@ -57,7 +54,6 @@ public class Profit {
         }
         return Math.round((totalWinningPrize.doubleValue() / (double)buyingAmount) * 1000)/1000.0 * 100;
     }
-
     private String findWinningPrizeForCal(int countOfContains) {
         for (WinningPrize count : WinningPrize.values()){
             if (countOfContains == count.countOfContain){

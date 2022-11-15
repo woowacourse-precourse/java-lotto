@@ -47,6 +47,4 @@ public class PrintDriver {
     private void printTotalProfitRate(double totalProfitRate) {
         System.out.println("총 수익률은 " + totalProfitRate + "%입니다.");
     }
-
-
 }

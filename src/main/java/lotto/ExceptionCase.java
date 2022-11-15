@@ -60,6 +60,7 @@ public class ExceptionCase {
         while (itrForNumbers.hasNext()){
             int number = (int)itrForNumbers.next();
             if (number < 1 || number > 45){
+                System.out.println("!");
                 System.out.println("[ERROR] 당첨 번호의 각 숫자 범위는 1 - 45 입니다.");
                 throw new IllegalArgumentException();
             }
@@ -80,7 +81,6 @@ public class ExceptionCase {
             throw new IllegalArgumentException();
         }
     }
-
     public void validationForRange(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45){
             System.out.println("[ERROR] 당첨 번호의 각 숫자 범위는 1 - 45 입니다.");

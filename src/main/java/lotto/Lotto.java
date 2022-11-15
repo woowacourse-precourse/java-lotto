@@ -13,5 +13,4 @@ public class Lotto {
         exceptionCase.checkNumbersOverLap(numbers);
         exceptionCase.checkNumbersRange(numbers);
     }
-
 }
