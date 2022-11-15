@@ -19,7 +19,7 @@ public class LottoResult {
     }
 
     public double calculateLottoProfit(LottoMoney money) {
-        System.out.println(calculateTotalReward());
+        // System.out.println(calculateTotalReward());
         return (double) calculateTotalReward() / money.getMoney() * 100;
     }
 

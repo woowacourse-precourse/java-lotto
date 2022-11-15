@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,7 +63,6 @@ public class Lotto {
 
     public static List<Integer> generateLottoTicket() {
         List<Integer> lottoTicket = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_SIZE);
-        Collections.shuffle(lottoTicket);
         return lottoTicket.stream().sorted().collect(Collectors.toList());
     }
 

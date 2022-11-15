@@ -18,7 +18,6 @@ public class LottoMoney {
   public void calculateLottoTicketCount() {
     try {
       this.lottoTicketCount = money / MONEY_UNIT;
-      System.out.println("LottoMoney.calculateLottiTicketCount(): " + lottoTicketCount);
     } catch (Exception e) {
       throw new IllegalArgumentException("[ERROR] calculateLottoTicketCount");
     }

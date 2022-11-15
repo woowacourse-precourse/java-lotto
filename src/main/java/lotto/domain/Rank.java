@@ -28,6 +28,14 @@ public enum Rank {
                 .orElse(NOTHING);
     }
 
+    public int getHit() {
+        return this.hit;
+    }
+
+    public boolean getHasBonusHit() {
+        return this.hasBonusHit;
+    }
+
     public int getReward() {
         return this.reward;
     }
