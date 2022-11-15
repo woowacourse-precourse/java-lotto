@@ -2,11 +2,11 @@ package lotto;
 
 public class WinningHistory {
 
-    int firstWinningCmt;
-    int secondWinningCmt;
-    int thirdWinningCmt;
-    int forthWinningCmt;
-    int fifthWinningCmt;
+    private int firstWinningCmt;
+    private int secondWinningCmt;
+    private int thirdWinningCmt;
+    private int forthWinningCmt;
+    private int fifthWinningCmt;
 
     public WinningHistory() {
         initializeWinningCmt();

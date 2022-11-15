@@ -1,13 +1,15 @@
 package lotto;
 
-import java.util.*;
+import OutputView.PrintMsg;
+
+import java.util.List;
 
 public class Game {
 
     public void play(int lottoCount) {
-        System.out.println("\n" + lottoCount + "개를 구매했습니다.");
+        PrintMsg.numberOfLottoPurchasedMsg(lottoCount);
         List<Lotto> purchasedLottos = Lotto.generateLottoSet(lottoCount);
-        printPurchasedLottos(purchasedLottos);
+        PrintMsg.purchasedLottosMsg(purchasedLottos);
         WinningNumber winningNumber = new WinningNumber();
         winningNumber.generator();
         Earning earning = new Earning();
@@ -20,12 +22,8 @@ public class Game {
             earning.RankCalculate(calculator.getSameCmt(), calculator.getBonusCorrect(), winningHistory);
         }
         winningHistory.print();
-        System.out.println("총 수익률은 " + earning.rateCalculate(lottoCount*1000, earningAmount) + "%입니다.");
+        PrintMsg.earningRateMsg(earning.rateCalculate(lottoCount * 1000, earningAmount));
     }
 
-    public void printPurchasedLottos(List<Lotto> purchasedLottos) {
-        for (Lotto purchasedLotto : purchasedLottos) {
-            System.out.println(purchasedLotto.getLottoNumber());
-        }
-    }
+
 }

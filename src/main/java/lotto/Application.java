@@ -1,18 +1,19 @@
 package lotto;
 
+import OutputView.PrintMsg;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
 
-        System.out.println("구입금액을 입력해 주세요.");
+        PrintMsg.purchasedMsg();
         String purchaseAmount = Console.readLine();
         Game game = new Game();
         game.play(isValidPurchaseAmount(purchaseAmount) / 1000);
     }
 
     static private int isValidPurchaseAmount(String inputValue) throws IllegalArgumentException {
-        if(!isNumeric(inputValue)) {
+        if (!isNumeric(inputValue)) {
             throw new IllegalArgumentException("[ERROR]");
         }
         int inputNumber = Integer.parseInt(inputValue);

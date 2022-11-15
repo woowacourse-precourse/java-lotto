@@ -10,8 +10,8 @@ public class Calculator {
     public void calculate(List<Integer> purchasedLotto, List<Integer> winningLotto, int bonusNumber) {
         initializedValues();
         sameCmt = comparePurchasedWithWinningLotto(purchasedLotto, winningLotto);
-        if(sameCmt == 5) {
-            if(purchasedLotto.contains(bonusNumber)) {
+        if (sameCmt == 5) {
+            if (purchasedLotto.contains(bonusNumber)) {
                 bonusCorrect++;
             }
         }

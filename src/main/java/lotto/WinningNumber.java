@@ -1,5 +1,6 @@
 package lotto;
 
+import OutputView.PrintMsg;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class WinningNumber {
     }
 
     private Lotto setWinningLotto() {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        PrintMsg.winningMsg();
         String inputValue = Console.readLine().trim();
         List<Integer> winningLottoNumbers = new ArrayList<>();
         for (String numberValue : inputValue.split(",")) {
@@ -34,16 +35,16 @@ public class WinningNumber {
     }
 
     private int setBonusNumber() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        PrintMsg.bonusMsg();
         String bonusNumber = Console.readLine();
         return isValidBonusNumber(Integer.parseInt(bonusNumber), winningLotto);
     }
 
-    private int isValidBonusNumber(int bonusNumber, List<Integer> winningLotto) throws IllegalArgumentException{
-        if(!(bonusNumber >= 1 && bonusNumber <= 45)) {
+    private int isValidBonusNumber(int bonusNumber, List<Integer> winningLotto) throws IllegalArgumentException {
+        if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다.");
         }
-        if(winningLotto.contains(bonusNumber)) {
+        if (winningLotto.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다.");
         }
         return bonusNumber;

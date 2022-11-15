@@ -25,7 +25,7 @@ public class Lotto {
 
     public static List<Lotto> generateLottoSet(int counts) {
         List<Lotto> lottos = new ArrayList<>();
-        for(int count =0; count < counts; count++) {
+        for (int count = 0; count < counts; count++) {
             lottos.add(Lotto.generate());
         }
         return lottos;
@@ -35,13 +35,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호 개수가 다릅니다.");
         }
-        for(int number : numbers) {
-            if(number >= 1 && number <= 45) {
+        for (int number : numbers) {
+            if (number >= 1 && number <= 45) {
                 continue;
             }
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 로또 번호입니다.");
         }
-        if(isDuplicated(numbers)){
+        if (isDuplicated(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호 사이에 중복이 존재합니다.");
         }
     }
