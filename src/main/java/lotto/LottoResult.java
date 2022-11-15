@@ -16,7 +16,7 @@ public class LottoResult {
         sortRankResult(comparingLong(result -> result.getKey().winningPrize));
         this.purchaseAmount = winningResult.size() * LotteryPublisher.LOTTO_PRICE;
         this.totalPrize = calcTotalPrize(this.rankResult);
-        this.totalReturnRatio = Math.round((double) totalPrize / purchaseAmount * 1000) / 10.0;
+        this.totalReturnRatio = Math.round((double) totalPrize / purchaseAmount * 10000) / 100.0;
     }
 
     public void sortRankResult(Comparator<Map.Entry<LottoRank, Integer>> comparator) {

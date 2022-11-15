@@ -18,7 +18,7 @@ public class ResultView {
         System.out.println("당첨 통계");
         System.out.println("---");
         printRankResult();
-        System.out.println("총 수익률은 " + this.lottoResult.getTotalReturnRatio() + "%입니다.");
+        System.out.println("총 수익률은 " + formatTotalReturnRatio(this.lottoResult.getTotalReturnRatio()) + "%입니다.");
     }
 
     private void printRankResult() {
@@ -37,13 +37,17 @@ public class ResultView {
         if (rank.isCorrectBonusNumber) {
             stringBuilder.append(", 보너스 볼 일치");
         }
-        stringBuilder.append(" (").append(formatPrize(rank))
+        stringBuilder.append(" (").append(formatNumber(rank.winningPrize))
                 .append("원) - ").append(result.getValue()).append("개");
         return stringBuilder.toString();
     }
 
-    private String formatPrize(LottoRank rank) {
-        return new DecimalFormat("###,###").format(rank.winningPrize);
+    private String formatNumber(long number) {
+        return new DecimalFormat("###,###").format(number);
+    }
+
+    private String formatTotalReturnRatio(double totalReturnRatio) {
+        return new DecimalFormat("###,###.#").format(totalReturnRatio);
     }
 
     private boolean isPrintExclusive(Map.Entry<LottoRank, Integer> result) {

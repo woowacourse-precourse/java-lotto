@@ -55,9 +55,9 @@ class LottoResultTest {
     @DisplayName("로또 결과를 통해 구매 금액 대비 총 수익률을 구한다.")
     @Test
     void totalReturnRatioTest() {
-        List<LottoRank> winningResult = List.of(_4th, DRAW, _3rd, _3rd, _5th);
-        LottoResult lottoResult = new LottoResult(winningResult, 5000);
+        List<LottoRank> winningResult = List.of(_4th, DRAW, _3rd, _3rd, _5th, _5th, _5th);
+        LottoResult lottoResult = new LottoResult(winningResult);
 
-        assertThat(lottoResult.getTotalReturnRatio()).isEqualTo(61100.0);
+        assertThat(lottoResult.getTotalReturnRatio()).isEqualTo(43785.71);
     }
 }
