@@ -9,6 +9,8 @@ public class ConsoleOut {
 	}
 
 	public static void printLottos(List<Lotto> lottos) {
+		System.out.println();
+		System.out.println(lottos.size() + Constants.PRINT_LOTTO_HISTORY);
 		for (Lotto lotto : lottos) {
 			System.out.println(lotto);
 		}
