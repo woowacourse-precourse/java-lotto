@@ -1,6 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.Lotto;
 import lotto.dto.WinningLottoNumberDto;
 import lotto.dto.WinningNumberCountDto;
 import lotto.exception.PayMoneyException;
