@@ -9,7 +9,7 @@
   - 보너스 번호 입력 - inputBonusNumber()
 ## 구현
 - 로또 생성 - createLotto()
-- 보너스 번호 생성 - createBonusNumber()
+- 적중 계산 - checkHit()
 - 수익률 계산 - calculateEarn()
 - 에러 처리 - errorHandling()
 ## 출력
