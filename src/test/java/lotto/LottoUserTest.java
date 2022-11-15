@@ -36,6 +36,7 @@ public class LottoUserTest {
     @CsvSource(value = {"0,0","1000,1","2000,2","5000,5","10000,10","13000,13","20000000,20000"})
     void buyLottoTest(long money, int cnt) {
         LottoUser user = new LottoUser(money,new LottoSystem());
+        user.buyLotto();
         List<Lotto> lottos = user.getLottos();
         assertEquals(lottos.size(),cnt);
     }
@@ -111,5 +112,6 @@ public class LottoUserTest {
                 )
         );
     }
+
 }
 

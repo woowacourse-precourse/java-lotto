@@ -19,7 +19,6 @@ public class LottoUser {
         this.lottoSystem = lottoSystem;
         this.lottos = new ArrayList<>();
         this.winInfomations = new ArrayList<>();
-        buyLotto();
     }
 
     private void validate(long money){
@@ -31,7 +30,7 @@ public class LottoUser {
         }
     }
 
-    private void buyLotto(){
+    public void buyLotto(){
         while(this.money >= Lotto.PRICE){
             money -= Lotto.PRICE;
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
