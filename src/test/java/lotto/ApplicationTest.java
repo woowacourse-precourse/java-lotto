@@ -1,9 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.exception.MyIllegalArgumentException;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -72,6 +79,27 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"가,나,다,라,마,바", "가나다라마바"})
+    @DisplayName("당첨 번호를 규칙에 어긋나게 입력했을 때 예외처리하는지 확인한다.")
+    void askWinNumbersByErrorInput(String input) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        Assertions.assertThatThrownBy(Application::askWinNumbers)
+                .isInstanceOf(MyIllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("당첨 번호를 올바르게 입력했을 때 리스트를 반환하는지 확인한다.")
+    void askWinNumbers() {
+        String input = "1,2,3,4,5,6";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        List<Integer> numbers = Application.askWinNumbers();
+        Assertions.assertThat(numbers).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
+    }
+
 
     @Override
     public void runMain() {
