@@ -20,6 +20,7 @@ public class Output {
         for(Lotto lotto: newLotto) {
             System.out.println(lotto.getLottoNumbers());
         }
+        System.out.println();
     }
     public static void printResult(Map<Rank, Integer> ranking, double profit){
         System.out.println();
