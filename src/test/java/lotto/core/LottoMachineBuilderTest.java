@@ -96,4 +96,68 @@ class LottoMachineBuilderTest {
 		InputStream inputStream = generateInputStream(inputBuilder.toString());
 		System.setIn(inputStream);
 	}
+
+	@DisplayName("구입금액에 숫자가 아닌 문자를 입력했을 경우, ERROR_IS_NOT_NUMERIC_VALUE 에러 메세지 발생")
+	@Test
+	void checkPurchaseAmountIsNotNumericTest() {
+		final LottoFactory lottoFactory = mock(LottoFactory.class);
+		final String purchaseAmount = "1000a";
+		LottoMachineBuilder lottoMachineBuilder = new LottoMachineBuilder();
+
+		InputStream inputStream = generateInputStream(purchaseAmount);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(() -> lottoMachineBuilder.init(lottoFactory)
+				.purchaseLotteries())
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_IS_NOT_NUMERIC_VALUE);
+	}
+
+	@DisplayName("구입금액에 앞에 0이 오는 숫자를 입력했을 때, ERROR_FIRST_CHAR_IS_ZERO 에러 메세지 발생")
+	@Test
+	void checkPurchaseAmountFirstCharIsZeroTest() {
+		final LottoFactory lottoFactory = mock(LottoFactory.class);
+		final String purchaseAmount = "01000";
+		LottoMachineBuilder lottoMachineBuilder = new LottoMachineBuilder();
+
+		InputStream inputStream = generateInputStream(purchaseAmount);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(() -> lottoMachineBuilder.init(lottoFactory)
+				.purchaseLotteries())
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_FIRST_CHAR_IS_ZERO);
+	}
+
+	@DisplayName("구입금액에 ' '을 입력했을 때, ERROR_EMPTY_INPUT 에러 메세지 발생")
+	@Test
+	void checkPurchaseAmountIsNothingTest() {
+		final LottoFactory lottoFactory = mock(LottoFactory.class);
+		final String purchaseAmount = " ";
+		LottoMachineBuilder lottoMachineBuilder = new LottoMachineBuilder();
+
+		InputStream inputStream = generateInputStream(purchaseAmount);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(() -> lottoMachineBuilder.init(lottoFactory)
+				.purchaseLotteries())
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_EMPTY_INPUT);
+	}
+
+	@DisplayName("구입금액이 1000단위로 나눠 떨어지지 않으면, ERROR_DONT_DIVIDED_BY_LOTTO_PRICE 에러 메세지 발생")
+	@Test
+	void checkPurchaseAmountCanNotBeDividedByLottoPriceTest() {
+		final LottoFactory lottoFactory = mock(LottoFactory.class);
+		final String purchaseAmount = "1500";
+		LottoMachineBuilder lottoMachineBuilder = new LottoMachineBuilder();
+
+		InputStream inputStream = generateInputStream(purchaseAmount);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(() -> lottoMachineBuilder.init(lottoFactory)
+				.purchaseLotteries())
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_DONT_DIVIDED_BY_LOTTO_PRICE);
+	}
 }
