@@ -73,4 +73,12 @@ class LottoResultCalculatorTest {
 
         assertThat(lottoResultCalculator.calWinningAmount(ranks)).isEqualTo(expected);
     }
+
+    @Test
+    void 총수익률_구하기() {
+        long winningAmount = 100_000_000;
+        int money = 133_000;
+
+        assertThat(lottoResultCalculator.calRateOfReturn(winningAmount, money)).isEqualTo((double) winningAmount / money);
+    }
 }
