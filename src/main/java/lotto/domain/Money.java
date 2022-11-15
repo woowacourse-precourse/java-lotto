@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 import static lotto.domain.AdditionalFunction.StringToInt;
+import static lotto.view.ErrorMessage.*;
 
 public class Money {
     private final int money;
@@ -20,14 +21,14 @@ public class Money {
     }
 
     private void validatePositiveNum(int money) {
-        if (money < 0) {
-            throw new IllegalArgumentException("[ERROR] 0원 이상의 금액을 입력하세요.");
+        if (money < 1000) {
+            throw new IllegalArgumentException(ERROR_MESSAGE+LESS_THAN_THOUSAND_ERROR_MESSAGE);
         }
     }
 
     private void validateUnit(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 천원 단위로 입력해야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE+THOUSAND_UNIT_ERROR_MESSAGE);
         }
     }
 }

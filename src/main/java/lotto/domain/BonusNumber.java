@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static lotto.domain.AdditionalFunction.StringToInt;
 import static lotto.domain.AdditionalFunction.validateNumRange;
+import static lotto.view.ErrorMessage.DUPLICATE_ERROR_MESSAGE;
+import static lotto.view.ErrorMessage.ERROR_MESSAGE;
 
 public class BonusNumber {
     private final int bonusNumber;
@@ -24,7 +26,7 @@ public class BonusNumber {
 
     private void validateDuplicate(int bonusNumber, PrizeLotto prizeLotto) {
         if (prizeLotto.getPrizeLotto().contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE+DUPLICATE_ERROR_MESSAGE);
         }
     }
 
