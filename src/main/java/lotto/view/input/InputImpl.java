@@ -9,7 +9,7 @@ import lotto.utils.message.ErrorMessage;
 
 public class InputImpl implements Input {
 
-    private static final String PAYMENT_AMOUNT_REGEX = "^[0-9]*$";
+    private static final String NUMBER_REGEX = "^[0-9]*$";
 
     @Override
     public int inputPaymentAmount() throws IllegalArgumentException {
@@ -40,7 +40,7 @@ public class InputImpl implements Input {
     }
 
     private void validateIsNumber(String paymentAmount) throws IllegalArgumentException {
-        if (!paymentAmount.matches(PAYMENT_AMOUNT_REGEX)) {
+        if (!paymentAmount.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_PAYMENT_AMOUNT);
         }
     }
@@ -82,7 +82,7 @@ public class InputImpl implements Input {
     }
 
     private void isLottoNumber(int number) throws IllegalArgumentException {
-        if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+        if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER || !String.valueOf(number).matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_LOTTO_NUMBER);
         }
     }
