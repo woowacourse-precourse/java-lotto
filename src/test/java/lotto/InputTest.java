@@ -49,4 +49,11 @@ public class InputTest {
         assertThatThrownBy(() -> Input.createWinningLotto("1, 2, 3, 4, 5, 5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호가 1~45를 벗어나면 예외가 발생한다.")
+    @Test
+    void bonusNumberNotInRange() {
+        assertThatThrownBy(() -> Input.checkBonusValidation("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
