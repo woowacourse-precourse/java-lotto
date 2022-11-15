@@ -10,9 +10,9 @@ import lotto.view.OutputView;
 import java.util.NoSuchElementException;
 
 public class UserController {
-    static UserService userService = new UserService();
-    static LotterySellService lotterySellService = new LotterySellService();
-    static LotteryCheckService lotteryCheckService = new LotteryCheckService();
+    private static UserService userService = new UserService();
+    private static LotterySellService lotterySellService = new LotterySellService();
+    private static LotteryCheckService lotteryCheckService = new LotteryCheckService();
 
     private static User user;
 

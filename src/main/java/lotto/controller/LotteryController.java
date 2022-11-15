@@ -8,7 +8,7 @@ import lotto.view.OutputView;
 import java.util.List;
 
 public class LotteryController {
-    static LotteryDrawService lotteryDrawService = new LotteryDrawService();
+    private static LotteryDrawService lotteryDrawService = new LotteryDrawService();
 
     public static void draw() throws IllegalArgumentException {
         List<Integer> winningNumbers = InputView.takeWinningNumberInput();
