@@ -16,6 +16,6 @@ public class LottoStatisticsUI {
     }
 
     public void showRate(double rate){
-        System.out.println(String.format("총 수익률은 %f", rate)+"%입니다.");
+        System.out.println(String.format("총 수익률은 %.1f", rate)+"%입니다.");
     }
 }
