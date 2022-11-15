@@ -1,16 +1,17 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoNumberCreator;
-import lotto.domain.LottoStore;
+import lotto.domain.*;
 import lotto.ui.InputUi;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {

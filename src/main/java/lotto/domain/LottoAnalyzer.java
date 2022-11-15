@@ -28,7 +28,7 @@ public class LottoAnalyzer {
         for (Lotto lottoNumber : lottoNumbers) {
             int rankNumber = findLottoWinRank(lottoNumber);
             LottoRank lottoRank = LottoRank.scoreRankNumber(rankNumber);
-            lottoRank = findSecondLottoWinRank(lottoRank);
+            lottoRank = findSecondLottoWinRank(lottoRank, lottoNumber.getNumbers());
             if (validateNoRank(lottoRank)) {
                 continue;
             }
@@ -48,8 +48,8 @@ public class LottoAnalyzer {
     /**
      * 로또 보너스 번호로 2등 당첨 찾기
      */
-    private LottoRank findSecondLottoWinRank(LottoRank lottoRank) {
-        if (lottoRank == LottoRank.THIRD_RANK && lottoWinNumber.contains(lottoBonusBall)) {
+    private LottoRank findSecondLottoWinRank(LottoRank lottoRank, List<Integer> lottoNumber) {
+        if (lottoRank == LottoRank.THIRD_RANK && lottoNumber.contains(lottoBonusBall)) {
             lottoRank = LottoRank.SECOND_RANK;
         }
         return lottoRank;
