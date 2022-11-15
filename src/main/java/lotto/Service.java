@@ -67,18 +67,20 @@ public class Service {
     }
 
     public int getLuckyNumberInput(String winningNumberInput) {
-        try{
+        try {
             int input = Integer.parseInt(Console.readLine());
+            if (!(input > 0) || !(input < 46)) {
+                throw new IllegalArgumentException("[ERROR] 범위를 벗어나는 숫자입니다.");
+            }
             String[] winningNumbers = winningNumberInput.split(",");
             for (String winningNumber : winningNumbers) {
-                if(input == Integer.parseInt(winningNumber)){
+                if (input == Integer.parseInt(winningNumber)) {
                     throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
                 }
             }
             return input;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
-
     }
 }
