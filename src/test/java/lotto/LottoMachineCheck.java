@@ -45,6 +45,17 @@ public class LottoMachineCheck {
         assertThat(mergeLottoNumbers.size()).isEqualTo(12);
     }
 
+    @DisplayName("소수점 두번쨰 자리에서 반올림 로직 테스트")
+    @Test
+    void checkRoundingAtSecondSpot(){
+        int profit = 5000;
+        int userMoney = 8000;
+
+        double rateEarningMoney = profit/(double)userMoney*100;
+        rateEarningMoney = Math.round(rateEarningMoney*10)/10.0;
+        assertThat(rateEarningMoney).isEqualTo(62.5d);
+    }
+
     static List<Integer> mergeList(List<Integer> list1, List<Integer> list2){
         List<Integer> mergeList = new ArrayList<>();
         Collections.addAll(mergeList, list1.toArray(new Integer[0]));
