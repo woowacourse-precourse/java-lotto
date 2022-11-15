@@ -41,7 +41,9 @@ public class OutputView {
         System.out.println("6개 일치 (2,000,000,000원) - " + countPrize.getOrDefault(Rank.SIX, 0) + "개");
     }
 
-
+    public void printEarningRateOfLottoMessage(String earningRate) {
+        System.out.println("총 수익률은 " + earningRate + "%입니다.");
+    }
 
 
 
