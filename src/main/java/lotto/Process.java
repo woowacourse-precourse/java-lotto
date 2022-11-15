@@ -20,4 +20,12 @@ public class Process {
         System.out.println(BUY_MESSAGE);
         userMoney = UserInput.money();
     }
+
+    static void lottoCountMessage(){
+        lottoPaper = UserInput.coin(userMoney);
+        savelottoPaper = lottoPaper;
+        System.out.println();
+        System.out.println(lottoPaper + LOTTO_BUY_CONFIRM_MESSAGE);
+
+    }
 }
