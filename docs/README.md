@@ -33,13 +33,7 @@
 ## 기능 목록
 최종 결과가 나올 때 까지 어떤 기능을 거쳐가야할지 순서대로 기능을 생각해본다.
 
-### domain.lottoData
-- [x]  로또 데이터를 담기 위한 클래스 Lotto
-- [x]  해당 차수에서 당첨 번호를 담기 위한 클래스. WinnerLotto
-- [x]  해당 차수에서 당첨된 로또를 담기 위한 클래스. TotalWinnerLotto
-- [x]  당첨 정보를 일괄적으로 관리하기 위한 enum. Rank
-
-### domain.ui
+### ui
 - [x]  다른 클래스로부터 요청받은 메시지를 출력해준다.
     - [x]  로또 구입 금액 입력을 요청하기 위한 메시지를 출력한다. OutputUI#printMessage()
     - [x]  당첨 일반 번호 입력을 요청하기 위한 메시지를 출력한다. OutputUI#printMessage()
@@ -57,11 +51,20 @@
 - [x]  당첨 일반 번호를 검증한다. Validator#validateNormalNumbers()
 - [x]  당첨 보너스 번호를 검증한다. Validator#validateBonusNumber()
 
+### domain
+- [x]  로또 데이터를 담기 위한 클래스 Lotto
+- [x]  해당 차수에서 당첨 번호를 담기 위한 클래스. WinnerLotto
+- [x]  해당 차수에서 당첨된 로또를 담기 위한 클래스. TotalWinnerLotto
+- [x]  당첨 정보를 일괄적으로 관리하기 위한 enum. Rank
+
+### domain.lottoDevice
 - [x]  금액을 받아 1000원 단위로 로또 용지를 발급한다. LottoMachine#createLottoWithMoney()
 
+### domain.raffleDevice
 - [x]  당첨 랭킹별로 승자를 반환한다. RaffleMachine#getWinnerPerRank()
     - [x]  구입한 로또의 등수를 계산한다. RaffleResultCalculator#decideRank()
 
 - [x]  구입한 모든 로또의 수익률을 계산한다. RaffleResultCalculator#getProfitRate()
 
+### controller
 - [x]  로또 프로젝트의 전반적인 흐름을 관리한다. LottoController#start()
