@@ -26,4 +26,15 @@ public class InputWinningNumbers {
         }
         return result;
     }
+    /** 보너스 번호 입력 및 예외처리 기능 */
+     public static int getBonusNumbers(List<Integer> winningNumbers) {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        if (!userInputException.checkInputTypeAndRange(input))
+            throw new IllegalArgumentException("[ERROR]");
+        if(winningNumbers.contains(Integer.valueOf(input))){
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        return Integer.valueOf(input);
+    }
 }
