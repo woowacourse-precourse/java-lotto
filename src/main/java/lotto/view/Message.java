@@ -23,4 +23,8 @@ public class Message {
     public void inputBonusNumber() {
         System.out.println("\n보너스 번호를 입력해 주세요.");
     }
+
+    public void startResult() {
+        System.out.println("\n당첨 결과\n---");
+    }
 }

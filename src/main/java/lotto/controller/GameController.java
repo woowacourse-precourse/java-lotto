@@ -31,4 +31,8 @@ public class GameController {
         message.inputBonusNumber();
         winningNumber.inputBonusNumber();
     }
+
+    public void getResult() {
+        message.startResult();
+    }
 }

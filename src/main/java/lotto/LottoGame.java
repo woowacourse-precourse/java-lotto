@@ -8,5 +8,6 @@ public class LottoGame {
     public void playGame() {
         gameController.buyLotto();
         gameController.checkWinningNumbers();
+        gameController.getResult();
     }
 }
