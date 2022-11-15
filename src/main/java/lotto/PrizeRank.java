@@ -46,7 +46,7 @@ public enum PrizeRank {
   }
 
   public boolean isSamePrizeRank(int correctCount, boolean isBonusNumberMatch) {
-    if(this.isBonusNumberMatch == null){
+    if (this.isBonusNumberMatch == null) {
       return this.correctCount == correctCount;
     }
     return this.correctCount == correctCount && this.isBonusNumberMatch == isBonusNumberMatch;

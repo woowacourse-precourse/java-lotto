@@ -8,7 +8,7 @@ public class PrizeStatistics {
   private final int bonusNumber;
 
   public PrizeStatistics(Lotto prizeLotto, int bonusNumber) {
-    this.prizeRankArray =  PrizeRank.values();
+    this.prizeRankArray = PrizeRank.values();
     this.prizeLotto = prizeLotto;
     this.bonusNumber = bonusNumber;
   }
