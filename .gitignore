@@ -30,3 +30,15 @@ out/
 
 ### VS Code ###
 .vscode/
+target/classes/lotto/Application.class
+target/classes/lotto/Lotto.class
+target/classes/lotto/domain/GenerateNumbers.class
+target/classes/lotto/domain/Rank.class
+target/classes/lotto/domain/User.class
+target/classes/lotto/domain/winConfirmation.class
+target/classes/META-INF/MANIFEST.MF
+target/classes/META-INF/maven/java-lotto/java-lotto/pom.properties
+target/classes/META-INF/maven/java-lotto/java-lotto/pom.xml
+target/test-classes/lotto/ApplicationTest.class
+target/test-classes/lotto/LottoTest.class
+/target/

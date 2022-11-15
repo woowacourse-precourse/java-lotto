@@ -31,7 +31,7 @@ public class User {
 		return userBonus;
 	}
 
-	private List<Integer> winningNumber() {
+	public List<Integer> winningNumber() {
 		inputNumbers();
 		bonusNumber();
 		List<Integer> winningNumbers = new ArrayList(Arrays.asList(userNumbers));
