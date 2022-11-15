@@ -30,6 +30,13 @@ public class WinningNumber {
     }
 
     /**
+     * 보너스 번호를 반환하는 메소드
+     */
+    public int getBonus() {
+        return bonus;
+    }
+
+    /**
      * 당첨 번호의 유효성을 검사하는 메소드
      */
     private static void validateWinningNumber(List<Integer> numbers) {
@@ -82,6 +89,10 @@ public class WinningNumber {
      */
     private boolean isDuplicatedWithWinningNumber(int bonus) {
         return numbers.contains(bonus);
+    }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
     }
 
     public int getMatchingCount(Lotto lotto) {

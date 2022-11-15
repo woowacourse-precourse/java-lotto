@@ -17,6 +17,13 @@ public class Amount {
     }
 
     /**
+     * 총 당첨금의 합을 받아 수익률(소수점 둘째 자리에서 반올림)을 계산하여 반환하는 메소드
+     */
+    public String getYield(long sumOfMoney) {
+        return String.format("%.1f", sumOfMoney / (double) amount * 100);
+    }
+
+    /**
      * 구매한 금액 만큼의 로또의 개수를 반환하는 메소드
      */
     public int getCount() {

@@ -23,13 +23,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수가 6개가 아닙니다.");
         }
         if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 중복된 로또 번호가 있습니다.");
         }
     }
 
+    /**
+     * count 개수만큼 로또를 생성하는 메소드
+     */
     public static List<Lotto> create(int count) {
         List<Lotto> lottos = new ArrayList<>();
 
@@ -40,11 +43,37 @@ public class Lotto {
         return lottos;
     }
 
+    /**
+     * 로또의 번호 정보들을 문자열로 반환하는 메소드
+     */
     @Override
     public String toString() {
         return numbers.stream()
                 .sorted()
                 .collect(Collectors.toList())
                 .toString();
+    }
+
+    /**
+     * 맞는 개수와 보너스 번호의 여부로 등수를 반환하는 메서드
+     */
+    public Rank getRank(WinningNumber winningNumber) {
+        return Rank.of(getMatchingCount(winningNumber), hasBonus(winningNumber));
+    }
+
+    /**
+     * 당첨 번호와 비교해 맞는 개수를 반환하는 메소드
+     */
+    private int getMatchingCount(WinningNumber winningNumber) {
+        return (int) numbers.stream()
+                .filter(winningNumber::hasNumber)
+                .count();
+    }
+
+    /**
+     * 보너스 번호가 있는지에 대한 여부를 반환하는 메소드
+     */
+    private boolean hasBonus(WinningNumber winningNumber) {
+        return numbers.contains(winningNumber.getBonus());
     }
 }

@@ -17,13 +17,9 @@ public class Result {
         Map<Rank, Integer> results = Rank.getRankWithCount();
 
         for (Lotto lotto : lottos) {
-            int matchingCount = winningNumber.getMatchingCount(lotto);
-            boolean hasBonusNumber = winningNumber.hasBonusNumber(lotto);
-            Rank rank = Rank.of(matchingCount, hasBonusNumber);
-
+            Rank rank = lotto.getRank(winningNumber);
             results.put(rank, results.getOrDefault(rank, 0) + 1);
         }
-
         return new Result(results);
     }
 
@@ -37,16 +33,9 @@ public class Result {
     }
 
     /**
-     * 구입 금액을 파라미터로 받아 총 당첨금의 합으로 수익률(소수점 둘째 자리에서 반올림)을 계산하여 반환하는 메소드
-     */
-    private String getYield(int amount) {
-        return String.format("%.1f", sumOfMoney() / (double) amount * 100);
-    }
-
-    /**
      * 당첨 결과에 대한 통계를 출력하는 메소드
      */
-    public void printStatistics(int amount) {
+    public void printStatistics(Amount amount) {
         System.out.println("\n당첨 통계\n---");
         for (Rank rank : Rank.values()) {
             if (rank.equals(Rank.NO_LUCK)) {
@@ -54,6 +43,6 @@ public class Result {
             }
             System.out.printf("%s - %d개\n", Rank.getMessage(rank), results.get(rank));
         }
-        System.out.println("총 수익률은 " + getYield(amount) + "%입니다.");
+        System.out.println("총 수익률은 " + amount.getYield(sumOfMoney()) + "%입니다.");
     }
 }

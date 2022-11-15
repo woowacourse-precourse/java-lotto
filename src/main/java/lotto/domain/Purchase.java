@@ -24,6 +24,6 @@ public class Purchase {
         printInputBonusNumber();
         winningNumber.addBonus(inputBonusNumber());
 
-        //Result.of(lottos, winningNumber).printStatistics(amount);
+        Result.of(lottos, winningNumber).printStatistics(amount);
     }
 }
