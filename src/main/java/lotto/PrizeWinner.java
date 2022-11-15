@@ -1,8 +1,6 @@
 package lotto;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.List;
 
 public enum PrizeWinner {
 

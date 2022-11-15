@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class User {
     private final Integer money;
