@@ -3,7 +3,7 @@
   - `Console.readLine()`을 이용하여 사용자 입력값(1개) 받기 [🚀] 
   - [ERROR] 1000원 단위가 아니면 에러 발생 [🚀]
 - phase 2) 구매 개수 & 발행한 로또 번호를 출력하기
-  - 구매 개수 = 구매 금액 // 1000
+  - 구매 개수 = 구매 금액 // 1000 [🚀]
   - `Randoms.pickUniqueNumbersInRange()`을 이용하여 발행한 로또 번호를 리턴
 - phase 3) 당첨 번호 입력받기
   - `Console.readLine()`을 이용하여 사용자 입력값(6개) 받기 []
