@@ -8,7 +8,6 @@ import lotto.message.ErrorMessageGenerator;
 import lotto.validator.Validator;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ConsoleIn {
 
@@ -47,7 +46,7 @@ public class ConsoleIn {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getBonusNumberCondition();
 
-        String numbers = getConcatenatedString(answerNumbers, input);
+        String numbers = Util.getConcatenatedString(answerNumbers) + "," + input;
 
         Condition notPassCondition = Validator.getNotPassCondition(conditions, numbers);
 
@@ -60,9 +59,5 @@ public class ConsoleIn {
 
     private static String getInput() {
         return Console.readLine();
-    }
-
-    private static String getConcatenatedString(List<Integer> numbers, String input) {
-        return String.join(",", numbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.toList())) + "," + input;
     }
 }
