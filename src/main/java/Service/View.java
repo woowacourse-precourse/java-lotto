@@ -42,7 +42,7 @@ public class View {
     public static void read_bonusNumber() {
         System.out.print(MESSAGE_BONUSNUMBER_INPUT_FORMAT + "\n");
         String bonusNumber=Console.readLine();
-        if(!bonusNumber.matches("[1-45]*$")) throw new IllegalArgumentException();
+        if(!bonusNumber.matches("^[0-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$")) throw new IllegalArgumentException();
         Game.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
