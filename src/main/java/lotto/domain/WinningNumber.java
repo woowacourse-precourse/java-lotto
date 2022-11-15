@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
-    private static List<Integer> winningNumber;
+    private static List<Integer> winningNumbers;
 
     public List<Integer> saveWinningNumber(String input){
         validateWinningNumber(input);
-        winningNumber = Arrays.stream(input.split(","))
+        winningNumbers = Arrays.stream(input.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
-        new Lotto(winningNumber);
-        return winningNumber;
+        new Lotto(winningNumbers);
+        return winningNumbers;
     }
 
     public void checkBonus(String bonus){
         validateBonusNumber(bonus);
         validateBonusRange(Integer.parseInt(bonus));
-        validateDuplicateBonus(Integer.parseInt(bonus),winningNumber);
+        validateDuplicateBonus(Integer.parseInt(bonus),winningNumbers);
     }
     private void validateBonusRange(int bonus){
         if(bonus<1 || bonus>45)

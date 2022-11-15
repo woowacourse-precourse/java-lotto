@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 public class LottoNumbers {
 
     public List<Lotto> printLotto(int total){
-        List<Lotto> lotto = new ArrayList<>();
+        List<Lotto> lottos = new ArrayList<>();
         for(int i=0; i<total; i++){
             Lotto lottoNumber = new Lotto(generateLotto());
-            lotto.add(lottoNumber);
+            lottos.add(lottoNumber);
         }
-        return lotto;
+        return lottos;
     }
     public List<Integer> generateLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());

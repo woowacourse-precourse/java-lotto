@@ -21,18 +21,15 @@ public class Play {
     private int total;
     private int prize;
     private String bonus;
-    private List<Lotto> lotto;
-    private List<Integer> winLotto;
-    private Map<ResultType,Integer> totalResult;
 
     public void startPlay(){
         try {
             inputAmount();
-            generateLotto();
-            winLotto = inputWinningNumber();
+            List<Lotto> lottos = generateLotto();
+            List<Integer> winningLottos = inputWinningNumber();
             bonus = inputBonusNumber();
-            totalResult = makeResult(winLotto, bonus);
-            printResult(totalResult);
+            Map<ResultType,Integer> totalResults = makeResult(lottos, winningLottos, bonus);
+            printResult(totalResults);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -46,10 +43,10 @@ public class Play {
         System.out.printf(RATE_MESSAGE, profit);
     }
 
-    private Map<ResultType, Integer> makeResult(List<Integer> winLotto, String bonus) {
-        totalResult = result.calculateLotto(lotto, winLotto, bonus);
-        prize = result.makePrize(totalResult);
-        return totalResult;
+    private Map<ResultType, Integer> makeResult(List<Lotto> lottos, List<Integer> winLotto, String bonus) {
+        Map<ResultType, Integer> totalResults = result.calculateLotto(lottos, winLotto, bonus);
+        prize = result.makePrize(totalResults);
+        return totalResults;
     }
 
     private String inputBonusNumber() {
@@ -62,13 +59,13 @@ public class Play {
     private List<Integer> inputWinningNumber() {
         System.out.println("\n"+INPUT_WINNING_MESSAGE);
         String winning = Console.readLine();
-        List<Integer> winLotto = winningNumber.saveWinningNumber(winning);
-        return winLotto;
+        return winningNumber.saveWinningNumber(winning);
     }
 
-    private void generateLotto() {
-        lotto = lottoNumbers.printLotto(total/1000);
-        lottoNumbers.displayLotto(lotto);
+    private List<Lotto> generateLotto() {
+        List<Lotto> lottos = lottoNumbers.printLotto(total/1000);
+        lottoNumbers.displayLotto(lottos);
+        return lottos;
     }
 
     private void inputAmount() {
@@ -77,6 +74,5 @@ public class Play {
         total = purchase.checkAmount(amount);
         System.out.println("\n"+(total/1000)+CHECK_MESSAGE);
     }
-
 
 }

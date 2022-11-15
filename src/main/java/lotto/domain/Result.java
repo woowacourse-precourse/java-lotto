@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class Result {
 
-    private static Map<ResultType,Integer> allResult = new HashMap<>();
+    private static Map<ResultType,Integer> allResults = new HashMap<>();
 
     public void initMap(){
         for(ResultType resultType:ResultType.values()){
-            allResult.put(resultType,0);
+            allResults.put(resultType,0);
         }
     }
 
@@ -24,12 +24,12 @@ public class Result {
             checkBonus = compareBonus(input.get(i),bonus);
             saveResult(check,checkBonus);
         }
-        return allResult;
+        return allResults;
     }
     private void saveResult(int check, boolean checkBonus) {
         ResultType resultType = makeTotalWinnings(check, checkBonus);
-        if(allResult.containsKey(resultType))
-            allResult.put(resultType,allResult.get(resultType)+1);
+        if(allResults.containsKey(resultType))
+            allResults.put(resultType,allResults.get(resultType)+1);
 
     }
 
