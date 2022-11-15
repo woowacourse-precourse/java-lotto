@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    public int inputOfAmount(){
+    public int inputOfMoneyAmount(){
         String userInput = Console.readLine();
         MoneyAmountValidator.validateInputType(userInput);
         int moneyAmount = Integer.parseInt(userInput);
