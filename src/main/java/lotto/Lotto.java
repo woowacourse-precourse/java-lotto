@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validLengthWinningNumber(numbers);
+        duplicateWinningNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -17,4 +18,8 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void duplicateWinningNumber(List<Integer> winningLottoNumber) {
+        if(winningLottoNumber.size()!=winningLottoNumber.stream().distinct().count())
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복이 있으면 안됩니다.");
+    }
 }
