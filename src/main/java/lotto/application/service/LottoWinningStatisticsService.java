@@ -1,4 +1,6 @@
 package lotto.application.service;
 
-public class LottoWinningStatisticsService {
+import lotto.application.port.in.LottoWinningStatisticsUseCase;
+
+public class LottoWinningStatisticsService implements LottoWinningStatisticsUseCase {
 }

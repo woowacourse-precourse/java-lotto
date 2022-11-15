@@ -30,7 +30,7 @@ public class Result {
             return Optional.of(Reward.FOURTH);
         } else if (matchedCount == 5) {
             if (isMatchedBonus) {
-                Optional.of(Reward.SECOND);
+                return Optional.of(Reward.SECOND);
             }
             return Optional.of(Reward.THIRD);
         }
