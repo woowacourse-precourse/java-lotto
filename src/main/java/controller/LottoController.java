@@ -2,6 +2,7 @@ package controller;
 
 import domain.Buyer;
 import domain.GenerateLotto;
+import domain.PickBonusNum;
 import domain.PickLottoNum;
 import view.BuyerInputView;
 import view.BuyerOutputView;
@@ -10,11 +11,13 @@ public class LottoController {
     private Buyer buyer;
     private GenerateLotto generateLotto;
     private PickLottoNum pickLottoNum;
+    private PickBonusNum pickBonusNum;
 
     public void lottoStart() {
         buyLotto();
         showLotto();
         pickLotto();
+        pickBonus();
     }
 
     private void buyLotto() {
@@ -30,6 +33,10 @@ public class LottoController {
 
     private void pickLotto() {
         pickLottoNum = new PickLottoNum(BuyerInputView.getPickNum());
+    }
+
+    private void pickBonus() {
+        pickBonusNum = new PickBonusNum(pickLottoNum.pickLotto, BuyerInputView.getBonusNum());
     }
 
 

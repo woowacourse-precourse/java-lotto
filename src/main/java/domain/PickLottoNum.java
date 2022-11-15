@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PickLottoNum {
-    public Lotto pickLottoNum;
+    public Lotto pickLotto;
     public List<Integer> pickNumberList = new ArrayList<>();
     private static final int LOTTO_NUM = 6;
 
     public PickLottoNum(String pickNum) {
         this.pickNumberList.clear();
         validate(pickNum);
-        this.pickLottoNum = new Lotto(this.pickNumberList);
+        this.pickLotto = new Lotto(this.pickNumberList);
     }
 
     private void validate(String pickNum) {
