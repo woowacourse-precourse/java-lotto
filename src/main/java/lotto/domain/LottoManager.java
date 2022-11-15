@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,16 +39,15 @@ public class LottoManager {
         return lottos;
     }
 
-    public void inputLuckyNumbers() {
-        String inputNumbers = Console.readLine();
+    public void setLuckyNumbers(String inputNumbers) {
         luckyNumbers = Stream.of(inputNumbers.split(","))
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    public void inputBonusNumbers() {
-        bonusNumber = Integer.parseInt(Console.readLine());
+    public void setBonusNumbers(String inputNumber) {
+        bonusNumber = Integer.parseInt(inputNumber);
     }
 
     private static boolean isEmptyOrNull(String value) {

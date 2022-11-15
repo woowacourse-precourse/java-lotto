@@ -18,12 +18,15 @@ public class User {
     }
 
     public void start() {
+        String inputValue = "";
         int price;
         int count;
         List<Lotto> lottos;
 
         System.out.println("구입금액을 입력해 주세요.");
-        price = inputPrice();
+        inputValue = input();
+        validate(inputValue);
+        price = Integer.parseInt(inputValue);
 
         count = setCount(price);
         System.out.println("\n" + count + "개를 구매했습니다.");
@@ -34,10 +37,10 @@ public class User {
         }
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
-        lottoManager.inputLuckyNumbers();
+        lottoManager.setLuckyNumbers(input());
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
-        lottoManager.inputBonusNumbers();
+        lottoManager.setBonusNumbers(input());
 
         for (Lotto lotto : lottos) {
             int index = lottoManager.getRankingIndex(lotto);
@@ -49,8 +52,29 @@ public class User {
         System.out.println(getEarningRatio(price));
     }
 
-    private int inputPrice() {
-        return Integer.parseInt(Console.readLine());
+    private void validate(String input) {
+        if (!isNumeric(input)) {
+            throw new IllegalArgumentException(ErrorMessage.NUMERIC_ERROR.getMessage());
+        }
+        if (!checkAmount(input) || !isDividedThousand(input)) {
+            throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR.getMessage());
+        }
+    }
+
+    public static boolean isNumeric(String input) {
+        return input != null && input.matches("[-+]?\\d*\\.?\\d+");
+    }
+
+    public static boolean checkAmount(String input) {
+        return Integer.parseInt(input) >= 1000;
+    }
+
+    public static boolean isDividedThousand(String input) {
+        return Integer.parseInt(input) % 1000 == 0;
+    }
+
+    private String input() {
+        return Console.readLine();
     }
 
     private int setCount(int price) {
