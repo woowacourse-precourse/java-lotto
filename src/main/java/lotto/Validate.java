@@ -70,4 +70,18 @@ public class Validate {
 		return false;
 	}
 
+	public static void checkBonusNumber(String bonusNumber, List<Integer> numbers) {
+		if (isNotNumeric(bonusNumber)) errorThrow(Message.NOT_NUMERIC.getMessage());
+		if (isOutOfRange(bonusNumber)) errorThrow(Message.OUT_OF_RANGE.getMessage());
+		if (isDuplicated(bonusNumber, numbers)) errorThrow(Message.DUPLICATED_NUMBER.getMessage());
+	}
+
+	public static boolean isOutOfRange(String bonusNumber){
+		return Integer.parseInt(bonusNumber) < Constant.MIN_VALUE.getNumber()
+			|| Integer.parseInt(bonusNumber) > Constant.MAX_VALUE.getNumber();
+	}
+
+	public static boolean isDuplicated(String bonusNumber, List<Integer> numbers) {
+		return numbers.contains(Integer.parseInt(bonusNumber));
+	}
 }
