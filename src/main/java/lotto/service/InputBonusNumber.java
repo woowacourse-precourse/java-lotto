@@ -12,7 +12,6 @@ public class InputBonusNumber {
     InputBonusNumberHandler inputBonusNumberHandler = new InputBonusNumberHandler();
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
 
-
     public Integer inputBonusNumber(List<Integer> sixWinningNumbers) {
         Output output = new Output();
         output.bonusLottoNumberOrder();

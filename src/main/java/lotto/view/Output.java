@@ -6,13 +6,13 @@ import lotto.service.WinLottoResult;
 import java.text.DecimalFormat;
 
 public class Output {
-    WinLottoResult winLottoResult = new WinLottoResult();
     public final String ERROR_ORDER = "[ERROR]";
     private final String INPUTMONEY_ORDER = "구입금액을 입력해 주세요.";
     private final String PURCHASE_LOTTO_ORDER = "개를 구매했습니다.";
     private final String WINNING_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
     private final String BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
     private final String WIN_STATISTICS = "당첨 통계";
+    WinLottoResult winLottoResult = new WinLottoResult();
 
     public void inputMoneyOrder() {
         System.out.println(INPUTMONEY_ORDER);
@@ -60,7 +60,7 @@ public class Output {
         System.out.println("6개 일치 ("+formatter.format(PrizeRanking.FIRST.getNumber())+"원) - "+count+"개");
         winLottoResult.yield += count * PrizeRanking.FIRST.getNumber();
     }
-    public void totalBenefit(double yield) {
+    public void totalYield(double yield) {
         DecimalFormat formatter = new DecimalFormat("###,###.0");
         if(yield == 0.0) {System.out.println("총 수익률은 "+0.0+"%입니다.");}
         if(yield > 0) { System.out.println("총 수익률은 "+formatter.format(yield)+"%입니다.");}

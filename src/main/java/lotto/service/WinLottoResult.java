@@ -18,7 +18,7 @@ public class WinLottoResult {
 
         output.winStatistics();
         for(int i = 0; i < randomLottoLists.size(); i++){
-            checkLottoPoint[i] = countWinResult(winningNumbers, randomLottoLists.get(i));
+            checkLottoPoint[i] = countWinPoints(winningNumbers, randomLottoLists.get(i));
         }
         printWinResult(checkWinResult(checkLottoPoint));
     }
@@ -37,7 +37,7 @@ public class WinLottoResult {
         return checkWinResult;
     }
 
-    private int countWinResult(List<Integer> winningNumbers, List<Integer> randomLottoLists ) {
+    private int countWinPoints(List<Integer> winningNumbers, List<Integer> randomLottoLists ) {
         int count = 0;
 
         for(int i = 0; i < randomLottoLists.size(); i++){
@@ -60,12 +60,12 @@ public class WinLottoResult {
         output.firstPlace(winResult[4]);
     }
 
-    public void calBenefit(int profitMoney, UserMoney userMoney) {
+    public void calculateYield(int profitMoney, UserMoney userMoney) {
         Output output = new Output();
         double userInputMoney = userMoney.getMoney();
         double answer = (profitMoney) / userInputMoney;
         double yield = Math.round(answer*1000)/10.0;
 
-        output.totalBenefit(yield);
+        output.totalYield(yield);
     }
 }

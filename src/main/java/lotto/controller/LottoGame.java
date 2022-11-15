@@ -16,12 +16,13 @@ public class LottoGame {
             pickRandomLottos(inputMoney.lottoPapers);
             List<Integer> randomLottoLists = inputLottoNumbers();
             winLottosResult(randomLottoLists, PickRandomLottoLists.randomLottoLists);
-            winLottoResult.calBenefit(winLottoResult.yield, userMoney);
+            winLottoResult.calculateYield(winLottoResult.yield, userMoney);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
+
     private void countLottos(UserMoney userMoney) {
         inputMoney.calculateLottoPapers(userMoney);
     }
