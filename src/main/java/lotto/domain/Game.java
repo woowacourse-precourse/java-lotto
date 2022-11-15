@@ -45,7 +45,7 @@ public class Game {
             this.winningLotto = lotto;
 
         } catch(NumberFormatException e) {
-            throw new InvalidUserInputException("올바른 형식으로 입력해 주세요.");
+            throw new InvalidUserInputException("[ERROR] 올바른 형식으로 입력해 주세요.");
         }
     }
 
@@ -53,9 +53,9 @@ public class Game {
         int tempBonusNumber = Integer.parseInt(Console.readLine());
 
         if (tempBonusNumber < 1 || 45 < tempBonusNumber) {
-            throw new InvalidUserInputException("1 ~ 45 사이의 숫자를 입력해 주세요.");
+            throw new InvalidUserInputException("[ERROR] 1 ~ 45 사이의 숫자를 입력해 주세요.");
         } else if (winningLotto.getNumbers().contains(tempBonusNumber)) {
-            throw new InvalidUserInputException("당첨 번호와 다른 보너스 번호를 입력해 주세요.");
+            throw new InvalidUserInputException("[ERROR] 당첨 번호와 다른 보너스 번호를 입력해 주세요.");
         }
 
         this.bonusNumber = tempBonusNumber;

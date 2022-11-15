@@ -26,7 +26,7 @@ public class Lotto {
                 .map(n -> duplicateCheckMap.putIfAbsent(n,1))
                 .anyMatch(o -> o != null)) {
 
-            throw new DuplicateLottoNumberException("중복된 숫자를 입력 하셨습니다.");
+            throw new DuplicateLottoNumberException("[ERROR] 중복된 숫자를 입력 하셨습니다.");
         }
     }
 
