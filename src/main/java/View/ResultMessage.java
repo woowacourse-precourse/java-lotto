@@ -15,6 +15,7 @@ public class ResultMessage {
     }
 
     public static void printNumberOfPurchaseLottos(int number) {
+        printNewLine();
         print(
                 ResultStatistics.NUMBER_OF_PURCHASE,
                 Integer.toString(number)
@@ -30,6 +31,7 @@ public class ResultMessage {
     }
 
     public static void printStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
+        printNewLine();
         print(ResultStatistics.GUIDE_MESSAGE);
         print(ResultStatistics.LINE);
         getCompleteStatistics(resultStatistics);
@@ -51,6 +53,10 @@ public class ResultMessage {
         for (Lotto lotto : lottos) {
             lotto.printLottoNumbers();
         }
+    }
+
+    public static void printNewLine() {
+        System.out.println();
     }
 
     public static void print(ResultStatistics rank) {

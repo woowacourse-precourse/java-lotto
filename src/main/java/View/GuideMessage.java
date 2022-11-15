@@ -6,11 +6,17 @@ public class GuideMessage {
     }
 
     public static void printWinningNumbersInput() {
+        printNewLine();
         print(enumCollections.GuideMessage.WINNING_NUMBERS_INPUT);
     }
 
     public static void printBonusNumberInput() {
+        printNewLine();
         print(enumCollections.GuideMessage.BONUS_NUMBER_INPUT);
+    }
+
+    public static void printNewLine() {
+        System.out.println();
     }
 
     public static void print(enumCollections.GuideMessage situation) {
