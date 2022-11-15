@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 class ValidationUtilTest {
 
     @Test
-    @DisplayName("구매 금액에 숫자만 들어가있는지 테스트")
+    @DisplayName("구매 금액에 숫자가 아닌 다른 문자가 들어오면 예외가 발생한다.")
     void 구매_금액_숫자_테스트() throws Exception {
         //given
         ValidationUtil validationUtil = new ValidationUtil();
@@ -33,7 +33,7 @@ class ValidationUtilTest {
     }
 
     @Test
-    @DisplayName("구매 금액이 1000 단위로 나누어 떨어지는지 테스트")
+    @DisplayName("구매 금액이 1000 단위로 나누어 떨어지지 않으면 예외가 발생한다.")
     void 구매_금액_나머지_테스트() throws Exception {
         //given
         ValidationUtil validationUtil = new ValidationUtil();
@@ -54,7 +54,7 @@ class ValidationUtilTest {
     }
 
     @Test
-    @DisplayName("구매 금액에 대한 통합 테스트")
+    @DisplayName("구매 금액에 대한 통합 테스트를 진행한다.")
     void 구매_금액_통합_테스트() throws Exception {
         //given
         ValidationUtil validationUtil = new ValidationUtil();
@@ -80,7 +80,7 @@ class ValidationUtilTest {
     }
 
     @Test
-    @DisplayName("당첨 번호를 6개 입력했는지 테스트")
+    @DisplayName("당첨 번호를 6개 입력하지 않으면 예외가 발생한다.")
     void 당첨_번호_개수_테스트() throws Exception {
         //given
         ValidationUtil validationUtil = new ValidationUtil();
@@ -99,9 +99,9 @@ class ValidationUtilTest {
                     .hasMessageContaining(NUMBER_COUNT);
         }
     }
-    
+
     @Test
-    @DisplayName("당첨 번호에 공백값이 들어있는지 검증한다.")
+    @DisplayName("당첨 번호에 공백값이 들어있으면 예외가 발생한다.")
     void 당첨_번호_공백_테스트() throws Exception {
         //given
         ValidationUtil validationUtil = new ValidationUtil();
@@ -129,4 +129,5 @@ class ValidationUtilTest {
                     .hasMessageContaining(NUMBER_BLANK);
         }
     }
+    
 }
