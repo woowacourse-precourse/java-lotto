@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        makeAscendingOrder(numbers);
         this.numbers = numbers;
     }
 
@@ -20,7 +22,7 @@ public class Lotto {
         validateDuplicate(numbers);
     }
 
-    public void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> uniqueLottoNumbers = new HashSet<>();
         for (int lottoNumber : numbers) {
             if (!uniqueLottoNumbers.add(lottoNumber)) {
@@ -41,7 +43,7 @@ public class Lotto {
         return matchNumber;
     }
 
-    public Integer isMatched(int myNumber, List<Integer> winningNumbers) {
+    private Integer isMatched(int myNumber, List<Integer> winningNumbers) {
         if (winningNumbers.contains(myNumber)) {
             return 1;
         }
@@ -53,6 +55,10 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+
+    private void makeAscendingOrder(List<Integer> numbers) {
+        Collections.sort(numbers);
     }
 
 }
