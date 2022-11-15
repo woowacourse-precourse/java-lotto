@@ -18,7 +18,8 @@ public class LottoController {
             process();
         } catch (IllegalArgumentException exception) {
             OutputView.printExceptionMessage(exception);
-            return;
+        } catch (Exception exception) {
+            OutputView.printExceptionMessage(exception);
         }
     }
 
@@ -47,7 +48,6 @@ public class LottoController {
     private double getRateOfReturn(int money, Win win) {
         double winnings = win.getWinnings();
         RateOfReturn rateOfReturn = new RateOfReturn(winnings, money);
-
         return rateOfReturn.calculate();
     }
 
@@ -59,7 +59,6 @@ public class LottoController {
     private Win calculateWinnings(Ticket tickets, WinningNumbersDto winningNumbersDto, BonusNumberDto bonusNumberDto) {
         Win win = new Win();
         win.compareAllLotto(tickets, winningNumbersDto.getWinningNumbers(), bonusNumberDto.getBonusNumber());
-
         return win;
     }
 
