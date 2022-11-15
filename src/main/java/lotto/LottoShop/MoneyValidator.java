@@ -1,6 +1,7 @@
 package lotto.LottoShop;
 
 import static lotto.Enum.Constant.*;
+import static lotto.Enum.ConstantMessage.*;
 import static lotto.Enum.Error.*;
 
 public class MoneyValidator {

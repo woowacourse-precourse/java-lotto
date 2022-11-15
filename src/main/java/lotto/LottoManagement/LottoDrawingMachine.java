@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static lotto.Enum.Constant.*;
+import static lotto.Enum.ConstantMessage.*;
 import static lotto.Enum.Error.*;
 
 public class LottoDrawingMachine {
@@ -33,12 +34,12 @@ public class LottoDrawingMachine {
     }
 
     private static List<String> drawLottoNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_LOTTO_NUMBERS.getValue());
         String winning_number_line =
                 Console.readLine()
                         .replace(SPACE.getValue(), EMPTY.getValue());
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUS_NUMBER.getValue());
         String bonus_number_line =
                 Console.readLine()
                         .replace(SPACE.getValue(), EMPTY.getValue());
@@ -100,7 +101,7 @@ public class LottoDrawingMachine {
 
         int matched_count = countLottoNumberDistinct(concat_numbers);
 
-        if (matched_count == THIRD_GRADE_COUNT.getIntValue()) {
+        if (matched_count == THIRD_GRADE_MATCHED_COUNT.getIntValue()) {
             return checkBonusNumber(lotto_numbers);
         }
         return matched_count;
@@ -113,9 +114,9 @@ public class LottoDrawingMachine {
                         .count();
 
         if (bonus_matched == BONUS_NUMBER_MATCHED.getIntValue()) {
-            return SECOND_GRADE_COUNT.getIntValue();
+            return SECOND_GRADE_MATCHED_COUNT.getIntValue();
         }
-        return THIRD_GRADE_COUNT.getIntValue();
+        return THIRD_GRADE_MATCHED_COUNT.getIntValue();
     }
 
 

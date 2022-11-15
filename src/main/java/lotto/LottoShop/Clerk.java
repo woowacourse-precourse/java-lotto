@@ -5,6 +5,7 @@ import lotto.LottoManagement.Lotto;
 import java.util.List;
 
 import static lotto.Enum.Constant.*;
+import static lotto.Enum.ConstantMessage.*;
 
 public class Clerk {
     private final MoneyValidator moneyValidator;
@@ -32,7 +33,7 @@ public class Clerk {
     }
 
     private void printPurchasedLotto(List<Lotto> lotto_group) {
-        System.out.println(lotto_group.size() + MESSAGE_PURCHASE.getValue());
+        System.out.println(lotto_group.size() + PRINT_PURCHASE_AMOUNT.getValue());
         lotto_group.stream()
                 .map(Lotto::getNumbers)
                 .forEach(System.out::println);

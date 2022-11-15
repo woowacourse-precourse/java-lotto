@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.Enum.Constant.*;
+import static lotto.Enum.ConstantMessage.*;
 
 public class Consumer {
     private final Clerk clerk;
@@ -35,7 +36,7 @@ public class Consumer {
     }
 
     public void purchaseLotto() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(INPUT_PURCHASE_AMOUNT.getValue());
         String purchaseAmount = Console.readLine();
 
         this.lotto_group = clerk.sellLotto(purchaseAmount);
