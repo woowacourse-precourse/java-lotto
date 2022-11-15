@@ -2,21 +2,20 @@
 
 ## 기능 목록
 
-- [ ] 1~45까지 랜덤 숫자를 중복없이 생성 - LottoNumbers#createRandomNumbers()
-- [ ] 로또 구입 금액에 맞게 로또 발행 - LottoNumbers#buyHowManyLotto()
-- [ ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x - Manager#inputWinNumbers()
-- [ ] 수익률 구하기 - Manager#calculateMoney()
-  - [ ] 보너스 번호 1개 입력 - Manager#inputBonusNumber()
-  - [ ] 소수점 둘째자리에서 반올림 
-- [ ] 로또 숫자 중, 중복된 숫자 있으면 예외 발생 - Lotto#hasNumber()
-- [ ] 보너스 숫자 ( 2등 당첨 ) , 5개 숫자 ( 3등 당첨 ) 구분 - Manager#function()
-- [ ] 몇 등 당첨인지 구분할 수 있는 기능
+- [ x ] 1~45까지 랜덤 숫자를 중복없이 생성 - LottoNumbers#createRandomNumbers()
+- [ x ] 로또 구입 금액에 맞게 로또 발행 - LottoNumbers#buyHowManyLotto()
+- [ x ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x - Manager#inputWinNumbers()
+- [ x ] 수익률 구하기 - Manager#calculateMoney()
+  - [ x ] 보너스 번호 1개 입력 - Manager#inputBonusNumber()
+  - [ x ] 소수점 둘째자리에서 반올림
+- [ x ] 보너스 숫자 ( 2등 당첨 ) , 5개 숫자 ( 3등 당첨 ) 구분 - Manager#function()
+- [ x ] 몇 등 당첨인지 구분할 수 있는 기능
 
 ## 예외 목록
-- [ ] 내가 입력한 승리 번호 , 보너스 번호가 숫자가 아닐 때 예외 발생
-  - [ ] 1 ~ 45의 범위가 아닐 때 예외 발생
+- [ x ] 내가 입력한 승리 번호 , 보너스 번호가 숫자가 아닐 때 예외 발생
+  - [ x ] 1 ~ 45의 범위가 아닐 때 예외 발생
   - [ x ] (승리 번호, 보너스 번호) 중복된 번호가 있을 때 예외 발생
-- [ ] try - catch를 이용한 IllegalArgumentException 예외 발생 - main()
+- [ x ] try - catch를 이용한 IllegalArgumentException 예외 발생 - main()
 - [ ] 
 
 
