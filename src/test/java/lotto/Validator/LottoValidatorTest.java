@@ -26,23 +26,31 @@ class LottoValidatorTest {
 
     @DisplayName("보너스 번호가 당첨 번호에 포함되어 있으면 예외가 발생한다.")
     @Test
-    void createNotNaturalNumber1() {
+    void BonusNumberContainWinningNumber() {
         assertThatThrownBy(() -> {
-            lottoValidator.checkBonusContain(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 6);
+            lottoValidator.checkBonusContain(new Lotto(List.of(1, 2, 3, 4, 5, 6)), "6");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호가 1~45 사이의 숫자가 아니라면 예외가 발생한다.")
     @Test
-    void createNotNaturalNumber2() {
+    void createNumberOutOfRange() {
         assertThatThrownBy(() -> {
-            lottoValidator.checkBonusRange(46);
+            lottoValidator.checkBonusRange("46");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1~45 사이의 숫자가 아니라면 예외가 발생한다.")
+    @Test
+    void createAlphabetInput() {
+        assertThatThrownBy(() -> {
+            lottoValidator.checkBonusRange("a");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨 번호가 6개가 아니면 예외가 발생한다.")
     @Test
-    void createNotNaturalNumber4() {
+    void createNotSixCountNumber() {
         assertThatThrownBy(() -> {
             lottoValidator.checkNumberCount("1,2,3,4,5,6,7");
         }).isInstanceOf(IllegalArgumentException.class);
@@ -50,7 +58,7 @@ class LottoValidatorTest {
 
     @DisplayName("당첨 번호에 숫자가 아닌 입력이 들어오면 예외가 발생한다.")
     @Test
-    void createNotNaturalNumber5() {
+    void createAlphabetInput2() {
         assertThatThrownBy(() -> {
             lottoValidator.checkInputForm("a,b,c,d,e,f");
         }).isInstanceOf(IllegalArgumentException.class);
