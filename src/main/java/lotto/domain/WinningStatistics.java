@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -9,10 +10,11 @@ public class WinningStatistics {
 
     public WinningStatistics(Results results, int purchasePrice) {
         countEachResult = new EnumMap<>(Result.class);
+        initializeMap();
         for (Result result : results.getResults()) {
             increaseResultCount(result);
         }
-        calculateYield(purchasePrice);
+        yield = calculateYield(purchasePrice);
     }
 
     public Map<Result, Integer> getCountEachResult() {
@@ -21,6 +23,10 @@ public class WinningStatistics {
 
     public double getYield() {
         return this.yield;
+    }
+
+    private void initializeMap() {
+        Arrays.stream(Result.values()).forEach(result -> countEachResult.put(result, 0));
     }
 
     private void increaseResultCount(Result result) {
