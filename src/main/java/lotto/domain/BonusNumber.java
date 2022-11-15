@@ -1,6 +1,4 @@
-package lotto;
-
-import java.util.List;
+package lotto.domain;
 
 public class BonusNumber {
     private static final int LOTTO_GAME_START_NUMBER = 1;
