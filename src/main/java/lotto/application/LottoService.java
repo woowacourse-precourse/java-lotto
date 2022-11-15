@@ -1,40 +1,22 @@
 package lotto.application;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import lotto.domain.Balls;
 import lotto.domain.BonusBall;
-import lotto.domain.WinningBalls;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAmount;
 import lotto.domain.Match;
-import lotto.domain.Balls;
-import lotto.infrastructure.LottoProvider;
+import lotto.domain.WinningBalls;
 
-public class LottoService {
+public interface LottoService {
 
-    public static LottoAmount getLottoAmount(int lottoAmount) {
-        return new LottoAmount(lottoAmount);
-    }
+    LottoAmount getLottoAmount(int lottoAmount);
 
-    public static List<Lotto> getLottos(int purchaseAmount) {
-        LottoAmount lottoAmount = new LottoAmount(purchaseAmount);
-        return LottoProvider.createLottos(lottoAmount.getLottoCount());
-    }
+    List<Lotto> getLottos(LottoAmount lottoAmount);
 
-    public static Balls getBalls(WinningBalls winningBalls, BonusBall bonusBall) {
-        return new Balls(winningBalls, bonusBall);
-    }
+    Balls getBalls(WinningBalls winningBalls, BonusBall bonusBall);
 
-    public static List<Match> match(List<Lotto> lottos, Balls balls) {
-        return lottos.stream()
-                .map(lotto -> lotto.match(balls))
-                .collect(Collectors.toList());
-    }
+    List<Match> match(List<Lotto> lottos, Balls balls);
 
-    public static double calculateProfit(int principal, long prizeMoney) {
-        return (prizeMoney * 100.0) / principal;
-    }
-
-
-
+    double calculateProfit(int principal, long prizeMoney);
 }

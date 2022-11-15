@@ -2,6 +2,7 @@ package lotto.application;
 
 import static org.assertj.core.api.Assertions.*;
 
+import config.LottoContainer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoServiceTest {
+
+    private final LottoService lottoService;
+
+    public LottoServiceTest() {
+        lottoService = LottoContainer.getInstance().lottoService();
+    }
 
     @DisplayName("구입금액을 기준으로 로또 구매 개수 생성 테스트")
     @Test
@@ -32,7 +39,7 @@ class LottoServiceTest {
         int principal = 5000;
         int prizeMoney = 12000;
 
-        double profit = LottoService.calculateProfit(principal,prizeMoney);
+        double profit = lottoService.calculateProfit(principal,prizeMoney);
 
         assertThat(profit).isEqualTo(240.0);
     }
@@ -40,9 +47,9 @@ class LottoServiceTest {
     @DisplayName("로또 구입금액과 생성된 로또 개수를 비교")
     @Test
     void createLottosByLottoAmount() {
-        int lottoAmount = 5000;
+        LottoAmount lottoAmount = new LottoAmount(5000);
 
-        List<Lotto> lottos = LottoService.getLottos(lottoAmount);
+        List<Lotto> lottos = lottoService.getLottos(lottoAmount);
 
         assertThat(lottos.size()).isEqualTo(5);
     }
@@ -58,7 +65,7 @@ class LottoServiceTest {
         Lotto lotto3 = new Lotto(Arrays.asList(1,2,3,4,5,8));
         List<Lotto> lottos = new ArrayList<>(Arrays.asList(lotto1,lotto2,lotto3));
 
-        List<Match> matches = LottoService.match(lottos, balls);
+        List<Match> matches = lottoService.match(lottos, balls);
 
         assertThat(matches).isEqualTo(Arrays.asList(Match.SIX_MATCH, Match.FIVE_BONUS_MATCH, Match.FIVE_MATCH));
     }
@@ -74,7 +81,7 @@ class LottoServiceTest {
 
         List<Lotto> lottos = new ArrayList<>(Arrays.asList(lotto1));
 
-        List<Match> matches = LottoService.match(lottos, balls);
+        List<Match> matches = lottoService.match(lottos, balls);
 
         assertThat(matches).isEqualTo(Arrays.asList(Match.FOUR_MATCH));
     }

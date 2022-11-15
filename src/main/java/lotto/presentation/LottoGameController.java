@@ -13,26 +13,36 @@ import lotto.presentation.view.LottoGameReader;
 
 public class LottoGameController {
 
-    public static void start() {
-        LottoAmount lottoAmount = LottoService.getLottoAmount(LottoGameReader.readLottoAmount());
-        LottoGamePrinter.printLottoCount(lottoAmount.getLottoCount());
+    private final LottoService lottoService;
+    private final LottoGameReader lottoGameReader;
+    private final LottoGamePrinter lottoGamePrinter;
 
-        List<Lotto> lottos = LottoService.getLottos(lottoAmount.getLottoCount());
-        LottoGamePrinter.printLottosOrderByAsc(lottos);
-
-        Balls balls = drawBalls(LottoGameReader.readGeneralWinNumbers(), LottoGameReader.readBonusNumber());
-
-        List<Match> matches = LottoService.match(lottos, balls);
-        LottoGamePrinter.printMatchResult(matches);
-
-        double profit = LottoService.calculateProfit(lottoAmount.getLottoAmount(),Match.calculateTotalPrizeMoney(matches));
-        LottoGamePrinter.printProfit(profit);
+    public LottoGameController(LottoService lottoService, LottoGameReader lottoGameReader, LottoGamePrinter lottoGamePrinter) {
+        this.lottoService = lottoService;
+        this.lottoGameReader = lottoGameReader;
+        this.lottoGamePrinter = lottoGamePrinter;
     }
 
-    public static Balls drawBalls(List<Integer> unwrapWinningBalls, int unwrapBonusBall) {
+    public void start() {
+        LottoAmount lottoAmount = lottoService.getLottoAmount(lottoGameReader.readLottoAmount());
+        lottoGamePrinter.printLottoCount(lottoAmount.getLottoCount());
+
+        List<Lotto> lottos = lottoService.getLottos(lottoAmount);
+        lottoGamePrinter.printLottosOrderByAsc(lottos);
+
+        Balls balls = drawBalls(lottoGameReader.readGeneralWinNumbers(), lottoGameReader.readBonusNumber());
+
+        List<Match> matches = lottoService.match(lottos, balls);
+        lottoGamePrinter.printMatchResult(matches);
+
+        double profit = lottoService.calculateProfit(lottoAmount.getLottoAmount(), Match.calculateTotalPrizeMoney(matches));
+        lottoGamePrinter.printProfit(profit);
+    }
+
+    private Balls drawBalls(List<Integer> unwrapWinningBalls, int unwrapBonusBall) {
         WinningBalls winningBalls = new WinningBalls(unwrapWinningBalls);
         BonusBall bonusBall = new BonusBall(unwrapBonusBall);
-        return LottoService.getBalls(winningBalls, bonusBall);
+        return lottoService.getBalls(winningBalls, bonusBall);
     }
 
 }

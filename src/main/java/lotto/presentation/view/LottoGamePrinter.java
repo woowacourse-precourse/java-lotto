@@ -8,36 +8,36 @@ import lotto.domain.Match;
 
 public class LottoGamePrinter {
 
-    public static void printEnterLottoAmount() {
+    public void printEnterLottoAmount() {
         System.out.println(LottoGameMessage.READ_LOTTO_AMOUNT);
     }
 
-    public static void printEnterWinNumber() {
+    public void printEnterWinNumber() {
         System.out.println(LottoGameMessage.READ_WIN_NUMBER);
     }
 
-    public static void printEnterBonusNumber() {
+    public void printEnterBonusNumber() {
         System.out.println(LottoGameMessage.READ_BONUS_NUMBER);
     }
 
-    public static void printLottoCount(int lottoCount) {
+    public void printLottoCount(int lottoCount) {
         System.out.printf(LottoGameMessage.PRINT_LOTTO_COUNT,lottoCount);
         lineBreak();
     }
 
-    public static void printLottosOrderByAsc(List<Lotto> lottos) {
+    public void printLottosOrderByAsc(List<Lotto> lottos) {
         lottos.forEach(lotto -> {
                 lotto.sortAscending();
                 System.out.println(lotto);});
     }
 
-    public static void printMatchResult(List<Match> matches) {
+    public void printMatchResult(List<Match> matches) {
         System.out.println(LottoGameMessage.PRINT_MATCH_RESULT_PREFIX);
         Arrays.stream(Match.values())
                 .forEach(match -> printMatchCase(matches, match));
     }
 
-    public static void printMatchCase(List<Match> matches, Match writeMatch) {
+    public void printMatchCase(List<Match> matches, Match writeMatch) {
         if (writeMatch.equals(Match.NO_MATCH)) {
             return;
         }
@@ -49,14 +49,14 @@ public class LottoGamePrinter {
         lineBreak();
     }
 
-    public static void printProfit(double profit) {
+    public void printProfit(double profit) {
         String roundProfit = String.format("%.1f",profit);
         System.out.printf(LottoGameMessage.PRINT_PROFIT,roundProfit);
         lineBreak();
     }
 
-    public static void lineBreak() {
-        System.out.println("");
+    public void lineBreak() {
+        System.out.println();
     }
 
 }
