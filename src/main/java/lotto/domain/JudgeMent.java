@@ -16,7 +16,7 @@ public class JudgeMent {
         int countCorrect = initNumber;
         for (int i = 0; i < Resource.numberSize; i++) {
             int number = winningNumbers.get(i);
-            if (lottoNumbers.contains(i)) {
+            if (lottoNumbers.contains(number)) {
                 countCorrect++;
             }
         }
@@ -40,25 +40,26 @@ public class JudgeMent {
         }
         for(int i=0;i<lottoNumbers.size();i++) {
             Reward result = getReward(lottoNumbers.get(i).getNumbers(), winningNumber);
-            correctResult.put(result,correctResult.get(result)+1);
+            correctResult.replace(result,correctResult.get(result)+1);
+
         }
     }
-    private Reward getReward(List<Integer> numbers, WinningNumber winningNumber) {
+    public Reward getReward(List<Integer> numbers, WinningNumber winningNumber) {
         int correctCount = compareNumbers(winningNumber.getNumbers(), numbers);
         if (correctCount >= minCorrectNumber) {
-            return checkReward(numbers, winningNumber, correctCount);
+            return checkReward(numbers, winningNumber,correctCount);
         }
         return Reward.NOTHING;
     }
 
-    private Reward checkReward(List<Integer> numbers, WinningNumber winningNumber, int correctCount) {
-        if(minCorrectNumber == Reward.THREE.getNumber()){
+    public Reward checkReward(List<Integer> numbers, WinningNumber winningNumber,int correctCount) {
+        if(correctCount == Reward.THREE.getNumber()){
             return Reward.THREE;
         }
-        if(minCorrectNumber==Reward.FOUR.getNumber()){
+        if(correctCount==Reward.FOUR.getNumber()){
             return Reward.FOUR;
         }
-        if(minCorrectNumber==Reward.FIVE.getNumber()){
+        if(correctCount==Reward.FIVE.getNumber()){
             if (bonusCheck(numbers, winningNumber.getBonusNumber())) {
                 return Reward.FIVE_BONUS;
             }
