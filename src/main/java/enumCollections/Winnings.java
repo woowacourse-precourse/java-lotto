@@ -1,10 +1,10 @@
 package enumCollections;
 
 public enum Winnings {
-    FIRST(2000000000),
-    SECOND(30000000),
-    THIRD(1500000),
-    FOURTH(50000),
+    FIRST(2_000_000_000),
+    SECOND(30_000_000),
+    THIRD(1_500_000),
+    FOURTH(50_000),
     FIFTH(5000);
 
     private final int amount;
