@@ -12,9 +12,12 @@ import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.WinningLotto;
 import lotto.domain.result.Result;
 import lotto.domain.result.ResultTable;
+import lotto.domain.reward.Reward;
+import lotto.domain.reward.RewardTable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class LottoService implements LottoServiceUseCase {
 
@@ -27,7 +30,9 @@ public class LottoService implements LottoServiceUseCase {
                 requestMatchDto.getWinningLotto(), requestMatchDto.getBonus());
 
         ResultTable resultTable = createResultTable(winningLotto, lottos);
+        RewardTable rewardTable = createRewardTable(resultTable);
 
+        return new ResponseMatchDto(rewardTable);
     }
 
     @Override
@@ -39,6 +44,22 @@ public class LottoService implements LottoServiceUseCase {
             lottos.add(createLotto());
         }
         return new ResponseBuyLottoDto(lottos);
+    }
+
+    private RewardTable createRewardTable(ResultTable resultTable) {
+        List<Reward> rewards = getRewards(resultTable.getResults());
+        return new RewardTable(rewards);
+    }
+
+    private List<Reward> getRewards(List<Result> results) {
+        List<Reward> rewards = new ArrayList<>();
+        for (Result result : results) {
+            Optional<Reward> optionalReward = result.matchReward();
+            if (optionalReward.isPresent()) {
+                rewards.add(optionalReward.get());
+            }
+        }
+        return rewards;
     }
 
     private int getNumberOfLottos(List<Lotto> lottos) {

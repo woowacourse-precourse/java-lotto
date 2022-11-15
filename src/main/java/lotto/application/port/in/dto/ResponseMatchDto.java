@@ -1,16 +1,17 @@
 package lotto.application.port.in.dto;
 
 import lotto.domain.result.ResultTable;
+import lotto.domain.reward.RewardTable;
 
 public class ResponseMatchDto {
 
-    ResultTable resultTable;
+    RewardTable rewardTable;
 
-    public ResponseMatchDto(ResultTable resultTable) {
-        this.resultTable = resultTable;
+    public ResponseMatchDto(RewardTable rewardTable) {
+        this.rewardTable = rewardTable;
     }
 
-    public ResultTable getResultTable() {
-        return resultTable;
+    public RewardTable getRewardTable() {
+        return rewardTable;
     }
 }
