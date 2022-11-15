@@ -1,6 +1,6 @@
-package YieldMachine;
+package yieldMachine;
 
-import User.User;
+import user.User;
 import lotto.BoughtLotto;
 import lotto.WinningNumberLotto;
 

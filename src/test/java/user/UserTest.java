@@ -1,6 +1,5 @@
 package user;
 
-import User.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

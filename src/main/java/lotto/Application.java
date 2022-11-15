@@ -1,7 +1,7 @@
 package lotto;
 
-import User.User;
-import YieldMachine.YieldMachine;
+import user.User;
+import yieldMachine.YieldMachine;
 
 public class Application {
     public static void main(String[] args) {
