@@ -28,7 +28,7 @@ public class OutputView {
     }
 
     public void printRate(int sumPrize, int countHoldingLotto) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", (float) sumPrize / (countHoldingLotto * 1000) * 100);
+        System.out.printf("총 수익률은 %.1f%%입니다.", (double) sumPrize / (countHoldingLotto * 1000) * 100);
 
     }
 }
