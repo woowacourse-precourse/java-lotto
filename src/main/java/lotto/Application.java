@@ -32,8 +32,17 @@ public class Application {
         //로또 구매및 출력
         ArrayList<Lotto> lottoList = buyLotto(countPurchaseLotto(buyMoney));
 
+
         //당첨번호 입력받기
-        ArrayList<Integer> luckyList = inputLuckyNumber();
+        ArrayList<Integer> luckyList;
+        try {
+           luckyList = inputLuckyNumber();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
         //보너스 번호 입력받기
         int bonusNumber = inputBonusNumber();
         //당첨 확인
@@ -206,8 +215,12 @@ public class Application {
         if(inputNumber % lottoPrice !=0){
             return false;
         }
+        return true;
+    }
+    static boolean isValidLottery(String input)  {
+
+        //1~45의 숫자
 
         return true;
     }
-
 }
