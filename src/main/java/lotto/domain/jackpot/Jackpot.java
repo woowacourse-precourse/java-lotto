@@ -16,6 +16,7 @@ public class Jackpot {
         System.out.println("당첨 번호를 입력해 주세요.");
         jackpot_number_static = ReadLine();
         jackpot_number_output_and_validate(jackpot_number_static);
+        System.out.println(jackpot_number_static);
     }
 
     public static void jackpot_number_output_and_validate(String jackpot_number){
@@ -31,6 +32,7 @@ public class Jackpot {
         System.out.println("\n"+"보너스 번호를 입력해주세요.");
         bonus_number_static=ReadLine();
         bonus_number_output_and_validate(bonus_number_static);
+        System.out.println(bonus_number_static);
     }
 
     public static void bonus_number_output_and_validate(String bonus_number){
