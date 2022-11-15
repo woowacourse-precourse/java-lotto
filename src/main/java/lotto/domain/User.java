@@ -11,13 +11,13 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
 	private int[] userNumbers = new int[6];
 	private int userBonus;
-	
+
 	private int[] inputNumbers() {
 		System.out.println("숫자를 입력해 주세요.");
 		String inputNumber = Console.readLine();
 		inputNumber = inputNumber.trim();
 		String[] inputNumbers = inputNumber.split(",");
-		
+
 		for (int index = 0; index < inputNumbers.length; index++) {
 			userNumbers[index] = Integer.parseInt(inputNumbers[index]);
 		}
@@ -31,12 +31,11 @@ public class User {
 		return userBonus;
 	}
 
-	public List<Integer> lottery() {
+	private List<Integer> winningNumber() {
 		inputNumbers();
 		bonusNumber();
-		List<Integer> userLotteryNumbers = new ArrayList(Arrays.asList(userNumbers));
-		userLotteryNumbers.add(userBonus);
-		System.out.println(userLotteryNumbers);
-		return userLotteryNumbers;
+		List<Integer> winningNumbers = new ArrayList(Arrays.asList(userNumbers));
+		winningNumbers.add(userBonus);
+		return winningNumbers;
 	}
 }
