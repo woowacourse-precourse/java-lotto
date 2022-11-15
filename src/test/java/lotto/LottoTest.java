@@ -37,4 +37,11 @@ class LottoTest {
         String actual = lotto.toString();
         assertThat(actual).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
+
+    @DisplayName("보너스 번호는 로또 번호와 중복될 수 없다")
+    @Test
+    void duplicatedBonusNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> lotto.isDuplicateBonusNumber(6)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
