@@ -4,16 +4,27 @@ import static lotto.Error.PRICE_UNIT_ERROR;
 
 public class LottoPrice {
 
-    private static int LOTTO_PRICE = 1000;
+    private final int LOTTO_PRICE = 1000;
+    private final int price;
+    private final int amount;
 
-    public static boolean checkPrice(int price) {
+    public LottoPrice(int price) {
+        checkPrice(price);
+        this.price = price;
+        this.amount = price / LOTTO_PRICE;
+    }
+
+    public void checkPrice(int price) {
         if (price % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(PRICE_UNIT_ERROR.getMessage());
         }
-        return true;
     }
 
-    public static int getAmount(int price) {
-        return price / LOTTO_PRICE;
+    public int getPrice() {
+        return price;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }
