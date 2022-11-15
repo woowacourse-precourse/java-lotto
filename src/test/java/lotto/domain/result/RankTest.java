@@ -17,7 +17,7 @@ class RankTest {
             "2, false, 'NONE'",
             "10, false, 'NONE'"
     })
-    public void calculateMatchResults(int hitCount, boolean hasBonusNumber, String rank) {
+    public void getRank(int hitCount, boolean hasBonusNumber, String rank) {
         assertThat(Rank.getRank(hitCount, hasBonusNumber).toString())
                 .isEqualTo(rank);
     }
