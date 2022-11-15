@@ -1,34 +1,14 @@
 package lotto.View;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.Model.Lotto;
-
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.View.IOMessage.*;
 
-/**
- *  LottoManager 가 동작되는데 필요한 데이터를 입력 받고 출력하는 UI 클래스
- *  1. 사용자에게 로또 구입 금액 입력 받기
- *  2. 발행한 로또 번호들 오름차순으로 출력하기
- *  3. 로또 당첨 번호, 보너스 번호 입력 받기
- *  4. 로또 당첨 통계와 수익률 출력하기
- */
-
 public class LottoManagerView {
-
-    public static String inputBonusNumber(){
-        System.out.println(GET_BONUS_NUMBER_MESSAGE);
-        return readLine();
-    }
-
-    public static String inputWinningNumbers(){
-        System.out.println(GET_WINNING_NUMBERS_MESSAGE);
-        return readLine();
-    }
     public static String inputUserMoney(){
         System.out.println(GET_LOTTO_PRICE_MESSAGE);
-        return readLine();
+        return Console.readLine();
     }
 
     public static void printIssuedLotto(int ticketNumber, List<Lotto> userLotto){
@@ -38,13 +18,26 @@ public class LottoManagerView {
         }
     }
 
-    // TODO: 당첨번호, 보너스 번호 입력 받기
-    public static void getWinningNumbers(){
-
+    public static String inputBonusNumber(){
+        System.out.println(GET_BONUS_NUMBER_MESSAGE);
+        return Console.readLine();
     }
 
-    // TODO: 당첨 통게 출력하기
-    public static void printWinningHistory(){
+    public static String inputWinningNumbers(){
+        System.out.println(GET_WINNING_NUMBERS_MESSAGE);
+        return Console.readLine();
+    }
 
+    public static void printWinningHistory(List<Integer> record){
+        System.out.println(WINNING_STATISTICS_MESSAGE);
+        System.out.println(WinningState.MATCHING_THREE + String.valueOf(record.get(0)) + "개");
+        System.out.println(WinningState.MATCHING_FOUR + String.valueOf(record.get(1)) + "개");
+        System.out.println(WinningState.MATCHING_FIVE + String.valueOf(record.get(2)) + "개");
+        System.out.println(WinningState.MATCHING_FIVE_WITH_BONUS + String.valueOf(record.get(3)) + "개");
+        System.out.println(WinningState.MATCHING_SIX + String.valueOf(record.get(4)) + "개");
+    }
+
+    public static void printEarningRate(String earning){
+        System.out.println(TOTAL_EARNING_RATE_MESSAGE + earning + "%입니다.");
     }
 }

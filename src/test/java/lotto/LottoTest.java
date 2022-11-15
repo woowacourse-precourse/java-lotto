@@ -8,6 +8,7 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -33,10 +34,9 @@ class LottoTest {
 
     @DisplayName("사용자에게 입력 받은 금액이 정수가 아닌 경우 예외가 발생한다.")
     @Test
-    void validInputPriceIfInteger(){
-        assertThatThrownBy(() -> LottoManager.getUserMoney("money14000"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.valueOf(ErrorResponse.INVALID_MONEY));
+    void validInputMoney(){
+        assertThatThrownBy(() -> LottoManager.getUserMoney("1402md00"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("사용자에게 입력 받은 금액이 1000원으로 나누어지지 않는 경우 예외가 발생한다.")

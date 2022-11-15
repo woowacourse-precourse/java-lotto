@@ -1,45 +1,92 @@
 package lotto.Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoManager {
+    private static int inputMoney;
+    private static int jackpot = 0;
     private static int ticketNumber;
     public static final List<Lotto> userLotto = new ArrayList<>();
     public static final List<Integer> winnings = new ArrayList<>();
-    private static int bonusNumber = 0;
+    private static int bonusNumber;
+
+    public static final Map<Integer, Integer> winningHistory = new HashMap<>();
 
     private static final String INTEGER_REGEX = "-?\\d+";
     private static final String WINNING_NUMBER_SPLIT_REGEX = ",";
     private static final int LOTTO_NUMBER_START = 1;
     private static final int LOTTO_NUMBER_END = 45;
 
+    private static final int LOTTO_SIZE = 6;
     private static final int PRICE_PER_LOTTO_TICKET = 1000;
 
     public LottoManager(){
         initialize();
-
     }
-    // TODO: 메서드
-    /*
-        - 사용자에게 입력 받은 금액에 따라 로또 수량을 저장하는 기능 (getUserMoney)
-        - 사용자에게 수량만큼 로또 발행하는 기능 (issue)
-        - 사용자에게 입력 받은 당첨 번호와 보너스 번호를 저장 (getWinningNumbers)
-        - 당첨 번호와 사용자의 로또를 비교하는 기능 (compare)
-            - 사용자가 발행한 각 로또가 당첨 번호와 일치하는 것이 몇 개 있는지 세는 메서드
-            - 3, 4, 5, 5(보너스), 6 일치에 해당하는 것이 몇개인지 통계를 내는 메서드
-        - 당첨 내역을 정산하는 기능 (calculateWinningNumbers)
-            - 전체 당첨금을 계산하는 메서드
-            - 전체 수익률을 계산하는 메서드
-     */
+
+    public String getEarningRate() {
+        double rate = jackpot / (double) inputMoney * 100.f;
+        return String.valueOf(rate);
+    }
+
+    public List<Integer> getWinningRecords() {
+        List<Integer> record = new ArrayList<>();
+        for (int index = 3; index < LOTTO_SIZE + 2; index++) {
+            record.add(winningHistory.get(index));
+        }
+        return record;
+    }
+
+    private int getMatchingCount(Lotto lotto) {
+        int count = 0;
+        for (int index = 0; index < LOTTO_SIZE; index++) {
+            if (winnings.contains(lotto.getNumber(index))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void compare() {
+        for (Lotto lotto : userLotto) {
+            int count = getMatchingCount(lotto);
+            if (count == 5 && winnings.contains(bonusNumber)) {
+                winningHistory.put(6, winningHistory.get(6) + 1);
+                jackpot += PrizeMoney.PRIZE_FOR_FIVE_MATCHING_WITH_BONUS.getMoney();
+                continue;
+            }
+            if (count == 6) {
+                winningHistory.put(7, winningHistory.get(7) + 1);
+                jackpot += PrizeMoney.PRIZE_FOR_SIX_MATCHING.getMoney();
+                continue;
+            }
+            if (count == 5) {
+                winningHistory.put(5, winningHistory.get(5) + 1);
+                jackpot += PrizeMoney.PRIZE_FOR_FIVE_MATCHING.getMoney();
+                continue;
+            }
+            if (count == 4) {
+                winningHistory.put(4, winningHistory.get(4) + 1);
+                jackpot += PrizeMoney.PRIZE_FOR_FOUR_MATCHING.getMoney();
+                continue;
+            }
+            if (count == 3) {
+                winningHistory.put(3, winningHistory.get(3) + 1);
+                jackpot += PrizeMoney.PRIZE_FOR_THREE_MATCHING.getMoney();
+            }
+        }
+    }
 
     private static void validateNumber(String input) {
-        if (!input.matches(INTEGER_REGEX)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_NUMBER));
+        int number = 0;
+        try{
+            number = Integer.parseInt(input);
+        }catch(Exception e){
+            System.out.println(ErrorResponse.INVALID_LOTTO_NUMBER);
         }
-        int number = Integer.parseInt(input);
         if (number < LOTTO_NUMBER_START || number > LOTTO_NUMBER_END) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_NUMBER_RANGE));
         }
@@ -74,19 +121,14 @@ public class LottoManager {
 
     private static void validateWinningNumbers(String input){
         String[] numbers = getSplitWinningNumbers(input);
-        for(String s:numbers){
-            System.out.println(s);
-        }
 
         for (String number : numbers) {
             if(validateWinningNumber(number)) {
                 winnings.add(Integer.parseInt(number));
             }
         }
-        for(int w:winnings){
-            System.out.println(w);
-        }
-        if (winnings.size() != 6) {
+
+        if (winnings.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_WINNING_NUMBERS));
         }
     }
@@ -96,14 +138,15 @@ public class LottoManager {
     }
 
     public static void getUserMoney(String userMoney) {
-        if (!userMoney.matches(INTEGER_REGEX)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_MONEY));
+        try {
+            inputMoney = Integer.parseInt(userMoney);
+        }catch(IllegalArgumentException e){
+            System.out.println(ErrorResponse.INVALID_MONEY);
         }
-        int money = Integer.parseInt(userMoney);
-        if (money % PRICE_PER_LOTTO_TICKET != 0) {
+        if (inputMoney % PRICE_PER_LOTTO_TICKET != 0) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_PURCHASE_PRICE));
         }
-        ticketNumber = money / PRICE_PER_LOTTO_TICKET;
+        ticketNumber = inputMoney / PRICE_PER_LOTTO_TICKET;
     }
 
     public static int getTicketNumber(){
@@ -122,8 +165,16 @@ public class LottoManager {
             System.out.println(lotto);
         }
     }
+    private static void initializeHistory() {
+        for (int count = 0; count < 8; count++) {
+            winningHistory.put(count, 0);
+        }
+    }
+
     public static void initialize(){
         userLotto.removeAll(userLotto);
         winnings.removeAll(winnings);
+        initializeHistory();
+
     }
 }

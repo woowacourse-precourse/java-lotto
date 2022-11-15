@@ -1,7 +1,9 @@
 package lotto.Model;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -9,17 +11,21 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        sort();
     }
 
     @Override
     public String toString() {
-        return numbers.toString();
+        return numbers
+                .stream()
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList())
+                .toString();
     }
 
-    private void sort(){
-        Collections.sort(numbers);
+    public int getNumber(int i){
+        return numbers.get(i);
     }
+
     private void validateSize(List<Integer> numbers){
         if(numbers.size()!=6){
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_SIZE));
