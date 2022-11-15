@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lotto.Utils;
@@ -9,13 +10,14 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         Utils.validateLottoNumbers(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
     public String toStringLotto() {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
         StringBuilder lotto = new StringBuilder("[");
-        for (int n : this.numbers) {
+        for (int n : sortedNumbers) {
             lotto.append(String.valueOf(n)).append(", ");
         }
         lotto = new StringBuilder(lotto.substring(0, lotto.length() - 2) + "]");

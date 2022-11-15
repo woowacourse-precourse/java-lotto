@@ -4,14 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import lotto.domain.Lotto;
 import lotto.controller.LottoMachine;
 import lotto.enums.LottoInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoMachineTest {
-    public static final LottoMachine lottoMachine = new LottoMachine();
+    public final LottoMachine lottoMachine = new LottoMachine();
 
     @DisplayName("구매한 로또 개수 확인")
     @Test
