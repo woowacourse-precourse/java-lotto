@@ -33,8 +33,7 @@ public class InputMoney {
     }
 
     private void verifyItIsNumber(String money) {
-        String regex = "[0-9]+";
-        if (!(money.matches(regex))) {
+        if (!(money.matches(ErrorPrint.REGEX.getValue()))) {
             throw new IllegalArgumentException(ErrorPrint.ERROR_ONLY_NUMBER.getValue());
         }
     }

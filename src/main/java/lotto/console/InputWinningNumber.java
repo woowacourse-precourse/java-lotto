@@ -51,10 +51,9 @@ public class InputWinningNumber {
     }
 
     private void verifyNumber(List<Integer> winningNumbers) {
-        String regex = "[0-9]+";
         for (int number : winningNumbers) {
             String num = Integer.toString(number);
-            if (!(num.matches(regex))) {
+            if (!(num.matches(ErrorPrint.REGEX.getValue()))) {
                 throw new IllegalArgumentException(ErrorPrint.ERROR_ONLY_NUMBER.getValue());
             }
         }

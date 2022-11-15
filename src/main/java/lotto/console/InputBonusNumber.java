@@ -35,8 +35,7 @@ public class InputBonusNumber {
     }
 
     private void verifyItIsNumber(String bonusNumber) {
-        String regex = "[0-9]+";
-        if (!(bonusNumber.matches(regex))) {
+        if (!(bonusNumber.matches(ErrorPrint.REGEX.getValue()))) {
             throw new IllegalArgumentException(ErrorPrint.ERROR_ONLY_NUMBER.getValue());
         }
     }
