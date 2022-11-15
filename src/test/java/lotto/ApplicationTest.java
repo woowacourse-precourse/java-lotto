@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -66,5 +67,13 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("10040"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 기능_테스트1() {
+        Assertions.assertRandomUniqueNumbersInRangeTest(() -> {
+            this.run(new String[]{"1000"});
+            org.assertj.core.api.Assertions.assertThat(this.output()).contains(new CharSequence[]{"1개를 구매했습니다.", "[8, 21, 23, 41, 42, 43]"});
+        }, List.of(21, 8, 23, 41, 42, 43));
     }
 }

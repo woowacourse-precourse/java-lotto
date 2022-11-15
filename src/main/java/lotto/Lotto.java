@@ -1,8 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -19,17 +16,6 @@ public class Lotto {
         }
     }
 
-    private static List<Integer> randomNumber(int numberLength) {
-        List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < numberLength) {
 
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
 }
