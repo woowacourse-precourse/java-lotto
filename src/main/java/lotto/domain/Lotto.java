@@ -3,6 +3,9 @@ package lotto.domain;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.domain.Preset.LOTTO_MAX_VALUE;
+import static lotto.domain.Preset.LOTTO_MIN_VALUE;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,9 +15,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        checkSize(numbers);
+        checkOutOfRange(numbers);
+        checkDuplicated(numbers);
     }
 
     // TODO: 추가 기능 구현
@@ -29,5 +32,25 @@ public class Lotto {
 
     public void sortElements() {
         Collections.sort(this.numbers);
+    }
+
+    public static void checkSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkOutOfRange(List<Integer> numbers) {
+        for(Integer number : numbers) {
+            if (number < LOTTO_MIN_VALUE || number > LOTTO_MAX_VALUE)
+                throw new IllegalArgumentException("[ERROR] input error");
+        }
+    }
+
+    public static void checkDuplicated(List<Integer> numbers) {
+        for(Integer number : numbers) {
+            if (Collections.frequency(numbers, number) > 1)
+                throw new IllegalArgumentException("[ERROR] input error");
+        }
     }
 }
