@@ -20,12 +20,12 @@ public class Money {
             throw new IllegalArgumentException(ERROR_NON_POSITIVE_INTEGER);
         }
 
-        checkNegativeNumber(purchaseMoney);
+        checkZeroOrNegativeNumber(purchaseMoney);
         checkNoLottoMoney(purchaseMoney);
     }
 
-    private void checkNegativeNumber(int purchaseMoney) {
-        if (purchaseMoney < 0) {
+    private void checkZeroOrNegativeNumber(int purchaseMoney) {
+        if (purchaseMoney <= 0) {
             throw new IllegalArgumentException(ERROR_NON_POSITIVE_INTEGER);
         }
     }
