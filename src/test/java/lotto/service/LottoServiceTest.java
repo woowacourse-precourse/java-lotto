@@ -28,14 +28,14 @@ class LottoServiceTest {
     @Test
     @DisplayName("[정상] calculateLottoRanks 기능을 통해 구매한 로또의 등수를 확인 할 수 있다.")
     void calculateLottoRanks() {
-        lottoService.calculateLottoRanks(user, winningLotto);
-        assertThat(user.getLottoRanks()).isNotEmpty();
-        assertThat(user.getLottoRanks().size()).isEqualTo(8);
+        lottoService.calculateRankings(user, winningLotto);
+        assertThat(user.getRankings()).isNotEmpty();
+        assertThat(user.getRankings().size()).isEqualTo(8);
     }
 
     @Test
     @DisplayName("[예외] calculateLottoRanks 기능을 호출하기전에는 빈 리스트이다.")
     void calculateLottoRanks_Before() {
-        assertThat(user.getLottoRanks()).isEmpty();
+        assertThat(user.getRankings()).isEmpty();
     }
 }

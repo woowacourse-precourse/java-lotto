@@ -8,13 +8,13 @@ public class User {
 
     private final int purchaseCount;
     private final List<Lotto> lottos;
-    private final List<LottoRank> lottoRanks;
+    private final List<Ranking> rankings;
 
     private User(PurchaseAmountDto purchaseAmountDto) {
         int purchaseAmount = purchaseAmountDto.getPurchaseAmount();
         this.purchaseCount = purchaseAmount / Lotto.LOTTO_UNIT;
         this.lottos = new ArrayList<>(this.purchaseCount);
-        this.lottoRanks = new ArrayList<>(this.purchaseCount);
+        this.rankings = new ArrayList<>(this.purchaseCount);
 
         purchaseLottos();
     }
@@ -38,7 +38,7 @@ public class User {
         return lottos;
     }
 
-    public List<LottoRank> getLottoRanks() {
-        return lottoRanks;
+    public List<Ranking> getRankings() {
+        return rankings;
     }
 }

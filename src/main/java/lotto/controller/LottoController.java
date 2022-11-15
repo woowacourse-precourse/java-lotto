@@ -26,7 +26,7 @@ public class LottoController {
         showPurchaseHistory(user);
         WinningLotto winningLotto = getWinningLotto();
 
-        lottoService.calculateLottoRanks(user, winningLotto);
+        lottoService.calculateRankings(user, winningLotto);
         ProfitDto profitDto = lottoService.calculateProfit(user);
         showLottoResult(user, profitDto);
     }
@@ -59,6 +59,6 @@ public class LottoController {
     }
 
     private void showLottoResult(User user, ProfitDto profitDto) {
-        OutputView.printResultInformation(user.getLottoRanks(), profitDto.getProfit());
+        OutputView.printResultInformation(user.getRankings(), profitDto.getProfit());
     }
 }

@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public enum LottoRank {
+public enum Ranking {
 
     FIRST_PLACE(6, 2_000_000_000L),
     SECOND_PLACE(5, 30_000_000L),
@@ -17,7 +17,7 @@ public enum LottoRank {
     private final int matchCount;
     private final long prizeMoney;
 
-    LottoRank(int matchCount, long prizeMoney) {
+    Ranking(int matchCount, long prizeMoney) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
     }
@@ -30,30 +30,26 @@ public enum LottoRank {
         return prizeMoney;
     }
 
-    public Long calculatePrizeMoney(Long count) {
-        return this.prizeMoney * count;
-    }
-
-    public static LottoRank getLottoRank(int matchCount, boolean bonusNumberHit) {
-        LottoRank rank = getLottoRankByHitCount(matchCount);
+    public static Ranking getRanking(int matchCount, boolean bonusNumberHit) {
+        Ranking rank = getRankingByHitCount(matchCount);
         return checkSecondPlace(rank, bonusNumberHit);
     }
 
-    private static LottoRank getLottoRankByHitCount(int matchCount) {
-        return lottoRanksOrderByPriceMoneyAsc().stream()
+    private static Ranking getRankingByHitCount(int matchCount) {
+        return rankingsOrderByPriceMoneyAsc().stream()
                 .filter(lottoRank -> lottoRank.matchCount == matchCount)
                 .findAny()
                 .orElse(NOTHING);
     }
 
-    private static LottoRank checkSecondPlace(LottoRank lottoRank, boolean bonusNumberHit) {
-        if (lottoRank == THIRD_PLACE && bonusNumberHit) {
+    private static Ranking checkSecondPlace(Ranking ranking, boolean bonusNumberHit) {
+        if (ranking == THIRD_PLACE && bonusNumberHit) {
             return SECOND_PLACE;
         }
-        return lottoRank;
+        return ranking;
     }
 
-    public static List<LottoRank> lottoRanksOrderByPriceMoneyAsc() {
+    public static List<Ranking> rankingsOrderByPriceMoneyAsc() {
         return Arrays.stream(values())
                 .filter(lottoPrize -> !lottoPrize.equals(NOTHING))
                 .sorted(Comparator.comparingLong(rank -> rank.prizeMoney))

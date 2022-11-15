@@ -5,7 +5,7 @@ import static java.text.MessageFormat.*;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.domain.LottoRank;
+import lotto.domain.Ranking;
 
 public enum OutputView {
 
@@ -34,9 +34,9 @@ public enum OutputView {
         lottos.forEach(System.out::println);
     }
 
-    public static void printResultInformation(List<LottoRank> lottoRanks, Double profit) {
+    public static void printResultInformation(List<Ranking> rankings, Double profit) {
         printResultStartMessage();
-        printLottoResultMessage(lottoRanks);
+        printLottoResultMessage(rankings);
         printProfitResultMessage(profit);
     }
 
@@ -44,19 +44,19 @@ public enum OutputView {
         System.out.print(format(LOTTO_PROFIT_MESSAGE.toString(), profit));
     }
 
-    private static void printLottoResultMessage(List<LottoRank> lottoRanks) {
-        for (LottoRank lottoRank : LottoRank.lottoRanksOrderByPriceMoneyAsc()) {
+    private static void printLottoResultMessage(List<Ranking> rankings) {
+        for (Ranking ranking : Ranking.rankingsOrderByPriceMoneyAsc()) {
             System.out.println(format(LOTTO_RESULT_MESSAGE.toString(),
-                    lottoRank.getMatchCount(),
-                    getBonusBallMessage(lottoRank),
-                    lottoRank.getPrizeMoney(),
-                    Collections.frequency(lottoRanks, lottoRank)
+                    ranking.getMatchCount(),
+                    getBonusBallMessage(ranking),
+                    ranking.getPrizeMoney(),
+                    Collections.frequency(rankings, ranking)
             ));
         }
     }
 
-    private static String getBonusBallMessage(LottoRank lottoRank) {
-        if (lottoRank.equals(LottoRank.SECOND_PLACE)) {
+    private static String getBonusBallMessage(Ranking ranking) {
+        if (ranking.equals(Ranking.SECOND_PLACE)) {
             return BONUS_BALL_MESSAGE.toString();
         }
         return EMPTY_MESSAGE.toString();
