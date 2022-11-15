@@ -33,4 +33,16 @@ class WinLottoTest {
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+
+    @Test
+    void matchTest() {
+        WinLotto winLotto = new WinLotto(List.of(1, 2, 3, 4, 5, 6));
+        winLotto.setBonus(7);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        assertThat(winLotto.matches(lotto)).isEqualTo(Result.FiveBonus.message);
+    }
+
 }
