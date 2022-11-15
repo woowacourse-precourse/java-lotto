@@ -21,7 +21,7 @@ public class LottoGenerator {
         return lottos;
     }
 
-    private List<Integer> generateNumbers() {
+    public List<Integer> generateNumbers() {
         List<Integer> numbers
                 = Randoms.pickUniqueNumbersInRange(Lotto.FIRST_NUMBER, Lotto.LAST_NUMBER, Lotto.SIZE);
 

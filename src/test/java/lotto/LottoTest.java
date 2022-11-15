@@ -13,6 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+
+    LottoGenerator lottoGenerator = new LottoGenerator();
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -32,5 +35,13 @@ class LottoTest {
     void createLottoByUnderSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("만들어진 로또 번호에 중복이 없는지 테스트")
+    @Test
+    void noDuplicatedNumber() {
+        List<Lotto> lottos = lottoGenerator.generateLottos(1);
+
+        assertThat(lottos).doesNotHaveDuplicates();
     }
 }
