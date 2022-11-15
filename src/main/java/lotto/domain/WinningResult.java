@@ -89,4 +89,5 @@ public class WinningResult {
         }
         return sum;
     }
+
 }
