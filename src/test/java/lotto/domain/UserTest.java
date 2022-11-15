@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 public class UserTest {
 
     @Test
@@ -25,7 +23,7 @@ public class UserTest {
     void minimumMoneyTest() {
         String inputMoney = "500";
 
-        assertThatThrownBy(() -> User.initUserLotto(inputMoney))
+        Assertions.assertThatThrownBy(() -> User.initUserLotto(inputMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -34,7 +32,7 @@ public class UserTest {
     void dividedMoneyTest() {
         String inputMoney = "2500";
 
-        assertThatThrownBy(() -> User.initUserLotto(inputMoney))
+        Assertions.assertThatThrownBy(() -> User.initUserLotto(inputMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,7 +41,7 @@ public class UserTest {
     void notNumberMoneyTest() {
         String money = "a";
 
-        assertThatThrownBy(() -> User.initUserLotto(money))
+        Assertions.assertThatThrownBy(() -> User.initUserLotto(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
