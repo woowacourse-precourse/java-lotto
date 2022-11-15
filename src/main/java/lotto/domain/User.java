@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private static final String NOT_POSITIVE_MONEY = "[ERROR] 구입 금액은 0보다 큰 숫자여야 합니다.";
     private static final String INVALID_MONEY_UNIT = "[ERROR] 구입 금액은 1000원 단위여야 합니다.";
     private final int money;
     public final List<Lotto> lottos;
@@ -23,6 +24,9 @@ public class User {
     }
 
     private static void validate(int money) {
+        if (!Validator.isPositive(money)) {
+            throw new IllegalArgumentException(NOT_POSITIVE_MONEY);
+        }
         if (!Validator.isHundredUnit(money)) {
             throw new IllegalArgumentException(INVALID_MONEY_UNIT);
         }
