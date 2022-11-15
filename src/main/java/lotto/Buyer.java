@@ -44,7 +44,7 @@ public class Buyer {
             for (Lotto lotto : lottos) {
                 bw.write(lotto.toString() + "\n");
             }
-            bw.close();
+            bw.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
