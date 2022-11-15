@@ -7,7 +7,7 @@ import java.util.Set;
 import static lotto.Error.*;
 
 public class WinNumber {
-    private final List<Integer> winNumbers;
+    public List<Integer> winNumbers;
 
     public WinNumber(List<Integer> winNumbers) {
         checkSize(winNumbers);
