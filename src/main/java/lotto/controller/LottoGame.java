@@ -20,8 +20,9 @@ public class LottoGame {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
             LottoAnswer winNumber = inputWinNumber();
-            //message.printResult(calculateLotto.calculateResult(lottos, winNumber));
-            calculateLotto.calculateROI();
+            EnumMap<ResultEnum, Integer> result = calculateLotto.calculateResult(lottos, winNumber);
+            Double roi = calculateLotto.calculateROI(purchasePrice, result);
+            message.printResult(result, roi);
         } catch (IllegalArgumentException exception) {
             message.printMsg(exception.getMessage());
         }

@@ -52,7 +52,12 @@ public class CalculateLotto {
         }
     }
 
-    public void calcROI() {
+    public Double calculateROI(Integer purchasePrice, EnumMap<ResultEnum, Integer> result) {
+        int sumOfReward = INIT_VALUES;
+        for (ResultEnum resultEnum : result.keySet()) {
+            sumOfReward += resultEnum.getRewardAmount() * result.get(resultEnum);
+        }
 
+        return (double) ((sumOfReward / purchasePrice) * 100);
     }
 }
