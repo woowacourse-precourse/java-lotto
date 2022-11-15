@@ -100,6 +100,25 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(numbers).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
     }
 
+    @Test
+    @DisplayName("보너스 번호를 잘못 입력했을 때 예외 처리하는지 확인한다.")
+    void askBonusNumberByErrorInput() {
+        String input = "가";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        Assertions.assertThatThrownBy(Application::askBonusNumber)
+                .isInstanceOf(MyIllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("보너스 번호를 올바르게 입력했을 때 숫자를 반환하는지 확인한다.")
+    void askBonusNumber() {
+        String input = "10";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        Assertions.assertThat(Application.askBonusNumber()).isEqualTo(10);
+    }
+
 
     @Override
     public void runMain() {
