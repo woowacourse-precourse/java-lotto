@@ -20,13 +20,13 @@ public class LottoCalculator {
         return lottoResult;
     }
 
-    public void initLottoResult() {
+    private void initLottoResult() {
         for (Rank rank : Rank.values()) {
             lottoResult.put(rank, 0);
         }
     }
 
-    public int countMatchedNumber(Lotto lotto, Lotto winningLotto) {
+    private int countMatchedNumber(Lotto lotto, Lotto winningLotto) {
         List<Integer> winningNumbers = winningLotto.getLottoNumbers();
         return (int) lotto.getLottoNumbers().stream()
                 .filter(winningNumbers::contains)
