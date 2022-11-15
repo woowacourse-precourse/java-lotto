@@ -1,6 +1,7 @@
 package lotto.domainlTest;
 
 import lotto.domain.Buyer;
+import lotto.domain.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -43,7 +44,7 @@ public class BuyerTest {
     @ValueSource(strings = {"10500", "10010", "10001"})
     public void validateProperUnitAmountTest(String purchaseAMount) {
         Buyer buyer = new Buyer();
-        assertThatThrownBy(() -> buyer.validateProperUnitAmount(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.validateProperUnitAmount(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -51,7 +52,7 @@ public class BuyerTest {
     @ValueSource(strings = {"1050e", "10010 1000", "A000["})
     public void validateProperLettersTest(String purchaseAMount) {
         Buyer buyer = new Buyer();
-        assertThatThrownBy(() -> buyer.validateProperLetters(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.validateProperLetters(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

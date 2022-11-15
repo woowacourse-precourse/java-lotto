@@ -7,7 +7,7 @@ public class LottoGameController {
     LottoGameView lottoGameView = new LottoGameView();
     Buyer buyer = new Buyer();
     LottoGenerator lottoGenerator = new LottoGenerator();
-    RaffleNumber raffleNumber = new RaffleNumber();
+    RaffleNumber raffleNumber;
     Discriminator discriminator = new Discriminator();
     Revenue revenue = new Revenue();
 
@@ -31,8 +31,7 @@ public class LottoGameController {
     public void checkLotteryWin() {
         lottoGameView.askRaffleNumbers();
         lottoGameView.askBonusNumber();
-
-        raffleNumber.create(lottoGameView.getRaffleNumbers(), lottoGameView.getBonusNumber());
+        raffleNumber=new RaffleNumber(lottoGameView.getRaffleNumbers(), lottoGameView.getBonusNumber());
 
         discriminator.initialize(raffleNumber);
         discriminator.discriminate(lottoGenerator.getLottoOfBuyer());
@@ -69,7 +68,6 @@ public class LottoGameController {
         }catch (IllegalArgumentException e){
             System.out.println("프로그램을 종료합니다.");
         }
-
     }
 
 }

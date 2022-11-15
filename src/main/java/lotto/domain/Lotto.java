@@ -10,26 +10,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateProperQuantity(numbers);
-        validateDuplicatedNumbers(numbers);
+        Validation.validateProperQuantity(numbers);
+        Validation.validateDuplicatedNumbers(numbers);
         this.numbers = numbers;
-    }
-
-    private void validateProperQuantity(List<Integer> numbers) {
-        if (numbers.size() != PROPER_QUANTITY) {
-            System.out.println(WRONG_QUANTITY_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateDuplicatedNumbers(List<Integer> numbers) {
-        int numberOfUniqueNumbers;
-        Stream<Integer> lottoNumbers = numbers.stream();
-        numberOfUniqueNumbers = (int) lottoNumbers.distinct().count();
-        if (numberOfUniqueNumbers != PROPER_QUANTITY) {
-            System.out.println(DUPLICATE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
-        }
     }
 
     public boolean has(int number) {

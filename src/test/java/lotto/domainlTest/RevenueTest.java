@@ -48,8 +48,7 @@ public class RevenueTest {
                 new Lotto(List.of(1, 45, 5, 11, 23, 15)), // 5개 + 보너스 맞춘 로또
                 new Lotto(List.of(1, 45, 5, 11, 23, 20))); // 6개 맞춘 로또
 
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -80,8 +79,7 @@ public class RevenueTest {
         // 순서대로 5개+보너스, 6개 맞춘 로또들이다.
         List<Lotto> lotteries = List.of(new Lotto(List.of(1, 45, 5, 11, 23, 15)), new Lotto(List.of(1, 45, 5, 11, 23, 20)));
 
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -106,8 +104,7 @@ public class RevenueTest {
         // 순서대로 5개+보너스, 6개 맞춘 로또들이다.
         List<Lotto> lotteries = List.of(new Lotto(List.of(1, 45, 5, 11, 23, 15)), new Lotto(List.of(1, 45, 5, 11, 23, 20)));
 
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);

@@ -22,8 +22,7 @@ public class DiscriminatorTest {
 
         String raffleNumbers = "1,45,6,7,9,20";
         String bonusNumber = "8";
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -36,8 +35,7 @@ public class DiscriminatorTest {
     public void checkThatLottoMatchesFiveOfRaffleNumber() {
         String raffleNumbers = "1,45,6,7,9,20";
         String bonusNumber = "8";
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -51,8 +49,7 @@ public class DiscriminatorTest {
     public void checkThatLottoDoesNotMatchesFiveOfRaffleNumber(int matchCount) {
         String raffleNumbers = "1,45,6,7,9,20";
         String bonusNumber = "8";
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -70,8 +67,7 @@ public class DiscriminatorTest {
 
         String raffleNumbers = "1,45,6,7,9,20";
         String bonusNumber = "8";
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -92,8 +88,7 @@ public class DiscriminatorTest {
 
         String raffleNumbers = "1,45,5,11,23,9";
         String bonusNumber = "15";
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -123,8 +118,7 @@ public class DiscriminatorTest {
                 new Lotto(List.of(1, 45, 5, 11, 23, 15)), // 5개 + 보너스 맞춘 로또
                 new Lotto(List.of(1, 45, 5, 11, 23, 20))); // 6개 맞춘 로또
 
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);
@@ -152,8 +146,7 @@ public class DiscriminatorTest {
                 new Lotto(List.of(1, 45, 5, 11, 23, 15)), // 5개 + 보너스 맞춘 로또
                 new Lotto(List.of(1, 45, 5, 11, 23, 20))); // 6개 맞춘 로또
 
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumber);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
 
         Discriminator discriminator = new Discriminator();
         discriminator.initialize(raffleNumber);

@@ -9,7 +9,7 @@ public class LottoGenerator {
     private static final int LOTTO_START_NUMBER = 1;
     private static final int LOTTO_END_NUMBER = 45;
     private static final int NUMBER_OF_LOTTO = 6;
-    private static final String DELIMITER = "";
+    private static final String DELIMITER_BLANK = "";
     private static final String NEW_LINE = "\n";
 
     private int generated_lotto;
@@ -54,7 +54,7 @@ public class LottoGenerator {
             sortLottoNumbers = sortLottoNumbers(lotto);
             lottoNumbers.add(createLottoNumberFormat(sortLottoNumbers));
         }
-        return String.join(DELIMITER, lottoNumbers);
+        return String.join(DELIMITER_BLANK, lottoNumbers);
     }
 
 }

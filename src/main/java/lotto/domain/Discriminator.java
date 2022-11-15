@@ -7,8 +7,8 @@ import java.util.List;
 public class Discriminator {
 
     private static final int LEAST_MATCH_COUNT = 2;
-    private static final int ZERO = 0;
-    private static final int COUNT = 1;
+    private static final int ZERO_MATCH = 0;
+    private static final int COUNT_ONE = 1;
     private static final int SECOND_RANK_CONDITION = 5;
     private List<Integer> raffleNumbers;
     private List<List<Integer>> MATCHES;
@@ -21,23 +21,23 @@ public class Discriminator {
     }
 
     public int guessLottoNumber(Lotto lotto) {
-        int numberOfMatches = ZERO;
+        int numberOfMatches = ZERO_MATCH;
         for (int raffleNumber : raffleNumbers) {
             if (lotto.has(raffleNumber)) {
-                numberOfMatches += COUNT;
+                numberOfMatches += COUNT_ONE;
             }
         }
         return numberOfMatches;
     }
 
     public boolean canSecondRank(int raffleNumberMatches) {
-        return raffleNumberMatches == SECOND_RANK_CONDITION;
+        return raffleNumberMatches==SECOND_RANK_CONDITION;
     }
 
     public int guessBonusNumber(Lotto lotto, int raffleNumberMatches) {
-        int numberOfBonusNumberMatches = ZERO;
+        int numberOfBonusNumberMatches = ZERO_MATCH;
         if (canSecondRank(raffleNumberMatches) && lotto.has(bonusNumber)) {
-            numberOfBonusNumberMatches = COUNT;
+            numberOfBonusNumberMatches = COUNT_ONE;
         }
         return numberOfBonusNumberMatches;
     }

@@ -21,7 +21,7 @@ public class RaffleNumberTest {
     public void createRaffleNumberTest() {
         raffleNumbers = "1,2,3,4,5,6,7";
         bonusNumbers = "8";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new RaffleNumber(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class RaffleNumberTest {
     public void createDuplicatedRaffleNumberTest() {
         raffleNumbers = "1,2,3,4,5,5";
         bonusNumbers = "8";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new RaffleNumber(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class RaffleNumberTest {
     public void createWrongRaffleNumberTest() {
         raffleNumbers = "1,2,3,[,5,ㄷ";
         bonusNumbers = "8";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new RaffleNumber(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -46,8 +46,7 @@ public class RaffleNumberTest {
         raffleNumbers = "1,2,3,4,5,6";
         bonusNumbers = "8";
         List<Integer> expectedRaffleNumbers = List.of(1, 2, 3, 4, 5, 6);
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumbers);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumbers);
         assertThat(raffleNumber.getRaffleNumbers()).isEqualTo(expectedRaffleNumbers);
     }
 
@@ -56,8 +55,7 @@ public class RaffleNumberTest {
     @ValueSource(strings = {"[", "*", ")", "`", "~", "!", "<", " ", "-", "_", "+", "=", "?", "/", "'", ":", ";"})
     public void createWrongBonusNumberTest(String bonusNumbers) {
         raffleNumbers = "1,2,3,4,5,6";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new RaffleNumber(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -65,8 +63,7 @@ public class RaffleNumberTest {
     public void createProperBonusNumberTest() {
         raffleNumbers = "1,2,3,4,5,6";
         bonusNumbers = "45";
-        RaffleNumber raffleNumber = new RaffleNumber();
-        raffleNumber.create(raffleNumbers, bonusNumbers);
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumbers);
         assertThat(raffleNumber.getBonusNumber()).isEqualTo(45);
     }
 }
