@@ -18,7 +18,8 @@ public class RewardCoordinatorTest {
         WinningNumber winningNumber = mock(WinningNumber.class);
         List<LottoReward> rewards = mockLottoRewards();
         List<Lotto> lottos = mockLottos();
-        String excepted = "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
+        String excepted = "\n당첨 통계\n---\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
                 "6개 일치 (2,000,000,000원) - 1개\n" +
                 "총 수익률은 200.0%입니다.";
 

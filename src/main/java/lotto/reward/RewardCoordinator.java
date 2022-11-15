@@ -51,7 +51,7 @@ public class RewardCoordinator {
     private String printResult(int[] totalResult, long totalReward) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("\n당첨통계\n---\n");
+        stringBuilder.append("\n당첨 통계\n---\n");
         for (int index = totalResult.length-1; index >= 0; index--) {
             String result = rewards.get(index).getRewardInfo() + " - " + totalResult[index] + "개\n";
             stringBuilder.append(result);
