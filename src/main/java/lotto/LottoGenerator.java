@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -72,6 +73,55 @@ public class LottoGenerator {
         return match;
     }
 
+    public int getMatchBonus(List lotteryList, int bonus){
+        int match = 0;
+        for(int i=0; i<lotteryList.size(); i++){
+            if(lotteryList.contains(lotteryList.get(i)))
+                match += 1;
+        }
+        return match;
+    }
 
+    public List<List> compareNumbers(List<List> userList, List<Integer> winList, int bonus){
+        List<List> LotteryResult = new ArrayList<>();
 
+        int lottoCount = 0;
+        int bonusCount = 0;
+        for (int i = 0; i < userList.size(); i++){
+            bonusCount = 0;
+            lottoCount = getMatch(userList.get(i), winList);
+            if (lottoCount != 6){
+                bonusCount = getMatchBonus(userList.get(i), bonus);
+            }
+            LotteryResult.add(comparResultLottery(lottoCount, bonusCount));
+        }
+        return LotteryResult;
+    }
+
+    public List<Integer> comparResultLottery(int lottoCount, int bonusCount){
+        Integer[] account = {0,0,0,0,0};
+
+        if(lottoCount == 6){
+            account[0] ++; //1등
+        }
+        if(bonusCount == 1 && lottoCount == 5){
+            account[1] ++; //2등
+        }
+        if(bonusCount == 0 && lottoCount == 5){
+            account[2] ++; //3등
+        }
+        if(lottoCount == 4){
+            account[3] ++; //4등
+        }
+        if(lottoCount == 3){
+            account[4] ++; //5등
+        }
+        List<Integer> accountLoterry = Arrays.asList(account);
+
+        return accountLoterry;
+    }
+
+    public List<Integer> getResult(List<List> userResult){
+
+    }
 }
