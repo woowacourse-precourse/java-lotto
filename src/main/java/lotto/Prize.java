@@ -11,11 +11,11 @@ public enum Prize {
         CORRECT = correct;
     }
 
-    long reward() {
+    public long reward() {
         return REWARD;
     }
 
-    int correct() {
+    public int correct() {
         return CORRECT;
     }
 }

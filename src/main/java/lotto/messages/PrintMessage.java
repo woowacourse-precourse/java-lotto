@@ -1,4 +1,6 @@
-package lotto;
+package lotto.messages;
+
+import lotto.Prize;
 
 import java.util.List;
 

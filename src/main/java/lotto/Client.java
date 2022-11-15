@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.messages.ErrorMessage;
+import lotto.messages.PrintMessage;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
