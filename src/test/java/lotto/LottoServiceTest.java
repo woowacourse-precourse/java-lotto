@@ -75,4 +75,39 @@ public class LottoServiceTest {
         assertThat(lottoService.toLotto("1,2,3,4,5,6"))
                 .usingRecursiveComparison().isEqualTo(new Lotto(List.of(1, 2, 3, 4, 5, 6)));    // usingRecursiveComparison, 내부의 필드들을 모두 비교한다.(재귀) 내부 필드 값만 같다면, 오브젝트가 달라도 테스트 통과
     }
+
+    @DisplayName("보너스 번호가 로또 번호의 범위를 벗어나는 경우, 예외가 발생한다.")
+    @Test
+    void  toBonusNumberByOutOfRange() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toBonusNumber("46", new Lotto(List.of(1,2,3,4,5,6))))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_LOTTO_UNCONFORMABLE_NUMBER_RANGE.getMessage());
+    }
+
+    @DisplayName("보너스 번호가 정수형이 아닌 경우, 예외가 발생한다.")
+    @Test
+    void  toBonusNumberByNotInteger() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toBonusNumber("a", new Lotto(List.of(1,2,3,4,5,6))))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_NOT_INTEGER.getMessage());
+    }
+
+    @DisplayName("보너스 번호가 당첨번호와 중복되는 경우, 예외가 발생한다.")
+    @Test
+    void  toBonusNumberByOverlap() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toBonusNumber("6", new Lotto(List.of(1,2,3,4,5,6))))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_LOTTO_NUMBER_OVERLAP.getMessage());
+    }
+
+    @DisplayName("보너스 번호가 알맞은 번호인 경우, 정상 동작한다.")
+    @Test
+    void  toBonusNumber() {
+        LottoService lottoService = new LottoService();
+        assertThat(lottoService.toBonusNumber("7", new Lotto(List.of(1,2,3,4,5,6)))).isEqualTo(7);
+
+    }
 }
