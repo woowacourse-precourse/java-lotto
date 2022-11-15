@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Validator {
     public static void checkPurchaseMoney(int purchaseMoney) {
-        if (purchaseMoney % 1000 != 0) {
+        if (purchaseMoney % 1000 != 0) { // 1000으로 나누어 떨어지지 않을 경우
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 수를 입력하세요.");
         }
     }
@@ -35,7 +35,7 @@ public class Validator {
     public static void checkUniqueNumber(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
 
-        if(uniqueNumbers.size()!= numbers.size()) {
+        if (uniqueNumbers.size()!= numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 서로 다른 6개의 수를 입력하세요.");
         }
     }

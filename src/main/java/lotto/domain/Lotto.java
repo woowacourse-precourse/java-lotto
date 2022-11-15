@@ -2,8 +2,6 @@ package lotto.domain;
 
 import lotto.validator.Validator;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -28,8 +26,8 @@ public class Lotto {
     public int compareWithWinningNumber(List<Integer> winningNumber) {
         int sameNumberCount = 0;
 
-        for (int i=0; i<46; i++) {
-            if (numbers.contains(i) && winningNumber.contains(i)){
+        for (int i=1; i<46; i++) {
+            if (numbers.contains(i) && winningNumber.contains(i)) {
                 sameNumberCount++;
             }
         }
@@ -39,15 +37,17 @@ public class Lotto {
 
     public boolean checkBonusNumber(int bonusNumber) {
         boolean containBonusNumber = false;
+
         if (numbers.contains(bonusNumber) == true) {
             containBonusNumber = true;
         }
+
         return containBonusNumber;
     }
 
     public Rank calculateRank(List<Integer> winningNumber, int bonusNumber) {
-        int sameNumberCount = compareWithWinningNumber(winningNumber);
-        boolean hasBonusNumber = checkBonusNumber(bonusNumber);
+        int sameNumberCount = compareWithWinningNumber(winningNumber); // 같은 번호 카운트 결과
+        boolean hasBonusNumber = checkBonusNumber(bonusNumber); // 보너스 번호 포함 여부
 
         if (sameNumberCount==6) {
             return Rank.FIRST_PLACE;
@@ -60,6 +60,6 @@ public class Lotto {
         } else if (sameNumberCount==3) {
             return Rank.FIFTH_PLACE;
         }
-        return Rank.NO_PLACE;
+        return Rank.NO_PLACE; // 그 외 경우 6등 이하 (NO_PLACE) 반환
     }
 }

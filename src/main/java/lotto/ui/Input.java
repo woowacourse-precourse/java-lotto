@@ -36,7 +36,7 @@ public class Input {
     public int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumberInput = Console.readLine();
-        int bonusNumber = Integer.valueOf(bonusNumberInput);
+        int bonusNumber = Integer.valueOf(bonusNumberInput); // str to int
         return bonusNumber;
     }
 }

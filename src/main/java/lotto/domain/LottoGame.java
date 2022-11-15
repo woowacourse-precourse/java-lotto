@@ -8,12 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGame {
-    public int purchaseAmount;
-    public List<Integer> winningNumber;
-    public int bonusNumber;
+    public int purchaseAmount, bonusNumber, totalProfit;
+    public List<Integer> winningNumber, gameResult;
     public List<Lotto> issuedLotto;
-    public List<Integer> gameResult;
-    public int totalProfit;
     public float profitRate;
     public Input input;
     public Output output;
@@ -21,15 +18,15 @@ public class LottoGame {
     public void play() {
         this.input = new Input();
         this.output = new Output();
-        this.purchaseAmount = input.getPurchaseAmount();
-        issueLotto();
-        output.printIssuedLotto(issuedLotto);
-        this.winningNumber = input.getWinningNumber();
-        this.bonusNumber = input.getBonusNumber();
-        getGameResult();
-        output.printGameResult(this.gameResult);
-        this.profitRate = getProfitRate();
-        output.printProfitRate(this.profitRate);
+        this.purchaseAmount = input.getPurchaseAmount(); // 로또 구매
+        issueLotto(); // 로또 발행
+        output.printIssuedLotto(issuedLotto); // 발행된 로또 출력
+        this.winningNumber = input.getWinningNumber(); // 당첨 번호 입력
+        this.bonusNumber = input.getBonusNumber(); // 보너스 번호 입력
+        getGameResult(); // 로또 게임 결과 계산
+        output.printGameResult(this.gameResult); // 로또 게임 결과 출력
+        this.profitRate = getProfitRate(); // 수익률 게산
+        output.printProfitRate(this.profitRate); // 수익률 출력
     }
 
     public List<Integer> generateLottoNumbers() {
@@ -39,26 +36,29 @@ public class LottoGame {
 
     public List<Lotto> issueLotto() {
         this.issuedLotto = new ArrayList<Lotto>(purchaseAmount);
+
         for (int i=0; i<purchaseAmount; i++) {
             List<Integer> newLottoNumbers = generateLottoNumbers();
-            Lotto newLotto = new Lotto(newLottoNumbers);
+            Lotto newLotto = new Lotto(newLottoNumbers); // 새 로또 생성
             issuedLotto.add(newLotto);
         }
-        return issuedLotto;
+
+        return issuedLotto; // 발행된 로또 리스트 반환
     }
 
     public void getGameResult() {
-        this.gameResult = new ArrayList<Integer>(6); // Rank : 1~5
+        this.gameResult = new ArrayList<Integer>(6); // i번째 원소에 i등에 당첨된 로또의 수를 저장하는 리스트
+
         for (int i=0; i<6; i++) {
-            gameResult.add(0);
+            gameResult.add(0); // gameResult 리스트 원소를 0으로 초기화
         }
         for (int order=0; order < issuedLotto.size(); order++) {
-            Lotto lotto = issuedLotto.get(order);
-            Rank rank = lotto.calculateRank(winningNumber, bonusNumber);
+            Lotto lotto = issuedLotto.get(order); // rank를 게산할 lotto
+            Rank rank = lotto.calculateRank(winningNumber, bonusNumber); // 해당 lotto의 rank 계산
 
-            if (rank != Rank.NO_PLACE) {
+            if (rank != Rank.NO_PLACE) { // 5등 이상일 경우
                 int place = rank.getPlace();
-                gameResult.set(place, gameResult.get(place)+1);
+                gameResult.set(place, gameResult.get(place)+1); // i번째 원소(i등에 당첨된 로또 개수)를 +1
             }
         }
     }
@@ -77,8 +77,10 @@ public class LottoGame {
 
     public float getProfitRate() {
         getTotalProfit();
+
         this.profitRate = totalProfit / (purchaseAmount*1000);
         profitRate = Math.round((profitRate*10)/10.0); // 소수점 둘째자리에서 반올림
+
         return this.profitRate;
     }
 }

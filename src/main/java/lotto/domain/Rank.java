@@ -11,7 +11,7 @@ public enum Rank {
 
     private final String title;
     private final int place;
-    private int profit;
+    private final int profit;
     private final String detail;
 
     Rank(String title, int place, int profit, String detail) {
