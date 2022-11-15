@@ -18,10 +18,14 @@ public class Application {
         print.purchasedLottos(publishedLottos);
 
         print.askWinningNumber();
-        List<Integer> winningNumbers = new WinningNumbers(Console.readLine()).getNumbers();
+        String numbersInput = Console.readLine();
 
         print.askBonusNumber();
-        int bonusNumber = new BonusNumber(Console.readLine(), winningNumbers).getNumber();
+        String bonusNumberInput = Console.readLine();
+
+        WinningLotto winningLotto = new WinningLotto(numbersInput, bonusNumberInput);
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+        int bonusNumber = winningLotto.getBonusNumber();
 
         LinkedHashMap<String, Integer> winningStats = new WinningStats(winningNumbers, bonusNumber, publishedLottos).getStats();
         print.winningStats(winningStats);
