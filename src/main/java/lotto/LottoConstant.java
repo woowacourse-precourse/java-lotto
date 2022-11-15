@@ -12,6 +12,7 @@ public class LottoConstant {
     public static final String WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE = "[ERROR] 입력 로또 번호가 올바르지 않습니다.";
     public static final String WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE = "[ERROR] 입력 로또 번호가 올바르지 않습니다.";
     public static final String BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE = "[ERROR] 입력 보너스 번호가 숫자가 아닙니다.";
+    public static final String BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE = "[ERROR] 입력 로또 번호가 올바르지 않습니다.";
 
     private LottoConstant() {
     }

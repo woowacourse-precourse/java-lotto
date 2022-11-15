@@ -1,5 +1,6 @@
 package lotto.service;
 
+import static lotto.LottoConstant.BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE;
 import static lotto.LottoConstant.BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
@@ -78,6 +79,10 @@ public class LottoService {
             throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
 
+        int bonusNumber = Integer.parseInt(input);
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
+        }
         return Integer.parseInt(input);
     }
 }
