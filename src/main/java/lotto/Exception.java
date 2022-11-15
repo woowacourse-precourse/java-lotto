@@ -27,7 +27,12 @@ public class Exception {
         }
     }
 
-
+    public void checkBonusNumber(String bonusNumber,String winningNumber) {
+        checkBonusNumberSize(bonusNumber);
+        checkBonusNumberRange(bonusNumber);
+        checkBonusNumberStartZero(bonusNumber);
+        checkBonusNumberOverLap(bonusNumber,winningNumber);
+    }
 
     public void checkBonusNumberSize(String bonusNumber) {
         if (!(bonusNumber.length() >= 1 && bonusNumber.length() <= 2)) {
