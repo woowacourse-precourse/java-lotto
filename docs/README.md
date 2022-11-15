@@ -82,7 +82,6 @@
        f) statistic.java
            - statistic() : 당첨번호 및 보너스번호 정수 변경 등
            - victory_count() : 발매한 로또 줄별 당첨 등수 확인
-           - medal() : 등수별 개수 세기
            - medal_result() : 등수별 당첨 수 및 총 수익률 출력
        g) Lotto.java(로또 번호 검수)
            - validate // 6자리 인가 확인

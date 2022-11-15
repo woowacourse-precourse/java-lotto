@@ -1,7 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class statistic {
@@ -19,36 +21,27 @@ public class statistic {
     System.out.println("\n당첨 통계\n---");
     //
     String[] normal_number_table = normal_number.split(",");
-    int[] new_normal_number_table = Arrays.stream(normal_number_table).mapToInt(Integer::parseInt).toArray();
+    List<Integer> new_normal_number_table = Arrays.stream(normal_number_table).map(Integer::parseInt).collect(Collectors.toList());
     int new_bonus_number = Integer.parseInt(bonus_number);
     //
     victory_count(new_normal_number_table, new_bonus_number,pick_member);
     medal_result(result, input_price);
   }
-  //각 줄의 숫자별 포함 개수
-  private void victory_count(int[] new_normal_number_table, int new_bonus_number, List<List<Integer>> pick_member){
+  //당첨 수 확인
+  private void victory_count(List<Integer> new_normal_number_table, int new_bonus_number, List<List<Integer>> pick_member){
     for(List<Integer> line : pick_member){
-      int cnt_normal_number = 0;
-      int cnt_bonus_number = 0;
-      //
-      if(line.contains(new_normal_number_table[0])) cnt_normal_number++;
-      if(line.contains(new_normal_number_table[1])) cnt_normal_number++;
-      if(line.contains(new_normal_number_table[2])) cnt_normal_number++;
-      if(line.contains(new_normal_number_table[3])) cnt_normal_number++;
-      if(line.contains(new_normal_number_table[4])) cnt_normal_number++;
-      if(line.contains(new_normal_number_table[5])) cnt_normal_number++;
-      if(line.contains(new_bonus_number)) cnt_bonus_number++;
-      //
-      medal(cnt_normal_number, cnt_bonus_number);
+      int dang_chum = intersection(line, new_normal_number_table).size();
+      if(dang_chum == 6) result[4]++;
+      if(line.contains(new_bonus_number) && dang_chum == 5) result[3]++;
+      if(dang_chum >= 3) result[dang_chum - 3]++;
     }
   }
-  //각 줄별 당첨 수
-  private void medal(int cnt_normal_number, int cnt_bonus_number){
-    if(cnt_normal_number == 3) result[0]++;
-    else if(cnt_normal_number == 4) result[1]++;
-    else if(cnt_normal_number == 5 && cnt_bonus_number == 1) result[3]++;
-    else if(cnt_normal_number == 5) result[2]++;
-    else if(cnt_normal_number == 6) result[4]++;
+  //교집합
+  private List<Integer> intersection(List<Integer> left_side, List<Integer> right_side){
+    List<Integer> result = new ArrayList<>();
+    result.addAll(left_side);
+    result.retainAll(right_side);
+    return result;
   }
   //최종 통계 및 출력
   private void medal_result(int[] input_result, String ratio){
