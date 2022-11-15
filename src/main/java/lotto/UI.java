@@ -30,9 +30,9 @@ public class UI {
         return Lotto_numbers;
     }
 
-    private void Answer_number_validate(String Input) {
+    private void Number_validate(String Lotto_Number_Input) {
         try {
-            Integer number = Integer.valueOf(Input);
+            Integer number = Integer.valueOf(Lotto_Number_Input);
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException();}
         }catch(Exception e){
