@@ -9,9 +9,13 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Lotto[] lottos = new Lotto[10];
+        try {
+            lottos = new Lotto[numberOfLotto()];
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
 
-        Lotto[] lottos = new Lotto[numberOfLotto()];
-        
+        }
         for (int i = 0; i < lottos.length; i++) {
             lottos[i] = new Lotto(makeRandomNumbers());
         }
@@ -67,10 +71,13 @@ public class Application {
     private static int numberOfLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         String inputStringMoney = Console.readLine();
-        if(!isNumeric(inputStringMoney)){
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+        int money;
+        try {
+            money = Integer.parseInt(inputStringMoney);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
-        int money = Integer.parseInt(inputStringMoney);
+
         if(money < 0 || money%1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
         }
