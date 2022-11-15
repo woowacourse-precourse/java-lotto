@@ -80,12 +80,11 @@ public class Result {
         }
         return total;
     }
-    public void printResult(Map<ResultType,Integer> allResult){
-        System.out.println(ResultType.THREE.getDetail() + " - " + allResult.get(ResultType.THREE) + "개");
-        System.out.println(ResultType.FOUR.getDetail() + " - " + allResult.get(ResultType.FOUR) + "개");
-        System.out.println(ResultType.FIVE.getDetail() + " - " + allResult.get(ResultType.FIVE) + "개");
-        System.out.println(ResultType.FIVEPLUS.getDetail() + " - " + allResult.get(ResultType.FIVEPLUS) + "개");
-        System.out.println(ResultType.SIX.getDetail() + " - " + allResult.get(ResultType.SIX) + "개");
+    public void printResult(Map<ResultType,Integer> result){
+        for(ResultType resultType: ResultType.values()){
+            if(resultType!=ResultType.NOWINNING)
+                System.out.println(resultType.getDetail()+ " - "+result.get(resultType)+"개");
+        }
     }
 
 }
