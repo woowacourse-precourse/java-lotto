@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -7,19 +8,19 @@ public class Game {
     public static final Integer maximumLottoNumber = 45;
     public static final Integer numberToDraw = 6;
 
-    private Lotto winningLotto;
+    private List<Integer> winningNumbers = new ArrayList<>();
     private Integer bonus = 0;
 
     public Game(){
 
     }
 
-    public Lotto getWinningLotto() {
-        return winningLotto;
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 
-    public void setWinningLotto(List<Integer> winningNumbers){
-        winningLotto = new Lotto(winningNumbers);
+    public void setWinningNumbers(List<Integer> winningNumbers) {
+        this.winningNumbers = winningNumbers;
     }
 
     public Integer getBonus(){
@@ -37,7 +38,7 @@ public class Game {
     }
 
     private void validateBonusByDistinction(Integer bonus){
-        if (winningLotto.countBonus(bonus) > 0) throw new IllegalArgumentException();
+        if (winningNumbers.contains(bonus)) throw new IllegalArgumentException();
     }
 
 

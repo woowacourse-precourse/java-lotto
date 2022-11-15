@@ -23,7 +23,7 @@ class GameTest {
     @Test
     public void setBonusDuplicated(){
         Game game = new Game();
-        game.setWinningLotto(List.of(1, 2, 3, 4, 5, 6));
+        game.setWinningNumbers(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> game.setBonus(3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
