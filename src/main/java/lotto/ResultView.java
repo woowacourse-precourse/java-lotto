@@ -2,21 +2,25 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.utils.Messages.PRINT_BONUS_MESSAGE;
+import static lotto.utils.Messages.PRINT_NOT_BONUS_MESSAGE;
+import static lotto.utils.Messages.PRINT_PROFIT_MESSAGE;
+import static lotto.utils.Messages.PRINT_PURCHASE_COUNT_MESSAGE;
+import static lotto.utils.Messages.PRINT_RANK_MATCHCOUNT_MESSAGE;
+import static lotto.utils.Messages.PRINT_RANK_WINMONEY_AND_COUNT_MESSAGE;
+import static lotto.utils.Messages.PRINT_RESULT_START_MESSAGE;
+
 public class ResultView {
 
-    private static final String PRINT_RANK_MATCHCOUNT_MESSAGE = "%d개 일치";
-    private static final String PRINT_RANK_WINMONEY_AND_COUNT_MESSAGE = " (%d원) - %d개\n";
-    private static final String PRINT_NOT_BALL_MESSAGE = "";
-    private static final String PRINT_BALL_MESSAGE = ", 보너스 볼 일치";
-    public static final String PRINT_PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다.";
-
-    public void printRandomLottos(List<List<Integer>> lottos) {
+    public static void printRandomLottos(List<List<Integer>> lottos, int purchase) {
+        System.out.printf(PRINT_PURCHASE_COUNT_MESSAGE,purchase);
         for (List<Integer> lotto : lottos) {
             System.out.println(lotto);
         }
     }
 
-    public void printResult(RankResult rankResult) {
+    public static void printResult(RankResult rankResult) {
+        System.out.printf(PRINT_RESULT_START_MESSAGE);
         for (Rank rank : rankResult.getResult().keySet()) {
             int value = rankResult.getResult().get(rank);
             System.out.printf(printRank(rank, value));
@@ -28,19 +32,19 @@ public class ResultView {
         if (!rank.equals(Rank.LOSER)) {
             message.append(String.format(PRINT_RANK_MATCHCOUNT_MESSAGE, rank.getMatchCount()));
             message.append(printBonusNumber(rank));
-            message.append(String.format(PRINT_RANK_WINMONEY_AND_COUNT_MESSAGE, rank.getWinMoney(), count));
+            message.append(String.format(PRINT_RANK_WINMONEY_AND_COUNT_MESSAGE, rank.getStringWinMoney(), count));
         }
         return message.toString();
     }
 
     private static String printBonusNumber(Rank rank) {
         if (rank.equals(Rank.SECOND)) {
-            return PRINT_BALL_MESSAGE;
+            return PRINT_BONUS_MESSAGE;
         }
-        return PRINT_NOT_BALL_MESSAGE;
+        return PRINT_NOT_BONUS_MESSAGE;
     }
 
-    public void printProfit(RankResult rankResult, int money) {
+    public static void printProfit(RankResult rankResult, int money) {
         System.out.printf(PRINT_PROFIT_MESSAGE, rankResult.getProfit(money));
     }
 }
