@@ -61,7 +61,7 @@ public class InputNumber {
     static boolean isDuplicate(List<Integer> integratedWinningNumber) throws IllegalArgumentException {
         Set<Integer> duplicationCheck = new HashSet<>(integratedWinningNumber);
         if (duplicationCheck.size() == integratedWinningNumber.size()) {
-            return true;
+            return false;
         }
         throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스번호 내 중복이 있습니다.");
     }
