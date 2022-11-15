@@ -79,7 +79,7 @@ public class LottoGame {
         Message.printBonusNumber();
         bonusBall = Integer.parseInt(Console.readLine());
         Lotto lotto = new Lotto(winNumber);
-        lotto.hasDuplicatedLottoNumberWithBonusNumber(winNumber, bonusBall);
+        lotto.validateBonusNumber(winNumber, bonusBall);
     }
 
     // 로또 번호, 승리 숫자를 비교하는 메서드

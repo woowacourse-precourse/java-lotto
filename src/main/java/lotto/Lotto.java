@@ -22,7 +22,7 @@ public class Lotto {
             }
         }
 
-        if (checkNumberRange(numbers)) {
+        if (checkWinNumberRange(numbers)) {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
@@ -37,7 +37,7 @@ public class Lotto {
         return false;
     }
 
-    private boolean checkNumberRange(List<Integer> numbers) {
+    private boolean checkWinNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (!(1 <= number && number <= 45)) {
                 return true;
@@ -51,12 +51,28 @@ public class Lotto {
 
 
 
-
-
-    public void hasDuplicatedLottoNumberWithBonusNumber(List<Integer> numbers, int bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
+    public void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (checkBonusNumberRange(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR]");
         }
+
+        if (hasDuplicatedLottoNumberWithBonusNumber(numbers, bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
+
+    public boolean hasDuplicatedLottoNumberWithBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkBonusNumberRange(int bonusNumber) {
+        if (1 <= bonusNumber && bonusNumber <= 45) {
+            return true;
+        }
+        return false;
     }
 
 }
