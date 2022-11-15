@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import static lotto.utils.Validation.hasDuplicatedNumber;
+import static lotto.utils.Validation.isNumbersInCorrectRange;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +21,9 @@ public class Lotto {
         }
         if (hasDuplicatedNumber(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복되는 번호가 존재합니다.");
+        }
+        if (!isNumbersInCorrectRange(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
