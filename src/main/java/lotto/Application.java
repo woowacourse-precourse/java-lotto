@@ -1,9 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Application {
     public static void Error(String ErrorType){
@@ -19,10 +21,11 @@ public class Application {
         }
         return Amount;
     }
-    public static void PrintPurchaseResult(int Amount){
+    public static int PrintPurchaseResult(int Amount){
         int NumberOfGame = Amount/1000;
         System.out.println();
         System.out.println(NumberOfGame + "개를 구매했습니다.");
+        return NumberOfGame;
     }
     public static List<Integer> setWinningNumber(){
         System.out.println();
@@ -37,10 +40,23 @@ public class Application {
         }
         return WinningNumber;
     }
-    public static void UI(){
+    public static List<Lotto> MakeGame(int NumberOfGame){
+        List<Lotto> AllGame = new ArrayList<>();
+        List<List<Integer>> GameNumberTemp= new ArrayList<>();
 
+        for(int i = 0; i < NumberOfGame; i++){
+            GameNumberTemp.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Lotto TempLotto = new Lotto(GameNumberTemp.get(i));
+            AllGame.add(TempLotto);
+        }
+
+        return AllGame;
+    }
+    public static void Game(){
+        PrintPurchaseResult(EnterAmount());
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Game();
     }
 }
