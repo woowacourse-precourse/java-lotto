@@ -10,6 +10,7 @@ import static lotto.domain.Rank.*;
 public class Statistics {
     private static final int PERCENTAGE_VALUE = 100;
     private static final char PERCENTAGE_MARK = '%';
+    private static final int RECORD_COUNT = 1;
     private static final String EARNINGS_RATE_MARK = "%.1f";
     private Map<Rank, Integer> rankRecord = new TreeMap<>() {{
         put(FIRST_PLACE, 0);
@@ -30,7 +31,7 @@ public class Statistics {
     }};
 
     public void record(Rank rank) {
-        rankRecord.put(rank, rankRecord.get(rank) + 1);
+        rankRecord.put(rank, rankRecord.get(rank) + RECORD_COUNT);
     }
 
     public Map<Rank, Integer> getRankRecord() {
