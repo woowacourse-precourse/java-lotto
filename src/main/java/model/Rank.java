@@ -18,15 +18,7 @@ public enum Rank {
         this.prize = prize;
     }
 
-    public int getCorrectCount() {
-        return correctCount;
-    }
-
     public int getPrize() {
         return prize;
-    }
-
-    public String getStringPrize() {
-        return String.format("%,d", prize);
     }
 }
