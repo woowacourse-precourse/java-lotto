@@ -16,7 +16,8 @@ public class LottoController {
 		try {
 			LottoTickets lottoTickets = perchaseLottoTickets();
 			Lotto lotto = new Lotto(LottoNumbersGenerator.generate(InputView.lottoNumbers()));
-			LottoBonus lottoBonus = new LottoBonus(LottoBonusGenerator.generate(InputView.bonusNumber()));
+			LottoBonus lottoBonus = new LottoBonus(LottoBonusGenerator.generate(InputView.bonusNumber()),
+				lotto.getNumbers());
 
 			Stat stat = getStat(lottoTickets, lotto, lottoBonus);
 			OutputView.printLottoStat(stat.getStat());
