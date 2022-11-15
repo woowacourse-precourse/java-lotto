@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -29,8 +30,8 @@ public class Application {
         }
 
         Lotto.checkBuyAmount(amount);
-        amount = amount/1000;
-        List<List<Integer>> lottos = Lotto.generateLotto(amount);
+        Integer lottoTicketNumber = amount/1000;
+        List<List<Integer>> lottos = Lotto.generateLotto(lottoTicketNumber);
 
         //로또 당첨 번호 입력 받기
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -44,6 +45,10 @@ public class Application {
         //보너스 번호 validity check
         firstPlace.validBonus(bonus);
 
-        
+        //places: [5등,4등,3등,2등,1등]
+        List<Integer> places = firstPlace.countWins(lottos, bonus);
+
+        firstPlace.printStats(places,amount);
+
     }
 }
