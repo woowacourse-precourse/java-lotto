@@ -22,4 +22,5 @@ class NumberParserTest {
         assertThatThrownBy(() -> new NumberParser(List.of(46, 2, 4, 5, 17, 51)))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

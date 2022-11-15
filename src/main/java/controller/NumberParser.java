@@ -5,63 +5,63 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class NumberParser {
-    int bonusNumber;
-    List<Integer> winningNumbers = new ArrayList<>();
-    public void setWinningNumbers(String rawNumbers) {
 
+
+    /**
+     * NumberParserTest.java 테스트용 생성자
+     * @param winningNumbers 당첨 번호 리스트
+     */
+    public NumberParser(List<Integer> winningNumbers) {
+        validate(winningNumbers);
+    }
+
+    /**
+     * NumberParserTest.java 테스트용 생성자
+     * @param number 보너스 번호
+     */
+    public NumberParser(int number){
+        validate(number);
+    }
+
+    public NumberParser() { }
+
+    public List<Integer> setWinningNumbers(String rawNumbers) {
+        List<Integer> winningNumbers = new ArrayList<>();
         String[] splittedNumbers = rawNumbers.split(",");
         try {
             for (String number : splittedNumbers) {
                 winningNumbers.add(Integer.parseInt(number));
             }
-            checkException(winningNumbers);
-            System.out.println(winningNumbers);
+            validate(winningNumbers);
+            return winningNumbers;
         }catch(Exception e){
             System.out.println("임시 에러: 숫자를 입력해야 한다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public void setBonusNumber(String rawNumber){
+    public int setBonusNumber(String rawNumber){
+        int bonusNumber;
         try {
             bonusNumber = Integer.parseInt(rawNumber);
-            System.out.println(bonusNumber);
+            return bonusNumber;
         } catch(Exception e) {
             System.out.print("임시 에러: 숫자를 입력해야 한다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public int getBonusNumber(){
-        return bonusNumber;
-    }
-
-    public List<Integer> getWinningNumbers(){
-        return winningNumbers;
-    }
-    public NumberParser(List<Integer> numbers) {
-        winningNumbers = numbers;
-        checkException(winningNumbers);
-    }
-
-    public NumberParser(int number){
-        bonusNumber = number;
-        checkException(number);
-    }
-
-    public NumberParser(){}
-
-    public void checkException(List<Integer> numbers) {
-        if(numbers.size() != NumericData.NUMBER_AMOUNT.getNumericValue()){
+    public void validate(List<Integer> winningNumbers) {
+        if(winningNumbers.size() != NumericData.NUMBER_AMOUNT.getNumericValue()){
             System.out.println("임시에러: 숫자 6개만 넣어야한다.");
             throw new IllegalArgumentException();
         }
-        for(int number : numbers) {
-            checkException(number);
+        for(int number : winningNumbers) {
+            validate(number);
         }
     }
 
-    public void checkException(int number) {
+    public void validate(int number) {
         if(number < NumericData.MIN_NUMBER.getNumericValue()
             || number > NumericData.MAX_NUMBER.getNumericValue()){
             System.out.println("임시에러: 1부터 45사이의 숫자여야한다.");

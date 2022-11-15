@@ -1,15 +1,14 @@
 package controller;
 
-import data.WinningData;
 import java.util.List;
 
 public class ResultPrinter {
-    List<WinningData> winningData;
+    List<MatchResult> winningData;
 
-    public ResultPrinter(List<WinningData> data){
+    public ResultPrinter(List<MatchResult> data){
         winningData = data;
     }
-    public static void printResult(int amount){
+    public void printResult(int amount){
         int money = 0;
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -21,11 +20,12 @@ public class ResultPrinter {
         printProfitRate();
     }
 
-    public static void printFifthPrize(){
-        System.out.println("3개 일치 :");
+    public void printFifthPrize(){
+        System.out.print("3개 일치 :");
     }
 
-    public static void printFourthPrize(){
+    public void printFourthPrize(){
+        System.out.print("4개 일치 : ");
 
     }
 

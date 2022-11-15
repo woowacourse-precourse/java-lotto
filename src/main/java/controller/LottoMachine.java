@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.ArrayList;
 import lotto.Lotto;
 import data.InputGuideData;
-import data.WinningData;
 
 /**
  * 로또 프로그램의 전체적인 진행을 맡는 클래스
  */
 public class LottoMachine {
-    private final NumberParser numberParser = new NumberParser();
-    private List<WinningData> winningData = new ArrayList<>(); // 몇개의 숫자가 일치하고 보너스 숫자가 있는지 확인하는 리스트
+
+    private List<MatchResult> winningData = new ArrayList<>(); // 몇개의 숫자가 일치하고 보너스 숫자가 있는지 확인하는 리스트
+    private List<Integer> winningNumbers = new ArrayList<Integer>();
+    private int bonusNumber;
     private List<Lotto> lottos = new ArrayList<>();
     public void start(){
         inputCash();
-        inputWinningNumbers();
-        inputBonusNumber();
+        inputNumbers();
         countLottoNumber();
         printWinningDataToPrize();
     }
@@ -28,15 +28,19 @@ public class LottoMachine {
         lottos = cashReader.publishLotto();
     }
 
-
-    public void inputWinningNumbers() {
+    public void inputNumbers(){
+        NumberParser numberParser = new NumberParser();
+        inputWinningNumbers(numberParser);
+        inputBonusNumber(numberParser);
+    }
+    public void inputWinningNumbers(NumberParser numberParser) {
         InputGuideData.INPUT_NUMBER.printData();
-        numberParser.setWinningNumbers(inputRawData());
+        winningNumbers = numberParser.setWinningNumbers(inputRawData());
     }
 
-    public void inputBonusNumber() {
+    public void inputBonusNumber(NumberParser numberParser) {
         InputGuideData.INPUT_BONUS.printData();
-        numberParser.setBonusNumber(inputRawData());
+        bonusNumber = numberParser.setBonusNumber(inputRawData());
     }
 
     public String inputRawData(){
@@ -52,9 +56,9 @@ public class LottoMachine {
         int winningCount;
         boolean isHavingBonus;
         for(Lotto lotto : lottos){
-            winningCount = lotto.getNumberOfWins(numberParser.getWinningNumbers()); // 당첨번호와 일치하는 로또 번호 갯수 저장
-            isHavingBonus = lotto.isHavingBonusNumber(numberParser.getBonusNumber()); // 보너스번호와 일치하는지 여부 저장
-            winningData.add(new WinningData(winningCount, isHavingBonus));
+            winningCount = lotto.getNumberOfWins(winningNumbers); // 당첨번호와 일치하는 로또 번호 갯수 저장
+            isHavingBonus = lotto.isHavingBonusNumber(bonusNumber); // 보너스번호와 일치하는지 여부 저장
+            winningData.add(new MatchResult(winningCount, isHavingBonus));
         }
     }
 
@@ -62,7 +66,8 @@ public class LottoMachine {
      * 당첨 내역을 출력
      */
     public void printWinningDataToPrize(){
-
+        ResultPrinter resultPrinter = new ResultPrinter(winningData);
+        resultPrinter.printResult(lottos.size());
     }
     /**
      * 수익률 계산
