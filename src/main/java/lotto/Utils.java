@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Utils {
@@ -48,6 +49,15 @@ public class Utils {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(String.valueOf(ErrorCode.INVALID_SIZE));
         }
+    }
+
+    public static List<Integer> convertStringToIntList(String strs) {
+        List<Integer> result = new ArrayList<>();
+
+        for (String str : strs.split(",")) {
+            result.add(convertStringToInt(str));
+        }
+        return result;
     }
 
 }

@@ -8,9 +8,17 @@ public class Service {
     private static Customer customer;
 
     public static void start() {
-        money = UserInterface.readMoney();
-        customer = new Customer(Utils.convertStringToInt(money));
-        customer.purchaseLotto();
-        UserInterface.printLottoNumbers(customer.getLottoNumbers());
+        try {
+            money = UserInterface.readMoney();
+            customer = new Customer(Utils.convertStringToInt(money));
+            customer.purchaseLotto();
+            UserInterface.printLottoNumbers(customer.getLottoNumbers());
+            winNumbers = UserInterface.readWinNumbers();
+            customer.setWinNumbers(new Lotto(Utils.convertStringToIntList(winNumbers)));
+            bonusNumber = UserInterface.readBonusNumber();
+            customer.setBonusNumber(Utils.convertStringToInt(bonusNumber));
+        } catch (Exception e) {
+            System.out.print("[ERROR]" + e.toString());
+        }
     }
 }
