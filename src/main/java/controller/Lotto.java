@@ -13,7 +13,6 @@ public class Lotto {
         validate(numbers);
         duplicate(numbers);
         this.numbers = numbers;
-        numbers.sort(Comparator.naturalOrder());
     }
 
     private void validate(List<Integer> numbers) {
