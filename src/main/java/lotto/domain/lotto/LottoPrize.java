@@ -40,8 +40,8 @@ public enum LottoPrize {
     @Override
     public String toString() {
         if (hasBonus) {
-            return String.format("%d개 일치, 보너브 볼 일치 (%s원)", count, moneyFormat);
+            return String.format("%d개 일치, 보너스 볼 일치 (%s원)", count, moneyFormat);
         }
-        return String.format("%d개 일치, (%s원)", count, moneyFormat);
+        return String.format("%d개 일치 (%s원)", count, moneyFormat);
     }
 }
