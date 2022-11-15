@@ -5,6 +5,8 @@ import java.util.List;
 import lotto.utils.CheckInput;
 
 public class Lotto {
+    public static final String ERROR_INVALID_LOTTO_LENGTH = "[ERROR] 입력되는 로또값은 6자리여야 합니다.";
+    public static final String ERROR_INVALID_LOTTO_RANGE = "[ERROR] 당첨번호는 1부터 45 사이의 숫자여야 합니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -14,8 +16,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자이어야합니다.");
+            throw new IllegalArgumentException(ERROR_INVALID_LOTTO_LENGTH);
         }
+        for (int number : numbers) {
+            if (number < 1 || number > 45)
+                throw new IllegalArgumentException(ERROR_INVALID_LOTTO_RANGE);
+        }
+
         CheckInput.checkInputLottoDuplicate(numbers);
 
     }
