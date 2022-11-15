@@ -13,27 +13,27 @@ public class WinningNumber {
 		while (splitter.hasMoreTokens()) {
 			String token = splitter.nextToken();
 			if (!token.matches(ONLY_INTEGER_SERIES)) {
-				throw new IllegalArgumentException("알맞은 숫자가 아닙니다.");
+				throw new IllegalArgumentException(ERROR_NUMERIC);
 			}
 
 			if (Integer.parseInt(token) == ZERO) {
-				throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+				throw new IllegalArgumentException(ERROR_ZERO);
 			}
 
 			if (Integer.parseInt(token) > MAX_NUMBER) {
-				throw new IllegalArgumentException("45보다 큰 숫자는 입력할 수 없습니다.");
+				throw new IllegalArgumentException(ERROR_MAX_NUMBER);
 			}
 		}
 
 		if (hasDuplicatedNum(convertToSet(winningNumber))) {
-			throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+			throw new IllegalArgumentException(ERROR_DUPLICATE);
 		}
 	}
 
 	private static StringTokenizer splitWinningNumber(String winningNumber) {
 		StringTokenizer splitter = new StringTokenizer(winningNumber, DELIMITER);
 		if (splitter.countTokens() != LOTTO_NUMBER_SIZE) {
-			throw new IllegalArgumentException("구분자가 쉼표가 아닙니다.");
+			throw new IllegalArgumentException(ERROR_NOT_COMMA);
 		}
 		return splitter;
 	}

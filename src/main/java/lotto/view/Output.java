@@ -18,7 +18,7 @@ public class Output {
 
 	public static void printLotto(List<Lotto> lotteryTickets) {
 		for (Lotto lotteryTicket : lotteryTickets) {
-			System.out.println(Arrays.toString(lotteryTicket.getLotto()));
+			System.out.println(lotteryTicket.getLotto());
 		}
 	}
 

@@ -15,13 +15,13 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		if (numbers.size() != LOTTO_NUMBER_SIZE) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_SIZE);
 		}
 	}
 
 	private void validateDuplicate(List<Integer> numbers) {
 		if(numbers.stream().distinct().count() != numbers.size()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ERROR_DUPLICATE);
 		}
 	}
 
@@ -29,11 +29,15 @@ public class Lotto {
 		return numbers.contains(integer);
 	}
 
-	public int[] getLotto() {
-		return numbers.stream().mapToInt(Integer::intValue).toArray();
+	public List<Integer> getLotto() {
+		return numbers;
 	}
 
 	public int size() {
 		return numbers.size();
+	}
+
+	public int get(int i) {
+		return numbers.get(i);
 	}
 }

@@ -2,8 +2,6 @@ package lotto.mytest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +21,7 @@ public class GeneratorTest {
 	void sortSixNumber() {
 		Lotto lotto = generator.createLottery();
 		for (int i = 0; i < lotto.size() - 1; i++) {
-			//assertTrue(lotto.get(i) < lotto.get(i + 1));
+			assertTrue(lotto.get(i) < lotto.get(i + 1));
 		}
 	}
 }

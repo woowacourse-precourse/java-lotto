@@ -23,20 +23,24 @@ public class Operation {
 	}
 
 	public void start() {
-		int ticketCount = Input.enterMoney();
-		Output.printTicketCount(ticketCount);
+		try {
+			int ticketCount = Input.enterMoney();
+			Output.printTicketCount(ticketCount);
 
-		List<Lotto> lotteryTickets = LotterySeller.sellLottery(ticketCount);
-		Output.printLotto(lotteryTickets);
+			List<Lotto> lotteryTickets = LotterySeller.sellLottery(ticketCount);
+			Output.printLotto(lotteryTickets);
 
-		List<Integer> winningLotto = Lists.newArrayList(Input.enterWinningNumber());
-		int bonusNumber = Input.enterBonusNumber();
+			List<Integer> winningLotto = Lists.newArrayList(Input.enterWinningNumber());
+			int bonusNumber = Input.enterBonusNumber();
 
-		WinningLotto winningLottoResult = new WinningLotto(winningLotto, bonusNumber);
-		HashMap<Integer, Integer> result = winningLottoResult.produceResult(lotteryTickets);
-		Output.printResult(result);
+			WinningLotto winningLottoResult = new WinningLotto(winningLotto, bonusNumber);
+			HashMap<Integer, Integer> result = winningLottoResult.produceResult(lotteryTickets);
+			Output.printResult(result);
 
-		Long earningMoney = Prize.getTotalPrizeMoney(result);
-		Output.printEarningRate(ticketCount * 1000, earningMoney);
+			Long earningMoney = Prize.getTotalPrizeMoney(result);
+			Output.printEarningRate(ticketCount * 1000, earningMoney);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
