@@ -1,6 +1,8 @@
 package lotto;
 
 import static constance.Values.*;
+import static lotto.Game.*;
+
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -17,10 +19,23 @@ public class User {
     private float lotteryStat;
 
     public User(int amount) {
-        this.setLotteryCount(amount);
-        this.makeLotteries();
+        init(amount);
+    }
+
+    public User(String input) {
+        int amount;
+        amount=checker.checkAmountInput(input);
+        init(amount);
+    }
+
+    private void init(int amount) {
+        checker.checkNegative(amount);
+        checker.checkPayment(amount);
+        checker.checkRemain(amount);
+        setLotteryCount(amount);
+        makeLotteries();
         results = new ArrayList<>();
-        this.setResultsReady();
+        setResultsReady();
         winnings = 0;
     }
 
