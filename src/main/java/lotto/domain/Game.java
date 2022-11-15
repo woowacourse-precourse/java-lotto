@@ -34,6 +34,25 @@ public class Game {
         this.winningResults = new LottoWinningResult();
     }
 
+    public LottoRank compareLottoNumberAndWinningNumber(Lotto lottoNumber) {
+        int totalCorrect = 0;
+        List<Integer> numbers = lottoNumber.getLottoNumbers();
+
+        for (int index = 0; index < LOTTO_NUMBERS_COUNT; index++) {
+            if (winningNumbers.contains(numbers.get(index))) {
+                totalCorrect += 1;
+            }
+        }
+        return LottoRank.getRank(totalCorrect, haveBonusNumber(numbers));
+    }
+
+    public boolean haveBonusNumber(List<Integer> numbers) {
+        if (numbers.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
+
     public double computeRateOfReturn() {
         double totalMoney = 0;
         for (LottoRank rank : LottoRank.values()) {
