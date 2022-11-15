@@ -60,8 +60,8 @@ public class Person {
         return totalPrize;
     }
 
-    private float getReturnRate() {
-        return Math.round((sumPrize()/lottoResults.size())*10/10.0);
+    public float getReturnRate() {
+        return sumPrize()/(lottos.size()*LottoConstant.PRICE.getValue())*100;
     }
 
     public HashMap<LottoPrize, Integer> getLottoResult() {
