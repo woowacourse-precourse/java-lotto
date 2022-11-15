@@ -3,6 +3,8 @@ package lotto.management;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class LottoNumberConfirm {
     private final int INDEX_ADJUSTMENT_VALUE = 3;
@@ -18,6 +20,7 @@ public class LottoNumberConfirm {
     private final int bonusNumber;
 
     private List<Integer> ticketResult;
+
     LottoNumberConfirm(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
         ticketResult = new ArrayList<>();
         init();
@@ -34,7 +37,7 @@ public class LottoNumberConfirm {
         return ticketResult;
     }
 
-    public void checkTicket(){
+    public void checkTicket() {
         for (List<Integer> oneTicket : numberIntegration) {
             int matchNumbers = countMatchNumbers(oneTicket);
             if (checkMinimumQualification(matchNumbers)) {
@@ -44,8 +47,10 @@ public class LottoNumberConfirm {
     }
 
     private int countMatchNumbers(List<Integer> oneTicket) {
-        oneTicket.retainAll(winningNumbers);
-        return oneTicket.size();
+        return oneTicket.stream()
+                .filter(ticket -> winningNumbers.stream().anyMatch(Predicate.isEqual(ticket)))
+                .collect(Collectors.toList())
+                .size();
     }
 
     private void putTicketResult(int matchNumbers, List<Integer> oneTicket) {
