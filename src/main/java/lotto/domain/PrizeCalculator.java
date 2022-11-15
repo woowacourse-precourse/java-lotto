@@ -14,24 +14,24 @@ public class PrizeCalculator {
     private final Map<PrizeStatistic, Integer> prizeCount;
 
     public PrizeCalculator() {
-        this.totalPrizeAmount = 0;
+        this.totalPrizeAmount = LottoStatistic.INITIAL_VALUE.getValue();
         this.prizeCount = new EnumMap<>(PrizeStatistic.class);
         for (PrizeStatistic prizeType : PrizeStatistic.values()) {
-            prizeCount.put(prizeType, 0);
+            prizeCount.put(prizeType, LottoStatistic.INITIAL_VALUE.getValue());
         }
     }
 
     public void getResultForLotto(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
         int matchingCount = compareWinningNumbers(lotto, winningNumbers);
         boolean doesBonusMatch = false;
-        if (matchingCount == LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue() - 1) {
+        if (matchingCount == PrizeStatistic.FIVE_MATCH.getMatchingNumbers()) {
             doesBonusMatch = lotto.doesContainNumber(bonusNumber);
         }
         this.totalPrizeAmount += getPrizeAmount(matchingCount, doesBonusMatch);
     }
 
     public int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
-        int count = 0;
+        int count = LottoStatistic.INITIAL_VALUE.getValue();
         for (int number : winningNumbers) {
             if (lotto.doesContainNumber(number)) {
                 count++;
@@ -41,7 +41,7 @@ public class PrizeCalculator {
     }
 
     public long getPrizeAmount(int numberOfMatches, boolean doesBonusMatch) {
-        long prizeAmount = 0;
+        long prizeAmount = LottoStatistic.INITIAL_VALUE.getValue();
         for (PrizeStatistic prizeType : PrizeStatistic.values()) {
             if (prizeType.getMatchingNumbers() == numberOfMatches && prizeType.geBonus() == doesBonusMatch){
                 recordPrizeResult(prizeType);
@@ -66,6 +66,6 @@ public class PrizeCalculator {
     }
 
     public double calculateProfitRate(long initialMoney) {
-        return ((double)totalPrizeAmount / (double)initialMoney) * 100;
+        return ((double)totalPrizeAmount / (double)initialMoney) * LottoStatistic.PROFIT_RATE_MULTIPLIER.getValue();
     }
 }

@@ -98,6 +98,17 @@ public class PrizeCalculatorTest {
     }
 
     @Test
+    @DisplayName("5개 일치 + 보너스일치 하나인 경우의 로또 결과를 출력한다.")
+    void getResultStringForLottoOne5MatchPlusBonus() {
+        PrizeCalculator prizeCalculator = new PrizeCalculator();
+        prizeCalculator.getResultForLotto(new Lotto(List.of(12,11,3,7,8,9)), List.of(7,8,9,10,11,12), 3);
+        prizeCalculator.printPrizeResult();
+        assertThat(output()).contains("당첨 통계", "3개 일치 (5,000원) - 0개", "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 0개", "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                "6개 일치 (2,000,000,000원) - 0개");
+    }
+
+    @Test
     @DisplayName("일치가 없는 경우의 로또 결과를 출력한다.")
     void getResultStringForLottoNoMatch() {
         PrizeCalculator prizeCalculator = new PrizeCalculator();
