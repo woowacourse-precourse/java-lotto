@@ -1,7 +1,10 @@
 package lotto.utils;
 
 import static lotto.utils.Converter.convertToIntegerList;
-import static lotto.utils.Constants.*;
+import static lotto.utils.Constants.LOTTO_PRICE;
+import static lotto.utils.Constants.LOTTO_MAX;
+import static lotto.utils.Constants.LOTTO_MIN;
+import static lotto.utils.Constants.COUNT_OF_NUMBERS_IN_LOTTO;
 
 import java.util.List;
 import java.util.regex.Pattern;
