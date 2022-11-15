@@ -129,5 +129,25 @@ class ValidationUtilTest {
                     .hasMessageContaining(NUMBER_BLANK);
         }
     }
-    
+
+    @Test
+    @DisplayName("당첨 번호에 중복된 값이 들어오면 예외가 발생한다.")
+    void 당첨_번호_중복_테스트() throws Exception {
+        //given
+        ValidationUtil validationUtil = new ValidationUtil();
+        Method method = validationUtil.getClass().getDeclaredMethod("validateDuplicate", String[].class);
+        method.setAccessible(true);
+
+        //when
+        String[] wrongNums = {"1", "2", "3", "4", "5", "5"};
+
+        //then
+        try {
+            method.invoke(validationUtil, new Object[]{wrongNums});
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NUMBER_DUPLICATE);
+        }
+    }
 }
