@@ -18,11 +18,15 @@ public class Consumer {
         lottos = new ArrayList<>(List.of(lotto));
     }
 
+    Consumer() {
+        lottos = new ArrayList<>();
+    }
+
     public static void buyLotto() {
         LottoConsoleIo.printRequestPurchase();
         String inputValue = LottoConsoleIo.scanInputValue();
         ValidCheck.formatCheckPrice(inputValue);
-        for (int i = 0; i < Integer.parseInt(inputValue); i++) {
+        for (int i = 0; i < Integer.parseInt(inputValue)/LOTTO_PRICE; i++) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
         LottoConsoleIo.printNoOfLotto(lottos);
