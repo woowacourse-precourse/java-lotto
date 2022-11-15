@@ -55,11 +55,9 @@ public class OutputMessageGeneratorTest {
     }
 
     @DisplayName("`총 수익률은 [수익률]%입니다.`를 반환한다")
-    @ParameterizedTest
-    @ValueSource(doubles = {35.189, 100},
-            strings = {"총 수익률은 35.2%입니다.", "총 수익률은 100.0%입니다"})
-    void getYieldMessageTest(double yield, String expected) {
-        assertThat(getYieldMessage(yield))
-                .isEqualTo(expected);
+    @Test
+    void getYieldMessageTest() {
+        assertThat(getYieldMessage("32.5"))
+                .isEqualTo("총 수익률은 32.5%입니다.");
     }
 }

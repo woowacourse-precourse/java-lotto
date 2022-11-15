@@ -35,11 +35,10 @@ public enum OutputView {
 
     private static void printTotalRankCountMessage(Map<Rank, Integer> rankCounts) {
         OutputMessageGenerator.getTotalRankCountMessage(rankCounts)
-                .stream()
                 .forEach(System.out::println);
     }
 
-    private static void printYieldMessage(double yield) {
+    private static void printYieldMessage(String yield) {
         System.out.printf(OutputMessageGenerator.getYieldMessage(yield));
     }
 }

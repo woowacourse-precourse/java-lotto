@@ -1,9 +1,11 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class TotalResult {
     private static final int DEFAULT_RANK_COUNT = 0;
+    private static final DecimalFormat yieldFormat = new DecimalFormat("###,###.#");
     private final JackpotBonus jackpotBonus;
     private final List<Lotto> lotteries;
     private final Map<Rank, Integer> rankCounts;
@@ -29,16 +31,17 @@ public class TotalResult {
         return rankCounts;
     }
 
-    public double getYield() {
+    public String getYield() {
         if (lotteries.size() == 0) {
-            return 0;
+            return yieldFormat.format(0);
         }
 
         int sumOfRewards = Arrays.stream(Rank.values())
                 .mapToInt(this::rewardPerRank)
                 .sum();
 
-        return (double) sumOfRewards / (lotteries.size() * LottoIssuer.MONEY_UNIT) * 100;
+        double yield = (double) sumOfRewards / (lotteries.size() * LottoIssuer.MONEY_UNIT) * 100;
+        return yieldFormat.format(yield);
     }
 
     private int rewardPerRank(Rank rank) {

@@ -24,16 +24,15 @@ public class TotalResultTest {
 
     @DisplayName("각 등수에 당첨된 로또의 개수를 반환한다.")
     @Test
-    void getRankCountsByEnumMap() {
+    void getRankCountsTest() {
         Map<Rank, Integer> expected = getExpected();
         assertThat(totalResult.getRankCounts()).isEqualTo(expected);
     }
 
-    @DisplayName("수익률을 구한다.")
+    @DisplayName("수익률을 반환한다")
     @Test
     void getYield() {
-        Map<Rank, Integer> rankCounts = getExpected();
-        assertThat(totalResult.getYield(rankCounts)).isEqualTo("29,022,214.3");
+        assertThat(totalResult.getYield()).isEqualTo("29,022,214.3");
     }
 
     private static List<Lotto> getLotteries() {
