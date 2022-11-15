@@ -1,7 +1,14 @@
 package lotto;
 
+import lotto.config.LottoConfig;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            LottoConfig.config().play();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR]" + e.getMessage());
+        }
     }
 }
