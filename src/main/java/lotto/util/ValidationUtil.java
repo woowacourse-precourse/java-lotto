@@ -3,7 +3,7 @@ package lotto.util;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import static lotto.constant.ErrorOutputMessage.*;
+import static lotto.constant.message.ErrorOutputMessage.*;
 import static lotto.constant.LottoNumber.*;
 
 public class ValidationUtil {

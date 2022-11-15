@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.domain.LottoPrize;
+import lotto.domain.LottoPurchase;
+import lotto.domain.LottoWinningNumber;
 import lotto.util.MessageUtil;
 
 public class LottoPlay {

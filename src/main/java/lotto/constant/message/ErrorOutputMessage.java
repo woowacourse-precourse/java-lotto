@@ -1,4 +1,6 @@
-package lotto.constant;
+package lotto.constant.message;
+
+import lotto.constant.LottoNumber;
 
 public final class ErrorOutputMessage {
 

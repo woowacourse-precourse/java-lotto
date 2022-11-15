@@ -1,5 +1,7 @@
-package lotto;
+package lotto.domain;
 
+import lotto.domain.LottoPrize;
+import lotto.domain.LottoWinningNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
