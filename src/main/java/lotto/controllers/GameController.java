@@ -1,8 +1,11 @@
 package lotto.controllers;
 
 import lotto.applications.GameService;
+import lotto.domains.Lotto;
 import lotto.view.Input;
 import lotto.view.Output;
+
+import java.util.List;
 
 public class GameController {
     private static GameController INSTANCE;
@@ -22,6 +25,8 @@ public class GameController {
         final int money = Input.inputPurchaseLottoValue();
         final int numberOfLotto = gameService.getNumberOfLotto(money);
         opening(numberOfLotto);
+
+        final List<Lotto> userBoughtLotteries = gameService.createLotteries(numberOfLotto);
     }
 
     private void opening(int numberOfLotto) {
