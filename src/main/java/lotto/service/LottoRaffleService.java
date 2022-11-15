@@ -6,8 +6,7 @@ import lotto.model.LottoRaffleRecord;
 import lotto.model.LottoWinning;
 
 import java.util.*;
-
-import static lotto.config.Constants.LottoPrizeFilter.NOT_ALLOWED_RECORD_PRIZE;
+import java.util.stream.Collectors;
 
 public class LottoRaffleService {
 
@@ -20,33 +19,46 @@ public class LottoRaffleService {
     }
 
     public LottoRaffleRecord raffle(List<Lotto> lottos) {
-        lottos.forEach(lotto -> recordPrize(lotto.getNumbers()));
+        lottos.forEach(lotto -> recordMatchPrize(lotto.getNumbers()));
         return lottoRaffleRecord;
     }
 
-    private void recordPrize(List<Integer> lottoNumbers) {
-        int matchCount = checkLottoNumbers(lottoNumbers);
+    private void recordMatchPrize(List<Integer> lottoNumbers) {
+        int matchCount = checkMatchedNumbers(lottoNumbers);
         boolean matchBonus = checkBonusNumber(lottoNumbers);
 
-        String prize = LottoPrizeRules.findByMatchAndBonus(matchCount, matchBonus).name();
-
-        if (checkRecordAllowed(prize)) {
-            lottoRaffleRecord.updatePrizeRecord(prize);
+        List<LottoPrizeRules> result = findPrize(matchCount, matchBonus);
+        if (!result.isEmpty()) {
+            lottoRaffleRecord.updatePrizeRecord(result.get(0));
         }
     }
 
-    private int checkLottoNumbers(List<Integer> lottoNumbers) {
-        return (int) lottoNumbers.stream().filter(lottoWinning.getWinLotto().getNumbers()::contains).count();
+    public List<LottoPrizeRules> findPrize(int count, boolean bonus) {
+        List<LottoPrizeRules> result = findCountAndBonusMatch(count, bonus);
+        if (!result.isEmpty()) {
+            return result;
+        }
+        return findCountMatch(count);
+    }
+
+    private List<LottoPrizeRules> findCountMatch(int count) {
+        return Arrays.stream(LottoPrizeRules.values())
+                .filter(prize -> prize.getMatchCount() == count)
+                .collect(Collectors.toList());
+    }
+
+    private List<LottoPrizeRules> findCountAndBonusMatch(int count, boolean bonus) {
+        return Arrays.stream(LottoPrizeRules.values())
+                .filter(prize -> prize.getMatchCount() == count && prize.getBonus() == bonus)
+                .collect(Collectors.toList());
+    }
+
+    private int checkMatchedNumbers(List<Integer> lottoNumbers) {
+        List<Integer> winningNumbers = lottoWinning.getWinLotto().getNumbers();
+        return (int) lottoNumbers.stream().filter(winningNumbers::contains).count();
     }
 
     private boolean checkBonusNumber(List<Integer> lottoNumbers) {
         return lottoNumbers.contains(lottoWinning.getWinBonus());
-    }
-
-    private boolean checkRecordAllowed(String prize) {
-        if (NOT_ALLOWED_RECORD_PRIZE.contains(prize)) {
-            return false;
-        }
-        return true;
     }
 }
