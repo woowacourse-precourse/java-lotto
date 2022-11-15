@@ -375,4 +375,46 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
     }
+
+    @Nested
+    class GetThisRankingsAmountTest{
+
+        String input = "4 3 2 1 5";
+        Map<Integer, Integer> winningCounts = getWinningCountFromInput(input);
+
+        @Test
+        void getThisRankingsAmount_case1(){
+            int ranking = 1;
+            int output = 4;
+            assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
+        }
+
+        @Test
+        void getThisRankingsAmount_case2(){
+            int ranking = 2;
+            int output = 3;
+            assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
+        }
+
+        @Test
+        void getThisRankingsAmount_case3(){
+            int ranking = 3;
+            int output = 2;
+            assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
+        }
+
+        @Test
+        void getThisRankingsAmount_case4(){
+            int ranking = 4;
+            int output = 1;
+            assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
+        }
+
+        @Test
+        void getThisRankingsAmount_case5(){
+            int ranking = 5;
+            int output = 5;
+            assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
+        }
+    }
 }
