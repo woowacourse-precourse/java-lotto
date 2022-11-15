@@ -11,7 +11,7 @@ public class LottoWin {
         for (Lotto lotto : lottos) {
             Prize temp = getPrizeMoney(lotto, luckyNums, bonusNum);
             int tempRank = temp.getRank();
-            if (tempRank != 6) {
+            if (tempRank > 0) {
                 prizeMap.put(tempRank, prizeMap.getOrDefault(tempRank, 0) + 1);
             }
         }

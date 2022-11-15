@@ -2,6 +2,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,8 @@ public class Application {
         try {
             return Integer.parseInt(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMsg());
+            String errorMsg = ErrorMessage.INVALID_INPUT.getErrorMsg();
+            throw new IllegalArgumentException(errorMsg);
         }
     }
 
@@ -61,7 +63,6 @@ public class Application {
 
         for (int i = 0; i < numOfLotto; i++) {
             lottoNums = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, 6);
-            Collections.sort(lottoNums);
             Lotto newLotto = new Lotto(lottoNums);
             newLotto.printNumbers();
             lottos.add(newLotto);
@@ -144,14 +145,15 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = prizeList.size() - 1; i > 0; i--) {
-            int temp = prizeMap.getOrDefault(i + 1, 0);
+            int temp = prizeMap.getOrDefault(i, 0);
             int winNum = prizeList.get(i).getNumOfLucky();
             int price = prizeList.get(i).getPrize();
+            String commaNum = NumberFormat.getInstance(Locale.US).format(price);
             System.out.print(winNum +"개 일치");
             if (price == 30_000_000) {
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.println(" ("+ price + ")원 - " + temp + "개");
+            System.out.println(" ("+ commaNum + ")원 - " + temp + "개");
             total += temp * price;
         }
         return total;
@@ -159,8 +161,7 @@ public class Application {
 
     public static float getProfit(Integer totalPrice, Integer numOfLottos) {
         int initialPrice = numOfLottos * lottoPrice;
-        float profit = 100 * totalPrice / (float) initialPrice;
-        profit = Math.round(profit * 10) / 10;
+        float profit = ((totalPrice) / (float) initialPrice) * 100;
         return profit;
     }
 
