@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -38,6 +39,6 @@ class LottoTest {
                         .hasMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         );
     }
-}
-    // 아래에 추가 테스트 작성 가능
-}
+}  // 아래에 추가 테스트 작성 가능
+
+
