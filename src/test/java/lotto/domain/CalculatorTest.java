@@ -16,18 +16,31 @@ public class CalculatorTest {
     class getEarningRateTest {
 
         @Test
-        @DisplayName("정상 실행 테스트 1")
-        void successTest1() {
-            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 1, 0, 0, 0))).isEqualTo(5000.0);
+        @DisplayName("정상 실행")
+        void success1() {
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 1, 0, 0))).isEqualTo(5000.0);
         }
 
         @Test
-        @DisplayName("배열 크기 오류 테스트")
-        void arraySizeErrorTest() {
-            assertThatIllegalArgumentException()
-                    .isThrownBy(() -> Calculator.getEarningRate(Arrays.asList(1, 2, 3, 4, 5)));
+        @DisplayName("정상 실행")
+        void success2() {
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 0, 1, 2))).isEqualTo(166.7);
         }
-    }
 
+        @Test
+        @DisplayName("정상 실행")
+        void success3() {
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 1, 0, 200))).isEqualTo(24.9);
+        }
+
+        @Test
+        @DisplayName("예외 실행: 배열 크기 오류 테스트")
+        void fail1() {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> Calculator.getEarningRate(Arrays.asList(1, 2, 3, 4, 5, 6, 7)));
+        }
+
+
+    }
 
 }
