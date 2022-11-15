@@ -31,17 +31,31 @@ public class OutputView {
         winningDetails.entrySet().stream()
                 .filter(entry -> entry.getKey() != WinningRank.LAST_PLACE)
                 .forEach(entry -> {
-                    DecimalFormat df = new DecimalFormat(SEPARATOR_PATTERN);
                     if (entry.getKey() == WinningRank.SECOND_PLACE) {
-                        System.out.printf(WINNING_DETAILS_WITH_BONUS_MESSAGE,
-                                entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()),
-                                entry.getValue());
+                        printWinningDetailsWithBonus(entry);
                         return;
                     }
-                    System.out.printf(WINNING_DETAILS_MESSAGE,
-                            entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()),
-                            entry.getValue());
+                    printWinningDetailsWithoutBonus(entry);
                 });
+    }
+
+    private static void printWinningDetailsWithBonus(Map.Entry<WinningRank, Integer> entry) {
+        System.out.printf(WINNING_DETAILS_WITH_BONUS_MESSAGE,
+                entry.getKey().getMatchingCount(),
+                getFormattingPrice(entry.getKey().getWinningPrice()),
+                entry.getValue());
+    }
+
+    private static void printWinningDetailsWithoutBonus(Map.Entry<WinningRank, Integer> entry) {
+        System.out.printf(WINNING_DETAILS_MESSAGE,
+                entry.getKey().getMatchingCount(),
+                getFormattingPrice(entry.getKey().getWinningPrice()),
+                entry.getValue());
+    }
+
+    private static String getFormattingPrice(int winningPrice) {
+        DecimalFormat df = new DecimalFormat(SEPARATOR_PATTERN);
+        return df.format(winningPrice);
     }
 
     public static void printLottoYield(double lottoYield) {
