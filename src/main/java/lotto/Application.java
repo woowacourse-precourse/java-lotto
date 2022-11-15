@@ -49,21 +49,10 @@ public class Application {
         }
     }
     public static void getWinningNumbers(){
-//        System.out.print(winningNumbersStr);
-//
-//        String pattern="^[0-9]*$";
-//        String inputStr=Console.readLine();
-//        if(!Pattern.matches(pattern,inputStr)){
-//            throw new IllegalArgumentException(exceptionHeader+notInteger);
-//        }
-//
-//        int inputMoney = Integer.parseInt(inputStr);
-//        if(inputMoney%1000!=0){
-//            throw new IllegalArgumentException(exceptionHeader+wrongUnit);
-//        }
-//
-//        lottoNumber=inputMoney/1000;
-//        System.out.print(lottoNumber+inputMoneyPrint);
+        System.out.println(winningNumbersStr);
+        Lotto lotto=new Lotto(stringToListInteger(Console.readLine()));
+        System.out.println(bonusNumbersStr);
+        lotto.addBonusNumber(Integer.parseInt(Console.readLine()));
     }
     public static List<Integer> stringToListInteger(String str) {
         String[] strArray = str.split(",");
@@ -78,9 +67,7 @@ public class Application {
 
         getMoney();
         makeRandomNumbers();
-
-        Lotto lotto=new Lotto(stringToListInteger(Console.readLine()));
-
+        getWinningNumbers();
 
     }
 }

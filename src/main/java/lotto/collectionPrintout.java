@@ -8,5 +8,6 @@ public class collectionPrintout {
     static final String exceptionHeader = "[ERROR] ";
     static final String notInteger = "숫자만 입력해주세요.\n";
     static final String wrongUnit = "로또 금액은 1000원 입니다. 1000원 단위로 입력해주세요.\n";
-    static final String wrongNumberSize = "6개의 숫자만 입력해주세요.\n";
+    static final String wrongNumberSize = "6개의 숫자를 입력해주세요.\n";
+    static final String duplicateNumbers = "중복된 숫자는 입력할 수 없습니다.\n";
 }
