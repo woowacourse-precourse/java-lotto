@@ -18,6 +18,7 @@ public class Input {
         for (String item : numbers) {
             winningNumbers.add(Integer.parseInt(item));
         }
+
     }
 
     public static void receiveBonusNumber(List<Integer> winningNumbers) {

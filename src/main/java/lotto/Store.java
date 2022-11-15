@@ -10,7 +10,7 @@ public class Store {
 
     public static void validate(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 천원 단위로 입력해야 합니다.");
         }
     }
 

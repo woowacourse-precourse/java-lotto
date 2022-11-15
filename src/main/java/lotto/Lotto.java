@@ -16,14 +16,19 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리 숫자여야 합니다.");
+        }
+        for (Integer item : numbers) {
+            if (item < 1 || item > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
         }
     }
 
     private void checkRedundancy(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복된 숫자가 없어야 합니다.");
         }
     }
 
@@ -52,7 +57,7 @@ public class Lotto {
         return 8 - sameNumberCount;
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 }
