@@ -3,10 +3,9 @@ package lotto;
 import java.util.*;
 
 public class User {
-    private int purchaseAmount;
-    private int lottoPurchaseCount;
-    private ErrorPrint errorPrint;
-    private List<Lotto> lottos;
+    private final int purchaseAmount;
+    private final int lottoPurchaseCount;
+    private final List<Lotto> lottos;
 
     public User(int purchaseAmount){
         amountValidate(purchaseAmount);
@@ -21,7 +20,7 @@ public class User {
 
     public void amountValidate(int purchaseAmount){
         if (purchaseAmount % 10000 == 0) {
-            throw new IllegalArgumentException(this.errorPrint.AmountErrorNumberError.getErrorMessage());
+            throw new IllegalArgumentException(ErrorPrint.amountModulo.getErrorMessage());
         }
     }
 
