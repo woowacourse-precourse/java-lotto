@@ -1,7 +1,7 @@
 package lotto.domain.statistics;
 
 import static lotto.message.PlaceHistoryMessage.makePlaceHistoryMessage;
-import static lotto.value.RateValue.PERCENT;
+import static lotto.message.YieldRateMessage.makeYieldRateMessage;
 
 public class WinningStatistics {
 
@@ -22,11 +22,7 @@ public class WinningStatistics {
     }
 
     private String yieldRateMessage() {
-        return String.format("총 수익률은 %s입니다.", yieldRate());
-    }
-
-    private String yieldRate() {
-        return String.format("%,.1f%s", yieldRate.rate(), PERCENT.getRateChar());
+        return makeYieldRateMessage(yieldRate).getMessage();
     }
 
     public String getMessage() {
