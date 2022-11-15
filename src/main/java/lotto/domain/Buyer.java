@@ -1,11 +1,16 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Buyer {
     private int money;
     private List<List<Integer>> lottos;
+    
+    public Buyer() {
+        lottos = new ArrayList<List<Integer>>();
+    }
     
     public void setMoney(int money) {
         this.money = money;
