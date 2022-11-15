@@ -22,4 +22,8 @@ public class PurchasingLottoList {
 
         this.numberOfTicket = money / 1000;
     }
+
+    public int getNumberOfTicket() {
+        return numberOfTicket;
+    }
 }
