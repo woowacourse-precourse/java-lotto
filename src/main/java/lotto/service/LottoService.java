@@ -40,8 +40,7 @@ public class LottoService {
     }
 
     private void validLottoNumbers(String input) {
-        Arrays.stream(input.split(","))
-                .forEach(this::checkNumeric);
+        checkForm(input);
     }
 
     private void validBonusNumber(String input, Lotto lotto) {
@@ -80,6 +79,12 @@ public class LottoService {
     private void checkOverlap(int bonusNumber, Lotto winningLotto) {
         if (winningLotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_LOTTO_NUMBER_OVERLAP.getMessage());   // 입력받은 값이 당첨 번호와 중복되는 경우
+        }
+    }
+
+    private void checkForm(String input) {
+        if (!input.matches("[[1-9]+[0-9]*,]+[1-9]+[0-9]*")) {
+            throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_LOTTO_UNCONFORMABLE_FROM.getMessage());   // 입력받은 값이 숫자와 ,로 이루어지지 않은 경우
         }
     }
 }
