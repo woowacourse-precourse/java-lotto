@@ -85,4 +85,12 @@ public class Game {
         }
         return winGames;
     }
+
+    public void printResult(List<Integer> winGames) {
+        System.out.println("당첨 통계\n---");
+        for (Prize prize: Prize.values()) {
+            int count = Collections.frequency(winGames, prize.getWinning());
+            System.out.printf("%d개 일치 (%,d원) - %d개\n", prize.getWinning(), prize.getPrizeMoney(), count);
+        }
+    }
 }
