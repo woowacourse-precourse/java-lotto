@@ -1,12 +1,12 @@
 package lotto.lotto;
 
+import lotto.AllLottoMessage;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private static final String INVALIDATE_NUMBER_SIZE_MESSAGE = "[ERROR] 로또 번호는 6개만 가능합니다.";
-    private static final String INVALIDATE_DUPLICATION_MESSAGE = "[ERROR] 로또 번호는 중복될 수 없습니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -17,7 +17,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(INVALIDATE_NUMBER_SIZE_MESSAGE);
+            throw new IllegalArgumentException(AllLottoMessage.INVALIDATE_NUMBER_SIZE.getMessage());
         }
     }
     // TODO: 추가 기능 구현
@@ -25,7 +25,7 @@ public class Lotto {
         Set<Integer> nonDuplicationNumbers = new HashSet<>(numbers);
 
         if (nonDuplicationNumbers.size() != 6) {
-            throw new IllegalArgumentException(INVALIDATE_DUPLICATION_MESSAGE);
+            throw new IllegalArgumentException(AllLottoMessage.INVALIDATE_DUPLICATION.getMessage());
         }
     }
 
