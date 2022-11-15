@@ -10,5 +10,7 @@ public class WinningNumberCompare {
     public void winningNumberCompareControl(User user){
         String winningNumber = winningNumberCompareUI.takeWinningNumber();
         LottoResult lottoResult = new LottoResult(winningNumber);
+        String bonusNumber = winningNumberCompareUI.takeBonusNumber();
+        lottoResult.setBonusNumber(bonusNumber);
     }
 }

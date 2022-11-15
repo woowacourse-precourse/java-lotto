@@ -7,6 +7,7 @@ public class LottoResult {
     private static final int MIN_WINNING_NUMBER = 1;
     private static final int MAX_WINNING_NUMBER = 45;
     private Set<Integer> winningNumbers;
+    private int bonusNumber;
 
     public LottoResult(String winningNumber){
         validate(winningNumber);
@@ -18,7 +19,16 @@ public class LottoResult {
         return winningNumbers;
     }
 
-    public void validate(String winningNumber){
+    public void setBonusNumber(String bonusNumber) {
+        //validateBonusNumber(bonusNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
+    }
+
+    public int getBonusNumber(){
+        return bonusNumber;
+    }
+
+    private void validate(String winningNumber){
         validatePattern(winningNumber);
         validateNumberRange(winningNumber);
     }
@@ -48,6 +58,12 @@ public class LottoResult {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.");
         }
     }
+
+    private void validateBonusNumber(String bonusNumber){
+
+    }
+
+
 
     private Set<Integer> splitter(String winningNumber){
         String[] numberInputs = winningNumber.split(",");
