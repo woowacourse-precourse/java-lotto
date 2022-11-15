@@ -1,13 +1,33 @@
 package lotto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Comparator;
 import java.text.NumberFormat;
 import java.lang.IllegalArgumentException;
+import java.lang.Exception;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 enum ranking {
     FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH
+}
+
+enum ErrorMessage {
+    INVALID_NOTANUMBER("Input is not a number"),
+    INVALID_INPUTARGSNUM("Invalid number of input arguments"),
+    INVALID_DUPLICATED("Input has Duplicated number");
+    final private String ErrMes;
+    public String print(){
+        return ErrMes;
+    }
+    private ErrorMessage(String ErrMes){
+        this.ErrMes = "[ERROR] "+ ErrMes;
+    }
 }
 public class Application {
     static int inputmoney;
@@ -34,7 +54,7 @@ public class Application {
         try {
             num = Integer.parseInt(str);
         } catch (NumberFormatException ex){
-            throw new IllegalArgumentException(); //Error message 추후 수정
+            System.out.println(ErrorMessage.INVALID_NOTANUMBER.print());
         }
         return num;
     }
@@ -46,8 +66,10 @@ public class Application {
 
     static List<Integer> createLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lottoMin, lottoMax, lottoLength);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> sorted = new ArrayList<>(numbers);
+        sorted.sort(Comparator.naturalOrder());
+
+        return sorted;
     }
 
     static List<Lotto> createLottoList(int lottoNum){
@@ -102,7 +124,7 @@ public class Application {
         System.out.println("4개 일치 (50,000원) - " + lottoRankInfo.get(ranking.FOURTH) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + lottoRankInfo.get(ranking.THIRD) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoRankInfo.get(ranking.SECOND) + "개");
-        System.out.println("6개 일치, 보너스 볼 일치 (2,000,000,000원) - " + lottoRankInfo.get(ranking.FIRST) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + lottoRankInfo.get(ranking.FIRST) + "개");
     }
 
     static int howMuchPrize(HashMap<ranking, Integer> lottoRankInfo){
@@ -114,7 +136,7 @@ public class Application {
     }
 
     static void printEarningRate(int cashprize, int inputmoney){
-        System.out.printf("총 수익률은 %.1f%%입니다", (double)cashprize / inputmoney);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (double)cashprize / inputmoney*100);
     }
 
     public static void main(String[] args) {

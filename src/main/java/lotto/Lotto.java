@@ -12,13 +12,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUTARGSNUM.print());
         }
 
         int len = numbers.size();
         for (int i = len - 1; i >= 0; i--) { //중복 원소 검출
             if (numbers.indexOf(numbers.get(i)) != i)
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.INVALID_DUPLICATED.print());
         }
     }
 
