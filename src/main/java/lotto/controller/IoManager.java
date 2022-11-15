@@ -7,14 +7,19 @@ import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
 
 public class IoManager {
-    private final String PUT_PAYMENT_INPUT_ALERT = "구입금액을 입력해 주세요.";
-    private final String PUT_WINNING_NUMBERS_INPUT_ALERT = "당첨 번호를 입력해 주세요.";
-    private final String PUT_BONUS_NUMBER_INPUT_ALERT = "보너스 번호를 입력해 주세요.";
-    private final String STATISTICS_LABEL = "당첨 통계";
-    private final String DIVIDER = "---";
+    public final String PUT_PAYMENT_INPUT_ALERT = "구입금액을 입력해 주세요.";
+    public final String PUT_WINNING_NUMBERS_INPUT_ALERT = "당첨 번호를 입력해 주세요.";
+    public final String PUT_BONUS_NUMBER_INPUT_ALERT = "보너스 번호를 입력해 주세요.";
+    public final String STATISTICS_LABEL = "당첨 통계";
+    public final String DIVIDER = "---";
 
     private static final DecimalFormat integerWithCommaFormatter = new DecimalFormat("###,###");
     private static final DecimalFormat floatWithCommaAndOneDecimalFormatter = new DecimalFormat("###,###.#");
+
+
+    public String makePaymentAlert(Payment payment) {
+        return payment.getLottoCount() + "개를 구매했습니다.";
+    }
 
     public String makeLottoResultDescription(LottoResult lottoResult) {
         if(lottoResult.equals(LottoResult.MISS)) {
