@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.utils.OutputView;
 
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class Game {
     WinningNumber winningNumber;
 
     public void startGame() {
-        printWinningStatistics();
+        getWinningStatistics();
     }
 
     public Game() {
@@ -18,18 +20,13 @@ public class Game {
         winningNumber = new WinningNumber();
     }
 
-    private void printWinningStatistics() {
+    private void getWinningStatistics() {
         int[] result = countMatch(player.lottoNumbers, winningNumber.getLotto(), winningNumber.getBonusNumber());
-        System.out.println(WINNING_STATISTICS_MESSAGE);
-        System.out.println(Ranking.FifthPlace.printMessage(result[5]));
-        System.out.println(Ranking.FourthPlace.printMessage(result[4]));
-        System.out.println(Ranking.ThirdPlace.printMessage(result[3]));
-        System.out.println(Ranking.SecondPlace.printMessage(result[2]));
-        System.out.println(Ranking.FirstPlace.printMessage(result[1]));
-        printProfitPercent(result);
+        OutputView.printWinningStatistics(result);
+        calcProfitPercent(result);
     }
 
-    private void printProfitPercent(int[] result) {
+    private void calcProfitPercent(int[] result) {
         List<Ranking> prizeSet = List.of(
                 Ranking.FirstPlace,
                 Ranking.SecondPlace,
@@ -44,7 +41,7 @@ public class Game {
             earnedMoney += prizeSet.get(i).calcGetPrizeMoney(result[i + 1]);
         }
         double profit = earnedMoney / playerMoney * 100;
-        System.out.println("총 수익률은 " + String.format("%.1f", profit) + "%입니다.\n");
+        OutputView.printProfitPercent(profit);
     }
 
     private int[] countMatch(List<Lotto> lottoNumbers, Lotto winningNumber, int bonusNumber) {

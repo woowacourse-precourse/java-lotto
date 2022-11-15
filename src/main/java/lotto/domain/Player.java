@@ -1,11 +1,13 @@
-package lotto;
+package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.InputView;
+import lotto.utils.OutputView;
+import lotto.utils.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constant.Constants.*;
+import static lotto.constant.Constants.LOTTO_PRICE;
 
 public class Player {
 
@@ -19,8 +21,8 @@ public class Player {
     }
 
     private void inputCostForLotto() {
-        System.out.println(PURCHASE_MESSAGE);
-        String input = Console.readLine();
+        OutputView.printPurchaseMessage();
+        String input = InputView.getInputValue();
         Validator.validateForIllegalInput(input);
         int cost = Integer.parseInt(input);
         Validator.validateForDividedBy1000(cost);
@@ -32,14 +34,13 @@ public class Player {
         for (int i = 0; i < lottoCount; i++) {
             lottoNumbers.add(new Lotto(Lotto.createLottoNumber()));
         }
-        System.out.println();
-        System.out.println(lottoCount + PURCHASE_CONFIRM_MESSAGE);
+        OutputView.printPurchaseConfirmMessage(lottoCount);
     }
 
     private void printLottoNumber() {
         for (int i = 0; i < lottoNumbers.size(); i++) {
-            lottoNumbers.get(i).printSortedLottoNumber();
+            lottoNumbers.get(i).sortLottoNumber();
         }
-        System.out.println();
+        OutputView.printLineBreak();
     }
 }

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.Lotto.createLottoNumber;
 import static lotto.constant.Constants.*;
+import static lotto.domain.Lotto.createLottoNumber;
 import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {

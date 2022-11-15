@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.InputView;
+import lotto.utils.OutputView;
+import lotto.utils.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.constant.Constants.*;
 
 public class WinningNumber {
 
@@ -28,8 +28,8 @@ public class WinningNumber {
     private void inputWinningNumber() {
         List<Integer> winningNumber = new ArrayList<>();
 
-        System.out.println(WINNING_NUMBER_MESSAGE);
-        String input = Console.readLine();
+        OutputView.printWinningNumberMessage();
+        String input = InputView.getInputValue();
         String[] inputList = input.split(",");
 
         Validator.validateForIllegalInput(inputList);
@@ -40,19 +40,19 @@ public class WinningNumber {
         }
         Validator.validateForRange(winningNumber);
         lotto = new Lotto(winningNumber);
-        System.out.println();
+        OutputView.printLineBreak();
     }
 
     private void inputBonusNumber() {
-        System.out.println(BONUS_NUMBER_MESSAGE);
-        String input = Console.readLine();
+        OutputView.printBonusNumberMessage();
+        String input = InputView.getInputValue();
         Validator.validateForIllegalInput(input);
 
         int bonus = Integer.parseInt(input);
         Validator.validateForDuplicatedNumber(lotto, bonus);
 
         bonusNumber = bonus;
-        System.out.println();
+        OutputView.printLineBreak();
     }
 
 }

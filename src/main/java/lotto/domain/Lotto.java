@@ -1,6 +1,8 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.utils.OutputView;
+import lotto.utils.Validator;
 
 import java.util.*;
 
@@ -34,13 +36,13 @@ public class Lotto {
         return numbers.contains(num);
     }
 
-    public void printSortedLottoNumber() {
+    public void sortLottoNumber() {
         List<Integer> sortedNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.size(); i++) {
             sortedNumbers.add(numbers.get(i));
         }
         Collections.sort(sortedNumbers);
-        System.out.println(sortedNumbers);
+        OutputView.printSortedLottoNumber(sortedNumbers);
     }
 
     public List<Integer> getNumbers() {
