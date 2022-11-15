@@ -8,10 +8,10 @@ public class Counter {
 
     public int inputAmount() {
         System.out.println(inputAmountMessage);
-        return parseInput(Console.readLine());
+        return parseStrToInt(Console.readLine());
     }
 
-    private int parseInput(String input) {
+    private int parseStrToInt(String input) {
         int result;
 
         try {
@@ -19,10 +19,10 @@ public class Counter {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요");
         }
-        return validation(result);
+        return amountValidate(result);
     }
 
-    private int validation(int price) {
+    private int amountValidate(int price) {
         if (price % Lotto.lottoPrice != 0)
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
         return price;
