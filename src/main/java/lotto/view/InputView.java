@@ -1,5 +1,8 @@
 package lotto.view;
 
+import static lotto.ErrorMessage.INVALID_NUMBER_ERROR_MESSAGE;
+import static lotto.ErrorMessage.INVALID_WINNING_NUMBER_ERROR_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +33,7 @@ public class InputView {
 
 	private void validateNumber(String input) {
 		if (!Pattern.matches(ONLY_NUMBER_REGEX, input)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_NUMBER_ERROR_MESSAGE);
 		}
 	}
 
@@ -44,7 +47,7 @@ public class InputView {
 
 	private void validateWinningNumber(String input) {
 		if (!Pattern.matches(WINNING_NUMBER_REGEX, input)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_WINNING_NUMBER_ERROR_MESSAGE);
 		}
 	}
 

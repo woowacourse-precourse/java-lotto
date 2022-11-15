@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.ErrorMessage.INDIVISIBLE_ERROR_MESSAGE;
+import static lotto.ErrorMessage.LITTLE_BUDGET_ERROR_MESSAGE;
 import static lotto.domain.Constants.LOTTO_PRICE;
 
 public class Salesman {
@@ -16,13 +18,13 @@ public class Salesman {
 
 	private void validateLittleBudget(int purchaseBudget) {
 		if (purchaseBudget < LOTTO_PRICE) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(LITTLE_BUDGET_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateIndivisibleBudget(int purchaseBudget) {
 		if (purchaseBudget % LOTTO_PRICE != 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INDIVISIBLE_ERROR_MESSAGE);
 		}
 	}
 }

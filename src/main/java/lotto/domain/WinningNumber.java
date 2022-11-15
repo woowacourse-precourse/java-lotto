@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import static lotto.ErrorMessage.DUPLICATE_WINNING_NUMBER_ERROR_MESSAGE;
+
 public class WinningNumber {
+
 	private final Lotto winningLotto;
 	private final BonusNumber bonusNumber;
 
@@ -12,7 +15,7 @@ public class WinningNumber {
 
 	private void validateDuplicate(Lotto winningLotto, BonusNumber bonusNumber) {
 		if (winningLotto.isMatch(bonusNumber.getNumber())) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(DUPLICATE_WINNING_NUMBER_ERROR_MESSAGE);
 		}
 	}
 
