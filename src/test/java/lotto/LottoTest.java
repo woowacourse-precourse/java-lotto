@@ -3,7 +3,6 @@ package lotto;
 import lotto.domain.Issue;
 import lotto.domain.Lotto;
 import lotto.service.CoincideNumber;
-import lotto.ui.Output;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,6 +35,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호의 숫자와 보너스 번호의 숫자가 중복이 있다면 예외가 발생한다.")
+    @Test
+    void createBonusNumByDuplicatedWinNum() {
+        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> lotto.addBonusNum(6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("당첨번호와 입력번호를 비교한다")
     @Test
     void compareLottoNumber() {
@@ -55,7 +62,7 @@ class LottoTest {
     @DisplayName("당첨통계가 정상적으로 계산되는지 확인한다")
     @Test
     void calculateWinStaticics() {
-        CoincideNumber.plusCountOfRank(2);
+        CoincideNumber.plusCountOfRank(5);
         int count = 1;
         assertThat(count).isEqualTo(CoincideNumber.FIVE_BONUS_COINCIDE.count());
     }
@@ -64,10 +71,9 @@ class LottoTest {
     @Test
     void calculateRevenue() {
         Issue issue = new Issue(5000);
-        double result = 100000/5000;
-        assertThat(result).isEqualTo(issue.calculate(100000));
+        double result = (100000/5000)*100;
+        assertThat(result).isEqualTo(issue.revenue(100000));
     }
 
 
-    // 아래에 추가 테스트 작성 가능
 }
