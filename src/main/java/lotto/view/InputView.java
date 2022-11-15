@@ -21,13 +21,13 @@ public class InputView {
 
     public int getBonusNumber() {
         String input = getUserInput(INPUT_BONUS_NUMBER);
-        System.out.println("");
+        System.out.println();
         return validDate(input);
     }
 
     public List<Integer> getWinningNumbers() {
         String input = getUserInput(INPUT_WINNING_NUMBER);
-        System.out.println("");
+        System.out.println();
         return validSplitDate(input);
     }
 

@@ -19,7 +19,7 @@ public class OutputView {
         for (List<Integer> lottoNumber : lottoNumbers) {
             System.out.println(lottoNumber);
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void printStatistics(Map<Rank, Integer> totalResult) {
@@ -29,7 +29,7 @@ public class OutputView {
 
         for (Rank rank : Rank.values()) {
             System.out.printf(rank.getText(), totalResult.get(rank));
-            System.out.println("");
+            System.out.println();
         }
     }
 

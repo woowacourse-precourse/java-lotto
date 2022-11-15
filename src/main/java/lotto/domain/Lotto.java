@@ -35,12 +35,12 @@ public class Lotto {
 
     private boolean isValidRange(List<Integer> numbers) {
         return numbers.stream()
-                        .noneMatch(number -> number < START_LOTTO_NUMBER || END_LOTTO_NUMBER < number);
+                .noneMatch(number -> number < START_LOTTO_NUMBER || END_LOTTO_NUMBER < number);
     }
 
     private boolean isValidUnique(List<Integer> numbers) {
         return numbers.stream()
-                        .distinct()
-                        .count() == LOTTO_NUMBERS_LENGTH;
+                .distinct()
+                .count() == LOTTO_NUMBERS_LENGTH;
     }
 }

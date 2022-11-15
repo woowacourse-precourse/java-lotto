@@ -5,7 +5,6 @@ import java.util.List;
 public class WinningNumbers {
 
     private final int bonusNumber;
-
     private final List<Integer> lottoNumber;
 
     public WinningNumbers(List<Integer> lottoNumber, int bonusNumber) {
