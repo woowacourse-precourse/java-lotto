@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class NumberMatcherTest {
     @DisplayName("두 리스트를 받아 일치하는 숫자의 개수를 반환한다.")

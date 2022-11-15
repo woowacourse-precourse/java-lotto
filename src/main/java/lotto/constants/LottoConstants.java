@@ -1,7 +1,5 @@
 package lotto.constants;
 
-import org.junit.jupiter.api.Test;
-
 public enum LottoConstants {
     START_NUMBER(1),
     END_NUMBER(45),
