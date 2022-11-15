@@ -61,6 +61,30 @@ class ApplicationTest extends NsTest {
 
     //내가 만든 테스트들
     @Test
+    void 예외_로또구매할금액_숫자가아닌입력() {
+        assertSimpleTest(() -> {
+            runException("asdbkfsa");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_로또구매할금액_로또금액보다작은금액() {
+        assertSimpleTest(() -> {
+            runException("999");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_로또구매할금액_로또금액의배수가아닌금액() {
+        assertSimpleTest(() -> {
+            runException("9200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+
+    @Test
     void 예외_로또번호입력오류_길이초과() {
         assertSimpleTest(() -> {
             runException("10000", "1,2,3,4,5,6,7");
