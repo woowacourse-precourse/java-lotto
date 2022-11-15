@@ -29,10 +29,14 @@ public class LottoResult {
         }
     }
 
-    private List<Integer> scoreBoard = new ArrayList<>();
-    private int winnings;
+    private List<Integer> scoreBoard;
+    private int winningAmount;
 
-    private int compareLottoWinningNumber(List<Integer> lotto, Set<Integer> winningNumbers){
+    public void setScoreBoard(List<List<Integer>> lottos, Set<Integer> winningNumbers){
+
+    }
+
+    public int compareLottoWinningNumber(List<Integer> lotto, Set<Integer> winningNumbers){
         int matches = 0;
 
         for (int number : lotto){
@@ -44,5 +48,8 @@ public class LottoResult {
         return matches;
     }
 
+    public boolean compareLottoBonusNumber(List<Integer> lotto, int bonusNumber){
+        return lotto.contains(bonusNumber);
+    }
 
 }
