@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.common.Error;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,11 +15,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6개 이상이어야 합니다.");
-        }
+        require(numbers.size() != 6, Error.SIZE);
         Set<Integer> set = new HashSet<>(numbers);
-        if (set.size() != 6) throw new IllegalArgumentException("[ERROR] 6개 이상이어야 합니다.");
+        require(set.size() != 6, Error.SIZE);
+    }
+
+    private void require(final boolean condition, final Error error) {
+        if (condition) {
+            throw new IllegalArgumentException(error.getMsg());
+        }
     }
 
     public List<Integer> getNumbers() {

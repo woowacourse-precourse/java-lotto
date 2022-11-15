@@ -41,10 +41,6 @@ public class GameController {
         return service.buy(money);
     }
 
-    private boolean isEmpty(List<Lotto> lottos) {
-        return lottos.isEmpty();
-    }
-
     private void printLn() {
         System.out.println();
     }
@@ -58,12 +54,16 @@ public class GameController {
         lottos.forEach(i -> {
             List<Integer> numbers = i.getNumbers().stream().sorted().collect(Collectors.toList());
             System.out.print("[");
-            for (int j = 0; j < numbers.size() - 1; j++) {
-                System.out.print(numbers.get(j) + ", ");
-            }
+            printNumberList(numbers);
             System.out.print(numbers.get(numbers.size() - 1));
             System.out.println("]");
         });
+    }
+
+    private void printNumberList(List<Integer> numbers) {
+        for (int j = 0; j < numbers.size() - 1; j++) {
+            System.out.print(numbers.get(j) + ", ");
+        }
     }
 
     private String  inputWinnings() {

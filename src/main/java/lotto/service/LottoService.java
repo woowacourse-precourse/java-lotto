@@ -38,14 +38,20 @@ public class LottoService {
             .collect(Collectors.toList());
     }
 
-    public LottoResult getResult(List<Lotto> lottos, String winns, String bonus) {
-        validator.isValidWinAndBonus(winns, bonus);
-        String[] split = winns.split(",");
+    public LottoResult getResult(List<Lotto> lottos, String wins, String bonus) {
+        validator.isValidWinAndBonus(wins, bonus);
+        List<Integer> integerWins = winString2WinInteger(wins);
+        int integerBonus = Integer.parseInt(bonus);
+        List<Integer> result = computer.getResult(lottos, integerWins, integerBonus);
+        return new LottoResult(money, result);
+    }
+
+    private List<Integer> winString2WinInteger(String wins) {
         List<Integer> a = new ArrayList<>();
+        String[] split = wins.split(",");
         for (String s:split) {
             a.add(Integer.parseInt(s));
         }
-        List<Integer> result = computer.getResult(lottos, a, Integer.parseInt(bonus));
-        return new LottoResult(money, result);
+        return a;
     }
 }

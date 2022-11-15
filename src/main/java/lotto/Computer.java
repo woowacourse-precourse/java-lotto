@@ -26,7 +26,6 @@ public class Computer {
 
     private void updatePlaceMap(List<Lotto> lottos, List<Integer> winns, int bonus) {
         for (Lotto lotto : lottos) {
-            List<Integer> numbers = lotto.getNumbers();
             int ranking = lotto.getRanking(winns, bonus);
             Integer integer = placeMap.get(ranking);
             if (isNull(integer)) continue;

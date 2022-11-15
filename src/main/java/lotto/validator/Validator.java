@@ -41,8 +41,8 @@ public class Validator {
         Set<Integer> collect = Arrays.stream(split).map(Integer::parseInt)
             .collect(Collectors.toSet());
         require(collect.size() != 6, Error.FORMAT);
-        collect.stream().forEach(i -> require(i<1, Error.SIZE));
-        collect.stream().forEach(i -> require(i>45, Error.SIZE));
+        collect.forEach(i -> require(i<1, Error.RANGE));
+        collect.forEach(i -> require(i>45, Error.RANGE));
     }
 
     private void isDuplicatedNumber(String winns, String bonus) {
