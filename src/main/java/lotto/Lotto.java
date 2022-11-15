@@ -1,12 +1,15 @@
 package lotto;
 
-import java.util.List;
+import jdk.jshell.execution.Util;
+
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        numbers = sortNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -14,7 +17,22 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if (!(Collections.max(numbers) <= Utility.maxLottoNumber && Collections.min(numbers) >= Utility.minLottoNumber)){
+            throw new IllegalArgumentException();
+        }
+        Set<Integer> distinctNumbers = new HashSet<>(numbers);
+        if(distinctNumbers.size()!= numbers.size()){
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
+    private List <Integer> sortNumbers(List<Integer> numbers){
+        List <Integer> _numbers = new ArrayList<>(numbers);
+        Collections.sort(_numbers);
+        return _numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
