@@ -26,9 +26,9 @@ class MoneyTest {
     }
 
     @Test
-    void getValue_메서드는_Long_타입의_값을_반환한다() {
+    void getAmount_메서드는_Long_타입의_값을_반환한다() {
         Money money = Money.wons(1000L);
-        assertThat(money.getValue()).isEqualTo(1000L);
+        assertThat(money.getAmount()).isEqualTo(1000L);
     }
 
     @Test
@@ -39,7 +39,15 @@ class MoneyTest {
         assertThat(money1.plus(money2)).isEqualTo(new Money(2500L));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} * {1} = {2}")
+    @CsvSource({"1500, 2, 3000", "1000, 100, 100000", "8000, 5, 40000"})
+    void times_메서드는_곱하는_수를_입력받아_곱을_반환한다(long amount, long times, long result) {
+        Money money = Money.wons(amount);
+
+        assertThat(money.times(times)).isEqualTo(Money.wons(result));
+    }
+
+    @ParameterizedTest(name = "{0} / {1} = {2}")
     @CsvSource({"1500, 500, 3", "1000, 1500, 0.6666666666666666", "8000, 5000, 1.6"})
     void divide_메서드는_Money를_입력받아_몫을_반환한다(long amount1, long amount2, double result) {
         Money money1 = Money.wons(amount1);

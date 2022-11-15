@@ -5,26 +5,30 @@ import java.util.Objects;
 public class Money {
     public static final Money ZERO = Money.wons(0);
 
-    private final Long value;
+    private final Long amount;
 
-    public Money(Long value) {
-        this.value = value;
+    public Money(Long amount) {
+        this.amount = amount;
     }
 
-    public static Money wons(long value) {
-        return new Money(value);
+    public static Money wons(long amount) {
+        return new Money(amount);
     }
 
     public Money plus(Money amount) {
-        return new Money(this.value + amount.value);
+        return new Money(this.amount + amount.amount);
+    }
+
+    public Money times(long count) {
+        return new Money(this.amount * count);
     }
 
     public double divide(Money amount) {
-        return this.value / (double) amount.value;
+        return this.amount / (double) amount.amount;
     }
 
-    public Long getValue() {
-        return value;
+    public Long getAmount() {
+        return amount;
     }
 
     public boolean equals(Object o) {
@@ -37,15 +41,15 @@ public class Money {
         }
 
         Money object = (Money) o;
-        return Objects.equals(value.doubleValue(), object.value.doubleValue());
+        return Objects.equals(amount.doubleValue(), object.amount.doubleValue());
     }
 
     public int hashCode() {
-        return Objects.hashCode(value);
+        return Objects.hashCode(amount);
     }
 
     @Override
     public String toString() {
-        return value + "원";
+        return amount + "원";
     }
 }
