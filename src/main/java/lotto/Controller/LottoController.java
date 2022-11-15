@@ -28,7 +28,6 @@ public class LottoController {
         }
     }
     private void setLottoCount(){
-        output.askPurchasePrice();
         lottoData.setCountOfLotto(input.purchasePrice());
     }
 
@@ -52,13 +51,11 @@ public class LottoController {
     }
 
     private void inputWinnerNumber(){
-        output.askWinnerNumber();
         Lotto winnerNumberLotto = new Lotto(input.winnerNumbers());
         lottoData.setWinnerNumber(winnerNumberLotto);
     }
 
     private void inputBonusNumber(){
-        output.askBonusNumber();
         lottoData.setBonusNumber(input.bonusNumber());
     }
 
