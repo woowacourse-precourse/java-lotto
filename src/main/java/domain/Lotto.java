@@ -1,6 +1,8 @@
 package domain;
 
 
+import view.ErrorMessage;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class Lotto {
         validateDuplicate(numbers);
         this.numbers = numbers;
     }
+
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6)
             throw new IllegalArgumentException(ErrorMessage.NOT_SIZE.getErrorMessage());
@@ -24,6 +27,7 @@ public class Lotto {
         if (numbers.size() != numbersOverlap.size())
             throw new IllegalArgumentException(ErrorMessage.HAVE_DUPLICATION.getErrorMessage());
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

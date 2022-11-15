@@ -1,36 +1,37 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Console;
+
+import view.ErrorMessage;
 
 import java.util.List;
 
 public class User {
 
-    private final int inputUserMoney;
+    private final int inputMoney;
 
-    private final int totalLotto;
-    private final List<Lotto> totalLottoNumbers;
+    private final int totalCount;
+    private final List<Lotto> totalNumbers;
 
-    public User(int inputUserMoney, int totalLotto, List<Lotto> totalLottoNumbers) {
-        validateInputUserMoney(inputUserMoney);
-        this.inputUserMoney = inputUserMoney;
-        this.totalLotto = totalLotto;
-        this.totalLottoNumbers = totalLottoNumbers;
+    public User(int inputMoney, int totalCount, List<Lotto> totalNumbers) {
+        validateInputMoney(inputMoney);
+        this.inputMoney = inputMoney;
+        this.totalCount = totalCount;
+        this.totalNumbers = totalNumbers;
     }
 
-    public int getInputUserMoney() {
-        return inputUserMoney;
+    public int getInputMoney() {
+        return inputMoney;
     }
 
-    public List<Lotto> getTotalLottoNumbers() {
-        return totalLottoNumbers;
+    public List<Lotto> getTotalNumbers() {
+        return totalNumbers;
     }
 
-    public int getTotalLotto() {
-        return totalLotto;
+    public int getTotalCount() {
+        return totalCount;
     }
 
-    private void validateInputUserMoney(int inputUserMoney) {
-        if (inputUserMoney % 1000 != 0) throw new IllegalArgumentException(ErrorMessage.NOT_UNIT.getErrorMessage());
+    private void validateInputMoney(int inputMoney) {
+        if (inputMoney % 1000 != 0) throw new IllegalArgumentException(ErrorMessage.NOT_UNIT.getErrorMessage());
     }
 }

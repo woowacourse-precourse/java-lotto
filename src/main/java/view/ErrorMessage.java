@@ -1,4 +1,4 @@
-package domain;
+package view;
 
 public enum ErrorMessage {
     NOT_UNIT("1000단위로 입력해야합니다."),
@@ -10,6 +10,7 @@ public enum ErrorMessage {
 
     private final String errorMessage;
     private final String PREFIX = "[ERROR]";
+
     ErrorMessage(String errorMessage) {
         this.errorMessage = PREFIX + errorMessage;
     }

@@ -1,15 +1,18 @@
 package domain;
 
+import view.ErrorMessage;
+
 import java.util.List;
 
 public class LottoCompany {
 
-    private final List<Integer> lottoWinningNumbers;
-    private final int lottoWinningBonus;
-    public LottoCompany(List<Integer> lottoWinningNumbers ,int lottoWinningBonus) {
-        this.lottoWinningBonus = lottoWinningBonus;
-        validateRange(lottoWinningBonus);
-        this.lottoWinningNumbers = lottoWinningNumbers;
+    private final List<Integer> winningNumbers;
+    private final int winningBonus;
+
+    public LottoCompany(List<Integer> winningNumbers, int winningBonus) {
+        this.winningBonus = winningBonus;
+        validateRange(winningBonus);
+        this.winningNumbers = winningNumbers;
     }
 
     private void validateRange(int lottoWinningBonus) {
@@ -17,11 +20,11 @@ public class LottoCompany {
             throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
     }
 
-    public List<Integer> getLottoWinningNumbers() {
-        return lottoWinningNumbers;
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 
-    public int getLottoWinningBonus() {
-        return lottoWinningBonus;
+    public int getWinningBonus() {
+        return winningBonus;
     }
 }

@@ -1,4 +1,4 @@
-package domain;
+package view;
 
 public enum ResultMessage {
     FIFTH("3개 일치", "5,000", "3"),
@@ -7,25 +7,25 @@ public enum ResultMessage {
     SECOND("5개 일치, 보너스 볼 일치", "30,000,000", "Bonus"),
     FIRST("6개 일치", "2,000,000,000", "6");
     private final String condition;
-    private final String winningCount;
+    private final String winningYield;
 
-    private final String winningNumber;
+    private final String includeCount;
 
-    ResultMessage(String condition, String winningCount, String winningNumber) {
+    ResultMessage(String condition, String winningYield, String includeCount) {
         this.condition = condition;
-        this.winningCount = winningCount;
-        this.winningNumber = winningNumber;
+        this.winningYield = winningYield;
+        this.includeCount = includeCount;
     }
 
     public String getCondition() {
         return this.condition;
     }
 
-    public String getWinningCount() {
-        return this.winningCount;
+    public String getWinningYield() {
+        return this.winningYield;
     }
 
     public String getWinningNumber() {
-        return this.winningNumber;
+        return this.includeCount;
     }
 }
