@@ -72,7 +72,7 @@ public class Model {
 
         for (int temp = 0; temp < prizeRankings.size(); temp++) {
 
-            if (prizeRankings.get(temp) == Ranking.THIRD.getRanking()) {
+            if (prizeRankings.get(temp) == Prize.THIRD.getRanking()) {
                 changedRanking = upRanking(USERS_LOTTOS.get(temp), BONUS_NUMBER);
                 prizeRankings.set(temp, changedRanking);
             }
@@ -83,7 +83,7 @@ public class Model {
     private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
         HashMap<Integer, Integer> numberByRanking = new HashMap<>();
 
-        for (int temp = Ranking.FIRST.getRanking(); temp <= Ranking.FIFTH.getRanking(); temp++) {
+        for (int temp = Prize.FIFTH.getRanking(); temp >= Prize.FIRST.getRanking(); temp--) {
             numberByRanking.put(temp, 0);
         }
 
@@ -95,9 +95,9 @@ public class Model {
     // 5개가 일치한 로또가 보너스 번호가 포함되어 있다면 순위를 올리는 메서드
     private int upRanking (List<Integer> usersLotto, int bonusNumber) {
         if (usersLotto.contains(bonusNumber)) {
-            return Ranking.SECOND.getRanking();
+            return Prize.SECOND.getRanking();
         }
-        return Ranking.THIRD.getRanking();
+        return Prize.THIRD.getRanking();
     }
 
     // 순위 리스트를 받아 Map으로 값을 추가시키는 메서드
@@ -112,10 +112,10 @@ public class Model {
 
     // 일치하는 값을 순위로 변환시키는 메서드
     private int addPrizeRanking(int duplicatedNumber) {
-        if (duplicatedNumber == 3) return Ranking.FIFTH.getRanking();
-        if (duplicatedNumber == 4) return Ranking.FORTH.getRanking();
-        if (duplicatedNumber == 5) return Ranking.THIRD.getRanking();
-        if (duplicatedNumber == 6) return Ranking.FIRST.getRanking();
+        if (duplicatedNumber == 3) return Prize.FIFTH.getRanking();
+        if (duplicatedNumber == 4) return Prize.FORTH.getRanking();
+        if (duplicatedNumber == 5) return Prize.THIRD.getRanking();
+        if (duplicatedNumber == 6) return Prize.FIRST.getRanking();
         return 0;
     }
 
@@ -162,34 +162,22 @@ public class Model {
 
     // 순위 별 당첨금액이 저장된 enum클래스
     private enum Prize {
-        FIRST(2_000_000),
-        SECOND(30_000),
-        THIRD(1_500),
-        FORTH(50),
-        FIFTH(5);
+        FIRST(2_000_000, 1),
+        SECOND(30_000, 2),
+        THIRD(1_500, 3),
+        FORTH(50, 4),
+        FIFTH(5, 5);
 
         final private int prize;
+        final private int ranking;
         private int getPrize() {
             return prize;
         }
-        Prize(int prize) {
-            this.prize = prize;
-        }
-    }
-
-    // 순위가 저장된 enum클래스
-    public enum Ranking {
-        FIRST(1),
-        SECOND(2),
-        THIRD(3),
-        FORTH(4),
-        FIFTH(5);
-
-        final private int ranking;
         private int getRanking() {
             return ranking;
         }
-        Ranking(int ranking) {
+        Prize(int prize, int ranking) {
+            this.prize = prize;
             this.ranking = ranking;
         }
     }
