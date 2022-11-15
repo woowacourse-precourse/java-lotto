@@ -24,9 +24,9 @@ public class StatisticManager {
         yield = winningMoney / (double) playerMoney * 100;
     }
 
-    public void calculateFinalRank(int buyNumber,List<Integer> winningNumbers, int bonusNumber){
+    public void calculateFinalRank(int buyNumber, List<Integer> winningNumbers, int bonusNumber) {
         for (int i = 0; i < buyNumber; i++) {
-            calculateRank(LottoMachine.lottoPaper.get(i),winningNumbers,bonusNumber);
+            calculateRank(LottoMachine.lottoPaper.get(i), winningNumbers, bonusNumber);
         }
     }
 
@@ -46,7 +46,7 @@ public class StatisticManager {
         return intNumbers;
     }
 
-    public int stringToInt(String number){
+    public int stringToInt(String number) {
         return Integer.parseInt(number);
     }
 
@@ -72,8 +72,6 @@ public class StatisticManager {
     private boolean compareBonusNumber(Lotto lotto, int bonusNumber) {
         return lotto.getNumbers().contains(bonusNumber);
     }
-
-
 
 
 }

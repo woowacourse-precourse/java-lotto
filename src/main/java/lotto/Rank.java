@@ -25,13 +25,13 @@ public enum Rank {
     public static Rank valueOf(int countOfMatch, boolean matchBonus) {
         if (countOfMatch == 6)
             return FIRST;
-        else if (countOfMatch == 5 && matchBonus == true)
+        if (countOfMatch == 5 && matchBonus == true)
             return SECOND;
-        else if (countOfMatch == 5 || (countOfMatch == 4 && matchBonus == true))
+        if (countOfMatch == 5 || (countOfMatch == 4 && matchBonus == true))
             return THIRD;
-        else if (countOfMatch == 4 || (countOfMatch == 3 && matchBonus == true))
+        if (countOfMatch == 4 || (countOfMatch == 3 && matchBonus == true))
             return FOURTH;
-        else if (countOfMatch == 3 || (countOfMatch == 2 && matchBonus == true))
+        if (countOfMatch == 3 || (countOfMatch == 2 && matchBonus == true))
             return FIFTH;
         return MISS;
     }

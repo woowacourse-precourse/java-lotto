@@ -19,14 +19,14 @@ public class LottoMachine {
         saveLottoNumbers(lotto);
     }
 
-    public void buyLotto(int buyNumber){
+    public void buyLotto(int buyNumber) {
         for (int i = 0; i < buyNumber; i++) {
             createLottoNumbers();
             viewLottoNumbers(LottoMachine.lottoPaper.get(i));
         }
     }
 
-    public int calculateBuyNumber(int playerMoney){
+    public int calculateBuyNumber(int playerMoney) {
         int buyNumber = playerMoney / 1000;
         System.out.printf("\n%d개를 구매했습니다.\n", buyNumber);
         return buyNumber;

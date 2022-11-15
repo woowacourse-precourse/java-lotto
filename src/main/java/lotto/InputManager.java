@@ -31,9 +31,7 @@ public class InputManager {
     public String inputBonusNumber(List<Integer> winningNumbers) {
         System.out.print("\n보너스 번호를 입력해 주세요.\n");
         String bonusNumber = Console.readLine();
-        exceptionManager.checkBonusNumber(winningNumbers,bonusNumber);
+        exceptionManager.checkBonusNumber(winningNumbers, bonusNumber);
         return bonusNumber;
     }
-
-
 }
