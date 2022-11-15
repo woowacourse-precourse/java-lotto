@@ -32,13 +32,10 @@
 `**util/Validator**`
 - [x]  입력받은 금액의 예외 상황을 확인하는 기능
   - 확인할 조건 : 양수 ?, 1000원 단위 ?
-  - 예외 : `IllegalArgumentException` 발생
 - [x]  보너스 번호 입력에 대한 예외 상황을 확인하는 기능
   - 확인할 조건 : 당첨번호 포함 ?, 양수 ?, 1 ~ 45 사이의 숫자 ?
-  - 예외 : `IllegalArgumentException` 발생
 - [x]  당첨 번호 입력에 대한 예외 상황을 확인하는 기능
   - 확인할 조건 : 양수 ?, 1 ~ 45 사이의 숫자 ?, 중복 ?
-  - 예외 : `IllegalArgumentException` 발생
 
 `**util/LottoGenerator**`
 - [x]  로또를 생성하는 기능
@@ -84,3 +81,6 @@
   - `FIVEWITHBONUS(”5개 일치, 보너스 볼 일치", “30,000,000”, 51)`
   - `SIX(”6개 일치”, “2,000,000,000”, 60)`
   - `computeScore()`
+
+- `error/ErrorMessage` 클래스 : 에러 메세지를 enum으로 정의
+  - `getMessage()`
