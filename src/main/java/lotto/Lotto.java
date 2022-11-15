@@ -15,4 +15,11 @@ public class Lotto {
     public void printNumbers(){
         System.out.println(numbers);
     }
+
+    public boolean containNumbers(int number){
+        if(numbers.contains(number)){
+            return true;
+        }
+        return false;
+    }
 }
