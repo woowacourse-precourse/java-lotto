@@ -18,6 +18,10 @@ class UserTest {
         systemIn("1000");
         user.getBudget();
         assertThat(user.getPublicans()).isEqualTo(1);
+
+        systemIn("1001");
+        assertThatThrownBy(() -> user.getBudget()).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 구입금액은 1000원 단위입니다!");
     }
 
     @Test
