@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class RandomLottoNumbersGenerator {
     private static final int MIN_NUMBER = 1;
@@ -22,11 +20,6 @@ public class RandomLottoNumbersGenerator {
     }
 
     private static List<Integer> generate(int size) {
-        Set<Integer> lottoNumbers = new HashSet<>();
-        while (lottoNumbers.size() != size) {
-            lottoNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
-        }
-
-        return new ArrayList<>(lottoNumbers);
+        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, size));
     }
 }
