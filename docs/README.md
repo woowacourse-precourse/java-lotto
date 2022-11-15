@@ -31,5 +31,11 @@
       - [ ] 입력한 값이 기존 단위와 나눌 때 나눠떨어지는지 검사하는 메소드 - checkIfDivideWithThousand(String)
       - [ ] 로또 번호를 임의로 생성해주는 메소드 - getLotto(List<Lotto>)
    - [ ] 당첨번호와 보너스 넘버를 받고 WinningNumber 객체를 생성하는 메소드 -makeWinningNumber()
-   - [ ] 로또 리스트와 WinningNumber객체를 받고 JudgeMent객체를 생성하고 결과를 출력하는 메소드 -showResult(List<Lotto>,WinningNumber)
-- [ ] 수익률을 계산해주는 메소드
+   - [ ] 전체적인 최종 상금과, 당첨결과를 확인하는 메소드-getResult(List<Lott>,WinningNumber)
+      - [ ] JudgeMent로 부터 얻은 결과 Map에서 결과를 출력해주고, 최종상금을 계산하는 메소드 - getTotalBill(int,JudgeMent)
+         - [ ] 최종 결과를 출력해주는 메소드-showResult(Map<Reward,Integer>, Reward)
+- [ ] 수익률을 계산해주는 메소드 -getRevenuePercent(String,int)
+
+### Lotto.java
+- [ ] Integer리스트에 중복되는 숫자가 있는지 확인하는 메소드 -validateDuplicate(List<Integer>)
+   - [ ] 한 숫자가 한 리스트에 포함되어있는지 확인하는 메소드(같은 인덱스 제외) -checkDuplicate(List<Integer>,int) 
