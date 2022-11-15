@@ -14,20 +14,20 @@ public class LottoResultJudge {
         int correctNum = correspondNumber(userLotto, lotto);
         boolean correspondBonus = correspondBonus(userLotto, bonus);
 
-        if (correctNum == 6) {
-            FIRST.setCount(++count[0]);
-        }
-        if (correctNum == 5 && correspondBonus) {
-            SECOND.setCount(++count[1]);
-        }
-        if (correctNum == 5) {
-            THIRD.setCount(++count[2]);
+        if (correctNum == 3) {
+            FIFTH.setCount(++count[4]);
         }
         if (correctNum == 4) {
             FOURTH.setCount(++count[3]);
         }
-        if (correctNum == 3) {
-            FIFTH.setCount(++count[4]);
+        if (correctNum == 5) {
+            THIRD.setCount(++count[2]);
+        }
+        if (correctNum == 5 && correspondBonus) {
+            SECOND.setCount(++count[1]);
+        }
+        if (correctNum == 6) {
+            FIRST.setCount(++count[0]);
         }
     }
 

@@ -4,6 +4,7 @@ import lotto.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class LottoStore {
     private static int money;
@@ -46,15 +47,11 @@ public class LottoStore {
 
     public void statsLotto() {
         System.out.println("\n당첨통계\n---");
-        System.out.println(LottoResult.FIFTH.getName() + LottoResult.FIFTH.getCount() + "개");
-        System.out.println(LottoResult.FOURTH.getName() + LottoResult.FOURTH.getCount() + "개");
-        System.out.println(LottoResult.THIRD.getName() + LottoResult.THIRD.getCount() + "개");
-        System.out.println(LottoResult.SECOND.getName() + LottoResult.SECOND.getCount() + "개");
-        System.out.println(LottoResult.FIRST.getName() + LottoResult.FIRST.getCount() + "개");
+        Stream.of(LottoResult.values())
+                .forEach(lottoResult -> System.out.println(lottoResult.getName() + lottoResult.getCount() + "개"));
 
-        for(LottoResult lottoResult: LottoResult.values()) {
-            profit += lottoResult.getProfit();
-        }
+        Stream.of(LottoResult.values())
+                .forEach(lottoResult -> profit += lottoResult.getProfit());
 
         System.out.println("총 수익률은 " + ProfitCalculator.getInstance.profitPercent(money, profit) + "%입니다.");
     }
