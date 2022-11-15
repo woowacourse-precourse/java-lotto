@@ -32,12 +32,9 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
         String input = readInput();
-
         final int MONEY = validateMoneyInput(input);
+
         List<Lotto> boughtLottos = new ArrayList<Lotto>();
-
-        System.out.println(MONEY/1000+"개를 구매했습니다.");
-
         boughtLottos = buyLotto(boughtLottos, MONEY);
         printLottos(boughtLottos);
 
@@ -47,20 +44,33 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         input = readInput();
-        int bonusNum = parseInt(input);
-        if (pickedNumbers.contains(bonusNum) || bonusNum < 1 || bonusNum > 45) {
-            throw new IllegalArgumentException("[Error] Number should be in the range of 1 ~ 45");
-        }
 
+        int bonusNum = validateBonusNum(input, pickedNumbers);
         int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
         float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
+
         System.out.printf("총 수익률은 %.1f",rateOfReturn);
         System.out.println("%입니다.");
+
+        return;
     }
 
     public static float getRateOfReturn(int totalIncome, final int MONEY) {
         float rateOfReturn = (float) totalIncome/MONEY * 100;
         return rateOfReturn;
+    }
+
+    public static int validateBonusNum(String input, List pickedNumbers){
+        int bonusNum = parseInt(input);
+
+        if (pickedNumbers.contains(bonusNum)) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        if (bonusNum < 1 || bonusNum > 45){
+            throw new IllegalArgumentException("[ERROR]");
+        }
+
+        return bonusNum;
     }
 
     public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, int bonusNum) {
@@ -113,7 +123,7 @@ public class Application {
             int number = pickedNumbers.get(i);
             count += lotto.matchNumber(number);
         }
-
+        System.out.println(count);
         return count;
     }
 
@@ -185,12 +195,28 @@ public class Application {
         int numberOfLottos = (money / 1000);
 
         for (int i = 0; i < numberOfLottos; i++) {
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            randomNumbers = generateLottoNumbers(randomNumbers);
             Lotto lottoItem = new Lotto(randomNumbers);
             lottos.add(lottoItem);
         }
+        System.out.println("\n"+ numberOfLottos+"개를 구매했습니다.");
 
         return lottos;
+    }
+
+    public static List<Integer> generateLottoNumbers(List<Integer> Randoms){
+        List<Integer> randomNumbers = new ArrayList<Integer>(Randoms);
+
+        randomNumbers.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1-o2;
+            }
+        });
+
+        return randomNumbers;
     }
 
     public static int validateMoneyInput(String input) {
@@ -209,7 +235,8 @@ public class Application {
             int money = Integer.parseInt(input);
             return money;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            System.out.println("[ERROR] wrong input");
+            return 0;
         }
     }
 
