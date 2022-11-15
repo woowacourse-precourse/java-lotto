@@ -8,7 +8,10 @@ import lotto.validate.Validator;
 
 import java.util.List;
 
+import static lotto.util.Message.*;
+
 public class User {
+
     private List<Lotto> lottos;
     private int money;
 
@@ -19,7 +22,7 @@ public class User {
     }
 
     public void inputBuyLottoPrice() {
-        System.out.println(Message.INPUT_BUY_LOTTO_PRICE);
+        System.out.println(INPUT_BUY_LOTTO_PRICE.getMessage());
         String money = Console.readLine();
         Validator.validNumber(money);
         this.money = Integer.parseInt(money);
@@ -31,7 +34,7 @@ public class User {
     }
 
     private void printLottos() {
-        System.out.printf(Message.BUY_LOTTO, lottos.size());
+        System.out.printf(BUY_LOTTO.getMessage(), lottos.size());
         lottos.forEach(System.out::println);
     }
 

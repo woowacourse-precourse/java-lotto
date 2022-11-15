@@ -4,6 +4,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
 
 public class CustomLogger {
+
     public final static Logger LOG = initLog();
 
     private CustomLogger() {

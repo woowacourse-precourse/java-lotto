@@ -8,7 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.util.Message.*;
+
 public class Dealer {
+
     private Lotto lotto;
     private int bonusNumber;
 
@@ -18,7 +21,7 @@ public class Dealer {
     }
 
     public void inputAnswerNumbers() {
-        System.out.print(Message.INPUT_WIN_LOTTO_NUMBER);
+        System.out.print(INPUT_WIN_LOTTO_NUMBER.getMessage());
         String numbers = Console.readLine();
         DealerValidator.validAnswerNumber(numbers);
         List<Integer> lottoNumbers = Arrays.stream(numbers.split(","))
@@ -29,7 +32,7 @@ public class Dealer {
     }
 
     public void inputBonusNumber() {
-        System.out.print(Message.INPUT_BONUS_LOTTO_NUMBER);
+        System.out.print(INPUT_BONUS_LOTTO_NUMBER.getMessage());
         String number = Console.readLine();
         DealerValidator.validNumber(number);
         bonusNumber = Integer.parseInt(number);

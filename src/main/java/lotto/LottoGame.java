@@ -10,6 +10,8 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static lotto.util.Message.*;
+
 public class LottoGame {
     private User user = new User();
     private Dealer dealer = new Dealer();
@@ -50,7 +52,7 @@ public class LottoGame {
     }
 
     private void printMatchResult() {
-        System.out.print(Message.STATS_WIN_LOTTO);
+        System.out.print(STATS_WIN_LOTTO.getMessage());
         for (Map.Entry<Rank, Integer> entry : matchResult.entrySet()) {
             printStatsResult(entry.getKey(), entry.getValue());
         }
@@ -59,7 +61,7 @@ public class LottoGame {
     }
 
     private void printYield() {
-        System.out.printf(Message.YIELD_RESULT, calculateYield());
+        System.out.printf(YIELD_RESULT.getMessage(), calculateYield());
     }
 
     private double calculateYield() {
@@ -74,11 +76,11 @@ public class LottoGame {
 
     private void printStatsResult(Rank rank, int count) {
         if (rank.equals(Rank.SECOND)) {
-            System.out.printf(Message.STATS_RESULT_BONUS, rank.getMatchCount(), priceFommater(rank.getPrice()), count);
+            System.out.printf(STATS_RESULT_BONUS.getMessage(), rank.getMatchCount(), priceFommater(rank.getPrice()), count);
             return;
         }
 
-        System.out.printf(Message.STATS_RESULT, rank.getMatchCount(), priceFommater(rank.getPrice()), count);
+        System.out.printf(STATS_RESULT.getMessage(), rank.getMatchCount(), priceFommater(rank.getPrice()), count);
     }
 
     private String priceFommater(long price) {
