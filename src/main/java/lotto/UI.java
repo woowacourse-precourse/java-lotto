@@ -81,6 +81,8 @@ public class UI {
     }
 
     public void Lotto_Choice_Result_Print(HashMap<Integer, Integer> Lotto_Choice_Result){
+        System.out.println("당첨 통계");
+        System.out.println("---");
         System.out.printf("3개 일치 (5,000원) - %d개%n",Lotto_Choice_Result.get(3));
         System.out.printf("4개 일치 (50,000원) - %d개%n",Lotto_Choice_Result.get(4));
         System.out.printf("5개 일치 (1,500,000원) - %d개%n",Lotto_Choice_Result.get(5));
