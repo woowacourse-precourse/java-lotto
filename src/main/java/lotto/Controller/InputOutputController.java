@@ -47,7 +47,7 @@ public class InputOutputController {
     }
 
     public void calculatedYield(){
-        String yield = calculatedService.calculatedYield(lottoResult);
+        float yield = calculatedService.calculatedYield(lottoResult);
         outputView.printYield(yield);
     }
 }
