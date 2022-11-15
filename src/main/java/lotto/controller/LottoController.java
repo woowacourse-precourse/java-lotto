@@ -7,17 +7,29 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
+    private LottoTicket lottoTicket;
+    private WinningNumber winningNumber;
+    private Winning winning;
+
     public void run() {
         String inputMoney = InputView.inputMoney();
-        LottoTicket lottoTicket = new LottoTicket(inputMoney);
-        OutputView.buyLottoCount(lottoTicket.getTicketCount());
-        OutputView.showLottoTicket(lottoTicket);
+        makeLottoTicket(inputMoney);
 
         String inputWinNumber = InputView.inputWinNumber();
         String inputBonusNumber = InputView.inputBonusNumber();
-        WinningNumber winningNumber = new WinningNumber(inputWinNumber, inputBonusNumber);
+        winningNumber = new WinningNumber(inputWinNumber, inputBonusNumber);
 
-        Winning winning = new Winning(lottoTicket, winningNumber);
+        showStatistics(lottoTicket, winningNumber);
+    }
+
+    public void makeLottoTicket(String inputMoney) {
+        lottoTicket = new LottoTicket(inputMoney);
+        OutputView.buyLottoCount(lottoTicket.getTicketCount());
+        OutputView.showLottoTicket(lottoTicket);
+    }
+
+    public void showStatistics(LottoTicket lottoTicket, WinningNumber winningNumber) {
+        winning = new Winning(lottoTicket, winningNumber);
         winning.checkWinningResult();
         OutputView.winStatistics(winning.getLottoResult());
         OutputView.showRating(winning.getTotalRate());
