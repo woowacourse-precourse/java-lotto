@@ -9,9 +9,10 @@ public class PlayerChoose {
 	public static List<List<Integer>> run(int chance) {
 		List<List<Integer>> playerNumbers = new ArrayList<>();
 		for (int i = 0; i < chance; i++) {
-			playerNumbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+			List<Integer> arr = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			playerNumbers.add(arr);
+			ShowNums.run(arr);
 		}		
 		return playerNumbers;
 	}
-
 }
