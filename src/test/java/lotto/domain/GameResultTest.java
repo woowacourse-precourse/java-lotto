@@ -11,8 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class GameResultTest {
-    static final List<Integer> winningLotto = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-    static final Integer bonusNumber = 20;
+    private static final List<Integer> winningLotto = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+    private static final Integer bonusNumber = 20;
 
     @DisplayName("로또가 당첨 번호와 몇 개 일치하는지 비교한다.")
     @Test

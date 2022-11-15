@@ -20,7 +20,7 @@ class InputTest {
                 () -> assertThat(Input.validatePurchaseAmount(isDivisible)).isEqualTo(isDivisible),
                 () -> assertThatThrownBy(() -> Input.validatePurchaseAmount(isNotDivisible))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.PURCHASE_AMOUNT_ERROR)
+                        .hasMessageContaining(ErrorMessage.PURCHASE_AMOUNT_ERROR.getMessage())
         );
     }
 
@@ -35,16 +35,16 @@ class InputTest {
         assertAll(
                 () -> assertThatThrownBy(() -> Input.validateWiningNumber(strangeNumber))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR),
+                        .hasMessageContaining(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR.getMessage()),
                 () -> assertThatThrownBy(() -> Input.validateWiningNumber(overSizeNumber))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR),
+                        .hasMessageContaining(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR.getMessage()),
                 () -> assertThatThrownBy(() -> Input.validateWiningNumber(outOfRangeNumber))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR),
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR.getMessage()),
                 () -> assertThatThrownBy(() -> Input.validateWiningNumber(duplicatedNumber))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR));
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR.getMessage()));
     }
 
     @DisplayName("보너스 번호의 유효성을 검증하여 예외처리 한다.")
@@ -56,9 +56,9 @@ class InputTest {
         assertAll(
                 () -> assertThatThrownBy(() -> Input.validateBonusNumber(severalNumber))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.BONUS_NUMBER_LENGTH_ERROR),
+                        .hasMessageContaining(ErrorMessage.BONUS_NUMBER_LENGTH_ERROR.getMessage()),
                 () -> assertThatThrownBy(() -> Input.validateBonusNumber(outOfRangeNumber))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR));
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR.getMessage()));
     }
 }

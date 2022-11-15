@@ -18,7 +18,7 @@ public class Input {
 
     public static Integer validatePurchaseAmount(int amount) {
         if (!(amount % Constant.PURCHASE_AMOUNT_UNIT == REMAINDER)) {
-            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_ERROR);
+            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_ERROR.getMessage());
         }
         return amount;
     }
