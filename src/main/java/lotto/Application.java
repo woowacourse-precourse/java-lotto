@@ -46,7 +46,6 @@ public class Application {
         List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
         printRanking(ranking);
         printEarningRate(money, ranking);
-
     }
 
     public static void validate(int money) {
