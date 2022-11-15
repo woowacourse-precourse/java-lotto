@@ -11,6 +11,6 @@ public class RandomLottoGenerateStrategy implements LottoGenerateStrategy {
 
     @Override
     public List<Integer> generateLotto() {
-        return Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER,MAXIMUM_NUMBER,LOTTOSIZE);
+        return Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, LOTTOSIZE);
     }
 }
