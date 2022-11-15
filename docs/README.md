@@ -14,11 +14,11 @@ Prize : 당첨금
 - [ ] 구입 금액 만큼 로또를 발행한다 - `LottoAgency#issue()`
   - [ ] 로또 발행 개수를 계산한다 - `LottoAgency#issueAmount()`
   - [ ] 발행된 로또가 중복되었다면 ***IllegalArgumentException***을 발생시킨다 - `LottoAgency#isDuplicated()`
-- [ ] 당첨 번호를 입력받는다 - `Client#marking()`
+- [ ] 당첨 번호를 입력받는다 - `Client#mark()`
   - [ ] 입력받은 번호를 List<Integer>로 파싱한다 - `Client#numbersToLotto()`
     - [ ] 입력된 당첨 번호가 원하는 포맷이 아니라면 ***IllegalArgumentException***을 발생시킨다 - `Client#lottoValidate()`
   - [ ] 입력된 당첨 번호가 6개가 아니라면 ***IllegalArgumentException***을 발생시킨다 - `Lotto#validate()`
-- [ ] 보너스 번호를 입력받는다 - `Client#bonusMarking()`
+- [ ] 보너스 번호를 입력받는다 - `Client#bonusMar()`
   - [ ] 보너스 번호가 원하는 포맷인지 검사한다 - `Client#bonusValidate()`
     - [ ] 보너스 번호가 숫자가 아니라면 ***IllegalArgumentException***을 발생시킨다 - `Client#isNumber()`
     - [ ] 보너스 번호 길이가 1이 아니라면 ***IllegalArgumentException***을 발생시킨다 - `Client#isBonusLength()`
