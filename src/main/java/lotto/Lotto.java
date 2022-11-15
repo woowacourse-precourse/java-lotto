@@ -16,7 +16,7 @@ public class Lotto {
         }
 
         for (int i=0; i<6; i++) {
-            for(int j=i; j<6; j++) {
+            for(int j=i+1; j<6; j++) {
                 if (numbers.get(i).equals(numbers.get(j))) {
                     throw new IllegalArgumentException();
                 }
