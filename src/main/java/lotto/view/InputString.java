@@ -35,5 +35,4 @@ public enum InputString {
             return "[ERROR] 숫자와 콤마만 입력해주세요.";
         }
     }
-
 }
