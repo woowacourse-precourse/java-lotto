@@ -37,6 +37,10 @@ public enum Rank {
         return commonMatch;
     }
 
+    public String getMoneyFormat() {
+        return money.getMoneyFormat();
+    }
+
     public int getMoneyValue() {
         return money.intValue();
     }
