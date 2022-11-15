@@ -1,4 +1,4 @@
-package lotto.domain.rank;
+package lotto.domain.user;
 
 import lotto.domain.user.Purchase;
 import lotto.exception.InputException;
