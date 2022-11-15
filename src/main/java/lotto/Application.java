@@ -19,8 +19,12 @@ public class Application {
     private static final int LOTTO_NUMBER_LAST_RANGE = 45;
     private static final int LOTTO_NUMBERS_SIZE = 6;
     private static final int NO_OUT_OF_RANGE_SIZE = 0;
-
     private static final int INVALID_BONUS_NUMBER = -1;
+    private static final int FIFTH_PLACE_PRIZE = 5000;
+    private static final int FOURTH_PLACE_PRIZE = 50000;
+    private static final int THIRD_PLACE_PRIZE = 1500000;
+    private static final int SECOND_PLACE_PRIZE = 30000000;
+    private static final int FIRST_PLACE_PRIZE = 2000000000;
 
     public static int getLottoPurchaseMoney() {
         System.out.println(INPUT_REQUEST_MESSAGE.getMessage());
@@ -240,6 +244,15 @@ public class Application {
         System.out.printf(FIRST_PLACE_MESSAGE.getMessage(), winningStats.get(4));
     }
 
+    public static int getProfit(List<Integer> winningStats) {
+        int profit = 0;
+        List<Integer> winningAmount = new ArrayList<>(List.of(FIFTH_PLACE_PRIZE, FOURTH_PLACE_PRIZE, THIRD_PLACE_PRIZE, SECOND_PLACE_PRIZE, FIRST_PLACE_PRIZE));
+        for (int i = 0; i < winningStats.size(); i++) {
+            profit += winningStats.get(i) * winningAmount.get(i);
+        }
+        return profit;
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -257,5 +270,6 @@ public class Application {
         }
         List<Integer> winningStats = getWinningStats(lottery, winningNumbers, bonusNumber);
         printWinningStats(winningStats);
+        int profit = getProfit(winningStats);
     }
 }
