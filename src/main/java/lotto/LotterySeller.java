@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class LotterySeller {
     int numberOfLottoIssued = 0;
@@ -19,6 +20,7 @@ public class LotterySeller {
     public void receiveMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
+        validate(userInput);
         System.out.println();
 
         int money = Integer.parseInt(userInput);
@@ -26,6 +28,12 @@ public class LotterySeller {
             System.out.println("거스름돈: " + money % 1000 + "원");
         }
         numberOfLottoIssued += money / 1000;
+    }
+
+    private void validate(String money) {
+        if (!Pattern.matches("^[0-9]+$", money)) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 문자가 포함되었습니다.");
+        }
     }
 
     public void issueLotto() {
