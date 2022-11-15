@@ -1,19 +1,17 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.model.*;
-import lotto.model.enums.GameMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
-    private Price price;
-    private Lotto lotto;
-    private Lottos lottos;
-    private LuckySix luckySix;
-    private LuckyBonus luckyBonus;
-    private WinningResult winningResult;
-    private Profit profit;
+    private Price userPrice;
+    private Lotto userLotto;
+    private Lottos userLottos;
+    private LuckySix userLuckySix;
+    private LuckyBonus userLuckyBonus;
+    private WinningResult userWinningResult;
+    private Profit userProfit;
 
     public void start() {
         buyLotto();
@@ -26,32 +24,32 @@ public class LottoController {
 
     private void buyLotto() {
         String inputPrice = InputView.getPrice();
-        price = new Price(inputPrice);
+        userPrice = new Price(inputPrice);
     }
 
     private void showTicket() {
-        OutputView.showTicketAmount(price.calculateCount());
-        lottos = new Lottos(price.calculateCount());
-        OutputView.showDrawNumber(lottos);
+        OutputView.showTicketAmount(userPrice.calculateCount());
+        userLottos = new Lottos(userPrice.calculateCount());
+        OutputView.showDrawNumber(userLottos.lottos);
     }
 
     private void pickLuckySix() {
         String inputLuckySix = InputView.getLuckySix();
-        luckySix = new LuckySix(inputLuckySix);
+        userLuckySix = new LuckySix(inputLuckySix);
     }
 
     private void pickLuckyBonus() {
         String inputLuckyBonus = InputView.getLuckyBonus();
-        luckyBonus = new LuckyBonus(inputLuckyBonus);
+        userLuckyBonus = new LuckyBonus(inputLuckyBonus, userLuckySix.luckySix);
     }
 
     private void showWinningResult() {
-        winningResult = new WinningResult(price.calculateCount(), lottos);
-        OutputView.showWinningResult(winningResult.winningResult);
+        userWinningResult = new WinningResult(userPrice.calculateCount(), userLottos.lottos, userLuckySix.luckySix, userLuckyBonus.luckyBonus);
+        OutputView.showWinningResult(userWinningResult.winningResult);
     }
 
     private void showProfit() {
-        profit = new Profit(price.price, winningResult);
-        OutputView.printProfitRate(Profit.profitRate);
+        userProfit = new Profit(userPrice.price, userWinningResult.winningResult);
+        OutputView.printProfitRate(userProfit.profitRate);
     }
 }
