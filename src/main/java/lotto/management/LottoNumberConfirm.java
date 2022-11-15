@@ -1,10 +1,10 @@
-package lotto.controller;
+package lotto.management;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LottoNumberConfirmManagement {
+public class LottoNumberConfirm {
     private final int INDEX_ADJUSTMENT_VALUE = 3;
     private final int INIT_VALUE = 0;
     private final int MINIMUM_QUALIFICATION = 3;
@@ -18,7 +18,7 @@ public class LottoNumberConfirmManagement {
     private final int bonusNumber;
 
     private List<Integer> ticketResult;
-    LottoNumberConfirmManagement(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
+    LottoNumberConfirm(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
         ticketResult = new ArrayList<>();
         init();
         this.numberIntegration = numberIntegration;
@@ -31,13 +31,16 @@ public class LottoNumberConfirmManagement {
     }
 
     public List<Integer> getTicketsResult() {
+        return ticketResult;
+    }
+
+    public void checkTicket(){
         for (List<Integer> oneTicket : numberIntegration) {
             int matchNumbers = countMatchNumbers(oneTicket);
             if (checkMinimumQualification(matchNumbers)) {
                 putTicketResult(matchNumbers, oneTicket);
             }
         }
-        return ticketResult;
     }
 
     private int countMatchNumbers(List<Integer> oneTicket) {
@@ -46,7 +49,6 @@ public class LottoNumberConfirmManagement {
     }
 
     private void putTicketResult(int matchNumbers, List<Integer> oneTicket) {
-
         if (matchNumbers == 5) {
             checkBonusNumber(oneTicket);
         }
