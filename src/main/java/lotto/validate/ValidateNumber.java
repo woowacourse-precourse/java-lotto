@@ -2,6 +2,10 @@ package lotto.validate;
 
 import lotto.Lotto;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class ValidateNumber {
     private static final String NOT_NUMERIC_MESSAGE = "[ERROR] 구매 금액은 숫자여야 합니다.";
     private static final String UNDER_1000_MESSAGE = "[ERROR] 구매 금액은 1000원 이상이어야 합니다.";
@@ -61,6 +65,12 @@ public class ValidateNumber {
         if (lotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
         }
-
+    }
+    public static void isDuplicateLotto(List<Integer> lotto) {
+        Set<Integer> targetSet = new HashSet<>(lotto);
+        if (targetSet.size() != lotto.size()){
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
+        }
+        return;
     }
 }
