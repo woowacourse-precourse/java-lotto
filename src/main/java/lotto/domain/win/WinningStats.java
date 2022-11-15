@@ -45,11 +45,13 @@ public class WinningStats {
 			}
 			addWinningMoney(winning.getMoney(), winnings.get(winning));
 			if (winning == Winning.SECOND) {
-				System.out.printf(SECOND_PRINT_FORMAT, winning.getMatchCount(),  decFormat.format(winning.getMoney()),
+				System.out.printf(SECOND_PRINT_FORMAT, winning.getMatchCount(),
+						decFormat.format(winning.getMoney()),
 						winnings.get(winning));
 				continue;
 			}
-			System.out.printf(PRINT_FORMAT, winning.getMatchCount(), decFormat.format(winning.getMoney()),
+			System.out.printf(PRINT_FORMAT, winning.getMatchCount(),
+					decFormat.format(winning.getMoney()),
 					winnings.get(winning));
 		}
 		getRate();
