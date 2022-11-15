@@ -26,6 +26,13 @@ public class LottoController {
     private static WinningResult winningResult;
 
 
+    public void run(){
+        try {
+            start();
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
     public void start(){
         int ticketCount = inputPlayerAmount();
         OutputView.printTicketCount(ticketCount);
