@@ -11,7 +11,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(){
-        List<Integer> ls = Randoms.pickUniqueNumbersInRange(1,45,6);
+        List<Integer> ls = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
         Collections.sort(ls);
         numbers = new ArrayList<>(ls);
     }
