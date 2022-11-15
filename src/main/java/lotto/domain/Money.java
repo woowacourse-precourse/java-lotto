@@ -13,7 +13,7 @@ public class Money {
     }
 
     private void validateMoney(String money) {
-        if (isNotNumeric(money)) { // 숫자가 아닌 값인 경우
+        if (isNotNumeric(money)) {
             throw new ErrorException(Error.IS_NOT_NUMERIC.toString());
         }
 
