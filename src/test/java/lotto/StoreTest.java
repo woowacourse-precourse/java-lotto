@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StoreTest {
     Store store;
+
     @BeforeEach
     void beforeEach() {
         store = new Store();
@@ -51,9 +52,9 @@ class StoreTest {
         store.setBonusNumber(bonusNumber);
 
         List<Lotto> lottos = new ArrayList<Lotto>();
-        lottos.add(new Lotto(List.of(1,2,3,4,5,6)));
-        lottos.add(new Lotto(List.of(1,2,3,11,12,13)));
-        lottos.add(new Lotto(List.of(1,2,3,11,12,13)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 11, 12, 13)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 11, 12, 13)));
 
         LottoResult lr = store.checkPrize(lottos);
         assertThat(lr.getTotalMoney()).isEqualTo(2000010000);
@@ -68,8 +69,8 @@ class StoreTest {
         store.setBonusNumber(bonusNumber);
 
         List<Lotto> lottos = new ArrayList<Lotto>();
-        lottos.add(new Lotto(List.of(1,2,3,4,5,7)));
-        lottos.add(new Lotto(List.of(14,25,23,11,12,13)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        lottos.add(new Lotto(List.of(14, 25, 23, 11, 12, 13)));
 
         LottoResult lr = store.checkPrize(lottos);
         assertThat(lr.getTotalMoney()).isEqualTo(30000000);
@@ -84,8 +85,8 @@ class StoreTest {
         store.setBonusNumber(bonusNumber);
 
         List<Lotto> lottos = new ArrayList<Lotto>();
-        lottos.add(new Lotto(List.of(1,2,3,4,27,28)));
-        lottos.add(new Lotto(List.of(1,2,3,4,7,28)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 27, 28)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 7, 28)));
 
         LottoResult lr = store.checkPrize(lottos);
         assertThat(lr.getTotalMoney()).isEqualTo(100000);

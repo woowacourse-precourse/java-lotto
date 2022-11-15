@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 
@@ -47,7 +48,7 @@ public class Buyer {
     private void printPrize(LottoResult result) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for(Prize prize : Prize.values()) {
+        for (Prize prize : Prize.values()) {
             System.out.println(prize.getMatching() + "개 일치 (" + prize.getPrizeMoney() + ") - " + "" + "개");
         }
     }
@@ -60,14 +61,14 @@ public class Buyer {
     }
 
     private float calcRate(int seedMoney, int lastMoney) {
-        float rate = (float)lastMoney / seedMoney * 100;
+        float rate = (float) lastMoney / seedMoney * 100;
         rate = roundRate(rate);
         return rate;
     }
 
     private float roundRate(float f) {
         int r = Math.round(f * 100);
-        return (float)r / 100;
+        return (float) r / 100;
     }
 
     private void printRate(float rate) {

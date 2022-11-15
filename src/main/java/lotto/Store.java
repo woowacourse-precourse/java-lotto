@@ -47,7 +47,7 @@ public class Store {
         System.out.println(count_lotto);
 
         // 발행한 로또들에 번호 출력
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
@@ -59,7 +59,7 @@ public class Store {
         LottoResult lottoResult = new LottoResult();
         List<Integer> winningNumbers = winningLotto.getNumbers();
 
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             List<Integer> numbers = lotto.getNumbers();
             int count = countMatchingNumbers(numbers, winningNumbers);
             boolean bonus = hasBonusNumber(numbers, bonusNumber);
@@ -75,8 +75,9 @@ public class Store {
             throw new NullPointerException();
         }
     }
+
     private void validateBonusNumber() {
-        if(bonusNumber == null) {
+        if (bonusNumber == null) {
             throw new NullPointerException();
         }
         if (winningLotto != null) {  // 1등 당첨번호와 보너스번호가 중복되면 예외 발생
@@ -107,10 +108,12 @@ public class Store {
         setWinningLotto(winningLotto);
         setBonusNumber(bonusNumber);
     }
+
     public void setWinningLotto(Lotto winningLotto) {
         this.winningLotto = winningLotto;
         validateWinningLotto();
     }
+
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
         validateBonusNumber();

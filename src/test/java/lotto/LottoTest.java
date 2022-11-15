@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
     Lotto l;
+
     @BeforeEach
     void beforeEach() {
         l = null;
@@ -42,7 +43,7 @@ class LottoTest {
     @Test
     void generateRandomNumbers() {
         l = new Lotto(
-               Lotto.generateRandomNumbers()
+                Lotto.generateRandomNumbers()
         );
         System.out.println(l.getNumbers());
     }

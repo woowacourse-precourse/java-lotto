@@ -12,9 +12,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+
 class BuyerTest {
     Store store;
     Buyer buyer;
+
     @BeforeEach
     void beforeEach() {
         store = new Store();
@@ -51,7 +53,7 @@ class BuyerTest {
     void checkRate_10개사서_5등1개() {
         LottoResult result = new LottoResult();
         result.addPrize(Prize.PRIZE5);
-        int total = (int)result.getTotalMoney();
+        int total = (int) result.getTotalMoney();
         int seedMoney = 10000;
 
         float rate = buyer.checkRate(seedMoney, total);
@@ -62,7 +64,7 @@ class BuyerTest {
     void checkRate_100개사서_3등1개() {
         LottoResult result = new LottoResult();
         result.addPrize(Prize.PRIZE3);
-        int total = (int)result.getTotalMoney();
+        int total = (int) result.getTotalMoney();
         int seedMoney = 100000;
 
         float rate = buyer.checkRate(seedMoney, total);
@@ -75,7 +77,7 @@ class BuyerTest {
         result.addPrize(Prize.PRIZE5);
         result.addPrize(Prize.PRIZE4);
         result.addPrize(Prize.PRIZE3);
-        int total = (int)result.getTotalMoney();
+        int total = (int) result.getTotalMoney();
         int seedMoney = 15000;
 
         float rate = buyer.checkRate(seedMoney, total);

@@ -7,8 +7,7 @@ public enum Prize {
     PRIZE2(5, true, 30000000),
     PRIZE3(5, false, 1500000),
     PRIZE4(4, false, 50000),
-    PRIZE5(3, false, 5000)
-    ;
+    PRIZE5(3, false, 5000);
     private int matching = 0;
     private boolean bonus = false;
     private int prizeMoney = 0;
@@ -41,6 +40,7 @@ public enum Prize {
     public int getPrizeMoney() {
         return prizeMoney;
     }
+
     public int getMatching() {
         return matching;
     }

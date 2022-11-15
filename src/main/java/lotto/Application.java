@@ -12,9 +12,9 @@ public class Application {
 
         // 로또 구매 입력
         List<Lotto> lottos = new ArrayList<Lotto>();
-        lottos.add(new Lotto(List.of(1,2,3,4,5,6)));
-        lottos.add(new Lotto(List.of(7,8,9,10,11,12)));
-        lottos.add(new Lotto(List.of(19,17,16,15,14,13)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(7, 8, 9, 10, 11, 12)));
+        lottos.add(new Lotto(List.of(19, 17, 16, 15, 14, 13)));
 
         // 당첨 번호 설정
         admin.inputGameNumbers();

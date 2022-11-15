@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Admin {
     Store store;
+
     Admin(Store store) {
         this.store = store;
     }
@@ -48,7 +49,7 @@ public class Admin {
 
     private List<Integer> stringToIntegerList(List<String> input) {
         List<Integer> numbers = new ArrayList<Integer>();
-        for(String s : input) {
+        for (String s : input) {
             int number = Integer.parseInt(s);
             numbers.add(number);
         }

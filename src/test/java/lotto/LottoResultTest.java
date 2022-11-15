@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LottoResultTest {
     LottoResult result;
+
     @BeforeEach
     void beforeEach() {
         result = new LottoResult();
@@ -61,6 +62,7 @@ class LottoResultTest {
         long total = result.getTotalMoney();
         assertThat(total).isEqualTo(10000);
     }
+
     @Test
     void 당첨5_4_3() {
         result.addPrize(Prize.PRIZE5);

@@ -34,7 +34,7 @@ public class LottoResult {
     // 특정 등수에 몇개가 당첨됬는지 반환합니다.
     public int countPrize(Prize prize) {
         Integer count = result.get(prize);
-        if(count == null) {
+        if (count == null) {
             return 0;
         }
         return count;

@@ -22,12 +22,13 @@ public class Lotto {
     }
 
     private static void validateRange(List<Integer> numbers) {
-        for(int n : numbers) {
-            if(n < MINIMUM_NUMBER || MAXIMUM_NUMBER < n) {
+        for (int n : numbers) {
+            if (n < MINIMUM_NUMBER || MAXIMUM_NUMBER < n) {
                 throw new IllegalArgumentException();
             }
         }
     }
+
     private static void validateDuplicate(List<Integer> numbers) {
         Set<Integer> sixNumbers = new HashSet<Integer>();
         sixNumbers.addAll(numbers);
@@ -35,6 +36,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
