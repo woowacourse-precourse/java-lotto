@@ -55,5 +55,17 @@ public class Lotto {
         }
     }
 
+    public void RankLineOverHundred (int rankPoint) {
+        if (rankPoint == 103) {
+            GameData.FIFTH.addCount();
+        }
+        if (rankPoint == 104) {
+            GameData.FOURTH.addCount();
+        }
+        if (rankPoint == 105) {
+            GameData.SECOND.addCount();
+        }
+    }
+
 
 }
