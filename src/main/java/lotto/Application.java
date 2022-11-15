@@ -13,6 +13,9 @@ public class Application {
         try {
             System.out.println(OutputMessage.PRICE.get());
             Price p = new Price();
+            LottoManager lottoManager = new LottoManager(p);
+            System.out.println(lottoManager.getAmount() + OutputMessage.AMOUNT.get());
+            lottoManager.printLotteries();
 
             int count = p.get() / 1000;
             System.out.println(count + OutputMessage.COUNT.get());

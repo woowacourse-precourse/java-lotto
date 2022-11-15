@@ -2,7 +2,7 @@ package lotto;
 
 public enum OutputMessage {
     PRICE("구입금액을 입력해 주세요."),
-    COUNT("개를 구매했습니다.");
+    AMOUNT("개를 구매했습니다."),
 
     String message;
     private OutputMessage(String message) {
