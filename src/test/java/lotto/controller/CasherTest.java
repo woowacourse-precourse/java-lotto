@@ -17,7 +17,7 @@ public class CasherTest {
     void issueTickets() {
         int money = 8000;
         int expected = 8;
-        assertThat(Casher.issueTickets(money)).isEqualTo(expected);
+        assertThat(Casher.calculateTicketsNumber(money)).isEqualTo(expected);
     }
 
     @Tag("issueTickets")
@@ -25,7 +25,7 @@ public class CasherTest {
     @ParameterizedTest
     @ValueSource(strings = {"8001", "8000j"})
     void wrongInputToIssueTickets(String wrongInput) {
-        assertThatThrownBy(() -> Casher.issueTickets(Integer.parseInt(wrongInput)))
+        assertThatThrownBy(() -> Casher.calculateTicketsNumber(Integer.parseInt(wrongInput)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

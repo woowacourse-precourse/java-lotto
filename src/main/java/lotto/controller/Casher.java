@@ -4,7 +4,7 @@ import static lotto.controller.Constants.*;
 
 public class Casher {
 
-    public static int issueTickets(int money) {
+    public static int calculateTicketsNumber(int money) {
         ExceptionHandler.validateMoneyUnit(money);
         return money / MONEY_UNIT;
     }
