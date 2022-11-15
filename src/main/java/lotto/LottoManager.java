@@ -26,12 +26,22 @@ public class LottoManager {
         }
         this.inputMoney = money;
         //lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
-        makeLottos(money / 1000);
+        try{
+            makeLottos(money / 1000);
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
-    private void makeLottos(int amount){
+    private void makeLottos(int amount) throws IllegalArgumentException{
         for (int i = 0; i < amount; i++){
-            Lotto lotto = new Lotto(makeLottoNumbers());
-            lottos.add(lotto);
+            try {
+                Lotto lotto = new Lotto(makeLottoNumbers());
+                lottos.add(lotto);
+            }
+            catch (IllegalArgumentException e){
+                throw new IllegalArgumentException(e.getMessage());
+            }
         }
     }
 

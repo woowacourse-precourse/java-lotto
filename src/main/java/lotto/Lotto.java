@@ -6,14 +6,19 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException{
+        try{
+            validate(numbers);
+            this.numbers = numbers;
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException{
         if (numbers.size() != 6 || isDuplicate(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 로또 번호 추출");
         }
     }
 
