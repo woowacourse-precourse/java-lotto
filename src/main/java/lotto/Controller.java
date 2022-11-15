@@ -17,7 +17,7 @@ public class Controller {
             List<Lotto> lottos = Lottos.publishLottos(money / LOTTO_PRICE);
             print.infoLottos(lottos);
             List<Integer> winningNumber = user.winningNumber();
-            int bonusNumber = user.bonusNumber();
+            int bonusNumber = user.bonusNumber(winningNumber);
             Map<Rank, Integer> totalRank = winning.getTotalRank(lottos, winningNumber, bonusNumber);
             print.infoRank(totalRank);
             print.infoProfit(profit.getProfit(totalRank, money));

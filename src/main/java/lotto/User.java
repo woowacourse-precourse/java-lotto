@@ -31,19 +31,22 @@ public class User {
         for (String number : splitInput) {
             int lottoNumber = Integer.parseInt(number);
             if (lottoNumber < 1 || lottoNumber > 45){
-                throw new IllegalArgumentException("1~45 범위 안으로 입력해주세요");
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
             winningNumber.add(lottoNumber);
         }
         return winningNumber;
     }
 
-    int bonusNumber(){
+    int bonusNumber(List<Integer> winningNumber){
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int bonusNumber = Integer.parseInt(input);
         if (bonusNumber < 1 || bonusNumber > 45){
-            throw new IllegalArgumentException("1~45 범위 안으로 입력해주세요");
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        if (winningNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException("보너스 번호 중복입니다");
         }
         return (bonusNumber);
     }
