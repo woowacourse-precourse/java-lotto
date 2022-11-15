@@ -10,8 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class DealerTest {
-    private final int PURCHASE_AMOUNT = 8000;
-    private final float EARNING_RATE = 5000 / (float)8000 * 100;
     private List<Lotto> lotteries;
 
     @BeforeEach
@@ -43,9 +41,10 @@ public class DealerTest {
         assertEquals(dealer.getResult(), MAKE_ANSWER);
     }
 
-
     @Test
     void calculateEarningRateTest() {
+        int PURCHASE_AMOUNT = 8000;
+        float EARNING_RATE = 5000 / (float)8000 * 100;
         Dealer dealer = new Dealer(lotteries, new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Bonus(7));
         assertEquals(dealer.calculateEarningRate(PURCHASE_AMOUNT), EARNING_RATE);
     }
