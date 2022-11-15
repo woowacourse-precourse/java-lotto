@@ -22,6 +22,13 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호의 길이가 1이나 2가 아니면 예외가 발생한다")
+    @Test
+    void createExceptionTest3() {
+        assertThatThrownBy(() -> new Exception().checkBonusNumber("100"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 
