@@ -1,12 +1,8 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -49,7 +45,7 @@ class LottoTest {
 
     @Test
     @Disabled
-    void list_of_정렬하기 () {
+    void list_of_정렬하기() {
         SortedSet<Integer> treeSet = new TreeSet<>(List.of(3, 2, 1, 5, 4, 5, 5));
         assertThat(treeSet).isEqualTo(List.of(1, 2, 3, 4, 5));
 

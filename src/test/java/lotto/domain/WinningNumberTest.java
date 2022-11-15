@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.StringTokenizer;
 
 import static org.assertj.core.api.Assertions.*;
@@ -21,12 +20,12 @@ class WinningNumberTest {
         assertThat(st.countTokens() == 6).isFalse();
     }
 
-    @Test
+    /*@Test
     void 당첨_번호_입력_성공() {
         WinningNumber wn = new WinningNumber();
         wn.inputWinningNumber("1,2,3,4,5,6");
         assertThat(wn.getWinningNumber()).contains(1, 2, 3, 4, 5, 6);
-    }
+    }*/
 
     @Test
     void 당첨_번호_입력_실패1() {
