@@ -11,7 +11,7 @@
         - [ ] 로또 번호 오름차순 정렬 - Lotto#sort
     - [ ] 발행한 로또 수량 및 번호 출력 LottoMarket#printLottoInfo
 
-- [ ] 중복되지 않는 6개의 숫자 뽑기 - NumberGenerator
+- [x] 중복되지 않는 6개의 숫자 뽑기 - NumberGenerator
 
 - [ ] 당첨 번호 추첨 (중복되지 않는) - LottoHeadOffice
     - [ ] 당첨 번호 입력 받기 (6개) - LottoHeadOffice#inputWinningNum

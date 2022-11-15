@@ -8,6 +8,7 @@ public class NumberGenerator {
     private List<Integer> numbers;
 
     NumberGenerator() {
+        this.numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     public List<Integer> getNumbers() {
