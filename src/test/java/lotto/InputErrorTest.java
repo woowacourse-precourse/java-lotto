@@ -16,6 +16,15 @@ public class InputErrorTest extends NsTest {
         });
     }
 
+    @Test
+    void 당첨번호_문자열_구분자_테스트() {
+        assertSimpleTest(() -> {
+            runException("2000", "1.2.3.4.5.6");
+            assertThat(output()).contains(InputErrorMessage.INVALID_LOTTO_NUMBERS.getErrorMessage());
+        });
+    }
+    
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
