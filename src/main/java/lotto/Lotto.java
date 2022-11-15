@@ -15,7 +15,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void printNumbers(){
+    public void printNumbers() {
         System.out.println(numbers.toString());
     }
 

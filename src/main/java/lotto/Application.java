@@ -7,7 +7,7 @@ public class Application {
             lottoManager.buyLotto();
             lottoManager.generateAnswerNumbers();
             lottoManager.printStatistics();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 

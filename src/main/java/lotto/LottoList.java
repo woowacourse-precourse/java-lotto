@@ -24,7 +24,7 @@ public class LottoList {
         }
     }
 
-    private void appendLotto(Lotto lotto){
+    private void appendLotto(Lotto lotto) {
         this.lottos.add(lotto);
     }
 
