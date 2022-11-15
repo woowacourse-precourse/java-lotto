@@ -5,6 +5,7 @@ public class LottoStore {
 
     public int calculatePurchasedLottoCount(int inputMoney) {
         int lottoCount = inputMoney / lottoPrice;
+        new LottoException().inputMoneyUnitException(inputMoney, lottoPrice);
         return lottoCount;
     }
 }
