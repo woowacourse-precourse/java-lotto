@@ -12,6 +12,8 @@ public class LottoController {
         OutputView.showLottos(lotteryMachine.getLottos());
         WinningNumber winningNumber = createWinningNumber();
         LottoResult lottoResult = new LottoResult(lotteryMachine, winningNumber);
+        OutputView.showResult(lottoResult.getResult());
+        OutputView.showProfitPercent(purchaseMoney.getPurchaseMoney(), lottoResult);
     }
 
     private WinningNumber createWinningNumber(){
