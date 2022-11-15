@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Map;
+import lotto.Constant.WinInfo;
 
 public class LottoUser {
     private long money;

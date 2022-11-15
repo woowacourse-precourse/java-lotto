@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.Constant.WinInfo;
 
 public class LottoSystem {
     private List<Integer> winNumbers;
