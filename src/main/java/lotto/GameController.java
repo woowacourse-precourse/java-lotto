@@ -23,7 +23,7 @@ public class GameController {
         UserInput input = new UserInput();
         LottoDrawing winningNumbers = input.getWinningNumber();
 
-        this.winningNumbers = winningNumbers.winningNumbers;
+        this.winningNumbers = winningNumbers.winningNumber;
         this.bonusNumber = winningNumbers.bonusNumber;
     }
 

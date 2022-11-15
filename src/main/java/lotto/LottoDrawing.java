@@ -7,17 +7,16 @@ import static constants.Constant.*;
 import static constants.ErrorMessage.*;
 
 public class LottoDrawing {
-    List<Integer> winningNumbers = new ArrayList<>();
+    List<Integer> winningNumber = new ArrayList<>();
     int bonusNumber;
 
     public LottoDrawing(String inputWinning, String inputBonus) {
         List<Integer> winningNumbers = convertStringToNumberList(inputWinning);
+        Lotto winningLotto = new Lotto(winningNumbers);
+
         int bonusNumber = validateBonus(inputBonus);
 
-        Lotto winningLotto = new Lotto(winningNumbers);
-        winningNumbers = winningLotto.getNumbers();
-
-        this.winningNumbers = winningNumbers;
+        this.winningNumber = winningLotto.getNumbers();
         this.bonusNumber = bonusNumber;
     }
 
