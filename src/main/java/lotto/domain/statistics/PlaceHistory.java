@@ -62,9 +62,7 @@ public class PlaceHistory {
     }
 
     private void fillLines(StringBuffer stringBuffer) {
-        matchResults.forEach((matchResult, value) -> {
-            appendLine(stringBuffer, matchResult);
-        });
+        matchResults.forEach((matchResult, value) -> appendLine(stringBuffer, matchResult));
     }
 
     private void appendLine(StringBuffer stringBuffer, MatchResult matchResult) {
