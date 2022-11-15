@@ -27,4 +27,12 @@ class MoneyTest {
             Money money = new Money(0);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("금액 생성시 음수이면 예외 발생해야 함")
+    @Test
+    void createMoneyByNegative() {
+        assertThatThrownBy(() -> {
+            Money money = new Money(-1000);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
