@@ -2,6 +2,8 @@ package lotto.model;
 
 public class LottoAmount {
     private final int amount;
+    private final String SHORT_AMOUNT = "[ERROR] 구입금액이 부족합니다.";
+    private final String REMAIN_AMOUNT = "[ERROR] 남는 금액이 존재합니다.";
 
     public LottoAmount(int purchaseAmount) {
         validateEnoughMoney(purchaseAmount);
@@ -15,13 +17,13 @@ public class LottoAmount {
 
     private void validateEnoughMoney(int purchaseAmount) {
         if (purchaseAmount < 1000) {
-            throw new IllegalArgumentException("[ERROR] 구입금액이 부족합니다.");
+            throw new IllegalArgumentException(SHORT_AMOUNT);
         }
     }
 
     private void validateChangeIsZero(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 남는 금액이 존재합니다.");
+            throw new IllegalArgumentException(REMAIN_AMOUNT);
         }
     }
 }
