@@ -2,26 +2,27 @@ package lotto.domain;
 
 import lotto.view.InputView;
 
-public class WinningLotto {
-    private final Lotto lotto;
+import java.util.List;
+
+public class WinningLotto extends Lotto {
     private final int bonusNumber;
 
     public static WinningLotto create() {
         InputView input = new InputView();
-        Lotto winningLotto = new Lotto(input.readWinningLotto());
-        int bonusNumber = input.readBonusNumber();
-
-        return new WinningLotto(winningLotto, bonusNumber);
+        return new WinningLotto(input.readWinningLotto());
     }
 
-    public WinningLotto(Lotto winningLotto, int bonusNumber) {
-        this.lotto = winningLotto;
-        winningLotto.validateBonusNumber(bonusNumber);
-        this.bonusNumber = bonusNumber;
+    private WinningLotto(List<Integer> numbers) {
+        super(numbers);
+        this.bonusNumber = new InputView().readBonusNumber();
+        validateBonusNumber();
     }
 
-    public int getMatchCountWith(Lotto lotto) {
-        return lotto.getMatchCountWith(this.lotto);
+    private void validateBonusNumber() {
+        super.validateLottoNumberRange(bonusNumber);
+        if (super.contain(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
     }
 
     public boolean isBonusNumberIn(Lotto lotto) {
