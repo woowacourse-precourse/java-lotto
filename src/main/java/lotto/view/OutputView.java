@@ -19,8 +19,19 @@ public class OutputView {
     private static final String CORRECT_COUNT_PHRASE = "%d개 일치";
     private static final String CORRECT_BONUS_PHRASE = ", 보너스 볼 일치";
     private static final String REWARD_AND_COUNT_PHRASE = " (%s원) - %d개\n";
+    private static final String GAME_RESULT_PHRASE = "당첨 통계\n---";
+    private static final String GAME_YIELD_PHRASE = "총 수익률은 %.1f%%입니다.\n";
 
     public OutputView() {
+    }
+
+    public static void printYield(double yield) {
+        String yieldPhrase = String.format(GAME_YIELD_PHRASE, yield * 100);
+        System.out.println(yieldPhrase);
+    }
+
+    public static void printGameResult() {
+        System.out.println(GAME_RESULT_PHRASE);
     }
 
     public static void printResultStatistic(GameResult gameResult) {
