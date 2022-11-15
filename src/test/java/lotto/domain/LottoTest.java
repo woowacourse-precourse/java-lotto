@@ -27,7 +27,7 @@ class LottoTest {
 
     @Test
     void 범위를_초과한_숫자_포함() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 70)))
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 70)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
