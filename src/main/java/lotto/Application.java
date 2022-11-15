@@ -21,7 +21,8 @@ public class Application {
         // 발행한 로또 수량 및 번호를 출력
         List<List> lottoNumberList = LottoQuantityAndNumberOutput(numberOfPurchases);
 
-
+        // 사용자에게 당첨 번호 입력받기
+        String winningNumber = UserInputString.ENTERWINNINGNUMBER.getString();
 
     }
 
