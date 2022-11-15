@@ -58,10 +58,9 @@ public class Player {
     }
 
     public void setLottos(int tiket){
-        LottoCreator lottoCreator = new LottoCreator();
         List<Lotto> lottos = new ArrayList<>();
         for(int i=0; i<tiket; i++){
-            lottos.add(new Lotto(lottoCreator.createRandomLotto()));
+            lottos.add(new Lotto(Lotto.createRandomLotto()));
         }
         this.lottos = lottos;
     }
