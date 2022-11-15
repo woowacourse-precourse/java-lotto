@@ -52,4 +52,9 @@ public class LotteryController {
     private WinningNumbers makeWinNums() {
         return LottoFactory.createWinNums(Input.inputWinningLotteryNumber(), Input.inputBonusNumber());
     }
+
+    private void end(LotteryResult result, LottoMoney lottoMoney) {
+        Output.printLottosResult(result);
+        Output.printProfit(Util.getProfit((float) result.getPrize(), (float) lottoMoney.getMoney()));
+    }
 }
