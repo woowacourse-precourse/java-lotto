@@ -8,16 +8,16 @@ import lotto.domain.generator.NumberGenerator;
 import lotto.domain.lottery.BonusNumber;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.lottery.WinningLotto;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ProfitTest {
 
-    private static NumberGenerator fixedNumberGenerator;
+    private NumberGenerator fixedNumberGenerator;
 
-    @BeforeAll
-    static void initialize() {
+    @BeforeEach
+    void setUp() {
         fixedNumberGenerator = new FixedNumberGenerator(); // [1, 2, 3, 4, 5, 6]
     }
 

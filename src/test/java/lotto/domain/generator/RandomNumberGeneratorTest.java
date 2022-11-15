@@ -12,13 +12,13 @@ class RandomNumberGeneratorTest {
     private NumberGenerator randomNumberGenerator;
 
     @BeforeEach
-    void initialize() {
+    void setUp() {
         randomNumberGenerator = new RandomNumberGenerator();
     }
 
     @Test
     @DisplayName("로또 번호는 6개여야 합니다")
-    void drawLotteryNumbers_size() {
+    void generateNumbers_size() {
         List<Integer> lotteryNumbers = randomNumberGenerator.generateNumbers();
 
         assertThat(lotteryNumbers.size())
@@ -27,7 +27,7 @@ class RandomNumberGeneratorTest {
 
     @Test
     @DisplayName("로또 번호는 1부터 45까지 범위여야 합니다")
-    void drawLotteryNumbers_range() {
+    void generateNumbers_range() {
         List<Integer> lotteryNumbers = randomNumberGenerator.generateNumbers();
 
         assertThat(lotteryNumbers.stream().allMatch(number -> number >= 1 && number <= 45))
@@ -36,7 +36,7 @@ class RandomNumberGeneratorTest {
 
     @Test
     @DisplayName("로또 번호는 중복이 없어야 합니다")
-    void drawLotteryNumbers_conflict() {
+    void generateNumbers_conflict() {
         List<Integer> lotteryNumbers = randomNumberGenerator.generateNumbers();
 
         assertThat(lotteryNumbers)
