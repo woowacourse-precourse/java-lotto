@@ -47,13 +47,13 @@ public class Application {
     }
 
     public String Rate_Of_Return(Integer money, HashMap<Integer, Integer>Lotto_Choice_Result){
-        Integer[] data = {5000, 50000,1500000, 2000000000,30000000};
+        Integer[] data = {5000, 50000, 1500000, 2000000000, 30000000};
         List<Integer> revenue = new ArrayList<>(Arrays.asList(data));
         Integer Total_revenue = 0;
-        for(Integer index = 3; index >=7; index++){
-            Total_revenue += revenue.get(index)*Lotto_Choice_Result.get(index);
+        for(Integer index = 3; index <=7; index++){
+            Total_revenue += revenue.get(index-3)*Lotto_Choice_Result.get(index);
         }
-        String Rate_Of_Return = String.format("%.2f", Double.valueOf(Total_revenue / money *100));
+        String Rate_Of_Return = String.format("%.1f", Total_revenue / (double) money *100);
         UI.Rate_Of_Return_Print(Rate_Of_Return);
         return Rate_Of_Return;
     }
