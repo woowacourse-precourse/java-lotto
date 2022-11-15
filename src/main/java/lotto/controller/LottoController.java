@@ -15,11 +15,9 @@ public class LottoController {
 	}
 
 	public void start() {
-		int money = InputView.getPrice();
-		int numberOfTickets = money / 1_000;
-
-		List<String> tickets = lottoService.publishTickets(numberOfTickets);
-		OutputView.displayNumberOfTickets(numberOfTickets, tickets);
+		int price = InputView.getPrice();
+		List<String> tickets = lottoService.publishTickets(price);
+		OutputView.displayNumberOfTickets(tickets);
 
 		OutputView.displayStatistics(
 			lottoService.getWinningStatistics(
@@ -27,7 +25,7 @@ public class LottoController {
 				InputView.getBonusNumber()));
 
 		OutputView.displayIncomeRatio(
-			lottoService.getRateOfReturn(money)
+			lottoService.getRateOfReturn(price)
 		);
 	}
 }

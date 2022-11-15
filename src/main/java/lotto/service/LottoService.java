@@ -1,5 +1,8 @@
 package lotto.service;
 
+import static lotto.validator.LottoValidator.validateBonusNumber;
+import static lotto.validator.LottoValidator.validateWinningNumber;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -13,51 +16,54 @@ import lotto.domain.WinningRule;
 
 public class LottoService {
 
-	private final String WINNING_STATISTICS_FORMAT = "%s (%,d원) - %d개";
+    private final String WINNING_STATISTICS_FORMAT = "%s (%,d원) - %d개";
 
-	private final Map<WinningRule, Integer> winningRuleStatus;
+    private final Map<WinningRule, Integer> winningRuleStatus;
 
-	private List<Lotto> lottos;
+    private List<Lotto> lottos;
 
-	public LottoService() {
-		winningRuleStatus = new HashMap<>();
-	}
+    public LottoService() {
+        winningRuleStatus = new HashMap<>();
+    }
 
-	public List<String> publishTickets(final int numberOfTickets) {
-		lottos = LottoGenerator.publish(numberOfTickets);
-		return lottos.stream()
-			.map(Lotto::toString)
-			.collect(Collectors.toList());
-	}
+    public List<String> publishTickets(final int price) {
+        lottos = LottoGenerator.publish(price / 1_000);
+        return lottos.stream()
+            .map(Lotto::toString)
+            .collect(Collectors.toList());
+    }
 
-	public List<String> getWinningStatistics(final List<Integer> winningNumbers,
-		int bonus) {
+    public List<String> getWinningStatistics(final List<Integer> winningNumbers,
+        final int bonus) {
 
-		initWinningStatus(winningNumbers, bonus);
-		return Arrays.stream(WinningRule.values())
-			.filter(WinningRule::isNotNoneMatch)
-			.map(this::formatWinningStatistics)
-			.collect(Collectors.toList());
-	}
+        validateWinningNumber(winningNumbers);
+        validateBonusNumber(bonus, winningNumbers);
+        initWinningStatus(winningNumbers, bonus);
 
-	void initWinningStatus(final List<Integer> winningNumbers, int bonus) {
-		for (Lotto lotto : lottos) {
-			CompareResult result = lotto.compareTo(winningNumbers, bonus);
-			winningRuleStatus.merge(WinningRule.of(result), 1, Integer::sum);
-		}
-	}
+        return Arrays.stream(WinningRule.values())
+            .filter(WinningRule::isNotNoneMatch)
+            .map(this::formatWinningStatistics)
+            .collect(Collectors.toList());
+    }
 
-	private String formatWinningStatistics(WinningRule rule) {
-		return String.format(WINNING_STATISTICS_FORMAT,
-			rule.getStatus(), rule.getPrice(),
-			winningRuleStatus.getOrDefault(rule, 0));
-	}
+    void initWinningStatus(final List<Integer> winningNumbers, int bonus) {
+        for (Lotto lotto : lottos) {
+            CompareResult result = lotto.compareTo(winningNumbers, bonus);
+            winningRuleStatus.merge(WinningRule.of(result), 1, Integer::sum);
+        }
+    }
 
-	public double getRateOfReturn(final int totalInvestment) {
-		double winningAmount = winningRuleStatus.keySet()
-			.stream()
-			.map(WinningRule::getPrice)
-			.reduce(0L, Long::sum);
-		return (winningAmount / totalInvestment) * 100;
-	}
+    private String formatWinningStatistics(WinningRule rule) {
+        return String.format(WINNING_STATISTICS_FORMAT,
+            rule.getStatus(), rule.getPrice(),
+            winningRuleStatus.getOrDefault(rule, 0));
+    }
+
+    public double getRateOfReturn(final int totalInvestment) {
+        double winningAmount = winningRuleStatus.keySet()
+            .stream()
+            .map(WinningRule::getPrice)
+            .reduce(0L, Long::sum);
+        return (winningAmount / totalInvestment) * 100;
+    }
 }

@@ -3,8 +3,8 @@ package lotto.view;
 import java.util.List;
 
 public class OutputView {
-	public static void displayNumberOfTickets(int numberOfTickets, List<String> tickets) {
-		System.out.println("\n" + numberOfTickets + "개를 구매했습니다.");
+	public static void displayNumberOfTickets(List<String> tickets) {
+		System.out.println("\n" + tickets.size() + "개를 구매했습니다.");
 		tickets.forEach(System.out::println);
 	}
 

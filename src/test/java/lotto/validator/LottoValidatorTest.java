@@ -11,16 +11,6 @@ public class LottoValidatorTest {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    @DisplayName("입력이 1,000 단위로 나누어 떨어지는 수인지 검증할 수 있다.")
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 11, 12, 7004, 4_444_001})
-    void validatePrice_입력이_1000_단위로_나누어떨어지는_수인지_검증(final int money) {
-        Assertions.assertThatThrownBy(
-                () -> LottoValidator.validatePrice(money)
-            ).isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(ERROR_MESSAGE);
-    }
-
     @DisplayName("입력된 로또 번호가 1~45 사이의 숫자인지 검증할 수 있다.")
     @ParameterizedTest
     @ValueSource(ints = {0, 46, -1})
