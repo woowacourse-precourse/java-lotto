@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LottoIO {
-    private LottoIO() {
+public class LottoUI {
+    private LottoUI() {
     }
 
     public static List<Integer> getLottoNumber() {

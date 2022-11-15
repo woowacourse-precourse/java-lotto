@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class LottoIOTest {
+class LottoUITest {
 
     @DisplayName("올바른 입력이 들어왔을 때")
     @Test
@@ -17,7 +17,7 @@ class LottoIOTest {
         System.setIn(new ByteArrayInputStream("1,2,3,4,5,6".getBytes()));
 
         //When
-        List<Integer> lottoNumber = LottoIO.getLottoNumber();
+        List<Integer> lottoNumber = LottoUI.getLottoNumber();
 
         //Then
         assertThat(lottoNumber).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
@@ -30,7 +30,7 @@ class LottoIOTest {
         System.setIn(new ByteArrayInputStream("1,a,3,4,5,6".getBytes()));
 
         //When
-        assertThatThrownBy(() -> LottoIO.getLottoNumber())
+        assertThatThrownBy(() -> LottoUI.getLottoNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -41,7 +41,7 @@ class LottoIOTest {
         System.setIn(new ByteArrayInputStream("1,1.1,3,4,5,6".getBytes()));
 
         //When
-        assertThatThrownBy(() -> LottoIO.getLottoNumber())
+        assertThatThrownBy(() -> LottoUI.getLottoNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
