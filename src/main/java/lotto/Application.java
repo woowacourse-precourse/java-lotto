@@ -14,6 +14,10 @@ public class Application {
         String purchaseAmount = UserInputString.ENTERPURCHASEAMOUNT.getString();
         int numberOfPurchases = GetUserInputOfPurchaseAmount(purchaseAmount);
 
+        // 잘못된 입력 예외 처리
+        if(numberOfPurchases == -1)
+            return;
+
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
