@@ -2,8 +2,8 @@ package lotto.controller;
 
 import lotto.domain.GradesResult;
 import lotto.domain.GradingMachine;
-import lotto.domain.LottoTicket;
 import lotto.domain.LottoMoney;
+import lotto.domain.LottoTicket;
 import lotto.domain.LottoTicketSeller;
 import lotto.view.Input;
 import lotto.view.Output;

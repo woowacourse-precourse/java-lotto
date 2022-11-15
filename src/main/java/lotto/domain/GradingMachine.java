@@ -6,7 +6,6 @@ import static lotto.domain.Lotto.MIN_LOTTO_NUMBER;
 
 import java.util.EnumMap;
 import java.util.Map;
-import lotto.view.Output;
 
 public class GradingMachine {
 
