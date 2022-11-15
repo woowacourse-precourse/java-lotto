@@ -34,7 +34,7 @@ public class Lotto {
             error.outOfRange();
         }
     }
-    public List<Integer> getNumbers() {
-        return this.numbers;
+    public void print() {
+        System.out.println(numbers);
     }
 }

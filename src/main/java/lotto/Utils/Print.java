@@ -1,5 +1,6 @@
-package lotto.UI;
+package lotto.Utils;
 
+import lotto.Lotto;
 import lotto.domain.WinInfo;
 
 import java.util.*;
@@ -17,9 +18,10 @@ public class Print {
     public void purchaseCount(int count) {
         System.out.printf("%d개를 구매했습니다.\n", count);
     }
-    public void purchasedLottos(List<List<Integer>> lottos) {
-        for (List<Integer> lotto : lottos) {
-            System.out.println(lotto);
+    public void purchasedLottos(List<Lotto> lottos) {
+        System.out.printf("%d개를 구매했습니다.\n", lottos.size());
+        for (Lotto lotto : lottos) {
+            lotto.print();
         }
     }
     public void winningStats(LinkedHashMap<String, Integer> winningStats) {
