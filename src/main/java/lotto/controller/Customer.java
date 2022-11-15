@@ -17,6 +17,11 @@ public class Customer {
     public void buy(LottoShop shop) {
         setLotteries(shop.buy());
     }
+
+    public void watch(LottoBroadcast broadcast) {
+        setBroadcast(broadcast);
+    }
+
     private void printLotteries(List<Lotto> lotteries) {
         System.out.println(lotteries.size() + "개를 구매했습니다.");
         lotteries.forEach(System.out::println);
@@ -25,6 +30,10 @@ public class Customer {
     private void setLotteries(List<Lotto> lotteries) {
         printLotteries(lotteries);
         this.lotteries = lotteries;
+    }
+
+    private void setBroadcast(LottoBroadcast broadcast) {
+        this.broadcast = broadcast;
     }
 
 }
