@@ -1,8 +1,11 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.Error;
 import lotto.ui.LottoShopView;
 import lotto.ui.LottoWin;
@@ -22,12 +25,15 @@ public class LottoShop {
         return lottos;
     }
 
-    public HashMap<LottoWin, Integer> compare(
+    public LinkedHashMap<LottoWin, Integer> compare(
         List<Lotto> lottos,
         List<Integer> winningNumbers,
         Integer bonusNumber
     ) {
-        HashMap<LottoWin, Integer> result = new HashMap<>();
+        LinkedHashMap<LottoWin, Integer> result = new LinkedHashMap<>();
+
+        Arrays.stream(LottoWin.values())
+            .forEach(lottoWin -> result.put(lottoWin, 0));
 
         lottos.forEach(
             lotto -> {
