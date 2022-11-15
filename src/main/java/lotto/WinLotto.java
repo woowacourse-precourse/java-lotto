@@ -67,7 +67,8 @@ public class WinLotto {
         if (inputLotto.contains(bonusLotto)) {
             throw new IllegalArgumentException("로또번호와 보너스번호가 중복됩니다.");
         }
-        if(inputLotto.replaceAll(",", "").length() !=10) throw new IllegalArgumentException(",로 숫자를 구분해서 입력하세요");
+        inputLotto = inputLotto.replaceAll(",","");
+        if(inputLotto.replaceAll("[0-9]", "").length() !=0) throw new IllegalArgumentException(",로 숫자를 구분해서 입력하세요");
     }
 
 
