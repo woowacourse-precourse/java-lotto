@@ -23,7 +23,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
     private void duplicate(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(DUPLICATE_EXCEPTION);
