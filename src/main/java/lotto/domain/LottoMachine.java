@@ -22,7 +22,7 @@ public class LottoMachine {
 
     public void purchaseLottoTable(int money) {
         lottoTable.clear();
-        for (int i = 0; i < toAmount(money); i++) {
+        for (int row = 0; row < toAmount(money); row++) {
             Lotto lotto = new Lotto(createNumbers());
             lottoTable.add(lotto);
         }

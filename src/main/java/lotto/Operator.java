@@ -29,20 +29,20 @@ public class Operator {
 
     public List<Integer> checkLotto() {
         ouput.notifyWinningLottoNumbersInput();
-        Lotto winning = new Lotto(input.getWinningLottoNumbers());
+        Lotto winningLotto = new Lotto(input.getWinningLottoNumbers());
         ouput.beginNewLine();
 
         ouput.notifyBonusNumberInput();
         int bounusNumber = input.getBonusNumber();
         ouput.beginNewLine();
         return lottoChecker.toResult(
-                lottoChecker.compareLottoTable(lottoMachine.getLottoTable(), winning, bounusNumber));
+                lottoChecker.compareLottoTable(lottoMachine.getLottoTable(), winningLotto, bounusNumber));
     }
 
-    public void notifyResult(List<Integer> sumOfResult) {
-        ouput.notifySumOfResult(sumOfResult);
-        float rateOfProfit = profitCalculator.toRateOfProfit(sumOfResult);
-        ouput.notifyRateOfReturn(rateOfProfit);
+    public void notifyResult(List<Integer> result) {
+        ouput.notifyResult(result);
+        float rateOfProfit = profitCalculator.toRateOfProfit(result);
+        ouput.notifyRateOfProfit(rateOfProfit);
     }
 }
 

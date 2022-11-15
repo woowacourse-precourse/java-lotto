@@ -26,8 +26,8 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(Ouput.HAD_DUPLICATE_NUMBER_ERROR);
         }
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) < MIN_NUMBER || numbers.get(i) > MAX_NUMBER) {
+        for (int ordinal = 0; ordinal < NUMBER_OF_NUMBERS; ordinal++) {
+            if (numbers.get(ordinal) < MIN_NUMBER || numbers.get(ordinal) > MAX_NUMBER) {
                 throw new IllegalArgumentException(Ouput.MUST_BE_NUMBERS_BETWEEN_1_TO_45_ERROR);
             }
         }

@@ -1,14 +1,11 @@
 package lotto;
 
-import lotto.domain.Manager;
-import lotto.ui.Input;
-
 public class Application {
     public static void main(String[] args) {
+        Operator operator = new Operator();
         try {
-            Operator operator = new Operator();
-            operator.purchaseLottoTable();
-            operator.notifySumOfResult(operator.compareWinningLottoNumbers());
+            operator.purchaseLotto();
+            operator.notifyResult(operator.checkLotto());
         }catch (IllegalArgumentException e){
             System.out.println(e.toString());
         }

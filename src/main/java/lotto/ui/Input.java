@@ -19,10 +19,10 @@ public class Input {
     public List<Integer> getWinningLottoNumbers() {
         List<Integer> winningNumbers = new ArrayList<>();
         try {
-            String numbers = Console.readLine();
-            String[] a = numbers.split(",");
-            for (int i = 0; i < a.length; i++) {
-                winningNumbers.add(Integer.parseInt(a[i]));
+            String csv = Console.readLine();
+            String[] numbers = csv.split(",");
+            for (int ordinal = 0; ordinal < numbers.length; ordinal++) {
+                winningNumbers.add(Integer.parseInt(numbers[ordinal]));
             }
             return winningNumbers;
         } catch (IllegalArgumentException e) {

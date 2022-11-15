@@ -37,8 +37,8 @@ public class Ouput {
 
     public void notifyPurchasedLottoTable(List<Lotto> lottoTable) {
         System.out.printf(PURCAHSED_N_LOTTOS_NOTICE, lottoTable.size());
-        for (int order = 0; order < lottoTable.size(); order++) {
-            System.out.println(lottoTable.get(order).getNumbers());
+        for (int row = 0; row < lottoTable.size(); row++) {
+            System.out.println(lottoTable.get(row).getNumbers());
         }
     }
 
@@ -54,16 +54,16 @@ public class Ouput {
         System.out.println(ENTER_BOUNUS_NUMBER_NOTICE);
     }
 
-    public void notifyRateOfReturn(float rateOfReturn) {
-        System.out.printf(RATE_OF_PROFIT_IS_N_NOTICE, rateOfReturn);
+    public void notifyRateOfProfit(float rateOfProfit) {
+        System.out.printf(RATE_OF_PROFIT_IS_N_NOTICE, rateOfProfit);
     }
 
-    public void notifySumOfResult(List<Integer> sumOfResult) {
+    public void notifyResult(List<Integer> result) {
         System.out.println(GRADE_STATISTICS_NOTICE);
         System.out.println(LINE_NOTICE);
-        GradeNotice[] grade = GradeNotice.values();
-        for (int order = 0; order < 5; order++) {
-            System.out.printf(grade[order].notice, sumOfResult.get(order));
+        GradeNotice[] gradeNotices = GradeNotice.values();
+        for (int index = 0; index < 5; index++) {
+            System.out.printf(gradeNotices[index].notice, result.get(index));
         }
     }
 
