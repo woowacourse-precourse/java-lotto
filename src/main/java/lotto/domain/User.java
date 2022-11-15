@@ -49,7 +49,7 @@ public class User {
         lotteryResult.add(id, rank);
     }
 
-    public Map<LotteryRank, Integer> countWinningTickets() {
+    public Map<LotteryRank, Integer> countWinningTicketsByRank() {
         return lotteryResult.findWinningInformation();
     }
 

@@ -24,7 +24,7 @@ public class UserController {
     public static void checkLotteryResult() {
         lotteryCheckService.updateUserLotteryResult(user);
         OutputView.showWinningResult(
-                user.countWinningTickets(),
+                user.countWinningTicketsByRank(),
                 user.getNumberOfTickets(),
                 user.getTotalReward()
         );
