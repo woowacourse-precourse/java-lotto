@@ -39,7 +39,7 @@ public class Application {
 
         // phase 5) 당첨 통계 출력하기
         List<Integer> score = countScoreCandidate(candidateLotto, winningLotto, bonusNumber);
-        printWinningResult(score);
+        int totalPrize = printWinningResult(score);
 
 
     }
@@ -82,12 +82,15 @@ public class Application {
         }
         return candidateLotto;
     }
-    public static void printWinningResult(List<Integer> score){
+    public static int printWinningResult(List<Integer> score){
         List<LottoCode> lottoCode = List.of(CORRECT_3, CORRECT_4, CORRECT_5,
                                             CORRECT_5_WITH_BONUS, CORRECT_6);
+        int totalPrize = 0;
         for (int index = 0; index<5; index++){
-            System.out.println(lottoCode.get(index).toString() + score.get(index) + "개");
+            System.out.println(lottoCode.get(index).getMessage().toString() + score.get(index) + "개");
+            totalPrize += score.get(index) * lottoCode.get(index).getPrize();
         }
+        return totalPrize;
     }
 
     public static List<Integer> countScoreCandidate(List<Lotto> candidateLotto,
