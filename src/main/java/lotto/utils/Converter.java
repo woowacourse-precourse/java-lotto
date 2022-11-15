@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
+    private static final String DELIMITER = ",";
 
     public List<Integer> convertToLuckyNumber(String input) {
         List<Integer> luckyNumber = new ArrayList<>();
@@ -13,7 +14,7 @@ public class Converter {
     }
 
     private String[] getNumbers(String input) {
-        return input.split(",");
+        return input.split(DELIMITER);
     }
 
     private void addNumber(List<Integer> luckyNumber, String[] numbers) {

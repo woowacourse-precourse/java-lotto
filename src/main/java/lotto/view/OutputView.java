@@ -3,14 +3,11 @@ package lotto.view;
 import lotto.domain.WinningNumberStatus;
 import lotto.domain.Lotto;
 import lotto.dto.ResultResponse;
-
 import java.util.List;
 
-import static lotto.domain.NoticeMessage.ADDITIONAL_SECOND;
-import static lotto.domain.NoticeMessage.LOTTO_COUNT;
+import static lotto.domain.NoticeMessage.*;
 
 public class OutputView {
-
     public void outputLotto(List<Lotto> lotteries) {
         System.out.println(lotteries.size() + LOTTO_COUNT.toString());
         for (Lotto lottery : lotteries) {
@@ -20,44 +17,14 @@ public class OutputView {
     }
 
     public void outputWinningStatistics(ResultResponse result) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS);
         for (int rank = WinningNumberStatus.FIFTH.getOrder(); rank >= WinningNumberStatus.FIRST.getOrder(); rank--) {
-            WinningNumberStatus winningNumberStatus = WinningNumberStatus.getWinningNumberStatusByOrder(rank);
-            System.out.println(winningNumberStatus.getCount() + "개 일치" + getAdditionalSecondNotice(rank)
-                    + " (" + getProcessedMoney(winningNumberStatus.getMoney())+ "원) - " + result.getResult().get(rank) + "개");
+            System.out.println(printWinningStatistics(result, rank));
         }
-    }
-
-    private String getProcessedMoney(int money) {
-        String interimMoney = String.valueOf(money);
-        int limit = 3;
-        int count = 0;
-
-        StringBuilder processedMoney = new StringBuilder();
-        for (int index = interimMoney.length(); index > 0; index--) {
-            if (count == limit) {
-                processedMoney.append(",");
-                count = 0;
-                index++;
-                continue;
-            }
-
-            processedMoney.append(interimMoney.charAt(index - 1));
-            count++;
-        }
-        return processedMoney.reverse().toString();
-    }
-
-    private String getAdditionalSecondNotice(int rank) {
-        if (rank == WinningNumberStatus.SECOND.getOrder()) {
-            return ADDITIONAL_SECOND.toString();
-        }
-        return "";
     }
 
     public void outputEarningRate(double earningRate) {
-        System.out.println("총 수익률은 " + String.format("%.1f", earningRate) + "%입니다.");
+        System.out.println(printEarningRate(earningRate));
     }
 
 }

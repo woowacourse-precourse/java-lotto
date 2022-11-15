@@ -5,10 +5,12 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoStatus;
 import lotto.domain.WinningNumberStatus;
 import lotto.dto.ResultResponse;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static lotto.domain.LottoStatus.PERCENT;
+import static lotto.domain.WinningNumberStatus.FIRST;
 
 public class LottoService {
     public List<Lotto> issueLotto(int money) {
@@ -39,7 +41,7 @@ public class LottoService {
 
     public double getEarning(ResultResponse count) {
         double earning = 0;
-        for (int rank = WinningNumberStatus.FIRST.getOrder(); rank <= WinningNumberStatus.FIFTH.getOrder(); rank++) {
+        for (int rank = FIRST.getOrder(); rank <= WinningNumberStatus.FIFTH.getOrder(); rank++) {
             WinningNumberStatus winningNumberStatus = WinningNumberStatus.getWinningNumberStatusByOrder(rank);
             earning += count.getResult().get(rank) * winningNumberStatus.getMoney();
         }
@@ -47,6 +49,6 @@ public class LottoService {
     }
 
     public double getEarningRate(int purchasingAmount, double earning) {
-        return (earning / purchasingAmount) * 100;
+        return (earning / purchasingAmount) * PERCENT.getValue();
     }
 }

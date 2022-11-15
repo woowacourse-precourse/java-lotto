@@ -8,6 +8,8 @@ import static lotto.domain.ErrorMessage.*;
 import static lotto.domain.LottoStatus.*;
 
 public class Validator {
+    private static final String DELIMITER = ",";
+    private static final char DIGIT_EXCEPTION = '0';
 
     public void validatePurchasingAmountSize(String input) {
         if (input.length() < LottoStatus.PRICE.getDigitsSize()) {
@@ -30,7 +32,7 @@ public class Validator {
 
     private void validateFirstDigit(String input) {
         char first = getDigit(input, 0);
-        if (first == '0' || !Character.isDigit(first)) {
+        if (first == DIGIT_EXCEPTION || !Character.isDigit(first)) {
             throw new IllegalArgumentException(INCORRECT_PURCHASING_AMOUNT.toString());
         }
     }
@@ -70,7 +72,7 @@ public class Validator {
     }
 
     private String[] getNumbers(String input) {
-        return input.split(",");
+        return input.split(DELIMITER);
     }
 
     public void validateLuckyNumberDigit(String input) {
