@@ -56,21 +56,23 @@ public class LottoTickets {
 
     public static int getWinningAmounts() {
         int sum = 0;
+        int size = ReferenceValue.Lotto.SIZE.getValue();
 
-        for (int eachMatchIndex : lottoMatches) {
-            sum += getMatchesMoney(eachMatchIndex);
+        for (int index = 0; index < size; index++) {
+            int count = lottoMatches.get(index);
+            sum += getMatchesMoney(index, count);
         }
 
         return sum;
     }
 
-    private static int getMatchesMoney(int eachMatchIndex) {
+    private static int getMatchesMoney(int index, int count) {
 
         int money = 0;
 
         for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
-            if (winningStats.equalsIndex(eachMatchIndex)) {
-                money = winningStats.getMoney();
+            if (winningStats.equalsIndex(index)) {
+                money = (winningStats.getMoney() * count);
                 break;
             }
         }
