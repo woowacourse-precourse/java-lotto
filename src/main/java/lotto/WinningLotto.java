@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -48,5 +50,20 @@ public class WinningLotto {
 
     private Integer bonusNumberOf(Matcher matcher) {
         return Integer.parseInt(matcher.group("n7"));
+    }
+
+    public Optional<Prize> evaluateTo(Lotto lotto) {
+        Predicate<Prize> pipeMatching = prize -> primaryNumbers.stream()
+                .filter(lotto::hasNumber)
+                .count() == prize.getNumMatch();
+
+        Predicate<Prize> pipeBonusProcessing = prize -> {
+            if (prize.needsBonusNumber()) {
+                return lotto.hasNumber(bonusNumber);
+            }
+            return true;
+        };
+
+        return Prize.pickAnyWith(pipeMatching.and(pipeBonusProcessing));
     }
 }
