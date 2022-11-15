@@ -31,7 +31,7 @@ public class WinningStatisticsTest {
     @Test
     @DisplayName("당첨 내역을 이용해 당첨 금액을 구한다.")
     void getWinningAmountTest() {
-        Map<WinningRank, Integer> winningDetails = WinningRank.generateWinningDetails();
+        Map<WinningRank, Integer> winningDetails = WinningStatistics.generateWinningDetails();
         winningDetails.replace(WinningRank.SECOND_PLACE, 2);
         winningDetails.replace(WinningRank.FOURTH_PLACE, 5);
         winningDetails.replace(WinningRank.FIFTH_PLACE, 13);

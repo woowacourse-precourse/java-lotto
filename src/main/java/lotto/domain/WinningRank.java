@@ -13,8 +13,6 @@ public enum WinningRank {
     SECOND_PLACE(5, true, 30_000_000),
     FIRST_PLACE(6, false, 2_000_000_000);
 
-    private static final int INITIAL_VALUE = 0;
-
     private final int matchingCount;
     private final boolean containsBonusNumber;
     private final int winningPrice;
@@ -31,12 +29,6 @@ public enum WinningRank {
                 .filter(winningRank -> winningRank.containsBonusNumber == containsBonusNumber)
                 .findFirst()
                 .orElse(WinningRank.LAST_PLACE);
-    }
-
-    public static Map<WinningRank, Integer> generateWinningDetails() {
-        Map<WinningRank, Integer> winningDetails = new EnumMap<>(WinningRank.class);
-        Arrays.stream(values()).forEach(winningRank -> winningDetails.put(winningRank, INITIAL_VALUE));
-        return winningDetails;
     }
 
     public int getMatchingCount() {
