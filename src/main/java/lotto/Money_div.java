@@ -1,16 +1,14 @@
 package lotto;
 
-import java.util.*;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class Lotto_num {
+public class Money_div {
 
     private static final int MIN_COST = 1000;
 
     private final int money;
 
-    public Lotto_num(int money){
+    public Money_div(int money){
         validateNum(money);
         this.money = money;
     }
