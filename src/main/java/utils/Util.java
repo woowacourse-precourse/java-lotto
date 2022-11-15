@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Util {
 
-    private static final String REGEX = ", ";
+    private static final String REGEX = ",";
 
     public static int convertStringToInt(String textNumber) {
         return Integer.parseInt(textNumber);
