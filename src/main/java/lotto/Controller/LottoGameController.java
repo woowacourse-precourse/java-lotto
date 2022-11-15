@@ -40,4 +40,10 @@ public class LottoGameController {
 
         return integerList;
     }
+
+    private int translateStringToInteger(String text) {
+        int integerNumber = Integer.parseInt(text);
+
+        return integerNumber;
+    }
 }
