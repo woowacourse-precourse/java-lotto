@@ -16,8 +16,7 @@ public class Input {
         if(isNumber(tmp)) {
             return Integer.parseInt(tmp);
         }
-        System.out.println("[ERROR] 숫자 형식이 아닙니다.");
-        return 0;
+        throw new IllegalArgumentException("[ERROR]");
     }
 
     public static List<Integer> inputSixNumber() {
@@ -28,7 +27,6 @@ public class Input {
                     .distinct()
                     .mapToInt(Integer::parseInt).boxed()
                     .collect(Collectors.toList());
-
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자형식이 아닙니다.");
         }

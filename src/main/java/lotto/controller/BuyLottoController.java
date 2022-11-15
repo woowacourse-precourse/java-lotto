@@ -16,23 +16,21 @@ import static lotto.console.Output.BufferedRecorder.*;
 
 public class BuyLottoController {
 
-    private int inputCost() throws IOException{
+    private int inputCost() {
         printInputCost();
         int cost = inputNumber();
+        int tmp = lottoNumbersPerCost(cost);
 
-        if (isUp(0, cost) && isMultiplesOf1000(cost)) {
-            int tmp = lottoNumbersPerCost(cost);
-
-            writeNewLine();
-            writeBuyLotto(tmp);
-
-            return tmp;
+        if(!(isUp(0, cost) && isMultiplesOf1000(cost))) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 비용을 입력했습니다.");
         }
 
-        throw new IllegalArgumentException("[Error] 잘못된 비용을 지불했습니다.");
+        writeBuyLotto(tmp);
+
+        return tmp;
     }
 
-    private List<Lotto> createLottoNumber(int lottoNumber) throws IOException {
+    private List<Lotto> createLottoNumber(int lottoNumber) {
         List<Lotto> lottoList = new ArrayList<>();
         List<Integer> tmp;
 
@@ -46,15 +44,9 @@ public class BuyLottoController {
         return lottoList;
     }
 
-    private void printLottoNumber() throws IOException {
-        writeNewLine();
-        printBufferedStream();
-    }
 
-    public List<Lotto> runBuyLottoController() throws IOException {
+    public List<Lotto> runBuyLottoController() {
         List<Lotto> answer = createLottoNumber(inputCost());
-        printLottoNumber();
-
         return answer;
     }
 }

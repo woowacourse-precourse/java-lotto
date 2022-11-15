@@ -45,6 +45,7 @@ public class StatisticController {
         updateStatisticCount(lottoList, winningLotto);
         recordGrade();
         recordRevenueRate();
-        printBufferedStream();
+//        printBufferedStream();
+
     }
 }

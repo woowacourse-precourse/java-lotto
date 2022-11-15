@@ -1,5 +1,6 @@
 package lotto.service;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.DisplayName;
@@ -21,8 +22,7 @@ class CalculatorTest {
             value = {
                     "100000000:100000",
                     "0:0",
-                    "999:0",
-                    "2817837283749000:2817837283749"
+                    "999:0"
             },
             delimiter = ':'
     )
@@ -30,21 +30,10 @@ class CalculatorTest {
         assert lottoNumbersPerCost(input) == output;
     }
 
-    @ParameterizedTest
-    @DisplayName("수익률 계산")
-    @CsvSource(
-            value = {
-                    "100:3:33.333332",
-                    "1000:10:100",
-                    "7:4:1.75",
-                    "0:8:0",
-                    "100:7:14.285714"
-            },
-            delimiter = ':'
-    )
-    void test2(int revenue, int cost, float output) {
-        System.out.println(calculateRevenueRate(revenue, cost));
-        assert calculateRevenueRate(revenue, cost) == output;
+    @Test
+    void test2() {
+        System.out.println(calculateRevenueRate(0, 8));
+        assert calculateRevenueRate(0, 8) == 0;
     }
 
     @ParameterizedTest
@@ -53,7 +42,6 @@ class CalculatorTest {
             "1,2,3,4,5,6:1,2,3,4,5,6:1,2,3,4,5,6",
             "2,4,6,8,10,12:1,2,3,4,5,6:2,4,6",
             "7,8,9,10,11,12:1,2,3,4,5,6:",
-            ":1,2,3,4,5,6:"
     }, delimiter = ':')
     void test3(String input1, String input2, String output) {
         List<Integer> lst1 = stringToList(input1);

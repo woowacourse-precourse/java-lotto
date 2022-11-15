@@ -1,22 +1,19 @@
 package lotto.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import static lotto.console.Input.*;
 import static lotto.console.Output.*;
-import static lotto.console.Output.BufferedRecorder.*;
 
 public class WinningLottoController {
 
-    public List<Integer> createWinningLotto() throws IOException {
+    public List<Integer> createWinningLotto() {
         printInputWinningNumber();
 
         return inputSixNumber();
     }
 
-    public void addBonusNumber(List<Integer> winningLotto) throws IOException {
-        writeNewLine();
+    public void addBonusNumber(List<Integer> winningLotto) {
         printInputBonusNumber();
 
         int bonusNumber = inputNumber();
@@ -28,7 +25,7 @@ public class WinningLottoController {
         winningLotto.add(bonusNumber);
     }
 
-    public List<Integer> runWinningLottoController() throws IOException {
+    public List<Integer> runWinningLottoController() {
         List<Integer> winningLotto = createWinningLotto();
         addBonusNumber(winningLotto);
 
