@@ -19,7 +19,7 @@ public class Lotto {
     }
     public static void doubleCheck(List<Integer> numbers){
         for(int i = 0; i < numbers.size();i++){
-            if(numbers.contains(numbers.get(i))){
+            if(numbers.contains(numbers.get(i)) && numbers.indexOf(numbers.get(i)) != i ){
                 throw new IllegalArgumentException();
             }
         }
