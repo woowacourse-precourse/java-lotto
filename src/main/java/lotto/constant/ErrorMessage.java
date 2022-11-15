@@ -9,7 +9,8 @@ public enum ErrorMessage {
     MONEY_IS_ALLOWED_ONLY_NUMERIC("구매 입력은 숫자만 가능합니다"),
     THIS_INPUT_ALLOW_NUMBER("이 입력은 숫자만 허용합니다"),
     USER_INPUT_DOES_NOT_COMPLY_WITH_RULE_FOR_WINNING_LOTTO_NUMBER("입력한 당첨 번호 형식은 게임 규칙에 맞지 않습니다"),
-    USER_INPUT_MONEY_IS_ZERO("사용자가 넣은 금액이 0원입니다");
+    USER_INPUT_MONEY_IS_ZERO("사용자가 넣은 금액이 0원입니다"),
+    NUMBER_OF_LOTTO_NUMBERS_DOES_NOT_COMPLY_WITH_RULE("로또 개수가 규칙과 맞지 않습니다");
 
     private final String message;
 

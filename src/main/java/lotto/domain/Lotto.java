@@ -34,7 +34,8 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LottoNumber.NUMBER_OF_LOTTO_NUMBERS.getNumber()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    ErrorMessage.NUMBER_OF_LOTTO_NUMBERS_DOES_NOT_COMPLY_WITH_RULE.getMessage());
         }
     }
 
