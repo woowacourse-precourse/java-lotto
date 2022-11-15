@@ -71,7 +71,9 @@ public class CalculatingLotto {
         int[] rankCount=new int[5];
         int index=0;
         for(index=0;index<allRank.size();index++){
-            rankCount[allRank.get(index)-1]++;
+            if(allRank.get(index)!=0) {
+                rankCount[allRank.get(index) - 1]++;
+            }
         }
         List<Integer> rankingCount= new ArrayList<>();
         for(index=0;index<rankCount.length;index++){
