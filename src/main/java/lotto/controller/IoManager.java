@@ -38,23 +38,26 @@ public class IoManager {
 
     public String makeLottoHistoryDescription(LottoStatistics lottoStatistics) {
         StringBuilder stringBuilder = new StringBuilder();
+
         for (LottoResult lottoResult: LottoResult.values()) {
             if(lottoResult.equals(LottoResult.MISS)) {
                 continue;
             }
 
-            String resultDescription = makeLottoResultDescription(lottoResult);
             int resultCount = lottoStatistics.getLottoResultCount(lottoResult);
+            String resultDescriptionWithCount = makeLottoResultDescriptionWithCount(lottoResult, resultCount);
+            stringBuilder.append(resultDescriptionWithCount);
 
-            stringBuilder.append(resultDescription)
-                    .append(" - ")
-                    .append(resultCount)
-                    .append("개");
             if(lottoResult.ordinal() != LottoResult.FIRST.ordinal()) {
                 stringBuilder.append("\n");
             }
         }
         return stringBuilder.toString();
+    }
+
+    private String makeLottoResultDescriptionWithCount(LottoResult lottoResult, int count) {
+        String resultDescription = makeLottoResultDescription(lottoResult);
+        return resultDescription + " - " + count + "개";
     }
 
     public String makeReturnRateDescription(Payment payment, LottoStatistics lottoStatistics) {
