@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.type.ErrorType;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -36,6 +37,14 @@ public class LottoGame {
         InputView.isValidFormat(winNumberInput);
 
         addWinNumbers(winNumberInput);
+
+        String bonusNumberInput = InputView.inputBonusNumber();
+
+        InputView.isValidFormat(bonusNumberInput);
+        InputView.isValidBonusNumber(bonusNumberInput);
+        isDuplicateWithWinNumbers(bonusNumberInput);
+
+        addWinNumbers(bonusNumberInput);
     }
 
     private void addWinNumbers(String winNumberInput) {
@@ -44,5 +53,12 @@ public class LottoGame {
         for (String number : numbers) {
             winNumbers.add(Integer.parseInt(number));
         }
+    }
+
+    private void isDuplicateWithWinNumbers(String bonusNumberInput) {
+        int bonus = Integer.parseInt(bonusNumberInput);
+
+        if(winNumbers.contains(bonus))
+            throw new IllegalArgumentException(ErrorType.DUPLICATE_WHIT_WIN_NUMBERS.getError());
     }
 }

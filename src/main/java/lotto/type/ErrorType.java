@@ -9,7 +9,9 @@ public enum ErrorType {
     DUPLICATE_NUMBER("[ERROR] 중복된 숫자로 로또를 생성할 수 없습니다."),
     OVER_SIZE("[ERROR] 로또 번호는 6개로 구성되어야 합니다."),
     OVER_SIZE_WIN_NUMBER("[ERROR] 당첨 번호는 6개를 입력해야 합니다."),
-    OVER_WIN_NUMBER("[ERROR] 당첨번호의 범위를 초과했습니다.");
+    OVER_WIN_NUMBER("[ERROR] 당첨번호의 범위를 초과했습니다."),
+    OVER_BONUS_NUMBER("[ERROR] 보너스번호의 범위를 초과했습니다."),
+    DUPLICATE_WHIT_WIN_NUMBERS("[ERROR] 보너스번호는 당첨번호와 겹치치 않는 번호여야 합니다.");
 
     private final String error;
 

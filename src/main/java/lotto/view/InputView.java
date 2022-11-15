@@ -49,4 +49,20 @@ public class InputView {
                 throw new IllegalArgumentException(ErrorType.OVER_WIN_NUMBER.getError());
         }
     }
+
+    public static String inputBonusNumber() {
+        System.out.println(TextType.BONUS_NUMBER_INPUT_MESSAGE.getText());
+
+        String input = Console.readLine();
+
+        return input;
+    }
+
+    public static void isValidBonusNumber(String bonusNumberInput) {
+
+        isNumber(bonusNumberInput);
+
+        if(Integer.parseInt(bonusNumberInput) < 0 || Integer.parseInt(bonusNumberInput) > 45)
+            throw new IllegalArgumentException(ErrorType.OVER_BONUS_NUMBER.getError());
+    }
 }
