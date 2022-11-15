@@ -1,6 +1,12 @@
-package lotto;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
+import lotto.domain.Person;
+import lotto.domain.Rank;
+import lotto.domain.WinningNumbers;
+import lotto.constants.Constants;
+import lotto.utility.Parser;
 
 import java.util.Map;
 

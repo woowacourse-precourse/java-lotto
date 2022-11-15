@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.constants.Constants;
 
 import java.util.ArrayList;
 import java.util.EnumMap;

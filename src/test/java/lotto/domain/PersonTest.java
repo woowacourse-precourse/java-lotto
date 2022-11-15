@@ -1,5 +1,6 @@
-package lotto;
+package lotto.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PersonTest {
 
+    @DisplayName("당첨 통계 테스트")
     @Test
     void matchResult() {
         Person person = generatePerson();
@@ -22,7 +24,8 @@ class PersonTest {
         assertThat(matchResult.get(Rank.SECOND)).isEqualTo(1);
         assertThat(matchResult.get(Rank.FIFTH)).isEqualTo(1);
     }
-
+    
+    @DisplayName("수익률 계산 테스트")
     @Test
     void yield() {
         Person person = generatePerson();

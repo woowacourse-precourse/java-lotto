@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.constants.Constants;
+import lotto.constants.ErrorMessages;
 
 public class WinningNumbers {
     final Lotto winningNumbers;

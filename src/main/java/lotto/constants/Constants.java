@@ -1,4 +1,4 @@
-package lotto;
+package lotto.constants;
 
 public class Constants {
     public static final int MIN = 1;

@@ -1,4 +1,7 @@
-package lotto;
+package lotto.utility;
+
+import lotto.constants.Constants;
+import lotto.constants.ErrorMessages;
 
 import java.util.ArrayList;
 import java.util.Arrays;
