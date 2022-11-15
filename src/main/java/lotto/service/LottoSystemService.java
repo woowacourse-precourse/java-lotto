@@ -108,7 +108,7 @@ public class LottoSystemService {
 
         for (int i = 0; i < total.size(); i++) {
             nowMessage = total.get(i);
-            resultMessage = nowMessage + hit.get(i) + " 개";
+            resultMessage = nowMessage + hit.get(i) + "개";
             total.set(i, resultMessage);
         }
     }
