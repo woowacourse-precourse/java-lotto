@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static lotto.domain.Preset.*;
+import static lotto.view.OutputView.LOTTO_PRINT_FORMAT;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -20,9 +21,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
     @Override
     public String toString() {
-        return String.format("[%d, %d, %d, %d, %d, %d]", numbers.get(0), numbers.get(1), numbers.get(2), numbers.get(3), numbers.get(4), numbers.get(5));
+        return String.format(LOTTO_PRINT_FORMAT, numbers.get(0), numbers.get(1), numbers.get(2), numbers.get(3), numbers.get(4), numbers.get(5));
     }
 
     public List<Integer> getNumbers() {
@@ -40,14 +42,14 @@ public class Lotto {
     }
 
     public static void checkOutOfRange(List<Integer> numbers) {
-        for(Integer number : numbers) {
+        for (Integer number : numbers) {
             if (number < LOTTO_MIN_VALUE || number > LOTTO_MAX_VALUE)
                 throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
         }
     }
 
     public static void checkDuplicated(List<Integer> numbers) {
-        for(Integer number : numbers) {
+        for (Integer number : numbers) {
             if (Collections.frequency(numbers, number) > 1)
                 throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
         }

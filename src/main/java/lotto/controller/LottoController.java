@@ -2,11 +2,9 @@ package lotto.controller;
 
 import lotto.domain.*;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 import static lotto.domain.Preset.*;
-import static lotto.domain.WinningType.getWinningType;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 

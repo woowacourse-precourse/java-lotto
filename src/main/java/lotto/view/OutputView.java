@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 import java.util.Map;
 
 import static lotto.domain.Preset.LINE_FEED;
-import static lotto.domain.Preset.pourcentage;
+import static lotto.domain.Preset.percentage;
 
 public class OutputView {
 
@@ -17,6 +17,7 @@ public class OutputView {
     public static final String READ_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     public static final String READ_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
+    public static final String LOTTO_PRINT_FORMAT = "[%d, %d, %d, %d, %d, %d]";
     public static final String PRINT_PURCHASE_NUM_MESSAGE = "개를 구매했습니다.";
     public static final String PRINT_RESULT_MAIN_MESSAGE = "당첨 통계\n" + "---";
     public final static String PRINT_RESULT_EQUAL_MESSAGE = "개 일치";
@@ -32,7 +33,6 @@ public class OutputView {
     }
 
     public static void printResult(WinningLotto winningLotto, Lottos lottos, int inputMoney) {
-
         printResultMainMessage();
 
         WinningResult result = new WinningResult(winningLotto, lottos);
@@ -47,7 +47,6 @@ public class OutputView {
     }
 
     public static void printEachWinningResult(WinningType type, Map<WinningType, Integer> winningResults) {
-
         if (type == WinningType.NONE) return;
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
@@ -63,7 +62,7 @@ public class OutputView {
 
     public static void printEarning(double earning) {
         System.out.print(PRINT_EARNING_START_MESSAGE);
-        System.out.printf("%.1f", earning * pourcentage);
+        System.out.printf("%.1f", earning * percentage);
         System.out.println(PRINT_EARNING_END_MESSAGE);
     }
 }
