@@ -24,6 +24,8 @@
     - [x]  당첨 내역 저장 기능 → registerWinningResult
     - [x]  당첨금 저장 기능 → registerTotalPrize
     - [ ]  수익률 저장 기능 → registerLottoYield
+
+        소수점 둘째 자리에서 반올림
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [x]  로또 개수만큼 발행 기능 → issueLotto
@@ -38,10 +40,13 @@
     - [x]  보너스 번호 검증 기능 → validateBonusNumber
         - [x]  보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateBonusNumberBetween1And45
         - [x]  보너스 번호가 당첨 번호와 겹치지 않는지 검증 기능 → validateBonusNumberNotInWinningNumber
-    - [x]  문자열을 숫자로 변환해주는 기능 → convertStringIntoInt
-    - [x]  문자열을 리스트로 변환해주는 기능 → convertStringIntoList 
+5.  ConvertData
+    - [x]  문자열을 숫자로 변환해주는 기능 → StringIntoInt
+    - [x]  문자열을 리스트로 변환해주는 기능 → StringIntoList
+    - [ ]  실수 형식의 문자열의 정수 부분을 변환해주는 기능 → IntegerPartOfNumber
+    - [ ]  실수 형식의 문자열의 소수 부분을 변환해주는 기능 → DecimalPartOfNumber
 
-        당첨 번호를 쉼표 기준으로 입력했는지 검증
+      당첨 번호를 쉼표 기준으로 입력했는지 검증
 
 ### view
 
@@ -127,7 +132,7 @@
         
     3. 수익률 출력
         
-        소수점 둘째 자리에서 반올림 (ex. 100.0%, 51.5%, 1,000,000.%)
+        소수점 둘째 자리에서 반올림 (ex. 100.0%, 51.5%, 1,000,000.0%)
         
         ```plain text
         총 수익률은 62.5%입니다.

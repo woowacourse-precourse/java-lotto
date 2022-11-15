@@ -7,6 +7,7 @@ import lotto.model.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.enums.Ranking;
+import lotto.ConvertUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,12 +17,13 @@ public class ApplicationController {
     Seller seller = new Seller();
     Player player = new Player();
     InputValidator inputValidator = new InputValidator();
+    ConvertUtil convertUtil = new ConvertUtil();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
     public void startApplication() {
         String input_purchaseAmount = inputView.inputPurchaseAmount();
-        int purchaseAmount = inputValidator.convertStringIntoInt(input_purchaseAmount);
+        int purchaseAmount = convertUtil.StringIntoInt(input_purchaseAmount);
         inputValidator.validatePurchaseAmount(purchaseAmount);
         player.setPurchaseAmount(purchaseAmount);
 
@@ -46,7 +48,7 @@ public class ApplicationController {
 
     public void control_WinningNumber() {
         String input_WinningNumber = inputView.inputWinningNumber();
-        List<Integer> winningNumber = inputValidator.convertStringIntoList(input_WinningNumber);
+        List<Integer> winningNumber = convertUtil.StringIntoList(input_WinningNumber);
         inputValidator.validateWinningNumber(winningNumber);
         player.setWinningNumber(winningNumber);
 
@@ -55,7 +57,7 @@ public class ApplicationController {
 
     public void control_BonusNumber() {
         String input_BonusNumber = inputView.inputBonusNumber();
-        int bonusNumber = inputValidator.convertStringIntoInt(input_BonusNumber);
+        int bonusNumber = convertUtil.StringIntoInt(input_BonusNumber);
         inputValidator.validateBonusNumber(bonusNumber, player.getWinningNumber());
         player.setBonusNumber(bonusNumber);
 

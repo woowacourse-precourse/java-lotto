@@ -7,29 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputValidator {
-    public int convertStringIntoInt(String input) {
-        try {
-            int result = Integer.parseInt(input);
-            return result;
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_INPUT_VALUE_IS_NOT_NUMBER.getMessage());
-        }
-    }
-
     public void validatePurchaseAmount(int purchaseAmount) {
         if (purchaseAmount % PRICE_OF_LOTTO.getValue() != 0) {
             throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_PURCHASE_AMOUNT_IS_NOT_DIVIDED_BY_1000.getMessage());
-        }
-    }
-
-    public List<Integer> convertStringIntoList(String input) {
-        try {
-            List<Integer> result = List.of(input.split(",")).stream()
-                    .map(x -> Integer.parseInt(x))
-                    .collect(Collectors.toList());
-            return result;
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_WINNING_NUMBER_INPUT_IS_INVALID_INPUT_TYPE.getMessage());
         }
     }
 
