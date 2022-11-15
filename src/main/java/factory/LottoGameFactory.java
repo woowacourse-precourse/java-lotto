@@ -9,4 +9,5 @@ public class LottoGameFactory {
     public static LottoGameController getGame(){
         return new LottoGameController(new Inputer(), new LottoNumberComparator(), new Printer());
     }
+
 }
