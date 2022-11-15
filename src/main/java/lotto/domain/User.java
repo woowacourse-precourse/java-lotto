@@ -28,7 +28,9 @@ public class User {
         this.userLottos = lottoGenerator(quantity);
     }
 
-
+    public List<UserLotto> getUserLottos() {
+        return this.userLottos;
+    }
 
 
 
