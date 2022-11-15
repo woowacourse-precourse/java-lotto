@@ -1,5 +1,6 @@
 package lotto.Controller;
 
+import lotto.Domain.BonusNumber;
 import lotto.Domain.Lotto;
 import lotto.Domain.LottoPublisher;
 import lotto.Domain.PurchasingLotto;
@@ -20,6 +21,7 @@ public class LottoGameController {
 
     public void gameStart() {
         purchaseLotto();
+        inputLottoNumberAndBonus();
     }
 
     public void purchaseLotto() {
@@ -29,6 +31,16 @@ public class LottoGameController {
         new PurchasingLotto(purchasingAmount);
         outputView.printTheNumberOfLotto(purchasingLotto.getAmountOfLotto());
         outputView.printLottoNumber(purchasingLotto.getPurchase());
+    }
+
+    public void inputLottoNumberAndBonus() {
+        String lottoNumberUserInput = inputView.inputWinningNumber();
+        List<Integer> lottoNumber = translateStringToIntegerList(lottoNumberUserInput);
+        new Lotto(lottoNumber);
+        outputView.printEmptyLine();
+        String bonusNumberUserInput = inputView.inputBonusNumber();
+        int bonusNumber = translateStringToInteger(bonusNumberUserInput);
+        new BonusNumber(bonusNumber);
     }
 
     private List<Integer> translateStringToIntegerList(String text) {
