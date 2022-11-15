@@ -11,14 +11,13 @@ public class UserIO {
     public static void printLottoNumbers(List<Lotto> allLotto) {
         System.out.println(allLotto.size()+"개를 구매했습니다.");
         for (Lotto paper : allLotto) {
-
             System.out.println(paper.getNumbers());
         }
     }
 
     public static Integer inputPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        return Validaor.validatePurchaseAmount(Console.readLine());
     }
 
     public static List<Integer> inputWinningNumber() {

@@ -10,7 +10,13 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        play();
+        try {
+            play();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+//            throw new IllegalArgumentException(e.getMessage());
+        }
+
     }
 
     private static void play() {
