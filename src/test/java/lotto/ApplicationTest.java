@@ -1,15 +1,20 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
+
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
@@ -57,5 +62,50 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+
+    @DisplayName("로또 번호와 당첨 번호에서 같은 숫자의 개수를 센다")
+    @Test
+    void matchWinningNumbersTest() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> answer = List.of(1, 3, 19, 20, 21, 22);
+        int match = 2;
+        assertThat(matchCount(lotto, answer)).isEqualTo(match);
+    }
+
+    @Test
+    void matchBonusTest() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        String bonus = "4";
+        boolean result = true;
+        assertThat(matchBonus(lotto, bonus)).isEqualTo(result);
+    }
+
+    @Test
+    void RankingTest() {
+        List<Lotto> lottoTickets = List.of(
+            new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+            new Lotto(List.of(1, 2, 3, 4, 5, 10)),
+            new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+            new Lotto(List.of(1, 2, 3, 4, 5, 9)),
+            new Lotto(List.of(1, 2, 7, 8, 9, 10))
+        );
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String bonus = "7";
+
+        Map<Rank, Integer> history = calculateWinning(lottoTickets, winningNumbers, bonus);
+
+        Map<Rank, Integer> result = new HashMap<>();
+        result.put(Rank.RANK1, 1);
+        result.put(Rank.RANK2, 1);
+        result.put(Rank.RANK3, 2);
+        result.put(Rank.RANK4, 0);
+        result.put(Rank.RANK5, 0);
+        result.put(Rank.NOTHING, 1);
+
+        for (Rank rank : history.keySet()){
+            assertThat(history.get(rank)).isEqualTo(result.get(rank));
+        }
     }
 }
