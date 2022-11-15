@@ -6,24 +6,27 @@ import lotto.Validate;
 public class GetResultNumber {
     private final Validate validate = new Validate();
 
-    public boolean validationPrizeNumber(int[] number, String[] prizeNumberFromUser, int numberValidationLoop) {
+    public void validationPrizeNumber(int[] number, String[] prizeNumberFromUser, int numberValidationLoop) {
         if (prizeNumberFromUser.length != 6) {
             throw new IllegalArgumentException("로또 번호는 6개의 숫자입니다.");
         }
-
-        return validate.wrongNumber(Integer.parseInt(prizeNumberFromUser[numberValidationLoop])) ||
-                validate.duplicateNumber(
-                        Integer.parseInt(prizeNumberFromUser[numberValidationLoop]), number);
+        if (validate.wrongNumber(Integer.parseInt(prizeNumberFromUser[numberValidationLoop]))) {
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        if (validate.duplicateNumber(
+                Integer.parseInt(prizeNumberFromUser[numberValidationLoop]), number)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
     }
 
     public void getPrizeNumberFromUser(int[] prizeNumber) {
         try {
             String[] prizeNumberFromUser = Console.readLine().split(",");
 
-            for (int numberValidationLoop = 0; numberValidationLoop < prizeNumberFromUser.length; numberValidationLoop++) {
-                if (validationPrizeNumber(prizeNumber, prizeNumberFromUser, numberValidationLoop)) {
-                    throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-                }
+            for (int numberValidationLoop = 0; numberValidationLoop < prizeNumberFromUser.length;
+                 numberValidationLoop++) {
+                validationPrizeNumber(prizeNumber, prizeNumberFromUser, numberValidationLoop);
+
                 prizeNumber[numberValidationLoop] = Integer.parseInt(prizeNumberFromUser[numberValidationLoop]);
             }
         } catch (NumberFormatException e) {
@@ -31,17 +34,21 @@ public class GetResultNumber {
         }
     }
 
-    public boolean validationBonusNumber(int[] prizeNumber, int bonusNumber) {
-        return validate.wrongNumber(bonusNumber) || validate.duplicateNumber(bonusNumber, prizeNumber);
+    public void validationBonusNumber(int[] prizeNumber, int bonusNumber) {
+        if (validate.wrongNumber(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+
+        if (validate.duplicateNumber(bonusNumber, prizeNumber)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
     }
 
     public int getBonusNumberFromUser(int[] prizeNumber) {
         try {
             int bonusNumber = Integer.parseInt(Console.readLine());
 
-            if (validationBonusNumber(prizeNumber, bonusNumber)) {
-                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
+            validationBonusNumber(prizeNumber, bonusNumber);
 
             return bonusNumber;
 
