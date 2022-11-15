@@ -1,5 +1,7 @@
 package domain;
 
+import exception.LottoException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +11,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -16,6 +19,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+    private void validateDuplicate(List<Integer> numbers) {
+        LottoException.lottoDuplicate(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public String toString() {
