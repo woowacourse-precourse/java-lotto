@@ -1,12 +1,11 @@
 package lotto.view.vlidation;
 
 import lotto.view.exception.CantDuplicatedNumberInputException;
-import lotto.view.exception.NumberIsOutOfRange;
+import lotto.view.exception.NumberIsOutOfRangeException;
 import lotto.view.exception.OnlySixNumberInputException;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static lotto.domain.LottoConfig.*;
 
@@ -28,7 +27,7 @@ public class InputCorrectLottoValidator {
     private static void validateNumberListInRange(List<Integer> inputNumbers) {
         for (Integer integer : inputNumbers) {
             if (!isNumberInRange(integer)) {
-                throw new NumberIsOutOfRange();
+                throw new NumberIsOutOfRangeException();
             }
         }
     }
@@ -38,7 +37,7 @@ public class InputCorrectLottoValidator {
     }
 
     private static void validateNoDuplicateNumbers(List<Integer> inputNumbers) {
-        HashSet<Integer> inputNoDuplicatedNumbers = (HashSet<Integer>) Set.copyOf(inputNumbers);
+        HashSet<Integer> inputNoDuplicatedNumbers = new HashSet<>(inputNumbers);
         if (inputNoDuplicatedNumbers.size() != inputNumbers.size()) {
             throw new CantDuplicatedNumberInputException();
         }
