@@ -21,6 +21,9 @@ public class Application {
         printLottoInfo(lottoCount, userLottoList);
 
         // 당첨 번호 입력 (Lotto)
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> lottoNums = getLottoNums();
+        Lotto lottoNumber = new Lotto(lottoNums);
         // 보너스 번호 입력
         // 당첨 확인
         // 당첨 통계 출력
@@ -64,6 +67,19 @@ public class Application {
         }
     }
 
+    private List<Integer> getLottoNums() {
+        String[] lottoNumString = Console.readLine().split(",");
+        return convertInteger(lottoNumString);
+    }
+
+    private List<Integer> convertInteger(String[] lottoNumString) {
+        List<Integer> lottoNums = new ArrayList<>();
+        for (String s : lottoNumString) {
+            lottoNums.add(Integer.parseInt(s));
+        }
+        lottoNums.sort(Integer::compareTo);
+        return lottoNums;
+    }
     public static void main(String[] args) {
         Application app = new Application();
         // TODO: 프로그램 구현
