@@ -73,30 +73,30 @@ public class LottoManager {
     }
 
     private void isFirst(int correct) {
-        if(correct == 6) {
+        if(correct == Prize.FIRST_PRIZE.getContained()) {
             prize[0]++;
         }
     }
     private void isSecond(int correct, boolean bonus) {
-        if(correct == 5 && bonus) {
+        if(correct == Prize.SECOND_PRIZE.getContained() && bonus) {
             prize[1]++;
         }
     }
 
     private void isThird(int correct, boolean bonus) {
-        if(correct == 5 && !bonus) {
+        if(correct == Prize.THIRD_PRIZE.getContained() && !bonus) {
             prize[2]++;
         }
     }
 
     private void isFourth(int correct) {
-        if(correct == 4) {
+        if(correct == Prize.FOURTH_PRIZE.getContained()) {
             prize[3]++;
         }
     }
 
     private void isFifth(int correct) {
-        if(correct == 3) {
+        if(correct == Prize.FIFTH_PRIZE.getContained()) {
             prize[4]++;
         }
     }

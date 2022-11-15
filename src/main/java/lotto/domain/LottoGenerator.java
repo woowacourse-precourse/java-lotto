@@ -8,12 +8,6 @@ import java.util.*;
 
 public class LottoGenerator {
 
-    private Judge judge;
-
-    public LottoGenerator() {
-        this.judge = new Judge();
-    }
-
     public List<Lotto> createLottoNumbers(String amount) {
         Notice.BUY_MESSAGE.buy(Integer.parseInt(amount) / 1000);
         List<Lotto> lottos = new ArrayList<>();
