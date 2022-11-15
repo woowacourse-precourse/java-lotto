@@ -1,12 +1,12 @@
 package lotto.utils;
 
 public enum Grade {
-    FIRST(1, 6, 0,2_000_000_000),
+    FIRST(1, 6, 0, 2_000_000_000),
     SECOND(2, 5, 1, 30_000_000),
-    THIRD(3, 5,0, 1_500_000),
+    THIRD(3, 5, 0, 1_500_000),
     FOURTH(4, 4, 0, 50_000),
-    FIFTH(5, 3,0,5_000),
-    NOTHING(6,0, 0, 0);
+    FIFTH(5, 3, 0, 5_000),
+    NOTHING(6, 0, 0, 0);
     final private int rank;
     final private int correctLotto;
     final private int correctBonus;
@@ -21,7 +21,7 @@ public enum Grade {
     }
 
     public String getBonusMessage() {
-        if (correctBonus == 1){
+        if (correctBonus == 1) {
             return "보너스 볼 일치";
         }
         return "";

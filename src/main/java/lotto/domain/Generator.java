@@ -19,7 +19,7 @@ public class Generator {
     }
 
     private void generateTickets(List<List<Integer>> tickets, int count) {
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             List<Integer> sortedNumbers = numbers.stream().sorted().collect(Collectors.toList());
             tickets.add(sortedNumbers);

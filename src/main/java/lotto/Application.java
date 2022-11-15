@@ -27,8 +27,8 @@ public class Application {
         showResult(lottoNumber, bonusNumber, tickets);
     }
 
-    private static List<List<Integer>> publish(int count){
-        if(count != END){
+    private static List<List<Integer>> publish(int count) {
+        if (count != END) {
             Generator generator = new Generator(count);
             List<List<Integer>> tickets = generator.getTickets();
             OutputView.printTickets(tickets);
@@ -37,7 +37,7 @@ public class Application {
         return TICKETS_END;
     }
 
-    private static void showResult(List<Integer> lottoNumbers, int bonusNumber, List<List<Integer>> tickets){
+    private static void showResult(List<Integer> lottoNumbers, int bonusNumber, List<List<Integer>> tickets) {
         if (lottoNumbers.size() != 0 && tickets.size() != 0 && bonusNumber != 0) {
             Statistics.print(tickets, lottoNumbers, bonusNumber);
         }
@@ -52,7 +52,7 @@ public class Application {
     }
 
     private static int implementBonus(List<Integer> lottoNumber, InputController game) {
-        if (lottoNumber.size() == LOTTO_COUNT){
+        if (lottoNumber.size() == LOTTO_COUNT) {
             int bonusNumber = game.checkBonus(new Lotto(lottoNumber));
             return bonusNumber;
         }

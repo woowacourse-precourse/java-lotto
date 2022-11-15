@@ -22,7 +22,7 @@ public class Lotto {
             throw new IllegalArgumentException(ExceptionMessage.LOTTO_NOT_VALID.getMessage());
         }
     }
-    // TODO: 추가 기능 구현
+
     private Boolean isValidRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
