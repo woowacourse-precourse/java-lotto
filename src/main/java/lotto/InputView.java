@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class InputView {
@@ -43,7 +44,8 @@ public class InputView {
         char[] inputs = input.toCharArray();
         for (char character : inputs) {
             if (!Character.isDigit(character)) {
-                throw new IllegalArgumentException(INPUT_NOT_DIGIT_MESSAGE);
+                System.out.println(INPUT_NOT_DIGIT_MESSAGE);
+                throw new NoSuchElementException();
             }
         }
     }
