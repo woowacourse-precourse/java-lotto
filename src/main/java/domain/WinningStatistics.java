@@ -23,7 +23,21 @@ public class WinningStatistics {
         this.winningNumber = winningNumber;
         this.bonus = bonus;
     }
-    
 
+    public List<Integer> getWinningStatistics(List<List<Integer>> randomNumbersContainer, List<Integer> winningNumber, int bonus) {
+        calculateStatistics(randomNumbersContainer,winningNumber,bonus);
+
+    }
+
+    private void calculateStatistics(List<List<Integer>> randomNumbersContainer, List<Integer> winningNumber, int bonus) {
+        for (List<Integer> list : randomNumbersContainer) {
+            int statistics = getStatistics(list, winningNumber, bonus);
+            Integer score = comparisonTarget.get(statistics);
+            if (score == null) {
+                continue;
+            }
+            comparisonTarget.put(statistics, score + 1);
+        }
+    }
 
 }
