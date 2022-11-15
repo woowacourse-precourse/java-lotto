@@ -22,7 +22,17 @@ public class User {
         this.lotteryCount = purchaseAmount/1000;
     }
 
+    public void lotteryNumberGenerator(){
+        List<Lotto> lotteryNumbers = new ArrayList<>();
 
+        for(int i=0; i<lotteryCount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            lotteryNumbers.add(new Lotto(numbers));
+        }
+
+        this.lotteryNumbers = lotteryNumbers;
+    }
 
     public int getPurchaseAmount() {
         return purchaseAmount;
