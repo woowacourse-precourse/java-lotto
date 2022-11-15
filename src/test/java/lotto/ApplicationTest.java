@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.exception.IllegalPriceUnitException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -47,10 +49,49 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 고액_당첨_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("7000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "7개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 7개",
+                            "총 수익률은 200000000.0%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 입력단위_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("999");
+            assertThat(output()).contains(new IllegalPriceUnitException().getMessage());
         });
     }
 
