@@ -70,11 +70,8 @@ public class Rank {
             result.increaseCount();
             return;
         }
-
-        if (countLotto == 5 && countBonus == 1) {
-            Result result = Result.fromLabel(countLotto + 2);
-            result.increaseCount();
-        }
+        Result result = Result.fromLabel(countLotto + 2);
+        result.increaseCount();
     }
 }
 

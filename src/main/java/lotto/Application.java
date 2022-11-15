@@ -8,7 +8,6 @@ public class Application {
         User user = UI.getUser();
         Rank rank = new Rank();
         rank.run(user);
-        System.out.println("rank.run finished!!!");
         for (Result temp : Result.values()) {
             System.out.println(temp);
             System.out.println(temp.count());
