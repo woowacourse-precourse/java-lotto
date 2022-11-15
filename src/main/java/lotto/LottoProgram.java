@@ -6,6 +6,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.WinnerLotto;
 import lotto.domain.LottoResult;
+import lotto.service.LottoService;
 
 import java.util.List;
 import java.util.Map;

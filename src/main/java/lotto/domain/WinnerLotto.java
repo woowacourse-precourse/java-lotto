@@ -2,12 +2,9 @@ package lotto.domain;
 
 import lotto.utils.Validator;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static lotto.domain.LottoNumber.toLottoNumber;
 import static lotto.domain.LottoRank.matchRank;
+import static lotto.utils.Converter.toLotto;
 
 public class WinnerLotto {
     private static final String BONUS_DUPLICATE = "보너스번호가 당첨번호와 중복됩니다.";
@@ -48,17 +45,4 @@ public class WinnerLotto {
             throw new IllegalArgumentException(BONUS_DUPLICATE);
         }
     }
-
-    private Lotto toLotto(String inputNumbers) {
-        return new Lotto(of(inputNumbers));
-    }
-
-    private List<Integer> of(String inputNumbers) {
-        List<String> numbers = Arrays.asList(inputNumbers.split(","));
-        return numbers.stream()
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
 }
-
