@@ -1,6 +1,7 @@
-package lotto;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.UserInput;
 import lotto.domain.Lotto;
 import lotto.domain.Score;
 import lotto.domain.WinningNumbers;
