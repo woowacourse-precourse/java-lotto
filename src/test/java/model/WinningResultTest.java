@@ -4,24 +4,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
-import static model.Win.FIFTH;
-import static model.Win.FIRST;
-import static model.Win.FOURTH;
-import static model.Win.SECOND;
-import static model.Win.THIRD;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WinningResultTest {
     static Stream<Arguments> winningResult() {
         return Stream.of(
-                Arguments.of( 2_064_725_000, List.of(1, 2, 3, 4, 5), 100),
+                Arguments.of(2_064_725_000, List.of(1, 2, 3, 4, 5), 100),
                 Arguments.of(30_456_000, List.of(0, 0, 10, 0, 0), 49.3),
                 Arguments.of(10_000, List.of(0, 0, 0, 0, 0), 0)
         );

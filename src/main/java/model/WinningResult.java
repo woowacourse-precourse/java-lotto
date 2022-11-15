@@ -17,7 +17,7 @@ public class WinningResult {
 
     private void setInitWinningResult() {
         for (Win win : Win.values()) {
-            this.winningResult.put(win, INIT_COUNT);
+            winningResult.put(win, INIT_COUNT);
         }
     }
 

@@ -20,4 +20,8 @@ public class Money {
             throw new IllegalArgumentException(PRICE_ERROR);
         }
     }
+
+    public int getCount() {
+        return money / PRICE;
+    }
 }

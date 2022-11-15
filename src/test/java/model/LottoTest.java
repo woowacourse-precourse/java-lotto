@@ -91,7 +91,6 @@ class LottoTest {
         WinningResult inputWinningResult = lotto.getWinningResult(winningLotto);
         Map<Win, Integer> winningResult = inputWinningResult.getWinningResult();
 
-        assertEquals(winningResult.size(), 1);
         assertEquals(winningResult.get(win), 1);
     }
 }

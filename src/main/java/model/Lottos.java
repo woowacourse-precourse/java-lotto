@@ -9,7 +9,6 @@ import java.util.List;
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
 import static constant.Config.NUMBER_COUNT;
-import static constant.Config.PRICE;
 
 public class Lottos {
     private final List<Lotto> lottos;
@@ -25,16 +24,12 @@ public class Lottos {
     }
 
     private void setLottos(Money money) {
-        int count = getCount(money);
+        int count = money.getCount();
 
         for (int i = 0; i < count; i++) {
             Lotto lotto = new Lotto(getNumbers());
             lottos.add(lotto);
         }
-    }
-
-    private int getCount(Money money) {
-        return money.getMoney() / PRICE;
     }
 
     private List<Integer> getNumbers() {
