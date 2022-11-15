@@ -24,4 +24,10 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("사용자가 입력한 당첨 번호 중 범위를 벗어난 요소가 있다면 예외가 발생한다.")
+    @Test
+    void createWinningLottoByOverRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 100)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
