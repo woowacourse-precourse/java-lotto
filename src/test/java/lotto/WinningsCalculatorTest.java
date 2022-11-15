@@ -92,4 +92,21 @@ public class WinningsCalculatorTest {
         assertThat(winningsCalculator.countLottoRankings(lottoPapers))
                 .isEqualTo(result);
     }
+
+    @DisplayName("총 수익금 계산")
+    @Test
+    void calculateTotalWinningsTest() {
+        Map<String, Integer> rankingCounts = new HashMap<>() {
+            {
+                put("FIRST_PLACE", 1);
+                put("SECOND_PLACE", 1);
+                put("THIRD_PLACE", 0);
+                put("FOURTH_PLACE", 0);
+                put("FIFTH_PLACE", 1);
+            }
+        };
+        long result = 2030005000L;
+        assertThat(winningsCalculator.calculateTotalWinnings(rankingCounts))
+                .isEqualTo(result);
+    }
 }
