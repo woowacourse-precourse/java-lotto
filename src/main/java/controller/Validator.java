@@ -31,8 +31,9 @@ public class Validator {
 
     public static void isNumericWinningNumber(String[] pureNumber, Error error) {
         try {
-            for(String s : pureNumber)
+            for(String s : pureNumber) {
                 Integer.parseInt(s);
+            }
         } catch (Exception e) {
             throw new IllegalArgumentException(error.getMsg());
         }
