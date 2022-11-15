@@ -13,7 +13,7 @@ public class LottoGameMachineServiceImpl implements LottoGameMachineService{
 
     @Override
     public void enterMoney(int money) {
-        repository.payMoney(money);
+        repository.saveMoney(money);
     }
 
     @Override

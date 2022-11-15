@@ -14,26 +14,10 @@ public class LottoRepository {
     private Lotto winningNumbers;
     private int bonusNumber;
 
-    // 돈을 저장하다
-    public void payMoney(int money){
+    public void saveMoney(int money){
         this.money = money;
         calculateLottoQuantity();
         createLottoNumber();
-    }
-
-    private void createLottoNumber() {
-        for(int i=0;i<lottoQuantity;i++){
-            this.lottoNumbers.add(new Lotto(generateLottoNumbers()));
-        }
-    }
-
-    private void calculateLottoQuantity() {
-        this.lottoQuantity = getMoney() / 1000;
-    }
-
-    private List<Integer> generateLottoNumbers() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lottoNumbers.stream().sorted().collect(Collectors.toList());
     }
 
     public void saveWinningNumbers(Lotto winningNumbers){
@@ -62,5 +46,20 @@ public class LottoRepository {
 
     public int getBonusNumber() {
         return bonusNumber;
+    }
+
+    private void createLottoNumber() {
+        for(int i=0;i<lottoQuantity;i++){
+            this.lottoNumbers.add(new Lotto(generateLottoNumbers()));
+        }
+    }
+
+    private void calculateLottoQuantity() {
+        this.lottoQuantity = getMoney() / 1000;
+    }
+
+    private List<Integer> generateLottoNumbers() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return lottoNumbers.stream().sorted().collect(Collectors.toList());
     }
 }

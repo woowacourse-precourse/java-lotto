@@ -26,7 +26,7 @@ class LottoRepositoryTest {
         int money = 8000;
 
         // When
-        repository.payMoney(money);
+        repository.saveMoney(money);
 
         // Then
         assertThat(repository.getMoney()).isEqualTo(8000);
