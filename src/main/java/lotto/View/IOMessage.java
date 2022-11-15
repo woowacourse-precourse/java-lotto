@@ -11,10 +11,7 @@ public enum IOMessage {
     IOMessage(String message){
         this.message = message;
     }
-
     public String toString(){
         return message;
     }
-
-
 }

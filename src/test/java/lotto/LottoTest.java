@@ -49,8 +49,23 @@ class LottoTest {
         List<String> purchases = new ArrayList<>((List.of("24000", "23000", "53000", "6000", "12000", "2499000")));
         for (String purchase: purchases) {
             LottoManager.getUserMoney(purchase);
+            LottoManager.getIssuedLotto();
             assertThat(LottoManager.getTicketNumber())
                     .isEqualTo(Integer.parseInt(purchase) / 1000);
+        }
+    }
+
+    @DisplayName("로또 티켓 수량에 따라 로또 번호를 발행했는지 확인한다.")
+    @Test
+    void validIssuedLotto(){
+        List<String> purchases = new ArrayList<>((List.of("24000", "23000", "53000", "6000", "12000", "1000")));
+        for (String purchase: purchases) {
+            LottoManager manager = new LottoManager();
+            manager.getUserMoney(purchase);
+            manager.issue();
+            assertThat(manager.userLotto.size())
+                    .isEqualTo(Integer.parseInt(purchase) / 1000);
+            manager.initialize();
         }
     }
 }

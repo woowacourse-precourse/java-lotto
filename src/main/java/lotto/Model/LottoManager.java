@@ -3,6 +3,8 @@ package lotto.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class LottoManager {
     // TODO: 변수
     /*
@@ -11,7 +13,7 @@ public class LottoManager {
         - 발행된 사용자의 로또 번호들을 저장 (List<Lotto> userNumbers)
      */
     private static int ticketNumber;
-    private static final List<Lotto> userLotto = new ArrayList<>();
+    public static final List<Lotto> userLotto = new ArrayList<>();
     private static final List<Integer> winnings = new ArrayList<>();
     private static int bonusNumber;
 
@@ -46,7 +48,20 @@ public class LottoManager {
     public static int getTicketNumber(){
         return ticketNumber;
     }
-    private static void issue(){
 
+    public static void issue() {
+        for (int number = 0; number < ticketNumber; number++) {
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            userLotto.add(new Lotto(lottoNumbers));
+        }
+    }
+
+    public static void getIssuedLotto(){
+        for(Lotto lotto: userLotto){
+            System.out.println(lotto);
+        }
+    }
+    public static void initialize(){
+        userLotto.removeAll(userLotto);
     }
 }

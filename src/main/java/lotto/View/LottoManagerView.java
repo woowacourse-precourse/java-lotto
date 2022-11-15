@@ -1,6 +1,11 @@
 package lotto.View;
 
+import lotto.Model.Lotto;
+
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.View.IOMessage.*;
 
 /**
  *  LottoManager 가 동작되는데 필요한 데이터를 입력 받고 출력하는 UI 클래스
@@ -12,13 +17,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoManagerView {
     public static String inputUserMoney(){
-        System.out.println(IOMessage.GET_LOTTO_PRICE_MESSAGE);
+        System.out.println(GET_LOTTO_PRICE_MESSAGE);
         return readLine();
     }
-    // TODO: 구매 내역과 로또 오름차순 출력
-    public static void printIssuedLotto(){
 
-        
+    public static void printIssuedLotto(int ticketNumber, List<Lotto> userLotto){
+        System.out.println(String.valueOf(ticketNumber) + LOTTO_TICKET_NUMBER_MESSAGE);
+        for(Lotto lotto: userLotto){
+            System.out.println(lotto);
+        }
     }
 
     // TODO: 당첨번호, 보너스 번호 입력 받기

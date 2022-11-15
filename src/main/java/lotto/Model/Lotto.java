@@ -1,5 +1,6 @@
 package lotto.Model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -8,8 +9,17 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        sort();
     }
 
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
+    private void sort(){
+        Collections.sort(numbers);
+    }
     private void validateSize(List<Integer> numbers){
         if(numbers.size()!=6){
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_SIZE));
@@ -25,7 +35,7 @@ public class Lotto {
     }
 
     private void validateDuplication(List<Integer> numbers){
-        int[] count = new int[45];
+        int[] count = new int[46];
         for(Integer number: numbers) {
             count[number]++;
             if(count[number]>1){
@@ -38,6 +48,4 @@ public class Lotto {
         validateRange(numbers);
         validateDuplication(numbers);
     }
-
-    // TODO: 추가 기능 구현
 }

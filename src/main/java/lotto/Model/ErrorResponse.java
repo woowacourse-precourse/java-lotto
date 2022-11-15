@@ -16,6 +16,4 @@ public enum ErrorResponse {
     public String toString(){
         return message;
     }
-
-    private static final int LOTTO_PRICE = 1000;
 }
