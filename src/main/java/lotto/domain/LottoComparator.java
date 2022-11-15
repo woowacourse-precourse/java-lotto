@@ -9,13 +9,9 @@ import java.util.stream.Collectors;
 import lotto.constant.WinningRating;
 
 public class LottoComparator {
-	private static final int INITIAL_VALUE = 0;
-	Lotto lotto;
-	WinningNumbers winningNumbers;
-	BonusNumber bonusNumber;
-	List<Integer> winningNumbersWithBonusNumber;
-	int countOfMatchedNumber;
-	WinningRating winningRating;
+	private final WinningNumbers winningNumbers;
+	private final BonusNumber bonusNumber;
+	private WinningRating winningRating = WinningRating.MISS;
 
 	LottoComparator(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.winningNumbers = winningNumbers;
@@ -23,31 +19,40 @@ public class LottoComparator {
 	}
 
 	public void compare(Lotto lotto) {
-		this.lotto = lotto;
+		List<Integer> winningNumbersWithBonusNumber = new ArrayList<>();
 
-		init();
-		calculateCountOfMatchedNumber(lotto.getNumbers());
-		rateWinning();
+		addBonusNumberToWinningNumbers(winningNumbersWithBonusNumber);
+		int countOfMatchedNumber = calculateCountOfMatchedNumber(lotto.getNumbers());
+		rateWinning(lotto, winningNumbersWithBonusNumber, countOfMatchedNumber);
 	}
 
-	private void rateWinning() {
+	private void addBonusNumberToWinningNumbers(List<Integer> winningNumbersWithBonusNumber) {
+		winningNumbersWithBonusNumber.addAll(winningNumbers.getWinningNumbers());
+		winningNumbersWithBonusNumber.add(bonusNumber.getBonusNumber());
+	}
+
+	private int calculateCountOfMatchedNumber(List<Integer> numbers) {
+		return (int)numbers.stream().filter(winningNumbers.getWinningNumbers()::contains).count();
+	}
+
+	private void rateWinning(Lotto lotto, List<Integer> winningNumbersWithBonusNumber, int countOfMatchedNumber) {
 		if (countOfMatchedNumber >= WinningRating.FIFTH.getCountOfMatchedNumber()
 			&& countOfMatchedNumber != WinningRating.SECOND.getCountOfMatchedNumber()) {
-			rateNotSecondAndThirdWinning();
+			rateNotSecondAndThirdWinning(countOfMatchedNumber);
 		}
 		if (countOfMatchedNumber == WinningRating.SECOND.getCountOfMatchedNumber()) {
-			rateSecondOrThirdWinning();
+			rateSecondOrThirdWinning(lotto, winningNumbersWithBonusNumber);
 		}
 	}
 
-	private void rateSecondOrThirdWinning() {
+	private void rateSecondOrThirdWinning(Lotto lotto, List<Integer> winningNumbersWithBonusNumber) {
 		winningRating = WinningRating.THIRD;
 		if (new HashSet<>(winningNumbersWithBonusNumber).containsAll(lotto.getNumbers())) {
 			winningRating = WinningRating.SECOND;
 		}
 	}
 
-	private void rateNotSecondAndThirdWinning() {
+	private void rateNotSecondAndThirdWinning(int countOfMatchedNumber) {
 		Arrays.stream(WinningRating.values())
 			.filter(rating -> rating != WinningRating.SECOND)
 			.collect(Collectors.toList())
@@ -55,18 +60,6 @@ public class LottoComparator {
 				if (rating.getCountOfMatchedNumber() == countOfMatchedNumber)
 					winningRating = rating;
 			});
-	}
-
-	private void init() {
-		winningRating = WinningRating.MISS;
-		countOfMatchedNumber = INITIAL_VALUE;
-		winningNumbersWithBonusNumber = new ArrayList<>();
-		winningNumbersWithBonusNumber.addAll(winningNumbers.getWinningNumbers());
-		winningNumbersWithBonusNumber.add(bonusNumber.getBonusNumber());
-	}
-
-	private void calculateCountOfMatchedNumber(List<Integer> numbers) {
-		countOfMatchedNumber = (int)numbers.stream().filter(winningNumbers.getWinningNumbers()::contains).count();
 	}
 
 	public WinningRating getWinningRating() {
