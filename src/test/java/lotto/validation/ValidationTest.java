@@ -34,6 +34,15 @@ class ValidationTest {
             .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @DisplayName("로또 구입 금액이 1000보다 작으면 에러가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"999", "900", "0", "200", "-1"})
+    void createPurchaseMoneyLessThan1000(String purchaseMoney) {
+        assertThatThrownBy(() -> Validation.validatePurchaseMoneyGreaterThan1000(purchaseMoney))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     @DisplayName("당첨 번호 입력에 숫자와 , 이외의 값이 들어가면 에러가 발생한다,")
     @Test
     void createWinningNumberByOtherThanNumAndComma() {
