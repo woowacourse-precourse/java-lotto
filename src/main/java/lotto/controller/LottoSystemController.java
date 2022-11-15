@@ -20,6 +20,11 @@ public class LottoSystemController {
     private WinningResultCalculator winningResultCalculator = new WinningResultCalculator();
     private OutputView outputView = new OutputViewImple();
     private InputView inputView = new InputViewImple();
+    private Integer expenses;
+    private List<Lotto> purchasedLottos;
+    private WinningNumbers createdWinningNumbers;
+    private Map<Rank, Integer> winningStatusResult;
+    private double returnRatioResult;
 
     public void run(){
         try {
@@ -30,19 +35,37 @@ public class LottoSystemController {
     }
 
     private void startLottoSystem() {
-        Integer expenses = inputView.inputPayment();
-        List<Lotto> lottos = lottoVendingMachine.generateLottos(expenses);
-        outputView.printPurchasedLottos(lottos);
-
-        List<Integer> rawValuse = inputView.inputWinningNumbers();
-        Integer bonusNumber = inputView.inputBonusNumber();
-        WinningNumbers createdWinningNumbers = winningNumbers.generateFromRawValues(rawValuse, bonusNumber);
-
-        Map<Rank, Integer> winningStatusResult = winningResultCalculator.generateWinningStatus(lottos,createdWinningNumbers);
-        outputView.printWinningStatus(winningStatusResult);
-        double returnRatioResult = winningResultCalculator.generateReturnRatio(expenses,winningStatusResult);
-        outputView.printReturnRatio(returnRatioResult);
+        purchaseLottos();
+        inputWinningNumbers();
+        showWinningResult();
     }
 
+    private void purchaseLottos(){
+        expenses = inputView.inputPayment();
+        purchasedLottos = lottoVendingMachine.generateLottos(expenses);
+        outputView.printPurchasedLottos(purchasedLottos);
+    }
+
+    private void inputWinningNumbers(){
+        List<Integer> rawValuse = inputView.inputWinningNumbers();
+        Integer bonusNumber = inputView.inputBonusNumber();
+        createdWinningNumbers = winningNumbers.generateFromRawValues(rawValuse, bonusNumber);
+    }
+
+    private void showWinningResult(){
+        showWinningStatus();
+        showReturnRatio();
+    }
+
+    private void showWinningStatus(){
+        winningStatusResult = winningResultCalculator.generateWinningStatus(purchasedLottos,createdWinningNumbers);
+        outputView.printWinningStatus(winningStatusResult);
+    }
+
+    private void showReturnRatio(){
+        returnRatioResult = winningResultCalculator.generateReturnRatio(expenses,winningStatusResult);
+        outputView.printReturnRatio(returnRatioResult);
+    }
+    
 }
 
