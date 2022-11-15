@@ -27,12 +27,4 @@ public class WinLotto extends Lotto{
     public int getBonusNumber() {
         return bonusNumber;
     }
-
-    @Override
-    public String toString() {
-        return "WinLotto{" +
-                "lotto=" + super.toString()+
-                "bonusNumber=" + bonusNumber +
-                '}';
-    }
 }
