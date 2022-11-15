@@ -35,6 +35,12 @@ public class Lotto_Controller {
         money = input_numbers.input_Money();
         lottoCnt = main_service.get_NumberOfLotto(money);
         output_view.print_LottoCnt(lottoCnt);
-//        Generate_And_Print_Random_Lotto_Numbers();
+        Generate_And_Print_Random_Lotto_Numbers();
+    }
+
+    public void Generate_And_Print_Random_Lotto_Numbers() {
+        RandomLottoNumbers = make_numbers.make_RandomLotto(lottoCnt);
+        Output_View.print_RandomLottoNumbers(RandomLottoNumbers);
+//        Enter_Lottery_Winning_Conditions();
     }
 }
