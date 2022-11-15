@@ -33,7 +33,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복 된 숫자가 있습니다.");
         }
         if (rangeCheck(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위는 1~45 입니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 숫자는 1이상 45이하여야 입니다.");
         }
     }
 

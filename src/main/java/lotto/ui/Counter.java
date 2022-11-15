@@ -9,6 +9,7 @@ import java.util.List;
 public class Counter {
     private static final String inputAmountMessage = "구입 금액을 입력해 주세요.";
     private static final String inputNumbersMessage = "당첨 번호를 입력해 주세요.";
+    private static final String inputBonusMessage = "보너스 번호를 입력해 주세요.";
 
     public int inputAmount() {
         System.out.println(inputAmountMessage);
@@ -19,6 +20,11 @@ public class Counter {
     public List<Integer> inputNumbers() {
         System.out.println(inputNumbersMessage);
         return parseStrToList(Console.readLine());
+    }
+
+    public int inputBonus(Lotto lotto) {
+        System.out.println(inputBonusMessage);
+        return bonusValidate(lotto, parseStrToInt(Console.readLine()));
     }
 
     private int parseStrToInt(String input) {
@@ -38,9 +44,12 @@ public class Counter {
         return amount;
     }
 
-    private List<Integer> numbersValidate(List<Integer> numbers) {
-        new Lotto(numbers);
-        return numbers;
+    private int bonusValidate(Lotto lotto, int bonus) {
+        if (lotto.getNumbers().contains(bonus))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복 될 수 없습니다.");
+        if (bonus < Lotto.lottoMinNumber || bonus > Lotto.lottoMaxNumber)
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1이상 45이하여야 합니다.");
+        return bonus;
     }
 
     private List<Integer> parseStrToList(String input) {
@@ -51,6 +60,6 @@ public class Counter {
             result.add(parseStrToInt(number));
         }
 
-        return numbersValidate(result);
+        return result;
     }
 }
