@@ -17,18 +17,24 @@ class SampleTest {
     }
     @Test
     void getPayMoneyTest1(){
-        assertThatThrownBy(() -> sample.getPayMoney("12ab12"))
+        Input input = new Input();
+
+        assertThatThrownBy(() -> input.getPayMoney("12ab12"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void getPayMoneyTest2(){
-        assertThatThrownBy(() -> sample.getPayMoney("123452853740958342000"))
+        Input input = new Input();
+
+        assertThatThrownBy(() -> input.getPayMoney("123452853740958342000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void getPayMoneyTest3(){
-        assertThatThrownBy(() -> sample.getPayMoney("135700"))
+        Input input = new Input();
+
+        assertThatThrownBy(() -> input.getPayMoney("135700"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
@@ -84,31 +90,41 @@ class SampleTest {
 
     @Test
     void getWinningNumberTest1(){
-        assertThat(sample.getWinningNumber("1,2,3,4,5,6"))
+        Input input = new Input();
+
+        assertThat(input.getWinningNumber("1,2,3,4,5,6"))
                 .isEqualTo(new Lotto(List.of(1,2,3,4,5,6)));
     }
 
     @Test
     void getWinningNumberTest2(){
-        assertThatThrownBy(() -> sample.getWinningNumber("1,2,3,4,5,a6"))
+        Input input = new Input();
+
+        assertThatThrownBy(() -> input.getWinningNumber("1,2,3,4,5,a6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void getWinningNumberTest3(){
-        assertThatThrownBy(() -> sample.getWinningNumber("1,2,3,4,6"))
+        Input input = new Input();
+
+        assertThatThrownBy(() -> input.getWinningNumber("1,2,3,4,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void getBonusNumberTest1(){
-        assertThat(sample.validBonusNumber("4"))
+        Input input = new Input();
+
+        assertThat(input.validBonusNumber("4"))
                 .isEqualTo(4);
     }
 
     @Test
     void getBonusNumberTest2(){
-        assertThatThrownBy(() -> sample.validBonusNumber("0"))
+        Input input = new Input();
+
+        assertThatThrownBy(() -> input.validBonusNumber("0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
