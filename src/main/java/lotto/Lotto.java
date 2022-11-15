@@ -39,7 +39,7 @@ public class Lotto {
             return 3;
         }
         if(correct == 4) return 4;
-        if(correct == 5) return 5;
+        if(correct == 3) return 5;
         return 0;
     }
 
