@@ -41,7 +41,6 @@ public class Lotto {
     }
 
     private void checkRange(List<Integer> numbers) {
-
         for (int i = 0; i < LOTTO_SIZE; i++) {
             int current = numbers.get(i);
 

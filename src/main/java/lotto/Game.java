@@ -11,10 +11,10 @@ public class Game {
     static int bonus;
     static Lotto winningNumbers;
     static LottoTickets lottoTickets;
-    static StringBuilder totalLog = new StringBuilder();
     public static int price;
 
     Game(String input) {
+        checkInputError(input);
         this.price = Integer.valueOf(input);
     }
 
@@ -24,11 +24,10 @@ public class Game {
             enterWinningNumbers();
             enterBonus();
         } catch (IllegalArgumentException e) {
-            return;
+            throw new IllegalArgumentException();
         }
         setLottoResults();
-        totalLog.append(Record.getWinningStats(lottoTickets));
-        System.out.println(totalLog);
+        System.out.println(Record.getWinningStats(lottoTickets));
     }
 
     private static void setLottoResults() {
@@ -50,27 +49,28 @@ public class Game {
 
     private static void enterLottoTickets() {
         int counts = price / ReferenceValue.Lotto.PRICE.getValue();
-        totalLog.append(Record.getBuyCounts(counts) + ReferenceValue.LINE_BREAK);
+        System.out.println(Record.getBuyCounts(counts));
 
         List<Lotto> allLottery = new ArrayList<>();
         for (int i = 0; i < counts; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.Lotto.START_RANGE.getValue(),
                     ReferenceValue.Lotto.END_RANGE.getValue(), ReferenceValue.Lotto.SIZE.getValue());
 
+            System.out.println(lottoNumbers);
+
             Lotto lotto = new Lotto(lottoNumbers);
-            totalLog.append(Record.getLotto(lotto) + ReferenceValue.LINE_BREAK);
             allLottery.add(lotto);
         }
 
         lottoTickets = new LottoTickets(allLottery);
-        totalLog.append(ReferenceValue.LINE_BREAK);
+        System.out.println();
     }
 
     private static void enterWinningNumbers() {
         String winningInput = Console.readLine();
 
-        totalLog.append(Record.getWinningNumbers() + ReferenceValue.LINE_BREAK);
-        totalLog.append(winningInput + ReferenceValue.LINE_BREAK + ReferenceValue.LINE_BREAK);
+        System.out.println(Record.getWinningNumbers());
+        System.out.println(winningInput + ReferenceValue.LINE_BREAK);
 
         List<Integer> numbers = Lotto.getLottoNumbers(winningInput);
         winningNumbers = new Lotto(numbers);
@@ -79,8 +79,8 @@ public class Game {
     private static void enterBonus() {
         String bonusInput = Console.readLine();
 
-        totalLog.append(Record.getBonusNumber() + ReferenceValue.LINE_BREAK);
-        totalLog.append(bonusInput + ReferenceValue.LINE_BREAK + ReferenceValue.LINE_BREAK);
+        System.out.println(Record.getBonusNumber());
+        System.out.println(bonusInput + ReferenceValue.LINE_BREAK);
 
         if (checkNumberError(bonusInput) || checkBonusDuplicateError(bonusInput) || checkBonusRangeError(bonusInput)) {
             throw new IllegalArgumentException();
@@ -107,25 +107,11 @@ public class Game {
         return winningNumbers.checkBonusDuplicate(bonus);
     }
 
-    public static String checkInputError() {
+    public static void checkInputError(String input) {
         Record.printEnterPrice();
-        String input = Console.readLine();
-
         System.out.println(input + ReferenceValue.LINE_BREAK);
 
-        if (checkNumberError(input)
-                || checkMinimumPriceError(input)
-                || checkPriceError(input)) {
-            return Record
-                    .ErrorMessage
-                    .IS_ERROR
-                    .getMessage();
-        }
-        return input;
-    }
-
-    public static void checkError(boolean error) {
-        if (error) {
+        if (checkNumberError(input) || checkMinimumPriceError(input) || checkPriceError(input)) {
             throw new IllegalArgumentException();
         }
     }

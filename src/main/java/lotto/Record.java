@@ -8,31 +8,31 @@ public class Record {
     private static final String COUNT_MESSAGE = "개";
 
     public static void printNumberError() {
-        System.out.println(ErrorMessage.IS_NUMBER.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.IS_NUMBER.getMessage());
     }
 
     public static void printPriceError() {
-        System.out.println(ErrorMessage.DIVIDED_PRICE.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DIVIDED_PRICE.getMessage());
     }
 
     public static void printMinimumError() {
-        System.out.println(ErrorMessage.MINIMUM_PRICE.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.MINIMUM_PRICE.getMessage());
     }
 
     public static void printSizeError() {
-        System.out.println(ErrorMessage.EXCEED_SIZE.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.EXCEED_SIZE.getMessage());
     }
 
     public static void printRangeError() {
-        System.out.println(ErrorMessage.OUT_OF_RANGE.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.OUT_OF_RANGE.getMessage());
     }
 
     public static void printBonusDuplicateError() {
-        System.out.println(ErrorMessage.DUPLICATE_BONUS.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DUPLICATE_BONUS.getMessage());
     }
 
     public static void printDuplicateError() {
-        System.out.println(ErrorMessage.DUPLICATE_NUMBER.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DUPLICATE_NUMBER.getMessage());
     }
 
     public static String getBonusNumber() {
@@ -124,7 +124,7 @@ public class Record {
         }
 
         public String getMessage() {
-            return IS_ERROR.message + this.message;
+            return this.message;
         }
 
     }
