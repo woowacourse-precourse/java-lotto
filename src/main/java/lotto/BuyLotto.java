@@ -18,7 +18,7 @@ public class BuyLotto {
 
     private void validate(int money) {
         if (money % 1000 != 0) {
-            System.out.println("[Error] 1000원 단위로 입력해주세요.");
+            System.out.println("[ERROR] 1000원 단위로 입력해주세요.");
             throw new IllegalArgumentException();
         }
     }
