@@ -41,9 +41,9 @@ public class OutputView {
     }
 
     public static void printResultMessage(Lottery lottery, WinningLotto winningLotto) {
-        List<Rank> ranks = new ArrayList<>();
         System.out.println(RESULT_MESSAGE);
 
+        List<Rank> ranks = new ArrayList<>();
         lottery.getLottery()
                 .forEach(lotto -> ranks.add(winningLotto.getRank(lotto)));
 

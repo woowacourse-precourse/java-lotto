@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.LottoNumber;
 import lotto.domain.PurchaseMoney;
 
 import java.util.*;
@@ -49,6 +50,7 @@ public class InputView {
         Arrays.stream(numbers)
                 .forEach(s -> {
                     int number = Integer.parseInt(s);
+                    new LottoNumber(number);
                     winningLottoNumbers.add(number);
                 });
 
@@ -68,6 +70,8 @@ public class InputView {
     }
 
     public static int convertInputBonusNumber(String input) {
-        return Integer.parseInt(input);
+        int bonusNumber = Integer.parseInt(input);
+        new LottoNumber(bonusNumber);
+        return bonusNumber;
     }
 }

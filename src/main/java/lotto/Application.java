@@ -30,8 +30,6 @@ public class Application {
             WinningLotto winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
             OutputView.printResultMessage(lottery, winningLotto);
 
-
-
             List<Rank> ranks = new ArrayList<>();
             lottery.getLottery()
                     .forEach(lotto -> ranks.add(winningLotto.getRank(lotto)));

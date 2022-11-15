@@ -42,8 +42,4 @@ public enum Rank {
     public String getWinningPrice() {
         return winningPrice;
     }
-
-    public boolean getIsHasBonusNumber() {
-        return isHasBonusNumber;
-    }
 }
