@@ -29,6 +29,10 @@ public class Lotto {
         return new Lotto(sortedLottoNumber);
     }
 
+    public boolean existsMatchingNumber(final int number) {
+        return numbers.contains(number);
+    }
+
     public enum LottoNumberValidator {
 
         LOTTO_NUMBER_SIZE((List<Integer> numbers) -> {
