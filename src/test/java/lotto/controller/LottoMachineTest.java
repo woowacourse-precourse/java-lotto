@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
-import lotto.domain.Player;
 import lotto.domain.info.Rank;
 import org.junit.jupiter.api.*;
 
@@ -31,7 +30,7 @@ class LottoMachineTest {
             List<Integer> numbers = LottoMachine.publishLotto().getNumbers();
 
             for (Integer number : numbers) {
-                assertThat(number >= 1 || number <= 45).isTrue();
+                assertThat(number < 1 || number > 45).isFalse();
             }
         }
 
@@ -111,6 +110,16 @@ class LottoMachineTest {
             Rank rank = LottoMachine.getRank(playersLottoNumber, bonus, lotto);
 
             assertThat(rank).isEqualTo(Rank.THIRD);
+        }
+
+        @DisplayName("로또 번호를 3개 미만으로 맞추면 '등수외'가 반환된다")
+        @Test
+        void getRank4() {
+            Set<Integer> playersLottoNumber = Set.of(2,1,3,4,15,9);
+            int bonus = 1;
+            Rank rank = LottoMachine.getRank(playersLottoNumber, bonus, lotto);
+
+            assertThat(rank).isEqualTo(Rank.EXTERIOR);
         }
     }
 }
