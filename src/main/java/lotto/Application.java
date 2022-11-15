@@ -17,7 +17,7 @@ public class Application {
             List<List> result = compare.compareNumbers(userList, winningNumberList, bonusNumber);
             List<Integer> prizeResult = compare.countWinResult(result);
             compare.printPrize(prizeResult);
-            compare.getPrizeMoney(prizeResult, userAccount);
+            compare.getMoney(prizeResult, userAccount);
         }
         catch (IllegalArgumentException e){
             System.out.println(e.getMessage());

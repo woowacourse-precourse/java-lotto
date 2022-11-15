@@ -13,17 +13,13 @@ public class LottoGenerator {
     private static final Integer MIN_RANGE = 1;
     private static final Integer MAX_RANGE = 45;
     private static final Integer COUNT = 6;
-
     private static final Integer purchaseMoney = 1000;
 
     private List<Integer> lottoNumbers = new ArrayList<>();
 
-
-
     public Integer inputMoney(){
         System.out.println("구입금액을 입력해 주세요");
         int money = Integer.parseInt(Console.readLine());
-        Check.validateMoney(money);
         Check.validateMoney(money);
 
         return money;

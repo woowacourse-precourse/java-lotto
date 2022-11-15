@@ -87,28 +87,28 @@ public class LotteryCompare {
         return winLottery;
     }
 
-    public static void printPrize(List<Integer> LottoResult) {
+    public static void printPrize(List<Integer> LotteryResult) {
         System.out.println("\n당첨 통계\n" + "---");
-        System.out.println("3개 일치 (5,000원) - " + LottoResult.get(4) + "개");
-        System.out.println("4개 일치 (50,000원) - " + LottoResult.get(3) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + LottoResult.get(2) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + LottoResult.get(1) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + LottoResult.get(0) + "개");
+        System.out.println("3개 일치 (5,000원) - " + LotteryResult.get(4) + "개");
+        System.out.println("4개 일치 (50,000원) - " + LotteryResult.get(3) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + LotteryResult.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + LotteryResult.get(1) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + LotteryResult.get(0) + "개");
     }
 
-    public void getPrizeMoney(List<Integer> winLottoResult, int lottoAmount){
+    public void getMoney(List<Integer> winningLottery, int lottoAmount){
         int total = 0;
         int cost = lottoAmount * 1000;
-        total += 2000000000 * winLottoResult.get(0);
-        total += 30000000 * winLottoResult.get(1);
-        total += 1500000 * winLottoResult.get(2);
-        total += 50000 * winLottoResult.get(3);
-        total += 5000 * winLottoResult.get(4);
-        getPrizeRate(total, cost);
+        total += 2000000000 * winningLottery.get(0);
+        total += 30000000 * winningLottery.get(1);
+        total += 1500000 * winningLottery.get(2);
+        total += 50000 * winningLottery.get(3);
+        total += 5000 * winningLottery.get(4);
+        getRate(total, cost);
     }
 
     //5.수익률 계산
-    public double getPrizeRate(int total_prize, int cost) {
+    public double getRate(int total_prize, int cost) {
         double rate = (total_prize / (double)cost) * 100;
         System.out.println("총 수익률은 " + String.format("%.1f", rate) + "%입니다.");
         return rate;
