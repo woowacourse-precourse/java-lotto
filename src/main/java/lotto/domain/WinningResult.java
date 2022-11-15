@@ -52,4 +52,8 @@ public class WinningResult {
                 + (long) fifth * RewardUtil.FIFTH.getReward();
     }
 
+    public int getFirst() {
+        return first;
+    }
+
 }
