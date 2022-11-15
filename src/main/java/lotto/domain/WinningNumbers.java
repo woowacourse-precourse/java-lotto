@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.domain.validator.BonusNumberValidator;
 import lotto.domain.validator.NumbersValidator;
-
 import java.util.List;
 
 public class WinningNumbers {

@@ -5,13 +5,23 @@ import java.util.List;
 import java.util.Map;
 
 import static lotto.LottoConstants.LOTTO_PRICE;
-import static lotto.PrinterMessages.MONEY_INPUT_REQUEST_MESSAGE;
-import static lotto.PrinterMessages.WINNING_NUMBERS_INPUT_REQUEST_MESSAGE;
-import static lotto.PrinterMessages.BONUS_NUMBER_INPUT_REQUEST_MESSAGE;
-import static lotto.PrinterMessages.LOTTO_PURCHASE_MESSAGE;
-import static lotto.PrinterMessages.WINNING_STATISTICS_MESSAGE;
-import static lotto.PrinterMessages.DIVIDING_LINE;
-import static lotto.PrinterMessages.EARNING_RATE_MESSAGE;
+import static lotto.OutputMessages.MONEY_INPUT_REQUEST_MESSAGE;
+import static lotto.OutputMessages.WINNING_NUMBERS_INPUT_REQUEST_MESSAGE;
+import static lotto.OutputMessages.BONUS_NUMBER_INPUT_REQUEST_MESSAGE;
+import static lotto.OutputMessages.LOTTO_PURCHASE_MESSAGE;
+import static lotto.OutputMessages.WINNING_STATISTICS_MESSAGE;
+import static lotto.OutputMessages.DIVIDING_LINE;
+import static lotto.OutputMessages.EARNING_RATE_MESSAGE;
+import static lotto.OutputMessages.FIFTH_STATISTICS_MESSAGE;
+import static lotto.OutputMessages.FOURTH_STATISTICS_MESSAGE;
+import static lotto.OutputMessages.THIRD_STATISTICS_MESSAGE;
+import static lotto.OutputMessages.SECOND_STATISTICS_MESSAGE;
+import static lotto.OutputMessages.FIRST_STATISTICS_MESSAGE;
+import static lotto.domain.Rank.FIFTH;
+import static lotto.domain.Rank.FOURTH;
+import static lotto.domain.Rank.THIRD;
+import static lotto.domain.Rank.SECOND;
+import static lotto.domain.Rank.FIRST;
 
 public class MessagePrinter {
     public static void printMoneyInputRequest() {
@@ -41,11 +51,20 @@ public class MessagePrinter {
     public static void printWinningDetails(Map<Integer, Integer> winningDetails) {
         System.out.println(WINNING_STATISTICS_MESSAGE.getMessage());
         System.out.println(DIVIDING_LINE.getMessage());
-        System.out.println(String.format("3개 일치 (5,000원) - %d개\n", winningDetails.get(5_000)) +
-                String.format("4개 일치 (50,000원) - %d개\n", winningDetails.get(50_000)) +
-                String.format("5개 일치 (1,500,000원) - %d개\n", winningDetails.get(1_500_000)) +
-                String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningDetails.get(30_000_000)) +
-                String.format("6개 일치 (2,000,000,000원) - %d개", winningDetails.get(2_000_000_000)));
+        printStatistics(winningDetails);
+    }
+
+    public static void printStatistics(Map<Integer, Integer> winningDetails) {
+        System.out.println(String.format(FIFTH_STATISTICS_MESSAGE.getMessage(),
+                winningDetails.get(FIFTH.prizeMoney())));
+        System.out.println(String.format(FOURTH_STATISTICS_MESSAGE.getMessage(),
+                winningDetails.get(FOURTH.prizeMoney())));
+        System.out.println(String.format(THIRD_STATISTICS_MESSAGE.getMessage(),
+                winningDetails.get(THIRD.prizeMoney())));
+        System.out.println(String.format(SECOND_STATISTICS_MESSAGE.getMessage(),
+                winningDetails.get(SECOND.prizeMoney())));
+        System.out.println(String.format(FIRST_STATISTICS_MESSAGE.getMessage(),
+                winningDetails.get(FIRST.prizeMoney())));
     }
 
     public static void printEarningRate(double earningRate) {
