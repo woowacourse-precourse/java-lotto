@@ -115,7 +115,7 @@ public class LottoService {
     }
 
     public int isEqual(int index, int i) {
-        if(lottos.get(index).equals(winningNumbers.get(i))) {
+        if(lottos.get(index).contains(winningNumbers.get(i))) {
             return 1;
         }
 
