@@ -31,6 +31,8 @@ public class Player {
 
     public Lotto getWinningNumbers() {
         String numbers = Console.readLine();
+        validateDelimiter(numbers);
+        validateNumberFormatForAll(numbers);
         return new Lotto(numbers);
     }
 

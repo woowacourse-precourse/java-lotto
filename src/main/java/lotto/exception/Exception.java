@@ -1,9 +1,10 @@
 package lotto.exception;
 
 import java.util.List;
+import java.util.stream.Stream;
 
-import static lotto.constant.MessageConstants.*;
 import static lotto.constant.Constants.*;
+import static lotto.constant.MessageConstants.*;
 
 public class Exception {
     public static void validateNumberFormat(String number) {
@@ -43,6 +44,21 @@ public class Exception {
         if(distinctCount != MAX_COUNT) {
             throwException(DUPLICATE_MESSAGE);
         }
+    }
+
+    public static void validateDelimiter(String numbers) {
+        int delimiterCount = (int) Stream.of(numbers.split(NULL))
+                .filter(c -> c.equals(DELIMITER))
+                .count();
+
+        if(delimiterCount != CORRECT_DELIMITER_COUNT) {
+            throwException(WRONG_DELIMITER_MESSAGE);
+        }
+    }
+
+    public static void validateNumberFormatForAll(String numbers) {
+        Stream.of(numbers.split(DELIMITER))
+                .forEach(Exception::validateNumberFormat);
     }
 
     public static void throwException(String message) {
