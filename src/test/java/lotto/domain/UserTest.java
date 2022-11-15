@@ -11,7 +11,8 @@ class UserTest {
     @DisplayName("[정상] 올바른 구매 금액을 전달할시에 사용자 클래스 생성된다.")
     @Test
     void createUser() {
-        User user = new User(PurchaseAmountDto.of(10_000));
+        PurchaseAmountDto purchaseAmountDto = PurchaseAmountDto.of(10_000);
+        User user = User.of(purchaseAmountDto);
         for (Lotto lotto : user.getLottos()) {
             System.out.println(lotto);
         }

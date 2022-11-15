@@ -10,7 +10,7 @@ public class User {
     private final List<Lotto> lottos;
     private final List<LottoRank> lottoRanks;
 
-    public User(PurchaseAmountDto purchaseAmountDto) {
+    private User(PurchaseAmountDto purchaseAmountDto) {
         int purchaseAmount = purchaseAmountDto.getPurchaseAmount();
         this.purchaseCount = purchaseAmount / Lotto.LOTTO_UNIT;
         this.lottos = new ArrayList<>(this.purchaseCount);
@@ -19,9 +19,13 @@ public class User {
         purchaseLottos();
     }
 
+    public static User of(PurchaseAmountDto purchaseAmountDto) {
+        return new User(purchaseAmountDto);
+    }
+
     private void purchaseLottos() {
         for (int i = 0; i < purchaseCount; i++) {
-            Lotto lotto = Lotto.create();
+            Lotto lotto = LottoGenerator.generate();
             lottos.add(lotto);
         }
     }
