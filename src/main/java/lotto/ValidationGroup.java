@@ -8,19 +8,19 @@ public enum ValidationGroup {
             ValidationType.CHECK_SIZE_NUMBERS, ValidationType.CHECK_RANGE_NUMBERS));
 
     private String inputType;
-    private List<ValidationType> validationTypeList;
+    private List<ValidationType> validationTypes;
 
     ValidationGroup(String inputType, List<ValidationType> validationTypeList) {
         this.inputType = inputType;
-        this.validationTypeList = validationTypeList;
+        this.validationTypes = validationTypeList;
     }
 
-    public List<ValidationType> getValidationTypeList() {
-        return validationTypeList;
+    public List<ValidationType> getValidationTypes() {
+        return validationTypes;
     }
 
     public static Boolean validate(List<Integer> numbers) {
-        for (ValidationType validationType: LOTTO_NUMBERS.getValidationTypeList()) {
+        for (ValidationType validationType: LOTTO_NUMBERS.getValidationTypes()) {
             if (!validationType.validateNumbers(numbers)) {
                 return false;
             }
