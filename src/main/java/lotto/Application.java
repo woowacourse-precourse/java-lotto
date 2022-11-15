@@ -8,7 +8,11 @@ public class Application {
     }
 
     public static void playGame() {
-        GameController gameController = new GameController();
-        gameController.run();
+        try {
+            GameController gameController = new GameController();
+            gameController.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
