@@ -20,7 +20,7 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR + " " + e.getMessage());
         } catch (Exception e) {
-            System.out.println(ERROR + " " + "알 수 없는 이유로 예외 발생");
+            System.out.println(ERROR + " " + "예외 발생");
             e.printStackTrace();
         }
     }
