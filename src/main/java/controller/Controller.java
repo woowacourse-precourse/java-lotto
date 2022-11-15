@@ -39,6 +39,8 @@ public class Controller {
             putMatchNumberCount(matchNumber);
         }
         PrintResult.printMatchDetail(matchNumberCount);
+        int totalMoney = server.moneyToLotto(matchNumberCount);
+        PrintResult.printRevenue(totalMoney, money);
     }
 
     public void setMatchNumberCount() {
