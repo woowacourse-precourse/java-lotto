@@ -6,26 +6,33 @@ import java.util.List;
 import lotto.model.Rank;
 
 public class OutputView {
-    public static final String ERROR_STATEMENT = "[ERROR] %s";
+    public static final String ERROR_MESSAGE = "[ERROR] %s";
+    public static final String REQUEST_CASH = "구입금액을 입력해 주세요.";
+    public static final String RESPOND_TICKET_NUMBER = "%d개를 구매했습니다.";
+    public static final String REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    public static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    public static final String RESPOND_STATISTICS = "당첨 통계";
+    public static final String DIVIDER = "---";
+    public static final String RESPOND_YIELD = "총 수익률은 %s%%입니다.\n";
 
     public static void printErrorMessage(Exception error) {
-        System.out.printf(ERROR_STATEMENT, error.getMessage());
+        System.out.printf(ERROR_MESSAGE, error.getMessage());
     }
 
     public static void printCashInput() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(REQUEST_CASH);
     }
 
     public static void printTicketNumber(int ticketNumber) {
-        System.out.printf("%d개를 구매했습니다.", ticketNumber);
+        System.out.printf(RESPOND_TICKET_NUMBER, ticketNumber);
     }
 
     public static void printWinningNumberInput() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(REQUEST_WINNING_NUMBER);
     }
 
     public static void printBonusNumberInput() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(REQUEST_BONUS_NUMBER);
     }
 
     public static void printAllPlayerNumbers(List<List<Integer>> allPlayerNumbers) {
@@ -35,8 +42,8 @@ public class OutputView {
     }
 
     public static void printStatistics(List<Rank> ranks) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(RESPOND_STATISTICS);
+        System.out.println(DIVIDER);
 
         for (Rank rank : ranks) {
             if (rank == Rank.NONE) {
@@ -47,6 +54,6 @@ public class OutputView {
     }
 
     public static void printYield(String yield) {
-        System.out.printf("총 수익률은 %s%%입니다.\n", yield);
+        System.out.printf(RESPOND_YIELD, yield);
     }
 }
