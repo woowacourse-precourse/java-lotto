@@ -13,6 +13,6 @@ public class LottoPurchaseView {
 
     public static void printPurchaseLottoNumber(Lottos lottos){
         System.out.println(lottos.getLottoCount()+Constants.PURCHASE_LOTTO_COUNT_MESSAGE);
-        System.out.print(lottos.toString());
+        System.out.print(lottos);
     }
 }
