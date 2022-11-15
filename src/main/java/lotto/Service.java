@@ -114,6 +114,8 @@ public class Service {
                 result.put(winner4st, result.getOrDefault(winner4st, 1) + 1);
             } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 5 && !correctLuckyNumber(luckyNumberInput, lottoNumber)) {
                 result.put(winner3st, result.getOrDefault(winner3st, 1) + 1);
+            } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 5 && correctLuckyNumber(luckyNumberInput, lottoNumber)) {
+                result.put(winner2st, result.getOrDefault(winner2st, 1) + 1);
             }
         }
         List<Integer> resultList = new ArrayList<>();
