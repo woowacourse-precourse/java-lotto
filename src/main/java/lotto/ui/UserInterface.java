@@ -5,10 +5,9 @@ import lotto.domain.Lotto;
 import lotto.PrizeMoney;
 import lotto.domain.Statistics;
 import lotto.domain.WinningLotto;
+import lotto.exception.UserExceptionController;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserInterface {
     public static final int PRICE_UNIT = 1000;
@@ -23,7 +22,7 @@ public class UserInterface {
         String price = Console.readLine();
         System.out.println();
 
-        return Integer.parseInt(price);
+        return UserExceptionController.validatePrice(price);
     }
 
     public static void printPurchaseResult(int lottoCount, List<Lotto> lottos) {
@@ -36,19 +35,16 @@ public class UserInterface {
 
     public static WinningLotto enterWinningLotto() {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
-        String winningNumbers = Console.readLine();
+        String winningNumbersInput = Console.readLine();
+        List<Integer> validWinningNumbers = UserExceptionController.validateWinningNumbers(winningNumbersInput);
         System.out.println();
 
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
+        int validBonusNumber = UserExceptionController.validateLottoNumber(bonusNumber);
         System.out.println();
 
-        // 나중에 입력 값을 검증하여 에러를 잡는 코드가 추가돼야 함
-        return new WinningLotto(
-                Arrays.stream(winningNumbers.split(","))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList()),
-                Integer.parseInt(bonusNumber));
+        return new WinningLotto(validWinningNumbers, validBonusNumber);
     }
 
     public static void printStatistics(List<Lotto> lottos, WinningLotto winningLottos) {
