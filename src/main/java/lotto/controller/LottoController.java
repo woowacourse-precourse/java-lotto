@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.WinningLotto;
-import lotto.domain.WinningType;
+import lotto.domain.*;
 
 import java.text.DecimalFormat;
 import java.util.*;
@@ -39,51 +36,31 @@ public class LottoController {
 
         printResultMainMessage();
 
-        Map<WinningType, Integer> winningResults = getWinningResults(winningLotto, lottos);
-        printWinningResult(winningResults);
+        WinningResult result = getWinningResults(winningLotto, lottos);
+        result.print();
 
-        double earning = calculateEarning(winningResults, inputMoney);
+        double earning = result.calculateEarning(inputMoney);
         printEarning(earning);
     }
 
-    public static Map<WinningType, Integer> getWinningResults(WinningLotto winningLotto, Lottos purchasedLottos) {
+    public static WinningResult getWinningResults(WinningLotto winningLotto, Lottos purchasedLottos) {
 
-        Map<WinningType, Integer> winningResults = new EnumMap<>(WinningType.class);
+        WinningResult result = new WinningResult();
 
-        Boolean withBonus;
         for (Lotto lotto : purchasedLottos.getLottos()) {
 
-            withBonus = false;
+            boolean withBonus = false;
             int equalNumber = countEqualNumber(winningLotto, lotto);
 
             if (equalNumber == SECOND_WINNING) {
-                equalNumber = FIVE_EQUALS;
-                withBonus = true;
+                WinningType type = getWinningType(FIVE_EQUALS, true);
+                continue;
             }
-            WinningType type = getWinningType(equalNumber, withBonus);
-            countWinnings(winningResults, type);
+            WinningType type = getWinningType(equalNumber, false);
+            result.increaseOneByKey(type);
         }
 
-        return winningResults;
-    }
-
-    public static void countWinnings(Map<WinningType, Integer> winningResults, WinningType type) {
-
-        if (winningResults.containsKey(type))
-            winningResults.put(type, winningResults.get(type) + 1);
-
-        if (!winningResults.containsKey(type))
-            winningResults.put(type, 1);
-    }
-
-    public static void printWinningResult(Map<WinningType, Integer> winningResults) {
-
-        Iterator<WinningType> winningTypeIterator = getWinningTypeIterator();
-        while (winningTypeIterator.hasNext()) {
-            WinningType type = winningTypeIterator.next();
-            winningResults.putIfAbsent(type, 0);
-            printEachWinningResult(type, winningResults);
-        }
+        return result;
     }
 
     public static int countEqualNumber(WinningLotto winningLotto, Lotto userLotto) {
@@ -101,20 +78,6 @@ public class LottoController {
             count = SECOND_WINNING;
 
         return count;
-    }
-
-    public static double calculateEarning(Map<WinningType, Integer> winningResults, int inputMoney) {
-
-        double earning = 0;
-
-        Iterator<WinningType> winningTypeIterator = getWinningTypeIterator();
-        while (winningTypeIterator.hasNext()) {
-            WinningType type = winningTypeIterator.next();
-            earning += (double) type.getWinnings() * (double) winningResults.get(type);
-        }
-        earning /= inputMoney;
-
-        return earning;
     }
 
     public static Iterator<WinningType> getWinningTypeIterator() {
