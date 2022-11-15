@@ -166,5 +166,6 @@ public class LottoController {
             profit += prizes[i].getCount() * prices[i];
         }
         profit = profit / (NumberOfLotto * 1000) * 100;
+        profit = Math.round(profit * 10)/10.0;
     }
 }
