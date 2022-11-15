@@ -47,7 +47,8 @@ public enum WinStatistics {
             if (winStatistics == SECOND) {
                 System.out.println(winStatistics.matchCount + "개 일치, 보너스 볼 일치 (" + winStatistics.prizeMoney + ") - " + lottoStatisticsMap.get(winStatistics) + "개");
                 continue;
-            }if(winStatistics == UNSUCCESSFUL){
+            }
+            if (winStatistics == UNSUCCESSFUL) {
                 continue;
             }
             System.out.println(winStatistics.matchCount + "개 일치 (" + winStatistics.prizeMoney + ") - " + lottoStatisticsMap.get(winStatistics) + "개");
@@ -60,14 +61,17 @@ public enum WinStatistics {
         long lottoCount = 0;
         int i = 0;
         for (WinStatistics winStatistics : WinStatistics.values()) {
+//            System.out.println("lottoStatistics" + lottoStatisticsMap.get(winStatistics));
+//            System.out.println("prize:" + prizeList.get(i));
             profit += lottoStatisticsMap.get(winStatistics) * prizeList.get(i);
             lottoCount += lottoStatisticsMap.get(winStatistics);
+//            System.out.println("lottoCount:" + lottoCount);
             i++;
         }
         showProfitLotto(profit, lottoCount);
     }
 
-    public static void showProfitLotto(long profit, long lottoCount) {
+    public static void showProfitLotto(double profit, long lottoCount) {
         double result = profit / (lottoCount * 1000) * 100;
         System.out.println("총 수익률은 " + String.format("%.1f", result) + "%입니다.");
     }
