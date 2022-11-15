@@ -13,8 +13,8 @@ public class Money {
     private final int money;
 
     public Money(int money) {
-        validateMoneyUnit(money);
         validateNegative(money);
+        validateMoneyUnit(money);
         this.money = money;
     }
 
