@@ -43,6 +43,21 @@ public class LottoResult {
             lottoResultMessage.append(String.format(rank.getWinningMessage() + "\n", count));
         }
 
-        return lottoResultMessage.toString();
+        return lottoResultMessage.toString().strip();
+    }
+
+    public float getTotalProfitRate() {
+        return (float) getTotalReward() / (float) userMoney * 100f;
+    }
+
+    private long getTotalReward() {
+        long totalReward = 0;
+
+        for (Rank rank : Rank.values()) {
+            int count = lottoRanks.getOrDefault(rank, 0);
+            long reward = rank.getReward();
+            totalReward += count * reward;
+        }
+        return totalReward;
     }
 }
