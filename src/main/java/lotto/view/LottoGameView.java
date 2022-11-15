@@ -22,11 +22,12 @@ public class LottoGameView{
     }
 
     public void askRaffleNumbers(){
-
+        System.out.println("당첨 번호를 입력해 주세요.");
+        raffleNumbers= Console.readLine();
     }
 
     public void askBonusNumber(){
-
+        
     }
 
     public void noticeNumberOfTickets(int numberOfTickets){
