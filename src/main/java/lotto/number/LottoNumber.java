@@ -15,8 +15,7 @@ public class LottoNumber {
         Printer.printNumberOfTickets(numberOfLotto);
         for (int i = 0; i < numberOfLotto; i++) {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(lottoNumber);
-            lotto = new Lotto(lottoNumber);
+ㅎ            lotto = new Lotto(lottoNumber);
             System.out.println(lotto.getNumbers());
             lottoList.add(lotto);
         }
