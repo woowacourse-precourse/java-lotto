@@ -2,6 +2,8 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class ManagerTest {
@@ -21,5 +23,13 @@ class ManagerTest {
 		String money = "14000";
 		Manager.showGeneratedLottos(Manager.buyLottos(money));
 		assertThat(Manager.lottoMachine.getLottos().size()).isEqualTo(14);
+	}
+
+	@Test
+	void 당첨_번호_정상_저장_확인(){
+		String numbers = "1,2,3,4,5,6";
+		List<Integer> number = Manager.formatting(numbers);
+		Manager.inputWinningNumbers(numbers);
+		assertThat(Manager.lotto.getNumbers()).isEqualTo(number);
 	}
 }
