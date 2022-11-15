@@ -12,6 +12,7 @@ public class Ticket {
 
     private void validate(String userInput) {
         int money = numberFormatCheck(userInput);
+        multipleOfTicketPriceCheck(money);
     }
 
     private int numberFormatCheck(String userInput) {
@@ -22,6 +23,12 @@ public class Ticket {
             throw new IllegalArgumentException();
         }
         return value;
+    }
+
+    private void multipleOfTicketPriceCheck(int money) {
+        if (money % LottoConstants.TICKET_PRICE.getValue() != 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getCount() {
