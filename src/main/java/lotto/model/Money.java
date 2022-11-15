@@ -13,7 +13,7 @@ public class Money {
     }
 
     private void validateMoney(String purchase){
-        if(Integer.parseInt(purchase)%1000!=0){
+        if(Integer.parseInt(purchase)%1000!=0||Integer.parseInt(purchase)==0||Integer.parseInt(purchase)<0){
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위여야 합니다.");
         }
     }
