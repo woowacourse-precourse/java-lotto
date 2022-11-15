@@ -5,12 +5,18 @@ import lotto.view.util.InputUtil;
 
 import java.util.List;
 
+import static lotto.domain.messages.ErrorMessages.EXPENSES_RANGE_ERROR_MESSAGE;
+
 public class InputViewImple implements InputView {
 
     @Override
     public Integer inputPayment() {
-        System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        try{
+            System.out.println("구입금액을 입력해 주세요.");
+            return Integer.parseInt(Console.readLine());
+        }catch (Exception e){
+            throw new IllegalArgumentException(EXPENSES_RANGE_ERROR_MESSAGE);
+        }
     }
 
     @Override
