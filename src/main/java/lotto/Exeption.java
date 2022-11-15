@@ -6,6 +6,15 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Exeption {
+    //보너스 숫자가 중복됐을 때
+    public static void isNotoverlapped(Lotto lotto, int bonus) {
+        if (lotto.getNumbers().contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자는 중복되었습니다.");
+        }
+        if (bonus < 1 && bonus > 45) {
+            throw new IllegalArgumentException("[ERROR] 숫자는 1과 45 사이에서 입력하셔야합니다.");
+        }
+    }
 
     public static void isNotoverlapped(List<Integer> numbers) {
         int length = numbers.size();
