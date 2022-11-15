@@ -37,7 +37,7 @@ public class Lotto {
         final int startRange = 1;
         final int endRange = 45;
         for (int num : numbers) {
-            if (num > startRange || num < endRange) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
+            if (!(num >= startRange || num <= endRange)) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
         }
     }
 
