@@ -7,8 +7,6 @@ import static org.assertj.core.api.Assertions.*;
 
 class ProfitTest {
 
-
-
     @DisplayName("수익률 계산 소수점 두번째에서 반올림이 되는지 확인")
     @Test
     void calculatePercentageOfProfit() {
