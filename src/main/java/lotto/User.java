@@ -2,23 +2,25 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class User {
 
     private static final String INFORMATION_MESSAGE = "구입금액을 입력해주세요.";
     private static final String INFORMATION_LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
+    private static final String INFORMATION_USER_INPUT_MESSAGE = "당첨 번호를 입력해주세요.";
+    private static final String INFORMATION_USER_INPUT_BONUS_MESSAGE = "보너스 번호를 입력해주세요.";
 
-    private int lottoCount;
     private int price;
+    private int lottoCount;
+    private UserLotto userLotto;
     private final Exception exception;
-    private List<Lotto> randomLottoNumbers;
+    private ArrayList<Lotto> randomLottoNumbers;
 
     public User(){
         exception = new Exception();
-        randomLottoNumbers = new ArrayList<>();
+        randomLottoNumbers = new ArrayList<Lotto>();
+        userLotto = new UserLotto();
     }
 
     public void setPrice(){
@@ -44,17 +46,63 @@ public class User {
 
     public void setRandomLottoNumbers(){
         for(int i=0;i<lottoCount;i++){
-            randomLottoNumbers.add(new Lotto(initNewLotto()));
+            Lotto lotto = new Lotto(initNewLotto());
+            exception.validateDuplicateLotto(lotto);
+            randomLottoNumbers.add(lotto);
         }
+    }
+
+    public UserLotto getUserLotto(){
+        return this.userLotto;
     }
 
     private List<Integer> initNewLotto(){
         List<Integer> lottos = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lottos);
-        return lottos;
+        ArrayList<Integer> lotto = new ArrayList<>();
+        lotto.addAll(lottos);
+        checkValidLotto(lotto);
+        return lotto;
+    }
+
+    private void checkValidLotto(List<Integer> lottos) {
+        exception.validateDuplicate(lottos);
+        exception.validateLottoCount(lottos);
     }
 
     public List<Lotto> getRandomLottoNumbers(){
         return randomLottoNumbers;
+    }
+
+    public void setUserLotto(){
+        setUserInputLottoNumbers();
+        setUserInputLottoBonusNumber();
+    }
+
+    private void setUserInputLottoNumbers(){
+        System.out.println(INFORMATION_USER_INPUT_MESSAGE);
+        Set<Integer> winningNumber = getUserInputNumbers();
+        userLotto.setNumbers(winningNumber);
+    }
+
+    private Set<Integer> getUserInputNumbers() {
+        String inputWinningNumber = Console.readLine();
+        String[] numberSplit = inputWinningNumber.split(",");
+        Set<Integer> winningNumber = new HashSet<>();
+        List<Integer> stringNumber = new ArrayList<Integer>();
+        for(int i=0;i<numberSplit.length;i++){
+            exception.validateInteger(numberSplit[i]);
+            exception.validateDuplicateInputNumber(winningNumber, Integer.parseInt(numberSplit[i]));
+
+            stringNumber.add(Integer.parseInt(numberSplit[i]));
+        }
+
+        return winningNumber;
+    }
+
+    private void setUserInputLottoBonusNumber(){
+        System.out.println(INFORMATION_USER_INPUT_BONUS_MESSAGE);
+        String inputBonus = Console.readLine();
+        // +예외
+        userLotto.setBonusNumber(Integer.parseInt(inputBonus));
     }
 }
