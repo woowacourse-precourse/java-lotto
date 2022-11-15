@@ -14,7 +14,7 @@ public class LottoRaffle {
     private int countdto;
     private int bonusdto;
     private int[] resultwindto;
-    public void lottoRaffle() {
+    LottoRaffle() {
         try {
             readyMoney();
             readyLottoNumber();
