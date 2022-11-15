@@ -53,5 +53,12 @@ public class Lotto {
         return matches;
     }
 
+    public boolean compareBonus(int bonusNumber, List<Integer> payedLotto){
+        for (int i = 0; i < payedLotto.size(); i++){
+            if (payedLotto.contains(bonusNumber)) return true;
+        }
+        return false;
+    }
+
 
 }
