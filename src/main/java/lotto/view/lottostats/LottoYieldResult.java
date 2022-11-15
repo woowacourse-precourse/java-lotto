@@ -18,11 +18,10 @@ public class LottoYieldResult {
 
     private static String calculateYield(List<Integer> lottoRanks, int lottoPrice) {
         float prizeAmount = 0;
-        String resultYield;
         for (Rank rank : Rank.values()) {
             prizeAmount += lottoRanks.get(rank.getRank()) * rank.getMoney();
         }
-        resultYield = String.format(YIELD_FORMAT, (prizeAmount / lottoPrice) * PERCENTAGE);
-        return resultYield;
+        float lottoYield = (prizeAmount / lottoPrice) * PERCENTAGE;
+        return String.format(YIELD_FORMAT, lottoYield);
     }
 }
