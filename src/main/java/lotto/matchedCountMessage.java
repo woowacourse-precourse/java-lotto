@@ -19,6 +19,7 @@ public enum matchedCountMessage {
     public String getMatchMessage() {
         return this.matchedMessage;
     }
-    public int getMatchNumber() {return this.number;}
+    public int getMatchNumber() {
+        return this.number;}
 
 }

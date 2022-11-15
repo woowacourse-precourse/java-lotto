@@ -1,24 +1,30 @@
 package lotto;
 
+import static lotto.Output.printWinningStatistic;
 import static lotto.matchedCountMessage.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Statistic {
-    private Map<Integer,Integer> MatchedCount ;
+    private static Map<Integer,Integer> MatchedCount ;
+
     Statistic (){
-        MatchedCount = new HashMap<>();
+        MatchedCount = new LinkedHashMap<>();
     }
 
     public Map<Integer, Integer> getStatistic(){
         return this.MatchedCount;
     }
 
+    public Integer getStatisticNumber(int number) {
+        return this.MatchedCount.get(number);
+    }
+
     public void addMatchedCount(int number){
-        MatchedCount.put(number, MatchedCount.get(number)+1);
+       MatchedCount.put(number, MatchedCount.getOrDefault(number,0)+1);
     }
 
     public void score (List<Integer> WinningNumber, int bonusNumber, ArrayList<Lotto> lottos){
@@ -43,11 +49,19 @@ public class Statistic {
     }
     public void countEachLottoNumber( Lotto lotto,List<Integer> WinningNumber, int bonusNumber){
         int winningSum = CountEachLottoWinningNumber(lotto, WinningNumber);
-        if (winningSum == 5 && checkEachLottoBonusNumber(lotto, bonusNumber)) {
+        if (winningSum == FIVE_MATCH.getMatchNumber() && checkEachLottoBonusNumber(lotto, bonusNumber)) {
             addMatchedCount(FIVE_MATCH_WITH_BONUS.getMatchNumber());
             return;
         }
-        addMatchedCount(winningSum);
+        if (winningSum >= THREE_MATCH.getMatchNumber())
+            addMatchedCount(winningSum);
     }
-
+    public static void printMatchedCount(){
+        printWinningStatistic();
+        System.out.println(THREE_MATCH.getMatchMessage() + MatchedCount.getOrDefault(THREE_MATCH.getMatchNumber(),0));
+        System.out.println(FOUR_MATCH.getMatchMessage() + MatchedCount.getOrDefault(FOUR_MATCH.getMatchNumber(),0));
+        System.out.println(FIVE_MATCH.getMatchMessage() + MatchedCount.getOrDefault(FIVE_MATCH.getMatchNumber(),0));
+        System.out.println(FIVE_MATCH_WITH_BONUS.getMatchMessage() + MatchedCount.getOrDefault(FIVE_MATCH_WITH_BONUS.getMatchNumber(),0));
+        System.out.println(SIX_MATCH.getMatchMessage() + MatchedCount.getOrDefault(SIX_MATCH.getMatchNumber(),0));
+    }
 }

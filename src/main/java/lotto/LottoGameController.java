@@ -31,6 +31,6 @@ public class LottoGameController {
     }
 
     public void printStatistic(){
-        printWinningStatistic();
+        lottoGame.printStatistic();
     };
 }

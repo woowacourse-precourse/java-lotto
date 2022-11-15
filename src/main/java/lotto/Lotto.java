@@ -29,7 +29,7 @@ public class Lotto {
         for (int i =  0 ; i< numbers.size(); i++){
                 Message = Message +numbers.get(i);
             if (i != numbers.size()-1){
-                Message+= ",";
+                Message+= ", ";
             }
         }
         Message+="]";

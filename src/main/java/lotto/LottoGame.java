@@ -31,9 +31,6 @@ public class LottoGame {
         printPurchaseCount(number);
     }
 
-    public ArrayList<Lotto> getLottoGame() {
-        return this.lottos;
-    }
     public void printLottos() {
         for (int i = 0 ; i< lottos.size() ; i++){
             System.out.println(lottos.get(i));
@@ -54,6 +51,9 @@ public class LottoGame {
      public void compare(){
          statistic = new Statistic();
          statistic.score(WinningNumber,bonusNumber,lottos);
+     }
+     public void printStatistic() {
+        Statistic.printMatchedCount();
      }
 
 }
