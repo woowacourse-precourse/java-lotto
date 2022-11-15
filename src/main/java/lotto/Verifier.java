@@ -12,12 +12,22 @@ public class Verifier {
         }
     }
 
-    public static void validateWinningNumbers(String[] values) {
+    public static void validateLottoNumbers(String[] values) {
         if (values.length != Lotto.NUMBER_COUNT) {
             throw new IllegalArgumentException(ErrorType.NUMBER_COUNT.getMessage());
         }
         validateDuplicate(values);
         for (String value : values) {
+            validateLottoNumber(value);
+        }
+    }
+
+    public static void validateLottoNumbers(List<Integer> values) {
+        if (values.size() != Lotto.NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorType.NUMBER_COUNT.getMessage());
+        }
+        validateDuplicate(values);
+        for (int value : values) {
             validateLottoNumber(value);
         }
     }
@@ -37,9 +47,25 @@ public class Verifier {
         }
     }
 
+    public static void validateLottoNumber(int value) {
+        if (value < Lotto.START_RANGE || value > Lotto.END_RANGE) {
+            throw new IllegalArgumentException(ErrorType.OUT_OF_RANGE.getMessage());
+        }
+    }
+
     public static void validateDuplicate(String[] values) {
         List<String> temp = new ArrayList<>();
         for (String value : values) {
+            if (temp.contains(value)) {
+                throw new IllegalArgumentException(ErrorType.HAS_DUPLICATE.getMessage());
+            }
+            temp.add(value);
+        }
+    }
+
+    public static void validateDuplicate(List<Integer> values) {
+        List<Integer> temp = new ArrayList<>();
+        for (int value : values) {
             if (temp.contains(value)) {
                 throw new IllegalArgumentException(ErrorType.HAS_DUPLICATE.getMessage());
             }

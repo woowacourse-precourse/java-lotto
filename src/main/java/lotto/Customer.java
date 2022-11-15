@@ -16,12 +16,12 @@ public class Customer {
 
     public List<Rank> checkMyLotto(List<Integer> winningNumbers, int bonusNumber) {
         LottoManager lottoManager = new LottoManager();
-        List<Rank> myRanks = new ArrayList<>();
+        List<Rank> rankResult = new ArrayList<>();
         for (Lotto lotto : lottoTickets) {
             Rank myRank = lottoManager.getRank(lotto, winningNumbers, bonusNumber);
-            myRanks.add(myRank);
+            rankResult.add(myRank);
         }
-        return myRanks;
+        return rankResult;
     }
 
     public List<Lotto> getLottoTickets() {

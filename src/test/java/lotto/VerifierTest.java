@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class VerifierTest {
     @Test
@@ -16,9 +15,9 @@ class VerifierTest {
     }
 
     @Test
-    void validateWinningNumbersTest() {
+    void validateLottoNumbersTest() {
         String[] input = {"1", "2", "3", "4", "5"};
-        assertThatThrownBy(() -> Verifier.validateWinningNumbers(input))
+        assertThatThrownBy(() -> Verifier.validateLottoNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoManager {
@@ -9,6 +10,17 @@ public class LottoManager {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.START_RANGE, Lotto.END_RANGE, Lotto.NUMBER_COUNT);
         Lotto lotto = new Lotto(numbers);
         return lotto;
+    }
+
+    public int getWinnings(List<Rank> rankResult) {
+        int winnings = 0;
+        for (Rank rank : rankResult) {
+            if (rank == null) {
+                continue;
+            }
+            winnings += rank.getReward();
+        }
+        return winnings;
     }
 
     public Rank getRank(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
@@ -30,6 +42,17 @@ public class LottoManager {
             return Rank.FIFTH;
         }
         return null;
+    }
+
+    public int[] getRankCount (List<Rank> rankResult){
+        int[] rankCount = new int[Rank.MAX_RANK];
+        for (Rank rank : rankResult) {
+            if (rank == null) {
+                continue;
+            }
+            rankCount[rank.getIndex()]++;;
+        }
+        return rankCount;
     }
 
     public boolean hasBonusNumber(Lotto lotto, int bonusNumber) {

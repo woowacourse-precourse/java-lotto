@@ -18,6 +18,7 @@ public class Lotto {
         if (numbers.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException(ErrorType.NUMBER_COUNT.getMessage());
         }
+        Verifier.validateLottoNumbers(numbers);
     }
 
     public List<Integer> getNumbers() {
