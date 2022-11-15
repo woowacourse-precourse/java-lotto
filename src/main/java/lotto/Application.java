@@ -15,22 +15,14 @@ public class Application {
             Comments.print(Comments.INPUT_MONEY);
             Money money = new Money(toInt(Console.readLine()));
             LottoGroups lottos = new LottoGroups(createLottos(money.getNumberToPublishLottos()));
-
             Comments.printLottos(lottos);
 
             Comments.print(Comments.INPUT_WINNING_NUMBERS);
             WinningNumbers winningNumbers = new WinningNumbers(toIntegers(spilt(Console.readLine())));
-
             Comments.print(Comments.INPUT_BONUS_NUMBER);
             BonusNumber bonusNumber = new BonusNumber(inputBonusNumber(winningNumbers));
 
-            Map<Rank, Integer> numbersOfRanks = lottos.numbersOfRanks(winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber());
-
-            Comments.print(Comments.WINNING_TOTAL);
-            Rank.printTotalResultComment(numbersOfRanks);
-
-            Comments.printYield(money.calculateYield(sumOfProceeds(numbersOfRanks)));
-
+            printStatistics(money, lottos.numbersOfRanks(winningNumbers.get(), bonusNumber.get()));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -49,13 +41,11 @@ public class Application {
     }
 
     private static int toInt(String input) {
-        int number;
         try {
-            number = Integer.parseInt(input);
+            return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
         }
-        return number;
     }
 
     private static String[] spilt(String input) {
@@ -86,5 +76,11 @@ public class Application {
                 proceeds.add(rank.calculate(numbersOfRanks.get(rank))));
 
         return proceeds.stream().mapToLong(proceed -> proceed).sum();
+    }
+
+    private static void printStatistics(Money money, Map<Rank, Integer> numbersOfRanks) {
+        Comments.print(Comments.WINNING_TOTAL);
+        Rank.printTotalResultComment(numbersOfRanks);
+        Comments.printYield(money.calculateYield(sumOfProceeds(numbersOfRanks)));
     }
 }

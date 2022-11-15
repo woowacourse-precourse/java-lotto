@@ -16,7 +16,7 @@ public class WinningNumbers {
         this.numbers = numbers;
     }
 
-    public List<Integer> getWinningNumbers() {
+    public List<Integer> get() {
         List<Integer> winningNumbers = numbers.stream().collect(Collectors.toList());
         return winningNumbers;
     }
