@@ -35,4 +35,16 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public MatchedResult checkPrizes(List<Integer> winningNumbers, int bonusNumber) {
+        int matchNum = 0;
+        boolean bonusMatched = false;
+        for(int num : numbers) {
+            if(winningNumbers.contains(num)) matchNum++;
+            if(bonusNumber == num) {
+                bonusMatched = true;
+            }
+        }
+        return new MatchedResult(matchNum, bonusMatched);
+    }
 }

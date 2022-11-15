@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.Lotto;
+import lotto.model.Rank;
 
 import java.util.List;
 
@@ -37,7 +38,12 @@ public class Terminal implements View {
     }
 
     @Override
-    public void printResult() {
-
+    public void printResult(double ratio) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(Rank rank : Rank.values()) {
+            System.out.println(rank.getMessage() + rank.getAchievedCount() + "개");
+        }
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", ratio));
     }
 }

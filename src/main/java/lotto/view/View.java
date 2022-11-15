@@ -9,5 +9,5 @@ public interface View {
     void printLotto(List<Lotto> boughtLottoes);
     String requestWinningNumbers();
     String requestBonusNumber();
-    void printResult();
+    void printResult(double ratio);
 }

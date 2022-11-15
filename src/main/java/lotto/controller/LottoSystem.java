@@ -1,10 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.model.Lotto;
-import lotto.model.MoneyParser;
-import lotto.model.SingleLottoNumValidator;
-import lotto.model.WinningNumberParser;
+import lotto.model.*;
 import lotto.view.Terminal;
 import lotto.view.View;
 
@@ -24,6 +21,7 @@ public class LottoSystem {
     private List<Lotto> boughtLottoes;
     private List<Integer> winningNumbers;
     int bonusNumber;
+    int money;
 
     public void run() {
         buy();
@@ -33,7 +31,8 @@ public class LottoSystem {
 
     private void buy() {
         MoneyParser moneyParser = new MoneyParser();
-        int lottoCount = moneyParser.parse(view.requestMoney()) / LOTTO_PRICE;
+        money = moneyParser.parse(view.requestMoney());
+        int lottoCount = money / LOTTO_PRICE;
         view.printLottoCount(lottoCount);
         boughtLottoes = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
@@ -57,6 +56,25 @@ public class LottoSystem {
     }
 
     private void result() {
-
+        for(Lotto lotto : boughtLottoes) {
+            MatchedResult matchedResult = lotto.checkPrizes(winningNumbers, bonusNumber);
+            if(matchedResult.getMatchedNum() == Rank.FIRST.getMatchCount()) {
+                Rank.FIRST.setAchievedCount(Rank.FIRST.getAchievedCount() + 1);
+            } else if (matchedResult.getMatchedNum() == Rank.SECOND.getMatchCount() && matchedResult.isBonusMatched()) {
+                Rank.SECOND.setAchievedCount(Rank.SECOND.getAchievedCount() + 1);
+            } else if (matchedResult.getMatchedNum() == Rank.THIRD.getMatchCount()) {
+                Rank.THIRD.setAchievedCount(Rank.THIRD.getAchievedCount() + 1);
+            } else if (matchedResult.getMatchedNum() == Rank.FOURTH.getMatchCount()) {
+                Rank.FOURTH.setAchievedCount(Rank.FOURTH.getAchievedCount() + 1);
+            } else if (matchedResult.getMatchedNum() == Rank.FIFTH.getMatchCount()) {
+                Rank.FIFTH.setAchievedCount(Rank.FIFTH.getAchievedCount() + 1);
+            }
+        }
+        int income = 0;
+        for (Rank rank : Rank.values()) {
+            income += rank.getPrize() * rank.getAchievedCount();
+        }
+        double ratio = income / money;
+        view.printResult(ratio);
     }
 }
