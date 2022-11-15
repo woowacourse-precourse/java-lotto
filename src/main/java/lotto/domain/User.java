@@ -81,7 +81,11 @@ public class User {
         return lottos;
     }
 
-    public void addResult(Reward reward, int count) {
-        result.put(reward, count);
+    public void saveResult(Reward reward) {
+        if (result.containsKey(reward)) {
+            result.put(reward, result.get(reward) + 1);
+        } else {
+            result.put(reward, 1);
+        }
     }
 }
