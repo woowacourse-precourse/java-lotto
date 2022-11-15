@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import lotto.Result;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,11 +10,11 @@ public class Application {
 
         // 로또 구입 금액에 따른 로또 개수 계산
         int count = Judgement.buyLotto(money);
-        System.out.println(count);
 
         // 발행한 로또 수량 및 번호 출력
         System.out.printf("%d개를 구매했습니다. \n", count);
         Result result = new Result();
+        result.setCount(count);
         result.purchaseLotteries(count);
         result.printPurchasedLotteries();
 
@@ -33,11 +30,10 @@ public class Application {
         result.setBonusNumber(bonusNumber);
         System.out.println(bonusNumber);
 
-        result.calculateWinningHistory();
-        System.out.println(result.winningHistory);
+        result.calculateWinningStatistics();
+        System.out.println(result.winningStatistics);
 
         // 당첨 내역 출력
-
-        // 수익률 계산 출력
+        result.printWinningStatistics();
     }
 }

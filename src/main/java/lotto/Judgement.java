@@ -27,22 +27,30 @@ public class Judgement {
         return count;
     }
 
-    public static int judgeGrade(int sameNumberCount, int bonusNumberCount){
+    public static Prize judgeGrade(int sameNumberCount, int bonusNumberCount){
         if(sameNumberCount==3){
-            return 5;
+            return Prize.Fifth;
         }
         if(sameNumberCount==4){
-            return 4;
+            return Prize.Fourth;
         }
         if(sameNumberCount==5 && bonusNumberCount==0){
-            return 3;
+            return Prize.Third;
         }
         if(sameNumberCount==5 && bonusNumberCount==1){
-            return 2;
+            return Prize.Second;
         }
         if(sameNumberCount==6){
-            return 1;
+            return Prize.First;
         }
-        return -1;
+        return Prize.Invalid;
+    }
+
+
+
+    public static double calculateEarningRate(int inputMoney, int prizeMoney){
+        double earningRate = (double)prizeMoney*100/(double)inputMoney;
+        earningRate = Math.round(earningRate*10/10.0);
+        return earningRate;
     }
 }
