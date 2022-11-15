@@ -15,7 +15,7 @@ public class BonusTest {
     void duplicateBonusNumandWinningNum() {
         Lotto winningNum = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(
-            ()->new Bonus(1,winningNum)
+            () -> new Bonus(1, winningNum)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 }
