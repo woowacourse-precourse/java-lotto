@@ -32,8 +32,11 @@ public class LottoSeller {
 
     public static int receivePurchasePrice() {
         printMessage(MessageType.PURCHASE_PRICE);
-
-        return receiveNumber();
+        try {
+            return receiveNumber();
+        } catch (Exception e) {
+            return receivePurchasePrice();
+        }
     }
 
     public static List<Integer> receiveWinningNumbers() {
@@ -54,8 +57,11 @@ public class LottoSeller {
 
     public static int receiveBonusNumber() {
         printMessage(MessageType.BONUS_NUMBER);
-
-        return receiveNumber();
+        try {
+            return receiveNumber();
+        } catch (Exception e) {
+            return receiveBonusNumber();
+        }
     }
 
     private static void validateWinningNumbers(String input) {
@@ -73,11 +79,9 @@ public class LottoSeller {
 
     private static int receiveNumber() {
         String userInput = Console.readLine();
-        try {
-            validateNumber(userInput);
-        } catch (Exception e) {
-            return receiveNumber();
-        }
+
+        validateNumber(userInput);
+
         return Integer.parseInt(userInput);
     }
 }
