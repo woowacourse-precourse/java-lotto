@@ -40,7 +40,7 @@ public class Game {
     }
 
     private void validateWinningNumberBySize(List<Integer> winningNumbers){
-        if (winningNumbers.size() != maximumLottoNumber){
+        if (winningNumbers.size() != numberToDraw){
             throw new IllegalArgumentException();
         }
     }
