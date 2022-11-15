@@ -7,10 +7,15 @@ import lotto.model.Rank;
 import lotto.view.Input;
 import lotto.view.Output;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class LottoController {
+    public static final String INPUT_PRIZE_NUMBER_COUNT_ERROR = "[ERROR] 당첨 번호를 6개 입력하세요.";
+    public static final String INPUT_PRIZE_NUMBER_RANGE_ERROR = "[ERROR] 당첨 번호는 1~45까지 입력 가능합니다.";
+    public static final String INPUT_PRIZE_NUMBER_DUPLICATION_ERROR = "[ERROR] 당첨 번호에 중복이 있습니다.";
 
     public void run() {
         try {
@@ -53,7 +58,25 @@ public class LottoController {
     private List<Integer> inputPrizeNumbers() {
         Output.printInputPrizeNumbers();
         List<Integer> prizeNumbers = Input.inputPrizeNumbers();
+        validatePrizeNumber(prizeNumbers);
         return prizeNumbers;
+    }
+
+    private void validatePrizeNumber(List<Integer> prizeNumbers) {
+        for(Integer number : prizeNumbers){
+            if(!(number >= 1 && number <= 45)){
+                throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_RANGE_ERROR);
+            }
+        }
+        Set<Integer> checkDuplication = new HashSet<>();
+        for(Integer number : prizeNumbers){
+            if(!checkDuplication.add(number)){
+                throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_DUPLICATION_ERROR);
+            }
+        }
+        if(prizeNumbers.size() < 6){
+            throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_COUNT_ERROR);
+        }
     }
 
     private int inputBonusNumber() {
