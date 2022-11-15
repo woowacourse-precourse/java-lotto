@@ -1,7 +1,12 @@
 package lotto.service;
 
+import lotto.model.Lotto;
 import lotto.util.ArgumentExceptionMessage;
 import lotto.util.LottoConstant;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Author : Jeeseob
@@ -14,6 +19,17 @@ public class LottoService {
         return divideLottoPrice(purchaseAmount);
     }
 
+    public Lotto toLotto(String input) {
+        return new Lotto(toIntegerList(input));
+    }
+
+    private List<Integer> toIntegerList(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        Arrays.stream(input.split(","))
+                .forEach(s -> winningNumbers.add(toInteger(s)));
+        return winningNumbers;
+    }
+
     private void validPurchaseAmount(String input) {
         checkNumeric(input);
     }
@@ -21,7 +37,7 @@ public class LottoService {
     private int toInteger(String input) {
         return Integer.parseInt(input);
     }
-    
+
     private int divideLottoPrice(int purchaseAmount) {
         checkDivideLottoPrice(purchaseAmount);
         return purchaseAmount / LottoConstant.LOTTO_PRICE.getValue();

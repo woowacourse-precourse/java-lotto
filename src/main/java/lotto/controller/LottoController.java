@@ -17,14 +17,20 @@ public class LottoController {
         this.lottoService = lottoService;
     }
 
-    // TODO: 구입금액 입력
+    /**
+     * 구입금액 입력
+     * @return 구매한 로또 개수
+     */
     public int inputPurchaseAmount() {
         return lottoService.toPurchaseAmount(Console.readLine());
     }
 
-    //TODO: 당첨 번호 입력
+    /**
+     * 당첨 번호 입력
+     * @return 당첨 번호 Lotto 객체
+     */
     public Lotto inputWinningNumbers() {
-        return new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        return lottoService.toLotto(Console.readLine());
     }
 
     //TODO: 보너스 번호 입력
