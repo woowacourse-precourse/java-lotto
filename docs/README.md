@@ -83,6 +83,9 @@
     - [x] 로또 번호가 6개가 넘어가면 예외가 발생한다. -  `createLottoByOverSize`
     - [x] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다. -  `createLottoByDuplicateNumber`
     - [x] 로또 번호에 범위를 벗어나는 숫자가 있으면 예외가 발생한다. -  `createLottoByOutOfRangeNumber`
+    - [x] 로또 번호와 당첨 번호를 비교하면, 해당 Score를 반환한다. - `compareLottoWithWinningNumbers`
+    - [x] 5개 번호와 보너스 번호가 일치하면, FIVE_BONUS를 반환한다. - `compareLottoWithWinningNumbersFiveBonus`
+    - [x] 로또 번호가 3개 미만 일치하면, NOTHING을 반환한다." - `compareLottoWithWinningNumbersNothing`
   - [x] WinningNumbers
     - [x] 로또 번호의 예외를 모두 포함한다.
     - [x] 보너스 번호에 중복된 숫자가 있으면 예외가 발생한다. - `createWinningNumbersByDuplicateNumber`
