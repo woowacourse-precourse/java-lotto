@@ -20,6 +20,8 @@ public class Ui {
 
         String bonusNumber= inputBonusNumber();
 
+        lottoService.compareLottoNumber(winNumber,bonusNumber);
+
 
 
     }
