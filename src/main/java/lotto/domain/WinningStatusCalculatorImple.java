@@ -16,10 +16,14 @@ public class WinningStatusCalculatorImple implements WinningStatusCalculator{
 
         for (Lotto lotto : lottos) {
             Rank rank = Rank.calculateRank(lotto, winningNumbers);
-            winningStatus.put(rank, winningStatus.get(rank) + 1);
+            winningStatus.put(rank, getMatchedCount(rank)+1);
         }
 
         return winningStatus;
+    }
+
+    private Integer getMatchedCount(Rank rank){
+        return winningStatus.get(rank);
     }
 
     private void initWinningStaus(){
