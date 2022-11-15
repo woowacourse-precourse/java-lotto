@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.Constants.LOTTO_NUMBERS_COUNT;
 import static lotto.message.ExceptionMessage.*;
 
 public class Lotto {
@@ -9,7 +10,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        duplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -18,14 +18,27 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        sizeValidate(numbers);
+        duplicateValidate(numbers);
+    }
+
+    private void sizeValidate(List<Integer> numbers) {
+        if (!isSizeEq(numbers)) {
             throw new IllegalArgumentException(SIZE_EXCEPTION);
         }
     }
 
-    private void duplicate(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
+    private boolean isSizeEq(List<Integer> numbers) {
+        return numbers.size() != LOTTO_NUMBERS_COUNT;
+    }
+
+    private void duplicateValidate(List<Integer> numbers) {
+        if (isDuplicateExist(numbers)) {
             throw new IllegalArgumentException(DUPLICATE_EXCEPTION);
         }
+    }
+
+    private boolean isDuplicateExist(List<Integer> numbers) {
+        return numbers.size() != numbers.stream().distinct().count();
     }
 }
