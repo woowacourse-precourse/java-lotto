@@ -39,4 +39,6 @@ public class Lotto {
 
         return rankNumber;
     }
+
+
 }
