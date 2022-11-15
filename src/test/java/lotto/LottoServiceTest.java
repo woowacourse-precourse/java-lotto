@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.Money;
+import lotto.domain.LottoMoney;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +17,7 @@ class LottoServiceTest {
     @DisplayName("로또 구매시 1000원당 1장만큼 생성이 된다.")
     @Test
     void purchaseLottoTest() {
-        lottoService.purchase(new Money(5000));
+        lottoService.purchase(new LottoMoney(5000));
 
         assertThat(lottoService.getPurchaseLotteries().size()).isEqualTo(5);
     }

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.LottoMessage;
 import lotto.LottoService;
 import lotto.domain.Lotto;
-import lotto.domain.Money;
+import lotto.domain.LottoMoney;
 import lotto.domain.WinningResult;
 
 import java.util.List;
@@ -27,8 +27,8 @@ public class LottoController {
 
     private void purchase() {
         lottoMessage.printPurchaseMessage();
-        Money money = new Money(Console.readLine());
-        lottoService.purchase(money);
+        LottoMoney lottoMoney = new LottoMoney(Console.readLine());
+        lottoService.purchase(lottoMoney);
     }
 
     private void showPurchaseLotteries() {

@@ -13,11 +13,11 @@ public class LottoService {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final List<Lotto> lotteries = new ArrayList<>();
     private WinningResult winningResult;
-    private Money purchaseMoney;
+    private LottoMoney lottoMoney;
 
-    public void purchase(Money money) {
-        purchaseMoney = money;
-        int buyQuantity = money.getWon() / 1000;
+    public void purchase(LottoMoney lottoMoney) {
+        this.lottoMoney = lottoMoney;
+        int buyQuantity = lottoMoney.getMoney() / 1000;
 
         for (int i = 0; i < buyQuantity; i++) {
             lotteries.add(new Lotto(randomGenerator.createRandomNumbers()));
@@ -55,7 +55,7 @@ public class LottoService {
     }
 
     private double divideByPurchaseMoney(double totalWinningAmount) {
-        return totalWinningAmount / purchaseMoney.getWon();
+        return totalWinningAmount / lottoMoney.getMoney();
     }
 
     private List<Number> convertToNumbers(String input) {
