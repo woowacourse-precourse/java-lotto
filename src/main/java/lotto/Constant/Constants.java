@@ -7,6 +7,7 @@ public final class Constants {
         public static final String DUPLICATE = "[ERROR] 중복된 숫자 없게 입력해주세요.";
         public static final String ONE_TO_FORTYFIVE = "[ERROR] 1~45숫자만 입력해주세요.";
         public static final String SIZE = "[ERROR] 6개의 숫자를 입력해주세요.";
+        public static final String MONEY = "[ERROR] 1,000원 ~ 2,147,483,000원 까지 구매 가능합니다.";
     }
 
     public static final class Message {
