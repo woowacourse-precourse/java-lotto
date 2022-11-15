@@ -10,6 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         ListValidator.length(numbers);
+        ListValidator.Overlaped(numbers);
         this.numbers = numbers;
     }
 

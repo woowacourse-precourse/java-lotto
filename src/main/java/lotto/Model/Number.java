@@ -3,7 +3,7 @@ package lotto.Model;
 import lotto.Utils.Converter;
 import lotto.Utils.Validator.IntegerValidator;
 import lotto.Utils.Validator.ListValidator;
-import lotto.Utils.Validator.Number.NumberValidator;
+import lotto.Utils.Validator.NumberValidator;
 import lotto.View.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -40,6 +40,7 @@ public class Number {
         String bonus = Console.readLine();
         IntegerValidator.Integer(bonus);
         ListValidator.validateRange(bonus);
+
         return Integer.parseInt(bonus);
     }
 

@@ -1,8 +1,7 @@
 package lotto.Utils.Validator;
 
 
-import lotto.Utils.Converter;
-import lotto.View.OutputView;
+
 
 import java.util.HashSet;
 import java.util.List;
@@ -19,8 +18,7 @@ public class ListValidator {
         }
     }
 
-    public static void Overlaped(String[] stringArray) {
-        List<Integer> List = Converter.stringArrayToIntegerList(stringArray);
+    public static void Overlaped(List<Integer> List) {
         Set<Integer> numSet = new HashSet<>(List);
 
         if (numSet.size() != List.size()) {

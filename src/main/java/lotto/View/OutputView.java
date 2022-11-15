@@ -9,8 +9,6 @@ import java.util.Objects;
 
 
 public class OutputView {
-
-
     public static void moneyPrizes(int match, String prize, int count) {
 
         if (Objects.equals(prize, MatchNumber.FIVE_BONUS_MATCH.getMoneyAsString())) {
@@ -36,9 +34,7 @@ public class OutputView {
     public static void lottoNumber(List<List<Integer>> lottoBox) {
         for (List<Integer> lottoNumber : lottoBox) {
             ListValidator.length(lottoNumber);
-//            Collections.sort(lottoNumber);
             System.out.println(lottoNumber);
         }
-
     }
 }

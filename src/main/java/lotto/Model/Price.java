@@ -1,19 +1,19 @@
 package lotto.Model;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Utils.Validator.IntegerValidator;
-import lotto.Utils.Validator.Number.PriceValidator;
+import lotto.Utils.Validator.PriceValidator;
 import lotto.View.InputView;
 
 public class Price {
 
     private final int inputPrice;
     private final int lottoTicketCount;
-    private final static int ERROR_PRICE=0;
+    private static final int ERROR_NUMBER=0;
 
     public Price() {
+        InputView.buyLotto();
         this.inputPrice = inputPrice();
-        this.lottoTicketCount = LottoTickets(inputPrice);
+        this.lottoTicketCount = lottoTickets(inputPrice);
     }
 
     public int getInputPrice() {
@@ -25,16 +25,20 @@ public class Price {
     }
 
 
-    public int inputPrice() {
-        InputView.buyLotto();
-        String price = Console.readLine();
-        PriceValidator.checkPrice(price);
-        return Integer.parseInt(price);
+
+    public int lottoTickets(int price) {
+        return price / 1000;
     }
 
-    public int LottoTickets(int price) {
-        PriceValidator.price(price);
-        return price / 1000;
+    public static int inputPrice() {
+        String priceInputs = Console.readLine();
+        if (!PriceValidator.checkPriceInteger(priceInputs)) {
+            return ERROR_NUMBER;
+        }
+        if(!PriceValidator.priceCorrect(Integer.parseInt(priceInputs))){
+            return ERROR_NUMBER;
+        }
+        return Integer.parseInt(priceInputs);
     }
 
 
