@@ -34,7 +34,7 @@ public class Money {
     }
 
     private static boolean verifyPositiveInteger(String money) {
-        return money != null && money.matches("^[1-9]\\d*");
+        return money != null && money.matches("^[1-9]\\d{0,8}");
     }
 
     private static boolean verifyRange(int money) {
