@@ -15,12 +15,12 @@ import static lotto.enums.WinCondition.getIndex;
 
 public class PlayLotto extends Input {
 
+    private final static Integer NUMBER_SIZE = 6;
     private Lotto lotto;
     private User user;
     private final Output out;
     private List<Integer> win_count;
     private int bonus;
-    private static Integer NUMBER_SIZE = 6;
 
     public PlayLotto() {
 
@@ -142,7 +142,7 @@ public class PlayLotto extends Input {
     }
 
     public Float cal_revenue(){
-        Float sum = 0f;
+        float sum = 0f;
         for(Reward reward : Reward.values()){
             sum += reward.getValue() * win_count.get(reward.ordinal());
         }
