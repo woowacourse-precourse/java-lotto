@@ -43,11 +43,11 @@ public class LottoNumberFormValidation {
         int currentCount = numbers.size();
         int distinctCount = (int) numbers.stream().distinct().count();
 
-        rangeSizeValid(currentCount);
+        numberCountValid(currentCount);
         duplicateValid(currentCount, distinctCount);
     }
 
-    private void rangeSizeValid(int currentCount) {
+    private void numberCountValid(int currentCount) {
         if (currentCount != 6) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
