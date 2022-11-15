@@ -31,4 +31,18 @@ public class WinningNumbersTest {
         assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 46), 8))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createBonusNumberByDuplicatedNumber() {
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1 ~ 45로 구성되지 않았다면 예외가 발생한다.")
+    @Test
+    void createBonusNumberByOverRange() {
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
