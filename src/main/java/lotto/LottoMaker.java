@@ -10,7 +10,7 @@ public class LottoMaker {
     public void makeRandomLottoNumbers(int purchaseNumber) {
         while (lottoNumbers.size() < purchaseNumber) {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            if (!lottoNumbers.equals(lottoNumbers)) {
+            if (!lottoNumbers.contains(lottoNumbers)) {
                 lottoNumbers.add(lottoNumber);
             }
         }
