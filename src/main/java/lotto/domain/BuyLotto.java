@@ -15,10 +15,8 @@ public class BuyLotto {
     public List<List<Integer>> lottoList = new ArrayList<>();
     public static int cntLotto = 0;
 
-
     public BuyLotto() {
-        int price = Integer.parseInt(inputSystem());
-        calculateLotto(price);
+
     }
 
     public void calculateLotto(int price) {
@@ -31,7 +29,11 @@ public class BuyLotto {
         if (price < LOTTO_PRICE) {
             throw new IllegalArgumentException(PrintMessages.ERROR_MONEY_MIN.getMessage());
         }
+    }
 
+    public void inputPrice() {
+        int price = Integer.parseInt(inputSystem());
+        calculateLotto(price);
     }
 
     public void GenerateLottoNumber() {
@@ -40,12 +42,6 @@ public class BuyLotto {
             Collections.sort(randomList);
             Lotto lotto = new Lotto(randomList);
             lottoList.add(lotto.getNumbers());
-        }
-    }
-
-    public void showLottos() {
-        for (List<Integer> list : lottoList) {
-            System.out.println(list);
         }
     }
 
