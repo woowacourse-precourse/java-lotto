@@ -59,4 +59,8 @@ public class Lotto {
         }
         return prize[index];
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }

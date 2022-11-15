@@ -19,7 +19,7 @@ public class LottoController {
             Lotto winNumber = getWinLottoNumber(inputWinNumber());
 
             lottoView.printBonusNumberQuestion();
-            int bonusNumber = inputBonusNumber();
+            int bonusNumber = inputBonusNumber(winNumber);
 
         } catch (IllegalArgumentException e) {
             return ;
@@ -107,9 +107,22 @@ public class LottoController {
         return input.length != set.size();
     }
 
-    public int inputBonusNumber() {
+    public int inputBonusNumber(Lotto winNumber) {
         String input = Console.readLine();
         checkNumber(input);
-        return Integer.parseInt(input);
+        int bonusNumber = Integer.parseInt(input);
+
+        if (isDuplicatedInBonus(winNumber, bonusNumber)) {
+            lottoView.printDuplicatedNumberError();
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
+    }
+
+    public boolean isDuplicatedInBonus(Lotto win, int bonus) {
+        Set<Integer> winNumber = new HashSet<>(win.getNumbers());
+        Set<Integer> bonusNumber = new HashSet<>(List.of(bonus));
+
+        return winNumber.retainAll(bonusNumber);
     }
 }
