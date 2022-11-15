@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private static final int SMALLEST_LOTTERY_NUMBER = 1;
@@ -15,6 +12,20 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+    public Lotto(String correctNumbers) {
+        List<String> splitted = Arrays.asList(correctNumbers.split(","));
+        List<Integer> parsedNumbers = new ArrayList<>();
+
+        try {
+            splitted.forEach(x -> parsedNumbers.add(Integer.parseInt(x)));
+            numbers = parsedNumbers;
+        } catch (NumberFormatException ex) {
+            throw (new IllegalArgumentException(ExceptionMessage.WINNING_NUMBER_EXCEPTION
+                    .toString()));
+        }
+        validate(numbers);
     }
 
     private void validateNumberRange(List<Integer> numbers) {
