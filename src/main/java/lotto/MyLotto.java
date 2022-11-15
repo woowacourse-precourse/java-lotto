@@ -33,7 +33,11 @@ public class MyLotto {
         return boughtLotto;
     }
 
-    public List<List<Integer>> getMyPocket(){
+    public int getCountNumsOfLotto() {
+        return this.countNumsOfLotto;
+    }
+
+    public List<List<Integer>> getMyPocket() {
         return this.myPocket;
     }
 }

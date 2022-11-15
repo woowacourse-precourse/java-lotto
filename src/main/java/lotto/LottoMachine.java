@@ -2,14 +2,17 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.Constants.*;
 
 public class LottoMachine {
-    private static void sortListInAscending(List<Integer> numbers) {
-        numbers.sort(Comparator.naturalOrder());
+    private static List<Integer> sortListInAscending(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 
     public static List<Integer> generateLotto() {
@@ -17,7 +20,7 @@ public class LottoMachine {
                 MIN_VALUE_OF_LOTTO,
                 MAX_VALUE_OF_LOTTO,
                 NUM_OF_LOTTO);
-        LottoMachine.sortListInAscending(numbers);
-        return numbers;
+
+        return LottoMachine.sortListInAscending(numbers);
     }
 }

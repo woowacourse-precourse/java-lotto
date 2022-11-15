@@ -5,7 +5,11 @@ public class Constants {
     public static final int MIN_VALUE_OF_LOTTO = 1;
     public static final int MAX_VALUE_OF_LOTTO = 45;
     public static final int MONEY_UNIT = 1000;
-
+    public static final String ENTER_PURCHASE_MONEY = "구입금액을 입력해 주세요.";
+    public static final String HOW_MANY_LOTTO_BOUGHT = "개를 구매했습니다.";
+    public static final String ENTER_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    public static final String ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    public static final String WINNING_STATS = "당첨 통계";
     public static final String SPLIT_MARK = ",";
     public static final String ERROR_MESSAGE_FOR_SIZE = "[ERROR] 로또 번호는 " + NUM_OF_LOTTO + "자리여야 합니다.";
     public static final String ERROR_MESSAGE_FOR_RANGE_OF_NUMBER = "[ERROR] 로또 번호는 " + MIN_VALUE_OF_LOTTO + "부터 " + MAX_VALUE_OF_LOTTO + " 사이의 숫자여야 합니다.";
