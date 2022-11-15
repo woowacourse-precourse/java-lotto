@@ -11,12 +11,11 @@ public class LottoProgram {
     private final int LOTTO_PRICE = 1000;
 
     private int numberOfLotto = 0;
-    // private List<Lotto> lottos;
+    private List<Lotto> lottos;
 
     public void progress() {
         buyLotto();
-        // makeLotto();
-
+        makeLotto();
     }
 
     public void buyLotto() {
@@ -33,4 +32,14 @@ public class LottoProgram {
         return money / LOTTO_PRICE;
     }
 
+    public void makeLotto() {
+        this.lottos = new ArrayList<>();
+
+        for (int i = 0; i < this.numberOfLotto; i++) {
+            List<Integer> numbers = LottoGenerator.generateLotto();
+            Lotto lotto = new Lotto(numbers);
+            lotto.printLottoNumbers();
+            this.lottos.add(lotto);
+        }
+    }
 }
