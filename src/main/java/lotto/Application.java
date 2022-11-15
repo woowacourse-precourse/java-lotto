@@ -37,8 +37,16 @@ public class Application {
         return winningNumbers;
     }
 
+    public static int getBonusNumber() {
+        System.out.println("보너스 번호를 입력해주세요.");
+        int bonusNumber = Integer.parseInt(readLine());
+        checkLottoNumber(bonusNumber);
+        return bonusNumber;
+    }
+
     public static void main(String[] args) {
         int payment = validatePayment();
         List<Integer> winningNumbers = getWinningNumbers();
+        int bonusNumber = getBonusNumber();
     }
 }
