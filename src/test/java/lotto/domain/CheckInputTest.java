@@ -54,4 +54,24 @@ class CheckInputTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void checkWinningNumberValid_테스트() {
+        List<Integer> check = List.of(1,2,3,4,5,6);
+        assertThat(new CheckInput().checkWinningNumberValid("1,2,3,4,5,6")).isEqualTo(check);
+    }
+
+    @DisplayName("보너스 번호 입력값이 숫자가 아닌 경우 예외가 발생한다.")
+    @Test
+    void checkBonusNumberValid_예외_테스트1() {
+        assertThatThrownBy(() -> new CheckInput().checkWinningNumberValid("j"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호 입력값이 1 ~ 45 사이의 수가 아니면 예외가 발생한다.")
+    @Test
+    void checkBonusNumberValid_예외_테스트2() {
+        assertThatThrownBy(() -> new CheckInput().checkWinningNumberValid("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
