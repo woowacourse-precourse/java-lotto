@@ -50,7 +50,7 @@ class LottoTest {
 
     @Test
     @DisplayName("로또가 문자열로 올바르게 출력되는지 확인한다.")
-    public void checkSortedLottoResult() {
+    public void checkLottoResult() {
         String expectedLotto = "[1, 2, 3, 4, 5, 6]";
         Lotto lotto  = new Lotto(List.of(5, 2, 6, 4, 1, 3));
         assertThat(lotto.toString()).isEqualTo(expectedLotto);
