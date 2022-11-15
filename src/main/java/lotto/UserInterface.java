@@ -27,6 +27,7 @@ public class UserInterface {
     }
 
     public int getBonusNumber() {
-
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
     }
 }
