@@ -28,10 +28,9 @@ public class Application {
 
         HashMap<Integer, Integer> lottoRate = compareLotto.lottoRate;
 
-
-
-
-
+        ResultPrint resultPrint = new ResultPrint(lottoRate, lottoNumber);
+        resultPrint.printRate();
+        resultPrint.totalProfit();
 
     }
 }
