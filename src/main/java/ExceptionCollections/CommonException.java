@@ -10,6 +10,16 @@ public class CommonException {
     static final int LOTTO_MAXIMUM_NUMBER = 45;
     static final int LOTTO_NUMBER_LENGTH = 6;
 
+    public static void isEmpty(String number) {
+        if (number.isEmpty()) {
+            throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.EMPTY_STRING));
+        }
+    }
+
+    public static void isEmpty(Integer number) {
+        isEmpty(number.toString());
+    }
+
     public static boolean hasCharacters(String number) {
         if (!number.matches(NUMBER)) {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.CHARACTER_INCLUDED));
