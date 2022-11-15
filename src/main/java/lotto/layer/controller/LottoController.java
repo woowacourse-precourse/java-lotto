@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
-import lotto.domain.WinningLotto;
+import lotto.domain.Rank;
 import lotto.layer.view.InputView;
 import lotto.layer.service.LottoService;
 import lotto.layer.view.OutputView;
@@ -36,7 +36,7 @@ public class LottoController {
         Lotto lotto = Mapper.stringToLotto(inputLotto);
         String inputBonusNumber = inputView.requestBonusNumber();
         LottoNumber bonusNumber = Mapper.stringToLottoNumber(inputBonusNumber);
-        Map<WinningLotto, Integer> lottoFrequency = lottoService.getWinningLottoFrequency(lotto, bonusNumber);
+        Map<Rank, Integer> lottoFrequency = lottoService.getRankFrequency(lotto, bonusNumber);
         double benefitRate = lottoService.getBenefitRate();
         outputView.responseStatistic(lottoFrequency, benefitRate);
     }

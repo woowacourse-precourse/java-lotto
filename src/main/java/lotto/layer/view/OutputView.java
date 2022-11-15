@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import lotto.domain.Lotto;
-import lotto.domain.WinningLotto;
+import lotto.domain.Rank;
 
 public class OutputView extends View {
 
     private static final String COMPLETE_BUY_LOTTO = "%d개를 구매했습니다.";
     private static final String STATISTICS = "당첨 통계";
     private static final String THREE_DOT_LINE = "---";
-    private static final String WINNING_LOTTO_INFO = "%d개 일치 (%s원) - %d개";
-    private static final String WINNING_LOTTO_BONUS_INFO = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private static final String RANK_INFO = "%d개 일치 (%s원) - %d개";
+    private static final String RANK_BONUS_INFO = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String BENEFIT_RATE = "총 수익률은 %.1f%%입니다.";
 
     public void responseBuyLotto(List<Lotto> lotteries) {
@@ -25,26 +25,26 @@ public class OutputView extends View {
         printEmptyLine();
     }
 
-    public void responseStatistic(Map<WinningLotto, Integer> frequency, double benefitRate) {
+    public void responseStatistic(Map<Rank, Integer> frequency, double benefitRate) {
         print(STATISTICS);
         print(THREE_DOT_LINE);
-        for (Entry<WinningLotto, Integer> winningLottoEntry : frequency.entrySet()) {
-            printWinningLottoInfo(winningLottoEntry);
+        for (Entry<Rank, Integer> rankEntry : frequency.entrySet()) {
+            printRankInfo(rankEntry);
         }
         print(String.format(BENEFIT_RATE, benefitRate));
     }
 
-    private void printWinningLottoInfo(Entry<WinningLotto, Integer> winningLottoEntry) {
-        WinningLotto winningLotto = winningLottoEntry.getKey();
-        int count = winningLottoEntry.getValue();
-        int commonMatch = winningLotto.getCommonMatch();
-        int money = winningLotto.getMoneyValue();
+    private void printRankInfo(Entry<Rank, Integer> rankEntry) {
+        Rank rank = rankEntry.getKey();
+        int count = rankEntry.getValue();
+        int commonMatch = rank.getCommonMatch();
+        int money = rank.getMoneyValue();
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         String moneyFormat = decimalFormat.format(money);
-        if (winningLotto.equals(WinningLotto.PLACE_2)) {
-            print(String.format(WINNING_LOTTO_BONUS_INFO, commonMatch, moneyFormat, count));
+        if (rank.equals(Rank.PLACE_2)) {
+            print(String.format(RANK_BONUS_INFO, commonMatch, moneyFormat, count));
             return;
         }
-        print(String.format(WINNING_LOTTO_INFO, commonMatch, moneyFormat, count));
+        print(String.format(RANK_INFO, commonMatch, moneyFormat, count));
     }
 }

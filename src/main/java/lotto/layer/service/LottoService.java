@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
-import lotto.domain.WinningLotto;
+import lotto.domain.Rank;
 import lotto.layer.db.Table;
 
 public class LottoService {
@@ -35,16 +35,16 @@ public class LottoService {
         return lotteries;
     }
 
-    public Map<WinningLotto, Integer> getWinningLottoFrequency(Lotto commonLotto, LottoNumber bonusNumber) {
+    public Map<Rank, Integer> getRankFrequency(Lotto commonLotto, LottoNumber bonusNumber) {
         validateDuplicate(commonLotto, bonusNumber);
         List<Lotto> lotteries = table.getLotteries();
-        Map<WinningLotto, Integer> frequency = initWinningLotto();
+        Map<Rank, Integer> frequency = initRankFrequency();
         for (Lotto lotto : lotteries) {
-            WinningLotto winningLotto = getWinningLotto(commonLotto, bonusNumber, lotto);
-            if (winningLotto == null) {
+            Rank rank = getRank(commonLotto, bonusNumber, lotto);
+            if (rank == null) {
                 continue;
             }
-            frequency.put(winningLotto, frequency.getOrDefault(winningLotto, 0) + 1);
+            frequency.put(rank, frequency.getOrDefault(rank, 0) + 1);
         }
         table.saveFrequency(frequency);
         return frequency;
@@ -58,35 +58,35 @@ public class LottoService {
 
     public double getBenefitRate() {
         Money money = table.getMoney();
-        Map<WinningLotto, Integer> frequency = table.getFrequency();
+        Map<Rank, Integer> frequency = table.getFrequency();
         return calculateBenefitRate(money, frequency);
     }
 
-    private double calculateBenefitRate(Money money, Map<WinningLotto, Integer> frequency) {
+    private double calculateBenefitRate(Money money, Map<Rank, Integer> frequency) {
         int totalSum = 0;
-        for (Entry<WinningLotto, Integer> winningLottoEntry : frequency.entrySet()) {
-            WinningLotto winningLotto = winningLottoEntry.getKey();
-            int count = winningLottoEntry.getValue();
-            int winningMoney = winningLotto.getMoneyValue();
-            totalSum += winningMoney * count;
+        for (Entry<Rank, Integer> rankEntry : frequency.entrySet()) {
+            Rank rank = rankEntry.getKey();
+            int count = rankEntry.getValue();
+            int rankMoney = rank.getMoneyValue();
+            totalSum += rankMoney * count;
         }
         double benefitRate = (double) totalSum / money.intValue();
         benefitRate *= 100;
         return benefitRate;
     }
 
-    private Map<WinningLotto, Integer> initWinningLotto() {
-        Map<WinningLotto, Integer> frequency = new HashMap<>();
-        for (WinningLotto winningLotto : WinningLotto.values()) {
-            frequency.put(winningLotto, 0);
+    private Map<Rank, Integer> initRankFrequency() {
+        Map<Rank, Integer> frequency = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            frequency.put(rank, 0);
         }
         return frequency;
     }
 
-    private WinningLotto getWinningLotto(Lotto commonLotto, LottoNumber bonusNumber, Lotto generatedLotto) {
+    private Rank getRank(Lotto commonLotto, LottoNumber bonusNumber, Lotto generatedLotto) {
         int matchScore = calculateCommonMatchScore(commonLotto, generatedLotto);
         boolean bonusNumberMatch = isBonusNumberMatch(bonusNumber, generatedLotto);
-        return WinningLotto.matchOf(matchScore, bonusNumberMatch);
+        return Rank.matchOf(matchScore, bonusNumberMatch);
     }
 
     private int calculateCommonMatchScore(Lotto commonLotto, Lotto generatedLotto) {

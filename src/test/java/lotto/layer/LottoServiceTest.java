@@ -13,7 +13,7 @@ import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
-import lotto.domain.WinningLotto;
+import lotto.domain.Rank;
 import lotto.layer.db.Table;
 import lotto.layer.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
@@ -57,7 +57,7 @@ class LottoServiceTest {
 
     @DisplayName("당첨 빈도수가 0이여도 모든 당첨이 key 값에 존재해야함")
     @Test
-    void lottoServiceMakeFrequencyMustHasAllWinningLottoKeys() {
+    void lottoServiceMakeFrequencyMustHasAllRankKeys() {
         // given
         MockedStatic<Randoms> randoms = mockStatic(Randoms.class);
         List<Integer> expectValues = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
@@ -67,11 +67,11 @@ class LottoServiceTest {
         given(Randoms.pickUniqueNumbersInRange(1, 45, 6)).willReturn(expectValues);
 
         // when
-        Map<WinningLotto, Integer> frequency = lottoService.getWinningLottoFrequency(inputLotto,
+        Map<Rank, Integer> frequency = lottoService.getRankFrequency(inputLotto,
                 bonusNumber);
 
         // then
-        assertThat(frequency).containsKeys(WinningLotto.values());
+        assertThat(frequency).containsKeys(Rank.values());
         randoms.close();
     }
 
@@ -87,11 +87,11 @@ class LottoServiceTest {
         LottoNumber bonusNumber = LottoNumber.getInstance(4);
 
         // when
-        Map<WinningLotto, Integer> frequency = lottoService.getWinningLottoFrequency(inputLotto,
+        Map<Rank, Integer> frequency = lottoService.getRankFrequency(inputLotto,
                 bonusNumber);
 
         // then
-        assertThat(frequency.get(WinningLotto.PLACE_5)).isEqualTo(1);
+        assertThat(frequency.get(Rank.PLACE_5)).isEqualTo(1);
         randoms.close();
     }
 
@@ -104,7 +104,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(values);
 
         // expect
-        assertThatThrownBy(() -> lottoService.getWinningLottoFrequency(lotto, bonusNumber)).isInstanceOf(
+        assertThatThrownBy(() -> lottoService.getRankFrequency(lotto, bonusNumber)).isInstanceOf(
                 IllegalArgumentException.class);
     }
 
@@ -113,7 +113,7 @@ class LottoServiceTest {
     void lottoServiceAnalyzeBenefitRate() {
         // given
         table.saveMoney(new Money(1000));
-        Map<WinningLotto, Integer> frequency = makeFrequency();
+        Map<Rank, Integer> frequency = makeFrequency();
         table.saveFrequency(frequency);
 
         // when
@@ -123,12 +123,12 @@ class LottoServiceTest {
         assertThat(benefitRate).isEqualTo(500);
     }
 
-    private Map<WinningLotto, Integer> makeFrequency() {
-        Map<WinningLotto, Integer> frequency = new HashMap<>();
-        for (WinningLotto winningLotto : WinningLotto.values()) {
-            frequency.put(winningLotto, 0);
+    private Map<Rank, Integer> makeFrequency() {
+        Map<Rank, Integer> frequency = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            frequency.put(rank, 0);
         }
-        frequency.put(WinningLotto.PLACE_5, 1);
+        frequency.put(Rank.PLACE_5, 1);
         return frequency;
     }
 }

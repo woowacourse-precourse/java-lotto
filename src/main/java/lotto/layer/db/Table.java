@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
-import lotto.domain.WinningLotto;
+import lotto.domain.Rank;
 
 public class Table {
 
     private final List<Lotto> lotteries = new ArrayList<>();
-    private final Map<WinningLotto, Integer> frequency = new HashMap<>();
+    private final Map<Rank, Integer> frequency = new HashMap<>();
     private Money money;
 
     public List<Lotto> getLotteries() {
@@ -22,7 +22,7 @@ public class Table {
         return money;
     }
 
-    public Map<WinningLotto, Integer> getFrequency() {
+    public Map<Rank, Integer> getFrequency() {
         return this.frequency;
     }
 
@@ -34,7 +34,7 @@ public class Table {
         this.money = money;
     }
 
-    public void saveFrequency(Map<WinningLotto, Integer> frequency) {
+    public void saveFrequency(Map<Rank, Integer> frequency) {
         this.frequency.putAll(frequency);
     }
 

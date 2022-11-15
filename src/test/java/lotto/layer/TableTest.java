@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
-import lotto.domain.WinningLotto;
+import lotto.domain.Rank;
 import lotto.layer.db.Table;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,8 +31,8 @@ class TableTest {
 
     private void saveTable(Table table) {
         Money money = new Money(1000);
-        Map<WinningLotto, Integer> frequency = new HashMap<>();
-        frequency.put(WinningLotto.PLACE_1, 1);
+        Map<Rank, Integer> frequency = new HashMap<>();
+        frequency.put(Rank.PLACE_1, 1);
         List<Lotto> lotteries = new ArrayList<>();
         Lotto lotto = new Lotto(List.of(1,2,3,45,5,6));
         lotteries.add(lotto);
