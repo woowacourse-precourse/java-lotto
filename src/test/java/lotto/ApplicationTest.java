@@ -44,6 +44,42 @@ class ApplicationTest extends NsTest {
                 List.of(7, 11, 30, 40, 42, 43),
                 List.of(2, 13, 22, 32, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45));
+
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run(input.toArray(new String[0]));
+                    assertThat(output()).contains(output);
+                },
+                mockedNumbers.get(0),
+                mockedNumbers.get(1),
+                mockedNumbers.get(2),
+                mockedNumbers.get(3),
+                mockedNumbers.get(4),
+                mockedNumbers.get(5),
+                mockedNumbers.get(6),
+                mockedNumbers.get(7));
+    }
+
+    @Test
+    @DisplayName("통합 테스트4")
+    void 기능_테스트4() {
+        List<String> input = List.of("0", "1,2,3,4,5,6", "7");
+        List<String> output = List.of(
+                "0개를 구매했습니다.",
+                "3개 일치 (5,000원) - 0개",
+                "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 0개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                "6개 일치 (2,000,000,000원) - 0개",
+                "총 수익률은 0.0%입니다.");
+        List<List<Integer>> mockedNumbers = List.of();
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run(input.toArray(new String[0]));
+                    assertThat(output()).contains(output);
+                },
+                null);
+
     }
 
 

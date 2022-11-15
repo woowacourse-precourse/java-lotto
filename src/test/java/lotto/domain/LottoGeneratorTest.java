@@ -16,12 +16,12 @@ class LottoGeneratorTest {
         LottoGenerator generator = LottoGenerator.getInstance();
         assertThatThrownBy(() -> generator.generateLottos(money))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("구입 금액은 0 이상이며 로또 가격의 배수여야 합니다");
+                .hasMessageContaining("구입 금액은 로또 가격의 배수여야 합니다");
     }
 
     @DisplayName("올바른 금액이면 구입 가능한 개수 만큼 로또 발행")
     @ParameterizedTest()
-    @CsvSource({"1000,1", "5000,5", "10000,10"})
+    @CsvSource({"1000,1", "5000,5", "10000,10", "0,0"})
     void test_when_money_is_not_valid(int money, int expectedSize) {
         LottoGenerator generator = LottoGenerator.getInstance();
         assertThat(generator.generateLottos(money).size())

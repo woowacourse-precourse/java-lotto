@@ -25,7 +25,7 @@ public class LottoResultCalculator {
 
     public static BigDecimal calculateEarningsRatio(Long totalCost, BigInteger totalPrize) {
         if (totalCost == 0) {
-            return BigDecimal.ZERO;
+            return new BigDecimal("0.0");
         }
         BigDecimal earning = new BigDecimal(totalPrize);
         BigDecimal price = new BigDecimal(totalCost);
