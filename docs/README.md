@@ -15,7 +15,7 @@
     - [x] 리스트로 된 숫자들이 1~45 사이의 값이 아니면 예외처리를 한다. - LottoWinningNumber#validAllNumberRange()  
     - [x] 하나의 숫자가 1 ~ 45 사이의 값이 아니면 예외처리를 한다. - LottoWinningNumber#validOneNumberRange()
 - [x]  1 ~ 45 사이의 임의의 서로 다른 숫자 6개로 구성된 로또를 생성한다. - Lotto#creatLottoNumbers()  
-- [ ] 당첨 번호와 로또번호를 비교 한다. - Judgment#compareLotto()  
+- [ ] 당첨 번호와 로또번호를 비교 한다. - Judgment#campareToNumber()  
   - [x] 3개 일치는 5,000원 이다.  
   - [x] 4개 일치는 50,000원이다.  
   - [x] 5개 일치는 1,500,000원이다.  
