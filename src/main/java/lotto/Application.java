@@ -10,5 +10,8 @@ public class Application {
         List<Integer> winningNumbers = IOController.readWinningNumbers();
         int bonusNumber = IOController.readBonusNumber();
         WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+        lottoService.setWinningLotto(winningLotto);
+        List<Integer> allRankings = lottoService.caculateAllRankings();
+
     }
 }

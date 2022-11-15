@@ -17,18 +17,16 @@ public class MatchPair {
         return matchBonusNumber;
     }
 
-    public int calculateRanking(){
-        if(this.matchNumbers == 6){
+    public int calculateRanking() {
+        if (this.matchNumbers == 6) {
             return 1;
         }
-        if(this.matchNumbers == 5 && this.matchBonusNumber == true){
+        if (this.matchNumbers == 5 && this.matchBonusNumber == true) {
             return 2;
         }
-        if(this.matchNumbers <= 5 && this.matchNumbers >= 3){
-            return (8-this.matchNumbers);
+        if (this.matchNumbers <= 5 && this.matchNumbers >= 3) {
+            return (8 - this.matchNumbers);
         }
-        return -1;
+        return 0;
     }
-
-
 }
