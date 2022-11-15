@@ -72,4 +72,8 @@ public class Print {
         System.out.printf(MESSAGE_TOTAL_YIELD, yieldRound);
         System.out.println();
     }
+
+    public static void printExceptionMessage(Exception e) {
+        System.out.println(e.getMessage());
+    }
 }

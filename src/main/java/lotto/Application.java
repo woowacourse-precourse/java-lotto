@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.views.Print;
+
 public class Application {
     public static void main(String[] args) {
         try {
@@ -9,7 +11,7 @@ public class Application {
             lottoHandler.pickBonusNumber();
             lottoHandler.calculateResult();
         } catch(Exception e){
-            System.out.println(e.getMessage());
+            Print.printExceptionMessage(e);
         }
     }
 }
