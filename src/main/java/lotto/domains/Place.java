@@ -10,9 +10,9 @@ public enum Place {
     FIRST(6, false, 2000000000),
     ZERO(0, false, 0);
 
-    private int correction;
-    private boolean bonus;
-    private int prize;
+    private final int correction;
+    private final boolean bonus;
+    private final int prize;
 
     public int getCorrection() {
         return correction;
