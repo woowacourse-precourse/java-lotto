@@ -38,12 +38,10 @@ public class ValidUtil {
     }
 
 
-    public static int validateNumberRange(String number) {
+    public static void validateNumberRange(String number) {
         if (!number.matches("(^[1-3][0-9]$)|(^[1-9]$)|(^4[0-5]$)")) {
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
         }
-
-        return Integer.parseInt(number);
     }
 
     public static String[] validAllWinningNumber(String winningNumber) {
