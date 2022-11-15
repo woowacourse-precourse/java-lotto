@@ -15,7 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호가 6자리가 아닙니다.");
         }
         this.isDuplicateNumberExist(numbers);
     }
@@ -23,7 +23,7 @@ public class Lotto {
     private void isDuplicateNumberExist(List<Integer> input) {
         Set<Integer> set = new HashSet<>(input);
         if (input.size() != set.size())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다");
     }
 
     public Map<MatchInfo, Integer> calculateLottoStatistics(List<List<Integer>> userLottoList, int bonusNumber) {

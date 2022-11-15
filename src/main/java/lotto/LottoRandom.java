@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class LottoRandom {
     private final int MIN_LOTTO_NUM = 1;
@@ -20,7 +19,7 @@ public class LottoRandom {
 
     private void validatePurchaseAmount(int purchaseAmount) {
         if (purchaseAmount % PURCHASE_AMOUNT_UNIT != 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("구매 금액이 1000원 단위가 아닙니다.");
     }
 
     public List<List<Integer>> generateRandomLottoNumberList(int purchaseCount) {

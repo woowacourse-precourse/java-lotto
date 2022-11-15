@@ -23,7 +23,6 @@ public class LottoController {
             this.calculateStatics(lottoRandom, purchaseAmount);
         } catch (Exception e){
             this.lottoView.printException(e);
-            throw e;
         }
     }
 
