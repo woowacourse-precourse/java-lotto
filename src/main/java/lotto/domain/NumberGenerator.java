@@ -7,6 +7,14 @@ import java.util.List;
 
 public class NumberGenerator {
 
+    public void checkValidateNumber(String money){
+        for(int i = 0; i < money.length(); i++){
+            if((int)money.charAt(i) < 80 || (int)money.charAt(i) > 89){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
     // 구매 티켓만큼 로또번호 생성
     public List<List<Integer>> createRandomNumbers(int numberOfTicket){
         List<List<Integer>> lottoList =  new ArrayList<>();
