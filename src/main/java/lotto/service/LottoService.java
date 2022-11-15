@@ -46,10 +46,22 @@ public class LottoService {
     }
 
     public Double calculateEarningRates(String inputMoney, Map<Prize, Long> winningResults) {
-        Long earnings = winningResults.entrySet().stream()
-                .map(winningResult -> winningResult.getKey().getMoney() * winningResult.getValue())
+        Long earnings = calculateEarning(winningResults);
+        return calculateEarningRates(inputMoney, earnings);
+    }
+
+    private static Long calculateEarning(Map<Prize, Long> winningResults) {
+        return winningResults.entrySet().stream()
+                .map(LottoService::calculatePrizeMoney)
                 .reduce(Long::sum)
                 .orElseThrow(() -> new IllegalArgumentException(CANNOT_CALCULATE_EARNINGS));
+    }
+
+    private static long calculatePrizeMoney(Map.Entry<Prize, Long> winningResult) {
+        return winningResult.getKey().getMoney() * winningResult.getValue();
+    }
+
+    private static Double calculateEarningRates(String inputMoney, Long earnings) {
         return Math.round(
                 earnings * NEAREST_TENTH / Double.parseDouble(inputMoney) * MAKE_PERCENT
         ) / NEAREST_TENTH;
