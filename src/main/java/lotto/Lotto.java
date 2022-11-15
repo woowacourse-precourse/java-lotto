@@ -11,6 +11,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -24,7 +25,6 @@ public class Lotto {
     }
 
     public void display() {
-        Collections.sort(this.numbers);
         System.out.println(this.numbers);
     }
 

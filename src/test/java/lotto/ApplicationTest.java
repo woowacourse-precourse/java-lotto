@@ -101,14 +101,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void getBonusTest() {
-        String str = "5";
-        Integer bonus = getBonus(str);
-
-        assertThat(bonus).isEqualTo(5);
-    }
-
-    @Test
     void findTest() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> winning = List.of(1, 2, 3, 6, 7, 8);

@@ -39,7 +39,7 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
         winningNumbers = getWinningNumbers(Console.readLine());
         System.out.println("보너스 번호를 입력해 주세요.");
-        bonus = getBonus(Console.readLine());
+        bonus = getBonus(Console.readLine(), winningNumbers);
 
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -82,13 +82,14 @@ public class Application {
         return winningNumbers;
     }
 
-    public static Integer getBonus(String numberText) {
+    public static Integer getBonus(String numberText, List<Integer> numbers) {
         List<Integer> bonus = parseIntegerList(numberText);
 
         validateCharacter(numberText);
         validateBonus(bonus);
         validateNumbers(bonus);
         validateRanges(bonus);
+        validateDuplicatedBonus(numbers, bonus.get(0));
 
         return bonus.get(0);
     }
@@ -216,6 +217,13 @@ public class Application {
     }
 
     public static void validateDuplicatedNumber(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 번호는 허용되지 않습니다.");
+        }
+    }
+
+    public static void validateDuplicatedBonus(List<Integer> numbers, Integer bonus) {
+        numbers.add(bonus);
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 번호는 허용되지 않습니다.");
         }
