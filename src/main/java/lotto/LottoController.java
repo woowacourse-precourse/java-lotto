@@ -55,7 +55,7 @@ public class LottoController {
             int count = lottoService.matchNumbers(lottos.get(i).getNumbers(), userLotto);
             boolean isBonusMatch = lottoService.matchBonus(lottos.get(i).getNumbers(), bonusNum);
             if (count == 5 && isBonusMatch) {
-               count = 2;
+               count = 7;
             }
             result.add(count);
         }
@@ -64,13 +64,21 @@ public class LottoController {
     }
 
     public void resultPrint(List<Integer> answer){
+        int winnings = 0;
         for (int i=0;i<5;i++){
             System.out.println(Prize.values()[i].getMessage() + answer.get(i)+ "개");
+            winnings += (Prize.values()[i].getReward() * answer.get(i));
         }
+    }
+
+    public void printProfit(int winnings, int money){
+        double reward = ((double)winnings/(double)money)*100.0;
+        System.out.println("총 수익률은 " + Math.round(reward*10.0)/10.0+"%입니다.");
     }
 
     public List<Integer> winningResult(List<Integer> result){
         List<Integer> answer = Arrays.asList(0, 0, 0, 0, 0);
+        System.out.println(result);
         for (Integer number:result){
             if (number == 3) {
                 Integer tmp = answer.get(0);
@@ -84,7 +92,7 @@ public class LottoController {
                 Integer tmp = answer.get(2);
                 answer.set(2, tmp + 1);
             }
-            if (number == 2){
+            if (number == 7){
                 Integer tmp = answer.get(3);
                 answer.set(3, tmp + 1);
             }
