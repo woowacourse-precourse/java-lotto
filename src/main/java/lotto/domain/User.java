@@ -6,6 +6,7 @@ import lotto.view.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class User {
     private List<Lotto> lottos = new ArrayList<>();
@@ -17,11 +18,43 @@ public class User {
     }
     public void inputWinningNUmber() {
         Printer.inputWinningNumber();
-        String[] numbers = Console.readLine().split(",");
+        String input = Console.readLine();
+        List<String> numbers = List.of(input.split(","));
+        //validateLottoNum && validateBonusNum
         for(String str: numbers) {
             winningNumber.add(Integer.parseInt(str));
         }
         Printer.inputBonusNumber();
         bonusNumber = Integer.parseInt(Console.readLine());
+    }
+
+    private void validateLottoNum(List<String> numbers) {
+        if(numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개 입력해야 합니다.");
+        }
+        // Set으로 변환
+        if(Set.copyOf(numbers).size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호가 중복되지 않아야 합니다.");
+        }
+        for(int i = 0; i < numbers.size(); i++) {
+            String num = numbers.get(i);
+            if(num.charAt(i) < 1 || num.charAt(i) > 45) {
+                throw new IllegalArgumentException("[ERROR] 1 ~ 45 숫자만 입력 가능합니다.");
+            }
+        }
+    }
+
+    private void validateBonusNum(String num) {
+        if(num.length() != 1) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 한개 입력해야 합니다. ");
+        }
+
+        if(winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호가 중복되지 않아야 합니다.");
+        }
+
+        if(num.charAt(0) < 1 || num.charAt(0) > 45) {
+            throw new IllegalArgumentException("[ERROR] [ERROR] 1 ~ 45 숫자만 입력 가능합니다.");
+        }
     }
 }
