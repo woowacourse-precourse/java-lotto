@@ -31,7 +31,7 @@ class AccountTest {
 
     @DisplayName("당첨 결과 내역을 가져온다.")
     @Test
-    void shouldHaveWinningResultValues_WhenGetKeySetOfResults() {
+    void should_HaveWinningResultValues_When_GetKeySetOfResults() {
         // given
         Account account = new Account(winningCalculator);
         // when
@@ -42,7 +42,7 @@ class AccountTest {
 
     @DisplayName("당첨 결과를 저장한다.")
     @Test
-    void shouldBeAdded_WhenSaveResults() {
+    void should_AddToResultTable_When_SaveResults() {
         // given
         List<Lotto> lottos = new ArrayList<>();
         lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7))));
@@ -56,11 +56,11 @@ class AccountTest {
 
     @DisplayName("수익률을 가져온다.")
     @Nested
-    class ShouldGetYield {
+    class GetYield {
 
         @DisplayName("2등과 5등 당첨")
         @Test
-        void winRank2AndRank5() {
+        void should_GetYield_When_WinRank2AndRank5() {
             // given
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7))));
@@ -73,7 +73,7 @@ class AccountTest {
 
         @DisplayName("5등과 꽝 당첨")
         @Test
-        void winRank5AndRankNone() {
+        void should_GetYield_When_WinRank5AndRankNone() {
             // given
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
@@ -86,7 +86,7 @@ class AccountTest {
 
         @DisplayName("5등 1개, 꽝 2개 당첨")
         @Test
-        void winRank5And2RankNone() {
+        void should_GetYield_When_WinRank5And2RankNone() {
             // given
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
@@ -100,7 +100,7 @@ class AccountTest {
 
         @DisplayName("꽝 2개 당첨")
         @Test
-        void winRankNoneTwice() {
+        void should_GetYield_When_Win2RankNone() {
             // given
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));

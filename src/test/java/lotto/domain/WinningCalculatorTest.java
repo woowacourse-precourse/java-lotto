@@ -27,7 +27,7 @@ class WinningCalculatorTest {
 
         @DisplayName("당첨 번호 설정 후, 동일한 번호의 로또 결과 계산 -> 1등 반환")
         @Test
-        void shouldBeRank1WhenSetWinningNumbers() {
+        void should_BeRank1_When_SetWinningNumbersBySameNumbers() {
             // given
             List<Integer> numbers = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10, 11));
             Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
@@ -40,28 +40,28 @@ class WinningCalculatorTest {
 
         @DisplayName("int 범위 밖의 숫자 포함 -> 예외발생")
         @Test
-        void haveTooBigNumber() {
+        void should_ThrowIllegalArgumentException_When_HaveNumberInOuterRangeOfInt() {
             assertThatThrownBy(() -> winningCalculator.setWinningNumbers("1,2,3,4,5,2200000000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
-        @DisplayName("번호 5개 입력 -> 예외발생")
+        @DisplayName("정해진 개수와 다른 개수의 숫자 입력 -> 예외발생")
         @Test
-        void fiveNumbers() {
-            assertThatThrownBy(() -> winningCalculator.setWinningNumbers("1,2,3,4,5,2200000000"))
+        void should_ThrowIllegalArgumentException_When_IsNotCorrectSize() {
+            assertThatThrownBy(() -> winningCalculator.setWinningNumbers("1,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
-        @DisplayName("범위 바깥의 수 입력 -> 예외발생")
+        @DisplayName("정해진 번호 범위 바깥의 수 입력 -> 예외발생")
         @Test
-        void outerRange() {
+        void should_ThrowIllegalArgumentException_When_HaveNumberInOuterRange() {
             assertThatThrownBy(() -> winningCalculator.setWinningNumbers("1,2,3,46,5,6"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("중복된 번호 입력 -> 예외발생")
         @Test
-        void duplicatedNumber() {
+        void should_ThrowIllegalArgumentException_When_HaveDuplicatedNumber() {
             assertThatThrownBy(() -> winningCalculator.setWinningNumbers("1,2,3,4,5,5"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
@@ -73,7 +73,7 @@ class WinningCalculatorTest {
 
         @DisplayName("로또 번호와 일치하는 보너스 번호 설정 후, 결과 계산 -> 2등 반환")
         @Test
-        void shouldBeRank2WhenSetBonusNumber() {
+        void should_BeRank2_When_SetBonusNumber() {
             // given
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 8));
             Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
@@ -84,23 +84,23 @@ class WinningCalculatorTest {
                     .isEqualTo(WinningResult.RANK_2);
         }
 
-        @DisplayName("int 범위 밖의 숫자 포함 -> 예외발생")
+        @DisplayName("int 범위 밖의 숫자 입력 -> 예외발생")
         @Test
-        void tooBigNumber() {
+        void should_ThrowIllegalArgumentException_When_IsInOuterRangeOfInt() {
             assertThatThrownBy(() -> winningCalculator.setBonusNumber("2200000000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
-        @DisplayName("범위 바깥의 수 입력 -> 예외발생")
+        @DisplayName("정해진 번호 범위 바깥의 수 입력 -> 예외발생")
         @Test
-        void outerRange() {
+        void should_ThrowIllegalArgumentException_When_IsInOuterRangeOfRule() {
             assertThatThrownBy(() -> winningCalculator.setBonusNumber("46"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("당첨 번호에 이미 포함된 번호 입력 -> 예외발생")
         @Test
-        void alreadyInWinningNumbers() {
+        void should_ThrowIllegalArgumentException_When_IsAlreadyInWinningNumber() {
             assertThatThrownBy(() -> winningCalculator.setWinningNumbers("6"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
@@ -110,9 +110,9 @@ class WinningCalculatorTest {
     @Nested
     class calculateResultOfLotto {
 
-        @DisplayName("꽝인 경우")
+        @DisplayName("당첨 번호와 1개 일치 -> 꽝 반환")
         @Test
-        void getClassNone() {
+        void should_BeRankNone_When_Contain1WinningNumber() {
             // given
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 7, 8, 9, 10, 30));
@@ -121,9 +121,9 @@ class WinningCalculatorTest {
             assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_NONE);
         }
 
-        @DisplayName("5등인 경우")
+        @DisplayName("당첨 번호와 3개 일치 -> 5등 반환")
         @Test
-        void getClass5() {
+        void should_BeRank5_When_Contain3WinningNumbers() {
             // given
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 9, 10, 30));
@@ -132,9 +132,9 @@ class WinningCalculatorTest {
             assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_5);
         }
 
-        @DisplayName("4등인 경우")
+        @DisplayName("당첨 번호와 4개 일치 -> 4등 반환")
         @Test
-        void getClass4() {
+        void should_BeRank4_When_Contain4WinningNumbers() {
             // given
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 10, 30));
@@ -143,9 +143,9 @@ class WinningCalculatorTest {
             assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_4);
         }
 
-        @DisplayName("3등인 경우")
+        @DisplayName("당첨 번호와 5개 일치 -> 3등 반환")
         @Test
-        void getClass3() {
+        void should_BeRank3_When_Contain5WinningNumbers() {
             // given
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 30));
@@ -154,9 +154,9 @@ class WinningCalculatorTest {
             assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_3);
         }
 
-        @DisplayName("2등인 경우")
+        @DisplayName("당첨 번호와 5개 일치, 보너스 번호 포함 -> 5등 반환")
         @Test
-        void getClass2() {
+        void should_BeRank2_When_Contain5WinningNumbersAndBonus() {
             // given
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 2, 3, 4, 5, 6));
@@ -165,9 +165,9 @@ class WinningCalculatorTest {
             assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_2);
         }
 
-        @DisplayName("1등인 경우")
+        @DisplayName("당첨 번호와 6개 일치 -> 5등 반환")
         @Test
-        void getClass1() {
+        void should_BeRank1_When_Contain6WinningNumbers() {
             // given
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
