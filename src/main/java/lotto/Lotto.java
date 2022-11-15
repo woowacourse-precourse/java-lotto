@@ -22,4 +22,9 @@ public class Lotto {
 
         validator.validateGeneratedNumbers(numbers);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
