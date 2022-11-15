@@ -16,7 +16,10 @@ public enum Message {
 
     ERRROR_NUMBER_RANGE("[ERROR] 숫자 범위만 입력해야 합니다."),
     ERROR_NUMBER_OVERLAP("[ERROR] 숫자가 중복됩니다."),
-    ERROR_NOT_ZERO_REMAINDER("[ERROR] 1000으로 나누어 지지 않습니다");
+    ERROR_NOT_ZERO_REMAINDER("[ERROR] 1000원 단위로 구매해야 합니다"),
+    ERRROR_LOTTO_SIZE("[ERROR] 로또 번호는 6개를 입력해야 합니다"),
+    ERROR_BONUS_SIZE("[ERROR] 보너스 번호는 1개를 입력해야 합니다"),
+    ERROR_START_ZERO("[ERROR] 첫 입력이 0일수 없습니다");
 
 
     private final String message;
