@@ -5,7 +5,7 @@ import lotto.view.constant.ValidationRegex;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Validator {
+public class ViewValidator {
     static final String EMPTY_VALUE_REGEX = ValidationRegex.EMPTY_VALUE.getRegex();
     static final String NUMBER_REGEX = ValidationRegex.NUMBER.getRegex();
 

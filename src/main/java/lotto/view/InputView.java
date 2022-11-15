@@ -28,11 +28,11 @@ public class InputView {
     }
 
     private static void validate (String input) throws IllegalArgumentException {
-        if (Validator.isEmpty(input)) {
+        if (ViewValidator.isEmpty(input)) {
             throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
         }
 
-        if (!Validator.isNumber(input)) {
+        if (!ViewValidator.isNumber(input)) {
             System.out.println(NOT_NUMBER_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
@@ -48,16 +48,16 @@ public class InputView {
     }
 
     private static void validateWinningNumberInput (String input) throws IllegalArgumentException {
-        if (Validator.isEmpty(input)) {
+        if (ViewValidator.isEmpty(input)) {
             throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
         }
 
         List<String> numbers = divideByDelimiter(input);
-        if (Validator.hasEmptyValue(numbers)) {
+        if (ViewValidator.hasEmptyValue(numbers)) {
             throw new IllegalArgumentException(EMPTY_VALUE_IN_WINNING_NUMBER);
         }
 
-        if (Validator.hasNonNumericValue(numbers)) {
+        if (ViewValidator.hasNonNumericValue(numbers)) {
             throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
         }
     }
