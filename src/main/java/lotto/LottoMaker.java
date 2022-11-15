@@ -9,8 +9,7 @@ public class LottoMaker {
     private HashSet overlapNumber= new HashSet();
     private Exception exception = new Exception();
 
-
-    List<Integer> splitNumber(String number){
+    public List<Integer> splitNumber(String number){
         String [] numbers =number.split(",");
         return stringToInteger(numbers);
     }
@@ -27,6 +26,7 @@ public class LottoMaker {
             }
             throw new IllegalArgumentException("ERROR");
         }
+        overlapException("lotto");
         return LottoNumber;
     }
 
@@ -35,7 +35,7 @@ public class LottoMaker {
     }
 
     public boolean overlapException(String type){
-        //System.out.println(overlapNumber.size());
+        System.out.println(overlapNumber.size());
         if(type =="lotto"){
             if(overlapNumber.size()==6)return true;
         }
