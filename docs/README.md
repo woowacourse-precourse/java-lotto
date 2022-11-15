@@ -55,9 +55,19 @@
 ### 테스트
 
 - [ ] 단위 테스트
+
   - [x] 각 기능별로 테스트할 수 있어야 한다. - `runTest`
+
   - [x] 예외 발생 시, "[ERROR]" 문구를 포함해야 한다.
-  - [ ] TBD
+
+    
+
+  - [x] Lotto
+
+    - [x] 로또 번호가 6개보다 적다면 예외가 발생한다. - `createLottoByUnderSize`
+    - [x] 로또 번호가 6개가 넘어가면 예외가 발생한다. -  `createLottoByOverSize`
+    - [x] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다. -  `createLottoByDuplicateNumber`
+    - [x] 로또 번호에 범위를 벗어나는 숫자가 있으면 예외가 발생한다. -  `createLottoByOutOfRangeNumber`
 
 - [ ] 통합 테스트
   - [ ] TBD
