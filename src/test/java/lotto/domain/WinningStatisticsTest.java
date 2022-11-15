@@ -33,4 +33,19 @@ public class WinningStatisticsTest {
         assertThat(winningDetails.get(WinningRank.SIX_MATCH)).isEqualTo(0);
 
     }
+    @DisplayName("당첨 금액을 구한다.")
+    @Test
+    void getWinningAmountTest() {
+        Map<WinningRank, Integer> winningDetails = WinningStatistics.createWinningDetails();
+        winningDetails.replace(WinningRank.NO_MATCH, 3);
+        winningDetails.replace(WinningRank.THREE_MATCH, 1);
+        winningDetails.replace(WinningRank.FOUR_MATCH, 1);
+        winningDetails.replace(WinningRank.FIVE_MATCH, 1);
+        winningDetails.replace(WinningRank.FIVE_MATCH_BONUS, 1);
+        winningDetails.replace(WinningRank.SIX_MATCH, 1);
+
+        long winningAmount = WinningStatistics.getWinningAmount(winningDetails);
+        assertThat(winningAmount).isEqualTo(2031555000);
+    }
+
 }
