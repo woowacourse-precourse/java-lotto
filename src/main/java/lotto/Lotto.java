@@ -11,8 +11,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        sortNumbers(numbers);
         validate(numbers);
+        sortNumbers(numbers);
         this.numbers = numbers;
     }
 
