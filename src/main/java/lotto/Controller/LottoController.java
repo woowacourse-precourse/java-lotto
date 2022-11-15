@@ -29,8 +29,9 @@ public class LottoController {
 
     public void inputWinnerLotto() {
         String winnerLottoNumber = InputView.inputWinnerLotto();
-        LottoWinnerNumber lottoWinnerNumber = new LottoWinnerNumber(winnerLottoNumber);
-        winnerLotto = lottoWinnerNumber.convertWinnerNumber(winnerLottoNumber);
+
+        Lotto lotto = new Lotto(winnerLottoNumber);
+        winnerLotto = lotto.convertWinnerNumber(winnerLottoNumber);
         new Lotto(winnerLotto);
         inputBonusLotto();
     }
