@@ -49,6 +49,6 @@ public enum Rank {
     }
 
     public int getJackpotHitCnt() {
-        return jackpotCntMap.get(rank);
+        return jackpotCntMap.get(this);
     }
 }
