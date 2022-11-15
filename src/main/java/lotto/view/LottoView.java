@@ -5,6 +5,7 @@ import static lotto.domain.constant.ResultConstant.*;
 import static lotto.view.constant.InputMessage.*;
 import static lotto.view.constant.OutputMessage.*;
 
+import java.util.Collections;
 import java.util.List;
 
 import lotto.domain.Lotto;
@@ -22,6 +23,8 @@ public class LottoView {
 
 	public static void displayPurchasedLottos(List<Lotto> lottos) {
 		for (Lotto lotto : lottos) {
+			List<Integer> sortedLottoNumbers = lotto.getLottoNumbers();
+			Collections.sort(sortedLottoNumbers);
 			System.out.println(lotto.getLottoNumbers());
 		}
 	}
