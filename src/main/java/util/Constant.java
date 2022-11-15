@@ -2,6 +2,8 @@ package util;
 
 public class Constant {
 
+    private Constant() {}
+
     public static final String LINE_SEPARATOR = "---";
     public static final String SAMES_FORMAT = "%d개 일치";
     public static final String SAME_BONUS_BALL = ", 보너스 볼 일치";
