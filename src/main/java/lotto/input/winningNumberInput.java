@@ -8,7 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class winningNumberInput {
 	public ArrayList<Integer> winningNumber;
-	public winningNumberInput(){
+
+	public winningNumberInput() {
 		System.out.println("1부터 45범위의 당첨번호 6개를 ,단위로 입력해주세요");
 		String userInput = Console.readLine();
 		String[] array = userInput.split(",");

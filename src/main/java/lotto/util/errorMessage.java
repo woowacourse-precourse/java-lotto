@@ -13,7 +13,8 @@ public enum errorMessage {
 	errorMessage(String description) {
 		this.description = description;
 	}
+
 	public String getValue() {
-		return "[ERROR]"+description;
+		return "[ERROR]" + description;
 	}
 }

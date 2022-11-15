@@ -9,13 +9,14 @@ import lotto.util.errorMessage;
 
 public class budgetInput {
 	public int numberOfGame;
-	public budgetInput(){
+
+	public budgetInput() {
 		try {
 			System.out.println("예산을 입력하세요");
 			int budget = Integer.parseInt(Console.readLine());
 			validateBudget(budget);
 			this.numberOfGame = budget / 1000;
-		}catch (NumberFormatException e){
+		} catch (NumberFormatException e) {
 			System.out.println(errorMessage.ONLY_INPUT_INTEGER.getValue());
 			throw new NoSuchElementException(errorMessage.ONLY_INPUT_INTEGER.getValue());
 		}

@@ -19,6 +19,7 @@ public class validator {
 			throw new IllegalArgumentException(String.valueOf(errorMessage.ONLY_INPUT_SIX_NUMBERS));
 		}
 	}
+
 	public static void validateBonusNumber(ArrayList<Integer> winningNumber, int bonusNumber) {
 		if (bonusNumber > 45 || bonusNumber < 1) {
 			throw new IllegalArgumentException(String.valueOf(errorMessage.ONLY_INPUT_BETWEEN_1_45));
@@ -30,6 +31,7 @@ public class validator {
 		}
 
 	}
+
 	public static void validateBudget(int budget) {
 		if (budget < 1000) {
 			throw new IllegalArgumentException(String.valueOf(errorMessage.ONLY_INPUT_THOUSAND_UNIT));

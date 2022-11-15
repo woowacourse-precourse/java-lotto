@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import lotto.calculate.calculateProfitability;
 import lotto.calculate.calculateResult;
 
-public class calculateProfitabilityTest {
+public class CalculateProfitabilityTest {
 	@DisplayName("구입한 로또의 수익률을 소숫점 1자리로 정확하게 표현하는지 여부")
 	@Test
-	void validateNumberOnMap() {
+	void IsCalculateProfitabilityExactly() {
 		ArrayList<List<Integer>> userNumber = new ArrayList<>();
 		List<Integer> list = new ArrayList<>();
 		list.add(1);
@@ -33,11 +33,10 @@ public class calculateProfitabilityTest {
 		winningNumber.add(40);
 		int bonusNumber = 45;
 
-
-		calculateResult calculateResult = new calculateResult(userNumber,winningNumber,bonusNumber);
-		calculateProfitability calculateProfitability = new calculateProfitability(calculateResult.calculateResult, userNumber);
+		calculateResult calculateResult = new calculateResult(userNumber, winningNumber, bonusNumber);
+		calculateProfitability calculateProfitability = new calculateProfitability(calculateResult.calculateResult,
+			userNumber);
 		assertThat(calculateProfitability.calculateProfitability).isEqualTo(500.0);
-
 
 	}
 }

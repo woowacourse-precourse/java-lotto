@@ -5,20 +5,21 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
-        }
-        Set<Integer> hashNumber = new HashSet<>(numbers);
-        if (hashNumber.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다");
-        }
-    }
-    // TODO: 추가 기능 구현
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
+
+	private void validate(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			throw new IllegalArgumentException("[ERROR]");
+		}
+		Set<Integer> hashNumber = new HashSet<>(numbers);
+		if (hashNumber.size() != numbers.size()) {
+			throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다");
+		}
+	}
+	// TODO: 추가 기능 구현
 }

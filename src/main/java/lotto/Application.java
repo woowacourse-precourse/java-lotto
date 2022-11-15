@@ -12,17 +12,19 @@ import lotto.output.winningResultOutput;
 import lotto.util.sorter;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        budgetInput numberOfGame = new budgetInput();
-        randomNumberGenerate randomNumberGenerate = new randomNumberGenerate(numberOfGame.numberOfGame);
-        sorter sortAnswer = new sorter(randomNumberGenerate.numbers);
-        new quantityAndNumberOutput(numberOfGame.numberOfGame,randomNumberGenerate.numbers);
-        winningNumberInput winningNumberInput = new winningNumberInput();
-        bonusNumberInput bonusNumber = new bonusNumberInput(winningNumberInput.winningNumber);
-        calculateResult calculateResult = new calculateResult(sortAnswer.answer,winningNumberInput.winningNumber, bonusNumber.bonusNumber);
-        new winningResultOutput(calculateResult.calculateResult);
-        calculateProfitability calculateProfitability = new calculateProfitability(calculateResult.calculateResult,sortAnswer.answer);
-        new profitabilityOutput(calculateProfitability.calculateProfitability);
-    }
+	public static void main(String[] args) {
+		// TODO: 프로그램 구현
+		budgetInput numberOfGame = new budgetInput();
+		randomNumberGenerate randomNumberGenerate = new randomNumberGenerate(numberOfGame.numberOfGame);
+		sorter sortAnswer = new sorter(randomNumberGenerate.numbers);
+		new quantityAndNumberOutput(numberOfGame.numberOfGame, randomNumberGenerate.numbers);
+		winningNumberInput winningNumberInput = new winningNumberInput();
+		bonusNumberInput bonusNumber = new bonusNumberInput(winningNumberInput.winningNumber);
+		calculateResult calculateResult = new calculateResult(sortAnswer.answer, winningNumberInput.winningNumber,
+			bonusNumber.bonusNumber);
+		new winningResultOutput(calculateResult.calculateResult);
+		calculateProfitability calculateProfitability = new calculateProfitability(calculateResult.calculateResult,
+			sortAnswer.answer);
+		new profitabilityOutput(calculateProfitability.calculateProfitability);
+	}
 }

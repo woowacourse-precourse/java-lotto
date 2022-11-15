@@ -14,7 +14,7 @@ public class CalculateResultTest {
 	@DisplayName("구입한 로또와 당첨번호 및 보너스 번호를 map에 정확하게 담는지 여부")
 	@Test
 	void validateNumberOnMap() {
-		ArrayList<List<Integer>>userNumber = new ArrayList<>();
+		ArrayList<List<Integer>> userNumber = new ArrayList<>();
 		List<Integer> list = new ArrayList<>();
 		list.add(1);
 		list.add(5);
@@ -32,10 +32,8 @@ public class CalculateResultTest {
 		winningNumber.add(40);
 		int bonusNumber = 45;
 
-
-		calculateResult calculateResult = new calculateResult(userNumber,winningNumber,bonusNumber);
+		calculateResult calculateResult = new calculateResult(userNumber, winningNumber, bonusNumber);
 		assertThat(calculateResult.calculateResult.get("three")).isEqualTo(1);
-
 
 	}
 }
