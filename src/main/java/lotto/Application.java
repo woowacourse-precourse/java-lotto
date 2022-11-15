@@ -2,15 +2,17 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    private static Map<Rank, Integer> resultRankMap = new HashMap<Rank, Integer>();
 
+    public static void main(String[] args) {
         int buyMoney = buyLotto();
         List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
         Lotto myLottoNum = myLottoNum();
@@ -19,13 +21,28 @@ public class Application {
         for (int j = 0; j < buyLottoPrint.size(); j++) {
             List<Integer> lottoRandomNum = buyLottoPrint.get(j);
 
-            int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
+            int agreementCount = lottoStart(lottoRandomNum, myLottoNum);
             boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
-            Rank agreementLotto = agreementLotto(lottoStart, bonusAgreement);
-
+            Rank rank = agreementLotto(agreementCount, bonusAgreement);
+            prizeList(rank);
         }
+        System.out.println(resultRankMap);
 //        DecimalFormat decFormat = new DecimalFormat("###,###");
 //        String prizeMoney2 = decFormat.format(prizeMoney);
+    }
+
+    // 당첨내역 리스트
+    /**
+     * 7. prizeList (당첨 내역 저장) 완료 <br/>
+     * lottoStart 값 받아서 일치 갯수 일치 당첨 복권 갯수 출력 <br/>
+     * 
+     */
+    public static void prizeList(Rank rank) {
+        Integer count = resultRankMap.get(rank);
+        if (count == null) {
+            count = 0;
+        }
+        resultRankMap.put(rank, count + 1);
     }
 
     // 구매금액입력
