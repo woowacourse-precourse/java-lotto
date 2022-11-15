@@ -36,7 +36,7 @@ public class Lotto {
     // 입력된 숫자의 갯수가 6개가 맞는지 확인
     private void validateLottoNumberCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println(PrintError.LOTTO_SIZE);
+            PrintError.LOTTO_SIZE.print();
             throw new IllegalArgumentException();
         }
     }
@@ -45,7 +45,7 @@ public class Lotto {
     private void validateLottoNumberRange(List<Integer> numbers) {
         for (int number: numbers){
             if (number < 1 || number > 45){
-                System.out.println(PrintError.LOTTO_RANGE);
+                PrintError.LOTTO_RANGE.print();
                 throw new IllegalArgumentException();
             }
         }
@@ -56,7 +56,7 @@ public class Lotto {
         HashSet<Integer> DuplicatedNumber = new HashSet<>(numbers);
 
         if (DuplicatedNumber.size() < 6){
-            System.out.println(PrintError.LOTTO_OVERLAP);
+            PrintError.LOTTO_OVERLAP.print();
             throw new IllegalArgumentException();
         }
     }
@@ -78,7 +78,7 @@ public class Lotto {
 
         for (char element: mergedNumber.toCharArray()) {
             if (element < 48 || element > 57) {
-                System.out.println(PrintError.LOTTO_NUMBER);
+                PrintError.LOTTO_NUMBER.print();
                 throw new IllegalArgumentException();
             }
         }
