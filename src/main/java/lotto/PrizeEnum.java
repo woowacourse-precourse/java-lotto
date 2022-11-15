@@ -48,4 +48,12 @@ public enum PrizeEnum {
     public String getMessage() {
         return this.message;
     }
+
+    public static void reset() {
+        fifthWinner_3.count = 0;
+        fourthWinner_4.count = 0;
+        thirdWinner_5.count = 0;
+        secondWinner_5_bonus.count = 0;
+        firstWinner_6.count = 0;
+    }
 }

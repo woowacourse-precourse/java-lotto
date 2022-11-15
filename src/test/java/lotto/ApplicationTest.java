@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,7 +13,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-
+    @BeforeEach
+    void beforeEach(){
+        PrizeEnum.reset();
+    }
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(

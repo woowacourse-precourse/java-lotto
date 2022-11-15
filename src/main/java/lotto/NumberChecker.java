@@ -9,8 +9,6 @@ public class NumberChecker {
     public static List<Integer> winningNumber = new ArrayList<>();
     public static int bonusNumber;
     public static List<List<Integer>> myLottos = new ArrayList<>();
-    public static List<Integer> numberOfCorrectNumbers = new ArrayList<>();
-    public static List<Integer> ranks = new ArrayList<>();
 
     NumberChecker(List<Integer> winningNumber, int bonusNumber, List<List<Integer>> myLottos) {
         this.winningNumber = winningNumber;
