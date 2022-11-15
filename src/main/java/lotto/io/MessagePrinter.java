@@ -5,15 +5,23 @@ import java.util.List;
 import java.util.Map;
 
 import static lotto.LottoConstants.LOTTO_PRICE;
+import static lotto.PrinterMessages.MONEY_INPUT_REQUEST_MESSAGE;
+import static lotto.PrinterMessages.WINNING_NUMBERS_INPUT_REQUEST_MESSAGE;
+import static lotto.PrinterMessages.BONUS_NUMBER_INPUT_REQUEST_MESSAGE;
+import static lotto.PrinterMessages.LOTTO_PURCHASE_MESSAGE;
+import static lotto.PrinterMessages.WINNING_STATISTICS_MESSAGE;
+import static lotto.PrinterMessages.DIVIDING_LINE;
+import static lotto.PrinterMessages.EARNING_RATE_MESSAGE;
 
 public class MessagePrinter {
     public static void printMoneyInputRequest() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(MONEY_INPUT_REQUEST_MESSAGE.getMessage());
     }
 
     public static void printGeneratedLottoQuantity(int paidMoney) {
         int lottoQuantity = paidMoney / LOTTO_PRICE.getValue();
-        System.out.println(lottoQuantity + "개를 구매했습니다.");
+        String message = String.format(LOTTO_PURCHASE_MESSAGE.getMessage(), lottoQuantity);
+        System.out.println(message);
     }
 
     public static void printGeneratedLottoNumbers(List<Lotto> lottos) {
@@ -23,16 +31,16 @@ public class MessagePrinter {
     }
 
     public static void printWinningNumbersInputRequest() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(WINNING_NUMBERS_INPUT_REQUEST_MESSAGE.getMessage());
     }
 
     public static void printBonusNumberInputRequest() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(BONUS_NUMBER_INPUT_REQUEST_MESSAGE.getMessage());
     }
 
     public static void printWinningDetails(Map<Integer, Integer> winningDetails) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS_MESSAGE.getMessage());
+        System.out.println(DIVIDING_LINE.getMessage());
         System.out.println(String.format("3개 일치 (5,000원) - %d개\n", winningDetails.get(5_000)) +
                 String.format("4개 일치 (50,000원) - %d개\n", winningDetails.get(50_000)) +
                 String.format("5개 일치 (1,500,000원) - %d개\n", winningDetails.get(1_500_000)) +
@@ -41,8 +49,8 @@ public class MessagePrinter {
     }
 
     public static void printEarningRate(double earningRate) {
-        String roundedEarningRate = String.format("%.1f", earningRate);
-        System.out.println("총 수익률은 " + roundedEarningRate +"%입니다.");
+        String message = String.format(EARNING_RATE_MESSAGE.getMessage(), earningRate);
+        System.out.println(message);
     }
 
     public static void printErrorMessage(Exception exception) {
