@@ -9,7 +9,7 @@
 - [x] 당첨번호와 로또번호를 비교할 수 있다. - Referee#compare()
   - [x] 몇 개의 수가 같은지 알 수 있다. - Judgement#sameNumberCount()
   - [x] 보너스 숫자가 포함되어 있는지 알 수 있다. - Judgement#containBonusNumber()
-    - [x] LottoResult
+    - [x] LottoResults
     - 1등: 6개 번호 일치 / 2,000,000,000원
     - 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
     - 3등: 5개 번호 일치 / 1,500,000원

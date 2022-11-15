@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import lotto.commons.LottoResult;
+import lotto.commons.LottoResults;
 import lotto.exception.ExceptionHandler;
 
 public class InputOutput {
@@ -36,11 +36,11 @@ public class InputOutput {
     }
 
     public void printWinHistory(Map<String, Integer> winHistory) {
-        System.out.println(LottoResult.FIFTH_WIN + " - " + winHistory.get("FIFTH_WIN") + "개");
-        System.out.println(LottoResult.FIRTH_WIN + " - " + winHistory.get("FIRTH_WIN") + "개");
-        System.out.println(LottoResult.THIRD_WIN + " - " + winHistory.get("THIRD_WIN") + "개");
-        System.out.println(LottoResult.SECOND_WIN + " - " + winHistory.get("SECOND_WIN") + "개");
-        System.out.println(LottoResult.FIRST_WIN + " - " + winHistory.get("FIRST_WIN") + "개");
+        System.out.println(LottoResults.FIFTH_WIN + " - " + winHistory.get("FIFTH_WIN") + "개");
+        System.out.println(LottoResults.FIRTH_WIN + " - " + winHistory.get("FIRTH_WIN") + "개");
+        System.out.println(LottoResults.THIRD_WIN + " - " + winHistory.get("THIRD_WIN") + "개");
+        System.out.println(LottoResults.SECOND_WIN + " - " + winHistory.get("SECOND_WIN") + "개");
+        System.out.println(LottoResults.FIRST_WIN + " - " + winHistory.get("FIRST_WIN") + "개");
     }
 
     public void printRateOfProfit(double profit) {

@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.commons.LottoResult;
+import lotto.commons.LottoResults;
 
 public class Referee {
 
@@ -9,16 +9,16 @@ public class Referee {
         Judgement judgement = new Judgement();
         int count = judgement.sameNumberCount(myLotto, winLotto);
         if (count == 6) {
-            return LottoResult.FIRST_WIN.name();
+            return LottoResults.FIRST_WIN.name();
         } else if (count == 5) {
             if (judgement.containBonusNumber(myLotto, bonus)) {
-                return LottoResult.SECOND_WIN.name();
+                return LottoResults.SECOND_WIN.name();
             }
-            return LottoResult.THIRD_WIN.name();
+            return LottoResults.THIRD_WIN.name();
         } else if (count == 4) {
-            return LottoResult.FIRTH_WIN.name();
+            return LottoResults.FIRTH_WIN.name();
         } else if (count == 3) {
-            return LottoResult.FIFTH_WIN.name();
+            return LottoResults.FIFTH_WIN.name();
         }
         return "";
     }

@@ -1,6 +1,6 @@
 package lotto.commons;
 
-public enum LottoResult {
+public enum LottoResults {
     FIRST_WIN("6개 일치 (2,000,000,000원)"),
     SECOND_WIN("5개 일치, 보너스 볼 일치 (30,000,000원)"),
     THIRD_WIN("5개 일치 (1,500,000원)"),
@@ -9,12 +9,8 @@ public enum LottoResult {
 
     private final String result;
 
-    LottoResult(String result) {
+    LottoResults(String result) {
         this.result = result;
-    }
-
-    public String getKey() {
-        return name();
     }
 
     public String getResult() {
