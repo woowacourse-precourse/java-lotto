@@ -1,11 +1,11 @@
-package lotto;
+package lotto.lotto;
 
 import static lotto.constant.Rules.NUMBER_LENGTH;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.exception.NotDistinctException;
-import lotto.exception.WrongLengthException;
+import lotto.exception.lotto.NotDistinctException;
+import lotto.exception.lotto.WrongLengthException;
 
 public class Lotto {
 

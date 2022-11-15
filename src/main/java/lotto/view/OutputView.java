@@ -4,7 +4,7 @@ import static lotto.constant.Message.INPUT_MONEY;
 import static lotto.constant.Message.LOTTO_GENERATED;
 
 import java.util.List;
-import lotto.Lotto;
+import lotto.lotto.Lotto;
 
 public class OutputView {
 

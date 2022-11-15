@@ -1,9 +1,9 @@
-package lotto;
+package lotto.lotto;
 
 import static lotto.constant.Rules.END_INCLUSIVE;
 import static lotto.constant.Rules.START_INCLUSIVE;
 
-import lotto.exception.LottoNumberException;
+import lotto.exception.lotto.LottoNumberException;
 
 public class LottoNumber {
 
@@ -51,7 +51,7 @@ public class LottoNumber {
     public String toString() {
         return Integer.toString(number);
     }
-    
+
     public int getNumber() {
         return number;
     }

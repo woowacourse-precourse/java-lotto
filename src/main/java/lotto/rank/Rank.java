@@ -1,11 +1,11 @@
-package lotto.constant;
+package lotto.rank;
 
 import static lotto.constant.Message.MATCH;
 import static lotto.constant.Message.MATCH_NO_BONUS;
 
 import java.util.Arrays;
 import java.util.Optional;
-import lotto.Money;
+import lotto.money.Money;
 
 public enum Rank {
 

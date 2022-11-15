@@ -1,16 +1,18 @@
 package lotto;
 
-import static lotto.constant.Rank.FIFTH;
-import static lotto.constant.Rank.FIRST;
-import static lotto.constant.Rank.FOURTH;
-import static lotto.constant.Rank.NONE;
-import static lotto.constant.Rank.SECOND;
-import static lotto.constant.Rank.THIRD;
-import static lotto.constant.Rank.getRank;
+import static lotto.rank.Rank.FIFTH;
+import static lotto.rank.Rank.FIRST;
+import static lotto.rank.Rank.FOURTH;
+import static lotto.rank.Rank.NONE;
+import static lotto.rank.Rank.SECOND;
+import static lotto.rank.Rank.THIRD;
+import static lotto.rank.Rank.getRank;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.constant.Rank;
+import lotto.lotto.Lotto;
+import lotto.lotto.LottoNumber;
+import lotto.rank.Rank;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

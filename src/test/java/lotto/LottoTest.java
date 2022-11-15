@@ -1,14 +1,17 @@
 package lotto;
 
-import static lotto.LottoGenerator.generateLottos;
+import static lotto.lotto.LottoGenerator.generateLottos;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.exception.BonusNumberDuplicationError;
-import lotto.exception.LottoNumberException;
-import lotto.exception.WrongLengthException;
+import lotto.exception.lotto.BonusNumberDuplicationError;
+import lotto.exception.lotto.LottoNumberException;
+import lotto.exception.lotto.WrongLengthException;
+import lotto.lotto.Lotto;
+import lotto.lotto.LottoNumber;
+import lotto.lotto.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;

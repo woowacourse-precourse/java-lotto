@@ -1,13 +1,15 @@
 package lotto;
 
-import static lotto.Money.createPurchaseMoney;
 import static lotto.constant.Rules.LOTTO_PRICE;
+import static lotto.money.Money.createPurchaseMoney;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.exception.MoneyNotDividedByPriceException;
-import lotto.exception.MoneyNotPositiveIntegerException;
-import lotto.exception.MoneyRangeException;
+import lotto.exception.money.MoneyNotDividedByPriceException;
+import lotto.exception.money.MoneyNotPositiveIntegerException;
+import lotto.exception.money.MoneyRangeException;
+import lotto.money.Money;
+import lotto.money.Yield;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
-package lotto;
+package lotto.lotto;
 
 import java.util.List;
-import lotto.exception.BonusNumberDuplicationError;
+import lotto.exception.lotto.BonusNumberDuplicationError;
 
 public class WinningLotto extends Lotto {
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.lotto;
 
 import static lotto.constant.Rules.END_INCLUSIVE;
 import static lotto.constant.Rules.NUMBER_LENGTH;

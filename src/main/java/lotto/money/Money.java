@@ -1,11 +1,11 @@
-package lotto;
+package lotto.money;
 
 import static lotto.constant.Rules.LOTTO_PRICE;
 
 import java.text.DecimalFormat;
-import lotto.exception.MoneyNotDividedByPriceException;
-import lotto.exception.MoneyNotPositiveIntegerException;
-import lotto.exception.MoneyRangeException;
+import lotto.exception.money.MoneyNotDividedByPriceException;
+import lotto.exception.money.MoneyNotPositiveIntegerException;
+import lotto.exception.money.MoneyRangeException;
 
 public class Money {
 
