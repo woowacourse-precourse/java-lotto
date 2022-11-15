@@ -23,7 +23,7 @@ class LottoTest extends NsTest {
                     assertThat(output()).contains(ERROR_MESSAGE);
                 },
                 List.of(14, 3, 16, 33, 42, 45),
-                List.of(14, 3, 16, 33, 42, 45),
+                List.of(14, 3, 33, 16, 42, 45),
                 List.of(4, 5, 6, 1, 2, 33),
                 List.of(1, 2, 5, 7, 33, 4),
                 List.of(1, 2, 5, 14, 22, 45)

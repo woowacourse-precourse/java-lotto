@@ -67,7 +67,6 @@ public class Game {
     }
 
     public static void checkLottoTickets(List<Lotto> allLottery, Lotto uncheckedLotto) {
-
         for (Lotto lotto : allLottery) {
             lotto.checkDuplicateLotto(uncheckedLotto);
         }
@@ -81,7 +80,6 @@ public class Game {
         if (checkWinningNumbersError(winningInput)) {
             throw new IllegalArgumentException();
         }
-
         List<Integer> numbers = Lotto.getLottoNumbers(winningInput);
         winningNumbers = new Lotto(numbers);
     }
