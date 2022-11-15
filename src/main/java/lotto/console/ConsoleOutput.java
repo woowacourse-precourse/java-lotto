@@ -14,6 +14,7 @@ public class ConsoleOutput {
   private final String RESULT_MESSAGE = "당첨 통계\n---";
 
   public void printLotto(List<Lotto> lottos) {
+    stringBuilder.append(lottos.size()).append("개를 구매했습니다.\n");
     for (Lotto lotto : lottos) {
       List<Integer> numbers = lotto.getNumbers();
       List<Integer> sorted = numbers.stream().sorted().collect(Collectors.toList());
