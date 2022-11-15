@@ -21,6 +21,9 @@ public class WinningLottoMachine {
         return bonusNumber;
     }
 
+    public WinningLotto makeWinningLotto(List<Integer> winningLottoNumber, int winningLottoBonusNumber) {
+        return new WinningLotto(winningLottoNumber, winningLottoBonusNumber);
+    }
     private void validateLottoNumberLength(List<Integer> numberList) {
         if (numberList.size() != Constants.LOTTO_NUMBERS_LENGTH.getValue()) {
             throw new IllegalArgumentException("6 개의 숫자가 아닙니다.");

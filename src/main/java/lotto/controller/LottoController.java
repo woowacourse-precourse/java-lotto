@@ -61,7 +61,7 @@ public class LottoController {
         OutputView.printBonusNumberInputMessage();
         int winningLottoBonusNumber = winningLottoMachine.giveWinningLottoBonusNumber(InputView.inputBonusNumber());
 
-        return new WinningLotto(winningLottoNumber, winningLottoBonusNumber);
+        return winningLottoMachine.makeWinningLotto(winningLottoNumber, winningLottoBonusNumber);
     }
 
 }
