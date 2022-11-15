@@ -22,7 +22,10 @@ public class LottoResult {
                 getIsBonus(lotto, bonusNumber.bonusNumber);
             }
 
-            lottoResult.put(getRanking(), lottoResult.get(getRanking()) + 1);
+            Result result = getRanking();
+            if (lottoResult.containsKey(result)) {
+                lottoResult.put(result, lottoResult.get(result) + 1);
+            }
         }
         return lottoResult;
     }
@@ -38,7 +41,6 @@ public class LottoResult {
         lottoResult.put(THIRD, 0);
         lottoResult.put(FOURTH, 0);
         lottoResult.put(FIFTH, 0);
-        lottoResult.put(NO_REWARD, 0);
     }
 
     private void getEqualCount(Lotto lotto, List<Integer> winNumbers) {
