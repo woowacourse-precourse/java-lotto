@@ -35,6 +35,13 @@ public class Exception {
         }
     }
 
+    public void checkBonusNumberRange(String bonusNumber) {
+        int bonus=Integer.parseInt(bonusNumber);
+        if(!(bonus>=1&&bonus<=45)){
+            throw new IllegalArgumentException(Message.ERRROR_NUMBER_RANGE.getMessage());
+        }
+    }
+
 
 
 
