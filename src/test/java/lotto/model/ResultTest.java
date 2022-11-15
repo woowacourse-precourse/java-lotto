@@ -18,7 +18,7 @@ class ResultTest {
     @DisplayName("compare에 Lotto를 넘겨주면 로또의 결과를 Prize 클래스 형태로 반환된다.")
     @ParameterizedTest
     @MethodSource("compareInitData")
-    void compare(Lotto lotto, Result result, Prize prize) {
+    void returnPrizeWhenCompareLottoAndResult(Lotto lotto, Result result, Prize prize) {
         assertThat(result.compare(lotto)).isEqualTo(prize);
     }
 
