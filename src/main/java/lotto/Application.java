@@ -15,34 +15,21 @@ public class Application {
 
     private void run() {
         try {
-            firstPhase();
-            printPurchaseResult();
-            secondPhase();
-            lastPhase();
+            userService.setInputMoney(user);
+            managerService.changeLottos(user);
+
+            OutputUtil.printUserLottoCount(user);
+            OutputUtil.printUserLottos(user);
+
+            managerService.setWinningNumber(manager);
+            managerService.setBonusNumber(manager);
+
+            managerService.judgeResult(user, manager);
+            userService.calculateYield(user);
+            OutputUtil.printResult(user);
         } catch (IllegalArgumentException illegalArgumentException) {
             OutputUtil.printEndProgram();
         }
-    }
-
-    private void firstPhase() {
-        userService.setInputMoney(user);
-        managerService.changeLottos(user);
-    }
-
-    private void printPurchaseResult() {
-        OutputUtil.printUserLottoCount(user);
-        OutputUtil.printUserLottos(user);
-    }
-
-    private void secondPhase() {
-        managerService.setWinningNumber(manager);
-        managerService.setBonusNumber(manager);
-    }
-
-    private void lastPhase() {
-        managerService.judgeResult(user, manager);
-        userService.calculateYield(user);
-        OutputUtil.printResult(user);
     }
 
     public static void main(String[] args) {
