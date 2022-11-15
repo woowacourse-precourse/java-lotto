@@ -1,11 +1,14 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -47,4 +50,28 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("보너스");
     }
+
+    @DisplayName("로또 발생하는거 체크")
+    @Test
+    void test_LottoMachine_make_lotto_numbers() {
+        List<Integer> numbers = LottoMachine.generateLotto();
+        System.out.println(numbers);
+    }
+
+    @DisplayName("전체적인 test")
+    @Test
+    void test_Lotto_game_test() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lotto.setBonus(7);
+        List<Integer> numbers = LottoMachine.generateLotto();
+        System.out.println("winning numbers: " + lotto.getWinningNumbers());
+        System.out.println("bonus number: " + lotto.getBonus());
+        System.out.println("random numbers: " + numbers);
+
+        int countMatchedNumber = LottoCheck.checkNumsOfMatchedNumber(lotto.getWinningNumbers(), numbers);
+        boolean containBonus = LottoCheck.containBonus(lotto.getBonus(), numbers);
+        System.out.println("count: " + countMatchedNumber);
+        System.out.println("containBonus: " + containBonus);
+    }
+
 }
