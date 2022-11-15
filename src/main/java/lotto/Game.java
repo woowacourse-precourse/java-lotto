@@ -60,17 +60,17 @@ public class Game {
         List<List<Result>> userResults = user.getResults();
         System.out.println("\n" + WINNING_STATS.message());
         System.out.println(DIVISION.message());
-        for (int coincide = MIN_COINCIDE.value(); coincide < MAX_COINCIDE.value(); ++coincide) {
+        for (int coincide = MIN_COINCIDE.value(); coincide <= MAX_COINCIDE.value(); ++coincide) {
             printCoincides(coincide, userResults);
         }
     }
 
     public void printCoincides(int coincide, List<List<Result>> userResults) {
         if (coincide == MAX_COINCIDE.value()) {
-            System.out.println(String.format(COINCIDE_RESULT.message(), coincide, COINCIDE_BONUS.message(),
+            System.out.println(String.format(COINCIDE_RESULT.message(), coincide - 1, COINCIDE_BONUS.message(),
                     DECIMAL_FORMAT.format(WINNINGS[WINNINGS.length - 1]), userResults.get(WINNINGS.length - 1).size()));
         }
-        System.out.println(String.format(COINCIDE_RESULT.message(), coincide, COINCIDE_BONUS.message(),
+        System.out.println(String.format(COINCIDE_RESULT.message(), coincide, "",
                 DECIMAL_FORMAT.format(WINNINGS[coincide]), userResults.get(coincide).size()));
     }
 
@@ -93,7 +93,7 @@ public class Game {
         winningLotto = new WinningLotto(inputNumbers(), inputBonusNumber());
 
         raffle(user);
-
+        printResults(user);
         setLotteryStat(user);
 
         printCoincideResult(user);
