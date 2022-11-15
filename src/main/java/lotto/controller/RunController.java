@@ -46,9 +46,7 @@ public class RunController {
 
 	private WinningNumber inputWinningNumber(InputView inputView, OutputView outputView) {
 		Lotto winningLotto = getWinningLotto(inputView, outputView);
-
 		BonusNumber bonusNumber = getBonusNumber(inputView, outputView);
-
 		return new WinningNumber(winningLotto, bonusNumber);
 	}
 
