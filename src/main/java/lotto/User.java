@@ -10,7 +10,7 @@ public class User {
 
     private final String inputMoney;
     static int money;
-    public List<Lotto> userLotto;
+    public final List<Lotto> userLotto;
 
     public User(String inputMoney) {
         this.inputMoney = inputMoney;

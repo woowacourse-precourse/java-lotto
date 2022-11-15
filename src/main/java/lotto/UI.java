@@ -14,7 +14,7 @@ public class UI {
         String money = Console.readLine();
         User user = new User(money);
         printUserLotto(user.userLotto);
-        return new User(money);
+        return user;
     }
 
     public static void printUserLotto(List<Lotto> userNumbers) {

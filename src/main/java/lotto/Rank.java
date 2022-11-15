@@ -33,37 +33,7 @@ public class Rank {
         lottoForUsingMethod.isNumbersInRange(checkBonus);
     }
 
-    public enum Result {
-        FST(6, MESSAGE_FIRST_PRIZE, 0),
-        SECOND(7, MESSAGE_SECOND_PRIZE, 0),
-        THIRD(5, MESSAGE_THIRD_PRIZE, 0),
-        FOURTH(4, MESSAGE_FOURTH_PRIZE, 0),
-        FIFTH(3, MESSAGE_FIFTH_PRIZE, 0),
-        EMPTY(-1, "Empty", 0);
-        private final int label;
-        private final String text;
-        private int count;
 
-        Result(int label, String text, int count) {
-            this.label = label;
-            this.text = text;
-            this.count = count;
-        }
-
-        public static Result fromLabel(int targetLabel) {
-            return Arrays.stream(Result.values())
-                    .filter(result -> result.label == targetLabel)
-                    .findAny()
-                    .orElse(EMPTY);
-        }
-
-        public static void setCount(Result result) {
-            result.count++;
-        }
-
-        public String text() { return text; }
-        public int count() { return count; }
-    }
 
     public void run(User user) {
         int countLotto = 0;
@@ -72,7 +42,7 @@ public class Rank {
             List<Integer> userNumbers = lotto.getNumbers();
             countLotto = countMatchedNumbers(userNumbers);
             countBonus = countMatchedWithBonusNumber(userNumbers);
-
+            updateResult(countLotto, countBonus);
         }
     }
 
@@ -97,13 +67,45 @@ public class Rank {
     private void updateResult(int countLotto, int countBonus) {
         if ((countLotto != 5) || (countLotto == 5 && countBonus == 0)) {
             Result result = Result.fromLabel(countLotto);
-            Result.setCount(result);
+            result.increaseCount();
             return;
         }
 
         if (countLotto == 5 && countBonus == 1) {
             Result result = Result.fromLabel(countLotto + 2);
-            Result.setCount(result);
+            result.increaseCount();
         }
     }
+}
+
+enum Result {
+    FST(6, MESSAGE_FIRST_PRIZE, 0),
+    SECOND(7, MESSAGE_SECOND_PRIZE, 0),
+    THIRD(5, MESSAGE_THIRD_PRIZE, 0),
+    FOURTH(4, MESSAGE_FOURTH_PRIZE, 0),
+    FIFTH(3, MESSAGE_FIFTH_PRIZE, 0),
+    EMPTY(-1, "Empty", 0);
+    private final int label;
+    private final String text;
+    private int count;
+
+    Result(int label, String text, int count) {
+        this.label = label;
+        this.text = text;
+        this.count = count;
+    }
+
+    public static Result fromLabel(int targetLabel) {
+        return Arrays.stream(Result.values())
+                .filter(result -> result.label == targetLabel)
+                .findAny()
+                .orElse(EMPTY);
+    }
+
+    public void increaseCount() {
+        this.count = this.count + 1;
+    }
+
+    public String text() { return text; }
+    public int count() { return count; }
 }
