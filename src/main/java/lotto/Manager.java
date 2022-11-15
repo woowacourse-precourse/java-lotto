@@ -45,6 +45,6 @@ public class Manager {
         totalWinnings += matchCounts[2] * LottoConst.WINNING_MATCH_5;
         totalWinnings += matchCounts[3] * LottoConst.WINNING_MATCH_5_AND_BONUS;
         totalWinnings += matchCounts[4] * LottoConst.WINNING_MATCH_6;
-        return Math.round(totalWinnings * 10 / (double) purchasePrice) / (double) 10;
+        return Math.round(totalWinnings * 1000 / (double) purchasePrice) / (double) 10;
     }
 }
