@@ -10,17 +10,19 @@ public class InputView {
 
     private static final String DIVISION_CHAR = ",";
     private static final Integer PURCHASE_UNIT = 1000;
+    private static final String EXCEPTION_ONLY_USE_NUMBER = "[ERROR] 숫자를 입력하세요.";
+    private static final String EXCEPTION_UNIT_ERROR = "[ERROR] 1000원 단위로 입력하세요.";
 
-    public Integer purchaseAmount() {
+
+    public Integer purchaseAmount() throws IllegalArgumentException{
         System.out.println("구입 금액을 입력해 주세요.");
         String userInput = Console.readLine();
         if (userInput.matches(".*[a-zA-Z]+.*")) {
-            System.out.println("[ERROR] 숫자만 입력할래?");
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력하거라");
+            throw new IllegalArgumentException(EXCEPTION_ONLY_USE_NUMBER);
         }
         Integer input = Integer.parseInt(userInput);
         if (input % PURCHASE_UNIT > 0) {
-            throw new IllegalArgumentException("1000원 단위로만 구매 가능합니다.");
+            throw new IllegalArgumentException(EXCEPTION_UNIT_ERROR);
         }
         return input / PURCHASE_UNIT;
 
