@@ -10,9 +10,11 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    private void validate(List<Integer> numbers) throws IllegalArgumentException{
+        Validation validation = new Validation();
+        validation.checkDuplicate(numbers);
+        for(int number : numbers){
+            validation.checkNumberInRange(number);
         }
     }
 
