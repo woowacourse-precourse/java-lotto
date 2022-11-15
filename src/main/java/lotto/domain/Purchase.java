@@ -1,4 +1,4 @@
-package lotto.user;
+package lotto.domain;
 
 import lotto.util.Constant;
 import lotto.util.ErrorHandler;
