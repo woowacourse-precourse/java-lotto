@@ -23,7 +23,7 @@ public class LottoGameController {
             String amount = getAmount();
             List<Lotto> tickets = game.createLottoTickets(amount);
             printTickets(amount, tickets);
-            List<Integer> winningNumbers = getWinnings();
+            List<Integer> winningNumbers = getWinningNumbers();
             int bonus = Integer.parseInt(getBonus(winningNumbers));
             List<String> checkResult = game.compare(winningNumbers, tickets, bonus);
             LottoHistory history = game.createHistory(checkResult, amount);
@@ -48,15 +48,15 @@ public class LottoGameController {
         }
     }
 
-    public List<Integer> getWinnings() {
-        PrintGuideMessage.printWinningsGuide();
+    public List<Integer> getWinningNumbers() {
+        PrintGuideMessage.printWinningNumbersGuide();
         WinningInput input = new WinningInput();
         return game.toList(input.getInput());
     }
 
-    public String getBonus(List<Integer> winnings) {
+    public String getBonus(List<Integer> winningNumbers) {
         PrintGuideMessage.printBonusGuide();
-        BonusInput input = new BonusInput(winnings);
+        BonusInput input = new BonusInput(winningNumbers);
         return input.getInput();
     }
 

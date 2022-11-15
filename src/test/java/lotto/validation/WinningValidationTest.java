@@ -64,7 +64,7 @@ class WinningValidationTest {
         input = "1,2,3,4,5,6,7";
 
         // when, then
-        assertThatThrownBy(() -> validation.isCorrectWinningSize(input))
+        assertThatThrownBy(() -> validation.isCorrectWinningNumbersSize(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }

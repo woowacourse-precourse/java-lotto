@@ -24,7 +24,7 @@ public class WinningValidation extends IllegalArgumentException {
         isBlank(input);
         isNumberAndComma(input);
         isCorrectRange(input);
-        isCorrectWinningSize(input);
+        isCorrectWinningNumbersSize(input);
         isDuplicate(input);
     }
 
@@ -61,7 +61,7 @@ public class WinningValidation extends IllegalArgumentException {
         }
     }
 
-    public void isCorrectWinningSize(String input) {
+    public void isCorrectWinningNumbersSize(String input) {
         winningNumbers = Arrays.asList(input.split(","));
         if (winningNumbers.size() != NumbersType.NUMBERS_SIZE.getValue()) {
             message = ErrorMessage.valueOf("CORRECT_SIZE_WINNING_EXCEPTION");

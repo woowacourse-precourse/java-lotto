@@ -9,9 +9,9 @@ public class LottoCheck {
     public LottoCheck() {
     }
 
-    public int checkWinning(List<Integer> winnings, List<Integer> numbers) {
+    public int checkWinning(List<Integer> winningNumbers, List<Integer> numbers) {
         List<Integer> noneDuplication = numbers.stream()
-                .filter(number -> winnings.stream().noneMatch(Predicate.isEqual(number)))
+                .filter(number -> winningNumbers.stream().noneMatch(Predicate.isEqual(number)))
                 .collect(Collectors.toList());
         return NumbersType.NUMBERS_SIZE.getValue() - noneDuplication.size();
     }

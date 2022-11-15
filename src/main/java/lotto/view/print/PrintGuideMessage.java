@@ -11,8 +11,8 @@ public class PrintGuideMessage {
         System.out.printf(GuideMessage.PURCHASE_MESSAGE.getMessage(), quantity);
     }
 
-    public static void printWinningsGuide() {
-        System.out.println(GuideMessage.WINNINGS_INPUT_MESSAGE.getMessage());
+    public static void printWinningNumbersGuide() {
+        System.out.println(GuideMessage.WINNING_NUMBERS_INPUT_MESSAGE.getMessage());
     }
 
     public static void printBonusGuide() {
