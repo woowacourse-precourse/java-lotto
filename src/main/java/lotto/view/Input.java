@@ -31,4 +31,15 @@ public class Input {
         return winningAndBonusNumber;
     }
 
+    public static List<Integer> inputBonusNumber(List<Integer> numbers) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        validateNumberRange(input);
+
+        numbers.add(Integer.parseInt(input));
+        validateDuplication(numbers);
+
+        return numbers;
+    }
+
 }
