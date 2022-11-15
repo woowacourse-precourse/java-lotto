@@ -5,6 +5,7 @@ import java.util.List;
 public class ExceptionController {
     public ExceptionController() {
     }
+
     private boolean validateMoneyIsInt(String money) {
         for (int i = 0; i < money.length(); i++) {
             if (!Character.isDigit(money.charAt(i))) {
@@ -70,6 +71,35 @@ public class ExceptionController {
         }
         if (!validateRangeError(numbers)) {
             throw new IllegalArgumentException("[ERROR] 1~45의 숫자를 넣어주세요");
+        }
+    }
+    private boolean validateBonusIsInt(String bonus) {
+        for (int i = 0; i < bonus.length(); i++) {
+            if (!Character.isDigit(bonus.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean validateBonusOutOfRange(int bonus) {
+        return bonus <= 45 && bonus >= 1;
+    }
+
+    public void validateBonus(String bonus) {
+        if (!this.validateBonusIsInt(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요");
+        }
+        int bonusInt = Integer.parseInt(bonus);
+        if (!this.validateBonusOutOfRange(bonusInt)) {
+            throw new IllegalArgumentException("[ERROR] 1~45의 숫자만 입력해주세요");
+        }
+    }
+    public static void validateDuplicateBonusWithWin(Lotto numbers, int bonus) {
+        for (int i : numbers.getNumbers()) {
+            if (i == bonus) {
+                throw new IllegalArgumentException("[ERROR] 중복되지 않은 숫자를 당첨번호로 입력해주세요");
+            }
         }
     }
 }
