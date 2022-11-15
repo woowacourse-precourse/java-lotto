@@ -8,9 +8,9 @@ public class Cash {
     private int amount;
 
     public Cash(Integer amount) {
+        validateMoreThanZero(amount);
+        validateCashUnit(amount);
         this.amount = amount;
-        validateMoreThanZero(this.amount);
-        validateCashUnit(this.amount);
     }
 
     public void spend(int amount) {
