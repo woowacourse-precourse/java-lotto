@@ -21,7 +21,7 @@ class YieldManagerTest {
     class MakeYield {
         @ParameterizedTest
         @MethodSource("parameterProvider")
-        void AWARD_리스트에_따라_수익률을_잘_반환하는지_테스트한다(List<Award> awards, float expected) {
+        void 상_리스트에_따라_상금을_잘_반환하는지_테스트(List<Award> awards, float expected) {
             assertThat(YieldManager.makeYield(awards)).isEqualTo(expected);
         }
 

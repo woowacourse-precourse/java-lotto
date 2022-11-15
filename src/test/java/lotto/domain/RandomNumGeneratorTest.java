@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class RandomNumGeneratorTest {
     @ParameterizedTest(name = "makeUniqueRandomList 테스트")
     @MethodSource("parameterProvider")
-    void 랜덤값_잘_반환되는지_테스트(List<Integer> expected1, List<Integer> expected2, List<Integer> expected3) {
+    void 랜덤값이_지정된_값으로_잘_반환되는지_테스트(List<Integer> expected1, List<Integer> expected2, List<Integer> expected3) {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     assertThat(RandomNumGenerator.makeUniqueRandomList()).isEqualTo(expected1);

@@ -24,12 +24,12 @@ class UserLottoTest {
         System.setOut(new PrintStream(out));
     }
 
-    @DisplayName("사이즈를 계산할 때")
+    @DisplayName("size 메소드 테스트")
     @Nested
     class Size {
         @ParameterizedTest(name = "{0}이 입력으로 들어왔을 때")
         @CsvSource(value = {"8000, 8", "1000, 1", "0, 0", "2000, 2"})
-        void 로또_개수를_잘_반환하는지_테스트한다(String target, int expected) {
+        void 로또_개수를_잘_반환하는지_테스트(String target, int expected) {
             ByteArrayInputStream in = new ByteArrayInputStream(target.getBytes());
             System.setIn(in);
             UserLotto userLotto = new UserLotto();
@@ -38,12 +38,12 @@ class UserLottoTest {
         }
     }
 
-    @DisplayName("로또를 가져올 때")
+    @DisplayName("getLottoAt 메소드 테스트")
     @Nested
     class GetLottoAt {
         @ParameterizedTest(name = "{0}이 입력으로 들어왔을 때")
         @CsvSource(value = {"8000, 8", "1000, 1", "15000, 15", "2000, 2"})
-        void 로또객체를_잘_가져오는지_테스트한다(String target, int size) {
+        void 로또객체를_잘_가져오는지_테스트(String target, int size) {
             ByteArrayInputStream in = new ByteArrayInputStream(target.getBytes());
             System.setIn(in);
             UserLotto userLotto = new UserLotto();

@@ -31,13 +31,13 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1", "2", "3"})
-    void contains_메소드를_통해_값을_가지고있는지_테스트한다(int target) {
+    void contains_메소드를_통해_값을_가지고있는지_테스트(int target) {
         assertThat(numbers.contains(target)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1, true", "2, true", "3, true", "4, false", "5, false"})
-    void 서로다른_값에_대해_contains_메소드가_잘_작동하는지_테스트한다(int target, boolean expected) {
+    void 서로다른_값에_대해_contains_메소드가_잘_작동하는지_테스트(int target, boolean expected) {
         assertThat(numbers.contains(target)).isEqualTo(expected);
     }
 }

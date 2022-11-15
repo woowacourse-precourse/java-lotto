@@ -15,11 +15,11 @@ class AwardTest {
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    @DisplayName("Award 객체가 입력으로 들어왔을 때")
+    @DisplayName("getReward 메소드 테스트")
     class GetReward {
         @ParameterizedTest(name = "{0}가 입력으로 들어왔을 때")
         @MethodSource("parameterProvider")
-        void 상금을_잘_반환하는지_테스트한다(Award target, int expected) {
+        void 상금을_잘_반환하는지_테스트(Award target, int expected) {
             assertThat(target.getReward()).isEqualTo(expected);
         }
 
@@ -38,11 +38,11 @@ class AwardTest {
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    @DisplayName("Ordinal로 객체에 정보에 접근하려 할 때")
+    @DisplayName("getByOrdinal 메소드 테스트")
     class GetByOrdinal {
         @ParameterizedTest(name = "{0}가 입력으로 들어왔을 때")
         @MethodSource("parameterProvider")
-        void AWARD객체를_잘_반환하는지_테스트한다(int target, Award expected) {
+        void ordinal_값에_따라_Award객체를_잘_반환하는지_테스트(int target, Award expected) {
             assertThat(Award.getByOrdinal(target)).isEqualTo(expected);
         }
 

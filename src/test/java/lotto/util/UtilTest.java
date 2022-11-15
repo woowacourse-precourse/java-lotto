@@ -19,7 +19,7 @@ class UtilTest {
                 "50000, 0, 0",
                 "1500000, 1500000, 100"
         })
-        void 수익률을_잘_계산하는지_테스트한다(float before, float after, float expected) {
+        void 수익률을_잘_계산하는지_테스트(float before, float after, float expected) {
             assertThat(Util.calculateYield(before + after, before)).isEqualTo(expected);
         }
     }
@@ -34,7 +34,7 @@ class UtilTest {
                 "1000000.0: 1: 1,000,000.0",
                 "62.46: 0: 62.0"
         }, delimiter = ':')
-        void 콤마를_잘_삽입하고_소숫점에서_반올림하는지_테스트한다(float target, int precision, String expected) {
+        void 콤마를_잘_삽입하고_소숫점에서_반올림하는지_테스트(float target, int precision, String expected) {
             assertThat(Util.makeFloatFormatted(target, precision)).isEqualTo(expected);
         }
     }

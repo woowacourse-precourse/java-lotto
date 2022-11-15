@@ -23,12 +23,12 @@ class BonusNumberTest {
         System.setOut(new PrintStream(out));
     }
 
-    @DisplayName("보너스 번호 입력이 들어왔을 때")
+    @DisplayName("getBonusNumber 메소드 테스트")
     @Nested
     class GetBonusNumber {
         @ParameterizedTest(name = "{0}가 들어왔을 때")
         @CsvSource(value = {"1, 1", "2, 2", "35, 35", "40, 40", "45, 45"})
-        void getBonusNumber(String target, int expected) {
+        void 입력된_보너스번호가_잘_반환되는지_테스트(String target, int expected) {
             ByteArrayInputStream in = new ByteArrayInputStream(target.getBytes());
             System.setIn(in);
             BonusNumber bonusNumber = new BonusNumber();

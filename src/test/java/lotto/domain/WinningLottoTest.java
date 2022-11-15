@@ -26,11 +26,11 @@ class WinningLottoTest {
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    @DisplayName("정답 로또로 채점할 때")
+    @DisplayName("grade 메소드 테스트")
     class Grade {
         @ParameterizedTest
         @MethodSource("parameterProvider")
-        void 정답_로또로_다른_로또를_채점할_때를_테스트한다(String source, Lotto target, int expected) {
+        void 정답_로또로_다른_로또를_채점하면_같은값_개수를_반환하는지_테스트(String source, Lotto target, int expected) {
             ByteArrayInputStream in = new ByteArrayInputStream(source.getBytes());
             System.setIn(in);
             WinningLotto winningLotto = new WinningLotto();

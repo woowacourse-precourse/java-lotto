@@ -34,11 +34,11 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    @DisplayName("유효한 개수가 입력되지 않았을 때")
+    @DisplayName("checkNumberCount 검증 테스트")
     class CheckNumberCount {
         @ParameterizedTest(name = "{0}가 입력되었을 때")
         @MethodSource("parameterProvider")
-        void 유효한_개수가_입력되었는지_테스트한다(List<Integer> target) {
+        void 유효한_개수가_입력되었는지_테스트(List<Integer> target) {
             assertThatThrownBy(() -> new Lotto(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.COUNT_NOT_EQUAL);
@@ -58,11 +58,11 @@ class LottoTest {
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    @DisplayName("중복된 원소가 있을 때")
+    @DisplayName("checkEachDistinct 검증 테스트")
     class CheckEachDistinct {
         @ParameterizedTest(name = "{0}가 입력되었을 때")
         @MethodSource("parameterProvider")
-        void 각_원소가_중복되지_않는지_테스트한다(List<Integer> target) {
+        void 각_원소가_중복되지_않는지_테스트(List<Integer> target) {
             assertThatThrownBy(() -> new Lotto(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.NUMBER_NOT_DISTINCT);
@@ -79,11 +79,11 @@ class LottoTest {
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    @DisplayName("지정된 로또 값의 범위를 넘어섰을 때")
+    @DisplayName("checkEachOutOfRange 검증 테스트")
     class CheckEachOutOfRange {
         @ParameterizedTest(name = "{0}가 입력되었을 때")
         @MethodSource("parameterProvider")
-        void 각_원소가_지정된_로또_값의_범위를_넘지_않는지_테스트한다(List<Integer> target) {
+        void 각_원소가_지정된_로또_값의_범위를_넘지_않는지_테스트(List<Integer> target) {
             assertThatThrownBy(() -> new Lotto(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.NUMBER_EACH_OUT_OF_RANGE);
