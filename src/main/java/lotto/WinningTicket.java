@@ -74,4 +74,15 @@ public class WinningTicket {
 
         return userInput;
     }
+
+    void validateBonusNumber(String userInput) {
+
+        if (!User.isNum(userInput)) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요");
+        } else if (this.numbers.contains(Integer.parseInt(userInput))) {
+            throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다");
+        } else if (Integer.parseInt(userInput) < 1 || Integer.parseInt(userInput) > 45) {
+            throw new IllegalArgumentException("[ERROR] 1~45 범위 안의 수만 입력하세요");
+        }
+    }
 }
