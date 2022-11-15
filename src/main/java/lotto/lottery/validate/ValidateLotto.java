@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ValidateLotto {
-    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final String ERROR_MESSAGE = "[ERROR] 잘못된 로또 번호 생성입니다.";
     private static final int LOTTO_NUMBER_SIZE = 6;
 
 

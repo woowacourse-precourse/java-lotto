@@ -6,6 +6,7 @@ import lotto.lottery.domain.Lotto;
 import lotto.lottery.repository.LottoRepository;
 import lotto.user.domain.User;
 import lotto.user.validate.ValidateUser;
+import lotto.view.ValidateError;
 
 public class UserRepository {
     private static final List<Integer> LOTTO_NUMBER = List.of(1, 2, 3, 4, 5, 6);
@@ -43,7 +44,7 @@ public class UserRepository {
             ValidateUser.validateOnlyNumber(userInput);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            ValidateError.printError(e);
             return false;
         }
     }
@@ -53,7 +54,7 @@ public class UserRepository {
             ValidateUser.validateMinAmount(Integer.parseInt(userInput));
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            ValidateError.printError(e);
             return false;
         }
     }

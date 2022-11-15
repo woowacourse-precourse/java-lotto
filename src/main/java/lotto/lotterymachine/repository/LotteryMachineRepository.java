@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.lotterymachine.domain.LotteryMachine;
 import lotto.lotterymachine.validate.ValidateLotteryMachine;
+import lotto.view.ValidateError;
 
 public class LotteryMachineRepository {
     private static final int INIT_NUMBER = 0;
     private static final List<Integer> INIT_NUMBERS = Collections.singletonList(INIT_NUMBER);
 
     public boolean setTargetNumbers(LotteryMachine lotteryMachine) {
-        System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> inputNumbers = setInputTargetNumbers();
         if (inputNumbers.equals(INIT_NUMBERS)) {
             return false;
@@ -23,9 +23,8 @@ public class LotteryMachineRepository {
     }
 
     public boolean setTargetBonusNumber(LotteryMachine lotteryMachine) {
-        System.out.println("보너스 번호를 입력해 주세요.");
         int inputTargetNumber = setInputTargetBonusNumber();
-        if (inputTargetNumber == 0) {
+        if (inputTargetNumber == INIT_NUMBER) {
             return false;
         }
         lotteryMachine.setTargetBonusNumber(inputTargetNumber);
@@ -57,7 +56,7 @@ public class LotteryMachineRepository {
             ValidateLotteryMachine.validateOnlyNumber(userInput);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            ValidateError.printError(e);
             return false;
         }
     }
@@ -67,7 +66,7 @@ public class LotteryMachineRepository {
             ValidateLotteryMachine.validateOnlyNumbers(userInput);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            ValidateError.printError(e);
             return false;
         }
     }
@@ -77,7 +76,7 @@ public class LotteryMachineRepository {
             ValidateLotteryMachine.validateNumbersSize(userInput);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            ValidateError.printError(e);
             return false;
         }
     }
