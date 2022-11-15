@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class LottoResult {
 
-    Map<LottoRank, Integer> lottoResult = new LinkedHashMap<>();
+    private Map<LottoRank, Integer> lottoResult = new LinkedHashMap<>();
 
     public LottoResult() {
         initResult();
