@@ -3,7 +3,7 @@ package lotto.domain.strategy;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 
-import static lotto.domain.LottoNumberParser.parseLottoNumbers;
+import static lotto.utility.LottoNumberParser.parseLottoNumbers;
 
 public class InputLottoGenerateStrategy implements LottoGenerateStrategy {
     @Override
