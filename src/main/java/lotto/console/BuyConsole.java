@@ -17,12 +17,16 @@ public class BuyConsole {
 
     public int inputPrice() {
         String input = Console.readLine();
-        Pattern p = Pattern.compile("^[0-9]*$");
-        if (!p.matcher(input.trim()).matches()) {
+        if (notNumbers(input)) {
             System.out.println(INPUT_NUMBER_ERROR);
             return inputPrice();
         }
         return Integer.parseInt(input);
+    }
+
+    private boolean notNumbers(String input) {
+        Pattern p = Pattern.compile("^[0-9]*$");
+        return !p.matcher(input).matches();
     }
 
     public void printLottos(List<Lotto> lottos) {
