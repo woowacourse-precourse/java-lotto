@@ -10,7 +10,7 @@ import static lotto.exception.Exception.*;
 
 public class Player {
     private final List<Lotto> lottos = new ArrayList<>();
-    private int purchaseCost = 0;
+    public int purchaseCost = 0;
 
     public List<Lotto> getLottos() {
         return lottos;
