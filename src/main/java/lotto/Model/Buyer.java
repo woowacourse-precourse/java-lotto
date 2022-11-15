@@ -5,15 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.View.Input;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Buyer {
     private static final int AMOUNT_PER_LOTTO = 1000;
     private int purchasedAmount;
-    private List<Lotto> lottos;
-
-    public int getPurchasedAmount() { return purchasedAmount; }
-    public List<Lotto> getLottos() { return lottos; }
+    private List<Lotto> lottos = new ArrayList<>();
 
     /**
      * 입력한 금액을 바탕으로 구매한 로또의 개수를 설정(로또 1장 당 1000원)
@@ -39,6 +37,7 @@ public class Buyer {
     public void pickLottoNumbers(){
         while (lottos.size() < purchasedAmount){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
             if (validateLottoNumber(numbers, lottos)){
                 lottos.add(new Lotto(numbers));
             }
@@ -60,4 +59,6 @@ public class Buyer {
         return true;
     }
 
+    public int getPurchasedAmount() { return purchasedAmount; }
+    public List<Lotto> getLottos() { return lottos; }
 }
