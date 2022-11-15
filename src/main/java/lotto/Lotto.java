@@ -1,10 +1,7 @@
 package lotto;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
-
 import static lotto.ErrorMessage.*;
 
 public class Lotto {
@@ -47,5 +44,11 @@ public class Lotto {
         if (outOfRange.size() != NO_OUT_OF_RANGE_SIZE) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBERS_RANGE.getMessage());
         }
+    }
+
+    public void printLottoNumbers() {
+        List<Integer> sortedNumbers = new ArrayList<>(this.numbers);
+        Collections.sort(sortedNumbers);
+        System.out.println(Arrays.deepToString(sortedNumbers.toArray()));
     }
 }
