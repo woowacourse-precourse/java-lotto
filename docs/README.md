@@ -9,16 +9,17 @@
     - [ ] 구입 금액에 해당하는 만큼 로또 발행 LottoMarket#publishLotto
         - [ ] 1개의 로또 발행 (중복되지 않는 6개의 숫자) - Lotto
         - [ ] 로또 번호 오름차순 정렬 - Lotto#sort
-    - [ ] 발행한 로또 수량 및 번호 출력 LottoMarket#getLottoInfo
+    - [ ] 발행한 로또 수량 및 번호 출력 LottoMarket#printLottoInfo
 
 - [ ] 중복되지 않는 6개의 숫자 뽑기 - NumberGenerator
 
 - [ ] 당첨 번호 추첨 (중복되지 않는) - LottoHeadOffice
-    - [ ] 당첨 번호 입력 받기 (6개) - LottoHeadOffice#getWinningNum
-    - [ ] 보너스 번호 입력 받기 (1개) - LottoHeadOffice#getBonusNum
+    - [ ] 당첨 번호 입력 받기 (6개) - LottoHeadOffice#inputWinningNum
+    - [ ] 보너스 번호 입력 받기 (1개) - LottoHeadOffice#inputBonusNum
 
 - [ ] 당첨 금액 확인 - LottoResult
-    - [ ] 사용자 번호와 당첨 번호 비교 - LottoResult#calculator
+    - [ ] 당첨 금액 계산 - LottoResult#calculator
+        [ ] 사용자 번호와 당첨 번호 비교 - LottoResult#compareNum
         - [ ] 1등: 6개 번호 일치 / 2,000,000,000원
         - [ ] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
         - [ ] 3등: 5개 번호 일치 / 1,500,000원

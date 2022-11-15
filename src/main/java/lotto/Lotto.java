@@ -16,5 +16,8 @@ public class Lotto {
         }
     }
 
+    public void sort() {
+    }
+
     // TODO: 추가 기능 구현
 }
