@@ -3,6 +3,10 @@ package lotto.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -70,6 +74,16 @@ class ExceptionServiceTest {
         ExceptionService exceptionService = new ExceptionService();
         String winningNumbers = "1,2,3,4,45,46";
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("보너스 번호가 1~45사이의 숫자가 아니면 예외가 발생한다.")
+    void checkIfTheScopeIsCorrectBonusNumberTest() {
+        ExceptionService exceptionService = new ExceptionService();
+        String bonusNumber = "46";
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        assertThatThrownBy(() -> exceptionService.exceptionHandlingOfBonusNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
