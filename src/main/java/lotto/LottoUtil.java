@@ -99,4 +99,25 @@ public class LottoUtil {
 
         return rank;
     }
+
+    public static void calculateRevenue(List<Integer> ranks, int userLottoCnt) {
+
+        int revenue = 0;
+
+        for(int rank : ranks){
+            revenue += getRevenueByRank(rank);
+        }
+
+        System.out.println(revenue);
+    }
+
+    private static int getRevenueByRank(int rank) {
+        if(rank == 1)   return 2000000000;
+        if(rank == 2)   return 30000000;
+        if(rank == 3)   return 1500000;
+        if(rank == 4)   return 50000;
+        if(rank == 5)   return 5000;
+
+        return 0;
+    }
 }

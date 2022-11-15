@@ -22,6 +22,7 @@ public class Application {
 
 
         List<Integer> ranks = LottoUtil.creatRank(winStatistics, bonusStatistics);
+        LottoUtil.calculateRevenue(ranks, userLottoCnt);
 
     }
 }
