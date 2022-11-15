@@ -4,12 +4,11 @@ import lotto.domain.LottoMachine;
 import lotto.domain.User;
 
 public class Application {
+    static private LottoMachine machine = new LottoMachine();
+    static private User user = new User();
 
     public static void main(String[] args) {
         try {
-            LottoMachine machine = new LottoMachine();
-            User user = new User();
-
             machine.getInputMoney();
             machine.createLottoNumber();
 
@@ -24,8 +23,4 @@ public class Application {
             System.out.println(e.getMessage());
         }
     }
-
-
-
-
 }
