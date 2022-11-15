@@ -19,7 +19,7 @@ public class Buy {
     public static int validatePrice2(String price) {
         for (char c : price.toCharArray()) {
             if (!('0' <= c && c <= '9')) {
-                throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg());
+                throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg()); //오류?
             }
         }
         nLottoPrice = Integer.parseInt(price);

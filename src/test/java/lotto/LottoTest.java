@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.Count.WinTypeCounter;
-import static lotto.Count.WinningCount;
 import static lotto.Lotto.validateNumberRange;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -92,19 +90,5 @@ class LottoTest {
         userNumber.add(List.of(3, 4, 5, 6, 7, 8));  //345678 6개 같다
         result = Count.WinningCount(userNumber, lotto.getLottoNumber());
         assertEquals(List.of(3, 4, 5, 6), result);
-    }
-
-    @Test
-    void priceCalculateTest() {
-        Lotto lotto = new Lotto(List.of(3, 4, 5, 6, 7, 8));
-        List<List<Integer>> userNumber = new ArrayList<>();
-        int result;
-        userNumber.add(List.of(1, 5, 6, 8, 23, 30));  //568 3개 같다
-        userNumber.add(List.of(3, 4, 5, 6, 11, 30));  //3456 4개 같다
-        userNumber.add(List.of(3, 5, 6, 21, 23, 45));  //356 3개 같다
-
-        WinningCount(userNumber, lotto.getLottoNumber());
-        result = PrintLotto.getPrizeMoney(WinTypeCounter);
-        assertEquals(60000, result);
     }
 }
