@@ -53,6 +53,11 @@ public class Lotto_Controller {
     public void Show_Winning_Stats() {
         winStats = main_service.organize_Details(RandomLottoNumbers, winNumbers, bonusNumber);
         Output_View.print_winningStats(winStats);
-//        Show_Yield();
+        Show_Yield();
+    }
+
+    public void Show_Yield() {
+        yield = main_service.get_Yield(winStats, money);
+        Output_View.print_yield(yield);
     }
 }
