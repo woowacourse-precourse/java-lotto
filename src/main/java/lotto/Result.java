@@ -39,6 +39,7 @@ public class Result {
 
     private void printPerRank(BufferedWriter bw) throws IOException {
         Rank[] rank = Rank.values();
+        Arrays.sort(rank, Collections.reverseOrder());
         for (Rank r : rank) {
             if (r.equals(Rank.FAIL)) {
                 continue;
