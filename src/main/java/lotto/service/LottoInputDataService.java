@@ -1,16 +1,15 @@
 package lotto.service;
 
-import static lotto.util.LottoUtil.bonusNumberParser;
-import static lotto.util.LottoUtil.lottoNumbersParser;
-
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.util.LottoUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoInputDataService {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final LottoUtil lottoUtil = new LottoUtil();
 
     public Lotto inputLottoData() {
         List<Integer> lottoNumbers = inputLottoNumbers();
@@ -20,13 +19,13 @@ public class LottoInputDataService {
 
     public List<Integer> inputLottoNumbers() {
         outputView.askLottoNumbers();
-        List<Integer> lottoNumbers = lottoNumbersParser(inputView.inputLottoNumbersView());
+        List<Integer> lottoNumbers = lottoUtil.lottoNumbersParser(inputView.inputLottoNumbersView());
         return lottoNumbers;
     }
 
     public int inputBonusNumber() {
         outputView.askBonusNumber();
-        int bonusNumber = bonusNumberParser(inputView.inputBonusNumberView());
+        int bonusNumber = lottoUtil.bonusNumberParser(inputView.inputBonusNumberView());
         return bonusNumber;
     }
 
