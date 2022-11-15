@@ -10,7 +10,7 @@ public enum EventMessage {
     STATISTICS_BODY("%d개 일치 (%s원) - %s개"),
     STATISTICS_BODY_SECOND("%d개 일치, 보너스 볼 일치 (%s원) - %s개"),
     STATISTICS_FOOTER("총 수익률은 %s%%입니다."),
-    NEW_LINE("\n");
+    NEW_LINE("");
 
     public final String message;
     EventMessage(String message){

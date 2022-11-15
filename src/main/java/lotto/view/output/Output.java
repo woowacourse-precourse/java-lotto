@@ -4,6 +4,7 @@ import lotto.model.Lotto;
 import lotto.model.statistics.Statistics;
 import lotto.utils.EventMessage;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface Output {
@@ -12,4 +13,5 @@ public interface Output {
     void printEventMessage(EventMessage eventMessage);
     void printIssuedLotto(List<Lotto> issuedLotto);
     void printStatistics(Statistics statistics);
+    void printPurchaseMessage(BigDecimal count);
 }
