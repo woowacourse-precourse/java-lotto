@@ -11,24 +11,8 @@ public class Ticket {
     }
 
     private void validate(String userInput) {
-        int money = numberFormatCheck(userInput);
-        multipleOfTicketPriceCheck(money);
-    }
-
-    private int numberFormatCheck(String userInput) {
-        int value;
-        try {
-            value = Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-        return value;
-    }
-
-    private void multipleOfTicketPriceCheck(int money) {
-        if (money % LottoConstants.TICKET_PRICE.getValue() != 0) {
-            throw new IllegalArgumentException();
-        }
+        int money = Validator.numberFormatCheck(userInput);
+        Validator.multipleOfTicketPriceCheck(money);
     }
 
     public int getCount() {

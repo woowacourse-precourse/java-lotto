@@ -15,15 +15,9 @@ public class WinningNumber {
     }
 
     private List<Integer> validate(String userInput) {
-        String[] elements = inputFormatCheck(userInput);
+        String[] elements = Validator.inputFormatCheck(userInput);
         return null;
     }
 
-    private String[] inputFormatCheck(String userInput) {
-        String[] elements = userInput.split(",");
-        if (elements.length != LottoConstants.LENGTH.getValue()) {
-            throw new IllegalArgumentException();
-        }
-        return elements;
-    }
+
 }
