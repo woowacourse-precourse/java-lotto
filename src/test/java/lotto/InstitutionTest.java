@@ -1,13 +1,23 @@
 package lotto;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class InstitutionTest {
+
+    private static final List<PrizeWinner> prizeWinners = Arrays.asList(PrizeWinner.values());
+
+    @BeforeEach
+    void setUp() {
+        for(PrizeWinner prizeWinner : prizeWinners) {
+            prizeWinner.setCount(0);
+        }
+    }
 
     @DisplayName("로또 번호와 당첨 번호의 중복 갯수를 알려준다")
     @Test
@@ -29,7 +39,7 @@ public class InstitutionTest {
 
         Boolean bonusNumberIncluded = Institution.getInstance()
                 .isBonusNumberIncluded(lotto.getNumbers(), prize.getBonusNumber());
-        Boolean expect = Boolean.FALSE;
+        Boolean expect = Boolean.TRUE;
 
         Assertions.assertEquals(bonusNumberIncluded, expect);
     }
@@ -39,7 +49,6 @@ public class InstitutionTest {
     void updatePrizeWinnerCount() {
         Prize prize = new Prize(List.of(1,2,3,4,5,6), 7);
         Lotto lotto = new Lotto(List.of(1,2,3,8,9,10));
-        List<PrizeWinner> prizeWinners = Arrays.asList(PrizeWinner.values());
 
         Integer count = Institution.getInstance().countPrizeAndLottoDuplicatedNumber(lotto.getNumbers(), prize.getNumbers());
 
@@ -58,28 +67,22 @@ public class InstitutionTest {
     @DisplayName("총 상금의 금액을 계산한다")
     @Test
     void calculateSumOfPrizeMoney() {
-        Prize prize = new Prize(List.of(1,2,3,4,5,6), 7);
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,7));
-
-        List<PrizeWinner> prizeWinners = Arrays.asList(PrizeWinner.values());
         prizeWinners.get(prizeWinners.indexOf(PrizeWinner.FIRSTPLACE)).addCount();
-        prizeWinners.get(prizeWinners.indexOf(PrizeWinner.SECONDPLACE)).addCount();
-        prizeWinners.get(prizeWinners.indexOf(PrizeWinner.SECONDPLACE)).addCount();
 
-        Integer prizeMoneySum = Institution.getInstance().calculateSumOfPrizeMoney(prizeWinners);
-        Integer expectedPrizeMoneySum = 2000000000 + 30000000*2;
-        
+        Long prizeMoneySum = Institution.getInstance().calculateSumOfPrizeMoney(prizeWinners).longValue();
+        Long expectedPrizeMoneySum = 2000000000L;
+
         Assertions.assertEquals(prizeMoneySum, expectedPrizeMoneySum);
     }
 
     @DisplayName("수익률을 계산한다")
     @Test
     void calculateYield() {
-        Integer prizeMoneySum = 5000;
+        Long prizeMoneySum = 5000L;
         Integer userMoney = 8000;
 
         Double yield = Institution.getInstance().calculateYield(prizeMoneySum,userMoney);
-        Double expectedYield = (prizeMoneySum.doubleValue()/userMoney)*100;
+        Double expectedYield = (prizeMoneySum.doubleValue()/userMoney);
 
         Assertions.assertEquals(yield, expectedYield);
 
