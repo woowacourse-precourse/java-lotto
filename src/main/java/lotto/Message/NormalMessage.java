@@ -21,7 +21,7 @@ public class NormalMessage {
     public static void printBuyMessage(User user) {
         System.out.println();
         System.out.println(user.getLottoQuantity().toString() + BUY_MESSAGE);
-        System.out.println(user.getLottoNumbers());
+        System.out.println(user.makeLottoNumbers());
     }
 
     public static void printWinningNumberInputMessage() {
@@ -34,24 +34,29 @@ public class NormalMessage {
     }
 
     public static void printResultMessage(WinningResult winningResult) {
-        final int SECOND_PLACE = 3;
         System.out.println();
         System.out.println(BASE_RESULT_MESSAGE);
 
         List<Integer> lottoWinningNumbers = winningResult.getWinningResult();
+        String resultMessage = makeResultMessage(lottoWinningNumbers);
+        System.out.print(resultMessage);
+        System.out.print("총 수익률은 " + winningResult.getYield() + "%입니다.");
+    }
+
+    public static String makeResultMessage(List<Integer> lottoWinningNumbers) {
+        final int SECOND_PLACE = 3;
         DecimalFormat formatter = new DecimalFormat("###,###,###,###,###,###");
+        String resultOutput = "";
         for (int place = 0; place < lottoWinningNumbers.size(); place++) {
-            String resultOutput = "";
-            resultOutput = LottoPlace.values()[place].getMatchNumbers() + "개 일치";
+            resultOutput += LottoPlace.values()[place].getMatchNumbers() + "개 일치";
 
             // 2등
             if (place == SECOND_PLACE) {
                 resultOutput += ", 보너스 볼 일치";
             }
             resultOutput += " (" + formatter.format(LottoPlace.values()[place].getWinMoney()) + "원)";
-            resultOutput += " - " + lottoWinningNumbers.get(place) + "개";
-            System.out.println(resultOutput);
+            resultOutput += " - " + lottoWinningNumbers.get(place) + "개" + "\n";
         }
-        System.out.println("총 수익률은 " + winningResult.getYield() + "%입니다.");
+        return resultOutput;
     }
 }
