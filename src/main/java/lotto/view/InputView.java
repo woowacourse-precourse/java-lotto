@@ -19,12 +19,14 @@ public class InputView {
 
         return Integer.parseInt(input);
     }
+
     public List<Integer> getWinningNumbers() {
         System.out.println(MESSAGE_TO_GET_WINNING_NUMBER);
         String input = Console.readLine().trim(); //띄어쓰기 고려
 
         return castToList(input);
     }
+
     public int getBonusNumbers() {
         System.out.println(MESSAGE_TO_GET_BONUS_NUMBER);
         String input = Console.readLine().trim(); //띄어쓰기 고려
@@ -32,6 +34,7 @@ public class InputView {
         isNumber(input);
         return Integer.parseInt(input);
     }
+
     public boolean isNumber(String input) {
         try {
             Integer.parseInt(input);
@@ -40,6 +43,7 @@ public class InputView {
         }
         return true;
     }
+
     public List<Integer> castToList(String input) {
         List<Integer> winningNumbers = new ArrayList<>();
 
