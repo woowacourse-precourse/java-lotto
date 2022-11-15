@@ -55,6 +55,70 @@ BUILD SUCCESSFUL in 0s
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
+### 🔥 구현 기능 목록
+
+- [x] **CLASS 1.** `Lotto`
+    - **Class Variables:**
+        - [x] `private final List<Integer> numbers`
+    - **Class Methods:**
+        - [x] `public Lotto(List<Integer> numbers)`
+        - [x] `private void validate(List<Integer> numbers)`
+        - [x] `private void validateSizeOfNumbers(List<Integer> numbers)`
+        - [x] `private void validateDuplicateNumbers(List<Integer> numbers)`
+        - [x] `private void validateRangeOfNumbers(List<Integer> numbers)`
+        - [x] `public List<Integer> getLottoNumbers()`
+- [x] **CLASS 2.** `WinLotto extends Lotto`
+    - **Class Variables:**
+        - [x] `private final int bonusNumber`
+    - **Class Methods:**
+        - [x] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
+        - [x] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
+        - [x] `public int getBonusNumber()`
+- [x] **CLASS 3.** `LottoDraw`
+    - **Class Methods:**
+        - [x] `public static LottoRank getLottoRank(Lotto lotto, WinLotto winLotto)`
+        - [x] `private static int getWinNumber(Lotto lotto, WinLotto winLotto)`
+        - [x] `private static boolean existBonusNumber(Lotto lotto, WinLotto winLotto)`
+- [x] **CLASS 4.** `enum LottoRank`
+    - **Class Variables:**
+        - [x] `FIRST(2000000000)`
+        - [x] `SECOND(30000000)`
+        - [x] `THIRD(1500000)`
+        - [x] `FOURTH(50000)`
+        - [x] `FIFTH(5000)`
+        - [x] `LOSE(0)`
+        - [x] `private final int winPrice`
+    - **Class Methods**
+        - [x] `public LottoRank(int winPrice)`
+        - [x] `public int getWinPrice()`
+- [x] **CLASS 5.** `User`
+    - **Class Variables:**
+        - [x] `private final int purchaseMoney`
+        - [x] `private final int incomeMoney`
+        - [x] `private final List<Lotto> lottoList`
+        - [x] `private HashMap<LottoRank, Integer> winResult`
+    - **Class Methods:**
+        - [x] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
+        - [x] `private void validatePurchaseMoney(int purchaseMoney)`
+        - [x] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
+        - [x] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
+        - [x] `public float getIncomePercent()`
+        - [x] `public HashMap<LottoRank, Integer> getWinResult()`
+- [x] **CLASS 6.** `UserInterface`
+    - **Class Methods:**
+        - [x] `public static void printPurchaseMoneyMessage()`
+        - [x] `public static int inputPurchaseMoney()`
+        - [x] `public static void printWinNumbersMessage()`
+        - [x] `public static List<Integer> inputWinNumbers()`
+        - [x] `public static void printBonusNumberMessage()`
+        - [x] `public static int inputBonusNumber()`
+        - [x] `public static void printLottoList(List<Lotto> lottoList)`
+        - [x] `public static void printWinResult(HashMap<LottoRank, Integer> winResult)`
+        - [x] `public static void printIncomePercent(int incomePercent)`
+- [x] **CLASS 7.** `LottoGenerator`
+    - **Class Methods:**
+        - [x] `public static List<Lotto> generateLotto(int count)`
+
 ### 입출력 요구 사항
 
 #### 입력
@@ -179,14 +243,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
