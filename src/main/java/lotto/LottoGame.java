@@ -15,7 +15,7 @@ public class LottoGame {
             List<Lotto> lottos = purchaseLotto(purchasePrice);
             Lotto winNumber = inputWinNumber();
         } catch (IllegalArgumentException exception) {
-            message.printMsg(exception.getMessage());
+            message.printError(exception.getMessage());
         }
     }
 
