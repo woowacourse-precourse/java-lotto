@@ -15,6 +15,18 @@ public class LottoCalculator {
         lottos = lottoGenerator.getLottos();
     }
 
-
-
+    public void checkHit() {
+        int correct;
+        int bonusNumber = input.getBonusNumber();
+        List<Integer> winningNumber = input.getWinningNumber();
+        for (Lotto lotto : lottos) {
+            correct = 0;
+            for (int index = 0; index < 6; index++) {
+                if (lotto.getNumbers().get(index).equals(winningNumber.get(index))) {
+                    correct++;
+                }
+                
+            }
+        }
+    }
 }
