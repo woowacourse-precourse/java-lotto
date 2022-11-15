@@ -35,4 +35,8 @@ public class Output {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + prizeMap.get(SECOND) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + prizeMap.get(FIRST) + "개");
     }
+
+    public static void printUserProfit(double result) {
+        System.out.println("총 수익률은 " + result + "%입니다.");
+    }
 }
