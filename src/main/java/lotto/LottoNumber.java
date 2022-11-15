@@ -29,7 +29,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     private static void validate(int number) {
         if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력하였습니다.");
         }
     }
 
