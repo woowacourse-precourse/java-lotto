@@ -10,17 +10,30 @@ import lotto.presentation.Output;
 
 public class LottoSimulator {
 
-    public static void run() {
-        long amount = Input.inputAmount();
+    private static final LottoService lottoService = LottoService.getInstance();
 
-        LottoService lottoService = LottoService.getInstance();
+    public static void run() {
+        List<Lotto> lottos = initLottos();
+
+        WinNumbers winNumbers = initWinNumbers();
+
+        draw(lottos, winNumbers);
+    }
+
+    private static List<Lotto> initLottos() {
+        long amount = Input.inputAmount();
         List<Lotto> lottos = lottoService.sellLotto(amount);
         Output.printLottos(lottos);
+        return lottos;
+    }
 
+    private static WinNumbers initWinNumbers() {
         List<Integer> numbers = Input.inputNumbers();
         int bonusNumber = Input.inputNumber();
-        WinNumbers winNumbers = new WinNumbers(numbers, bonusNumber);
+        return new WinNumbers(numbers, bonusNumber);
+    }
 
+    private static void draw(List<Lotto> lottos, WinNumbers winNumbers) {
         List<Result> results = lottoService.compareLottos(winNumbers, lottos);
         Output.printResult(results);
         Output.printRate(results);
