@@ -33,6 +33,13 @@ public class UserMoney {
         }
     }
 
+    private void isInRightRange(int userMoneyInput){
+        if(userMoneyInput <lottoPrice){
+            printErrorMessage(String.format("%d원 이상을 구매해주세요.",lottoPrice));
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 
 
