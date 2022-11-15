@@ -29,9 +29,17 @@ public class Application {
             Bank bank = new Bank(winLotto, bonusNumber);
             long totalMoney = bank.getTotalMoney(lottos);
             bank.printPayResult();
+
+            //통계 결과 출력
+            printProfit(money, totalMoney);
         } catch (MyIllegalArgumentException e) {
             e.printErrorMessage();
         }
+    }
+
+    public static void printProfit(long money, long totalMoney) {
+        double profit = Math.round((double) totalMoney * 100 / (double) money) / 100.0;
+        System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 
     private static void print(Receipt receipt, List<Lotto> lottos) {
