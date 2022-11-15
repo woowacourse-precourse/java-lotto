@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+
 public enum Rank {
     BANG(0, 0),
     FIVE(3, 5_000),
@@ -14,5 +16,16 @@ public enum Rank {
     Rank(final int count, final int reward) {
         this.count = count;
         this.reward = reward;
+    }
+
+    public static Rank countCondition(final int count ,final boolean bonus) {
+        if(count == 5 && bonus){
+            return SECOND;
+        }
+        if(count<3){
+            return BANG;
+        }
+
+        return Arrays.stream(Rank.values()).filter(rank -> rank.count == count).findAny().orElseThrow();
     }
 }
