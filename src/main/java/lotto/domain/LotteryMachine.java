@@ -42,13 +42,22 @@ public class LotteryMachine {
         List<Lotto> lotteries = new ArrayList<>();
         for (int i = 0; i < numberOfLotteries; ++i) {
             List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lotteryNumbers.sort(Comparator.naturalOrder());
+            lotteryNumbers = sortNumbersByAscendingOrder(lotteryNumbers);
             Lotto lotto = new Lotto(lotteryNumbers);
             System.out.println(lotteryNumbers);
             lotteries.add(lotto);
         }
         System.out.println();
         return lotteries;
+    }
+
+    private List<Integer> sortNumbersByAscendingOrder(List<Integer> lotteryNumbers) {
+        List<Integer> sortedNumbers = new ArrayList<>();
+        for (int lotteryNumber : lotteryNumbers) {
+            sortedNumbers.add(lotteryNumber);
+        }
+        sortedNumbers.sort(Comparator.naturalOrder());
+        return sortedNumbers;
     }
 
     public void drawLottery() {
