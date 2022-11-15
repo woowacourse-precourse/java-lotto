@@ -27,7 +27,7 @@ public class LottoHandler {
         user.payMoney(money);
         user.buyLotto();
 
-        Print.printLotto(user.getUserLottos());
+        Print.printLottoList(user.getUserLottos());
     }
 
     public void pickWinningNumber() throws IllegalArgumentException {

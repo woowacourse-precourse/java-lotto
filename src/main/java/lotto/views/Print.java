@@ -2,6 +2,7 @@ package lotto.views;
 
 import lotto.model.Lotto;
 import lotto.model.RankCounter;
+import lotto.utils.Rules;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -18,11 +19,23 @@ public class Print {
         System.out.println(MESSAGE_INSERT_MONEY);
     }
 
-    public static void printLotto(List<Lotto> lottos) {
+    public static void printLottoList(List<Lotto> lottos) {
         System.out.println(lottos.size() + MESSAGE_LOTTO_COUNT);
         for (int lottoIndex = 0; lottoIndex < lottos.size(); lottoIndex++) {
-            System.out.println(lottos.get(lottoIndex));
+            printLotto(lottos.get(lottoIndex));
         }
+    }
+
+    public static void printLotto(Lotto lotto) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        stringBuilder.append(lotto.findLottoNumber(0));
+        for (int numberIndex = 1; numberIndex < Rules.LOTTO_SIZE.getValue(); numberIndex++) {
+            stringBuilder.append(", ");
+            stringBuilder.append(lotto.findLottoNumber(numberIndex));
+        }
+        stringBuilder.append("]");
+        System.out.println(stringBuilder.toString());
     }
 
     public static void printWinningNumber() {
