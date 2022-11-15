@@ -17,6 +17,7 @@ public class Game {
         int bonusNumber = Input.inputBonusNumber();
         Bonus bonus = new Bonus(winning, bonusNumber);
         List<Integer> result = countWinNumber(lottos, bonus);
+        Map<Numbers, Integer> ranking = rank(result);
     }
 
     public List<Integer> countWinNumber(List<Lotto> lottos, Bonus bonusLotto) {
@@ -27,5 +28,15 @@ public class Game {
         }
 
         return result;
+    }
+
+    public Map<Numbers, Integer> rank(List<Integer> result) {
+        Map<Numbers, Integer> rankList = new HashMap<>();
+        for (Integer count : result) {
+            Numbers rank = Numbers.findRank(count);
+            rankList.put(rank, rankList.getOrDefault(rank, 0) + 1);
+        }
+
+        return rankList;
     }
 }
