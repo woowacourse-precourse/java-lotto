@@ -7,11 +7,15 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class BonusTest {
-    @Test
-    void 올바른_입력() {
-        Assertions.assertEquals(6, new Bonus("6").getBonusNumber());
+
+    @ParameterizedTest
+    @ValueSource(strings = {"6", "6    ", "   6  ", "006", "    0   6"})
+    void 올바른_입력(String input) {
+        Assertions.assertEquals(6, new Bonus(input).getBonusNumber());
     }
 
     @DisplayName("당첨 번호와 중복되는 보너스 번호는 예외 처리한다.")
