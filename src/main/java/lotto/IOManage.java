@@ -20,7 +20,7 @@ public class IOManage {
         System.out.println(Message.INPUT_PAYMENT.get());
         String input = Console.readLine();
 
-        if (control.validateNumber(input)) {
+        if (control.validateNumber(input) && control.validatePriceUnit(input)) {
             inputPrice = Integer.parseInt(input);
             return true;
         }
@@ -39,20 +39,15 @@ public class IOManage {
         }
     }
 
-    public boolean inputWinningNumbers() {
+    public void inputWinningNumbers() {
         System.out.println("\n" + Message.INPUT_WINNING_NUMBER.get());
 
         String inputString = Console.readLine();
         List<Integer> numbers = control.inputToWinningNumbers(inputString);
 
-        if (numbers.size() != 6) {
-            return false;
-        }
-
         Lotto lotto = new Lotto(numbers);
         numbers = lotto.getNumbers();
         winningNumbers = numbers;
-        return true;
     }
 
     public boolean inputBonusNumber() {
@@ -95,11 +90,21 @@ public class IOManage {
     public void numberFlowManage() {
         outputLottoGeneration();
 
-        if (inputWinningNumbers()) {
+        if (inputWinningNumbersNormal()) {
             if (inputBonusNumber()) {
                 outputStatistic();
                 outputEarningRate();
             }
         }
+    }
+
+    public boolean inputWinningNumbersNormal() {
+        try {
+            inputWinningNumbers();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 }

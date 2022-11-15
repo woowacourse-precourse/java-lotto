@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ControlLottoGameTest{
 
@@ -17,15 +16,6 @@ public class ControlLottoGameTest{
         int input = 8000;
         int output = 8;
         assertThat(control.priceToQuantity(input)).isEqualTo(output);
-    }
-
-    @DisplayName("구입 금액이 1,000원 단위가 아니면 예외가 발생한다.")
-    @Test
-    void quantityConversionExceptionTest() {
-        ControlLottoGame control = new ControlLottoGame();
-        int input = 8050;
-        assertThatThrownBy(() -> control.priceToQuantity(input))
-                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력된 값이 숫자가 맞는지 확인한다.")
