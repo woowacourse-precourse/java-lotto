@@ -10,12 +10,17 @@ public class Game {
     static int purchase;
     static Lotto winningNumber;
     static int bonusNumber;
+    static final int LOTTO_PRICE = 1000;
 
     static void setPurchase(String input) throws IllegalArgumentException {
         validation.checkNull(input);
         validation.checkNumeric(input);
         purchase = Integer.parseInt(input);
         validation.checkDividable(purchase);
+    }
+
+    static int getLottoCount() {
+        return (purchase / LOTTO_PRICE);
     }
 
     static void setWinningNumber(String input) throws IllegalArgumentException {
