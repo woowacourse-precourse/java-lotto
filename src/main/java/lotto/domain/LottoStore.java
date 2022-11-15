@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -14,7 +16,8 @@ public class LottoStore {
 
     public void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
-        this.money = LottoBuyer.getInstance.getPay();
+        String input = Console.readLine();
+        this.money = LottoBuyer.getInstance.getPay(input);
 
 
         pages = LottoSeller.getInstance.getSellPages(money);
@@ -27,12 +30,12 @@ public class LottoStore {
 
     public void determiningWinningNumber() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
-
-        this.winningNumber = LottoDesignator.getInstance.inputLotto();
+        String lottoInput = Console.readLine();
+        this.winningNumber = LottoDesignator.getInstance.inputLotto(lottoInput);
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
-
-        this.bonus = LottoDesignator.getInstance.inputBonus();
+        String input = Console.readLine();
+        this.bonus = LottoDesignator.getInstance.inputBonus(lottoInput, input);
     }
 
     public void judgeLottoNumber() {

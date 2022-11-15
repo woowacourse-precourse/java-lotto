@@ -12,9 +12,7 @@ import static lotto.constant.Constant.*;
 
 public class LottoDesignator {
     public static final LottoDesignator getInstance = new LottoDesignator();
-    private String lottoInput;
-    public List<Integer> inputLotto() {
-        lottoInput = Console.readLine();
+    public List<Integer> inputLotto(String lottoInput) {
 
         checkOnlyNumber(lottoInput);
         checkSixCipher(lottoInput);
@@ -26,8 +24,7 @@ public class LottoDesignator {
         return lotto;
     }
 
-    public int inputBonus() {
-        String input = Console.readLine();
+    public int inputBonus(String lottoInput, String input) {
 
         checkOnlyNumber(input);
         checkRange(input);

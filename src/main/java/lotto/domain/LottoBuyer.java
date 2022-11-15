@@ -7,8 +7,7 @@ public class LottoBuyer {
 
     public static final LottoBuyer getInstance = new LottoBuyer();
 
-    public int getPay() {
-        String input = Console.readLine();
+    public int getPay(String input) {
 
         checkOnlyNumber(input);
         checkPayUnit(input);
