@@ -8,6 +8,9 @@ import lotto.constant.Constant;
 
 public class Application {
     private static Constant constant = new Constant();
+    public static List<Lotto> Tickets = new ArrayList<>();
+    public static int Lotto_Size = 6;
+
     private static String Answer_Numbers = "당첨 번호를 입력해 주세요.";
     private static String Regex = ",";
     private static String Insert_Money = "구매 금액을 입력하세요";
@@ -22,7 +25,15 @@ public class Application {
     private static String Count_Correct = "개";
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        int count = Buy_Lotto();
+        for (int i = 0; i < count; i++) {
+            Tickets.add(new Lotto(
+                Randoms.pickUniqueNumbersInRange(1,45,6))
+            );
+            Tickets.get(i).print_Numbers();
+        }
+        Winning(get_Rank(MakeAnswer(), Tickets, MakeBonus()));
+        printResult(count);
     }
     
     public enum Rank{
