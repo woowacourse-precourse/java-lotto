@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -43,5 +44,13 @@ class LottoTest {
         lotto.printNumbers();
 
         Assertions.assertThat(output.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]\n");
+    }
+
+    @DisplayName("로또 번호 정렬 기능을 테스트한다.")
+    @Test
+    void sortNumbers() {
+        Lotto lotto = new Lotto(Arrays.asList(3, 2, 1, 5, 4, 6));
+        lotto.sortNumbers();
+        Assertions.assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 }
