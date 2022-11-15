@@ -1,11 +1,13 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Application {
@@ -48,10 +50,10 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해 주세요.");
         userInput = Console.readLine();
-        Set<Integer> winningNumbers = new HashSet<>();
-        String[] inputNumbers = userInput.split(",");
+        Set<Integer> checkDuplicatedNumbers = new HashSet<>();
+        String[] splitInput = userInput.split(",");
 
-        if (inputNumbers.length != LOTTO_NUMBER_COUNT) {
+        if (splitInput.length != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(LOTTO_NUMBER_COUNT_ERROR_MESSAGE);
         }
 
@@ -59,7 +61,7 @@ public class Application {
             int currNum;
 
             try {
-                currNum = Integer.parseInt(inputNumbers[cnt].trim());
+                currNum = Integer.parseInt(splitInput[cnt].trim());
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException(NUMBER_TYPE_ERROR_MESSAGE);
             }
@@ -68,12 +70,15 @@ public class Application {
                 throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
             }
 
-            winningNumbers.add(currNum);
+            checkDuplicatedNumbers.add(currNum);
 
-            if (winningNumbers.size() != cnt + 1) {
+            if (checkDuplicatedNumbers.size() != cnt + 1) {
                 throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_ERROR_MESSAGE);
             }
         }
+
+        List<Integer> winningNumbers = new ArrayList<>(checkDuplicatedNumbers);
+        winningNumbers.sort(Integer::compareTo);
 
         System.out.println("보너스 번호를 입력해 주세요.");
         userInput = Console.readLine();
@@ -89,10 +94,24 @@ public class Application {
             throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
         }
 
-        if (winningNumbers.contains(bonusNumber)) {
+        if (checkDuplicatedNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_ERROR_MESSAGE);
         }
+
+        Map<Rank, Integer> rankCounts = new HashMap<>(Map.of(
+                Rank.FIFTH, 0,
+                Rank.FORTH, 0,
+                Rank.THIRD, 0,
+                Rank.SECOND, 0,
+                Rank.FIRST, 0));
+
+        for (Lotto lotto : lottos) {
+            int matchCount = lotto.compareWithWinningNumbers(winningNumbers);
+            Rank rank = Rank.getRankByMatchCount(matchCount, lotto.contains(bonusNumber));
+
+            if (rank != Rank.NONE) {
+                rankCounts.put(rank, rankCounts.get(rank) + 1);
+            }
+        }
     }
-
-
 }
