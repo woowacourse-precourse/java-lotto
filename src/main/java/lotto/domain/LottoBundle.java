@@ -29,7 +29,7 @@ public class LottoBundle {
         return lottoList;
     }
 
-    private List<Lotto> createLottoList() {
+    public List<Lotto> createLottoList() {
         List<Lotto> lottoList1 = new ArrayList<>();
         while (this.count-- > 0) {
             //로또 한개 생성 후 로또 뭉치에 추가
@@ -38,7 +38,7 @@ public class LottoBundle {
         return lottoList1;
     }
 
-    private Lotto createOneLotto() {
+    public Lotto createOneLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         List<Integer> numbers_clone = new ArrayList<>(numbers);
         Collections.sort(numbers_clone);
