@@ -28,8 +28,8 @@ public class Utils {
 
     public static int getBonusNum() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int purchase = string2int(readLine());
-        return purchase;
+        int bonusNum = string2int(readLine());
+        return bonusNum;
     }
 
     private static List<Integer> parsingInput(String input) {

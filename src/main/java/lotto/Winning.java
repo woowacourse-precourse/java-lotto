@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.Enums.ErrorMessage;
+
 import java.util.List;
 
 public class Winning {
@@ -15,6 +17,18 @@ public class Winning {
 
 
     private void validateBonus(int number) {
+        int minNum = 1;
+        int maxNum = 45;
 
+        if(number<minNum) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_RANGE.getMessage());
+        }
+        if(number>maxNum) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_RANGE.getMessage());
+        }
+        if(winningLotto.getLotto().contains(number)){
+            throw new IllegalArgumentException(ErrorMessage.BONUS_DUPLICATE.getMessage());
+        }
     }
+
 }

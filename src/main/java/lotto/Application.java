@@ -13,6 +13,8 @@ public class Application {
             Buyer buyer = new Buyer(purchase);
 
             Lotto winningLotto = new Lotto(getWinningNums());
+            int bonusNum = getBonusNum();
+            Winning winning = new Winning(winningLotto, bonusNum);
 
 
 
