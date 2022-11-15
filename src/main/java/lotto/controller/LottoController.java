@@ -11,6 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
+import lotto.domain.Rank;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.domain.Yield;

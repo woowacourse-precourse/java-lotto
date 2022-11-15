@@ -34,11 +34,11 @@ public class OutputView {
         }
     }
 
-    public static void printStatistics(Rank ranks) {
+    public static void printStatistics(List<Rank> ranks) {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        for (Rank rank : ranks.values()) {
+        for (Rank rank : ranks) {
             if (rank == Rank.NONE) {
                 continue;
             }

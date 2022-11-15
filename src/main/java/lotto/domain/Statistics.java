@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.List;
 
 public class Statistics {
-    private Rank rank;
 
     public Statistics(List<Rank> rankings) {
         initializeStatistics(rankings);
@@ -22,7 +21,9 @@ public class Statistics {
         }
     }
 
-    public Rank getRankWithStatistics() {
-        return rank;
+    public List<Rank> getRankWithStatistics() {
+         return List.of(Rank.values());
     }
+
+
 }
