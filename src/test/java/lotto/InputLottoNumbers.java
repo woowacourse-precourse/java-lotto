@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.handler.InputBonusNumberHandler;
 import lotto.handler.InputWinningNumbersHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,8 +10,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class InputWinningNumbers {
+class InputLottoNumbers {
     InputWinningNumbersHandler inputWinningNumbersHandler = new InputWinningNumbersHandler();
+    InputBonusNumberHandler inputBonusNumberHandler = new InputBonusNumberHandler();
 
     @DisplayName("당첨 로또 번호의 입력이 아무것도 없는지 확인하는 Test")
     @Test
@@ -68,6 +70,16 @@ class InputWinningNumbers {
             String test = "123a45";
             String[] testData = test.split("");
             inputWinningNumbersHandler.checkIsNumber(testData);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("6개의 당첨 번호가 로또 번호를 포함하는지 확인하는 Test")
+    @Test
+    void checkAllNumbers() {
+        assertThatThrownBy(() -> {
+            String bonus = "1";
+            List<Integer> testData = List.of(1,2,3,4,5,6);
+            inputBonusNumberHandler.checkAllNumbersException(bonus, testData);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
