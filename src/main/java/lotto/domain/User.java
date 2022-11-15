@@ -3,9 +3,7 @@ package lotto.domain;
 import lotto.constant.LotteryRank;
 import lotto.constant.Status;
 import lotto.domain.constant.LottoProperty;
-import lotto.constant.ValidationErrorMessage;
-import lotto.domain.LotteryTicket;
-import lotto.domain.LotteryResult;
+import lotto.constant.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,7 @@ public class User {
 
     public void validate (int money) throws IllegalArgumentException {
         if (!isMultipleOfThousand(money)) {
-            throw new IllegalArgumentException(ValidationErrorMessage.INVALID_MONEY_AMOUNT.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_AMOUNT.getErrorMessage());
         }
     }
 

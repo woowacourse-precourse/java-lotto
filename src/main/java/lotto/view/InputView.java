@@ -1,7 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.constant.ValidationErrorMessage;
+import lotto.constant.ErrorMessage;
 import lotto.view.constant.InputGuidePhrase;
 
 import java.util.Arrays;
@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    static final String EMPTY_VALUE_ERROR_MESSAGE = ValidationErrorMessage.EMPTY_VALUE.getErrorMessage();
-    static final String NOT_NUMBER_ERROR_MESSAGE = ValidationErrorMessage.NOT_NUMBER.getErrorMessage();
+    static final String EMPTY_VALUE_ERROR_MESSAGE = ErrorMessage.EMPTY_VALUE.getErrorMessage();
+    static final String NOT_NUMBER_ERROR_MESSAGE = ErrorMessage.NOT_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getText();
     static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getText();
-    static final String EMPTY_VALUE_IN_WINNING_NUMBER = ValidationErrorMessage.EMPTY_VALUE_IN_WINNING_NUMBER.getErrorMessage();
+    static final String EMPTY_VALUE_IN_WINNING_NUMBER = ErrorMessage.EMPTY_VALUE_IN_WINNING_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_DELIMITER = ",";
 
     public static int takeMoneyInput() throws IllegalArgumentException {

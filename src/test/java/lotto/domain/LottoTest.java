@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
-import lotto.constant.ValidationErrorMessage;
+import lotto.constant.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +19,7 @@ class LottoTest {
                 .hasMessageContaining("1부터 45까지의 숫자만 허용됩니다.");
 
 
-        assertThat(ValidationErrorMessage.DUPLICATE_NUMBERS.getErrorMessage())
+        assertThat(ErrorMessage.DUPLICATE_NUMBERS.getErrorMessage())
                 .isEqualTo("[ERROR] 중복된 숫자가 없도록 입력해주세요.");
     }
 

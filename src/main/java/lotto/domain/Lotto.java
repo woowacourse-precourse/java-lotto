@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.constant.LottoProperty;
-import lotto.constant.ValidationErrorMessage;
+import lotto.constant.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +15,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (!DomainValidator.hasCorrectSize(numbers)) {
-            throw new IllegalArgumentException(ValidationErrorMessage.INVALID_SIZE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE.getErrorMessage());
         }
 
         for (int number : numbers) {
             if (!DomainValidator.hasCorrectRange(number)) {
-                throw new IllegalArgumentException(ValidationErrorMessage.INVALID_RANGE.getErrorMessage());
+                throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE.getErrorMessage());
             }
         }
 
         if (!DomainValidator.isAllUnique(numbers)) {
-            throw new IllegalArgumentException(ValidationErrorMessage.DUPLICATE_NUMBERS.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getErrorMessage());
         }
     }
 
