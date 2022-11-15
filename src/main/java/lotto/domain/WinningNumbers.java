@@ -12,6 +12,11 @@ public class WinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
+    public void validationBonus(Lotto winningNumber, int bonusNumber) {
+        winningNumber.validateNumberInRange(bonusNumber);
+        validateWinningContainsBonus(winningNumber);
+    }
+
     private void validateWinningContainsBonus(Lotto winningNumber) {
         if (winningNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException(ERR_WINNING_CONTAIN_BONUS);
