@@ -28,7 +28,7 @@ public class InputValidation {
                 throw new IllegalArgumentException("당첨 번호는 중복될 수 없습니다.");
             }
             if (winningNumber == 0 || winningNumber > 45) {
-                throw new IllegalArgumentException("당첨 번호는 최대 45 입니다.");
+                throw new IllegalArgumentException("");
             }
             temp.add(winningNumber);
         }
@@ -41,11 +41,11 @@ public class InputValidation {
 
         int bonusNumber = Integer.parseInt(number);
         if (bonusNumber == 0 || bonusNumber > 45) {
-            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+            throw new IllegalArgumentException("당첨 번호는 최대 45 입니다.");
         }
 
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 }
