@@ -6,7 +6,7 @@ import java.util.List;
 import lotto.buy.Payment;
 import lotto.input.InputConvert;
 import lotto.result.LottoCompare;
-import lotto.result.ResultPrint;
+import lotto.print.ResultPrint;
 import lotto.situation.Lotto;
 import lotto.situation.QuickPick;
 

@@ -26,12 +26,6 @@ public class PaymentTest {
         assertThat(payment.purchase()).isEqualTo(19);
     }
     @Test
-    @DisplayName("로또 구매 금액")
-    void lottoPurchasePrice() {
-        Payment payment = new Payment(8000);
-        assertThat(payment.getPay()).isEqualTo(8000);
-    }
-    @Test
     @DisplayName("1,000원으로 나누어 떨어지지 않는 경우 예외메세지가 출력된다.")
     void createPaymentByWrongNumberForPrint() {
         OutputStream out = new ByteArrayOutputStream();

@@ -15,7 +15,4 @@ public class Payment {
     public int purchase() {
         return pay / LOTTO_PRICE;
     }
-    public int getPay() {
-        return pay;
-    }
 }

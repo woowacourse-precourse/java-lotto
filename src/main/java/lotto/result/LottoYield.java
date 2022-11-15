@@ -2,12 +2,12 @@ package lotto.result;
 
 import java.util.Map;
 
-public class LottoResult {
+public class LottoYield {
 
     double totalWinnings;
     double totalPurchase;
 
-    public LottoResult(Map<String, Integer> prizesMap) {
+    public LottoYield(Map<String, Integer> prizesMap) {
         totalWinnings = 0;
         totalPurchase = 0;
         for (LottoPrizes lottoPrize : LottoPrizes.values()) {
@@ -18,13 +18,14 @@ public class LottoResult {
             }
         }
     }
-    public double yield() {
-        return totalWinnings / totalPurchase;
-    }
     private void plusToTotalWinnings(LottoPrizes lottoPrize, int winsCount) {
         totalWinnings += winsCount * lottoPrize.money();
     }
     private void plusToTotalPurchase(int winsCount) {
         totalPurchase += winsCount * LottoPrizes.purchasingPrice();
     }
+    public double yield() {
+        return totalWinnings / totalPurchase;
+    }
+
 }

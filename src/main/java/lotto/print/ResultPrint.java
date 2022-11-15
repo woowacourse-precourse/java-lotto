@@ -1,22 +1,24 @@
-package lotto.result;
+package lotto.print;
 
 import static lotto.result.LottoPrizes.*;
 
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
+import lotto.result.LottoPrizes;
+import lotto.result.LottoYield;
 
 public class ResultPrint {
 
     public static void printingResult(Map<String, Integer> prizesMap) {
-        LottoResult lottoResult = new LottoResult(prizesMap);
+        LottoYield lottoYield = new LottoYield(prizesMap);
         List<LottoPrizes> lottoPrizes = List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
         System.out.println("\n당첨 통계\n---");
         for (LottoPrizes lottoPrize : lottoPrizes) {
             int prizesCount = prizesMap.get(lottoPrize.name());
             printPrize(lottoPrize, prizesCount);
         }
-        printYield(lottoResult.yield());
+        printYield(lottoYield.yield());
     }
     private static void printPrize(LottoPrizes lottoPrizes, int prizesCount) {
         System.out.print(lottoPrizes.getCondition());
