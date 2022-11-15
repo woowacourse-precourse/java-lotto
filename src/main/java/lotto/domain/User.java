@@ -21,9 +21,9 @@ public class User {
     public void inputBuyLottoPrice() {
         System.out.println(Message.INPUT_BUY_LOTTO_PRICE);
         String money = Console.readLine();
-        Validator.isNumber(money);
+        Validator.validNumber(money);
         this.money = Integer.parseInt(money);
-        UserValidator.isMoneyDividedLottoPrice(this.money);
+        UserValidator.validMoneyDividedLottoPrice(this.money);
     }
 
     private void buyLotto() {

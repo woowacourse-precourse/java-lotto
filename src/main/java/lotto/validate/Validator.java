@@ -4,7 +4,7 @@ import static lotto.log.CustomLogger.*;
 
 public class Validator {
 
-    public static void isNumber(String str) {
+    public static void validNumber(String str) {
         long count = str.chars()
                 .filter(i -> !Character.isDigit(i))
                 .count();
