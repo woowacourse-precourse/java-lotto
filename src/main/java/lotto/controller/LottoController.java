@@ -30,7 +30,8 @@ public class LottoController {
         Lotto winningNumbers = lottoStore.confirmWinningNumbers(lottoPrinter.inputer("당첨 번호를 입력해 주세요."));
         int bonusNumber = lottoStore.confirmBonusNumber(lottoPrinter.inputer("보너스 번호를 입력해 주세요."));
 
-        Map<LottoGrade, Integer> lottosResult = lottoStore.conversionLottosResult(lottos, winningNumbers, bonusNumber);
+        List<LottoGrade> lottoGrades = lottoStore.allLottosCompare(lottos, winningNumbers, bonusNumber);
+        Map<LottoGrade, Integer> lottosResult = lottoStore.conversionLottosResult(lottoGrades);
         lottoPrinter.lottoResultPrint(lottosResult);
 
         double calculationResult = lottoStore.revenueCalculator(money.getMoney(), lottosResult);

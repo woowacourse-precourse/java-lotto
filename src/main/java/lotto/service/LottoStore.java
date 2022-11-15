@@ -39,7 +39,7 @@ public class LottoStore {
         return Integer.parseInt(bonusNumber);
     }
 
-    public Map<LottoGrade, Integer> conversionLottosResult(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
+    public Map<LottoGrade, Integer> conversionLottosResult(List<LottoGrade> lottoGrades) {
         Map<LottoGrade, Integer> totalResult = new EnumMap<>(LottoGrade.class);
         totalResult.put(LottoGrade.ONE, 0);
         totalResult.put(LottoGrade.TWO, 0);
@@ -47,7 +47,7 @@ public class LottoStore {
         totalResult.put(LottoGrade.FOUR, 0);
         totalResult.put(LottoGrade.FIVE, 0);
 
-        List<LottoGrade> lottosResult = allLottosCompare(lottos, winningNumbers, bonusNumber);
+        List<LottoGrade> lottosResult = lottoGrades;
         for (LottoGrade lottoGrade : lottosResult) {
             if (lottoGrade != LottoGrade.MISS) {
                 totalResult.put(lottoGrade, totalResult.get(lottoGrade) + 1);
@@ -57,7 +57,7 @@ public class LottoStore {
         return totalResult;
     }
 
-    private List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
+    public List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
         List<LottoGrade> lottosResult = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
