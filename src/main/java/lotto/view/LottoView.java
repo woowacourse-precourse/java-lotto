@@ -13,4 +13,10 @@ public class LottoView {
         System.out.println(OutputMessage.INPUT_AMOUNT.printMessage());
     }
 
+    // 로또 구매 수량 출력
+    public static void printLottoCount(int count) {
+        System.out.println();
+        System.out.printf(ResultMessage.LOTTO_COUNT.printMessage(), count);
+    }
+
 }
