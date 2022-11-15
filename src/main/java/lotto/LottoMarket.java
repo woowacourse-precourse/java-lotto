@@ -11,6 +11,12 @@ public class LottoMarket {
     private int purchaseLottoNum;
     private List<Lotto> lottos = new ArrayList<>();
 
+    public LottoMarket() {
+        inputPrice();
+        publishLotto();
+        printLottoInfo();
+    }
+
     private void inputPrice() {
         System.out.println("구입금액을 입력해 주세요.");
         String s = Console.readLine();

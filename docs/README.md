@@ -4,7 +4,7 @@
 2. 도메인 로직에 대한 단위 테스트를 작성하는 연습
 
 ## 🌟 기능 목록
-- [ ] 로또구입 LottoMarket
+- [x] 로또구입 LottoMarket
     - [x] 구입금액 입력 LottoMarket#inputPrice
     - [x] 구입 금액에 해당하는 만큼 로또 발행 LottoMarket#publishLotto
         - [x] 1개의 로또 발행 (중복되지 않는 6개의 숫자) - Lotto
