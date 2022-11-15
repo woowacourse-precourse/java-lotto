@@ -18,7 +18,9 @@ public enum Prize {
         this.prize = prize;
         this.numsOfWinner = 0;
     }
-
+    public int getPrize(){
+        return this.prize;
+    }
     public int getMatchedNumbers() {
         return this.matchedNumbers;
     }
