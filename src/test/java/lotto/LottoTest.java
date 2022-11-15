@@ -33,10 +33,15 @@ class LottoTest {
     void testPrintLotto() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         lotto.printLotto();
-
         assertEquals("[1, 2, 3, 4, 5, 6]", out.toString().trim());
+    }
+
+    @DisplayName("로또 비교 확인")
+    @Test
+    void testCompare() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertEquals(LottoRanking.SECOND, lotto.compare(List.of(1, 2, 3, 4, 5, 7), 6));
     }
 }
