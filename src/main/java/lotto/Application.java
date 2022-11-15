@@ -1,11 +1,13 @@
 package lotto;
 
 import lotto.domain.Lottery;
+import lotto.domain.Lotto;
 import lotto.domain.PurchaseMoney;
+import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.Set;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,9 +22,12 @@ public class Application {
         OutputView.printLottoNumbers(lottery);
 
         OutputView.printWinningNumbersEnteringGuideMessage();
-        Set<Integer> winningLottoNumber = InputView.inputWinningNumbers();
+        List<Integer> winningLottoNumber = InputView.inputWinningNumbers();
 
         OutputView.printBonusNumbersEnteringGuideMessage();
         int bonusNumber = InputView.inputBonusNumber();
+
+        WinningLotto winningLotto = new WinningLotto(new Lotto(winningLottoNumber), bonusNumber);
+        OutputView.printResultMessage(lottery, winningLotto);
     }
 }

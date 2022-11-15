@@ -4,20 +4,20 @@ import java.util.Arrays;
 
 public enum Rank {
 
-    NON(0, 0, false),
-    FIFTH(3, 5000, false),
-    FOURTH(4, 50000, false),
-    THIRD(5, 1500000, false),
-    SECOND(5, 30000000, true),
-    FIRST(6, 2000000000, false);
+    NON(0, "0", false),
+    FIFTH(3, "5,000", false),
+    FOURTH(4, "50,000", false),
+    THIRD(5, "1,500,000", false),
+    SECOND(5, "30,000,000", true),
+    FIRST(6, "2,000,000,000", false);
 
     private static final int SECOND_AND_THIRD_WINNING_COUNT = 5;
 
     private final int winningNumberCount;
-    private final int winningPrice;
+    private final String winningPrice;
     private final boolean isHasBonusNumber;
 
-    Rank(int winningNumberCount, int winningPrice, boolean isHasBonusNumber) {
+    Rank(int winningNumberCount, String winningPrice, boolean isHasBonusNumber) {
         this.winningNumberCount = winningNumberCount;
         this.winningPrice = winningPrice;
         this.isHasBonusNumber = isHasBonusNumber;
@@ -39,7 +39,7 @@ public enum Rank {
         return winningNumberCount;
     }
 
-    public int getWinningPrice() {
+    public String getWinningPrice() {
         return winningPrice;
     }
 

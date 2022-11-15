@@ -3,9 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.PurchaseMoney;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class InputView {
 
@@ -21,12 +19,12 @@ public class InputView {
         return new PurchaseMoney(money);
     }
 
-    public static Set<Integer> inputWinningNumbers() {
+    public static List<Integer> inputWinningNumbers() {
         String input = Console.readLine();
         return convertInputWinningNumbers(input);
     }
 
-    private static Set<Integer> convertInputWinningNumbers(String input) {
+    private static List<Integer> convertInputWinningNumbers(String input) {
         Set<Integer> winningLottoNumbers = new HashSet<>();
         String[] numbers = input.split(WINNING_NUMBERS_SPLIT_DELIMITER);
 
@@ -36,7 +34,7 @@ public class InputView {
                     winningLottoNumbers.add(number);
                 });
 
-        return winningLottoNumbers;
+        return new ArrayList<>(winningLottoNumbers);
     }
 
     public static int inputBonusNumber() {
