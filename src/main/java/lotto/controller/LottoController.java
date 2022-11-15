@@ -28,11 +28,11 @@ public class LottoController {
         printPurchaseList(buyer);
 
         messagePrinter.printStaticWinningLottoNumbersNotification();
-        Lotto winning = new Lotto(numberScanner.inputWinningLottoNumbers());
+        Lotto winningLotto = new Lotto(numberScanner.inputWinningLottoNumbers());
         messagePrinter.printStaticBonusNumberNotification();
         Bonus bonus = new Bonus(numberScanner.inputBonusNumber());
-        WinningLotto winningLotto = new WinningLotto(winning, bonus);
-        checkAndRecord(buyer, winningLotto);
+
+        checkAndRecord(buyer, new WinningLotto(winningLotto, bonus));
 
         messagePrinter.printStaticStatisticsTopic();
         messagePrinter.printStaticParagraphDivision();
