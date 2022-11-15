@@ -1,7 +1,5 @@
 package lotto.domain.lotto.correctLotto;
 
-import org.mockito.internal.matchers.Null;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +13,6 @@ public enum Ranking {
     FIFTHRANKING(RankingValue.FIFTH, 5000),
     ;
 
-    private static final Integer SECOND_RANKING_COUNT = 6;
     private static final Integer POINT = 1;
     private static final Integer INITIAL_VALUE = 0;
 
@@ -36,19 +33,23 @@ public enum Ranking {
     }
 
     public static Ranking makeRanking(int count, boolean bonus) {
-        if (count < SECOND_RANKING_COUNT) {
-            return Arrays.stream(Ranking.values())
-                    .filter(ranking -> ranking.rankingValue.getCount() == count)
-                    .findFirst()
-                    .orElse(OUTOFRANKNG);
-        }
-
-        if (count == SECOND_RANKING_COUNT && bonus == true) {
-            return Ranking.SECONDRANKING;
-        }
-
-        return Ranking.FIRSTRANKING;
+        return Arrays.stream(RankingValue.values())
+                .filter(value -> RankingValue.findRankingValue(value, count, bonus))
+                .map(Ranking::findRanking)
+                .findFirst()
+                .orElse(OUTOFRANKNG);
     }
+
+    private static Ranking findRanking(RankingValue rankingValue) {
+        return Arrays.stream(Ranking.values())
+                .filter(value -> Ranking.isRanking(value.getRankingValue(), rankingValue))
+                .findFirst()
+                .orElse(OUTOFRANKNG);
+    }
+
+    private static boolean isRanking(RankingValue base, RankingValue compare) {
+        return base == compare;
+    };
 
     public static Map<Ranking, Integer> makeRankingCount(Rankings rankings) {
         Map<Ranking, Integer> rankingCount = new HashMap<>();
