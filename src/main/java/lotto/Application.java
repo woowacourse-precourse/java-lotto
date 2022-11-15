@@ -54,6 +54,16 @@ public class Application {
         int bonusNum = Integer.parseInt(Console.readLine());
         return bonusNum;
     }
+    // 로또 번호 생성
+    public static List<Lotto> lottoNumber() {
+//        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
+//        numbers.sort(Comparator.naturalOrder()); // 다시 보기
+        Lotto lotto = new Lotto(pickUniqueNumbersInRange(1,45,6));
+        lottos.add(lotto);
+//        return numbers;
+        lottos.sort((Comparator<? super Lotto>) lotto);
+        return lottos;
+    }
 
 
 
