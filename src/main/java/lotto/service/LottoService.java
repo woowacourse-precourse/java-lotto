@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
-import lotto.domain.Lotto;
 import lotto.domain.WinningNumber;
 import lotto.repository.LottoRepository;
 
@@ -13,8 +12,6 @@ public class LottoService {
     public static final int LOTTO_PRICE = 1000;
     public static final int PERCENT = 100;
     public static final double SECOND_DECIMAL_PLACE = 10.0;
-
-    public static final String NEXT_LINE = "\n";
     public static final int ONE = 1;
     public static final int ZERO = 0;
     private final LottoRepository lottoRepository = LottoRepository.getInstance();

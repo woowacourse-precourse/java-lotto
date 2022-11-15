@@ -1,4 +1,4 @@
-package lotto.constants.message;
+package lotto.constants.messages;
 
 import java.util.List;
 

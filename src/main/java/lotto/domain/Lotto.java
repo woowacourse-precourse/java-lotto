@@ -5,14 +5,11 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import lotto.constants.enums.WinResultStatus;
-import lotto.constants.message.ExceptionMessage;
+import lotto.constants.messages.ExceptionMessage;
+import lotto.constants.utils.MessageFormatUtil;
 
 public class Lotto {
     public static final int LOTTO_COUNT = 6;
-    public static final String START_SYMBOL = "[";
-    public static final String END_SYMBOL = "]";
-    public static final String COMMA = ",";
-    public static final String SPACE = " ";
     public static final int ONE = 1;
     public static final int HIT_THREE = 3;
     public static final int HIT_FIVE = 5;
@@ -47,14 +44,15 @@ public class Lotto {
     public String createMessage() {
         // TODO 리팩토링
         StringBuilder lottoResult = new StringBuilder();
-        lottoResult.append(START_SYMBOL);
+        lottoResult.append(MessageFormatUtil.START_BRACKET);
         numbers.stream()
                 .sorted(Integer::compareTo)
                 .forEach(number -> lottoResult.append(number)
-                        .append(COMMA)
-                        .append(SPACE));
-        return lottoResult.delete(lottoResult.lastIndexOf(COMMA), lottoResult.lastIndexOf(SPACE) + ONE)
-                .append(END_SYMBOL)
+                        .append(MessageFormatUtil.COMMA)
+                        .append(MessageFormatUtil.SPACE));
+        return lottoResult.delete(lottoResult.lastIndexOf(MessageFormatUtil.COMMA),
+                        lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + ONE)
+                .append(MessageFormatUtil.END_BRACKET)
                 .toString();
     }
 

@@ -3,7 +3,7 @@ package lotto.views;
 import java.util.List;
 import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
-import lotto.constants.message.OutputMessage;
+import lotto.constants.messages.OutputMessage;
 import lotto.domain.Lotto;
 
 public class OutputView {
@@ -16,15 +16,18 @@ public class OutputView {
 
     public void outputLottoBuyingResult(List<Object> resultOfBuyingLotto) {
         System.out.println();
-        System.out.println(messageGenerator.createBuyingLottoCountMessage((int) resultOfBuyingLotto.get(COUNT_OF_LOTTO)));
-        System.out.println(messageGenerator.createBuyingLottoResultMessage((List<Lotto>)resultOfBuyingLotto.get(BOUGHT_RESULT)));
+        System.out.println(
+                messageGenerator.createBuyingLottoCountMessage((int) resultOfBuyingLotto.get(COUNT_OF_LOTTO)));
+        System.out.println(
+                messageGenerator.createBuyingLottoResultMessage((List<Lotto>) resultOfBuyingLotto.get(BOUGHT_RESULT)));
     }
 
     public void outputLottoResult(List<Object> lottoResult) {
         System.out.println();
         System.out.println(OutputMessage.WINNING_STATISTICS);
         System.out.println(OutputMessage.DIVIDING_LINE);
-        System.out.println(messageGenerator.createStatisticsMessage((Map<WinResultStatus, Integer>)lottoResult.get(STATISTICS)));
+        System.out.println(
+                messageGenerator.createStatisticsMessage((Map<WinResultStatus, Integer>) lottoResult.get(STATISTICS)));
         System.out.println(messageGenerator.createEarningsRateMessage((double) lottoResult.get(EARNINGS_RATE)));
     }
 

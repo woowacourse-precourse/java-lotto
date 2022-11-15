@@ -1,25 +1,23 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.constants.message.ExceptionMessage;
+import lotto.constants.messages.ExceptionMessage;
+import lotto.constants.utils.MessageFormatUtil;
+import lotto.constants.utils.RegularExpressionUtil;
 
 public class WinningNumberValidator {
-    public static final String LOTTO_NUMBER_CHECK = "^([0-9]*,){5}[0-9]*$";
-    public static final String BONUS_NUMBER_CHECK = "^[0-9]*$";
-
-    public static final String COMMA = ",";
     public static final int MAX_NUMBER = 6;
     public static final int MAXIMUM_NUMBER = 45;
     public static final int MINIMUM_NUMBER = 1;
 
     public void validateLottoNumber(String inputLottoNumber) {
-        if (!inputLottoNumber.matches(LOTTO_NUMBER_CHECK)) {
+        if (!inputLottoNumber.matches(RegularExpressionUtil.LOTTO_NUMBER_CHECK)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR);
         }
-        if (isDuplicatedNumber(List.of(inputLottoNumber.split(COMMA)))) {
+        if (isDuplicatedNumber(List.of(inputLottoNumber.split(MessageFormatUtil.COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
         }
-        if (isOutOfBounds(List.of(inputLottoNumber.split(COMMA)))) {
+        if (isOutOfBounds(List.of(inputLottoNumber.split(MessageFormatUtil.COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS);
         }
     }
@@ -50,7 +48,7 @@ public class WinningNumberValidator {
     }
 
     public void validateBonusNumber(String bonusNumber, List<Integer> numbers) {
-        if (!bonusNumber.matches(BONUS_NUMBER_CHECK)) {
+        if (!bonusNumber.matches(RegularExpressionUtil.BONUS_NUMBER_CHECK)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NON_NUMERIC_INPUT);
         }
         if (Integer.parseInt(bonusNumber) < MINIMUM_NUMBER || Integer.parseInt(bonusNumber) > MAXIMUM_NUMBER) {

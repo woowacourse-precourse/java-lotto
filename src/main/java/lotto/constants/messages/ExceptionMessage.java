@@ -1,4 +1,4 @@
-package lotto.constants.message;
+package lotto.constants.messages;
 
 public class ExceptionMessage {
     public static final String ERROR = "[ERROR] ";

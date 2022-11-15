@@ -1,17 +1,16 @@
 package lotto.validator;
 
-import lotto.constants.message.ExceptionMessage;
+import lotto.constants.messages.ExceptionMessage;
+import lotto.constants.utils.RegularExpressionUtil;
 
 public class InputValidator {
-    public static final String ONLY_NUMBER = "^[0-9]*$";
-
     public static final int NOTHING = 0;
     public static final int LOTTO_PRICE = 1000;
     public static final int ZERO = 0;
     public static final int FIRST_INDEX = 0;
 
     public boolean validateInputPrice(String inputPrice) {
-        if (!inputPrice.matches(ONLY_NUMBER)) {
+        if (!inputPrice.matches(RegularExpressionUtil.ONLY_NUMBER_CHECK)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NON_NUMERIC_INPUT);
         }
         if (isZero(Integer.parseInt(inputPrice))) {

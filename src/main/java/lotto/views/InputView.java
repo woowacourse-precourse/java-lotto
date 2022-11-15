@@ -2,7 +2,7 @@ package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.constants.message.InputMessage;
+import lotto.constants.messages.InputMessage;
 
 public class InputView {
 
