@@ -10,11 +10,11 @@ public class LottoGame {
     public void run() {
         WinLottoResult winLottoResult = new WinLottoResult();
         try {
-            UserMoney userMoney = inputMoney.inputMoney();
+            UserMoney userMoney = inputMoney.inputUserMoney();
             countLottos(userMoney);
             pickRandomLottos(InputMoney.lottoPapers);
-            List<Integer> randomLottoLists = inputLottoNumbers();
-            winLottosResult(randomLottoLists, PickRandomLottoLists.randomLottoLists);
+            List<Integer> winningLottoNumbers = inputLottoNumbers();
+            winLottosResult(winningLottoNumbers, PickRandomLottoLists.randomLottoLists);
             winLottoResult.calculateYield(WinLottoResult.yield, userMoney);
 
         } catch (IllegalArgumentException e) {
@@ -36,13 +36,13 @@ public class LottoGame {
         InputWinningNumbers inputWinningNumbers = new InputWinningNumbers();
         InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
-        List<Integer> sixLottoNumbers = inputWinningNumbers.inputWinningNumber();
-        sixLottoNumbers.add(inputBonusNumber.inputBonusNumber(sixLottoNumbers));
-        return sixLottoNumbers;
+        List<Integer> sixWinningNumbers = inputWinningNumbers.inputWinningNumber();
+        sixWinningNumbers.add(inputBonusNumber.inputBonusNumber(sixWinningNumbers));
+        return sixWinningNumbers;
     }
 
-    private void winLottosResult(List<Integer> answerLotto, List<List<Integer>> dataLotto) {
+    private void winLottosResult(List<Integer> winningNumbers, List<List<Integer>> randomLottoLists) {
         WinLottoResult winLottoResult = new WinLottoResult();
-        winLottoResult.checkWinLottoResult(answerLotto, dataLotto);
+        winLottoResult.checkWinLottoResult(winningNumbers, randomLottoLists);
     }
 }

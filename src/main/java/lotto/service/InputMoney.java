@@ -11,7 +11,7 @@ public class InputMoney {
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     Output output = new Output();
 
-    public UserMoney inputMoney() {
+    public UserMoney inputUserMoney() {
         output.inputMoneyOrder();
         String inputMoney = Console.readLine();
         output.lineSpace();
