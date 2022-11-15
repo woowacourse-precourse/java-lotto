@@ -4,6 +4,7 @@ import lotto.utils.Error;
 import lotto.view.Print;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicatedNumbers(numbers);
+        numberRangeCheck(numbers);
         this.numbers = numbers;
     }
     private void validate(List<Integer> numbers) {
@@ -36,6 +38,14 @@ public class Lotto {
         HashSet<Integer> duplicate = new HashSet<>(winNumbers);
         if (duplicate.size() != 6) {
             throw new IllegalArgumentException(Error.DUPLICATED_NUMBER.getMessage());
+        }
+    }
+
+    private static void numberRangeCheck(List<Integer> winNumbers) throws IllegalArgumentException{
+        for (int i = 0; i < winNumbers.size(); i++) {
+            if (winNumbers.get(i) < 0 || winNumbers.get(i) > 45) {
+                throw new IllegalArgumentException(Error.INVALID_NUMBER_RANGE.getMessage());
+            }
         }
     }
 }

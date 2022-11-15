@@ -19,7 +19,7 @@ public class Application {
         try{
             Money.getMoney();
         }catch (IllegalArgumentException e){
-            System.out.println("[ERROR] 숫자가 아닌 값을 포함하고 있습니다.");
+            Print.notNumberError();
             return;
         }
         Print.howmanyLottos(numberOfLottos);
@@ -36,7 +36,7 @@ public class Application {
                 Compare.userList.add(correctNumbers.get(i));
             }
         }catch (IllegalArgumentException e){
-            System.out.println("[ERROR] 로또 번호 입력 오류");
+            Print.wrongInputError();
             return;
         }
 
