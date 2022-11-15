@@ -1,38 +1,37 @@
 package lotto.util;
 
 import static lotto.constant.ErrorType.BONUS_NUMBER_DUPLICATION_ERROR;
-import static lotto.constant.ErrorType.NOT_POSITIVE_NUMBER_ERROR;
 import static lotto.constant.ErrorType.LOTTO_NUMBERS_COUNT_STANDARD_ERROR;
 import static lotto.constant.ErrorType.LOTTO_NUMBERS_DUPLICATION_ERROR;
 import static lotto.constant.ErrorType.LOTTO_NUMBER_RANGE_ERROR;
+import static lotto.constant.ErrorType.NOT_POSITIVE_NUMBER_ERROR;
 import static lotto.constant.ErrorType.PURCHASE_AMOUNT_UNIT_ERROR;
+import static lotto.constant.NumberConstant.ZERO;
+import static lotto.constant.StandardConstant.LOTTO_NUMBERS_COUNT_STANDARD;
+import static lotto.constant.StandardConstant.MONEY_UNIT_STANDARD;
 
 import java.util.List;
 import lotto.LottoNumberRange;
 
 public class Validator {
 
-    private static final int UNIT_STANDARD = 1000;
-    private static final int ZERO = 0;
-    private static final int LOTTO_NUMBERS_COUNT_STANDARD = 6;
-
     public static void validatePositiveNumber(int number) {
-        boolean isPositive = number > 0;
+        boolean isPositive = number > ZERO.getValue();
         if (!isPositive) {
             throw new IllegalArgumentException(NOT_POSITIVE_NUMBER_ERROR.getMessage());
         }
     }
 
     public static void validateUnitStandard(int purchaseAmount) {
-        boolean isPurchaseAmountNotFollowUnitStandard = purchaseAmount % UNIT_STANDARD != ZERO;
+        boolean isPurchaseAmountNotFollowUnitStandard = purchaseAmount % MONEY_UNIT_STANDARD.getValue() != ZERO.getValue();
         if (isPurchaseAmountNotFollowUnitStandard) {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_UNIT_ERROR.getMessage());
         }
     }
 
     public static void validateLottoNumbersCount(List<Integer> lottoNumbers) {
-        int size = lottoNumbers.size();
-        if (size != LOTTO_NUMBERS_COUNT_STANDARD) {
+        int count = lottoNumbers.size();
+        if (count != LOTTO_NUMBERS_COUNT_STANDARD.getValue()) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_COUNT_STANDARD_ERROR.getMessage());
         }
     }
@@ -57,7 +56,7 @@ public class Validator {
                 .distinct()
                 .count();
 
-        if (count != LOTTO_NUMBERS_COUNT_STANDARD) {
+        if (count != LOTTO_NUMBERS_COUNT_STANDARD.getValue()) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_DUPLICATION_ERROR.getMessage());
         }
     }
