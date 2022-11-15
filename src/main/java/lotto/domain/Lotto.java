@@ -10,13 +10,13 @@ import lotto.constants.message.ExceptionMessage;
 public class Lotto {
     public static final int LOTTO_COUNT = 6;
     public static final String START_SYMBOL = "[";
-    private static final String END_SYMBOL = "]";
+    public static final String END_SYMBOL = "]";
     public static final String COMMA = ",";
-    private static final String SPACE = " ";
+    public static final String SPACE = " ";
     public static final int ONE = 1;
     public static final int HIT_THREE = 3;
     public static final int HIT_FIVE = 5;
-    private static final int SECOND_PLACE_COUNT = 7;
+    public static final int SECOND_PLACE_COUNT = 7;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -25,7 +25,6 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        // todo 분리하기
         if (numbers.size() != LOTTO_COUNT) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NUMERIC_LENGTH);
         }
@@ -46,14 +45,15 @@ public class Lotto {
     }
 
     public String createMessage() {
+        // TODO 리팩토링
         StringBuilder lottoResult = new StringBuilder();
         lottoResult.append(START_SYMBOL);
         numbers.stream()
-                .limit(numbers.size() - ONE)
+                .sorted(Integer::compareTo)
                 .forEach(number -> lottoResult.append(number)
                         .append(COMMA)
                         .append(SPACE));
-        return lottoResult.append(numbers.get(numbers.size() - ONE))
+        return lottoResult.delete(lottoResult.lastIndexOf(COMMA), lottoResult.lastIndexOf(SPACE) + ONE)
                 .append(END_SYMBOL)
                 .toString();
     }
