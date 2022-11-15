@@ -14,6 +14,9 @@ public class LottoMoney {
         validate(money);
         this.money = parseInt(money);
     }
+    public int changeToLottoCount() {
+        return money / LOTTO_PRICE;
+    }
     private void validate(String inputMoney){
         validInputNotNumber(inputMoney);
         validUnderMinimumPrice(inputMoney);

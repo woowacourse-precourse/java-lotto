@@ -7,7 +7,7 @@ public class LottoProgram {
         //로또 구입, 지불 금액 입력
         LottoMoney lottoMoney = ReceiveMoney();
         // 로또 발급
-
+        LottoCount lottoCount = calculateLottoCount(lottoMoney);
         // 로또 추첨 ( 로또 난수 생성 )
 
         // 당첨 로또 만들기
@@ -16,8 +16,10 @@ public class LottoProgram {
 
         // 출력하기
     }
-    public static LottoMoney ReceiveMoney(){
+    private LottoMoney ReceiveMoney(){
         return new LottoMoney(InputView.inputMoneyView());
     }
-
+    private LottoCount calculateLottoCount(LottoMoney lottoMoney) {
+        return new LottoCount(lottoMoney.changeToLottoCount());
+    }
 }
