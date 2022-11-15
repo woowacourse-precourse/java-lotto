@@ -1,10 +1,10 @@
 package controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
-import java.util.ArrayList;
-import lotto.Lotto;
 import data.InputGuideData;
+import java.util.ArrayList;
+import java.util.List;
+import lotto.Lotto;
 
 /**
  * 로또 프로그램의 전체적인 진행을 맡는 클래스

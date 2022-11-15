@@ -1,19 +1,20 @@
 package controller;
 
 public class MatchResult {
-    private boolean isHavingBonus;
-    private int winningCount;
+
+    private final boolean isHavingBonus;
+    private final int winningCount;
 
     public MatchResult(int winningCount, boolean isHavingBonus) {
         this.isHavingBonus = isHavingBonus;
         this.winningCount = winningCount;
     }
 
-    public boolean getIsHavingBonus(){
+    public boolean getIsHavingBonus() {
         return isHavingBonus;
     }
 
-    public int getWinningNumberCount(){
+    public int getWinningNumberCount() {
         return winningCount;
     }
 }

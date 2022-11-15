@@ -7,11 +7,12 @@ public enum NumericData {
     LOTTO_PRICE(1000);
 
     private final int numeric;
-    NumericData(int numeric){
+
+    NumericData(int numeric) {
         this.numeric = numeric;
     }
 
-    public int getNumericValue(){
+    public int getNumericValue() {
         return numeric;
     }
 

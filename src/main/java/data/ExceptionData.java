@@ -9,10 +9,11 @@ public enum ExceptionData {
 
     private final String errorMessage;
 
-    ExceptionData(String errorMessage){
+    ExceptionData(String errorMessage) {
         this.errorMessage = errorMessage;
     }
-    public void callErrorMessage(){
+
+    public void callErrorMessage() {
         System.out.print(EXCEPTION_HEAD.errorMessage);
         System.out.println(errorMessage);
     }

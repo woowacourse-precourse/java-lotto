@@ -7,13 +7,13 @@ public enum InputGuideData {
     INPUT_BONUS("보너스 번호를 입력해 주세요.");
 
 
-    private String printData;
+    private final String printData;
 
-    InputGuideData(String printData){
+    InputGuideData(String printData) {
         this.printData = printData;
     }
 
-    public void printData(){
+    public void printData() {
         System.out.println(printData);
     }
 }

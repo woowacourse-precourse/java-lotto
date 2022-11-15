@@ -12,11 +12,12 @@ public enum OutputData {
     CLOSE_PROFIT_RATE("%입니다.");
 
     private final String outputData;
-    OutputData(String outputData){
+
+    OutputData(String outputData) {
         this.outputData = outputData;
     }
 
-    public String getOutputData(){
+    public String getOutputData() {
         return outputData;
     }
 }
