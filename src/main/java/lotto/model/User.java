@@ -38,7 +38,7 @@ public class User {
         isDigitValidate(number);
         rangeValidate(Integer.parseInt(number));
 
-        bonusNumber=Integer.parseInt(number);
+        this.bonusNumber=Integer.parseInt(number);
 
     }
 
@@ -84,6 +84,9 @@ public class User {
 
     public int getPublicans() {
         return publicans;
+    }
+    public int getBonus() {
+        return bonusNumber;
     }
 
 }

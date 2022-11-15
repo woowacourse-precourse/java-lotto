@@ -44,4 +44,15 @@ class UserTest {
 
     }
 
+    @Test
+    void 보너스번호_입력_처리테스트() {
+        systemIn("1");
+        user.getBonusNumber();
+        assertThat(user.getBonus()).isEqualTo(1);
+
+        systemIn("k");
+        assertThatThrownBy(() -> user.getBonusNumber()).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 숫자를 입력해주세요!");
+    }
+
 }
