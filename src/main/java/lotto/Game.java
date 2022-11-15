@@ -24,7 +24,7 @@ public class Game {
         randomLottos = makeLottosList(money);
         printRandomLottos(randomLottos);
 
-        // 당첨 번호 입력
+        // 당첨 번호 입력 및 타당성 검증
         winningLotto = inputWinningLotto();
     }
 
