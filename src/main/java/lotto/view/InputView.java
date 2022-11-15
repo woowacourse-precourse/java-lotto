@@ -61,7 +61,6 @@ public class InputView {
         try {
             System.out.println(Message.PURCHASE_AMOUNT.getValue());
             int money = inputNum();
-            validateThousand(money);
             return money;
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_MONEY_ERROR_MESSAGE);
@@ -72,7 +71,6 @@ public class InputView {
         try {
             System.out.println(Message.BONUS_NUMBER.getValue());
             Integer number = inputNum();
-            validateCheckNumberLimit(number);
             return number;
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_ONLY_NUMBER_ERROR_MESSAGE);
@@ -83,8 +81,7 @@ public class InputView {
     private static List<Integer> splitNumbers(final String numbersText) {
         try {
             return Arrays.stream(numbersText.split(Validation.REGEX.getValue()))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
+                    .map(Integer::parseInt).collect(Collectors.toList());
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_ONLY_NUMBER_ERROR_MESSAGE);
         }
@@ -97,7 +94,6 @@ public class InputView {
 
         List<Integer> splitLotto = splitNumbers(lottoNumber);
 
-        validateAllLottoNumber(splitLotto);
         return splitLotto;
     }
 
@@ -106,9 +102,6 @@ public class InputView {
         return inputLottoNumbers();
     }
 
-    private static void validateAllLottoNumber(List<Integer> splitLotto) {
-        validateCheckLimit(splitLotto);
-    }
 
     private static void validateLottoNumberPattern(final String rawLottoNumbers) {
         Pattern PATTERN = Pattern.compile(Validation.PATTERN.getValue());
@@ -117,30 +110,5 @@ public class InputView {
         }
     }
 
-    private static void validateCheckNumberLimit(Integer num){
-        if (num < 1 || num > 45) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + LIMIT_NUMBER_ERROR_MESSAGE);
-        }
-    }
-
-
-    private static void validateCheckLimit(List<Integer> numbers) {
-        for (Integer num : numbers) {
-            validateCheckNumberLimit(num);
-        }
-    }
-    private static void validateThousand(Integer money) {
-        validateLessThanThousand(money);
-        validateMultipleThousand(money);
-
-    }
-    private static void validateLessThanThousand(Integer money) {
-        if(money < 1000)
-            throw new IllegalArgumentException(ERROR_MESSAGE + LESS_THAN_THOUSAND_ERROR_MESSAGE);
-    }
-    private static void validateMultipleThousand(Integer money) {
-        if(money % 1000 != 0)
-            throw new IllegalArgumentException(ERROR_MESSAGE + MULTIPLE_THOUSAND_ERROR_MESSAGE);
-    }
 
 }

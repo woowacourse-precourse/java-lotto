@@ -12,6 +12,7 @@ import static lotto.view.outputView.printWinningMessage;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.AnswerLotto;
+import lotto.domain.Buyer;
 import lotto.domain.LottoGroup;
 import lotto.domain.NumberGenerator;
 import lotto.domain.WinningRank;
@@ -23,13 +24,14 @@ public class Controller {
     public boolean run(){
         try {
             Integer money = inputMoney();
-            LottoGroup lottoGroup = buyLotto(money);
+            Buyer buy = new Buyer(money,getNumberOfLotto(money));
+            LottoGroup lottoGroup = buyLotto(buy);
             AnswerLotto answerLotto = getAnswerLotto();
             Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(
                     lottoGroup, answerLotto);
             printWinningMessage();
             printWinningInformation(winningDetails);
-            calculateStatistic(winningDetails,money);
+            calculateStatistic(winningDetails, buy.getMoney());
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
@@ -37,11 +39,10 @@ public class Controller {
         return true;
     }
 
-    private LottoGroup buyLotto(Integer money){
+    private LottoGroup buyLotto(Buyer buy){
         NumberGenerator lottogenerator = new NumberGenerator();
-        Integer numOfLotto = getNumberOfLotto(money);
-        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(numOfLotto));
-        printLottoGroup(lottoGroup, numOfLotto);
+        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(buy.getNumOfLotto()));
+        printLottoGroup(lottoGroup, buy.getNumOfLotto());
         return lottoGroup;
     }
 
