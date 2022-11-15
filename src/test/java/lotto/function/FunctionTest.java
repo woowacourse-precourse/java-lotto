@@ -4,6 +4,7 @@ import lotto.domain.jackpot.JackpotResult;
 import lotto.domain.lotto.Lotto;
 
 import lotto.domain.prize.PrizeResult;
+import lotto.domain.rate.Rate;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -64,6 +65,19 @@ class FunctionTest {
 
 		//then
 		assertThat(hashMap.get("3개 일치")).isEqualTo(null);
+	}
+
+	@Test
+	void MAP에_있는_값만_가져오기_정상작동하는지() {
+		//given
+		HashMap<String,Integer> testMap=new HashMap<>();
+		testMap.put("3개 일치",1);
+		testMap.put("5개 일치",2);
+		//when
+		List<Integer> money_list = Rate.prize_money_list_return(testMap);
+		int prize_money_sum = Rate.prize_money_sum(money_list);
+		//then
+		assertThat(prize_money_sum).isEqualTo(3005000);
 	}
 
 	private static List<Integer> one_of_lotto() {
