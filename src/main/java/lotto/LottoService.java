@@ -35,4 +35,10 @@ public class LottoService {
         }
     }
 
+    public WinningResult makeWinningResult(WinningLotto winningLotto, List<Lotto> lottos) {
+        List<Rank> ranks = lottos.stream().map(
+                (lotto) -> Rank.valueOf(winningLotto.match(lotto), winningLotto.checkBonus(lotto)))
+                .collect(Collectors.toList());
+        return new WinningResult(ranks, lottoPrice);
+    }
 }

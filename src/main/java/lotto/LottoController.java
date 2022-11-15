@@ -18,7 +18,7 @@ public class LottoController {
     public void run() {
         List<Lotto> lottos = buyLottos();
         WinningLotto winningLotto = makeWinningNumbers();
-        WinningResult winningResult = calcWinningResult(winningLotto, lottos);
+        WinningResult winningResult = lottoService.makeWinningResult(winningLotto, lottos);
         // OutputView.printWinningDetails();
         // OutputView.printRateOfReturn();
     }
@@ -42,12 +42,4 @@ public class LottoController {
 
         return new WinningLotto(winningNumbers, bonusNumber);
     }
-
-    private WinningResult calcWinningResult(WinningLotto winningLotto, List<Lotto> lottos) {
-        List<Rank> ranks = lottos.stream().map(
-                (lotto) -> Rank.valueOf(winningLotto.match(lotto), winningLotto.checkBonus(lotto)))
-                .collect(Collectors.toList());
-        return null;
-    }
-
 }
