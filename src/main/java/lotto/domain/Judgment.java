@@ -91,4 +91,16 @@ public class Judgment {
         }
 
     }
+    
+    public int correctCount(List<Integer> winningNumbers, List<Integer> buyerNumbers) {
+        int result = 0;
+        
+        for (int index = 0; index < buyerNumbers.size(); index++) {
+            if (winningNumbers.contains(buyerNumbers.get(index))) {
+                result++;
+            }
+        }
+        
+        return result;
+    }
 }
