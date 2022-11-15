@@ -23,10 +23,18 @@ public class ConvertTest {
         });
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"-8000", "0", "3000000000"})
+    void 정수_범위와_천원단위가_아닌_예외처리(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Convert.StrToInt(input);
+        });
+    }
+
     @Test
     void 로또_당첨번호_정상입력() {
         assertThat(Convert.StrToList("1,2,3,4,5,6"))
-            .isEqualTo(List.of(1,2,3,4,5,6));
+            .isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @ParameterizedTest
