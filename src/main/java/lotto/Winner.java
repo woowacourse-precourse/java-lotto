@@ -1,17 +1,19 @@
 package lotto;
 
 public enum Winner {
-    FOURTH(3, 5000),
-    THIRD(4, 50000),
-    SECOND(5, 1500000),
-    BONUS(50, 3000000),
-    FIRST(6, 2000000000);
+    FOURTH(3, 0,5000),
+    THIRD(4, 1,50000),
+    SECOND(5, 2,1500000),
+    BONUS(50, 3,3000000),
+    FIRST(6, 4,2000000000);
 
     private final int matchNumber;
+    private final int statisticsIndex;
     private final int prize;
 
-    Winner(int matchNumber,int prize){
+    Winner(int matchNumber,int statisticsIndex,int prize){
         this.matchNumber = matchNumber;
+        this.statisticsIndex=statisticsIndex;
         this.prize = prize;
     }
 
@@ -24,5 +26,14 @@ public enum Winner {
             }
         }
         return  retPrize;
+    }
+
+    public static int getStatisticsIndex(int matchNumber){
+        for(Winner winner : Winner.values()){
+            if(winner.matchNumber==matchNumber){
+                return winner.statisticsIndex;
+            }
+        }
+        return -1;
     }
 }

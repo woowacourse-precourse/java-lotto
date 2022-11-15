@@ -65,7 +65,17 @@ public class SaturdayTest {
         assertThat(saturday.checkLottoAt(2)).isEqualTo(5);
         assertThat(saturday.checkLottoAt(3)).isEqualTo(5);
         assertThat(saturday.checkLottoAt(4)).isEqualTo(6);
+    }
 
+    @Test
+    void testmakeStatistics(){
+        Saturday saturday = new Saturday("1,2,3,4,5,6","7");
+        DB.insert(new Lotto(List.of(1,2,3,4,5,6))); //6
+        DB.insert(new Lotto(List.of(1,2,3,4,5,7))); // 5+b
+        DB.insert(new Lotto(List.of(1,2,3,4,7,10))); // 5
+        DB.insert(new Lotto(List.of(1,2,3,4,11,45))); //4
+
+        assertThat(saturday.makeStatistics()).isEqualTo(List.of(0,1,1,1,1));
 
     }
 

@@ -7,7 +7,6 @@ import java.util.List;
 public class Saturday {
     private List<Integer> winNumbers;
     private int winBonus;
-    private List<Integer> statistics;
 
     Saturday(String input_win,String input_bonus)throws IllegalArgumentException{
         validateStrInput(input_win,input_bonus);
@@ -21,7 +20,6 @@ public class Saturday {
         validateIntInput(win,bonus);
         this.winNumbers = win;
         this.winBonus = bonus;
-        statistics = new ArrayList<>(List.of(0,0,0,0,0));
     }
 
 
@@ -79,5 +77,16 @@ public class Saturday {
         if(flag==1 && count<5) return count+1;
 
         return count;
+    }
+    public List<Integer> makeStatistics(){
+        List<Integer> statistics = new ArrayList<>(List.of(0,0,0,0,0));
+        int size = DB.getTableSize();
+        int count,index;
+        for(int i=0; i<size; i++){
+            count = checkLottoAt(i);
+            index=Winner.getStatisticsIndex(count);
+            statistics.set(index,statistics.get(index)+1);
+        }
+        return statistics;
     }
 }
