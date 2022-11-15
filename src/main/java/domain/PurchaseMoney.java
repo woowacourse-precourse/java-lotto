@@ -46,10 +46,10 @@ public class PurchaseMoney {
     }
 
     public int getPurchaseMoney() {
-        return purchaseMoney;
+        return this.purchaseMoney;
     }
 
     public int getLottoCount() {
-        return purchaseMoney / LOTTO_PRICE;
+        return this.purchaseMoney / LOTTO_PRICE;
     }
 }

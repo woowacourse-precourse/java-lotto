@@ -5,7 +5,6 @@ import view.InputView;
 import view.OutputView;
 
 public class LottoController {
-
     public void run() {
         PurchaseMoney purchaseMoney = new PurchaseMoney(InputView.inputMoney());
         LotteryMachine lotteryMachine = new LotteryMachine(purchaseMoney.getLottoCount());
@@ -26,5 +25,4 @@ public class LottoController {
     private WinningNumber getWinningNumbers(Lotto winningNumbers, int bonusNumber) {
         return new WinningNumber(winningNumbers, bonusNumber);
     }
-
 }

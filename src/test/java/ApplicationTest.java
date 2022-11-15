@@ -12,7 +12,7 @@ class ApplicationTest extends NsTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    void function_test() {
+    void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -44,6 +44,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
