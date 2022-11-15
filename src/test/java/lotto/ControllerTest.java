@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class ControllerTest {
     @Test
     void ValidatePurchaseAmountTest1() {
-        // 1000원 단위가 아닌 경우
+        // 로또 구입 금액이 1000원 단위가 아닌 경우
         Integer purchaseAmount = 4500;
         assertThatThrownBy(() -> Controller.ValidatePurchaseAmount(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -19,7 +19,7 @@ class ControllerTest {
 
     @Test
     void ValidatePurchaseAmountTest2() {
-        // 1000원 보다 작은 경우
+        // 로또 구입 금액이 1000원 보다 작은 경우
         Integer purchaseAmount = 900;
         assertThatThrownBy(() -> Controller.ValidatePurchaseAmount(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -27,9 +27,19 @@ class ControllerTest {
 
     @Test
     void AnalyzePlayerNumbersTest1() {
+        // 발행한 로또를 분석하는 메소드 테스트
         List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         List<List<Integer>> publishedLottoArray = new ArrayList<>(Arrays.asList(Arrays.asList(1, 2, 3, 4, 5, 6, 7)));
         assertEquals(1, Controller.AnalyzePlayerNumbers
                 (numbers, publishedLottoArray).get(1));
+    }
+
+    @Test
+    void AnalyzePlayerNumbersTest2() {
+        // 발행한 로또를 분석하는 메소드 테스트
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        List<List<Integer>> publishedLottoArray = new ArrayList<>(Arrays.asList(Arrays.asList(1, 2, 3, 4, 5, 8, 7)));
+        assertEquals(1, Controller.AnalyzePlayerNumbers
+                (numbers, publishedLottoArray).get(2));
     }
 }
