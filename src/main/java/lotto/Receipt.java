@@ -7,8 +7,10 @@ import lotto.exception.MyIllegalArgumentException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static lotto.LottoConfiguration.*;
+import static lotto.LottoConfiguration.START_NUMBER;
+import static lotto.LottoConfiguration.END_NUMBER;
 import static lotto.LottoConfiguration.PRICE;
+import static lotto.LottoConfiguration.SIZE;
 
 public class Receipt {
     private final int money;
@@ -21,7 +23,7 @@ public class Receipt {
     }
 
     private void validate(int money) {
-        if (money <= 0 && money % PRICE != 0) {
+        if (money <= 0 || money % PRICE != 0) {
             throw new MyIllegalArgumentException(ErrorCode.MONEY_ERROR);
         }
     }
