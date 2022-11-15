@@ -31,11 +31,11 @@
     - 각 사용자 로또 번호들이 갖고 있는 `match`의 수를 리스트`matches`로 만들어 반환한다. `LottoResult#getMatches`
     - 각 사용자 로또 번호들의 `hasBonus`의 수를 리스트`hasBonusMatches`로 만들어 반환한다. `LottoResult#getBonusMatches`
 
-- Ranking 모델
+- PlayerRanking 모델
     - `LottoResult` 모델에서 반환한 `matches`, `hasBonusMatches`를 입력값으로 받는다.
-    - 입력값을 `Rank`(Enum)의 인스턴스 변수인 `match`와 비교하고, `hasBonus`를 고려해 각 최종 순위를 찾는다. `Ranking#findPlayerRanking`
-    - 최종 순위를 구매한 티켓의 개수만큼 반복해 리스트`playerRankings`에 자례대로 저장한다. `Ranking#setPlayerRankings`
-    - 사용자의 티켓 별 최종 순위를 저장한 리스트`playerRankings`를 반환한다. `Ranking#getPlayerRankings`
+    - 입력값을 `Rank`(Enum)의 인스턴스 변수인 `match`와 비교하고, `hasBonus`를 고려해 각 최종 순위를 찾는다. `PlayerRanking#findPlayerRanking`
+    - 최종 순위를 구매한 티켓의 개수만큼 반복해 리스트`playerRankings`에 자례대로 저장한다. `PlayerRanking#setPlayerRankings`
+    - 사용자의 티켓 별 최종 순위를 저장한 리스트`playerRankings`를 반환한다. `PlayerRanking#getPlayerRankings`
 
 - Statistics 모델
     - 사용자의 티켓 별 최종 순위를 저장한 리스트`rankings`를 입력받는다.

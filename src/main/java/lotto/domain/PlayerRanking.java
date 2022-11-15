@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Ranking {
+public class PlayerRanking {
     private List<Rank> playerRankings = new ArrayList<>();
 
-    public Ranking(List<Integer> matches, List<Boolean> bonusMatches) {
+    public PlayerRanking(List<Integer> matches, List<Boolean> bonusMatches) {
         setPlayerRankings(matches, bonusMatches);
     }
 

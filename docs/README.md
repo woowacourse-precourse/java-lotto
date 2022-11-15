@@ -33,7 +33,7 @@
 
 **로또 순위 계산**
 
-- [x] 겹치는 번호 개수, 보너스 여부로 순위를 구한다. `Ranking#findPlayerRanking()`
+- [x] 겹치는 번호 개수, 보너스 여부로 순위를 구한다. `PlayerRanking#findPlayerRanking()`
 
 **당첨 통계 계산**
 

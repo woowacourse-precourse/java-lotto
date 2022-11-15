@@ -11,7 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
-import lotto.domain.Ranking;
+import lotto.domain.PlayerRanking;
 import lotto.domain.Statistics;
 import lotto.domain.Yield;
 import lotto.view.InputView;
@@ -71,8 +71,8 @@ public class LottoController {
 
     private static void aggregateStatisticResults() {
         LottoResult result = new LottoResult(winningNumbers, bonusNumber, allPlayerNumbers);
-        Ranking ranking = new Ranking(result.getMatches(), result.getBonusMatches());
-        Statistics statistics = new Statistics(ranking.getPlayerRankings());
+        PlayerRanking playerRanking = new PlayerRanking(result.getMatches(), result.getBonusMatches());
+        Statistics statistics = new Statistics(playerRanking.getPlayerRankings());
         OutputView.printStatistics(statistics.getStatistics());
     }
 
