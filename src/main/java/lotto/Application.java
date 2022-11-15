@@ -48,6 +48,13 @@ public class Application {
         userNums.add(Integer.valueOf(String.valueOf(myNums)));
         return myNums;
     }
+    // 보너스 번호 입력
+    public static int bounsNumber() {
+        System.out.println("보너스 번호 입력: ");
+        int bonusNum = Integer.parseInt(Console.readLine());
+        return bonusNum;
+    }
+
 
 
 
