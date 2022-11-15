@@ -1,6 +1,5 @@
 package lotto;
 
-import javax.swing.text.NumberFormatter;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -12,10 +11,8 @@ public class Application {
 
     private static int amount;
     private static int totalOutcome;
-
-    private static List<LotteryHostAgency.WinningCriteria> results;
-
     private static List<Lotto> lottories;
+    private static List<LotteryHostAgency.WinningCriteria> results;
 
 
     private static String validateInputAmountString(String inputString) {
@@ -53,7 +50,7 @@ public class Application {
         return results;
     }
 
-    private static List<Integer> setInputWinningNumbers() {
+    private static List<Integer> getInputWinningNumbers() {
         List<Integer> results = new ArrayList<>();
         System.out.println("당첨 번호를 입력해주세요.");
         String inputNumbersString = validateInputWinningNumbersString(readLine());
@@ -63,7 +60,7 @@ public class Application {
         return results;
     }
 
-    private static int setInputBonusNumber() {
+    private static int getInputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         return Integer.parseInt(validateInputBonusNumberString(readLine()));
 
@@ -111,10 +108,10 @@ public class Application {
         LotteryHostAgency lha = new LotteryHostAgency();
         lottories = purchaseLotteries();
 
-        List<Integer> inputNumbers = setInputWinningNumbers();
-        int inputBonusNumber = setInputBonusNumber();
+        List<Integer> winningNumbers = getInputWinningNumbers();
+        int bonusNumber = getInputBonusNumber();
 
-        lha.setDrawalNumbers(inputNumbers, inputBonusNumber);
+        lha.setDrawalNumbers(winningNumbers, bonusNumber);
         results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
         printWiningStats(results);
     }
