@@ -1,9 +1,8 @@
 package lotto.domain;
 
-import org.mockito.internal.matchers.Not;
-
 import java.util.HashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static lotto.message.ErrorMessage.*;
 
@@ -20,15 +19,18 @@ public class Purchase {
         try {
             Integer.parseInt(money);
         } catch (Exception e) {
-            throw new IllegalArgumentException(Not_Digit.getMessage());
+            System.out.println(Not_Digit.getMessage());
+            throw new NoSuchElementException();
         }
     }
 
     private void priceRange(int money) {
         if(money % 1000 != 0) {
-            throw new IllegalArgumentException(Purchase_Price.getMessage());
+            System.out.println(Purchase_Price.getMessage());
+            throw new IllegalArgumentException();
         } else if(money <= 0) {
-            throw new IllegalArgumentException(Purchase_Price.getMessage());
+            System.out.println(Purchase_Price.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 

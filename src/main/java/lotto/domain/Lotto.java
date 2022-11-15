@@ -20,14 +20,16 @@ public class Lotto {
 
     private void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Lotto_Numbers_Size.getMessage());
+            System.out.println(Lotto_Numbers_Size.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateNumbersRange(List<Integer> numbers) {
         for(int i = 0; i < 6; i++) {
             if(numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException(Lotto_Numbers_Range.getMessage());
+                System.out.println(Lotto_Numbers_Range.getMessage());
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -36,7 +38,8 @@ public class Lotto {
         Set<Integer> numbersSet = new HashSet<>(numbers);
 
         if(numbers.size() != numbersSet.size()) {
-            throw new IllegalArgumentException(Lotto_Numbers_Duplicate.getMessage());
+            System.out.println(Lotto_Numbers_Duplicate.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 

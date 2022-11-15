@@ -4,6 +4,8 @@ import lotto.message.ErrorMessage;
 
 import java.util.List;
 
+import static lotto.message.ErrorMessage.*;
+
 public class Bonus {
     private final int bonus;
 
@@ -18,19 +20,22 @@ public class Bonus {
         try {
             Integer.parseInt(bonus);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.Bonus_Not.getMessage());
+            System.out.println(Bonus_Not.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
     private void bonusRange(int bonus) {
         if(bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException(ErrorMessage.Bonus_Range.getMessage());
+            System.out.println(Bonus_Range.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
     private void bonusDuplicate(int bonus, List<Integer> numbers) {
         if(numbers.contains(bonus)) {
-            throw new IllegalArgumentException(ErrorMessage.Bonus_Duplicate.getMessage());
+            System.out.println(Bonus_Duplicate.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 

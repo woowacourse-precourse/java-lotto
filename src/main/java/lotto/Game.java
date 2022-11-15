@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.message.GameMessage.*;
 
 public class Game {
     HashMap<Integer, List<Integer>> userLottoNumbers;
@@ -41,11 +42,11 @@ public class Game {
     }
 
     private void start() {
-        System.out.println(GameMessage.Input_Purchase.getMessage());
+        System.out.println(Input_Purchase.getMessage());
     }
 
     private void inputLotto() {
-        System.out.println(GameMessage.Input_Lotto_Numbers.getMessage());
+        System.out.println(Input_Lotto_Numbers.getMessage());
         validateLotto(readLine());
     }
 
@@ -63,7 +64,7 @@ public class Game {
     }
 
     private void inputBonus() {
-        System.out.println(GameMessage.Input_Bonus.getMessage());
+        System.out.println(Input_Bonus.getMessage());
     }
 
     private void winningPlay() {
@@ -85,11 +86,11 @@ public class Game {
     }
 
     private void totalStat() {
-        System.out.println(GameMessage.Winnig_Stat.getMessage());
-        System.out.println(GameMessage.Three_Match.getMessage() + winningStat.get(5) + "개");
-        System.out.println(GameMessage.Four_Match.getMessage() + winningStat.get(4) + "개");
-        System.out.println(GameMessage.Five_Match.getMessage() + winningStat.get(3) + "개");
-        System.out.println(GameMessage.Five_Bonus_Match.getMessage() + winningStat.get(2) + "개");
-        System.out.println(GameMessage.Six_Match.getMessage() + winningStat.get(1) + "개");
+        System.out.println(Winnig_Stat.getMessage());
+        System.out.println(Three_Match.getMessage() + winningStat.get(5) + "개");
+        System.out.println(Four_Match.getMessage() + winningStat.get(4) + "개");
+        System.out.println(Five_Match.getMessage() + winningStat.get(3) + "개");
+        System.out.println(Five_Bonus_Match.getMessage() + winningStat.get(2) + "개");
+        System.out.println(Six_Match.getMessage() + winningStat.get(1) + "개");
     }
 }
