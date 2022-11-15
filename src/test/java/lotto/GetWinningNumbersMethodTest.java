@@ -24,9 +24,9 @@ class GetWinningNumbersMethodTest extends NsTest {
         assertSimpleTest(() -> {
             run("40,41,42,43,44,45");
             for (int number = 1; number <= 45; number++) {
-                if(winningNumbers.contains(number))
+                if (winningNumbers.contains(number))
                     assertThat(numberType[number]).isEqualTo(NumberType.WINNING);
-                if(!winningNumbers.contains(number))
+                if (!winningNumbers.contains(number))
                     assertThat(numberType[number]).isNotEqualTo(NumberType.WINNING);
             }
         });

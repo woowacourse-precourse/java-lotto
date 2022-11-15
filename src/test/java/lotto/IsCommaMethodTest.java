@@ -17,8 +17,8 @@ class IsCommaMethodTest {
     @DisplayName("쉼표를 제외한 모든 경우 false를 반환한다.")
     @Test
     void isCommaMethodExceptionTest() {
-        for(char asciicode = 0; asciicode < 256; asciicode++) {
-            if(asciicode == ',') continue;
+        for (char asciicode = 0; asciicode < 256; asciicode++) {
+            if (asciicode == ',') continue;
             assertThat(isComma(asciicode)).isEqualTo(false);
         }
     }
