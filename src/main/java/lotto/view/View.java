@@ -1,8 +1,8 @@
 package lotto.view;
 
 import java.util.List;
+import lotto.model.WinnerInfo;
 import lotto.util.Convertor;
-import lotto.util.WinnerInfo;
 
 public class View {
     private static final String GET_MONEY_MESSAGE = "구입 금액을 입력해 주세요.";

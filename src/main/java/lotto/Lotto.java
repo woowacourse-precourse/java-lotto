@@ -1,7 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
-import lotto.util.Validator;
+import java.util.Set;
 import lotto.view.View;
 
 /*
@@ -53,7 +54,9 @@ public class Lotto {
     }
 
     private void validateUnique(List<Integer> numbers) {
-        if (!Validator.isUniqueNumber(numbers)) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        if (uniqueNumbers.size() != numbers.size()) {
             View.printNotUniqueNumber();
             throw new IllegalArgumentException();
         }

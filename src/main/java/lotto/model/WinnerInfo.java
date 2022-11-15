@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.model;
 
 /*
  * 로또 당첨 조건 및 상금 등의 정보를 담당하는 enum 클래스

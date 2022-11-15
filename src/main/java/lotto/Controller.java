@@ -5,9 +5,9 @@ import java.util.List;
 import lotto.model.BonusNumber;
 import lotto.model.Money;
 import lotto.model.Service;
+import lotto.model.WinnerInfo;
 import lotto.util.LottoGenerator;
 import lotto.util.PlayerInput;
-import lotto.util.WinnerInfo;
 import lotto.view.View;
 
 /*

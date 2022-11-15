@@ -15,12 +15,12 @@ public class PlayerInput {
     public static int getInteger() {
         String input = Console.readLine().trim();
 
-        if (Validator.isEmpty(input)) {
+        if (input.isEmpty()) {
             View.printInputIsEmpty();
             throw new IllegalArgumentException();
         }
 
-        if (!Validator.isInteger(input)) {
+        if (isPositiveInteger(input)) {
             View.printNotInteger();
             throw new IllegalArgumentException();
         }
@@ -31,7 +31,7 @@ public class PlayerInput {
         String input = Console.readLine().trim();
         List<Integer> numbers;
 
-        if (Validator.isEmpty(input)) {
+        if (input.isEmpty()) {
             View.printInputIsEmpty();
             throw new IllegalArgumentException();
         }
@@ -49,6 +49,17 @@ public class PlayerInput {
         }
 
         return numbers;
+    }
+
+    private static boolean isPositiveInteger(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            char needVerify = number.charAt(i);
+
+            if (!Character.isDigit(needVerify)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

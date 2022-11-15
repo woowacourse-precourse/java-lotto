@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import lotto.constant.Constant;
 import lotto.util.Convertor;
-import lotto.util.WinnerInfo;
 
 /*
  * 로또 게임 로직을 담당하는 객체
