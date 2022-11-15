@@ -3,6 +3,7 @@ package lotto.lotto;
 import static lotto.constant.Rules.END_INCLUSIVE;
 import static lotto.constant.Rules.START_INCLUSIVE;
 
+import java.util.Objects;
 import lotto.exception.lotto.LottoNumberException;
 
 public class LottoNumber {
@@ -67,6 +68,11 @@ public class LottoNumber {
     @Override
     public String toString() {
         return Integer.toString(number);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 
     public int getNumber() {

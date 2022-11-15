@@ -23,4 +23,8 @@ public class WinningLotto extends Lotto {
             LottoNumber bonusNumber) {
         return !winningNumbers.contains(bonusNumber);
     }
+
+    public LottoNumber getBonusNumber() {
+        return bonusNumber;
+    }
 }

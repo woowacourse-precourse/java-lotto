@@ -34,4 +34,8 @@ public class Lotto {
     public String toString() {
         return Arrays.toString(numbers.toArray());
     }
+
+    public List<LottoNumber> getNumbers() {
+        return numbers;
+    }
 }
