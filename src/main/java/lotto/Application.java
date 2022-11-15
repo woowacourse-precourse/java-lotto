@@ -15,6 +15,6 @@ public class Application {
 
         List<Integer> numbersOfWinner = ui.getWinningNumber();
 
-
+        int bunusNumber = ui.getBonusNumber();
     }
 }

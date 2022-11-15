@@ -69,7 +69,9 @@ public class UI {
 
         isSixNumbers(splitWinningNumbers);
 
-        isOneToFourtyFive(splitWinningNumbers);
+        for (String splitWinningNumber : splitWinningNumbers) {
+            isOneToFourtyFive(splitWinningNumber);
+        }
 
         isDuplicatedNumber(splitWinningNumbers);
     }
@@ -81,17 +83,14 @@ public class UI {
         }
     }
 
-    public void isOneToFourtyFive(String[] splitWinningNumbers) {
+    public static void isOneToFourtyFive(String splitWinningNumber) {
+        isNumber(splitWinningNumber);
 
-        for (String splitWinningNumber : splitWinningNumbers) {
-            isNumber(splitWinningNumber);
+        int winningNumber = Integer.parseInt(splitWinningNumber);
 
-            int winningNumber = Integer.parseInt(splitWinningNumber);
-
-            if (winningNumber < 0 || winningNumber > 45) {
-                System.out.println(ErrorType.NOT_ONE_TO_FOURTYFIVE.getErrorMessage());
-                throw new IllegalArgumentException();
-            }
+        if (winningNumber < 0 || winningNumber > 45) {
+            System.out.println(ErrorType.NOT_ONE_TO_FOURTYFIVE.getErrorMessage());
+            throw new IllegalArgumentException();
         }
     }
 
@@ -133,5 +132,10 @@ public class UI {
     public static int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
+
+        isNumber(bonusNumber);
+        isOneToFourtyFive(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
     }
 }
