@@ -48,7 +48,7 @@ public class Lotto {
         }
         catch(Exception e){
             System.out.println("[ERROR]");
-            throw e;
+            return 0;
         }
     }
     
@@ -61,41 +61,47 @@ public class Lotto {
         }
     }
     
-    public static void printTickets(List<List> tickets){
+    public static void printTickets(List<List> ticketsNum){
         System.out.println( tickets + "개를 구매했습니다.");
-        for (List l : tickets){
+        for (List l : ticketsNum){
             System.out.println(l);
         }
     }
     
-    public static List<String> winInput(){
-        List<String> results = new ArrayList<>();
+    public static String winInput() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningInput = Console.readLine().strip();
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String bonus = Console.readLine().strip();
-        results.add(winningInput);
-        results.add(bonus);
-        return results;
+        return winningInput;
     }
     
-    public static List<Integer> validateWin(List<String> input) throws IllegalArgumentException{
-        IllegalArgumentException exception = new IllegalArgumentException();
-        String[] temp = input.get(0).split(",");
-        if(temp.length > 6){
-            System.out.println("[ERROR]");
-            throw exception;
+    public static String bonusIn(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusInput = Console.readLine().strip();
+        return bonusInput;
+    }
+    
+    public static List<String> str(String[] in){
+        List<String> result = new ArrayList<>();
+        for(String s : in){
+            result.add(s);
         }
+        return result;
+    }
+    
+    public static List<Integer> validateWin(String input, String bonusIn) throws IllegalArgumentException{
+        IllegalArgumentException exception = new IllegalArgumentException();
+        String[] temp = input.split(",");
+        List<String> win = str(temp);
         List<Integer> result = new ArrayList<>();
-        for(int n = 0; n < temp.length; n++){
-            int tempNum = val(input, n);
+        for(int n = 0; n < win.size(); n++){
+            int tempNum = val(win, n);
             if (result.contains(tempNum)){
                 System.out.println("[ERROR]");
                 throw exception;
             }
             result.add(tempNum);
         }
-        bonusNum = val(input, 7);
+        bonusNum = Integer.valueOf(bonusIn);
         if(result.contains(bonusNum)){
             System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw exception;
@@ -106,6 +112,7 @@ public class Lotto {
     public static int val(List<String> in, int num) throws IllegalArgumentException{
         try{
             int temp = Integer.valueOf(in.get(num));
+            System.out.println(temp);
             if (temp < 45 && temp > 0){
                 return temp;
             }
@@ -163,7 +170,7 @@ public class Lotto {
         System.out.println("6개 일치 (2,000,000,000원) - " + first +"개");
         
         float result = calculate(tickets, first,second,third,fourth,fifth);
-        float temp = Math.round(result * 100) / 100;
+        float temp = result * 100;
     
         System.out.println("총 수익률은 " + temp +"%입니다.");
     }

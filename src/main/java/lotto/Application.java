@@ -7,11 +7,14 @@ import static lotto.Lotto.*;
 public class Application {
     public static void main(String[] args) {
         int money = read();
-        numOfTickets(money);
-        List<List> tickets = purchased();
-        printTickets(tickets);
-        List<String> winningIn = winInput();
-        List<Integer> winningNum = validateWin(winningIn);
-        loop(winningNum, tickets);
+        if(money != 0){
+            numOfTickets(money);
+            List<List> tickets = purchased();
+            printTickets(tickets);
+            String winningIn = winInput();
+            String bonusIn = bonusIn();
+            List<Integer> winningNum = validateWin(winningIn,bonusIn);
+            loop(winningNum, tickets);
+        }
     }
 }
