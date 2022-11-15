@@ -28,6 +28,7 @@ public class LottoServiceMachine {
     public void getWinningLottoNumber(){
         winningNumber = getWinningNumberByCount(REQUIRE_LOTTO_NUMBER_COUNT.getValue());
         bonusNumber = getWinningNumberByCount(AVAIL_BONUS_NUMBER_COUNT.getValue());
+        isNormalNumberInBonusNumber();
     }
     public List<Integer> getWinningNumberByCount(int requireCount){
         String lottoNumberString = Console.readLine();
