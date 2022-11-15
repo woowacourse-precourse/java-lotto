@@ -23,13 +23,9 @@ public class Buyer {
         }
     }
 
-    static int inputLottoAmount() {
+    static int LottoAmountConversion(String inputValue) {
         int purchaseAmount;
-        String inputValue;
         PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
-
-        System.out.println(BuyerPrint.ENTER_PURCHASE_AMOUNT_MESSAGE);
-        inputValue = Console.readLine();
 
         validConsistByNumber(inputValue);
         purchaseAmount = Integer.parseInt(inputValue);

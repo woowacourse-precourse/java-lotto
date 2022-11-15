@@ -2,11 +2,11 @@
 ---
 ## 기능 목록 
 - [x] 구매자는 로또를 구매한다.
-    - [x] 로또 금액을 입력 받는다. - Buyer#inputLottoAmount()    
+    - [x] 문자열로 된 로또 금액을 유효성 검사후 정수형 값으로 반환한다. - Buyer#LottoAmountConversion()    
       - [x] 금액이 천원으로 나누어 떨어지지 않으면 예외 처리한다. - PurchaseAmountUnit#validDivisionByThousand()  
       - [x] 금액이 숫자로 구성되어있지 않으면 예외 처리한다. - Buyer#validConsistByNumber()  
     - [x] 금액에 따라 로또를 생성(구매)한다. Buyer#buyLotto()
-- [ ] 당첨 번호 와 보너스 번호를 입력 받는다. - LottoWinningNumber#input()  
+- [ ] 문자열로 된 당첨 번호 와 보너스 번호를 유효성 검사후 알맞은 값으로 변환해서 반환한다.- LottoWinningNumber#winningNumberConversion()  
     - [x] 당첨 번호 와 보너스 번호가 숫자로되어있지 않으면 예외 처리한다. - LottoWinningNumber#validConsistNumber()    
     - [x] 당첨 번호가 6개로 되어있지 않으면 예외 처리한다. - LottoWinningNumber#validSixNumber()    
     - [x] 입력 된 당첨 번호를 쉼표(,)를 기준으로 분리 시켜야 한다. - LottoWinningNumber#separateByComma()    

@@ -26,11 +26,13 @@ public class LottoWinningNumber {
         }
         validOneNumberRange(bonusNumber);
     }
+
     public void validOneNumberRange(int number) {
         if (number < Lotto.numberMinRage || number > Lotto.numberMaxRage) {
             throw new IllegalArgumentException();
         }
     }
+
     public String[] separateByComma(String inputNumbers) {
         return inputNumbers.split(",");
     }
