@@ -31,6 +31,7 @@ public class Lotto {
         List<Integer> numbersToBeValidated = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
+
         if (numbersToBeValidated.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(ERROR_TITLE + DUPLICATE_NUMBERS);
         }

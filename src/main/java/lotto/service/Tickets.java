@@ -9,12 +9,12 @@ import java.util.List;
 import lotto.domain.Lotto;
 
 public class Tickets {
-    private final List<List<Integer>> tickets;
     private final Integer purchaseQuantity;
+    private final List<List<Integer>> tickets;
 
     public Tickets(Integer purchasePrice) {
-        tickets = new ArrayList<>();
         purchaseQuantity = purchasePrice / UNIT_PRICE;
+        tickets = new ArrayList<>();
         issueTickets(purchaseQuantity);
     }
 

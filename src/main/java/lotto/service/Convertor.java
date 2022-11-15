@@ -22,14 +22,18 @@ public class Convertor {
     }
 
     public static List<Integer> separate(String input) {
-        final String[] inputSplitted = input.split(COMMA);
-        validateFormat(inputSplitted);
-
+        final String[] splitted = splitByRegex(input, COMMA);
         final List<Integer> numbers = new ArrayList<>();
-        for (String element : inputSplitted) {
+
+        for (String element : splitted) {
             numbers.add(toNumericValue(element));
         }
         return numbers;
+    }
+
+    private static String[] splitByRegex(String input, String regex) {
+        validateFormat(input.split(regex));
+        return input.split(regex);
     }
 
     private static void validateIfNumeric(String input) {

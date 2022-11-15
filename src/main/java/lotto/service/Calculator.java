@@ -13,12 +13,12 @@ public class Calculator {
 
     private final List<Integer> totalProfit;
 
-    public Calculator(Tickets tickets, Winner winner) {
-        lottoTickets = tickets.getTickets();
-        winningNumbers = winner.getWinningNumbers();
-        bonusNumber = winner.getBonusNumber();
+    public Calculator(Tickets lottoTickets, Winner winnerTicket) {
+        this.lottoTickets = lottoTickets.getTickets();
+        this.winningNumbers = winnerTicket.getWinningNumbers();
+        this.bonusNumber = winnerTicket.getBonusNumber();
 
-        totalProfit = new ArrayList<>();
+        this.totalProfit = new ArrayList<>();
         updateTotalProfit();
     }
 
@@ -33,8 +33,8 @@ public class Calculator {
     }
 
     private void addPossibleProfit(List<Integer> lottoTicket) {
-        Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
-        Profit profit = new Profit(
+        final Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
+        final Profit profit = new Profit(
                 matcher.getMatchingWinningNumberCount(),
                 matcher.getMatchingBonusNumberCount()
         );

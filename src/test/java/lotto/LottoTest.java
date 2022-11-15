@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 
 class LottoTest {
-    @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+    @DisplayName("로또 번호의 개수가 6개가 아니면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
