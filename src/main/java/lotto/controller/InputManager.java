@@ -3,8 +3,8 @@ package lotto.controller;
 import lotto.model.lotto.Lotto;
 import lotto.model.lotto.LottoGenerator;
 import lotto.model.lotto.LottoNumber;
-import lotto.model.lotto.WinningNumbers;
 import lotto.model.payment.Payment;
+
 import lotto.view.ConsoleInputView;
 
 import java.util.ArrayList;

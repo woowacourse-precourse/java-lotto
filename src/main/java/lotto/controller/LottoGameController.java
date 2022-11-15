@@ -16,7 +16,6 @@ public class LottoGameController {
     private final InputManager inputManager;
     private final OutputManager outputManager;
 
-
     private final LottoGenerator lottoGenerator;
     private final LottoStatisticsGenerator statisticsGenerator;
 
@@ -43,7 +42,6 @@ public class LottoGameController {
 
         List<LottoResult> lottoResults = checkLottos(lottos, winningNumbers);
         LottoStatistics lottoStatistics = statisticsGenerator.generate(lottoResults);
-
         outputManager.printLottoStatistics(payment, lottoStatistics);
     }
 
@@ -59,13 +57,13 @@ public class LottoGameController {
         outputManager.printBonusNumberInputAlert();
         LottoNumber bonusNumber = inputManager.getAndProcessLottoNumberInput();
 
-
         return new WinningNumbers(winningLotto, bonusNumber);
     }
 
     private List<Lotto> purchaseLottos(Payment payment) {
-        List<Lotto> lottos = new ArrayList<>();
         outputManager.printPaymentAlert(payment);
+
+        List<Lotto> lottos = new ArrayList<>();
         for(int i = 0; i < payment.getLottoCount(); i++) {
             Lotto tmpLotto = lottoGenerator.autoGenerate();
             outputManager.printLotto(tmpLotto);

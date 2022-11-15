@@ -72,6 +72,38 @@ public class OutputManager {
         return stringBuilder.toString();
     }
 
+    private String makeLottoHistoryDescription(LottoStatistics lottoStatistics) {
+        StringBuilder stringBuilder = new StringBuilder();
+        LottoResult[] sortedAllLottoResults = LottoResult.getValuesWithAscendingOrderByMatchCount();
+        for (int i = 0; i < sortedAllLottoResults.length; i++) {
+            LottoResult lottoResult = sortedAllLottoResults[i];
+            if(lottoResult.equals(LottoResult.MISS)) {
+                continue;
+            }
+            stringBuilder.append(makeLottoResultDescriptionWithCount(lottoStatistics, lottoResult));
+
+            if(i != sortedAllLottoResults.length - 1) {
+                stringBuilder.append("\n");
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    private String makeReturnRateDescription(Payment payment, LottoStatistics lottoStatistics) {
+        int totalPayment = payment.getAmount();
+        int totalPrize = lottoStatistics.getTotalPrize();
+        float returnRate = 100 * ((float) totalPrize / (float) totalPayment);
+
+        return "총 수익률은 " + floatWithCommaAndOneDecimalFormatter.format(returnRate) + "%입니다.";
+    }
+
+    private String makeLottoResultDescriptionWithCount(LottoStatistics lottoStatistics, LottoResult lottoResult) {
+        int resultCount = lottoStatistics.getLottoResultCount(lottoResult);
+        String resultDescription = makeLottoResultDescription(lottoResult);
+
+        return resultDescription + " - " + resultCount + "개";
+    }
+
     private String makeLottoResultDescription(LottoResult lottoResult) {
         if(lottoResult.equals(LottoResult.MISS)) {
             return "꽝";
@@ -82,42 +114,10 @@ public class OutputManager {
         if(lottoResult.doesMatchBonusBall()) {
             stringBuilder.append(", 보너스 볼 일치");
         }
-        stringBuilder.append(" (").append(integerWithCommaFormatter.format(lottoResult.getPrize())).append("원)");
+        stringBuilder.append(" (");
+        stringBuilder.append(integerWithCommaFormatter.format(lottoResult.getPrize()));
+        stringBuilder.append("원)");
 
         return stringBuilder.toString();
-    }
-
-    private String makeLottoHistoryDescription(LottoStatistics lottoStatistics) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        LottoResult[] sortedAllLottoResults = LottoResult.getValuesWithAscendingOrderByMatchCount();
-        for (int i = 0; i < sortedAllLottoResults.length; i++) {
-            LottoResult lottoResult = sortedAllLottoResults[i];
-            if(lottoResult.equals(LottoResult.MISS)) {
-                continue;
-            }
-
-            int resultCount = lottoStatistics.getLottoResultCount(lottoResult);
-            String resultDescriptionWithCount = makeLottoResultDescriptionWithCount(lottoResult, resultCount);
-            stringBuilder.append(resultDescriptionWithCount);
-
-            if(i != sortedAllLottoResults.length - 1) {
-                stringBuilder.append("\n");
-            }
-        }
-        return stringBuilder.toString();
-    }
-
-    private String makeLottoResultDescriptionWithCount(LottoResult lottoResult, int count) {
-        String resultDescription = makeLottoResultDescription(lottoResult);
-        return resultDescription + " - " + count + "개";
-    }
-
-    private String makeReturnRateDescription(Payment payment, LottoStatistics lottoStatistics) {
-        int totalPayment = payment.getAmount();
-        int totalPrize = lottoStatistics.getTotalPrize();
-        float returnRate = 100 * ((float) totalPrize / (float) totalPayment);
-
-        return "총 수익률은 " + floatWithCommaAndOneDecimalFormatter.format(returnRate) + "%입니다.";
     }
 }
