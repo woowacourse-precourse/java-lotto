@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.lotto.Lotto;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;

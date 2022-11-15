@@ -1,7 +1,7 @@
 package lotto.console;
 
 import lotto.Hit;
-import lotto.Lotto;
+import lotto.domain.lotto.Lotto;
 import lotto.message.MessageGenerator;
 
 import java.util.HashMap;
