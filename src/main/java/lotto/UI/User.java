@@ -1,4 +1,4 @@
-package lotto;
+package lotto.UI;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -8,10 +8,6 @@ import java.util.stream.Stream;
 
 public class User {
     static final int LOTTO_PRICE = 1000;
-
-    public User(){
-
-    }
 
     public int lotteryPurchaseAmount(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -38,7 +34,7 @@ public class User {
         return winningNumber;
     }
 
-    int bonusNumber(List<Integer> winningNumber){
+    public int bonusNumber(List<Integer> winningNumber){
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int bonusNumber = Integer.parseInt(input);

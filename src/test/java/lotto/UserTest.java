@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.UI.User;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,8 +9,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     OutputStream out = new ByteArrayOutputStream();

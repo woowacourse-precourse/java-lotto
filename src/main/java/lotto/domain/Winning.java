@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +46,4 @@ public class Winning {
         List<Integer> numbers = lotto.getNumbers();
         return (numbers.contains(bonusNumber));
     }
-
-
 }

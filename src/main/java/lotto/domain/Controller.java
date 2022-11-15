@@ -1,4 +1,8 @@
-package lotto;
+package lotto.domain;
+
+import lotto.UI.Print;
+import lotto.UI.User;
+import lotto.domain.*;
 
 import java.util.List;
 import java.util.Map;
