@@ -53,4 +53,10 @@ public class UserInputLottoInfoException {
             throw new IllegalArgumentException();
         }
     }
+    public void checkInputIsEmpty(String number, String message) {
+        if (number.isEmpty()) {
+            System.out.println(ERROR_MESSAGE + message);
+            throw new IllegalArgumentException();
+        }
+    }
 }
