@@ -39,10 +39,11 @@ public class WinningNumberLotto extends Lotto {
     }
 
     private void validateBonusNumber(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자 하나여야 합니다. -> VALIDATE 조건 추가");
+        if (checkInteger(input)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 자연수 값을 입력해주세요.")
+        }
+        if (checkRange(input)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45의 값을 입력해주세요.")
         }
     }
 
@@ -59,7 +60,7 @@ public class WinningNumberLotto extends Lotto {
         return true;
     }
 
-    private boolean checkSize(String input) {
+    private boolean checkRange(String input) {
         int number = Integer.parseInt(input);
         return START_NUMBER <= number && number <= END_NUMBER;
     }
