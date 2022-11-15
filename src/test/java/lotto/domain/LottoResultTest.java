@@ -28,4 +28,11 @@ class LottoResultTest {
         assertThat(totalProfit).isEqualTo(3000000);
     }
 
+    @DisplayName("수익의 총합과 로또 구입금이 주어졌을 때 수익률을 계산할 수 있다.")
+    @Test
+    void 수익률_계산() {
+        double rateOfProfit = lottoResult.getRateOfProfit(10000);
+        assertThat(rateOfProfit).isEqualTo(30000.0);
+    }
+
 }
