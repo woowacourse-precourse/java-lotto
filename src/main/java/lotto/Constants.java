@@ -16,11 +16,6 @@ public class Constants {
     public static final String OUTPUT_MATCH_5_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     public static final String OUTPUT_MATCH_6 = "6개 일치 (2,000,000,000원) - ";
     public static final String OUTPUT_COUNT = "개";
-
     public static final String OUTPUT_TOTAL_PER = "총 수익률은 ";
-
-
-
-
     public static final String ERROR = "[ERROR] ";
 }

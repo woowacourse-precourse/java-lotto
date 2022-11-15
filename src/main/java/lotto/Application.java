@@ -26,6 +26,8 @@ public class Application {
         Map<Rank, Integer> winningHistory
                 = calculateWinning(lottoTickets, winningNumbers, bonusNumber);
         OutputView.showWinningHistory(winningHistory);
+        double rateReturn = getRateOfReturn(purchaseAmount, winningHistory);
+        OutputView.showRateOfReturn(rateReturn);
     }
 
     private static List<Lotto> publishLotto(int lottoCount) {
@@ -78,5 +80,15 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    private static double getRateOfReturn(String purchaseAmount,
+            Map<Rank, Integer> winningHistory) {
+        double winningAmount = 0;
+        for (Rank rank : Rank.values()) {
+            winningAmount += winningHistory.get(rank) * rank.getPrize();
+        }
+        double rateReturn = (winningAmount / Integer.parseInt(purchaseAmount)) * 100;
+        return Math.round(rateReturn * 100) / 100.0;
     }
 }
