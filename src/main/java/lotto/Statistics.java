@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Statistics {
-    private static final int first = 2_000_000_000;
-    private static final int second = 30_000_000;
-    private static final int third = 1_500_000;
-    private static final int fourth = 50_000;
-    private static final int fifth = 5_000;
-    private static final List<Integer> reward = new ArrayList<>(Arrays.asList(first, second, third, fourth, fifth));
+//    private static final int first = 2_000_000_000;
+//    private static final int second = 30_000_000;
+//    private static final int third = 1_500_000;
+//    private static final int fourth = 50_000;
+//    private static final int fifth = 5_000;
+//    private static final List<Integer> reward = new ArrayList<>(Arrays.asList(first, second, third, fourth, fifth));
     private final Lotto winning;
     private final int bonus;
 
@@ -19,7 +19,7 @@ public class Statistics {
         this.bonus = bonus;
     }
 
-    public int getPrize(Lotto lotto) {
+    public int getRank(Lotto lotto) {
         int count = getCount(lotto);
         if (count == 6)
             return 1;
@@ -52,17 +52,17 @@ public class Statistics {
 
     void checkWinningLotto (List<Lotto> userLottos, List<Integer> winningCount){
         for (int i = 0; i < userLottos.size(); i++) {
-            int prize = getPrize(userLottos.get(i));
-            if (prize != -1)
-                winningCount.set(prize - 1, winningCount.get(prize - 1) + 1);
+            int rank = getRank(userLottos.get(i));
+            if (rank != -1)
+                winningCount.set(rank - 1, winningCount.get(rank - 1) + 1);
         }
     }
 
-
     public static double getYield(int cost, List<Integer> winningCount) {
         int totalReward = 0;
+        List<Prize> reward = new ArrayList<>(Arrays.asList(Prize.values()));
         for (int i = 0; i < winningCount.size(); i++) {
-            totalReward += winningCount.get(i) * reward.get(i);
+            totalReward += winningCount.get(i) * reward.get(i).getReward();
         }
         return (double) totalReward / (double) cost * 100;
     }
