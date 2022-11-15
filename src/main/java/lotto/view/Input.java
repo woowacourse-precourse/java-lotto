@@ -25,15 +25,34 @@ public class Input {
     public int getMoney(){
         try {
             System.out.println(PURCHASE_AMOUNT_MESSAGE);
-            String unverifiedCharacters = Console.readLine();
-            int money = Integer.parseInt(unverifiedCharacters);
-            if(money < 1000) validationMoney();
-            if(money % 1000 != 0) validationDivideMoney();
+            String unverifiedMoney = Console.readLine();
+            int money = validateMoney(unverifiedMoney);
             return money;
         }catch (IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + e.getMessage());
             return getMoney();
         }
+    }
+
+    private int validateMoney(String unverifiedMoney) {
+        if(!isItANumberOrNot(unverifiedMoney)) errorThrow(IS_NUMBER_MESSAGE);
+        int money = Integer.parseInt(unverifiedMoney);
+        if(money < 1000) errorThrow(SMALL_AMOUNT_ERROR_MESSAGE);
+        if(money % 1000 != 0) errorThrow(DIVIDE_ERROR_MESSAGE);
+        return money;
+    }
+
+    private boolean isItANumberOrNot(String unverifiedNumber){
+        try {
+            Integer.parseInt(unverifiedNumber);
+        }catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
+    private void errorThrow (String error){
+        throw new IllegalArgumentException(error);
     }
 
     public Lotto getWinningNumbers(){
@@ -111,11 +130,4 @@ public class Input {
         }
     }
 
-    private void validationDivideMoney() {
-        throw new IllegalArgumentException(DIVIDE_ERROR_MESSAGE);
-    }
-
-    private void validationMoney() {
-        throw new IllegalArgumentException(SMALL_AMOUNT_ERROR_MESSAGE);
-    }
 }
