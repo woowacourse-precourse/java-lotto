@@ -3,6 +3,7 @@ package lotto.service;
 import lotto.domain.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -21,6 +22,7 @@ public class LottoStatisticsService {
         System.out.println(WINNING_STATS_STRING.getMessage());
         SortedMap<LottoRank, Integer> countOfRank = setLottoRankIntegerSortedMap(lottoWinningNumber.getNumbers(), lottoWinningNumber.getBonusNumber());
         printStatistics(countOfRank);
+        printTotalYield(countOfRank, money);
     }
 
     private void printStatistics(SortedMap<LottoRank, Integer> countOfRank) {
@@ -29,6 +31,14 @@ public class LottoStatisticsService {
         System.out.print(sb);
     }
 
+    private void printTotalYield(SortedMap<LottoRank, Integer> countOfRank, Money money) {
+        long total = 0L;
+        for (Map.Entry<LottoRank, Integer> entry : countOfRank.entrySet()) {
+            total += (long) entry.getKey().getAmount() * entry.getValue();
+        }
+
+        System.out.println("총 수익률: " + money.getYield(total) + "%입니다.");
+    }
 
     private SortedMap<LottoRank, Integer> setLottoRankIntegerSortedMap(List<Integer> winningNumbers, int bonusNumber) {
         SortedMap<LottoRank, Integer> countOfRank = setCountOfRankMap();
