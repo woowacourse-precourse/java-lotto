@@ -1,8 +1,8 @@
 package lotto.function;
 
+
 import lotto.domain.jackpot.JackpotResult;
 import lotto.domain.lotto.Lotto;
-
 import lotto.domain.prize.PrizeResult;
 import lotto.domain.rate.Rate;
 import org.junit.jupiter.api.Test;
