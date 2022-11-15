@@ -47,4 +47,13 @@ public class ExceptionCase {
 
         return true;
     }
+
+    static public void checkInputLottoNumber(List<Integer> input) {
+        if (!checkInputSameNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!checkBoundLottoNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
