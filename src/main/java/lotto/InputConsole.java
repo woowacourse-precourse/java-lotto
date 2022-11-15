@@ -12,7 +12,6 @@ public class InputConsole {
 
     private static Lotto userInputNumber;
     private static int userInputBonusNumber;
-
     private static int money;
     private static final int LOTTO_PRICE = 1000;
 
@@ -22,13 +21,10 @@ public class InputConsole {
 
     public static int buyLotto(){
         InputView.BUYLOTTO_MESSAGE.getMessage();
-
         String userInput = Input.input();
         checkString(userInput);
         int money = Integer.parseInt(userInput);
-
         checkMoney(money);
-
         return money;
     }
 
@@ -39,7 +35,6 @@ public class InputConsole {
         for (String number : userInputNumber.split(",")) {
             userInputLottoNumbers.add(Integer.valueOf(number));
         }
-        checkString(userInputNumber);
         return userInputLottoNumbers;
     }
 
