@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RankCounter {
@@ -15,9 +16,14 @@ public class RankCounter {
         }
     }
 
-    public void addRank(LottoRanking rank) {
-        if (rank.equals(LottoRanking.LOSE)) return;
-        rankCount.put(rank, rankCount.get(rank) + 1);
+    public void count(List<Lotto> lottos) {
+        LottoChecker lottoChecker = new LottoChecker();
+        for (Lotto lotto : lottos) {
+            LottoRanking rank = lottoChecker.check(lotto);
+            if (!rank.equals(LottoRanking.LOSE))
+                continue;
+            rankCount.put(rank, rankCount.get(rank) + 1);
+        }
     }
 
     public void showRankCount() {
