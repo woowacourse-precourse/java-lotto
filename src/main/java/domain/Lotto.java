@@ -49,7 +49,7 @@ public class Lotto {
         return numbers;
     }
 
-    public void printCreatedLotto() {
+    public void printSortedLotto() {
         List<Integer> collect = numbers.stream()
                                        .sorted()
                                        .collect(Collectors.toList());

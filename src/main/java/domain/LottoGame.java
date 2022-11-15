@@ -35,7 +35,7 @@ public class LottoGame {
     public void printLotteries(int buyCount) {
         for (int i = 0; i < buyCount; i++) {
             Lotto createdLotto = lotteries.get(i);
-            createdLotto.printCreatedLotto();
+            createdLotto.printSortedLotto();
         }
     }
 
