@@ -18,6 +18,9 @@ public enum OutputMessageGenerator {
     private static final String SECOND_RANK_RESULT_MESSAGE_FORMAT = "%d개 일치, 보너스 볼 일치 (%s) - %d개";
     private static final DecimalFormat rewardFormat = new DecimalFormat("###,###");
 
+    private static final String YIELD_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.";
+    private static final DecimalFormat yieldFormat = new DecimalFormat("###,###.#");
+
     public static String getPurchaseLottoMessage(int lottoCount) {
         return String.format(PURCHASE_LOTTO_MESSAGE_FORMAT, lottoCount);
     }
@@ -28,11 +31,16 @@ public enum OutputMessageGenerator {
                 .collect(Collectors.toList())
                 .toString();
     }
+
     public static List<String> getTotalRankCountMessage(Map<Rank, Integer> rankCounts) {
         List<Rank> ranksByReverseOrder = getRanksByReverseOrder();
         return ranksByReverseOrder.stream()
                 .map(rank -> getRankCountMessage(rank, rankCounts.get(rank)))
                 .collect(Collectors.toList());
+    }
+
+    public static String getYieldMessage(double yield) {
+        return String.format(YIELD_MESSAGE_FORMAT, yieldFormat.format(yield));
     }
 
     private static String getRankCountMessage(Rank rank, int count) {

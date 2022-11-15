@@ -4,6 +4,8 @@ import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -49,6 +51,15 @@ public class OutputMessageGeneratorTest {
         );
 
         assertThat(getTotalRankCountMessage(rankCounts))
+                .isEqualTo(expected);
+    }
+
+    @DisplayName("`총 수익률은 [수익률]%입니다.`를 반환한다")
+    @ParameterizedTest
+    @ValueSource(doubles = {35.189, 100},
+            strings = {"총 수익률은 35.2%입니다.", "총 수익률은 100.0%입니다"})
+    void getYieldMessageTest(double yield, String expected) {
+        assertThat(getYieldMessage(yield))
                 .isEqualTo(expected);
     }
 }
