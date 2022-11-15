@@ -3,17 +3,23 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import lotto.Judgement;
 
 public class Result {
     private int count;
     private List<Integer> winningNumber;
     private int bonusNumber;
-    HashMap<Integer, Integer> winningHistory = new HashMap<>();
-    List<Lotto> purchasedLotteries = new ArrayList<Lotto>();
+    HashMap<Integer, Integer> winningHistory = new HashMap<Integer, Integer>() {
+        {
+            put(1, 0);
+            put(2, 0);
+            put(3, 0);
+            put(4, 0);
+            put(5, 0);
+        }
+    };
+    List<Lotto> purchasedLotteries = new ArrayList<>();
 
     public Result(){
     }
@@ -33,7 +39,22 @@ public class Result {
         }
     }
 
-    public void printWinningHistory(){
+    public void calculateWinningHistory(){
+        for (Lotto purchasedLottery:purchasedLotteries){
+            int sameNumberCount = Judgement.countSameNumber(winningNumber, purchasedLottery.getNumbers());
+            int bonusNumberCount = Judgement.countBonusNumber(bonusNumber, purchasedLottery.getNumbers());
+            int grade = Judgement.judgeGrade(sameNumberCount, bonusNumberCount);
+            if (!(grade==-1)){
+                winningHistory.put(grade, winningHistory.get(grade)+1);
+            }
+        }
+    }
 
+    public void setWinningNumber(List<Integer> winningNumber) {
+        this.winningNumber = winningNumber;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }
