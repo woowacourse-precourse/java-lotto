@@ -8,7 +8,12 @@ public enum MessageConstant {
     RESULT_MESSAGE("당첨 통계\n---"),
     COUNT_MESSAGE("%d개 일치 (%s원) - %d개"),
     YIELD_MESSAGE("총 수익률은 %f%입니다."),
-    BONUS_COUNT("5개 일치, 보너스 볼 일치 (%s원) - %d개");
+    BONUS_COUNT("5개 일치, 보너스 볼 일치 (%s원) - %d개"),
+    FIRST("2,000,000,000"),
+    SECOND("30,000,000"),
+    THIRD("1,500,000"),
+    FOURTH("50,000"),
+    FIFTH("5,000");
 
     private final String message;
 
