@@ -7,7 +7,6 @@ import java.util.*;
 
 public class Application {
     public static <integer> void main(String[] args) {
-        // TODO: 프로그램 구현
 
         Message.Start();
 
@@ -25,7 +24,7 @@ public class Application {
 
         HashSet<List> listLotto = randomLotto(numberLotto);
 
-        outputNumber(listLotto);
+        Message.listNumber(listLotto);
 
         Message.win();
 
@@ -92,13 +91,6 @@ public class Application {
         return numberLotto;
     }
 
-    public static void outputNumber(HashSet<List> listLotto) {
-        for (List i : listLotto) {
-            System.out.println(i);
-        }
-    }
-
-
     public static List<Integer> inputNumber() {
         List<Integer> winNum = new ArrayList<>();
 
@@ -156,7 +148,6 @@ public class Application {
     }
 
 
-
     private static double resultPercentage(HashMap<Integer, Integer> result, int money) {
         double sumReward = 0;
 
@@ -167,7 +158,6 @@ public class Application {
         return (sumReward / money) * 100;
 
     }
-
 
 
 }

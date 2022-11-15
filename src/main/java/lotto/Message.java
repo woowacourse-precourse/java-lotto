@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class Message {
 
@@ -18,6 +20,12 @@ public class Message {
 
     static void bonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    static void listNumber(HashSet<List> listLotto){
+        for (List i : listLotto) {
+            System.out.println(i);
+        }
     }
 
     static void lotto(HashMap<Integer, Integer> result) {
