@@ -26,11 +26,12 @@ public enum LottoGrade {
 
     public static LottoGrade getRank(int matchNum, boolean bonusBall) {
         if (matchNum == 6) return ONE;
-        if (bonusBall) {
-            matchNum++;
+        if (matchNum == 5) {
+            if (bonusBall) {
+                return TWO;
+            }
+            return THREE;
         }
-        if (matchNum == 6) return TWO;
-        if (matchNum == 5) return THREE;
         if (matchNum == 4) return FOUR;
         if (matchNum == 3) return FIVE;
         return MISS;
