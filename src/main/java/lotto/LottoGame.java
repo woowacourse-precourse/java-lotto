@@ -7,16 +7,16 @@ import java.util.List;
 
 public class LottoGame {
     private final Integer bonusNumber;
-    private final PublishedLottos publishedLottos;
+    private final GameLottos gameLottos;
 
-    public LottoGame(Integer bonusNumber, Lotto winningLotto, List<Lotto> goingToPublishLottos) {
+    public LottoGame(Integer bonusNumber, Lotto winningLotto, List<Lotto> publishedLottos) {
         this.bonusNumber = bonusNumber;
-        this.publishedLottos = new PublishedLottos(winningLotto, goingToPublishLottos);
+        this.gameLottos = new GameLottos(winningLotto, publishedLottos);
         this.validateBonusNumber(bonusNumber);
     }
 
     public LottoResult generateResult() {
-        List<Rank> ranks = publishedLottos.calculateResultRanks(bonusNumber);
+        List<Rank> ranks = gameLottos.calculateResultRanks(bonusNumber);
         EnumMap<Rank, Integer> ranksResult = new EnumMap<>(Rank.class);
 
         for (Rank rank : ranks) {
@@ -27,7 +27,7 @@ public class LottoGame {
     }
 
     private void validateBonusNumber(Integer bonusNumber) throws IllegalArgumentException {
-        if (publishedLottos.isWinningLottoContainBonusNumber(bonusNumber)) {
+        if (gameLottos.isWinningLottoContainBonusNumber(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호와 당첨 번호는 중복되지 않아야 합니다.");
         }
     }

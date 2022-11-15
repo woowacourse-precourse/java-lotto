@@ -5,12 +5,12 @@ import lotto.enums.Rank;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PublishedLottos {
+public class GameLottos {
     private static final int RANK_TWO_OR_THREE_COUNT = 5;
     private final Lotto winningLotto;
     private final List<Lotto> publishedLottos;
 
-    public PublishedLottos(Lotto winningLotto, List<Lotto> publishedLottos) {
+    public GameLottos(Lotto winningLotto, List<Lotto> publishedLottos) {
         this.winningLotto = winningLotto;
         this.publishedLottos = publishedLottos;
     }

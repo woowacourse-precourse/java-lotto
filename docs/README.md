@@ -4,7 +4,7 @@
 <!--
 - [] 1-45범위의 서로다른 임의의 6개의 번호를 가진 수를 생성한다. - GameManager.publishRandomLotto() 
 - [] 당첨 결과를 생성한다. - LottoGame.createResult() 
-  - [] 당첨 순위와 금액을 계산한다. - publishedLottos.calculateResultRank() 
+  - [] 당첨 순위와 금액을 계산한다. - gameLottos.calculateResultRank() 
   - [] 구매 금액 대비 수익률을 계산한다. - LottoResult.calculateEarningRatio() 
 -->
 
