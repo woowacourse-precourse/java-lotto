@@ -17,4 +17,8 @@ public class LottoResult {
         }
     }
 
+    public void add(LottoRank lottoRank) {
+        lottoResult.put(lottoRank, lottoResult.get(lottoRank) + 1);
+    }
+
 }
