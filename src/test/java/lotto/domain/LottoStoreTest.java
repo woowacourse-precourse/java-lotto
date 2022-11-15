@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class LottoStoreTest {
 
     @Test
@@ -15,4 +17,11 @@ class LottoStoreTest {
         assertThat(lottoAmount).isEqualTo(10);
     }
 
+    @DisplayName("로또 구매 개수만큼 로또를 발행할 수 있다.")
+    @Test
+    void 로또를_구매해_발행받기() {
+        LottoStore lottoStore = new LottoStore();
+        List<Lotto> lottoTickets = lottoStore.buyLottoTickets(10000);
+        assertThat(lottoTickets.size()).isEqualTo(10);
+    }
 }
