@@ -23,4 +23,9 @@ public class PrintResult {
             System.out.println(numberMatch.getNumberMatch() + matchNumbers.get(order.get(idx)) + UNIT);
         }
     }
+
+    public void printRevenue(int totalMoney, int lottoMoney) {
+        int revenue = totalMoney / lottoMoney * 100;
+        System.out.println(revenue);
+    }
 }
