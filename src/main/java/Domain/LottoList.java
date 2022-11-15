@@ -11,23 +11,14 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LottoList {
-    static final int LOTTO_PRICE = 1000;
 
     private int lottoPlayNumber;
-    private List<Lotto> lottoList;
+    private final List<Lotto> lottoList;
 
-    public LottoList(){
-        InputView.printBuyingLottoMessage();
-        lottoPlayNumber = setLottoPlayNumber();
+    public LottoList(String BuyingLottoMoney){
+        Validation.validateMoneyInput(BuyingLottoMoney);
+        this.lottoPlayNumber = Integer.parseInt(BuyingLottoMoney) / 1000;
         lottoList = makeRandomLottoNumbers(lottoPlayNumber);
-        OutputView.printNumberOfLotto(lottoPlayNumber, lottoList);
-    }
-
-    private int setLottoPlayNumber(){
-        String readMoneyValue = InputView.readInputLine();
-        Validation.validateMoneyInput(readMoneyValue);
-        int money = Integer.parseInt(readMoneyValue);
-        return money / LOTTO_PRICE;
     }
 
     private List<Lotto> makeRandomLottoNumbers(int lottoPlayNumber){
