@@ -2,13 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMarket {
     private static final int LOTTOPRICE = 1000;
     private int purchasePrice;
     private int purchaseLottoNum;
-    private List<Lotto> lottos;
+    private List<Lotto> lottos = new ArrayList<>();
 
     public void inputPrice() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -20,6 +21,8 @@ public class LottoMarket {
     }
 
     public void publishLotto() {
+        NumberGenerator numberGenerator = new NumberGenerator();
+        Lotto lotto = new Lotto(numberGenerator.getNumbers());
     }
 
     public void printLottoInfo() {
