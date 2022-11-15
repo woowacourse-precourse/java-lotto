@@ -23,7 +23,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("같은 번호의 로또 두 개를 비교하여 같은 원소가 6이 아니라면 예외가 발생한다.")
+    @DisplayName("같은 번호의 로또 두 개를 비교하면 같은 원소가 6이다.")
     @Test
     void compareLottosAllEquals() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -33,7 +33,7 @@ class LottoTest {
         assertThat(count).isEqualTo(6);
     }
 
-    @DisplayName("1개의 원소만 다른 로또 두 개를 비교하여 같은 원소가 5이 아니라면 예외가 발생한다.")
+    @DisplayName("1개의 원소만 다른 로또 두 개를 비교하면 같은 원소가 5이다.")
     @Test
     void compareLottosOneDiff() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -43,7 +43,7 @@ class LottoTest {
         assertThat(count).isEqualTo(5);
     }
 
-    @DisplayName("2개의 원소만 다른 로또 두 개를 비교하여 같은 원소가 4이 아니라면 예외가 발생한다.")
+    @DisplayName("2개의 원소만 다른 로또 두 개를 비교하면 같은 원소가 4이다.")
     @Test
     void compareLottosTwoDiff() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -53,7 +53,7 @@ class LottoTest {
         assertThat(count).isEqualTo(4);
     }
 
-    @DisplayName("3개의 원소만 다른 로또 두 개를 비교하여 같은 원소가 3이 아니라면 예외가 발생한다.")
+    @DisplayName("3개의 원소만 다른 로또 두 개를 비교하면 같은 원소가 3이다.")
     @Test
     void compareLottosThreeDiff() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -63,7 +63,7 @@ class LottoTest {
         assertThat(count).isEqualTo(3);
     }
 
-    @DisplayName("4개의 원소만 다른 로또 두 개를 비교하여 같은 원소가 2이 아니라면 예외가 발생한다.")
+    @DisplayName("4개의 원소만 다른 로또 두 개를 비교하면 같은 원소가 2이다.")
     @Test
     void compareLottosFourDiff() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -73,7 +73,7 @@ class LottoTest {
         assertThat(count).isEqualTo(2);
     }
 
-    @DisplayName("5개의 원소만 다른 로또 두 개를 비교하여 같은 원소가 1이 아니라면 예외가 발생한다.")
+    @DisplayName("5개의 원소만 다른 로또 두 개를 비교하면 같은 원소가 1이다.")
     @Test
     void compareLottosFiveDiff() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -83,7 +83,7 @@ class LottoTest {
         assertThat(count).isEqualTo(1);
     }
 
-    @DisplayName("모든 원소가 다른 로또 두 개를 비교하여 같은 원소가 0이 아니라면 예외가 발생한다.")
+    @DisplayName("모든 원소가 다른 로또 두 개를 비교하면 같은 원소가 0이다.")
     @Test
     void compareLottosAllDiff() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -93,7 +93,7 @@ class LottoTest {
         assertThat(count).isEqualTo(0);
     }
 
-    @DisplayName("모든 원소가 같은 정렬되지 않은 로또 두 개를 비교하여 같은 원소가 6이 아니라면 예외가 발생한다.")
+    @DisplayName("모든 원소가 같은 정렬되지 않은 로또 두 개를 비교하면 같은 원소가 6이다.")
     @Test
     void compareLottosRandomPos() {
         Lotto lotto = new Lotto(List.of(6, 4, 2, 3, 1, 5));

@@ -3,10 +3,10 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoPublisher {
+    private static final Integer LOTTO_NUMBER_COUNT = 6;
     private final LottoMetadata lottoMetadata;
 
     public LottoPublisher(LottoMetadata lottoMetadata) {
@@ -15,21 +15,21 @@ public class LottoPublisher {
 
     public Lotto purchase() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
-                lottoMetadata.getStartNumberInRange(),
-                lottoMetadata.getEndNumberInRange(),
-                lottoMetadata.getNumberSize()
+                lottoMetadata.getStartNumber(),
+                lottoMetadata.getEndNumber(),
+                LOTTO_NUMBER_COUNT
         );
         return new Lotto(numbers);
     }
 
     List<Lotto> purchase(Integer payment) {
-        raiseErrorIfRemainderIsZero(payment, lottoMetadata.getWonPerLotto());
+        raiseErrorIfRemainderIsZero(payment, lottoMetadata.getPriceOfLotto());
         return purchaseMultipleLotto(payment);
     }
 
     private List<Lotto> purchaseMultipleLotto(Integer payment) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < payment / lottoMetadata.getWonPerLotto(); ++i) {
+        for (int i = 0; i < payment / lottoMetadata.getPriceOfLotto(); ++i) {
             lottos.add(purchase());
         }
         return lottos;

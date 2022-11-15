@@ -85,7 +85,7 @@
 - 로또의 메타데이터를 갖는다.
   - `private final LottoMetadata lottoMetadata`
 - 로또 정보를 받아 로또 결과를 계산한다.
-  - `Map<Prize, Integer> countWinningLotto(Lotto target, List<Lotto> lottos>`
+  - `Map<Prize, Integer> countWinningLotto(Lotto target, List<Lotto> lottos, Integer bonus>`
 
 #### Prize
 
