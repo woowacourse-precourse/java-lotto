@@ -33,7 +33,8 @@ public class Application {
         // 당첨번호를 통해 lotto 객체 생성
         Lotto lotto = new Lotto(winningNumberList);
 
-
+        // 사용자의 로또 번호와 당첨 번호를 비교
+        List<Integer> winningStatus = CompareUserLottoNumberWithWinningNumber(lottoNumberList,bonusNumber,lotto);
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
@@ -70,4 +71,15 @@ public class Application {
         }
         return winningNumberList;
     }
+
+    public static List<Integer> CompareUserLottoNumberWithWinningNumber(List<List> lottoNumberList,int bonusNumber, Lotto lotto){
+        List<Integer> winningStatus = new ArrayList<>();
+        for(int i = 0; i < lottoNumberList.size(); i++) {
+            List<Integer> lottoNumber = lottoNumberList.get(i);
+            winningStatus.add(lotto.CountAfterComparison(lottoNumber,bonusNumber));
+        }
+        return winningStatus;
+    }
+
+
 }
