@@ -19,6 +19,8 @@ public class LottoController {
             OutputView.printLottos(numberOfLottos, lottoGenerator);
             LottoResult lottoResult = getLottoResult();
             GameResult gameResult = getGameResult(lottoGenerator, lottoResult);
+            getGameStatistics(numberOfLottos, gameResult);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -46,5 +48,11 @@ public class LottoController {
         List<Ranking> lottoRanking = RankingCalculator.getLottoRanking(lottoGenerator, lottoResult);
 
         return new GameResult(lottoRanking);
+    }
+
+    private void getGameStatistics(NumberOfLottos numberOfLottos, GameResult gameResult) {
+        OutputView.printGameResult();
+        OutputView.printResultStatistic(gameResult);
+        OutputView.printYield(numberOfLottos.calculateYield(gameResult.getRankMoney()));
     }
 }
