@@ -30,7 +30,7 @@ public class Lotto {
     }
 
     private void ascendingOrderCheck(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size() - 1; i++) {
+        for (int i = Message.ZEROINIT; i < numbers.size() - 1; i++) {
             if (numbers.get(i) > numbers.get(i + 1)) {
                 throw new IllegalArgumentException(Message.IsNotAscendingOrderMessage);
             }
@@ -66,7 +66,7 @@ public class Lotto {
         }
 
         // 쉼표 및 공백 제거
-        lottoNumberMessage.delete(lottoNumberMessage.length() - 2, lottoNumberMessage.length());
+        lottoNumberMessage.delete(lottoNumberMessage.length() - Message.TWOLETTERS, lottoNumberMessage.length());
 
         // 괄호 추가 : ]
         lottoNumberMessage.append(Message.EndSquareBrackets);

@@ -12,8 +12,8 @@ public class WinningNumber {
     private Integer bonusNumber;
 
     public WinningNumber() {
-        winningNumbers = new ArrayList<Integer>();
-        bonusNumber = 0;
+        winningNumbers = new ArrayList<>();
+        bonusNumber = Message.ZEROINIT;
     }
 
     public void createWinningNumbers() {
@@ -74,14 +74,14 @@ public class WinningNumber {
     }
 
     private void rangeCheck(int WinningNumber) {
-        if (WinningNumber < 1 || 45 < WinningNumber) {
+        if (WinningNumber < Message.SMALLESTNUMBER || Message.LARGESTNUMBER < WinningNumber) {
             throw new IllegalArgumentException(Message.WrongRangeMessage);
         }
     }
 
     private void duplicationCheck(List<Integer> winningNumbers) {
         for (Integer num : winningNumbers) {
-            if (Collections.frequency(winningNumbers, num) != 1) {
+            if (Collections.frequency(winningNumbers, num) != Message.ONETIME) {
                 throw new IllegalArgumentException(Message.DuplicationMessage);
             }
         }

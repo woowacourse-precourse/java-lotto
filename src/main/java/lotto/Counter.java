@@ -8,7 +8,7 @@ public class Counter {
     private int numberOfLotto;
 
     public Counter() {
-        money = 0;
+        money = Message.ZEROINIT;
     }
 
     public void putMoney() {
@@ -20,7 +20,7 @@ public class Counter {
 
     private void moneyCheck(String inputMoney) {
         numberCheck(inputMoney);
-        money = Integer.parseInt(inputMoney);
+
         unitCheck(money);
 
         moneyCount(money);
@@ -28,21 +28,20 @@ public class Counter {
 
     public void numberCheck(String inputMoney) {
         try {
-            Double.parseDouble(inputMoney);
+            money = Integer.parseInt(inputMoney);
         } catch (NumberFormatException e) {
-            System.out.println(Message.IsNotNumberMessage);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.IsNotNumberMessage);
         }
     }
 
     public void unitCheck(int money) {
-        if (money % 1000 != 0) {
+        if (money % Message.THOUSAND != Message.ZERO) {
             throw new IllegalArgumentException(Message.IsNotThousandUnitMessage);
         }
     }
 
     private void moneyCount(int money) {
-        this.numberOfLotto = money / 1000;
+        this.numberOfLotto = money / Message.THOUSAND;
     }
 
     public int getNumberOfLotto() {

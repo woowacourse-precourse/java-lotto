@@ -1,5 +1,7 @@
 package lotto;
 
+import constant.Message;
+
 public class PlayLottoGame {
 
     WinningChecker winningChecker;
@@ -41,8 +43,8 @@ public class PlayLottoGame {
     }
 
     private boolean haveOpportunityOfWinning() {
-        numberOfLotto -= 1;
-        return numberOfLotto >= 0;
+        numberOfLotto -= Message.ONETIME;
+        return numberOfLotto >= Message.ZERO;
     }
 
     private void printWinningHistory() {

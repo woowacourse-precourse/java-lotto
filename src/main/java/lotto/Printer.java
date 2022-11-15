@@ -13,24 +13,24 @@ public class Printer {
     public Printer(int moneyInput, Map<Integer, Integer> winningChart) {
         this.moneyInput = moneyInput;
         this.winningChart = winningChart;
-        this.rateOfProfit = 0;
+        this.rateOfProfit = Message.ZEROINIT;
 
         calculateRateOfReturn();
         printWinningChart();
     }
 
     private void calculateRateOfReturn() {
-        int sum = winningChart.get(Message.RANKFIRST) * 2000000000
-                + winningChart.get(Message.RANKSECOND) * 30000000
-                + winningChart.get(Message.RANKTHIRD) * 1500000
-                + winningChart.get(Message.RANKFOURTH) * 50000
-                + winningChart.get(Message.RANKFIFTH) * 5000;
+        int sum = winningChart.get(Message.RANKFIRST) * Message.RANKFIRSTRIZEMONEY
+                + winningChart.get(Message.RANKSECOND) * Message.RANKSECONDRIZEMONEY
+                + winningChart.get(Message.RANKTHIRD) * Message.RANKTHIRDRIZEMONEY
+                + winningChart.get(Message.RANKFOURTH) * Message.RANKFOURTHRIZEMONEY
+                + winningChart.get(Message.RANKFIFTH) * Message.RANKFIFTHPRIZEMONEY;
 
-        rateOfProfit = (double) sum / (double) moneyInput * 100;
+        rateOfProfit = (double) sum / (double) moneyInput * Message.HUNDRED;
     }
 
     private void printWinningChart() {
-        System.out.println("당첨 통계" + "\n" + "---");
+        System.out.println(Message.WinStatistics);
 
         System.out.println(Message.RankFifthMessage + winningChart.get(Message.RANKFIFTH) + Message.Piece);
         System.out.println(Message.RankFourthMessage + winningChart.get(Message.RANKFOURTH) + Message.Piece);

@@ -23,11 +23,11 @@ public class WinningChecker {
     }
 
     private void initWinningChart() {
-        winningChart.put(Message.RANKFIRST, 0);
-        winningChart.put(Message.RANKSECOND, 0);
-        winningChart.put(Message.RANKTHIRD, 0);
-        winningChart.put(Message.RANKFOURTH, 0);
-        winningChart.put(Message.RANKFIFTH, 0);
+        winningChart.put(Message.RANKFIRST, Message.ZEROINIT);
+        winningChart.put(Message.RANKSECOND, Message.ZEROINIT);
+        winningChart.put(Message.RANKTHIRD, Message.ZEROINIT);
+        winningChart.put(Message.RANKFOURTH, Message.ZEROINIT);
+        winningChart.put(Message.RANKFIFTH, Message.ZEROINIT);
     }
 
     public void setWinningChart(List<Integer> lotto) {
@@ -35,7 +35,7 @@ public class WinningChecker {
     }
 
     private int checkNumbers(List<Integer> lotto) {
-        int sameNumberCount = 0;
+        int sameNumberCount = Message.ZEROINIT;
 
         for (int num : winningNumbers) {
             if (lotto.contains(num)) {
@@ -53,7 +53,12 @@ public class WinningChecker {
     }
 
     private void addWinningRecord(int sameNumberCount) {
-        winningChart.put(sameNumberCount, winningChart.get(sameNumberCount) + 1);
+        if (winLotto(sameNumberCount))
+            winningChart.put(sameNumberCount, winningChart.get(sameNumberCount) + Message.ONETIME);
+    }
+
+    private boolean winLotto(int sameNumberCount) {
+        return sameNumberCount >= Message.WINLOTTO;
     }
 
     public Map<Integer, Integer> getWinningChart() {
