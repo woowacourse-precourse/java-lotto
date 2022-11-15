@@ -7,13 +7,13 @@ import java.util.Map;
 public class Result {
     private final Map<LottoRank, Integer> result = new EnumMap<LottoRank, Integer>(LottoRank.class);
 
-    public Result(List<LottoRank> lottoRanks){
+    public Result(List<LottoRank> lottoRanks) {
         putValues(lottoRanks);
     }
 
-    private void putValues(List<LottoRank> lottoRanks){
-        for(LottoRank lottoRank : lottoRanks){
-            result.put(lottoRank, result.getOrDefault(lottoRank, 0)+1);
+    private void putValues(List<LottoRank> lottoRanks) {
+        for (LottoRank lottoRank : lottoRanks) {
+            result.put(lottoRank, result.getOrDefault(lottoRank, 0) + 1);
         }
     }
 
@@ -24,11 +24,11 @@ public class Result {
     }
 
     public int getRankCount(LottoRank lottoRank) {
-        return result.getOrDefault(lottoRank,0);
+        return result.getOrDefault(lottoRank, 0);
     }
 
-    public float calculateProfit(LottoCount amount){
-        return (float)this.calculatePrize()/(float)amount.getAmount() * 100;
+    public float calculateProfit(LottoCount amount) {
+        return (float) this.calculatePrize() / (float) amount.getAmount() * 100;
 
     }
 }

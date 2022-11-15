@@ -12,17 +12,17 @@ public class LottoCount {
         this.amount = amount;
     }
 
-    public int calculateLottoCount(){
+    public int calculateLottoCount() {
         return amount / LOTTO_PRICE;
     }
 
-    private void validateAmount(int amount){
-        if(amount % LOTTO_PRICE !=0||amount==0){
+    private void validateAmount(int amount) {
+        if (amount % LOTTO_PRICE != 0 || amount == 0) {
             throw new IllegalArgumentException(AMOUNT_NOT_DIVISIBLE_EXCEPTION);
         }
     }
 
-    public int getAmount(){
+    public int getAmount() {
         return amount;
     }
 }

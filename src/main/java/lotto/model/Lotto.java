@@ -17,33 +17,35 @@ public class Lotto {
         validateLottoDistinct(numbers);
         validateLottoRange(numbers);
     }
-    private void validateLottoCount(List<Integer> numbers){
+
+    private void validateLottoCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_NOT_SIX_EXCEPTION);
         }
     }
 
-    private void validateLottoDistinct(List<Integer> numbers){
-        int distinctCount =(int) numbers.stream()
+    private void validateLottoDistinct(List<Integer> numbers) {
+        int distinctCount = (int) numbers.stream()
                 .distinct()
                 .count();
-        if(distinctCount!=numbers.size()){
+        if (distinctCount != numbers.size()) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_NOT_Distinct_EXCEPTION);
         }
     }
-    private void validateLottoRange(List<Integer> numbers){
-        for(int number : numbers){
-            if(number>45||number<1){
+
+    private void validateLottoRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number > 45 || number < 1) {
                 throw new IllegalArgumentException(LOTTO_NUMBERS_RANGE_EXCEPTION);
             }
         }
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public int countSameNum(Lotto lotto){
+    public int countSameNum(Lotto lotto) {
         return (int) numbers.stream()
                 .filter(lotto::contains)
                 .count();

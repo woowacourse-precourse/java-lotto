@@ -19,8 +19,8 @@ public enum LottoRank {
     private final int prizeAmount;
     private final BiPredicate<Integer, Boolean> isMatch;
 
-    LottoRank(final int correctNumber, final int prizeAmount, BiPredicate<Integer, Boolean> isMatch){
-        this.correctNumber =correctNumber;
+    LottoRank(final int correctNumber, final int prizeAmount, BiPredicate<Integer, Boolean> isMatch) {
+        this.correctNumber = correctNumber;
         this.prizeAmount = prizeAmount;
         this.isMatch = isMatch;
 
@@ -49,6 +49,6 @@ public enum LottoRank {
     }
 
     public int getPrizeAmount() {
-        return  prizeAmount;
+        return prizeAmount;
     }
 }
