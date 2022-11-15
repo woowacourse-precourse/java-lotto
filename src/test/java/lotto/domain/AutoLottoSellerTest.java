@@ -10,7 +10,7 @@ class AutoLottoSellerTest {
     final AutoLottoSeller autoLottoSeller = new AutoLottoSeller();
 
     @Nested
-    class buyLotto {
+    class buyLottoTest {
 
 
         @DisplayName("2000원 넣었을때 로또 2장 뽑히는지 확인")

@@ -14,7 +14,7 @@ class CounterTest {
     final List<Integer> testRankingTwo = List.of(0, 0, 0, 0, 0, 0);
 
     @Nested
-    class countFirst {
+    class countFirstTest {
 
         @DisplayName("1등이 2명 일때")
         @Test
