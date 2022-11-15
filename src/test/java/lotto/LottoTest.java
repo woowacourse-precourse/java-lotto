@@ -60,7 +60,7 @@ class LottoTest {
         int matchCount = lotto.getMatchCountWithLotto(List.of(6, 5, 4, 3, 2, 1));
 
         //Then
-        assertThat(matchCount).isEqualTo(6);
+        assertThat(matchCount).isEqualTo(7);
     }
 
     @DisplayName("하나도 일치하지 않을 때")
@@ -75,5 +75,19 @@ class LottoTest {
 
         //Then
         assertThat(matchCount).isEqualTo(0);
+    }
+
+    @DisplayName("5개 맞으면서 보너스 넘버가 맞을 때")
+    @Test
+    void match5AndBonusNumber() throws Exception {
+        //Given
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        lotto.setLottoBonusNumber(7);
+
+        //When
+        int matchCount = lotto.getMatchCountWithLotto(List.of(1, 2, 3, 4, 7, 10));
+
+        //Then
+        assertThat(matchCount).isEqualTo(6);
     }
 }

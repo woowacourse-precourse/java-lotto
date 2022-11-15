@@ -63,6 +63,7 @@ class ManagerTest {
         //When
         List<List<Integer>> purchased = List.of(
                 List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 7, 10),
                 List.of(1, 2, 3, 4, 5, 8),
                 List.of(1, 2, 3, 4, 8, 9),
                 List.of(1, 2, 3, 8, 9, 10),
@@ -74,7 +75,7 @@ class ManagerTest {
         int[] matchCount = manager.findMatchCount(lotto, purchased);
 
         //Then
-        assertThat(matchCount).isEqualTo(new int[]{1, 1, 1, 1});
+        assertThat(matchCount).isEqualTo(new int[]{1, 1, 1, 1, 1});
     }
 
     @DisplayName("3개 일치가 3 6개 일치가 3")
@@ -99,7 +100,7 @@ class ManagerTest {
         int[] matchCount = manager.findMatchCount(lotto, purchased);
 
         //Then
-        assertThat(matchCount).isEqualTo(new int[]{3, 0, 0, 3});
+        assertThat(matchCount).isEqualTo(new int[]{3, 0, 0, 0, 3});
     }
 
     @DisplayName("예시에 나온 수익율에 대한 테스트")
