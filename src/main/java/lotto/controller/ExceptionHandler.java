@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import static lotto.controller.UserController.PRICE;
+
 import java.util.List;
 import lotto.view.ExceptionHandlerUI;
 
@@ -53,7 +55,7 @@ public class ExceptionHandler {
 
     public static void validPurchaseForm(String readline){
         int amount = excParseInt(readline);
-        if(amount%1000 != 0){
+        if(amount%PRICE != 0){
             throw new IllegalArgumentException(excMessageAboutPurchaseForm);
         }
     }

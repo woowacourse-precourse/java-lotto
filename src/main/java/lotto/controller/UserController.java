@@ -12,10 +12,11 @@ import lotto.model.User;
 import lotto.view.UserUI;
 
 public class UserController {
-    private static final Integer price = 1000;
+    public static final Integer PRICE = 1000;
 
     private static User model;
     private final static UserUI view = new UserUI();
+
 
     public void purchaseLottery(LottoController lottoCtrl){
         String purchase = view.getPurchaseMoney();
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     public void howMuch(int purchase, LottoController lottoCtrl){
-        int loop = purchase / price;
+        int loop = purchase / PRICE;
         List<Lotto> lotteries = new ArrayList<Lotto>();
 
         for(int i=0;i<loop;i++){
