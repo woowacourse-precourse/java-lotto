@@ -9,75 +9,60 @@ import lotto.dto.ScoreInfo;
 import lotto.vo.*;
 
 public class LottoServiceImpl implements LottoService {
-	@Override
-	public List<Lotto> createLottos(LottoBuyingInfo lottoBuyingInfo) {
-		List<Lotto> result = new ArrayList<>();
-		for (int count = 0; count < lottoBuyingInfo.getAmount(); count++) {
-			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoInfo.MIN_LOTTO_NUMBER, LottoInfo.MAX_LOTTO_NUMBER, LottoInfo.LOTTO_SIZE);
-			result.add(new Lotto(numbers));
-		}
+    @Override
+    public List<Lotto> createLottos(LottoBuyingInfo lottoBuyingInfo) {
+        List<Lotto> result = new ArrayList<>();
+        for (int count = 0; count < lottoBuyingInfo.getAmount(); count++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoInfo.MIN_LOTTO_NUMBER, LottoInfo.MAX_LOTTO_NUMBER, LottoInfo.LOTTO_SIZE);
+            result.add(new Lotto(numbers));
+        }
 
-		return result;
-	}
+        return result;
+    }
 
-	@Override
-	public ScoreInfo makeScoreInfoBy(List<Lotto> lottos, WinningInfo winningInfo) {
-		ScoreInfo scoreInfo = new ScoreInfo();
-		for (Lotto lotto : lottos) {
-			calculateRank(lotto, winningInfo, scoreInfo);
-		}
-		return scoreInfo;
-	}
+    @Override
+    public ScoreInfo makeScoreInfoBy(List<Lotto> lottos, WinningInfo winningInfo) {
+        ScoreInfo scoreInfo = new ScoreInfo();
+        for (Lotto lotto : lottos) {
+            calculateRank(lotto, winningInfo, scoreInfo);
+        }
+        return scoreInfo;
+    }
 
-	@Override
-	public Profit calculateProfitBy(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
-		return new Profit(countSumOfPrice(scoreInfo) / lottoBuyingInfo.getMoney())
-				.convertToPercentage()
-				.roundToFirstDigit();
-	}
+    @Override
+    public Profit calculateProfitBy(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
+        return new Profit(countSumOfPrice(scoreInfo) / lottoBuyingInfo.getMoney())
+                .convertToPercentage()
+                .roundToFirstDigit();
+    }
 
-	private double countSumOfPrice(ScoreInfo scoreInfo) {
-		return Arrays.stream(Score.values())
-				.mapToDouble(score -> score.getPrice() * scoreInfo.get(score))
-				.sum();
-	}
+    private double countSumOfPrice(ScoreInfo scoreInfo) {
+        return Arrays.stream(Score.values())
+                .mapToDouble(score -> score.getPrice() * scoreInfo.get(score))
+                .sum();
+    }
 
 
-	private void calculateRank(Lotto lotto, WinningInfo winningInfo, ScoreInfo scoreInfo) {
-		int matchCount = getMatchCount(lotto, winningInfo);
+    private void calculateRank(Lotto lotto, WinningInfo winningInfo, ScoreInfo scoreInfo) {
+        int matchCount = getMatchCount(lotto, winningInfo);
+        boolean bonusMatching = isBonusMatching(lotto, winningInfo);
 
-		if (matchCount == 6) {
-			scoreInfo.addScore(Score.FIRST);
-			return;
-		}
+        for (Score score : Score.values()) {
+            if (score.isMatchingToScoreCondition(matchCount, bonusMatching)) {
+                scoreInfo.addScore(score);
+                return;
+            }
+        }
+    }
 
-		if (matchCount == 5) {
-			if (isBonusMatching(lotto, winningInfo)) {
-				scoreInfo.addScore(Score.SECOND);
-				return;
-			}
-			scoreInfo.addScore(Score.THIRD);
-			return;
-		}
+    private static int getMatchCount(Lotto lotto, WinningInfo winningInfo) {
+        return (int) lotto.getNumbers()
+                .stream()
+                .filter(number -> winningInfo.isWinningNumbersContaining(number))
+                .count();
+    }
 
-		if (matchCount == 4) {
-			scoreInfo.addScore(Score.FORTH);
-			return;
-		}
-
-		if (matchCount == 3) {
-			scoreInfo.addScore(Score.FIFTH);
-		}
-	}
-
-	private static int getMatchCount(Lotto lotto, WinningInfo winningInfo) {
-		return (int) lotto.getNumbers()
-				.stream()
-				.filter(number -> winningInfo.isWinningNumbersContaining(number))
-				.count();
-	}
-
-	private boolean isBonusMatching(Lotto lotto, WinningInfo winningInfo) {
-		return lotto.contains(winningInfo.getBonus());
-	}
+    private boolean isBonusMatching(Lotto lotto, WinningInfo winningInfo) {
+        return lotto.contains(winningInfo.getBonus());
+    }
 }
