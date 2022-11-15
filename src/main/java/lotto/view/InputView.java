@@ -33,8 +33,7 @@ public class InputView {
         }
 
         if (!ViewValidator.isNumber(input)) {
-            System.out.println(NOT_NUMBER_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
         }
     }
 
