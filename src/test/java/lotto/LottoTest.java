@@ -165,9 +165,9 @@ class LottoTest {
     @Test
     void yieldTest() {
         /*given*/
-        double yieldExtend = 10;
+        double yieldExtend = 62.5;
         /*when*/
-        double yieldActual = playLotto.yield(5000,List.of(0,0,0,1,0));
+        double yieldActual = playLotto.yield(8000,List.of(0,0,0,0,1));
         /*then*/
         assertThat(yieldExtend).isEqualTo(yieldActual);
     }
