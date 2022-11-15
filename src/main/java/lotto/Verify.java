@@ -53,15 +53,13 @@ public class Verify {
 		return dupCheck;
 	}
 
-	private static void verifyDupNumber(int bonusNumber, List<Integer> goal) {
-		boolean[] dupCheck = verifyDupNumber(goal);
-
-		if (dupCheck[bonusNumber]) {
+	private static void verifyDupNumber(int bonusNumber, boolean[] goal) {
+		if (goal[bonusNumber]) {
 			illegalArgumentException(Constants.ERROR_DUP_NUMBER);
 		}
 	}
 
-	public static void verifyBonus(int bonusNumber, List<Integer> goal) {
+	public static void verifyBonus(int bonusNumber, boolean[] goal) {
 		verifyDupNumber(bonusNumber, goal);
 		verifyNumberBoundary(bonusNumber);
 	}

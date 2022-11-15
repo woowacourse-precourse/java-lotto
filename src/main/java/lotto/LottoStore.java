@@ -8,7 +8,7 @@ public class LottoStore {
 
 	private int moneyBuyLotto;
 	private List<Lotto> lottos;
-	private List<Integer> goal;
+	private boolean[] goal;
 	private int bonusNumber;
 
 	public LottoStore() {
@@ -22,6 +22,7 @@ public class LottoStore {
 		publish();
 		win();
 		bonus();
+		checkWin();
 	}
 
 	private void buy() {
@@ -46,12 +47,31 @@ public class LottoStore {
 	}
 
 	private void win() {
-		goal = ConsoleIn.readGoal();
-		Verify.verifyGoal(goal);
+		ConsoleOut.printInputGoal();
+		List<Integer> inputGoal = ConsoleIn.readGoal();
+		Verify.verifyGoal(inputGoal);
+		goal = makeGoal(inputGoal);
+	}
+
+	private boolean[] makeGoal(List<Integer> inputGoal) {
+		boolean[] goal = new boolean[Constants.LOTTO_UPPER_BOUNDARY + 1];
+
+		for (Integer number : inputGoal) {
+			goal[number] = true;
+		}
+
+		return goal;
 	}
 
 	private void bonus() {
+		ConsoleOut.printInputBonus();
 		bonusNumber = Util.strToInt(ConsoleIn.readLine());
 		Verify.verifyBonus(bonusNumber, goal);
+	}
+
+	private void checkWin() {
+		for (Lotto lotto : lottos) {
+//			checkLotto(lotto);
+		}
 	}
 }
