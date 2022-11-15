@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public class ResultServiceTest {
 
     @DisplayName("등수가 맞게 나오는지 확인")
     @Test
-    void compareTest() {
+    void getResultTest() {
         List<Integer> listOfUserNum = List.of(1,2,3,4,5,6);
         List<List<Integer>> lottoList =
                 List.of(
@@ -36,7 +35,7 @@ public class ResultServiceTest {
                 );
         int bonus = 7;
 
-        Map<Rank, Integer> testOfCompare = resultService.compare(listOfUserNum, lottoList, bonus);
+        Map<Rank, Integer> testOfCompare = resultService.getResult(listOfUserNum, lottoList, bonus);
         Map<Rank, Integer> resultOfCompare = new EnumMap<Rank, Integer>(Rank.class);
         resultOfCompare.put(Rank.FIRST, 2);
         resultOfCompare.put(Rank.SECOND, 1);
@@ -44,6 +43,50 @@ public class ResultServiceTest {
         resultOfCompare.put(Rank.FOURTH, 1);
         resultOfCompare.put(Rank.FIFTH, 1);
         assertThat(testOfCompare).isEqualTo(resultOfCompare);
+    }
+
+    @DisplayName("일치하는 번호의 개수가 잘 나오는지 확인")
+    @Test
+    void getCntOfMatchedNumTest() {
+        List<Integer> listOfUserNum = List.of(1,2,3,4,5,6);
+        List<Integer> newLotto = List.of(4,2,3,7,5,6);
+        int resultCntOfMatchedNum = 5;
+
+        int testCntOfMatchedNum = resultService.getCntOfMatchedNum(listOfUserNum, newLotto);
+
+        assertThat(testCntOfMatchedNum).isEqualTo(resultCntOfMatchedNum);
+
+    }
+
+    @DisplayName("보너스 일치 여부가 잘 나오는지 확인")
+    @Test
+    void isBonusMatchedTest() {
+        List<Integer> newLotto = List.of(4,2,3,7,5,6);
+        List<Integer> newLotto2 = List.of(4,2,3,1,5,6);
+        int bonus = 7;
+
+        boolean testIsBonusMatched = resultService.isBonusMatched(newLotto, bonus);
+        boolean testIsBonusMatched2 = resultService.isBonusMatched(newLotto2, bonus);
+
+        assertThat(testIsBonusMatched).isEqualTo(true);
+        assertThat(testIsBonusMatched2).isEqualTo(false);
+    }
+
+    @DisplayName("보너스 일치 여부가 잘 나오는지 확인")
+    @Test
+    void getYieldTest() {
+        int userPayment = 6000;
+        Map<Rank, Integer> resultOfGetYield = new EnumMap<Rank, Integer>(Rank.class);
+        resultOfGetYield.put(Rank.FIRST, 0);
+        resultOfGetYield.put(Rank.SECOND, 0);
+        resultOfGetYield.put(Rank.THIRD, 0);
+        resultOfGetYield.put(Rank.FOURTH, 1);
+        resultOfGetYield.put(Rank.FIFTH, 1);
+
+        double resultOfYield = 916.7;
+        double testOfYield = resultService.getYield(resultOfGetYield, userPayment);
+
+        assertThat(testOfYield).isEqualTo(resultOfYield);
     }
 
 

@@ -11,17 +11,11 @@ public class ResultServiceImpl implements ResultService{
 
     @Override
     public Map<Rank, Integer> getResult(List<Integer> listOfUserNum, List<List<Integer>> lottoList, int bonus) {
-        initiateResult();
-        result = compare(listOfUserNum, lottoList, bonus);
-        return result;
-    }
-
-
-    @Override
-    public Map<Rank, Integer> compare(List<Integer> listOfUserNum, List<List<Integer>> lottoList, int bonus) {
         int cntOfMatchedNum = 0;
+        initiateResult();
+
         for (List<Integer> lotto : lottoList) {
-            cntOfMatchedNum = getCntOfMatchedNum(listOfUserNum, lotto, bonus);
+            cntOfMatchedNum = getCntOfMatchedNum(listOfUserNum, lotto);
 
             if (cntOfMatchedNum == 5 && isBonusMatched(lotto, bonus)) {
                 result.put(Rank.SECOND, result.get(Rank.SECOND) + 1);
@@ -34,7 +28,7 @@ public class ResultServiceImpl implements ResultService{
 
 
     @Override
-    public int getCntOfMatchedNum(List<Integer> listOfUserNum, List<Integer> newLotto, int bonus) {
+    public int getCntOfMatchedNum(List<Integer> listOfUserNum, List<Integer> newLotto) {
         int cntOfMatchedNum = 0;
         for (int num : newLotto) {
             if (listOfUserNum.contains(num)) {
@@ -67,7 +61,7 @@ public class ResultServiceImpl implements ResultService{
         }
 
         yield = totalPrize / userPayment * 100;
-        return yield;
+        return Math.round(yield * 10)/ 10.0;
     }
 
 
