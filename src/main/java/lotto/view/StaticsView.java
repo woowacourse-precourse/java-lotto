@@ -2,6 +2,8 @@ package lotto.view;
 
 import lotto.domain.LottoRank;
 
+import java.text.NumberFormat;
+
 public enum StaticsView {
 
     MATCH("%s개 일치 (%s원) - %s개"),
@@ -23,6 +25,10 @@ public enum StaticsView {
     }
 
     public String render(LottoRank rank, int count) {
-        return String.format(format, rank.getMatchCount(), rank.getPrizeMoney(), count);
+        return String.format(
+                format,
+                rank.getMatchCount(),
+                NumberFormat.getInstance().format(rank.getPrizeMoney()),
+                count);
     }
 }

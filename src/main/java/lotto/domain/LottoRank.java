@@ -34,8 +34,8 @@ public enum LottoRank {
         return matchCount;
     }
 
-    public String getPrizeMoney() {
-        return NumberFormat.getInstance().format(prizeMoney);
+    public int getPrizeMoney() {
+        return prizeMoney;
     }
 
     public boolean isHasBonusNumber() {
