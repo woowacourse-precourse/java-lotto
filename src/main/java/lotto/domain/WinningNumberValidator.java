@@ -10,39 +10,39 @@ public class WinningNumberValidator {
     public static final int MAXIMUM_NUMBER = 45;
     public static final int MINIMUM_NUMBER = 1;
 
-    public void validateLottoNumber(String inputLottoNumber) {
-        if (!inputLottoNumber.matches(RegularExpressionUtil.LOTTO_NUMBER_CHECK)) {
+    public void validateWinningLottoNumber(String winningLottoNumber) {
+        if (!winningLottoNumber.matches(RegularExpressionUtil.LOTTO_NUMBER_CHECK)) {
             throw new IllegalArgumentException(ExceptionMessage.WINNING_FORMAT_ERROR);
         }
-        if (isDuplicatedNumber(List.of(inputLottoNumber.split(MessageFormatUtil.COMMA)))) {
+        if (isDuplicatedNumber(List.of(winningLottoNumber.split(MessageFormatUtil.COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATED_NUMBER);
         }
-        if (isOutOfBounds(List.of(inputLottoNumber.split(MessageFormatUtil.COMMA)))) {
+        if (isOutOfBounds(List.of(winningLottoNumber.split(MessageFormatUtil.COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.OUT_OF_BOUNDS);
         }
     }
 
-    private boolean isOutOfBounds(List<String> splitInputWinningNumber) {
-        return getMaximumNumber(splitInputWinningNumber) > MAXIMUM_NUMBER
-                || getMinimumNumber(splitInputWinningNumber) < MINIMUM_NUMBER;
+    private boolean isOutOfBounds(List<String> splitWinningLottoNumber) {
+        return getMaximumNumber(splitWinningLottoNumber) > MAXIMUM_NUMBER
+                || getMinimumNumber(splitWinningLottoNumber) < MINIMUM_NUMBER;
     }
 
-    private int getMinimumNumber(List<String> splitInputWinningNumber) {
-        return splitInputWinningNumber.stream()
+    private int getMinimumNumber(List<String> splitWinningLottoNumber) {
+        return splitWinningLottoNumber.stream()
                 .map(Integer::parseInt)
                 .min(Integer::compareTo)
                 .get();
     }
 
-    private int getMaximumNumber(List<String> splitInputWinningNumber) {
-        return splitInputWinningNumber.stream()
+    private int getMaximumNumber(List<String> splitWinningLottoNumber) {
+        return splitWinningLottoNumber.stream()
                 .map(Integer::parseInt)
                 .max(Integer::compareTo)
                 .get();
     }
 
-    private boolean isDuplicatedNumber(List<String> splitInputWinningNumber) {
-        return splitInputWinningNumber.stream()
+    private boolean isDuplicatedNumber(List<String> splitWinningLottoNumber) {
+        return splitWinningLottoNumber.stream()
                 .distinct()
                 .count() != NumberUtil.LOTTO_NUMBER_COUNT;
     }

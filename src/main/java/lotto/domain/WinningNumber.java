@@ -14,7 +14,7 @@ public class WinningNumber {
     private final int bonusNumber;
 
     public WinningNumber(List<String> winningNumber) {
-        validator.validateLottoNumber(winningNumber.get(LOTTO_NUMBER));
+        validator.validateWinningLottoNumber(winningNumber.get(LOTTO_NUMBER));
         this.numbers = createNumbers(winningNumber.get(LOTTO_NUMBER));
         validator.validateBonusNumber(winningNumber.get(BONUS_NUMBER), numbers);
         this.bonusNumber = Integer.parseInt(winningNumber.get(BONUS_NUMBER));
