@@ -4,7 +4,6 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Reward;
 import lotto.domain.User;
-
 import java.util.List;
 import java.util.Map;
 
