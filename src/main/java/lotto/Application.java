@@ -41,7 +41,7 @@ public class Application {
         //당첨통계
         printWinningDetails(winList, rewardList);
         //수익률 출력
-        calcLotteryYield(winList, buyMoney);
+        calcLotteryYield(winList, buyMoney, rewardList);
     }
     static int countPurchaseLotto(int buyMoney) {
 
@@ -160,12 +160,12 @@ public class Application {
         rewardList.add(first);
         return rewardList;
     }
-    static void calcLotteryYield(ArrayList<Integer> winList, int buyMoney){
+    static void calcLotteryYield(ArrayList<Integer> winList, int buyMoney, ArrayList<Float> rewardList){
         DecimalFormat decFormat = new DecimalFormat("###,###.#");
 
         float sum =0;
         for(int i=0; i<winList.size(); i++){
-
+            sum += winList.get(i)*
         }
     }
 }
