@@ -17,7 +17,6 @@ public class StoreTest {
         // given
         Store store = new Store();
         List<Integer> lotto = store.issue();
-        System.out.println(lotto);
 
         // when
         Set<Integer> duplicateCheck = new HashSet<>();

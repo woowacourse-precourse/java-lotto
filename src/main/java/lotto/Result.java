@@ -1,21 +1,21 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static lotto.Const.*;
 
 public class Result {
     private Map<Float, Integer> winBoard;
-    private Rank[] ranks;
 
     public Result() {
         initWinBoard();
-        ranks = Rank.values();
     }
 
     public void compare(Customer customer, Lotto lotto) {
-        float matchingNumber = numberOfMatchingNumbers(customer.getWinningNumber(), lotto); // lotto 번호만 넘김
+        float matchingNumber = numberOfMatchingNumbers(customer.getWinningNumber(), lotto);
 
         if (matchingNumber == 5f) {
             if (match(lotto, customer.getBonusNumber())) {
@@ -27,35 +27,29 @@ public class Result {
     }
 
     public long getTotalReward() {
+        List<Float> numbersOfMatching = Rank.getNumbersOfMatching();
         long totalReward = 0;
-
-        for (int i = 0; i < ranks.length; i++) {
-            totalReward += getReward(ranks[i].getMatching());
+        for (float matching : numbersOfMatching) {
+            totalReward += getReward(matching);
         }
 
         return totalReward;
     }
 
     public void printStatistic() {
-        for (int i = 0; i < ranks.length; i++) {
-            int winSheetCount = winBoard.get(ranks[i].getMatching());
-            long reward = getReward(ranks[i].getMatching());
+        List<Float> numbersOfMatching = Rank.getNumbersOfMatching();
 
-            System.out.println(getOutOfMatching(ranks[i].getMatching()) + " (" + getOutOfPrize(ranks[i].getPrize()) + "원) - " + winSheetCount + "개");
+        for (float matching : numbersOfMatching) {
+            int winSheetCount = winBoard.get(matching);
+            long reward = Rank.getPrize(matching);
+            System.out.println(getOutOfMatching(matching) + " ("
+                    + getOutOfPrize(reward) + "원) - " + winSheetCount + "개");
         }
     }
 
-    public long getReward(float matchingNumber) {
+    private long getReward(float matchingNumber) {
         long winSheetCount = winBoard.get(matchingNumber);
-        long reward = 0;
-
-        for (int i = 0; i < ranks.length; i++) {
-            if (ranks[i].getMatching() == matchingNumber) {
-                reward = winSheetCount * ranks[i].getPrize();
-            }
-        }
-
-        return reward;
+        return winSheetCount * Rank.getPrize(matchingNumber);
     }
 
     private String getOutOfMatching(float matchingNumber) {
@@ -72,21 +66,9 @@ public class Result {
         return outOfMatching;
     }
 
-    private String getOutOfPrize(long prize) { // 3 자리씩 끊어서 출력, Decimal.formater
-        String longToString = Long.toString(prize);
-        String outOfPrize = "";
-        int index = 0;
-
-        for (int i = longToString.length() - 1; i != -1; i--) {
-            if (index != 0 && index % 3 == 0) {
-                outOfPrize = "," + outOfPrize;
-            }
-
-            outOfPrize = longToString.charAt(i) + outOfPrize;
-            index++;
-        }
-
-        return outOfPrize;
+    private String getOutOfPrize(long prize) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(prize);
     }
 
     private void updateWinBoard(float matchingNumber) {
@@ -113,12 +95,8 @@ public class Result {
 
     private void initWinBoard() {
         winBoard = new HashMap<>();
-
-        for (float i = 3; i <= 6; i++) {
-            winBoard.put(i, 0);
-        }
-
-        winBoard.put(5.5f, 0);
+        List<Float> numbersOfMatching = Rank.getNumbersOfMatching();
+        numbersOfMatching.forEach(number -> winBoard.put(number, 0));
     }
 
     public Map<Float, Integer> getWinBoard() {

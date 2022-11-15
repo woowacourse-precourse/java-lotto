@@ -19,4 +19,14 @@ public class RankTest {
         // then
         assertThat(numberOfMatching.containsAll(compare)).isTrue();
     }
+
+    @DisplayName("Rank getPrize 메소드 확인")
+    @Test
+    void getPrizeMethodOfRankValidate() {
+        // given
+        long prize = Rank.getPrize(5.5f);
+
+        // then
+        assertThat(prize).isEqualTo(30_000_000);
+    }
 }

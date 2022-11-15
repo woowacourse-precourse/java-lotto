@@ -19,21 +19,12 @@ public enum Rank {
         this.prize = prize;
     }
 
-    public float getMatching() {
-        return this.matching;
+    public static long getPrize(float matching) {
+        return Arrays.stream(values())
+                .filter(rank -> rank.matching == matching)
+                .findFirst()
+                .get().prize;
     }
-
-    public long getPrize() {
-        return this.prize;
-    }
-
-    /**
-     * 어떤 것을 수정해야할까?
-     *
-     * getMatching 이 아닌, 그냥 matching 번호를 넘겨주면?
-     * 그리고 values 를 했을 때 그것을 List 로 넘겨주어도 되겠다.
-     */
-
 
     public static List<Float> getNumbersOfMatching() {
         List<Float> numbersOfMatching = new ArrayList<>();

@@ -80,7 +80,7 @@ public class ResultTest {
 
     @DisplayName("5개와 보너스가 일치하는 경우")
     @Test
-    void fiveNumberAndBounsNumberMatch() {
+    void fiveNumberAndBonusNumberMatch() {
         // given
         Result result = new Result();
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -129,7 +129,7 @@ public class ResultTest {
 
         // then
         assertThat(result.getWinBoard().get(6f)).isEqualTo(2);
-        assertThat(result.getReward(6f)).isEqualTo(4_000_000_000L);
+        assertThat(result.getTotalReward()).isEqualTo(4_000_000_000L);
     }
 
     @DisplayName("총 당첨금 반환")
