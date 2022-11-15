@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class LottoUtil {
 
@@ -20,7 +21,17 @@ public class LottoUtil {
         return result;
     }
 
-    public static boolean isNumeric(String str) {
+    public boolean isNumeric(String str) {
         return str != null && str.matches("[0-9.]+");
+    }
+
+    public List<String> tokenizeString(String input) {
+        List<String> result = new ArrayList<>();
+        StringTokenizer tokenizer = new StringTokenizer(input, ",");
+
+        while (tokenizer.hasMoreTokens()) {
+            result.add(tokenizer.nextToken());
+        }
+        return result;
     }
 }
