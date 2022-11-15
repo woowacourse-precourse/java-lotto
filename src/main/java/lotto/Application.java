@@ -9,7 +9,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Application {
-    // TODO : Enum class 활용하기
     static Game gameData = new Game();
 
     static StringBuilder sb = new StringBuilder();
