@@ -15,11 +15,16 @@ public class LottoWinningNumber {
     }
 
     public void validSixNumber(String[] inputNumbers) {
-        if (inputNumbers.length != 6) {
+        if (inputNumbers.length != Lotto.numberCount) {
             throw new IllegalArgumentException();
         }
     }
 
+    public void validOneNumberRange(int number) {
+        if (number < Lotto.numberMinRage || number > Lotto.numberMaxRage) {
+            throw new IllegalArgumentException();
+        }
+    }
     public String[] separateByComma(String inputNumbers) {
         return inputNumbers.split(",");
     }
