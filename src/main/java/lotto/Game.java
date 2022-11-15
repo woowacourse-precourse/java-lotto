@@ -30,4 +30,10 @@ public class Game {
         }
     }
 
+    private static Lotto setUserLotto(){
+        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        List<Integer> beforeUserLotto =Check.checkInputLotto(input);
+        Lotto userLotto = new Lotto(beforeUserLotto);
+        return userLotto;
+    }
 }
