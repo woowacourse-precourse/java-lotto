@@ -49,13 +49,14 @@ public class Money {
         return money / LOTTO_PRICE;
     }
 
-    public int getMoney() {
-        return money;
-    }
 
     @Override
     public String toString() {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         return decFormat.format(this.money) + "원";
+    }
+
+    public int getMoney() {
+        return money;
     }
 }
