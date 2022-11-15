@@ -11,6 +11,8 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        Game game = new Game();
+        game.setBonus();
     }
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
@@ -37,12 +39,11 @@ public class Lotto {
         }
     }
 
-    public boolean validateBonus(int bonus) throws IllegalArgumentException {
+    public void validateBonus(int bonus) throws IllegalArgumentException {
         checkNumberRange(numbers);
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호 외의 번호를 입력해야 합니다.");
         }
-        return true;
     }
 
     public List<Integer> returnNumbers() {
