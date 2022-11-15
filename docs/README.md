@@ -26,11 +26,13 @@
   `IllegalArgumentException`을 반환한다.
 
 ### LottoNumbers
-- [ ] 1. 당첨 번호 추첨 시, 중복되지 않는 숫자 6개와 보너스 번호 1개를 뽑는다.
-- [ ] 2. 로또 번호는 오름차순으로 정렬한다.
+`LottoNumbers`는 로또 번호 자동 생성과 관련한 util 메소드 클래스입니다.
+- [X] 1. 1부터 45사이의 6자리 로또 번호 랜덤 생성
+- [X] 2. 로또 번호 중복 제거
+- [X] 3. 로또 번호가 1부터 45사이의 숫자가 아닐 경우, `IllegalArgumentException`을 반환한다.
   
 ### LottoWinningNumbers
-
+- [ ] 1. 당첨 번호 추첨 시, 중복되지 않는 숫자 6개와 보너스 번호 1개를 뽑는다.
 ### LottoBonusNumber
 
 
