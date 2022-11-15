@@ -37,4 +37,18 @@ class OutputViewTest {
         // Then
         assertEquals(message, outContent.toString());
     }
+
+    @Test
+    @DisplayName("당첨 번호 입력 메세지 출력")
+    void announceInputWinningNumbers() {
+        // Given
+        String message = "당첨 번호를 입력해 주세요.\n";
+
+        // When
+        outputView.announceInputWinningNumbers();
+
+        // Then
+        assertEquals(message, outContent.toString());
+    }
+
 }
