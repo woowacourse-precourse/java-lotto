@@ -20,7 +20,7 @@ class UserServiceTest {
 
     @DisplayName("유저가 구매한 금액이 1000원 단위가 아니거나 0원 이하라면 예외가 발생한다.")
     @ParameterizedTest
-    @ValueSource(ints = {12345, -1000, 0})
+    @ValueSource(ints = {12345, -1000})
     void validatePayMoney(int money) {
         assertThatThrownBy(() -> userService.validateMoney(money))
                 .isInstanceOf(IllegalArgumentException.class);
