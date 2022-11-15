@@ -39,7 +39,7 @@ public class Game {
         return matchNumbers;
     }
 
-    public int getBonusNumber(List<Integer> matchNumbers){
+    public int getBonusNumber(List<Integer> matchNumbers) {
         String inputBonusNumber = ui.inputBonusNumber();
         int bonusNumber = service.getBonusNumber(inputBonusNumber, matchNumbers);
 
