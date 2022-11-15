@@ -32,7 +32,7 @@ public class Controller {
         List<List<Integer>> lottoNumbers = getLottoNumbers(lottoAmount);
         View.printPurchaseInformation(lottoAmount, lottoNumbers);
 
-        List<Integer> winningLottoNumber = getWinningLottoNumber();
+        List<Integer> winningLottoNumber = getWinningLottoNumbers();
         int winningBonusNumber = getWinningBonusNumber();
 
         service = new Service(lottoAmount, lottoNumbers, winningLottoNumber, winningBonusNumber);
@@ -62,7 +62,7 @@ public class Controller {
         return lottoNumbers;
     }
 
-    private List<Integer> getWinningLottoNumber() {
+    private List<Integer> getWinningLottoNumbers() {
         View.printInputLottoNumbers();
         Lotto lotto = new Lotto(PlayerInput.getLottoNumbers());
         return lotto.getNumbers();
@@ -75,12 +75,12 @@ public class Controller {
     }
 
     private double getProfitRates(int money, int[] lottoResult) {
-        double winningAmount = 0;
+        double prize = 0;
 
         for (int i = 0; i < lottoResult.length; i++) {
-            winningAmount += lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
+            prize += lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
         }
-        return (winningAmount / money) * 100;
+        return (prize / money) * 100;
     }
 
 }

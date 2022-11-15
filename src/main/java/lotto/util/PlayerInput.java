@@ -48,7 +48,7 @@ public class PlayerInput {
         }
 
         if (!input.contains(",")) {
-            View.printNotComma();
+            View.printNotSeparatedByComma();
             throw new IllegalArgumentException();
         }
         return numbers;

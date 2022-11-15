@@ -81,7 +81,7 @@ public class View {
         System.out.printf(NOT_LOTTO_PRICE_MESSAGE, lottoPrice);
     }
 
-    public static void printNotComma() {
+    public static void printNotSeparatedByComma() {
         System.out.println(NOT_SEPARATED_BY_COMMA_MESSAGE);
     }
 
