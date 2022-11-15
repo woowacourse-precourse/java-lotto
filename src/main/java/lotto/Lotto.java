@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -46,7 +47,7 @@ public class Lotto {
         }
     }
     // TODO: 추가 기능 구현
-    static void lottoSystem(){
+    public static void lottoSystem(){
         System.out.println("구입금액을 입력해 주세요.");
         String payment = Console.readLine();
         Integer amountOfLotto = amountOfLotto(payment);
@@ -56,11 +57,12 @@ public class Lotto {
         System.out.println("당첨  번호를 입력해 주세요.");
         String winningNumber = Console.readLine();
         System.out.println();
-        getTypingWinningNumber(winningNumber);
+        List<Integer> getLottoNumber = getTypingWinningNumber(winningNumber);
         System.out.println("보너스 번호를 입력해 주세요");
         String bonusNumber = Console.readLine();
+
     }
-    static Integer amountOfLotto(String lottoPayment){
+    public static Integer amountOfLotto(String lottoPayment){
         try{
             Integer amount = 0;
             Integer payment = Integer.parseInt(lottoPayment);
@@ -75,7 +77,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-    static ArrayList<List<Integer>> getRandomLottoNumber(int amountOfLotto){
+    public static ArrayList<List<Integer>> getRandomLottoNumber(int amountOfLotto){
         ArrayList<List<Integer>> randomLottoNumber = new ArrayList<>();
         for(int amount=0;amount<amountOfLotto;amount++){
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -86,13 +88,12 @@ public class Lotto {
         return randomLottoNumber;
     }
 
-    static List<Integer> getTypingWinningNumber(String typing){
+    public static List<Integer> getTypingWinningNumber(String typing){
         try{
-            List<Integer> getWinningNumber = new ArrayList<>();
             String[] splitTypingNumber = typing.split(",");
-            for(int winningNumber=0;winningNumber<splitTypingNumber.length;winningNumber++){
-                getWinningNumber.add(Integer.parseInt(splitTypingNumber[winningNumber]));
-            }
+            List<Integer> getWinningNumber = conversionArrayToList(splitTypingNumber);
+            Lotto lotto = new Lotto(getWinningNumber);
+            lotto.validate(getWinningNumber);
             System.out.println(getWinningNumber);
             return getWinningNumber;
         }
@@ -100,6 +101,22 @@ public class Lotto {
             System.out.println("[ERROR] 당첨 번호 입력은 숫자와 ','만 가능합니다");
             throw new IllegalArgumentException();
         }
+    }
+
+    public static List<Integer> conversionArrayToList(String[] arr){
+        List<Integer> getWinningNumber = new ArrayList<>();
+        for(int arrayIndex=0;arrayIndex<arr.length;arrayIndex++){
+            int number = Integer.parseInt(arr[arrayIndex]);
+            if(number>45 || number<1){
+                System.out.println("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            } else if (getWinningNumber.contains(number)) {
+                System.out.println("[ERROR] 당첨 번호는 중복을 허용하지 않습니다.");
+                throw new IllegalArgumentException();
+            }
+            getWinningNumber.add(number);
+        }
+        return getWinningNumber;
     }
 }
 
