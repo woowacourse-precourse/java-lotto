@@ -1,12 +1,27 @@
 package lotto;
 
-import static constance.Texts.*;
 import static constance.Values.*;
+import static constance.Values.Texts.*;
+import static constance.Values.Constants.*;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class Game {
 
+    public int inputAmount(){
+        int checkedAmount = -1;
+        while (checkedAmount < 0) {
+            try {
+                System.out.println(PURCHASE_AMOUNT.message());
+                String amount = camp.nextstep.edu.missionutils.Console.readLine();
+                checkedAmount = checker.checkAmountInput(amount);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(RESTART.message());
+            }
+        }
+        return checkedAmount;
+    }
     public static final Checker checker = new Checker();
     private User user;
     private WinningLotto winningLotto;
@@ -16,11 +31,8 @@ public class Game {
     }
 
     public void play() {
-
-        String amount;
         String numbers;
         String bonusNumber;
-        int checkedAmount;
         List<Integer> checkedNumbers;
         int checkedBonusNumber;
         List<Lotto> lotteries;
@@ -33,29 +45,18 @@ public class Game {
         float lotteryStat;
         float userLotteryStat;
 
-        checkedAmount = -1;
-        while (checkedAmount < 0) {
-            try {
-                System.out.println(LOTTO_USER_INPUT_PURCHASE_AMOUNT);
-                amount = camp.nextstep.edu.missionutils.Console.readLine();
-                checkedAmount = checker.checkAmountInput(amount);
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println(LOTTO_GAME_RESTART);
-            }
-        }
-
-        user = new User(checkedAmount);
+        user = new User(inputAmount());
 
         System.out.println();
-        System.out.println(String.format(LOTTO_USER_PURCHASE_RESULT, user.getLotteryCount(), user.getLotteryList()));
+        System.out.println(String.format(PURCHASE_RESULT.message(), user.getLotteryCount(), user.getLotteryList()));
 
-        System.out.println(LOTTO_USER_INPUT_WINNING_NUMBERS);
+        System.out.println(WINNING_NUMBERS.message());
         numbers = camp.nextstep.edu.missionutils.Console.readLine();
 
         checkedNumbers = checker.checkNumbersInput(numbers);
 
         System.out.println();
-        System.out.println(LOTTO_USER_INPUT_BONUS_NUMBERS);
+        System.out.println(BONUS_NUMBERS.message());
         bonusNumber = camp.nextstep.edu.missionutils.Console.readLine();
 
         checkedBonusNumber = checker.checkNumber(bonusNumber);
@@ -81,25 +82,25 @@ public class Game {
         user.setLotteryStat(lotteryStat);
 
         System.out.println();
-        System.out.println(LOTTO_GAME_WINNING_STATS);
-        System.out.println(LOTTO_GAME_DIVISION);
-        for (int i = MIN_COINCIDE; i < WINNINGS.length - 1; ++i) {
+        System.out.println(WINNING_STATS.message());
+        System.out.println(DIVISION.message());
+        for (int i = MIN_COINCIDE.value(); i < WINNINGS.length - 1; ++i) {
             String coincideMessage;
             if (i == 6 && printBonus > 0) {
                 i -= 1;
-                coincideMessage = String.format(LOTTO_GAME_COINCIDE_RESULT, i, LOTTO_GAME_COINCIDE_BONUS,
+                coincideMessage = String.format(COINCIDE_RESULT.message(), i, COINCIDE_BONUS.message(),
                         DECIMAL_FORMAT.format(WINNINGS[i + winningBonus]), userResults.get(i + winningBonus).size());
                 printBonus = 0;
                 winningBonus = 0;
             } else {
-                coincideMessage = String.format(LOTTO_GAME_COINCIDE_RESULT, i, "",
+                coincideMessage = String.format(COINCIDE_RESULT.message(), i, "",
                         DECIMAL_FORMAT.format(WINNINGS[i]), userResults.get(i).size());
             }
             System.out.println(coincideMessage);
         }
 
         userLotteryStat = user.getLotteryStat();
-        System.out.println(String.format(LOTTO_GAME_LOTTERY_RETURN, userLotteryStat));
+        System.out.println(String.format(LOTTERY_RETURN.message(), userLotteryStat));
 
     }
 }
