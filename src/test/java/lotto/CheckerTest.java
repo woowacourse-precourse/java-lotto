@@ -33,7 +33,7 @@ public class CheckerTest {
                 new Lotto(List.of(1, 2, 3, 7, 8, 9))
         );
         Buyer buyer = new Buyer();
-        buyer.get(lottos);
+        buyer.buy(lottos);
         assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 1))
                 .isEqualTo(
                         getExpected(1, 0, 0, 0, 2)
@@ -50,7 +50,7 @@ public class CheckerTest {
                 new Lotto(List.of(1, 2, 3, 7, 8, 10))
         );
         Buyer buyer = new Buyer();
-        buyer.get(lottos);
+        buyer.buy(lottos);
         assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 3))
                 .isEqualTo(
                         getExpected(1, 1, 0, 0, 2)
