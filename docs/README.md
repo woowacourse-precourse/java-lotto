@@ -26,16 +26,31 @@
 * 소수점 둘째 자리에서 반올림
 ### 예외 발생시 [ERROR]로 시작하는 에러메시지 출력
 
-
-# 설계
-
 ---
+# 설계 최종 수정
 
-* InputView 에서 입력을 받아서 Lotto 와 Calculator 객체를 생성
-* Lotto 는 생성 번호와 당첨 번호를 비교함
-* 계산을 위한 정보를 담고 있는 Correct enum
-* 출력 내용에 대한 상수와 메서드를 담고 있는 Message enum
-* 에러 메시지 출력은 ErrorMessage enum
-* Calculator 클래스에서 결과에 대한 계산과 출력을 담당함
+1. Game class
+* Lotto 인스턴스
+* Calculator 인스턴스
+* 어플리케이션의 메인 진행
 
+2. Lotto class
+* 당첨 번호 인스턴스
+* 메서드로 등수를 확인
 
+3. Calculator class
+* 랜덤으로 생성된 숫자들 인스턴스
+* Correct enum 을 사용해 당첨 결과 계산과 출력
+
+4. Message enum
+* 출력메시지 상수들과 출력 메서드를 담당함
+
+5. ErrorMessage enum
+* 에러 메시지 출력 상수와 메서드 담당
+
+6. Input class
+* 사용자에게서 입력을 받는 메서드만 가짐
+
+7. Validation class
+* 생성자를 private으로 가짐
+* 입력받은 값들의 유효성을 검사하는 역할만 가짐
