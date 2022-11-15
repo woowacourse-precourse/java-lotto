@@ -52,9 +52,9 @@ public class LottoMachine {
         return lottoResult;
     }
 
-    // 당첨 결과 생성
-    public int[] createLottoResult(List<List<Integer>> lottos, List<Integer> winningNumber, int bonusNumber) {
-        int[] lottoMatchs = new int[6];
+    // 당첨 결과 생성 기능
+    private int[] createLottoResult(List<List<Integer>> lottos, List<Integer> winningNumber, int bonusNumber) {
+        int[] lottoMatchs = new int[WinStatus.values().length];
         for (List lotto : lottos) {
             WinStatus winStatus = getMatchCount(lotto, winningNumber, bonusNumber);
             lottoMatchs[winStatus.getIndex()] += 1;
@@ -70,16 +70,19 @@ public class LottoMachine {
                 matchCount += 1;
             }
         }
-        if (matchCount == 5 && winningNumber.contains(bonusNumber)) {
+        if (matchCount == 5 && lotto.contains(bonusNumber)) {
             return WinStatus.FIVE_BONUS_MATCH;
         }
-        if (matchCount >= 3) {
-            return WinStatus.getWinStatus(matchCount);
-        }
-        return WinStatus.NOTHING;
+        return WinStatus.getWinStatus(matchCount);
     }
 
 
 //  당첨 수익률 반환 기능
-    public double getYield() {}
+    public double getYield() {
+        long totalPrizeMoney = 0;
+        for (int index = 0; index < lottoResult.length; index++) {
+            totalPrizeMoney += lottoResult[index] * WinStatus.getPrizeMoney(index);
+        }
+        return (double)totalPrizeMoney / (double)money.getMoney() * 100;
+    }
 }
