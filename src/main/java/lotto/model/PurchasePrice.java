@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.math.BigInteger;
 import lotto.util.LottoExceptionMessage;
 
 public class PurchasePrice {
@@ -15,6 +16,9 @@ public class PurchasePrice {
         if (!hasNumber(purchasePrice)) {
             throw new IllegalArgumentException(LottoExceptionMessage.PURCHASE_PRICE_IS_NUMBER.getMessage());
         }
+        if (!acceptsNumberRange(purchasePrice)) {
+            throw new IllegalArgumentException(LottoExceptionMessage.PURCHASE_PRICE_OVER_MAX_NUMBER.getMessage());
+        }
         if (!correctUnitOfPrice(Integer.parseInt(purchasePrice))) {
             throw new IllegalArgumentException(LottoExceptionMessage.PURCHASE_PRICE_UNIT_OF_MONEY.getMessage());
         }
@@ -22,11 +26,15 @@ public class PurchasePrice {
 
     private boolean hasNumber(String purchasePrice) {
         try {
-            Integer.parseInt(purchasePrice);
+            new BigInteger(purchasePrice);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private boolean acceptsNumberRange(String purchasePrice) {
+        return BigInteger.valueOf(Integer.MAX_VALUE).compareTo(new BigInteger(purchasePrice)) > 0;
     }
 
     private boolean correctUnitOfPrice(int purchasePrice) {
