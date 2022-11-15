@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.util.Setting;
 
 public class Buyer {
     private List<Lotto> lottos;

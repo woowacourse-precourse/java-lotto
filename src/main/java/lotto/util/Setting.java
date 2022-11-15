@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.util;
 
 public class Setting {
     public static final int MIN_BUY_UNIT = 1_000;

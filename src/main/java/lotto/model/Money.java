@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.util.Setting;
+
 public class Money {
     private static final String ERROR_UNIT = String.format("[ERROR] 최소 구매 단위는 %s원 입니다.", Setting.MIN_BUY_UNIT);
 
