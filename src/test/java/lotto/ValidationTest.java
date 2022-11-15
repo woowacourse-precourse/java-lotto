@@ -5,11 +5,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ValidationTest {
     /*
@@ -84,13 +82,13 @@ class ValidationTest {
         @Test
         @DisplayName("중복되지 않는 숫자를 입력하면 예외가 발생하지 않는다.")
         void rightCase() {
-            Validation.isDuplicatedWinningNumbers(Arrays.asList(1,2,3,4,5));
+            Validation.isDuplicated(Arrays.asList(1,2,3,4,5));
         }
 
         @Test
         @DisplayName("중복되는 숫자를 입력하면 예외가 발생한다.")
         void wrongCase() {
-            assertThatThrownBy(() -> Validation.isDuplicatedWinningNumbers(Arrays.asList(2,2,3,4,45)))
+            assertThatThrownBy(() -> Validation.isDuplicated(Arrays.asList(2,2,3,4,45)))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

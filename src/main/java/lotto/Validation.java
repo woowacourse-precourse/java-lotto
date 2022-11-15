@@ -33,7 +33,7 @@ public class Validation {
         }
     }
     // 당첨번호가 중복되지 않는지 검증
-    public static void isDuplicatedWinningNumbers(List<Integer> winningNumbers) {
+    public static void isDuplicated(List<Integer> winningNumbers) {
         for (Integer winningNumber : winningNumbers) {
             if (winningNumbers.stream().filter(n -> n.equals(winningNumber)).count() != 1) {
                 throw new IllegalArgumentException("[ERROR] 당첨번호가 중복되지 않게 입력해 주세요");
@@ -54,7 +54,7 @@ public class Validation {
             isDigit(winningNumber);
             isRightLottoNumber(Integer.parseInt(winningNumber));
         }
-        isDuplicatedWinningNumbers(winningNumbers.stream().map(Integer::parseInt).collect(Collectors.toList()));
+        isDuplicated(winningNumbers.stream().map(Integer::parseInt).collect(Collectors.toList()));
     }
 
     // 당첨번호와 중복되지 않는지 검증
