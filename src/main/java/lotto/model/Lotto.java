@@ -29,7 +29,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (!isValidSize(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 서로 다른 6개의 수를 입력해주세요.");
+            throw new IllegalArgumentException("서로 다른 6개의 수를 입력해주세요.");
         }
     }
 

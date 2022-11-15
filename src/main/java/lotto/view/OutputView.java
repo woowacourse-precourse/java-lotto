@@ -67,4 +67,8 @@ public class OutputView {
     private static void printYield(Double yield) {
         System.out.printf("총 수익률은 %.1f%%입니다.", yield * 100);
     }
+
+    public static void printErrorMessage(String message) {
+        System.out.println("[ERROR] " + message);
+    }
 }

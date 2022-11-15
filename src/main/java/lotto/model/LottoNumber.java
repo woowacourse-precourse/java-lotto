@@ -26,7 +26,7 @@ public class LottoNumber {
 
     private void validate(int number) {
         if (!isValidNumber(number)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
@@ -36,7 +36,7 @@ public class LottoNumber {
 
     public static LottoNumber of(int number) {
         return Optional.ofNullable(LottoNumbers.get(number))
-                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."));
+                .orElseThrow(() -> new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다."));
     }
 
     @Override
