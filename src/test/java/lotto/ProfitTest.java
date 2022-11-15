@@ -19,7 +19,6 @@ public class ProfitTest {
 
     LottoConfig lottoConfig = new LottoConfig();
     RankService rankService = lottoConfig.rankService();
-    RankController rankController = lottoConfig.rankController();
 
     @Test
     @DisplayName("수익률 계산 테스트")

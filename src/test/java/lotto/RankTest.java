@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.controller.RankController;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.WinLotto;
 import lotto.domain.user.User;
@@ -17,7 +16,6 @@ import static org.assertj.core.api.Assertions.*;
 public class RankTest {
     LottoConfig lottoConfig = new LottoConfig();
     RankService rankService = lottoConfig.rankService();
-    RankController rankController = lottoConfig.rankController();
 
     @Test
     @DisplayName("당첨 번호 입력 테스트")
@@ -31,7 +29,7 @@ public class RankTest {
     }
 
     @Test
-    @DisplayName("\',\'로 구분되지 않는 경우 예외 처리")
+    @DisplayName(",로 구분되지 않는 경우 예외 처리")
     void generateWinningLottoException(){
         String winningNumbers = "1 2 3 4 5 6";
         String bonus = "7";
