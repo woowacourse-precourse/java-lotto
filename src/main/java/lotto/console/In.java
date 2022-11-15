@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class In {
     public static Integer readPaymentAmount() {
-        System.out.println("구입 금액을 입력해 주세요");
+        System.out.println("구입 금액을 입력해 주세요.");
         Integer amount;
         try {
             amount = Integer.valueOf(Console.readLine());
