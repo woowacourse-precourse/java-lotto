@@ -66,11 +66,20 @@ public class Application {
         return lottery;
     }
 
+    public static void printLotto(int lottoPurchaseMoney, List<Lotto> lottery) {
+        int lottoTicketCount = lottoPurchaseMoney / LOTTO_TICKET_MONEY;
+        System.out.printf(PURCHASE_LOTTO_TICKET_COUNT_MESSAGE.getMessage(), lottoTicketCount);
+        for (Lotto lotto : lottery) {
+            lotto.printLottoNumbers();
+        }
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
             return;
         }
         List<Lotto> lottery = makeLottery(lottoPurchaseMoney);
+        printLotto(lottoPurchaseMoney, lottery);
     }
 }
