@@ -17,6 +17,20 @@ public class Application {
         // TODO: 프로그램 구현
     }
     
+    public enum Rank{
+        first(0),
+        second(0),
+        third(0),
+        fourth(0),
+        fifth(0);
+
+        private int count;
+
+        Rank(int count){
+            this.count = count;
+        }
+    }
+
     public static Lotto MakeAnswer() {
         List<String> winning = new ArrayList<>();
         List<Integer> WinningNumberSet = new ArrayList<>();
