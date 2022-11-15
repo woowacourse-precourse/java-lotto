@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.model.LottoResult;
+import lotto.model.LottoWinner;
 import lotto.model.User;
 import lotto.view.LottoCompareUI;
 
@@ -9,8 +9,8 @@ public class LottoCompare {
 
     public void winningNumberCompareControl(User user){
         String winningNumber = lottoCompareUI.takeWinningNumber();
-        LottoResult lottoResult = new LottoResult(winningNumber);
+        LottoWinner lottoWinner = new LottoWinner(winningNumber);
         String bonusNumber = lottoCompareUI.takeBonusNumber();
-        lottoResult.setBonusNumber(bonusNumber);
+        lottoWinner.setBonusNumber(bonusNumber);
     }
 }

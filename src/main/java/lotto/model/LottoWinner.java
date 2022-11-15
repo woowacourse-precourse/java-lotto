@@ -2,14 +2,14 @@ package lotto.model;
 
 import java.util.*;
 
-public class LottoResult {
+public class LottoWinner {
     private static final int WINNING_NUMBER_SIZE = 6;
     private static final int MIN_WINNING_NUMBER = 1;
     private static final int MAX_WINNING_NUMBER = 45;
     private Set<Integer> winningNumbers;
     private int bonusNumber;
 
-    public LottoResult(String winningNumber){
+    public LottoWinner(String winningNumber){
         validateWinningNumber(winningNumber);
         this.winningNumbers = splitter(winningNumber);
         checkWinningNumberDuplication();
