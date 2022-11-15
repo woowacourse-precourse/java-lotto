@@ -25,6 +25,16 @@ class LottoServiceTest {
     }
 
     @Test
+    @DisplayName("로또 리스트 형식으로 생성이 되는지 단위 테스트")
+    void generateLottoList() {
+
+        int numberOfLotto = 5;
+        List<Lotto> result = lottoService.generateLottoList(numberOfLotto);
+
+        assertThat(result.size()).isEqualTo(numberOfLotto);
+    }
+
+    @Test
     @DisplayName("lotto 클래스로 생성이 되는지 단위 테스트")
     void generateLottoTest() {
 
