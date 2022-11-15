@@ -8,9 +8,9 @@ public enum Prize {
     FIFTH(5, 3, 5_000),
     NOTHING(0, 0, 0);
 
-    final public int rank;
-    final public int prize;
-    final public int numberOfLucky;
+    private final int rank;
+    private final int prize;
+    private final int numberOfLucky;
 
     public Integer getPrize() {
         return prize;
