@@ -15,6 +15,7 @@ public class Application {
         String inputmoney = InputMoney();
         int lotto_count = CheckUnit(inputmoney);
         LottoNumber(lotto_count);
+        List<Integer> win_numbers = InputNumber();
     }
 
     public static String InputMoney() {
@@ -44,7 +45,13 @@ public class Application {
     }
 
     public static List<Integer> InputNumber(){
-
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] win_number = Console.readLine().split(",");
+        List<Integer> win_numbers = new ArrayList<>();
+        for(String number : win_number){
+            win_numbers.add(Integer.valueOf(number));
+        }
+        return win_numbers;
     }
 
     public static List<Integer> CompareNumber(){
