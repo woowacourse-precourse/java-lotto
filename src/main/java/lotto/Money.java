@@ -10,6 +10,11 @@ public class Money {
     public static final String ERROR_NOT_INT_MONEY = "[ERROR] 금액은 숫자로 입력해주세요.";
     private int money;
 
+    public Money(int money) {
+        validMoney(money);
+        this.money = money;
+    }
+
     private void validMoney(int number) {
         if (number < 0) {
             throw new IllegalArgumentException(ERROR_MONEY);
@@ -48,7 +53,11 @@ public class Money {
         }
     }
 
-    public int divide(int amount) {
-        return money / amount;
+    public int lottoAccount(Money amount) {
+        return money / amount.money;
+    }
+
+    public int get() {
+        return money;
     }
 }

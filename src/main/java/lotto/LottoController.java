@@ -9,13 +9,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoController {
     public void start() {
-        Money userInputMoney = new Money();
-        userInputMoney.init();
+        Money userInputMoney = new Money(Money.init());
         LottoGame lottoGame = new LottoGame();
         lottoGame.buy(userInputMoney);
         printLottos(lottoGame.getLottos());
 
         WinningNumbers winningNumbers = printWinningNumber();
+        LottoResult lottoResult = lottoGame.checkWinning(winningNumbers);
+
     }
 
     public void printLottos(List<Lotto> lottos) {
@@ -52,5 +53,23 @@ public class LottoController {
         Integer bonusNumber = Money.changeInt(readLine());
         System.out.println();
         return bonusNumber;
+    }
+
+    public void printResult(LottoResult lottoResult) {
+        System.out.println("당첨 통계");
+        for (LottoPrize prize : LottoPrize.values()) {
+            int number = lottoResult.getPrize(prize);
+            System.out.println();
+        }
+    }
+
+    public String generateResultMessage(LottoPrize prize, int number) {
+        if (prize == LottoPrize.MISS) {
+            return "";
+        }
+        if (prize == LottoPrize.SECOUND) {
+            return String.format("%d개, 보너스 볼 일치 %d개 (%d)원 ", prize.getLottoNumberMatches(), prize.getReward().get(), number);
+        }
+        return String.format("%d개, 보너스 볼 일치 %d개 (%d)원", prize.getLottoNumberMatches(), prize.getReward().get(), number);
     }
 }

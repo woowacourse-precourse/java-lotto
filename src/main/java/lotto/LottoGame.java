@@ -10,4 +10,8 @@ public class LottoGame {
     public List<Lotto> getLottos() {
         return Lotto.getLottos();
     }
+
+    public LottoResult checkWinning(WinningNumbers winningNumbers) {
+        return new LottoResult(Lotto.checkWinning(winningNumbers));
+    }
 }

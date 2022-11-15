@@ -2,7 +2,9 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
@@ -13,7 +15,7 @@ public class Lotto {
     private static final List<Lotto> number = new ArrayList<>();
     private static final List<LottoItem> initLottoNumbers = new ArrayList<>();
     private static final List<Lotto> lottos = new ArrayList<>();
-    private static final int lottoPrice = 1000;
+    private static final Money lottoPrice = new Money(1000);
 
     static {
         for (int i = 1; i <= 45; i++) {
@@ -34,7 +36,6 @@ public class Lotto {
     }
 
 
-
     public static List<Integer> generateLottoNumbers() {
         Collections.shuffle(initLottoNumbers);
         List<Integer> lottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
@@ -44,7 +45,7 @@ public class Lotto {
     }
 
     public static void buy(Money money) {
-        int countLottos = money.divide(lottoPrice);
+        int countLottos = money.lottoAccount(lottoPrice);
         for (int i=0; i < countLottos; i++) {
             lottos.add(new Lotto(generateLottoNumbers()));
         }
@@ -56,6 +57,27 @@ public class Lotto {
 
     public static List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
+    }
+
+    public static LottoPrize confirmWinning(WinningNumbers winningNumbers) {
+        int lottoNumberMatches = (int) numbers.stream()
+                .filter(winningNumbers::hasLottoNumber)
+                .count();
+        int bonusNumberMatches = (int) numbers.stream()
+                .filter(winningNumbers::hasBonusNumber)
+                .count();
+
+        return LottoPrize.match(lottoNumberMatches, bonusNumberMatches);
+    }
+
+    public static Map<LottoPrize, Integer> checkWinning(WinningNumbers winningNumbers) {
+        Map<LottoPrize, Integer> result = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            LottoPrize prize = confirmWinning(winningNumbers);
+            result.put(prize, result.get(prize) + 1);
+        }
+
+        return result;
     }
 
 }

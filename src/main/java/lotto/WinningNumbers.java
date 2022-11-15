@@ -25,4 +25,13 @@ public class WinningNumbers {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
+
+    public boolean hasLottoNumber(Integer lottoItem) {
+        return lottoItem.equals(lottoItem);
+    }
+
+    public boolean hasBonusNumber(Integer lottoItem) {
+        return lottoItem.equals(lottoItem);
+    }
+
 }
