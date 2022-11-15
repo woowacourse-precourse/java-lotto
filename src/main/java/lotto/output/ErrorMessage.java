@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.output;
 
 public enum ErrorMessage {
     ERROR_LOTTO_SIZE("[ERROR] 로또의 번호 개수가 6개가 아닙니다."),
