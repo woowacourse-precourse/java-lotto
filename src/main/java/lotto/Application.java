@@ -65,6 +65,31 @@ public class Application {
         return lottos;
     }
 
+    public enum LottoRank{
+        FIRST_PLACE(6, "6개 일치 (2,000,000,000)"),
+        SECOND_PLACE(5, "5개 번호와 보너스 볼 일치 (30,000,000)"),
+        THIRD_PLACE(5, "5개 일치 (1,500,000)"),
+        FOURTH_PLACE(4, "4개 일치 (50,000)"),
+        FIFTH_PLACE(3, "3개 일치 (5,000)"),
+        SIXTH_PLACE(0, "낙점 (0)");
+
+        private Integer matches;
+        private String reward;
+
+        LottoRank(int matches, String reward) {
+            this.matches = matches;
+            this.reward = reward;
+        }
+
+        public Integer winMatch() {
+            return matches;
+        }
+        public String winReward() {
+            return reward;
+        }
+
+    }
+
 
 
 
