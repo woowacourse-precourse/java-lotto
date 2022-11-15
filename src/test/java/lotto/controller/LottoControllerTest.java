@@ -51,4 +51,15 @@ public class LottoControllerTest {
                     .isEqualTo(List.of(List.of(3, 0), List.of(3, 0)));
         });
     }
+
+    @Test
+    public void recordWinningLogTest() {
+        List<List<Integer>> matchCounts = List.of(List.of(3,0), List.of(4,0));
+        lottoController.recordWinningLog(matchCounts);
+
+        assertSimpleTest(() -> {
+            assertThat(lottoController.getWinningLog()).isEqualTo(new int[] {1, 1, 0, 0, 0});
+        });
+
+    }
 }
