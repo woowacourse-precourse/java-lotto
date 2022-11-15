@@ -1,14 +1,12 @@
 package lotto;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -52,6 +50,15 @@ class LottoTest {
     }
 
     @DisplayName("입력한 당첨 번호와 보너스 번호가 중복이면 예외가 발생한다.")
+    @Test
+    void createWinningLottoByDuplicatedNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 45, 6));
+        int bonus = 45;
+        assertThatThrownBy(() -> new Rank(lotto, bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 중복이면 예외가 발생한다.")
     @Test
     void createWinningLottoByDuplicatedNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 45, 6));

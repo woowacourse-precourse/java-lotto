@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-// enum 사용해보자
+
 public class User {
 
     private final String inputMoney;

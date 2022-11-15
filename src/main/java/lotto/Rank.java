@@ -34,8 +34,6 @@ public class Rank {
         lottoForUsingMethod.isNumbersInRange(checkBonus);
     }
 
-
-
     public void run(User user) {
         int countLotto = 0;
         int countBonus = 0;

@@ -1,9 +1,8 @@
 package lotto;
 
-import static lotto.Constant.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -27,7 +26,6 @@ public class Lotto {
         List<Integer> uniqueNumbers = numbers.stream()
                                              .distinct()
                                              .collect(Collectors.toList());
-
         if (uniqueNumbers.size() != numbers.size()) {
             System.out.println("[ERROR] 중복되지 않는 숫자들을 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자들을 입력해주세요.");
