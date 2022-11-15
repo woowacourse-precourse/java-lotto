@@ -99,7 +99,7 @@
 ### DivideInputMoneyGenerator
 
 입력된 숫자가 1000으로 나눈 나머지가 존재할 경우 "1000" 단위의 값을 입력해주세요.
-문구가 출력되도록 하고 IllegalArgumentException 예외를 발생시켰습니다.
+문구가 출력되도록 하고 `IllegalArgumentException` 예외를 발생시켰습니다.
 
 ### PrintInputMoneyGenerator
 
@@ -110,7 +110,11 @@ DivideInputMoneyGenerator 를 실행시켜 예외가 발생될 경우 try catch�
 로또 발행개수를 printf("%d개를 구매했습니다", inputMoney); 를 통해 출력하고
 개수를 int 형식으로 반환합니다.
 
+<br>
+
 ---
+
+<br>
 
 ## 구입한 개수 만큼 로또 발행 및 번호 출력
 
@@ -124,7 +128,11 @@ DivideInputMoneyGenerator 를 실행시켜 예외가 발생될 경우 try catch�
 로또 발행 개수만큼 for문을 돌며 UserNumberGenerator를 실행시켜 반환된 List 결과값을
 2차원 List에 저장하여 반환합니다.
 
+<br>
+
 ---
+
+<br>
 
 ## 로또 정답 숫자, 보너스 숫자 입력
 
@@ -137,13 +145,13 @@ DivideInputMoneyGenerator 를 실행시켜 예외가 발생될 경우 try catch�
 
 ### CorrectNumberGenerator
 사용자가 잘못된 입력(1-45사이의 숫자가 아닐경우)을 하였을 경우 [ERROR] 문구출력으로 로깅과 함께 
-IllegalArgumentException 예외를 발생시켰습니다.
+`IllegalArgumentException` 예외를 발생시켰습니다.
 
 ### Lotto
 
 CorrectNumberGenerator 를 실행시켜 사용자에게 정답 숫자를 입력받아 List 형식으로 저장합니다.
 
-입력받은 숫자를 Lotto 클래스의 validate 메서드를 통해 size()를 확인하여 아닐 경우 IllegalArgumentException 예외를 발생시켰습니다. 
+입력받은 숫자를 Lotto 클래스의 validate 메서드를 통해 size()를 확인하여 아닐 경우 `IllegalArgumentException` 예외를 발생시켰습니다. 
 
 입력받은 올바른 형식을 경우 List<Integet> 형식으로 반환합니다. 
 
@@ -156,7 +164,11 @@ String 을 int 형식으로 변환합니다.
 
 입력된 숫자를 반환합니다. 만약 정답 숫자와 중복된다면 while(true) 문을 통해 정답 숫자와 중복이 아닐때까지 반복합니다.
 
+<br>
+
 ---
+
+<br>
 
 ## 모든 로또 발행 숫자와 정답 숫자, 보너스 숫자를 비교
 
@@ -190,7 +202,11 @@ BonusNumberGenerator 를 실행시켜 보너스 숫자를 생성합니다.
 
 BonusNumberCalculatorGenerator 를 실행시켜 생성된 returnNumber를 List<Integer> 형식을 반환합니다.
 
+<br>
+
 ---
+
+<br>
 
 ## 로또 비교 결과 저장 및 출력
 
@@ -200,7 +216,7 @@ BonusNumberCalculatorGenerator 를 실행시켜 생성된 returnNumber를 List<I
 
 CompareNumberWithBonus에서 반환된 로또 정답 개수 List<Integer> 를 입력받아 케이스별로 출력합니다.
 
-Collections.frequency() 메서드를 통해 정답의 개수를 List에 저장하였습니다.
+`Collections.frequency()` 메서드를 통해 정답의 개수를 List에 저장하였습니다.
 
 정답 개수별로 저장된 List<Integer> 을 통해 케이스별로 결과를 출력하였습니다.
 
@@ -222,26 +238,12 @@ tatalEarningMoney를 에 대해 구입금액과 당첨금액을 계산하여 수
 
 입력된 totalEarningMoney 계산시 int 형으로는 당첨금이 20억이 넘어갈 경우 에러가 발생되어 Long 타입으로 변환하여 계산하도록 하였습니다.
 
-
-
-
 <br>
 
 **구현 흐름도**
 
 > 구입 금액 숫자를 입력 -> 구입한 개수 만큼 로또 발행 및 번호 출력 -> 로또 정답 숫자, 보너스 숫자 입력
 > -> 모든 로또 발행 숫자와 정답 숫자, 보너스 숫자를 비교 -> 로또 비교 결과 저장 -> 로또 비교 결과 반환
-
-
-
-
-
-
-
-
-
-
-
 
 
 <br>
@@ -267,10 +269,7 @@ tatalEarningMoney를 에 대해 구입금액과 당첨금액을 계산하여 수
 - 로또 1장의 가격은 1,000원이다.
 - 당첨 번호와 보너스 번호를 입력받는다.
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
-- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
-
-
-
+- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 
 ---------------------------------------------------------------------
