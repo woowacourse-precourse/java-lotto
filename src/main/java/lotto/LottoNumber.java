@@ -1,22 +1,22 @@
 package lotto;
 
-import static lotto.ExceptionCode.INVALID_LOTTO_NUMBER_RANGE;
+import static lotto.exception.ExceptionCode.INVALID_LOTTO_NUMBER_RANGE;
 
 import java.util.Objects;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber> {
 
     public static final int LOWER_BOUND = 1;
     public static final int UPPER_BOUND = 45;
-    private final int NO;
+    private final int number;
 
-    LottoNumber(int no) {
-        validate(no);
-        this.NO = no;
+    LottoNumber(int number) {
+        validate(number);
+        this.number = number;
     }
 
-    private void validate(int no) {
-        if (no < LOWER_BOUND || no > UPPER_BOUND) {
+    private void validate(int number) {
+        if (number < LOWER_BOUND || number > UPPER_BOUND) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE);
         }
     }
@@ -30,11 +30,22 @@ public class LottoNumber {
             return false;
         }
         LottoNumber that = (LottoNumber) o;
-        return NO == that.NO;
+        return number == that.number;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(NO);
+        return Objects.hash(number);
     }
+
+    @Override
+    public int compareTo(LottoNumber lottoNumber) {
+        return this.number - lottoNumber.number;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
+
 }

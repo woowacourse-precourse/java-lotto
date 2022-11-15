@@ -1,12 +1,13 @@
 package lotto;
 
-import static lotto.ExceptionCode.INVALID_LOTTO_SIZE;
+import static lotto.exception.ExceptionCode.INVALID_LOTTO_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Lotto {
 
@@ -14,12 +15,10 @@ public class Lotto {
     private final Set<LottoNumber> numbers;
 
     public static Lotto generateRandomLotto() {
-        while (true) {
-            try {
-                return new Lotto(getRandomLottoNumbers());
-            } catch (IllegalArgumentException ignored) {
-
-            }
+        try {
+            return new Lotto(getRandomLottoNumbers());
+        } catch (IllegalArgumentException e) {
+            return generateRandomLotto();
         }
     }
 
@@ -74,4 +73,9 @@ public class Lotto {
         return numbers.contains(bonusNo);
     }
 
+    @Override
+    public String toString() {
+        TreeSet<LottoNumber> sortedLottoNumber = new TreeSet<>(numbers);
+        return sortedLottoNumber.toString();
+    }
 }

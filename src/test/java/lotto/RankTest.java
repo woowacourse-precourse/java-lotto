@@ -12,6 +12,6 @@ public class RankTest {
     void getSecondRankByCountOfMatchAndMatchBonus() {
         Integer countOfMatch = 5;
         Boolean matchBonus = true;
-        assertThat(Rank.findByCountOfMatchAndMatchBonus(countOfMatch, matchBonus)).isEqualTo(Rank.SECOND);
+        assertThat(Rank.findBy(countOfMatch, matchBonus)).isEqualTo(Rank.SECOND);
     }
 }

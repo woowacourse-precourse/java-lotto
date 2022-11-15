@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum Rank {
@@ -10,15 +11,18 @@ public enum Rank {
     FIFTH(3, 5_000),
     MISS(0, 0);
 
-    private Integer countOfMatch;
-    private Integer winningMoney;
+    private static final String PRINT_BONUS_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static final String PRINT_FORMAT = "%d개 일치 (%s원) - %d개\n";
+    private static final String DECIMAL_PATTERN = "###,###";
+    private final Integer countOfMatch;
+    private final Integer winningMoney;
 
     private Rank(Integer countOfMatch, Integer winningMoney) {
         this.countOfMatch = countOfMatch;
         this.winningMoney = winningMoney;
     }
 
-    public static Rank findByCountOfMatchAndMatchBonus(Integer countOfMatch, Boolean matchBonus) {
+    public static Rank findBy(Integer countOfMatch, Boolean matchBonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank ->
                         rank.equals(countOfMatch, matchBonus)
@@ -31,7 +35,6 @@ public enum Rank {
         if (isRankNameSecondButNotMatchBonus(matchBonus)) {
             return false;
         }
-
         return this.countOfMatch.equals(countOfMatch);
     }
 
@@ -48,6 +51,15 @@ public enum Rank {
     }
 
     public Long prize(int countOfMatchLotto) {
-        return (long) countOfMatchLotto * winningMoney;
+        return ((long) countOfMatchLotto) * winningMoney;
+    }
+
+    public String print(int countOfMatchLotto) {
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_PATTERN);
+        String printFormat = PRINT_FORMAT;
+        if (this.equals(Rank.SECOND)) {
+            printFormat = PRINT_BONUS_FORMAT;
+        }
+        return String.format(printFormat, countOfMatch, decimalFormat.format(winningMoney), countOfMatchLotto);
     }
 }
