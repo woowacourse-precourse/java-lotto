@@ -36,7 +36,8 @@ public class LottoService {
     }
 
     public void saveWinningNumbers(String numbers) {
-
+        List<Integer> winningNumbers = validateWinningNumbers(numbers);
+        lottoRepository.saveWinningNumbers(winningNumbers);
     }
 
     private List<Integer> validateWinningNumbers(String numbers) {
