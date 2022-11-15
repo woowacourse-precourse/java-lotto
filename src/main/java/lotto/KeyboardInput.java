@@ -6,4 +6,8 @@ public class KeyboardInput {
     public static String read() {
         return Console.readLine();
     }
+
+    public static String[] readArray() {
+        return read().split(",");
+    }
 }
