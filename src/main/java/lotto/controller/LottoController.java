@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import java.util.List;
-import java.util.Map;
 import lotto.console.Output;
 import lotto.player.Host;
 import lotto.player.Store;
