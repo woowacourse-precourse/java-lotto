@@ -3,6 +3,8 @@ package lotto;
 import lotto.Application.Places;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.Application.NumberType;
@@ -16,8 +18,9 @@ import static lotto.Application.numberType;
 import static lotto.Application.purchasedLottos;
 
 class GetComparisonResultMethodTest {
+    @DisplayName("6개 번호가 일치하는 로또는 1등에 해당한다.")
     @Test
-    void getComparisonResult_메소드_테스트1() {
+    void getComparisonResultMethodTest1() {
         initializeNoOfLottoWinAt();
         for (int number = 1; number <= 6; number++)
             numberType[number] = NumberType.WINNING;
@@ -35,8 +38,9 @@ class GetComparisonResultMethodTest {
         assertThat(noOfLottoWinAt.get(Places.NONE)).isEqualTo(0);
     }
 
+    @DisplayName("5개 번호와 1개 보너스 번호가 일치하는 로또는 2등에 해당한다.")
     @Test
-    void getComparisonResult_메소드_테스트2() {
+    void getComparisonResultMethodTest2() {
         initializeNoOfLottoWinAt();
         for (int number = 1; number <= 6; number++)
             numberType[number] = NumberType.WINNING;
@@ -55,8 +59,9 @@ class GetComparisonResultMethodTest {
         assertThat(noOfLottoWinAt.get(Places.NONE)).isEqualTo(0);
     }
 
+    @DisplayName("5개 번호가 일치하는 로또는 3등에 해당한다.")
     @Test
-    void getComparisonResult_메소드_테스트3() {
+    void getComparisonResultMethodTest3() {
         initializeNoOfLottoWinAt();
         for (int number = 1; number <= 6; number++)
             numberType[number] = NumberType.WINNING;
@@ -75,8 +80,9 @@ class GetComparisonResultMethodTest {
         assertThat(noOfLottoWinAt.get(Places.NONE)).isEqualTo(0);
     }
 
+    @DisplayName("4개 번호가 일치하는 로또는 4등에 해당한다.")
     @Test
-    void getComparisonResult_메소드_테스트4() {
+    void getComparisonResultMethodTest4() {
         initializeNoOfLottoWinAt();
         for (int number = 1; number <= 6; number++)
             numberType[number] = NumberType.WINNING;
@@ -95,8 +101,9 @@ class GetComparisonResultMethodTest {
         assertThat(noOfLottoWinAt.get(Places.NONE)).isEqualTo(0);
     }
 
+    @DisplayName("3개 번호가 일치하는 로또는 5등에 해당한다.")
     @Test
-    void getComparisonResult_메소드_테스트5() {
+    void getComparisonResultMethodTest5() {
         initializeNoOfLottoWinAt();
         for (int number = 1; number <= 6; number++)
             numberType[number] = NumberType.WINNING;
@@ -115,8 +122,9 @@ class GetComparisonResultMethodTest {
         assertThat(noOfLottoWinAt.get(Places.NONE)).isEqualTo(0);
     }
 
+    @DisplayName("숫자 2개와 보너스 번호가 일치해도 등수에 해당하지 않는다.")
     @Test
-    void getComparisonResult_메소드_테스트6() {
+    void getComparisonResultMethodTest6() {
         initializeNoOfLottoWinAt();
         for (int number = 1; number <= 6; number++)
             numberType[number] = NumberType.WINNING;
