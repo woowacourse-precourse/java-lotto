@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,7 @@ public class Lotto {
         validate(numbers);
         duplicate(numbers);
         this.numbers = numbers;
+        numbers.sort(Comparator.naturalOrder());
     }
 
     private void validate(List<Integer> numbers) {
@@ -20,7 +22,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         List<Integer> lottoNumber = new ArrayList<>();
         lottoNumber.addAll(numbers);
         return lottoNumber;

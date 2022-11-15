@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Input {
 
-    public int getMoney() {
+    public int getMoney() throws IllegalArgumentException {
         int money;
         try{
             money = Integer.parseInt(Console.readLine());
