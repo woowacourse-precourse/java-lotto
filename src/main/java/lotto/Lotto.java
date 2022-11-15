@@ -13,7 +13,6 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        numberGenerator(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
@@ -25,12 +24,23 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void numberGenerator(List<Integer> numbers) {
-        numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, MAX_LOTTO_NUMBER_COUNT);
-        numbers.sort(Comparator.naturalOrder());
-    }
-
     public boolean numberRightCompare(List<Integer> inputNumber) {
         return numbers.containsAll(inputNumber);
+    }
+
+    public List<Integer> getLottoNumber() {
+        return numbers;
+    }
+
+    public void printLottoNumber() {
+        System.out.print("[");
+        for(int i = 0; i < MAX_LOTTO_NUMBER_COUNT; i++){
+            if(i == (MAX_LOTTO_NUMBER_COUNT - 1)) {
+                System.out.print(numbers.get(i));
+                break;
+            }
+            System.out.print(numbers.get(i) + ", ");
+        }
+        System.out.print("]\n");
     }
 }
