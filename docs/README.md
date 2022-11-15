@@ -1,3 +1,16 @@
+## 👏 프로젝트 설명
+
+> 해당 프로젝트는 __로또 게임__을 위한 프로젝트 입니다.
+
+- 😶 사용자는 __구매 금액__ 을 1,000원 단위로 입력합니다.
+- 🖥 1,000원당 한 개의 로또가 발행 되며, 로또는 1 ~ 45 사이의 번호 6개의 숫자로 구성됩니다.
+- 😶 __당첨 번호__ 6자리와 __보너스 번호__ 한 개를 입력합니다.
+- 🖥 1등 ~ 5등까지 __당첨 통계__가 출력되며, __수익률__ (상금 합계 / 구매 금액)이 출력됩니다.
+
+<br><br>
+
+
+
 ## ✏ 기능
 
 ### 입력
@@ -46,25 +59,26 @@
   - __(조건)__ 소수점 둘째 자리
 
 
-<br>
+<br><br>
 
-## ✏ 스켈레톤
-- domain (비즈니스 로직)
-  - Revenue (수익 및 수익률 계산)
-  - Score (등수 계산)
-- model (일급컬렉션)
-  - Bonus (보너스 숫자)
+## 🦴 스켈레톤
+- controller
+  - LottoController 
+- domain 
   - Lotto (개별 로또)
-  - Lottos (로또들)
-- validation 
-  - Validation (모델 생성 검증 외 다른 검증 로직)
-- view
-  - input
-    - CreateBonus (보너스 숫자 생성)
-    - CreateLott (로또 생성)
-    - UserInput (유저 인풋 받음)
-  - output
-    - Guide (가이드 문장 출력)
-    - Result (결과 통계 출력)
+  - Lottos (발행 된 로또들)
+  - Profit (수익)
+  - WinningLotto (당첨 번호와 보너스 번호)
 - util
   - Constants (상수)
+  - RankingType (등수 Enum)
+- validation 
+  - Validator (검증 로직)
+- view 
+  - input (UI)
+    - LottoCreator (일급 컬렉션 생성자에 들어갈 후보 컬렉션 생성)
+    - UserInput (유저 인풋 관련)
+  - output (UI)
+    - Guide (가이드 문장 출력)
+    - ResultStatics (결과 통계)
+
