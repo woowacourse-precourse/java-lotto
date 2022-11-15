@@ -36,6 +36,11 @@ public class Player {
         return new Lotto(numbers);
     }
 
+    public int getBonusNumber() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
+
     private void validatePurchaseCost(String purchaseCost) {
         validateNumberFormat(purchaseCost);
         validateDivision(purchaseCost);

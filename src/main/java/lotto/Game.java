@@ -4,6 +4,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Player;
 
 import static lotto.view.InputView.*;
+import static lotto.view.InputView.showBonusNumberInputMessage;
 import static lotto.view.OutputView.*;
 
 public class Game {
@@ -21,5 +22,8 @@ public class Game {
 
         showWinningNumberInputMessage();
         Lotto winningNumbers = player.getWinningNumbers();
+
+        showBonusNumberInputMessage();
+        int bonusNumber = player.getBonusNumber();
     }
 }
