@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.Arrays;
+
 public enum MatchType {
     THREE(3, 5_000),
     FOUR(4, 50_000),
@@ -24,21 +26,7 @@ public enum MatchType {
     }
 
     public static MatchType fromNumberMatched(double numberMatched) {
-        if (numberMatched == MatchType.THREE.numberMatched) {
-            return MatchType.THREE;
-        }
-        if (numberMatched == MatchType.FOUR.numberMatched) {
-            return MatchType.FOUR;
-        }
-        if (numberMatched == MatchType.FIVE.numberMatched) {
-            return MatchType.FIVE;
-        }
-        if (numberMatched == MatchType.FIVE_BONUS.numberMatched) {
-            return MatchType.FIVE_BONUS;
-        }
-        if (numberMatched == MatchType.SIX.numberMatched) {
-            return MatchType.SIX;
-        }
-        return null;
+        return Arrays.stream(MatchType.values())
+                .filter(matchType -> matchType.getNumberMatched() == numberMatched).findAny().orElse(null);
     }
 }
