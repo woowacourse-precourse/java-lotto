@@ -1,11 +1,8 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -26,12 +23,4 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-//    @Test
-//    void sortedLottoNumbers(){
-//        Lotto lotto = new Lotto(Arrays.asList(2,3,6,5,1,4));
-//
-//        List<Integer> result = new ArrayList<>(List.of(1,2,3,4,5,6));
-//
-//        assertThat(lotto).isEqualTo(result);
-//    }
 }
