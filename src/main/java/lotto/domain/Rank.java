@@ -27,7 +27,7 @@ public enum Rank {
         return prize;
     }
 
-    public String getPrizeWithComna() {
+    public String getPrizeWithComma() {
         return NUMBER_FORMAT.format(prize);
     }
 }
