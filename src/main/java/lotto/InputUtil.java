@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.NotNumberException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ public class InputUtil {
     try {
       return Integer.parseInt(s);
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다.");
+      throw new NotNumberException();
     }
   }
 
@@ -33,7 +34,7 @@ public class InputUtil {
     try {
       intList = strList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다.");
+      throw new NotNumberException();
     }
     return intList;
   }

@@ -1,5 +1,9 @@
 package lotto;
 
+import lotto.exception.HasDuplicateException;
+import lotto.exception.NumberOutOfRangeException;
+import lotto.exception.WrongNumberCountException;
+
 import java.util.List;
 
 import static lotto.Lotto.*;
@@ -14,13 +18,13 @@ public class LottoValidator {
 
   private static void checkNumbersCount(List<Integer> numbers) {
     if (numbers.size() != NUMBER_COUNT) {
-      throw new IllegalArgumentException("[ERROR] 숫자의 개수가 잘못되었습니다.");
+      throw new WrongNumberCountException();
     }
   }
 
   private static void checkHasDuplicateNumber(List<Integer> numbers) {
     if (numbers.stream().distinct().count() != numbers.size()) {
-      throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다.");
+      throw new HasDuplicateException();
     }
   }
 
@@ -32,7 +36,7 @@ public class LottoValidator {
 
   public static void checkIsNumberInRange(int number) {
     if (!isInRange(number)) {
-      throw new IllegalArgumentException("[ERROR] 범위를 벗어나는 숫자가 있습니다.");
+      throw new NumberOutOfRangeException();
     }
   }
 

@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.exception.BuyAmountCanNotDividedByLottoPrice;
+import lotto.exception.BuyAmountUnderZeroException;
+
 import java.util.List;
 
 public class User {
@@ -50,13 +53,13 @@ public class User {
 
   private void checkOverZero(int buyAmount) {
     if (buyAmount <= 0) {
-      throw new IllegalArgumentException("[ERROR] 입력 금액이 0 이하입니다!");
+      throw new BuyAmountUnderZeroException();
     }
   }
 
   private void checkBuyAmountDividedByLottoPrice(int buyAmount) {
     if (buyAmount % Lotto.PRICE != 0) {
-      throw new IllegalArgumentException("[ERROR] 입력 금액의 단위가 잘못되었습니다.");
+      throw new BuyAmountCanNotDividedByLottoPrice();
     }
   }
 }
