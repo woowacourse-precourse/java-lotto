@@ -8,9 +8,10 @@ public class PlayerLottoAmount {
 
     private final int amount;
 
-    public PlayerLottoAmount(int amount) {
-        validateAmount(amount);
-        this.amount = amount;
+    public PlayerLottoAmount(String amount) {
+        int amountNum = validateNumber(amount);
+        validateAmount(amountNum);
+        this.amount = amountNum;
     }
 
     public int calculateLottoCount() {
@@ -19,15 +20,15 @@ public class PlayerLottoAmount {
 
 
     private void validateAmount(int amount) {
-        validateNumber(amount);
         validateNatural(amount);
         validateDivisible(amount);
     }
 
-    private static int validateNumber(int amount) {
+    private static int validateNumber(String amount) throws IllegalArgumentException{
         try {
-            return amount;
+            return Integer.parseInt(amount);
         }catch (NumberFormatException e){
+            System.out.println(NOT_NUMBER_ERROR);
             throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }
     }
@@ -35,6 +36,7 @@ public class PlayerLottoAmount {
 
     private void validateNatural(int amount) {
         if (amount <= 0) {
+            System.out.println(NOT_NATURAL_NUMBER_ERROR);
             throw new IllegalArgumentException(NOT_NATURAL_NUMBER_ERROR);
         }
     }

@@ -12,9 +12,9 @@ public class InputView {
     private static final  String INPUT_BONUS_NUMBER  = "보너스 번호를 입력해 주세요.";
     private static final String INPUT_TYPE_ERROR = "[ERROR] 숫자만 입력해 주세요.";
     private static List<Integer> winningNumberList;
-    public static int inputPlayerAmount(){
+    public static String inputPlayerAmount(){
         System.out.println(INPUT_LOTTO_AMOUNT);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
     public static List<Integer> inputLottoWinningNum(){

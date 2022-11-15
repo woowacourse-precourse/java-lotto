@@ -14,9 +14,9 @@ class PlayerLottoAmountTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1100, -1})
+    @ValueSource(strings = {"1000j", "1100", "-1"})
     @DisplayName("올바르지 않은 금액")
-    void failed(int inputAmount) {
+    void failed(String inputAmount) {
         assertThatThrownBy(() -> new PlayerLottoAmount(inputAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -24,7 +24,7 @@ class PlayerLottoAmountTest {
     @Test
     @DisplayName("구매한 로또 티켓 장수")
     void calculateLottoCount() {
-        PlayerLottoAmount amount = new PlayerLottoAmount(1000);
+        PlayerLottoAmount amount = new PlayerLottoAmount("1000");
         assertThat(amount.calculateLottoCount()).isEqualTo(1);
     }
 }
