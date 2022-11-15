@@ -1,10 +1,5 @@
 package lotto.validator;
 
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
-
-import static java.lang.System.exit;
-
 public class NumberValidator {
     private final static int UNIT = 1000;
     private final static int MIN_RANGE_NUM = 1;
