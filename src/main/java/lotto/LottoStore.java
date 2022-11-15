@@ -31,7 +31,7 @@ public class LottoStore {
     }
 
     private void validateMoney(long money) {
-        if (money % 1000 != 0) {
+        if (money <= 0 || money % 1000 != 0) {
             throw new IllegalArgumentException();
         }
     }
