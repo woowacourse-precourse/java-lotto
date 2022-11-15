@@ -11,4 +11,12 @@ public class Display {
             System.out.println(LottoPaper.get(i));
         }
     }
+
+    static void displayRank() {
+        System.out.println(GameData.FIRST.getPrintWord() +  GameData.FIRST.getCount() + "개");
+        System.out.println(GameData.SECOND.getPrintWord() +  GameData.SECOND.getCount() + "개");
+        System.out.println(GameData.THIRD.getPrintWord() +  GameData.THIRD.getCount() + "개");
+        System.out.println(GameData.FOURTH.getPrintWord() +  GameData.FOURTH.getCount() + "개");
+        System.out.println(GameData.FIFTH.getPrintWord() +  GameData.FIFTH.getCount() + "개");
+    }
 }
