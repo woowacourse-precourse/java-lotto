@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
-// TODO Parameterized Tests 적용 방법 공부하기
 class ResultTest {
 
     // 다양한 Test Case는 `ApplicationTest`에서 Integration Test로 진행
