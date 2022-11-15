@@ -1,9 +1,13 @@
 package lotto;
 
+import lotto.caculation.Money;
+import lotto.caculation.Purchase;
 import lotto.reward.Lotto;
 import lotto.reward.RandomNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.Console;
 import java.util.List;
@@ -54,6 +58,13 @@ class LottoTest {
         Lotto winningLotto = new Lotto(List.of(4,5,6,7,8,10));
 
         assertThat(lotto.matchCountNumbers(winningLotto)).isEqualTo(3);
+    }
+
+    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"1000", "1200", "1990"})
+    void 로또_구매_함수_테스트(String number){
+        assertThat(new Purchase(new Money(number)).getLottoCount()).isEqualTo(1);
     }
     // 아래에 추가 테스트 작성 가능
 }
