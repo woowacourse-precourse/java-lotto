@@ -24,7 +24,7 @@ public class Lotto {
         }
     }
 
-    public static boolean checkUniqueNumber(List<Integer> numbers) {
+    private static boolean checkUniqueNumber(List<Integer> numbers) {
         Set<Integer> checkNumbers = new HashSet<>(numbers);
         return numbers.size() == checkNumbers.size();
     }
