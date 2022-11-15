@@ -3,6 +3,7 @@ package lotto.model;
 import lotto.Constant;
 import lotto.domain.Lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -77,5 +78,16 @@ public class Main_Service {
             }
         }
         return lotto_cnt;
+    }
+
+    public String get_Yield(int[] numberOfWins, int money) {
+        int[] perMoney = new int[]{5000, 50000, 1500000, 30000000, 2000000000};
+        double yield = 0;
+        for (int i = 0; i < perMoney.length; i++) {
+            yield += perMoney[i] * numberOfWins[i];
+        }
+        //return String.format("%.1f", yield / money * 100) + "%";
+        DecimalFormat df = new DecimalFormat("###,###.#");
+        return df.format(yield / money * 100) + "%";
     }
 }
