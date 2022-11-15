@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.error.ErrorMessage;
 import lotto.util.Validator;
 
 import java.util.HashSet;
@@ -7,10 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public class NumberBox {
-    private static final String WRONG_LENGTH = "[ERROR] 로또 번호는 6개의 숫자여야 합니다.";
-    private static final String DUPLICATE_NUMBERS = "[ERROR] 로또 번호는 중복되지 않는 숫자들로 구성되어야 합니다.";
-    private static final String IN_WINNING_NUMBERS = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private static final String NOT_IN_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     public final Set<Integer> winningNumbers;
 
     public final int bonusNumber;
@@ -32,22 +29,22 @@ public class NumberBox {
 
     private static void validate(List<Integer> winningNumbers) {
         if (winningNumbers.size() != Validator.LOTTO_SIZE) {
-            throw new IllegalArgumentException(WRONG_LENGTH);
+            throw new IllegalArgumentException(ErrorMessage.WRONG_LENGTH.getMessage());
         }
         if (Validator.isDuplicate(winningNumbers)) {
-            throw new IllegalArgumentException(DUPLICATE_NUMBERS);
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
         }
         if (!Validator.isInRange(winningNumbers)) {
-            throw new IllegalArgumentException(NOT_IN_RANGE);
+            throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE.getMessage());
         }
     }
 
     private static void validate(List<Integer> winningNumbers, int bonusNumber) {
         if (Validator.isDuplicate(winningNumbers, bonusNumber)) {
-            throw new IllegalArgumentException(IN_WINNING_NUMBERS);
+            throw new IllegalArgumentException(ErrorMessage.IN_WINNING_NUMBERS.getMessage());
         }
         if (!Validator.isInRange(bonusNumber)) {
-            throw new IllegalArgumentException(NOT_IN_RANGE);
+            throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE.getMessage());
         }
     }
 }

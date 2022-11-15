@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.error.ErrorMessage;
 import lotto.util.LottoGenerator;
 import lotto.util.Output;
 import lotto.util.Validator;
@@ -8,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static final String NOT_POSITIVE_MONEY = "[ERROR] 구입 금액은 0보다 큰 숫자여야 합니다.";
-    private static final String INVALID_MONEY_UNIT = "[ERROR] 구입 금액은 1000원 단위여야 합니다.";
     public final List<Lotto> lottos;
 
     public User(int money) {
@@ -23,10 +22,10 @@ public class User {
 
     private static void validate(int money) {
         if (!Validator.isPositive(money)) {
-            throw new IllegalArgumentException(NOT_POSITIVE_MONEY);
+            throw new IllegalArgumentException(ErrorMessage.NOT_POSITIVE_MONEY.getMessage());
         }
         if (!Validator.isHundredUnit(money)) {
-            throw new IllegalArgumentException(INVALID_MONEY_UNIT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_UNIT.getMessage());
         }
     }
 
