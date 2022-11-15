@@ -1,15 +1,14 @@
 package lottomanager;
 
-import lottomanager.LottoChecker;
-import lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoChckerTest {
+class LottoCheckerTest {
 
     private final LottoChecker lottoChecker = new LottoChecker();
     @DisplayName("로또 번호중 몇개가 같은 지 반환한다.")
@@ -27,6 +26,11 @@ class LottoChckerTest {
         int bonus = 5;
         assertEquals(lottoChecker.compareBonus(bonus, winningLotto),true);
     }
-
+    @Test
+    void checkGetRank(){
+        List<List<Integer>> Lottoes = List.of(List.of(1, 2, 3, 4, 5, 6), List.of(3, 4, 5, 6, 7, 8));
+        List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 7);
+        assertEquals(lottoChecker.getRank(Lottoes, winningLotto, true), List.of(0, 1, 0, 1, 0));
+    }
 
 }
