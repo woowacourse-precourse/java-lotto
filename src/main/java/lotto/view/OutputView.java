@@ -34,7 +34,9 @@ public class OutputView {
             String money = df.format(rank.getMoney());
             System.out.printf("%d개 일치%s (%s원) - %d개\n", rank.getCorrectNumCount(), getBonusPrint(rank),money, result.get(rank));
         }
-
+    }
+    public static void printRate(double rate){
+        System.out.printf("총 수익률은 %.1f%%입니다.",rate);
     }
     private static String getBonusPrint(Rank rank){
         if(rank.equals(Rank.SECOND)){
