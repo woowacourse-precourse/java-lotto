@@ -8,9 +8,10 @@ import lotto.view.View;
 
 public class Money {
 
-    private final int money;
     private static final int ZERO = 0;
     private static final int LOTTO_PRICE = 1000;
+
+    private final int money;
 
     public Money(int money) {
         validatePurchase(money);
@@ -18,12 +19,12 @@ public class Money {
         this.money = money;
     }
 
-    public int getMoney() {
-        return this.money;
-    }
-
     public static int getLottoPrice() {
         return LOTTO_PRICE;
+    }
+
+    public int getMoney() {
+        return this.money;
     }
 
     private void validatePurchase(int money) {

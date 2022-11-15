@@ -3,7 +3,6 @@ package lotto.util;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lotto.constant.Constant;
 
 /*
  * 입력 값의 검증 조건을 구현한 클래스
@@ -24,25 +23,6 @@ public class Validator {
             }
         }
         return true;
-    }
-
-    public static boolean isValidSize(List<Integer> numbers) {
-        return numbers.size() == Constant.LOTTO_SIZE;
-    }
-
-    // 여러개의 숫자를 검증
-    public static boolean isValidNumbers(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (!isValidNumber(number)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // 1개 숫자를 검증
-    public static boolean isValidNumber(int number) {
-        return number >= Constant.LOTTO_START_NUMBER && number <= Constant.LOTTO_END_NUMBER;
     }
 
     public static boolean isUniqueNumber(List<Integer> numbers) {

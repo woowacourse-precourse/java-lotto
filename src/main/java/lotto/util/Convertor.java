@@ -2,7 +2,7 @@ package lotto.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.constant.Constant;
+import lotto.Lotto;
 
 public class Convertor {
 
@@ -10,7 +10,7 @@ public class Convertor {
     public static List<Integer> ExtractList(List<List<Integer>> list, int index) {
         List<Integer> result = new ArrayList<>();
 
-        for (int i = 0; i < Constant.LOTTO_SIZE; i++) {
+        for (int i = 0; i < Lotto.getSize(); i++) {
             result.add(list.get(index).get(i));
         }
         return result;

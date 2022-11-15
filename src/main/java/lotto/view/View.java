@@ -1,7 +1,6 @@
 package lotto.view;
 
 import java.util.List;
-import lotto.constant.Constant;
 import lotto.util.Convertor;
 import lotto.util.WinnerInfo;
 
@@ -16,7 +15,7 @@ public class View {
 
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INPUT_IS_EMPTY_MESSAGE = ERROR_MESSAGE + "입력된 값이 없습니다. 게임이 종료됩니다.";
-    private static final String NOT_INTEGER_MESSAGE = ERROR_MESSAGE + "정수만 입력 가능합니다. 게임이 종료됩니다.";
+    private static final String NOT_INTEGER_MESSAGE = ERROR_MESSAGE + "양수만 입력 가능합니다. 게임이 종료됩니다.";
     private static final String NOT_PURCHASE_MESSAGE = ERROR_MESSAGE + "로또를 구매하지 않아 게임이 종료됩니다.";
     private static final String NOT_LOTTO_PRICE_MESSAGE = ERROR_MESSAGE + "%d단위로만 입력 가능합니다. 게임이 종료됩니다.%n";
     private static final String NOT_SEPARATED_BY_COMMA_MESSAGE = ERROR_MESSAGE + "숫자는 콤마로 구분해 주세요. 게임이 종료됩니다.";
@@ -81,12 +80,12 @@ public class View {
         System.out.println(NOT_SEPARATED_BY_COMMA_MESSAGE);
     }
 
-    public static void printNotLottoSize() {
-        System.out.printf(NOT_LOTTO_SIZE_MESSAGE, Constant.LOTTO_SIZE);
+    public static void printNotLottoSize(int lottoSize) {
+        System.out.printf(NOT_LOTTO_SIZE_MESSAGE, lottoSize);
     }
 
-    public static void printNotLottoNumber() {
-        System.out.printf(NOT_LOTTO_NUMBER_MESSAGE, Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER);
+    public static void printNotLottoNumber(int lottoStartNumber, int lottoEndNumber) {
+        System.out.printf(NOT_LOTTO_NUMBER_MESSAGE, lottoStartNumber, lottoEndNumber);
     }
 
     public static void printNotUniqueNumber() {
