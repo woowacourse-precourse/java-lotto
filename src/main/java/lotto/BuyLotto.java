@@ -44,5 +44,9 @@ public class BuyLotto {
         }
     }
 
+    private static List<Integer> sortNumbers(List<Integer>numbers) {
+        System.out.println(numbers);
+        return numbers;
+    }
 
 }
