@@ -8,7 +8,7 @@ public class Customer {
     private int amount;
 
     public void inputAmount() {
-        System.out.println(Ready.INSERT_AMOUNT);
+        System.out.println(Ready.INSERT_AMOUNT.getValue());
         String amount = readLine();
         if (validateAmount(amount)) {
             this.amount = Integer.parseInt(amount);
