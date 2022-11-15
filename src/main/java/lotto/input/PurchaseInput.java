@@ -1,9 +1,9 @@
-package lotto.Input;
+package lotto.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import lotto.Output.ErrorMessage;
-import lotto.Output.Message;
+import lotto.output.ErrorMessage;
+import lotto.output.Message;
 
 public class PurchaseInput {
     private static final int LOTTO_PRICE = 1000;

@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import lotto.domain.ErrorMessage;
-import lotto.domain.Message;
+import lotto.output.ErrorMessage;
+import lotto.output.Message;
 
 public class WinningInput {
     public static String winningInput;
