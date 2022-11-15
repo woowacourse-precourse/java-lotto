@@ -63,6 +63,15 @@ public class InputTest extends NsTest {
         assertThat(inputController.inputWinningNumber()).isEqualTo(testLottoNumber);
     }
 
+    @DisplayName("당첨 번호 입력 값중 1~45 사이의 수가 아닌 숫자가 있는 경우 예외 발생한다.")
+    @Test
+    void createWinningNumberRange() {
+        Validator validator = new Validator();
+        String str[] = {"1","2","3","4","5","99"};
+        assertThatThrownBy(() -> validator.isCorrectRangeNumber(str,Error.RANGE))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
