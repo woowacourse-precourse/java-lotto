@@ -15,27 +15,35 @@ public class WinningLottoService {
 
     public WinningLotto scanWinningNums() {
         List<Integer> nums = scanNumbers();
-        int bonusNum = scanBonusNumber(nums);
+        int bonusNum = scanBonusNumber();
         return new WinningLotto(nums, bonusNum);
     }
 
     public List<Integer> scanNumbers() {
         System.out.println(SCAN_ANSWER_MSG);
-        List<Integer> scanNumbers;
+        return changeToList(Console.readLine());
+    }
+
+    public int scanBonusNumber() {
+        System.out.println(BLANK_BR + SCAN_BONUS_NUMBER_MSG);
+        return changeToInteger(Console.readLine());
+    }
+
+    public List<Integer> changeToList(String scanNums) {
+        List<Integer> lottoNumbers;
         try {
-            scanNumbers = Arrays.stream(Console.readLine().split(INPUT_SPLITTER)).mapToInt(Integer::valueOf)
+            lottoNumbers = Arrays.stream(scanNums.split(INPUT_SPLITTER)).mapToInt(Integer::valueOf)
                 .sorted().boxed().collect(Collectors.toList());
         } catch (Exception NumberFormatException) {
             throw new IllegalArgumentException(INPUT_NOT_INTEGER);
         }
-        return scanNumbers;
+        return lottoNumbers;
     }
 
-    public int scanBonusNumber(List<Integer> lottoNumbers) {
-        System.out.println(BLANK_BR + SCAN_BONUS_NUMBER_MSG);
+    public int changeToInteger(String scanNum) {
         int bonusNumber;
         try {
-            bonusNumber = Integer.parseInt(Console.readLine());
+            bonusNumber = Integer.parseInt(scanNum);
         } catch (Exception NumberFormatException) {
             throw new IllegalArgumentException(INPUT_NOT_INTEGER);
         }
