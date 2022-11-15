@@ -8,7 +8,9 @@ import java.util.*;
 public class InputView {
 
     private static final String REGEX_ONLY_NUMBER = "^[0-9]*$";
+    private static final String REGEX_WINNING_NUMBERS_FORMAT = "^([0-9]|(,[0-9]))*$";
     private static final String ERROR_WITH_TEXT_MESSAGE = "[ERROR] 숫자만 입력해야 합니다.";
+    private static final String ERROR_WRONG_WINNING_NUMBERS_FORMAT_MESSAGE = "[ERROR] 올바른 형식을 입력해 주세요.";
     private static final String WINNING_NUMBERS_SPLIT_DELIMITER = ",";
 
     public static PurchaseMoney inputPurchaseMoney() {
@@ -30,7 +32,14 @@ public class InputView {
 
     public static List<Integer> inputWinningNumbers() {
         String input = Console.readLine();
+        validatePositiveInputWinningNumbers(input);
         return convertInputWinningNumbers(input);
+    }
+
+    private static void validatePositiveInputWinningNumbers(String input) {
+        if (!input.matches(REGEX_WINNING_NUMBERS_FORMAT)) {
+            throw new IllegalArgumentException(ERROR_WRONG_WINNING_NUMBERS_FORMAT_MESSAGE);
+        }
     }
 
     private static List<Integer> convertInputWinningNumbers(String input) {
