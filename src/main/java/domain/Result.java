@@ -1,5 +1,7 @@
 package domain;
 
+import dto.LottoDto;
+import dto.ResultDto;
 import dto.WinningNumberDto;
 
 import java.util.EnumMap;
@@ -17,6 +19,9 @@ public class Result {
         }
     }
 
+    public ResultDto sendDto() {
+        return new ResultDto(statistics);
+    }
     public void increment(LottoRank rank) {
         Integer value = statistics.get(rank);
         statistics.put(rank, ++value);
