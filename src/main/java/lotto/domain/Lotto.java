@@ -17,12 +17,24 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateLottoSize(numbers);
+        validateNumberDuplicate(numbers);
+        validateNumberRange(numbers);
+    }
+
+    private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_CORRECT_SIZE.getMessage());
         }
+    }
+
+    private void validateNumberDuplicate(List<Integer> numbers) {
         if (checkDuplicateInNumbers(numbers)) {
             throw new IllegalArgumentException(Error.LOTTO_NUMBERS_IS_CONTAIN_DUPLICATE.getMessage());
         }
+    }
+
+    private void validateNumberRange(List<Integer> numbers) {
         if (!isNumbersInRange(numbers)) {
             throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_IN_RANGE.getMessage());
         }
