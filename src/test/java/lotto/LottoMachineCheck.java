@@ -27,11 +27,11 @@ public class LottoMachineCheck {
     void checkUseSteamToSortList() {
         List<Integer> winningNumber = List.of(6, 5, 4, 3, 2, 1);
 
-        Arrays.stream(winningNumber.toArray())
+        List sortedList = Arrays.stream(winningNumber.toArray())
                 .sorted()
                 .collect(Collectors.toList());
 
-        assertThat(winningNumber).isEqualTo(List.of(1, 2, 3, 4, 5,6));
+        assertThat(sortedList).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @DisplayName("두개의 리스트 합치는 로직 테스트")
