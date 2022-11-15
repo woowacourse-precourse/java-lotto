@@ -1,7 +1,11 @@
 package lotto.exception;
 
 import static lotto.constant.Constant.*;
+
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public class UserInputLottoInfoException {
     public void isInputValueOnlyNumber(String price, String message) {
@@ -32,6 +36,13 @@ public class UserInputLottoInfoException {
     }
     public void checkArrayLength(String[] numbers, String message) {
         if (numbers.length != NUMBER_OF_LOTTO_NUMBERS) {
+            System.out.println(ERROR_MESSAGE + message);
+            throw new IllegalArgumentException();
+        }
+    }
+    public void isExistSameNumber(String[] numbers, String message) {
+        Set<String> set = new HashSet<>(Arrays.asList(numbers));
+        if (numbers.length!= set.size()) {
             System.out.println(ERROR_MESSAGE + message);
             throw new IllegalArgumentException();
         }
