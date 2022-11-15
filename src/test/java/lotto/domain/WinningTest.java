@@ -20,6 +20,7 @@ class WinningTest {
         Lotto lotto;
         WinningLotto winningLotto;
         Winning winning;
+
         @BeforeEach
         void setUp() {
             lotto = mock(Lotto.class);

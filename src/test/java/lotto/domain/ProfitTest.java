@@ -12,7 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class ProfitTest {
     @DisplayName("수익률 계산")
     @Nested
-    class calProfitRate{
+    class calProfitRate {
         Profit p;
 
         @BeforeEach
