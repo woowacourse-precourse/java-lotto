@@ -53,7 +53,10 @@ public class Input {
     }
 
     public void checkWinningLotto(String inputWinningLotto){
-
+        String[] checkArray = inputWinningLotto.split(",");
+        if(checkArray.length!=6){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 ,로 구분해야 합니다.");
+        }
     }
 
 
