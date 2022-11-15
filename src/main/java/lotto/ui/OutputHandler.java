@@ -18,8 +18,8 @@ public class OutputHandler {
     }
 
     public void showStatistics() {
-        System.out.println(PrintMessage.MESSAGE_STATISTICS);
-        System.out.println(PrintMessage.MESSAGE_LINE);
+        System.out.println(PrintMessage.MESSAGE_STATISTICS.getMessage());
+        System.out.println(PrintMessage.MESSAGE_LINE.getMessage());
 
         Map<LottoReward, Integer> winningHistory = statistics.getWinningHistory();
         showWinningHistory(winningHistory);

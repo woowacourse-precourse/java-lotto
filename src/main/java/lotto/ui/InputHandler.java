@@ -17,7 +17,6 @@ public class InputHandler {
             money = Integer.parseInt(Console.readLine());
             Validator.validatePrice(money);
         } catch (NumberFormatException e) {
-            Validator.validatePrice(money);
             System.out.println(ExceptionMessage.ERROR_FORMAT.getMessage());
             throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT.getMessage());
         }

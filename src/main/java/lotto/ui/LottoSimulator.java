@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import lotto.domain.*;
+import lotto.message.ExceptionMessage;
 import lotto.message.PrintMessage;
 
 import java.util.List;
@@ -25,10 +26,10 @@ public class LottoSimulator {
         System.out.printf(PrintMessage.MESSAGE_BUY_LOTTO.getMessage(), count);
         showLotteries();
 
-        System.out.println(PrintMessage.MESSAGE_ENTER_WINNING_NUMBER);
+        System.out.println(PrintMessage.MESSAGE_ENTER_WINNING_NUMBER.getMessage());
         Lotto winningLotto = inputWinningNumber();
 
-        System.out.println(PrintMessage.MESSAGE_ENTER_BONUS_NUMBER);
+        System.out.println(PrintMessage.MESSAGE_ENTER_BONUS_NUMBER.getMessage());
         int bonusNumber = inputLottoBonusNumber(winningLotto);
 
         List<LottoReward> lottoRewards = calculate(winningLotto, bonusNumber);
