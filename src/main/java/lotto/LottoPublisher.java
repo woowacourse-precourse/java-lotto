@@ -8,9 +8,9 @@ import java.util.Random;
 
 public class LottoPublisher {
     public static final int lottoNum = 6;
-    public static final int lottoPrice = 1000;
     public static final int startNum = 1;
     public static final int lastNum = 45;
+    public static final int lottoPrice = 1000;
 
     private int money;
 
@@ -23,7 +23,7 @@ public class LottoPublisher {
         insertMoney(money);
         List<Lotto> ret = new ArrayList<>();
         for(int i=0; i<cnt; i++){
-            List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(startNum, lastNum, lottoNum);
+            List<Integer> lottoNums = new ArrayList<>(Randoms.pickUniqueNumbersInRange(startNum, lastNum, lottoNum));
             Lotto lotto = new Lotto(lottoNums);
             System.out.println(lotto.getNumbers());
             ret.add(lotto);
@@ -37,7 +37,7 @@ public class LottoPublisher {
     }
 
     private int checkMoney(int money){
-        if(money % lottoPrice != 0){
+        if(money % lottoPrice != 0 || money < LottoPublisher.lottoPrice){
             throw new IllegalArgumentException("1,000원 단위로 입력하세요");
         }
         return money / lottoPrice;

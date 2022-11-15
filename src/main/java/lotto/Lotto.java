@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -19,10 +20,13 @@ public class Lotto {
         if (numbers.size() != LottoPublisher.lottoNum) {
             throw new IllegalArgumentException();
         }
+        if(numbers.stream().distinct().count() != LottoPublisher.lottoNum){
+            throw new IllegalArgumentException();
+        }
     }
 
     private void ascendingOrder(List<Integer> numbers){
-        numbers.sort(Integer::compareTo);
+        Collections.sort(numbers);
     }
 
     // TODO: 추가 기능 구현

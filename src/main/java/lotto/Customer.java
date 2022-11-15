@@ -2,11 +2,12 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
     private int asset;
-    private List<Lotto> userLotto;
+    private List<Lotto> userLotto = new ArrayList<>();
 
     public int getAsset() {
         return asset;
@@ -25,6 +26,7 @@ public class Customer {
         try{
             this.asset = Integer.parseInt(asset);
         }catch (Exception e){
+            Message.printErrorMessage(e);
             throw new IllegalArgumentException(e);
         }
     }
