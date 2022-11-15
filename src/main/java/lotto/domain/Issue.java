@@ -38,7 +38,7 @@ public class Issue {
         }
         return history;
     }
-    public double calculate(double winRevenue){
+    public double revenue(double winRevenue){
         return (winRevenue/(amount*1000))*100;
     }
 }
