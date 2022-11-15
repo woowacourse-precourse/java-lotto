@@ -27,7 +27,7 @@ public class BonusNumber {
         try {
             int number = Integer.parseInt(bonus);
         }catch (NumberFormatException e) {
-            inputError(outputView.isNumberMsg());
+            //inputError(outputView.isNumberMsg());
         }
         return true;
     }

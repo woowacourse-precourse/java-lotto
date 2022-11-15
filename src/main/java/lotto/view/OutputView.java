@@ -4,11 +4,11 @@ import java.util.List;
 
 public class OutputView {
 
-    public String isNumberMsg() {
+    public static String isNumberMsg() {
         return "[ERROR] 숫자를 입력해주세요.";
     }
 
-    public String unitErrorMsg() {
+    public static String unitErrorMsg() {
         return "[ERROR] 1000원으로 나누어 떨어지지 않습니다.";
     }
 

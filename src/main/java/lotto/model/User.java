@@ -1,16 +1,15 @@
 package lotto.model;
 
 import lotto.view.OutputView;
+import java.util.regex.Pattern;
 
-public class User {
+public class User{
 
-    static OutputView outputView = new OutputView();
+    private static final Pattern pattern = Pattern.compile("^[0-9]*$");
 
     public static boolean isNumber(String str){
-        try {
-            int value = Integer.parseInt(str);
-        }catch (NumberFormatException e) {
-            inputError(outputView.isNumberMsg());
+        if(!(pattern.matcher(str).matches())) {
+            inputError(OutputView.isNumberMsg());
         }
         return true;
     }
@@ -18,12 +17,12 @@ public class User {
     public static boolean unitError(String str) {
         int value = Integer.parseInt(str);
         if(value % 1000 != 0) {
-            inputError(outputView.unitErrorMsg());
+            inputError(OutputView.unitErrorMsg());
         }
         return true;
     }
 
-    private static void inputError(String error) {
+    public static void inputError(String error) {
         throw new IllegalArgumentException(error);
     }
 
