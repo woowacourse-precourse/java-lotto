@@ -35,10 +35,10 @@ public class StatisticsView {
     private static void printStatistic(Rank rank, int lottoCount) {
         int matchCount = rank.getMatchCount();
         Money prize = rank.getPrize();
-        if (!hasBonusNumber(rank)) {
+        if (!rank.hasBonusNumber()) {
             System.out.printf(STATISTIC_FORMAT, matchCount, formatWithComma(prize), lottoCount);
         }
-        if (hasBonusNumber(rank)) {
+        if (rank.hasBonusNumber()) {
             System.out.printf(STATISTIC_FORMAT_WITH_BONUS_NUMBER, matchCount, formatWithComma(prize), lottoCount);
         }
         System.out.println();
@@ -46,10 +46,6 @@ public class StatisticsView {
 
     public static void printProfitRate(double profitRate) {
         System.out.printf(PROFIT_RATE_FORMAT, convertRateToPercentage(profitRate));
-    }
-
-    private static boolean hasBonusNumber(Rank rank) {
-        return rank == Rank.SECOND;
     }
 
     private static double convertRateToPercentage(double rate) {
