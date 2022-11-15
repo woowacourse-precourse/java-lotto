@@ -40,7 +40,7 @@ public class Lotto {
         return rankNumber;
     }
 
-    public void RankLineUnderHundred (int rankPoint) {
+    public void rankLineUnderHundred (int rankPoint) {
         if (rankPoint == 3) {
             GameData.FIFTH.addCount();
         }
@@ -55,7 +55,7 @@ public class Lotto {
         }
     }
 
-    public void RankLineOverHundred (int rankPoint) {
+    public void rankLineOverHundred (int rankPoint) {
         if (rankPoint == 103) {
             GameData.FIFTH.addCount();
         }
@@ -67,21 +67,21 @@ public class Lotto {
         }
     }
 
-    public void RankLine (List<Integer> LottoPaperLine) {
+    public void rankLine (List<Integer> LottoPaperLine) {
         int rankPoint = compareWinNumberAndLottoPaperPoint(LottoPaperLine);
 
         if (rankPoint < 100) {
-            RankLineUnderHundred(rankPoint);
+            rankLineUnderHundred(rankPoint);
         }
         if (rankPoint >= 100) {
-            RankLineOverHundred(rankPoint);
+            rankLineOverHundred(rankPoint);
         }
     }
 
     public void totalRank(List<List<Integer>> LottoPaper) {
 
         for (int i = 0; i < LottoPaper.size(); i++) {
-            RankLine(LottoPaper.get(i));
+            rankLine(LottoPaper.get(i));
         }
     }
 
