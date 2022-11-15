@@ -13,7 +13,9 @@ public class Application {
         List<Integer> answer = MakeAnswer();
         int bonus_num = MakeBonus(answer);
         Map<String, Integer> user_match_count = UserMatchingCount(user_lotto, answer, bonus_num);
-        PrintResult(user_match_count);
+        long result_money = HowMuchMoney(user_match_count);
+        double win_rate = GetWinRate(result_money, user_buy_num);
+        PrintResult(user_match_count, win_rate);
     }
 
     static int HowManyLotto() {
@@ -123,13 +125,14 @@ public class Application {
         return output;
     }
 
-    static void PrintResult(Map<String, Integer> user_match_count) {
+    static void PrintResult(Map<String, Integer> user_match_count, double win_rate) {
         System.out.println("\n당첨 통계\n---");
         System.out.println("3개 일치 (5,000원) - " + user_match_count.get("3개") + "개");
         System.out.println("4개 일치 (50,000원) - " + user_match_count.get("4개") + "개");
         System.out.println("5개 일치 (1,500,000원) - " + user_match_count.get("5개") + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + user_match_count.get("5개+보너스") + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + user_match_count.get("6개") + "개");
+        System.out.println("총 수익률은 " + win_rate +"%입니다.");
     }
 
     static long HowMuchMoney(Map<String, Integer> user_match_count) {
@@ -142,5 +145,12 @@ public class Application {
         result_money += user_match_count.get("6개") * 200000000L;
 
         return result_money;
+    }
+
+    static double GetWinRate(long result_money, int user_buy_num) {
+        double money = result_money;
+        double win_rate = (money / (user_buy_num * 1000.0)) * 100.0;
+        win_rate = Math.round(win_rate * 10) / 10.0;
+        return win_rate;
     }
 }
