@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.WinningType.FIRST;
+
 public class Application {
     final static int Money = 50000; //user 의 잔고
     public static void main(String[] args) {
