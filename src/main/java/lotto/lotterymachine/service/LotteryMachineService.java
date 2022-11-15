@@ -33,35 +33,34 @@ public class LotteryMachineService {
                 count++;
             }
         }
-        recordScore(userLottery, lotteryMachine.getTargetBonusNumber(), count);
+        setScores(userLottery, lotteryMachine.getTargetBonusNumber(), count);
     }
 
-    public boolean recordScore(List<Integer> userLottery, int targetBonusNumber, int count) {
+    public void setScores(List<Integer> userLottery, int targetBonusNumber, int count) {
 
         if (count == Score.FIVE.ordinal()) {
             count = checkBonusNumber(userLottery, targetBonusNumber, count);
-            featScoreBoard(count);
-            return true;
+            featScoreBoardPlusOne(count);
+            return;
         }
 
         if (count == Score.FIVE_BONUS.ordinal()) {
-            featScoreBoard(count + 1);
-            return true;
+            featScoreBoardPlusOne(count + 1);
+            return;
         }
-        featScoreBoard(count);
-        return true;
+        featScoreBoardPlusOne(count);
     }
 
-    public int checkBonusNumber(List<Integer> userLottery, int lotteryMachine, int count) {
-        if (userLottery.contains(lotteryMachine)) {
+    public int checkBonusNumber(List<Integer> userLottery, int targetBonusNumber, int count) {
+        if (userLottery.contains(targetBonusNumber)) {
             count = count + 1;
             return count;
         }
         return count;
     }
 
-    public void featScoreBoard(int count) {
-        Score score = Score.values()[count];
+    public void featScoreBoardPlusOne(int index) {
+        Score score = Score.values()[index];
         ScoreBoard.put(score, ScoreBoard.get(score) + 1);
     }
 
