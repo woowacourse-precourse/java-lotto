@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.ErrorMessage.CANNOT_FIND_RANK;
+
 public enum Result {
     FIFTH(3, 5000),
     FOURTH(4, 50_000),
@@ -26,7 +28,7 @@ public enum Result {
                 return result;
             }
         }
-        throw new IllegalArgumentException("[ERROR] 해당하는 등수를 찾을 수 없습니다.");
+        throw new IllegalArgumentException(CANNOT_FIND_RANK);
     }
 
     public int getCorrectNumbers(){
