@@ -9,6 +9,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class UserTest {
 
     private final User user = new User();
+    private final String wrongLottoInput = "12.4.2.16.32.6";
+    private final String wrongLottoInput2 = "124216326";
+    private final String wrongLottoInput3 = "124,2,16,32,6,16";
+    private final String wrongLottoInput4 = "사십사,이십이,이,12";
+    private final String wrongLottoInput5 = "1, 13, 14, 23, 16, 35";
 
     @Test
     public void 로또구매시_개수_오류여부(){
@@ -18,13 +23,16 @@ class UserTest {
     }
 
     @Test
-    public void 로또_개수_확인(){
-        user.generatingLotto(5);
-        assertEquals(5, user.getBoughtLotto().size());
-        assertEquals(6, user.getBoughtLotto().get(0).size());
-        assertEquals(6, user.getBoughtLotto().get(1).size());
-        assertEquals(6, user.getBoughtLotto().get(2).size());
-        assertEquals(6, user.getBoughtLotto().get(3).size());
-        assertEquals(6, user.getBoughtLotto().get(4).size());
+    public void 유저_로또번호_선택(){
+        assertThatThrownBy(() -> user.choosingLottoNumber(wrongLottoInput))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.choosingLottoNumber(wrongLottoInput2))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.choosingLottoNumber(wrongLottoInput3))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.choosingLottoNumber(wrongLottoInput4))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.choosingLottoNumber(wrongLottoInput5))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
