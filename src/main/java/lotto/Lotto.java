@@ -8,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        random(numbers);
         this.numbers = numbers;
     }
 
@@ -17,7 +18,7 @@ public class Lotto {
         }
     }
 
-    public void Random(List<Integer> numbers)   {
+    public void random(List<Integer> numbers) {
         Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
