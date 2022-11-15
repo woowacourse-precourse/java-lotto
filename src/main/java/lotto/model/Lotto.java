@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.List;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Constants;
 
 public class Lotto {
@@ -37,4 +38,10 @@ public class Lotto {
             }
         }
     }
+
+    public static Lotto generate() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(
+                Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_LENGTH));
+    }
+
 }
