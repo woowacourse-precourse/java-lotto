@@ -23,23 +23,29 @@ public class WinningStats {
         this.winningStats = winningStats;
     }
 
-    private void addStats(int count, LinkedHashMap<String, Integer> winningStats) {
-        String key = "";
+    private String getKey(int count) {
         if (count == 3) {
-            key = "FIFTH";
+            return "FIFTH";
         }
-        else if (count == 4) {
-            key = "FOURTH";
+        if (count == 4) {
+            return "FOURTH";
         }
-        else if (count == 5) {
-            key = "THIRD";
+        if (count == 5) {
+            return "THIRD";
         }
-        else if (count == 6) {
-            key = "SECOND";
+        if (count == 6) {
+            return "SECOND";
         }
-        else if (count == 7) {
-            key = "FIRST";
+        if (count == 7) {
+            return "FIRST";
         }
+        return "";
+    }
+
+    private void addStats(int count, LinkedHashMap<String, Integer> winningStats) {
+        if (count < 3 || count > 7)
+            return;
+        String key = getKey(count);
         winningStats.put(key, winningStats.get(key) + 1);
     }
 
