@@ -29,9 +29,7 @@ public class Lotto {
     public int getNumberOfWins(List<Integer> winningNumbers){
         int count = 0;
         for(Integer number : winningNumbers){
-            System.out.print(number + " ");
             if(numbers.contains(number)){
-                System.out.print("NUMBERCHECK!");
                 count++;
             }
         }

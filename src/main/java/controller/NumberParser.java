@@ -1,5 +1,6 @@
 package controller;
 
+import data.NumericData;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ public class NumberParser {
     public NumberParser(){}
 
     public void checkException(List<Integer> numbers) {
-        if(numbers.size() != 6){
+        if(numbers.size() != NumericData.NUMBER_AMOUNT.getNumericValue()){
             System.out.println("임시에러: 숫자 6개만 넣어야한다.");
             throw new IllegalArgumentException();
         }
@@ -61,7 +62,8 @@ public class NumberParser {
     }
 
     public void checkException(int number) {
-        if(number < 0 || number > 45){
+        if(number < NumericData.MIN_NUMBER.getNumericValue()
+            || number > NumericData.MAX_NUMBER.getNumericValue()){
             System.out.println("임시에러: 1부터 45사이의 숫자여야한다.");
             throw new IllegalArgumentException();
         }

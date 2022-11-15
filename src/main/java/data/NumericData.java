@@ -6,13 +6,7 @@ package data;
 public enum NumericData {
     NUMBER_AMOUNT(6, "6"),
     MIN_NUMBER(1, "1"),
-    MAX_NUMBER(45, "45"),
-    LOTTO_PRICE(1000, "1,000"),
-    FIFTH_PRIZE(5000, "5,000"),
-    FOURTH_PRIZE(50000, "50,000"),
-    THIRD_PRIZE(1500000, "1,500,000"),
-    SECOND_PRIZE(30000000, "30,000,000"),
-    FIRST_PRIZE(2000000000, "2,000,000,000");
+    MAX_NUMBER(45, "45");
 
     private final int numeric;
     private String outputMoney;
