@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 public class InputOutput {
 
     public int getMoneyInput() {
@@ -29,5 +32,10 @@ public class InputOutput {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원으로 떨어지는 숫자를 입력해주세요.");
         }
+    }
+
+    public void printLotto(List<Lotto> buyerLotto) {
+        Stream<Lotto> stream = buyerLotto.stream();
+        stream.forEach(Lotto::printLotto);
     }
 }
