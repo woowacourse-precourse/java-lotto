@@ -1,4 +1,6 @@
-package lotto;
+package lotto.util;
+
+import lotto.exception.IllegalArgumentError;
 
 public class Util {
 

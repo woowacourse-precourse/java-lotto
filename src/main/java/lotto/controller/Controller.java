@@ -1,6 +1,14 @@
-package lotto;
+package lotto.controller;
 
 import java.util.List;
+import lotto.ui.InputView;
+import lotto.domain.Lotto;
+import lotto.service.LottoGenerator;
+import lotto.domain.LottoNumber;
+import lotto.domain.Money;
+import lotto.ui.OutputView;
+import lotto.domain.Rank;
+import lotto.service.RankingService;
 
 public class Controller {
 

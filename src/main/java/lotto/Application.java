@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.exception.IllegalArgumentError;
+import lotto.controller.Controller;
+
 public class Application {
 
 

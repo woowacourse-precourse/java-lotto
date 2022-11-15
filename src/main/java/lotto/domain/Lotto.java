@@ -1,8 +1,10 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import lotto.exception.IllegalArgumentError;
+import lotto.util.Constants;
 
 public class Lotto {
 

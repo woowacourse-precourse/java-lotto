@@ -1,6 +1,10 @@
-package lotto;
+package lotto.service;
 
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoNumber;
+import lotto.domain.Money;
+import lotto.domain.Rank;
 
 public class RankingService {
 
@@ -8,7 +12,7 @@ public class RankingService {
     private final LottoNumber bonusNumber;
 
 
-    RankingService(Lotto winningNumbers, LottoNumber bonusNumber) {
+    public RankingService(Lotto winningNumbers, LottoNumber bonusNumber) {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }

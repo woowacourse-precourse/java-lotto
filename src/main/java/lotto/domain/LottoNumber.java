@@ -1,10 +1,13 @@
-package lotto;
+package lotto.domain;
+
+import lotto.exception.IllegalArgumentError;
+import lotto.util.Constants;
 
 public class LottoNumber implements Comparable<LottoNumber> {
 
     private final int number;
 
-    LottoNumber(int number) {
+    public LottoNumber(int number) {
         validateRange(number);
         this.number = number;
     }

@@ -1,7 +1,7 @@
-package lotto;
+package lotto.ui;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.Util.toInt;
+import static lotto.util.Util.toInt;
 
 import java.util.ArrayList;
 import java.util.List;

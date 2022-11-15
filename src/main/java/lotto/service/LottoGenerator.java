@@ -1,10 +1,13 @@
-package lotto;
+package lotto.service;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
+import lotto.util.Constants;
 
 
 public class LottoGenerator {

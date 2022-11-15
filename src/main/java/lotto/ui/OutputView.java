@@ -1,7 +1,10 @@
-package lotto;
+package lotto.ui;
 
 import java.util.Collections;
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoNumber;
+import lotto.domain.Rank;
 
 public class OutputView {
 

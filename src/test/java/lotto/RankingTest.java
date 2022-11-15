@@ -1,10 +1,12 @@
 package lotto;
 
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import lotto.domain.Lotto;
+import lotto.domain.LottoNumber;
+import lotto.domain.Rank;
+import lotto.service.RankingService;
 import org.junit.jupiter.api.Test;
 
 public class RankingTest {

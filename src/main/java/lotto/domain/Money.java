@@ -1,10 +1,13 @@
-package lotto;
+package lotto.domain;
+
+import lotto.exception.IllegalArgumentError;
+import lotto.util.Constants;
 
 public class Money {
 
     private final int money;
 
-    Money(int money) {
+    public Money(int money) {
         validateMoney(money);
         this.money = money;
     }
