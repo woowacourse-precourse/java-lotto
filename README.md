@@ -1,5 +1,43 @@
 # 미션 - 로또
 
+## 📚 구현기능목록
+
+---
+###  로또 구매 기능
+- [x] 구입금액 입력문구 출력하기
+- [x] 로또 구입 금액 입력받기
+  - [x] `[예외] 정수가 아닌 잘못된 입력값인 경우`
+- [x] 로또 수량 계산하기
+  - [x] `[예외] 1000원으로 나누어떨어지지 않는 경우, 0원인 경우`
+- [x] 로또 구매하기
+- [x] 발행한 로또 수량 및 번호 출력하기
+---
+### 로또 생성 기능
+- [x] 1~45범위에서 중복되지 않는 6개의 숫자 뽑기
+- [x] 로또 만들기
+  - [x] `[예외] 1~45범위가 아닌경우, 6개의 숫자가 아닌 경우, 중복이 있는 경우`
+---
+### 로또 당첨번호 입력 기능
+- [x] 당첨번호 입력문구 출력하기
+- [x] 당첨번호 입력받기
+  - [x] `[예외] 정수가 아닌 잘못된 입력값인 경우`
+- [x] 보너스번호 입력문구 출력하기
+- [x] 보너스번호 1개 입력받기
+  - [x] `[예외] 정수가 아닌 잘못된 입력값인 경우 , 1~45범위의 숫자 아닌경우`
+---
+### 로또 확인 기능
+- [x] 구매한 로또번호와 당첨번호 비교하기
+- [x] 구매한 로또번호와 보너스번호 비교하기
+- [x] 구매한 로또번호를 당첨번호,보너스번호와 같이 비교하기
+  - [x] `[예외] 당첨번호에 보너스번호가 존재하는경우`
+---
+###  당첨 통계 출력 기능
+- [x] 당첨 통계 내기
+- [x] 당첨 내역 출력하기
+- [x] 수익률 계산하기
+- [x] 수익률 출력하기
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -179,14 +217,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
