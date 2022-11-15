@@ -1,9 +1,7 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
@@ -17,7 +15,7 @@ class LottoListTest extends NsTest {
     public void generateLottoTest() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             LottoList lottoList = new LottoList();
-            lottoList.generateLotto();
+            lottoList.generateLotto(1L);
             lottoList.printLottoList();
             assertThat(output()).contains("1개를 구매했습니다.",
                     "[2, 3, 4, 5, 6, 7]");
@@ -29,7 +27,7 @@ class LottoListTest extends NsTest {
     public void checkDESC() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             LottoList lottoList = new LottoList();
-            lottoList.generateLotto();
+            lottoList.generateLotto(1L);
             lottoList.printLottoList();
             assertThat(output()).contains("1개를 구매했습니다.",
                     "[2, 3, 4, 5, 6, 7]");
@@ -41,8 +39,7 @@ class LottoListTest extends NsTest {
     public void buyMultiLottos() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             LottoList lottoList = new LottoList();
-            lottoList.generateLotto();
-            lottoList.generateLotto();
+            lottoList.generateLotto(2L);
             lottoList.printLottoList();
             assertThat(output()).contains("2개를 구매했습니다.",
                     "[2, 3, 4, 5, 6, 7]", "[2, 4, 5, 7, 12, 43]");
