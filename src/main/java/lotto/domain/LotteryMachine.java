@@ -52,21 +52,33 @@ public class LotteryMachine {
     }
 
     public void drawLottery() {
-        System.out.println(InputMessage.WINNING_LOTTERY_INPUT_MESSAGE.getMessage());
-        String[] winningNumbersInput = readLine().split(",");
-        System.out.println();
+        String[] winningNumbersInput = getWinningNumbersInput();
 
         if (!NumberValidator.isValidWinningNumbers(winningNumbersInput)) {
             System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
+        List<Integer> winningNumbers = transformFormatOfWinningNumbers(winningNumbersInput);
+        this.winningLotto = new Lotto(winningNumbers);
+        this.bonusNumber = drawBonusNumber();
+    }
+
+    private String[] getWinningNumbersInput() {
+        System.out.println(InputMessage.WINNING_LOTTERY_INPUT_MESSAGE.getMessage());
+        String[] winningNumbersInput = readLine().split(",");
+        System.out.println();
+
+        return winningNumbersInput;
+    }
+
+    private List<Integer> transformFormatOfWinningNumbers(String[] winningNumbersInput) {
         List<Integer> winningNumbers = new ArrayList<>();
         for (int i = 0; i < winningNumbersInput.length; ++i) {
             winningNumbers.add(Integer.parseInt(winningNumbersInput[i]));
         }
+
         winningNumbers.sort(Comparator.naturalOrder());
-        this.winningLotto = new Lotto(winningNumbers);
-        this.bonusNumber = drawBonusNumber();
+        return winningNumbers;
     }
 
     private int drawBonusNumber() {
