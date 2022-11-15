@@ -1,10 +1,12 @@
 package controller;
 
+import domain.WinningStatistics;
 import view.OutputView;
 
 import java.util.List;
 
 public class LottoGameController {
+    private WinningStatistics winningResult;
     public void run() {
         InputController inputController = new InputController();
         int purchasingMoney = inputController.inputMoney();
@@ -17,6 +19,6 @@ public class LottoGameController {
 
     private void showResult(List<List<Integer>> randomNumbersContainer, List<Integer> winningNumber, int bonusNumber) {
         OutputView.showWinningStatistics();
-
+        WinningStatistics winningStatistics = new WinningStatistics(randomNumbersContainer,winningNumber,bonusNumber);
     }
 }
