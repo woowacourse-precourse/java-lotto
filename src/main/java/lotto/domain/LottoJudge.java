@@ -11,8 +11,8 @@ import lotto.domain.vo.LottoWithBonus;
 
 public class LottoJudge {
 
-    private BuyLotteries buyLotteries;
-    private LottoWithBonus lottoWithBonus;
+    private final BuyLotteries buyLotteries;
+    private final LottoWithBonus lottoWithBonus;
 
     public LottoJudge(BuyLotteries buyLotteries, LottoWithBonus lottoWithBonus) {
         this.buyLotteries = buyLotteries;
@@ -22,7 +22,7 @@ public class LottoJudge {
     public LottoResult calculateResult() {
         Map<LottoReference, Integer> lottoResult = new HashMap<>();
 
-        for (Lotto haveLotto : buyLotteries.getBuyLottoList()) {
+        for (Lotto haveLotto : buyLotteries.getBuyLotteries()) {
             int containsCount = getContainsCount(haveLotto, lottoWithBonus.getLotto());
             LottoReference reference = LottoReference.hasCorrectCount(containsCount);
             if (reference == FIVE) {

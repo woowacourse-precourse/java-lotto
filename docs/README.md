@@ -17,7 +17,7 @@
 - [x] 중복되지 않는 숫자 6개  `pickUniqueNumbersInRange()` 사용
   - ex)`1,2,3,4,5,6`
   
-- [x] buyLottoList
+- [x] buyLotteries
     ```java
     [8, 21, 23, 41, 42, 43] 
     [3, 5, 11, 16, 32, 38] 
