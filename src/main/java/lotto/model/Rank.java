@@ -20,12 +20,12 @@ public enum Rank {
         this.matchCount = matchCount;
     }
 
-    public static Rank findRank(int correctCount, boolean matchBonus) {
-        if (isSecond(correctCount, matchBonus)) {
+    public static Rank findRank(int matchCount, boolean matchBonus) {
+        if (isSecond(matchCount, matchBonus)) {
             return Rank.SECOND;
         }
         return Arrays.stream(values)
-                .filter(rank -> rank.matchCount == correctCount)
+                .filter(rank -> rank.matchCount == matchCount)
                 .findFirst()
                 .orElse(Rank.NONE);
     }
