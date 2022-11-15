@@ -1,9 +1,11 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import lotto.Error;
 import lotto.ui.LottoShopView;
+import lotto.ui.LottoWin;
 
 public class LottoShop {
 
@@ -18,6 +20,32 @@ public class LottoShop {
         printLotto(lottos);
 
         return lottos;
+    }
+
+    public HashMap<LottoWin, Integer> compare(
+        List<Lotto> lottos,
+        List<Integer> winningNumbers,
+        Integer bonusNumber
+    ) {
+        HashMap<LottoWin, Integer> result = new HashMap<>();
+
+        lottos.forEach(
+            lotto -> {
+                List<Integer> lottoNumbers = lotto.getNumbers();
+
+                long count = lottoNumbers.stream()
+                    .filter(winningNumbers::contains)
+                    .count();
+
+                boolean hasBonusNumber = lottoNumbers.contains(bonusNumber);
+
+                if (count >= 3) {
+                    result.merge(LottoWin.getWinPlace(count, hasBonusNumber), 1, Integer::sum);
+                }
+            }
+        );
+
+        return result;
     }
 
     private void validate(int money) {
