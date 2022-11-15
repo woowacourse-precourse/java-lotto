@@ -11,6 +11,9 @@ public class LottoView {
 
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
+    private static final int THOUSAND_WON = 1000;
+    private static final int ZERO = 0;
+    private static final int LOTTO_SIZE = 6;
 
     final String REGEX_1 = "^[0-9]*?";
     final String REGEX_2 = "^[0-9,]*?";
@@ -25,7 +28,7 @@ public class LottoView {
     private void validateMoney(String money) {
         checkOnlyNumber(money);
 
-        if (Integer.parseInt(money) % 1000 != 0) {
+        if (Integer.parseInt(money) % THOUSAND_WON != ZERO) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
         }
     }
@@ -54,7 +57,7 @@ public class LottoView {
     }
 
     private void validateWinningNumber(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호의 개수가 6개가 아닙니다.");
         }
 

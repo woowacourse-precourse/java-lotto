@@ -7,6 +7,12 @@ import java.util.Map;
 
 public class Statistics {
 
+    private static final double POINT_ONE = 0.1;
+    private static final double DOUBLE_TEN = 10.0;
+    private static final int ZERO = 0;
+    private static final int INCREASE_BY_ONE = 1;
+    private static final int INT_TEN = 10;
+
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
@@ -21,12 +27,12 @@ public class Statistics {
     }
 
     public double getProfit(List<List<Integer>> lottosNumber) {
-        double prizePercentage = (double) getTotalPrize(lottosNumber) / lottosNumber.size() * 0.1;
-        return Math.round(prizePercentage * 10) / 10.0;
+        double prizePercentage = (double) getTotalPrize(lottosNumber) / lottosNumber.size() * POINT_ONE;
+        return Math.round(prizePercentage * INT_TEN) / DOUBLE_TEN;
     }
 
     private int getTotalPrize(List<List<Integer>> lottosNumber) {
-        int totalPrize = 0;
+        int totalPrize = ZERO;
         List<Prize> grades = getEachLottoGrade(lottosNumber);
         for (Prize grade : grades) {
             totalPrize += Prize.getPrice(grade);
@@ -53,10 +59,10 @@ public class Statistics {
         for (Prize grade : grades) {
             int gradeNum = Prize.getGradeNum(grade);
             if (numberOfGrades.containsKey(gradeNum)) {
-                numberOfGrades.put(gradeNum, numberOfGrades.get(gradeNum) + 1);
+                numberOfGrades.put(gradeNum, numberOfGrades.get(gradeNum) + INCREASE_BY_ONE);
                 continue;
             }
-            numberOfGrades.put(gradeNum, 1);
+            numberOfGrades.put(gradeNum, INCREASE_BY_ONE);
         }
         return numberOfGrades;
     }

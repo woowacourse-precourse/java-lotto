@@ -10,6 +10,9 @@ import java.util.Map;
 
 public class LottoResult {
 
+    private static final int THOUSAND_WON = 1000;
+    private static final int ZERO = 0;
+
     private LottoView lottoView = new LottoView();
     private List<List<Integer>> lottos = new ArrayList<>();
     private List<Integer> winningNumber;
@@ -24,7 +27,7 @@ public class LottoResult {
     public void buyNewLottos() {
         int money = lottoView.getMoney();
         System.out.println();
-        printLottosNumbers(money / 1000);
+        printLottosNumbers(money / THOUSAND_WON);
     }
 
     public void getWinningNumberAndBonusNumber() {
@@ -46,7 +49,7 @@ public class LottoResult {
 
     private void printNumberOfEachGrade(Map<Integer, Integer> numberOfEachGrade) {
         for (Prize prize : Prize.values()) {
-            int countGrade = 0;
+            int countGrade = ZERO;
             if (numberOfEachGrade.containsKey(Prize.getGradeNum(prize))) {
                 countGrade = numberOfEachGrade.get(Prize.getGradeNum(prize));
             }

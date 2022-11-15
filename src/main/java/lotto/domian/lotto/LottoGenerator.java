@@ -7,6 +7,10 @@ import java.util.List;
 
 public class LottoGenerator {
 
+    private static final int MIN_LOTTO_NUMBER = 1;
+    private static final int MAX_LOTTO_NUMBER = 45;
+    private static final int LOTTO_SIZE = 6;
+
     private final List<Lotto> lottos = new ArrayList<>();
     private final List<List<Integer>> lottosNumber = new ArrayList<>();
 
@@ -19,7 +23,7 @@ public class LottoGenerator {
 
     private void getNewLottes(int count) {
         while (lottos.size() < count) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE)));
         }
     }
 

@@ -4,6 +4,12 @@ import java.util.List;
 
 public class Grade {
 
+    private static final int ZERO = 0;
+    private static final int THREE = 3;
+    private static final int FOUR = 4;
+    private static final int FIVE = 5;
+    private static final int SIX = 6;
+
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
@@ -14,25 +20,22 @@ public class Grade {
 
     public Prize returnLottoGrade(List<Integer> lottoNumbers) {
         int correctNumbers = countCorrectNumbers(lottoNumbers);
-        if (correctNumbers == 5) {
+        if (correctNumbers == FIVE) {
             return checkLottoNumbersContainBonusNumber(lottoNumbers);
         }
         return checkLottoGrade(correctNumbers);
     }
 
     public Prize checkLottoGrade(int correctNumbers) {
-        if (correctNumbers == 6) {
+        if (correctNumbers == SIX) {
             return Prize.FIRST;
         }
-
-        if (correctNumbers == 4) {
+        if (correctNumbers == FOUR) {
             return Prize.FOURTH;
         }
-
-        if (correctNumbers == 3) {
+        if (correctNumbers == THREE) {
             return Prize.FIFTH;
         }
-
         return null;
     }
 
@@ -44,7 +47,7 @@ public class Grade {
     }
 
     public int countCorrectNumbers(List<Integer> lottoNumbers) {
-        int correctNumbers = 0;
+        int correctNumbers = ZERO;
         for (int lottoNumber : lottoNumbers) {
             if (winningNumbers.contains(lottoNumber)) {
                 correctNumbers++;
