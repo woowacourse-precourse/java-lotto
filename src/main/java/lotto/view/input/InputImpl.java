@@ -3,84 +3,88 @@ package lotto.view.input;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.utils.message.ErrorMessage;
 
 public class InputImpl implements Input {
 
     private static final int MIN_PAYMENT_AMOUNT = 1000;
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
+    private static final String PAYMENT_AMOUNT_REGEX = "^[0-9]*$";
 
     @Override
     public int inputPaymentAmount() throws IllegalArgumentException {
-        int paymentAmount = Integer.parseInt(Console.readLine());
-        if (isOverMinimumPaymentAmount(paymentAmount) && isAllowedPaymentAmount(paymentAmount)) {
-            return paymentAmount;
-        }
-        return 0;
+        String paymentAmount = Console.readLine();
+        validateIsNumber(paymentAmount);
+        validatePaymentAmount(Integer.parseInt(paymentAmount));
+        return Integer.parseInt(paymentAmount);
     }
 
     @Override
     public List<String> inputWinningNumbers() throws IllegalArgumentException {
         List<String> winningNumbers = new ArrayList<>(List.of(Console.readLine().split(",")));
-        if (isAllowedWinningNumbers(winningNumbers)) {
-            return winningNumbers;
-        }
-        return null;
+        validateWinningNumber(winningNumbers);
+        return winningNumbers;
     }
 
     @Override
     public int inputBonusNumber() throws IllegalArgumentException{
-        int bonusNumber = Integer.parseInt(Console.readLine());
-        if (isLottoNumber(bonusNumber)) {
-            return bonusNumber;
-        }
-        return 0;
+        String bonusNumber = Console.readLine();
+        validateIsNumber(bonusNumber);
+        isLottoNumber(Integer.parseInt(bonusNumber));
+        return Integer.parseInt(bonusNumber);
     }
 
-    private boolean isOverMinimumPaymentAmount(int paymentAmount) throws IllegalArgumentException {
+    private void validatePaymentAmount(int paymentAmount) throws IllegalArgumentException {
+        validateIsOverMinimumPaymentAmount(paymentAmount);
+        validateIsAllowedPaymentAmount(paymentAmount);
+    }
+
+    private void validateIsNumber(String paymentAmount) throws IllegalArgumentException {
+        if (!paymentAmount.matches(PAYMENT_AMOUNT_REGEX)) {
+            throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_PAYMENT_AMOUNT);
+        }
+    }
+
+    private void validateIsOverMinimumPaymentAmount(int paymentAmount) throws IllegalArgumentException {
         if (paymentAmount < MIN_PAYMENT_AMOUNT) {
-            throw new IllegalArgumentException("[ERROR] 최소 로또 구매 금액은 1000원입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_OVER_MINIMUM_PAYMENT_AMOUNT);
         }
-        return true;
     }
 
-    private boolean isAllowedPaymentAmount(int paymentAmount) throws IllegalArgumentException {
+    private void validateIsAllowedPaymentAmount(int paymentAmount) throws IllegalArgumentException{
         if (paymentAmount % MIN_PAYMENT_AMOUNT != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1000원 단위의 금액이어야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_PAYMENT_AMOUNT);
         }
-        return true;
     }
 
-    private boolean isAllowedWinningNumbers(List<String> winningNumbers) throws IllegalArgumentException {
-        if (winningNumbers.size() != 6 || isDuplicatedNumber(winningNumbers) || isAllowedLottoNumber(winningNumbers)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45의 서로다른 6개 숫자를 입력해야합니다.");
+    private void validateWinningNumber(List<String> winningNumbers) throws IllegalArgumentException {
+        if (winningNumbers.size() != 6 || isDuplicatedNumber(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_WINNING_NUMBER);
         }
-        return true;
+
+        if (!isAllowedLottoNumber(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_WINNING_NUMBER);
+        }
     }
 
     private boolean isDuplicatedNumber(List<String> winningNumbers) {
         int winningNumberSize = (int) winningNumbers.stream()
                 .distinct().count();
-        if (winningNumberSize == 6) {
-            return false;
-        }
-        return true;
+        return winningNumberSize != 6;
     }
 
     private boolean isAllowedLottoNumber(List<String> winningNumbers) throws IllegalArgumentException{
         for (String winningNumber : winningNumbers) {
             int number = Integer.parseInt(winningNumber);
-            if (isLottoNumber(number)) {
-                return false;
-            }
+            isLottoNumber(number);
         }
         return true;
     }
 
-    private boolean isLottoNumber(int number) throws IllegalArgumentException {
+    private void isLottoNumber(int number) throws IllegalArgumentException {
         if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_LOTTO_NUMBER);
         }
-        return true;
     }
 }
