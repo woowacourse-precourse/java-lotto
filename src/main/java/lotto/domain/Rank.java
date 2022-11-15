@@ -7,12 +7,12 @@ public enum Rank {
     SECOND(5, true, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"),
     FIRST(6, false, 2_000_000_000, "6개 일치 (2,000,000,000원) - %d개");
 
+    private static final int SECOND_AND_THIRD_MATCH_COUNT = 5;
+
     private final int matchCount;
     private final boolean hasBonusNumber;
     private final int prize;
     private final String sentence;
-
-    private final int SECOND_AND_THIRD_MATCH_COUNT = 5;
 
     Rank(int matchCount, boolean hasBonusNumber, int prize, String sentence) {
         this.matchCount = matchCount;

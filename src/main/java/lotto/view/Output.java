@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Output {
-    private final String MESSAGE_TO_PRINT_COUNT = "개를 구매했습니다.";
-    private final String MESSAGE_TO_PRINT_RESULT = "\n당첨 통계\n---";
-    private final String MESSAGE_TO_PRINT_YIELD_A = "총 수익률은 ";
-    private final String MESSAGE_TO_PRINT_YIELD_B = "%입니다.";
+    private static final String MESSAGE_TO_PRINT_COUNT = "개를 구매했습니다.";
+    private static final String MESSAGE_TO_PRINT_RESULT = "\n당첨 통계\n---";
+    private static final String MESSAGE_TO_PRINT_YIELD_A = "총 수익률은 ";
+    private static final String MESSAGE_TO_PRINT_YIELD_B = "%입니다.";
 
     // user의 로또 출력하기
     public void printUserLottos(UserLottos userLottos) {

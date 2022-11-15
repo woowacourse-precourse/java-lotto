@@ -5,7 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UserLottos {
-    private final int LOTTO_PRICE = 1000;
+    private static final String USER_LOTTO_ERROR_MESSAGE ="[ERROR] 1000원 단위로 돈을 넣어주세요.";
+    private static final int LOTTO_PRICE = 1000;
     private final int count;
     private final int money;
     private final Set<Lotto> userLottos;
@@ -19,7 +20,7 @@ public class UserLottos {
 
     public void validateMoney(int money) {
         if (money < LOTTO_PRICE || money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 돈을 넣어주세요.");
+            throw new IllegalArgumentException(USER_LOTTO_ERROR_MESSAGE);
         }
     }
 

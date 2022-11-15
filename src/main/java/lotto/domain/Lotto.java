@@ -7,6 +7,7 @@ public class Lotto {
     private static final int LOTTO_NUMBER = 6;
     private static final int LOTTO_MIN = 1;
     private static final int LOTTO_MAX = 45;
+    private static final String LOTTO_ERROR_MESSAGE ="[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않은 숫자여야 합니다.";
 
     private final List<Integer> numbers;
 
@@ -17,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (!isValidLotto(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(LOTTO_ERROR_MESSAGE);
         }
     }
 
@@ -40,23 +41,24 @@ public class Lotto {
     }
 
     //로또의 유효성 검사
-    private boolean isValidLotto(List<Integer> numbers) {
-        return isCorrectSize(numbers) && isInRange(numbers) && isNotDuplicated(numbers);
-    }
-
-    private boolean isCorrectSize(List<Integer> numbers) {
-        return numbers.size() == LOTTO_NUMBER;
-    }
-
-    private boolean isNotDuplicated(List<Integer> numbers) {
-        return Set.copyOf(numbers).size() == LOTTO_NUMBER;
-    }
-
-    private boolean isInRange(List<Integer> numbers) {
-        return numbers.stream().allMatch(v -> LOTTO_MIN <= v && v <= LOTTO_MAX);
-    }
-
     public static boolean isValidNumber(int number) {
         return LOTTO_MIN <= number && number <= LOTTO_MAX;
     }
+
+    public static boolean isValidLotto(List<Integer> numbers) {
+        return isCorrectSize(numbers) && isInRange(numbers) && isNotDuplicated(numbers);
+    }
+
+    public  static boolean isCorrectSize(List<Integer> numbers) {
+        return numbers.size() == LOTTO_NUMBER;
+    }
+
+    public static boolean isNotDuplicated(List<Integer> numbers) {
+        return Set.copyOf(numbers).size() == LOTTO_NUMBER;
+    }
+
+    public static boolean isInRange(List<Integer> numbers) {
+        return numbers.stream().allMatch(v -> LOTTO_MIN <= v && v <= LOTTO_MAX);
+    }
+
 }
