@@ -24,7 +24,7 @@ public class Application {
             WinningLotto winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
 
             Result result = new Result(lottos, winningLotto);
-            OutputView.printResult(result);
+            OutputView.printStatistic(result);
             OutputView.printYield(result, money);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

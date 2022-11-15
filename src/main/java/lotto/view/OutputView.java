@@ -47,7 +47,7 @@ public class OutputView {
         System.out.print(NEW_LINE);
     }
 
-    public static void printResult(Result result) {
+    public static void printStatistic(Result result) {
         System.out.printf(NEW_LINE);
         System.out.println(STATISTIC_HEADER);
         System.out.println(STATISTIC_BORDER);
