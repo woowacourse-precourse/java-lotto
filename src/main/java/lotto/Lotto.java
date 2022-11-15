@@ -34,19 +34,11 @@ public class Lotto {
             currentLotto=new ArrayList<>(lotto);
             currentLotto.retainAll(numbers);
             count=currentLotto.size();
-            if(count==5&&numbers.contains(bonusNumber)) count=count+1;
+            if(count==6 || (count==5 && numbers.contains(bonusNumber))) count=count+1;
             count=count-3;
             if(count>=0)
                 resultStatistics[count]=resultStatistics[count]+1;
         }
         return resultStatistics;
     }
-    /*
-    //당첨 번호 중복되는지 확인할 필요있음
-    3개 일치 (5,000원)
-    4개 일치 (50,000원)
-    5개 일치 (1,500,000원)
-    5개 일치, 보너스 볼 일치 (30,000,000원)
-    6개 일치 (2,000,000,000원)
-     */
 }

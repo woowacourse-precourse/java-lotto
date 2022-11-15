@@ -30,6 +30,17 @@ public class InputTest {
         }).hasMessageContaining("[ERROR]");
     }
     @Test
+    @DisplayName("입력금액을 0을 넣을 시 에러가 발생한다.")
+    void 입력금액_테스트(){
+        assertThatThrownBy(() -> {
+            command("0");
+            Application.main(new String[]{
+                    String.valueOf(new Input().getCash())
+            });
+        }).hasMessageContaining("[ERROR]");
+    }
+
+    @Test
     @DisplayName("당첨 번호 입력 시 숫자가 아닌 경우 에러가 발생한다.")
     void 당첨번호_숫자정규식_테스트(){
         assertThatThrownBy(() -> {
@@ -79,7 +90,6 @@ public class InputTest {
             });
         }).hasMessageContaining("[ERROR]");
     }
-
     private void command(final String... args) {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));

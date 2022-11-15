@@ -11,31 +11,30 @@ import java.util.regex.Pattern;
 public class Input {
     private Pattern pattern;
     private Matcher matcher;
-    //구입 금액 입력
     public int getCash(){
         String cash=Console.readLine();
-        NumberRegex(cash);
+        numberRegex(cash);
         return cashUnit(cash);
     }
-    public List<Integer> getWinningNumbers(){//당첨 번호 입력
+    public List<Integer> getWinningNumbers(){
         String winningNumbers=Console.readLine();
         return winningNumberFilter(winningNumbers);
     }
     public int getBonusNumber(List<Integer> winningNumber){
         String bonusNumber=Console.readLine();
-        duplicateCheck(winningNumber,bonusNumber);
-        NumberRegex(bonusNumber);
+        numberRegex(bonusNumber);
+        numberDuplicateCheck(winningNumber,bonusNumber);
         return NumberRange(bonusNumber);
     }
     private List<Integer> winningNumberFilter(String winningNumbers){
         Set<Integer> Numbers = new HashSet<>();
         for (String number: winningNumbers.split(",")){
-            NumberRegex(number);
+            numberRegex(number);
             Numbers.add(NumberRange(number));
         }
         return new ArrayList<>(Numbers);
     }
-    private void duplicateCheck(List<Integer> winningNumber,String bonusNumber){
+    private void numberDuplicateCheck(List<Integer> winningNumber,String bonusNumber){
         int number =Integer.parseInt(bonusNumber);
         if(winningNumber.contains(number)) throw new IllegalArgumentException("[ERROR] 입력 값이 당첨 번호와 중복됩니다.");
     }
@@ -45,15 +44,15 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 입력 값이 범위가 아닙니다.");
         return checkNumber;
     }
-    private void NumberRegex(String cash){ //입력 값이 숫자인지
+    private void numberRegex(String cash){
         pattern = Pattern.compile("^[0-9]+$");
         matcher = pattern.matcher(cash);
         if(!matcher.matches())
             throw new IllegalArgumentException("[ERROR] 입력 값이 숫자가 아닙니다.");
     }
-    private int cashUnit(String cash){ //입력 금액 단위 확인
+    private int cashUnit(String cash){
         int money=Integer.parseInt(cash);
-        if(money%1000 !=0)
+        if(money%1000 !=0 || money==0)
             throw new IllegalArgumentException("[ERROR] 입력하신 금액은 1,000원 단위가 아닙니다.");
         return money;
     }
