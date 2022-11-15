@@ -15,7 +15,7 @@ public class Generator {
 
     public List<Lotto> createLottoList(int amount) {
         List<Lotto> myLotto = new ArrayList<>();
-        while(myLotto.size()<amount) {
+        while (myLotto.size() < amount) {
             myLotto.add(new Lotto(getLottoNumbers()));
         }
         return myLotto;
