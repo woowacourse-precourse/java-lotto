@@ -1,15 +1,14 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.ui.Input;
 import lotto.utils.Constant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
     public Game() {
-        createLottoWithCount(getLottoCount(Input.getPurchaseAmount()));
     }
 
     public Integer getLottoCount(int amount) {
@@ -32,5 +31,10 @@ public class Game {
 
     public List<Integer> getRandomLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(Constant.MIN_LOTTO_NUMBER, Constant.MAX_LOTTO_NUMBER, Constant.LOTTO_NUMBER_COUNT);
+    }
+
+    public List<Integer> getSortLotto(List<Integer> numbers) {
+        Collections.sort(numbers);
+        return numbers;
     }
 }
