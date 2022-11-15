@@ -24,4 +24,8 @@ public class WinningNumbers {
         }
     }
 
+    public int countMatchWinningNumber(Lotto lottoTicket) {
+        return winningNumber.countMatchNumber(lottoTicket);
+    }
+
 }
