@@ -5,9 +5,11 @@ import lotto.util.Utils;
 
 public class BonusNumberValidator {
     private String bonusNumber;
+    private String winningNumbers;
 
-    public BonusNumberValidator(String bonusNumber) {
+    public BonusNumberValidator(String bonusNumber, String winningNumbers) {
         this.bonusNumber = bonusNumber;
+        this.winningNumbers = winningNumbers;
         isIntBonus();
         isBonusDuplicated();
         isBonusCorrectRange();
@@ -22,7 +24,7 @@ public class BonusNumberValidator {
     }
 
     private void isBonusDuplicated() {
-        if (Utils.isContain(bonusNumber, Utils.convertToList(bonusNumber))) {
+        if (Utils.isContain(bonusNumber, Utils.convertToList(winningNumbers))) {
             throw new IllegalArgumentException(Constants.ERROR_BONUS_NUMBER_DUPLICATED);
         }
     }
