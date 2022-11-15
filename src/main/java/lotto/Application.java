@@ -7,9 +7,6 @@ import java.util.*;
 
 public class Application {
     UI UI = new UI();
-    HashMap<Integer, Integer> Lotto_Choice_Result = new HashMap<>();
-
-
 
 
     public List<List<Integer>> Lotto_number(Integer money){
@@ -26,18 +23,16 @@ public class Application {
     }
 
     public HashMap<Integer, Integer> Lotto_Choice(List<List<Integer>>Total_Lotto_numbers, List<Integer> Answer_Number, Integer Bonus_Number){
+        HashMap<Integer, Integer> Lotto_Choice_Result = new HashMap<>();
         Lotto_Choice_Result.put(3, 0);
         Lotto_Choice_Result.put(4, 0);
         Lotto_Choice_Result.put(5, 0);
         Lotto_Choice_Result.put(6, 0);
         Lotto_Choice_Result.put(7, 0);
-        ;
         for (List Lotto_numbers: Total_Lotto_numbers){
             Integer Common_Number = Lotto_machine(Answer_Number,Bonus_Number,Lotto_numbers);
             if (Common_Number >=3){
-                Lotto_Choice_Result.put(Common_Number, Lotto_Choice_Result.get(Common_Number)+1);
-            }
-        }
+                Lotto_Choice_Result.put(Common_Number, Lotto_Choice_Result.get(Common_Number)+1);}}
         UI.Lotto_Choice_Result_Print(Lotto_Choice_Result);
         return Lotto_Choice_Result;
     }
@@ -69,6 +64,9 @@ public class Application {
 
     public static void main(String[] args) {
 
-       // TODO: 프로그램 구현
+
+
+
+        // TODO: 프로그램 구현
     }
 }
