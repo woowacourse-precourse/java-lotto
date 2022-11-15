@@ -21,15 +21,14 @@ public class LottoApplication {
     private static final LottoConvertor convertor = new LottoConvertor();
     private static final LottoCompare compare = new LottoCompare();
 
-
     public static void run() {
-        String playerRequest;
+        String playerInput;
         LottoApplication app = new LottoApplication();
-        Map<Rank, Integer> prizeState = new HashMap<>();
+        Map<Rank, Integer> winStats = new HashMap<>();
 
         print.buyLottoPrice();
-        playerRequest = input.request();
-        int playerPrice = app.validationConvertInput(playerRequest);
+        playerInput = input.request();
+        int playerPrice = app.validationConvertInput(playerInput);
 
         if (playerPrice == -1) { // 프로그램 종료 *특이케이스
             return;
@@ -37,34 +36,38 @@ public class LottoApplication {
 
         app.priceValidation(playerPrice);
 
-        int lottoBuyCount = buy.lottoQuantity(playerPrice);
-        print.buyLotto(lottoBuyCount);
+        int buyLottoCount = buy.lottoQuantity(playerPrice);
+        print.buyLotto(buyLottoCount);
 
         LottoCalculator lottoCalculator = new LottoCalculator(playerPrice);
 
-        List<Lotto> buyLottos = Lotto.buyLotto(lottoBuyCount);
-        print.buyLottoNumbers(buyLottos);
+        List<Lotto> buyLottoes = Lotto.buyLotto(buyLottoCount);
+        print.buyLottoNumbers(buyLottoes);
 
-        print.prizeNumber();
-        playerRequest = input.request();
+        print.winNumber();
+        playerInput = input.request();
 
-        Lotto lotto = new Lotto(app.prizeNumbersValidation(playerRequest));
+        Lotto lotto = new Lotto(app.winNumbersValidation(playerInput));
 
         print.bonusNumber();
-        playerRequest = input.request();
-        int bonusNumber = app.bonusNumberValidation(playerRequest, lotto);
+        playerInput = input.request();
+        int bonusNumber = app.bonusNumberValidation(playerInput, lotto);
 
-        for (Rank rank : Rank.values()) {
-            prizeState.put(rank, 0);
+        app.createPrizeState(winStats);
+
+        for (Lotto buyLotto : buyLottoes) {
+            app.comparePrizeState(winStats, lotto, bonusNumber, buyLotto);
         }
 
-        for (Lotto buyLotto : buyLottos) {
-            app.comparePrizeState(prizeState, lotto, bonusNumber, buyLotto);
-        }
-
-        lottoCalculator.calPrizeProfit(prizeState);
-        print.stats(prizeState);
+        lottoCalculator.calPrizeProfit(winStats);
+        print.stats(winStats);
         print.rate(lottoCalculator.getRate());
+    }
+
+    private void createPrizeState(Map<Rank, Integer> winState) {
+        for (Rank rank : Rank.values()) {
+            winState.put(rank, 0);
+        }
     }
 
     private int validationConvertInput(String playerRequest) {
@@ -77,11 +80,10 @@ public class LottoApplication {
         inputValidator.validationAmount(playerPrice);
     }
 
-    private List<Integer> prizeNumbersValidation(String playerRequest) {
+    private List<Integer> winNumbersValidation(String playerRequest) {
         inputValidator.validationInputLength(playerRequest);
         String[] splitNumbers = convertor.splitNumbers(playerRequest);
-        List<Integer> prizeNumbers = convertor.convertNumbers(splitNumbers);
-        return prizeNumbers;
+        return convertor.convertNumbers(splitNumbers);
     }
 
     private int bonusNumberValidation(String playerRequest, Lotto lotto) {
@@ -91,7 +93,7 @@ public class LottoApplication {
         return bonusNumber;
     }
 
-    private void comparePrizeState(Map<Rank, Integer> prizeStatus, Lotto lotto, int bonusNumber, Lotto buyLotto) {
+    private void comparePrizeState(Map<Rank, Integer> winStatus, Lotto lotto, int bonusNumber, Lotto buyLotto) {
         int compareCount = compare.getCompareCount(buyLotto.getNumbers(), lotto.getNumbers());
         boolean bonusCheck = compare.getBonusCheck(bonusNumber, buyLotto.getNumbers());
 
@@ -100,6 +102,6 @@ public class LottoApplication {
         }
 
         Rank rank = Rank.getRank(compareCount, bonusCheck);
-        prizeStatus.put(rank, prizeStatus.getOrDefault(rank, 0) + 1);
+        winStatus.put(rank, winStatus.getOrDefault(rank, 0) + 1);
     }
 }
