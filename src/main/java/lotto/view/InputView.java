@@ -29,7 +29,7 @@ public class InputView {
         }
     }
 
-    public static int inputMoney() {
+    public static int inputMoney() { // 티켓 구매 금액 입력받는 기능
         System.out.println(INPUT_MONEY.getMessage());
 
         String inputMoney = Console.readLine();
