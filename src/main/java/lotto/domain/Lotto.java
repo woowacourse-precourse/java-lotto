@@ -1,9 +1,14 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.util.ErrorHandler;
+import lotto.util.ErrorMessage;
 import lotto.util.Utilities;
+import lotto.util.Validator;
 
 import java.util.List;
+
+import static lotto.util.Constant.FIVE;
 
 public class Lotto {
     private static final int START_INCLUSIVE = 1;
@@ -11,7 +16,6 @@ public class Lotto {
     private static final int NUMBERS_SIZE = 6;
     private static final int BONUS_SCORE = 1;
     private static final int BONUS_SCORELESS = 0;
-    private static final int FIVE = 5;
 
     private final List<Integer> numbers;
 
@@ -60,10 +64,6 @@ public class Lotto {
     }
 
     static class LottoValidator extends Validator {
-        private static final int START_INCLUSIVE = 1;
-        private static final int END_INCLUSIVE = 45;
-        private static final int NUMBERS_SIZE = 6;
-
         public static void validateNumbersSize(List<Integer> list) {
             if (list.size() != NUMBERS_SIZE) {
                 ErrorHandler.throwException(ErrorMessage.LOTTO_SIZE_EXCEEDED);
