@@ -39,7 +39,7 @@ public class Customer {
         return true;
     }
     private boolean isPoor(int cash){
-        if(cash <= Money.MIN)return true;
+        if(cash < Money.MIN)return true;
         return false;
     }
     private boolean isElonMusk(int cash){

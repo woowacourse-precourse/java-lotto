@@ -17,13 +17,10 @@ public class UI {
             saturday.makeStatistics();
             saturday.calYeild();
             printStatistics();
-            printfYeild();
-        }
+            printfYeild();}
         catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
-            System.exit(0);
         }
-
     }
     private static String inputMoney(){
         System.out.println("구입금액을 입력해 주세요.");

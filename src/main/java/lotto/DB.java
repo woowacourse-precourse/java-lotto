@@ -10,6 +10,9 @@ public class DB {
     private static double yeild=0;
     private static List<Integer> statistics = new ArrayList<>(List.of(0,0,0,0,0));
 
+    public static void init(){
+        DB.table.clear();
+    }
 
     public static void insert(Lotto lotto){
         table.add(lotto);
@@ -20,15 +23,20 @@ public class DB {
     public static int getTableSize(){
         return table.size();
     }
-    public static void updatePrizeSum(int prize){
-        DB.prizeSum +=prize;
+    public static void setPrizeSum(int prize){
+        DB.prizeSum =prize;
     }
     public static long getPrizeSum(){
         return DB.prizeSum;
     }
+
     public static List<Integer> getStatistics(){
         return statistics;
     }
+    public static void setStatistics(List<Integer> statistics){
+        DB.statistics=statistics;
+    }
+
     public static void setYeild(double yeild){
         DB.yeild=yeild;
     }

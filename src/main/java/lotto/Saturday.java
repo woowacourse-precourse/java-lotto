@@ -11,7 +11,7 @@ public class Saturday {
     Saturday(String input_win,String input_bonus)throws IllegalArgumentException{
         validateStrInput(input_win,input_bonus);
         String[] numbers = input_win.split(",");
-        List<Integer> win = new ArrayList<>();
+        List<Integer> win = new ArrayList<Integer>();
         for(int i=0; i<numbers.length; i++){
             win.add(Integer.parseInt(numbers[i]));
         }
@@ -66,31 +66,36 @@ public class Saturday {
     }
     public int checkLottoAt(int i){
         Lotto lotto = DB.selectAt(i);
-        ArrayList<Integer> numbers = new ArrayList<>(lotto.getNumbers());
+        List<Integer> numbers = lotto.getNumbers();
         int count=0;
         int flag=0;
-        for(int j=0; j<6; j++){
+        for(int j=0; j<numbers.size(); j++){
            if(checkNumber(numbers.get(j))) count++;
            if(numbers.get(j)==winBonus) flag=1;
         }
         if(flag==1 && count==5)return count*10;
         if(flag==1 && count<5) return count+1;
-
         return count;
     }
     public void makeStatistics(){
-        List<Integer> statistics = DB.getStatistics();
+        List<Integer> statistics = new ArrayList<>(List.of(0,0,0,0,0));
+
         int size = DB.getTableSize();
-        int count,index,prize;
+        int count,index,prizeSum=0;
         for(int i=0; i<size; i++){
             count = checkLottoAt(i);
             if(count>=3){
                 index=Winner.getStatisticsIndex(count);
                 statistics.set(index,statistics.get(index)+1);
-                prize = Winner.getPrize(count);
-                DB.updatePrizeSum(prize);
+                prizeSum +=Winner.getPrize(count);
+                
             }
         }
+        System.out.println("statistics = " + statistics);
+        System.out.println("prizeSum = " + prizeSum);
+        DB.setStatistics(statistics);
+        DB.setPrizeSum(prizeSum);
+        
     }
 
     public void calYeild(){
