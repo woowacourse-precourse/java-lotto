@@ -29,7 +29,7 @@ public class WinningCheck {
         printWinningStatistics();
     }
 
-    public int getMathCount(List<Integer> lottoNumbers) {
+    public int getMacthCount(List<Integer> lottoNumbers) {
         int count = 0;
         for(int lottoNum : lottoNumbers) {
             if(winningNumbers.contains(lottoNum))
