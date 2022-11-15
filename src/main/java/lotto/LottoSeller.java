@@ -65,10 +65,12 @@ public class LottoSeller {
     private void validateMoney(String money) {
        for (int i = 0; i < money.length(); i++) {
            if(!Character.isDigit(money.charAt(i))) {
+               System.out.println("[ERROR] 입력하신 금액에 숫자 이외의 다른 문자가 있습니다.");
                throw new IllegalArgumentException("[ERROR] 입력하신 금액에 숫자 이외의 다른 문자가 있습니다.");
            }
        }
        if (Integer.parseInt(money)%1000 != 0) {
+           System.out.println("[ERROR] 입력하신 금액이 천원 단위가 아닙니다.");
            throw new IllegalArgumentException("[ERROR] 입력하신 금액이 천원 단위가 아닙니다.");
        }
     }

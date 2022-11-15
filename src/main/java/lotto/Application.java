@@ -16,8 +16,7 @@ public class Application {
             payer.calculateWinningRate();
             payer.printResult();
         }
-        catch(ArithmeticException error) {
-            System.out.println(error.getMessage());
+        catch (IllegalArgumentException ae) {
         }
     }
 }

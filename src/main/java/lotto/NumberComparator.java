@@ -12,8 +12,11 @@ public class NumberComparator {
     private List<Integer> result = new ArrayList<>();
 
     NumberComparator(List<Integer> number, int bonus) {
+        validateNumber(number);
         this.number = number;
+        validateBonus(bonus);
         this.bonus = bonus;
+
     }
 
     NumberComparator() {
@@ -66,12 +69,15 @@ public class NumberComparator {
 
     private void validateNumber(List<Integer> number) {
         if (number.size() != 6) {
+            System.out.println("[ERROR] 입력한 당첨 번호의 개수가 6개가 아닙니다.");
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호의 개수가 6개가 아닙니다.");
         }
         if (Collections.min(number) < 1 || Collections.max(number) > 45) {
+            System.out.println("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
         if (number.size() != number.stream().distinct().count()) {
+            System.out.println("[ERROR] 당첨 번호에 중복된 숫자가 있습니다.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 있습니다.");
         }
     }
@@ -81,9 +87,11 @@ public class NumberComparator {
 
        numberAll.add(bonus);
         if (bonus< 1 || bonus > 45) {
+            System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
         if (numberAll.size() != numberAll.stream().distinct().count()) {
+            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }
