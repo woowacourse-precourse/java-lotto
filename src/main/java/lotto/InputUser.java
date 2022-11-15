@@ -31,4 +31,15 @@ public class InputUser {
             throw new IllegalArgumentException(ERRMSG.getErrMsg());
         }
     }
+    public static List<List<Integer>> lottoNumber(int price) {
+        List<List<Integer>> result = new ArrayList<>();
+        price/=1000;
+        System.out.println(price+"개를 구매했습니다.");
+        for (int i = 0; i < price; i++) {
+            List<Integer> lottoList = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            System.out.println(lottoList);
+            result.add(lottoList);
+        }
+        return result;
+    }
 }
