@@ -43,7 +43,11 @@ public class LottoManager {
     }
 
     public float getEarningRate(){
-        float ret = (float)calculateTotalPrize() / (float)inputMoney;
+        float ret = 0;
+
+        if (inputMoney == 0)
+            return ret;
+        ret = (float)calculateTotalPrize() / (float)inputMoney;
         return ret * 100;
     }
 
