@@ -5,7 +5,7 @@ import lotto.domain.BonusNumber;
 import lotto.domain.MainNumber;
 import lotto.domain.Ranker;
 
-public class winningNumberInputUI {
+public class WinningNumberInputUI {
     private String mainNumberMessage = "당첨 번호를 입력해 주세요.";
     private String bonusNumberMessage = "보너스 번호를 입력해 주세요.";
 
