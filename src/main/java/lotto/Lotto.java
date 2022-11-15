@@ -17,7 +17,8 @@ public class Lotto {
         validate(numbers);
         outOfRangeExceptioin(numbers);
         checkNoDuplicateWinnningLotto(numbers);
-        this.numbers = numbers;
+        List<Integer> numbersCopy = deepCopy(numbers);
+        this.numbers = numbersCopy;
     }
 
     private void validate(List<Integer> numbers) {
@@ -42,6 +43,21 @@ public class Lotto {
         if (checkList.size() != numbers.size()) {
             throw new IllegalArgumentException(PrintGameInfo.getDuplicate());
         }
+    }
+
+    /**
+     * Random Test환경에서 실행시 UnsupportedOperationError가 났다
+     * 따라서 Test값을 따로 넘겨줘서 정렬하고 사용
+     * @param numbers
+     * @return
+     */
+    public List<Integer> deepCopy(List<Integer> numbers) {
+        List<Integer> numbersCopy = new ArrayList<>();
+        for (Integer number : numbers) {
+            numbersCopy.add(number);
+        }
+        numbersCopy.sort(Comparator.naturalOrder());
+        return numbersCopy;
     }
 
     public static List<Integer> getIntNumbers(List<String> userInput) {

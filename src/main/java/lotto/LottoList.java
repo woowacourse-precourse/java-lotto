@@ -80,25 +80,8 @@ public class LottoList {
     public void setAllLottoList() {
         for (int lottoIndex =0; lottoIndex < lottoCount; lottoIndex++ ) {
             List<Integer> numbers = getLottoNumbers();
-
-            List<Integer> numbersCopy = deepCopy(numbers);
-            lottos.add(new Lotto(numbersCopy));
+            lottos.add(new Lotto(numbers));
         }
-    }
-
-    /**
-     * Random Test환경에서 실행시 UnsupportedOperationError가 났다
-     * 따라서 Test값을 따로 넘겨줘서 정렬하고 사용
-     * @param numbers
-     * @return
-     */
-    public List<Integer> deepCopy(List<Integer> numbers) {
-        List<Integer> numbersCopy = new ArrayList<>();
-        for (Integer number : numbers) {
-            numbersCopy.add(number);
-        }
-        numbersCopy.sort(Comparator.naturalOrder());
-        return numbersCopy;
     }
 
     /**
