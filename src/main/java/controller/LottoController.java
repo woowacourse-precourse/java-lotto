@@ -48,8 +48,14 @@ public class LottoController {
 
         for (Lotto lotto : lottoList) {
 
-            Rank rank = Rank.findRank(calculateNumberOfMatch(number.getWinningNumber(), lotto.getNumbers())
-                    , isBonusNumberContain(number.getWinningNumber(), number.getBonusNumber()));
+            int numberOfMatch = calculateNumberOfMatch(number.getWinningNumber(), lotto.getNumbers());
+            boolean isContainBonusNumber = false;
+
+            if (numberOfMatch == 5) {
+                isContainBonusNumber = isContainsBonusNumber(lotto.getNumbers(), number.getBonusNumber());
+            }
+
+            Rank rank = Rank.findRank(numberOfMatch, isContainBonusNumber);
             lottoRepository.saveLottoResult(rank);
             rank.plusCount();
         }
@@ -88,7 +94,7 @@ public class LottoController {
         return count;
     }
 
-    private boolean isBonusNumberContain(List<Integer> winningNumber, int bonusNumber) {
-        return winningNumber.contains(bonusNumber);
+    private boolean isContainsBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
+        return lottoNumbers.contains(bonusNumber);
     }
 }
