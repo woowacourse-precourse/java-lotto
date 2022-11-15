@@ -1,8 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private static final int SMALLEST_LOTTERY_NUMBER = 1;
@@ -30,8 +30,8 @@ public class Lotto {
         }
     }
 
-    private void validateUniqueness(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != LOTTERY_NUMBER_COUNT) {
+    private void validateUniqueness(List<Integer> numbers, int count) {
+        if (new HashSet<>(numbers).size() != count) {
             throw (new IllegalArgumentException(ExceptionMessage.WINNING_NUMBER_EXCEPTION
                     .toString()));
         }
@@ -39,7 +39,14 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateNumberRange(numbers);
-        validateUniqueness(numbers);
+        validateUniqueness(numbers, LOTTERY_NUMBER_COUNT);
     }
 
+    public void validateBonusNumber(int bonusNumber) {
+        List<Integer> numbersIncludingBonus = new ArrayList<>(numbers);
+
+        numbersIncludingBonus.add(bonusNumber);
+        validateNumberRange(numbersIncludingBonus);
+        validateUniqueness(numbersIncludingBonus, LOTTERY_NUMBER_COUNT + 1);
+    }
 }
