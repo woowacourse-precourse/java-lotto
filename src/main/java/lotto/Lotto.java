@@ -33,4 +33,17 @@ public class Lotto {
         }
         printMatch(result, bonus, price);
     }
+    public int calcMatch(List<Integer> lottoNumber) {
+        int count = 0;
+        for (int number : lottoNumber) {
+            count+=countMatch(number);
+        }
+        return count;
+    }
+    public int countMatch(int num) {
+        if (numbers.contains(num)) {
+            return 1;
+        }
+        return 0;
+    }
 }
