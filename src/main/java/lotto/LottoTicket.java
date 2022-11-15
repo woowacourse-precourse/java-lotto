@@ -10,8 +10,6 @@ import static lotto.Validate.canBuyLotto;
 import static lotto.Validate.isInteger;
 
 public class LottoTicket {
-
-
     public List<Lotto> buy(String input) {
         List<Lotto> lottos = new ArrayList<>();
         int money = isInteger(input);

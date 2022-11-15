@@ -8,6 +8,5 @@ public class Application {
         }catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
-
     }
 }
