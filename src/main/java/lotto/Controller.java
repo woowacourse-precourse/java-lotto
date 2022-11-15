@@ -8,6 +8,9 @@ import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Controller {
     private Game game;
     private User user;
@@ -35,6 +38,33 @@ public class Controller {
         catch (Exception exception){
             throw new IllegalArgumentException();
         }
+    }
+
+    public void setWinningNumbers(){
+        view.printMessage(Text.WINNING_NUMBER_INPUT);
+        String winningNumbersInput = Console.readLine();
+        String[] splitInput = winningNumbersInput.split(",");
+        validateWinningNumbers(splitInput);
+        game.setWinningNumbers(toIntegerList(splitInput));
+    }
+
+    private void validateWinningNumbers(String[] splitInput){
+        try {
+            for (String string : splitInput) {
+                Integer.parseInt(string);
+            }
+        }
+        catch (Exception exception){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Integer> toIntegerList(String[] splitInput){
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String string : splitInput){
+            winningNumbers.add(Integer.parseInt(string));
+        }
+        return winningNumbers;
     }
 
 
