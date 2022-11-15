@@ -1,18 +1,16 @@
 package lotto.inputValidators;
 
-import lotto.messages.ErrorMessage;
-
 public class MoneyValidator {
-    static public void validateInputMoney(String inputMoney) {
+    static public boolean isValidMoneyInput(String inputMoney) {
         if (NumberValidator.includeNotNumericCharacter(inputMoney)) {
-            System.out.println(ErrorMessage.MONEY_INPUT_ERROR_MESSAGE.getMessage());
-            throw new IllegalArgumentException();
+            return false;
         }
 
         int userMoney = Integer.parseInt(inputMoney);
         if (!isMultipleOfOneThousand(userMoney)) {
-            throw new IllegalArgumentException();
+            return false;
         }
+        return true;
     }
 
     static private boolean isMultipleOfOneThousand(int userMoney) {

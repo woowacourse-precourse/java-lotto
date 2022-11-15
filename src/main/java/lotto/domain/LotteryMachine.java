@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.inputValidators.MoneyValidator;
 import lotto.inputValidators.NumberValidator;
+import lotto.messages.ErrorMessage;
 import lotto.messages.InputMessage;
 import lotto.messages.LotteryMachineMessage;
 
@@ -23,7 +24,10 @@ public class LotteryMachine {
         System.out.println(InputMessage.USER_MONEY_INPUT_MESSAGE.getMessage());
         String userInput = readLine();
         System.out.println();
-        MoneyValidator.validateInputMoney(userInput);
+        if (MoneyValidator.isValidMoneyInput(userInput)) {
+            System.out.println(ErrorMessage.MONEY_INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException();
+        }
 
         return Integer.parseInt(userInput);
     }
