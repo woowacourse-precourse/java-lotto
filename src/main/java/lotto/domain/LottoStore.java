@@ -1,15 +1,15 @@
 package lotto.domain;
 
+import static lotto.constants.LottoConstant.A_LOTTO_PRICE;
+import static lotto.constants.LottoConstant.LENGTH_OF_WINNING_NUMBER;
+import static lotto.constants.LottoConstant.NUMBER_MAX_RANGE;
+import static lotto.constants.LottoConstant.NUMBER_MIN_RANGE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoStore {
-
-    private static final int A_LOTTO_PRICE = 1000;
-    private static final int LENGTH_OF_WINNING_NUMBER = 6;
-    private static final int NUMBER_MAX_RANGE = 45;
-    private static final int NUMBER_MIN_RANGE = 1;
 
     private List<Lotto> lottoTickets = new ArrayList<>();
 
