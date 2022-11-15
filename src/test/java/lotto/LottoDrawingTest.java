@@ -38,6 +38,11 @@ class LottoDrawingTest {
         assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,6", "a"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ERROR_NOT_NUMBER);
+    }    @Test
+    void 보너스번호_비정상입력_당첨번호와_중복() {
+        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,6", "6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ERROR_NOT_NUMBER);
     }
 
 }
