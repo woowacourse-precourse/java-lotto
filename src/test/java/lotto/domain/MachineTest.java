@@ -79,4 +79,33 @@ class MachineTest {
         assertThat(resultOfLottos.get(machine)).isEqualTo(result);
     }
 
+    @Test
+    @DisplayName("user가 투입한 금액에 대한 당첨금의 비율을 계산한다. 단, 소수점 둘째 자리에서 반올림한다.")
+    void calculateRatioOfWinningsToInsertMoney() {
+        // Given
+        BigInteger insertMoney = new BigInteger("7000");
+
+        // When
+        Map<String, Integer> resultOfLottos = new HashMap<>(Map.of(
+                PrizeOfLotto.FIRST.getRank(), 0,
+                PrizeOfLotto.SECOND.getRank(), 0,
+                PrizeOfLotto.THIRD.getRank(), 0,
+                PrizeOfLotto.FOURTH.getRank(), 1,
+                PrizeOfLotto.FIFTH.getRank(), 0
+        ));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        Integer bonusNumber = 7;
+        Machine machine = new Machine(winningNumbers, bonusNumber);
+        float ratio = machine.calculateRatioOfWinningsToInsertMoney(resultOfLottos, insertMoney);
+
+        // Then 1
+        float result = (float) 714.3;
+        assertThat(ratio).isEqualTo(result);
+
+        // Then 2
+        String ratioStr = String.valueOf(ratio);
+        int ratioScale = ratioStr.length() - (ratioStr.indexOf(".") + 1);
+        assertThat(ratioScale).isEqualTo(1);
+    }
+
 }
