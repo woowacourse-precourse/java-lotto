@@ -9,10 +9,10 @@ public class Output {
     private static final int FOURTHPRICE=50000;
     private static final int FIFTHPRICE=5000;
 
-    public void printLotto(List<List<Integer>> allLotto ){
+    public void printLotto(List<Lotto> allLotto ){
         int lottoCount=allLotto.size();
         System.out.println(lottoCount+"개를 구매했습니다.");
-        for(List<Integer> lotto:allLotto){
+        for(Lotto lotto:allLotto){
             System.out.println(lotto);
         }
     }
