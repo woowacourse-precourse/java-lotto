@@ -34,4 +34,8 @@ public class DataOutput {
     public static void income(float[] income){
         System.out.println("총 수익률은 " + String.format("%.2f" ,income) + "%입니다.");
     }
+
+    public static void count(int count){
+        System.out.println(count + "개를 구매했습니다.");
+    }
 }
