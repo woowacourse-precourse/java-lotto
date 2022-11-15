@@ -64,6 +64,27 @@ public class ConsoleManager {
         System.out.printf("6개 일치 (2,000,000,000원) - %d개%n", ranks.get(1));
     }
 
-
+    public static void printRateOfReturn(double doubleTypeRateOfReturn){
+        String rateOfReturn = String.format("%.1f", doubleTypeRateOfReturn);
+        String formattedRateOfReturn = "";
+        int count = 0;
+        for (int i = rateOfReturn.length() - 1; i >= 0; i--) {
+            if (i == rateOfReturn.length() - 1 || i == rateOfReturn.length() - 2){
+                formattedRateOfReturn += rateOfReturn.charAt(i);
+                continue;
+            }
+            if (count == 3){
+                formattedRateOfReturn += ",";
+                count = 0;
+            }
+            formattedRateOfReturn += rateOfReturn.charAt(i);
+            count++;
+        }
+        String finalRateOfReturn = "";
+        for (int i = formattedRateOfReturn.length()-1; i >= 0; i--) {
+            finalRateOfReturn += formattedRateOfReturn.charAt(i);
+        }
+        System.out.printf("총 수익률은 %s%%입니다.",finalRateOfReturn);
+    }
 
 }
