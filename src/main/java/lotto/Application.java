@@ -26,12 +26,26 @@ public class Application {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers;
     }
+    public static int[] jackpot(){
+        System.out.println("당첨 번호를 입력해 주세요");
+        String temp1 = Console.readLine();
+        String[] temp = temp1.split(",");
+        int[] i_temp = new int[temp.length];
+        for(int i=0;i< temp.length;i++){
+            i_temp[i] = Integer.parseInt(temp[i]);
+        }
+        return i_temp;
+    }
+    public static int getbonus(){
+        System.out.println("보너스 번호를 입력해 주세요");
+        return Integer.parseInt(Console.readLine());
+    }
     public static void main(String[] args) {
         Statistics statistics = new Statistics();
-        int temp=0,L_cnt = Lotto_start();
+        int L_cnt = Lotto_start();
         List<Lotto> lottoList = Lotto_maker(L_cnt);
-        System.out.println("당첨 번호를 입력해 주세요");
-        String ans_num = Console.readLine();
+        int[] ans_num = jackpot();
+        int bonus = getbonus();
 
 
     }
