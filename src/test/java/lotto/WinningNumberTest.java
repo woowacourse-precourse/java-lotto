@@ -48,6 +48,13 @@ public class WinningNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+    @DisplayName("당첨 번호가 중복이면 예외가 발생한다.")
+    @Test
+    void creatWinningNumberByDuplicateNumber() {
+        assertThatThrownBy(()-> winningNumber.saveWinningNumber("1,2,3,4,5,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
     @DisplayName("당첨 번호는 쉼표로 나눈다.")
     @Test
     void divideWinningNumberByComma() {

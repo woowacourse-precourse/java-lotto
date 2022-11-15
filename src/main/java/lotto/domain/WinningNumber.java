@@ -12,7 +12,7 @@ public class WinningNumber {
         winningNumber = Arrays.stream(input.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
-        Lotto lotto = new Lotto(winningNumber);
+        new Lotto(winningNumber);
         return winningNumber;
     }
 
