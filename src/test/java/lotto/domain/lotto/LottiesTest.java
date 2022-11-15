@@ -1,7 +1,7 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import org.assertj.core.api.Assertions;
+import lotto.domain.rank.LottoRank;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,7 +43,7 @@ public class LottiesTest {
 
         int lottoSize = lotties.count();
 
-        Assertions.assertThat(lottoSize).isEqualTo(4);
+        assertThat(lottoSize).isEqualTo(4);
     }
 
     @DisplayName("당첨 맵의 크기는 발행한 로또의 개수와 같아야 한다.")

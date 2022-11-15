@@ -1,5 +1,6 @@
-package lotto.domain;
+package lotto.domain.rank;
 
+import lotto.domain.user.Purchase;
 import lotto.exception.InputException;
 import lotto.view.InputView;
 import org.assertj.core.api.Assertions;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PurchaseTest {
 
@@ -26,7 +29,7 @@ public class PurchaseTest {
     void getLottoPublishCount() {
         int lottoPublishCount = purchase.getLottoPublishCount();
 
-        Assertions.assertThat(lottoPublishCount).isEqualTo(2);
+        assertThat(lottoPublishCount).isEqualTo(2);
     }
 
     @DisplayName("구입 금액 숫자 예외 처리 테스트")

@@ -1,5 +1,7 @@
-package lotto.domain;
+package lotto.domain.rank;
 
+
+import lotto.domain.rank.LottoRank;
 
 import java.util.HashMap;
 import java.util.Map;

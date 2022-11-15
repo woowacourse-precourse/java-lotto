@@ -1,6 +1,7 @@
-package lotto.domain;
+package lotto.domain.user;
 
 import lotto.common.Constant;
+import lotto.domain.lotto.Lotto;
 import lotto.exception.InputException;
 
 import java.util.List;

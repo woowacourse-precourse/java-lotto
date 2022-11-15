@@ -1,8 +1,8 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
+import lotto.domain.user.UserLotto;
 import lotto.exception.InputException;
 import lotto.view.InputView;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
 
@@ -21,6 +22,20 @@ class LottoTest {
     @BeforeEach
     void init() {
         lotto = new Lotto(List.of(6, 1, 2, 3, 32, 8));
+    }
+
+    @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+    @Test
+    void createLottoByOverSize() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByDuplicatedNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호가 당첨되지 않은 경우 거짓을 반환한다.")
@@ -53,7 +68,7 @@ class LottoTest {
             List<Integer> winNumbers = List.of(1,2,3,5,8,9,1);
             int bonusNumber = 2;
 
-            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+            assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_INVALID_COUNT.message());
         }
@@ -64,7 +79,7 @@ class LottoTest {
             List<Integer> winNumbers = List.of(1,66,0,4,3,7);
             int bonusNumber = 2;
 
-            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+            assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_INVALID_RANGE.message());
         }
@@ -75,7 +90,7 @@ class LottoTest {
             List<Integer> winNumbers = List.of(1,1,3,4,10,8);
             int bonusNumber = 2;
 
-            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+            assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_DUPLICATE_DIGIT.message());
         }
@@ -91,7 +106,7 @@ class LottoTest {
             String winNumbers = "1 2 3 4";
             System.setIn(generateUserInput(winNumbers));
 
-            Assertions.assertThatThrownBy(InputView::inputUserWinNumber)
+            assertThatThrownBy(InputView::inputUserWinNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_INVALID_FORM.message());
         }
@@ -102,7 +117,7 @@ class LottoTest {
             String winNumbers = "1,@,A,4";
             System.setIn(generateUserInput(winNumbers));
 
-            Assertions.assertThatThrownBy(InputView::inputUserWinNumber)
+            assertThatThrownBy(InputView::inputUserWinNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_INVALID_FORM.message());
         }

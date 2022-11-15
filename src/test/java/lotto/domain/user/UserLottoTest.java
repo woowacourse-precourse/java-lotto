@@ -1,8 +1,7 @@
-package lotto.domain;
+package lotto.domain.user;
 
 import lotto.exception.InputException;
 import lotto.view.InputView;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -10,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UserLottoTest {
 
@@ -23,7 +24,7 @@ public class UserLottoTest {
             String bonusNumber = "$";
             System.setIn(generateUserInput(bonusNumber));
 
-            Assertions.assertThatThrownBy(InputView::inputUserBonusNumber)
+            assertThatThrownBy(InputView::inputUserBonusNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
@@ -34,7 +35,7 @@ public class UserLottoTest {
             String bonusNumber = "1,3";
             System.setIn(generateUserInput(bonusNumber));
 
-            Assertions.assertThatThrownBy(InputView::inputUserBonusNumber)
+            assertThatThrownBy(InputView::inputUserBonusNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
@@ -45,7 +46,7 @@ public class UserLottoTest {
             List<Integer> winNumbers = List.of(1,2,3,4,10,8);
             int bonusNumber = 67;
 
-            Assertions.assertThatThrownBy(() -> new UserLotto(winNumbers, bonusNumber))
+            assertThatThrownBy(() -> new UserLotto(winNumbers, bonusNumber))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }

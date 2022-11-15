@@ -1,10 +1,11 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoGeneratorTest {
 
@@ -15,7 +16,7 @@ public class LottoGeneratorTest {
 
         int randomLottoSize = lotto.size();
 
-        Assertions.assertThat(randomLottoSize).isEqualTo(6);
+        assertThat(randomLottoSize).isEqualTo(6);
     }
 
     @DisplayName("발행하는 로또에는 중복된 숫자가 있으면 안된다.")
@@ -27,7 +28,7 @@ public class LottoGeneratorTest {
                 .distinct()
                 .count();
 
-        Assertions.assertThat(notDuplicateCount).isEqualTo(6);
+        assertThat(notDuplicateCount).isEqualTo(6);
     }
 
     @DisplayName("발행하는 로또의 각 수는 1 - 45 범위를 벗어나지 않는다.")
@@ -39,7 +40,7 @@ public class LottoGeneratorTest {
                 .filter(n -> n <= 0 || n > 45)
                 .count();
 
-        Assertions.assertThat(zeroCount).isEqualTo(0);
+        assertThat(zeroCount).isEqualTo(0);
     }
 }
 
