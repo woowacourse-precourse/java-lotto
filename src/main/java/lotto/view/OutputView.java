@@ -13,6 +13,9 @@ public class OutputView {
 
     private static final long LOTTO_RESULT_IS_ZERO = 0L;
 
+    private static final String LOTTO_RESULT_FIVE_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static final String LOTTO_RESULT_ELSE_MESSAGE = "%d개 일치 (%s원) - %d개\n";
+
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.printf("%d개를 구매했습니다.\n", lottoBundle.size());
 
@@ -49,17 +52,16 @@ public class OutputView {
                                     Map<LottoResult, Long> numberOfEachLottoResult) {
         DecimalFormat df = new DecimalFormat("###,###");
 
-        if (lottoResult.equals(LottoResult.FIVE_WITH_BONUS)) {
-            System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
-                    lottoResult.getNumberOfMatches(),
-                    df.format(lottoResult.getPayout()),
-                    numberOfEachLottoResult.getOrDefault(lottoResult, LOTTO_RESULT_IS_ZERO));
-            return;
-        }
-
-        System.out.printf("%d개 일치 (%s원) - %d개\n",
+        System.out.printf(getMessageFormat(lottoResult),
                 lottoResult.getNumberOfMatches(),
                 df.format(lottoResult.getPayout()),
                 numberOfEachLottoResult.getOrDefault(lottoResult, LOTTO_RESULT_IS_ZERO));
+    }
+
+    private String getMessageFormat(LottoResult lottoResult) {
+        if (lottoResult.equals(LottoResult.FIVE_WITH_BONUS)) {
+            return LOTTO_RESULT_FIVE_WITH_BONUS_MESSAGE;
+        }
+        return LOTTO_RESULT_ELSE_MESSAGE;
     }
 }
