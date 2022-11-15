@@ -36,8 +36,8 @@
    - [x] (당첨 번호를 ,로 구분했을 때) 숫자 6개가 아니면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#checkSize()
    - [x] (당첨 번호를 ,로 구분했을 때) 유효한 범위의 숫자가 아니면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#checkNumbersRange()
    - [x] 중복인 숫자가 있으면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#duplicateCheck()
-- [ ] 유효한 보너스 번호 하나를 입력 받을 수 있다. - UserInterFace#inputValidBonus()
-   - [ ] 당첨 번호와 겹치면 에러 메시지를 출력 후 종료할 수 있다.
+- [x] 유효한 보너스 번호 하나를 입력 받을 수 있다. - UserInterFace#inputValidBonus()
+   - [x] 당첨 번호와 겹치면 에러 메시지를 출력 후 종료할 수 있다.
 - [x] 정수가 특정 범위에 있지 않으면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#checkRange()
 - [ ] 구매자가 구매한 로또 번호(6자리)와 당첨 번호(6자리 + 보너스 번호)를 비교할 수 있다.
   - [ ] 몇 개의 당첨 번호가 포함되는지 알 수 있다. - Judgment#correctCount()

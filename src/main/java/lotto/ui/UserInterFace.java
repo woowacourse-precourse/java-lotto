@@ -11,13 +11,16 @@ import java.util.List;
 import lotto.domain.Judgment;
 
 public class UserInterFace {
+    private static final String NOT_A_INTEGER_ERROR_MESSAGE = "[ERROR] 정수를 입력해야 합니다.";
+    private static final String DUPLICATE_BONUS_ERROR_MESSAGE = "[ERROR] 당첨 번호와 중복됩니다.";
+    
     public int inputInteger() {
         try {
             String input = Console.readLine();
             int result = Integer.valueOf(input);
             return result;
         } catch (NumberFormatException error) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_A_INTEGER_ERROR_MESSAGE);
         }
     }
     
@@ -54,5 +57,19 @@ public class UserInterFace {
         judgment.checkSize(numbers, 6);
         judgment.checkNumbersRange(numbers, 1, 45);
         return numbers;
+    }
+    
+    public int inputValidBonus(List<Integer> winningNumbers) {
+        Judgment judgment = new Judgment();
+        int input = inputInteger();
+        judgment.checkRange(input, 1, 45);
+        
+        for (int index = 0; index < winningNumbers.size(); index++) {
+            if (winningNumbers.get(index).equals(input)) {
+                throw new IllegalArgumentException(DUPLICATE_BONUS_ERROR_MESSAGE);
+            }
+        }
+        
+        return input;
     }
 }
