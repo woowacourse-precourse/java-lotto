@@ -46,4 +46,8 @@ public class Display {
         System.out.println("[ERROR] 로또 번호는 숫자여야 합니다.");
     }
 
+    static void displayErrorMoney () {
+        System.out.println("[ERROR] 로또 구매 금액은 1000원 단위여야 합니다,");
+    }
+
 }
