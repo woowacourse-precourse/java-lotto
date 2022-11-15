@@ -37,4 +37,12 @@ public class Game {
         Collections.sort(numbers);
         return numbers;
     }
+
+    public List<Lotto> getSortLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            getSortLotto(lotto.getNumbers());
+        }
+        return lottos;
+    }
+
 }
