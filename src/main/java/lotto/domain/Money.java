@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.exception.ErrorCode;
+import lotto.exception.PayMoneyException;
 
 public class Money {
 
@@ -13,7 +14,7 @@ public class Money {
 
     private void validWrite(String writePay) {
         if (!isDigit(writePay)) {
-            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
+            throw new PayMoneyException(ErrorCode.ERROR.getMessage() + " Money is Exception !!");
         }
     }
 
