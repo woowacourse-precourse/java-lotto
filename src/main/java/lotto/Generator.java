@@ -15,12 +15,12 @@ public class Generator {
     private static final String DUPLICATE_ERROR_MSG = "[ERROR] 로또에 중복된 번호가 있습니다.";
 
     public Lotto createLottoNumber() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE);
-        lottoNumbers.sort(Comparator.naturalOrder());
-        return createLotto(lottoNumbers);
+        return createLotto(new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE)));
     }
 
     private Lotto createLotto(List<Integer> lottoNumbers) {
+
+        lottoNumbers.sort(Comparator.naturalOrder());
         validCheck(lottoNumbers);
         return new Lotto(lottoNumbers);
     }

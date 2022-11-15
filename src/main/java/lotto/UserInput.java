@@ -16,6 +16,11 @@ public class UserInput {
     public static int inputAmount() {
         System.out.println(AMOUNT_INPUT_MSG);
         String str = Console.readLine();
+
+        if(!str.matches("[0-9]+")){
+            throw new IllegalArgumentException(AMOUNT_ERROR_MSG);
+        }
+
         int amount;
         try {
             amount = Integer.parseInt(str);
