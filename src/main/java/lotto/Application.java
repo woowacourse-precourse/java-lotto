@@ -34,7 +34,7 @@ public class Application {
             throw new IllegalArgumentException(NUMBER_TYPE_ERROR_MESSAGE);
         }
 
-        if (inputMoney % LOTTO_PRICE != 0) {
+        if (inputMoney <= 0 || inputMoney % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
         }
 
