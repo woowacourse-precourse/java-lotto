@@ -41,4 +41,9 @@ public class CheckWinningHistory {
         if (diff.size() == 3){ this.fifthPlace++; return 5000; }
         return 0;
     }
+    /** 구입금액과 당첨금을 비교해, 총 수익률을 계산해 반환하는 기능 */
+    private float getEarningsRate(float purchasingAmount, float totalPrizeMoney){
+        float earningsRate = (totalPrizeMoney/purchasingAmount) * 100;
+        return earningsRate;
+    }
 }
