@@ -35,19 +35,12 @@ public class LottoPublisher {
     }
 
     private List<Integer> generateNums() {
-        List<Integer> nums = new ArrayList<>();
-        while (nums.size() != LOTTERY_NUM_CNT) {
-            int num = Randoms.pickNumberInRange(START_NUM, END_NUM);
-
-            if (nums.contains(num)) {
-                continue;
-            }
-
-            nums.add(num);
-        }
+        List<Integer> immutableNums = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTERY_NUM_CNT);
+        List<Integer> nums = new ArrayList<>(immutableNums);
 
         nums.sort(Comparator.naturalOrder());
 
         return nums;
     }
+
 }
