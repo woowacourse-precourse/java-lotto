@@ -24,13 +24,16 @@ public class LottoTickets {
         List<Lotto> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE, LOTTO_SIZE);
-            // TODO compare-To 로 sorting 가능한지 확인해보기
-            List<Integer> unmodifiableList = Collections.unmodifiableList(numbers);
-            List<Integer> newList = new ArrayList<>(unmodifiableList);
-            Collections.sort(newList);
-            Lotto lotto = new Lotto(newList);
+            Lotto lotto = new Lotto(sortNumbers(numbers));
             lottoNumbers.add(lotto);
         }
         return lottoNumbers;
+    }
+
+    private List<Integer> sortNumbers(List<Integer> numbers) {
+        List<Integer> unmodifiableNumbers = Collections.unmodifiableList(numbers);
+        List<Integer> mutableNumbers = new ArrayList<>(unmodifiableNumbers);
+        Collections.sort(mutableNumbers);
+        return mutableNumbers;
     }
 }
