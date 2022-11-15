@@ -8,17 +8,17 @@ import static lotto.constants.ExceptionMessage.NOT_VALID_MATCH;
 import static lotto.constants.ExceptionMessage.NULL_POINTER;
 
 public enum WaysToWinAndRewards {
-    FIRST(1, 6, 0, 2_000_000_000),
-    SECOND(2, 5, 1, 30_000_000),
-    THIRD(3, 5, 0, 1_500_000),
-    FOURTH(4, 4, 0, 50_000),
-    FIFTH(5, 3, 0, 5_000),
-    NONE(-1, -1, 0, 0);
+    FIRST(1, 6, false, 2_000_000_000),
+    SECOND(2, 5, true, 30_000_000),
+    THIRD(3, 5, false, 1_500_000),
+    FOURTH(4, 4, false, 50_000),
+    FIFTH(5, 3, false, 5_000),
+    NONE(-1, -1, false, 0);
     private int rank;
     private int mainNumberMatches;
-    private int bonusNumberShouldMatch; //0이면 상관없음
+    private boolean bonusNumberShouldMatch; //0이면 상관없음
     private int reward;
-    WaysToWinAndRewards(int rank, int mainNumberMatches, int bonusNumberMatch, int reward) {
+    WaysToWinAndRewards(int rank, int mainNumberMatches, boolean bonusNumberMatch, int reward) {
         this.rank = rank;
         this.mainNumberMatches = mainNumberMatches;
         this.bonusNumberShouldMatch = bonusNumberMatch;
@@ -45,8 +45,11 @@ public enum WaysToWinAndRewards {
         }
         return Arrays.stream(WaysToWinAndRewards.values())
                 .filter(way -> {
-                    return (way.mainNumberMatches == numberOfMainNumbersMatches &&
-                            way.bonusNumberShouldMatch == isBonusNumberMatch);
+                    boolean isBonus = true;
+                    if(way.bonusNumberShouldMatch && isBonusNumberMatch == 0) {
+                        isBonus = false;
+                    }
+                    return (way.mainNumberMatches == numberOfMainNumbersMatches && isBonus);
                 })
                 .findAny()
                 .orElse(NONE);
