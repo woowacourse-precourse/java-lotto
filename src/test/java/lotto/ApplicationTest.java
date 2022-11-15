@@ -9,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static lotto.exception.InputException.inputMoneyException;
+import static lotto.service.LottoService.compareBonus;
 import static lotto.service.LottoService.countMatchingNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -95,6 +96,19 @@ class ApplicationTest extends NsTest {
 
         // then
         assertEquals(count, 2);
+    }
+
+    @Test
+    void 보너스_포함_여부() {
+        // given
+        Lotto lottoA = new Lotto(List.of(1,2,3,4,5,6));
+        int bonus = 5;
+
+        // when
+        boolean flag = compareBonus(lottoA, bonus);
+
+        // then
+        assertEquals(flag, true);
     }
 
     @Override
