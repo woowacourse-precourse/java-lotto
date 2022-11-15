@@ -4,7 +4,6 @@ import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
@@ -43,10 +42,10 @@ public class LottoController {
 
     private List<Integer> getWinNumber(){
         String win = InputView.winningLotto();
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = WinNumber.winNum(win);
 
-        Lotto lotto = new Lotto(win);
-        numbers = lotto.change(win);
+        Lotto lotto = new Lotto(numbers);
+        //numbers = lotto.change(win);
         return numbers;
     }
 

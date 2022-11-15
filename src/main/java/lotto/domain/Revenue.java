@@ -3,13 +3,13 @@ package lotto.domain;
 import java.util.List;
 
 public class Revenue {
-    private static int reward = 0;
 
     private static long oneRevenue(WinDetail winDetail){
         return winDetail.reward();
     }
 
     public static long revenue(List<WinDetail> result){
+        int reward=0;
         for(WinDetail win : result) {
             reward += oneRevenue(win);
         }

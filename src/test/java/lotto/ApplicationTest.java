@@ -98,7 +98,6 @@ class ApplicationTest extends NsTest {
         User user = new User();
         int count = user.lottoCount("5000");
         assertThat(count).isEqualTo(5);
-
     }
 
     @Test
@@ -111,11 +110,9 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 유효하지않은_당첨번호_중복_입력() {
-        List<Integer> num = List.of(1,2,3,4,5,5);
-        Lotto lotto = new Lotto(num);
-        assertThatThrownBy(() -> {
-            lotto.isEqualNumber(num);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            new Lotto(List.of(1,2,3,4,5,5)))
+            .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
@@ -129,11 +126,9 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 유효하지않은_당첨범호_범위_입력(){
-        List<Integer> num = List.of(1,2,3,4,5,67);
-        Lotto lotto = new Lotto(num);
-        assertThatThrownBy(() -> {
-            lotto.isRangeNumber(num);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+                new Lotto(List.of(1,2,3,4,5,67)))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
