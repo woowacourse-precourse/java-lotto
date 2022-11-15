@@ -34,6 +34,16 @@ public class Game {
         this.winningResults = new LottoWinningResult();
     }
 
+    public void pickAndPrintLottoNumbersCount() {
+        System.out.println(String.format(LOTTO_BUY_COUNT, lottoCount));
+
+        for (int index = 0; index < lottoCount; index++) {
+            Lotto lotto = new Lotto(Lotto.pickLottoNumbers());
+            lottoNumbers.add(lotto);
+            lotto.printLottoNumbers();
+        }
+    }
+
     public void computeWinningResult() {
         for (int index = 0; index < lottoCount; index++) {
             Lotto lottoNumber = lottoNumbers.get(index);
