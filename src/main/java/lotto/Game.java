@@ -86,15 +86,24 @@ public class Game {
         return winGames;
     }
 
-    public void printResult(List<Integer> winGames, boolean bonusYes) {
+    public void printResult(List<Integer> winGames, boolean bonusYes, int money) {
+        int winnings = 0;
         System.out.println("당첨 통계\n---");
         for (Prize prize: Prize.values()) {
             int count = Collections.frequency(winGames, prize.getWinning());
             if (count == 5 && bonusYes) {
                 System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n", prize.getWinning(), prize.getPrizeMoney(), count);
+                winnings += count;
                 continue;
             }
             System.out.printf("%d개 일치 (%,d원) - %d개\n", prize.getWinning(), prize.getPrizeMoney(), count);
+            winnings += count;
         }
+        System.out.printf("총 수익률은 %f입니다.", calculateRate(winnings, money));
+    }
+
+    private float calculateRate(int winnings, int money) {
+        float rate = (float) (Math.round(winnings/money*100*100)/100.0);
+        return rate;
     }
 }
