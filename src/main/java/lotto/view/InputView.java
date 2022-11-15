@@ -52,7 +52,7 @@ public final class InputView {
 
     private static void validate(String input) {
         if (!Pattern.matches(INPUT_TYPE, input)) {
-            OutputView.printException(new IllegalArgumentException("입력 타입은 숫자이여야 합니다."));
+            throw new IllegalArgumentException("입력 타입은 숫자이여야 합니다.");
         }
     }
 }
