@@ -26,17 +26,32 @@ public class LottoStatistic {
 
     @Override
     public String toString() {
-        DecimalFormat df = new DecimalFormat("###,###");
+
         String print = "\n당첨 통계\n---\n";
         for (Rank rank : Rank.values()) {
-            print += rank.getCounts() + "개 일치";
-            if (rank == Rank.Second_Place)
-                print += ", 보너스 볼 일치";
-            print += " (" + df.format(rank.getPrice()) + "원) - ";
-            print += rankMap.getOrDefault(rank, 0) + "개\n";
+            print+=summarizeRank(rank);
+//            print += rank.getCounts() + "개 일치";
+//            if (rank == Rank.Second_Place)
+//                print += ", 보너스 볼 일치";
+//            print += " (" + df.format(rank.getPrice()) + "원) - ";
+//            print += rankMap.getOrDefault(rank, 0) + "개\n";
         }
         print += "총 수익률은 " + String.format("%.1f", profitRate) + "%입니다.";
         return print;
+    }
+    private String summarizeRank(Rank rank){
+        DecimalFormat df = new DecimalFormat("###,###");
+        int count = rank.getCounts();
+        String price = df.format(rank.getPrice());
+        int quantity = rankMap.getOrDefault(rank, 0);
+
+        String str = count + "개 일치";
+        if (rank == Rank.Second_Place)
+            str += ", 보너스 볼 일치";
+        str += " (" + price + "원) - ";
+        str += quantity + "개\n";
+
+        return str;
     }
 
     private void calculateProfitRate() {
@@ -45,8 +60,6 @@ public class LottoStatistic {
             Integer value = entry.getValue();
             profitRate += rank.getPrice() * value;
         }
-
-
         profitRate /= cost;
         profitRate *= 100;
     }

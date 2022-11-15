@@ -16,10 +16,10 @@ public class LottoController {
         int count = cost2count(cost);
 
         //주어진 개수의 로또 뭉치 생성
-        LottoBundle lb = new LottoBundle(count);
+        LottoBundle lottoBundle = new LottoBundle(count);
 
         //생성된 로또 뭉치 출력
-        System.out.println(lb);
+        System.out.println(lottoBundle);
 
         //당첨번호 입력
         Lotto win_lotto = lottoInput();
@@ -28,8 +28,8 @@ public class LottoController {
         int bonus_num = bonusInput(win_lotto);
 
         //로또 번호를 비교해서 통계결과를 출력해주는 클래스 생성
-        LottoStatistic ls = new LottoStatistic(lb, bonus_num, win_lotto, cost);
-        System.out.println(ls);
+        LottoStatistic lottoStatistic = new LottoStatistic(lottoBundle, bonus_num, win_lotto, cost);
+        System.out.println(lottoStatistic);
     }
 
     private int costInput() {
@@ -60,7 +60,9 @@ public class LottoController {
         System.out.println(Message.Input_Bonus.getMessage());
         String bonus_str = readLine();
         int bonus_num = String2Int(bonus_str);
+        //1~45이외에 숫자가 있는 경우 Exception
         Lotto.rangeCheck(bonus_num);
+        //당첨번호와 중복인 경우 Exception
         lotto.bonus_duplicateCheck(bonus_num);
         return bonus_num;
     }
