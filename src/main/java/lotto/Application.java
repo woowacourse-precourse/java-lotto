@@ -5,12 +5,16 @@ public class Application {
         // TODO: 프로그램 구현
         LottoUI lottoProgram = new LottoUI(new Manager());
 
-        lottoProgram.setPurchasePrice();
-        lottoProgram.publishLottos();
+        try {
+            lottoProgram.setPurchasePrice();
+            lottoProgram.publishLottos();
 
-        lottoProgram.getLottoNumber();
-        lottoProgram.setBonusNumber();
+            lottoProgram.getLottoNumber();
+            lottoProgram.setBonusNumber();
 
-        lottoProgram.getLottoResult();
+            lottoProgram.getLottoResult();
+        } catch (IllegalArgumentException e){
+            return;
+        }
     }
 }
