@@ -11,4 +11,7 @@ public class ErrorMessage {
     public static final String WRONG_VALUE_MSG = ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     public static final String DUPLICATE_MSG = ERROR_MESSAGE + "로또 번호는 중복되지 않는 수로 이루어져야 합니다.";
 
+    public static final String WINNING_NUMBER_WRONG_TYPE = ERROR_MESSAGE + "당첨 번호의 입력 서식이 잘못되었습니다.";
+    public static final String BONUS_NUMBER_WRONG_RANGE = ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
+    public static final String BONUS_NUMBER_DUPLICATE = ERROR_MESSAGE + "보너스 번호는 로또 당첨 번호들과 중복되선 안됩니다.";
 }
