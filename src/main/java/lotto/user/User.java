@@ -18,8 +18,8 @@ public class User {
     }
 
     public void buyLottos() {
-        int money = inputPurchasePrice();
-        int countOfBuyLotto = money / LOTTO_PRICE;
+        long money = inputPurchasePrice();
+        long countOfBuyLotto = money / LOTTO_PRICE;
         for (int i = 0; i < countOfBuyLotto; i++) {
             lottos.add(new BoughtLotto());
         }
@@ -29,11 +29,11 @@ public class User {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    private int inputPurchasePrice() {
+    private long inputPurchasePrice() {
         printInputMessage();
         String input = Console.readLine();
         validatePurchasePrice(input);
-        return Integer.parseInt(input);
+        return Long.parseLong(input);
     }
 
     private void validatePurchasePrice(String money) {
