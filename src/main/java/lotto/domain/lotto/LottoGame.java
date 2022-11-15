@@ -36,7 +36,7 @@ public class LottoGame {
 		lottos = person.buyLotto();
 		int lottoCount = lottos.size();
 		System.out.println();
-		System.out.println(lottoCount + "개를 구매했습니다");
+		System.out.println(lottoCount + "개를 구매했습니다.");
 		for (Lotto lotto : lottos) {
 			System.out.println(lotto.getNumbers().toString());
 		}

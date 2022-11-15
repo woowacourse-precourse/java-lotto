@@ -23,8 +23,8 @@ public class LottoAutoGenerator {
 	}
 
 	public Lotto createLottoByAuto() {
-		List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER,
-				LOTTO_END_NUMBER, LOTTO_LENGTH);
+		List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER,
+				LOTTO_END_NUMBER, LOTTO_LENGTH));
 		Collections.sort(numbers);
 		return new Lotto(numbers);
 	}

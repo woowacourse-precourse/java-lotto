@@ -42,7 +42,7 @@ public class Money {
 
 	public void isNumber(String money) {
 		try {
-			Integer.parseInt(money);
+			Long.parseLong(money);
 		} catch (Exception e) {
 			throw new IllegalArgumentException(LOTTO_PURCHASE_AMOUNT_IS_NUMBER);
 		}

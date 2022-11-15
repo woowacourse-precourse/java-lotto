@@ -2,6 +2,7 @@ package lotto.domain.win;
 
 import static lotto.util.constant.Constant.ENTER;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.lotto.Lotto;
@@ -12,10 +13,12 @@ import lotto.domain.person.Person;
 public class WinningStats {
 
 
-	private static final String PRINT_FORMAT = "%d개 일치 (%d원) - %d개" + ENTER;
-	private static final String SECOND_PRINT_FORMAT = "%d개 일치, 보너스 볼 일치 (%d원) - %d개" + ENTER;
+	private static final String PRINT_FORMAT = "%d개 일치 (%s원) - %d개" + ENTER;
+	private static final String SECOND_PRINT_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개" + ENTER;
 	private static final String TOTAL_EARNING_RATE_MESSAGE = "총 수익률은 %.1f";
 	private static final String PRINT_WINNING_HEADER = "당첨 통계" + ENTER + "---";
+
+	DecimalFormat decFormat = new DecimalFormat("###,###");
 
 	Person person;
 	LottoMachine lottoMachine;
@@ -42,11 +45,11 @@ public class WinningStats {
 			}
 			addWinningMoney(winning.getMoney(), winnings.get(winning));
 			if (winning == Winning.SECOND) {
-				System.out.printf(SECOND_PRINT_FORMAT, winning.getMatchCount(), winning.getMoney(),
+				System.out.printf(SECOND_PRINT_FORMAT, winning.getMatchCount(),  decFormat.format(winning.getMoney()),
 						winnings.get(winning));
 				continue;
 			}
-			System.out.printf(PRINT_FORMAT, winning.getMatchCount(), winning.getMoney(),
+			System.out.printf(PRINT_FORMAT, winning.getMatchCount(), decFormat.format(winning.getMoney()),
 					winnings.get(winning));
 		}
 		getRate();
