@@ -37,7 +37,7 @@ public class Application {
         //당첨 확인
         ArrayList<Integer> winList = winCount(lottoList, luckyList, bonusNumber);
         //상금 리스트
-        ArrayList<Integer> rewardList = inputReward();
+        ArrayList<Float> rewardList = inputReward();
         //당첨통계
         printWinningDetails(winList);
         //수익률 출력
@@ -147,8 +147,8 @@ public class Application {
         System.out.println("3개 일치 (" +second+"원) - "+winList.get(1)+"개"+decFormat.format(second));
         System.out.println("3개 일치 (" +first+"원) - "+winList.get(0)+"개"+decFormat.format(first));
     }
-    static ArrayList<Integer> inputReward(){
-        ArrayList<Integer> rewardList = new ArrayList<Integer>();
+    static ArrayList<Float> inputReward(){
+        ArrayList<Float> rewardList = new ArrayList<Float>();
 
         return rewardList;
     }
