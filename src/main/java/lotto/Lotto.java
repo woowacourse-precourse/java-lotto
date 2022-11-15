@@ -1,15 +1,16 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<Integer> numbers = new ArrayList<>();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers.addAll(numbers);
     }
 
     private void validate(List<Integer> numbers) {

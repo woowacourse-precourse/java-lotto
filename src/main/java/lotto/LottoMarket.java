@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoMarket {
@@ -37,7 +38,9 @@ public class LottoMarket {
     private void printLottoInfo() {
         System.out.println(purchaseLottoNum + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+            List<Integer> numbers = lotto.getNumbers();
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
     }
 
