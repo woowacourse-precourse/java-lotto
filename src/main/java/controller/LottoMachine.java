@@ -20,7 +20,6 @@ public class LottoMachine {
         inputBonusNumber();
         countLottoNumber();
         printWinningDataToPrize();
-        printProfitRate();
     }
 
     public void inputCash() {
