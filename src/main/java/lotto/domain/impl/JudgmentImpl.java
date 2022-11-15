@@ -7,9 +7,9 @@ import java.util.List;
 public class JudgmentImpl implements Judgment {
 
     @Override
-    public int correctCount(List<Integer> userNumbers, List<Integer> priceNumbers) {
+    public int correctCount(List<Integer> userNumbers, List<Integer> prizeNumber) {
         return (int) userNumbers.stream()
-                .filter(priceNumbers::contains)
+                .filter(prizeNumber::contains)
                 .count();
     }
 
