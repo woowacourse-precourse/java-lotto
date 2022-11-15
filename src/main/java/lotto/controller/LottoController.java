@@ -53,6 +53,8 @@ public class LottoController {
     private void printResult(LottoCount amount, Result result){
         OutputView.printResult();
         OutputView.printLottoResult(result);
-        OutputView.printProfit((float)result.calculatePrize()/(float)amount.getAmount());
+        OutputView.printProfit(result.calculateProfit(amount));
     }
+
+
 }

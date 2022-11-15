@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
+import static lotto.utils.ExceptionMessage.RESULT_NOT_CORRECT_EXCEPTION;
+
 public enum LottoRank {
     NOTHING(0, 0, (correctNumber, matchBonus) -> correctNumber < 3),
     FIFTH(3, 5000, (correctNumber, matchBonus) -> correctNumber == 3),
@@ -29,7 +31,7 @@ public enum LottoRank {
         return Arrays.stream(values())
                 .filter(lottoRank -> lottoRank.isMatch.test(sameCount, bonus))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 조건에 맞지 않는 당첨입니다."));
+                .orElseThrow(() -> new IllegalArgumentException(RESULT_NOT_CORRECT_EXCEPTION));
     }
 
     public static List<LottoRank> getWithoutDefault() {

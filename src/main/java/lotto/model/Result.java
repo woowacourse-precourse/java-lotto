@@ -26,4 +26,9 @@ public class Result {
     public int getRankCount(LottoRank lottoRank) {
         return result.getOrDefault(lottoRank,0);
     }
+
+    public float calculateProfit(LottoCount amount){
+        return (float)this.calculatePrize()/(float)amount.getAmount() * 100;
+
+    }
 }

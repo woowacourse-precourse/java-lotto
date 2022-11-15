@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.view.OutputView;
+
 import static lotto.utils.ExceptionMessage.BONUS_NUMBER_OVERLAP_EXCEPTION;
 import static lotto.utils.ExceptionMessage.LOTTO_NUMBERS_RANGE_EXCEPTION;
 
@@ -38,6 +40,11 @@ public class LuckyNumbers {
 
     public LottoRank calculateRanking(Lotto lotto) {
         int cnt = luckyNumbers.countSameNum(lotto);
-        return LottoRank.valueOf(cnt,lotto.contains(bonusNumber));
+        try {
+            return LottoRank.valueOf(cnt, lotto.contains(bonusNumber));
+        } catch(IllegalArgumentException e){
+            OutputView.printException(e);
+            throw new IllegalArgumentException();
+        }
     }
 }
