@@ -6,14 +6,20 @@ public class winConfirmation {
 	List<Integer> lottoNumbers;
 	List<Integer> userNumbers;
 	
-	int bonus;
-	int userBonus;
+	protected int correctCount;
+	protected static String result;
 
-	int correctCount(List<Integer> lottoNumbers, List<Integer> userNumbers) {
-		return 0;
+	protected int correctCount(List<Integer> lottoNumbers, List<Integer> userNumbers) {
+		for (int index = 0; index < userNumbers.size(); index++) {
+			int userNumber = userNumbers.get(index);
+			if(lottoNumbers.contains(userNumber)) {
+				correctCount++;
+			}
+		}
+		return correctCount;
 	}
 	
-	boolean correctBonus(int bonus, int userbonus) {
-		return false;
+	protected boolean correctBonus(int bonusNumber, int userbonus) {
+		return bonusNumber == userbonus;
 	}
 }
