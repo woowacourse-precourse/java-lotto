@@ -11,6 +11,10 @@ public class Lotto {
         this.numbers = numbers;
         print_numbers(numbers);
     }
+    public int getNumByIndex(int index){
+        return this.numbers.get(index);
+    }
+
     public void print_numbers(List<Integer> numbers){
         Collections.sort(numbers);
         System.out.println(numbers);

@@ -41,12 +41,13 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
     public static void main(String[] args) {
-        Statistics statistics = new Statistics();
         int L_cnt = Lotto_start();
         List<Lotto> lottoList = Lotto_maker(L_cnt);
         int[] ans_num = jackpot();
         int bonus = getbonus();
-
+        Statistics statistics = new Statistics(lottoList,ans_num,bonus);
+        statistics.check_points();
+        statistics.print_statistic(L_cnt);
 
     }
 }
