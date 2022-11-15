@@ -26,7 +26,7 @@ public class Lotto {
     }
 
     public static boolean isBonus(Lotto lotto, Bonus bonus) {
-        return lotto.numbers.contains(bonus.getBonusNum());
+        return lotto.numbers.contains(bonus.bonusNum);
     }
 
     private void validateSize(List<Integer> numbers) {
