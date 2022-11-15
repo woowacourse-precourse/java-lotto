@@ -17,9 +17,6 @@ public class Lotto {
         List<Integer> winningNumbers = new ArrayList<>();
         String[] winningNum = numbers.split(",");
         for(String number : winningNum){
-            if(winningNumbers.contains(number)){
-                throw new IllegalArgumentException("[ERROR] 중복된 숫자가 들어왔습니다.");
-            }
             winningNumbers.add(Integer.parseInt(number));
         }
 
@@ -55,10 +52,12 @@ public class Lotto {
     }
 
     public void checkedNumber(List<Integer> winningNum){
+        List<Integer> winningNumber = new ArrayList<>();
         for(int number : winningNum){
-            if(winningNum.contains(number)){
+            if(winningNumber.contains(number)){
                 throw new IllegalArgumentException("[ERROR] 중복된 숫자가 들어왔습니다.");
             }
+            winningNumber.add(number);
         }
     }
 }
