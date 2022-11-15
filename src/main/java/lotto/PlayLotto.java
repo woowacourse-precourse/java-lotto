@@ -126,12 +126,10 @@ public class PlayLotto {
         return correctNumber.get(0) * Reward.FIFTH.getAmount();
     }
 
-    public double yield(int money, List<Integer> correctNumber) {
-        int allProfit = profit1st(correctNumber) + profit2nd(correctNumber) + profit3rd(correctNumber) + profit4th(correctNumber) + profit5th(correctNumber);
-        return Math.round(allProfit / money *10.0) / 10.0;
-    }
-
-    public void printYield(double yield) {
-        System.out.printf("총 수익률은 " + String.format("%.1f", yield) + "입니다.");
+    public double yield(Integer money, List<Integer> correctNumber) {
+        double allProfit = profit1st(correctNumber) + profit2nd(correctNumber) + profit3rd(correctNumber) + profit4th(correctNumber) + profit5th(correctNumber);
+        double yield = Math.round(((allProfit / money) * 100) * 10.0) / 10.0;
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+        return yield;
     }
 }
