@@ -1,5 +1,6 @@
 package lotto.model.machine;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -83,11 +84,16 @@ public class NumbersMatchRepository {
         if (originalMoney == 0) {
             originalMoney = 1;
         }
-        output.print(Message.YIELD, (earnedMoney.get() / originalMoney) * PERCENTAGE);
+        outputComma(output, (earnedMoney.get() / originalMoney) * PERCENTAGE);
     }
 
     public float addEarnedMoney(Integer matchCount) {
         return ticketMatchTable.get(matchCount) * Rank.getRankMoney(matchCount);
+    }
+
+    public void outputComma(Output output, float yield) {
+        DecimalFormat df = new DecimalFormat("#,##0.0");
+        output.print(Message.YIELD.getMessage(), df.format(Float.parseFloat(Float.toString(yield))));
     }
 }
 

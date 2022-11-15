@@ -7,10 +7,6 @@ public class OutputConsole implements Output {
         System.out.print(message.getMessage());
     }
 
-    @Override
-    public void print(Message yieldMsg, float yield) {
-        System.out.printf((yieldMsg.getMessage()) + "%n", yield);
-    }
 
     @Override
     public void print(Message message, Long number) {
@@ -22,14 +18,10 @@ public class OutputConsole implements Output {
         System.out.println(string);
     }
 
-    @Override
-    public void print(String string, Long number) {
-        System.out.printf(string + "%n", number); // %n -> 지워도 되나???
-    }
 
     @Override
-    public void print(Message lottoResult, Integer matchCount, float rankMoney, Long aLong) {
-
+    public void print(String yield, String format) {
+        System.out.printf(yield + "%n", format);
     }
 
 }
