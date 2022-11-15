@@ -23,7 +23,8 @@ public class UserLotto {
     public void makeLottoNumberList() throws IllegalArgumentException {
         List<Lotto> lottos=new ArrayList<>();
         for(int i=0; i< lottoCount; i++) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> randoms=Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(new ArrayList<>(randoms));
             if (!lotto.getLotto().isEmpty()) {
                 Collections.sort(lotto.getLotto());
                 lottos.add(lotto);
