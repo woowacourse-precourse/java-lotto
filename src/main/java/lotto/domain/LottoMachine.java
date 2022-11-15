@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import lotto.Constants;
@@ -11,9 +13,16 @@ public class LottoMachine {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Constants.MIN_LOTTO_NUMBER_RANGE.getValue(),
                 Constants.MAX_LOTTO_NUMBER_RANGE.getValue(), Constants.LOTTO_NUMBERS_LENGTH.getValue());
 
-        validateLottoNumber(numbers);
+        List<Integer> lottoNumbers = sortLottoNumbers(numbers);
+        validateLottoNumber(lottoNumbers);
 
-        return numbers;
+        return lottoNumbers;
+    }
+
+    private List<Integer> sortLottoNumbers(List<Integer> numbers) {
+        ArrayList<Integer> lottoNumbersCopy = new ArrayList<>(List.copyOf(numbers));
+        lottoNumbersCopy.sort(Comparator.naturalOrder());
+        return lottoNumbersCopy;
     }
 
     public void validateLottoNumber(List<Integer> numbers) {
@@ -21,7 +30,6 @@ public class LottoMachine {
         validateLottoNumbersDuplicated(numbers);
         validateLottoNumbersSorted(numbers);
         validateLottoNumbersInRange(numbers);
-
     }
 
     private void validateLottoNumbersLength(List<Integer> numbers) {
