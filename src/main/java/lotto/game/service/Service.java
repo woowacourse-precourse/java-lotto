@@ -1,40 +1,14 @@
-package lotto.game;
+package lotto.game.service;
 
 import lotto.user.Lotto;
-import lotto.user.Quantity;
 import lotto.util.Constant;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Service {
+public class Service extends Generator {
     private static final int DEFAULT_SCORE = 0;
-    private static final int PURCHASE_UNIT = 1_000;
-
-    public int generateQuantity(String purchaseAmount) {
-        return Quantity
-                .generate(purchaseAmount)
-                .calculateQuantity();
-    }
-
-    public List<Lotto> generateLottos(int quantity) {
-        List<Lotto> lottoNumbers = new ArrayList<>();
-
-        while (lottoNumbers.size() < quantity) {
-            lottoNumbers.add(Lotto.generate());
-        }
-        return lottoNumbers;
-    }
-
-    public Lotto generateDraw(String numbers) {
-        return Lotto.generate(numbers);
-    }
-
-    public int generateBonus(String number) {
-        return Integer.parseInt(number);
-    }
 
     public Map<Integer, Integer> calculateDrawScore(List<Lotto> lottos, Lotto draw) {
         Map<Integer, Integer> drawScore = new HashMap<>();
@@ -60,7 +34,7 @@ public class Service {
 
     public double calculateEarningsRate(Map<Integer, Integer> drawScore, int bonusScore, int quantity) {
         int totalPrize = calculateTotalPrize(drawScore, bonusScore);
-        return (double) totalPrize / (quantity * PURCHASE_UNIT);
+        return (double) totalPrize / (quantity * Constant.PURCHASE_UNIT);
     }
 
     private int calculateTotalPrize(Map<Integer, Integer> drawScore, int bonusScore) {
