@@ -1,5 +1,6 @@
 package lotto.service;
 
+import static lotto.LottoConstant.BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
@@ -63,12 +64,20 @@ public class LottoService {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
         List<Integer> numbers = Arrays.stream(input.split(","))
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         if (!numbers.stream().allMatch(number -> (number >= 1 && number <= 45))) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE);
         }
 
         return new Lotto(numbers);
+    }
+
+    public static int getBonusNumber(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
+        }
+
+        return Integer.parseInt(input);
     }
 }
