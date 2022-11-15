@@ -9,12 +9,9 @@ public class StringUtil {
     public static final String NO_BLANK = "";
     public static final String DELIMITER = ",";
 
-    public static String removeBlank(String data) {
-        return data.replace(BLANK, NO_BLANK);
-    }
-
     public static List <Integer> parseToIntegerList(String data) {
-        return Arrays.stream(data.split(DELIMITER)).map(Integer::parseInt).collect(Collectors.toList());
+        return Arrays.stream(data.split(DELIMITER))
+                .map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public static int parseToInt(String data) {
