@@ -262,7 +262,6 @@ public class Application {
             purchaseLottos();
             getWinningNumbers();
             getBonusNumber();
-
             getComparisonResult();
             printLottoResults();
             printEarningsRate();
