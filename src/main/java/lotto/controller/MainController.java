@@ -13,7 +13,7 @@ public class MainController {
 
 	public void run() {
 		try {
-			int purchaseAmount = inputView.createPurchaseAmount();
+			int purchaseAmount = inputView.purchaseAmount();
 			Wallet wallet = new LottoMachine(purchaseAmount).buyLotto();
 			LottoCompany lottoCompany = new LottoCompany(inputView.winningNumber(), inputView.bonusNumber());
 			PrizeChecker prizeChecker;

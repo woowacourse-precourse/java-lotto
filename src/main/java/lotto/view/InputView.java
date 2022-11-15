@@ -9,6 +9,7 @@ public class InputView {
 
 	private static final String ERROR_INPUT_NULL = "[ERROR] 입력이 없습니다.";
 	private static final String ERROR_INPUT_INT = "[ERROR] 숫자만 입력하세요";
+	private static final String ERROR_INPUT_FORMAT = "[ERROR] ','와 숫자만 입력 가능합니다";
 	static InputView instance;
 
 
@@ -23,9 +24,10 @@ public class InputView {
 
 	public List<Integer> winningNumber() {
 		String winningNumberInput = Console.readLine();
-
-		validateNull(ERROR_INPUT_NULL);
 		List<Integer> lotto = new ArrayList<>();
+
+		validateNull(winningNumberInput);
+		validateInputFormat(winningNumberInput);
 		for (String number : winningNumberInput.split(",")) {
 			lotto.add(Integer.parseInt(number));
 		}
@@ -34,24 +36,35 @@ public class InputView {
 
 	public int bonusNumber() {
 		String bonusNumberInput = Console.readLine();
-		validateNull(ERROR_INPUT_NULL);
+		validateNull(bonusNumberInput);
+		validateNumber(bonusNumberInput);
 
 		return Integer.parseInt(bonusNumberInput);
 	}
-	public int createPurchaseAmount() {
+	public int purchaseAmount() {
 		String purchaseAmountInput = Console.readLine();
 		validateNull(purchaseAmountInput);
-		validatePurchaseAmount(purchaseAmountInput);
+		validateNumber(purchaseAmountInput);
 
 		return Integer.parseInt(purchaseAmountInput);
 	}
 
 	private void validateNull(String input) {
 		if(input.isEmpty()) {
-			System.out.println(ERROR_INPUT_NULL);
+			throw new IllegalArgumentException(ERROR_INPUT_NULL);
 		}
 	}
-	private void validatePurchaseAmount(String input) {
+	private void validateInputFormat(String input) {
+		if(!(isCorrectFormat(input))) {
+			throw new IllegalArgumentException(ERROR_INPUT_FORMAT);
+		}
+	}
+
+	private boolean isCorrectFormat(String input) {
+		return input.chars().allMatch(c -> Character.isDigit(c) || c == ',');
+	}
+
+	private void validateNumber(String input) {
 		if (!(isAllDigit(input))) {
 			throw new IllegalArgumentException(ERROR_INPUT_INT);
 		}
