@@ -15,16 +15,16 @@ class LottoGameTest {
     void getLottoAmountAsMoney() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         int money = 14000;
 
-        LottoGame lottoGame = new LottoGame(new Money(money));
+        LottoGame lottoGame = new LottoGame(money);
 
         Field field = lottoGame.getClass().getDeclaredField("amount");
         field.setAccessible(true);
 
         int lottoAmount = (int) field.get(lottoGame);
 
-        Method method = lottoGame.getClass().getDeclaredMethod("getLottoAmount", int.class);
+        Method method = lottoGame.getClass().getDeclaredMethod("getLottoAmount", Money.class);
         method.setAccessible(true);
-        method.invoke(lottoGame, money);
+        method.invoke(lottoGame, new Money(money));
 
         assertThat(lottoAmount).isEqualTo(14);
     }
@@ -32,7 +32,8 @@ class LottoGameTest {
     @Test
     @DisplayName("로또 구입 금액만큼 로또를 생성하면 성공이다.")
     void createLottosAsLottoAmount() throws NoSuchFieldException, IllegalAccessException {
-        Money money = new Money(14000);
+        int money = 14000;
+
         LottoGame lottoGame = new LottoGame(money);
 
         Field field = lottoGame.getClass().getDeclaredField("lottos");
