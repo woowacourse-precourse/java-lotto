@@ -69,6 +69,12 @@
     - [x] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다. -  `createLottoByDuplicateNumber`
     - [x] 로또 번호에 범위를 벗어나는 숫자가 있으면 예외가 발생한다. -  `createLottoByOutOfRangeNumber`
 
+  - [x] WinningNumbers
+
+    - [x] 로또 번호의 예외를 모두 포함한다.
+    - [x] 보너스 번호에 중복된 숫자가 있으면 예외가 발생한다. - `createWinningNumbersByDuplicateNumber`
+    - [x] 보너스 번호에 범위를 벗어나는 숫자가 있으면 예외가 발생한다. - `createWinningNumbersByOutOfRangeNumber`
+
 - [ ] 통합 테스트
   - [ ] TBD
 
