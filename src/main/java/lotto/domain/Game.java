@@ -34,6 +34,15 @@ public class Game {
         this.winningResults = new LottoWinningResult();
     }
 
+    public void computeWinningResult() {
+        for (int index = 0; index < lottoCount; index++) {
+            Lotto lottoNumber = lottoNumbers.get(index);
+            LottoRank rank = compareLottoNumberAndWinningNumber(lottoNumber);
+            winningResults.updateWinningResult(rank);
+        }
+    }
+
+
     public LottoRank compareLottoNumberAndWinningNumber(Lotto lottoNumber) {
         int totalCorrect = 0;
         List<Integer> numbers = lottoNumber.getLottoNumbers();
