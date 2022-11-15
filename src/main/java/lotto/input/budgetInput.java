@@ -2,10 +2,12 @@ package lotto.input;
 
 import static lotto.util.validator.*;
 
+import java.util.NoSuchElementException;
+
 import camp.nextstep.edu.missionutils.Console;
+import lotto.util.errorMessage;
 
 public class budgetInput {
-	private static final String ERROR_MESSAGE = "[ERROR]";
 	public int numberOfGame;
 	public budgetInput(){
 		try {
@@ -14,8 +16,8 @@ public class budgetInput {
 			validateBudget(budget);
 			this.numberOfGame = budget / 1000;
 		}catch (NumberFormatException e){
-			System.out.println(ERROR_MESSAGE);
-			throw new IllegalArgumentException(ERROR_MESSAGE);
+			System.out.println(errorMessage.ONLY_INPUT_INTEGER.getValue());
+			throw new NoSuchElementException(errorMessage.ONLY_INPUT_INTEGER.getValue());
 		}
 	}
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lotto.Lotto;
+
 public class randomNumberGenerate {
 	public ArrayList<List<Integer>> numbers;
 		public randomNumberGenerate(int gameCount){
