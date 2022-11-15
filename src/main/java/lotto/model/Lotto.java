@@ -11,10 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkOverlap(numbers);
-        List<Integer> sortedNumbers = new ArrayList<>();
-        for (Integer number : numbers) {
-            sortedNumbers.add(number);
-        }
+        List<Integer> sortedNumbers = deepCopy(numbers);
         sortedNumbers.sort(Comparator.naturalOrder());
         this.numbers = sortedNumbers;
     }
@@ -36,4 +33,11 @@ public class Lotto {
         validate(distinctNumbers);
     }
 
+    public List<Integer> deepCopy(List<Integer> numbers) {
+        List<Integer> copyNumbers = new ArrayList<>();
+        for (Integer number : numbers) {
+            copyNumbers.add(number);
+        }
+        return copyNumbers;
+    }
 }
