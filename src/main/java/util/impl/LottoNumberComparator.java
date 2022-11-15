@@ -22,7 +22,7 @@ public class LottoNumberComparator implements Comparator {
         return count-2;
     }
 
-    public int comparetoTarget(List<Integer> standard, List<Integer> target) {
+    private int comparetoTarget(List<Integer> standard, List<Integer> target) {
         int count = 0;
         for(int i = 0 ; i < MAX_LOTTO_COUNT ; i++) {
             if(target.contains(standard.get(i))) {
