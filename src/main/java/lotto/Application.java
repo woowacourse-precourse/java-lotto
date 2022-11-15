@@ -23,16 +23,6 @@ public class Application {
         return existentTicket;
     }
 
-    static List<Integer> generateRandomLottoTicket() {
-        List<Integer> LottoTicket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return sortRandomLottoTicket(LottoTicket);
-    }
-
-    static List<Integer> sortRandomLottoTicket(List<Integer> LottoTicket) {
-        Collections.sort(LottoTicket);
-        return LottoTicket;
-    }
-
     static Map<Integer, Integer> checkTotalRank(Set<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber) {
         Map<Integer, Integer> totalRank = new HashMap<>();
         initializeTotalRank(totalRank);
