@@ -39,8 +39,15 @@ public class Lotto {
     }
 
     public int getMatchCountWithLotto(List<Integer> purchase) {
-        return (int) purchase.stream()
+        int cnt = (int) purchase.stream()
                 .filter(number -> numbers.contains(number))
                 .count();
+        if (cnt == LottoConst.LOTTO_LENGTH) {
+            cnt += 1;
+        }
+        if (cnt == LottoConst.LOTTO_LENGTH - 1 && purchase.contains(numbers.get(LottoConst.LOTTO_LENGTH))) {
+            cnt += 1;
+        }
+        return cnt;
     }
 }
