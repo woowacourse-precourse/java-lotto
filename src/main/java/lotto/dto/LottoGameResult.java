@@ -17,10 +17,6 @@ public class LottoGameResult {
         this.profitRatio = profitRatio;
     }
 
-    public List<LottoRanking> getLottoRankings() {
-        return lottoRankings;
-    }
-
     public Map<LottoRanking, Integer> getLottoRankingCount() {
         return lottoRankingCount;
     }
