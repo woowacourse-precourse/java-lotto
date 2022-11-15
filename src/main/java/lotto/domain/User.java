@@ -102,6 +102,9 @@ public class User {
     }
 
     private double getProfitRate(long profit) {
+        if (profit == 0L) {
+            return 0;
+        }
         return profit * 100 / (double) money;
     }
 }
