@@ -20,14 +20,15 @@ public enum MatchMoney {
         this.money = money;
     }
 
-    public static lotto.MatchMoney Matching(int count) {
+    public static MatchMoney Matching(int count) {
         return Arrays.stream((values()))
                 .filter(MatchMoney -> MatchMoney.getMatchCount() == count)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException());
     }
-    public lotto.MatchMoney countFive(boolean bonus) {
-        lotto.MatchMoney matchMoney;
+
+    public MatchMoney countFive(boolean bonus) {
+        MatchMoney matchMoney;
         if (bonus) {
             return matchMoney = TWO;
         }
