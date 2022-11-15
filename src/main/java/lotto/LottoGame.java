@@ -1,17 +1,20 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class LottoGame {
 
     private final Message message = new Message();
-    private final ProcessInputAndVariable processInput = new ProcessInputAndVariable();
+    private final ProcessInputAndVariable processInputAndVariable = new ProcessInputAndVariable();
+    private final ManagementLotto managementLotto = new ManagementLotto();
 
     public void start() {
         try {
             Integer purchasePrice = inputPurchasePrice();
-        } catch (IllegalArgumentException e) {
-            //
+            List<Lotto> lottos = purchaseLotto(purchasePrice);
+        } catch (IllegalArgumentException exception) {
+            message.printMsg(exception.getMessage());
         }
     }
 
@@ -19,6 +22,14 @@ public class LottoGame {
         message.printPurchaseMsg();
         String price = Console.readLine();
 
-        return processInput.convertToInteger(price);
+        return processInputAndVariable.convertToInteger(price);
+    }
+
+    private List<Lotto> purchaseLotto(Integer price) {
+        Integer lottoAmount = processInputAndVariable.calculateLottoAmount(price);
+        List<Lotto> lottos = managementLotto.purchase(lottoAmount);
+        message.printPurchaseLotto(lottos);
+
+        return lottos;
     }
 }
