@@ -9,6 +9,7 @@ import lotto.ui.UserInterFace;
 public class Application {
     private static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.\n";
     private static final String INPUT_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.\n";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.\n";
     
     public static void main(String[] args) {
         try {
@@ -30,6 +31,7 @@ public class Application {
         userInterFace.printLottos(buyer.getLottos());
         userInterFace.print(INPUT_WINNING_NUMBERS_MESSAGE);
         List<Integer> winningNumbers = userInterFace.inputWinningNumbers();
+        userInterFace.print(INPUT_BONUS_NUMBER_MESSAGE);
         int bonus = userInterFace.inputValidBonus(winningNumbers);
         userInterFace.printResult(buyer, winningNumbers, bonus);
     }
