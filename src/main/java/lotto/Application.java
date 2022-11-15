@@ -80,6 +80,10 @@ public class Application {
         }
     }
 
+    public static void printEarnPriceRate(Double EarnPriceRate) {
+        System.out.println("총 수익률은 " + String.format("%.1f", EarnPriceRate) + "%입니다.");
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int price;
@@ -103,5 +107,8 @@ public class Application {
 
         List<Rank> statistics = lottoGame.getStatistics();
         printStatistics(statistics);
+
+        Double EarnPriceRate = lottoGame.getEarnPriceRate();
+        printEarnPriceRate(EarnPriceRate);
     }
 }
