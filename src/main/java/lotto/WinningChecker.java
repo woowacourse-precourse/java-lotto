@@ -21,13 +21,30 @@ public class WinningChecker {
         winningNumbers = winningNumber.getWinningNumbers();
         bonusNumber = winningNumber.getBonusNumber();
     }
-
     private void initWinningChart() {
         winningChart.put(Message.RANKFIRST, 0);
         winningChart.put(Message.RANKSECOND, 0);
         winningChart.put(Message.RANKTHIRD, 0);
         winningChart.put(Message.RANKFOURTH, 0);
         winningChart.put(Message.RANKFIFTH, 0);
+    }
+
+    private int checkNumbers(List<Integer> lotto) {
+        int sameNumberCount = 0;
+
+        for (int num : winningNumbers) {
+            if (lotto.contains(num)) {
+                sameNumberCount++;
+            }
+        }
+        if (getBonus(sameNumberCount, lotto)) {
+            sameNumberCount = Message.RANKSECOND;
+        }
+        return sameNumberCount;
+    }
+
+    private boolean getBonus(int sameNumberCount, List<Integer> lotto) {
+        return sameNumberCount == Message.RANKTHIRD && lotto.contains(bonusNumber);
     }
 
     public Map<Integer, Integer> getWinningChart() {
