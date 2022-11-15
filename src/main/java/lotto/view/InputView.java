@@ -16,8 +16,12 @@ public class InputView {
     public static int readInputMoney() {
 
         System.out.println(READ_INPUT_MESSAGE);
-        return convertStrToInt(Console.readLine());
-
+        try {
+            return convertStrToInt(Console.readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw new NoSuchElementException();
+        }
     }
 
     public static List<Integer> readWinningNumbers() {
