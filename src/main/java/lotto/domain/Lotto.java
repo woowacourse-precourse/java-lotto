@@ -1,11 +1,13 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
-    public static final String NUMBER_SEPARATOR = ",";
+    public static final String NUMBER_SEPARATOR = ", ";
     private static final int LOTTO_SIZE = 6;
     private final List<Integer> numbers;
 
@@ -16,14 +18,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 로또는 6개의 숫자로 구성되어야 합니다.");
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != LOTTO_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또는 중복된 숫자로 구성될 수 없습니다.");
         }
     }
 
@@ -48,8 +50,9 @@ public class Lotto {
 
     @Override
     public String toString() {
-        numbers.sort(Comparator.naturalOrder());
-        List<String> stringNumbers = numbers.stream().map(Object::toString).collect(Collectors.toList());
+        List<Integer> numbersForSort = new ArrayList(numbers);
+        Collections.sort(numbersForSort);
+        List<String> stringNumbers = numbersForSort.stream().map(Object::toString).collect(Collectors.toList());
         return String.join(NUMBER_SEPARATOR, stringNumbers);
     }
 }
