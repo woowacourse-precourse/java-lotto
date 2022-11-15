@@ -74,7 +74,7 @@ public class Statistics {
         int bonusNumber = 0;
         do {
             bonusNumber = Randoms.pickNumberInRange(1, 45);
-        } while (!IllegalArgument.isRedundancyWithNumbers(bonusNumber, numbers));
+        } while (IllegalArgument.isRedundancyWithNumbers(bonusNumber, numbers));
         return bonusNumber;
     }
 
