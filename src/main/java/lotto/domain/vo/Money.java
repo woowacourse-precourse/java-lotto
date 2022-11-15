@@ -1,6 +1,6 @@
 package lotto.domain.vo;
 
-import lotto.domain.constants.ErrorCode;
+import static lotto.domain.constants.ErrorCode.NOT_NEGATIVE_NUMBER;
 
 public class Money {
 
@@ -17,7 +17,7 @@ public class Money {
 
     private void validateMoney(int input) {
         if (input < 0) {
-            throw ErrorCode.NOT_NEGATIVE_NUMBER.getException();
+            throw NOT_NEGATIVE_NUMBER.getException();
         }
     }
 }

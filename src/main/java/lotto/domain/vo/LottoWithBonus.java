@@ -1,13 +1,16 @@
 package lotto.domain.vo;
 
+import static lotto.domain.constants.ErrorCode.NOT_CONTAINS_IN_LOTTO;
+import static lotto.domain.constants.ErrorCode.NOT_IN_RANGE;
+import static lotto.domain.constants.LottoConstants.LOTTO_NUMBER_END;
+import static lotto.domain.constants.LottoConstants.LOTTO_NUMBER_START;
+
 import java.util.List;
-import lotto.domain.constants.ErrorCode;
-import lotto.domain.constants.LottoConstants;
 
 public class LottoWithBonus {
 
-    private Lotto lotto;
-    private int bonusNumber;
+    private final Lotto lotto;
+    private final int bonusNumber;
 
     public LottoWithBonus(Lotto lotto, int bonusNumber) {
         validateContains(lotto, bonusNumber);
@@ -28,14 +31,13 @@ public class LottoWithBonus {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
 
         if (lottoNumbers.contains(bonusNumber)) {
-            throw ErrorCode.NOT_CONTAINS_IN_LOTTO.getException();
+            throw NOT_CONTAINS_IN_LOTTO.getException();
         }
     }
 
     private void validateRange(int bonusNumber) {
-        if (bonusNumber < LottoConstants.LOTTO_NUMBER_START
-                || bonusNumber > LottoConstants.LOTTO_NUMBER_END) {
-            throw ErrorCode.NOT_IN_RANGE.getException();
+        if (bonusNumber < LOTTO_NUMBER_START || bonusNumber > LOTTO_NUMBER_END) {
+            throw NOT_IN_RANGE.getException();
         }
     }
 }
