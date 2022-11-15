@@ -11,7 +11,7 @@ public class WinningNumbers {
         List<Integer>numbers = convertInputToNumbers(input);
         this.numbers = new Lotto(numbers).getNumbers();
     }
-    public static List<Integer> convertInputToNumbers(String input) {
+    private List<Integer> convertInputToNumbers(String input) {
         Error error = new Error();
         List<Integer> result = new ArrayList<>();
         try {
