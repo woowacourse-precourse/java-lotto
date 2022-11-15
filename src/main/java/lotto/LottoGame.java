@@ -6,8 +6,12 @@ public class LottoGame {
     private final GameController gameController = new GameController();
 
     public void playGame() {
-        gameController.buyLotto();
-        gameController.checkWinningNumbers();
-        gameController.getResult();
+        try {
+            gameController.buyLotto();
+            gameController.checkWinningNumbers();
+            gameController.getResult();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 }
