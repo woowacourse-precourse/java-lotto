@@ -19,7 +19,7 @@ public class BuyerTest {
         Buyer testBuyer = new Buyer();
         InputStream in = new ByteArrayInputStream(testBuyerMoney.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
-        testBuyer.inputPurchaseMoney();
+        testBuyer.buy();
 
         // then
         assertThat(testBuyer.getHaveCount()).isEqualTo(expected);

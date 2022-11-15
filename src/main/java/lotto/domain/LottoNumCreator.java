@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoNumCreator {
@@ -12,6 +13,7 @@ public class LottoNumCreator {
     }
 
     public static List<Integer> getLottoNumbers(){
+        createUniqueNumbers();
         return lottoNumbers;
     }
 }
