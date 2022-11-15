@@ -1,31 +1,40 @@
 package lotto.controller;
 
-import lotto.Enum.Ranking;
 import lotto.domain.LottoAnswer;
 import lotto.domain.User;
-import lotto.service.CalProfitPercent;
+import lotto.domain.vo.BuyLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.service.WinningCheck;
 
 import java.util.List;
-import java.util.Map;
 
 public class LottoController {
-    User user;
-    LottoAnswer lottoAnswer;
-    public void run() {
-        OutputView.outputEnterMoney();
-        user = new User(InputView.convertToNumber());
-        OutputView.outputPurchaseSuccess(user.getUserLottos());
-        OutputView.outputEnterLottoAnswer();
-        List<Integer> numbers = InputView.convertToList();
-        OutputView.outputEnterBonusNumber();
-        lottoAnswer = new LottoAnswer(numbers, InputView.convertToNumber());
-        WinningCheck winningCheck = new WinningCheck();
-        CalProfitPercent calProfitPercent = new CalProfitPercent();
-        Map<Ranking, Integer> winningResults =  winningCheck.winningCheck(
-                user.getUserLottos(), lottoAnswer.getNumbers(), lottoAnswer.getBonusNumber());
-        OutputView.outputWinningResults(winningResults, calProfitPercent.calProfitPercent(winningResults, user.getMoney()));
+    InputView inputView;
+    OutputView outputView;
+
+    public LottoController() {
+        outputView = new OutputView();
+        inputView = new InputView();
     }
+
+    public void run() {
+        BuyLotto buyLotto = buyLottoTicket();
+        User user = new User(buyLotto.lottoTicketsCount());
+        LottoAnswer lottoAnswer = outputSuccessInputLottoAnswer(user);
+
+        WinningCheck winningCheck = new WinningCheck(user.getUserLottos(), lottoAnswer);
+        outputView.outputWinningResults(winningCheck.getLottoResult(), winningCheck.calculate(buyLotto.getMoney()));
+    }
+
+    private BuyLotto buyLottoTicket() {
+        return new BuyLotto(outputView.outputEnterMoney());
+    }
+
+    private LottoAnswer outputSuccessInputLottoAnswer(User user) {
+        outputView.outputPurchaseSuccess(user.getUserLottos());
+        List<Integer> numbers = outputView.outputEnterLottoAnswer();
+        return new LottoAnswer(numbers, outputView.outputEnterBonusNumber());
+    }
+
 }

@@ -10,7 +10,7 @@ public enum OutputMessage {
     OUTPUT_WINNING_RESULTS_DESCRIPTION("%s - %d개"),
     OUTPUT_PROFIT_PERCENT_IS("총 수익률은 %.1f%%입니다.");
 
-    private String output;
+    final private String output;
 
     public String getOutput() {
         return output;

@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.Enum.Ranking;
+import lotto.enums.Ranking;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAnswer;
 

@@ -1,14 +1,12 @@
 package lotto.domain;
 
+import lotto.enums.ErrorMessage;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private static final String OUTPUT_ERROR = "[ERROR] ";
-    private static final String OUTPUT_ERROR_NO_LENGTH = "6개의 숫자를 입력해주세요.";
-    private static final String OUTPUT_ERROR_OUT_RANGE = "1부터 45까지 숫자만 입력하실 수 있습니다.";
-    private static final String OUTPUT_ERROR_OVERLAP_NUMBER = "같은 숫자를 입력하셨습니다.";
     public static final int RANGE_MIN = 1;
     public static final int RANGE_MAX = 45;
     public static final int LOTTO_SIZE = 6;
@@ -21,7 +19,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException(OUTPUT_ERROR + OUTPUT_ERROR_NO_LENGTH);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_LENGTH_NUMBER.getErrorMessage());
         }
         Set<Integer> overlap = new HashSet<>();
         for (int number : numbers) {
@@ -36,13 +34,13 @@ public class Lotto {
 
     private void numberMaxMinCheck(int number) {
         if (number < RANGE_MIN || number > RANGE_MAX) {
-            throw new IllegalArgumentException(OUTPUT_ERROR + OUTPUT_ERROR_OUT_RANGE);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_RANGE.getErrorMessage());
         }
     }
 
     private void numberOverlapCheck(Set<Integer> overlap, int number) {
         if (overlap.contains(number)) {
-            throw new IllegalArgumentException(OUTPUT_ERROR + OUTPUT_ERROR_OVERLAP_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_SAME_NUMBER.getErrorMessage());
         }
         overlap.add(number);
     }
