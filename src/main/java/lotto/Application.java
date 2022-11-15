@@ -13,19 +13,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Integer money = ConsoleIn.getMoney();
-
             List<Lotto> randomLottos = LottoMachine.getRandomLottos(money);
 
             ConsoleOut.printLottos(randomLottos);
 
             List<Integer> answerNumbers = ConsoleIn.getLottoNumbers();
-
             Integer bonusNumber = ConsoleIn.getBonusNumber(answerNumbers);
 
             Lotto answerLotto = Lotto.numberOf(answerNumbers);
-
             HashMap<Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
-
             Float earningRate = Calculator.getEarningRate(result, money);
 
             ConsoleOut.printResult(result);

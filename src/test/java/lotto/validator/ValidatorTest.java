@@ -1,7 +1,6 @@
-package lotto.console.validator;
+package lotto.validator;
 
 import lotto.condition.Condition;
-import lotto.validator.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
