@@ -6,6 +6,8 @@ import lotto.application.input.purchasemoney.PurchaseMoneyInput;
 import lotto.application.input.purchasemoney.PurchaseMoneyInputImpl;
 import lotto.application.input.winningnumber.WinningNumberInput;
 import lotto.application.input.winningnumber.WinningNumberInputImpl;
+import lotto.application.output.inputguideprinter.InputGuidePrinter;
+import lotto.application.output.inputguideprinter.InputGuidePrinterImpl;
 import lotto.application.output.lottoprinter.LottoPrinter;
 import lotto.application.output.lottoprinter.LottoPrinterImpl;
 import lotto.application.output.statisticprinter.WinningStatisticPrinter;
@@ -29,16 +31,20 @@ public class ContextFactory {
         return new InputAgentImpl();
     }
 
+    public InputGuidePrinter getInputGuidePrinter() {
+        return new InputGuidePrinterImpl();
+    }
+
     public PurchaseMoneyInput getPurchaseMoneyInput() {
-        return new PurchaseMoneyInputImpl(getInputAgent());
+        return new PurchaseMoneyInputImpl(getInputAgent(), getInputGuidePrinter());
     }
 
     public WinningNumberInput getWinningNumberInput() {
-        return new WinningNumberInputImpl(getInputAgent());
+        return new WinningNumberInputImpl(getInputAgent(), getInputGuidePrinter());
     }
 
     public BonusNumberInput getBonusNumberInput() {
-        return new BonusNumberInputImpl(getInputAgent());
+        return new BonusNumberInputImpl(getInputAgent(), getInputGuidePrinter());
     }
 
     public LottoNumberGenerator getLottoNumberGenerator() {
