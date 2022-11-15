@@ -19,7 +19,6 @@ public class Bonus {
     }
 
     private void validate(int bonusNumber, Lotto winningLotto) {
-        validateNumberRange(bonusNumber);
         validateBonusNumber(bonusNumber, winningLotto);
     }
 
