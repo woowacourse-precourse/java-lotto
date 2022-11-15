@@ -85,6 +85,16 @@ public class Application {
         return lottoRankInfo;
     }
 
+    static void printResult(HashMap<ranking, Integer> lottoRankInfo){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        System.out.println("3개 일치 (5,000원) - " + lottoRankInfo.get(ranking.FIFTH) + "개");
+        System.out.println("4개 일치 (50,000원) - " + lottoRankInfo.get(ranking.FOURTH) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + lottoRankInfo.get(ranking.THIRD) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoRankInfo.get(ranking.SECOND) + "개");
+        System.out.println("6개 일치, 보너스 볼 일치 (2,000,000,000원) - " + lottoRankInfo.get(ranking.FIRST) + "개");
+    }
 
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
