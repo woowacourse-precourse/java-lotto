@@ -9,22 +9,22 @@ public class LottoConsoleIo {
     }
 
     static void printNoOfLotto(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+        System.out.println("\n"+lottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
 
     static void printRequestWin() {
-        System.out.println("당첨 번호를 입력해주세요.");
+        System.out.println("\n당첨 번호를 입력해주세요.");
     }
 
     static void printRequestBonus() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
     }
 
     static void printResultStatistics(List<Integer> result) {
-        System.out.println("당첨 통계\n---");
+        System.out.println("\n당첨 통계\n---");
         System.out.println("3개 일치 (5,000원) - " + result.get(0) + "개\n" +
                 "4개 일치 (50,000원) - " + result.get(1) + "개\n" +
                 "5개 일치 (1,500,000원) - " + result.get(2) + "개\n" +
