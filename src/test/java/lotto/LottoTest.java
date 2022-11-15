@@ -51,7 +51,7 @@ class LottoTest {
         LottoRaffler raffler = new LottoRaffler(new Integer[]{1,2,3,4,5,6},7);
         List<Lotto> lottos = new ArrayList<>();
         lottos.add(lotto);
-        assertThat(raffler.raffle(lottos)).isEqualTo(Rank.FOUR);
+        assertThat(raffler.raffle(lottos).get(0)).isEqualTo(Rank.FOUR);
     }
 
 }
