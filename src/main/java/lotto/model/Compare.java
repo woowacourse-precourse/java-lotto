@@ -42,8 +42,9 @@ public class Compare {
 
     private void validate(List<Integer> lottoNumbers, int bonusNumber) {
         validateLength(lottoNumbers);
-        validateRange(lottoNumbers);
+        validateRange(lottoNumbers, bonusNumber);
         validateDuplication(lottoNumbers);
+        validateDuplicationInBonus(lottoNumbers, bonusNumber);
     }
 
     private void validateLength(List<Integer> lottoNumbers) {
@@ -52,11 +53,15 @@ public class Compare {
         }
     }
 
-    private void validateRange(List<Integer> lottoNumbers) {
+    private void validateRange(List<Integer> lottoNumbers, int bonusNumber) {
         for (Integer lottoNumber: lottoNumbers) {
             if (lottoNumber < 1 || lottoNumber > 45) {
                 throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBER_RANGE.getExceptionMessage());
             }
+        }
+
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(Exception.INVALID_BONUS_NUMBER_RANGE.getExceptionMessage());
         }
     }
 
@@ -70,4 +75,9 @@ public class Compare {
         }
     }
 
+    private void validateDuplicationInBonus(List<Integer> lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(Exception.INVALID_BONUS_NUMBER_DUPLICATION.getExceptionMessage());
+        }
+    }
 }
