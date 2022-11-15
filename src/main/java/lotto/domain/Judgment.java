@@ -14,22 +14,26 @@ public class Judgment {
 
     public RankCounter calculateRank() {
         this.rankCounter = new RankCounter();
-        drawLotto();
+        drawAllLotto();
         return rankCounter;
+    }
+
+    private void drawAllLotto() {
+        for (int indexLotto = 0; indexLotto < user.getLottoCount(); indexLotto++) {
+            Rank rank = drawLotto(indexLotto);
+            rankCounter.addRank(rank);
+        }
+    }
+
+    private Rank drawLotto(int indexLotto) {
+        Lotto lotto = user.findLotto(indexLotto);
+        return winningNumbers.rankingLotto(lotto);
     }
 
     public double calculateYield() {
         double investmentMoney = (double) user.getGameMoney();
         double totalPrizeMoney = (double) calculateTotalPrizeMoney();
         return totalPrizeMoney / investmentMoney;
-    }
-
-    private void drawLotto() {
-        for (int indexLotto = 0; indexLotto < user.getLottoCount(); indexLotto++) {
-            Lotto lotto = user.findLotto(indexLotto);
-            Rank rank = winningNumbers.rankingLotto(lotto);
-            rankCounter.addRank(rank);
-        }
     }
 
     private long calculateTotalPrizeMoney() {
