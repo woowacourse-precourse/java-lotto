@@ -40,7 +40,7 @@ public class LottoService {
 
     public List<Lotto> createUserLotto(Integer numberOfLotto) {
         List<Lotto> userLottoGroup = new ArrayList<>();
-        for (int i = NumberStatus.ZERO.getNumber(); i < numberOfLotto; i++) {
+        for (int i = BoundaryStatus.START_NUMBER.getNumber(); i < numberOfLotto; i++) {
             Lotto userLottoPiece = RandomUtils.createRandomUserLotto();
             userLottoGroup.add(userLottoPiece);
         }

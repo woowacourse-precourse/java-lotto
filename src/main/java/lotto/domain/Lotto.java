@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.status.NumberStatus;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,7 +16,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != NumberStatus.TOTAL_NUMBER_OF_LOTTO.getNumber()) {
             throw new IllegalArgumentException();
         }
     }
