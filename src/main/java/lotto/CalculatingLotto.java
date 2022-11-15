@@ -3,9 +3,19 @@ package lotto;
 import java.util.List;
 
 public class CalculatingLotto {
+    private static final int LOTTONUMCOUNT=6;
 
     public int calculateLottoRank(List<Integer> winningLotto, int bonus, List<Integer> oneLotto){
-        return 0;
+        int sameNumCount=0;
+        for(int index1=0;index1<LOTTONUMCOUNT;index1++){
+            for(int index2=0;index2<LOTTONUMCOUNT;index2++){
+                sameNumCount+=findSameNumber(winningLotto.get(index1),oneLotto.get(index2));
+            }
+        }
+        boolean bonusCount=checkBonus(bonus, oneLotto);
+
+        int rank=getLottoRank(sameNumCount,bonusCount);
+        return rank;
     }
 
     public List<Integer> calculateAllLotto(List<Integer> winningLotto, int bonus, List<List<Integer>> allLotto){
