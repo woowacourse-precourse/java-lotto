@@ -24,7 +24,7 @@ public class View {
         System.out.print(MESSAGE_WINNINGNUMBERS_INPUT_FORMAT);
         Game.winningNumbers_Input = Console.readLine();
 
-        if(Game.winningNumbers_Input.length()==EXACT_FORMAT) throw new IllegalArgumentException();
+        if(Game.winningNumbers_Input.length()!=EXACT_FORMAT) throw new IllegalArgumentException();
     }
 
     public static boolean read_buyingLottoAmount() {
