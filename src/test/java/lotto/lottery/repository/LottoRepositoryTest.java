@@ -1,10 +1,9 @@
-package lotto.repository;
+package lotto.lottery.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import lotto.lottery.domain.Lotto;
-import lotto.lottery.repository.LottoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package lotto.user.validate;
 
 import static lotto.user.validate.ValidateUser.validateDivideByUnit;
-import static lotto.user.validate.ValidateUser.validateOnlyNumber;
+import static lotto.user.validate.ValidateUser.validateMoneyOnlyNumber;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ class ValidateUserTest {
     void user_input_word() {
         try {
             String input = "a";
-            validateOnlyNumber(input);
+            validateMoneyOnlyNumber(input);
             fail();
         } catch (IllegalArgumentException e) {
         }

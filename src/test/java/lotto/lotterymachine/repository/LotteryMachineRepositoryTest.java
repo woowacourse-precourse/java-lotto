@@ -1,7 +1,6 @@
 package lotto.lotterymachine.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import lotto.lotterymachine.domain.LotteryMachine;
 import org.junit.jupiter.api.Test;
