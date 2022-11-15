@@ -8,7 +8,7 @@ import lotto.constant.WinningRating;
 public class LottoComparator {
 	private final WinningNumbers winningNumbers;
 	private final BonusNumber bonusNumber;
-	private WinningRating winningRating = WinningRating.MISS;
+	private WinningRating winningRating;
 
 	LottoComparator(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.winningNumbers = winningNumbers;
@@ -16,6 +16,7 @@ public class LottoComparator {
 	}
 
 	public void compare(Lotto lotto) {
+		winningRating = WinningRating.MISS;
 		boolean hasBonusNumber = checkHavingBonusNumber(lotto);
 		int countOfMatchedNumber = calculateCountOfMatchedNumber(lotto.getNumbers());
 		rateWinning(countOfMatchedNumber, hasBonusNumber);
