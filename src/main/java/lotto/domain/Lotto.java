@@ -44,7 +44,7 @@ public class Lotto {
         int awardNumber;
         while (i<numbers.size() && j<awardLotto.getNumbers().size()) {
             inputNumber = numbers.get(i);
-            awardNumber = awardLotto.getNumbers().get(i);
+            awardNumber = awardLotto.getNumbers().get(j);
             if (inputNumber == awardNumber) {
                 correct++;
                 i++;

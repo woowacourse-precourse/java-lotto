@@ -7,7 +7,6 @@ import lotto.domain.LottoProperties;
 import java.io.IOException;
 import java.util.List;
 
-import static lotto.view.OutputLotto.check;
 import static lotto.view.OutputLotto.printResult;
 
 

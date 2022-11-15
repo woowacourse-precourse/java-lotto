@@ -9,8 +9,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class OutputLotto{
-    public static final String message = "[ERROR]";
-    private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     public static void printResult(GameSet gameSet) throws IOException {
         printPrefix();
         printGameCount(gameSet);

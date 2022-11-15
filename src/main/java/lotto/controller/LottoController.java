@@ -5,7 +5,6 @@ import lotto.service.LottoServiceImpl;
 
 import java.io.IOException;
 
-import static lotto.view.OutputLotto.check;
 public class LottoController {
     private LottoService lottoService = new LottoServiceImpl();
     public LottoController(){
@@ -14,7 +13,7 @@ public class LottoController {
         try {
             lottoService.play();
         }catch (IOException e){
-
+            System.out.println("[ERROR]"+e.getMessage());
         }
     }
 }

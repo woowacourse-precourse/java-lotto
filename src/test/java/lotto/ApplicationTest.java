@@ -54,20 +54,6 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
-    @Test
-    void 예외_테스트2() {
-        assertSimpleTest(() -> {
-            runException("100");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
-    }
-    @Test
-    void 예외_테스트3() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("111"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

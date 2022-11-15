@@ -1,10 +1,8 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static lotto.exception.ErrorHandler.unCorrectMoneyInputException;
 import static lotto.exception.ErrorHandler.unCorrectMoneyRangeException;
