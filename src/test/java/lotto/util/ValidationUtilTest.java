@@ -63,4 +63,29 @@ class ValidationUtilTest {
         }
     }
 
+    @Test
+    @DisplayName("구매 금액에 대한 통합 테스트")
+    void 구매_금액_통합_테스트() throws Exception {
+        //given
+        ValidationUtil validationUtil = new ValidationUtil();
+
+        //when
+        String wrongTypeAmount = "1234j";
+        String remainderAmount =  "1234";
+        String correctAmount = "8000";
+
+        //then
+        assertThatThrownBy(() ->
+                validationUtil.validatePurchase(wrongTypeAmount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(PURCHASE_TYPE);
+
+        assertThatThrownBy(() ->
+                validationUtil.validatePurchase(remainderAmount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(PURCHASE_REMAINDER);
+
+        int purchaseAmount = validationUtil.validatePurchase(correctAmount);
+        assertThat(purchaseAmount).isEqualTo(8000);
+    }
 }
