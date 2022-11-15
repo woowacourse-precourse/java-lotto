@@ -13,7 +13,7 @@ public class UserInput {
     private static final String BONUS_NUMBERS_INPUT_MSG = "보너스 번호를 입력해 주세요";
     private static final String AMOUNT_ERROR_MSG = "[ERROR] 잘못된 금액 값을 입력했습니다.";
 
-    public int inputAmount() {
+    public static int inputAmount() {
         System.out.println(AMOUNT_INPUT_MSG);
         String str = Console.readLine();
 
@@ -24,7 +24,7 @@ public class UserInput {
         }
     }
 
-    public List<Integer> inputTargetNumbers() {
+    public static List<Integer> inputTargetNumbers() {
         System.out.println(TARGET_NUMBERS_INPUT_MSG);
         String input = Console.readLine();
         String[] targets = input.split(",");
@@ -38,7 +38,7 @@ public class UserInput {
         return targetNumbers;
     }
 
-    public int inputBonusNumber() {
+    public static int inputBonusNumber() {
         System.out.println(BONUS_NUMBERS_INPUT_MSG);
         String input = Console.readLine();
 

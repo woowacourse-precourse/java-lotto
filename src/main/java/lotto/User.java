@@ -11,7 +11,15 @@ public class User {
         return lottos;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public int getAmount() {
+        return this.amount;
+    }
+
+    public void inputAmount() {
+        this.amount = UserInput.inputAmount();
+    }
+
+    public void buyLotto() {
+        this.lottos = Buyer.buyLotto(amount);
     }
 }
