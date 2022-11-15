@@ -32,7 +32,7 @@ public class LottoMachine implements Runnable {
             output.printLottos(count, wallet.getLottos());
 
             WinningNumber winningNumber = getWinningNumber();
-            WinningInformation winningInformation = getWinningStatus(wallet, winningNumber);
+            WinningInformation winningInformation = getWinningInformation(wallet, winningNumber);
 
             output.printResult(winningInformation.getWinningCounts(), winningInformation.getYield(count));
         } catch (RuntimeException exception) {
@@ -40,7 +40,7 @@ public class LottoMachine implements Runnable {
         }
     }
 
-    private WinningInformation getWinningStatus(LottoWallet wallet, WinningNumber winningNumber) {
+    private WinningInformation getWinningInformation(LottoWallet wallet, WinningNumber winningNumber) {
         List<Lotto> lottos = wallet.getLottos();
 
         List<Winning> winnings = lottos.stream()
