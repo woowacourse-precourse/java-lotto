@@ -71,6 +71,14 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @DisplayName("로또가 올바른 리스트 형식이 아니면 예외가 발생한다.")
+    @Test
+    void createIncorrectLotto() {
+        assertSimpleTest(() -> {
+            runException("1000","1.2,3,4,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
