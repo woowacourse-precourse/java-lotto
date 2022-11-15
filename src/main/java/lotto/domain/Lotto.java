@@ -22,7 +22,6 @@ public class Lotto {
         return this.numbers;
     }
 
-
     public void isValidLotto(List<Integer> numbers) {
         if (!isDuplicatedNumberAndInRange(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.OUT_OF_SIZE.getMessage());
@@ -75,7 +74,7 @@ public class Lotto {
 
     public int isNumberAndInRange(int number) {
         if (!isInNumberRange(number)) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.OUT_OF_SIZE.getMessage());
         }
         return number;
     }
@@ -83,13 +82,13 @@ public class Lotto {
     private void isNumber(String number) {
         String regex = "[0-9]*$";
         if (!number.matches(regex)) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_NUMBER.getMessage());
         }
     }
 
     private void isDuplicated(int number) {
         if (numbers.contains(number)) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.IS_DUPLICATED.getMessage());
         }
         numbers.add(number);
     }
@@ -101,6 +100,6 @@ public class Lotto {
     }
 
     private boolean isMaxSize() {
-        return (this.numbers.size() == 6);
+        return (this.numbers.size() == LottoValues.COUNT.getValue());
     }
 }

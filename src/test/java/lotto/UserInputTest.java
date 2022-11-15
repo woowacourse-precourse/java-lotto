@@ -129,4 +129,19 @@ class UserInputTest {
             new User().isNumberAndInRange(userInput);
         });
     }
+
+    @DisplayName("보너스 번호와 로또 번호가 중복되면 예외가 발생한다.")
+    @Test
+    void isLottoContainBonus() {
+        // given
+        String lotto = "34,12,43,32,3,22";
+        String bonus = "34";
+        User user = new User();
+        user.setUserNumbers(new Lotto(lotto));
+
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            user.isValidBonusNumber(bonus);
+        });
+    }
 }

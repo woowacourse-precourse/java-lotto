@@ -17,6 +17,10 @@ public class User {
         return this.purchaseAmount;
     }
 
+    public void setUserNumbers(Lotto userNumbers) {
+        this.userNumbers = userNumbers;
+    }
+
     private void isNumber(String number) {
         String regex = "[0-9]*$";
         if (!number.matches(regex)) {
@@ -62,5 +66,14 @@ public class User {
         return (number >= LottoValues.START_LOTTO_VALUE.getValue()
                 && number <= LottoValues.MAX_LOTTO_VALUE.getValue()
         );
+    }
+
+    public int isValidBonusNumber(String number){
+        int bonus = isNumberAndInRange(number);
+
+        if(!userNumbers.getNumbers().contains(bonus)){
+            return bonus;
+        }
+        throw new IllegalArgumentException(ErrorMessage.IS_LOTTO_CONTAIN_BONUS.getMessage());
     }
 }
