@@ -2,6 +2,8 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.model.Lotto;
+import lotto.view.Output;
+
 public class LottoGameController {
     static int purchaseAmount;
     static int purchaseNumber;
@@ -19,4 +21,10 @@ public class LottoGameController {
         bonusNumber = UserController.getBonusNumber(winNumber);
     }
 
+    public static void calculateWinning() {
+        winningStats = LottoMachineController.getWinningStats(lottos, winNumber, bonusNumber);
+        rateOfReturn = LottoMachineController.getRateOfReturn(winningStats, purchaseAmount);
+        Output.printWinningStatistics(winningStats);
+        Output.printRateOfReturn(rateOfReturn);
+    }
 }
