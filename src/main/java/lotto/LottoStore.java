@@ -28,7 +28,7 @@ public class LottoStore {
 	private void publish() {
 		int numLotto = moneyBuyLotto / Constants.MINIMUM_MONEY_UNIT;
 		severalLottoPublish(numLotto);
-
+		ConsoleOut.printLottos(lottos);
 	}
 
 	private void severalLottoPublish(int numLotto) {
