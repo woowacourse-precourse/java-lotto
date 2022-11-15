@@ -61,8 +61,8 @@ public class InputView {
     }
 
     private void validateAmount(int amount) {
-        isValidAmount(amount);
         isEnoughAmount(amount);
+        isValidAmount(amount);
     }
 
     private void isValidAmount(int amount) {
