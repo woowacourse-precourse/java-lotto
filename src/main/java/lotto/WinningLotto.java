@@ -13,9 +13,7 @@ public class WinningLotto extends Lotto {
     }
 
     private void validate(List<Integer> numbers, Integer bonusNumber) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        super.validate(numbers);
 
         validateBonusNumber(bonusNumber);
         if (numbers.contains(bonusNumber)) {
@@ -37,4 +35,59 @@ public class WinningLotto extends Lotto {
     public Integer getBonusNumber() {
         return bonusNumber;
     }
+
+    public CorrectType compareNumber(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        int correct = countCorrectNumber(lottoNumbers);
+
+        CorrectType correctType = getCorrectType(lottoNumbers, correct);
+
+        return correctType;
+    }
+
+    private int countCorrectNumber(List<Integer> lottoNumbers) {
+
+        int count = 0;
+        for (Integer num : lottoNumbers) {
+            if (getNumbers().contains(num)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private CorrectType getCorrectType(List<Integer> lottoNumbers, int correct) {
+        if (correct < 3) {
+            return CorrectType.NOTHING;
+        }
+
+        if (correct == 3) {
+            return CorrectType.TREE_CORRECT;
+        }
+
+        if (correct == 4) {
+            return CorrectType.FOUR_CORRECT;
+        }
+
+        if (correct == 5 && isCorrectBonusNumber(lottoNumbers)) {
+            return CorrectType.FIVE_AND_BONUS_CORRECT;
+        }
+
+        if (correct == 5) {
+            return CorrectType.FIVE_CORRECT;
+        }
+
+        return CorrectType.ALL_CORRECT;
+    }
+
+    private Boolean isCorrectBonusNumber(List<Integer> lottoNumbers) {
+        if (lottoNumbers.contains(this.bonusNumber)) {
+            return Boolean.TRUE;
+        }
+
+        return Boolean.FALSE;
+    }
+
+
 }
