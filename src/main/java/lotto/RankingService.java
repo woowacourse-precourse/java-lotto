@@ -36,5 +36,18 @@ public class RankingService {
         return Rank.values();
     }
 
+    public int getTotalPrize(Rank[] rankings) {
+        int prize = 0;
+
+        for (Rank rank : rankings) {
+            prize += rank.getPrize() * rank.getCount();
+        }
+
+        return prize;
+    }
+
+    public double getProfitRateFrom(Money money, Rank[] rankings) {
+        return ((double) getTotalPrize(rankings) / money.getMoney()) * 100;
+    }
 
 }
