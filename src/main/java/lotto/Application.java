@@ -1,37 +1,44 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
 public class Application {
     static final int LOTTO_START = 1;
     static final int LOTTO_END = 45;
     static final int LOTTO_PICK_NUM = 6;
     public static void main(String[] args) {
-        printInputMoney();
+        try {
+            printInputMoney();
 
-        int money = getMoneyInputFromUser();
-        int numberOfLotteries = calculateNumberOfLotteries(money);
+            int money = getMoneyInputFromUser();
+            int numberOfLotteries = calculateNumberOfLotteries(money);
 
-        List<Lotto> lotteries = getLotteries(numberOfLotteries);
+            List<Lotto> lotteries = getLotteries(numberOfLotteries);
 
-        WinLotto winLotto = getWinLotto();
+            WinLotto winLotto = getWinLotto();
 
-        Map<Result, Integer> matches = new HashMap<>();
-        printWins(lotteries, winLotto, matches);
-        printProfit(matches, money);
+            Map<Result, Integer> matches = new HashMap<>();
+            printWins(lotteries, winLotto, matches);
+            printProfit(matches, money);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+        }
+
     }
 
     private static void printProfit(Map<Result, Integer> matches, int money) {
         int profit = calculateProfit(matches);
         double profitPercent = calculateProfitPercent(profit, money);
-        System.out.println("총 수익률은 " + profitPercent + "%입니다");
+        System.out.println("총 수익률은 " + profitPercent + "%입니다.");
     }
 
     public static double calculateProfitPercent(int profit, int money) {
@@ -81,13 +88,11 @@ public class Application {
 
     private static String getBonusInputFromUser() {
         System.out.println(Message.INPUT_BONUS.message);
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        return Console.readLine();
     }
 
     private static WinLotto getWinLottoInputFromUser() {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String input = Console.readLine();
         WinLotto winLotto = validateWinLottoInput(input);
 
         return winLotto;
@@ -125,7 +130,8 @@ public class Application {
 
     public static void randomPickLotteries(List<Lotto> lotteries, int numberOfLotteries) {
         for (int i = 0; i < numberOfLotteries; i++) {
-            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_PICK_NUM);
+            List<Integer> uniqueNumbers = new ArrayList<>(
+                    Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_PICK_NUM));
             Collections.sort(uniqueNumbers);
             Lotto lotto = new Lotto(uniqueNumbers);
             lotteries.add(lotto);
@@ -143,8 +149,7 @@ public class Application {
     }
 
     private static int getMoneyInputFromUser() {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String input = Console.readLine();
         return validateMoneyInput(input);
     }
 
