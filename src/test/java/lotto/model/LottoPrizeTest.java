@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoPrizeTest {
-    @ParameterizedTest(name = "비교 결과 로또 {1}등 당첨")
+    @ParameterizedTest(name = "CompareResult를 확인한 결과 로또 {1}등 당첨")
     @MethodSource("lottoResultAndPrize")
     void CompareResult가_몇_등_당첨인지_판단하는_기능(CompareResult lottoResult, LottoPrize expected) {
         assertThat(LottoPrize.toPrize(lottoResult)).isEqualTo(expected);
