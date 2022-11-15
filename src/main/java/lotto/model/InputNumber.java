@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -10,10 +10,11 @@ public class InputNumber {
     public static List<Integer> winNumbers;
     public static int bonusNumber;
 
-    public static List<Integer> getWinNumbers() {
+    public static List<Integer> getWinNumbers() throws IllegalArgumentException{
         String playerInput = Console.readLine();
         toMakeWinNumbers(playerInput);
-        validateWinNumbers(winNumbers);
+        duplicatedNumbers(winNumbers);
+        numberRangeCheck(winNumbers);
         return winNumbers;
     }
 
@@ -34,13 +35,20 @@ public class InputNumber {
         }
     }
 
-    private static void validateWinNumbers(List<Integer> winNumbers) {
+
+
+    private static void duplicatedNumbers(List<Integer> winNumbers) throws IllegalArgumentException{
         for (int i = 0; i < winNumbers.size(); i++) {
             int duplicate = i;
             if (duplicate != i && winNumbers.contains(winNumbers.get(duplicate))) {
-                throw new IllegalArgumentException("[ERROR]중복된 숫자를 입력할 수 없습니다.");
+                System.out.println("중복ㅇ");
+                throw new IllegalArgumentException("ㅇㅇㅇ에");
             }
+        }
+    }
 
+    private static void numberRangeCheck(List<Integer> winNumbers) throws IllegalArgumentException{
+        for (int i = 0; i < winNumbers.size(); i++) {
             if (winNumbers.get(i) < 0 || winNumbers.get(i) > 45) {
                 throw new IllegalArgumentException("[ERROR]1~45 사이의 숫자만 입력할 수 있습니다.");
             }

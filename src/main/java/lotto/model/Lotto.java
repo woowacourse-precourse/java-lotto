@@ -1,7 +1,5 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.Money;
-import lotto.model.RandomNumber;
 import lotto.view.Print;
 
 import java.util.List;

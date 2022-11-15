@@ -1,7 +1,6 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.BonusNumber;
-import lotto.model.Result;
+import lotto.utils.Result;
 import lotto.view.FinalResult;
 
 import java.util.HashMap;

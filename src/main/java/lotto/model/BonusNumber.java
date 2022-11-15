@@ -1,6 +1,4 @@
-package lotto.domain;
-
-import lotto.Compare;
+package lotto.model;
 
 import java.util.HashMap;
 import java.util.List;

@@ -2,8 +2,8 @@ package lotto.view;
 
 import java.util.List;
 
-import static lotto.domain.InputNumber.bonusNumber;
-import static lotto.domain.InputNumber.winNumbers;
+import static lotto.model.InputNumber.bonusNumber;
+import static lotto.model.InputNumber.winNumbers;
 
 public class Print {
     final static String GET_USER_MONEY = "구입 금액을 입력해 주세요.";
