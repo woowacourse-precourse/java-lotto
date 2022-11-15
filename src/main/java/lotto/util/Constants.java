@@ -8,7 +8,8 @@ public final class Constants {
 	public static final int MAX_NUMBER = 45;
 	public static final int ZERO = 0;
 	public static final int LOTTO_PRICE = 1000;
-	public static final int PERCENT = 100;
+	public static final int HUNDRED = 100;
+	public static final String PERCENTAGE_FORMAT = "%.1f";
 	public static final String DELIMITER = ",";
 	public static final String MONEY_FORMAT = "###,###";
 	public static final String ONLY_INTEGER_SERIES = "^[0-9]*$";

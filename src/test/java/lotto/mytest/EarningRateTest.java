@@ -20,4 +20,13 @@ public class EarningRateTest {
 		earningRate = EarningRate.calculate(paidMoney, earningMoney);
 		assertThat(earningRate).isEqualTo(62.5);
 	}
+
+	@DisplayName("소숫점 첫째 자리에서 반올림 확인")
+	@Test
+	void roundOff() {
+		paidMoney = 8888;
+		earningMoney = 5000L;
+		earningRate = EarningRate.calculate(paidMoney, earningMoney);
+		assertThat(earningRate).isEqualTo(56.3);
+	}
 }

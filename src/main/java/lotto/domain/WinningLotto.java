@@ -7,7 +7,7 @@ import lotto.service.Lotto;
 import lotto.util.Rank;
 
 public class WinningLotto {
-	static EnumMap<Rank, Integer> prizeResult = new EnumMap<>(Rank.class);
+	static EnumMap<Rank, Integer> result = new EnumMap<>(Rank.class);
 	static int matchCount = 0;
 	static boolean isMatchBonusNumber = false;
 	private static List<Integer> winningLotto;
@@ -21,7 +21,7 @@ public class WinningLotto {
 
 	private static void initResult() {
 		for (Rank rank : Rank.values()) {
-			prizeResult.put(rank, 0);
+			result.put(rank, 0);
 		}
 	}
 
@@ -32,12 +32,12 @@ public class WinningLotto {
 			isMatchBonusNumber = comparison.isMatchBonusNumber(lotteryTicket);
 
 			Rank rank = Rank.setRank(matchCount, isMatchBonusNumber);
-			prizeResult.put(rank, prizeResult.get(rank) + 1);
+			result.put(rank, result.get(rank) + 1);
 		}
-		return prizeResult;
+		return result;
 	}
 
 	public static EnumMap<Rank, Integer> getPrizeResult() {
-		return prizeResult;
+		return result;
 	}
 }
