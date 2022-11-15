@@ -43,21 +43,21 @@ public class Lotto {
         return containBonusNumber;
     }
 
-    public int calculateRank(List<Integer> winningNumber, int bonusNumber) {
+    public Rank calculateRank(List<Integer> winningNumber, int bonusNumber) {
         int sameNumberCount = compareWithWinningNumber(winningNumber);
         boolean hasBonusNumber = checkBonusNumber(bonusNumber);
 
         if (sameNumberCount==6) {
-            return 1;
+            return Rank.FIRST_PLACE;
         } else if (sameNumberCount==5 && hasBonusNumber==true) {
-            return 2;
+            return Rank.SECOND_PLACE;
         } else if (sameNumberCount==5 && hasBonusNumber==false) {
-            return 3;
+            return Rank.THIRD_PLACE;
         } else if (sameNumberCount==4) {
-            return 4;
+            return Rank.FOURTH_PLACE;
         } else if (sameNumberCount==3) {
-            return 5;
+            return Rank.FIFTH_PLACE;
         }
-        return 6;
+        return Rank.NO_PLACE;
     }
 }
