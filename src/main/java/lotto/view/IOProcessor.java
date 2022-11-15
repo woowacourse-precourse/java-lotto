@@ -3,19 +3,19 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Policy;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class IOProcessor {
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR]"; // 에러메시지 앞에 붙이는 접두사
+    private static final String BOUNS_NUMBER_FORMAT = ", 보너스 볼 일치 ";
 
     private enum WinningMessageFormat {
-        WINNING_FIVE("%d개 일치 (%,d원) - %d개\n"),
-        WINNING_FOUR("%d개 일치 (%,d원) - %d개\n"),
-        WINNING_THREE("%d개 일치 (%,d원) - %d개\n"),
-        WINNING_TWO("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
-        WINNING_ONE("%d개 일치 (%,d원) - %d개\n");
+        WINNING_FIVE("%d개 일치%s(%,d원) - %d개\n"),
+        WINNING_FOUR("%d개 일치%s(%,d원) - %d개\n"),
+        WINNING_THREE("%d개 일치%s(%,d원) - %d개\n"),
+        WINNING_TWO("%d개 일치%s(%,d원) - %d개\n"),
+        WINNING_ONE("%d개 일치%s(%,d원) - %d개\n");
 
         private final String format;
 
@@ -46,13 +46,16 @@ public class IOProcessor {
     }
 
     public static void printWinningStatistics(Map<String, Integer> winningInfo) {
-        Iterator<String> keys = winningInfo.keySet().iterator();
         System.out.println("당첨 통계\n---");
 
-        while (keys.hasNext()) {
-            String key = keys.next();
+        for (String key : winningInfo.keySet()) {
+            String bonusNumber = " ";
+            if (Policy.WinningCriteria.valueOf(key).getBonusNumberCount() == 1) {
+                bonusNumber = BOUNS_NUMBER_FORMAT;
+            }
             System.out.printf(WinningMessageFormat.valueOf(key).getFormat(),
                     Policy.WinningCriteria.valueOf(key).getMatchingCount(),
+                    bonusNumber,
                     Policy.WinningAmount.valueOf(key).getAmount(),
                     winningInfo.get(key));
         }
