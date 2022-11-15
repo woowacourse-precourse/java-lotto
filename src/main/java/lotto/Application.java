@@ -13,7 +13,8 @@ public class Application {
     static final String NOT_SIX_DIGITS_MESSAGE = "[ERROR] 당첨 번호는 6자리여야 합니다.";
     static final String NOT_WINNING_NUMBERS_RANGE_ONE_TO_FORTYFIVE_MESSAGE = "[ERROR] 당첨 번호는 1에서 45까지의 숫자를 입력해야 합니다.";
     static final String NOT_BONUS_NUMBER_RANGE_ONE_TO_FORTYFIVE_MESSAGE = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자를 입력해야 합니다.";
-    static final String DUPLICATED_NUMBERS_EXIST_MESSAGE ="[ERROR] 입력하신 번호 중 중복된 번호가 존재합니다.";
+    static final String DUPLICATED_WINNING_NUMBERS_EXIST_MESSAGE ="[ERROR] 입력하신 번호 중 중복된 번호가 존재합니다.";
+    static final String DUPLICATED_BONUS_NUMBERS_EXIST_MESSAGE ="[ERROR] 입력하신 보너스 번호가 당첨 번호와 중복됩니다.";
     static List<Integer> winningNumbers;
     static int bonusNumber;
     public enum Places{
@@ -64,8 +65,8 @@ public class Application {
     }
     public static void winningNumbersDuplicateValidTest(List<Integer> winningNumbers,int newNumber){
         if(winningNumbers.contains(newNumber)){
-            System.out.println(DUPLICATED_NUMBERS_EXIST_MESSAGE);
-            throw new IllegalArgumentException(DUPLICATED_NUMBERS_EXIST_MESSAGE);
+            System.out.println(DUPLICATED_WINNING_NUMBERS_EXIST_MESSAGE);
+            throw new IllegalArgumentException(DUPLICATED_WINNING_NUMBERS_EXIST_MESSAGE);
         }
     }
     public static int getBonusNumber(){
@@ -82,8 +83,8 @@ public class Application {
             throw new IllegalArgumentException(NOT_BONUS_NUMBER_RANGE_ONE_TO_FORTYFIVE_MESSAGE);
         }
         if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
-            System.out.println(NOT_BONUS_NUMBER_RANGE_ONE_TO_FORTYFIVE_MESSAGE);
-            throw new IllegalArgumentException(NOT_BONUS_NUMBER_RANGE_ONE_TO_FORTYFIVE_MESSAGE);
+            System.out.println(DUPLICATED_BONUS_NUMBERS_EXIST_MESSAGE);
+            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBERS_EXIST_MESSAGE);
         }
     }
 }
