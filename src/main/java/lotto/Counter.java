@@ -27,9 +27,15 @@ public class Counter {
 
         try {
             lottoNumber = Integer.parseInt(payMoney) / 1000;
+            if (Integer.parseInt(payMoney) % 1000 != 0) {
+                throw new IllegalArgumentException();
+            }
         }
         catch (NumberFormatException e) {
-            System.out.println(ERROR_MESSAGE);
+            System.out.println(ERROR_MESSAGE + " 1000원 단위의 숫자 형태로 입력해주세요.");
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(ERROR_MESSAGE + " 1000원 단위로 입력해주세요.");
         }
 
         return lottoNumber;

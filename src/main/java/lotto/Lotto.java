@@ -11,12 +11,28 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        sizeCheck(numbers);
+        duplicatedCheck(numbers);
+        rangeCheck(numbers);
+    }
+
+    public void sizeCheck(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
 
+    public void duplicatedCheck(List<Integer> numbers) {
         for (int i=0; i<numbers.size(); i++) {
             if (numbers.indexOf(numbers.get(i)) != -1 && numbers.indexOf(numbers.get(i)) != i) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public void rangeCheck(List<Integer> numbers) {
+        for (int i=0; i<numbers.size(); i++) {
+            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
                 throw new IllegalArgumentException();
             }
         }
