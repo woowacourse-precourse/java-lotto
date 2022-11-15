@@ -9,9 +9,9 @@ import java.util.List;
 public class MainController {
     private int money;
     private int lottoCount;
+    private List<List<Integer>> lotteries;
     private int bonusNumber;
     private String winningNumber;
-    private List<List<Integer>> totalLotteries;
     private List<Integer> winningNumbers;
     int[] winningNumberMatchCount;
     private final String MONEY_INPUT_ERROR = "[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.";
@@ -33,23 +33,23 @@ public class MainController {
     }
 
     public void makeLottoController() {
-        totalLotteries = new LottoMachine().createLotto(lottoCount);
-        OutputView.printLotteries(totalLotteries);
+        lotteries = new LottoMachine().createLotto(lottoCount);
+        OutputView.printLotteries(lotteries);
         makeWinningLottoController();
     }
 
     public void makeWinningLottoController() {
-        winningNumber = InputView.inputWinningNumber();
+        winningNumber = InputView.inputWinningNumbers();
         new LottoException().winningException(winningNumber);
         winningNumbers = new WinningLotto().creteWinningNumbers(winningNumber);
         compareController();
     }
 
     public void compareController() {
-        new LottoBank().calculateWinningMatchNumber(lottoCount, totalLotteries, winningNumbers);
+        new LottoBank().calculateWinningMatchNumber(lottoCount, lotteries, winningNumbers);
         bonusNumber = InputView.inputBonusNumber();
         winningNumberMatchCount = new LottoBank().compareBonusNumber(lottoCount, bonusNumber,
-                totalLotteries, winningNumbers);
+                lotteries, winningNumbers);
         OutputView.printResult(winningNumberMatchCount);
         OutputView.printWinningMessage();
         profitRateController();

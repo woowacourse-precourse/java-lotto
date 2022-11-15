@@ -13,11 +13,11 @@ public class InputView {
         return money;
     }
 
-    public static String inputWinningNumber() {
+    public static String inputWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBER);
-        String winningNumber = Console.readLine();
+        String winningNumbers = Console.readLine();
         System.out.println();
-        return winningNumber;
+        return winningNumbers;
     }
 
     public static int inputBonusNumber() {
