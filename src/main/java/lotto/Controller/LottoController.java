@@ -14,7 +14,7 @@ public class LottoController {
 
     private static final int MIN_COST = ValidNumbers.MIN_COST.getValue();
     private static LottoService lottoService = new LottoService();
-    private static List<Lotto> totalLotto = new ArrayList<>();
+    private static List<Lotto> totalLotto;
     private static int money = 0;
 
     public void start() {
@@ -28,6 +28,8 @@ public class LottoController {
         money = inputView.readMoney();
 
         Lotto lotto;
+        totalLotto = new ArrayList<>();
+                
         int quantity = (money / MIN_COST);
         while (quantity-- > 0) {
             lotto = lottoService.createRandomLotto();
