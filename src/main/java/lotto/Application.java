@@ -1,7 +1,11 @@
 package lotto;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        MyModel model = new MyModel();
+        MyView view = new MyView(model);
+        LottoController controller = new LottoController(model, view);
+        controller.run();
     }
 }
