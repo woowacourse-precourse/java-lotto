@@ -25,9 +25,11 @@ public class Service {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < numberOfCreate; i++) {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto validate = new Lotto(lottoNumber);
             System.out.println(lottoNumber);
             lottoNumbers.add(lottoNumber);
         }
+
         return lottoNumbers;
     }
 }
