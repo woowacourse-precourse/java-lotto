@@ -38,7 +38,7 @@ public class Lottos {
     
     private List<List<Integer>> parseLottos() {
         return lottos.stream()
-                .map(Lotto::lottoNumber)
+                .map(Lotto::lottoNumbers)
                 .collect(Collectors.toList());
     }
     

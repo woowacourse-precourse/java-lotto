@@ -27,7 +27,7 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
     
-    public List<Integer> lottoNumber() {
+    public List<Integer> lottoNumbers() {
         return Collections.unmodifiableList(numbers);
     }
     
