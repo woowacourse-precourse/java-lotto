@@ -26,7 +26,7 @@ public class Checker {
         return resultStatistics;
     }
 
-    public static EnumMap<RankNumber, Integer> initializeResultStatistics() {
+    private static EnumMap<RankNumber, Integer> initializeResultStatistics() {
         EnumMap<RankNumber, Integer> emptyResultStatistics = new EnumMap<>(RankNumber.class);
         for (RankNumber rank : RankNumber.values()) {
             emptyResultStatistics.put(rank, 0);
@@ -34,14 +34,14 @@ public class Checker {
         return emptyResultStatistics;
     }
 
-    public static boolean isInRankRange(Lotto lotto) {
-        if (countSameNumbers(lotto) >= RankNumber.getRankNumber(RankNumber.FIFTH)) {
+    private static boolean isInRankRange(Lotto lotto) {
+        if (countSameNumbers(lotto) >= RankNumber.get(RankNumber.FIFTH)) {
             return true;
         }
         return false;
     }
 
-    public static void compareLotto(Lotto lotto) {
+    private static void compareLotto(Lotto lotto) {
         int sameNumbers = countSameNumbers(lotto);
         RankNumber rank = getRank(sameNumbers);
         if (rank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
@@ -50,7 +50,7 @@ public class Checker {
         updateCounts(rank);
     }
 
-    public static int countSameNumbers(Lotto lotto) {
+    private static int countSameNumbers(Lotto lotto) {
         int count = 0;
         for (int winningNumber : winningNumbers) {
             if (lotto.contains(winningNumber)) {
@@ -60,15 +60,15 @@ public class Checker {
         return count;
     }
 
-    public static RankNumber getRank(int sameNumbers) {
+    private static RankNumber getRank(int sameNumbers) {
         return RankNumber.getRank(sameNumbers);
     }
 
-    public static boolean hasBonusNumber(Lotto lotto) {
+    private static boolean hasBonusNumber(Lotto lotto) {
         return lotto.contains(bonusNumber);
     }
 
-    public static void updateCounts(RankNumber rank) {
+    private static void updateCounts(RankNumber rank) {
         int oldCounts = resultStatistics.get(rank);
         resultStatistics.put(rank, oldCounts + 1);
     }
