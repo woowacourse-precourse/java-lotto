@@ -21,16 +21,16 @@
     - [x] 숫자인지 확인 - NumberGenerator #checkNumber
     - [x] 중복 검사 - WinningNumbers #checkOverlap
     - [x] 범위 확인 - WinningNumbers #checkScope
-  - [x] 보너스 번호 입력 - LottoManager# inputBonusNumber
-    - [x] 숫자인지 확인
+  - [x] 보너스 번호 입력 - LottoManager #inputBonusNumber
+    - [x] 숫자인지 확인 - LottoManager #checkNumber
     - [x] 범위 확인 - WinningNumbers #checkScope
   - [x] 당첨번호가 보너스 번호를 포함하는지 확인 - WinningNumbers #checkInclusion
 - [x] 로또 번호(6자리)와 당첨 번호(6자리, 보너스 번호 1개)를 비교한다. - LottoCalculator #compare
-- [x] 일치하는 수에 해당하는 인덱스에 추가한다.
+- [x] 일치하는 수에 해당하는 인덱스에 추가한다. - LottoCalculator #addRankCount 
   - [x] 당첨번호 중 몇개의 숫자가 같은지 알 수 있다. - Judgement#correctCount
-    - [x] 보너스 번호가 있는지 알 수 있다.(당첨번호 5자리가 같은 경우만) - Judgement#hasWinningNumber
+  - [x] 보너스 번호가 있는지 알 수 있다.(당첨번호 5자리가 같은 경우만) - Judgement#hasWinningNumber
   - [x] 수익률 계산 - LottoCalculator #getRateOfReturn
+    - [x] 등수별 상금 계산 - Rank #getPrizeMoney 
     - [x] 총 상금 합산 - LottoCalculator #sumOfPrizeMoney
   - [x] 당첨 내역 출력 - LottoManager #printWinningDetails
-  - [x] 수익률 출력 - LottoManager #printRateOfReturn
     
