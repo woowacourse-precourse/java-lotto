@@ -8,7 +8,7 @@ public class PrizeStatistics {
   private final int bonusNumber;
 
   public PrizeStatistics(Lotto prizeLotto, int bonusNumber) {
-    this.prizeRankArray = new PrizeRank[PrizeRank.values().length];
+    this.prizeRankArray =  PrizeRank.values();
     this.prizeLotto = prizeLotto;
     this.bonusNumber = bonusNumber;
   }
@@ -22,21 +22,25 @@ public class PrizeStatistics {
   }
 
   public void setPrizeRankArrayByLottoList(List<Lotto> myLottoList) {
+    PrizeRank.resetAllCount();
     for (Lotto lotto : myLottoList) {
-      updatePrizeRankArray(lotto.getLottoNumbers());
+      updatePrizeRankArray(lotto);
     }
   }
 
-  public void updatePrizeRankArray(List<Integer> myLottoNumbers) {
+  private void updatePrizeRankArray(Lotto myLotto) {
+    List<Integer> myLottoNumbers = myLotto.getLottoNumbers();
     int count = 0;
     for (int number : myLottoNumbers) {
-      if (prizeLotto.isNumberContained(number)) count++;
+      if (prizeLotto.isNumberContained(number)) {
+        count++;
+      }
     }
-    updateMatchingPrizeRank(count, isBonusNumberContained());
+    updateMatchingPrizeRank(count, isBonusNumberContained(myLotto));
   }
 
-  private boolean isBonusNumberContained() {
-    return prizeLotto.isNumberContained(bonusNumber);
+  private boolean isBonusNumberContained(Lotto myLotto) {
+    return myLotto.isNumberContained(bonusNumber);
   }
 
   private void updateMatchingPrizeRank(int count, boolean isBonusNumberContained) {
