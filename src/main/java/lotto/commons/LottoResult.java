@@ -9,8 +9,8 @@ public enum LottoResult {
 
     private final String result;
 
-    LottoResult(String result){
-        this.result=result;
+    LottoResult(String result) {
+        this.result = result;
     }
 
     public String getResult() {
