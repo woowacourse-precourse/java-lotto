@@ -69,13 +69,21 @@ public class Compare {
             rank.printRank(rankcnt.get(i));
         }
     }
-    public static void totalGetMoney() {
+    public static int totalGetMoney() {
         List<Integer> totalMoneyList = new ArrayList<>();
         int totalWiningMoney = 0;
         for (int i=0; i< getWinningsDesc().size(); i++) {
-            Integer rate = getWinningsDesc().get(i) * rankcnt.get(i);
+            int rate = getWinningsDesc().get(i) * rankcnt.get(i);
             totalMoneyList.add(i, rate);
             totalWiningMoney = totalWiningMoney + totalMoneyList.get(i);
         }
+        return totalWiningMoney;
     }
+    public static void printTotalRate(int inputMoney) {
+        float totalrateMoney = totalGetMoney() * 100 / (float)inputMoney;
+        System.out.println(totalrateMoney);
+        System.out.println(
+                "총 수익률은 " + String.format("%.1f", totalrateMoney) + "%입니다.");
+    }
+
 }
