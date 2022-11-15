@@ -7,7 +7,7 @@ import util.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoGameComtroller implements GameController {
+public class LottoGameController implements GameController {
 
     private final int LOTTO_PRICE = 1000;
     private List<Lotto> lottoList;
@@ -18,7 +18,7 @@ public class LottoGameComtroller implements GameController {
     private Printer printer;
     private int money;
 
-    public LottoGameComtroller(Inputer inputer, Comparator comparator, Printer printer) {
+    public LottoGameController(Inputer inputer, Comparator comparator, Printer printer) {
         this.inputer = inputer;
         this.comparator = comparator;
         this.printer = printer;
