@@ -3,6 +3,7 @@ package lotto.domain;
 import org.assertj.core.groups.Tuple;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static lotto.util.ConstValue.LottoConst.*;
@@ -33,5 +34,17 @@ public enum LottoRank {
         this.ranking = ranking;
         this.prizeMoney = prizeMoney;
         this.message = message;
+    }
+
+    public static LottoRank getLottoRank(final Tuple key) {
+        final List<Object> keys = key.toList();
+        if (is2ndRank(keys)) {
+            return rankMatcher.get(key);
+        }
+        return rankMatcher.get(new Tuple(keys.get(0)));
+    }
+
+    private static boolean is2ndRank(final List<Object> keys) {
+        return keys.contains(5) && keys.contains(true);
     }
 }
