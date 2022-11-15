@@ -30,23 +30,23 @@ public class Host {
         }
     }
 
-    public List<Winning> drawLotto(User user) {
+    public List<Winning> drawLotto(List<Lotto> userLottos) {
         List<Winning> result = new ArrayList<>();
 
-        for (Lotto userLotto : user.getLottos()) {
-            int correctCount = compareNumbers(userLotto);
-            boolean isBonusNumber = compareBonusNumber(userLotto);
+        for (Lotto userLotto : userLottos) {
+            List<Integer> userLottoNumbers = userLotto.getNumbers();
+            int correctCount = compareNumbers(userLottoNumbers);
+            boolean isBonusNumber = compareBonusNumber(userLottoNumbers);
             result.add(Winning.valueOf(correctCount, isBonusNumber));
         }
         return result;
     }
 
-    private boolean compareBonusNumber(Lotto userLotto) {
-        return userLotto.getNumbers().contains(winningBonusNumber);
+    private boolean compareBonusNumber(List<Integer> userLottoNumbers) {
+        return userLottoNumbers.contains(winningBonusNumber);
     }
 
-    private int compareNumbers(Lotto userLotto) {
-        List<Integer> userLottoNumbers = userLotto.getNumbers();
+    private int compareNumbers(List<Integer> userLottoNumbers) {
         int correctCount = 0;
 
         for (int i = 0; i < Constants.LOTTO_LEN; i++) {

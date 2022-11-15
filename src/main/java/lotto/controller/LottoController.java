@@ -17,7 +17,7 @@ public class LottoController {
     }
 
     public Statistics drawLotto(Host host, User user) {
-        List<Winning> drawResults = host.drawLotto(user);
+        List<Winning> drawResults = host.drawLotto(user.getLottos());
         return new Statistics(drawResults);
     }
 
