@@ -25,7 +25,7 @@ public class OutputView {
             System.out.println(rank.getMessage() + rank.calculateCount(results) + "개");
         }
 
-        System.out.println("총 수익률은 " + String.format("%.1f", getEarningRate(Rank.calculateEarning(results), user.getInputMoney())) + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%,.1f", getEarningRate(Rank.calculateEarning(results), user.getInputMoney())) + "%입니다.");
     }
 
     private static double getEarningRate(long profit, long inputMoney) {
