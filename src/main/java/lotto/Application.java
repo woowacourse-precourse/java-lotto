@@ -5,9 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class Application {
@@ -23,22 +21,23 @@ public class Application {
     public static void main(String[] args) {
         lotto_list.clear();
         lotto_answer.clear();
-
+        System.out.println("구입금액을 입력해 주세요.");
         getPurchaseAmount(lotto_list);
 
         // TODO: 프로그램 구현
     }
 
     public static void getPurchaseAmount(List<List<Integer>> lotto_list) {
-        System.out.println("구입금액을 입력해 주세요.");
         String temp = Console.readLine();
-        try{
-            Integer.parseInt(temp);
+        try {
+            purchase_price = Integer.parseInt(temp);
         }
         catch(NumberFormatException e){
-            System.out.print("[ERROR]");
-            throw new IllegalArgumentException("[ERROR]");
+            System.out.println("[ERROR] '숫자' 를 입력해 주세요.");
+            throw new NoSuchElementException("[ERROR] '숫자' 를 입력해 주세요.");
         }
+        if(purchase_price < 1000)
+            throw new IllegalArgumentException("[ERROR] 1000원 보다 큰 값을 입력해 주세요.");
         purchase_price = Integer.parseInt(temp);
         lotto_amount = purchase_price / 1000;
         System.out.println(lotto_amount + "개를 구매했습니다.");
@@ -48,17 +47,15 @@ public class Application {
 
 
     public static void getLottoNumber(List<List<Integer>> lotto_list, Integer lotto_amount) {
-        List<Integer> numbers;
         while (lotto_list.size() < lotto_amount) {
-            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            //Collections.sort(numbers);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.sort(Comparator.naturalOrder());
             lotto_list.add(numbers);
         }
         for (List<Integer> each_lotto : lotto_list) {
             System.out.println(each_lotto);
         }
         getLottoAnswer();
-
     }
 
     public static void getLottoAnswer() {
