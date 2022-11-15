@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Buyer {
     private int money;
-    private int ticketCount;
     private List<Lotto> lottoTickets;
 
     public void payMoney() {
@@ -21,28 +20,8 @@ public class Buyer {
     }
 
     public List<Lotto> getLotteryTickets() {
-        createLotteryTickets();
+        int ticketCount = money / 1000;
+        lottoTickets = Drawing.createLotteryTickets(ticketCount);
         return lottoTickets;
-    }
-
-    public void createLotteryTickets() {
-        setTicketCount();
-        initLottoTickets();
-        for (int i = 0; i < ticketCount; i++) {
-            List<Integer> numbers = createNumbers();
-            lottoTickets.add(new Lotto(numbers));
-        }
-    }
-
-    private void setTicketCount() {
-        this.ticketCount = money / 1000;
-    }
-
-    private void initLottoTickets() {
-        lottoTickets = new ArrayList<>(ticketCount);
-    }
-
-    private List<Integer> createNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
