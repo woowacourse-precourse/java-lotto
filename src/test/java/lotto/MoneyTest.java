@@ -1,18 +1,21 @@
 package lotto;
 
 import static lotto.constant.Rules.LOTTO_PRICE;
-import static lotto.money.Money.calculateEarning;
 import static lotto.money.Money.createPurchaseMoney;
+import static lotto.rank.Rank.NONE;
+import static lotto.rank.Rank.SECOND;
+import static lotto.rank.Rank.THIRD;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import lotto.exception.money.PurchaseMoneyNotDividedByPriceException;
 import lotto.exception.money.PurchaseMoneyNotPositiveIntegerException;
 import lotto.exception.money.PurchaseMoneyRangeException;
+import lotto.money.Earning;
 import lotto.money.Money;
 import lotto.money.Yield;
+import lotto.rank.Rank;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -72,9 +75,7 @@ public class MoneyTest {
     @DisplayName("총 수익은 당첨금의 총합과 같다.")
     @Test
     void earningIsEqualToSumOfWinningMoney() {
-        List<Money> winningMoney = new ArrayList<>();
-        winningMoney.add(new Money(1000));
-        winningMoney.add(new Money(400));
-        assertThat(calculateEarning(winningMoney).getMoney()).isEqualTo(1400);
+        Map<Rank, Integer> rankMap = Map.of(NONE, 0, THIRD, 3, SECOND, 1);
+        assertThat(Earning.getEarning(rankMap).getMoney()).isEqualTo(1_500_000 * 3 + 30_000_000);
     }
 }

@@ -3,7 +3,6 @@ package lotto.money;
 import static lotto.constant.Rules.LOTTO_PRICE;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import lotto.exception.money.PurchaseMoneyNotDividedByPriceException;
 import lotto.exception.money.PurchaseMoneyNotPositiveIntegerException;
 import lotto.exception.money.PurchaseMoneyRangeException;
@@ -48,14 +47,6 @@ public class Money {
 
     public int calculateLottoCount() {
         return money / LOTTO_PRICE;
-    }
-
-    public static Money calculateEarning(List<Money> winningMoney) {
-        int earning = 0;
-        for (Money money : winningMoney) {
-            earning += money.getMoney();
-        }
-        return new Money(earning);
     }
 
     @Override

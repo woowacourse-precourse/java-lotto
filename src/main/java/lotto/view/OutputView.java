@@ -39,13 +39,14 @@ public class OutputView {
         System.out.println(INPUT_BONUS_NUMBER);
     }
 
-    public static void printResult(Map<Rank, Integer> rankMap) {
+    public static void printResult(Map<Rank, Integer> rankMap, Yield yield) {
         System.out.println(RESULT_STATICS);
         System.out.println(DIVISION);
         List<Rank> ranks = getRanksExceptNONE();
         for (Rank rank : ranks) {
             printIndividualRank(rankMap, rank);
         }
+        printYield(yield);
     }
 
     private static List<Rank> getRanksExceptNONE() {
@@ -61,8 +62,12 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public static void printYield(Yield yield) {
+    private static void printYield(Yield yield) {
         String message = String.format(YIELD_RESULT, yield.toString());
         System.out.println(message);
+    }
+
+    public static void printBlank() {
+        System.out.println();
     }
 }

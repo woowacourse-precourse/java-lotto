@@ -6,7 +6,6 @@ import static lotto.money.Money.createPurchaseMoney;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.lotto.Lotto;
 import lotto.lotto.LottoNumber;
 import lotto.money.Money;
 
@@ -17,10 +16,9 @@ public class InputView {
         return createPurchaseMoney(purchaseMoney);
     }
 
-    public static Lotto inputWinningNumber() {
-        List<LottoNumber> winningNumbers = Arrays.stream(readLine().trim().split(","))
+    public static List<LottoNumber> inputWinningNumber() {
+        return Arrays.stream(readLine().trim().split(","))
                 .map(LottoNumber::new).collect(Collectors.toList());
-        return new Lotto(winningNumbers);
     }
 
     public static LottoNumber inputBonusNumber() {
