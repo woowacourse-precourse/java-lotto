@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LottoReferee {
+public class LottoRefer {
     private final Map<LottoPrize, Integer> result = new HashMap<>();
 
-    LottoReferee() {
+    LottoRefer() {
         for (LottoPrize prize : List.of(SIXTH_PRIZE,FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)) {
             result.put(prize, 0);
         }
