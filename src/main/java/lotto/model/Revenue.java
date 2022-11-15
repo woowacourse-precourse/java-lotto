@@ -57,11 +57,18 @@ public class Revenue {
             settleRevenue(winnings);
         }
     }
+
     public void calculateRateOfRevenue(int purchaseAmount) {
         rateOfRevenue = (float) revenue / (float) purchaseAmount * PERCENTAGE;
     }
+    
     public float getRateOfRevenue() {
         return rateOfRevenue;
     }
+
+    public boolean isSecond(String rankName) {
+        return rankName.equals(BONUS_CONDITION);
+    }
+
 
 }
