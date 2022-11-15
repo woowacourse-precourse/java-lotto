@@ -43,25 +43,5 @@ public class Operation {
         return earningRate;
     }
 
-    static void playGame() {
-        try {
-            Print.getPurchaseAmount();
-            int purchaseAmount = Input.getPurchaseAmount();
-            List<Lotto> lottos = buyLotto(purchaseAmount);
-            Print.userLottos(lottos, purchaseAmount);
-
-            Print.getWinningNumbers();
-            List<Integer> winning = Input.getWinningNumbers();
-            Print.getBonusNumber();
-            int bonus = Input.getBonusNumber(winning);
-
-            Match match = new Match(lottos, winning, bonus);
-            int earning = calculateEarning(match);
-            double earningRate = calculateEarningRate(purchaseAmount, earning);
-            Print.result(earningRate, match);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }
 
