@@ -14,6 +14,7 @@ public class Input {
     }
 
     public static String getAnswer(String request) {
+        System.out.println();
         System.out.print(request);
         return Console.readLine().trim();
     }
