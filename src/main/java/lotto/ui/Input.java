@@ -57,4 +57,8 @@ public class Input {
 
         return number.get(0);
     }
+
+    public static Integer getBonusNumber() {
+        return validateBonusNumber(Console.readLine());
+    }
 }
