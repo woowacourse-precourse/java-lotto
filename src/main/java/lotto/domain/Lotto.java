@@ -20,12 +20,14 @@ public class Lotto {
 
     private void validateByRange(List<Integer> numbers){
         for (Integer number : numbers){
-            if (number > 45 || number < 1) throw new IllegalArgumentException();
+            if (number > Constants.MAXIMUM_LOTTO_NUMBER.getValue() || number < Constants.MINIMUM_LOTTO_NUMBER.getValue()) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
     private void validateBySize(List<Integer> numbers){
-        if (numbers.size() != 6){
+        if (numbers.size() != Constants.NUMBER_TO_DRAW.getValue()){
             throw new IllegalArgumentException();
         }
     }
