@@ -10,18 +10,23 @@ import lotto.domain.Rank;
 import lotto.domain.Seller;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+import lotto.view.StatisticsView;
 
 public class Game {
 
     public void play() {
-        Money capital = new Money(InputView.promptAmount());
-        List<Lotto> lottos = issueLottosWith(capital);
+        try {
+            Money capital = new Money(InputView.promptAmount());
+            List<Lotto> lottos = issueLottosWith(capital);
 
-        List<Rank> ranks = getPicker().pick(lottos);
+            List<Rank> ranks = getPicker().pick(lottos);
 
-        Money profit = sumProfitsOf(ranks);
-        double profitRate = capital.calculateProfitRateOf(profit);
-        OutputView.printStatistics(ranks, profitRate);
+            Money profit = sumProfitsOf(ranks);
+            double profitRate = capital.calculateProfitRateOf(profit);
+            StatisticsView.printStatistics(ranks, profitRate);
+        }
+        catch (IllegalArgumentException exception){
+        }
     }
 
     private Money sumProfitsOf(List<Rank> ranks) {
