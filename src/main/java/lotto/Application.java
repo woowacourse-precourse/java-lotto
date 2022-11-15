@@ -7,18 +7,18 @@ public class Application {
         // TODO: 프로그램 구현
 
 
-        Lotto.inputBuyPirce1(); //메세지
+        Lotto.inputBuyPirce1();
 
-        int input = User.inputBuyPrice(); //입력칸
+        int input = User.inputBuyPrice();
 
-        int input2 = Lotto.buyScuessCount(input); //8개를 구입하셨습니다
+        int input2 = Lotto.buyScuessCount(input);
 
         User user = new User();
         Lotto.buySucess(input2);
         List<List<Integer>> lottoRandomNumber = User.lottoRandomNumber(input2);
 
 
-        Lotto.sayLottoNumber();     //32번
+        Lotto.sayLottoNumber();
         String lottoListSix = user.lottoListSix();
         List<Integer> InputList = Validator.InputList(lottoListSix);
 
@@ -28,7 +28,7 @@ public class Application {
 
 
         Lotto.CountNumberMessage();
-        List<Integer> toResult = Lotto.toResult(InputList, lottoRandomNumber); //43
+        List<Integer> toResult = Lotto.toResult(InputList, lottoRandomNumber);
 
         System.out.println(toResult);
 
