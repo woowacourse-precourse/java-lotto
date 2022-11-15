@@ -1,4 +1,4 @@
-package Utils;
+package lottoUtils;
 
 public class MathUtils {
 
