@@ -21,7 +21,7 @@ public class LottoResults {
         if (totalCost == 0.0) {
             return totalCost;
         }
-        return totalPrize() / totalCost * 100;
+        return totalPrize() / totalCost;
     }
 
     private long totalCost() {

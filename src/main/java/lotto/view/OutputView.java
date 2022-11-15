@@ -15,7 +15,8 @@ import static lotto.view.InputViewMessage.NOTICE_PURCHASE_LOTTO_COUNT;
 import static lotto.view.OutputViewMessage.*;
 
 public class OutputView {
-    private static final DecimalFormat formatter = new DecimalFormat("###,###.#");
+    private static final DecimalFormat prizeFormat = new DecimalFormat("###,###");
+    private static final DecimalFormat percentFormat = new DecimalFormat("###,###.0%");
 
     public void printLottoNumber(Lottos lottos) {
         StringBuilder lottoNumberBuilder = new StringBuilder();
@@ -30,7 +31,7 @@ public class OutputView {
         Map<LottoWin, Integer> lottoWinResults = lottoResults.getLottoResults();
         lottoWinResults.remove(LOSER);
         lottoWinResults.forEach((lottoWin, winCount) -> System.out.print(parseLottoStatics(lottoWin, winCount)));
-        System.out.printf(NOTICE_TOTAL_RATE.getMessage(), lottoResults.totalRate(), PERCENT.getUnit());
+        System.out.printf(NOTICE_TOTAL_RATE.getMessage(), percentFormat.format(lottoResults.totalRate()));
     }
     public void printPurchaseTicketCounts(int size) {
         System.out.printf(NOTICE_PURCHASE_LOTTO_COUNT.getMessage(), size);
@@ -50,9 +51,9 @@ public class OutputView {
     private String parseLottoStatics(LottoWin lottoWin, int winCount) {
         if (lottoWin.isAnyBonus()) {
             return String.format(NOTICE_WINNER_LOTTO_RESULT_WITH_BONUS_BALL.getMessage(),
-                    lottoWin.getSameNumberCount(), formatter.format(lottoWin.getPrize()), winCount);
+                    lottoWin.getSameNumberCount(), prizeFormat.format(lottoWin.getPrize()), winCount);
         }
         return String.format(NOTICE_WINNER_LOTTO_RESULT.getMessage(),
-                lottoWin.getSameNumberCount(), formatter.format(lottoWin.getPrize()), winCount);
+                lottoWin.getSameNumberCount(), prizeFormat.format(lottoWin.getPrize()), winCount);
     }
 }
