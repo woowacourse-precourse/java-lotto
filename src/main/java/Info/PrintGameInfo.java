@@ -4,6 +4,7 @@ import lotto.Lotto;
 import lotto.LottoList;
 
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class PrintGameInfo {
     public static final String NEXT_LINE = "\n";
     public static final String HYPHEN = " - ";
     public static final String COUNT_UNIT = "개";
+    public static final String IS = "%입니다.";
     public static final String IS_NOT_DIGIT_STRING = "숫자 이외의 값이 존재합니다.";
     public static final String IS_EMPTY_STRING = "아무 값도 입력하지 않았습니다.";
     public static final String NOT_DIVDE_THOUSAND = "최소단위"+Integer.toString(LottoList.AMOUNT_UNIT)+"로 나눠지지 않습니다.";
@@ -28,6 +30,8 @@ public class PrintGameInfo {
     public static final String POINT_ERROR = "Status구하는 함수에 잘못된 상수 값이 들어왔습니다. 내부 로직 에러";
 
     public static final String PROFIT_FORMAT = "총 수익률은 ";
+
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###.#");
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -107,7 +111,8 @@ public class PrintGameInfo {
     }
 
     public static String getProfitFormat(double profit) {
-        return PROFIT_FORMAT + String.format("%.1f%%입니다.", profit);
+        String roundProfit = String.format("%.1f", profit);
+        return PROFIT_FORMAT + roundProfit.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",") + IS;
     }
 
     public static String getOverLottoCount() {

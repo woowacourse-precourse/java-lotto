@@ -35,7 +35,7 @@ public class InputException {
      */
     public static void userInputZeroException(String amount) {
         if (checkAllZero(amount)) {
-            throw new IllegalArgumentException(PrintGameInfo.USER_INPUT_ZERO);
+            throw new IllegalArgumentException(PrintGameInfo.getUserInputZero());
         }
     }
     public static boolean checkAllZero(String amount) {
