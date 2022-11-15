@@ -17,17 +17,17 @@ public class PurchasingLotto {
         return numberOfLotto;
     }
 
-    public void devisionValid(int purchase) {
-        if (purchase % 1000 != 0) {
-            throw new IllegalArgumentException(ERROR_DEVISION_EXCEPTION);
-        }
-    }
-
     public int getPurchase() {
         return this.purchase;
     }
 
     public int getAmountOfLotto() {
         return this.amountOfLotto;
+    }
+
+    public void devisionValid(int purchase) {
+        if (purchase % 1000 != 0) {
+            throw new IllegalArgumentException(ERROR_DEVISION_EXCEPTION);
+        }
     }
 }
