@@ -2,6 +2,7 @@ package lotto.model;
 
 import lotto.resource.ErrorType;
 import lotto.resource.WinningType;
+import lotto.view.Error;
 
 import static lotto.model.Lotto.*;
 

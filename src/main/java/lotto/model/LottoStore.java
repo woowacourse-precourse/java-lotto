@@ -1,6 +1,7 @@
 package lotto.model;
 
 import lotto.resource.ErrorType;
+import lotto.view.Error;
 
 import java.util.ArrayList;
 import java.util.List;

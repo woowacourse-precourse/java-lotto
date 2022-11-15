@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.view;
 
 import lotto.resource.ErrorType;
 
