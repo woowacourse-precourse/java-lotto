@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.domain.Error.*;
 import static lotto.domain.Number.*;
 
 public class BonusNumber {
@@ -13,7 +14,7 @@ public class BonusNumber {
 
     private void validateNumbers(String str) {
         if (!str.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(Error.NUMBER.getMessage());
+            throw new IllegalArgumentException(NUMBER.getMessage());
         }
     }
 
@@ -23,7 +24,7 @@ public class BonusNumber {
 
     private void validateRange(int bonusNumber) {
         if (bonusNumber < MIN_LOTTO_NUMBER.getNumber() || bonusNumber > MAX_LOTTO_NUMBER.getNumber()) {
-            throw new IllegalArgumentException(Error.RANGE.getMessage());
+            throw new IllegalArgumentException(RANGE.getMessage());
         }
     }
 

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.domain.Error.*;
 import static lotto.domain.Number.*;
 
 public class LottoMoney {
@@ -15,7 +16,7 @@ public class LottoMoney {
 
     private void validateNumber(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(Error.NUMBER.getMessage());
+            throw new IllegalArgumentException(NUMBER.getMessage());
         }
     }
 
@@ -25,7 +26,7 @@ public class LottoMoney {
 
     private void validateDividedNumber() {
         if ((money % THOUSAND.getNumber() != ZERO.getNumber()) || (divideThousand() == ZERO.getNumber())) {
-            throw new IllegalArgumentException(Error.MONEY.getMessage());
+            throw new IllegalArgumentException(MONEY.getMessage());
         }
     }
 
