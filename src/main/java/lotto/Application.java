@@ -16,7 +16,7 @@ public class Application {
     private void run() {
         try {
             userService.setInputMoney(user);
-            managerService.changeLottos(user);
+            managerService.changeToLottos(user);
 
             OutputUtil.printUserLottoCount(user);
             OutputUtil.printUserLottos(user);

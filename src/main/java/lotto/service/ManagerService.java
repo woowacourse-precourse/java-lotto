@@ -16,7 +16,7 @@ public class ManagerService {
     UserService userService = new UserService();
     LottoMachine lottoMachine = new LottoMachine();
 
-    public void changeLottos(User user) {
+    public void changeToLottos(User user) {
         List<Lotto> lottos = new ArrayList<>();
         int totalCount = (int)user.getMoney() / Number.THOUSAND;
 
@@ -32,11 +32,11 @@ public class ManagerService {
         String input = InputUtil.getUserInput();
         try {
             ExceptionHandler.checkValidationWinningNumber(input);
-            manager.setWinningNumbers(input);
         } catch (IllegalArgumentException illegalArgumentException) {
             OutputUtil.printInputWinningNumbersError();
             throw illegalArgumentException;
         }
+        manager.setWinningNumbers(input);
     }
 
     public void setBonusNumber(Manager manager) throws IllegalArgumentException {
@@ -44,11 +44,11 @@ public class ManagerService {
         String input = InputUtil.getUserInput();
         try {
             ExceptionHandler.checkValidationBonusNumber(input, manager.getWinningNumbers());
-            manager.setBonusNumber(input);
         } catch (IllegalArgumentException illegalArgumentException) {
             OutputUtil.printInputBonusNumberError();
             throw illegalArgumentException;
         }
+        manager.setBonusNumber(input);
     }
 
     public void judgeResult(User user, Manager manager) {

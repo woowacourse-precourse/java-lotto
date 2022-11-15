@@ -29,7 +29,7 @@ class ManagerServiceTest {
     void changeLottosTest() {
         user.setMoney(8000.0);
         int expect = 8;
-        managerService.changeLottos(user);
+        managerService.changeToLottos(user);
 
         assertThat(user.getLottoCount()).isEqualTo(expect);
     }
@@ -39,7 +39,7 @@ class ManagerServiceTest {
     void changeLottosTest_2() {
         user.setMoney(0.0);
         int expect = 0;
-        managerService.changeLottos(user);
+        managerService.changeToLottos(user);
 
         assertThat(user.getLottoCount()).isEqualTo(expect);
     }
