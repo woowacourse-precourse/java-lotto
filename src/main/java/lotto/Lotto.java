@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -28,6 +28,18 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
         numbers.add(bonus);
+    }
+
+    // 로또 최종 맞춘 개수 확인
+    public List<Grade> saveResult(List<List<Integer>> boughtLotto){
+        List<Grade> gradeList = new ArrayList<>();
+        for (List<Integer> lotto : boughtLotto) {
+            int correct = calculCorrect(lotto);
+            int bonus = 0;
+            if (correct == 5) bonus = calculBonus(lotto);
+            gradeList.add(Grade.getGrade(correct, bonus));
+        }
+        return gradeList;
     }
 
     // 로또 번호맞추기 (보너스 제외)
