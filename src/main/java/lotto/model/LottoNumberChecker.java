@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoNumberChecker {
-    // 당첨 번호와 사용자 번호를 비교
     private final Lotto winningLotto;
     private final LottoNumber bonusNumber;
     private final List<Lotto> lottos;
