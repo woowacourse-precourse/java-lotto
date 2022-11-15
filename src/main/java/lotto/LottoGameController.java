@@ -10,7 +10,7 @@ public class LottoGameController {
         LottoTickets lottoTickets = purchaseLotto(amount.makeLottoTickets());
         WinningTicket winningTicket = makeWinningLotto();
         LottoResult lottoResult = getResult(lottoTickets, winningTicket);
-        SystemMessage.winningResult(lottoResult.matchWinningRank());
+        SystemMessage.winningResult(lottoResult.getRanks());
         SystemMessage.profit(lottoResult.getProfit(amount.makeLottoTickets()));
     }
 

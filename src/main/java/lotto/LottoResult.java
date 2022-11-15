@@ -15,7 +15,7 @@ public class LottoResult {
         this.statistics = statistics;
     }
 
-    public Map<Ranking, Integer> matchWinningRank() {
+    public Map<Ranking, Integer> getRanks() {
         for (Ranking rank : this.statistics) {
             result.put(rank, result.get(rank) + 1);
         }
