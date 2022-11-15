@@ -6,8 +6,8 @@
 <div markdown="1">
 
 ### 입력 
-- [ ]  로또 구입 금액을 입력 받기.
-> - [ ]  `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하기.
+- [x]  로또 구입 금액을 입력 받기.
+> - [x]  `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하기.
 > - [ ]  숫자가 아닌 값을 입력 할 경우 예외 처리.
 > - [ ]  1,000원으로 나누어 떨어지지 않을 경우 예외 처리.
 > - [ ]  1,000원 미만의 값을 입력할 경우 예외 처리.
