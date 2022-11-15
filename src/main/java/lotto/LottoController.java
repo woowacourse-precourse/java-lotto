@@ -61,6 +61,9 @@ public class LottoController {
             int number = lottoResult.getPrize(prize);
             System.out.println();
         }
+
+        double rate = Math.floor(lottoResult.getRate() * 100) / 100 ;
+        System.out.printf("총 수익률은 %.2f 입니다.", rate);
     }
 
     public String generateResultMessage(LottoPrize prize, int number) {
