@@ -1,8 +1,6 @@
 package lotto.domain.lotto;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -40,5 +38,7 @@ public class Lotto {
         }
     }
 
-
+    public List<LottoNumber> getLotto() {
+        return Collections.unmodifiableList(lotto);
+    }
 }
