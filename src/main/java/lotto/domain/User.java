@@ -22,10 +22,8 @@ public class User {
     }
 
     private void validate(String input) throws RuntimeException{
-        char c;
-
         for(int i=0; i<input.length(); i++){
-            c = input.charAt(i);
+            char c = input.charAt(i);
             if(!Character.isDigit(c))
                 throw new IllegalArgumentException(LottoException.NOT_DISIT.getErrorMessage());
         }

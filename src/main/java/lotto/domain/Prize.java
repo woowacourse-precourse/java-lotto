@@ -2,18 +2,18 @@ package lotto.domain;
 
 public enum Prize {
     LOSING_TICKET(0,0,"0"),
-    FIFTH_PLACE(3,5000,"5,000"),
-    FOURTH_PLACE(4,50000,"50,000"),
-    THIRD_PLACE(5,1500000,"1,500,000"),
-    SECOND_PLACE(5,30000000,"30,000,000"),
-    FIRST_PLACE(6,2000000000,"2,000,000,000");
+    FIFTH_PLACE(3,5000,"(5,000원)"),
+    FOURTH_PLACE(4,50000,"(50,000원)"),
+    THIRD_PLACE(5,1500000,"(1,500,000원)"),
+    SECOND_PLACE(5,30000000,", 보너스 볼 일치 (30,000,000원)"),
+    FIRST_PLACE(6,2000000000,"(2,000,000,000원)");
 
-    private int place;
+    private int matchN;
     private int amount;
     private String stringAmount;
 
     Prize(int place, int amount, String stringAmount) {
-        this.place = place;
+        this.matchN = place;
         this.amount = amount;
         this.stringAmount = stringAmount;
     }
@@ -33,8 +33,8 @@ public enum Prize {
         return LOSING_TICKET;
     }
 
-    public int getPlace(){
-        return place;
+    public int getMatchN(){
+        return matchN;
     }
 
     public int getAmount(){
