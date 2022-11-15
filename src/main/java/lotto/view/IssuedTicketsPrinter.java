@@ -5,8 +5,8 @@ import lotto.model.LottoStorage;
 
 public class IssuedTicketsPrinter {
 
-    public void printIssuedTickets(LottoStorage lottoTicketsStorage) {
-        for (List<Integer> ticket : lottoTicketsStorage.getLottoTickets()) {
+    public static void printIssuedTickets() {
+        for (List<Integer> ticket : LottoStorage.getLottoTickets()) {
             System.out.println(ticket);
         }
     }
