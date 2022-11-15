@@ -1,10 +1,10 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static lotto.controller.LottoController.getWinningTypeIterator;
 import static lotto.domain.Preset.FIVE_EQUALS;
 import static lotto.domain.Preset.SECOND_WINNING;
 import static lotto.domain.WinningType.getWinningType;
@@ -75,4 +75,7 @@ public class WinningResult {
         }
     }
 
+    public static Iterator<WinningType> getWinningTypeIterator() {
+        return Arrays.stream(WinningType.values()).iterator();
+    }
 }

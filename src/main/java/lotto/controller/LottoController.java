@@ -42,8 +42,4 @@ public class LottoController {
         double earning = result.calculateEarning(inputMoney);
         printEarning(earning);
     }
-
-    public static Iterator<WinningType> getWinningTypeIterator() {
-        return Arrays.stream(WinningType.values()).iterator();
-    }
 }
