@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,6 +55,8 @@ public class Output {
     }
 
     public static void profitEventMessage(float profit) {
-        System.out.println(PROFIT_EVENT_MESSAGE.replace(REPLACE_PROFIT_FROM, String.format("%.1f", profit)));
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.0");
+
+        System.out.println(PROFIT_EVENT_MESSAGE.replace(REPLACE_PROFIT_FROM,decimalFormat.format(profit)));
     }
 }
