@@ -15,10 +15,12 @@ public class Application {
         List<Integer> lottoRandomNum = lottoRandomNum();
         List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
         Lotto myLottoNum = myLottoNum();
-        int bonusNum = bonusNum();
+        int bonusNum = bonusNum(myLottoNum);
         int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
 
     }
+
+//    int lottoStart;
 
     // 구매금액입력
     /**
@@ -97,7 +99,7 @@ public class Application {
         System.out.print("당첨 번호를 입력해 주세요.");
         String myPickNum = Console.readLine();
 
-        String[] numbers = myPickNum.split("");
+        String[] numbers = myPickNum.split(",");
 
         List<Integer> myLottoNum = new ArrayList<Integer>();
 
@@ -118,7 +120,7 @@ public class Application {
      * 
      * @return
      */
-    public static int bonusNum() {
+    public static int bonusNum(Lotto myLottoNum) {
         System.out.print("보너스 번호를 입력해 주세요.");
         int bonusPick = 0;
         try {
@@ -126,14 +128,14 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 입력 타입 오류.");
         }
-//
-//        int bonusNum = 0;
-//        if ((myLottoNum).contains(bonusPick)) {
-//            throw new IllegalArgumentException("[ERROR] 중복입력.에러 발생.");
-//        }
-//        if (!((List<Integer>) myLottoNum).contains(bonusPick)) {
-//
-//        }
+
+        int bonusNum = 0;
+        if (myLottoNum.contains(bonusPick)) {
+            throw new IllegalArgumentException("[ERROR] 중복입력.에러 발생.");
+        }
+        if (!myLottoNum.contains(bonusPick)) {
+
+        }
 
         return bonusPick;
     }
