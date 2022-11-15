@@ -24,7 +24,7 @@ public class Buyer {
 
     private void validate(int money) {
         if (money % 1_000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.DESIRED_AMOUNT_ERROR.getMessage());
         }
     }
 

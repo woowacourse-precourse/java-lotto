@@ -31,7 +31,7 @@ public class WinningNumber {
             int n = Integer.parseInt(number);
             return n;
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.PARSING_NUMBER_ERROR.getMessage());
         }
     }
 
@@ -56,8 +56,11 @@ public class WinningNumber {
 
     private int validateNumber(String number) {
         int n = convertStringToNumber(number);
-        if (isNotValidNumber(n) || isDuplicatedNumber(n)) {
-            throw new IllegalArgumentException();
+        if (isNotValidNumber(n)) {
+            throw new IllegalArgumentException(ErrorMessage.NUMERIC_RANGE_ERROR.getMessage());
+        }
+        if (isDuplicatedNumber(n)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER_ERROR.getMessage());
         }
         return n;
     }
