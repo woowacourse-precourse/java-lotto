@@ -15,6 +15,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 
     public boolean isContainNumber(int number) {
         return numbers.contains(number);

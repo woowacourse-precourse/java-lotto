@@ -43,7 +43,7 @@ public class UserOutput {
         }
     }
 
-    public static void printWinningRate(float rate){
+    public static void printWinningRate(double rate){
         System.out.printf(WINNING_RATE_MESSAGE,rate);
     }
 }

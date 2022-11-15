@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer {
-    private static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_PRICE = 1000;
 
     public static List<Lotto> buyLotto(int money){
 

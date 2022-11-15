@@ -47,6 +47,13 @@ public class Compare {
         this.winningLotto = winningLotto;
     }
 
+    public void inputTargetNumbers() {
+        this.winningLotto = UserInput.inputTargetNumbers();
+    }
+
+    public void inputBonusNumber() {
+        this.bonusNumber = UserInput.inputBonusNumber();
+    }
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
 

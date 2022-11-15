@@ -9,8 +9,15 @@ public class User {
     public List<Lotto> getLottos(){
         return lottos;
     }
+    public int getMoney() {
+        return this.money;
+    }
 
-    public void setMoney(int money){
-        this.money = money;
+    public void inputAmount() {
+        this.money = UserInput.moneyInput();
+    }
+
+    public void buyLotto() {
+        this.lottos = Buyer.buyLotto(money);
     }
 }
