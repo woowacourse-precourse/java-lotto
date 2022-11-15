@@ -24,7 +24,7 @@ public class LottoWalletService {
         return wallet;
     }
 
-    public List<Integer> newLottoNumber() {
+    private List<Integer> newLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
@@ -51,7 +51,7 @@ public class LottoWalletService {
         try {
             payment = Integer.parseInt(moneyAsString);
         } catch (Exception e) {
-            System.out.println("[ERROR] 구입금액은 숫자만 가능합니다.");
+            System.out.println("[ERROR] 구입금액은 숫자만 입력 가능합니다.");
             throw new IllegalArgumentException();
         }
         validateUnit();

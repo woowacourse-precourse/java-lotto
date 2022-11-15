@@ -16,7 +16,7 @@ public class WinningNumService {
         return tmp;
     }
 
-    private void getInputAndValidate(List<Integer> tmp) {
+    private void getInputAndValidate(List<Integer> tmp) throws IllegalArgumentException{
         System.out.println("당첨 번호를 입력해 주세요.");
 
         String numbersAsString = Console.readLine();
@@ -32,7 +32,6 @@ public class WinningNumService {
         }
         sizeCheck(tmp);
     }
-
 
     private void sizeCheck(List<Integer> winningNumber) throws IllegalArgumentException {
         if (winningNumber.size() != 6) {
