@@ -20,7 +20,7 @@ class LottoMachineTest {
         assertThat(lottos.get(0)).isInstanceOf(Lotto.class);
     }
 
-    @DisplayName("입력 금액에 해당하는 개수만큼 로또를 구매했는지 확인한다.")
+    @DisplayName("입력 금액에 해당하는 개수만큼 로또가 생성되었는지 확인한다.")
     @Test
     void should_HaveLottosOfCorrectCount_When_Purchase() {
         // given
@@ -28,9 +28,8 @@ class LottoMachineTest {
         String moneyRaw = Integer.toString(PRICE_OF_ONE_LOTTO * 5);
         // when
         List<Lotto> lottos = LottoMachine.publish(moneyRaw);
-        int countLottosByPrice = money / PRICE_OF_ONE_LOTTO;
         // then
-        assertThat(lottos.size()).isEqualTo(countLottosByPrice);
+        assertThat(lottos.size()).isEqualTo(5);
     }
 
     @DisplayName("입력 금액이 로또 가격의 배수가 아니면 예외가 발생한다.")

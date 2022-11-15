@@ -34,8 +34,8 @@ class WinningCalculatorTest {
             // when
             winningCalculator.setWinningNumbers("6,7,8,9,10,11");
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lottoBeforeResetWinningNumbers))
-                    .isEqualTo(WinningResult.RANK_1);
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lottoBeforeResetWinningNumbers);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_1);
         }
 
         @DisplayName("int 범위 밖의 숫자 포함 -> 예외발생")
@@ -76,12 +76,12 @@ class WinningCalculatorTest {
         void should_BeRank2_When_SetBonusNumber() {
             // given
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 8));
-            Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
+            Lotto lottoBeforeResetBonusNumber = new Lotto(numbers);
             // when
             winningCalculator.setBonusNumber("8");
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lottoBeforeResetWinningNumbers))
-                    .isEqualTo(WinningResult.RANK_2);
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lottoBeforeResetBonusNumber);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_2);
         }
 
         @DisplayName("int 범위 밖의 숫자 입력 -> 예외발생")
@@ -114,66 +114,72 @@ class WinningCalculatorTest {
         @Test
         void should_BeRankNone_When_Contain1WinningNumber() {
             // given
-            // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 7, 8, 9, 10, 30));
             Lotto lotto = new Lotto(numbers);
+            // when
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lotto);
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_NONE);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_NONE);
         }
 
         @DisplayName("당첨 번호와 3개 일치 -> 5등 반환")
         @Test
         void should_BeRank5_When_Contain3WinningNumbers() {
             // given
-            // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 9, 10, 30));
             Lotto lotto = new Lotto(numbers);
+            // when
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lotto);
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_5);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_5);
         }
 
         @DisplayName("당첨 번호와 4개 일치 -> 4등 반환")
         @Test
         void should_BeRank4_When_Contain4WinningNumbers() {
             // given
-            // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 10, 30));
             Lotto lotto = new Lotto(numbers);
+            // when
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lotto);
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_4);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_4);
         }
 
         @DisplayName("당첨 번호와 5개 일치 -> 3등 반환")
         @Test
         void should_BeRank3_When_Contain5WinningNumbers() {
             // given
-            // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 30));
             Lotto lotto = new Lotto(numbers);
+            // when
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lotto);
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_3);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_3);
         }
 
-        @DisplayName("당첨 번호와 5개 일치, 보너스 번호 포함 -> 5등 반환")
+        @DisplayName("당첨 번호와 5개 일치, 보너스 번호 포함 -> 2등 반환")
         @Test
         void should_BeRank2_When_Contain5WinningNumbersAndBonus() {
             // given
-            // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 2, 3, 4, 5, 6));
             Lotto lotto = new Lotto(numbers);
+            // when
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lotto);
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_2);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_2);
         }
 
-        @DisplayName("당첨 번호와 6개 일치 -> 5등 반환")
+        @DisplayName("당첨 번호와 6개 일치 -> 1등 반환")
         @Test
         void should_BeRank1_When_Contain6WinningNumbers() {
             // given
-            // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
             Lotto lotto = new Lotto(numbers);
+            // when
+            WinningResult winningResult = winningCalculator.getResultOfOneLotto(lotto);
             // then
-            assertThat(winningCalculator.getResultOfOneLotto(lotto)).isEqualTo(WinningResult.RANK_1);
+            assertThat(winningResult).isEqualTo(WinningResult.RANK_1);
         }
 
     }

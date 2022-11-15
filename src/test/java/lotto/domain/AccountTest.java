@@ -65,10 +65,11 @@ class AccountTest {
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7))));
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
-            // when
             account.saveResult(lottos);
+            // when
+            String yield = account.getYield();
             // then
-            assertThat(account.getYield()).isEqualTo("1,500,250.0");
+            assertThat(yield).isEqualTo("1,500,250.0");
         }
 
         @DisplayName("5등과 꽝 당첨")
@@ -78,10 +79,11 @@ class AccountTest {
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));
-            // when
             account.saveResult(lottos);
+            // when
+            String yield = account.getYield();
             // then
-            assertThat(account.getYield()).isEqualTo("250.0");
+            assertThat(yield).isEqualTo("250.0");
         }
 
         @DisplayName("5등 1개, 꽝 2개 당첨")
@@ -92,10 +94,11 @@ class AccountTest {
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13))));
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(11, 12, 13, 14, 5, 6))));
-            // when
             account.saveResult(lottos);
+            // when
+            String yield = account.getYield();
             // then
-            assertThat(account.getYield()).isEqualTo("166.7");
+            assertThat(yield).isEqualTo("166.7");
         }
 
         @DisplayName("꽝 2개 당첨")
@@ -105,10 +108,11 @@ class AccountTest {
             List<Lotto> lottos = new ArrayList<>();
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14))));
             lottos.add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 21, 22, 23, 24))));
-            // when
             account.saveResult(lottos);
+            // when
+            String yield = account.getYield();
             // then
-            assertThat(account.getYield()).isEqualTo("0.0");
+            assertThat(yield).isEqualTo("0.0");
         }
     }
 }
