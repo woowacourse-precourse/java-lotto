@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Application {
+
     static Game gameData = new Game();
 
     static StringBuilder sb = new StringBuilder();
@@ -27,7 +28,6 @@ public class Application {
         saveInput();
         calculateWinnings();
         calculateRate();
-
     }
 
     public static void saveInput(){
@@ -52,8 +52,6 @@ public class Application {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN, MAX, NUMBER_SIZE);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
-
-            System.out.println(numbers);
         }
     }
 
@@ -78,7 +76,6 @@ public class Application {
     }
 
     private static void setWinnings(int winningCount, boolean hasBonus){
-        System.out.println(winningCount);
         if(winningCount == 6 ) gameData.changehitSix(gameData.getHitSix()+1);
         if(winningCount == 5 && hasBonus) gameData.changehitFiveAndBonus(gameData.getHitFiveAndBonus()+1);
         if(winningCount == 5 && !hasBonus) gameData.changehitFive(gameData.getHitFive()+1);
@@ -108,5 +105,4 @@ public class Application {
         double rate = ((double) earnMoney / gameData.getMoney() ) * 100;
         System.out.println("총 수익률은 "+ String.format("%.1f", rate) + "%입니다.");
     }
-
 }
