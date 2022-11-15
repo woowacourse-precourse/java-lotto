@@ -107,20 +107,29 @@ public class Service {
     }
 
     public List<Integer> countWinner(List<List<Integer>> lottoNumberList, String winningNumberInput, String luckyNumberInput) {
+        initResult();
         for (List<Integer> lottoNumber : lottoNumberList) {
             if (countCorrectNumber(lottoNumber, winningNumberInput) == 3) {
-                result.put(winner5st, result.getOrDefault(winner5st, 1) + 1);
+                result.put(winner5st, result.get(winner5st) + 1);
             } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 4) {
-                result.put(winner4st, result.getOrDefault(winner4st, 1) + 1);
+                result.put(winner4st, result.get(winner4st) + 1);
             } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 5 && !correctLuckyNumber(luckyNumberInput, lottoNumber)) {
-                result.put(winner3st, result.getOrDefault(winner3st, 1) + 1);
+                result.put(winner3st, result.get(winner3st) + 1);
             } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 5 && correctLuckyNumber(luckyNumberInput, lottoNumber)) {
-                result.put(winner2st, result.getOrDefault(winner2st, 1) + 1);
+                result.put(winner2st, result.get(winner2st) + 1);
             } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 6) {
-                result.put(winner1st, result.getOrDefault(winner1st, 1) + 1);
+                result.put(winner1st, result.get(winner1st) + 1);
             }
         }
         return createList();
+    }
+
+    private void initResult() {
+        result.put(winner5st, 0);
+        result.put(winner4st, 0);
+        result.put(winner3st, 0);
+        result.put(winner2st, 0);
+        result.put(winner1st, 0);
     }
 
     private List<Integer> createList() {
