@@ -13,6 +13,7 @@ public class Application {
         List<Integer> answer = MakeAnswer();
         int bonus_num = MakeBonus(answer);
         Map<String, Integer> user_match_count = UserMatchingCount(user_lotto, answer, bonus_num);
+        PrintResult(user_match_count);
     }
 
     static int HowManyLotto() {
@@ -120,5 +121,14 @@ public class Application {
             if (lotto.contains(bonus_num)) output += "+보너스";
         }
         return output;
+    }
+
+    static void PrintResult(Map<String, Integer> user_match_count) {
+        System.out.println("\n당첨 통계\n---");
+        System.out.println("3개 일치 (5,000원) - " + user_match_count.get("3개") + "개");
+        System.out.println("4개 일치 (50,000원) - " + user_match_count.get("4개") + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + user_match_count.get("5개") + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + user_match_count.get("5개+보너스") + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + user_match_count.get("6개") + "개");
     }
 }
