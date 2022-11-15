@@ -12,6 +12,10 @@ public class Money {
         return this.amount / 1000;
     }
 
+    public Double getRatio(Money money) {
+        return (double) money.getAmount() * 100 / amount;
+    }
+
     private void validate(Long amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액이 양수가 아닙니다.");
@@ -25,7 +29,5 @@ public class Money {
         return amount;
     }
 
-    public Double getRatio(Money money) {
-        return (double) money.getAmount() * 100 / amount;
-    }
+
 }

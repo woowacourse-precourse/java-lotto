@@ -17,6 +17,12 @@ public class LottoList {
         this.amount = 0;
     }
 
+    public void generateLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers = numbers.stream().sorted().collect(Collectors.toList());
+        appendLotto(new Lotto(numbers));
+        amount++;
+    }
     public void printLottoList() {
         System.out.println(amount + "개를 구매했습니다.");
         for (var lotto : lottos) {
@@ -28,10 +34,5 @@ public class LottoList {
         this.lottos.add(lotto);
     }
 
-    public void generateLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        numbers = numbers.stream().sorted().collect(Collectors.toList());
-        appendLotto(new Lotto(numbers));
-        amount++;
-    }
+
 }
