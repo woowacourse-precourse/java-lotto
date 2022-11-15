@@ -2,7 +2,7 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Console;
 public class User {
     private int publicans;
-    public void getBudget(){
+    public User(){
         System.out.println("구입금액을 입력해 주세요.");
         int budget = Integer.parseInt(Console.readLine());
         if(budget%1000!=0){
