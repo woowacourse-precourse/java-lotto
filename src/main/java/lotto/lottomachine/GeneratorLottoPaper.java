@@ -3,34 +3,32 @@ package lotto.lottomachine;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.view.GameMessage;
 import lotto.domain.Lotto;
 import lotto.domain.LottoEnum;
 import lotto.lottopaper.LottoPaper;
+import lotto.view.OutputView;
 
 public class GeneratorLottoPaper {
+    private static final int ZERO = 0;
     public static LottoPaper generateLottoPaper(int lottoPrice) {
         int lottoCount = lottoPrice / LottoEnum.PRICE.getValue();
-        showLottoCount(lottoCount);
+        OutputView.showLottoCount(lottoCount);
+        return insertLottoIntoLottoPaper(lottoCount);
+    }
 
+    private static LottoPaper insertLottoIntoLottoPaper(int lottoCount) {
         LottoPaper lottoPaper = new LottoPaper();
-
-        while (lottoCount != 0) {
+        while (lottoCount != ZERO) {
             lottoPaper.addLotto(generateLotto());
             lottoCount--;
         }
-
         return lottoPaper;
-    }
-
-    private static void showLottoCount(int lottoCount) {
-        System.out.println(String.valueOf(lottoCount) + GameMessage.RESULT_RANK_UNITS + GameMessage.BUY_RESULT);
     }
 
     private static Lotto generateLotto() {
         List<Integer> lottoNumbers = generateLottoNumbers();
         Lotto lotto = new Lotto(lottoNumbers);
-        System.out.println(lottoNumbers);
+        OutputView.showGeneratedLotto(lottoNumbers);
         return lotto;
     }
 
