@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -94,11 +96,24 @@ public class Application {
         return lottosResult;
     }
 
+    // 9. 당첨 금액
+    static int getTotalWinningPrice(List<Integer> lottosResult) {
+
+        int totalWinningPrice = 0;
+        List<Integer> winningPrice = new ArrayList<>(List.of(30000000,0,0,5000,50000,1500000,2000000000));
+
+        for(int idx=0; idx<winningPrice.size(); idx++) {
+            totalWinningPrice += winningPrice.get(idx) * lottosResult.get(idx);
+        }
+
+        return totalWinningPrice;
+    }
+
+
     public static void main(String[] args) {
 
         List<Lotto> lottos = new ArrayList<>();
         List<Integer> winningNums = new ArrayList<>();
-        List<Integer> lottosResult = new ArrayList<>();
 
         // 로또 구입
         int sheets = buyLotto();
@@ -113,9 +128,10 @@ public class Application {
         int bonusNum = createBonusNum();
 
         // 당첨 결과
-        lottosResult = getLottoResultAll(lottos,winningNums,bonusNum);
+        List<Integer> lottosResult = getLottoResultAll(lottos,winningNums,bonusNum);
 
-        System.out.println(lottosResult);
+        // 당첨 금액
+        int totalWinningPrice = getTotalWinningPrice(lottosResult);
     }
 }
 
