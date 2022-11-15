@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Output {
@@ -22,9 +24,20 @@ public class Output {
     }
 
     public static void lotteriesNumbers(List<Lotto> lotteries) {
+        List<Integer> sortNumbers = new ArrayList<>();
         for (Lotto item : lotteries) {
-            System.out.println(item.getNumbers());
+            sortNumbers = sortNumbers(item.getNumbers());
+            System.out.println(sortNumbers);
         }
+    }
+
+    public static List<Integer> sortNumbers(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>();
+        for (Integer item : numbers) {
+            sortedNumbers.add(item);
+        }
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 
     public static void winningHistory(Judge judge) {

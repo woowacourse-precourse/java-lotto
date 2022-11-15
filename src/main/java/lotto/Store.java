@@ -21,7 +21,6 @@ public class Store {
 
     public static List<Integer> makeNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
         return numbers;
     }
 
