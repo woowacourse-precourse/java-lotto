@@ -11,7 +11,7 @@ public class LottoMarket {
     private int purchaseLottoNum;
     private List<Lotto> lottos = new ArrayList<>();
 
-    public void inputPrice() {
+    private void inputPrice() {
         System.out.println("구입금액을 입력해 주세요.");
         String s = Console.readLine();
 
@@ -20,9 +20,12 @@ public class LottoMarket {
         this.purchaseLottoNum = purchasePrice / LOTTOPRICE;
     }
 
-    public void publishLotto() {
-        NumberGenerator numberGenerator = new NumberGenerator();
-        Lotto lotto = new Lotto(numberGenerator.getNumbers());
+    private void publishLotto() {
+        for (int i = 0; i < purchaseLottoNum; i++) {
+            NumberGenerator numberGenerator = new NumberGenerator();
+            Lotto lotto = new Lotto(numberGenerator.getNumbers());
+            lottos.add(lotto);
+        }
     }
 
     public void printLottoInfo() {
