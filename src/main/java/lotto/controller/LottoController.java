@@ -28,7 +28,6 @@ public class LottoController {
         this.winningHistory = new WinningHistory();
     }
 
-    //메소드명 필수 확인
     public void run() {
         inputView.printLottoMoney();
         lottoMoney.inputMoney(Console.readLine());
