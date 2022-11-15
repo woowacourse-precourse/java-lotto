@@ -16,7 +16,7 @@ public class LottoShop {
         }
     }
 
-    public int LottoCountCalculate(int money) {
+    public int LottoCountCalculate() {
         int LottoCount = money / LOTTO_PRICE;
         return LottoCount;
     }
