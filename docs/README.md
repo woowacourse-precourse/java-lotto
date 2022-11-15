@@ -25,12 +25,12 @@
 > - [ ]  중복된 경우 발생하지 않게 처리 
 
 ### 프로세스 진행
-- [ ]  구입 금액을 저장
-- [ ]  구입 금액 / 1,000 통해 로또 개수 저장
-- [ ]  로또 개수 만큼 로또를 랜덤으로 생성
-> - [ ]  로또 생성에는 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange() 활용하기.
-> 
-- [ ]  생성된 로또 정렬
+- [x]  구입 금액을 저장
+- [x]  구입 금액 / 1,000 통해 로또 개수 저장
+- [x]  로또 개수 만큼 로또를 랜덤으로 생성
+> - [x]  로또 생성에는 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange() 활용하기.
+ 
+- [x]  생성된 로또 정렬
 - [ ]  당첨 통계 생성
 > - [ ]  당첨 결과 계산
 > - [ ]  총 수익률 계산
