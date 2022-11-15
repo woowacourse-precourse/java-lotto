@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.LottoMachine;
 import lotto.message.Message;
+import lotto.setting.Setting;
 
 import java.util.List;
 
@@ -45,7 +46,11 @@ public class LottoView {
         System.out.println(Message.WIN_STATS_HEAD);
     }
 
-//    당첨 통계 보여주는 기능
-//    public void displayYield() {}
+    // 당첨 통계 보여주는 기능
+    public void displayPrizes(int[] lottoResult) {
+        for (int index = Setting.SHOW_PRIZE_LIST_MIN_RANK; index < Setting.PRIZE_LIST_SIZE; index++) {
+            System.out.println(String.format(Message.WIN_STATS_LIST[index], lottoResult[index]));
+        }
+    }
 
 }
