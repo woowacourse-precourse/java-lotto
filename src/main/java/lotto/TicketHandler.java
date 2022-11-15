@@ -50,4 +50,8 @@ public class TicketHandler {
         }
         Application.setWinningTickets(this.winningTickets);
     }
+
+    public double calcProfit(int winnings) {
+        return ((double) winnings / Application.getPurchaseAmount()) * 100;
+    }
 }
