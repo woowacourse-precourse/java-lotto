@@ -23,8 +23,19 @@ public class LottoService {
 
 
     public int getLottoCount(String input){
-        int purchaseAmount = Integer.parseInt(input);
-        return purchaseAmount / Money.THOUSAND.getAmount();
+        try{
+            int purchaseAmount = Integer.parseInt(input);
+            validatePurchase(purchaseAmount);
+            return purchaseAmount / Money.THOUSAND.getAmount();
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validatePurchase(int purchaseAmount) {
+        if(purchaseAmount%1000!=0){
+            throw new IllegalArgumentException();
+        }
     }
 
     public void drawLottos(int lottoCount){
