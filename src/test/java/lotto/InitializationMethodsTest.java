@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
@@ -17,22 +18,25 @@ import static lotto.Application.noOfLottoWinAt;
 import lotto.Application.NumberType;
 
 class InitializationMethodsTest {
+    @DisplayName("initializeNumberType 메소드 초기화 결과 테스트")
     @Test
-    void initializeNumberType_메소드_초기화_결과_테스트() {
+    void initializeNumberTypeMethodResultTest() {
         initializeNumberType();
         for (int number = 1; number <= 45; number++)
             assertThat(numberType[number]).isEqualTo(NumberType.NONE);
     }
 
+    @DisplayName("initializeNoOfLottoWinAt 메소드 초기화 결과 테스트")
     @Test
-    void initializeNoOfLottoWinAt_메소드_초기화_결과_테스트() {
+    void initializeNoOfLottoWinAtMethodResultTest() {
         initializeNoOfLottoWinAt();
         for (Places place: Places.values())
             assertThat(noOfLottoWinAt.get(place)).isEqualTo(0);
     }
 
+    @DisplayName("initializePrizesAtPlaces 메소드 초기화 결과 테스트")
     @Test
-    void initializePrizesAtPlaces_메소드_초기화_결과_테스트() {
+    void initializePrizesAtPlacesMethodResultTest() {
         initializePrizesAtPlaces();
         ArrayList<Long> prizes
                 = new ArrayList<>(List.of(2_000_000_000L, 30_000_000L, 1_500_000L, 50_000L, 5_000L, 0L));
