@@ -1,11 +1,17 @@
-package lotto;
+package lotto.controller;
+
+import lotto.view.ResultView;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.Purchase;
+import lotto.domain.RankResult;
 
 import java.util.List;
 
-import static lotto.InputView.inputBonusNumber;
-import static lotto.InputView.inputPurchase;
-import static lotto.InputView.inputWinLotto;
-import static lotto.Lottos.createRandomLottos;
+import static lotto.view.InputView.inputBonusNumber;
+import static lotto.view.InputView.inputPurchase;
+import static lotto.view.InputView.inputWinLotto;
+import static lotto.domain.Lottos.createRandomLottos;
 import static lotto.utils.Messages.ERROR_DUPLICATION_MESSAGE;
 
 public class LottoController {

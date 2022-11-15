@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.utils.Messages.ERROR_PLUS_NUMBER_MESSAGE;
 import static lotto.utils.Messages.ERROR_UNIT_MESSAGE;
