@@ -18,7 +18,7 @@ public class BonusNumberValidator {
 
     private void validateInput(String input, List<Integer> winningNumbers) {
         if (!isFrom1To45(input)) {
-            throw new IllegalArgumentException("숫자로 입력해야 합니다.");
+            throw new IllegalArgumentException("1부터 45 사이의 숫자로 입력해야 합니다.");
         }
         if (isDuplicatedWithWinningNumber(input, winningNumbers)) {
             throw new IllegalArgumentException("보너스 번호와 당첨 번호가 중복되면 안됩니다.");
