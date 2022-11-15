@@ -11,5 +11,16 @@ public class Lotto {
         Collections.sort(this.numbers);
     }
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (Integer number : numbers) {
+            sb.append(number).append(", ");
+        }
+        sb.setLength(sb.length()-2);
+        sb.append("]");
+
+        return sb.toString();
+    }
 }
