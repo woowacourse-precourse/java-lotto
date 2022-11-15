@@ -37,11 +37,29 @@ class PlayerTest extends NsTest {
             });
         }
 
+        @DisplayName("구입 금액이 정수가 아니면 예외가 발생한다.")
+        @Test
+        void purchaseByNonInteger() {
+            assertSimpleTest(() -> {
+                runException("2000.5");
+                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+            });
+        }
+
         @DisplayName("구입 금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
         @Test
         void purchaseWithChange() {
             assertSimpleTest(() -> {
                 runException("1234");
+                assertThat(output()).contains(ERROR + WRONG_PURCHASE_COST_MESSAGE);
+            });
+        }
+
+        @DisplayName("구입 금액이 1000 이하일 경우 예외가 발생한다.")
+        @Test
+        void purchaseWithInsufficient() {
+            assertSimpleTest(() -> {
+                runException("500");
                 assertThat(output()).contains(ERROR + WRONG_PURCHASE_COST_MESSAGE);
             });
         }

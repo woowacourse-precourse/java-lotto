@@ -13,7 +13,7 @@ public final class MessageConstants {
     public static final String COUNT = "개";
     public static final String ENTER = "\n";
 
-    public static final String WRONG_FORMAT_MESSAGE = "숫자만 입력해주세요.";
+    public static final String WRONG_FORMAT_MESSAGE = "숫자(정수)만 입력해주세요.";
     public static final String WRONG_PURCHASE_COST_MESSAGE = "로또는 한개에 1000원입니다. 1000원 단위로 입력해주세요.";
 
     public static final String WRONG_COUNT_MESSAGE = "6개의 번호를 입력해주세요.";
