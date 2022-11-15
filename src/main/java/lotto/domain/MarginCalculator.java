@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class MarginCalculator {
@@ -13,10 +12,8 @@ public class MarginCalculator {
 
     private static long getTotalWinningAmount(Map<String, Integer> winningInfo) {
         long totalAmount = 0;
-        Iterator<String> keys = winningInfo.keySet().iterator();
 
-        while(keys.hasNext()) {
-            String key = keys.next();
+        for (String key : winningInfo.keySet()) {
             totalAmount += Policy.WinningAmount.valueOf(key).getAmount() * winningInfo.get(key);
         }
         return totalAmount;
