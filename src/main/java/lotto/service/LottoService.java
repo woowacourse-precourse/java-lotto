@@ -1,13 +1,16 @@
 package lotto.service;
 
-import static lotto.LottoConstant.*;
+import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
+import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
+import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
+import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE;
+import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
 public class LottoService {
@@ -56,7 +59,7 @@ public class LottoService {
     }
 
     public static Lotto getWinningNumber(String input) {
-        if (input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
+        if (!input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
         List<Integer> numbers = Arrays.stream(input.split(","))
