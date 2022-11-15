@@ -4,6 +4,9 @@ import java.util.*;
 
 public class LottoNumberCheck {
     private static final int PAYMENT = 1000;
+    private static final int WIN = 3;
+    private static final int FIVE = 5;
+    private static final int SEVEN = 7;
     private static Map<String, Integer> correctNumber;
     private static Map<List<Integer>, Integer> checkLotto;
     private static List<Integer> countPrizeNumber;
@@ -54,15 +57,15 @@ public class LottoNumberCheck {
 
     private void compareMyLottoNumberWithBonusNumber(Map<List<Integer>, Integer> checkLotto, Map<String, Integer> correctNumber, int bonusBall) {
         for (List<Integer> lotto : checkLotto.keySet()) {
-            if (checkLotto.get(lotto) == 5 && lotto.contains(bonusBall)) {
-                correctNumber.put(lotto.toString(), 7);
+            if (checkLotto.get(lotto) == FIVE && lotto.contains(bonusBall)) {
+                correctNumber.put(lotto.toString(), SEVEN);
             }
         }
     }
 
     private void countWinningLotto(Map<String, Integer> correctNumber) {
         for (String lotto : correctNumber.keySet()) {
-            if (correctNumber.get(lotto) >= 3) {
+            if (correctNumber.get(lotto) >= WIN) {
                 countPrizeNumber.add(correctNumber.get(lotto));
             }
         }
@@ -96,9 +99,9 @@ public class LottoNumberCheck {
     }
 
     private void countPrizeMoneyOfMyLotto(int totalWinNumber, Prize value) {
-        if (totalWinNumber == 7 && value.getPrize().substring(1, 6).equals("개 일치,")) {
+        if (totalWinNumber == SEVEN && value.getPrize().substring(1, 6).equals("개 일치,")) {
             winningLotto.put(value.getPrize(), winningLotto.getOrDefault(value.getPrize(), 0) + 1);
-        } else if (totalWinNumber != 7 && value.getPrize().substring(0, 5).equals(totalWinNumber + "개 일치")){
+        } else if (totalWinNumber != SEVEN && value.getPrize().substring(0, 5).equals(totalWinNumber + "개 일치")){
             winningLotto.put(value.getPrize(), winningLotto.getOrDefault(value.getPrize(), 0) + 1);
         }
     }
