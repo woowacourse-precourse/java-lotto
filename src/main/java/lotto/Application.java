@@ -24,7 +24,13 @@ public class Application {
 
         NumberBox numberBox = new NumberBox(winningNumbers, bonusNumber);
 
-        Output.printStatistics(Calculator.calculateResult(user.getLottos(), numberBox.getWinningNumbers(), numberBox.getBonusNumber()));
+        Output.printStatistics(
+                Calculator.calculateResult(
+                        user.getLottos(),
+                        numberBox.getWinningNumbers(),
+                        numberBox.getBonusNumber()
+                )
+        );
 
         Output.printYield(Calculator.calculateYield(money));
     }
