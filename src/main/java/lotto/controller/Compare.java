@@ -17,9 +17,7 @@ public class Compare {
     public Compare(List<List<Integer>> userLotto, Lotto winLotto, int bonusLotto) {
         for (int paper = 0; paper < userLotto.size(); paper++) {
             this.count = CountLotto(userLotto.get(paper),winLotto,paper);
-            if (count == 5) {
-                bonusHit = IsBonus(userLotto.get(paper), bonusLotto);
-            }
+            IsBonus(count,userLotto.get(paper), bonusLotto);
             Result(count,bonusHit);
         }
         Win();
@@ -35,8 +33,8 @@ public class Compare {
         return count;
     }
 
-    private boolean IsBonus(List<Integer> nowUserLotto, int bonusLotto) {
-        if (nowUserLotto.contains(bonusLotto)) {
+    private boolean IsBonus(int count, List<Integer> nowUserLotto, int bonusLotto) {
+        if (count == 5 && nowUserLotto.contains(bonusLotto)) {
             return true;
         }
         return false;
