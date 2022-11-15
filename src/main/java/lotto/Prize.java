@@ -1,18 +1,30 @@
 package lotto;
 
 public enum Prize {
-    FIFTH(5_000),
-    FOURTH(50_000),
-    THIRD(1_500_000),
-    SECOND(30_000_000),
-    JACKPOT(2_000_000_000);
+    FIFTH(3, false, 5_000),
+    FOURTH(4, false, 50_000),
+    THIRD(5, false, 1_500_000),
+    SECOND(5, true, 30_000_000),
+    JACKPOT(6, false, 2_000_000_000);
 
+    private final int matchedNumbers;
+    private final boolean containBonus;
     private final int prize;
     private int numsOfWinner;
 
-    Prize(int prize) {
+    Prize(int matchedNumbers, boolean containBonus, int prize) {
+        this.matchedNumbers = matchedNumbers;
+        this.containBonus = containBonus;
         this.prize = prize;
         this.numsOfWinner = 0;
+    }
+
+    public int getMatchedNumbers() {
+        return this.matchedNumbers;
+    }
+
+    public boolean getContainBonus() {
+        return this.containBonus;
     }
 
     public int getNumsOfWinner() {
