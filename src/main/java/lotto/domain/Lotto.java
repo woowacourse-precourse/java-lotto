@@ -36,7 +36,7 @@ public class Lotto {
     }
 
     public static void checkIsInt(String input) {
-        if(input.charAt(0) == '0'){
+        if (input.charAt(0) == '0') {
             throw new IllegalArgumentException("구입 금액 입력은 0으로 시작할 수 없습니다.");
         }
         for (int i = 0; i < input.length(); i++) {

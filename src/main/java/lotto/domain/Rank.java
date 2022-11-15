@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum Rank {
-
     None(0, 0),
     Five(3, 5000),
     Four(4, 50_000),

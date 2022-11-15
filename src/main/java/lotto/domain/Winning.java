@@ -31,7 +31,7 @@ public class Winning {
         }
     }
 
-    public static void overlapCheck(int inputNumber){
+    public static void overlapCheck(int inputNumber) {
         if (numbers.contains(inputNumber)) {
             throw new IllegalArgumentException("로또 번호에는 중복된 숫자를 입력할 수 없습니다.");
         }
