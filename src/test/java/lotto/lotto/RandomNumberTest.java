@@ -9,7 +9,6 @@ import java.util.List;
 
 class RandomNumberTest{
 
-
 	@DisplayName("랜덤으로 생성되는 로또의 수가 6개인지 확인")
 	@Test
 	void createRandomNumberSize() {
@@ -26,8 +25,4 @@ class RandomNumberTest{
 				randomNumber.lotto.get(i)>1).isTrue();
 		}
 	}
-
-
-
-	// 아래에 추가 테스트 작성 가능
 }
