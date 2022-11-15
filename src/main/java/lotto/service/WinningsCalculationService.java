@@ -14,6 +14,7 @@ public class WinningsCalculationService {
 
     private final Integer bonusNumber;
 
+    private final int[] winningPrice = {5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
     private int[] winningResult = new int[5];
 
     public WinningsCalculationService(User user, List<Integer> winningsNumber, Integer bonusNumber) {
@@ -52,37 +53,20 @@ public class WinningsCalculationService {
             }
         }
 
-        if (winningCount < 3) {
-            return 0;
-        }
         return winningCount;
     }
 
     private Integer calculateWinningPrice(int winningCount, boolean isSecond) {
-        int winningPrice = 0;
+        if (winningCount < 3) {
+            return 0;
+        }
 
-        if (winningCount == 3) {
-            winningPrice += 5000;
-            winningResult[0]++;
-        }
-        if (winningCount == 4) {
-            winningPrice += 50000;
-            winningResult[1]++;
-        }
-        if (winningCount == 5) {
-            winningPrice += 1500000;
-            winningResult[2]++;
-        }
-        if (winningCount == 5 && isSecond) {
-            winningPrice += 30000000;
+        if (isSecond) {
             winningResult[3]++;
+            return winningPrice[3];
         }
-        if (winningCount == 6) {
-            winningPrice += 2000000000;
-            winningResult[4]++;
-        }
-
-        return winningPrice;
+        winningResult[winningCount - 3]++;
+        return winningPrice[winningCount - 3];
     }
 
     private boolean isSecond(Lotto lotto, Integer bonusNumber) {
