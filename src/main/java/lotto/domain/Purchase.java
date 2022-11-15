@@ -7,35 +7,28 @@ public class Purchase {
     public int money;
 
     public void inputMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(Message.INPUT_MONEY);
         String userInput = Console.readLine();
-        int parseInput = 0;
         try {
-            if (isNumber(userInput)) {
-                parseInput = Integer.parseInt(userInput);
-            }
-            if (isValid(parseInput)) {
-                this.money = parseInput;
-            }
+            isNumber(userInput);
+            int parseInput = Integer.parseInt(userInput);
+            isValid(parseInput);
+            this.money = parseInput;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 
-    public boolean isNumber(String userInput) {
+    public void isNumber(String userInput) {
         if (!userInput.matches("[-+]?\\d*\\.?\\d+")) {
             throw new IllegalArgumentException(Message.MONEY_ERROR);
         }
-        return true;
     }
 
-    public boolean isValid(int userInput) {
+    public void isValid(int userInput) {
         if (userInput % 1000 != 0) {
             throw new IllegalArgumentException(Message.MONEY_ERROR);
         }
-        return userInput % 1000 == 0;
     }
 
     public int canBuyLotto(int money) {
