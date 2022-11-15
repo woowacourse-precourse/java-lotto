@@ -7,13 +7,17 @@ import validation.Validator;
 
 public class BonusNumberInputUtil {
     public static int getBonusNumber(Lotto winningNumbers) {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        printMessage();
 
         String bonusNumber = getInput();
 
         validate(bonusNumber, winningNumbers);
 
         return Integer.parseInt(bonusNumber);
+    }
+
+    private static void printMessage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     private static void validate(String bonusNumber, Lotto winningNumbers) {
