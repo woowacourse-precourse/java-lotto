@@ -63,7 +63,9 @@ public class InputView {
             for (String word : splitInput)
                 integers.add(convertStrToInt(word));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_WINNING_MESSAGE);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ERROR_WINNING_MESSAGE);
         }
 
         return integers;

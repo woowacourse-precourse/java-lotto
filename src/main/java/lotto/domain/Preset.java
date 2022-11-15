@@ -15,4 +15,5 @@ public class Preset {
     public static final int percentage = 100;
 
     public static final String ERROR_FORMAT_MESSAGE = "[ERROR] 잘못된 입력입니다";
+    public static final String ERROR_WINNING_MESSAGE = "[ERROR] 잘못된 당첨 번호 입력입니다";
 }
