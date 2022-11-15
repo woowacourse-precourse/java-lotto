@@ -9,5 +9,10 @@ public class BuyerInputView {
         return Console.readLine();
     }
 
+    public static String getPickNum() {
+        System.out.println(GameMessage.PICK_MESSAGE.getGameMessage());
+        return Console.readLine();
+    }
+
 
 }

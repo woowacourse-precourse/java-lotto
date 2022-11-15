@@ -19,7 +19,7 @@ public class Buyer {
     private void validateDigit(String inputNum) {
         for (int index = 0; index < inputNum.length(); index++) {
             if (!Character.isDigit(inputNum.charAt(index))) {
-                throw new IllegalArgumentException(ErrorMessage.DATA_TYPE_ERR.getErrorMessage());
+                throw new IllegalArgumentException(ErrorMessage.DATA_TYPE_ERR_MESSAGE.getErrorMessage());
             }
         }
     }
