@@ -2,9 +2,12 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoEstimator;
+import lotto.domain.LottoStatics;
+import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,16 +15,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoEstimatorTest {
-    private LottoEstimator lottoEstimator;
-
+    private LottoStatics lottoStatics;
     @BeforeEach
     void setUp(){
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        List<Lotto> purchasedLotteries = new ArrayList<>();
-        purchasedLotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        purchasedLotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        final byte[] buf = String.join("\n", "1,2,3,4,5,6","7").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
 
-        lottoEstimator = new LottoEstimator(purchasedLotteries, winningLotto, 7);
+        List<Lotto> purchasedLotteries = new ArrayList<>(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 5, 7))));
+        lottoStatics = new LottoEstimator(WinningLotto.create()).estimate(purchasedLotteries);
+
     }
 
     @Test
@@ -33,15 +35,14 @@ public class LottoEstimatorTest {
         expected.put(LottoRank.FIRST_PLACE, 1);
         expected.put(LottoRank.SECOND_PLACE, 1);
 
-        HashMap<LottoRank, Integer> result = lottoEstimator.estimate();
+        HashMap<LottoRank, Integer> result = lottoStatics.rankStatics();
 
         assertThat(result).isEqualTo(expected);
     }
 
     @Test
     void 수익률_구하기() {
-        lottoEstimator.estimate();
-        float result = lottoEstimator.getRateOfProfit();
+        float result = lottoStatics.profitRate();
 
         assertThat(result).isEqualTo(1.015E8f);
     }
