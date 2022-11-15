@@ -253,6 +253,11 @@ public class Application {
         return profit;
     }
 
+    public static void printEarningRate(int lottoPurchaseMoney, int profit) {
+        double earningRate = ((double) profit / (double) lottoPurchaseMoney) * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", earningRate) + "%입니다.");
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -271,5 +276,6 @@ public class Application {
         List<Integer> winningStats = getWinningStats(lottery, winningNumbers, bonusNumber);
         printWinningStats(winningStats);
         int profit = getProfit(winningStats);
+        printEarningRate(lottoPurchaseMoney, profit);
     }
 }
