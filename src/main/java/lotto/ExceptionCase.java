@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,16 +44,15 @@ public class ExceptionCase {
         }
     }
     public void checkNumbersOverLap(List<Integer> numbers) {
-        final int TRUE = 1;
         Iterator itrForNumbers = numbers.iterator();
-        int[] arrayForCheckOverLap = new int[46];
+        List<Integer> arrayForCheckOverLap = new ArrayList<>();
         while (itrForNumbers.hasNext()){
-            int checkIndex = (int)itrForNumbers.next();
-            if (arrayForCheckOverLap[checkIndex] == TRUE){
+            int checkNumber = (int)itrForNumbers.next();
+            if (arrayForCheckOverLap.contains(checkNumber)){
                 System.out.println("[ERROR] 당첨 번호는 중복이 없어야 합니다.");
                 throw new IllegalArgumentException();
             }
-            arrayForCheckOverLap[checkIndex] = TRUE;
+            arrayForCheckOverLap.add(checkNumber);
         }
     }
     public void checkNumbersRange(List<Integer> numbers) {
@@ -60,7 +60,6 @@ public class ExceptionCase {
         while (itrForNumbers.hasNext()){
             int number = (int)itrForNumbers.next();
             if (number < 1 || number > 45){
-                System.out.println("!");
                 System.out.println("[ERROR] 당첨 번호의 각 숫자 범위는 1 - 45 입니다.");
                 throw new IllegalArgumentException();
             }
