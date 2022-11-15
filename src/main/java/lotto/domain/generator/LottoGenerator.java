@@ -2,8 +2,8 @@ package lotto.domain.generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.model.Lotto;
 import lotto.domain.model.Lottos;
 import lotto.domain.model.request.MoneyRequest;
@@ -27,14 +27,15 @@ public class LottoGenerator {
         List<Lotto> lottos = new ArrayList<>();
         for (int number = 0; number < quantity; number++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_COUNT);
-            Collections.sort(lottoNumbers);
-            lottos.add(new Lotto(lottoNumbers));
+            lottos.add(new Lotto(lottoNumbers.stream()
+                    .sorted()
+                    .collect(Collectors.toList())));
         }
         return new Lottos(lottos);
     }
 
     private int getAvailableQuantity(int money) {
-        return Math.floorDiv(money, MONEY_UNIT);
+        return money / MONEY_UNIT;
     }
 
     public Lottos getLottos() {
@@ -46,16 +47,16 @@ public class LottoGenerator {
         if (isNotEnough(money)) {
             throw new IllegalArgumentException("최소 구매금액은 1000원 입니다.");
         }
-        if (isThousandOneUnit(money)) {
+        if (isNotThousandOneUnit(money)) {
             throw new IllegalArgumentException("1000원 단위로 입력해주세요.");
         }
     }
 
     private boolean isNotEnough(int money) {
-        return Math.floorDiv(money, MONEY_UNIT) == 0;
+        return (getAvailableQuantity(money)) == 0;
     }
 
-    private boolean isThousandOneUnit(int money) {
-        return getAvailableQuantity(money) != 0;
+    private boolean isNotThousandOneUnit(int money) {
+        return (money % MONEY_UNIT) != 0;
     }
 }
