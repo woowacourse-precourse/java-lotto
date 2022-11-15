@@ -9,28 +9,52 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MatchCountTest {
 
-    @DisplayName("같은 등수 반환 테스트")
+    @DisplayName("당첨 번호 3개일치와 당첨번호3개일치+보너스1개일치의 등수는 같아야 한다.")
     @Test
-    void 같은_등수_반환_테스트() {
+    void isSameResultTest_threeMatch() {
         MatchCount matchCount1 = new MatchCount(3, 0);
         MatchCount matchCount2 = new MatchCount(3, 1);
-        MatchCount matchCount3 = new MatchCount(4, 0);
-        MatchCount matchCount4 = new MatchCount(5, 0);
-        MatchCount matchCount5 = new MatchCount(5, 1);
-        MatchCount matchCount6 = new MatchCount(6, 0);
 
         assertTrue(matchCount1.isSameResult(matchCount2));
-        assertFalse(matchCount1.isSameResult(matchCount3));
-        assertFalse(matchCount3.isSameResult(matchCount4));
-        assertFalse(matchCount4.isSameResult(matchCount5));
-        assertFalse(matchCount5.isSameResult(matchCount6));
     }
 
-    @DisplayName("결과 생성 오류 테스트")
+    @DisplayName("당첨 번호 4개일치와 당첨번호4개일치+보너스1개일치의 등수는 같아야 한다.")
     @Test
-    void 결과_생성_오류_테스트() {
+    void isSameResultTest_fourMatch() {
+        MatchCount matchCount1 = new MatchCount(4, 0);
+        MatchCount matchCount2 = new MatchCount(4, 1);
+
+        assertTrue(matchCount1.isSameResult(matchCount2));
+    }
+
+    @DisplayName("당첨 번호 5개일치와 당첨번호5개일치+보너스1개일치의 등수는 달라야 한다.")
+    @Test
+    void isSameResultTest_fiveMatch() {
+        MatchCount matchCount1 = new MatchCount(5, 0);
+        MatchCount matchCount2 = new MatchCount(5, 1);
+
+        assertFalse(matchCount1.isSameResult(matchCount2));
+    }
+
+    @DisplayName("당첨 번호 당첨번호5개일치+보너스1개일치와 당첨번호6개일치의 등수는 달라야 한다.")
+    @Test
+    void isSameResultTest_sixMatch() {
+        MatchCount matchCount1 = new MatchCount(5, 1);
+        MatchCount matchCount2 = new MatchCount(6, 0);
+
+        assertFalse(matchCount1.isSameResult(matchCount2));
+    }
+
+    @DisplayName("보너스 개수가 2개 이상일 경우 에러가 발생한다.")
+    @Test
+    void createMatchCountError_bonus() {
         assertThatThrownBy(() -> new MatchCount(2, 2))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("결과 생성 오류 테스트 당첨 개수과 보너스 개수는 합해서 6개를 넘을 수 없다.")
+    @Test
+    void createMatchCountError_over() {
         assertThatThrownBy(() -> new MatchCount(6, 1))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new MatchCount(5, 2))
