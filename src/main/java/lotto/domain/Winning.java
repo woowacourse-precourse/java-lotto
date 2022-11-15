@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winning {
+    private static final int MIN_LOTTO = 1;
+    private static final int MAX_LOTTO = 45;
+
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
@@ -39,5 +42,10 @@ public class Winning {
         List<Integer> deduplicated = winningNumbers.stream()
                 .distinct().collect(Collectors.toList());
         return winningNumbers.size() != deduplicated.size();
+    }
+
+    private boolean isInvalidNumberRange(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(number -> number < MIN_LOTTO || number > MAX_LOTTO);
     }
 }
