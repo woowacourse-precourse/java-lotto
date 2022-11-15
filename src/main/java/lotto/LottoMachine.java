@@ -24,7 +24,6 @@ public class LottoMachine {
 				Constant.MIN_VALUE.getNumber(),
 				Constant.MAX_VALUE.getNumber(),
 				Constant.NUMBER_OF_NUMBERS.getNumber());
-			Collections.sort(lotto);
 			generatedLottos.add(lotto);
 		}
 		return new LottoMachine(generatedLottos);
