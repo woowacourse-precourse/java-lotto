@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class Lotto {
         this.numbers = numbers;
     }
     public static List<Integer> winningNumbers(){
-        System.out.println(Messages.INPUT_WINNING_NUMBERS);
+        System.out.println("구매 금액을 입력해주세요");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
 
