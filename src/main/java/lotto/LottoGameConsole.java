@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.Rank;
+import lotto.domain.constant.Rank;
 import lotto.domain.WinningLotto;
 import lotto.participant.*;
 

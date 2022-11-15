@@ -1,13 +1,13 @@
 package lotto.participant;
 
 import lotto.domain.Lotto;
-import lotto.domain.Rank;
+import lotto.domain.constant.Rank;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.domain.Rank.*;
+import static lotto.domain.constant.Rank.*;
 
 public class Emcee {
 

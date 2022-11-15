@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.constant;
 
 public enum Rank {
     FIRST_SIX_MATCHED(2_000_000_000),
