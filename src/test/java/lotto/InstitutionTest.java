@@ -71,4 +71,17 @@ public class InstitutionTest {
         
         Assertions.assertEquals(prizeMoneySum, expectedPrizeMoneySum);
     }
+
+    @DisplayName("수익률을 계산한다")
+    @Test
+    void calculateYield() {
+        Integer prizeMoneySum = 5000;
+        Integer userMoney = 8000;
+
+        Double yield = Institution.getInstance().calculateYield(prizeMoneySum,userMoney);
+        Double expectedYield = (prizeMoneySum.doubleValue()/userMoney)*100;
+
+        Assertions.assertEquals(yield, expectedYield);
+
+    }
 }
