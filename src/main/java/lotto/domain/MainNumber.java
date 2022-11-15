@@ -3,10 +3,10 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningNumber {
+public class MainNumber {
     private final List<Integer> numbers;
 
-    public WinningNumber(String userInput) {
+    public MainNumber(String userInput) {
         List<Integer> numbers = validate(userInput);
         this.numbers = numbers;
     }
