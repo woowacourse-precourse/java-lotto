@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import lotto.commons.LottoResult;
+import lotto.exception.ExceptionHandler;
 
 public class InputOutput {
 
+    ExceptionHandler exception = new ExceptionHandler();
+
     public int getLottoBuyAmount() {
         String input = Console.readLine();
-        //ErrorHandler#getLottoBuyAmountError()
+        exception.getLottoBuyAmountException(input);
         int money = Integer.parseInt(input);
         return money / 1000;
     }
 
     public List<Integer> getLottoNumbers() {
         String input = Console.readLine();
-        //ErrorHandler#getLottoWinnerNumberError()
+        exception.getLottoWinnerNumberException(input);
         List<Integer> numbers = new ArrayList<>();
         for (String number : input.split(",")) {
             numbers.add(Integer.valueOf(number));
@@ -27,7 +30,7 @@ public class InputOutput {
 
     public int getLottoBonusNumbers() {
         String input = Console.readLine();
-        //ErrorHandler#getLottoBonusNumberError()
+        exception.getLottoBonusNumberException(input);
         int number = Integer.parseInt(input);
         return number;
     }
