@@ -32,29 +32,28 @@ public class RankService {
         }
     }
 
-    public Rank calculateRanking(User user, WinLotto lotto){
+    public Rank calculateRanking(User user, WinLotto win){
+        Set<Integer> winLotto = new HashSet<>(win.getNumbers());
         Rank ranking = new Rank();
 
-        for (Lotto boughtLotto : user.getLotto()){
-            int rank = calculateRanking(boughtLotto, lotto);
+        for (Lotto lotto : user.getLotto()){
+            int rank = calculateRanking(lotto, winLotto, win.getBonusNumber());
             ranking.count(rank);
         }
         return ranking;
     }
 
-    private int calculateRanking(Lotto lotto, WinLotto winningLotto){
-        Set<Integer> winningNumbers = new HashSet<>(lotto.getNumbers());
-        Set<Integer> lottoNumbers = new HashSet<>(winningLotto.getNumbers());
-        lottoNumbers.retainAll(winningNumbers);
-        if (lottoNumbers.size() == 6) return 1;
-        if (lottoNumbers.size() == 5){
-            if (isMatchBonus(lotto, winningLotto.getBonusNumber()))
-                return 2;
+    private int calculateRanking(Lotto lotto, Set<Integer> win, int bonus){
+        Set<Integer> matchNumber = new HashSet<>(lotto.getNumbers());
+        matchNumber.retainAll(win);
+
+        if (matchNumber.size() == 6) return 1;
+        if (matchNumber.size() == 5){
+            if (isMatchBonus(lotto, bonus)) return 2;
             return 3;
         }
-        if (lottoNumbers.size() == 4) return 4;
-        if (lottoNumbers.size() == 3) return 5;
-
+        if (matchNumber.size() == 4) return 4;
+        if (matchNumber.size() == 3) return 5;
         return 0;
     }
 
