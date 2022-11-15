@@ -13,7 +13,6 @@ public class Calculator {
         this.lottoSet = lottoSet;
         this.winningLotto = winningLotto;
         bonus = winningLotto.get(6);
-        winningLotto.remove(6);
     }
 
     public List<Integer> getResult() {
@@ -34,9 +33,9 @@ public class Calculator {
     }
 
     public void rankCalculator(List<Integer> lottoNumber) {
-        if (cnt == 6) first += 1;
-        if (cnt == 5 && lottoNumber.contains(bonus)) second += 1;
-        if (cnt == 5 && !lottoNumber.contains(bonus)) third += 1;
+        if (cnt == 6 && !lottoNumber.contains(bonus)) first += 1;
+        if (cnt == 6 && lottoNumber.contains(bonus)) second += 1;
+        if (cnt == 5) third += 1;
         if (cnt == 4) fourth += 1;
         if (cnt == 3) fifth += 1;
     }
