@@ -56,4 +56,13 @@ class LottoTest {
 
         assertThat(cnt).isEqualTo(3);
     }
+
+    @DisplayName("로또 번호 보너스 비교")
+    @Test
+    void createBonusCount() {
+
+        boolean check = LottoUtil.checkBonus(new Lotto(List.of(1,3,5,7,9,11)), 11);
+
+        assertThat(check).isTrue();
+    }
 }
