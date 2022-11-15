@@ -1,6 +1,6 @@
 package lotto.logic;
 
-import lotto.message.Constant;
+import lotto.data.Constant;
 
 import java.util.List;
 

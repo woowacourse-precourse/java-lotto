@@ -1,6 +1,8 @@
 package lotto.controller;
 
 import lotto.logic.*;
+import lotto.data.LottoRank;
+import lotto.data.OutputForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,13 +45,13 @@ public class LottoGame {
     }
 
     private void showStatistic(Map<Integer, Integer> map, int amount) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + rank.getRankfive(map) + "개");
-        System.out.println("4개 일치 (50,000원) - " + rank.getRankfour(map) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + rank.getRankthree(map) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rank.getranktwo(map) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + rank.getrankone(map) + "개");
-        System.out.println("총 수익률은 " + (rank.getearningRate(map, amount) + "%입니다."));
+        System.out.println(OutputForm.OUTPUT_STATISTIC.getMessage());
+        System.out.println(OutputForm.OUTPUT_BORDER.getMessage());
+        System.out.println(LottoRank.FIFTH.getState() + rank.getRankfive(map) + "개");
+        System.out.println(LottoRank.FOURTH.getState() + rank.getRankfour(map) + "개");
+        System.out.println(LottoRank.THIRD.getState() + rank.getRankthree(map) + "개");
+        System.out.println(LottoRank.SECOND.getState() + rank.getranktwo(map) + "개");
+        System.out.println(LottoRank.FIRST.getState() + rank.getrankone(map) + "개");
+        System.out.println(OutputForm.OUTPUT_PROFIT.getMessage() + (rank.getearningRate(map, amount) + "%입니다."));
     }
 }

@@ -1,7 +1,7 @@
 package lotto.exception;
 
-import lotto.message.Constant;
-import lotto.message.Error;
+import lotto.data.Constant;
+import lotto.data.Error;
 
 import java.util.Collections;
 import java.util.List;
