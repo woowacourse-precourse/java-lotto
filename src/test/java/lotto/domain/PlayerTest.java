@@ -38,6 +38,24 @@ class PlayerTest extends NsTest {
         Assertions.assertEquals(purchaseNumber, 15000);
     }
 
+    @DisplayName("1000원으로 나누어 떨어지면 통과한다.")
+    @Test
+    void moneyInputDividedExceptionTest2() {
+        ScannerInput("20000");
+        player.inputMoney();
+        int purchaseNumber = player.getPurchaseNumber();
+        Assertions.assertEquals(purchaseNumber, 20000);
+    }
+
+    @DisplayName("1000원으로 나누어 떨어지면 통과한다.")
+    @Test
+    void moneyInputDividedExceptionTest3() {
+        ScannerInput("26000");
+        player.inputMoney();
+        int purchaseNumber = player.getPurchaseNumber();
+        Assertions.assertEquals(purchaseNumber, 26000);
+    }
+
     @DisplayName("0원을 입력할시 예외가 발생한다.")
     @Test
     void moneyInputZeroExceptionTest() {

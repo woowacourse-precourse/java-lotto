@@ -69,6 +69,26 @@ class PrizeTest {
         Assertions.assertTrue(prizeNumbers.containsAll(List.of(1, 2, 4, 5, 6, 7)));
     }
 
+    @DisplayName("1~45 사이의 6자리 숫자를 쉼표로 구분하여 입력하면 통과한다.")
+    @Test
+    void prizeNumbersInputTest2() {
+        ScannerInput("10,21,42,14,19,26");
+        prize.inputPrizeNumbers();
+        List<Integer> prizeNumbers = prize.getPrizeNumbers();
+        Assertions.assertEquals(prizeNumbers.size(), 6);
+        Assertions.assertTrue(prizeNumbers.containsAll(List.of(10, 21, 42, 14, 19, 26)));
+    }
+
+    @DisplayName("1~45 사이의 6자리 숫자를 쉼표로 구분하여 입력하면 통과한다.")
+    @Test
+    void prizeNumbersInputTest3() {
+        ScannerInput("24,27,42,30,39,41");
+        prize.inputPrizeNumbers();
+        List<Integer> prizeNumbers = prize.getPrizeNumbers();
+        Assertions.assertEquals(prizeNumbers.size(), 6);
+        Assertions.assertTrue(prizeNumbers.containsAll(List.of(24, 27, 42, 30, 39, 41)));
+    }
+
     /**
      * 보너스 숫자 입력 테스트
      */
@@ -109,6 +129,26 @@ class PrizeTest {
         prize.inputBonusNumber();
         int bonusNumber = prize.getBonusNumber();
         Assertions.assertEquals(bonusNumber, 8);
+    }
+
+    @DisplayName("1~45사이의 올바른 숫자를 입력하면 통과한다.")
+    @Test
+    void bonusNumbersInputTest2() {
+        prize.setPrizeNumbers(List.of(10, 21, 42, 14, 19, 26));
+        ScannerInput("23");
+        prize.inputBonusNumber();
+        int bonusNumber = prize.getBonusNumber();
+        Assertions.assertEquals(bonusNumber, 23);
+    }
+
+    @DisplayName("1~45사이의 올바른 숫자를 입력하면 통과한다.")
+    @Test
+    void bonusNumbersInputTest3() {
+        prize.setPrizeNumbers(List.of(24, 27, 42, 30, 39, 41));
+        ScannerInput("17");
+        prize.inputBonusNumber();
+        int bonusNumber = prize.getBonusNumber();
+        Assertions.assertEquals(bonusNumber, 17);
     }
 
 
