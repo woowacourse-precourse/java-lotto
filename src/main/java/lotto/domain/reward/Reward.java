@@ -14,4 +14,12 @@ public enum Reward {
         this.rank = rank;
         this.money = money;
     }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public long getMoney() {
+        return money;
+    }
 }
