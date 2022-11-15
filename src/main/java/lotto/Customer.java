@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Customer {
     private final List<Lotto> lottoNumbers;
-    private Lotto winNumbers;
-    private int bonusNumber;
     private final int money;
     private final int lottoCount;
 
@@ -26,12 +24,6 @@ public class Customer {
         }
     }
 
-    private void validateBonusNumber(int bonusNumber) {
-        if (winNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorCode.NOT_UNIQUE_NUMBERS));
-        }
-    }
-
     public void purchaseLotto() {
         for (int i = 0; i < lottoCount; i++) {
             lottoNumbers.add(new Lotto(NumbersGenerator.getRandomNumbers()));
@@ -40,14 +32,5 @@ public class Customer {
 
     public List<Lotto> getLottoNumbers() {
         return lottoNumbers;
-    }
-
-    public void setWinNumbers(Lotto newWinNumbers) {
-        winNumbers = newWinNumbers;
-    }
-
-    public void setBonusNumber(int newBonusNumber) {
-        validateBonusNumber(newBonusNumber);
-        bonusNumber = newBonusNumber;
     }
 }
