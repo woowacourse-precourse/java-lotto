@@ -105,6 +105,6 @@ class LottoTest {
 
         WinningCount(userNumber, lotto.getLottoNumber());
         result = PrintLotto.getPrizeMoney(WinTypeCounter);
-        assertEquals(60000, result);
+        assertEquals(65000, result);
     }
 }
