@@ -27,7 +27,7 @@ class InputValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"999", "-1", "1001", "6666"})
+    @ValueSource(strings = {"999", "-1", "1001", "6666", "2147484000"})
     void validatePurchaseAmount_메서드는_허용되지_않은_숫자형식의_문자열을_입력하면_IllegalArgumentException을_던진다(String amount) {
         assertThatThrownBy(() -> InputValidator.validateBuyAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class);
