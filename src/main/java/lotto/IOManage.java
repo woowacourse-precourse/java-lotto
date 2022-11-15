@@ -14,7 +14,6 @@ public class IOManage {
     private int bonusNumber;
 
     IOManage() {
-        payFlowManage();
     }
 
     public boolean inputPayment() {
@@ -87,7 +86,7 @@ public class IOManage {
         System.out.println(Message.EARNING_RATE.get() + earningRate + Message.ENDING.get());
     }
 
-    public void payFlowManage() {
+    public void flowManage() {
         if (inputPayment()) {
             numberFlowManage();
         }
