@@ -2,10 +2,10 @@ package lotto.application.port.in.dto;
 
 import lotto.domain.reward.RewardTable;
 
-public class RequestAnalyzeResponseDto {
+public class RequestAnalyzeRevenueDto {
     private RewardTable rewardTable;
 
-    public RequestAnalyzeResponseDto(RewardTable rewardTable) {
+    public RequestAnalyzeRevenueDto(RewardTable rewardTable) {
         this.rewardTable = rewardTable;
     }
 
