@@ -14,13 +14,11 @@ public class UserInputView {
     public static PurchaseMoney getPurchaseMoney() {
         System.out.println(INPUT_MONEY);
         String purchaseMoney = Console.readLine();
-
         try {
             return new PurchaseMoney(Integer.parseInt(purchaseMoney));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_PURCHASE_PRICE_IS_NUMBER);
         }
-
     }
 
     public static Lotto getWinningLottoNumber() {
