@@ -49,7 +49,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicationWithNumbers(int bonus) {
+    private void validateDuplicationWithWinningNumbers(int bonus) {
         if (winningNumbers.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않은 숫자여야 합니다.");
         }
@@ -57,7 +57,7 @@ public class Lotto {
 
     public void setBonus(int number) {
         validateRangeOfNumber(number);
-        validateDuplicationWithNumbers(number);
+        validateDuplicationWithWinningNumbers(number);
         this.bonus = number;
     }
 
