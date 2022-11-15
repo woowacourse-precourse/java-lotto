@@ -41,6 +41,15 @@ class PrizeTest {
         });
     }
 
+    @DisplayName("쉼표로 구분하지 않으면 예외가 발생한다.")
+    @Test
+    void prizeNumbersNotSplitCommaInputExceptionTest2() {
+        ScannerInput("1, 2, 3, 4, 5, 4");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            prize.inputPrizeNumbers();
+        });
+    }
+
     @DisplayName("45가 넘는 숫자를 입력하면 예외가 발생한다.")
     @Test
     void prizeNumbersOverRangeInputExceptionTest() {
