@@ -21,7 +21,7 @@ public class LottoMatcher {
     private void matchLotto(Lotto lotto, WinningLotto winningLotto) {
         int countOfMatchedNumbers = countWinningLottoNumbers(lotto.getNumbers(), winningLotto);
         boolean bonusNumberIsMatched = checkIfBonusNumberMatch(lotto.getNumbers(), winningLotto);
-        saveResult(countOfMatchedNumbers, bonusNumberIsMatched);
+        saveRank(countOfMatchedNumbers, bonusNumberIsMatched);
     }
 
     private int countWinningLottoNumbers(List<Integer> lottoNumbers, WinningLotto winningLotto) {
@@ -39,7 +39,7 @@ public class LottoMatcher {
         return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
-    private void saveResult(int numberOfMatchedLottoNumber, boolean bonus) {
+    private void saveRank(int numberOfMatchedLottoNumber, boolean bonus) {
         Rank rank = distinguishRank(numberOfMatchedLottoNumber, bonus);
         if (rank != null) {
             rankCounts.put(rank, rankCounts.getOrDefault(rank, 0) + 1);
