@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.LottoConstants;
 import lotto.domain.*;
 import lotto.domain.generator.LottoGameResultGenerator;
 import lotto.domain.generator.LottoGenerator;

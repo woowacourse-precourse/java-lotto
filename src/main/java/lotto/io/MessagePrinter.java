@@ -1,9 +1,10 @@
 package lotto.io;
 
 import lotto.domain.Lotto;
-
 import java.util.List;
 import java.util.Map;
+
+import static lotto.LottoConstants.LOTTO_PRICE;
 
 public class MessagePrinter {
     public static void printMoneyInputRequest() {
@@ -11,7 +12,7 @@ public class MessagePrinter {
     }
 
     public static void printGeneratedLottoQuantity(int paidMoney) {
-        int lottoQuantity = paidMoney / 1000;
+        int lottoQuantity = paidMoney / LOTTO_PRICE.getValue();
         System.out.println(lottoQuantity + "개를 구매했습니다.");
     }
 

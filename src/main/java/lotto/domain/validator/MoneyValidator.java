@@ -1,9 +1,11 @@
 package lotto.domain.validator;
 
+import static lotto.LottoConstants.LOTTO_PRICE;
+
 public class MoneyValidator extends Validator {
-    private static int COST_OF_LOTTO = 1000;
     private static String NEMERIC_ERROR_MESSAGE = "[ERROR] 입력된 값이 숫자가 아닙니다";
-    private static String DIVIDED_ERROR_MESSAGE = String.format("[ERROR] 입력된 값이 %s원 단위가 아닙니다", COST_OF_LOTTO);
+    private static String DIVIDED_ERROR_MESSAGE = String.format("[ERROR] 입력된 값이 %s원 단위가 아닙니다",
+            LOTTO_PRICE.getValue());
 
     private static boolean isNumeric(String moneyInput) {
         for (int index = 0; index < moneyInput.length(); index++) {
@@ -16,7 +18,7 @@ public class MoneyValidator extends Validator {
 
     private static boolean isDividedByConstOfLotto(String moneyInput) {
         int money = Integer.parseInt(moneyInput);
-        if (money == 0 || money % COST_OF_LOTTO != 0) {
+        if (money == 0 || money % LOTTO_PRICE.getValue() != 0) {
             return false;
         }
         return true;
