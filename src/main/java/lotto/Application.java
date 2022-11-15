@@ -28,7 +28,7 @@ public class Application {
 
         Message.win();
 
-        List<Integer> inputNum = inputNumber();
+        List<Integer> inputNum = Input.number();
 
         Lotto lotto = new Lotto(inputNum);
 
@@ -87,20 +87,7 @@ public class Application {
         return numberLotto;
     }
 
-    public static List<Integer> inputNumber() {
-        List<Integer> winNum = new ArrayList<>();
 
-        String inputNum = Console.readLine();
-
-        String[] winNumber = inputNum.split(",");
-
-        for (String i : winNumber) {
-
-            winNum.add(Integer.valueOf(i));
-        }
-
-        return winNum;
-    }
 
 
 }
