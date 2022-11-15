@@ -20,10 +20,19 @@ public class Lotto {
         if (numbers.size() != NUMBER_CNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 너무 많습니다.");
         }
+
         for (int i : numbers) {
             if (i < Lotto.NUMBER_MIN || i > Lotto.NUMBER_MAX) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
+        }
+
+        boolean[] duplicate = new boolean[NUMBER_MAX + 1];
+        for (int i : numbers) {
+            if(duplicate[i]) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있으면 안됩니다.");
+            }
+            duplicate[i] = true;
         }
     }
 

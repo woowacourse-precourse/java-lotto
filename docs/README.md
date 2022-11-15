@@ -37,12 +37,12 @@
 
 - [x] 로또의 번호정보를 담는 클래스 => Lotto
     - [x] 로또가격 정보를 상수로 구현
-    - [ ] validation 추가
+    - [x] validation 추가
       - [x] 로또 번호 개수가 적거나 많을 때
         - IllegalArgumentException, message="[ERROR] 로또 번호가 너무 많거나 적습니다."
       - [x] 범위를 벗어난 번호가 존재
         - IllegalArgumentException, message="[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
-      - [ ] 중복된 숫자가 존재
+      - [x] 중복된 숫자가 존재
         - IllegalArgumentException, message="[ERROR] 로또 번호에 중복된 숫자가 있으면 안됩니다."
     - [x] getter 추가
     
