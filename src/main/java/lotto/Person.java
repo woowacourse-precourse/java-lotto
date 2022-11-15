@@ -31,6 +31,9 @@ public class Person {
 
     }
 
+    public double calculateTotalReturnRate(){
+        return Math.round(totalLottoPrize/purchaseAmount);
+    }
     private List<Integer> createRandomLottoNum() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         numbers.sort(Comparator.naturalOrder());
