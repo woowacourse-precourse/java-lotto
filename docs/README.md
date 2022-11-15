@@ -6,9 +6,9 @@
 - [x] 로또 번호는 오름차순으로 정렬한다. - NumberGenerator#sortAscendingOrder()
 - [x] 로또 당첨 번호 6개를 입력 받는다. - InputOutput#getLottoNumbers()
 - [x] 로또 보너스 번호 1개를 입력 받는다. - InputOutput#getLottoBonusNumber()
-- [ ] 당첨번호와 로또번호를 비교할 수 있다. - Referee#compare()
-  - [ ] 몇 개의 수가 같은지 알 수 있다. - Judgement#sameNumberCount()
-  - [ ] 보너스 숫자가 포함되어 있는지 알 수 있다. - Judgement#containBonusNumber()
+- [x] 당첨번호와 로또번호를 비교할 수 있다. - Referee#compare()
+  - [x] 몇 개의 수가 같은지 알 수 있다. - Judgement#sameNumberCount()
+  - [x] 보너스 숫자가 포함되어 있는지 알 수 있다. - Judgement#containBonusNumber()
     - [x] LottoResult
     - 1등: 6개 번호 일치 / 2,000,000,000원
     - 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
