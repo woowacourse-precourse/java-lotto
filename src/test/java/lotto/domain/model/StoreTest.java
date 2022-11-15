@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StoreTest {
-
 	@Test
 	void 금액만큼_로또발행(){
 		int pay = 5000;

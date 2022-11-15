@@ -67,7 +67,7 @@ public class WinningNumber {
 	private void validateRange(List<Integer> winning_numbers) {
 		for (int number : winning_numbers) {
 			if (number < LOTTO_MIN || LOTTO_MAX < number) {
-				new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
+					new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
 			}
 		}
 	}

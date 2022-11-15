@@ -19,7 +19,7 @@ public class BonusBall {
 		if (bonusBall < LOTTO_MIN || LOTTO_MAX < bonusBall) {
 			new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
 		}
-		if (winningNumbers.contains(bonusBall)){
+		if (winningNumbers.contains(bonusBall)) {
 			new ExceptionHandler(ErrorMessage.ERROR_OVERLAP).tryCatch(ErrorMessage.ERROR_OVERLAP);
 		}
 	}

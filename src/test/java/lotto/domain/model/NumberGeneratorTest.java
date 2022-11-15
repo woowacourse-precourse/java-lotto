@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NumberGeneratorTest {
 	@Test
-	void 정상작동_테스트(){
+	void 정상작동_테스트() {
 		NumberGenerator numberGenerator = new NumberGenerator();
 		List<Integer> randomNumbers = numberGenerator.createRandomNumbers();
 

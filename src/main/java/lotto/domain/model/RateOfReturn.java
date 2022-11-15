@@ -18,7 +18,7 @@ public class RateOfReturn {
 	private void getPrize(List<List<Integer>> score) {
 		for (List<Integer> eachScore : score) {
 			if (eachScore.get(2) > 0) {
-				prize += (long) eachScore.get(1) * eachScore.get(2);
+					prize += (long) eachScore.get(1) * eachScore.get(2);
 			}
 		}
 	}

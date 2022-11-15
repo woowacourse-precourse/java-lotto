@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PayTest {
-
 	@Test
 	void 제대로_작동() {
 		Pay pay = new Pay("123000");

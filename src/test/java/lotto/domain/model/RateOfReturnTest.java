@@ -9,7 +9,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RateOfReturnTest {
-
 	@Test
 	void 정상작동() {
 		int pay = 1000;

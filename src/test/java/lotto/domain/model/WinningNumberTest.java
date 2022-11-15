@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WinningNumberTest {
-
 	@Test
 	void 정상작동() {
 		WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");

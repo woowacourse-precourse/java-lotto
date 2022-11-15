@@ -11,10 +11,8 @@ public class LottoGame {
 	private WinningNumber winningNumber;
 	private BonusBall bonusBall;
 	private Pay pay;
-	private Store store;
 	private CompareNumber compareNumber;
 	public LottoTicket lottoTicket;
-
 
 	public void start() {
 		try {
@@ -23,7 +21,7 @@ public class LottoGame {
 			getBonusNumber();
 			getScore();
 			getRateOfReturn();
-		}catch (ExceptionHandler exceptionHandler){
+		} catch (ExceptionHandler exceptionHandler) {
 			System.out.println(exceptionHandler.getMessage());
 		}
 	}
@@ -31,7 +29,7 @@ public class LottoGame {
 	private void buyTicket() {
 		print.message(Message.START);
 		pay = new Pay(readLine());
-		store = new Store(pay.getPay());
+		Store store = new Store(pay.getPay());
 		lottoTicket = new LottoTicket(store.issueLottoTicket());
 		print.LottoTicket(store.count, lottoTicket.getLottoTicket());
 	}

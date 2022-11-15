@@ -7,8 +7,8 @@ import java.util.List;
 import static lotto.domain.Constants.*;
 
 public class CompareNumber {
-	private	final List<Integer> winningNumbers;
-	private	final int bonusBall;
+	private final List<Integer> winningNumbers;
+	private final int bonusBall;
 	private final List<List<Integer>> ticket;
 	public List<List<Integer>> result = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class CompareNumber {
 		initResult();
 		compareNumber();
 	}
-// todo ...
+
 	private void initResult() {
 		result.add(Arrays.asList(3, FIFTH, 0));
 		result.add(Arrays.asList(4, FOURTH, 0));
@@ -34,16 +34,17 @@ public class CompareNumber {
 		for (List<Integer> ticket : this.ticket) {
 			size = matchNumbers(ticket);
 			if (size >= MINIMUM_FOR_WIN) {
-				updateResult(size - MINIMUM_FOR_WIN, ticket);
+					updateResult(size - MINIMUM_FOR_WIN, ticket);
 			}
 		}
 	}
 
 	private void updateResult(int index, List<Integer> ticket) {
+		if (index == 3) {
+			index = 4;
+		}
 		if (index == 2 && ticket.contains(bonusBall)) {
 			index = 3;
-		} else if (index == 3) {
-			index = 4;
 		}
 		result.get(index).set(2, result.get(index).get(2) + 1);
 	}
@@ -52,8 +53,9 @@ public class CompareNumber {
 		int count = 0;
 
 		for (int winningNumber : winningNumbers) {
-			if (ticket.contains(winningNumber))
-				count++;
+			if (ticket.contains(winningNumber)) {
+					count++;
+			}
 		}
 		return count;
 	}
