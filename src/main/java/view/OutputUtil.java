@@ -1,7 +1,10 @@
 package view;
 
 import domain.Lotto;
+import domain.LottoRank;
 import domain.Lottos;
+import domain.Result;
+import dto.LottoDto;
 import dto.LottosDto;
 
 import java.util.List;
@@ -15,11 +18,11 @@ public class OutputUtil {
     private static final String WINNING_NUMBER_NOTICE = "\n당첨 번호를 입력해 주세요.";
     private static final String BONUS_NOTICE = "\n보너스 번호를 입력해 주세요.";
 
-    public void noticePurchase() {
+    public static void noticePurchase() {
         System.out.println(PURCHASE_INPUT);
     }
 
-    public void showPurchaseResult(LottosDto lottosDto) {
+    public static void showPurchaseResult(LottosDto lottosDto) {
         List<Lotto> lottos = lottosDto.lottos;
         Integer size = lottos.size();
 
@@ -30,11 +33,11 @@ public class OutputUtil {
         }
     }
 
-    public void winningNumberNotice() {
+    public static  void winningNumberNotice() {
         System.out.println(WINNING_NUMBER_NOTICE);
     }
 
-    public void noticeBonus() {
+    public static void noticeBonus() {
         System.out.println(BONUS_NOTICE);
     }
 

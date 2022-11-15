@@ -2,7 +2,6 @@ package domain;
 
 import dto.LottoDto;
 import dto.ResultDto;
-import dto.WinningNumberDto;
 
 import java.util.EnumMap;
 import java.util.List;

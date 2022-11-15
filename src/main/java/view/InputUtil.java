@@ -7,7 +7,7 @@ public class InputUtil {
 
     public static final String ERROR_INVALID_INPUT = "[ERROR] Invalid Input";
 
-    public Integer inputNumber() {
+    public static  Integer inputNumber() {
         Integer outcome;
 
         String number = Console.readLine();
@@ -15,12 +15,12 @@ public class InputUtil {
         outcome = Integer.parseInt(number);
         return outcome;
     }
-    public ArrayList<Integer> inputWinningNumbers() {
+    public static ArrayList<Integer> inputWinningNumbers() {
         String numbers = Console.readLine();
         ArrayList<Integer> checkedNumbers = checkNumbersValidity(numbers);
         return checkedNumbers;
     }
-    private void checkValidity(String target) throws IllegalArgumentException{
+    private static void checkValidity(String target) throws IllegalArgumentException{
         char[] words = target.toCharArray();
         for(char word : words){
             if(!Character.isDigit(word)){
@@ -28,7 +28,7 @@ public class InputUtil {
             }
         }
     }
-    private ArrayList<Integer> checkNumbersValidity(String target) throws IllegalArgumentException{
+    private static ArrayList<Integer> checkNumbersValidity(String target) throws IllegalArgumentException{
         ArrayList<Integer> outcome = new ArrayList<>();
         String[] parsedTarget = target.split(",");
         for(String word : parsedTarget){
