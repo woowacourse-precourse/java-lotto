@@ -80,47 +80,20 @@ public class Input {
     }
 
     public int getBonusNumber(List<Integer> winningNumbers){
-        System.out.println(BONUS_NUMBER_MESSAGE);
-        String bonusNumber = Console.readLine();
         try {
-            validateBonusNumber(bonusNumber, winningNumbers);
-        } catch (Exception e){
+            System.out.println(BONUS_NUMBER_MESSAGE);
+            return validateBonusNumber(Console.readLine(), winningNumbers);
+        } catch (IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + e.getMessage());
             return getBonusNumber(winningNumbers);
         }
-        return Integer.parseInt(bonusNumber);
     }
 
-    private void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
-        parseInt(bonusNumber);
-        int bonusNum = Integer.parseInt(bonusNumber);
-        if(!(bonusNum >=1 && bonusNum <=45)) {
-            throw new IllegalArgumentException(SCOPE_ERROR_MESSAGE);
-        }
-        if(winningNumbers.contains(bonusNum)) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
-        }
+    private int validateBonusNumber(String bonus, List<Integer> winningNumbers) {
+        if(!isItANumberOrNot(bonus)) errorThrow(IS_NUMBER_MESSAGE);
+        int bonusNumber = Integer.parseInt(bonus);
+        if(!(bonusNumber >=1 && bonusNumber <=45)) errorThrow(SCOPE_ERROR_MESSAGE);
+        if(winningNumbers.contains(bonusNumber)) errorThrow(DUPLICATE_ERROR_MESSAGE);
+        return bonusNumber;
     }
-
-    private void parseInt(String number) {
-        try {
-            Integer.parseInt(number);
-        }catch (Exception e){
-            throw new IllegalArgumentException(IS_NUMBER_MESSAGE);
-        }
-    }
-
-    private void isItInRange(List<Integer> winningNumbers) {
-        try {
-            int count = (int) winningNumbers.stream().
-                    filter(num -> num >= 1 && num <= 45).distinct()
-                    .count();
-            if(count != 6) {
-                throw new IllegalArgumentException(SCOPE_DUPLICATE_ERROR_MESSAGE);
-            }
-        }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException(e.getMessage());
-        }
-    }
-
 }
