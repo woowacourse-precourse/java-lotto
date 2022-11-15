@@ -9,7 +9,7 @@ public class OutputView {
     private final int LOTTO_SIZE = 6;
 
     public void printException(String message) {
-        System.out.println("[ERROR] " + message);
+        System.out.println(message);
     }
 
     public void printLottoQuantity(int lottoQuantity) {
