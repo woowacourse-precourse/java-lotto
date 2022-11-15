@@ -8,11 +8,28 @@ import java.util.stream.Collectors;
 
 public class LottoUI {
     private final Manager manager;
+    private Lotto lotto;
     private int bonusNumber;
+    private List<List<Integer>> publishPurchaseLottos;
 
     public LottoUI(Manager manager) {
         this.manager = manager;
+    }
 
+    public void getLottoResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        int[] matchCount = manager.findMatchCount(lotto, publishPurchaseLottos);
+
+        System.out.printf("%d개 일치 (5,000원) - %d개", 3, matchCount[0]);
+        System.out.printf("%d개 일치 (50,000원) - %d개", 4, matchCount[1]);
+        System.out.printf("%d개 일치 (1,500,000원) - %d개", 5, matchCount[2]);
+        System.out.printf("%d개 일치 (30,000,000원) - %d개", 5, matchCount[3]);
+        System.out.printf("%d개 일치 (2,000,000,000원) - %d개", 6, matchCount[4]);
+
+        double rate = manager.calculator(matchCount);
+        System.out.printf("총 수익률은 %f%입니다.", rate);
     }
 
     public void setPurchasePrice() {
@@ -32,7 +49,7 @@ public class LottoUI {
     }
 
     public void publishLottos() {
-        manager.publishPurchaseLottos();
+        publishPurchaseLottos = manager.publishPurchaseLottos();
     }
 
     public Lotto getLottoNumber() {
