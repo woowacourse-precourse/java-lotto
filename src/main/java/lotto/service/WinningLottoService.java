@@ -33,7 +33,7 @@ public class WinningLottoService {
         List<Integer> lottoNumbers;
         try {
             lottoNumbers = Arrays.stream(scanNums.split(INPUT_SPLITTER)).mapToInt(Integer::valueOf)
-                .sorted().boxed().collect(Collectors.toList());
+                    .sorted().boxed().collect(Collectors.toList());
         } catch (Exception NumberFormatException) {
             throw new IllegalArgumentException(INPUT_NOT_INTEGER);
         }
@@ -49,6 +49,5 @@ public class WinningLottoService {
         }
         return bonusNumber;
     }
-
 
 }

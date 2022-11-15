@@ -44,12 +44,13 @@ public class Lotto {
         throw new IllegalArgumentException(ANSWER_COUNT_OVER_ERROR);
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
 }

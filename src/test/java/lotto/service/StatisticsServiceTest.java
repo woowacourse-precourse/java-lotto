@@ -26,7 +26,6 @@ class StatisticsServiceTest {
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
-
     static Stream<Arguments> generatedData() {
         return Stream.of(
             Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 0, 0, 0, 0, 0)),

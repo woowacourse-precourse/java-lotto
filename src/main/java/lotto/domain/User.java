@@ -4,9 +4,9 @@ import java.util.List;
 
 public class User {
 
-    private int purchaseMoney;
-    private int purchaseLottoPiece;
-    private List<Lotto> purchaseLotto;
+    private final int purchaseMoney;
+    private final int purchaseLottoPiece;
+    private final List<Lotto> purchaseLotto;
 
     public User(int purchaseMoney, int purchaseLottoPiece, List<Lotto> purchaseLotto) {
         this.purchaseMoney = purchaseMoney;

@@ -3,8 +3,8 @@ package lotto.domain;
 import java.util.Map;
 
 public class Statistics {
-    private Map<Prize, Integer> prizeMap;
-    private double total;
+    private final Map<Prize, Integer> prizeMap;
+    private final double total;
 
     public Statistics(Map<Prize, Integer> prizeMap) {
         this.prizeMap = prizeMap;

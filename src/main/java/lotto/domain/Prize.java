@@ -10,9 +10,9 @@ public enum Prize {
     fifth(3, false, 5_000),
     none(0, false, 0);
 
-    private int catchPoint;
-    private boolean bonusCatchPoint;
-    private int money;
+    private final int catchPoint;
+    private final boolean bonusCatchPoint;
+    private final int money;
 
     Prize(int catchPoint, boolean bonusCatchPoint, int money) {
         this.catchPoint = catchPoint;
@@ -26,9 +26,7 @@ public enum Prize {
             if (bonusPoint) return second;
             return third;
         }
-        return Arrays.stream(values())
-            .filter(prize -> prize.catchPoint == catchPoint)
-            .findAny().orElse(none);
+        return Arrays.stream(values()).filter(prize -> prize.catchPoint == catchPoint).findAny().orElse(none);
     }
 
     public int getMoney() {

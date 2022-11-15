@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PrizeTest {
 
-    @DisplayName("prize를 찾는것을 확인")
+    @DisplayName("prize 찾는것을 확인")
     @ParameterizedTest
     @CsvSource({"6,false,first", "5,true,second", "5,false,third", "4,false,fourth", "3,false,fifth"})
     void findPrize(int catchPoint, boolean bonusPoint, Prize excepted) {

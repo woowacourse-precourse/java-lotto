@@ -14,7 +14,7 @@ class WinningLottoTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void createLottoByOverSize(int bonusNumber) {
         assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), bonusNumber))
-            .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 범위의 숫자가 범위안에 포함되지 않으면 에외가 발생한다.")
@@ -22,7 +22,7 @@ class WinningLottoTest {
     @ValueSource(ints = {0, 46, -1})
     void createLottoByDuplicatedNumber(int bonusNumber) {
         assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), bonusNumber))
-            .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }

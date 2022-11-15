@@ -19,6 +19,13 @@ public class UserService {
         return new User(purchaseMoney, purchaseLottoPiece, purchaseLotto);
     }
 
+    public int scanPayMoney() {
+        System.out.println(START_MSG);
+        int money = stringToInter(Console.readLine());
+        validateMoney(money);
+        return money;
+    }
+
     public List<Lotto> issueLotto(int purchaseLottoNum) {
         List<Lotto> tempGeneratedLotto = new ArrayList<>();
         for (int buy = 0; buy < purchaseLottoNum; buy++) {
@@ -36,13 +43,6 @@ public class UserService {
             printString.append(now).append("\n");
         }
         System.out.println(printString);
-    }
-
-    public int scanPayMoney() {
-        System.out.println(START_MSG);
-        int money = stringToInter(Console.readLine());
-        validateMoney(money);
-        return money;
     }
 
     public int stringToInter(String scanNum){
