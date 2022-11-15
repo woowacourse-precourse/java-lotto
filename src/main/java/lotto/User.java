@@ -10,7 +10,9 @@ import java.util.List;
 public class User {
     private int Money;
     private int amount;
+    private int numberOfLotto;
     private ArrayList<Lotto> lottos;
+    private  List<Integer> lottonum;
     private float profit;
     private List<Integer> winningRank;
     public User(int money){
@@ -29,22 +31,25 @@ public class User {
     public void buyLotto(){
         System.out.println("금액을 입력하세요");
         String money = Console.readLine();
-        amount = Integer.parseInt(money) ;
+        toInt(money);
         this.Money = this.Money - amount;
 
-        int numberOfLotto = amount/1000;
+        numberOfLotto = amount/1000;
 
         for(int i = 0 ; i < numberOfLotto ; i++){
-            List<Integer> lottonum = CreateRandomList.createList();
+            lottonum = new ArrayList<>(CreateRandomList.createList());
+
             Collections.sort(lottonum);
+
             Lotto lotto = new Lotto(lottonum);
             this.lottos.add(lotto);
         }
-        System.out.println(numberOfLotto + "개를 구매했습니다.");
-        printLotto();
+
 
     }
     public void printLotto(){
+        System.out.println(numberOfLotto + "개를 구매했습니다.");
+
         int size = this.lottos.size();
         for(int i = 0 ; i < size ; i++){
             this.lottos.get(i).printLotto();
@@ -62,11 +67,11 @@ public class User {
     }
 
     public void printResult(){
-        System.out.println("3개 일치 (5,000원) - " + winningRank.get(5));
-        System.out.println("4개 일치 (50,000원) - " + winningRank.get(4));
-        System.out.println("5개 일치 (1,500,000원) - " + winningRank.get(3));
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningRank.get(2));
-        System.out.println("6개 일치 (2,000,000,000원) - " + winningRank.get(1));
+        System.out.println("3개 일치 (5,000원) - " + winningRank.get(5) + "개");
+        System.out.println("4개 일치 (50,000원) - " + winningRank.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + winningRank.get(3) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningRank.get(2) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + winningRank.get(1) + "개");
     }
 
     public void computeProfit(){
@@ -78,7 +83,16 @@ public class User {
         profit = profit + winningRank.get(5) * 5000;
 
         float profitRate = (float)profit / (float)amount  * 100;
-        System.out.println("총 수익률은 " + String.format("%.2f",profitRate)+ "이득");
+        System.out.println("총 수익률은 " + String.format("%.1f",profitRate)+ "%입니다.");
 
     }
+    private void toInt(String money){
+        try{
+            amount = Integer.parseInt(money) ;
+        }
+        catch (NumberFormatException e){
+            System.out.println("[ERROR] : 숫자만 입력해주세요.");
+        }
+    }
 }
+
