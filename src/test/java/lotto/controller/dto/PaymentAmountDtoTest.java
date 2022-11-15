@@ -13,8 +13,7 @@ class PaymentAmountDtoTest {
     @DisplayName("지불금액 정수값이 아닌 값이 포함 예외테스트")
     void isIntegerTest(String input) {
         assertThatThrownBy(() -> new PaymentAmountDto(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 지불금액에 정수값이 아닌 값이 포함되어 있습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -22,7 +21,6 @@ class PaymentAmountDtoTest {
     @DisplayName("지불금액이 1000으로 나누어 떨어지지않는 예외테스트")
     void isDivisionTest(String input) {
         assertThatThrownBy(() -> new PaymentAmountDto(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 지불금액이 1000으로 나누어 떨어지지 않습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

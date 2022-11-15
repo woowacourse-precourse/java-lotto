@@ -24,7 +24,6 @@ class LottoPurchaseDtoTest {
     @DisplayName("로또 비용이 1000으로 나눠떨어지지 않을경우 예외처리")
     void lottosException(int money) {
         assertThatThrownBy(() -> new LottoPurchaseDto(money))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 지불금액이 1000으로 나누어 떨어지지 않습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

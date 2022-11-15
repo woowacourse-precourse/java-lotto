@@ -13,8 +13,7 @@ class WinnerNumberDtoTest {
     @DisplayName("당첨번호에 6개중 숫자가 중복일때 예외처리")
     void isWinnerNumberDuplicationTest(String winnerNumber, String bonusNumber) {
         assertThatThrownBy(() -> new WinnerNumberDto(winnerNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 당첨번호 안에서 중복 숫자가 있습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -22,8 +21,7 @@ class WinnerNumberDtoTest {
     @DisplayName("당첨번호에 6개중 숫자가 정수형태가 아닐때 예외처리")
     void isWinnerNumberIntegerTest(String winnerNumber, String bonusNumber) {
         assertThatThrownBy(() -> new WinnerNumberDto(winnerNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호에 정수값이 아닌 값이 포함되어 있습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -31,8 +29,7 @@ class WinnerNumberDtoTest {
     @DisplayName("당첨번호에 6개중 숫자가 범위 밖에 숫자일때 예외처리")
     void isWinnerNumberRangeTest(String winnerNumber, String bonusNumber) {
         assertThatThrownBy(() -> new WinnerNumberDto(winnerNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호가 1 ~ 45 범위안에 포함되지 않습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -40,8 +37,7 @@ class WinnerNumberDtoTest {
     @DisplayName("당첨번호와 보너스 숫자가 중복일때 예외처리")
     void isBonusNumberDuplicationTest(String winnerNumber, String bonusNumber) {
         assertThatThrownBy(() -> new WinnerNumberDto(winnerNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 번호가 당첨번호와 중복되면 안됩니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -49,8 +45,7 @@ class WinnerNumberDtoTest {
     @DisplayName("보너스 숫자가 정수 형태가 아닐시 예외처리")
     void isBonusNumberIntegerTest(String winnerNumber, String bonusNumber) {
         assertThatThrownBy(() -> new WinnerNumberDto(winnerNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호에 정수값이 아닌 값이 포함되어 있습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -58,7 +53,6 @@ class WinnerNumberDtoTest {
     @DisplayName("보너스 숫자가 숫자가 범위 밖에 숫자일때 예외처리")
     void isBonusNumberRangeTest(String winnerNumber, String bonusNumber) {
         assertThatThrownBy(() -> new WinnerNumberDto(winnerNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 번호가 1 ~ 45 범위안에 포함되지 않습니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
