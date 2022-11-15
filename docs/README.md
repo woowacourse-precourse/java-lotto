@@ -52,20 +52,21 @@
 * LottoGame 객체
   * 게임을 시작한다.
   * 구매금액을 물어본다.
-  * 수익률을 계산한다.
 * LottoAutoGenerator 객체
   * 로또 번호를 생성한다.
-* LottoNumber 객체
-  * 로또번호에 대해 유효성 검사를 한다.
 * Person 객체
   * 로또를 구매한다.
   * 필드 : 구매한 로또 번호, 구매금액
 * WinningStats(당첨 통계)
   * 당첨 통계를 출력한다.
   * 당첨 금액을 계산한다.
+  * 수익률을 계산한다.
 * LottoComparator 객체
   * 당첨번호와 로또번호를 비교하여 일치하는 번호 개수를 출력한다.
 * Money 객체
 * Constant 객체 (상수 공용으로 사용하기위함)
-* WinningAmount Enum
+* Winning Enum
   * 당첨 번호와 일치하는 개수,보너스번호 일치 여부,당첨금액
+* WinningInfo Enum
+  * Winning Enum Class의 정보를 가지고있는 Class
+
