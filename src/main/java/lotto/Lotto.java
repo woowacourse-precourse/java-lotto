@@ -52,8 +52,14 @@ public class Lotto {
         }
     }
 
+    private void validateRangeOfBonusNumber(int number) {
+        if (number < MIN_VALUE_OF_LOTTO || number > MAX_VALUE_OF_LOTTO) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
     public void setBonus(int number) {
-        validateRangeOfNumber(number);
+        validateRangeOfBonusNumber(number);
         validateDuplicationWithWinningNumbers(number);
         this.bonus = number;
     }
