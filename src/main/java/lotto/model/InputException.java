@@ -7,8 +7,8 @@ import java.util.Set;
 import lotto.view.Output.ErrorMessage;
 
 public class InputException {
-    static final int DIVIDE_NUMBER = 1000;
-    static final int COMMA_COUNT = 5;
+    private static final int DIVIDE_NUMBER = 1000;
+    private static final int COMMA_COUNT = 5;
 
     public static void isValidNumber(String input) {
         String compare = input.replaceAll("[0-9]", "");

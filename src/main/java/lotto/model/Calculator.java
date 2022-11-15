@@ -1,13 +1,13 @@
 package lotto.model;
 
 public class Calculator {
-    public static final int SIX_MATCH_REWARD = 2000000000;
-    public static final int FIVE_BONUS_MATCH_REWARD = 30000000;
-    public static final int FIVE_MATCH_REWARD = 1500000;
-    public static final int FOUR_MATCH_REWARD = 50000;
-    public static final int THREE_MATCH_REWARD = 5000;
-    public static final int DIVIDE_NUMBER = 1000;
-    static double priceAmount = 0;
+    private static final int SIX_MATCH_REWARD = 2000000000;
+    private static final int FIVE_BONUS_MATCH_REWARD = 30000000;
+    private static final int FIVE_MATCH_REWARD = 1500000;
+    private static final int FOUR_MATCH_REWARD = 50000;
+    private static final int THREE_MATCH_REWARD = 5000;
+    private static final int DIVIDE_NUMBER = 1000;
+    private static double priceAmount = 0;
 
     public static int calculatePurchase(int purchaseAmount) {
         return purchaseAmount / DIVIDE_NUMBER;
