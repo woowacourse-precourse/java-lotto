@@ -7,7 +7,7 @@ public class Validator {
 
     public void sizeValidator(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.");
         }
     }
 
