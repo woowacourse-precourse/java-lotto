@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.util.LottoUtils;
 import lotto.view.ExceptionMessage;
 
 public class Lotto {
@@ -10,6 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkUniqueNumbers(numbers);
+        checkNumberInRanger(numbers);
         this.numbers = numbers;
     }
 
@@ -31,6 +33,12 @@ public class Lotto {
         if (numbers.size() != uniqueNumbers.size()) {
             ExceptionMessage.overlabNumberError();
             throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkNumberInRanger(List<Integer> numbers) {
+        for(Integer number : numbers){
+            LottoUtils.checkNumberInRange(number);
         }
     }
 }

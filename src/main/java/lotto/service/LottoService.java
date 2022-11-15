@@ -23,17 +23,12 @@ public class LottoService {
 
     public List<Integer> setWinningNumber(String inputWinningNumber) {
         List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
-
-        for (int number : winningNumber) {
-            LottoUtils.checkNumberInRange(number);
-        }
         return winningNumber;
     }
 
     public int setBonusNumber(String inputBonusNumber) {
         try {
             int bonusNumber = Integer.parseInt(inputBonusNumber);
-            LottoUtils.checkNumberInRange(bonusNumber);
             return bonusNumber;
         } catch (Exception e) {
             ExceptionMessage.inputNumberError();
