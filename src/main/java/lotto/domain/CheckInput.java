@@ -54,6 +54,23 @@ public class CheckInput {
         }
     }
 
+    public static List<Integer> checkWinningNumberValid(String input) {
+        List<Integer> result = new ArrayList<>();
+
+        checkWinningNumberPattern(input);
+
+        String[] winningNumbers = input.split(",");
+        checkWinningNumberSize(winningNumbers);
+
+        for (int i = 0; i < winningNumbers.length; i++) {
+            int winningNumber = Integer.parseInt(winningNumbers[i]);
+            checkWinningNumberRange(winningNumber);
+            result.add(winningNumber);
+        }
+
+        return result;
+    }
+
     public static void checkWinningNumberPattern(String input) {
         Pattern pattern = Pattern.compile(WINNING_NUMBER_PATTERN);
         if (!pattern.matcher(input).matches()) {
