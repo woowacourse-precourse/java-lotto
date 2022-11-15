@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
-
+    private final InputView inputView = InputView.getInstance();
     private Lotto lotto;
 
     @BeforeEach
@@ -106,7 +106,7 @@ class LottoTest {
             String winNumbers = "1 2 3 4";
             System.setIn(generateUserInput(winNumbers));
 
-            assertThatThrownBy(InputView::inputUserWinNumber)
+            assertThatThrownBy(inputView::inputUserWinNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_INVALID_FORM.message());
         }
@@ -117,7 +117,7 @@ class LottoTest {
             String winNumbers = "1,@,A,4";
             System.setIn(generateUserInput(winNumbers));
 
-            assertThatThrownBy(InputView::inputUserWinNumber)
+            assertThatThrownBy(inputView::inputUserWinNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.LOTTO_INVALID_FORM.message());
         }

@@ -18,13 +18,15 @@ public class UserLottoTest {
     @Nested
     class BonusLottoException {
 
+        private final InputView inputView = InputView.getInstance();
+
         @DisplayName("보너스 번호가 숫자가 아니면 예외를 터트린다.")
         @Test
         void bonusLottoNotDigitException() {
             String bonusNumber = "$";
             System.setIn(generateUserInput(bonusNumber));
 
-            assertThatThrownBy(InputView::inputUserBonusNumber)
+            assertThatThrownBy(inputView::inputUserBonusNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
@@ -35,7 +37,7 @@ public class UserLottoTest {
             String bonusNumber = "1,3";
             System.setIn(generateUserInput(bonusNumber));
 
-            assertThatThrownBy(InputView::inputUserBonusNumber)
+            assertThatThrownBy(inputView::inputUserBonusNumber)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
