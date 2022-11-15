@@ -4,7 +4,6 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGameResult;
 import lotto.domain.LottoPurchaseMoney;
 import lotto.domain.Rank;
-
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,7 @@ public class OutputView {
 
     private static final String ERROR_MESSAGE = "[ERROR] ";
 
-    private static final String LOTTO_SIZE_MESSAGE = "개를 구매했습니다.";
+    private static final String LOTTO_SIZE_OUTPUT_MESSAGE = "개를 구매했습니다.";
     private static final String LOTTO_PREFIX = "[";
     private static final String LOTTO_SUFFIX = "]";
     private static final String SEPARATOR = ", ";
@@ -27,12 +26,12 @@ public class OutputView {
     public static void printLottos(List<Lotto> lottos) {
         System.out.println();
         printLottoSize(lottos.size());
-        lottos.stream().forEach(OutputView::printLotto);
+        lottos.forEach(OutputView::printLotto);
     }
 
     private static void printLottoSize(int size) {
         System.out.print(size);
-        System.out.println(LOTTO_SIZE_MESSAGE);
+        System.out.println(LOTTO_SIZE_OUTPUT_MESSAGE);
     }
 
     private static void printLotto(Lotto lotto) {

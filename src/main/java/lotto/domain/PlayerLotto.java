@@ -5,19 +5,22 @@ import java.util.List;
 
 public class PlayerLotto {
 
-    private final List<Lotto> lottos = new ArrayList<>();
+    private final List<Lotto> lottos;
 
     public PlayerLotto(LottoPurchaseMoney lottoPurchaseMoney) {
-        issue(lottoPurchaseMoney);
+        this.lottos = issue(lottoPurchaseMoney);
     }
 
-    public void issue(LottoPurchaseMoney lottoPurchaseMoney) {
+    public List<Lotto> issue(LottoPurchaseMoney lottoPurchaseMoney) {
         int number = lottoPurchaseMoney.getMoney() / LottoPurchaseMoney.LOTTO_PRICE;
 
+        List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             List<Integer> lottoNumbers = LottoNumberGenerator.generate();
             lottos.add(new Lotto(lottoNumbers));
         }
+
+        return lottos;
     }
 
     public List<Lotto> getLottos() {

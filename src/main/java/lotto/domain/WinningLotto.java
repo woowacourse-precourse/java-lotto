@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import java.util.List;
-
 import static lotto.domain.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
 import static lotto.domain.ErrorMessage.LOTTO_NUMBER_RANGE_ERROR_MESSAGE;
+
+import java.util.List;
 
 public class WinningLotto {
     private final Lotto winningLotto;
@@ -18,7 +18,7 @@ public class WinningLotto {
 
     private void validateBonusNumber(int bonusNumber) {
         validateRange(bonusNumber);
-        validateDuplicationWithWiningNumbers(bonusNumber);
+        validateDuplicationWithWinningNumbers(bonusNumber);
     }
 
     private void validateRange(int bonusNumber) {
@@ -27,7 +27,7 @@ public class WinningLotto {
         }
     }
 
-    private void validateDuplicationWithWiningNumbers(int bonusNumber) {
+    private void validateDuplicationWithWinningNumbers(int bonusNumber) {
         if (winningLotto.getNumbers()
                 .stream()
                 .anyMatch(number -> number == bonusNumber)) {
@@ -46,7 +46,7 @@ public class WinningLotto {
     private int countSameNumbers(Lotto lotto) {
         long count = winningLotto.getNumbers()
                 .stream()
-                .filter(number -> lotto.getNumbers().contains(number))
+                .filter(winningNumber -> lotto.getNumbers().contains(winningNumber))
                 .count();
         return (int)count;
     }

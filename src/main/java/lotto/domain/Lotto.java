@@ -1,10 +1,10 @@
 package lotto.domain;
 
+import static lotto.domain.ErrorMessage.*;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static lotto.domain.ErrorMessage.*;
 
 public class Lotto {
     static final int MINIMUM_NUMBER = 1;
