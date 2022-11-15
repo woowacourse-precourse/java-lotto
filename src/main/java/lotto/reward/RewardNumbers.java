@@ -15,16 +15,14 @@ public class RewardNumbers implements NumberStrategy {
     private final List<Numbers> lottoNumbers;
 
     public RewardNumbers(String input) {
-        //checkNull(input);
-
         List<Numbers> inputNumbers = inputToRewardNumbers(input);
-        //checkNumbers(inputNumbers);
+        checkNumbers(inputNumbers);
         lottoNumbers = new ArrayList<>(inputNumbers);
     }
 
     @Override
     public List<Numbers> getLottoNumbers() {
-        return null;
+        return lottoNumbers;
     }
 
     private List<Numbers> inputToRewardNumbers(String input) {
