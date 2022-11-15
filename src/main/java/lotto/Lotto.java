@@ -32,17 +32,4 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-
-    @Override
-    public String toString() {
-        // TODO: 투스트링 쓰지말고 출력 뷰에 정의할 것
-        String start = "[";
-        String end = "]";
-        String delimiter = ", ";
-
-        String lottoStr = this.numbers.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(delimiter));
-        return start + lottoStr + end;
-    }
 }
