@@ -54,7 +54,7 @@ public class Application {
         bonusNumber = Integer.parseInt(userInput);
     }
 
-    private static void bonusValidate(String userInput) {
+    public static void bonusValidate(String userInput) {
         checkOnlyNumber(userInput);
         checkNumberSize(userInput);
         checkSameNumber(userInput);
@@ -117,7 +117,7 @@ public class Application {
         lottoNumber = userPay / lottoPrice;
     }
 
-    private static void salesValidate(String userInput) {
+    public static void salesValidate(String userInput) {
         checkOnlyNumber(userInput);
         checkPrice(userInput);
     }
