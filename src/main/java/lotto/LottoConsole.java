@@ -10,27 +10,36 @@ public class LottoConsole {
     static final int MIN_LOTTO_NUM = 1;
     static final int MAX_LOTTO_NUM = 45;
     LottoManager lottoManager = new LottoManager();
-    void inputMoney(){
+    void inputMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int money = stringToInt(input);
-
+        if (money == -1){
+            throw new IllegalArgumentException("[ERROR] 구입금액 입력이 올바르지 않습니다.");
+        }
         lottoManager.InputMoney(money);
+
         System.out.println();
     }
 
-    void inputNumbers(){
+    void inputNumbers() throws IllegalArgumentException{
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
-        List<Integer> numbers = validateNumbers(input);
-        lottoManager.setWinNumbers(numbers);
         System.out.println();
+        List<Integer> numbers = validateNumbers(input);
+        if (numbers == null){
+            throw new IllegalArgumentException("[ERROR] 로또 번호 입력이 올바르지 않습니다.");
+        }
+        lottoManager.setWinNumbers(numbers);
 
         System.out.println("보너스 번호를 입력해 주세요.");
         input = Console.readLine();
-        int bonusNumber = validateNumber(input, numbers);
-        lottoManager.setBonusNumber(bonusNumber);
         System.out.println();
+        int bonusNumber = validateNumber(input, numbers);
+        if (bonusNumber == -1){
+            throw new IllegalArgumentException("[ERROR] 로또 번호 입력이 올바르지 않습니다.");
+        }
+        lottoManager.setBonusNumber(bonusNumber);
 
         lottoManager.matchLottos();
     }
@@ -75,7 +84,9 @@ public class LottoConsole {
 
         for (String str : strings){
             int number = validateNumber(str, ret);
-
+            if (number == -1){
+                return null;
+            }
             ret.add(number);
         }
         return ret;
@@ -84,11 +95,8 @@ public class LottoConsole {
     int validateNumber(String input, List<Integer> numbers){
         int number = stringToInt(input);
 
-        if (isOverRange(number)) {
-            throw new IllegalArgumentException();
-        }
-        if (isDuplicate(numbers, number)){
-            throw new IllegalArgumentException();
+        if (isOverRange(number) || isDuplicate(numbers, number)) {
+            return -1;
         }
         return number;
     }
@@ -112,12 +120,12 @@ public class LottoConsole {
 
         for (int i = 0; i < input.length(); i++){
             if (!(input.charAt(i) >= '0' && input.charAt(i) <= '9')){
-                throw new IllegalArgumentException();
+                return -1;
             }
             val *= 10;
             val += input.charAt(i) - '0';
             if (val > MAX_INT){
-                throw new IllegalArgumentException();
+                return -1;
             }
         }
         return (int)val;

@@ -20,7 +20,7 @@ public class LottoManager {
     private int bonusNumber;
     private List<Integer> winCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
 
-    void InputMoney(int money){
+    void InputMoney(int money) throws IllegalArgumentException{
         if (money % 1000 != 0){
             throw new IllegalArgumentException();
         }
