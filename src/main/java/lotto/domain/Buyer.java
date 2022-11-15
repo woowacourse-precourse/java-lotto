@@ -4,8 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.enums.BuyerPrint;
 import lotto.domain.enums.PurchaseAmountUnit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Buyer {
-    int lottoAmount;
+    private int lottoAmount;
 
     static void validConsistByNumber(String purchaseAmount) {
         try {
@@ -14,7 +17,8 @@ public class Buyer {
             throw new IllegalArgumentException();
         }
     }
-    static int inputLottoAmount(){
+
+    static int inputLottoAmount() {
         int purchaseAmount;
         String inputValue;
         PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
@@ -27,5 +31,14 @@ public class Buyer {
         purchaseAmountUnit.validDivisionByThousand(purchaseAmount);
 
         return purchaseAmount;
+    }
+
+    public List<Lotto> buyLotto(){
+        PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
+        int lottoCount = purchaseAmountUnit.purchaseAmount(lottoAmount);
+
+        List<Lotto> purchaseLotto = Lotto.creatLottoNumbers(lottoCount);
+
+        return purchaseLotto;
     }
 }

@@ -19,7 +19,7 @@ public enum PurchaseAmountUnit {
         }
     }
 
-    public int PurchaseAmount(int PurchaseAmount) {
+    public int purchaseAmount(int PurchaseAmount) {
         return PurchaseAmount / unit;
     }
 }
