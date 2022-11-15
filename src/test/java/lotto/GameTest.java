@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
-import static lotto.Game.makeWinning;
-import static lotto.Game.winningNumbers;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest extends NsTest {
