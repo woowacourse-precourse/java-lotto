@@ -47,7 +47,6 @@ public class Comparison {
         for (List<Integer> userLotto: userLottos) {
             compareLottoNumbers(userLotto, winningLottoNumbers, winningLottoBonusNumber);
         }
-        // Stream<Map.Entry<Result, Integer>>
         results.entrySet().stream().sorted(Map.Entry.comparingByKey());
     }
 
