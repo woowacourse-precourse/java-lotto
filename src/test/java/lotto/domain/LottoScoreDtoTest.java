@@ -26,7 +26,7 @@ public class LottoScoreDtoTest {
     @ParameterizedTest
     @NullSource
     @MethodSource("generateResults")
-    void case1(Map<LottoPrize, Integer> prizeCount) {
+    void LottoScoreDto_생성자_null_예외(Map<LottoPrize, Integer> prizeCount) {
         assertThrows(IllegalArgumentException.class, () -> new LottoScoreDto(prizeCount, 3.0));
     }
 }

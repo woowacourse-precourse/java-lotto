@@ -17,19 +17,19 @@ public class LottoWinningSystemTest {
 
     @DisplayName("로또당첨시스템 생성자에서는 InputView 가 null 이면 예외가 발생한다")
     @Test
-    void case1() {
+    void LottoWinningSystem_생성자_InputView_null_예외() {
         assertThrows(IllegalArgumentException.class, () -> new LottoWinningSystem(null, outputView, pickNumbers));
     }
 
     @DisplayName("로또당첨시스템 생성자에서는 OutputView 가 null 이면 예외가 발생한다")
     @Test
-    void case2() {
+    void LottoWinningSystem_생성자_OutputView_null_예외() {
         assertThrows(IllegalArgumentException.class, () -> new LottoWinningSystem(inputView, null, pickNumbers));
     }
 
     @DisplayName("로또당첨시스템 생성자에서는 pickNumbers 가 null 이면 예외가 발생한다")
     @Test
-    void case3() {
+    void LottoWinningSystem_생성자_PickNumbers_null_예외() {
         assertThrows(IllegalArgumentException.class, () -> new LottoWinningSystem(inputView, outputView, null));
     }
 }

@@ -32,25 +32,25 @@ public class InputValidatorTest {
     }
 
 
-    @DisplayName("숫자로 변환하는 과정을 담당함")
+    @DisplayName("int 숫자로 변환하는 과정을 담당함")
     @ParameterizedTest
     @MethodSource("oneInteger")
-    void case1(String input, int result) {
+    void toInt_메서드_정상작동(String input, int result) {
         assertThat(InputValidator.toInt(input)).isEqualTo(result);
     }
 
-    @DisplayName("숫자로 변환할 수 없는 경우 IEA 예외")
+    @DisplayName("int 숫자로 변환할 수 없는 경우 IEA 예외")
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"234 ", "a234"})
-    void case2(String input) {
+    @ValueSource(strings = {"234 ", "a234", "22000000000"})
+    void toInt_메서드_변환_불가_예외(String input) {
         assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt(input));
     }
 
     @DisplayName("숫자로 변환하는 과정을 담당함")
     @ParameterizedTest
     @MethodSource("Integers")
-    void case3(String input, List<Integer> result) {
+    void splitToIntegers_메서드_정상작동(String input, List<Integer> result) {
         assertThat(InputValidator.splitToIntegers(input)).isEqualTo(result);
     }
 
@@ -58,19 +58,19 @@ public class InputValidatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"234 ", "a234", "1,2,,3", "1,2,3,a"})
-    void case4(String input) {
+    void splitToIntegers_메서드_변환_불가_예외(String input) {
         assertThrows(IllegalArgumentException.class, () -> InputValidator.splitToIntegers(input));
     }
 
-    @DisplayName("toInt 메서드는 int 범위를 넘는 숫자가 들어오면 IEA 예외")
+    @DisplayName("long 숫자로 변환하는 과정을 담당함")
     @Test
-    void case5() {
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt("22000000000"));
+    void toLong_메서드_정상작동() {
+        assertThat(InputValidator.toLong("22000000000")).isEqualTo(22000000000L);
     }
 
-    @DisplayName("toLong 메서드는 long 범위를 넘는 숫자가 들어오면 IEA 예외")
+    @DisplayName("long 숫자로 변환할 수 없는 경우 IEA 예외")
     @Test
-    void case6() {
+    void toLong_메서드_변환_불가_예외() {
         assertThrows(IllegalArgumentException.class, () -> InputValidator.toLong("2200000000000000000000000"));
     }
 }

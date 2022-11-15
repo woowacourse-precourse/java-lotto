@@ -35,26 +35,26 @@ public class WinningLottoTest {
         );
     }
 
-    @DisplayName("setBonusNumber 메서드는 중복이 없는 숫자만을 받아들인다")
+    @DisplayName("WinningLotto 생성자는 중복이 없는 숫자만을 받아들인다")
     @ParameterizedTest
     @ValueSource(ints = {7, 8, 9, 45})
-    void case1(int input) {
+    void WinningLotto_생성자_정상작동(int input) {
         BonusNumber bonusNumber = new BonusNumber(input);
         assertDoesNotThrow(() -> new WinningLotto(winLotto, bonusNumber));
     }
 
-    @DisplayName("setBonusNumber 메서드에 중복인 숫자가 오면 IEA 예외")
+    @DisplayName("WinningLotto 생성자에 중복인 숫자가 오면 IEA 예외")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    void case2(int input) {
+    void WinningLotto_생성자_중복_예외(int input) {
         BonusNumber bonusNumber = new BonusNumber(input);
         assertThrows(IllegalArgumentException.class, () -> new WinningLotto(winLotto, bonusNumber));
     }
 
-    @DisplayName("getResult 메서드는 당첨 결과를 알맞게 LottoResult 형태로 반환한다")
+    @DisplayName("calculateLottoResult 메서드는 당첨 결과를 알맞게 LottoResult 형태로 반환한다")
     @ParameterizedTest
     @MethodSource("generateLotto")
-    void case3(Lotto lotto, LottoResult expected) {
+    void calculateLottoResult_메서드_정상작동(Lotto lotto, LottoResult expected) {
         WinningLotto winningLotto = new WinningLotto(winLotto, new BonusNumber(7));
         LottoResult result = winningLotto.calculateLottoResult(lotto);
         assertThat(result).isEqualTo(expected);
