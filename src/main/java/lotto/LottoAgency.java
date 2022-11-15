@@ -17,18 +17,19 @@ public class LottoAgency {
         List<List<Integer>> lottos = new ArrayList<>();
 
         for (int lottoIndex = 0; lottoIndex < amount; lottoIndex++) {
-            List<Integer> generatedNumbers = numberGenerator.generate();
-
-            if (isDuplicated(generatedNumbers)) {
-                lottoIndex--;
-                this.numberGenerator = new NumberGeneratorRandom();
-                continue;
-            }
-
-            lottos.add(generatedNumbers);
+            lottos.add(generateNumbers());
         }
 
         return lottos;
+    }
+
+    private List<Integer> generateNumbers() {
+        List<Integer> generated = numberGenerator.generate();
+        if (isDuplicated(generated)) {
+            this.numberGenerator = new NumberGeneratorRandom();
+            return generateNumbers();
+        }
+        return generated;
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
