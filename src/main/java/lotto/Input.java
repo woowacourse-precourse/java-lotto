@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static lotto.Error.*;
@@ -15,9 +16,13 @@ public class Input {
         String purchaseAmount = Console.readLine();
         System.out.println();
 
-        try {
-            Integer purchaseAmountInteger = Integer.valueOf(purchaseAmount);
+        if (purchaseAmount.matches("(.*)[^0-9](.*)")) {
+            System.out.println(INVALID_INPUT.getMessage());
+            throw new NoSuchElementException(INVALID_INPUT.getMessage());
+        }
 
+        try {
+            Integer purchaseAmountInteger = Integer.parseInt(purchaseAmount);
             if (purchaseAmountInteger % 1000 != 0) throw new IllegalArgumentException(INVALID_MONEY_INPUT.getMessage());
 
             return purchaseAmountInteger;
