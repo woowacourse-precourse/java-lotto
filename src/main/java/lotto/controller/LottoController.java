@@ -2,7 +2,7 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoPrize;
@@ -22,23 +22,39 @@ public class LottoController {
 
         getWinningNumbers();
 
-        HashMap<LottoPrize, Long> prizeList = checkLotteryResult();
+        LinkedHashMap<LottoPrize, Long> prizeList = checkLotteryResult();
+
+        player.saveResult(prizeList);
+
+        OutputView.printTotalResult(prizeList, player.getEarningRate());
     }
 
-    private HashMap<LottoPrize, Long> checkLotteryResult() {
-        HashMap<LottoPrize, Long> playerPrizes = new HashMap<>();
+    private LinkedHashMap<LottoPrize, Long> checkLotteryResult() {
+        LinkedHashMap<LottoPrize, Long> playerPrizes = initializePrizeMap();
 
         List<Lotto> playerLotteries = player.getLotteries();
 
         for (Lotto lotto : playerLotteries) {
             LottoPrize prize = lotto.play(winningNumbers);
-            
-            long count = playerPrizes.getOrDefault(prize, 0L);
+
+            long count = playerPrizes.get(prize);
 
             playerPrizes.put(prize, count + 1);
         }
 
+        playerPrizes.remove(LottoPrize.DEFAULT);
+
         return playerPrizes;
+    }
+
+    private LinkedHashMap<LottoPrize, Long> initializePrizeMap() {
+        LinkedHashMap<LottoPrize, Long> prizeMap = new LinkedHashMap<>();
+
+        for (LottoPrize lottoPrize : LottoPrize.values()) {
+            prizeMap.put(lottoPrize, 0L);
+        }
+
+        return prizeMap;
     }
 
     private void getWinningNumbers() {
