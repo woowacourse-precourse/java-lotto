@@ -10,7 +10,10 @@ public class WinningCheck {
 		List<Prize> prizes = new ArrayList<>();
 		for (Lotto lotto : lotteries) {
 			int hitCount = getHitCount(lotto, winnings.getWinningNumbers());
-			boolean bonusWinning = lotto.getNumbers().contains(winnings.getBonusNumber());
+			boolean bonusWinning = false;
+			if (hitCount == 5) {
+				bonusWinning = lotto.getNumbers().contains(winnings.getBonusNumber());
+			}
 			prizes.add(Prize.valueOf(hitCount, bonusWinning));
 		}
 
