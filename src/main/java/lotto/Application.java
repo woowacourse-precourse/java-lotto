@@ -12,6 +12,14 @@ public class Application {
     private static String Regex = ",";
     private static String Insert_Money = "구매 금액을 입력하세요";
     private static String Buy_Message = "개를 구매했습니다.";
+    private static String Winning_Stats = "당첨 통계\n---";
+    private static String Yield_Total = "총 수익률은 %s%%입니다.\n";
+    private static String Win_FirstPrize = "6개 일치 (2,000,000,000원) - ";
+    private static String Win_SecondPrize = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    private static String Win_ThirdPrize = "5개 일치 (1,500,000원) - ";
+    private static String Win_FourthPrize = "4개 일치 (50,000원) - ";
+    private static String Win_FifthPrize = "3개 일치 (5,000원) - ";
+    private static String Count_Correct = "개";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -113,4 +121,13 @@ public class Application {
         }
     }
 
+    public static void printResult(int count)   {
+        System.out.println(Winning_Stats);
+        System.out.println(Win_FifthPrize + Rank.fifth.count + Count_Correct);
+        System.out.println(Win_FourthPrize + Rank.fourth.count + Count_Correct);
+        System.out.println(Win_ThirdPrize + Rank.third.count + Count_Correct);
+        System.out.println(Win_SecondPrize + Rank.second.count + Count_Correct);
+        System.out.println(Win_FirstPrize + Rank.first.count + Count_Correct);
+        System.out.printf(Yield_Total, yield(count));
+    }
 }
