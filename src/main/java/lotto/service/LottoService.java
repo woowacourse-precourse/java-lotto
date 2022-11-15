@@ -1,9 +1,6 @@
 package lotto.service;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoIssuer;
-import lotto.domain.Rank;
-import lotto.domain.WinningNumber;
+import lotto.domain.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +13,7 @@ public class LottoService {
         this.lottoIssuer = lottoIssuer;
     }
 
-    public List<Lotto> purchaseLotto(int amount) {
+    public List<Lotto> purchaseLotto(Amounts amount) {
         return lottoIssuer.generateAllLotto(amount);
     }
 

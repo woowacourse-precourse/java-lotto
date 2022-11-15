@@ -30,4 +30,8 @@ public enum Rank {
     public int getReward() {
         return reward;
     }
+
+    public int getCount() {
+        return count;
+    }
 }

@@ -12,8 +12,8 @@ public class LottoIssuer {
         return new Lotto(numbers);
     }
 
-    public List<Lotto> generateAllLotto(int amount) {
-        int lottoNumber = amount / 1000;
+    public List<Lotto> generateAllLotto(Amounts amount) {
+        int lottoNumber = amount.getMoney() / 1000;
         final List<Lotto> lottos = new LinkedList<>();
         for (int i = 0; i < lottoNumber; i++) {
             lottos.add(generateLotto());

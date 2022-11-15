@@ -3,6 +3,8 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Amounts;
+import lotto.domain.Lotto;
+import lotto.domain.WinningNumber;
 import lotto.util.ValidUtil;
 
 import java.util.LinkedList;
@@ -23,28 +25,25 @@ public class Input {
         return new Amounts(amount);
     }
 
-    public List<Integer> inputWinningNumber() {
+    public Lotto inputWinningNumber() {
         System.out.println("당첨 번호를 입력해주세요.");
         String[] numbers = validUtil.validAllWinningNumber(Console.readLine());
-
         List<Integer> winningAndBonusNumber = new LinkedList<>();
         for (String number : numbers) {
             winningAndBonusNumber.add(Integer.parseInt(number));
         }
 
         validUtil.validateDuplication(winningAndBonusNumber);
-        return winningAndBonusNumber;
+        return new Lotto(winningAndBonusNumber);
     }
 
-    public List<Integer> inputBonusNumber(List<Integer> numbers) {
+    public WinningNumber inputBonusNumber(Lotto lotto) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         validUtil.validateNumberRange(input);
 
-        numbers.add(Integer.parseInt(input));
-        validUtil.validateDuplication(numbers);
 
-        return numbers;
+        return new WinningNumber(lotto, Integer.parseInt(input));
     }
 
 }
