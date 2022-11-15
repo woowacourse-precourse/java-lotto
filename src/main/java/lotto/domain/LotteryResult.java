@@ -21,8 +21,8 @@ public class LotteryResult {
         result = new HashMap<>();
         rankedTicketIds = new HashSet<>();
         initResult();
-        totalReward = 0;
-        size = 0;
+        totalReward = Status.EMPTY.getStatus();
+        size = Status.EMPTY.getStatus();;
     }
 
     private void initResult() {
