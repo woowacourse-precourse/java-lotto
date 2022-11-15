@@ -151,7 +151,7 @@ class ApplicationTest extends NsTest {
         // given
         Lotto inputLotto = new Lotto(List.of(5, 6, 7, 8, 9, 10));
         int bonus = 22;
-g
+
         Lotto lottoA = new Lotto(List.of(2, 3, 4, 5, 6, 7));
         Lotto lottoB = new Lotto(List.of(3, 4, 5, 6, 7, 8));
         List<Lotto> issuedLotteries = List.of(lottoA, lottoB);
