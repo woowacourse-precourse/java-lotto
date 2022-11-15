@@ -4,7 +4,7 @@ import lotto.domain.Generator;
 import lotto.domain.Purchase;
 import lotto.domain.RaffleNumber;
 import lotto.domain.Revenue;
-import lotto.domain.Roulette;
+import lotto.domain.LottoComparator;
 import lotto.ui.Printer;
 
 import java.util.List;
@@ -25,19 +25,19 @@ public class Application {
         raffleNumber.inputWinningNumber();
         raffleNumber.inputBonusNumber();
 
-        Roulette roulette = new Roulette(raffleNumber.winningNumber, raffleNumber.bonusNumber);
-        roulette.setLottoStatus();
+        LottoComparator lottoComparator = new LottoComparator(raffleNumber.winningNumber, raffleNumber.bonusNumber);
+        lottoComparator.setLottoStatus();
         for (Lotto one : myLotto) {
-            int sameNumber = roulette.compareWithWinningNumber(one.getNumbers());
+            int sameNumber = lottoComparator.compareWithWinningNumber(one.getNumbers());
             if (sameNumber < 3) {
                 continue;
             }
-            roulette.countLotto(one.getNumbers(), sameNumber);
+            lottoComparator.countLotto(one.getNumbers(), sameNumber);
         }
 
-        printer.printWinning(roulette.lottoStatus);
+        printer.printWinning(lottoComparator.lottoStatus);
 
-        Revenue revenue = new Revenue(roulette.lottoStatus);
+        Revenue revenue = new Revenue(lottoComparator.lottoStatus);
         float percent = revenue.calculateRevenue(purchase.money);
         printer.printRevenue(percent);
     }
