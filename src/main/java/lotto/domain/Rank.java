@@ -30,6 +30,13 @@ public enum Rank {
         return this.index;
     }
 
+    public Rank getRank(int index) {
+        return Arrays.stream(values())
+                .filter(rank -> rank.index == index)
+                .findAny()
+                .orElse(null);
+    }
+
     public static Rank findRank(int numbersCount, int bonusCount) {
         return Arrays.stream(values())
                 .filter(rank -> rank.matchNumbers == numbersCount)
