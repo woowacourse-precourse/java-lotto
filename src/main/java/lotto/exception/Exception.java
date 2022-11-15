@@ -22,4 +22,10 @@ public class Exception {
             throw new IllegalArgumentException(ERROR + "천 단위로 입력해주세요.");
         }
     }
+
+    public static void validateIsLessThanThousand(String input) {
+        if (Integer.parseInt(input)<1000) {
+            throw new IllegalArgumentException(ERROR + "구매금액은 1000 이상이어야 합니다.");
+        }
+    }
 }
