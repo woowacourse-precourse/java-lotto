@@ -10,12 +10,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int buyPrice = enterPrice();
-        while(true) {
-            if(buyPrice != 0)
-                break;
-            if(buyPrice == 0)
-                buyPrice = enterPrice();
-        }
+        if(buyPrice == 0)
+            return;
 
         List<Lotto> lottoList = buyLotto(buyPrice);
 
