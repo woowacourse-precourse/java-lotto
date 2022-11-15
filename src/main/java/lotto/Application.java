@@ -33,8 +33,13 @@ public class Application {
         }
 
         // 보너스 번호 입력
-        // TODO: 보너스 입력 예외 추가해야함
         int bonusNumber = console.inputBonusNumber();
+        try {
+            lotto.checkException(bonusNumber);
+        } catch (IllegalArgumentException e) {
+            console.outputErrorMessage();
+            return;
+        }
 
         LottoResult lottoResult = new LottoResult();
         for (List<Integer> issuedLotto : issuedLottos) {

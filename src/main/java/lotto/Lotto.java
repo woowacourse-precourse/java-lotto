@@ -14,6 +14,9 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        for (Integer number : numbers) {
+            checkException(number);
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -31,5 +34,10 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+    public void checkException(int num) {
+        if (num < 1 || num > 45) {
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -50,6 +50,6 @@ public class Console {
         return rank.correctCount + "개 일치 (" + splitCommaMoney + "원) - " + count + "개";
     }
     public void outputErrorMessage() {
-        System.out.println(ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        System.out.println(ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
