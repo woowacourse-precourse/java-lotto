@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class WinningNumber {
     private static String LOTTO_ALREADY_CONTAIN_BONUS_NUMBER = "[ERROR] 번호가 중복되어 보너스 숫자로 선택할 수 없습니다.";
     private static String BONUS_NUMBER_OUT_OF_NUMBER_RANGE = "[ERROR] 보너스 번호가 범위를 벗어났습니다.";
@@ -12,6 +14,14 @@ public class WinningNumber {
         valid(winningNumber, bonusNumber);
         this.winningNumber = winningNumber;
         this.bonusNumber = bonusNumber;
+    }
+
+    public List<Integer> copyWinningNumber() {
+        return List.copyOf(winningNumber.copyNumbers());
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     private void valid(Lotto winningNumber, int bonusNumber) {

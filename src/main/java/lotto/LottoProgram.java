@@ -21,7 +21,7 @@ public class LottoProgram {
         // 당첨 로또 만들기
         WinningNumber winningNumber = makeWinningNumber();
         // 등수 만들기
-
+        LottoRank lottoRank = makeRank(lottoCollection, winningNumber);
         // 출력하기
     }
     private LottoMoney ReceiveMoney() {
@@ -35,5 +35,10 @@ public class LottoProgram {
     }
     private WinningNumber makeWinningNumber() {
         return new WinningNumber(new Lotto(inputWinningNumberView()),inputBonusNumberView());
+    }
+    private LottoRank makeRank(LottoCollection lottoCollection, WinningNumber winningNumber){
+        //유저가 뽑은 로또들과 당첨 번호로 등수 Info 만들기
+        //로또 등수를 모아놓은 class 만들기
+        return new LottoRank(lottoCollection,winningNumber);
     }
 }
