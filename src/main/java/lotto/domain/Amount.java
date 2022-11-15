@@ -10,12 +10,7 @@ public class Amount {
     private int amount;
 
     public Amount(String amount) {
-        try {
-            InputValidation.isNumber(amount);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        InputValidation.isNumber(amount);
         this.amount = Integer.parseInt(amount);
     }
 

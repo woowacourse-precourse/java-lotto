@@ -7,12 +7,7 @@ public class BonusNumber {
 
     int bonus;
     public BonusNumber(String userInput) {
-        try {
-            InputValidation.isNumber(userInput);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        InputValidation.isNumber(userInput);
         this.bonus = Integer.parseInt(userInput);;
     }
 
