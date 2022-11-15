@@ -50,4 +50,10 @@ public class LogicTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 로또_당첨_정상_테스트() {
+        assertThat(logic.setJackpot("1,2,3,4,5,6")).containsExactly(1, 2, 3, 4, 5, 6);
+    }
+
+
 }

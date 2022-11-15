@@ -65,13 +65,32 @@ public class Logic {
     public List<Integer> setJackpot(String input) {
         List<Integer> answer = new ArrayList<>();
 
-
+        String[] temp = input.split(",");
+        for(int i = 0; i < temp.length; ++i) {
+            answer.add(checkNum(temp[i]));
+        }
         return answer;
     }
 
     public int getBonus(String input) {
         // implement
-
         return 0;
+    }
+
+    private int checkNum(String input) {
+        int len = input.length();
+        throwInputExceptions(len > 0, LOTTERY_OUT_OF_RANGE);
+        int ans = 0;
+        char c;
+        for(int i = 0; i < input.length(); ++i) {
+            ans *= 10;
+            c = input.charAt(i);
+            if(i == 0)
+                throwInputExceptions(c > '0' && c <= '9', LOTTERY_OUT_OF_RANGE);
+            throwInputExceptions(c >= '0' && c <= '9', LOTTERY_OUT_OF_RANGE);
+            ans += c - '0';
+        }
+        throwInputExceptions(ans >= 1 && ans <= 45, LOTTERY_OUT_OF_RANGE);
+        return ans;
     }
 }
