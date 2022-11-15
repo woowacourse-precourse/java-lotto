@@ -15,18 +15,13 @@ public class UserController {
         Model model = Model.getInstance();
         String input = View.setAmount();
 
-        try {
-            Validation.validateInput(input);
-            int amount = Integer.parseInt(input);
+        Validation.validateInput(input);
+        int amount = Integer.parseInt(input);
 
-            Validation.validateAmount(amount);
-            int count = amount / 1000;
+        Validation.validateAmount(amount);
+        int count = amount / 1000;
 
-            user = new User(amount, count);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        user = new User(amount, count);
 
         model.setUser(user);
     }
