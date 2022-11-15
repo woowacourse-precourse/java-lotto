@@ -1,5 +1,34 @@
 ## 기능 목록 정의하기
 
+### 역할 정의
+
+1. ShellInterface : 사용자 입력 
+2. InternalMatcher : 내부 처리 
+3. BuildHistory : 처리 결과 생성 
+4. PrinterInterface : 결과 출력
+
+### 기능 목록
+1.shell : 사용자 입력 역할을 책임질 기능 
+    1.Shell : 사용자 입력을 스스로 담당하는 책임
+    2.Exception : 사용자 입력 오류 발생 시 예외 처리를 담당하는 책임
+    3.  WinningNumber : 추첨 번호를 저장하는 책임
+2. controller : 내부 처리 역할을 각각 구현 
+   1.LottoTicket : 구매 금액에 해당하는 발행 횟수를 담당하는 책임 
+   2.AutomaticDispenser : LottoTicket 수 만큼 자동으로 로또를 발행하는 책임 
+   3.Matcher : 발행한 로또 번호와 사용자가 입력한 당첨 번호를 비교하는 책임 
+   4.HistoryBuilder : 처리 결과 생성을 도와주는 책임 
+   5.Printer : 처리 결과를 출력하는 책임
+3.domain : 처리 결과를 저장하는 역할 각각 구현 
+   1.Lotto : 로또 번호를 담당하는 책임 
+   2.History : HistoryBuilder에서 생성한 결과를 저장하는 책임 
+   3. MatchResult : 당첨 번호 일치 여부 결과 책임 
+   4. YieldResult : 수익률 결과 책임 
+   5. WinningAmount : 결과에  따라 당첨금을 설정해주는 책임
+
+
+
+---
+
 ### 요구사항 구현 절차를 점진적으로 명확하게 드러나도록 한다.
 
 #### 공과 사 분리 ( 공 : 어떤 일을 해달라고 요청할 수 있는 약속, 변경 가능성, 사 : 구현, 내부적인 처리를 담당)
