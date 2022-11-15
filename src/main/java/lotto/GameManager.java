@@ -13,7 +13,7 @@ public class GameManager {
   }
 
   public void lottoGameStart() {
-    try{
+    try {
       buyLotto();
       printBuyLottoList();
       prizeLotto = getPrizeNumberByUserInput();
@@ -22,7 +22,7 @@ public class GameManager {
       showPrizeStatistics(prizeStatistics);
       user.setPrizeMoney(prizeStatistics.calculatePrizeMoney());
       printShowReturnRateMessage(user.calculateReturnRate());
-    }catch (Exception e) {
+    } catch (IllegalArgumentException e) {
       System.out.println(e.getMessage());
     }
   }
@@ -59,7 +59,7 @@ public class GameManager {
     return bonusNumber;
   }
 
-  private void showPrizeStatistics(PrizeStatistics prizeStatistics){
+  private void showPrizeStatistics(PrizeStatistics prizeStatistics) {
     prizeStatistics.setPrizeRankArrayByLottoList(user.getUserLottoList());
     printBlankLine();
     printShowPrizeStatisticsMessage();
