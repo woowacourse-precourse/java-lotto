@@ -12,7 +12,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import java.io.ByteArrayInputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 
@@ -45,12 +47,21 @@ class LottoMachineTest {
 
     }
 
-    @Test
-    void getResult() {
-    }
+    @DisplayName("당첨된 로또 순위 만큼 총 상금 계산")
+    @ParameterizedTest
+    @CsvSource({"1,1,1,1,2,2031560000","2,0,0,0,0,4000000000","0,0,1,0,3,1515000","0,0,5,0,0,7500000"})
+    void calculateRevenue(int rank1, int rank2, int rank3, int rank4, int rank5 , double output) throws Exception{
+        LottoMachine lottoMachine = new LottoMachine();
+        Field result = lottoMachine.getClass().getDeclaredField("result");
+        Field revenue = lottoMachine.getClass().getDeclaredField("revenue");
+        result.setAccessible(true);
+        revenue.setAccessible(true);
 
-    @Test
-    void calculateRevenue() {
+        result.set(lottoMachine,new int[]{0,rank1,rank2,rank3,rank4,rank5});
+        lottoMachine.calculateRevenue();
+        double Allrevenue = (double) revenue.get(lottoMachine);
+
+        Assertions.assertThat(Allrevenue).isEqualTo(output);
     }
 
 }
