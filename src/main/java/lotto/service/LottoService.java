@@ -1,13 +1,11 @@
 package lotto.service;
 
-import static lotto.LottoConstant.INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
-import static lotto.LottoConstant.INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE;
-import static lotto.LottoConstant.INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
-import static lotto.LottoConstant.INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
+import static lotto.LottoConstant.*;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
 public class LottoService {
@@ -19,14 +17,14 @@ public class LottoService {
 
     public static int amountInputToInteger(String input) {
         if (!input.chars().allMatch((Character::isDigit))) {
-            throw new IllegalStateException(INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
         int amount = Integer.parseInt(input);
         if (amount < 1000) {
-            throw new IllegalStateException(INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
+            throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
         }
         if (amount % 1000 != 0) {
-            throw new IllegalStateException(INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE);
+            throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE);
         }
 
         return amount;
@@ -58,7 +56,7 @@ public class LottoService {
     private static Lotto getWinningNumber(String input) {
         List<Integer> numbers = new ArrayList<>();
         if (input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
-            throw new IllegalStateException(INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
+            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
 
         return new Lotto(numbers);
