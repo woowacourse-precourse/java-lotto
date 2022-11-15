@@ -43,12 +43,10 @@ public class Lotto {
         return numbers.stream().distinct().count() != numbers.size();
     }
 
-    public void printNumbers() {
-        System.out.println(this.numbers);
-    }
-
-    public void sortNumbers() {
+    public void printSortedNumbers() {
+        ArrayList<Integer> numbers = new ArrayList<>(this.numbers);
         Collections.sort(numbers);
+        System.out.println(numbers);
     }
 
     public List<Integer> getNumbers() {
