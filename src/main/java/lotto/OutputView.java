@@ -15,11 +15,12 @@ public class OutputView {
 
 
     enum places {
-        FIRST_PLACE(2000000000, 6, "6개 일치 (2,000,000,000원) - "),
-        SECOND_PLACE(30000000, Integer.MAX_VALUE, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-        THIRD_PLACE(1500000, 5, "5개 일치 (1,500,000원) - "),
+        FIFTH_PLACE(5000, 3, "3개 일치 (5,000원) - "),
         FOURTH_PLACE(50000, 4, "4개 일치 (50,000원) - "),
-        FIFTH_PLACE(5000, 3, "3개 일치 (5,000원) - ");
+        THIRD_PLACE(1500000, 5, "5개 일치 (1,500,000원) - "),
+        SECOND_PLACE(30000000, Integer.MAX_VALUE, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        FIRST_PLACE(2000000000, 6, "6개 일치 (2,000,000,000원) - ");
+
 
         final int numberMatch;
         final int prize;
@@ -60,6 +61,7 @@ public class OutputView {
     public static void printAnnouncement() {
         System.out.println(ANNOUNCEMENT);
     }
+
     public static void printLottoNumbers(int numberOfPurchasedLotto, List<Lotto> purchasedLotto) {
         System.out.println(numberOfPurchasedLotto + LOTTO_PURCHASE_MESSAGE);
         for (int index = 0; index < numberOfPurchasedLotto; index++) {
@@ -67,9 +69,11 @@ public class OutputView {
             System.out.println(purchasedLotto.get(index).getNumbers().toString());
         }
     }
+
     public static void printPlaceMessage(places place, int won) {
         System.out.println(place.message + won + "개");
     }
+
     public static void printClosingStatement(String percentage) {
         CLOSING_STATEMENT = "총 수익률은 " + percentage + "%입니다.";
         System.out.println(CLOSING_STATEMENT);

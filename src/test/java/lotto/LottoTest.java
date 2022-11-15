@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -35,6 +33,29 @@ class LottoTest extends NsTest {
 
     // 아래에 추가 테스트 작성 가능
 
+    @DisplayName("보너스 숫자가 1~45범위밖이라면 에러메시지 프린트.")
+    @Test
+    void bonusNumberNotInRange() {
+        assertSimpleTest(() -> {
+            try {
+                run("1000", "1,2,3,4,5,6", "52");
+            } catch (IllegalArgumentException e) {
+                assertThat(output().contains(ERROR_MESSAGE));
+            }
+        });
+    }
+
+    @DisplayName("플레이어가 입력한 6개의 숫자가 1~45범위밖이라면 에러메시지 프린트.")
+    @Test
+    void printErrorMessageIfNotInRange() {
+        assertSimpleTest(() -> {
+            try {
+                run("8000", "1,2,3,4,5,66", "30");
+            } catch (IllegalArgumentException e) {
+                assertThat(output().contains(ERROR_MESSAGE));
+            }
+        });
+    }
     @Override
     protected void runMain() {Lotto.main(new String[]{});}
 }

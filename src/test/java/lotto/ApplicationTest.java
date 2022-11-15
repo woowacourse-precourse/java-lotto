@@ -58,16 +58,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @DisplayName("플레이어가 입력한 6개의 숫자가 1~45범위밖이라면 에러메시지 프린트.")
-    @Test
-    void printErrorMessageIfNotInRange() {
-        assertSimpleTest(() -> {
-            Assertions.assertThrows(IllegalArgumentException.class, () -> {
-                run("8000", "1,2,0,4,5,50", "10");
-            });
-        });
-    }
-
     @DisplayName("보너스 숫자가 1~45범위밖이라면 IllegalArgumentException 발생.")
     @Test
     void validateBonusNumber() {
@@ -87,18 +77,6 @@ class ApplicationTest extends NsTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Application.setInitialNumber();
             Application.setNumberOfPurchasedLotto();
-        });
-    }
-
-    @DisplayName("보너스 숫자가 1~45범위밖이라면 에러메시지 프린트.")
-    @Test
-    void bonusNumberNotInRange() {
-        assertSimpleTest(() -> {
-            try {
-                run("3000", "1,2,3,4,5,6", "52");
-            } catch (IllegalArgumentException e) {
-                assertThat(output().contains(ERROR_MESSAGE));
-            }
         });
     }
 
