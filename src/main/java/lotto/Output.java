@@ -21,8 +21,8 @@ public class Output {
         DecimalFormat df = new DecimalFormat("###,###");
         System.out.println("\n당첨 통계");
         System.out.println("---");
-        for (Map.Entry<LottoMatch, Long> entry : winningDetails.entrySet()) {
-            System.out.println(entry.getKey().getName() + " (" + df.format(entry.getKey().getValue()) + "원 ) - " + entry.getValue() + "개");
+        for (Map.Entry<LottoMatch, Long> entry : winningDetails.entrySet().stream().sorted(Map.Entry.comparingByKey()).collect(Collectors.toList())) {
+            System.out.println(entry.getKey().getName() + " (" + df.format(entry.getKey().getValue()) + "원) - " + entry.getValue() + "개");
             winningAmount += entry.getKey().getValue() * entry.getValue();
         }
         System.out.println("총 수익률은 " + Calculate.getProfitRate(purchaseAmount, winningAmount) + "%입니다.");
