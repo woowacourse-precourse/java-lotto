@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.exception.Check;
 import lotto.exception.CustomException;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,7 +42,9 @@ public class Lotto {
         return numbers;
     }
 
-    public void ascendingSort() {
-        Collections.sort(numbers);
+    public Lotto ascendingSort() {
+        List<Integer> sortNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortNumbers);
+        return new Lotto(sortNumbers);
     }
 }

@@ -83,7 +83,7 @@ public class Player {
     public void printRankYield(HashMap<LottoResult, Integer> lottoResults, int buyMoney) {
         System.out.println("당첨 통계\n" + "---");
         long yield = 0;
-        float yieldF = 0f;
+        float yieldF = 0;
 
         setLottoResultsRank(lottoResults);
 
@@ -91,7 +91,7 @@ public class Player {
             System.out.println(rank.getMessage());
             yield += rank.getMoney() * rank.getAmount();
         }
-        yieldF = yield / buyMoney * 100;
+        yieldF = (float) yield / buyMoney * 100;
         System.out.println("총 수익률은 "+ String.format("%.1f", yieldF) + "%" + "입니다.");
     }
 
