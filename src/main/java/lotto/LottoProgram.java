@@ -1,6 +1,7 @@
 package lotto;
 
 import view.InputView;
+import view.OutputView;
 
 public class LottoProgram {
     public void run(){
@@ -8,6 +9,8 @@ public class LottoProgram {
         LottoMoney lottoMoney = ReceiveMoney();
         // 로또 발급
         LottoCount lottoCount = calculateLottoCount(lottoMoney);
+        // 로또 개수 출력
+        OutputView.printLottoCount(lottoCount);
         // 로또 추첨 ( 로또 난수 생성 )
 
         // 당첨 로또 만들기
