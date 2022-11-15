@@ -34,8 +34,17 @@ class LottoTest {
 
   @DisplayName("로또 번호가 오름차순이 아닐 때 예외가 발생한다.")
   @Test
-  void isNotDigit() {
+  void isNotSorted() {
     assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 5, 4, 6)))
+            .isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @DisplayName("로또 번호의 개수가 6개가 아니라면 예외가 발생한다.")
+  @Test
+  void isNotRightSize() {
+    assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+            .isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4)))
             .isInstanceOf(IllegalArgumentException.class);
   }
 }
