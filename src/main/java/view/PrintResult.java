@@ -17,15 +17,13 @@ public class PrintResult {
     }
 
     public static void printMatchDetail(HashMap matchNumbers) {
-        List<Integer> order = List.of(3, 4, 5, 7, 6);
         for (NumberMatch numberMatch : NumberMatch.values()) {
-            int idx = 0;
-            System.out.println(numberMatch.getNumberMatch() + matchNumbers.get(order.get(idx)) + UNIT);
+            System.out.println(numberMatch.getNumberMatch() + matchNumbers.get(numberMatch.getOrder()) + UNIT);
         }
     }
 
     public static void printRevenue(int totalMoney, int lottoMoney) {
-        int revenue = totalMoney / lottoMoney * 100;
-        System.out.println(revenue);
+        float revenue = totalMoney / (float) lottoMoney * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", revenue) + "%입니다.");
     }
 }
