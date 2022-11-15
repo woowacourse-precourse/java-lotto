@@ -15,12 +15,16 @@ public class WinningNumber {
     private static final String NumberStartWithZero =" 숫자가 "+ initNumber+"으로 시작합니다";
     private static final String charIsNotNumber = "잘못된 문자 입력입니다.";
     private static final String NumberIsMulti =" 중복된 숫자입니다";
-    private final List<Integer> numbers;
+    private static final String bonusNumberAlreadyIn =" 당첨번호에 보너스 넘버가 이미 있습니다";
 
-    private WinningNumber(String string){
+    private final List<Integer> numbers;
+    private int bonusNumber;
+
+    public WinningNumber(String string,int bonusNumber){
         List<Integer> numbers = StringToIntegerList(string);
         validate(numbers);
         this.numbers = numbers;
+        setBonusNumber(bonusNumber);
     }
 
     private List<Integer> StringToIntegerList(String string){
@@ -80,4 +84,10 @@ public class WinningNumber {
         }
     }
 
+    public void setBonusNumber(int bonusNumber) {
+        if(this.numbers.contains(bonusNumber)){
+            throw new IllegalArgumentException(ErrorResource.errorStart+bonusNumberAlreadyIn);
+        }
+        this.bonusNumber = bonusNumber;
+    }
 }
