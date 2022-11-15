@@ -34,4 +34,5 @@ public class BuyLotto {
     public int lottoTicketsCount() {
         return money / LOTTO_PRICE;
     }
+
 }

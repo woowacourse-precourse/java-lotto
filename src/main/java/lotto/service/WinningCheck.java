@@ -24,7 +24,10 @@ public class WinningCheck {
         lottoResult = new HashMap<>();
         initLottoResult();
         for(Lotto userLotto : userLottos) {
-            lottoResultCount(haveNumberCount(userLotto.getNumbers(), lottoAnswer.getNumbers(), lottoAnswer.getBonusNumber()));
+            lottoResultCount(haveNumberCount(
+                    userLotto.getNumbers(),
+                    lottoAnswer.getNumbers(),
+                    lottoAnswer.getBonusNumber()));
         }
     }
 

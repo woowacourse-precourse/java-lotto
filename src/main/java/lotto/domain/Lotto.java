@@ -21,18 +21,23 @@ public class Lotto {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_LENGTH_NUMBER.getErrorMessage());
         }
+
         Set<Integer> overlap = new HashSet<>();
         for (int number : numbers) {
-            numberOverlapCheck(overlap, number);
-            numberMaxMinCheck(number);
+            numberValidate(overlap, number);
         }
+    }
+
+    private void numberValidate(Set<Integer> overlap, int number) {
+        numberOverlapCheck(overlap, number);
+        numberMaxMinCheck(number);
     }
 
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    private void numberMaxMinCheck(int number) {
+    public void numberMaxMinCheck(int number) {
         if (number < RANGE_MIN || number > RANGE_MAX) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_RANGE.getErrorMessage());
         }
