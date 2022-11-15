@@ -1,9 +1,10 @@
 package lotto.domain;
 
+import static lotto.constant.LottoNumberConstant.LOTTO_PRICE;
+
 import lotto.util.Validator;
 
 public class Money {
-    private static final int LOTTO_PRICE = 1000;
     private int price;
 
     public Money(String money) {
@@ -17,6 +18,6 @@ public class Money {
     }
 
     public int lottoCount() {
-        return price / 1000;
+        return price / LOTTO_PRICE;
     }
 }
