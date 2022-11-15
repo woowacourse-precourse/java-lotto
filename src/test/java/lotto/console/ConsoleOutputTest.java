@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoPrize;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,6 +41,16 @@ class ConsoleOutputTest {
   }
 
 
+  @Test
+  void  당첨된결과와_수익률이_출력된다(){
+    List<LottoPrize> lottoPrizes = List.of(LottoPrize.FIFTH);
+    double givenRate = 62.5;
+
+    output.printResult(lottoPrizes, givenRate);
+
+    assertThat(outputStreamCaptor.toString()).contains("3개 일치 (5,000원) - 1개");
+    assertThat(outputStreamCaptor.toString()).contains("총 수익률은 62.5%입니다.");
+  }
   @AfterEach
   public void tearDown() {
     System.setOut(standardOut);
