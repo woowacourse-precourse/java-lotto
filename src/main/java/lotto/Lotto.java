@@ -43,7 +43,7 @@ public class Lotto {
     }
 
 
-    public int get_lotto_number(List<Integer> numbers, int i){
+    public int get_lotto_number(int i){
         return this.numbers.get(i);
     }
 
