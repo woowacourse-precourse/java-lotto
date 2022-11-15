@@ -3,30 +3,38 @@ package Controller;
 import Domain.*;
 import View.InputView;
 import View.OutputView;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Controller {
-    static final int LOTTO_PRICE = 1000;
+    private LottoList lottoList;
+    private Winning winning;
+    private Bonus bonus;
     public void run(){
-        InputView.printBuyingLottoMessage();
-        String readMoneyValue = InputView.readInputLine();
-        LottoList lottoList = new LottoList(readMoneyValue);
-        OutputView.printNumberOfLotto(lottoList.getLottoPlayNumber(), lottoList.getLottoList());
-
-        InputView.printInputWinningNumberMessage();
-        String readWinningNumber = InputView.readInputLine();
-        Winning winning = new Winning(readWinningNumber);
-
-        InputView.printInputBonusNumberMessage();
-        String readBonusNumber = InputView.readInputLine();
-        Bonus bonus = new Bonus(readBonusNumber, winning);
+        setLottoList();
+        setWinning();
+        setBonus();
 
         calculateLottoResult(lottoList, winning, bonus);
+    }
+    
+    public void setLottoList(){
+        InputView.printBuyingLottoMessage();
+        String readMoneyValue = InputView.readInputLine();
+        this.lottoList = new LottoList(readMoneyValue);
+        OutputView.printNumberOfLotto(lottoList.getLottoPlayNumber(), lottoList.getLottoList());
+    }
 
+    public void setWinning(){
+        InputView.printInputWinningNumberMessage();
+        String readWinningNumber = InputView.readInputLine();
+        this.winning = new Winning(readWinningNumber);
+    }
+
+    public void setBonus(){
+        InputView.printInputBonusNumberMessage();
+        String readBonusNumber = InputView.readInputLine();
+        this.bonus = new Bonus(readBonusNumber, winning);
     }
 
 
