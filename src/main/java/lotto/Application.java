@@ -12,6 +12,20 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
+    public enum lottoResult {
+        FIRST(6), SECOND(0), THIRD(5), FOURTH(4), FIFTH(3);
+
+        private final int score;
+
+        lottoResult(int score) {
+            this.score = score;
+        }
+
+        public int score() {
+            return score;
+        }
+    }
+
     public static int validatePayment() {
         System.out.println("구입금액을 입력해 주세요.");
         String payment = readLine();
@@ -70,10 +84,20 @@ public class Application {
         System.out.println();
     }
 
+    public static void printResult(List<Integer> lottoWinnings, String percentage) {
+        System.out.println("당첨 통계\n---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n", lottoWinnings.get(4));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", lottoWinnings.get(3));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoWinnings.get(2));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoWinnings.get(1));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoWinnings.get(0));
+        System.out.printf("총 수익률은 %s입니다.\n", percentage);
+    }
+
     public static void main(String[] args) {
         int payment = validatePayment();
-        List<Lotto> myLottos = buyLottos(payment);
-        printBoughtLottos(myLottos);
+        List<Lotto> boughtLottos = buyLottos(payment);
+        printBoughtLottos(boughtLottos);
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber();
     }
