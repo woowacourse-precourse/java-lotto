@@ -35,8 +35,7 @@ public class Application {
 
         lottoMachine.requestBonusNumbersMessage();
 
-        int bonusNumberInput = user.bonusNumberInput();
-        user.validBonusNumberInputContainWinningNumbers(bonusNumberInput, winningNumberList);
+        int bonusNumberInput = user.bonusNumberInput(winningNumberList);
 
         lottoMachine.scoreBoardMessage();
 
