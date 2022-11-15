@@ -25,7 +25,7 @@ public class Application {
         //당첨번호 입력받기
         ArrayList<Integer> luckyList = inputLuckyNumber();
         //보너스 번호 입력받기
-
+        int bonusNumber = inputBonusNumber();
         //당첨 확인
         //당첨통계
         //수익률 출력
@@ -54,7 +54,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.println("당첨 번호를 입력해 주세요.");
 
-        //todo: 잘못입력시 에러발생
+        //todo: 잘못입력시 에러발생 1~45, 숫자
         String inputLuckyNumber[] = sc.next().split(",");
         for(int i=0; i<inputLuckyNumber.length; i++){
             luckyList.add(Integer.parseInt(inputLuckyNumber[i]));
@@ -65,6 +65,11 @@ public class Application {
 
     static int inputBonusNumber() {
         int bonusNumber=0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("보너스 번호를 입력해 주세요.");
+
+        //todo: 잘못입력시 에러발생 1~45, 숫자
+        bonusNumber = sc.nextInt();
 
         return bonusNumber;
     }
