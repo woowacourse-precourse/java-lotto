@@ -11,6 +11,12 @@ public class UserLottoBuyingService {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
+    public User setUserInfo() {
+        User user = new User(userLottoBuyingPrice());
+        setUserTotalLotto(user);
+        printUserLottoNumbers(user);
+        return user;
+    }
     public long userLottoBuyingPrice() {
         outputView.printBuyingPriceQuestion();
         String buyingPrice = inputView.inputUserLottoBuyingPrice();
@@ -26,5 +32,8 @@ public class UserLottoBuyingService {
     public void setUserTotalLotto(User user) {
         outputView.printUserLottoQuantity(user.getUserLottoQuantity());
         user.createLottoNumbers(user.getUserLottoQuantity());
+    }
+    public void printUserLottoNumbers(User user) {
+        outputView.printUserLottoNumbers(user);
     }
 }
