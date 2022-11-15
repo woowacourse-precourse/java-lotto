@@ -40,4 +40,12 @@ public enum Rank {
         rankCount.put(rank, rankCount.getOrDefault(rank,0)+1);
     }
 
+    public static Map<Rank,Integer> getRankCount(){
+        return rankCount;
+    }
+
+    public int getReward(){
+        return reward;
+    }
+
 }
