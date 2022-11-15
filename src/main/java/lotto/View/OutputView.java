@@ -41,8 +41,8 @@ public class OutputView {
         return String.format("%.1f", sum);
     }
 
-    public static void createErrorMessage(IllegalArgumentException exception) {
-        System.out.println(ERROR_MESSAGE);
+    public static void printErrorMessage(IllegalArgumentException e) {
+        System.out.println(ERROR_MESSAGE+ e.getMessage());
     }
 
 }

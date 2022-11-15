@@ -13,6 +13,7 @@ public class Lotto {
     private static final String DUPLICATION_ERROR_SENTENCE = " 로또 번호는 겹치면 안됩니다.";
     private static final String CHAR_EXCEPTION_SENTENCE = " 입력에 문자열이 포함되었습니다.";
     private static final String BONUS_WITH_CHAR_EXCEPTION = " 숫자만 입력 해야 합니다.";
+    private static final String NEGATIVE_BONUS_ERROR = " 양수만 입력 가능합니다.";
 
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
@@ -54,16 +55,18 @@ public class Lotto {
 
     public static void setBonusNumber(int bonusNumber) {
         checkDuplicateBonusNumber(bonusNumber);
+        checkNegativeBonus(bonusNumber);
         Lotto.bonusNumber = bonusNumber;
     }
 
     private static void checkDuplicateBonusNumber(int bonusNumber) {
-        try{
-            if(winningNumbers.contains(bonusNumber))
-                throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_DUPLICATION_ERROR_SENTENCE);
-        }catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        if(winningNumbers.contains(bonusNumber))
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATION_ERROR_SENTENCE);
+    }
+
+    private static void checkNegativeBonus(int bonusNumber) {
+        if(bonusNumber < 0)
+            throw new IllegalArgumentException(NEGATIVE_BONUS_ERROR);
     }
 
     public static List<Integer> stringToList(String winningNumber) {
@@ -77,17 +80,15 @@ public class Lotto {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + CHAR_EXCEPTION_SENTENCE);
+            throw new IllegalArgumentException(CHAR_EXCEPTION_SENTENCE);
         }
     }
-
 
     public static int stringToInt(String bonusNumber) {
         try {
             return Integer.parseInt(bonusNumber);
         }catch (NumberFormatException e) {
-
-            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_WITH_CHAR_EXCEPTION);
+            throw new IllegalArgumentException(BONUS_WITH_CHAR_EXCEPTION);
         }
     }
 

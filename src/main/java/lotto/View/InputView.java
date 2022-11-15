@@ -8,16 +8,15 @@ import static lotto.Model.Lotto.stringToInt;
 import static lotto.Model.Lotto.stringToList;
 
 public class InputView {
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    private static final String MONEY_CHAR_ERROR_MESSAGE = " 숫자만 입력 가능합니다.";
+    private static final String CHAR_ERROR_MESSAGE = " 숫자만 입력 가능합니다.";
     private static final String MONEY_INPUT = "구입금액을 입력해 주세요.";
     private static final String WINNING_NUMBER_SENTENCE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER_SENTENCE = "보너스 번호를 입력해 주세요.";
 
     public static int inputAmount() {
         System.out.println(MONEY_INPUT);
-        String inputAmount = validationInputAmount(readLine());
-        return parseInt(inputAmount);
+        String inputMoney = checkStringWithChar(readLine());
+        return parseInt(inputMoney);
     }
 
     public static void printWinningNumberInput() {
@@ -27,16 +26,15 @@ public class InputView {
 
     public static void printBonusNumberInput() {
         System.out.println(BONUS_NUMBER_SENTENCE);
-        String temp = readLine();
+        String temp = checkStringWithChar(readLine());
         Lotto.setBonusNumber(stringToInt(temp));
     }
 
-    private static String validationInputAmount(String inputAmount) {
-        if (!inputAmount.matches("^[0-9]+$")) {
-            System.out.println(ERROR_MESSAGE);
-            throw new IllegalArgumentException(ERROR_MESSAGE + MONEY_CHAR_ERROR_MESSAGE);
+    private static String checkStringWithChar(String input) {
+        if (!input.matches("^-?[0-9]+$")) {
+            throw new IllegalArgumentException(CHAR_ERROR_MESSAGE);
         }
-        return inputAmount;
+        return input;
     }
 
 }

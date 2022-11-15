@@ -26,7 +26,7 @@ public class LottoController {
 
             printTotalResult();
         }catch (IllegalArgumentException e){
-            OutputView.createErrorMessage(e);
+            OutputView.printErrorMessage(e);
         }
 
     }

@@ -4,8 +4,8 @@ import static lotto.Model.Ranking.findRanking;
 
 public class Money {
 
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    private static final String MONEY_UNIT_ERROR_MESSAGE = "천원 단위만 입력 가능합니다.";
+    private static final String MONEY_UNIT_ERROR_MESSAGE = " 천원 단위만 입력 가능합니다.";
+    private static final String NON_POSITIVE_MONEY_ERROR_MESSAGE = " 양수만 입력 가능합니다.";
     private static final int moneyUnit = 1000;
 
     private static final int COUNT_OF_FIRST = 6;
@@ -16,18 +16,20 @@ public class Money {
 
     private static int inputMoney;
 
-    public Money(int amount) {
-        checkUnit(amount);
-        inputMoney = amount;
+    public Money(int money) {
+        checkNonPositiveMoney(money);
+        checkUnit(money);
+        inputMoney = money;
     }
 
-    private int checkUnit(int money) {
-        try {
-            if (money % moneyUnit != 0 || money == 0) throw new IllegalArgumentException(ERROR_MESSAGE + MONEY_UNIT_ERROR_MESSAGE);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        return money;
+    private void checkUnit(int money) {
+        if (money % moneyUnit != 0)
+            throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
+    }
+
+    private void checkNonPositiveMoney(int money){
+        if(money <= 0)
+            throw new IllegalArgumentException(NON_POSITIVE_MONEY_ERROR_MESSAGE);
     }
 
     public static int getInputMoney() {

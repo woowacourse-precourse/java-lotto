@@ -18,6 +18,22 @@ class MoneyTest extends NsTest {
         });
     }
 
+    @Test
+    void 입력이_0원일때() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 입력이_음수일때() {
+        assertSimpleTest(() -> {
+            runException("-1");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
