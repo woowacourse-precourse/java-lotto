@@ -22,9 +22,9 @@
 |17|숫자가 아무 것도 없을 경우 예외 처리|`[ERROR] 로또 번호가 존재하지 않습니다.`|![](https://geps.dev/progress/0)|☑️|
 |18|숫자가 같은 것이 있을 경우 예외 처리|`[ERROR] 중복된 번호가 있는지 확인해 주세요.`|![](https://geps.dev/progress/0)|☑️|
 |19|숫자가 아닌 것이 있을 경우 예외 처리|`[ERROR] 로또 번호는 숫자만 가능합니다.`|![](https://geps.dev/progress/0)|☑️|
-|20<td rowspan="3">금액 예외</td>|1,000원으로 나누어 떨어지지 않는 경우 예외 처리|`[ERROR] 입력 가능한 최소 단위는 1,000원 입니다.`|![](https://geps.dev/progress/0)|☑️|
-|21|숫자가 아닌 것을 입력한 경우 예외 처리|`[ERROR] 숫자만 입력해주세요.`|![](https://geps.dev/progress/0)|☑️|
-|22|아무 것도 입력하지 않은 경우 예외 처리|`[ERROR] 구매 금액을 입력해 주세요.`|![](https://geps.dev/progress/0)|☑️|
+|20<td rowspan="3">금액 예외</td>|1,000원으로 나누어 떨어지지 않는 경우 예외 처리|`[ERROR] 입력 가능한 최소 단위는 1,000원 입니다.`|![](https://geps.dev/progress/100)|✅|
+|21|숫자가 아닌 것을 입력한 경우 예외 처리|`[ERROR] 숫자만 입력해주세요.`|![](https://geps.dev/progress/100)|✅|
+|22|아무 것도 입력하지 않은 경우 예외 처리|`[ERROR] 구매 금액을 입력해 주세요.`|![](https://geps.dev/progress/100)|✅|
 
 📝 Test 목록
 ===========
