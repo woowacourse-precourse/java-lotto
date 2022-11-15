@@ -3,8 +3,10 @@ package lotto;
 import lotto.domain.LottoService;
 import lotto.model.BuyingLottoList;
 import lotto.model.Lotto;
+import lotto.model.LottoResult;
 import lotto.model.WinningLotto;
 import lotto.view.LottoBuyView;
+import lotto.view.LottoResultView;
 import lotto.view.WinningNumberView;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class Application {
         // TODO: 프로그램 구현
         LottoBuyView lottoServiceView = new LottoBuyView();
         WinningNumberView winningNumberView = new WinningNumberView();
+        LottoResultView lottoResultView = new LottoResultView();
         LottoService lottoService = new LottoService();
 
         int numberOfLotto = lottoServiceView.buyLotto();
@@ -23,6 +26,7 @@ public class Application {
         int bonusNumber = winningNumberView.inputBonusNumber();
         WinningLotto winningLottoInfo = new WinningLotto(winningLotto, bonusNumber);
 
-
+        LottoResult lottoResult = lottoService.checkLottoResult(buyingLottoList, winningLottoInfo);
+        lottoResultView.printResult(lottoResult);
     }
 }
