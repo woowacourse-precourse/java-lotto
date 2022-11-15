@@ -6,9 +6,9 @@ import static lotto.utils.ConstantUtil.MAX_LOTTO_NUMBER;
 import static lotto.utils.ConstantUtil.MIN_LOTTO_NUMBER;
 
 public final class Input {
-    private static final String DIGIT_ERROR_MESSAGE = ERROR + "숫자만 입력 가능합니다.";
-    private static final String DIGIT_COMMA_ERROR_MESSAGE = ERROR + "숫자와 콤마(,)만 입력 가능합니다.";
-    private static final String RANGE_ERROR_MESSAGE = ERROR + "로또 번호에 1 ~ 45 범위를 벗어난 숫자가 있습니다.";
+    private static final String DIGIT_ERROR_MESSAGE = ERROR + "숫자를 입력해주세요.";
+    private static final String DIGIT_COMMA_ERROR_MESSAGE = ERROR + "당첨 번호를 ,로 구분지어 입력해주세요.";
+    private static final String RANGE_ERROR_MESSAGE = ERROR + "번호는 1 ~ 45까지 가능합니다.";
 
     public static int inputPurchaseAmount() {
         return validateDigit(readLine());
