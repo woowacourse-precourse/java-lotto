@@ -40,6 +40,8 @@ public class LottoResult {
             addOutput(resultView.get(i),number);
         }
         String profitPercent = calculateProfit();
+        addProfitPercent(profitPercent);
+        return winningOutput;
     }
 
     private String calculateProfit() {
@@ -47,6 +49,10 @@ public class LottoResult {
         double profitNumber = ((winningMoney * 1.0) / money) * 100;
         profit = String.format("%.1f", profitNumber);
         return profit;
+    }
+
+    private void addProfitPercent(String profit) {
+        winningOutput += "총 수익률은 " + profit + "%입니다.\n";
     }
 
     private void addAmount(int amount, int count) {
