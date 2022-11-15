@@ -14,9 +14,11 @@ public class Application {
     	
     	count = getCount();
     		
-    	if(count==-1)
+    	if(count==-1) {
+    		System.out.println("[ERROR] 잘못된 입력 값입니다.");
     		return;
-    	
+    	}
+
     	List<Lotto> lottoNumbers = createLottoNumbers(count);
     	List<Integer> WinningNumber = getWinningNumber();
     	int bonusNumber = getBonusNumber();
@@ -36,15 +38,10 @@ public class Application {
     	String input = Console.readLine();
     	int result = 0;
 
-    	try {
-    		result = Integer.parseInt(input)/1000;
-    	}catch(Exception e){
-    		System.out.println("[ERROR] 잘못된 입력 값입니다.");
+    	if(!(input.matches("-?\\d+000")))
     		return -1;
-    	}
-    	
-    	if(!(input.matches("-?\\d+000"))) 
-    		throw new IllegalArgumentException("[ERROR] 1000원 단위가 아닙니다.");
+
+    	result = Integer.parseInt(input)/1000;
     
     	return result;
     }
@@ -52,6 +49,7 @@ public class Application {
     public static List<Integer> getWinningNumber() {
     	int eachNumber;
     	List<Integer> result = new ArrayList<>();
+    	//HashSet<Integer> hash = new HashSet<>();
     	
     	System.out.println("당첨 번호를 입력해 주세요.");
     	String input = Console.readLine();
@@ -63,9 +61,6 @@ public class Application {
     			throw new IllegalArgumentException("[ERROR] 잘못된 입력 값입니다.");
     		result.add(eachNumber);
     	}
-
-    	if(result.size()!=6)
-    		throw new IllegalArgumentException("[ERROR] 6자리가 아닙니다.");
     	
     	return result;
     }
