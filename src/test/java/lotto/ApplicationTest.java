@@ -79,6 +79,21 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @DisplayName("로또가 오름차순으로 되어 있는지  체크한다.")
+    @Test
+    void checkDesc(){
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "3,1,2,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "1개를 구매했습니다.",
+                            "[13, 14, 16, 38, 42, 45]"
+                    );
+                },
+                List.of(14, 13, 16, 38, 42, 45)
+        );
+
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
