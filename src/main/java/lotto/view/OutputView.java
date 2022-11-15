@@ -7,6 +7,8 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.Result;
+import lotto.domain.User;
+import lotto.service.ResultService;
 
 public class OutputView {
     public static void messageAmountInput() {
@@ -37,12 +39,18 @@ public class OutputView {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void messageStrategy() {
+    public static void printResult(User user, Result result) {
+        messageStrategy();
+        printRankResult(result);
+        printProfitRate(ResultService.getProfitRate(user, result));
+    }
+
+    private static void messageStrategy() {
         System.out.println("당첨 통계");
         System.out.println("---");
     }
 
-    public static void printRankResult(Result result) {
+    private static void printRankResult(Result result) {
         DecimalFormat formatter = new DecimalFormat("###,###");
         for (Rank rank : result.getResults().keySet()) {
             if (rank == Rank.NONE) {
@@ -56,7 +64,7 @@ public class OutputView {
         }
     }
 
-    public static void printProfitRate(double profitRate) {
+    private static void printProfitRate(double profitRate) {
         StringBuilder stringBuilder = new StringBuilder();
         DecimalFormat formatter = new DecimalFormat("###,###.0");
         stringBuilder.append(String.format("총 수익률은 %s%%입니다.", formatter.format(profitRate)));
