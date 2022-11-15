@@ -23,10 +23,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호의 숫자 범위를 벗어나면 예외가 발생한다")
+    @DisplayName("로또 번호의 숫자 범위를 초과하면 예외가 발생한다")
     @Test
-    void createLottoByDuplicatedNumber2(){
+    void createLottoByDuplicatedNumber2() {
         assertThatThrownBy(() -> new Lotto(List.of(46, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호의 숫자 범위를 초과하면 예외가 발생한다")
+    @Test
+    void createLottoByDuplicatedNumber3() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
