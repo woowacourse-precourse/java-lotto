@@ -5,24 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoMachineCheck {
 
-    @DisplayName("당첨 로또와 일반 로또 비교 후 얼마나 많은 숫자를 맞췄는지 반환하는 로직 테스트")
+    @DisplayName("스트림으로 중복 제거에 대한 테스트")
     @Test
-    void checkHowMachWithWinningNumber(){
-        List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
-        List<Integer> normalLotto = List.of(6, 5, 4, 3, 2, 1);
+    void checkUseSteamToRemoveDuplication() {
+        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 5);
 
-        List<Integer> mergeLottoNumbers = mergeList(winningLotto, normalLotto);
-        List<Integer> distinctLottoNumbers = mergeLottoNumbers.stream()
-                .distinct()
-                .collect(Collectors.toList());
+        List<Integer> removedDuplicationNumber =
+                winningNumber.stream()
+                        .distinct()
+                        .collect(Collectors.toList());
 
-        assertThat(distinctLottoNumbers.size()).isEqualTo(6);
+        assertThat(removedDuplicationNumber).isEqualTo(List.of(1, 2, 3, 4, 5));
     }
 
     static List<Integer> mergeList(List<Integer> list1, List<Integer> list2){
