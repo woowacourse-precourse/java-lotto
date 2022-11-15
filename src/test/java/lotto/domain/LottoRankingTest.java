@@ -44,9 +44,31 @@ public class LottoRankingTest {
 
     @DisplayName("순위를 알맞게 return 하는지 테스트(THREE)")
     @Test
-    void findRanking4Test() {
+    void findRanking3_1Test() {
         LottoResult answer = THREE;
         List<Integer> testCount = new ArrayList<>(List.of(3,1));
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        testLotto.setLottoResult(LOSING);
+        lottoStatistics.findRanking(testCount,testLotto);
+        assertThat(lottoStatistics.findRanking(testCount,testLotto)).isEqualTo(answer);
+    }
+
+    @DisplayName("순위를 알맞게 return 하는지 테스트(FOUR)")
+    @Test
+    void findRanking4Test() {
+        LottoResult answer = FOUR;
+        List<Integer> testCount = new ArrayList<>(List.of(4,1));
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        testLotto.setLottoResult(LOSING);
+        lottoStatistics.findRanking(testCount,testLotto);
+        assertThat(lottoStatistics.findRanking(testCount,testLotto)).isEqualTo(answer);
+    }
+
+    @DisplayName("순위를 알맞게 return 하는지 테스트(FOUR)")
+    @Test
+    void findRanking4_1Test() {
+        LottoResult answer = FOUR;
+        List<Integer> testCount = new ArrayList<>(List.of(4,0));
         Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         testLotto.setLottoResult(LOSING);
         lottoStatistics.findRanking(testCount,testLotto);
