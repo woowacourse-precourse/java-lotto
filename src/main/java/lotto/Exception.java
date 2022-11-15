@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,8 +35,6 @@ public class Exception {
         }
     }
 
-    // TODO: 담첨 번호 6자리를 입력받아 검증 후 리스트로 변환하여 반환한다.
-
     // TODO: 입력 값의 문자 혹은 숫자가 6개가 아닌 경우 예외 처리한다.
     private static List<String> isSixInputValues(List<String> winningNumbers) throws IllegalArgumentException{
         if (winningNumbers.size() != WINNING_NUMBER_SIZE)
@@ -62,6 +61,11 @@ public class Exception {
                 && isContainCharacter(number) <= MAX_VALUE_OF_WINNING_NUMBER))
             throw new IllegalArgumentException("[ERROR] An out-of-range number or character exists in the input value.");
 
+    }
+
+    // TODO: 입력 값을 쉼표 기준으로 분리하여 리스트로 반환한다.
+    private static List<String> splitBasedComma(String winningNumbers) {
+        return Arrays.asList(winningNumbers.split(SEPARATED_CHARACTER));
     }
 
     // TODO: 입력 값(보너스 번호)이 리스트(winningNumber)에 포함되어 있는 숫자일 경우 예외처리한다.
