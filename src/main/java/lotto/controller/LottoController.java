@@ -31,6 +31,8 @@ public class LottoController {
         getWinningLotto();
         //보너스 번호 입력하기
         getBonusNumber();
+        //당첨 통계 출력
+        getResult();
     }
 
     public static void getPrice() {
@@ -54,4 +56,7 @@ public class LottoController {
         bonusNumber = new Bonus(Input.inputBonusNumber(), winningLotto);
     }
 
+    public static void getResult() {
+        Output.printWinningStatics();
+    }
 }

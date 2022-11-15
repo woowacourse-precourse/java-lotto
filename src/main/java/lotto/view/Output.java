@@ -15,4 +15,8 @@ public class Output {
             System.out.println(lottoNumber.getLotto());
         }
     }
+
+    public static void printWinningStatics() {
+        System.out.printf(System.lineSeparator() + OutputMessage.WINNING_STATICS.getMessage());
+    }
 }
