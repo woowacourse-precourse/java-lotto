@@ -4,12 +4,11 @@ public class MatchPair {
     private final int matchNumbers;
     private final boolean matchBonusNumber;
 
-
-
     public MatchPair(int matchNumbers, boolean matchBonusNumber) {
         this.matchNumbers = matchNumbers;
         this.matchBonusNumber = matchBonusNumber;
     }
+
     public boolean isMatchBonusNumber() {
         return matchBonusNumber;
     }

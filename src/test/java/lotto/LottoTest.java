@@ -32,7 +32,7 @@ class LottoTest {
 
     }
     @Test
-    void calculateRankingTest(){
+    void calculateMatchNumberTest(){
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,10,11,12),45);
         Assertions.assertThat(lotto.calculateMatchNumber(winningLotto).getMatchNumbers())

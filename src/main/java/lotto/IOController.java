@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class IOController {
 
-    public static int readBuyingMoney() throws IllegalArgumentException{
+    public static int readBuyingMoney() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int buyingMoney;
@@ -58,21 +58,21 @@ public class IOController {
         }
     }
 
-    public static void printPrizeResult(List<Integer> allRankings,Integer buyingLottoNumber) {
+    public static void printPrizeResult(List<Integer> allRankings, Integer buyingLottoNumber) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + allRankings.get(5)+"개");
-        System.out.println("4개 일치 (50,000원) - " + allRankings.get(4)+"개");
-        System.out.println("5개 일치 (1,500,000원) - " + allRankings.get(3)+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + allRankings.get(2)+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + allRankings.get(1)+"개");
+        System.out.println("3개 일치 (5,000원) - " + allRankings.get(5) + "개");
+        System.out.println("4개 일치 (50,000원) - " + allRankings.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + allRankings.get(3) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + allRankings.get(2) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + allRankings.get(1) + "개");
         LottoService lottoService = new LottoService();
-        Float earningRate = lottoService.calculateEarningRate(allRankings,buyingLottoNumber);
-        System.out.println("총 수익률은 "+String.format("%.1f",earningRate)+"%입니다.");
+        Float earningRate = lottoService.calculateEarningRate(allRankings, buyingLottoNumber);
+        System.out.println("총 수익률은 " + String.format("%.1f", earningRate) + "%입니다.");
     }
 
-    public static void printExceptionMessage(IllegalArgumentException e){
-        System.out.println("[ERROR] "+e.getMessage());
+    public static void printExceptionMessage(IllegalArgumentException e) {
+        System.out.println("[ERROR] " + e.getMessage());
     }
 
 

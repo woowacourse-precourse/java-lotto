@@ -20,7 +20,7 @@ public class LottoService {
 
     public void makeRandomLottos(int number) {
         for (int i = 0; i < number; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
@@ -38,15 +38,16 @@ public class LottoService {
         }
         return new ArrayList<>(Arrays.asList(allRankings));
     }
-    public Float calculateEarningRate(List<Integer> allRankings, Integer buyingLottoNumber){
+
+    public Float calculateEarningRate(List<Integer> allRankings, Integer buyingLottoNumber) {
         Float allPrizes = 0f;
-        allPrizes += allRankings.get(1)* MoneyConstant.FIRST_PRIZE.getValue();
-        allPrizes += allRankings.get(2)* MoneyConstant.SECOND_PRIZE.getValue();
-        allPrizes += allRankings.get(3)* MoneyConstant.THIRD_PRIZE.getValue();
-        allPrizes += allRankings.get(4)* MoneyConstant.FOURTH_PRIZE.getValue();
-        allPrizes += allRankings.get(5)* MoneyConstant.FIFTH_PRIZE.getValue();
-        Float buyingMoney = Float.valueOf(buyingLottoNumber*MoneyConstant.LOTTO_PRICE.getValue());
-        return allPrizes/buyingMoney*100;
+        allPrizes += allRankings.get(1) * MoneyConstant.FIRST_PRIZE.getValue();
+        allPrizes += allRankings.get(2) * MoneyConstant.SECOND_PRIZE.getValue();
+        allPrizes += allRankings.get(3) * MoneyConstant.THIRD_PRIZE.getValue();
+        allPrizes += allRankings.get(4) * MoneyConstant.FOURTH_PRIZE.getValue();
+        allPrizes += allRankings.get(5) * MoneyConstant.FIFTH_PRIZE.getValue();
+        Float buyingMoney = Float.valueOf(buyingLottoNumber * MoneyConstant.LOTTO_PRICE.getValue());
+        return allPrizes / buyingMoney * 100;
     }
 
 
