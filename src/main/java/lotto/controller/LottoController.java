@@ -30,7 +30,7 @@ public class LottoController {
             List<Lotto> lottoTickets = lottoStore.buyLottoTickets(lottoPurchaseMoney.get());
             outputView.outputLottoTickets(lottoTickets);
             LottoResult lottoResult = makeLottoResult(winningNumbers, lottoTickets);
-
+            outputView.printWinningHistory(lottoResult);
 
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
