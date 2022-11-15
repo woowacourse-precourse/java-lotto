@@ -24,10 +24,11 @@ public class Controller {
         setMatchNumberCount();
         for (int lotto = 0; lotto < server.decideToBuyLotto(money); lotto++) {
             List<Integer> lottoNumber = server.publishLotto();
-            Lotto lottoCheck = new Lotto(lottoNumber);
-            lottoNumber = lottoCheck.lottoNumberSort();
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
             int matchNumber = server.countMatchNumber(common);
+            if(matchNumber < 3){
+                continue;
+            }
             if(matchNumber == 5 && server.compareBonusNumber(lottoNumber, bonusNumber)){
                 putMatchNumberCount(7);
                 continue;
