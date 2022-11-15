@@ -15,6 +15,14 @@ public class Winning {
         this.bonusNum = bonusNum;
     }
 
+    public Lotto getLotto(){
+        return winningLotto;
+    }
+
+    public int getBonusNum(){
+        return bonusNum;
+    }
+
 
     private void validateBonus(int number) {
         int minNum = 1;
@@ -26,9 +34,8 @@ public class Winning {
         if(number>maxNum) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_RANGE.getMessage());
         }
-        if(winningLotto.getLotto().contains(number)){
+        if(winningLotto.getNumbers().contains(number)){
             throw new IllegalArgumentException(ErrorMessage.BONUS_DUPLICATE.getMessage());
         }
     }
-
 }

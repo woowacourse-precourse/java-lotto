@@ -18,6 +18,7 @@ public class Buyer {
         validate(purchase);
         this.purchase = purchase;
         this.purchasedLottos = putchaseLottos(purchase/1000);
+        this.results = new ArrayList<>(List.of(0,0,0,0,0,0));
     }
 
     private void validate(int purchase){
@@ -40,16 +41,44 @@ public class Buyer {
     }
 
 
-    public void getResult(){
+    public void getResult(Winning winning){
+        for(Lotto lotto:purchasedLottos){
+            int grade = compare(winning, lotto);
+        }
 
     }
 
-    private int compare(){
+    private int compare(Winning winning, Lotto lotto){
+        int matchingCnt = countMatchingNum(winning.getLotto(), lotto);
+
+        if(matchingCnt == 6) return 1;
+        if(matchingCnt == 5) {
+            if(matchingBonus(winning.getBonusNum(), lotto)) return 2;
+            return 3;
+        }
+        if(matchingCnt == 4) return 4;
+        if(matchingCnt == 3) return 5;
+
         return 0;
     }
 
-    private int countMatchingNum(){
-        return 0;
+    private int countMatchingNum(Lotto winning, Lotto lotto){
+        int cnt = 0;
+        List<Integer> numbers = lotto.getNumbers();
+
+        for(int num:winning.getNumbers()){
+            if(numbers.contains(num)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    private boolean matchingBonus(int bonus, Lotto lotto){
+        if(lotto.getNumbers().contains(bonus)){
+            return true;
+        }
+        return false;
     }
 
     private void calReward(){

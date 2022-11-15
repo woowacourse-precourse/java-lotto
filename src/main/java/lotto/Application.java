@@ -16,6 +16,7 @@ public class Application {
             int bonusNum = getBonusNum();
             Winning winning = new Winning(winningLotto, bonusNum);
 
+            buyer.getResult(winning);
 
 
         }catch(IllegalArgumentException e){

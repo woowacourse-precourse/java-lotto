@@ -13,7 +13,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getLotto(){
+    public List<Integer> getNumbers(){
         return this.numbers;
     }
 
