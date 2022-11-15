@@ -1,7 +1,6 @@
 package lotto.model;
 
 import lotto.util.Utils;
-import lotto.util.validator.WinningStringValidator;
 
 import java.util.List;
 
@@ -9,7 +8,6 @@ public class WinningNumbersService {
     private WinningNumbers winningNumbers;
 
     public WinningNumbersService(String numbers, String bonusNumber) {
-        new WinningStringValidator(numbers, bonusNumber);
         this.winningNumbers = new WinningNumbers(getWinningNumbers(numbers), getWinningBonusNumber(bonusNumber));
     }
 

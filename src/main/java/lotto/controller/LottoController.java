@@ -1,6 +1,8 @@
 package lotto.controller;
 
 import lotto.model.*;
+import lotto.util.validator.BonusNumberValidator;
+import lotto.util.validator.WinningNumbersValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -8,7 +10,7 @@ public class LottoController {
     private LottoService lottoService;
     private MoneyService moneyService;
     private WinningNumbersService winningNumbersService;
-    private WinningMoneyService winningMoneyService;
+    private RankingService rankingService;
 
     public void start() {
         purchaseLottos(insertMoney());
@@ -29,20 +31,25 @@ public class LottoController {
     }
 
     private void pickWinningNumbers() {
-        winningNumbersService = new WinningNumbersService(InputView.inputWinningNumbers(),
-                InputView.inputWinningBonus());
+        String winningNumbers = InputView.inputWinningNumbers();
+        new WinningNumbersValidator(winningNumbers);
+
+        String winningBonus = InputView.inputWinningBonus();
+        new BonusNumberValidator(winningBonus);
+
+        winningNumbersService = new WinningNumbersService(winningNumbers, winningBonus);
     }
 
     private void profit() {
         OutputView.outputWinningScript();
         WinningNumbers winningNumbers = winningNumbersService.getWinningNumbers();
 
-        winningMoneyService = new WinningMoneyService(winningNumbers, lottoService.getLottoList());
-        winningMoneyService.doAllRank();
+        rankingService = new RankingService(winningNumbers, lottoService.getLottoList());
+        rankingService.doAllRank();
 
 
-        OutputView.outputWinningOrder(winningMoneyService.getRanking());
-        OutputView.outputProfitRate(winningMoneyService.calculateProfitRate(moneyService.getMoney(),
-                winningMoneyService.calculateWinningMoney()));
+        OutputView.outputWinningOrder(rankingService.getRanking());
+        OutputView.outputProfitRate(rankingService.calculateProfitRate(moneyService.getMoney(),
+                rankingService.calculateWinningMoney()));
     }
 }
