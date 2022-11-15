@@ -25,10 +25,7 @@ public class Controller {
         }
         List<Integer> winLottoNumber = client.getWinLottoNumber();
         new Lotto(winLottoNumber);
-        int bonusNumber = 0;
-        do {
-            bonusNumber = client.getWinBonusNumber();
-        } while (server.isInclude(winLottoNumber, bonusNumber));
+        int bonusNumber = setBonusNumber(winLottoNumber);
         setMatchNumberCount();
         int lottoPaper = server.decideToBuyLotto(money);
         PrintResult.printBuyLotto(lottoPaper);
@@ -60,5 +57,13 @@ public class Controller {
 
     public void putMatchNumberCount(int matchNumber) {
         matchNumberCount.put(matchNumber, matchNumberCount.get(matchNumber) + 1);
+    }
+
+    private int setBonusNumber(List<Integer> winLottoNumber){
+        int bonusNumber = 0;
+        do {
+            bonusNumber = client.getWinBonusNumber();
+        } while (server.isInclude(winLottoNumber, bonusNumber));
+        return bonusNumber;
     }
 }
