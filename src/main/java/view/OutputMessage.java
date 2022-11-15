@@ -29,12 +29,13 @@ public class OutputMessage {
         System.out.println("\n" + STATISTICS + "\n" + DIVIDING_LINE);
         for (Rank rank : Rank.values()) {
             System.out.println(rank.getMatchCount() + setBonusStatement(rank)
-                    + setRewardWithComma(rank.getReward()) + REWARD + rankInfo.getMatchNumber(rank) + NUMBER_OF_MATCHES);
+                    + setWithComma(rank.getReward()) + REWARD + rankInfo.getMatchNumber(rank) + NUMBER_OF_MATCHES);
         }
     }
 
     public void printYield(String yield) {
-        System.out.println(YIELD_START + yield + YIELD_END);
+        String[] separation = yield.split("\\.");
+        System.out.println(YIELD_START + setWithComma(Integer.parseInt(separation[0])) + "." + separation[1] + YIELD_END);
     }
 
     public String setBonusStatement(Rank rank) {
@@ -42,7 +43,7 @@ public class OutputMessage {
         return MATCH_COUNT;
     }
 
-    public String setRewardWithComma(int reward) {
+    public String setWithComma(int reward) {
         String rewardWithComma = String.valueOf(reward);
         Pattern pattern = Pattern.compile("(^[+-]?\\d+)(\\d{3})");
         Matcher regexMatcher = pattern.matcher(rewardWithComma);

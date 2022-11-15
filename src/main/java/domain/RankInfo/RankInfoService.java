@@ -27,7 +27,7 @@ public class RankInfoService {
 
         for (Rank rank : Rank.values()) {
             if (rankInfo.getMatchNumber(rank) != 0)
-                profit += rank.getReward();
+                profit += rank.getReward() * rankInfo.getMatchNumber(rank);
         }
         return profit / money.getMoney() * PERCENTAGE;
     }
