@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.exception.InputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
