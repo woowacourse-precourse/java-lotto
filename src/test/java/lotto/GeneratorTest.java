@@ -9,13 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GeneratorTest {
-    @DisplayName("로또 발행 테스트")
-    @Test
-    void 발행한_로또_개수_테스트() {
-        assertThat(Generator.generate(7000).size())
-                .isEqualTo(7);
-    }
-
     @DisplayName("중복되지 않는 숫자 리스트 생성 테스트")
     @Test
     void 여섯_개의_숫자리스트_생성_테스트() {
