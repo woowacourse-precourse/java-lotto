@@ -7,15 +7,34 @@ import java.util.NoSuchElementException;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        validateOverlap(numbers);
-        validateRange(numbers);
-        this.numbers = numbers;
+    public Lotto(List<Integer> lottoNumbers) {
+        validateSize(lottoNumbers);
+        validateOverlap(lottoNumbers);
+        validateRange(lottoNumbers);
+        this.numbers = lottoNumbers;
     }
 
-    private void validateOverlap(List<Integer> numbers) {
-        HashSet<Integer> overlapChecker = new HashSet<>(numbers);
+    public List<Integer> getLotto() {
+
+        return numbers;
+
+    }
+
+    private void validateSize(List<Integer> lottoNumbers) {
+
+        try {
+            if (lottoNumbers.size() != 6) {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception IllegalArgumentException) {
+            System.out.println("[ERROR] 6개의 숫자를 입력해주세요. ");//에러시 수행
+            IllegalArgumentException.printStackTrace();
+            throw new NoSuchElementException(); //최상위 클래스가 아니라면 무조건 던져주자
+        }
+    }
+
+    private void validateOverlap(List<Integer> lottoNumbers) {
+        HashSet<Integer> overlapChecker = new HashSet<>(lottoNumbers);
         try {
             if (overlapChecker.size() != 6) {
                 throw new IllegalArgumentException();
@@ -31,16 +50,10 @@ public class Lotto {
     }
 
 
-    public List<Integer> lottoReturn() {
-
-        return numbers;
-
-    }
-
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> lottoNumbers) {
 
         try {
-            if (returnTrueValidate(numbers)) {
+            if (!suitableRangeTrue(lottoNumbers)) {
                 throw new IllegalArgumentException();
             }
 
@@ -52,28 +65,14 @@ public class Lotto {
 
     }
 
-    private boolean returnTrueValidate(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) > 45 || numbers.get(i) == 0) {
-                return true;
+    private boolean suitableRangeTrue(List<Integer> lottoNumbers) {
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            if (lottoNumbers.get(i) > 45 || lottoNumbers.get(i) == 0) {
+                return false;
             }
         }
-        return false;
+        return true;
 
-    }
-
-
-    private void validate(List<Integer> numbers) {
-
-        try {
-            if (numbers.size() != 6) {
-                throw new IllegalArgumentException();
-            }
-        } catch (Exception IllegalArgumentException) {
-            System.out.println("[ERROR] 6개의 숫자를 입력해주세요. ");//에러시 수행
-            IllegalArgumentException.printStackTrace();
-            throw new NoSuchElementException(); //최상위 클래스가 아니라면 무조건 던져주자
-        }
     }
 
     // TODO: 추가 기능 구현

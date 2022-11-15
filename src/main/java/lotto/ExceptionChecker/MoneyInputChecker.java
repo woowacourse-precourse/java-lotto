@@ -4,24 +4,24 @@ import java.util.NoSuchElementException;
 
 public class MoneyInputChecker {
 
-    private final int number;
+    private final int money;
+    private static final int THOUSAND = 1000;
 
 
     public MoneyInputChecker(int moneyInput) {
         validateUnit(moneyInput);
 
-        this.number = moneyInput;
-
+        this.money = moneyInput;
     }
 
-    public int moneyReturn() {
-        return number;
+    public int getMoney() {
+        return money;
     }
 
 
-    public void validateUnit(int inputMoney) {
+    public void validateUnit(int moneyInput) {
         try {
-            if (inputMoney % 1000 != 0) {
+            if (moneyInput % THOUSAND != 0) {
                 throw new IllegalArgumentException();
             }
 

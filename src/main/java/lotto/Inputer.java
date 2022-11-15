@@ -20,17 +20,17 @@ public class Inputer {
 
         String userInputMoneyString = readLine();
         IntegerChecker integerChecker = new IntegerChecker(userInputMoneyString);
-        MoneyInputChecker moneyInputChecker = new MoneyInputChecker(integerChecker.numberReturn());
+        MoneyInputChecker moneyInputChecker = new MoneyInputChecker(integerChecker.getMoney());
 
-        return moneyInputChecker.moneyReturn();
+        return moneyInputChecker.getMoney();
     }
 
     public List<Integer> createLottoWinNumber() {
 
-        String lottoWin = readLine();
+        String lottoWinNumber = readLine();
 
-        Lotto lotto = new Lotto(lottoWinList(lottoWin));
-        List<Integer> lottoWinNumberList = lotto.lottoReturn();
+        Lotto lotto = new Lotto(makeStringToList(lottoWinNumber));
+        List<Integer> lottoWinNumberList = lotto.getLotto();
 
         this.LOTTO_LIST = lottoWinNumberList;
 
@@ -41,21 +41,21 @@ public class Inputer {
         String bonusNumber = readLine();
 
         IntegerChecker integerChecker = new IntegerChecker(bonusNumber);
-        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.numberReturn(), LOTTO_LIST);
+        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.getMoney(), LOTTO_LIST);
 
-        return bonusNumberChecker.bonusReturn();
+        return bonusNumberChecker.getBonusNumber();
     }
 
 
-    public List<Integer> lottoWinList(String lottoWin) {
+    public List<Integer> makeStringToList(String lottoWinNumber) {
 
-        String[] lottoWinArray = lottoWin.split(REGEX);
+        String[] lottoWinArray = lottoWinNumber.split(REGEX);
 
         List<Integer> lottoWinList = new ArrayList<>();
 
         for (int i = 0; i < lottoWinArray.length; i++) {
             IntegerChecker integerChecker = new IntegerChecker(lottoWinArray[i]);
-            lottoWinList.add(integerChecker.numberReturn());
+            lottoWinList.add(integerChecker.getMoney());
         }
 
         return lottoWinList;

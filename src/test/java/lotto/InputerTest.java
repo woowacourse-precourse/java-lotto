@@ -14,7 +14,7 @@ class InputerTest {
 
         Inputer inputer =new Inputer();
 
-        assertEquals(inputer.lottoWinList("1,2,3,4,5,6"), List.of(1, 2, 3, 4, 5, 6));
+        assertEquals(inputer.makeStringToList("1,2,3,4,5,6"), List.of(1, 2, 3, 4, 5, 6));
     }
 
 

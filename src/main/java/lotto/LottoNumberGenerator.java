@@ -5,29 +5,15 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.EnumCreate.RangeNumber;
 
 public class LottoNumberGenerator {
 
-    public enum Range{
+    RangeNumber startRange = RangeNumber.RANGE_START;
+    int startNumber = startRange.getRangeNumber();
 
-        RANGE_START(1),
-        RANGE_END(45);
-
-        private int range;
-        Range(int range) {
-            this.range = range;
-        }
-
-        public int getRange(){
-            return range;
-        }
-    }
-
-    Range startRange = Range.RANGE_START;
-    int startNumber = startRange.getRange();
-
-    Range endRange = Range.RANGE_END;
-    int endNumber = endRange.getRange();
+    RangeNumber endRange = RangeNumber.RANGE_END;
+    int endNumber = endRange.getRangeNumber();
 
     private static final int MONEY_UNIT = 1000; // 1000원
     private static final int LOTTO_NUMBER_AMOUNT = 6;
@@ -41,14 +27,11 @@ public class LottoNumberGenerator {
 
         for (int i = 0; i < lottoAmount; i++) {
             List<Integer> randomLottoNumber = new ArrayList<>();
-            List<Integer> lottoGeneration = pickUniqueNumbersInRange(startNumber, endNumber, LOTTO_NUMBER_AMOUNT );
+            List<Integer> lottoGeneration = pickUniqueNumbersInRange(startNumber, endNumber, LOTTO_NUMBER_AMOUNT);
             randomLottoNumber.addAll(lottoGeneration);
             Collections.sort(randomLottoNumber);
             returnList.add(randomLottoNumber);
         }
-
         return returnList;
     }
-
-
 }

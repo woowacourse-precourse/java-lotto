@@ -5,15 +5,19 @@ import java.util.NoSuchElementException;
 
 public class BonusNumberChecker {
 
-    private final int number;
+    private final int bonusNumber;
 
 
     public BonusNumberChecker(int bonusNumber, List<Integer> lottoWinList) {
         validateRange(bonusNumber);
         validateOverlap(bonusNumber, lottoWinList);
 
-        this.number = bonusNumber;
+        this.bonusNumber = bonusNumber;
 
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     private void validateOverlap(int bonusNumber, List<Integer> lottoWinList) {
@@ -30,13 +34,9 @@ public class BonusNumberChecker {
 
     }
 
-    public int bonusReturn() {
-        return number;
-    }
-
-    public void validateRange(int winNumber) {
+    public void validateRange(int bonusNumber) {
         try {
-            if (winNumber > 45 || winNumber == 0) {
+            if (bonusNumber > 45 || bonusNumber == 0) {
                 throw new IllegalArgumentException();
             }
 

@@ -20,7 +20,7 @@ class PrinterTest {
 
         Printer printer = new Printer();
 
-        assertEquals(printer.knowAmountEachWin(winList),amountEachWinList);
+        assertEquals(printer.makeCorrectAmountList(winList),amountEachWinList);
 
 
     }

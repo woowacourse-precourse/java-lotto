@@ -3,20 +3,20 @@ package lotto.ExceptionChecker;
 import java.util.NoSuchElementException;
 
 public class IntegerChecker {
-    private final int number;
+    private final int money;
 
-    public IntegerChecker(String input) {
-        validate(input);
-        this.number = Integer.parseInt(input);
+    public IntegerChecker(String userInputMoney) {
+        validateInteger(userInputMoney);
+        this.money = Integer.parseInt(userInputMoney);
     }
 
-    public int numberReturn() {
-        return number;
+    public int getMoney() {
+        return money;
     }
 
-    private void validate(String input) {
+    private void validateInteger(String userInputMoney) {
         try {
-            if (returnTrue(input)) {
+            if (!integerTrue(userInputMoney)) {
                 throw new IllegalArgumentException();
             }
         } catch (Exception IllegalArgumentException) {
@@ -28,12 +28,12 @@ public class IntegerChecker {
 
     }
 
-    private boolean returnTrue(String input) {
+    private boolean integerTrue(String userInputMoney) {
         try {
-            Integer.parseInt(input);
-            return false;
-        } catch (Exception e) {
+            Integer.parseInt(userInputMoney);
             return true;
+        } catch (Exception e) {
+            return false;
         }
 
     }

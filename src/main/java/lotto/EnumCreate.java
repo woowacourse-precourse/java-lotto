@@ -1,8 +1,26 @@
 package lotto;
 
-public class EnumCreate {
+import java.util.Arrays;
+import java.util.List;
 
-    public enum MatchAmount {
+public class EnumCreate {
+    public enum RangeNumber {
+
+        RANGE_START(1),
+        RANGE_END(45);
+
+        private int range;
+
+        RangeNumber(int range) {
+            this.range = range;
+        }
+
+        public int getRangeNumber() {
+            return range;
+        }
+    }
+
+    public enum MatchNumberAmount { //사용자가 몇개를 맞췄는지 개수를 나타냄.
         THREE(3),
         FOUR(4),
         FIVE(5),
@@ -12,7 +30,7 @@ public class EnumCreate {
         private int number;
 
 
-        MatchAmount(int number) {
+        MatchNumberAmount(int number) {
             this.number = number;
         }
 
@@ -36,6 +54,21 @@ public class EnumCreate {
             public String getNumberMessage() {
                 return numberMessage;
             }
+        }
+    }
+
+    public enum RewardList {
+        REWARD_LIST(Arrays.asList(5000, 50000, 1500000, 30000000, 2000000000));
+
+
+        private List<Integer> rewardList;
+
+        RewardList(List<Integer> rewardList) {
+            this.rewardList = rewardList;
+        }
+
+        public List<Integer> getRewardList() {
+            return rewardList;
         }
     }
 

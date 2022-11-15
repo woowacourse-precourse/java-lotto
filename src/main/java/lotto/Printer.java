@@ -4,39 +4,41 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.EnumCreate.MatchAmount;
-import lotto.EnumCreate.MatchAmount.LottoMatchMoneyMessage;
+import lotto.EnumCreate.MatchNumberAmount;
+import lotto.EnumCreate.MatchNumberAmount.LottoMatchMoneyMessage;
 
 public class Printer {
-
-    MatchAmount matchThree = MatchAmount.THREE;
-    MatchAmount matchSix = MatchAmount.SIX;
     private static final String BUY = "개를 구매했습니다.";
     private static final String STATICS = "당첨 통계\n---";
     private static final String REVENUE = "총 수익률은 ";
     private static final String REVENUE2 = "%입니다.";
     private static final String UNIT = "개";
 
+
     private static final int PERCENT = 100;
+
+
+    MatchNumberAmount matchThree = MatchNumberAmount.THREE;
+    MatchNumberAmount matchSix = MatchNumberAmount.SIX;
+
 
     public void printToDo(String toDo) {
         System.out.println(toDo);
     }
 
-    public void printUserLottoNumber(List<List<Integer>> lottoInput) {
+    public void printUserLottoNumber(List<List<Integer>> userLottoNumberList) {
 
-        int amountLotto = lottoInput.size();
+        int amountLotto = userLottoNumberList.size();
 
         System.out.println(amountLotto + BUY);
 
         for (int i = 0; i < amountLotto; i++) {
-            System.out.println(lottoInput.get(i));
+            System.out.println(userLottoNumberList.get(i));
         }
-
     }
 
-    public void printWinList(List<Integer> correctNumberList) {
-        List<Integer> amountEachWin = knowAmountEachWin(correctNumberList);
+    public void printCorrectNumberAmountList(List<Integer> amountCorrectNumberList) {
+        List<Integer> amountCorrectNumberAmount = makeCorrectAmountList(amountCorrectNumberList);
 
         System.out.println(STATICS);
 
@@ -45,11 +47,11 @@ public class Printer {
 
             String numberMessage = matchNumber.getNumberMessage();
 
-            System.out.println(numberMessage + amountEachWin.get(index) + UNIT);
+            System.out.println(numberMessage + amountCorrectNumberAmount.get(index) + UNIT);
         }
     }
 
-    public List<Integer> knowAmountEachWin(List<Integer> correctNumberList) {
+    public List<Integer> makeCorrectAmountList(List<Integer> correctNumberList) {
 
         List<Integer> frequencyList = new ArrayList<>();
 
