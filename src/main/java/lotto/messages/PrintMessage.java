@@ -17,10 +17,9 @@ public class PrintMessage {
         StringBuilder ticketMessage = new StringBuilder();
         for (List<Integer> ticket : tickets) {
             ticketMessage.append("[");
-            for (int number : ticket) {
-                ticketMessage.append(number).append(", ");
-            }
-            ticketMessage.setLength(ticketMessage.length()-2);
+
+            numberMessage(ticket);
+
             ticketMessage.append("]\n");
         }
         return ticketMessage.toString();
@@ -48,5 +47,15 @@ public class PrintMessage {
                 .append(String.format("%1.1f", benefit))
                 .append("%입니다.")
                 .toString();
+    }
+
+    public String numberMessage(List<Integer> ticket) {
+        StringBuilder numberMessage = new StringBuilder();
+        for (int number : ticket) {
+            numberMessage.append(number).append(", ");
+        }
+        numberMessage.setLength(numberMessage.length()-2);
+
+        return numberMessage.toString();
     }
 }
