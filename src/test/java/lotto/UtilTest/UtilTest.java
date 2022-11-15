@@ -1,4 +1,4 @@
-package UtilTest;
+package lotto.UtilTest;
 
 import lotto.Util.Util;
 import org.junit.jupiter.api.Test;
