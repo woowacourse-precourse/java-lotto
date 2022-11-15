@@ -39,7 +39,7 @@ public class Input extends Valid {
         check_empty(str);
         check_number(str);
         check_Range(str);
-        check_Overlap(numbers);
+        check_Overlap(numbers, str);
     }
 
     private static void checkPayMoney(String str)  {
