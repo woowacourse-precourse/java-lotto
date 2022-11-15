@@ -1,10 +1,9 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.Error;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class InputNumber {
     public static List<Integer> winNumbers;
@@ -13,12 +12,13 @@ public class InputNumber {
     public static List<Integer> getWinNumbers() throws IllegalArgumentException{
         String playerInput = Console.readLine();
         toMakeWinNumbers(playerInput);
+        //Collections.sort(winNumbers);
         duplicatedNumbers(winNumbers);
         numberRangeCheck(winNumbers);
         return winNumbers;
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber() throws IllegalArgumentException{
         String playerInput = Console.readLine();
         validateNumbers(playerInput);
         bonusNumber = Integer.parseInt(playerInput);
@@ -26,7 +26,7 @@ public class InputNumber {
         return bonusNumber;
     }
 
-    private static void toMakeWinNumbers(String playerInput) {
+    private static void toMakeWinNumbers(String playerInput){
         List<String> beforeCheck = Arrays.asList((playerInput.replace(" ", "")).split(","));
         winNumbers = new ArrayList<>();
         for (int i = 0; i < beforeCheck.size(); i++) {
@@ -35,28 +35,22 @@ public class InputNumber {
         }
     }
 
-
-
     private static void duplicatedNumbers(List<Integer> winNumbers) throws IllegalArgumentException{
-        for (int i = 0; i < winNumbers.size(); i++) {
-            int duplicate = i;
-            if (duplicate != i && winNumbers.contains(winNumbers.get(duplicate))) {
-                System.out.println("중복ㅇ");
-                throw new IllegalArgumentException("ㅇㅇㅇ에");
-            }
+        HashSet<Integer> duplicate = new HashSet<>(winNumbers);
+        if (duplicate.size() != 6) {
+            throw new IllegalArgumentException(Error.DUPLICATED_NUMBER.getMessage());
         }
     }
 
     private static void numberRangeCheck(List<Integer> winNumbers) throws IllegalArgumentException{
         for (int i = 0; i < winNumbers.size(); i++) {
             if (winNumbers.get(i) < 0 || winNumbers.get(i) > 45) {
-                throw new IllegalArgumentException("[ERROR]1~45 사이의 숫자만 입력할 수 있습니다.");
+                throw new IllegalArgumentException(Error.INVALID_NUMBER_RANGE.getMessage());
             }
         }
     }
 
-
-    private static boolean validateNumbers(String playerInput) {
+    private static boolean validateNumbers(String playerInput) throws IllegalArgumentException{
         try {
             Integer.parseInt(playerInput);
             return true;
@@ -65,8 +59,7 @@ public class InputNumber {
         }
     }
 
-
-    private static void duplicateBonusNumber(int bonusNumber) {
+    private static void duplicateBonusNumber(int bonusNumber) throws IllegalArgumentException{
         if (winNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR]보너스 숫자와 이미 입력한 당첨번호는 중복될 수 없습니다.");
         }

@@ -28,14 +28,18 @@ public class Application {
         Compare.userList = new ArrayList<>();
 
         Lotto.getAllLottos();
-
         Print.requestWinNumbers();
-        //InputNumber.getWinNumbers();
 
-        List<Integer> correctNumbers = InputNumber.getWinNumbers();
-        for (int i = 0; i < correctNumbers.size(); i++) {
-            Compare.userList.add(correctNumbers.get(i));
+        try {
+            List<Integer> correctNumbers = InputNumber.getWinNumbers();
+            for (int i = 0; i < correctNumbers.size(); i++) {
+                Compare.userList.add(correctNumbers.get(i));
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 로또 번호 입력 오류");
+            return;
         }
+
         Print.winNumbers();
         Print.requestBonusNumber();
         InputNumber.getBonusNumber();

@@ -2,6 +2,7 @@ package lotto.model;
 
 import lotto.view.Print;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -21,7 +22,8 @@ public class Lotto {
         int lottoCount = Money.numberOfLottos;
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> createdRandomNumbers = RandomNumber.create();
-            Lotto lotto = new Lotto(createdRandomNumbers);
+            ArrayList<Integer> realRandomNumbers  = new ArrayList<>(createdRandomNumbers);
+            Lotto lotto = new Lotto(realRandomNumbers);
             Compare.randomLottos.put(i, lotto.numbers);
             Print.getLottos(lotto.numbers);
         }

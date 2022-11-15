@@ -14,7 +14,6 @@ public class Calculate {
         for (int i = 0; i < resultCount.size(); i++) {
             Result result = Result.getResult(resultCount.get(i), hasBonusNumber.get(i));
             String re = String.valueOf(result);
-            System.out.println(result);
             if(re.equals("FIRST")){
                 FinalResult.first++;
             }

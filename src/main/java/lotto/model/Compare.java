@@ -15,7 +15,6 @@ public class Compare {
             correctCount =0;
             correctCount = checkCount(i);
             resultCount.put(i,correctCount);
-            System.out.println(i+"번째 "+ resultCount+"개 번호 일치");
         }
     }
 
