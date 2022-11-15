@@ -272,7 +272,7 @@ Account
 
 
 LottoPlayer
-- [ ] 로또 실행
+- [x] 로또 실행
   - [x] 로또 발권
 
 EarningRateCalculator
