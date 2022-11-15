@@ -83,7 +83,7 @@ public class LottoServiceTest {
 
         double profitRate = lottoService.getProfitRate();
 
-        assertThat(profitRate).isEqualTo(333.33);
+        assertThat(profitRate).isEqualTo(333.3);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class LottoServiceTest {
 
         double profitRate = lottoService.getProfitRate();
 
-        assertThat(profitRate).isEqualTo(166.67);
+        assertThat(profitRate).isEqualTo(166.7);
     }
 
     @Test
