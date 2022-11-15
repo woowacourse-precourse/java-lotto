@@ -1,7 +1,7 @@
 package domain;
 
 public class LottoIssue {
-    public static int issueLotto(String userMoney){
+    public int issueLotto(String userMoney){
         return Integer.parseInt(userMoney)/1000;
     }
 
