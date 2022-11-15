@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.List;
-
 /**
  * 당첨 로또 정보를 관리하는 클래스
  */

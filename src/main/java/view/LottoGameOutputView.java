@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class LottoGameOutputView implements OutputView {
 
     private final Format MONEY_FORMAT = new DecimalFormat("#,###");
-    private final Format RATE_FORMAT = new DecimalFormat("#,###.0");
+    private final Format RATE_FORMAT = new DecimalFormat("#,##0.0");
 
     static class Singleton {
 
@@ -27,7 +27,7 @@ public class LottoGameOutputView implements OutputView {
 
     @Override
     public void printException(Exception e) {
-        System.out.println("[ERROR] " + e.getMessage());
+        System.out.println("\n[ERROR] " + e.getMessage());
     }
 
     @Override

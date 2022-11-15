@@ -1,7 +1,7 @@
 package dto;
 
-import java.util.Map;
 import domain.LottoGrade;
+import java.util.Map;
 
 public class ScratchResult {
     private final Map<LottoGrade, Integer> countOfEachGrade;
