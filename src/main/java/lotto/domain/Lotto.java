@@ -19,7 +19,7 @@ public class Lotto {
     }
 
     public static int countCommonNumber(Lotto winningNums, Lotto lotto) {
-        return  (int) lotto.numbers
+        return (int) lotto.numbers
             .stream()
             .filter(number -> winningNums.numbers.contains(number))
             .count();
@@ -59,6 +59,10 @@ public class Lotto {
 
     private static boolean haveDuplicateNumber(List<Integer> numbers) {
         return numbers.size() != numbers.stream().distinct().count();
+    }
+
+    public static boolean isWinningLottoHasBouns(int bonusNum, Lotto lotto) {
+        return lotto.getNumbers().contains(bonusNum);
     }
 
     public List<Integer> getNumbers() {
