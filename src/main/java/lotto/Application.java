@@ -1,7 +1,12 @@
 package lotto;
 
+import lotto.domain.LottoGame;
+import lotto.domain.strategy.RandomCreateStrategy;
+import lotto.view.InputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameFrame gameFrame = new GameFrame();
+        gameFrame.start(new LottoGame(), new RandomCreateStrategy());
     }
 }
