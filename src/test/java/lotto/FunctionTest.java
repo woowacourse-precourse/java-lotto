@@ -80,4 +80,11 @@ class FunctionTest {
         String input = "1,2,3,4,5";
         assertThatThrownBy(() -> Application.validateWinLottoInput(input)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void calculateProfitPercentTest() {
+        int profit = 5000;
+        int money = 8000;
+        assertThat(Application.calculateProfitPercent(profit, money)).isEqualTo(62.5);
+    }
 }

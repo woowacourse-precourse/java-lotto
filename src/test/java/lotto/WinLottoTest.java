@@ -5,8 +5,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -41,8 +43,9 @@ class WinLottoTest {
         winLotto.setBonus(7);
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        Map<Result, Integer> map = new HashMap<>();
 
-        assertThat(winLotto.matches(lotto)).isEqualTo(Result.FiveBonus.message);
+        assertThat(winLotto.matches(lotto, map).get(Result.FiveBonus)).isEqualTo(1);
     }
 
 }
