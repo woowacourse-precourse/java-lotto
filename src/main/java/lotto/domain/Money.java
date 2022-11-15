@@ -15,8 +15,8 @@ public class Money {
         this.money = money;
     }
 
-    private void validateMinimumMoney(int money){
-        if (money<MIN_UNIT){
+    private void validateMinimumMoney(int money) {
+        if (money < MIN_UNIT) {
             throw new IllegalArgumentException(ErrorMessage.MININUM_PAYMENT);
         }
     }
@@ -35,7 +35,7 @@ public class Money {
         return money.money / MIN_UNIT;
     }
 
-    public static float calculateProfitRate(float profit, Money money){
+    public static float calculateProfitRate(float profit, Money money) {
         return profit / money.money * RATE_UNIT;
     }
 }
