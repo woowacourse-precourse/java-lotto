@@ -44,4 +44,43 @@ public class Lotto {
 
     }
 
+
+    public static boolean contains(Lotto lotto, int n) {
+
+        for (int l : lotto.numbers) {
+            if (l == n) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+
+    public static void printLotto(Lotto lotto) {
+
+        System.out.println(lotto.numbers.toString());
+
+    }
+
+
+    public static void sortLotto(Lotto lotto) {
+
+        for (int i = 0; i < lotto.numbers.size(); ++i) {
+            for (int j = i + 1; j < lotto.numbers.size(); ++j) {
+                if (lotto.numbers.get(i) > lotto.numbers.get(j)) {
+
+                    int tmpI = lotto.numbers.get(i);
+                    int tmpJ = lotto.numbers.get(j);
+
+                    lotto.numbers.remove(i);
+                    lotto.numbers.add(i, tmpJ);
+                    lotto.numbers.remove(j);
+                    lotto.numbers.add(j, tmpI);
+                }
+            }
+        }
+    }
+
 }
