@@ -93,6 +93,30 @@ public class CustomTest extends NsTest {
         assertThat(output()).contains(ERROR_WINNING_MESSAGE);
     }
 
+    @DisplayName("당첨 번호가 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void 단위_테스트_2_3() {
+        assertThatExceptionOfType(NoSuchElementException.class)
+                .isThrownBy(() -> {
+                            assertRandomUniqueNumbersInRangeTest(
+                                    () -> {
+                                        run("3000", "1,a,3,4,5,6");
+                                        assertThat(output()).contains(
+                                                "8개를 구매했습니다.",
+                                                "[8, 21, 23, 41, 42, 43]",
+                                                "[3, 5, 11, 16, 32, 38]",
+                                                "[7, 11, 16, 35, 36, 44]"
+                                        );
+                                    },
+                                    List.of(8, 21, 23, 41, 42, 43),
+                                    List.of(3, 5, 11, 16, 32, 38),
+                                    List.of(7, 11, 16, 35, 36, 44)
+                            );
+                        }
+                );
+        assertThat(output()).contains(ERROR_WINNING_MESSAGE);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
