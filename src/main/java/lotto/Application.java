@@ -26,6 +26,7 @@ public class Application {
                 System.out.println(lottoList.get(i).get());
 
             // 당첨 번호, 보너스 번호 입력
+            inputWinLotto();
             // 당첨 내역 구하기
         }
         catch (IllegalArgumentException e) {
@@ -42,7 +43,9 @@ public class Application {
                 }
             }
             lottoList.add(new Lotto(numbers));
-        }
+    private static void inputWinLotto() {
+        WinLottoIssuer winLottoIssuer = new WinLottoIssuer();
+        winLotto = winLottoIssuer.get();
     }
 
 }
