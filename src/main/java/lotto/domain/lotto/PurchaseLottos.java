@@ -1,7 +1,6 @@
 package lotto.domain.lotto;
 
 import static lotto.domain.lotto.Lotto.makeRandomLotto;
-import static lotto.message.TempPrintMessage.createPurchaseQuantityMsg;
 import static lotto.value.MoneyUnit.KRW;
 
 import java.util.ArrayList;
@@ -28,6 +27,10 @@ public class PurchaseLottos {
         return quantity() * KRW.getPrice();
     }
 
+    public List<Lotto> list() {
+        return new ArrayList<>(lottos);
+    }
+
     public PlaceHistory placeHistoryFor(WinningLotto winningLotto) {
         PlaceHistory placeHistory = new PlaceHistory();
 
@@ -36,31 +39,7 @@ public class PurchaseLottos {
         return placeHistory;
     }
 
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-
-        appendPurchaseQuantity(stringBuffer);
-        appendLottos(stringBuffer);
-
-        return stringBuffer.toString();
-    }
-
     private void fillPlaceHistory(WinningLotto winningLotto, PlaceHistory placeHistory) {
         lottos.forEach(lotto -> placeHistory.updateFor(winningLotto.makeMatchResult(lotto)));
-    }
-
-    private void appendPurchaseQuantity(StringBuffer stringBuffer) {
-        stringBuffer.append(createPurchaseQuantityMsg(quantity()));
-        stringBuffer.append(System.lineSeparator());
-    }
-
-    private void appendLottos(StringBuffer stringBuffer) {
-        lottos.forEach(lotto -> appendLotto(stringBuffer, lotto));
-    }
-
-    private void appendLotto(StringBuffer stringBuffer, Lotto lotto) {
-        stringBuffer.append(lotto.toString());
-        stringBuffer.append(System.lineSeparator());
     }
 }

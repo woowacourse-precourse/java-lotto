@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import static lotto.message.PurchaseLottosMessage.makePurchaseLottoMessage;
+
 import lotto.domain.PurchaseAmount;
 import lotto.domain.User;
 import lotto.domain.lotto.PurchaseLottos;
@@ -25,7 +27,7 @@ public class LottoGame {
 
     private void run() {
         PurchaseLottos purchaseLottos = purchaseLotto();
-        user.displayPurchaseResult(purchaseLottos);
+        user.displayPurchaseResult(makePurchaseLottoMessage(purchaseLottos));
 
         WinningLotto winningLotto = inputWinningLotto();
 

@@ -6,12 +6,12 @@ import static lotto.message.PrintMessage.INPUT_PURCHASE_AMOUNT;
 import static lotto.message.PrintMessage.INPUT_WINNING_LOTTO;
 
 import java.util.List;
-import lotto.domain.lotto.PurchaseLottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.domain.statistics.WinningStatistics;
 import lotto.io.InputControl;
 import lotto.io.OutputControl;
 import lotto.message.PrintMessage;
+import lotto.message.PurchaseLottosMessage;
 
 public class User {
 
@@ -33,7 +33,10 @@ public class User {
 
     public void displayMessage(PrintMessage printMessage) {
         OutputControl.println(printMessage.getMessage());
+    }
 
+    public void displayLineSeparator() {
+        OutputControl.println(System.lineSeparator());
     }
 
     public void displayErrorMessage(Exception exception) {
@@ -41,16 +44,22 @@ public class User {
     }
 
     private int inputLottoBonusNum() {
-        return InputControl.readInt();
+        displayMessage(INPUT_BONUS_NUMBER);
+        int ret = InputControl.readInt();
+        displayLineSeparator();
+        
+        return ret;
     }
 
     private List<Integer> inputLottoNums() {
         displayMessage(INPUT_WINNING_LOTTO);
-        return InputControl.readInts(LOTTO_NUMBER_DELIMITER.getValue());
+        List<Integer> ret = InputControl.readInts(LOTTO_NUMBER_DELIMITER.getValue());
+        displayLineSeparator();
+
+        return ret;
     }
 
-    public void displayPurchaseResult(PurchaseLottos purchaseLottos) {
-        displayMessage(INPUT_BONUS_NUMBER);
-        OutputControl.println(purchaseLottos.toString());
+    public void displayPurchaseResult(PurchaseLottosMessage purchaseLottosMessage) {
+        OutputControl.println(purchaseLottosMessage.getMessage());
     }
 }
