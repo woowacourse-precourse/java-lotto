@@ -24,6 +24,10 @@ public class User {
         return price;
     }
 
+    public void setLottosCount(int quantity) {
+        this.userLottos = lottoGenerator(quantity);
+    }
+
 
 
 
