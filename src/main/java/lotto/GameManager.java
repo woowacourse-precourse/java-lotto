@@ -17,6 +17,9 @@ public class GameManager {
     printBuyLottoList();
     prizeLotto = getPrizeNumberByUserInput();
     bonusNumber = getBonusNumberByUserInput();
+    PrizeStatistics prizeStatistics = new PrizeStatistics(prizeLotto, bonusNumber);
+    prizeStatistics.setPrizeRankArrayByLottoList(user.getUserLottoList());
+    prizeStatistics.printPrizeStatistics();
   }
 
   private void buyLotto() {

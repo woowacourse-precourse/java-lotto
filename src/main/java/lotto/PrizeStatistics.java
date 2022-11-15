@@ -28,6 +28,12 @@ public class PrizeStatistics {
     }
   }
 
+  public void printPrizeStatistics() {
+    for (PrizeRank prizeRank : prizeRankArray) {
+      System.out.println(prizeRank.getMessage());
+    }
+  }
+
   private void updatePrizeRankArray(Lotto myLotto) {
     List<Integer> myLottoNumbers = myLotto.getLottoNumbers();
     int count = 0;

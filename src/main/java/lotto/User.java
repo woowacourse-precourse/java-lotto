@@ -21,6 +21,10 @@ public class User {
     this.buyCount = buyAmount / Lotto.PRICE;
   }
 
+  public List<Lotto> getUserLottoList() {
+    return this.userLottoList;
+  }
+
   public void setUserLottoList(List<Lotto> userLottoList) {
     this.userLottoList = userLottoList;
   }

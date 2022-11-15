@@ -52,12 +52,12 @@ public enum PrizeRank {
     return this.correctCount == correctCount && this.isBonusNumberMatch == isBonusNumberMatch;
   }
 
-  public String getMessage(int prizeCount) {
+  public String getMessage() {
     return correctCount
         + correctCountMessage
         + getAdditionalMessage()
         + getMoneyString()
-        + getPrizeCountString(prizeCount);
+        + getPrizeCountString();
   }
 
   private String getMoneyString() {
@@ -65,8 +65,8 @@ public enum PrizeRank {
     return "(" + decFormat.format(prizeMoney) + "원)";
   }
 
-  private String getPrizeCountString(int prizeCount) {
-    return " - " + prizeCount + "개";
+  private String getPrizeCountString() {
+    return " - " + this.prizeCount + "개";
   }
 
   private String getAdditionalMessage() {
