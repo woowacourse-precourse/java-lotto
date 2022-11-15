@@ -38,12 +38,14 @@ class LottoMachineTest {
     @DisplayName("구입 금액에 따른 로또 생성 갯수")
     @ParameterizedTest
     @CsvSource({"1000,1", "2000,2", "3000,3", "5000,5"})
-    void createLottoNumber(String input, String size) {
+    void createLottoNumber(String input, int output) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         LottoMachine lottoMachine = new LottoMachine();
 
         lottoMachine.getInputMoney();
-        Assertions.assertThat(lottoMachine.createLottoNumber().size()).isEqualTo(Integer.valueOf(size));
+        int createdNum = lottoMachine.createLottoNumber().size();
+
+        Assertions.assertThat(createdNum).isEqualTo(Integer.valueOf(output));
 
 
     }
