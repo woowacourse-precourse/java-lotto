@@ -11,13 +11,13 @@ public class Winning {
         this.numbers = numbers;
     }
 
-    private static void validateWinning(List<Integer> numbers) {
+    public static void validateWinning(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("로또 번호에는 숫자 6개를 입력해야 합니다.");
         }
     }
 
-    private static void checkInt(String input) {
+    public static void checkInt(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
                 throw new IllegalArgumentException("로또 번호는 숫자만 입력해야 합니다.");
@@ -25,13 +25,13 @@ public class Winning {
         }
     }
 
-    private static void checkRange(int inputNumber) {
+    public static void checkRange(int inputNumber) {
         if (inputNumber < 1 || inputNumber > 45) {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
-    private static void overlapCheck(int inputNumber){
+    public static void overlapCheck(int inputNumber){
         if (numbers.contains(inputNumber)) {
             throw new IllegalArgumentException("로또 번호에는 중복된 숫자를 입력할 수 없습니다.");
         }
