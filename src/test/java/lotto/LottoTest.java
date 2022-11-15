@@ -7,6 +7,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+/**
+ * 예외 테스트 리스트
+ * 1. 중복된 숫자가 있음.
+ * 2. 범위 외의 숫자가 들어옴.
+ * 3. 6개의 숫자인지.
+ */
+
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
@@ -23,5 +30,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호에 범위 외의 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByOutRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 65)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

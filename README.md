@@ -1,5 +1,34 @@
 # 미션 - 로또
 
+## 기능 구현 목록
+
+1. 로또를 구매한다.(Purchase) -> 로또가 자동으로 생성된다.(LottoGenerator)
+2. 당첨번호를 입력한다. 
+3. 구매한 로또와 당첨번호를 비교한다.(Lotto)
+4. 당첨결과 출력(WinningResult)
+
+- [x] 로또를 구매한다. - Purchase
+  - [x] 1000원 단위로 로또를 구매한다. #lottoPurchase()
+  - [x] 로또 한장당 중복 없이 6개의 번호 뽑는다. - LottoGenerator#createLotto  
+  - [x] 구매된 로또를 표시해준다. #printPurchasedLotto()
+- [x] 당첨 번호를 검사한다. - Lotto
+  - [x] 입력이 유효한지 검사한다. #validate
+    - [x] 중복이 있는지 검사한다. #checkDuplicate
+    - [x] 숫자의 범위에 해당하는지 검사한다. #checkRange
+    - [x] 1234567890, 외에 들어온 문자가 있는지 검사한다. - WinningNumber#checkLetterDeparture
+    - [x] 6개의 숫자가 들어온 것인지 확인한다. #checkNumber
+  - [x] 보너스 번호를 검사한다.
+    - [x] 숫자인가?
+    - [x] 범위 내의 숫자인가?
+- 당첨 번호를 입력받는다. WinningNumber
+  - [x] 당첨 번호 6자리를 입력받는다. #getWinningNumber
+  - [x] 보너스 번호 1자리를 입력받는다. #getBonusNumber
+- [x] 당첨 여부를 판별한다. - WinningResult
+  - [x] 당첨 기준과 금액을 사용자에게 알려준다. #winningHistory
+    - [x] 등수를 확인한다. #checkRank
+    - [x] 확인된 등수를 카운트해서 몇등이 몇개인지 알려준다. #countRank
+  - [x] 수익률 계산한다. => (당첨된 금액 / 투자한 금액) * 100 #winningRate
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
