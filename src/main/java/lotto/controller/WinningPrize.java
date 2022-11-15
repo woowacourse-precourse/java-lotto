@@ -53,7 +53,6 @@ public enum WinningPrize {
     }
 
     private static Map<Integer, WinningPrize> forFindingEnumByRank(){
-        // enum 순회 하면서, ranking 을 키로 하고, 들어있는 숫자를 value 로 하는 맵 만들기.
         Map<Integer, WinningPrize> howManyNumbers = new HashMap<>();
         for(WinningPrize prize : WinningPrize.values()){
             howManyNumbers.put(prize.ranking, prize);
