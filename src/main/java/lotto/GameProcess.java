@@ -13,7 +13,7 @@ public class GameProcess {
         Output.gameStart();
 
         double payMoney = inputMoney();
-        double countPurchasing = Service.countBuyLotto(payMoney);
+        int countPurchasing = Service.countBuyLotto(payMoney);
         List<List<Integer>> purchasedLotteries = Lotto.makeLottoByRandomNumbers(countPurchasing);
         Output.informationOnPurchasedLottoNumbers(purchasedLotteries);
 

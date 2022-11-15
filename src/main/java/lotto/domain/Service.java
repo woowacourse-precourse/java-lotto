@@ -18,12 +18,13 @@ public class Service {
 
     public static double inputMoney() {
         String payMoney = Input.input();
-        Validator.validatePayMoney(payMoney);
+        Validator.validateInputMoneyNumber(payMoney);
+        Validator.validateInputMoneyUnit(payMoney);
         return parseDouble(payMoney);
     }
 
-    public static double countBuyLotto(double payMoney) {
-        return payMoney / (Constant.MONEY_UNIT);
+    public static int countBuyLotto(double payMoney) {
+        return (int) (payMoney / (Constant.MONEY_UNIT));
     }
 
     public static List<List<Integer>> firstCompareLottoNumber (List<List<Integer>> purchasedLotteries, List<Integer> winningNumbers) {

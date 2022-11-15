@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lotto.util.ErrorMessage;
+import lotto.util.Validator;
 import lotto.view.Input;
 
 public class Lotto {
@@ -23,10 +24,8 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_DIGIT.getErrorMessage());
         }
-        Set<Integer> numbersSet= new HashSet<>(numbers);
-        if(numbersSet.size() != numbers.size()) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE_NUMBER.getErrorMessage());
-        }
+        Validator.validateDuplicateNumbers(numbers);
+        Validator.validateRangeNumbers(numbers);
     }
 
     public static List<List<Integer>> makeLottoByRandomNumbers (double countPurchasing) {
@@ -34,7 +33,6 @@ public class Lotto {
 
         for(int i = 0; i<countPurchasing; i++) {
             List<Integer> individualLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            new Lotto(individualLotto);
             purchasedLotteries.add(individualLotto);
         }
         return purchasedLotteries;
@@ -42,19 +40,13 @@ public class Lotto {
 
 
     public static List<Integer> getWinningNumbers() {
-        //중복,1~45 조건 필요
         String inputWinningNumbers = Input.input();
-        List<Integer> winningNumbers = new ArrayList<>();
 
-        String[] inputNumbersArray = inputWinningNumbers.split(",");
+        List<Integer> winningNumbers = Validator.validateComma(inputWinningNumbers);
 
-        for (String s : inputNumbersArray) {
-            winningNumbers.add(parseInt(s));
-        }
         new Lotto(winningNumbers);
 
         return winningNumbers;
-
     }
 
     public static Integer getBonusNumber() {
