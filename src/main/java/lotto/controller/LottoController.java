@@ -12,8 +12,7 @@ import static lotto.domain.Preset.LOTTO_LENGTH;
 import static lotto.domain.Preset.LOTTO_PRICE;
 import static lotto.domain.WinningType.getWinningType;
 import static lotto.view.InputView.*;
-import static lotto.view.OutputView.printEarning;
-import static lotto.view.OutputView.printPurchaseNum;
+import static lotto.view.OutputView.*;
 
 public class LottoController {
 
@@ -66,22 +65,10 @@ public class LottoController {
 
     public static void printResultElements(Map<WinningType, Integer> winningResults) {
 
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
-
-        Iterator<WinningType> winningTypeIterator = Arrays.stream(WinningType.values()).iterator();
+        Iterator<WinningType> winningTypeIterator = getWinningTypeIterator();
         while (winningTypeIterator.hasNext()) {
             WinningType type = winningTypeIterator.next();
-            if (type != WinningType.NONE) {
-                System.out.print(type.getEqualCount());
-                System.out.print("개 일치");
-
-                if (type.getWithBonus())
-                    System.out.print(", 보너스 볼 일치");
-                System.out.print(" (" + decimalFormat.format(type.getWinnings()) + "원) - ");
-
-                winningResults.putIfAbsent(type, 0);
-                System.out.println(winningResults.get(type) + "개");
-            }
+            printEachWinningResult(type, winningResults);
         }
     }
 
@@ -109,12 +96,17 @@ public class LottoController {
 
         double earning = 0;
 
-        Iterator<WinningType> winningTypeIterator = Arrays.stream(WinningType.values()).iterator();
+        Iterator<WinningType> winningTypeIterator = getWinningTypeIterator();
         while (winningTypeIterator.hasNext()) {
             WinningType type = winningTypeIterator.next();
             earning += (double) type.getWinnings() * (double) winningResults.get(type);
         }
         earning /= inputMoney;
         printEarning(earning);
+    }
+
+    public static Iterator<WinningType> getWinningTypeIterator () {
+
+        return Arrays.stream(WinningType.values()).iterator();
     }
 }
