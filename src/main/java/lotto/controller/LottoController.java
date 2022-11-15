@@ -20,5 +20,16 @@ public class LottoController {
         user.inputPurchaseAmount(Console.readLine());
     }
 
+    public void purchaseConfirmation(){
+        user.setLotteryCount();
+        OutView.numberOfPurchases(user.getLotteryCount());
+
+        user.lotteryNumberGenerator();
+        List<Lotto> lotteryNumbers = user.getLotteryNumbers();
+        for(int i=0; i<user.getLotteryCount(); i++){
+            System.out.println(lotteryNumbers.get(i).getNumbers());
+        }
+    }
+
 
 }
