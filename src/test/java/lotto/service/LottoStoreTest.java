@@ -97,4 +97,18 @@ public class LottoStoreTest {
         assertThat(lottoStore.allLottosCompare(List.of(new Lotto(List.of(1,2,3,4,5,6))), new Lotto(List.of(1,2,3,4,5,8)), 6).get(0))
                 .isEqualTo(LottoGrade.TWO);
     }
+
+    @Test
+    @DisplayName("수익률이 일치해야 한다.")
+    void revenueCaclulatorTest() {
+        Map<LottoGrade, Integer> lottoGrades = Map.of(
+                LottoGrade.ONE, 0,
+                LottoGrade.TWO, 0,
+                LottoGrade.THREE, 0,
+                LottoGrade.FOUR, 0,
+                LottoGrade.FIVE, 1
+        );
+        assertThat(lottoStore.revenueCalculator(new Money("10000").getMoney(), lottoGrades))
+                .isEqualTo(50.0);
+    }
 }
