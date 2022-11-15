@@ -35,6 +35,9 @@ public class Lotto {
         return count;
     }
 
+    public boolean have(LottoNumber number) {
+        return numbers.contains(number);
+    }
 
     private void validate(List<Integer> numbers) {
         validateLength(numbers);
