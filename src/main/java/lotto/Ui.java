@@ -4,12 +4,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Ui {
 
+    private final LottoService lottoService = new LottoService();
 
     public void startLotto(){
 
         String purchaseAmount = inputPurchaseAmount();
 
-        int lottoCount = getLottoCount(purchaseAmount);
+        int lottoCount = lottoService.getLottoCount(purchaseAmount);
+        lottoService.drawLottos(lottoCount);
 
 
     }
@@ -19,10 +21,8 @@ public class Ui {
          return readLine();
     }
 
-    private int getLottoCount(String input){
-        int purchaseAmount = Integer.parseInt(input);
-        return purchaseAmount / Money.THOUSAND.getAmount();
-    }
+
+
 
 
 
