@@ -10,17 +10,18 @@ import static lotto.Constant.*;
 public class LottoDrawing {
     List<Integer> winningNumbers = new ArrayList<>();
     int bonusNumber;
+    public LottoDrawing(String inputWinning, String inputBonus){
+        List<Integer> winningNumbers = convertStringToNumberList(inputWinning);
+        int bonusNumber = convertStringToInteger(inputBonus);
 
-    public void getWinningNumber() {
-        System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
-        String winningNumber = Console.readLine();
-
-        List<Integer> winningNumbers = changeStringToNumberList(winningNumber);
         Lotto winningLotto = new Lotto(winningNumbers);
-        this.winningNumbers = winningLotto.getNumbers();
+        winningNumbers = winningLotto.getNumbers();
+
+        this.winningNumbers = winningNumbers;
+        this.bonusNumber = bonusNumber;
     }
 
-    private List<Integer> changeStringToNumberList(String input) {
+    private List<Integer> convertStringToNumberList(String input) {
         String[] tempInputs = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String number : tempInputs) {
@@ -29,8 +30,8 @@ public class LottoDrawing {
         return numbers;
     }
 
-    public void getBonusNumber() {
-        System.out.println(MESSAGE_INPUT_BONUS_NUMBER);
-        this.bonusNumber = Integer.parseInt(Console.readLine());
+    private int convertStringToInteger(String input){
+        return Integer.parseInt(input);
     }
+
 }
