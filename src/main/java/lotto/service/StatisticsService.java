@@ -51,7 +51,7 @@ public class StatisticsService {
     }
 
     private String printEachCount(Prize prize, int cnt) {
-        if (prize == Prize.second) return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH,
+        if (prize.isBonusCatchPoint()) return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH,
             formatter.format(prize.getMoney()), cnt);
 
         return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), "", formatter.format(prize.getMoney()), cnt);
