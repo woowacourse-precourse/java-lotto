@@ -5,4 +5,8 @@ public class InputView {
     public String inputUserLottoBuyingPrice() {
         return Console.readLine();
     }
+    public String[] inputWinningNumber() {
+        String winningNumbers = Console.readLine();
+        return winningNumbers.split(",");
+    }
 }
