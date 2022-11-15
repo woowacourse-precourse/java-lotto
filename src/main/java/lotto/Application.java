@@ -103,6 +103,9 @@ public class Application {
     }
     public static List<Integer> WinGameCheck(List<Lotto> AllGame,List<Integer> WinningNumber, int BonusNumber){
         List<Integer> Rank = new ArrayList<>();
+        for(int i = 0; i < 9; i++){
+            Rank.add(0);
+        }
         for(int i = 0; i < AllGame.size();i++){
             int Ranking =AllGame.get(i).Matching(WinningNumber,BonusNumber);
             Rank.add(Ranking,Rank.get(Ranking)+1);
@@ -136,7 +139,7 @@ public class Application {
         List<Integer> Winning = setWinningNumber();
         int BonusNumber = setBonus(Winning);
         List<Integer> Rank= WinGameCheck(AllGame,Winning,BonusNumber);
-        //PrintResult(Rank,3.1);
+        PrintResult(Rank,3.1);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
