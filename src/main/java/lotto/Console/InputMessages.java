@@ -6,4 +6,12 @@ public class InputMessages {
     public String readLine() {
         return Console.readLine();
     }
+
+    public String[] readLineAsArray() {
+        return Console.readLine().split(",");
+    }
+
+    public InputMessages() {
+
+    }
 }
