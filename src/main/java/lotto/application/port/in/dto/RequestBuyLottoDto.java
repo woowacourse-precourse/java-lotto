@@ -1,6 +1,6 @@
 package lotto.application.port.in.dto;
 
-import exception.MoneyIllegalArgumentException;
+import lotto.exception.MoneyIllegalArgumentException;
 
 public class RequestBuyLottoDto {
     private String money;

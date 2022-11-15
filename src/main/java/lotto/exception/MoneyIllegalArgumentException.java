@@ -1,4 +1,4 @@
-package exception;
+package lotto.exception;
 
 public class MoneyIllegalArgumentException extends IllegalArgumentException {
     private String message;

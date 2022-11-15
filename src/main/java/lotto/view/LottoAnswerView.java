@@ -1,4 +1,4 @@
-package view;
+package lotto.view;
 
 public class LottoAnswerView {
     public static void askAnswer() {

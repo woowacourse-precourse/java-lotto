@@ -14,4 +14,9 @@ public class RewardTable {
     public List<Reward> getRewards() {
         return rewards;
     }
+
+    public int getCountOfRank(int rank) {
+        return (int) this.rewards.stream().filter(reward -> reward.getRank() == rank).count();
+    }
+
 }

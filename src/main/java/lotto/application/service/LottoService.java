@@ -22,6 +22,17 @@ import java.util.Optional;
 public class LottoService implements LottoServiceUseCase {
 
     @Override
+    public Lotto ConvertLotto(String inputNumbers) {
+        List<Integer> numbers = new ArrayList<>();
+        String[] split = inputNumbers.split(",");
+
+        for (String splitValue : split) {
+            numbers.add(Integer.parseInt(splitValue));
+        }
+        return new Lotto(numbers);
+    }
+
+    @Override
     public ResponseMatchDto matchWinningNumber(RequestMatchDto requestMatchDto) {
         //비교하여 Result 객체로 리턴.
         List<Lotto> lottos = requestMatchDto.getLottoTickets().getLottos();

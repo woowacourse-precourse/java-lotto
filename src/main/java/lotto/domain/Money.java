@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import exception.MoneyIllegalArgumentException;
+import lotto.exception.MoneyIllegalArgumentException;
 
 
 public class Money {

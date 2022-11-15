@@ -1,6 +1,6 @@
 package lotto.domain.lotto;
 
-import exception.LottoIllegalArgumentException;
+import lotto.exception.LottoIllegalArgumentException;
 
 import java.util.List;
 
