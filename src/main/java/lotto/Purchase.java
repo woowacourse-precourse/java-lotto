@@ -22,6 +22,12 @@ public class Purchase {
             throw new IllegalArgumentException(ExceptionHandler.WRONG_PURCHASE_MONEY);
         return money;
     }
+
+    public float clacEarningRate(Integer totEarning) {
+        float earningRate = (float) totEarning / purchaseMoney * 100 * 10;
+        earningRate = (float) Math.round(earningRate) / 10;
+        return earningRate;
+    }
     public int getPurchaseMoney() {
         return purchaseMoney;
     }
