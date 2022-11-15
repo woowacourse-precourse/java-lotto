@@ -87,5 +87,17 @@ class LottoServiceTest {
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
         }
+
+        @Test
+        @DisplayName("[실패] - 올바르지 않은 형식이 입력된 경우(쉼표로 구분되지 않은 경우)")
+        void notDividedByCommaInput() {
+            // given
+            final String input = "1 2 3 4 5 6";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+        }
     }
 }
