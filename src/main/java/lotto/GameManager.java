@@ -18,8 +18,9 @@ public class GameManager {
     prizeLotto = getPrizeNumberByUserInput();
     bonusNumber = getBonusNumberByUserInput();
     PrizeStatistics prizeStatistics = new PrizeStatistics(prizeLotto, bonusNumber);
-    prizeStatistics.setPrizeRankArrayByLottoList(user.getUserLottoList());
-    prizeStatistics.printPrizeStatistics();
+    showPrizeStatistics(prizeStatistics);
+    user.setPrizeMoney(prizeStatistics.calculatePrizeMoney());
+    printShowReturnRateMessage(user.calculateReturnRate());
   }
 
   private void buyLotto() {
@@ -52,5 +53,12 @@ public class GameManager {
     }
     printBlankLine();
     return bonusNumber;
+  }
+
+  private void showPrizeStatistics(PrizeStatistics prizeStatistics){
+    prizeStatistics.setPrizeRankArrayByLottoList(user.getUserLottoList());
+    printBlankLine();
+    printShowPrizeStatisticsMessage();
+    prizeStatistics.printPrizeStatistics();
   }
 }

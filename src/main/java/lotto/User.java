@@ -35,6 +35,14 @@ public class User {
     }
   }
 
+  public void setPrizeMoney(int prizeMoney){
+    this.prizeMoney = prizeMoney;
+  }
+
+  public float calculateReturnRate(){
+    return 100.0f * this.prizeMoney / this.buyAmount;
+  }
+
   private void checkValidBuyAmount(int buyAmount) {
     checkOverZero(buyAmount);
     checkBuyAmountDividedByLottoPrice(buyAmount);
