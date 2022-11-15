@@ -34,7 +34,8 @@
 
 ## 로또 결과 조회
 - [x] 유저가 구매한 로또 당첨 결과를 담는 `LotteryResult` 클래스 구현
-- [ ] `LotteryCheckService` 를 통해 로또 당첨 결과 조회 기능 구현
+- [ ] `User` 클래스안의 당첨 결과 필드 업데이트 기능 구현
+- [ ] `LotteryCheckService` 를 통해 유저의 당첨 결과 업데이트 기능 구현
 - [ ] 구매 결과 문구 출력 (`OutputView`)
 - [ ] `UserController` 유저 로또 결과 조회 부분 구현
 
