@@ -41,11 +41,11 @@ public class WinningNumberLotto extends Lotto {
     }
 
     private void validateBonusNumber(String input) {
-        if (checkInteger(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 자연수 값을 입력해주세요.")
+        if (!checkInteger(input)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 자연수 값을 입력해주세요.");
         }
-        if (checkRange(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45의 값을 입력해주세요.")
+        if (!checkRange(input)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45의 값을 입력해주세요.");
         }
     }
 

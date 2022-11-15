@@ -43,6 +43,14 @@ public class WinningNumberLottoTest extends NsTest {
     }
 
     @Test
+    void inputBonusNumberByDuplicatedWinningNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("1,2,3,4,5,6", "4"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
     void inputWinningNumberByUnderSize() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> run("1,2,3,4,5"))
@@ -69,7 +77,7 @@ public class WinningNumberLottoTest extends NsTest {
     @Test
     void inputWinningNumberByNormal() {
         assertSimpleTest(() ->
-            run("1,2,3,4,5,6", "1")
+            run("1,2,3,4,5,6", "11")
         );
     }
 
