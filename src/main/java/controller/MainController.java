@@ -55,7 +55,7 @@ public class MainController {
     }
 
     public void profitRateController() {
-        double profitRate = new LottoBank().calculateTotalMoney(winningNumberCount, money);
+        double profitRate = new LottoBank().calculateProfit(winningNumberCount, money);
         OutputView.printProfitRate(profitRate);
     }
 }

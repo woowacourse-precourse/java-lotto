@@ -44,18 +44,18 @@ public class LottoBank {
         return winningNumberCount;
     }
 
-    public double calculateTotalMoney(int[] winningNumberMatchCount, int inputMoney) {
-        List<Integer> winningNumberMatchCounts = Arrays.stream(winningNumberMatchCount)
+    public double calculateProfit(int[] winningNumberCount, int inputMoney) {
+        List<Integer> winningNumberCountList= Arrays.stream(winningNumberCount)
                 .boxed().collect(Collectors.toList());
-        totalProfit = compareMatchCount(winningNumberMatchCounts);
+        totalProfit = calculateTotalProfit(winningNumberCountList);
         double profitRate = calculateProfitRate(inputMoney, totalProfit);
         return profitRate;
     }
 
-    public int compareMatchCount(List<Integer> winningNumberMatchCounts) {
-        for (int i = 0; i < winningNumberMatchCounts.size(); i++) {
-            int rankMatchCount = winningNumberMatchCounts.get(i);
-            totalProfit = calculateWinningMoney(rankMatchCount);
+    public int calculateTotalProfit(List<Integer> winningNumberCount) {
+        for (int i = 0; i < winningNumberCount.size(); i++) {
+            int winningCountByRank = winningNumberCount.get(i);
+            totalProfit = calculateWinningMoney(winningCountByRank);
         }
         return totalProfit;
     }
@@ -66,22 +66,12 @@ public class LottoBank {
         return profitRate;
     }
 
-    public int calculateWinningMoney(int rankMatchCount) {
-        if (rankMatchCount == 3) {
-            totalProfit += 5000;
-        }
-        if (rankMatchCount == 4) {
-            totalProfit += 50000;
-        }
-        if (rankMatchCount == 5) {
-            totalProfit += 1500000;
-        }
-        if (rankMatchCount == 6) {
-            totalProfit += 2000000000;
-        }
-        if (rankMatchCount == 7) {
-            totalProfit += 30000000;
-        }
+    public int calculateWinningMoney(int winningCountByRank) {
+        if (winningCountByRank == 3) {totalProfit += 5000;}
+        if (winningCountByRank == 4) {totalProfit += 50000;}
+        if (winningCountByRank == 5) {totalProfit += 1500000;}
+        if (winningCountByRank == 6) {totalProfit += 2000000000;}
+        if (winningCountByRank == 7) {totalProfit += 30000000;}
         return totalProfit;
     }
 }
