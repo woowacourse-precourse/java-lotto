@@ -1,15 +1,23 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Manager {
 
+	public static LottoMachine lottoMachine;
+
 	public void init(){
-		buyLottos(userInput());
+		showGeneratedLottos(buyLottos(userInput()));
 	}
 
-	public static void buyLottos(String userInputMoney){
+	public static int buyLottos(String userInputMoney){
+		int totalBought;
 		printPurchaseAmount();
 		Validate.checkValidMoney(userInputMoney);
-		Message.printBoughtAmount(Integer.parseInt(userInputMoney) / Constant.LOTTO_PRICE.getNumber());
+		totalBought = Integer.parseInt(userInputMoney) / Constant.LOTTO_PRICE.getNumber();
+		Message.printBoughtAmount(totalBought);
+		return totalBought;
 	}
 
 	public static void printPurchaseAmount(){
@@ -18,6 +26,11 @@ public class Manager {
 
 	public String userInput(){
 		return Input.readLine();
+	}
+
+	public static void showGeneratedLottos(int totalBought){
+		lottoMachine = LottoMachine.generateLottos(totalBought);
+		lottoMachine.printLottos();
 	}
 
 }
