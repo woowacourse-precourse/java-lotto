@@ -3,12 +3,12 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum Rating {
-    FIRST(6, 2000000000, "2,000,000,000"),
-    SECOND(5, 30000000, "30,000,000"),
-    THIRD(5, 1500000, "1,500,000"),
-    FOURTH(4, 50000, "50,000"),
+    NONE(0, 0, "0"),
     FIFTH(3, 5000, "5,000"),
-    NONE(0, 0, "0");
+    FOURTH(4, 50000, "50,000"),
+    THIRD(5, 1500000, "1,500,000"),
+    SECOND(5, 30000000, "30,000,000"),
+    FIRST(6, 2000000000, "2,000,000,000");
 
     private final int count;
     private final int reward;
