@@ -1,8 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Manager {
 
 	public static LottoMachine lottoMachine;
