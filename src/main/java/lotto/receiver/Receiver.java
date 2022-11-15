@@ -21,14 +21,21 @@ public class Receiver {
 
     public static List<Integer> receiveWinNumber() {
         Printer.requestWinningNumber();
-        String numberTemp = Console.readLine();
-        ValidateNumber.validatePurchaseMoney(numberTemp);
-        String[] winningNumberTemp = numberTemp.split(",");
+        String inputNumber = Console.readLine();
+        String[] winningNumberTemp = inputNumber.split(",");
         List<Integer> winningNumber = new ArrayList<>();
 
         for (String number : winningNumberTemp) {
             winningNumber.add(Integer.parseInt(number));
         }
         return winningNumber;
+    }
+
+    public static Integer receiveBonusNumber() {
+        Printer.requestBonusNumber();
+        String inputNumber = Console.readLine();
+        Integer bonusNumber = Integer.parseInt(inputNumber);
+
+        return bonusNumber;
     }
 }
