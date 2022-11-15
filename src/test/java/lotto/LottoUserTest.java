@@ -8,6 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -29,6 +30,16 @@ public class LottoUserTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 구입 금액은 0이상이여야 합니다");
     }
+
+    @DisplayName("주어진 금액만큼 로또를 구매했는지, Lotto의 검증 형식에 맞춰서 번호를 생성했는지")
+    @ParameterizedTest
+    @CsvSource(value = {"0,0","1000,1","2000,2","5000,5","10000,10","13000,13","20000000,20000"})
+    void buyLottoTest(long money, int cnt) {
+        LottoUser user = new LottoUser(money,new LottoSystem());
+        List<Lotto> lottos = user.getLottos();
+        assertEquals(lottos.size(),cnt);
+    }
+
 
 }
 

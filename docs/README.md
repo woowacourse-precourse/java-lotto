@@ -60,8 +60,8 @@
 
 - [ ] LottoUser 테스트
   - [x] validation 테스트
-  - [ ] buyLotto 테스트
-    - 돈의 양 만큼 로또를 샀는지
+  - [x] buyLotto 테스트
+    - 돈의 양 만큼 로또를 샀는지, Lotto의 검증 형식에 맞춰서 번호를 생성했는지
   - [ ] checkWin 테스트
     - 주어진 로또에 대해 알맞은 WinInfo를 가지게 되었는지
   - [ ] getReturnRate 테스트
