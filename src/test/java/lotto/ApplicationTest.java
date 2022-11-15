@@ -147,6 +147,15 @@ class ApplicationTest extends NsTest {
                 "[ERROR] 1~45의 숫자만 입력해주세요"
         );
     }
+    @ParameterizedTest
+    @DisplayName("보너스 중복 조건 테스트")
+    @ValueSource(strings = {"5", "4"})
+    void 보너스_중복_조건_테스트(String bonus) {
+        run("8000", "1,2,3,4,5,6", bonus);
+        assertThat(output()).contains(
+                "[ERROR] 중복되지 않은 숫자를 당첨번호로 입력해주세요"
+        );
+    }
 
     @Override
     public void runMain() {
