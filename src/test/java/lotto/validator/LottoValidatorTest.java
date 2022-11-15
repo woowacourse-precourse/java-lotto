@@ -26,7 +26,7 @@ public class LottoValidatorTest {
     @ValueSource(ints = {0, 46, -1})
     void validateNumber_입력된_숫자가_1에서_45_사이의_숫자인지_검증(final int number) {
         Assertions.assertThatThrownBy(
-                () -> LottoValidator.validateLottoNumber(number)
+                () -> LottoValidator.validateNumber(number)
             ).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -35,9 +35,19 @@ public class LottoValidatorTest {
     @Test
     void validateNumbers_당첨번호가_유효한지_검증() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 2);
-
         Assertions.assertThatThrownBy(
                 () -> LottoValidator.validateWinningNumber(numbers)
+            ).isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @DisplayName("보너스번호와 당첨번호에 중복된 숫자가 존재하는지 검증할 수 있다.")
+    @Test
+    void validateBonusNumber_보너스번호와_당첨번호에_중복을_검증() {
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 2;
+        Assertions.assertThatThrownBy(
+                () -> LottoValidator.validateBonusNumber(bonus, winningNumbers)
             ).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ERROR_MESSAGE);
     }

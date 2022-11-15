@@ -47,21 +47,18 @@ public class LottoValidator {
     }
 
 
-    public static void validateLottoNumber(final int number) {
-        if (isOutOfBound(number)) {
-            throw new IllegalArgumentException(
-                ERR_MESSAGE_HEAD + "로또 번호는 1부터 45 사이의 숫자여야 합니다."
-            );
-        }
-    }
-
-    private static boolean isOutOfBound(final int number) {
-        return number > MAX_NUMBER || number < MIN_NUMBER;
-    }
-
     public static void validateWinningNumber(final List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
+        numbers.forEach(LottoValidator::validateNumber);
+    }
+
+    private static void validateSize(final List<Integer> numbers) {
+        if (numbers.size() != MAX_NUMBERS_SIZE) {
+            throw new IllegalArgumentException(
+                ERR_MESSAGE_HEAD + "당첨번호는 6자리를 입력해야 합니다."
+            );
+        }
     }
 
     private static void validateDuplicate(final List<Integer> numbers) {
@@ -74,10 +71,25 @@ public class LottoValidator {
         }
     }
 
-    private static void validateSize(final List<Integer> numbers) {
-        if (numbers.size() != MAX_NUMBERS_SIZE) {
+    static void validateNumber(final int number) {
+        if (isOutOfBound(number)) {
             throw new IllegalArgumentException(
-                ERR_MESSAGE_HEAD + "당첨번호는 6자리를 입력해야 합니다."
+                ERR_MESSAGE_HEAD + "로또 번호는 1부터 45 사이의 숫자여야 합니다."
+            );
+        }
+    }
+
+    private static boolean isOutOfBound(final int number) {
+        return number > MAX_NUMBER || number < MIN_NUMBER;
+    }
+
+    public static void validateBonusNumber(final int bonus,
+        final List<Integer> winningNumbers) {
+
+        validateNumber(bonus);
+        if (winningNumbers.contains(bonus)) {
+            throw new IllegalArgumentException(
+                ERR_MESSAGE_HEAD + "보너스 번호의 숫자는 당첨번호와 중복될 수 없습니다."
             );
         }
     }
