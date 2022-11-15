@@ -42,8 +42,9 @@ public class Lotto {
     }
 
     private int compareNumber(Lotto target) {
-        target.numbers.retainAll(this.numbers);
-        return target.numbers.size();
+        List<Integer> integers = this.numbers;
+        integers.retainAll(target.numbers);
+        return integers.size();
     }
 
     public int getRanking(Lotto target, int bonus) {
