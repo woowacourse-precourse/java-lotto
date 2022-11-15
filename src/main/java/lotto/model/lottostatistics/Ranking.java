@@ -1,7 +1,6 @@
-package lotto.model;
+package lotto.model.lottostatistics;
 
 public enum Ranking {
-
 
     FIFTH(3, 5_000, false),
     FOURTH(4, 50_000, false),
@@ -37,6 +36,5 @@ public enum Ranking {
     public long getPrize() {
         return this.prize;
     }
-
 
 }

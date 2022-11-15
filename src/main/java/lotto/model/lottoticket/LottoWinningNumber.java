@@ -1,4 +1,8 @@
-package lotto.model;
+package lotto.model.lottoticket;
+
+import lotto.model.exception.InputException;
+
+import lotto.model.lottostatistics.Ranking;
 
 import lotto.view.ErrorMessages;
 
@@ -26,7 +30,7 @@ public class LottoWinningNumber {
     private void validateDuplicatedNumber(Lotto winningNumbers, LottoNumber bonusNumber) {
         if (winningNumbers.toString().contains(bonusNumber.toString())) {
             throw new IllegalArgumentException(
-                ErrorMessages.DUPLICATED_BONUS_NUMBER.getErrorMessage());
+                    ErrorMessages.DUPLICATED_BONUS_NUMBER.getErrorMessage());
         }
     }
 

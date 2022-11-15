@@ -9,7 +9,6 @@ public enum Messages {
     LOTTO_BONUS_RESULT("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n"),
     LOTTO_PROFIT("총 수익률은 %s%%입니다.\n");
 
-
     private final String message;
 
     Messages(String message) {

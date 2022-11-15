@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.model.exception.InputException;
+
 import lotto.view.ErrorMessages;
 
 public class Money {
@@ -29,9 +31,9 @@ public class Money {
     private void validateElement(String input) {
 
         long count = input.chars()
-            .filter(Character::isDigit)
-            .map(Character::getNumericValue)
-            .count();
+                .filter(Character::isDigit)
+                .map(Character::getNumericValue)
+                .count();
 
         if (isValidMonetaryUnit(count, input.length())) {
             throw new IllegalArgumentException(ErrorMessages.NUMBER_ELEMENT.getErrorMessage());

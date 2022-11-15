@@ -1,13 +1,17 @@
-package lotto.model;
+package lotto.model.lottoticket;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import lotto.model.exception.InputException;
+
 import lotto.view.ErrorMessages;
 
 public class Lotto {
+
     private final int START_INCLUSIVE = 1;
     private final int END_INCLUSIVE = 45;
     private final int LOTTO_NUMBER_COUNT = 6;
@@ -37,8 +41,8 @@ public class Lotto {
 
     private void validateAutoTicketDistinct(List<Integer> autoNumbers) {
         long count = autoNumbers.stream()
-            .distinct()
-            .count();
+                .distinct()
+                .count();
 
         if (count != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException();
@@ -51,8 +55,8 @@ public class Lotto {
         validateInputTicket(trimmedInput);
 
         this.numbers = Arrays.stream(trimmedInput.split(DELIMITER))
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private void validateInputTicket(String trimmedInput) {
@@ -65,23 +69,23 @@ public class Lotto {
     }
 
     private void validateInputTicketElement(String trimmedInput) {
-
         long count = Arrays.stream(trimmedInput.split(DELIMITER))
-            .map(Integer::parseInt)
-            .filter(i -> i >= START_INCLUSIVE)
-            .filter(i -> i <= END_INCLUSIVE)
-            .distinct()
-            .count();
+                .map(Integer::parseInt)
+                .filter(i -> i >= START_INCLUSIVE)
+                .filter(i -> i <= END_INCLUSIVE)
+                .distinct()
+                .count();
 
         if (count != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ErrorMessages.WINNING_NUMBER.getErrorMessage());
         }
 
     }
+
     private void validateInputTicketDelimiter(String trimmedInput) {
         long count = trimmedInput.chars()
-            .filter(c -> c == ',')
-            .count();
+                .filter(c -> c == ',')
+                .count();
 
         if (count != LOTTO_NUMBER_COUNT - 1) {
             throw new IllegalArgumentException(ErrorMessages.WINNING_DELIMITER.getErrorMessage());
@@ -91,12 +95,13 @@ public class Lotto {
     public boolean hasLottoNumber(final Integer lottoNumber) {
         return numbers.contains(lottoNumber);
     }
+
     public int countMatchWith(Lotto winningNumber) {
         long count = numbers.stream()
-            .filter(winningNumber::hasLottoNumber)
-            .count();
+                .filter(winningNumber::hasLottoNumber)
+                .count();
 
-        return (int)count;
+        return (int) count;
     }
 
     @Override

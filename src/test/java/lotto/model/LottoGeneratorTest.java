@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.model.lottogenerator.LottoGenerator;
+import lotto.model.lottoticket.LottoTickets;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +19,7 @@ class LottoGeneratorTest {
     @DisplayName("티켓 한 장을 생성하는지 확인")
     @Test
     public void 로또_한_장을_생성하는지_확인()  {
-        LottoTickets lottoTickets = generator.generateAutoLottoTickets(1);
+        LottoTickets lottoTickets = generator.generateAutoLottoTicketsAs(1);
 
         Assertions.assertThat(lottoTickets.getTicketCounts()).isEqualTo(1);
     }
@@ -25,7 +27,7 @@ class LottoGeneratorTest {
     @DisplayName("원하는 개수만큼 티켓을 생성하는지 확인")
     @Test
     void test() {
-        LottoTickets lottoTickets = generator.generateAutoLottoTickets(3);
+        LottoTickets lottoTickets = generator.generateAutoLottoTicketsAs(3);
 
         Assertions.assertThat(lottoTickets.getTicketCounts()).isEqualTo(3);
     }

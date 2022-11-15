@@ -1,14 +1,19 @@
 package lotto.controller;
 
-import lotto.model.InputException;
-import lotto.model.Lotto;
-import lotto.model.LottoGenerator;
-import lotto.model.LottoNumber;
-import lotto.model.LottoTickets;
 import lotto.model.Money;
-import lotto.model.LottoWinningNumber;
-import lotto.model.WinningCalculator;
-import lotto.model.WinningStatistics;
+
+import lotto.model.exception.InputException;
+
+import lotto.model.lottoticket.Lotto;
+import lotto.model.lottoticket.LottoNumber;
+import lotto.model.lottoticket.LottoTickets;
+import lotto.model.lottoticket.LottoWinningNumber;
+
+import lotto.model.lottogenerator.LottoGenerator;
+
+import lotto.model.lottostatistics.WinningCalculator;
+import lotto.model.lottostatistics.WinningStatistics;
+
 import lotto.view.InputView;
 import lotto.view.Messages;
 import lotto.view.OutputView;
@@ -31,10 +36,9 @@ public class LottoGameController {
             outputView.printLottoTicketsAmount(Messages.PURCHASED_TICKET_COUNTS, lottoTickets);
 
             LottoWinningNumber lottoWinningNumber = createLottoWinningNumber();
-
-            WinningStatistics winningStatistics = getWinningStatistics(lottoWinningNumber,
-                lottoTickets);
-            outputView.outputResult(winningStatistics, budget);
+            WinningStatistics winningStatistics =
+                    getWinningStatistics(lottoWinningNumber, lottoTickets);
+            outputView.printOutputResult(winningStatistics, budget);
         } catch (InputException errorMessage) {
             outputView.printExceptionMessage(errorMessage);
         }
@@ -73,7 +77,7 @@ public class LottoGameController {
     }
 
     public WinningStatistics getWinningStatistics(LottoWinningNumber lottoWinningNumber,
-        LottoTickets lottoTickets) {
+            LottoTickets lottoTickets) {
         WinningCalculator winningCalculator = new WinningCalculator();
 
         return winningCalculator.calculateStatistics(lottoWinningNumber, lottoTickets);

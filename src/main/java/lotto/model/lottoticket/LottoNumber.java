@@ -1,4 +1,6 @@
-package lotto.model;
+package lotto.model.lottoticket;
+
+import lotto.model.exception.InputException;
 
 import lotto.view.ErrorMessages;
 

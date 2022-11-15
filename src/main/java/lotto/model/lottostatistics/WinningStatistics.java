@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.model.lottostatistics;
 
 import java.util.Map;
 import java.util.Map.Entry;
