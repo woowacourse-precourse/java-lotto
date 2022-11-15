@@ -22,4 +22,11 @@ public class WinningTest {
         assertThatThrownBy(() -> new Winning("1,2,3,4,5,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호와 보너스 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void checkWinningAndBonusNumberDuplicated() {
+        assertThatThrownBy(() -> new Winning(List.of(1,2,3,4,5,6), "5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
