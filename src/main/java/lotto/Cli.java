@@ -5,7 +5,9 @@ import static lotto.Validation.isNumeric;
 import static lotto.response.Error.LOTTO_PURCHASE_MONETARY_UNIT_ERROR;
 import static lotto.response.Error.LOTTO_PURCHASE_TYPE_ERROR;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /** Cli class to interact with user. */
 public class Cli {
@@ -20,6 +22,19 @@ public class Cli {
 
     validate(amount);
     return Integer.parseInt(amount);
+  }
+
+  /**
+   * Function that receives lotto numbers.
+   * @return list of lotto number.
+   */
+  public static List<Integer> getNumbers() {
+    System.out.println("당첨 번호를 입력해 주세요.");
+    String userInput = readLine();
+    String[] numbers = userInput.split(",");
+    return Arrays.stream(numbers)
+        .map(Integer::parseInt)
+        .collect(Collectors.toList());
   }
 
   public static void print(List<Lotto> lottoList) {
