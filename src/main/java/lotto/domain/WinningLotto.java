@@ -19,13 +19,15 @@ public class WinningLotto extends Lotto {
     }
 
     private void checkBonsDuplicate(List<Integer> lottoNumbers, int bonusNumber) {
-        if (lottoNumbers.contains(bonusNumber))
+        if (lottoNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_DUPLICATE_ERROR);
+        }
     }
 
     private void checkRange(int bonusNumber) {
-        if (bonusNumber < LOTTO_RANGE_START || LOTTO_RANGE_END < bonusNumber)
+        if (bonusNumber < LOTTO_RANGE_START || LOTTO_RANGE_END < bonusNumber) {
             throw new IllegalArgumentException(ANSWER_RANGE_ERROR);
+        }
     }
 
     public int getBonusNumber() {

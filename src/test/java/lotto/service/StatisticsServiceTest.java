@@ -43,7 +43,9 @@ class StatisticsServiceTest {
         for (int rank = 0; rank < prizeList.size(); rank++) {
             Prize nowPrize = prizeList.get(rank);
             int nowPoint = expect.get(rank);
-            if (0 < nowPoint) prizeCntMap.put(nowPrize, nowPoint);
+            if (0 < nowPoint) {
+                prizeCntMap.put(nowPrize, nowPoint);
+            }
         }
         return new Statistics(prizeCntMap);
     }

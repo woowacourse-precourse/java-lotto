@@ -22,26 +22,28 @@ public class Lotto {
     private void checkDuplicate(List<Integer> scanNumbers) {
         List<Integer> distinctNumbers = new ArrayList<>();
         for (int num : scanNumbers) {
-            if (distinctNumbers.contains(num))
+            if (distinctNumbers.contains(num)) {
                 throw new IllegalArgumentException(ANSWER_DUPLICATE_ERROR);
+            }
             distinctNumbers.add(num);
         }
     }
 
     private void checkRange(List<Integer> scanNumbers) {
         for (int num : scanNumbers) {
-            if (num < LOTTO_RANGE_START || LOTTO_RANGE_END < num)
+            if (num < LOTTO_RANGE_START || LOTTO_RANGE_END < num) {
                 throw new IllegalArgumentException(ANSWER_RANGE_ERROR);
+            }
         }
     }
 
     private void checkSize(List<Integer> scanNumbers) {
-        if (scanNumbers.size() == LOTTO_NUMS_SIZE) return;
-
-        if (scanNumbers.size() < LOTTO_NUMS_SIZE)
+        if (scanNumbers.size() < LOTTO_NUMS_SIZE) {
             throw new IllegalArgumentException(ANSWER_COUNT_LOWER_ERROR);
-
-        throw new IllegalArgumentException(ANSWER_COUNT_OVER_ERROR);
+        }
+        if (scanNumbers.size() > LOTTO_NUMS_SIZE) {
+            throw new IllegalArgumentException(ANSWER_COUNT_OVER_ERROR);
+        }
     }
 
     public List<Integer> getNumbers() {

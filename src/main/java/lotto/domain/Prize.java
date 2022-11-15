@@ -23,7 +23,9 @@ public enum Prize {
     public static Prize find(int catchPoint, boolean bonusPoint) {
         //2등과 3증 차이 구분
         if (catchPoint == 5) {
-            if (bonusPoint) return second;
+            if (bonusPoint) {
+                return second;
+            }
             return third;
         }
         return Arrays.stream(values()).filter(prize -> prize.catchPoint == catchPoint).findAny().orElse(none);

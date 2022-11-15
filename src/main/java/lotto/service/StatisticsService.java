@@ -29,7 +29,9 @@ public class StatisticsService {
     private int matchCount(List<Integer> numbers, List<Integer> winnings) {
         int matchCnt = 0;
         for (int nowNum : numbers) {
-            if (winnings.contains(nowNum)) matchCnt++;
+            if (winnings.contains(nowNum)) {
+                matchCnt++;
+            }
         }
         return matchCnt;
     }
@@ -49,9 +51,10 @@ public class StatisticsService {
     }
 
     private String printEachCount(Prize prize, int cnt) {
-        if (prize.isBonusCatchPoint()) return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH,
-                formatter.format(prize.getMoney()), cnt);
-
+        if (prize.isBonusCatchPoint()) {
+            return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH,
+                    formatter.format(prize.getMoney()), cnt);
+        }
         return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), "", formatter.format(prize.getMoney()), cnt);
     }
 
