@@ -20,16 +20,11 @@ class ValidationUtilTest {
         method.setAccessible(true);
 
         //when
-        String correctAmount = "5000";
-        String wrongAmount = "10abc";
+        String purchaseAmount = "10abc";
 
         // then
-        assertThatCode(() ->
-                method.invoke(validationUtil, correctAmount))
-                .doesNotThrowAnyException();
-
         try {
-            method.invoke(validationUtil, wrongAmount);
+            method.invoke(validationUtil, purchaseAmount);
         } catch (InvocationTargetException e) {
             assertThat(e.getTargetException())
                     .isInstanceOf(IllegalArgumentException.class)
@@ -46,15 +41,11 @@ class ValidationUtilTest {
         method.setAccessible(true);
 
         //when
-        String correctAmount = "3000";
-        String wrongAmount = "1234";
+        String purchaseAmount = "1234";
 
         //then
-        int purchaseAmount = (int) method.invoke(validationUtil, correctAmount);
-        assertThat(purchaseAmount).isEqualTo(3000);
-
         try {
-            method.invoke(validationUtil, wrongAmount);
+            method.invoke(validationUtil, purchaseAmount);
         } catch (InvocationTargetException e) {
             assertThat(e.getTargetException())
                     .isInstanceOf(IllegalArgumentException.class)
@@ -97,21 +88,15 @@ class ValidationUtilTest {
         method.setAccessible(true);
 
         //when
-        String[] correctNums = {"1", "2", "3", "4", "5", "6"};
-        String[] wrongNums = {"1", "2", "3", "4", "5"};
+        String[] winningNums = {"1", "2", "3", "4", "5"};
 
         //then
-        assertThatCode(() ->
-                method.invoke(validationUtil, new Object[]{correctNums}))
-                .doesNotThrowAnyException();
-
         try {
-            method.invoke(validationUtil, new Object[]{wrongNums});
+            method.invoke(validationUtil, new Object[]{winningNums});
         } catch (InvocationTargetException e) {
             assertThat(e.getTargetException())
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(NUMBER_COUNT);
         }
-
     }
 }
