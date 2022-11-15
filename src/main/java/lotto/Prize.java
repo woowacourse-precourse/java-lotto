@@ -45,8 +45,8 @@ public enum Prize {
         return totalIncome;
     }
 
-    public static float computeIncomeRate(int seedMoney){
+    public static float computeIncomeRate(int seedMoney) {
         int totalIncome = computeIncome();
-        return totalIncome / (float)seedMoney;
+        return totalIncome / (float) seedMoney;
     }
 }
