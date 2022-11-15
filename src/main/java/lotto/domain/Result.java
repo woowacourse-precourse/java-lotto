@@ -30,4 +30,8 @@ public enum Result {
         }
         return false;
     }
+
+    public String toString(int count) {
+        return winningPoint + "개 일치 (" + prize + "원) - " + count + "개";
+    }
 }

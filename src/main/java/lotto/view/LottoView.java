@@ -7,6 +7,7 @@ import static lotto.LottoConstant.PURCHASE_LOTTO_COUNT_RESULT_MESSAGE;
 import static lotto.LottoConstant.STATISTICS_PRINT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
@@ -40,5 +41,8 @@ public class LottoView {
 
     public static void printResultStatistics(Map<Result, Integer> resultPoints, double rate) {
         System.out.println(STATISTICS_PRINT_MESSAGE);
+        Arrays.stream(Result.values()).forEach(result -> System.out.println(
+                result.toString(resultPoints.get(result))
+        ));
     }
 }
