@@ -133,13 +133,6 @@ public class Application {
         }
     }
 
-    public static int getBonusNumber() {
-        System.out.println(BONUS_NUMBER_REQUEST_MESSAGE.getMessage());
-        String userInput = Console.readLine();
-        int bonusNumber = Integer.parseInt(userInput);
-        return bonusNumber;
-    }
-
     public static int getBonusNumber(List<Integer> winningNumbers) {
         System.out.println(BONUS_NUMBER_REQUEST_MESSAGE.getMessage());
         String userInput = Console.readLine();
@@ -260,19 +253,13 @@ public class Application {
 
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
-        if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
-            return;
-        }
+        if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {return;}
         List<Lotto> lottery = makeLottery(lottoPurchaseMoney);
         printLotto(lottoPurchaseMoney, lottery);
         List<Integer> winningNumbers = getWinningNumbers();
-        if (winningNumbers == null) {
-            return;
-        }
-        int bonusNumber = getBonusNumber();
-        if (bonusNumber == INVALID_BONUS_NUMBER) {
-            return;
-        }
+        if (winningNumbers == null) {return;}
+        int bonusNumber = getBonusNumber(winningNumbers);
+        if (bonusNumber == INVALID_BONUS_NUMBER) {return;}
         List<Integer> winningStats = getWinningStats(lottery, winningNumbers, bonusNumber);
         printWinningStats(winningStats);
         int profit = getProfit(winningStats);
