@@ -26,6 +26,7 @@ public class LottoCompany {
         CommonUtil.validateLotto(numbers);
         return numbers;
     }
+
     private int inputBonus() {
         Print.askBonusNumber();
         String input = Console.readLine();
@@ -34,6 +35,7 @@ public class LottoCompany {
         validate(number);
         return number;
     }
+
     private void validate(int bonus) {
         if (bonus == 0) {
             Error.generate(Message.RANGE);
@@ -45,6 +47,7 @@ public class LottoCompany {
             Error.generate(Message.RANGE);
         }
     }
+
     public void processLotto(Lotto lotto) {
         lotto.drawLotto(numbers, bonus);
     }

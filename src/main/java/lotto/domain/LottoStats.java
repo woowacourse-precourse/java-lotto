@@ -24,7 +24,7 @@ public class LottoStats {
     private void putStat(Lotto lotto) {
         WinInfo info = lotto.getWinInfo();
         int count = stats.getOrDefault(info, 0);
-        stats.put(info,count + 1);
+        stats.put(info, count + 1);
         total += info.getReward();
     }
 
@@ -38,6 +38,6 @@ public class LottoStats {
             System.out.printf(key.getFormat(), key.getReward(), entry.getValue());
             System.out.println();
         }
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", (total / (float)purchase) * 100f);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (total / (float) purchase) * 100f);
     }
 }

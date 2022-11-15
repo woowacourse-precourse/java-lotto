@@ -32,6 +32,7 @@ public class CommonUtil {
             Error.generateIllegalArgumentException(Message.DUPLICATED);
         }
     }
+
     private static void checkRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
@@ -39,6 +40,7 @@ public class CommonUtil {
             }
         }
     }
+
     public static void validateLotto(List<Integer> numbers) {
         checkDuplicated(numbers);
         checkRange(numbers);

@@ -20,12 +20,14 @@ public class LottoStore {
             Error.generate(Message.AMOUNT);
         }
     }
+
     public void inputPurchase() {
         String input = Console.readLine();
 
         purchase = CommonUtil.stringToNumber(input);
         validate(purchase);
     }
+
     public List<Lotto> buyLotto() {
         List<Lotto> lottos = new ArrayList<>();
 
