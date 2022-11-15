@@ -11,9 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-
     @Test
-    void 기능_테스트() {
+    void 기능_테스트_일반() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -45,11 +44,55 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
-
+    @Test
+    void 기능_테스트_큰금액_당첨_경우_수익률_확인() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("8000", "8,21,23,41,42,43", "7");
+                    assertThat(output()).contains(
+                            "8개를 구매했습니다.",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 8개",
+                            "총 수익률은 200000000.0%입니다."
+                    );
+                },
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43)
+        );
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+        assertSimpleTest(() -> {
+            runException("1001");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+        assertSimpleTest(() -> {
+            runException("acds");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
