@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,47 +10,32 @@ public class Purchaser {
 
     private static final Long LOTTO_PRICE = 1_000L;
 
-    private static long purchaseAmount;
-    private static long lottoNum;
-    protected static List[] numbers;
+    public static long cost;
+    public static List<Lotto> numbers = new ArrayList<>();
+    public static long totalEarns;
 
-    protected static long setPurchaseAmount(){
+    protected static void setCost(){
+        System.out.println("구매 금액을 입력해 주세요");
         String inputMoney = Console.readLine();
+
         // 금액을 정확히 입력했는지 확인
-        if (validPurchaseAmount(inputMoney)){
-            purchaseAmount = Long.parseLong(inputMoney);
-        }
-        return purchaseAmount;
+        Validations.checkCostValid(inputMoney);
+
+        cost = Long.parseLong(inputMoney);
+        System.out.println();
     }
 
-    protected static boolean validPurchaseAmount(String inputMoney) throws IllegalArgumentException{
-//        숫자로 입력했는지, 아니면 Exception
-        try{
-            long temp = Long.parseLong(inputMoney);
-        }
-        catch(Exception e){
-            Error.NOT_NUMERIC.wrongInput();
-        }
-//        1000단위가 아닌 경우
-        if (Long.parseLong(inputMoney) % LOTTO_PRICE != 0){
-            Error.PURCHASE_AMOUNT_ERROR.wrongInput();
-        }
-        return true;
-    }
-
-    protected static void calculateLottoNum(){
-        lottoNum = purchaseAmount / LOTTO_PRICE;
-    }
-
-    protected static void pickRandomNumbers(){
-        numbers = new List [(int)lottoNum];
-
-        for(int i = 0; i < (int)lottoNum ; ++i){
-            numbers[i] = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    protected static void receiveLottoNumbers(){
+        for(int i = 0; i < cost / LOTTO_PRICE ; ++i){
+            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.add(new Lotto(lottoNumber));
         }
     }
 
-    public Long getLottoNum(){
-        return this.lottoNum;
+    public void printLottoNums(){
+        System.out.println((cost/LOTTO_PRICE) + "개를 구매했습니다.");
+        for(int i=0; i<numbers.size(); ++i){
+            System.out.println(numbers.get(i).getNumbers());
+        }
     }
 }
