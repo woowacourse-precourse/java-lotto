@@ -10,6 +10,14 @@ public class LottoWinning {
         this.hitBonus = hitBonus;
     }
 
+    public int getWinNumber() {
+        return winNumber;
+    }
+
+    public boolean isHitBonus() {
+        return hitBonus;
+    }
+
     @Override
     public boolean equals(Object obj) {
         LottoWinning lottoWinning = (LottoWinning) obj;

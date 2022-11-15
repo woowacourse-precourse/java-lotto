@@ -2,12 +2,17 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Sample {
     private static final String HOW_MANY_BUY_STRING = "개를 구매했습니다." + System.lineSeparator(); // Lotto-print-001
     private static final String ILLEGAL_ARGUMENT_ERROR_MESSAGE = "[ERROR] Illegal Argument";
+    private static final String WINNING_STATISTICS_START_MESSAGE = "당첨 통계" + System.lineSeparator() + "---" + System.lineSeparator();
+    private static final String WINNING_STATISTICS_PRINT_FORM = "%correctNumber개 일치 (%money원) - %count개" + System.lineSeparator();
+    private static final String WINNING_STATISTICS_PRINT_BONUS_FORM = "%correctNumber개 일치, 보너스 볼 일치 (%money원) - %count개" + System.lineSeparator();
+
     public int stringToInt(String line){ // Lotto-valid-001
         try{
             int number = Integer.parseInt(line);
@@ -84,7 +89,9 @@ public class Sample {
         List<LottoWinning> winningStatistics = new ArrayList<>();
         for (Lotto lotto : lottos){
             int lottoCorrectNumber = getCorrectNumber(lotto, winningNumbers);
-            boolean bonus = hitBonus(lotto, bonusNumber);
+            boolean bonus = false;
+            if (lottoCorrectNumber == 5)
+                hitBonus(lotto, bonusNumber);
             LottoWinning lottoWinning = new LottoWinning(lottoCorrectNumber, bonus);
             winningStatistics.add(lottoWinning);
         }
@@ -103,5 +110,25 @@ public class Sample {
 
     public boolean hitBonus(Lotto lotto, int bonus){ // WinningStatistics-compare-001
         return lotto.getNumbers().contains(bonus);
+    }
+
+    public String printWinningStatistics(List<LottoWinning> winningStatistics){
+        String message = WINNING_STATISTICS_START_MESSAGE;
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
+            String nowMessage = WINNING_STATISTICS_PRINT_FORM;
+            int correctNumber = lottoWinningEnum.getCorrectNumber();
+            boolean hitBonus = lottoWinningEnum.isHitBonus();
+            LottoWinning lottoWinning = new LottoWinning(correctNumber, hitBonus);
+
+            if (hitBonus){
+                nowMessage = WINNING_STATISTICS_PRINT_BONUS_FORM;
+            }
+            nowMessage = nowMessage.replace("%correctNumber", String.valueOf(lottoWinningEnum.getCorrectNumber()));
+            nowMessage = nowMessage.replace("%money", numberFormat.format(lottoWinningEnum.getMoney()));
+            nowMessage = nowMessage.replace("%count", String.valueOf(Collections.frequency(winningStatistics, lottoWinning)));
+            message += nowMessage;
+        }
+        return message;
     }
 }
