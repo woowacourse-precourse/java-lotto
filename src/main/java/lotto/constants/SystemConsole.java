@@ -30,11 +30,14 @@ public class SystemConsole {
     }
 
     public void winningRanking(int c, int m, int p) {
-        System.out.println(m+ "개 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " +c+ "개");
+        System.out.println(
+                m + "개 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " + c + "개");
     }
 
     public void winningRankingSecond(int c, int m, int p) {
-        System.out.println(m+"개 일치, 보너스 볼 일치 ("+NumberFormat.getNumberInstance().format(p)+"원) - "+c+"개");
+        System.out.println(
+                m + "개 일치, 보너스 볼 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " + c
+                        + "개");
     }
 
     public void grossYields(double revenue) {

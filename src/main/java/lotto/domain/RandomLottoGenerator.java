@@ -24,7 +24,6 @@ public class RandomLottoGenerator {
         return randomLotto;
     }
 
-    //TODO : 다른걸로 수정가능한지 알아보기.
     private void consoleOutput(List<List<Integer>> randomLottoTicket) {
         for (List<Integer> lottoTickets : randomLottoTicket) {
             System.out.println(lottoTickets);
