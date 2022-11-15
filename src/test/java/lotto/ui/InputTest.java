@@ -23,4 +23,27 @@ class InputTest {
                         .hasMessageContaining(ErrorMessage.PURCHASE_AMOUNT_ERROR)
         );
     }
+
+    @DisplayName("당첨 번호의 유효성을 검증하여 예외처리 한다.")
+    @Test
+    void validateWiningNumber() {
+        String overSizeNumber = "1,2,3,4,5,6,7";
+        String strangeNumber = "1.2.3.4.5.6";
+        String outOfRangeNumber = "1,2,3,4,5,46";
+        String duplicatedNumber = "1,2,3,4,6,6";
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateWiningNumber(strangeNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR),
+                () -> assertThatThrownBy(() -> Input.validateWiningNumber(overSizeNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR),
+                () -> assertThatThrownBy(() -> Input.validateWiningNumber(outOfRangeNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR),
+                () -> assertThatThrownBy(() -> Input.validateWiningNumber(duplicatedNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR));
+    }
 }
