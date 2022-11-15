@@ -54,4 +54,35 @@ public class StatisticsTest {
         int prize = st.getPrize(new Lotto(Arrays.asList(1, 2, 8, 9, 10, 11)));
         assertThat(prize).isEqualTo(-1);
     }
+
+    @Test
+    void 수익률_계산_1등() {
+        double yield = st.getYield(8000, Arrays.asList(1,0,0,0,0));
+        System.out.println(String.format("%,.1f",yield));
+        assertThat(Math.round(yield)).isEqualTo(25_000_000);
+    }
+    @Test
+    void 수익률_계산_2등() {
+        double yield = st.getYield(8000, Arrays.asList(0,1,0,0,0));
+        System.out.println(String.format("%,.1f",yield));
+        assertThat(Math.round(yield)).isEqualTo(375_000);
+    }
+    @Test
+    void 수익률_계산_3등() {
+        double yield = st.getYield(8000, Arrays.asList(0,0,1,0,0));
+        System.out.println(String.format("%,.1f",yield));
+        assertThat(Math.round(yield)).isEqualTo(18_750);
+    }
+    @Test
+    void 수익률_계산_4등() {
+        double yield = st.getYield(8000, Arrays.asList(0,0,0,1,0));
+        System.out.println(String.format("%,.1f",yield));
+        assertThat(Math.round(yield)).isEqualTo(625);
+    }
+    @Test
+    void 수익률_계산_5등() {
+        double yield = st.getYield(8000, Arrays.asList(0,0,0,0,1));
+        System.out.println(String.format("%,.1f",yield));
+        assertThat(Math.round(yield)).isEqualTo(63);
+    }
 }
