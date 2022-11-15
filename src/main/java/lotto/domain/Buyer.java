@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 public class Buyer {
     private static final long ZERO = 0L;
+    private static final int ROUND_CONSTANT_INT_TEN = 10;
+    private static final double ROUND_CONSTANT_DOUBLE_TEN = 10.0;
     private static final double PERCENT = 100;
     private static final int LOTTO_LEAST_AMOUNT = 1_000;
     private static final int LOTTO_MAX_AMOUNT = 100_000;
@@ -45,7 +47,9 @@ public class Buyer {
     }
 
     public double getYield() {
-        return (getPrizeSum() / (double) purchaseAmount) * PERCENT;
+        double originYield = (getPrizeSum() / (double) purchaseAmount) * PERCENT;
+        double roundedYield = Math.round(originYield * ROUND_CONSTANT_INT_TEN) / ROUND_CONSTANT_DOUBLE_TEN;
+        return roundedYield;
     }
 
     private void initLottoResult() {
