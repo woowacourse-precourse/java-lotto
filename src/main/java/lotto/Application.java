@@ -29,7 +29,7 @@ public class Application {
     public static Integer isUserPaymentValid (String userPayment) {
         try {Integer.parseInt(userPayment);
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException("ERROR");
+            throw new IllegalArgumentException("[ERROR]");
         }
         Integer numberOfLotto = Integer.parseInt(userPayment);
         try {
@@ -37,7 +37,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("ERROR");
+            System.out.println("[ERROR]");
         }
         return numberOfLotto/1000;
     }
