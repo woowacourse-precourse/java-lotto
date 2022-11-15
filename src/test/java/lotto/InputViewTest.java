@@ -35,4 +35,13 @@ public class InputViewTest {
         assertThat(new InputView().changeStringToList(input))
                 .isEqualTo(result);
     }
+
+    @DisplayName("보너스 번호는 1이상 45이하의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void validateNumberRangeTest() {
+        int input = 0;
+        assertThatThrownBy(() -> new InputView().validateNumberRange(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 보너스 번호는 1이상 45이하의 숫자만 가능합니다.");
+    }
 }
