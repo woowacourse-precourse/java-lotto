@@ -50,6 +50,25 @@ public class Lotto {
         return Randoms.pickUniqueNumbersInRange(MIN,MAX,MAX_COUNT);
     }
 
+    public int countMatchingNumbers(Lotto winningNumbers) {
+        int matchCount = 0;
+        for(int number : winningNumbers.getNumbers()) {
+            if(hasMatchingNumber(number)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
+
+    public boolean checkBonusNumber(int bonusNumber) {
+        return hasMatchingNumber(bonusNumber);
+    }
+
+    public boolean hasMatchingNumber(int number) {
+        return numbers.contains(number);
+    }
+
+
     @Override
     public String toString() {
         return numbers.toString();

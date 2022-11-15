@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Player;
+import lotto.domain.Statistic;
 
 import static lotto.view.InputView.*;
 import static lotto.view.InputView.showBonusNumberInputMessage;
@@ -25,5 +26,15 @@ public class Game {
 
         showBonusNumberInputMessage();
         int bonusNumber = player.getBonusNumber(winningNumbers);
+
+        compareLottoNumbers(winningNumbers, bonusNumber);
+    }
+
+    public void compareLottoNumbers(Lotto winningNumbers, int bonusNumber) {
+        for(Lotto lotto : player.getLottos()) {
+            int matchCount = lotto.countMatchingNumbers(winningNumbers);
+            boolean matchBonus = lotto.checkBonusNumber(bonusNumber);
+            Statistic.setCounts(matchCount, matchBonus);
+        }
     }
 }
