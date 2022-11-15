@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkOverlap(numbers);
         this.numbers = numbers;
     }
 
@@ -17,4 +18,12 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    private void checkOverlap(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++){
+            for(int j = i+1; j < numbers.size(); j++){
+                if (numbers.get(i) == numbers.get(j)) throw new IllegalArgumentException();
+            }
+        }
+    }
 }
