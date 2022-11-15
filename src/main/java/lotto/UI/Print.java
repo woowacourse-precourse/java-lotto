@@ -1,16 +1,20 @@
-package lotto;
+package lotto.UI;
+
+import lotto.Lotto;
+import lotto.domain.Match;
+import lotto.domain.Operation;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-import static lotto.Instance.*;
+import static lotto.instance.Setting.*;
 
 public class Print {
-    static void getPurchaseAmount() {
+    public static void getPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    static void userLottos(List<Lotto> lottos, int purchaseAmount) {
+    public static void userLottos(List<Lotto> lottos, int purchaseAmount) {
         int buyAmount = Operation.buyAmount(purchaseAmount);
         System.out.printf("%d개를 구매했습니다.\n", buyAmount);
         for (Lotto lotto : lottos) {
@@ -18,15 +22,15 @@ public class Print {
         }
     }
 
-    static void getWinningNumbers() {
+    public static void getWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    static void getBonusNumber() {
+    public static void getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    static void result(double earningRate, Match match) {
+    public static void result(double earningRate, Match match) {
         DecimalFormat formatter = new DecimalFormat("###,###");
         System.out.println("당첨 통계\n---");
         System.out.printf("3개 일치 (" + formatter.format(AMOUNT_THREE) + "원) - %d개\n", match.MATCH_THREE);

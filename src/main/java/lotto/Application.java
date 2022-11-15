@@ -1,16 +1,18 @@
 package lotto;
 
+import lotto.UI.Input;
+import lotto.UI.Print;
+import lotto.domain.Match;
+import lotto.domain.Operation;
 
 import java.util.List;
 
 public class Application {
     static int purchaseAmount;
     static List<Lotto> lottos;
-    static int bonus;
     static List<Integer> winning;
+    static int bonus;
     static Match match;
-    static int earning;
-    static double earningRate;
 
     static void buy() {
         Print.getPurchaseAmount();
@@ -28,8 +30,8 @@ public class Application {
 
     static void printResult(){
         match = new Match(lottos, winning, bonus);
-        earning = Operation.calculateEarning(match);
-        earningRate = Operation.calculateEarningRate(purchaseAmount, earning);
+        int earning = Operation.calculateEarning(match);
+        double earningRate = Operation.calculateEarningRate(purchaseAmount, earning);
         Print.result(earningRate, match);
     }
 
@@ -42,6 +44,7 @@ public class Application {
             System.out.println(e.getMessage());
         }
     }
+
     public static void main(String[] args) {
         playGame();
     }

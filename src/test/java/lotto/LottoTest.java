@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.CompareResult;
+import lotto.instance.matchType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -46,8 +48,8 @@ class LottoTest {
         Lotto lotto = new Lotto(numbers);
         List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
         int bonus = 7;
-        lotto.matchAll(winning,bonus);
-        assertThat(lotto.getType()).isEqualTo(matchType.FOUR);
+        CompareResult compareResult =new CompareResult(lotto, winning, bonus);
+        assertThat(compareResult.getType()).isEqualTo(matchType.FOUR);
     }
 
 }

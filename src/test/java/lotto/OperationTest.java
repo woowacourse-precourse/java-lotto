@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.Match;
+import lotto.domain.Operation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,9 +37,9 @@ public class OperationTest {
 
     @DisplayName("로또 번호를 생성할 때 중복되는 숫자가 없는지 확인한다.")
     @Test
-    void generateNumbersDuplication(){
+    void generateNumbersDuplication() {
         List<Integer> numbers = Operation.generateNumbers();
-        HashSet<Integer> checkDuplication=new HashSet<>(numbers);
-        assertThat (checkDuplication.size()).isEqualTo(6);
+        HashSet<Integer> checkDuplication = new HashSet<>(numbers);
+        assertThat(checkDuplication.size()).isEqualTo(6);
     }
 }

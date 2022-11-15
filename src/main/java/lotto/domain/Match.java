@@ -1,15 +1,18 @@
-package lotto;
+package lotto.domain;
+
+import lotto.Lotto;
+import lotto.instance.matchType;
 
 import java.util.List;
 
-import static lotto.matchType.*;
+import static lotto.instance.matchType.*;
 
 public class Match {
-    int MATCH_THREE;
-    int MATCH_FOUR;
-    int MATCH_FIVE;
-    int MATCH_SIX;
-    int MATCH_FIVE_BONUS;
+    public int MATCH_THREE;
+    public int MATCH_FOUR;
+    public int MATCH_FIVE;
+    public int MATCH_SIX;
+    public int MATCH_FIVE_BONUS;
 
     public Match() {
         initialize();
@@ -44,8 +47,8 @@ public class Match {
 
     public void countAll(List<Lotto> lottos, List<Integer> winning, int bonus) {
         for (Lotto lotto : lottos) {
-            lotto.compare(winning, bonus);
-            matchType type = lotto.getType();
+            CompareResult compareResult = new CompareResult(lotto, winning, bonus);
+            matchType type = compareResult.getType();
             countEach(type);
         }
     }
