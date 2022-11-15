@@ -71,7 +71,8 @@ public class LottoService {
     }
 
     public void saveBonusNumber(String number) {
-
+        validateBonusNumber(number);
+        lottoRepository.saveBonusNumber(Integer.parseInt(number));
     }
 
     private void validateBonusNumber(String number) {
