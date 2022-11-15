@@ -6,19 +6,17 @@ import java.util.List;
 
 public class Yeild {
     private int money;
-    private List<Integer> prizeCounts;
     private int prizeMoney;
     private double yeild;
 
-    public Yeild(int money, List<Integer> prizeCounts) {
+    public Yeild(int money) {
         this.money = money;
-        this.prizeCounts = prizeCounts;
         this.prizeMoney = 0;
     }
 
     public void createStatistic() {
-        for (int i = 0; i < prizeCounts.size(); i++) {
-            prizeMoney += Prize.values()[i].getMoney() * prizeCounts.get(i);
+        for (int i = 0; i<5; i++) {
+            prizeMoney += Prize.values()[i].getMoney() * Prize.values()[i].getPrizeCount();
         }
         yeild = Math.round(((double) prizeMoney / money)* 100*100)/100.0;
     }
