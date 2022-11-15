@@ -24,13 +24,21 @@ public class CustomerTest extends NsTest {
 		customer.inputAmount();
 		assertThat(output()).contains(ERROR_MESSAGE);
 	}
-	
+
 	@DisplayName("예외: 로또 구매 시 금액이 정해진 단위로 나누어 떨어지지 않는 경우")
 	@Test
 	void isUnitAmount() {
 		run("1300");
 		customer.inputAmount();
 		assertThat(output()).contains(ERROR_MESSAGE);
+	}
+
+	@DisplayName("로또 구매 장수 반환 테스트")
+	@Test
+	void validateLottoCount() {
+		run("13000");
+		customer.inputAmount();
+		assertThat(customer.getLottoCount()).isEqualTo(13);
 	}
 
 	@Override
