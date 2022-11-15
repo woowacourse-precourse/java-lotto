@@ -2,7 +2,6 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.extension.InvocationInterceptor;
@@ -44,7 +43,8 @@ public class LottoManager {
     }
 
     public float getEarningRate(){
-        return calculateTotalPrize() / inputMoney;
+        float ret = (float)calculateTotalPrize() / (float)inputMoney;
+        return ret * 100;
     }
 
     public long calculateTotalPrize(){

@@ -75,7 +75,7 @@ public class LottoConsole {
         for (int i = 0; i < numbers.size(); i++){
             System.out.printf("%d", numbers.get(i));
             if (i != numbers.size() - 1){
-                System.out.print(",");
+                System.out.print(", ");
             }
         }
         System.out.print("]");
