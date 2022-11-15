@@ -4,7 +4,6 @@ public enum Exception {
 
     PREFIX("\n[ERROR] "),
     INVALID_INPUT_ONLY_NUMBER("숫자만을 입력해야 합니다."),
-    INVALID_INPUT_ONLY_NUMBER_COMMA("숫자와 쉼표(,)만을 입력해야 합니다."),
     INVALID_LOTTO_NUMBER_COUNT("로또 번호는 6개이어야 합니다."),
     INVALID_LOTTO_NUMBER_RANGE("로또 번호의 숫자 범위는 1부터 45까지입니다."),
     INVALID_LOTTO_NUMBER_DUPLICATION("로또 번호는 서로 중복될 수 없습니다."),
