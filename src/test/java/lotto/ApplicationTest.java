@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -53,7 +54,34 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    //당첨 번호가 45가 넘는 경우 예외처리가 되어있는가?
+    @Test
+    void 예외_테스트2(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000", "1,2,3,46,47,5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
 
+    //당첨 번호에 문자가 들어가 있을 경우 예외처리가 되어있는가?
+    @Test
+    void 예외_테스트3(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000", "1,two,3,4,5,6"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
+    //당첨 번호의 수가 6개가 아닐 경우 예외처리가 되어있는가?
+    @Test
+    void 예외_테스트4(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6,7"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

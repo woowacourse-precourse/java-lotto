@@ -29,13 +29,16 @@ public class WinningNumber {
             for (int i = 0; i < divwinNumber.length; i++) {
                 winNumber.add(Integer.parseInt(divwinNumber[i]));
             }
+            if (checkException(winNumber) == false){
+                throw new IllegalArgumentException(("[ERROR]로또번호는 45가 넘을 수 없습니다."));
+            }
             if (winNumber.size() != 6){
-                throw new IllegalArgumentException("[Error]6개의 숫자만 입력해 주세요");
+                throw new IllegalArgumentException("[ERROR]6개의 숫자만 입력해 주세요");
             }
             return winNumber;
         }
         catch (NumberFormatException e){
-            throw new IllegalArgumentException("[Error]숫자만 입력하세요");
+            throw new IllegalArgumentException("[ERROR]숫자만 입력하세요");
         }
     }
 
@@ -52,9 +55,11 @@ public class WinningNumber {
         }
     }
 
-    public boolean checkException(int num){
-        if (num < 1 || num > 45)
-            return false;
+    public boolean checkException(List<Integer> num){
+        for (int i = 0; i < num.size(); i++){
+            if (num.get(i) < 1 || num.get(i) > 45)
+                return false;
+        }
         return true;
     }
 }
