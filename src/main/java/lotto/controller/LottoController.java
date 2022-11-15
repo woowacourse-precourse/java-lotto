@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.LottoEnum;
+import lotto.model.RANKING;
 
 public class LottoController {
 
@@ -30,5 +31,14 @@ public class LottoController {
             LottoEnum.TOTAL_LOTTO_NUMBER.getValue());
         numbers.sort(Comparator.comparingInt(number -> number));
         return numbers;
+    }
+
+    public double generateEarningsRate(List<Lotto> lotteries, Lotto luckyLotto, int luckyNumber) {
+        double acc = 0;
+        for (final Lotto lotto : lotteries) {
+            RANKING ranking = lotto.matchLottoWithLuckyNumber(luckyLotto, luckyNumber);
+            acc += ranking.getPrice();
+        }
+        return acc / (lotteries.size() * 1000) * 100;
     }
 }

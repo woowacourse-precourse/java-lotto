@@ -3,6 +3,7 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.LinkedList;
 import java.util.List;
 import lotto.controller.LottoController;
 import lotto.model.Lotto;
@@ -171,5 +172,62 @@ class LottoTest {
         userLotto = new Lotto(List.of(2, 4, 6, 8, 10, 15));
         assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
             .isEqualTo(RANKING.NONE);
+    }
+
+    @DisplayName("복권 5개중 5개 모두 못맞춰서 0의 수익률을 낸다.")
+    @Test
+    void generateEarningRate0() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        int luckyNo = 15;
+        List<Lotto> userLotteries = new LinkedList<>();
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        LottoController controller = new LottoController();
+        double result = controller.generateEarningsRate(userLotteries, luckyLotto, luckyNo);
+        assertThat(result)
+            .isEqualTo(0);
+    }
+
+    @DisplayName("복권 8개중 1개가 3등이어서 62.5%의 수익률 낸다.")
+    @Test
+    void generateEarningRate62_5() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        int luckyNo = 15;
+        List<Lotto> userLotteries = new LinkedList<>();
+        userLotteries.add(new Lotto(List.of(1, 3, 5, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        LottoController controller = new LottoController();
+        double result = controller.generateEarningsRate(userLotteries, luckyLotto, luckyNo);
+        assertThat(result)
+            .isEqualTo(62.5);
+    }
+
+    @DisplayName("복권 8개중 1개가 1등에 당첨되어 25_000_000%의 수익을 낸다.")
+    @Test
+    void generateEarningRateOver100() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        int luckyNo = 15;
+        List<Lotto> userLotteries = new LinkedList<>();
+        userLotteries.add(new Lotto(List.of(1, 3, 5, 7, 9, 11)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        userLotteries.add(new Lotto(List.of(2, 4, 6, 8, 10, 12)));
+        LottoController controller = new LottoController();
+        double result = controller.generateEarningsRate(userLotteries, luckyLotto, luckyNo);
+        assertThat(result)
+            .isEqualTo(25_000_000.0);
     }
 }
