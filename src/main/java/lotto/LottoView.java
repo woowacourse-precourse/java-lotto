@@ -40,9 +40,12 @@ public class LottoView {
         }
     }
 
-    public static void printWinningStatistics(List<Integer> result, double returnRate) {
+    public static void printWinningStatistics(List<Integer> result) {
         System.out.println(BLANK_LINE + STATISTICS_INFO_MESSAGE);
         printResultOfWin(result);
+    }
+
+    public static void printRateOfReturn(double returnRate) {
         System.out.println(MessageFormat.format(RATE_OF_RETURN_MESSAGE, returnRate));
     }
 
