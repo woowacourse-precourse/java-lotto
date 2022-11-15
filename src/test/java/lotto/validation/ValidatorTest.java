@@ -49,7 +49,7 @@ class ValidatorTest {
     @Test
     void createIncorrectBonusNumberPattern() {
         String money = "a1000";
-        assertThatThrownBy(() -> Validator.isCorrectBonusNumberPattern(money))
+        assertThatThrownBy(() -> Validator.isCorrectNumberPattern(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자를 입력해주세요.");
     }
