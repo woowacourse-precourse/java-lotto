@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.utils.LottoNumberGenerator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoTickets {
