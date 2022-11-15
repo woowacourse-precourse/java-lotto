@@ -18,14 +18,13 @@ public class Application {
             float earningRate = dealer.calculateEarningRate(publisher.getPurchaseAmount());
 
             String resultPrintFormat = getPrintResultFormat(result);
-            Output.printResult(resultPrintFormat);
-            Output.printEarningRate(earningRate);
+            Output.printWinningStatistics(resultPrintFormat, earningRate);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    static String getPrintResultFormat(List<Integer> result) {
+    private static String getPrintResultFormat(List<Integer> result) {
         StringBuilder resultPrintFormat = new StringBuilder();
         for (Ranking ranking : Ranking.values()) {
             int count = result.get(ranking.value());
@@ -34,7 +33,7 @@ public class Application {
         return resultPrintFormat.toString();
     }
 
-    static int getPurchaseAmount() {
+    private static int getPurchaseAmount() {
         try {
             return Input.getAnswerInInteger(Request.purchaseAmount.value());
         } catch (Exception e) {
@@ -42,7 +41,7 @@ public class Application {
         }
     }
 
-    static Lotto getWinNumber() {
+    private static Lotto getWinNumber() {
         try {
             List<Integer> numbers = new ArrayList<>();
             for (String number : Input.getAnswer(Request.winNumber.value()).split(",")) {
@@ -55,7 +54,7 @@ public class Application {
         }
     }
 
-    static Bonus getBonusNumber() {
+    private static Bonus getBonusNumber() {
         int bonusNumber = Input.getAnswerInInteger(Request.bonusNumber.value());
         return new Bonus(bonusNumber);
     }
