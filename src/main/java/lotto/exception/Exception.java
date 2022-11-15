@@ -43,7 +43,4 @@ public class Exception{
     public static void catchBonusInWinningException(Integer input){
         throwException(winningNumbers.getNumbers().contains(input), BONUS_IN_WINNING_ERROR.error);
     }
-    public static void catchOverLimitBuyLottoException(String input){
-        throwException(Integer.parseInt(input)> INPUT_LIMIT.option, INPUT_LIMIT_ERROR.error);
-    }
 }
