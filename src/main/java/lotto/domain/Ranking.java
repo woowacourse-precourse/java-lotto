@@ -7,9 +7,9 @@ public enum Ranking {
     FOURTH(4, 50000, "4개 일치 (50,000원) - ", false),
     FIFTH(3, 5000, "3개 일치 (5,000원) - ", false);
 
-    private int match, prize;
-    private String description;
-    private boolean bonusMatch;
+    private final int match, prize;
+    private final String description;
+    private final boolean bonusMatch;
 
     Ranking(int match, int prize, String description, boolean bonusMatch) {
         this.match = match;

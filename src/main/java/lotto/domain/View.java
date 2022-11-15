@@ -44,37 +44,32 @@ public class View {
         }
         return numbers;
     }
-    public List<Integer> validateUniqueNumbers(List<Integer> numbers) {
+    public void validateUniqueNumbers(List<Integer> numbers) {
         List<Integer> noDuplicates = new ArrayList<>();
         for (int num : numbers) {
             validateUniqueNumber(noDuplicates, num);
             noDuplicates.add(num);
         }
-        return numbers;
     }
-    public int validateUniqueNumber(List<Integer> noDuplicates, int num) {
+    public void validateUniqueNumber(List<Integer> noDuplicates, int num) {
         if (noDuplicates.contains(num)) {
             throw new IllegalArgumentException(ERROR_UNIQUE);
         }
-        return num;
     }
-    public List<Integer> validateNumbersInRange(List<Integer> numbers) {
+    public void validateNumbersInRange(List<Integer> numbers) {
         for (int num : numbers) {
             validateNumberInRange(num);
         }
-        return numbers;
     }
-    public int validateNumberInRange(int num) {
+    public void validateNumberInRange(int num) {
         if ((45 < num) || num < 1) {
             throw new IllegalArgumentException(ERROR_RANGE);
         }
-        return num;
     }
-    public List<Integer> validateNumberOfNumbers(List<Integer> numbers) {
+    public void validateNumberOfNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_SIZE);
         }
-        return numbers;
     }
 
     private List<Integer> validateWinnerInput(String input) {
@@ -91,21 +86,13 @@ public class View {
         validateUniqueNumber(numbers, bonus);
         return bonus;
     }
-    public int getMoneyInput() {
-        String moneyString = Console.readLine();
-        int money = validateIsNumber(moneyString);
-        validateIsDivisible(money);
-        return money;
-    }
     public List<Integer> getWinnerInput() {
         String numbersString = Console.readLine();
-        List<Integer> numbersInteger = validateWinnerInput(numbersString);
-        return numbersInteger;
+        return validateWinnerInput(numbersString);
     }
     public int getBonusInput(List<Integer> numbers) {
         String bonusString = Console.readLine();
-        int bonus = validateBonusInput(bonusString, numbers);
-        return bonus;
+        return validateBonusInput(bonusString, numbers);
     }
 
 }
