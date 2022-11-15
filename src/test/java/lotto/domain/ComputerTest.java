@@ -16,7 +16,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfWinningNumbersAreNotNaturalNumber() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,a");
-            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+            assertThat(output()).contains(NOT_NATURAL_NUMBER_EXCEPTION.toString());
         });
     }
 
@@ -34,7 +34,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfFiveWinningNumbers() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5");
-            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+            assertThat(output()).contains(LENGTH_EXCEPTION.toString());
         });
     }
 
@@ -43,7 +43,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfSevenWinningNumbers() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6,7");
-            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+            assertThat(output()).contains(LENGTH_EXCEPTION.toString());
         });
     }
 
@@ -51,8 +51,8 @@ public class ComputerTest extends NsTest {
     @Test
     void ThrowExceptionIfWinningNumbersAreUnderMin() {
         assertSimpleTest(() -> {
-            runException("1000", "0,1,2,3,4,5");
-            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+            runException("1000", "-1,1,2,3,4,5");
+            assertThat(output()).contains(RANGE_EXCEPTION.toString());
         });
     }
 
@@ -61,7 +61,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfWinningNumbersAreOverMax() {
         assertSimpleTest(() -> {
             runException("1000", "41,42,43,44,45,46");
-            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+            assertThat(output()).contains(RANGE_EXCEPTION.toString());
         });
     }
 
