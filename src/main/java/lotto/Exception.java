@@ -14,14 +14,14 @@ public class Exception {
     private static final String SEPARATED_CHARACTER = ",";
 
     // TODO : 로또 구매 금액을 입력 받아 검증 후 반환한다.
-    public static int isCorrectAmount(String purchaseAmount) {
+    public static int validateAmount(String purchaseAmount) {
         int amount = isContainCharacter(purchaseAmount);
         isDividedByTicketPrice(amount);
         return amount;
     }
 
     // TODO: 담청 번호 6자리를 입력받아 검증 후 리스트로 변환하여 반환한다.
-    public static List<String> isCorrectWinningNumbers(String winningNumber){
+    public static List<String> validateWinningNumbers(String winningNumber){
         List<String> winningNumbers = isSixInputValues(splitBasedComma(winningNumber));
         isAllDifferentValues(winningNumbers);
         isRangeFromOneToFortyFive(winningNumbers);
@@ -29,7 +29,7 @@ public class Exception {
     }
 
     // TODO: 보너스 번호 1자리를 입력받아 검증 후 반환한다.
-    public static String isCorrectBonusNumber(String bonusNumber){
+    public static String validateBonusNumber(String bonusNumber){
         isMatchFromOneToFortyFive(bonusNumber);
         isDuplicateNumberInWinningNumber(bonusNumber);
         return bonusNumber;

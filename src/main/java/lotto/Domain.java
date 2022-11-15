@@ -37,7 +37,7 @@ public class Domain {
     // TODO: 로또 금액 문장 출력 후 로또 금액을 입력 받는다.
     private static int inputLottoAmount(){
         System.out.println(INPUT_LOTTO_AMOUNT);
-        return Exception.isCorrectAmount(Console.readLine());
+        return Exception.validateAmount(Console.readLine());
     }
 
     // TODO: LOTTO_AMOUNT 변수를 초기화 한다.
@@ -53,7 +53,7 @@ public class Domain {
     // TODO: winningNumbers 리스트를 초기화 한다.
     private static void initializationWinningNumbers() {
         System.out.println(ENTER + INPUT_WINNING_NUMBERS);
-        winningNumbers = Exception.isCorrectWinningNumbers(Console.readLine());
+        winningNumbers = Exception.validateWinningNumbers(Console.readLine());
     }
 
     // TODO: lottoList를 초기화 한다.
