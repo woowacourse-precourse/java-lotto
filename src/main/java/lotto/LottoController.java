@@ -47,5 +47,19 @@ public class LottoController {
         }
         return ownLottos;
     }
+    static List<Integer> checkWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String inputWinNum = Console.readLine();
+        List<Integer> winNumbers;
+        try {
+            List<String> winNumbersString = Arrays.asList(inputWinNum.split(","));
+            winNumbers = winNumbersString.stream()
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 숫자여야 합니다.");
+        }
+        return winNumbers;
+    }
 
 }
