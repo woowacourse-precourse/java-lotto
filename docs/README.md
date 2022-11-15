@@ -3,10 +3,10 @@
 2. 당첨 번호 및 보너스 번호 입력 (OK)
 3. 입력 값 유효성 검사 (OK)
 4. 입력값(로또 구입 금액) => Lotto Instance 생성 (OK)
-5. Lotto Instance 유효성 검사
+5. Lotto Instance 유효성 검사 (OK)
 6. 생성된 Lotto Instance의 수량 및 번호 출력
-7. 입력값(당첨번호, 보너스 번호) => winning Lotto Instance 생성
-8. winning Lotto 유효성 검사
+7. 입력값(당첨번호, 보너스 번호) => winning Lotto Instance 생성 (OK)
+8. winning Lotto 유효성 검사 (OK)
 9. Lotto Instance와 winning Lotto 비교
 10. (4) => 로또 수량 및 번호 출력
 11. (8) => 당첨 내역 출력
@@ -19,7 +19,7 @@
 기능 7,8
 #### 3. IOController (maybe static, maybe split to Input and Output Class)
 기능 1,2,3,6,10,11
-#### 4. LottoRepository
+#### 4. LottoService
 기능 9
 #### 5. Enum?
 

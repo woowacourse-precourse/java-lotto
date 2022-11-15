@@ -40,6 +40,10 @@ class IOControllerTest {
         Assertions.assertThatThrownBy(IOController::readBonusNumber)
                 .isInstanceOf(IllegalArgumentException.class);
 
+        in = new ByteArrayInputStream("1,2,3,4,5,46".getBytes());
+        System.setIn(in);
+        Assertions.assertThatThrownBy(IOController::readBonusNumber)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -52,14 +56,17 @@ class IOControllerTest {
         System.setIn(in);
         Assertions.assertThatThrownBy(IOController::readBonusNumber).isInstanceOf(IllegalArgumentException.class);
 
+        in = new ByteArrayInputStream("123".getBytes());
+        System.setIn(in);
+        Assertions.assertThatThrownBy(IOController::readBonusNumber).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void validateNumberRangeTest() {
-        Assertions.assertThatThrownBy(() -> IOController.validateNumberRange(0))
-                .isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> IOController.validateNumberRange(46))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+//    @Test
+//    void validateNumberRangeTest() {
+//        Assertions.assertThatThrownBy(() -> IOController.validateNumberRange(0))
+//                .isInstanceOf(IllegalArgumentException.class);
+//        Assertions.assertThatThrownBy(() -> IOController.validateNumberRange(46))
+//                .isInstanceOf(IllegalArgumentException.class);
+//    }
 
 }
