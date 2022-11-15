@@ -1,13 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -54,6 +57,25 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 사용자_금액_입력_정상_테스트() {
+        InputStream in = generateUserInput("8000");
+        System.setIn(in);
+        int money = IOUtil.moneyInput();
+        assertThat(money).isPositive();
+        assertThat(money % 1000).isEqualTo(0);
+    }
+
+    @Test
+    void 사용자_금액_입력_예외_테스트() {
+        InputStream in = generateUserInput("1234");
+        System.setIn(in);
+        assertThatThrownBy(IOUtil::moneyInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    public static InputStream generateUserInput(String input) {
+        return new ByteArrayInputStream(input.getBytes());
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
