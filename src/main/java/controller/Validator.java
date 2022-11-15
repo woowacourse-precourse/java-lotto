@@ -24,11 +24,27 @@ public class Validator {
     }
 
     public static void validateWinningNumber(String[] pureNumber) {
-        for (String s : pureNumber) {
-            isNumeric(s, Error.NUMBER);
-            isCorrectRange(s,Error.RANGE);
-        }
+        isNumericWinningNumber(pureNumber, Error.NUMBER);
+        isCorrectRangeNumber(pureNumber,Error.RANGE);
         isCorrectSize(pureNumber,Error.SIZE);
+    }
+
+    public static void isNumericWinningNumber(String[] pureNumber, Error error) {
+        try {
+            for(String s : pureNumber)
+                Integer.parseInt(s);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(error.getMsg());
+        }
+    }
+
+    public static void isCorrectRangeNumber(String[] pureNumber, Error error) {
+        for(String s : pureNumber) {
+            int number = Integer.parseInt(s);
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException(error.getMsg());
+            }
+        }
     }
 
     public static int validateBonusNumber(String bonusNumber) {
