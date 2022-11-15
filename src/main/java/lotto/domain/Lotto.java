@@ -14,7 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -24,9 +24,8 @@ public class Lotto {
     }
 
     public String getSortedNumbersString() {
-        List<Integer> copyNumbers = new ArrayList<>(numbers);
-        Collections.sort(copyNumbers);
-        return copyNumbers.toString();
+        Collections.sort(numbers);
+        return numbers.toString();
     }
 
     public boolean contains(int number) {
