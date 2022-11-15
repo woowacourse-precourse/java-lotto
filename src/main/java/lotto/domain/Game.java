@@ -39,6 +39,7 @@ public class Game {
         isBonusJustOne(bonusInput);
         bonusNumber = bonusInput.get(0);
         isBonusUnique(bonusNumber);
+        isBonusCorrect(bonusNumber);
     }
     public void updateGame(LottoProperties lottoProperties){
         gameCount[lottoProperties.getIndex()]++;
@@ -52,6 +53,11 @@ public class Game {
     private void isBonusUnique(int bonusNumber){
         if(awardLotto.getNumbers().contains(bonusNumber)){
             ErrorHandler.mutualInputException();
+        }
+    }
+    private void isBonusCorrect(int bonusNumber){
+        if(bonusNumber<1 || bonusNumber>45){
+            ErrorHandler.numberUnCorrectException();
         }
     }
     public Lotto getAwardLotto(){
