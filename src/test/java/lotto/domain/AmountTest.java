@@ -22,7 +22,7 @@ class AmountTest {
         System.setIn(in);
 
         assertThatThrownBy(Input::inputAmount)
-                .hasMessageContaining("[ERROR] 구입 금액이 너무 크거나 입력이 잘못되었습니다.")
+                .hasMessageContaining("[ERROR] 구입 금액이 너무 크거나 입력이 올바르지 않습니다.")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -33,7 +33,7 @@ class AmountTest {
         System.setIn(in);
 
         assertThatThrownBy(Input::inputAmount)
-                .hasMessageContaining("[ERROR] 구입 금액이 너무 크거나 입력이 잘못되었습니다.")
+                .hasMessageContaining("[ERROR] 구입 금액이 너무 크거나 입력이 올바르지 않습니다.")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

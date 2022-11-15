@@ -21,13 +21,6 @@ public class Input {
     }
 
     /**
-     * 입력한 문자열이 숫자로만 이루어진 것인지 확인하는 메소드
-     */
-    private static boolean isNumeric(String number) {
-        return number.chars().allMatch(Character::isDigit);
-    }
-
-    /**
      * 당첨 번호를 입력받는 메소드
      */
     public static List<Integer> inputWinningNumbers() {
@@ -38,6 +31,18 @@ public class Input {
         return Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 보너스 번호를 입력받는 메소드
+     */
+    public static int inputBonusNumber() {
+        try {
+            String bonus = Console.readLine();
+            return Integer.parseInt(bonus);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호의 입력이 올바르지 않습니다.");
+        }
     }
 
     /**
@@ -54,17 +59,5 @@ public class Input {
      */
     private static boolean isSeparatedByCommaAndNumerics(String numbers) {
         return numbers.matches("(\\d)+,(\\d)+,(\\d)+,(\\d)+,(\\d)+,(\\d)+");
-    }
-
-    /**
-     * 보너스 번호를 입력받는 메소드
-     */
-    public static int inputBonusNumber() {
-        try {
-            String bonus = Console.readLine();
-            return Integer.parseInt(bonus);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호의 입력이 올바르지 않습니다.");
-        }
     }
 }

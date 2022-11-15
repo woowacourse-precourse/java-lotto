@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.util.Input;
-
 import java.util.List;
 
 import static lotto.domain.Amount.*;
@@ -12,19 +10,16 @@ import static lotto.util.Input.*;
 
 public class Purchase {
 
-    private static Amount amount;
-    private static List<Lotto> lottos;
-    private static WinningNumber winningNumber;
-
     public static void lotto() {
-        printAmountInputText();
-        amount = pay(inputAmount());
 
-        lottos = create(amount.getCount());
+        printAmountInputText();
+        Amount amount = pay(inputAmount());
+
+        List<Lotto> lottos = create(amount.getCount());
         printLottos(lottos);
 
         printInputWinningNumber();
-        winningNumber = draw(inputWinningNumbers());
+        WinningNumber winningNumber = draw(inputWinningNumbers());
 
         printInputBonusNumber();
         winningNumber.addBonus(inputBonusNumber());
