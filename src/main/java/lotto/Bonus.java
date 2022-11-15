@@ -18,7 +18,7 @@ public class Bonus {
         BonusValidate(BonusNumber, Game.JackpotNumbers);
     }
 
-    private static void BonusValidate(int BonusNumber, List<Integer> numbers) {
+    public static void BonusValidate(int BonusNumber, List<Integer> numbers) {
         if (numbers.contains(BonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_IS_DUPLICATED.getMsg());
         }

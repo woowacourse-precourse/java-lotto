@@ -34,8 +34,9 @@ public class Game {
         LottoGenerator(Buy.HowMuch());
         PrintGeneratedLotto(nLotto, GeneratedLotto);
         JackpotNumbers = inputJackpotNum();
+        Lotto lotto = new Lotto(JackpotNumbers);
         Bonus.askBonusNumber();
-        WinningCount(GeneratedLotto, JackpotNumbers);
+        WinningCount(GeneratedLotto, lotto.getLottoNumber());
         PrintWinning(WinTypeCounter);
     }
 }
