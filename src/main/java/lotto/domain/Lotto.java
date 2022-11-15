@@ -75,7 +75,7 @@ public class Lotto {
 
     // 입력된 문자열이 숫자가 맞는지 확인 하는 메서드
     private void isRealLottoNumber (String lottoNumber) {
-        String mergedNumber = String.join(lottoNumber);
+        String mergedNumber = String.join("",lottoNumber.split(","));
 
         for (char element: mergedNumber.toCharArray()) {
             if (element < 48 || element > 57) {
