@@ -1,4 +1,4 @@
-package lotto;
+package model;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,12 +9,12 @@ public class WinningLotto {
     private List<String> winningNumbers;
     private List<Integer> winningNumbersConvert;
 
-    public WinningLotto(String input){
+    public WinningLotto(String input) {
         setWinningNumberBasedOnComma(input);
         this.winningNumbersConvert = winningNumbersConvert;
     }
 
-    public void setWinningNumberBasedOnComma(String input){
+    public void setWinningNumberBasedOnComma(String input) {
         winningNumbers = Stream.of(input.split("\\s*,\\s*"))
                 .collect(Collectors.toList());
 
@@ -23,7 +23,7 @@ public class WinningLotto {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> getWinningNumbers(){
+    public List<Integer> getWinningNumbers() {
         return winningNumbersConvert;
     }
 

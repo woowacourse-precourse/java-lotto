@@ -1,4 +1,4 @@
-package lotto;
+package model;
 
 import controller.LottoController;
 
@@ -7,8 +7,7 @@ public class Application {
         LottoController lottoController = new LottoController();
         try {
             lottoController.lottoStart();
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
