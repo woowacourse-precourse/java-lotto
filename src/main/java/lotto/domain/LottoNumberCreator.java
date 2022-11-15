@@ -60,8 +60,9 @@ public class LottoNumberCreator {
      */
     private void validateWinNumberAmount(String[] lottoWinNumberWords) {
         if (lottoWinNumberWords.length != NUMBER_OF_LOTTERY) {
-            System.out.println("[ERROR] 로또 당첨 번호는 쉼표(,)를 기준으로 총 6개의 숫자를 입력하셔야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "[ERROR] 로또 당첨 번호는 쉼표(,)를 기준으로 총 6개의 숫자를 입력하셔야 합니다."
+            );
         }
     }
 
@@ -73,8 +74,7 @@ public class LottoNumberCreator {
             try {
                 Integer.valueOf(lottoWinNumberWords[i].trim());
             } catch (NumberFormatException e) {
-                System.out.println("[ERROR] 로또 당첨 번호는 숫자를 입력하셔야 합니다.");
-                throw new IllegalArgumentException(e);
+                throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 숫자를 입력하셔야 합니다.", e);
             }
         }
     }
@@ -85,8 +85,9 @@ public class LottoNumberCreator {
     private void validateNumberRange(List<Integer> lottoWinNumbers) {
         for (int i = 0; i < NUMBER_OF_LOTTERY; ++i) {
             if (lottoWinNumbers.get(i) < 1 || lottoWinNumbers.get(i) > 45) {
-                System.out.println("[ERROR] 로또 당첨 번호는 1부터 45 사이의 숫자를 입력하셔야 합니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(
+                        "[ERROR] 로또 당첨 번호는 1부터 45 사이의 숫자를 입력하셔야 합니다."
+                );
             }
         }
     }

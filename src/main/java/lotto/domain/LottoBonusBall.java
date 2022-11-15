@@ -23,8 +23,7 @@ public class LottoBonusBall {
      */
     private void validate(int bonusBall) {
         if (bonusBall < 1 || bonusBall > 45) {
-            System.out.println("[ERROR] 로또 보너스 번호는 1부터 45사이의 숫자를 입력하셔야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 보너스 번호는 1부터 45사이의 숫자를 입력하셔야 합니다.");
         }
     }
 
@@ -34,8 +33,7 @@ public class LottoBonusBall {
     private void validateDuplicationByLotto(int bonusBall, Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
         if (numbers.contains(bonusBall)) {
-            System.out.println("[ERROR] 로또 보너스 번호는 로또 당첨 번호들과 중복되지 않는 숫자를 입력하셔야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 보너스 번호는 로또 당첨 번호들과 중복되지 않는 숫자를 입력하셔야 합니다.");
         }
     }
 

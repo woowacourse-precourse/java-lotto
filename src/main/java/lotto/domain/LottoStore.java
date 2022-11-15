@@ -37,8 +37,7 @@ public class LottoStore {
         try {
             return Integer.valueOf(buyAmountBill);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 구입 금액은 숫자를 입력하셔야 합니다.");
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자를 입력하셔야 합니다.", e);
         }
     }
 
@@ -47,8 +46,7 @@ public class LottoStore {
      */
     private void validateThousandUnits(int buyAmount) {
         if (buyAmount % 1000 > 0) {
-            System.out.println("[ERROR] 구입 금액은 1,000 단위로 입력하셔야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000 단위로 입력하셔야 합니다.");
         }
     }
 }
