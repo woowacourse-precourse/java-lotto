@@ -89,6 +89,8 @@ public class LottoCalculateService {
             rankMap.put(Rank.THIRD, rankMap.getOrDefault(Rank.THIRD, 0) + 1);
         }
     }
-
+    public String getEarningRate(User user) {
+        return String.format("%.1f", ((double) getTotalPrice() / (double) user.getPrice()) * 100);
+    }
 
 }
