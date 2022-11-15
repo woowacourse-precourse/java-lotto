@@ -68,4 +68,9 @@ public class InputUser {
         checkContainLotto(lottoNumber, bonusNumber);
         return bonusNumber;
     }
+    public static void checkContainLotto(List<Integer> lottoNumber, int bonus) {
+        if (lottoNumber.contains(bonus)) {
+            throw new IllegalArgumentException(ERRMSG.getErrMsg());
+        }
+    }
 }
