@@ -22,10 +22,7 @@ public class Controll {
             buyTicket();
             outputView.printLotto(buyer.getLottoNumber());
             winnginTicket();
-            comparison.compareLotto(buyer.getLottoNumber(), winningTicket);
-            outputView.printResult(comparison.getSavedResult());
-            money.calculrateReturnRate(comparison.getSavedResult());
-            outputView.printPrizeMoney(money.getPrizeMoney(), buyer.getBuyerMoney());
+            compareAndCalculratePrize();
         } catch (IllegalArgumentException e) {
             outputView.printMessage(e.getMessage());
         }
@@ -42,5 +39,13 @@ public class Controll {
 
         outputView.printMessage("\n" + Message.BONUS_NUMBER.getMessage());
         winningTicket.saveBonus(inputView.inputNum());
+    }
+
+    private void compareAndCalculratePrize() {
+        comparison.compareLotto(buyer.getLottoNumber(), winningTicket);
+        outputView.printResult(comparison.getSavedResult());
+
+        money.calculrateReturnRate(comparison.getSavedResult());
+        outputView.printPrizeMoney(money.getPrizeMoney(), buyer.getBuyerMoney());
     }
 }
