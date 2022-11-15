@@ -19,6 +19,8 @@ public class LottoGameController {
     private List<Integer> userInputLottoNumberList;
     List<List<Integer>> publishedLottoNumberList = new ArrayList<>();
 
+    private final String ERROR_NOT_NUMBER = "[ERROR] 숫자로만 이루어져 있어야 합니다.";
+
     public void gameStart() {
         purchaseLotto();
         inputLottoNumberAndBonus();
@@ -79,6 +81,7 @@ public class LottoGameController {
     }
 
     private int translateStringToInteger(String text) {
+        notNumberValidate(text);
         int integerNumber = Integer.parseInt(text);
 
         return integerNumber;
@@ -86,5 +89,13 @@ public class LottoGameController {
 
     public List<List<Integer>> getUserInputLottoNumberList() {
         return this.getUserInputLottoNumberList();
+    }
+
+    private void notNumberValidate(String text) {
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) < 48 || text.charAt(i) > 57) {
+                throw new IllegalArgumentException(ERROR_NOT_NUMBER);
+            }
+        }
     }
 }
