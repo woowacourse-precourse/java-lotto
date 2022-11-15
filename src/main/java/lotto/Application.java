@@ -1,7 +1,14 @@
 package lotto;
 
 public class Application {
+    private static String ERROR_MESSAGE = "[ERROR] ";
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoPlay lottoPlay = new LottoPlay();
+        try{
+            lottoPlay.play();
+        } catch (IllegalStateException e){
+            System.out.println(ERROR_MESSAGE + e.getMessage());
+        }
     }
 }
