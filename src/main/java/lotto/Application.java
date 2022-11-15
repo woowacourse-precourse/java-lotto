@@ -11,9 +11,9 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            int numberOfGame = Budget.getInstance(getPurchase()).getLottoNumberByBudget();
+            int numberOfGame = Budget.getInstance(getMoney()).getLottoNumberByBudget();
             Purchase.getInstance(numberOfGame);
-            System.out.println("\n"+numberOfGame+InputMessage.PURCHASE_NUMBER_OF_GAME.getValue());
+            System.out.println("\n" + numberOfGame + InputMessage.PURCHASE_NUMBER_OF_GAME.getValue());
             TargetNumbers.getInstance(getWinNumber());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -21,7 +21,7 @@ public class Application {
 
     }
 
-    public static String getPurchase() { // 로또 구입 수행
+    public static String getMoney() { // 로또 구입 수행
         System.out.println(InputMessage.PLEASE_INPUT_BUDGET.getValue());
         String money = Console.readLine();
         return money;
@@ -29,7 +29,7 @@ public class Application {
 
     public static String getWinNumber() { // 당첨 번호 입력 수행
         System.out.println(InputMessage.PLEASE_INPUT_WIN_NUMBER.getValue());
-        String winNumber=Console.readLine();
+        String winNumber = Console.readLine();
         return winNumber;
     }
 

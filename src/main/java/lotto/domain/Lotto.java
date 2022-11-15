@@ -27,8 +27,8 @@ public class Lotto { // 로또 번호 세트 하나에 대한 기능 클래스
         }
     }
 
-    public static Lotto generateRandomLotto(){
-        return getInstance(Randoms.pickUniqueNumbersInRange(SMALLEST_NUMBER,LARGEST_NUMBER,SIZE));
+    public static List<Integer>  generateRandomLotto(){
+        return Randoms.pickUniqueNumbersInRange(SMALLEST_NUMBER,LARGEST_NUMBER,SIZE);
     }
 
 }
