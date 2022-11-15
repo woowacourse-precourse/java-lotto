@@ -66,8 +66,20 @@ public class Rank {
     }
 
     public void run (User user) {
-        for (Lotto numbers : user.userLotto) {
+        for (Lotto lotto : user.userLotto) {
+            List<Integer> userNumbers = lotto.getNumbers();
 
         }
+    }
+
+    private int countMatchedNumbers (List<Integer> userNumbers) {
+        int count = 0;
+        List<Integer> targetNumbers = lottoNumbers.getNumbers();
+        for (Integer number : userNumbers) {
+            if (targetNumbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
