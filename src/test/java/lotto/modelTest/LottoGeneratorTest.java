@@ -39,5 +39,14 @@ public class LottoGeneratorTest {
         Stream<Integer> sortedLottoNumbers= lottoGenerator.sortLottoNumbers(new Lotto(generatedLottoNumbers));
         assertThat(sortedLottoNumbers.toArray()).containsExactlyElementsOf(expectedLotto);
     }
-    
+    @Test
+    @DisplayName("오름차순으로 정렬된 로또가 문자열로 변환되는지 확인한다.")
+    public void checkSortedLottoResult(){
+        String expectedLotto= "[1, 2, 3, 4, 5, 6]\n";
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        List<Integer> generatedLottoNumbers=List.of(2,6,3,4,1,5);
+        Stream<Integer> sortedLottoNumbers= lottoGenerator.sortLottoNumbers(new Lotto(generatedLottoNumbers));
+        String result = lottoGenerator.createLottoNumberFormat(sortedLottoNumbers);
+        assertThat(result).isEqualTo(expectedLotto);
+    }
 }
