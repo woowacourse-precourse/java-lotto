@@ -1,5 +1,6 @@
 package lotto;
 
+import net.bytebuddy.build.ToStringPlugin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -88,6 +89,21 @@ class UserTest {
         assertThat(user.getFifth()).isEqualTo(1);
     }
 
+    @DisplayName("당첨 내역 확인하기")
+    @Test
+    void checkWinning() {
+        User user = new User(2000);
+        List<List<Integer>> lotto = List.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6));
+        user.setLottoNumbers(lotto);
+        int bonus = 7;
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
 
+        user.checkWinning(numbers, bonus);
 
+        assertThat(user.getFirst()).isEqualTo(2);
+        assertThat(user.getSecond()).isEqualTo(0);
+        assertThat(user.getThird()).isEqualTo(0);
+        assertThat(user.getFourth()).isEqualTo(0);
+        assertThat(user.getFifth()).isEqualTo(0);
+    }
 }
