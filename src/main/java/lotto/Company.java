@@ -84,7 +84,7 @@ public class Company {
                 "%입니다.");
     }
 
-    private static Integer[] countPrize(List<Prize> prizes) {
+    private Integer[] countPrize(List<Prize> prizes) {
         Integer[] countPrizes = new Integer[6];
         Arrays.fill(countPrizes, 0);
         for (Prize prize : prizes) {
