@@ -20,7 +20,7 @@ public class Game {
             Money capital = new Money(InputView.promptAmount());
             List<Lotto> lottos = issueLottosWith(capital);
 
-            List<Rank> ranks = getPicker().match(lottos);
+            List<Rank> ranks = pickLotto().match(lottos);
 
             StatisticsView.printStatistics(new Statistics(ranks), capital);
         } catch (IllegalArgumentException exception) {
@@ -28,7 +28,7 @@ public class Game {
         }
     }
 
-    private PickedLotto getPicker() {
+    private PickedLotto pickLotto() {
         Lotto winningLotto = new Lotto(InputView.promptWinningNumbers());
         LottoNumber bonusNumber = new LottoNumber(InputView.promptBonusNumber());
         return new PickedLotto(winningLotto, bonusNumber);
