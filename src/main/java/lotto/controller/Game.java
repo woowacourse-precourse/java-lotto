@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Grade;
-import lotto.domain.Lotto;
-import lotto.domain.LottoCashier;
-import lotto.domain.Referee;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -27,7 +24,10 @@ public class Game {
         List<Grade> grades = referee.calculateGrades();
         OutputView.printLottoStatics(referee.getStatics(grades));
 
+        Yield yield = new Yield(grades, money);
+        OutputView.printLottoEarningRate(yield.getYield());
     }
+
 
     private Lotto setWinningNumbers() {
         List<Integer> inputNumbers = InputView.inputWinningNumbers();

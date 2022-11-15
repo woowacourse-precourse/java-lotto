@@ -51,5 +51,8 @@ public class OutputView {
             }
         });
     }
+    public static void printLottoEarningRate(String yield) {
+        System.out.println("총 수익률은 " + yield + "입니다.");
+    }
 
 }

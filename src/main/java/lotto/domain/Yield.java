@@ -19,4 +19,8 @@ public class Yield {
         return totalWinningPrice;
     }
 
+    public String getYield() {
+        double percent = getTotalWinningPrice() * 100 / (double) totalInvestment;
+        return String.format("%.1f%%", percent);
+    }
 }
