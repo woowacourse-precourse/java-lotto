@@ -1,4 +1,4 @@
-package lotto.values;
+package lotto.domain;
 
 import static lotto.values.Constants.Console.*;
 import static lotto.values.Constants.Digit.*;

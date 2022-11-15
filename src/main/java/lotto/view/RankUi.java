@@ -1,13 +1,13 @@
 package lotto.view;
 
 import lotto.domain.Rank;
-import lotto.values.Hit;
+import lotto.domain.Hit;
 
 import java.util.LinkedHashMap;
 
 import static lotto.values.Constants.Digit.FIFTH_PLACE;
 import static lotto.values.Constants.Digit.FIRST_PLACE;
-import static lotto.values.Hit.getHit;
+import static lotto.domain.Hit.getHit;
 
 public class RankUi {
 
