@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.MatchCount;
 
 import java.util.List;
 
@@ -38,16 +39,19 @@ public class OutputView {
     public static void printWinningHistory(List<Integer> result) {
         System.out.println(START_WINNING_STATISTICS_MESSAGE);
         System.out.println("---");
-        for (int i = 3; i < 8; i++) {
+        int i = 3;
+        for (MatchCount matchCount : MatchCount.values()) {
             if (i == 6) {
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", i - 1, PRIZE_MONEY[i - 3], result.get(i - 3)));
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", i - 1, matchCount.getPrizeMoney(), result.get(i - 3)));
+                i++;
                 continue;
             }
             if (i == 7) {
-                System.out.println(String.format("%d개 일치 (%,d원) - %d개", i - 1, PRIZE_MONEY[i - 3], result.get(i - 3)));
+                System.out.println(String.format("%d개 일치 (%,d원) - %d개", i - 1, matchCount.getPrizeMoney(), result.get(i - 3)));
                 continue;
             }
-            System.out.println(String.format("%d개 일치 (%,d원) - %d개", i, PRIZE_MONEY[i - 3], result.get(i - 3)));
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개", i, matchCount.getPrizeMoney(), result.get(i - 3)));
+            i++;
         }
     }
 
