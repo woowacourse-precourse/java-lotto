@@ -38,7 +38,7 @@ public class Host {
     }
 
     public void showWinResult(User user) {
-        System.out.println("당첨 통계\n---\n");
+        System.out.println("당첨 통계\n---");
         ResultAnalyzer resultAnalyzer = new ResultAnalyzer(winNumbers, bonusNumber);
         DecimalFormat df = new DecimalFormat("###,###");
         List<Lotto> userLotto = user.getWholeLotto();

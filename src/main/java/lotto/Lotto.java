@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,20 +15,11 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         Validator validator = new Validator();
         validator.validateLotto(numbers);
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
     }
 
     // TODO: 추가 기능 구현
-
-    public int decideRank(List<Integer> lotto, int bonusNumber) {
-        return 0;
-    }
-
-
     public String toString(){
-        return numbers.toString();
+        return numbers.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList()).toString();
     }
 
     public List<Integer> getNumbers() {

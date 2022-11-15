@@ -17,7 +17,6 @@ public class Validator {
         String regexOnlyNumbers = "^[0-9]*$";
         Matcher matcherOnlyNumbers = Pattern.compile(regexOnlyNumbers).matcher(inputString);
         if (!matcherOnlyNumbers.matches()){
-            System.out.println("[ERROR] 숫자만 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
     }
@@ -49,6 +48,4 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복일 수 없습니다.");
         }
     }
-
-
 }
