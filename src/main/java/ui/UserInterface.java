@@ -1,10 +1,10 @@
 package ui;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.PrizeMoney;
-import lotto.Statistics;
-import lotto.WinningLotto;
+import lotto.domain.Statistics;
+import lotto.domain.WinningLotto;
 
 import java.util.Arrays;
 import java.util.List;

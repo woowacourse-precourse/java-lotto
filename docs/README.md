@@ -41,7 +41,7 @@
     - 로또 번호 6개를 랜덤으로 발행
 - 당첨 로또 클래스(WinningLotto)
     - 사용자로부터 입력받은 당첨 로또 번호 6자리와 보너스 번호를 관리
-- 통계 계산(StatisticCalculator)
+- 통계(Statistics)
     - 로또 당첨 통계를 계산하는 클래스
 - 예외 처리(ExceptionController)
     - 상수 형태로 에러 메세지를 관리

@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoGenerator;
+import lotto.domain.WinningLotto;
 import ui.UserInterface;
 
 import java.util.List;
