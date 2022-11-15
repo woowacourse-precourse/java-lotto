@@ -4,6 +4,7 @@ import lotto.resources.Constants;
 
 import java.util.List;
 import java.util.HashSet;
+
 import java.util.function.Consumer;
 
 public class Lotto {

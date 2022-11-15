@@ -8,7 +8,9 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Objects;
 import java.util.ArrayList;
+
 import java.util.stream.IntStream;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 public class TotalResultMaker {
