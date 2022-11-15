@@ -14,8 +14,4 @@ public enum RankInfo {
         this.prizeMoney = prizeMoney;
         this.message = message;
     }
-
-    public static void printTotalPrizeRate(double totalRate) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", totalRate);
-    }
 }

@@ -34,7 +34,6 @@ public class Referee {
 
         for (Lotto lottoClass : userLotto) {
             List<Integer> user = lottoClass.get();
-            System.out.println(user);
 
             int correctNumber = Judgment.correctCount(winningLotto, user);
             countNumberRank(correctNumber, bonusNumber, user);

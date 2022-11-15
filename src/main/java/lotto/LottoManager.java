@@ -30,22 +30,22 @@ public class LottoManager {
         }
     }
 
-    public void start() {
+    public void run() {
         Map<Integer, Integer> result;
-        List<Lotto> lotto;
+        List<Lotto> userLottos;
         List<Integer> winningNumber;
 
         int userMoney = this.getMoney();
+        int numberLottos = getNumberLottos(userMoney);
 
-        printPublishedLottos(userMoney);
+        printPublishedLottos(numberLottos);
 
-        lotto = this.publishLottoForPrice();
+        userLottos = this.publishLottoForPrice(numberLottos);
 
         winningNumber = this.GenerateLottoNumbers();
-
         int bonusNumber = this.GenerateBonusNumber();
 
-        result = Referee.compare(bonusNumber, winningNumber, lotto);
+        result = Referee.compare(bonusNumber, winningNumber, userLottos);
 
         this.printWinningMessage(result);
 
@@ -73,7 +73,7 @@ public class LottoManager {
     }
 
     public int getMoney() throws IllegalArgumentException {
-        OutputView.requestInputMoney();
+        System.out.println(LottoInfo.INPUT_BUY_MESSAGE.message);
         String inputMoney = Console.readLine();
 
         for (int i = 0; i < inputMoney.length(); i++) {
@@ -101,24 +101,27 @@ public class LottoManager {
         Collections.sort(lotto);
     }
 
-
     public int getNumberLottos(int money) {
         return (money / LOTTO_PRICE);
     }
 
-    public void printPublishedLottos(int money) {
-        int numberLottos = getNumberLottos(money);
+    public void printPublishedLottos(int numberLottos ) {
         OutputView.informNumberPurchases(numberLottos);
+        System.out.println(LottoInfo.PURCHASE_MESSAGE.message);
     }
 
-    public List<Lotto> publishLottoForPrice() {
+    public List<Lotto> publishLottoForPrice(int numberLottos) {
         List<Lotto> result = new ArrayList<>();
 
         for (int i = 0; i < numberLottos; i++) {
             List<Integer> newLotto = GenerateRandomNumbers();
+
             sortLottoNumbers(newLotto);
-            System.out.println(newLotto);
+
             Lotto lotto = new Lotto(newLotto);
+
+            OutputView.printLottoNumber(lotto);
+
             result.add(lotto);
         }
 
@@ -131,7 +134,7 @@ public class LottoManager {
 
         int index = 3;
         for (RankInfo win : RankInfo.values()) {
-            System.out.println(win.message + result.get(index) + "개");
+            OutputView.winningStatistic(win, result, index);
             index++;
         }
     }
@@ -145,6 +148,6 @@ public class LottoManager {
         }
 
         double totalRate = ((double) totalProfit / userMoney) * 100;
-        RankInfo.printTotalPrizeRate(totalRate);
+        OutputView.printTotalPrizeRate(totalRate);
     }
 }
