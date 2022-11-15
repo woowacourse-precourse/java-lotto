@@ -17,4 +17,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public List<Integer> winSevenNumber(String bonusNumber) {
+
+        this.numbers.add(Integer.parseInt(bonusNumber));
+
+        return this.numbers;
+    }
 }
