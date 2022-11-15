@@ -11,6 +11,7 @@ public class LottoGameController {
         WinningLotto winningLotto = makeWinningLotto();
         LottoResult lottoResult = getResult(lottos, winningLotto);
         SystemMessage.winningResult(lottoResult.matchWinningRank());
+        SystemMessage.profit(lottoResult.getProfit(amount.makeLottoTickets()));
     }
 
     private LottoAmount inputMoney() {
