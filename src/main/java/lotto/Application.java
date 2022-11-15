@@ -14,5 +14,7 @@ public class Application {
         List<List<Integer>> issueLotto = lottoMachine.issueLotto(amount);
 
         List<Integer> numbersOfWinner = ui.getWinningNumber();
+
+
     }
 }
