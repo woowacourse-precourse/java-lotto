@@ -23,4 +23,12 @@ class ValidationUtilsTest {
         assertThatThrownBy(() -> ValidationUtils.validateBonusNumber(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("돈이 너무 적으면 로또를 구매할 수 없다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1000", "-300", "500", "999"})
+    void throwExceptionWhenMoneyIsTooLittle(String money) {
+        assertThatThrownBy(() -> ValidationUtils.validateMoneyAmount(money))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

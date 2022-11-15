@@ -19,17 +19,6 @@ public class ValidationUtils {
         validatePrice(moneyAmount);
     }
 
-    private static void validatePrice(String moneyAmount) {
-        int money = Integer.parseInt(moneyAmount);
-        if (underPurchaseMoney(money)) {
-            throw new IllegalArgumentException(CANNOT_PURCHASE_LOTTO + LOTTO_PRICE + INPUT_LARGER);
-        }
-    }
-
-    private static boolean underPurchaseMoney(int money) {
-        return money < LOTTO_PRICE;
-    }
-
     public static void validateWinningNumber(String number) {
         if (isWinningNumberFormat(number)) {
             return;
@@ -55,5 +44,16 @@ public class ValidationUtils {
 
     private static boolean isNumber(String number) {
         return Pattern.matches(NUMBER_REGEX, number);
+    }
+
+    private static void validatePrice(String moneyAmount) {
+        int money = Integer.parseInt(moneyAmount);
+        if (underPurchaseMoney(money)) {
+            throw new IllegalArgumentException(CANNOT_PURCHASE_LOTTO + LOTTO_PRICE + INPUT_LARGER);
+        }
+    }
+
+    private static boolean underPurchaseMoney(int money) {
+        return money < LOTTO_PRICE;
     }
 }
