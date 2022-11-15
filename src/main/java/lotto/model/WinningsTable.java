@@ -32,4 +32,9 @@ public enum WinningsTable {
                 findAny().
                 orElse(NOTHING);
     }
+    public static String getWinningsByMatchState(String rankName){
+        WinningsTable winningsTable = WinningsTable.findByMatches(rankName);
+        return winningsTable.REVENUE;
+    }
+    
 }
