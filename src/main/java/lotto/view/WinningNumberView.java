@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class WinningNumberView {
         List<Integer> winningNumberList = makeWinningNumberList(winningNumbers);
 
         checkDuplicate(winningNumbers, winningNumberList);
-
+        Collections.sort(winningNumberList);
         return winningNumberList;
     }
 
