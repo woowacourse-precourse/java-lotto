@@ -34,6 +34,17 @@ public class Game {
         this.winningResults = new LottoWinningResult();
     }
 
+    public double computeRateOfReturn() {
+        double totalMoney = 0;
+        for (LottoRank rank : LottoRank.values()) {
+            totalMoney += winningResults.getWinningResult(rank) * rank.getLottoReward();
+        }
+        totalMoney /= (double)userMoney;
+        totalMoney *= 100;
+
+        return totalMoney;
+    }
+
     public void printWinningResult() {
         for (LottoRank rank : LottoRank.values()) {
             if (rank == LottoRank.MISS_PRIZE) {
