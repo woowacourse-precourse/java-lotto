@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
+    private static LottoValidator validator = LottoValidator.getInstance();
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -12,41 +13,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (!isValidSize(numbers)) {
+        if (!validator.isValidSize(numbers)) {
             throw new IllegalArgumentException();
         }
-        if (!isValidRangeNumbers(numbers)) {
+        if (!validator.isValidRangeNumbers(numbers)) {
             throw new IllegalArgumentException();
         }
-        if (isDuplicated(numbers)){
+        if (validator.isDuplicated(numbers)){
             throw new IllegalArgumentException();
         }
-    }
-
-    private boolean isValidSize(List<Integer> numbers) {
-        if (numbers.size() != LottoConstant.SIZE.getValue()) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isValidRange(int number) {
-        if (number < LottoConstant.STARTFROM.getValue()
-                || number > LottoConstant.ENDTO.getValue()) return false;
-        return true;
-    }
-
-    private boolean isValidRangeNumbers(List<Integer> numbers) {
-        for (int number : numbers) {
-            if (!isValidRange(number)) return false;
-        }
-        return true;
-    }
-
-    private boolean isDuplicated(List<Integer> numbers) {
-        HashSet<Integer> numberSet = new HashSet<>(numbers);
-        if (numberSet.size() != numbers.size()) return true;
-        return false;
     }
 
     public List<Integer> getLottoNumbers() {
