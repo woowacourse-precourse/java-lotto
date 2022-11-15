@@ -25,8 +25,8 @@ public class LottoController {
     private final LottoBundleView lottoBundleView;
     private final LottoResultView lottoResultView;
     private final HashMap<StepType, Runnable> stepMapper;
-    private Long userId;
-    private Long roundId;
+    private long userId;
+    private long roundId;
 
     private LottoController() {
         currentStep = StepType.INIT;
@@ -79,10 +79,7 @@ public class LottoController {
 
     private void giveResult() {
         adminService.finishRound();
-        LottoQueryDto lottoQueryDto = LottoQueryDto.builder()
-                .userId(userId)
-                .roundId(roundId)
-                .build();
+        LottoQueryDto lottoQueryDto = new LottoQueryDto(roundId, userId);
         HashMap<LottoResultType, Integer> myResult = userService.getMyResult(lottoQueryDto);
         Logger.log(lottoResultView.stringify(myResult));
         currentStep = currentStep.getNextStep();

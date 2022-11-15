@@ -39,7 +39,7 @@ public class UserService {
         Long userId = lottoQueryDto.getUserId();
         Long roundId = lottoQueryDto.getRoundId();
         WinNumber winNumber = userDao.selectWinNumber(roundId);
-        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(userId, roundId);
+        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(roundId, userId);
         lottoBundles.stream()
                 .map(LottoBundle::getLottos)
                 .flatMap(Collection::stream)

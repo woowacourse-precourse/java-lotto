@@ -17,14 +17,15 @@ public class LottoRoundRepository {
 
     private static void assignNewInstance() {
         synchronized (LottoRoundRepository.class) {
-            instance = new LottoRoundRepository(1L);
+            instance = new LottoRoundRepository();
         }
     }
 
     private final HashMap<Long, LottoRound> lottoRoundRepository = new HashMap<>();
 
-    private LottoRoundRepository(Long initRoundId) {
-        lottoRoundRepository.put(initRoundId, new LottoRound(initRoundId));
+    private LottoRoundRepository() {
+        long initId = lottoRoundRepository.size() + 1;
+        lottoRoundRepository.put(initId, new LottoRound(initId));
     }
 
     public Optional<LottoRound> findById(Long id) {
