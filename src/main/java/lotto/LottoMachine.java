@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,15 +17,17 @@ public class LottoMachine {
 		return lottos;
 	}
 
-	public void generateLottos(int count){
+	public static LottoMachine generateLottos(int count){
+		List<List<Integer>> generatedLottos = new ArrayList<>();
 		for (int i = 0; i < count;i++) {
 			List<Integer> lotto = Randoms.pickUniqueNumbersInRange(
 				Constant.MIN_VALUE.getNumber(),
 				Constant.MAX_VALUE.getNumber(),
 				Constant.NUMBER_OF_NUMBERS.getNumber());
 			Collections.sort(lotto);
-			lottos.add(lotto);
+			generatedLottos.add(lotto);
 		}
+		return new LottoMachine(generatedLottos);
 	}
 
 	public void printLottos(){
