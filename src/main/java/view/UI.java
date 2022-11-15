@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static Exception.Error.ERROR_AMOUNT_IS_NOT_RIGHT;
-import static Exception.Error.ERROR_NOT_NUMBER;
+import static view.Error.*;
 import static lotto.Winning.*;
 
 public class UI {
+
+    public void printMessage(Comment comment){
+        System.out.println(comment.getMessage());
+    }
 
     // 금액 입력
     public int inputCoin() {
