@@ -59,8 +59,7 @@ public class Lotto {
 
     private void deleteLastSeparator(StringBuilder lottoResult) {
         lottoResult.delete(lottoResult.lastIndexOf(MessageFormatUtil.COMMA),
-                        lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + NumberUtil.ONE)
-                .append(MessageFormatUtil.END_BRACKET);
+                lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + NumberUtil.ONE);
     }
 
     public WinResultStatus getWinResult(WinningNumber winningNumber) {
