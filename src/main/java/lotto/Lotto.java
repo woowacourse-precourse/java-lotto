@@ -68,17 +68,10 @@ public class Lotto {
                 count++;
         }
 
-        if (count == 6)
-            return Rank.FIRST;
-        else if (count == 5 && numbers.contains(bonusNumber))
-            return Rank.SECOND;
-        else if (count == 5)
-            return Rank.THIRD;
-        else if (count == 4)
-            return Rank.FOURTH;
-        else if (count == 3)
-            return Rank.FIFTH;
-        return Rank.NONE;
+        if (count == 5 && numbers.contains(bonusNumber))
+            count += 2;
+
+        return getRank(count);
     }
 
     private Rank getRank(int count) {
