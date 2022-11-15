@@ -19,7 +19,7 @@ public class Error {
 
     static void isStartedNotZero(String input) {
         if (input.charAt(0) == '0') {
-            throw new IllegalArgumentException("[ERROR] 숫자는 0이 아닌 숫자로 시작해야 합니다");
+            throw new IllegalArgumentException("[ERROR] 숫자는 0이 아닌 수로 시작해야 합니다");
         }
     }
 
