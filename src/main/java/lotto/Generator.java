@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.*;
 import java.util.*;
 
 public class Generator {
-    public static List<Lotto> createLotteryTickets(int ticketCount) {
+    public static List<Lotto> createLottoTickets(int ticketCount) {
         List<Lotto> lottoTickets = new ArrayList<>(ticketCount);
         for (int i = 0; i < ticketCount; i++) {
             List<Integer> numbers = createNumbers();
