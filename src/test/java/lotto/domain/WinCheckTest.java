@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.TotalResult.getCount;
 import static lotto.domain.WinCheck.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,7 +35,7 @@ class WinCheckTest {
     @Test
     void Result_isBonusMatch_테스트() {
         winCheckTestInit();
-        assertEquals(testWinCheck.isBonusMatch(), true);
+        assertTrue(testWinCheck.isBonusMatch());
     }
 
     @DisplayName("당첨결과가 올바르게 입력되는지 확인한다.")
@@ -48,8 +47,8 @@ class WinCheckTest {
         StartLotto.winNums = testWinNums;
         StartLotto.winChecks = new ArrayList<>();
         checkSave();
-        assertEquals(StartLotto.winChecks.get(0).getMatchCount(),testWinCheck.getMatchCount());
-        assertEquals(StartLotto.winChecks.get(0).isBonusMatch(),testWinCheck.isBonusMatch());
+        assertEquals(StartLotto.winChecks.get(0).getMatchCount(), testWinCheck.getMatchCount());
+        assertEquals(StartLotto.winChecks.get(0).isBonusMatch(), testWinCheck.isBonusMatch());
     }
 
 
