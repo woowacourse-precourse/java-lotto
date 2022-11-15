@@ -1,7 +1,20 @@
 package lotto;
 
+import java.util.List;
+import lotto.domain.LottoUI;
+import lotto.domain.Lotto;
+import lotto.domain.Message;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoUI lottoUI = new LottoUI();
+        try {
+            List<Lotto> lottoBundle = lottoUI.buy();
+            lottoUI.printLottoBundle(lottoBundle);
+            lottoUI.inputWinningNumbers();
+            lottoUI.printWinningStatistics(lottoBundle);
+        } catch (Exception exception) {
+            System.out.println(Message.ERROR_MESSAGE + exception.getMessage());
+        }
     }
 }
