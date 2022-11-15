@@ -15,6 +15,8 @@ public class OutputView {
     private static final String SHOW_YIELD = "총 수익률은 %.1f%%입니다.\n";
     private static final String WINNING_RESULT = "%d개 일치%s (%s원) - %d개\n";
     private static final String HAS_BONUS_BALL = ", 보너스 볼 일치";
+    private static final String NO_HAS_BONUS_BALL = "";
+    private static final String COMMA_EVERY_3_DIGITS = "###,###";
     private static final String OPEN_BRACKET = "[";
     private static final String CLOSE_BRACKET = "]";
     private static final String SEPARATOR = ", ";
@@ -46,8 +48,8 @@ public class OutputView {
                 .stream()
                 .filter(rankEntry -> rankEntry.getKey().getMatchingCnt() != NO_WINNING_LOTTO)
                 .forEach(rankEntry -> {
-                    String bonusBall = "";
-                    String reward = new DecimalFormat("###,###").format(rankEntry.getKey().getReward());
+                    String bonusBall = NO_HAS_BONUS_BALL;
+                    String reward = new DecimalFormat(COMMA_EVERY_3_DIGITS).format(rankEntry.getKey().getReward());
                     if (rankEntry.getKey().isBonusBall()) {
                         bonusBall = HAS_BONUS_BALL;
                     }
