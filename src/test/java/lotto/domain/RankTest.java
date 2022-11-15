@@ -15,6 +15,15 @@ public class RankTest {
         assertThat(result).isEqualTo(rank);
     }
 
+    @DisplayName("일치하는 번호가 없으면 Rank 결과는 NOTHING")
+    @Test
+    void findRankByMatchNothing() {
+        Rank rank = Rank.findRankByMatch(2);
+        Rank result = Rank.NOTHING;
+
+        assertThat(result).isEqualTo(rank);
+    }
+
     @DisplayName("Rank 출력 형식에 맞게 반환 성공")
     @Test
     void checkRankDataFormat() {
