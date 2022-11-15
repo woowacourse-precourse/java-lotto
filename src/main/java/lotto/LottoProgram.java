@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.util.Validation;
@@ -52,20 +51,12 @@ public class LottoProgram {
     public void getWinningLottoNumbers() {
         OutputView.printInputWinningNumbersMessage();
         List<Integer> numbers = InputView.getLottoNumbers();
-        makeWinningLotto(numbers);
+        setWinningLotto(new Lotto(numbers));
 
         OutputView.printInputBonusNumbersMessage();
         int bonus = InputView.getBonusNumber();
-        makeBonusNumber(bonus);
+        setBonusNumber(bonus);
         Validation.checkDuplicateLottoNumbersAndBonusNumber(this.winningLotto.getNumbers(), this.bonusNumber);
-    }
-
-    private void makeWinningLotto(List<Integer> numbers) {
-        this.winningLotto = new Lotto(numbers);
-    }
-
-    private void makeBonusNumber(int bonusNumber) {
-        this.bonusNumber = bonusNumber;
     }
 
     public void getResult() {
@@ -138,5 +129,13 @@ public class LottoProgram {
         }
 
         this.rateOfReturn = (double) totalReward / (this.numberOfLotto * LOTTO_PRICE) * 100;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
+
+    public void setWinningLotto(Lotto winningLotto) {
+        this.winningLotto = winningLotto;
     }
 }
