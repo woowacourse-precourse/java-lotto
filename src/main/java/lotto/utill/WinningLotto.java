@@ -1,5 +1,7 @@
 package lotto.utill;
 
+import lotto.Messages.Message;
+
 public class WinningLotto {
     private Lotto lotto;
     private int bonus;
@@ -12,10 +14,10 @@ public class WinningLotto {
 
     private void validateBonus(int bonus) {
         if(bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여 합니다.");
+            throw new IllegalArgumentException(Message.BonusNotInRange);
         }
         if((lotto.getNumbers()).contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException(Message.BonusSameLotto);
         }
     }
 

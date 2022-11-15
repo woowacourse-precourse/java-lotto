@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Messages.Message;
 import lotto.utill.*;
 
 import java.util.ArrayList;
@@ -27,16 +28,16 @@ public class LottoController {
 
     static int getLottoCount(String purchaseLotto) {
         if(purchaseLotto.length() == 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액을 입력하지 않았습니다.");
+            throw new IllegalArgumentException(Message.NotInputMoney);
         }
         try {
             int value = Integer.parseInt(purchaseLotto);
             if(value % 1000 != 0) {
-                throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
+                throw new IllegalArgumentException(Message.OnlyInput1000);
             }
             return value / 1000;
         } catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력가능합니다.");
+            throw new IllegalArgumentException(Message.OnlyInputNumber);
         }
     }
     private static List<Lotto> getLottoList(int lottoCount) {
