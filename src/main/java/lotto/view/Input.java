@@ -6,13 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static java.rmi.server.LogStream.log;
 
 public class Input {
 
     /** 사용자에게 로또를 살 금액을 입력 요청하는 메서드 */
     public static int askMoney() throws NumberFormatException {
         System.out.println(Messages.ASK_MONEY);
-        return Integer.parseInt(readLine());
+        int result = 0;
+        try {
+            result = Integer.parseInt(readLine());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER);
+        }
+
+        return result;
     }
 
     /** 복권 구매 */
@@ -31,6 +40,7 @@ public class Input {
         try {
             winNums = getWinNums(input);
         } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER);
         }
 
