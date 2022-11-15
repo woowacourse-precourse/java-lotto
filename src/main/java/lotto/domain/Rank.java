@@ -21,7 +21,7 @@ public enum Rank {
     }
 
     public boolean hasSameRank(int match, boolean bonus) {
-        if (match == SECOND_AND_THIRD) {
+        if (this.match == match && match == SECOND_AND_THIRD) {
             return this.bonus == bonus;
         }
         return this.match == match;
