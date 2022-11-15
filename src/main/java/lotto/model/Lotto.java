@@ -1,12 +1,15 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
+
+import static lotto.controller.Error.existDuplicateNumber;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        existDuplicateNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -16,5 +19,7 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getLottoNumbers() {
+        return numbers;
+    }
 }
