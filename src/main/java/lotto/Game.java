@@ -12,13 +12,14 @@ public class Game {
   private int numOfLotto;
   private List<Lotto> lotteries;
   private final Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
+  private Money money;
 
   public Game() {
     this.lotteries = new ArrayList<>();
   }
 
   public void setMoney(String input) {
-    Money money = new Money(Integer.parseInt(input));
+    this.money = new Money(Integer.parseInt(input));
     numOfLotto = money.getNumOfLotto();
   }
 
@@ -120,6 +121,23 @@ public class Game {
   // 당첨 통계 출력하는 메서드
   public void printResult() {
     OutputView.printWinningStatistics(winningResult);
+  }
+
+  // 총 당첨금
+  public double calculateWinPrize(Map<Ranking, Integer> winningResult) {
+    int winPrize = 0;
+    for (Ranking ranking : winningResult.keySet()) {
+      int money = ranking.getMoney();
+      int number = winningResult.get(ranking);
+      winPrize += money * number;
+    }
+    return winPrize;
+  }
+
+  // 총 수익률
+  public double earningsPercent(double winPrize) {
+    double earningsPercent = winPrize / money.getMoney() * 100;
+    return Math.round(earningsPercent * 10) / 10.0;
   }
 
 }

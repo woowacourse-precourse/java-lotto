@@ -11,6 +11,10 @@ public class Money {
     setNumOfLotto();
   }
 
+  public int getMoney() {
+    return money;
+  }
+
   public void validate(int money) {
     validateMinimum(money);
     validateDevided(money);
