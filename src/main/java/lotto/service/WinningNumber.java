@@ -12,19 +12,34 @@ public class WinningNumber {
 
 		while (splitter.hasMoreTokens()) {
 			String token = splitter.nextToken();
-			if (!token.matches(ONLY_INTEGER_SERIES)) {
-				throw new IllegalArgumentException(ERROR_NUMERIC);
-			}
-
-			if (Integer.parseInt(token) == ZERO) {
-				throw new IllegalArgumentException(ERROR_ZERO);
-			}
-
-			if (Integer.parseInt(token) > MAX_NUMBER) {
-				throw new IllegalArgumentException(ERROR_MAX_NUMBER);
-			}
+			validateNumber(token);
+			validateNoZero(token);
+			validateMaxNumber(token);
 		}
+		validateDuplicate(winningNumber);
+	}
 
+
+	private static void validateNumber (String token) {
+		if (!token.matches(ONLY_INTEGER_SERIES)) {
+			throw new IllegalArgumentException(ERROR_NUMERIC);
+		}
+	}
+
+	private static void validateNoZero (String token) {
+		if (Integer.parseInt(token) == ZERO) {
+			throw new IllegalArgumentException(ERROR_ZERO);
+		}
+	}
+
+	private static void validateMaxNumber (String token) {
+		if (Integer.parseInt(token) > MAX_NUMBER) {
+			throw new IllegalArgumentException(ERROR_MAX_NUMBER);
+		}
+	}
+
+
+	private static void validateDuplicate (String winningNumber) {
 		if (hasDuplicatedNum(convertToSet(winningNumber))) {
 			throw new IllegalArgumentException(ERROR_DUPLICATE);
 		}
@@ -32,10 +47,14 @@ public class WinningNumber {
 
 	private static StringTokenizer splitWinningNumber(String winningNumber) {
 		StringTokenizer splitter = new StringTokenizer(winningNumber, DELIMITER);
+		validateInputWinningNumber(splitter);
+		return splitter;
+	}
+
+	private static void validateInputWinningNumber (StringTokenizer splitter) {
 		if (splitter.countTokens() != LOTTO_NUMBER_SIZE) {
 			throw new IllegalArgumentException(ERROR_NOT_COMMA);
 		}
-		return splitter;
 	}
 
 	public static Set<Integer> convertToSet(String winningNumber) {

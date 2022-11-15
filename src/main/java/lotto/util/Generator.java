@@ -10,7 +10,8 @@ import lotto.service.Lotto;
 
 public class Generator {
 	public Lotto createLottery() {
-		List<Integer> lotteryTicket = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_SIZE));
+		List<Integer> lotteryTicket = new ArrayList<>(
+			Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_SIZE));
 		return sortNumber(lotteryTicket);
 	}
 
