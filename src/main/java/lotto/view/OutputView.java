@@ -15,7 +15,7 @@ import static lotto.view.InputViewMessage.NOTICE_PURCHASE_LOTTO_COUNT;
 import static lotto.view.OutputViewMessage.*;
 
 public class OutputView {
-    private static final DecimalFormat formatter = new DecimalFormat("###,###.##");
+    private static final DecimalFormat formatter = new DecimalFormat("###,###.#");
 
     public void printLottoNumber(Lottos lottos) {
         StringBuilder lottoNumberBuilder = new StringBuilder();
