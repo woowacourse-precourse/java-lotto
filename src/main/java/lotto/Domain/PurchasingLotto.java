@@ -22,4 +22,8 @@ public class PurchasingLotto {
             throw new IllegalArgumentException(ERROR_DEVISION_EXCEPTION);
         }
     }
+
+    public int getPurchase() {
+        return this.purchase;
+    }
 }
