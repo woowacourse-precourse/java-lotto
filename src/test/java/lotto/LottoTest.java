@@ -46,13 +46,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    InputNumber inputNumber = new InputNumber();
     @DisplayName("문자열 당첨번호를 넣었을 때 숫자 리스트로 리턴된다.")
     @Test
     void InputWinningNumberTest() {
         /*given*/
         List<Integer> winningNumberTest = List.of(1, 2, 3, 4, 5, 6);
         /*when*/
-        List<Integer> winningNumber = createLotto.winningNumber("1,2,3,4,5,6");
+        List<Integer> winningNumber = inputNumber.winningNumber("1,2,3,4,5,6");
         /*then*/
         assertThat(winningNumberTest).isEqualTo(winningNumber);
     }
@@ -132,7 +133,7 @@ class LottoTest {
 
     @DisplayName("티켓이 몇개 일치하는지 찾는다.")
     @ParameterizedTest
-    @CsvSource({"3,true,0", "4,false,1", "5,false,2", "5,true,3", "6,false,4", "0,true,9"})
+    @CsvSource({"3,true,4", "4,false,3", "5,false,2", "5,true,1", "6,false,0", "0,true,9"})
     void compareReward(int number1, boolean bonusCheck, int expected) {
         /*when*/
         int actual = playLotto.compareReward(number1, bonusCheck);
