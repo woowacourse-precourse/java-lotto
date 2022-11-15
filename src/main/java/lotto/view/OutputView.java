@@ -1,21 +1,13 @@
 package lotto.view;
 
 import static lotto.domain.LottoInfo.BLANK;
-import static lotto.domain.LottoInfo.FIFTH_PLACE;
-import static lotto.domain.LottoInfo.FIRST_PLACE;
-import static lotto.domain.LottoInfo.FOURTH_PLACE;
-import static lotto.domain.LottoInfo.SECOND_PLACE;
-import static lotto.domain.LottoInfo.THIRD_PLACE;
-import static lotto.utils.Constant.COUNT_MESSAGE;
-import static lotto.utils.Constant.FIFTH_PLACE_MESSAGE;
-import static lotto.utils.Constant.FIRST_PLACE_MESSAGE;
-import static lotto.utils.Constant.FOURTH_PLACE_MESSAGE;
+import static lotto.domain.LottoInfo.price;
 import static lotto.utils.Constant.PROFIT_RATE_MESSAGE;
 import static lotto.utils.Constant.PURCHASE_MESSAGE;
-import static lotto.utils.Constant.SECOND_PLACE_MESSAGE;
 import static lotto.utils.Constant.STATISTICS_LINE;
 import static lotto.utils.Constant.STATISTICS_MESSAGE;
-import static lotto.utils.Constant.THIRD_PLACE_MESSAGE;
+import static lotto.utils.Constant.WINNING_BONUS_STATUS_MESSAGE;
+import static lotto.utils.Constant.WINNING_STATUS_MESSAGE;
 
 import java.util.List;
 import java.util.Map;
@@ -36,16 +28,24 @@ public class OutputView {
     public static void printWinnerStatistics(Map<Integer, Integer> winnerStatistics) {
         System.out.println(STATISTICS_MESSAGE);
         System.out.println(STATISTICS_LINE);
-        System.out.println(FIFTH_PLACE_MESSAGE
-                + winnerStatistics.getOrDefault(FIFTH_PLACE.getWinning(), BLANK.getWinning()) + COUNT_MESSAGE);
-        System.out.println(FOURTH_PLACE_MESSAGE
-                + winnerStatistics.getOrDefault(FOURTH_PLACE.getWinning(), BLANK.getWinning()) + COUNT_MESSAGE);
-        System.out.println(THIRD_PLACE_MESSAGE
-                + winnerStatistics.getOrDefault(THIRD_PLACE.getWinning(), BLANK.getWinning()) + COUNT_MESSAGE);
-        System.out.println(SECOND_PLACE_MESSAGE
-                + winnerStatistics.getOrDefault(SECOND_PLACE.getWinning(), BLANK.getWinning()) + COUNT_MESSAGE);
-        System.out.println(FIRST_PLACE_MESSAGE
-                + winnerStatistics.getOrDefault(FIRST_PLACE.getWinning(), BLANK.getWinning()) + COUNT_MESSAGE);
+
+        for (int winning = 5; winning > 0; winning--) {
+            printStatistics(winnerStatistics, winning);
+        }
+    }
+
+    private static void printStatistics(Map<Integer, Integer> winnerStatistics, int winning) {
+        if (price.get(winning).isCorrectBonus()) {
+            System.out.printf(WINNING_BONUS_STATUS_MESSAGE,
+                    price.get(winning).getMatchCount(),
+                    price.get(winning).getWinningPrize(),
+                    winnerStatistics.getOrDefault(price.get(winning).getWinning(), BLANK.getWinning()));
+            return;
+        }
+        System.out.printf(WINNING_STATUS_MESSAGE,
+                price.get(winning).getMatchCount(),
+                price.get(winning).getWinningPrize(),
+                winnerStatistics.getOrDefault(price.get(winning).getWinning(), BLANK.getWinning()));
     }
 
     public static void printProfitRate(double profitRate) {
