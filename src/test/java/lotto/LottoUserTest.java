@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.Map;
+import lotto.Constant.LottoUserValidationError;
 import lotto.Constant.WinInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ public class LottoUserTest {
     void 검증_1000으로_나누어떨어지지않는경우_IllegalArgumentException(long money) {
         assertThatThrownBy(() -> new LottoUser(money, new LottoSystem()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 구입 금액은 1000원 단위로 나누어 떨어져야 합니다.");
+                .isEqualTo(LottoUserValidationError.MONEY_NOT_DEVIDED.exception);
     }
 
     @DisplayName("음수인 경우 IllegalArgumentException, 메세지 확인")
@@ -30,7 +31,7 @@ public class LottoUserTest {
     void 검증_음수인경우_IllegalArgumentException(long money) {
         assertThatThrownBy(() -> new LottoUser(money, new LottoSystem()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 구입 금액은 0이상이여야 합니다");
+                .isEqualTo(LottoUserValidationError.MONEY_MINUS.exception);
     }
 
     @DisplayName("주어진 금액만큼 로또를 구매했는지, Lotto의 검증 형식에 맞춰서 번호를 생성했는지")
