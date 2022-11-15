@@ -19,6 +19,7 @@ build/
 *.iws
 *.iml
 *.ipr
+*.DS_Store
 out/
 
 ### NetBeans ###
