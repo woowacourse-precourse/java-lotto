@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
 import lotto.utils.Validate;
 
 import java.util.ArrayList;
