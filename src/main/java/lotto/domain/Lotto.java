@@ -15,6 +15,10 @@ public class Lotto {
     if (numbers.size() != 6) {
       throw new IllegalArgumentException();
     }
+    int duplicateRemovedSize = (int) numbers.stream().distinct().count();
+    if (duplicateRemovedSize != 6) {
+      throw new IllegalArgumentException("중복된 숫자입니다.");
+    }
   }
 
   // TODO: 추가 기능 구현
