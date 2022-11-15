@@ -3,6 +3,7 @@ package Domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoGeneratorTest {
@@ -23,6 +24,12 @@ class LottoGeneratorTest {
     }
 
     @Test
-    void createLottoNumbers() {
+    @DisplayName("구입 금액에 숫자 이외의 문자가 있다면 예외가 발생한다.")
+    void haveOnlyNumbers() {
+        //given
+        String price = "1240won";
+        //then
+        assertThatThrownBy(() -> new LottoGenerator(price)) //when
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
