@@ -10,7 +10,7 @@ public enum Message {
     WINNING_INPUT_MESSAGE("정확히 숫자를 입력하고 `,`로 구분 지을 수 있습니다."),
     BONUS_INPUT_MESSAGE("보너스 번호는 숫자만 입력할 수 있습니다."),
     NOT_MOD_ZERO_MESSAGE("[ERROR] 1000으로 나누어지는 금액이 아닙니다."),
-    REJECT_ZERO("[ERROR] 구입 금액에 0을 입력할 수 없습니다."),
+    REJECT_ZERO("[ERROR] 구입 금액 맨 앞에 0을 입력할 수 없습니다."),
     REJECT_NOT_NUMBERS("[ERROR] 구입 금액에 숫자를 제외한 다른 입력이 올 수 없습니다."),
     RANGE_EXCEED_MESSAGE("[ERROR] 숫자는 1 ~ 45로 입력할 수 있습니다."),
     LENGTH_MESSAGE("[ERROR] 6개의 숫자를 입력해야 합니다."),

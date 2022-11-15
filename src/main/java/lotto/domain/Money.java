@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 public class Money {
     public static final int STANDARD_WON = 1000;
-    public static final int ZERO_WON = 0;
     private final int money;
     private final int lottoCount;
 
@@ -33,7 +32,7 @@ public class Money {
     }
 
     public void validateMoneyZero(String input) throws IllegalArgumentException {
-        if (input.equals(String.valueOf(ZERO_WON))) {
+        if (String.valueOf(input.charAt(0)).equals("0")) {
             throw new IllegalArgumentException(Message.REJECT_ZERO.getValue());
         }
     }
