@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        ExceptionCase.checkInputLottoNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -18,6 +19,8 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public List<Integer> winSevenNumber(String bonusNumber) {
+
+        ExceptionCase.checkInputBonusNumber(this.numbers, bonusNumber);
 
         this.numbers.add(Integer.parseInt(bonusNumber));
 

@@ -1,7 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LottoMachine {
 
     private final int buyLineMoney = 1000;
@@ -42,7 +45,7 @@ public class LottoMachine {
             winSixNumberSeparate.add(Integer.parseInt(i));
         }
 
-        return  winSixNumberSeparate;
+        return winSixNumberSeparate;
     }
 
 }

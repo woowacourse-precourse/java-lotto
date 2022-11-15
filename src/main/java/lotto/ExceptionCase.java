@@ -1,6 +1,8 @@
 package lotto;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ExceptionCase {
     private static boolean checkInputSameNumber(List<Integer> input) {
@@ -45,7 +47,7 @@ public class ExceptionCase {
         return false;
     }
 
-    static boolean checkBoundLottoNumber (List<Integer> input) {
+    static boolean checkBoundLottoNumber(List<Integer> input) {
 
         for (int i = 0; i < input.size(); i++) {
             if (!(input.get(i) > 0 && input.get(i) < 46)) {
@@ -56,7 +58,7 @@ public class ExceptionCase {
         return true;
     }
 
-    static boolean checkBoundLottoNumber (String input) {
+    static boolean checkBoundLottoNumber(String input) {
         int bonusNumber = Integer.parseInt(input);
 
         if (!(bonusNumber > 0 && bonusNumber < 46)) {
@@ -95,5 +97,6 @@ public class ExceptionCase {
             throw new IllegalArgumentException();
         }
     }
+
 
 }
