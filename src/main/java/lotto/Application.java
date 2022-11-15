@@ -63,9 +63,14 @@ public class Application {
 
 
     public static void main(String[] args) {
-
-
-
+        UI UI = new UI();
+        Application Application = new Application();
+        Integer money = UI.money();
+        List<List<Integer>> Total_Lotto_numbers = Application.Lotto_number(money);
+        List<Integer> Answer_Number = UI.Answer_Number();
+        Integer Bonus_Number = UI.Bonus_Number();
+        HashMap<Integer, Integer> Lotto_Choice_Result= Application.Lotto_Choice(Total_Lotto_numbers,  Answer_Number, Bonus_Number);
+        Application.Rate_Of_Return(money, Lotto_Choice_Result);
 
         // TODO: 프로그램 구현
     }
