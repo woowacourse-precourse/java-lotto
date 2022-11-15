@@ -24,7 +24,7 @@ public class LottoGame {
     int inputPurchaseMoney(Purchase purchase) {
         System.out.println("구입 금액을 입력해주세요.");
         int lottoCount = purchase.enterPurchaseMoney();
-        System.out.println("\n"+lottoCount+"개를 구매했습니다");
+        System.out.println("\n"+lottoCount+"개를 구매했습니다.");
         return lottoCount;
     }
 
