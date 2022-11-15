@@ -17,7 +17,7 @@ class BonusTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("보너스 번호가 1~45 벙위를 벗언라 경우 오류가 발생한다.")
+    @DisplayName("보너스 번호가 1~45 범위를 벗어난 경우 오류가 발생한다.")
     @Test
     void createBonusByOverRange() {
         assertThatThrownBy(() ->
