@@ -44,6 +44,18 @@ public class ControllerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구입 금액이 1,000 이상이 아니면 예외가 발생한다.")
+    @Test
+    void testNotEqualOrBiggerThanThousand() throws NoSuchMethodException {
+        Method checkEqualOrBiggerThanThousandMethod = Controller.class.getDeclaredMethod("checkEqualOrBiggerThanThousand", int.class);
+        checkEqualOrBiggerThanThousandMethod.setAccessible(true);
+
+        int number = 999;
+
+        assertThatThrownBy(() -> checkEqualOrBiggerThanThousandMethod.invoke(controller, number)).getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("문자열 구입 금액을 숫자 형식으로 변환")
     @Test
     void testFormatStringToNumber() throws Exception {

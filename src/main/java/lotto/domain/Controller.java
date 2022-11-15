@@ -15,6 +15,8 @@ import lotto.Score;
 public class Controller {
     private static final String NUMERIC_STRING_ERROR_MESSAGE = "숫자 형식으로 입력해 주세요.";
     private static final String DIVISIBLE_THOUSAND_ERROR_MESSAGE = "구입 금액은 1,000으로 나누어 떨어져야 합니다.";
+    private static final String EQUAL_OR_BIGGER_THAN_THOUSAND = "구입 금액은 1,000 이상이여야 합니다.";
+
 
     private static Controller instance;
 
@@ -59,6 +61,7 @@ public class Controller {
     private int formatStringToNumber(String numericString) {
         checkNumericString(numericString);
         int number = Integer.parseInt(numericString);
+        checkEqualOrBiggerThanThousand(number);
         checkDivisibleThousand(number);
 
         return number;
@@ -77,6 +80,9 @@ public class Controller {
     }
 
     private void checkEqualOrBiggerThanThousand(int number){
+        if(number < 1000){
+            throw new IllegalArgumentException(EQUAL_OR_BIGGER_THAN_THOUSAND);
+        }
     }
 
     private void printPublishedLotto(List<Lotto> lottos) {
