@@ -102,6 +102,30 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 예외_테스트_8() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "7f");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_9() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_10() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
