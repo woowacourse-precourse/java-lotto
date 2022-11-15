@@ -3,22 +3,16 @@ package lotto.util;
 import java.util.List;
 
 public class Validator {
+    private static final String MONEY_NOT_NUMBER = "[ERROR] 구매 금액은 숫자여야 합니다.";
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
     private static final int UNIT = 1000;
-
-    public static boolean isNumber(char input) {
-        if (!Character.isDigit(input)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자여야 합니다.");
-        }
-        return true;
-    }
 
     public static boolean isNumber(String input) {
         try {
             int money = Integer.parseInt(input);
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException(MONEY_NOT_NUMBER);
         }
         return true;
     }
