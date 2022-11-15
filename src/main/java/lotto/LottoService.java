@@ -53,7 +53,7 @@ public class LottoService {
         List<Integer> moneys = Stream.of(Money.values()).map(m -> m.getAmount()).filter(m->m!=1000).
                 collect(Collectors.toList());
         for(int i=0; i<numbersOfWin.size();i++){
-            grossEarning+= numbersOfWin.get(i)+moneys.get(i);
+            grossEarning+= numbersOfWin.get(i)*moneys.get(i);
         }
         return grossEarning/(Double.parseDouble(purchaseAmount))*100;
     }
