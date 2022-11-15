@@ -1,10 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.exception.userLottos.LottoZeroException;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static lotto.domain.Lotto.LOTTO_NUMS_SIZE;
@@ -21,7 +20,7 @@ public class UserLottos {
 
     public void validate(int ticketCount) {
         if (ticketCount <= 0) {
-            throw new IllegalArgumentException("[ERROR] 발행할 로또 개수는 적어도 하나 이상이여야 합니다.");
+            throw new LottoZeroException();
         }
     }
 

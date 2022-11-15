@@ -1,6 +1,10 @@
 package lotto.domain;
 
 import lotto.Utils;
+import lotto.exception.winningNums.BonusNumDuplicatedException;
+import lotto.exception.winningNums.InputNumRangeException;
+import lotto.exception.winningNums.InputNumsDuplicatedException;
+import lotto.exception.winningNums.InputPatternWrongException;
 
 import java.util.Comparator;
 import java.util.List;
@@ -20,16 +24,16 @@ public class WinningNums {
 
     public List<Integer> validateWinNums(String winNums) {
         if (!PATTERN.matcher(winNums).matches()) {
-            throw new IllegalArgumentException("[ERROR] 입력하신 문자열의 패턴이 올바르지 않습니다.");
+            throw new InputPatternWrongException();
         }
         List<Integer> nums = separateNums(winNums);
         nums.sort(Comparator.naturalOrder());
 
         if (!isNotDuplicate(nums)) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
+            throw new InputNumsDuplicatedException();
         }
         if (!isInRangeAll(nums)) {
-            throw new IllegalArgumentException("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
+            throw new InputNumRangeException();
         }
         return nums;
     }
@@ -37,10 +41,10 @@ public class WinningNums {
     public int validateBonusNum(String bonusNum) {
         int num = Utils.textToNumber(bonusNum);
         if (!isInRange(num)) {
-            throw new IllegalArgumentException("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
+            throw new InputNumRangeException();
         }
         if (!isNotContains(winningNums, num)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 숫자와 보너스 숫자가 중복됩니다.");
+            throw new BonusNumDuplicatedException();
         }
         return num;
     }

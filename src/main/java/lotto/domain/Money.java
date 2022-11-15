@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import lotto.Utils;
+import lotto.exception.money.MoneyLessException;
+import lotto.exception.money.MoneyUnitWrongException;
 
 public class Money {
     public static final int MONEY_DIVIDE_UNIT = 1000;
@@ -12,11 +14,12 @@ public class Money {
 
     public int validate(String input) {
         int money = Utils.textToNumber(input);
+
         if (money < MONEY_DIVIDE_UNIT) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원보다 커야합니다.");
+            throw new MoneyLessException();
         }
         if (money % MONEY_DIVIDE_UNIT != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위만 입력해야 합니다.");
+            throw new MoneyUnitWrongException();
         }
         return money;
     }
