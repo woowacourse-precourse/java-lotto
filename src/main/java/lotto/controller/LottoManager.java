@@ -1,5 +1,6 @@
-package lotto;
+package lotto.controller;
 
+import lotto.Lotto;
 import lotto.constant.LottoInfo;
 import lotto.constant.RankInfo;
 import lotto.view.OutputView;
@@ -28,28 +29,6 @@ public class LottoManager {
         public void print() {
             System.out.println(this.message);
         }
-    }
-
-    public void run() {
-        Map<Integer, Integer> result;
-        List<Lotto> userLottos;
-        List<Integer> winningNumber;
-
-        int userMoney = this.getMoney();
-        int numberLottos = getNumberLottos(userMoney);
-
-        printPublishedLottos(numberLottos);
-
-        userLottos = this.publishLottoForPrice(numberLottos);
-
-        winningNumber = this.GenerateLottoNumbers();
-        int bonusNumber = this.GenerateBonusNumber();
-
-        result = Referee.compare(bonusNumber, winningNumber, userLottos);
-
-        this.printWinningMessage(result);
-
-        this.printProfit(userMoney, result);
     }
 
     public List<Integer> GenerateLottoNumbers() {
