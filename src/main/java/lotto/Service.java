@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Service {
@@ -13,12 +14,12 @@ public class Service {
         try {
             int purchaseAmount = Integer.parseInt(Console.readLine());
             if (purchaseAmount % 1000 != 0) {
-                throw new IllegalArgumentException(ExceptionCode.INPUT_INVALID.message);
+                throw new IllegalArgumentException(ExceptionCode.INPUT_INVALID.getMessage());
             }
             return purchaseAmount / 1000;
         }
         catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionCode.INPUT_ERROR.message);
+            throw new IllegalArgumentException(ExceptionCode.INPUT_ERROR.getMessage());
         }
     }
 
@@ -28,16 +29,31 @@ public class Service {
 
         for (int i = 0; i < purchaseNum; i++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lottoValidate = new Lotto(lotto);
+            Collections.sort(lotto);
+            System.out.println(lotto);
             lottoNumbers.add(lotto);
         }
+        System.out.println();
+        return lottoNumbers;
     }
 
-    public enum ExceptionCode {
-        INPUT_ERROR("[ERROR] 숫자를 입력해주세요."),
-        INPUT_INVALID("[ERROR] 천원 단위로 구매할 수 있습니다.");
-        private final String message;
-        ExceptionCode(String message) {
-            this.message = message;
+    // 당첨 번호를 입력받는다.
+    public List<Integer> getWinningNumber() {
+        List<Integer> winningNumbers = new ArrayList<>();
+        String input = Console.readLine();
+
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException(ExceptionCode.WINNING_ERROR.getMessage());
         }
+        for (String number : input.split(",")) {
+            winningNumbers.add(Integer.valueOf(number));
+        }
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException(ExceptionCode.WINNING_INVALID.getMessage());
+        }
+
+        return winningNumbers;
     }
+
 }
