@@ -6,20 +6,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LottosGenerator {
-    private final List<Lotto> lottos;
+public class LottoGenerator {
 
-    public LottosGenerator(LottoCount lottoCount) {
-        this.lottos = generate(lottoCount.getCount());
+    public LottoGenerator(LottoQuantity lottoCount) {
+        generate(lottoCount.getCount());
     }
 
-    private List<Lotto> generate(int lottoCount) {
+    private Lottos generate(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = generateLottoNumbers();
             lottos.add(new Lotto(numbers));
         }
-        return lottos;
+        return new Lottos(lottos);
     }
 
     private List<Integer> generateLottoNumbers() {
@@ -30,9 +29,5 @@ public class LottosGenerator {
 
     private void sortNumbers(List<Integer> numbers) {
         Collections.sort(numbers);
-    }
-
-    public List<Lotto> getLottos() {
-        return this.lottos;
     }
 }
