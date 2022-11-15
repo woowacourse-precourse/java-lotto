@@ -3,7 +3,9 @@ package lotto.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,5 +40,15 @@ class LottoTest {
     void checkLottoPrintByASC() {
         Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
         assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
+
+    @DisplayName("로또 번호를 중복 없이 6개 생성하는지 테스트")
+    @Test
+    void createLottoNumbers(){
+        Lotto lotto = Lotto.createLotto();
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        Set<Integer> removeSameNumber = new HashSet<>(lottoNumbers);
+        assertThat(lottoNumbers.size()).isEqualTo(removeSameNumber.size()).isEqualTo(6);
     }
 }
