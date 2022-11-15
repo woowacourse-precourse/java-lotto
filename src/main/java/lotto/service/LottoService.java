@@ -51,6 +51,7 @@ public class LottoService {
         OutputView.bonusNumberMsg();
         String bonusNumberInput = InputView.getInputBonusNumber();
         ParserUtil.parseBonusNumberInput(bonusNumberInput);
+        isDuplicate(bonusNumberInput);
         this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
@@ -126,5 +127,13 @@ public class LottoService {
         double profitRatio = ((double) accumulatedWinningPrize / (double) purchaseAmount) * 100;
         //return Math.round(profitRatio*10/10.0);
         return profitRatio;
+    }
+
+    private void isDuplicate(String input) throws IllegalArgumentException {
+        List<Integer> winningNumbList = winningNumber.getNumbers();
+        Integer bonusNum = Integer.valueOf(input);
+        if (winningNumbList.contains(bonusNum)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복될 수 없습니다.");
+        }
     }
 }

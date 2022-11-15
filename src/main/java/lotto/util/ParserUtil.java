@@ -46,6 +46,7 @@ public class ParserUtil {
         if (!ValidationUtil.validateIsDigit(bonusNumInput)) {
             throw new IllegalArgumentException("[ERROR] 숫자 이외에 문자를 입력할 수 없습습니다.");
         }
+
         int bonusNum = Integer.parseInt(bonusNumInput);
         if (!ValidationUtil.validateIsInRange(bonusNum)) {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지 숫자를 입력해주세요.");
