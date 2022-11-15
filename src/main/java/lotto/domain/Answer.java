@@ -64,8 +64,26 @@ public class Answer {
         }
     }
 
+
+    public void createBonus(String bonusInput) {
+        int number;
+
+        validDigit(bonusInput);
+        number = Integer.parseInt(bonusInput);
+        validateInRange(number);
+        validateNotAnswer(number);
+        this.bonus = number;
+    }
+
+
     private void validateInRange(int bonus) {
         if (bonus < 1 || bonus > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateNotAnswer(int bonus) {
+        if (answer.contains(bonus)) {
             throw new IllegalArgumentException();
         }
     }
