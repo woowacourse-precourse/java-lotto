@@ -1,26 +1,28 @@
 package lotto.model;
 
+import lotto.model.enumeration.Exception;
+
 import java.util.List;
 
 public class Compare {
 
-    public int[] getResult(int inputMoney, List<List<Integer>> computerRandomNumbers, String[] numbers, int bonusNumber ) {
-
+    public int[] getResult(int inputMoney, List<List<Integer>> computerRandomNumbers, List<Integer> lottoNumbers, int bonusNumber ) {
+        validate(lottoNumbers, bonusNumber);
         int[] result = new int[5];
         int count;
 
         for (int i = 0; i < (inputMoney/1000) ; i++) {
             count = 0;
-            count = getContainingNumber(computerRandomNumbers, numbers, count, i);
+            count = getContainingNumber(computerRandomNumbers, lottoNumbers, count, i);
 
             reflectCountforResult(computerRandomNumbers, bonusNumber, result, count, i);
         }
         return result;
     }
 
-    public int getContainingNumber(List<List<Integer>> computerRandomNumbers, String[] numbers, int count, int i) {
+    public int getContainingNumber(List<List<Integer>> computerRandomNumbers, List<Integer> lottoNumbers, int count, int i) {
         for (int j = 0; j < 6 ; j++) {
-            if (computerRandomNumbers.get(i).contains(Integer.parseInt(numbers[j]))) count++;
+            if (computerRandomNumbers.get(i).contains(lottoNumbers.get(j))) count++;
         }
         return count;
     }
@@ -36,6 +38,36 @@ public class Compare {
             result[2]++;
         }
         if (count == 6) result[4]++;
+    }
+
+    private void validate(List<Integer> lottoNumbers, int bonusNumber) {
+        validateLength(lottoNumbers);
+        validateRange(lottoNumbers);
+        validateDuplication(lottoNumbers);
+    }
+
+    private void validateLength(List<Integer> lottoNumbers) {
+        if (lottoNumbers.size() != 6) {
+            throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBER_COUNT.getExceptionMessage());
+        }
+    }
+
+    private void validateRange(List<Integer> lottoNumbers) {
+        for (Integer lottoNumber: lottoNumbers) {
+            if (lottoNumber < 1 || lottoNumber > 45) {
+                throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBER_RANGE.getExceptionMessage());
+            }
+        }
+    }
+
+    private void validateDuplication(List<Integer> lottoNumbers) {
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            List<Integer> subNumbers = lottoNumbers.subList(i+1, lottoNumbers.size());
+            int lottonumber = lottoNumbers.get(i);
+            if (subNumbers.contains(lottonumber)) {
+                throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBER_DUPLICATION.getExceptionMessage());
+            }
+        }
     }
 
 }
