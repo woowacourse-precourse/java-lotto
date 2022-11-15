@@ -45,6 +45,6 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2 ,3 ,4 ,5 ,6));
         Lotto lotto1 = new Lotto(List.of(1, 3, 4, 5, 6, 8));
         assertThat(lotto.countSameNumber(lotto1, 9))
-                .isEqualTo(5);
+                .isEqualTo(Rank.THIRD);
     }
 }
