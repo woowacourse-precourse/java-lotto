@@ -1,8 +1,11 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.LottoResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -17,6 +20,16 @@ public class OutputView {
         System.out.println(lottoTickets.size() + OUTPUT_AMOUNT_OF_LOTTO);
         for (Lotto lottoTicket : lottoTickets) {
             System.out.println(lottoTicket.getNumbers().stream().sorted().collect(Collectors.toList()));
+        }
+    }
+
+    public void printWinningHistory(LottoResult lottoResult) {
+        Map<LottoRank, Integer> resultMap = lottoResult.get();
+        for (LottoRank lottoRank : resultMap.keySet()) {
+            if (lottoRank == LottoRank.LOSE) {
+                continue;
+            }
+            System.out.println(lottoRank.getDescription() + " - " + resultMap.get(lottoRank) + "개");
         }
     }
 
