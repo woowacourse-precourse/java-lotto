@@ -37,7 +37,7 @@ public class View {
 
     private void askPurchase() {
         System.out.println(ASK_HOW_MUCH_WILL_YOU_BUY);
-        money = reader.readLongNumber();
+        money = reader.readOneNumber();
         lottos = lottoController.buyLotto(money);
         System.out.println();
     }
@@ -63,7 +63,7 @@ public class View {
 
     private void askBonusNumbers() {
         System.out.println(ASK_BONUS_NUMBER);
-        lottoController.inputWinBonus(reader.readLongNumber().intValue());
+        lottoController.inputWinBonus(reader.readOneNumber().intValue());
         System.out.println();
     }
 

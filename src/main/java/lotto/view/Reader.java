@@ -18,13 +18,13 @@ public class Reader {
         return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    public Long readLongNumber() {
+    public Long readOneNumber() {
         String input = Console.readLine();
         isNumeric(input);
         return Long.parseLong(input);
     }
 
-    public void isNumeric(String input) {
+    private void isNumeric(String input) {
         if (input == null) {
             throw new IllegalArgumentException(FORBID_EMPTY.getErrorMessage());
         }
