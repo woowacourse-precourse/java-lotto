@@ -11,16 +11,12 @@ public class WinningLotto {
 
 
     private WinningLotto(){
-        setWinningLotto();
+        this.winningLottoNumber = LottoInputFilter.readLottoNumber();
+        this.winningBonusNumber = LottoInputFilter.readBonusNumber();
     }
 
     public static WinningLotto getInstance() {
         return winningLotto;
-    }
-
-    private void setWinningLotto() {
-        setWinningLottoNumber(LottoInputFilter.readLottoNumber());
-        setWinningBonusNumber(LottoInputFilter.readBonusNumber());
     }
 
     public static List<Integer> getWinningLottoNumber() {
@@ -29,10 +25,6 @@ public class WinningLotto {
 
     public static int getWinningBonusNumber() {
         return winningLotto.winningBonusNumber;
-    }
-
-    private static void setWinningLottoNumber(List<Integer> lottoNumber) {
-        winningLotto.winningLottoNumber = lottoNumber;
     }
 
     private static void setWinningLottoNumber() {
