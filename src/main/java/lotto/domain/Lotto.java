@@ -68,7 +68,8 @@ public class Lotto {
     }
 
     private boolean isBetweenLottoRange(List<Integer> numbers) {
-        return numbers.stream().allMatch(number -> number >= LOTTO_GAME_START_NUMBER && number <= LOTTO_GAME_END_NUMBER);
+        return numbers.stream().allMatch(number ->
+                number >= LOTTO_GAME_START_NUMBER&& number <= LOTTO_GAME_END_NUMBER);
     }
 
     private boolean isDuplicateNumber(List<Integer> numbers) {

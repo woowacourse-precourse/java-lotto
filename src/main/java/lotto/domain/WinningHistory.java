@@ -31,7 +31,9 @@ public enum WinningHistory {
     }
 
     public static List<WinningHistory> getValues() {
-        List<WinningHistory> winningHistoryValues = Stream.of(WinningHistory.values()).filter(rankType -> rankType.matchNumbers >= 3).collect(Collectors.toList());
+        List<WinningHistory> winningHistoryValues = Stream.of(WinningHistory.values())
+                                                        .filter(rankType -> rankType.matchNumbers >= 3)
+                                                        .collect(Collectors.toList());
         Collections.reverse(winningHistoryValues);
         return winningHistoryValues;
     }
