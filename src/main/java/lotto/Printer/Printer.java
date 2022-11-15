@@ -1,5 +1,7 @@
 package lotto.Printer;
 
+import java.util.List;
+
 public class Printer {
     private static final String PURCHASE_AMOUNT_REQUEST_MESSAGE = "구매금액을 입력해 주세요.";
     private static final String PURCHASE_MESSAGE = "%개를 구매했습니다.";
@@ -14,23 +16,27 @@ public class Printer {
     private static final String FIRST_PLACE_MESSAGE = "6개 일치 (2,000,000,000원) - %d개";
     private static final String EARNING_RATE_MESSAGE = "총 수익률은 %f%%입니다.";
 
-    public void requestPurchaseAmount(){
+    public void requestPurchaseAmount() {
         System.out.println(PURCHASE_AMOUNT_REQUEST_MESSAGE);
     }
 
-    public void printPurchaseMessage(int numberOfLottos){
+    public void printPurchaseMessage(int numberOfLottos) {
         System.out.printf(PURCHASE_MESSAGE, numberOfLottos);
     }
 
-    public void requestLottoNumber(){
+    public void printIssuedLottoNumber(List<Integer> LottoNumber) {
+        System.out.println(LottoNumber);
+    }
+
+    public void requestLottoNumber() {
         System.out.println(LOTTO_NUMBER_REQUEST_MESSAGE);
     }
 
-    public void requestBonusNumber(){
+    public void requestBonusNumber() {
         System.out.println(BONUS_NUMBER_REQUEST_MESSAGE);
     }
 
-    public void printWinningStatistics(){
+    public void printWinningStatistics() {
         System.out.println(WINNING_STATISTICS_MESSAGE);
         System.out.println(DIVIDING_LINE);
         System.out.println(FIFTH_PLACE_MESSAGE);
