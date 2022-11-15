@@ -18,9 +18,9 @@ public class LottoMoney {
 
     private void validate(int money) {
         if (money < LOTTERY_PRICE_PER_ONE)
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 1000원보다 큰 값을 입력해야 합니다.");
         if (money % LOTTERY_PRICE_PER_ONE != 0)
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야 합니다.");
     }
 
     public int lotteryCount() {
