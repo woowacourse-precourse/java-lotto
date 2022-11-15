@@ -6,13 +6,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class LottoController {
-    LottoView lottoView = new LottoView();
-    Prize[] prizes = Prize.values();
+    private LottoView lottoView = new LottoView();
+    private Prize[] prizes = Prize.values();
+    private int NumberOfLotto = 0;
+    private double profit = 0;
+
 
     public void run() {
         try {
             lottoView.printMoneyQuestion();
-            int NumberOfLotto = getNumberOfLotto();
+            NumberOfLotto = getNumberOfLotto();
             List<Lotto> lottoList = makeBunchOfLotto(NumberOfLotto);
             lottoView.printLottoList(lottoList);
             lottoView.printWinNumberQuestion();
@@ -20,8 +23,7 @@ public class LottoController {
             lottoView.printBonusNumberQuestion();
             int bonusNumber = inputBonusNumber(winNumber);
             getStatistics(lottoList,winNumber,bonusNumber);
-            lottoView.printStatistics(prizes);
-            lottoView.printProfit(getProfit(prizes, NumberOfLotto * 1000));
+            lottoView.printStatistics(prizes, profit);
         } catch (IllegalArgumentException e) {
             return ;
         }
@@ -148,19 +150,15 @@ public class LottoController {
 
     public void getStatistics(List<Lotto> lottoList, Lotto winNumber, int bonusNumber) {
         List<Integer> stats = new ArrayList<>();
+        int[] prices = {0,5000,50000,1500000,2000000000,30000000};
 
         for (Lotto lotto : lottoList) {
             compareLotto(lotto, winNumber, bonusNumber);
         }
-    }
-
-    public double getProfit(Prize[] prizes, int money) {
-        double sum = 0.;
-        int[] prices = {0,5000,50000,1500000,2000000000,30000000};
 
         for (int i = 1; i < prizes.length; i++) {
-            sum += prizes[i].getCount() * prices[i];
+            profit += prizes[i].getCount() * prices[i];
         }
-        return sum / money * 100;
+        profit = profit / (NumberOfLotto * 1000) * 100;
     }
 }

@@ -46,7 +46,7 @@ public class LottoView {
         }
     }
 
-    public void printStatistics(Prize[] prizes) {
+    public void printStatistics(Prize[] prizes, double profit) {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (" + prizes[1].getPrice() + ") - " + prizes[1].getCount() + "개");
@@ -55,9 +55,6 @@ public class LottoView {
         System.out.print("5개 일치, 보너스 볼 일치 (");
         System.out.println(prizes[5].getPrice() + ") - " + prizes[5].getCount() + "개");
         System.out.println("6개 일치 (" + prizes[4].getPrice() + ") - " + prizes[4].getCount() + "개");
-    }
-
-    public void printProfit(double profit) {
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 }
