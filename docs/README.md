@@ -12,7 +12,7 @@
 - [O] 일치한 개수에 따라 등수를 매긴다. Machine#checkRanking
 - [O] 수익률을 계산한다. Machine#calculateYieldRate
 - [O] 당첨 결과와 수익률을 출력한다. Console#result
-- [ ] 출력 형식에 맞게 출력한다. Console#~
+- [O] 출력 형식에 맞게 출력한다. Console#~
 
 ## 🚀 기능 요구 사항
 
