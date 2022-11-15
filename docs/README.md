@@ -18,13 +18,13 @@
 
 ### 실제 사용자 입력
 - [x] PurchaseMoneyInput - inputPurchaseMoney()
-  - 구매 금액을 입력하라는 안내 문구를 출력한 후 InputAgentImpl - inputUserPurchaseMoney() 를 호출하여 입력값을 처리한다.
+  - 구매 금액을 입력하라는 안내 문구를 출력한 후 InputAgent의 inputUserPurchaseMoney() 를 호출하여 입력값을 처리한다.
 
 - [x] WinningNumberInput - inputWinningLottoNumbers()
-  - 로또 번호를 입력하라는 안내 문구를 출력한 후 InputAgentImpl - inputWinningNumbers() 를 호출하여 입력값을 처리한다.
+  - 로또 번호를 입력하라는 안내 문구를 출력한 후 InputAgent의 inputWinningNumbers() 를 호출하여 입력값을 처리한다.
 
 - [x] BonusNumberInput - inputWinningLottoBonusNumber()
-  - 보너스 번호를 입력하라는 안내 문구를 출력한 후 InputAgentImpl - inputBonusNumber() 를 활용하여 입력값을 처리한다.
+  - 보너스 번호를 입력하라는 안내 문구를 출력한 후 InputAgent의 inputBonusNumber() 를 활용하여 입력값을 처리한다.
 
 ---
 
