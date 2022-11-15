@@ -27,13 +27,11 @@ public class Lotto {
     }
 
     private void checkDuplicatedNumber(List<Integer> numbers) {
-        for (int i = 0; i < 5; i++) {
-            int currentNumber = numbers.get(i);
-            int nextNumber = numbers.get(i + 1);
-            if (currentNumber == nextNumber) {
+        for (int num : numbers) {
+            List<Integer> numSublist = numbers.subList(numbers.indexOf(num)+1, 6);
+            if (numSublist.contains(num)) {
                 throw new IllegalArgumentException();
             }
-
         }
     }
 
