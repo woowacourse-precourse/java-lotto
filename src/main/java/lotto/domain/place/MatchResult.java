@@ -11,7 +11,7 @@ import static lotto.message.LottoLine.LOTTO_CURRENCY_UNIT;
 import java.util.Arrays;
 
 public enum MatchResult {
-    
+
     FIRST_PLACE(FIRST_PLACE_CONDITION, 2_000_000_000, "6개 일치"),
     SECOND_PLACE(SECOND_PLACE_CONDITION, 30_000_000, "5개 일치, 보너스 볼 일치"),
     THIRD_PLACE(THIRD_PLACE_CONDITION, 1_500_000, "5개 일치"),
@@ -30,9 +30,8 @@ public enum MatchResult {
     }
 
     public static MatchResult findByCondition(PlaceCondition placeCondition) {
-        return Arrays.stream(MatchResult.values()).filter(matchResult -> {
-                    return matchResult.isEqualCondition(placeCondition);
-                }).findAny()
+        return Arrays.stream(MatchResult.values()).filter(matchResult -> matchResult.isEqualCondition(placeCondition))
+                .findAny()
                 .orElse(NONE);
     }
 
