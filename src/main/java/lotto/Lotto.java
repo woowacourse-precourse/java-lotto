@@ -23,4 +23,14 @@ public class Lotto {
             throw new IllegalArgumentException(ERRMSG.getErrMsg());
         }
     }
+    public void calcLotto(List<List<Integer>> lottoLists, int bonus, int price) {
+        List<Map<Integer, List<Integer>>> result = new ArrayList<>();
+        for (List<Integer> lottoNumberList : lottoLists) {
+            Map<Integer, List<Integer>> howMatch = new HashMap<>();
+            int count = calcMatch(lottoNumberList);
+            howMatch.put(count, lottoNumberList);
+            result.add(howMatch);
+        }
+        printMatch(result, bonus, price);
+    }
 }
