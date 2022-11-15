@@ -11,4 +11,8 @@ public class Lotto {
         sizeValidate(numbers);
         this.numbers = numbers;
     }
+
+    public void printNumbers(){
+        System.out.println(numbers);
+    }
 }
