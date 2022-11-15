@@ -40,7 +40,7 @@ public class Output {
         String text = String.format("%d개 일치 ", ranking.getNumberCount());
         stringBuilder.append(text);
         if (ranking.isBonusNumber()) {
-            stringBuilder.append(", 보너스 볼 일치");
+            stringBuilder.append(", 보너스 볼 일치 ");
         }
         String wordConnect = "(" + decimalFormat.format(ranking.getPrizeMoney()) + "원) - " + matchCount + "개\n";
         stringBuilder.append(wordConnect);
