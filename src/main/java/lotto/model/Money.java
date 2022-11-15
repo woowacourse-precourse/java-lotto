@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Money {
 
-    private static final int LOTTO_PRICE = 1_000;
+    public static final int LOTTO_PRICE = 1_000;
 
     private int money;
 
@@ -25,6 +25,10 @@ public class Money {
 
     public int countLotto() {
         return money / LOTTO_PRICE;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     @Override

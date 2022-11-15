@@ -34,5 +34,7 @@ public enum Rank {
         return matchCount == SECOND.matchCount && matchBonus;
     }
 
-
+    public int getReward() {
+        return reward.getMoney();
+    }
 }
