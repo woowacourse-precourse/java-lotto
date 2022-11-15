@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Lotto {
@@ -29,5 +30,12 @@ public class Lotto {
         numbers.add(bonus);
     }
 
-    // TODO: 추가 기능 구현
+    public int calculCorrect(List<Integer> boughtLotto){
+        int correct = 0;
+        List<Integer> correctNumbers = this.numbers.subList(0,7);
+        for (Integer lotto : boughtLotto) {
+            if (correctNumbers.contains(lotto)) correct++;
+        }
+        return correct;
+    }
 }
