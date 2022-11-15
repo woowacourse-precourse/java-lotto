@@ -208,4 +208,74 @@ view 를 통해 사용자에게 입력 및 출력합니다. 입력 받은 값을
 
 
 
+## 3주차 미션 학습한 내용
 
+
+#### MVC 디자인 패턴 : Model, Controller, View
+**Controller :** 뷰와 모델 사이에서 인터페이스의 역할을 한다. 컨트롤러는 데이터와 비즈니스 로직 사이의 인터페이스 역할을 한다.
+
+**Model :** 프로그램의 데이터의 역할을 한다. 도메인 모델을 포함하기도 한다. Model 내부에 Controller, View와 관련된 코드가 있으면 안된다.
+
+**View :** 사용자가 보는 화면을 만든다. 입, 출력 화면을 만든다. Model에만 의존한다.
+
+사용자 인터페이스로부터 비즈니스 로직을 분리하면, 비즈니스 로직을 서로 영향 없이 쉽게 고칠 수 있는 코드가 된다.
+
+디자인 패턴을 적용함으로써 코드도 읽기 수월해지고 유지보수가 쉬워지고, 재사용성이 증가한다.
+
+
+
+#### 객체로 분리 및 단위 테스트
+
+input과 output이 확실하게 정의되어 있고, 각각의 기능이 분리되어 단위 테스트가 쉽게 된다.
+
+
+
+#### 테스트 코드를 작성하는 이유
+
+테스트 코드를 작성하는 이유는, 내가 구현한 코드가 잘 작동하는지도 더블 체크 하는 기능을 한다. 테스트함으로써 논리적 실수를 쉽게 찾을 수 있게 된다.
+
+주로 경곗값을 테스트한다. 예를 들어 1~10까지의 숫자 범위가 있는데, 3~6까지는 사용하면 안 된다고 가정했을 때, 2, 7 값과 3, 6 값을 넣어서 주로 테스트한다. 값의 경곗값에서 실수를 많이 하므로 주로 사용한다. 이처럼 테스트 코드를 작성하면 실수를 줄여 코드의 신뢰성을 줄 수 있게 된다.
+
+즉, 테스트 코드를 작성함으로써 작성된 코드에 신뢰가 생기고, 기능 추가 및 유지보수에 가속도를 더해주게 된다.
+
+
+
+#### Enum
+
+1. 클래스를 상수처럼 사용 할 수 있다.
+2. 서로 관련 있는 상수 값들을 모아 enum으로 구현하는 경우 유용하다.
+3. 클래스와 같은 문법 체계를 따른다.
+4. 상속을 지원하지 않는다.
+5. 상태와 행위를 한곳에서 관리 가능하다.
+6. 데이터의 그룹화
+
+```java
+public enum LottoReference {
+    THREE(3, 5_000, ""),
+    FOUR(4, 50_000, ""),
+    FIVE(5, 1_500_000, ""),
+    BONUS(5, 30_000_000, ", 보너스 볼 일치"),
+    SIX(6, 2_000_000_000, ""),
+    NOPE(0, 0, "");
+    private final int prize;
+    private final int correctCount;
+    private final String message;
+
+    LottoReference(int correctCount, int prize, String message) {
+        this.prize = prize;
+        this.correctCount = correctCount;
+        this.message = message;
+    }
+  	
+  	    public static LottoReference getLottoReference(int containsCount) {
+        for (LottoReference lottoReference : LottoReference.values()) {
+            if (lottoReference.getCorrectCount() == containsCount) {
+                return lottoReference;
+            }
+        }
+        return NOPE;
+    }
+}
+```
+
+위 코드는 로또 번호의 일치 개수와, 당첨금을 가지고 있는 하나의 클래스로 클래스를 분리하지 않고도 두 데이터의 연관성을 보여준다. 또한, 로또 번호의 일치 개수를 입력하면 일치하는 인스턴스를 반환하는 메소드를 통해 상태와 행위를 한곳에서 관리 가능하게 된다.
