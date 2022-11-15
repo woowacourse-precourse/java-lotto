@@ -1,5 +1,8 @@
 package lotto;
 
+import static lotto.Validation.isDistinct;
+import static lotto.Validation.outOfRange;
+
 import java.util.List;
 
 public class Lotto {
@@ -20,24 +23,5 @@ public class Lotto {
         if (outOfRange(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
-    }
-
-    /**
-     * Verify numbers contains number that have been used once.
-     * @param numbers the list of integer to be checked.
-     * @return true if no duplicate value exists.
-     */
-    private static boolean isDistinct(List<Integer> numbers) {
-        return numbers.stream().distinct()
-            .count() == numbers.size();
-    }
-
-    /**
-     * Check if the Lotto number is out of range.
-     * @param numbers the list of integer to be checked.
-     * @return false if number is not in between 1 and 45.
-     */
-    private static boolean outOfRange(List<Integer> numbers) {
-        return numbers.stream().anyMatch(num -> num>=1 && num<=45);
     }
 }
