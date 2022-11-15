@@ -12,7 +12,6 @@ public class Input {
     public List<Integer> getNumbers() { return this.numbers; }
     public int getMoney() { return this.money; }
     public int getBonusNumber() { return this.bonusNumber; }
-    
     public Input() {
         System.out.println("구입 금액을 입력해 주세요.");
         String inputmoney = Console.readLine();
