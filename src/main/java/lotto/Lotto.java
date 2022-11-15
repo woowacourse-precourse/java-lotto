@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
+    private final static int MIN_OF_RANDOM_NUMBER =1;
+    private final static int MAX_OF_RANDOM_NUMBER =45;
+    private final static int COUNT_LOTTO_NUMBER=6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -14,15 +19,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != COUNT_LOTTO_NUMBER) {
             throw new IllegalArgumentException();
         }
         List<Integer> collect = numbers.stream().distinct().collect(Collectors.toList());
-        if (collect.size()<6){
+        if (collect.size()<COUNT_LOTTO_NUMBER){
             throw new IllegalArgumentException();
         }
         for (Integer number : numbers) {
-            if(number<1 || number>45){
+            if(number<MIN_OF_RANDOM_NUMBER || number>MAX_OF_RANDOM_NUMBER){
                 throw new IllegalArgumentException();
             }
         }

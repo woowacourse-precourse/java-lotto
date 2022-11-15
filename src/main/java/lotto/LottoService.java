@@ -16,6 +16,12 @@ public class LottoService {
     private final static int MATCH_WIN_NUMBER=1;
     private final static int MATCH_BONUS_NUMBER=10;
     private final static String COMMA = ",";
+    private final static int MIN_OF_RANDOM_NUMBER =1;
+    private final static int MAX_OF_RANDOM_NUMBER =45;
+    private final static int COUNT_LOTTO_NUMBER=6;
+    private final static int PERCENT=100;
+    private final static int ZERO=0;
+
 
     private final List<Lotto> lottos = new ArrayList<>();
     private final List<Integer> lottoNumberCountRight = new ArrayList<>();
@@ -33,14 +39,14 @@ public class LottoService {
     }
 
     private void validatePurchase(int purchaseAmount) {
-        if(purchaseAmount%1000!=0){
+        if(purchaseAmount%Money.THOUSAND.getAmount()!=ZERO){
             throw new IllegalArgumentException();
         }
     }
 
     public void drawLottos(int lottoCount){
         for (int i=ZERO_INITIALIZATION; i<lottoCount; i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_OF_RANDOM_NUMBER, MAX_OF_RANDOM_NUMBER, COUNT_LOTTO_NUMBER);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
@@ -61,12 +67,12 @@ public class LottoService {
 
     public double getTotalReturn(String purchaseAmount){
         int grossEarning = ZERO_INITIALIZATION;
-        List<Integer> moneys = Stream.of(Money.values()).map(m -> m.getAmount()).filter(m->m!=1000).
-                collect(Collectors.toList());
-        for(int i=0; i<numbersOfWin.size();i++){
+        List<Integer> moneys = Stream.of(Money.values()).map(m -> m.getAmount()).filter(m->m!=Money.THOUSAND.getAmount())
+                .collect(Collectors.toList());
+        for(int i=ZERO_INITIALIZATION; i<numbersOfWin.size();i++){
             grossEarning+= numbersOfWin.get(i)*moneys.get(i);
         }
-        return grossEarning/(Double.parseDouble(purchaseAmount))*100;
+        return grossEarning/(Double.parseDouble(purchaseAmount))*PERCENT;
     }
 
 
@@ -82,7 +88,7 @@ public class LottoService {
     private void validateBonusNumber(String bonusNumber) {
         try {
             int bonus = Integer.parseInt(bonusNumber);
-            if (bonus<1 || bonus>45){
+            if (bonus<MIN_OF_RANDOM_NUMBER || bonus>MAX_OF_RANDOM_NUMBER){
                 throw new IllegalArgumentException();
             }
         }catch (Exception e){
