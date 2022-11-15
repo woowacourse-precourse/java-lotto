@@ -31,6 +31,13 @@ public class GetPrizeNumberTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("중복된 값을 받았을때 예외 처리")
+    @Test
+    void duplicateNumberTest () {
+        assertThatThrownBy(() -> runException("1,2,3,4,5,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     protected void runMain() {
         int [] prizeNumber = new int[6];

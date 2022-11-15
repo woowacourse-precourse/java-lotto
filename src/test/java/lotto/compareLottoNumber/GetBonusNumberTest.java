@@ -17,13 +17,20 @@ public class GetBonusNumberTest extends NsTest {
     @DisplayName("여러 개의 숫자를 받을시 예외 처리")
     @Test
     void getNotNumberTest() {
-        assertThatThrownBy(() -> runException("1,2"))
+        assertThatThrownBy(() -> runException("7,8"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("중복된 값을 받았을때 예외 처리")
+    @Test
+    void duplicateNumberTest () {
+        assertThatThrownBy(() -> runException("1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
     protected void runMain() {
-        int [] prizeNumber = new int[6];
+        int [] prizeNumber = {1,2,3,4,5,6};
         GetResultNumber getResultNumber = new GetResultNumber();
         getResultNumber.getBonusNumberFromUser(prizeNumber);
     }
