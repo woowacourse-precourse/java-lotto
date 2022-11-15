@@ -15,15 +15,15 @@ public class View implements Input {
     @Override
     public String readMoney() {
         print(printOutput(Message.MONEY_MESSAGE));
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 
     public List<Integer> readLotto() {
-        return makeLottoWinner(Console.readLine(), new ArrayList<>());
+        return makeLottoWinner(Console.readLine().trim(), new ArrayList<>());
     }
 
     public String readBonus() {
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 
     private List<Integer> makeLottoWinner(String lotto, List<Integer> lottoWinner) {
