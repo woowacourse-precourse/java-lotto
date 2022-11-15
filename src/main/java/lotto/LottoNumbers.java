@@ -20,7 +20,7 @@ public class LottoNumbers {
         List<Integer> lotto = new ArrayList<>();
         for (int i = 0; i < buyAmount; i++) {
             lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6); //중복 숫자는 리스트에 저장 하지 않음.
-            Collections.sort(lotto);
+
             System.out.println(lotto);
 
             lottoNums.add(lotto);
