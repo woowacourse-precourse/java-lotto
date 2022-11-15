@@ -17,29 +17,50 @@ import lotto.view.OutputView;
 public class LottoController {
     public void run() {
         try {
-            int money = InputView.getMoney();
-            User user = new User(money);
-            user.buyLotto();
+            User user = inputMoneyWithUser();
+            buyLotto(user);
 
-            OutputView.printPurchaseCount(user.getLottoCount());
-            Lottos userLottos = user.getLottos();
-            OutputView.printLottos(userLottos);
-
-            List<Integer> winningNumber = InputView.getWinningNumber();
-            int bonusNumber = InputView.getBonusNumber();
-
-            WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumber), new BonusNumber(bonusNumber));
+            Lottos userLottos = getUserLottos(user);
+            WinningLotto winningLotto = createWinningLotto();
             LottoMachine lottoMachine = new LottoMachine(winningLotto);
 
-            List<LottoPrize> prizeResult = lottoMachine.getPrizeResult(userLottos);
-
-            double profitRate = LottoCalculator.getProfitRate(user, prizeResult);
-            Map<LottoPrize, Integer> prizeCount = lottoMachine.getPrizeCount(userLottos);
-
-            OutputView.printCountOfLottoPrize(prizeCount);
-            OutputView.printProfitRate(profitRate);
+            Map<LottoPrize, Integer> prizeCount = getLottoPrizeResult(userLottos, lottoMachine);
+            printProfitRatio(user, prizeCount);
         } catch (IllegalArgumentException e) {
             ErrorLog.printError(e.getMessage());
         }
+    }
+
+    private void printProfitRatio(User user, Map<LottoPrize, Integer> prizeCount) {
+        double profitRate = LottoCalculator.getProfitRate(user, prizeCount);
+        OutputView.printProfitRate(profitRate);
+    }
+
+    private Map<LottoPrize, Integer> getLottoPrizeResult(Lottos userLottos, LottoMachine lottoMachine) {
+        Map<LottoPrize, Integer> prizeCount = lottoMachine.getPrizeCount(userLottos);
+        OutputView.printCountOfLottoPrize(prizeCount);
+        return prizeCount;
+    }
+
+    private void buyLotto(User user) {
+        user.buyLotto();
+        OutputView.printPurchaseCount(user.getLottoCount());
+    }
+
+    private WinningLotto createWinningLotto() {
+        List<Integer> winningNumber = InputView.getWinningNumber();
+        int bonusNumber = InputView.getBonusNumber();
+        return new WinningLotto(new Lotto(winningNumber), new BonusNumber(bonusNumber));
+    }
+
+    private Lottos getUserLottos(User user) {
+        Lottos userLottos = user.getLottos();
+        OutputView.printLottos(userLottos);
+        return userLottos;
+    }
+
+    private User inputMoneyWithUser() {
+        int money = InputView.getMoney();
+        return new User(money);
     }
 }
