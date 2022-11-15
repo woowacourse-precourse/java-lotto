@@ -36,6 +36,17 @@ class LottoCountingTest {
 
     int bonusNumber = 8;
 
+    Map<Integer, Integer> getWinningCountFromInput(String input){
+        Map<Integer,Integer> winningCount = new HashMap<>();
+        String[] individualCount = input.split(" ");
+        for(int inputIndex = 1; inputIndex <= individualCount.length; inputIndex++){
+            int oneWinningCount = Integer.parseInt(individualCount[inputIndex-1]);
+            winningCount.put(inputIndex,oneWinningCount);
+        }
+
+        return winningCount;
+    }
+
     @Nested
     class CompareLottoAndCountTest{
 
@@ -290,16 +301,6 @@ class LottoCountingTest {
     @Nested
     class CalculateEarningMoneyTest{
 
-        Map<Integer, Integer> getWinningCount(String input){
-            Map<Integer,Integer> winningCount = new HashMap<>();
-            String[] individualCount = input.split(" ");
-            for(int inputIndex = 1; inputIndex <= individualCount.length; inputIndex++){
-                int oneWinningCount = Integer.parseInt(individualCount[inputIndex-1]);
-                winningCount.put(inputIndex,oneWinningCount);
-            }
-
-            return winningCount;
-        }
 
 
         @Test
@@ -307,7 +308,7 @@ class LottoCountingTest {
             String input = "1 0 0 0 0";
             int output = 2_000_000_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -316,7 +317,7 @@ class LottoCountingTest {
             String input = "0 1 0 0 0";
             int output = 30_000_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -325,7 +326,7 @@ class LottoCountingTest {
             String input = "0 0 1 0 0";
             int output = 1_500_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -334,7 +335,7 @@ class LottoCountingTest {
             String input = "0 0 0 1 0";
             int output = 50_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -343,7 +344,7 @@ class LottoCountingTest {
             String input = "0 0 0 0 1";
             int output = 5_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -352,7 +353,7 @@ class LottoCountingTest {
             String input = "0 0 1 1 1";
             int output = 1_555_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -361,7 +362,7 @@ class LottoCountingTest {
             String input = "1 1 1 0 0";
             int output = 2_031_500_000;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
@@ -370,7 +371,7 @@ class LottoCountingTest {
             String input = "0 0 0 0 0";
             int output = 0;
 
-            Map<Integer, Integer> winningCount = getWinningCount(input);
+            Map<Integer, Integer> winningCount = getWinningCountFromInput(input);
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
     }
