@@ -4,31 +4,31 @@ import java.util.List;
 
 public class WinningNumbers {
 
-    private final int BONUS_NUMBER;
+    private final int bonusNumber;
 
-    private final List<Integer> LOTTO_NUMBER;
+    private final List<Integer> lottoNumber;
 
     public WinningNumbers(List<Integer> lottoNumber, int bonusNumber) {
         validate(lottoNumber, bonusNumber);
-        this.LOTTO_NUMBER = lottoNumber;
-        this.BONUS_NUMBER = bonusNumber;
+        this.lottoNumber = lottoNumber;
+        this.bonusNumber = bonusNumber;
     }
 
-    private boolean isValidUnique(List<Integer> numbers, int number) {
-        return !numbers.contains(number);
+    private boolean isValidUnique(List<Integer> lottoNumber, int bonusNumber) {
+        return !lottoNumber.contains(bonusNumber);
     }
 
-    private void validate(List<Integer> numbers, int number) {
-        if (!isValidUnique(numbers, number)) {
+    private void validate(List<Integer> lottoNumber, int bonusNumber) {
+        if (!isValidUnique(lottoNumber, bonusNumber)) {
             throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 
     public int getBonusNumber() {
-        return BONUS_NUMBER;
+        return bonusNumber;
     }
 
     public List<Integer> getLottoNumber() {
-        return LOTTO_NUMBER;
+        return lottoNumber;
     }
 }

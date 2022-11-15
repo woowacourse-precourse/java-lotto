@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.util.NumberGenerator;
+import lotto.util.LottoNumberGenerator;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class LottoAmount {
     }
 
     public List<List<Integer>> buyLotto() {
-        NumberGenerator numberGenerator = new NumberGenerator();
-        return numberGenerator.createRandomNumbers(lottoTickets);
+        LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
+        return lottoNumberGenerator.createRandomNumbers(lottoTickets);
     }
 
     public int getPurchaseAmount() {

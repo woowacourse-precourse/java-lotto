@@ -75,17 +75,17 @@ public class LottoController {
 
     private Statistics summingUp(WinningNumbers winningNumbers, List<List<Integer>> lottoNumber) {
         Statistics statistics = new Statistics();
-        statistics.makeTotalResult(winningNumbers, lottoNumber);
+        statistics.makeWinningStatistics(winningNumbers, lottoNumber);
         return statistics;
     }
 
     private void winningHistory(Statistics statistics) {
-        Map<Rank, Integer> totalResult = statistics.getTotalResult();
-        outputView.printStatistics(totalResult);
+        Map<Rank, Integer> winningStatistics = statistics.getWinningStatistics();
+        outputView.printStatistics(winningStatistics);
     }
 
     private void calculator(Statistics statistics, LottoAmount lottoAmount) {
-        double percentage = statistics.calculatorRevenue(lottoAmount.getPurchaseAmount());
-        outputView.printPercentage(percentage);
+        double revenueRatio = statistics.calculatorRevenueRatio(lottoAmount.getPurchaseAmount());
+        outputView.printPercentage(revenueRatio);
     }
 }

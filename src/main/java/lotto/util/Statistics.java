@@ -9,33 +9,33 @@ import java.util.Map;
 
 public class Statistics {
     private final static int ONE_HUNDRED_PERCENT = 100;
-    private final Map<Rank, Integer> totalResult = new HashMap<>();
+    private final Map<Rank, Integer> winningStatistics = new HashMap<>();
 
-    public void makeTotalResult(WinningNumbers winningNumbers, List<List<Integer>> lottoNumbers) {
-        setTotalResult();
+    public void makeWinningStatistics(WinningNumbers winningNumbers, List<List<Integer>> lottoNumbers) {
+        setWinningStatistics();
         for (List<Integer> lottoNumber : lottoNumbers) {
             Rank rank = compareLotto(winningNumbers, lottoNumber);
-            addResult(rank);
+            matchedCount(rank);
         }
     }
 
-    private void setTotalResult() {
+    private void setWinningStatistics() {
         for (Rank rank : Rank.values()) {
-            totalResult.put(rank, 0);
+            winningStatistics.put(rank, 0);
         }
     }
 
-    private void addResult(Rank rank) {
+    private void matchedCount(Rank rank) {
         if (rank == null) {
             return;
         }
-        int winCount = totalResult.get(rank);
-        totalResult.put(rank, winCount + 1);
+        int winningCount = winningStatistics.get(rank);
+        winningStatistics.put(rank, winningCount + 1);
     }
 
     private Rank compareLotto(WinningNumbers winningNumbers, List<Integer> lotto) {
         boolean bonus = hasBonus(winningNumbers, lotto);
-        int match = matchCount(winningNumbers, lotto);
+        int match = matchNumber(winningNumbers, lotto);
 
         for (Rank rank : Rank.values()) {
             if (rank.hasSameRank(match, bonus)) {
@@ -49,24 +49,28 @@ public class Statistics {
         return lotto.contains(winningNumbers.getBonusNumber());
     }
 
-    private int matchCount(WinningNumbers winningNumbers, List<Integer> lotto) {
+    private int matchNumber(WinningNumbers winningNumbers, List<Integer> lotto) {
         lotto.retainAll(winningNumbers.getLottoNumber());
         return lotto.size();
     }
 
-    public Map<Rank, Integer> getTotalResult() {
-        return totalResult;
+    public Map<Rank, Integer> getWinningStatistics() {
+        return winningStatistics;
     }
 
-    public double calculatorRevenue(int purchaseAmount) {
+    public double calculatorRevenueRatio(int purchaseAmount) {
         return calculatorBenefit() / (double) purchaseAmount * ONE_HUNDRED_PERCENT;
     }
 
     private long calculatorBenefit() {
-        long result = 0L;
-        for (Rank rank : totalResult.keySet()) {
-            result += (long) rank.getPrize() * totalResult.get(rank);
+        long benefit = 0L;
+        for (Rank rank : winningStatistics.keySet()) {
+            benefit += calculatorPrize(rank);
         }
-        return result;
+        return benefit;
+    }
+
+    private long calculatorPrize(Rank rank) {
+        return (long) rank.getPrize() * winningStatistics.get(rank);
     }
 }
