@@ -20,8 +20,12 @@ public class OutputView {
         printWinningStatisticsHeader();
         for (int index = 1; index < Rank.values().length; index++) {
             Rank rank = Rank.values()[index];
-            printWinningPrize(rank.getMatchedCount(), rank.getPrizeMoney(), userLottoScore.get(rank));
+            printWinningPrize(rank, userLottoScore.get(rank));
         }
         printWinningProfitRate(profitRate);
+    }
+
+    public static void printErrorMessage(IllegalArgumentException error){
+        System.out.println(error.getMessage());
     }
 }
