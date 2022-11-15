@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.controller.RankController;
+import lotto.controller.Dispatch;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.WinLotto;
 import lotto.domain.rank.Rank;
@@ -23,13 +23,15 @@ public class ProfitTest {
     @Test
     @DisplayName("수익률 계산 테스트")
     void calculateProfit(){
-        String winningNumber = "1,2,3,4,5,6";
-        String bonus = "7";
+        LottoConfig lottoConfig = new LottoConfig();
+        Dispatch dispatch = new Dispatch(lottoConfig);
+        List<Integer> winningNumber = dispatch.convertWinningNumbers("1,2,3,4,5,6");
+        int bonus = Integer.parseInt("7");
         List<Lotto> lottos = testLottos();
 
         User user = new User(String.valueOf(lottos.size() * 1000));
         buylotto(lottos, user);
-        WinLotto winLotto = rankService.generateWinningLotto(winningNumber, bonus);
+        WinLotto winLotto = new WinLotto(winningNumber, bonus);
         Rank rank = rankService.calculateRanking(user, winLotto);
         Double profit = rankService.calculateProfit(user, rank);
 

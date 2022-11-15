@@ -6,6 +6,8 @@ import lotto.domain.user.User;
 import lotto.service.RankService;
 import lotto.view.RankingView;
 
+import java.util.List;
+
 public class RankController {
 
     private final RankService rankService;
@@ -14,8 +16,7 @@ public class RankController {
         this.rankService = rankService;
     }
 
-    public RankingView statistics(User user, String winningNumbers, String bonus){
-        WinLotto winLotto = rankService.generateWinningLotto(winningNumbers, bonus);
+    public RankingView statistics(User user, WinLotto winLotto){
         Rank ranking = rankService.calculateRanking(user, winLotto);
         double profit = rankService.calculateProfit(user, ranking);
         return new RankingView(ranking, profit);
