@@ -13,25 +13,26 @@ public class Lotto {
 
     public Lotto(List<Integer> unValidatedNumbers) {
         this.numbers = new TreeSet<>(unValidatedNumbers);
-        validateSixNumber(numbers);
+        validateSixCount(numbers);
     }
-    //지금 number 변수가 너무 많아
-    public Lotto(String input) {
-        this.numbers = toIntSet(separateCommas(input));
 
+    public Lotto(String input) {
+        this.numbers = toIntSet(separateInput(input));
     }
 
     public Set<Integer> getNumbers() {
         return numbers;
     }
 
-    private TreeSet<Integer> toIntSet(Set<String> separateCommas) {
-        validateNumbers(separateCommas);
-        Set<Integer> unValidatedNumbers = separateCommas.stream().map(number -> Integer.parseInt(number)).collect(Collectors.toSet());
+    private TreeSet<Integer> toIntSet(Set<String> inputs) {
+        validateNumbers(inputs);
+        Set<Integer> unValidatedNumbers = inputs.stream()
+                .map(input -> Integer.parseInt(input))
+                .collect(Collectors.toSet());
         validateRange(unValidatedNumbers);
-        validateSixNumber(unValidatedNumbers);
-        TreeSet<Integer> treeSet = new TreeSet<>(unValidatedNumbers);
-        return treeSet;
+        validateSixCount(unValidatedNumbers);
+        TreeSet<Integer> numbers = new TreeSet<>(unValidatedNumbers);
+        return numbers;
     }
 
     private void validateRange(Set<Integer> unValidatedNumbers) {
@@ -40,23 +41,22 @@ public class Lotto {
         }
     }
 
-    private void validateNumbers(Set<String> separateCommas) {
-        for (String separateComma : separateCommas) {
-            if (!separateComma.chars().allMatch(Character::isDigit)) {
+    private void validateNumbers(Set<String> inputs) {
+        for (String input : inputs) {
+            if (!input.chars().allMatch(Character::isDigit)) {
                 throw new IllegalArgumentException(Error.NUMBER.getMessage());
             }
         }
     }
 
-    private Set<String> separateCommas(String input) {
+    private Set<String> separateInput(String input) {
         Set<String> inputs = new HashSet<>(Arrays.asList(input.split(",")));
         return inputs;
     }
 
-    private void validateSixNumber(Set<Integer> numbers) {
+    private void validateSixCount(Set<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Error.COUNT.getMessage());
         }
     }
-
 }
