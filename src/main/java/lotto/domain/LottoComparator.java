@@ -9,6 +9,7 @@ public class LottoComparator {
     private List<Lotto> lottos;
     private List<Integer> winningNumbers;
     private int bonusNumber;
+    private List<Integer> lottoNumbers;
 
     public LottoComparator(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber) {
         this.lottos = lottos;
@@ -22,24 +23,34 @@ public class LottoComparator {
 
     public int getNumberMatchesLottoNumber(int numberMatchesCount, boolean includeBonus) {
         int result = 0;
-
         for (Lotto lotto : lottos) {
             int matches = 0;
-            List<Integer> lottoNumbers = lotto.getNumbers();
-            for (Integer lottoNumber : lottoNumbers) {
-                if (winningNumbers.contains(lottoNumber)) {
-                    matches++;
-                }
+            lottoNumbers = lotto.getNumbers();
+            matches = countMatches(lottoNumbers);
+            result += countResult(numberMatchesCount, includeBonus, matches);
+        }
+        return result;
+    }
+
+    private int countMatches(List<Integer> lottoNumbers) {
+        int matches = 0;
+        for (Integer lottoNumber : lottoNumbers) {
+            if (winningNumbers.contains(lottoNumber)) {
+                matches++;
             }
-            if (includeBonus) {
-                if (numberMatchesCount == matches && lottoNumbers.contains(bonusNumber)) {
-                    result++;
-                }
-                continue;
+        }
+        return matches;
+    }
+
+    private int countResult(int numberMatchesCount, boolean includeBonus, int matches) {
+        int result = 0;
+        if (includeBonus) {
+            if (numberMatchesCount == matches && lottoNumbers.contains(bonusNumber)) {
+                return ++result;
             }
-            if (numberMatchesCount == matches) {
-                result++;
-            }
+        }
+        if (numberMatchesCount == matches) {
+            return ++result;
         }
         return result;
     }
