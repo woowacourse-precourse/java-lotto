@@ -32,7 +32,10 @@ public class LottoWalletService {
 
     private int getNumberOfLottoToMake() {
 
-        getInputOfMoney();
+        try {
+            getInputOfMoney();
+        } catch (IllegalArgumentException ignored) {
+        }
 
         int howManyLotto = payment / Constants.PRICE;
 
@@ -47,10 +50,7 @@ public class LottoWalletService {
 
         String moneyAsString = Console.readLine();
 
-        try {
-            isNumeric(moneyAsString);
-        } catch (IllegalArgumentException ignored) {
-        }
+        isNumeric(moneyAsString);
         rangeCheck();
         validateUnit();
     }

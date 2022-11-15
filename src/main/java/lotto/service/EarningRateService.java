@@ -4,7 +4,6 @@ import lotto.domain.Prize;
 
 import static lotto.domain.Constants.SECOND_PRIZE;
 import static lotto.domain.Score.*;
-import static lotto.domain.Prize.*;
 import static lotto.service.LottoWalletService.*;
 
 public class EarningRateService {
