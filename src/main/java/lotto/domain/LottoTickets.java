@@ -1,7 +1,9 @@
 package lotto.domain;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class LottoTickets {
@@ -13,6 +15,16 @@ public class LottoTickets {
 
     public int totalCount() {
         return lottoTickets.size();
+    }
+
+    public List<Rank> findWinner(lotto.domain.WinningNumbers winningNumbers) {
+        List<lotto.domain.Rank> winnerList = new ArrayList<>();
+        lottoTickets.forEach((lottoTicket) -> {
+            lotto.domain.Rank rank = winningNumbers.getRank(lottoTicket);
+            winnerList.add(rank);
+        });
+
+        return winnerList;
     }
 
     public String toString() {
