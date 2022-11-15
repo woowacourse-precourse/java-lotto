@@ -62,13 +62,17 @@ public class LottoController {
     }
 
     public void startLotto() {
-        getPurchaseAmount();
-        publishLotto();
-        getPublishedLotto();
-        getWinningNumbers();
-        getBonusNumber();
-        getWinners();
-        getRateOfReturn();
-        getResult();
+        try {
+            getPurchaseAmount();
+            publishLotto();
+            getPublishedLotto();
+            getWinningNumbers();
+            getBonusNumber();
+            getWinners();
+            getRateOfReturn();
+            getResult();
+        } catch (IllegalArgumentException ignored) {
+        }
+
     }
 }

@@ -40,4 +40,8 @@ public class OutputView {
 
         System.out.print(result);
     }
+
+    public static void printErrorMessage(service.Error errorMessage) {
+        System.out.println(errorMessage);
+    }
 }

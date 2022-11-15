@@ -1,6 +1,7 @@
 package service;
 
 import repository.MoneyRepository;
+import view.OutputView;
 
 import java.util.EnumMap;
 import java.util.regex.Pattern;
@@ -28,7 +29,8 @@ public class MoneyService {
         Format format = Format.PURCHASE_AMOUNT;
 
         if (!Pattern.matches(format.getRegex(), amount)) {
-            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_FORMAT.getText());
+            OutputView.printErrorMessage(Error.PURCHASE_AMOUNT_FORMAT);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -36,7 +38,8 @@ public class MoneyService {
         Rule lotto = Rule.PER_LOTTO;
 
         if (amountValue == 0 || amountValue % lotto.getPrice() != 0) {
-            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_VALUE.getText());
+            OutputView.printErrorMessage(Error.PURCHASE_AMOUNT_VALUE);
+            throw new IllegalArgumentException();
         }
     }
 

@@ -3,6 +3,7 @@ package service;
 import camp.nextstep.edu.missionutils.Randoms;
 import domain.Lotto;
 import repository.LottoRepository;
+import view.OutputView;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -25,7 +26,7 @@ public class LottoService {
 
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lotto.getMinNumber(), lotto.getMaxNumber(), lotto.getCount());
-            numbers.sort(Comparator.naturalOrder());
+            numbers = numbers.stream().sorted().collect(Collectors.toList());
             Lotto publishLotto = new Lotto(numbers);
 
             lottoRepository.save(publishLotto);
@@ -57,7 +58,8 @@ public class LottoService {
         Format winningNumbers = Format.WINNING_NUMBERS;
 
         if (!Pattern.matches(winningNumbers.getRegex(), numbers)) {
-            throw new IllegalArgumentException(Error.WINNING_NUMBERS_FORMAT.getText());
+            OutputView.printErrorMessage(Error.WINNING_NUMBERS_FORMAT);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -67,7 +69,8 @@ public class LottoService {
                 .count();
 
         if (uniqueNumberCount != Rule.PER_LOTTO.getCount()) {
-            throw new IllegalArgumentException(Error.WINNING_NUMBERS_INCLUDE_SAME_NUMBER.getText());
+            OutputView.printErrorMessage(Error.WINNING_NUMBERS_INCLUDE_SAME_NUMBER);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -87,7 +90,8 @@ public class LottoService {
         Format bonusNumber = Format.BONUS_NUMBER;
 
         if (!Pattern.matches(bonusNumber.getRegex(), number)) {
-            throw new IllegalArgumentException(Error.BONUS_NUMBER_FORMAT.getText());
+            OutputView.printErrorMessage(Error.BONUS_NUMBER_FORMAT);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -95,7 +99,8 @@ public class LottoService {
         List<Integer> winningNumbers = lottoRepository.getWinningNumbers();
 
         if (winningNumbers.contains(number)) {
-            throw new IllegalArgumentException(Error.BONUS_NUMBER_IN_WINNING_NUMBER.getText());
+            OutputView.printErrorMessage(Error.BONUS_NUMBER_IN_WINNING_NUMBER);
+            throw new IllegalArgumentException();
         }
     }
 

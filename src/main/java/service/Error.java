@@ -17,4 +17,9 @@ public enum Error {
     public String getText() {
         return this.errorText;
     }
+
+    @Override
+    public String toString() {
+        return this.errorText;
+    }
 }
