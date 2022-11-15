@@ -31,10 +31,7 @@ public class Application {
     }
 
     public static int checkPay(String str) {
-//        if (!str.matches("^[0-9]*$")) {
-//            throw new IllegalArgumentException("[ERROR] 안된대용");
-//        }
-        int pay = 0;
+        int pay;
         try {
             pay = Integer.parseInt(str);
         } catch (NumberFormatException e) {
