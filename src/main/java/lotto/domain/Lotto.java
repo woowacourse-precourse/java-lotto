@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.utils.ErrorMessage;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -16,14 +18,14 @@ public class Lotto {
 
     private void validateNumberLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수는 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_LENGTH_ERROR);
         }
     }
 
     private void validateNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1부터 45까지 입니다.");
+                throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR);
             }
         }
     }
@@ -31,7 +33,7 @@ public class Lotto {
     private void validateDuplicatedNumber(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (Collections.frequency(numbers, number) != 1) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
+                throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR);
             }
         }
     }

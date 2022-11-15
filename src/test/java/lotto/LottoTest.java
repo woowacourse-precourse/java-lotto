@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.utils.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ class LottoTest {
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 로또 번호의 개수는 6개여야 합니다.");
+                .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_LENGTH_ERROR);
     }
 
     @DisplayName("로또 번호가 1부터 45까지의 범위를 벗어나면 예외가 발생한다.")
@@ -24,10 +25,10 @@ class LottoTest {
         assertAll(
                 () -> assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6)))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 로또 번호의 범위는 1부터 45까지 입니다."),
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR),
                 () -> assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 로또 번호의 범위는 1부터 45까지 입니다."));
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR));
     }
 
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
@@ -35,6 +36,6 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(("[ERROR] 로또 번호는 중복되지 않아야 합니다."));
+                .hasMessageContaining((ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR));
     }
 }

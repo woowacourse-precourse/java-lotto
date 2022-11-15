@@ -1,5 +1,6 @@
 package lotto.ui;
 
+import lotto.utils.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,7 @@ class InputTest {
                 () -> assertThat(Input.validatePurchaseAmount(isDivisible)).isEqualTo(isDivisible),
                 () -> assertThatThrownBy(() -> Input.validatePurchaseAmount(isNotDivisible))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("[ERROR] 로또 구입 금액은 1,000원으로 나누어 떨어져야 합니다.")
+                        .hasMessageContaining(ErrorMessage.PURCHASE_AMOUNT_ERROR)
         );
     }
 }
