@@ -10,7 +10,7 @@ lotto
 │     ├── Lotto.java
 │     ├── LottoNumber.java
 │     ├── Money.java
-│     └── WinningLotto.java
+│     └── Rank.java
 │ 
 ├── layer
 │     ├── controller
