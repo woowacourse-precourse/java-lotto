@@ -8,6 +8,10 @@ public class OutputView {
         tickets.stream().forEach(System.out::println);
         System.out.println();
     }
+    public static void guideStatistics(){
+        System.out.println(Constant.STATISTICS_TITLE);
+        System.out.println(Constant.LINE);
+    }
     private static void printReward(){
 
     }

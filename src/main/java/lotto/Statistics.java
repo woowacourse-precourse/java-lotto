@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Statistics {
+    public static void print(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){
+
+        printReward(tickets, lottoNumbers, bonusNumber);
+        printProfitRate(tickets, lottoNumbers, bonusNumber);
+    }
     public static void printProfitRate(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){
         int cost = Constant.PURCHASE_UNIT * tickets.size();
         int profit = 0;
@@ -11,8 +16,8 @@ public class Statistics {
             Grade grade = Judgement.findGradeByCorrectNumber(lottoNumbers, bonusNumber, ticket);
             profit += grade.getReward();
         }
+        OutputView.guideStatistics();
         OutputView.printProfitRate(profit, cost);
-        //System.out.println("총 수익률은 "+Math.round(profitRate*10)/10.0+"%입니다.");
     }
 
     public static void printReward(List<List<Integer>> tickets, List<Integer> lottoNumbers, int bonusNumber){

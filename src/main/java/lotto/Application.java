@@ -6,11 +6,11 @@ import java.util.List;
 public class Application {
     private static final int END = 0;
     private static final List<Integer> LOTTO_ANSWER_END = new ArrayList<Integer>();
+    private static final List<List<Integer>> TICKETS_END = new ArrayList<List<Integer>>();
     private static final int LOTTO_COUNT = 6;
 
     public static void main(String[] args) {
         play();
-        // TODO: 프로그램 구현
     }
 
     public static void play() {
@@ -29,13 +29,13 @@ public class Application {
             OutputView.printTickets(tickets);
             return tickets;
         }
-        return null;
+        return TICKETS_END;
     }
 
     private static void showResult(List<Integer> lottoNumbers, int bonusNumber, List<List<Integer>> tickets){
-
-        Statistics.printReward(tickets, lottoNumbers, bonusNumber);
-        Statistics.printProfitRate(tickets, lottoNumbers, bonusNumber);
+        if (lottoNumbers.size() != 0 && tickets.size() != 0 && bonusNumber != 0) {
+            Statistics.print(tickets, lottoNumbers, bonusNumber);
+        }
     }
 
     private static List<Integer> implementLotto(int count, InputController game) {
@@ -49,6 +49,7 @@ public class Application {
     private static int implementBonus(List<Integer> lottoNumber, InputController game) {
         if (lottoNumber.size() == LOTTO_COUNT){
             int bonusNumber = game.checkBonus(new Lotto(lottoNumber));
+            return bonusNumber;
         }
         return END;
     }
