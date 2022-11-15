@@ -1,4 +1,4 @@
-package lotto.domain.enums;
+package lotto.domain.constant;
 
 public enum Message {
 

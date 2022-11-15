@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.User;
-import lotto.domain.enums.Number;
+import lotto.domain.constant.Number;
 import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;

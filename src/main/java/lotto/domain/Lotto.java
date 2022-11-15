@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.domain.enums.Message;
-import lotto.domain.enums.Number;
+import lotto.domain.constant.Message;
+import lotto.domain.constant.Number;
 import lotto.util.ExceptionHandler;
 import java.util.ArrayList;
 import java.util.Collections;

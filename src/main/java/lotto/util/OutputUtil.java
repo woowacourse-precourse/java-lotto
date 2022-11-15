@@ -2,8 +2,8 @@ package lotto.util;
 
 import lotto.domain.Lotto;
 import lotto.domain.User;
-import lotto.domain.enums.Message;
-import lotto.domain.enums.Number;
+import lotto.domain.constant.Message;
+import lotto.domain.constant.Number;
 import java.util.Map;
 
 public class OutputUtil {

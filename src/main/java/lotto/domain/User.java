@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.enums.Number;
+import lotto.domain.constant.Number;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

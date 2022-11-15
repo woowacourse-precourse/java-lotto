@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.enums.Number;
+import lotto.domain.constant.Number;
 import lotto.service.ManagerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

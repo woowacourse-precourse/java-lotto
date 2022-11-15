@@ -1,6 +1,6 @@
 package lotto.util;
 
-import lotto.domain.enums.Number;
+import lotto.domain.constant.Number;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
