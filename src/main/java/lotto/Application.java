@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     private static void CheckSmallMoney(int money){
@@ -28,10 +30,24 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
     public static void main(String[] args) {
+        System.out.println("구입금액을 입력해 주세요.");
         int customerMoney = Integer.parseInt(Console.readLine());
-        int numberOfLottos = BuyLotto(customerMoney);
 
+        int numberOfLottos = BuyLotto(customerMoney);
+        System.out.println(numberOfLottos+"개를 구매했습니다.");
+
+        List<Lotto> lottos = LottoMachine.makeLotto(numberOfLottos);
+        System.out.println(lottos);
+
+        System.out.println("당첨 번호를 입력해 주세요.");
         ArrayList<Integer> winningNumbers = GetWinningNumbers();
-        int bounusNumber = GetBounusNumber();
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int customerBounusNumber = GetBounusNumber();
+
+        for(Lotto lotto: lottos){
+            Prize count = new Prize(winningNumbers, lotto, customerBounusNumber);
+            System.out.println(count);
+        }
     }
 }
