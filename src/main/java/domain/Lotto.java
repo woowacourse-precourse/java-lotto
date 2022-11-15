@@ -1,13 +1,10 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import Utils.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Lotto {
     private final List<Integer> numbers;
