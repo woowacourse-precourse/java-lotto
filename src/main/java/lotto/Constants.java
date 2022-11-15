@@ -7,6 +7,7 @@ public class Constants {
     public static final String ASK_LOTTO_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     public static final String LOTTO_WINNING_NUMBERS_SEPARATOR = ",";
     public static final String ISSUED_LOTTO_NUMBERS_SEPARATOR = ", ";
+    public static final String LOTTO_ISSUE_COUNT_MESSAGE = "%d개를 구매했습니다.";
     public static final int MINIMUM_LOTTO_NUMBER = 1;
     public static final int MAXIMUM_LOTTO_NUMBER = 45;
     public static final int LOTTO_NUMBERS_SIZE = 6;

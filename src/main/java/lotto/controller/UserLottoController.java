@@ -28,14 +28,16 @@ public class UserLottoController {
         return instance;
     }
 
-    public void enterPurchaseAmount() throws IllegalArgumentException {
+    public String enterPurchaseAmount() throws IllegalArgumentException {
         OutputView.printAskPurchaseAmount();
         String purchaseAmount = InputView.input();
         userLottoService.validate(purchaseAmount);
-        userLottoService.issueLotto(Long.parseLong(purchaseAmount));
+        return purchaseAmount;
     }
 
-    public void printIssuedLotteries() {
+    public void issueLotteries(long issueCnt) {
+        OutputView.printIssueCount(issueCnt);
+        userLottoService.issueLotto(issueCnt);
         OutputView.printIssuedLotteries(userLottoService.getLotteries());
     }
 

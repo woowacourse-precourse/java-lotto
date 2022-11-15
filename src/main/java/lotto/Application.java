@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Constants.MINIMUM_PURCHASE_AMOUNT;
+
 import lotto.controller.ResultController;
 import lotto.controller.UserLottoController;
 
@@ -10,8 +12,9 @@ public class Application {
     public static void main(String[] args) {
         init();
         try {
-            userLottoController.enterPurchaseAmount();
-            userLottoController.printIssuedLotteries();
+            String purchaseAmount = userLottoController.enterPurchaseAmount();
+            long issueCnt = Long.parseLong(purchaseAmount) / MINIMUM_PURCHASE_AMOUNT;
+            userLottoController.issueLotteries(issueCnt);
             resultController.enterWinningNumbers();
             resultController.enterBonusNumber();
             resultController.printLottoResult(userLottoController.getIssuedLotteries());

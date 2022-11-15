@@ -42,9 +42,8 @@ public class UserLottoService {
         }
     }
 
-    public void issueLotto(long purchaseAmount) throws IllegalArgumentException {
-        long lottoCnt = purchaseAmount / MINIMUM_PURCHASE_AMOUNT;
-        for (int i = 0; i < lottoCnt; i++) {
+    public void issueLotto(long issueCnt) throws IllegalArgumentException {
+        for (int i = 0; i < issueCnt; i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER,
                     LOTTO_NUMBERS_SIZE));
             userLottoRepository.save(lotto);

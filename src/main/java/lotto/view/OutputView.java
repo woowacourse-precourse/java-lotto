@@ -4,6 +4,7 @@ import static lotto.Constants.ASK_BONUS_NUMBER;
 import static lotto.Constants.ASK_LOTTO_WINNING_NUMBERS;
 import static lotto.Constants.ASK_PURCHASE_AMOUNT;
 import static lotto.Constants.LOTTO_EARNING_RATE_MESSAGE;
+import static lotto.Constants.LOTTO_ISSUE_COUNT_MESSAGE;
 import static lotto.Constants.LOTTO_RESULT_HEADER_MESSAGE;
 
 import java.util.List;
@@ -41,7 +42,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printErrorMessage(String errorMessage) {
-        System.out.println(errorMessage);
+    public static void printIssueCount(long issueCnt) {
+        System.out.printf(LOTTO_ISSUE_COUNT_MESSAGE, issueCnt);
+        System.out.println();
     }
 }
