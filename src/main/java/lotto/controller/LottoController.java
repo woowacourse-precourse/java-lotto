@@ -20,15 +20,17 @@ public class LottoController {
         Output.printQuantityOfLotto(quantity);
         Output.printLottoTickets(tickets.getTickets());
 
-        drawLots(tickets);
+        drawLots(tickets, purchaseAmount);
     }
 
-    public static void drawLots(LottoTickets tickets) {
+    public static void drawLots(LottoTickets tickets, int purchaseAmount) {
         Lotto lottoNumbers = Input.inputLottoNumbers();
         int bonusNumber = Input.inputBonusNumber();
         LottoRank rank = checkTotalRank(tickets, lottoNumbers, bonusNumber);
+        LottoProfit profit = new LottoProfit(rank.getRank(), purchaseAmount);
 
         Output.printTotalRank(rank.getRank());
+        Output.printRateOfReturn(profit.getProfit());
     }
 
     static Set<List<Integer>> collectUniqueLottoTickets(int numberOfTickets) {

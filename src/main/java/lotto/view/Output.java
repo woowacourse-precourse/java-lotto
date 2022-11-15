@@ -53,19 +53,4 @@ public class Output {
     public static void printRateOfReturn(double rateOfReturn) {
         System.out.println(String.format(TOTAL_PROFIT, rateOfReturn));
     }
-
-    private static long calculateSumOfPrize(Map<Integer, Integer> totalRank) {
-        long sumOfPrize = 0;
-        sumOfPrize += totalRank.get(1) * 2000000000L;
-        sumOfPrize += totalRank.get(2) * 30000000L;
-        sumOfPrize += totalRank.get(3) * 1500000L;
-        sumOfPrize += totalRank.get(4) * 50000L;
-        sumOfPrize += totalRank.get(5) * 5000L;
-        return sumOfPrize;
-    }
-
-    private static double calculateRateOfReturn(long sumOfPrize, int purchaseAmount) {
-        double rateOfReturn = (double) sumOfPrize / (double) purchaseAmount;
-        return rateOfReturn;
-    }
 }
