@@ -44,4 +44,7 @@ public enum Prize {
     public int getMatching() {
         return matching;
     }
+    public boolean getBonus() {
+        return bonus;
+    }
 }

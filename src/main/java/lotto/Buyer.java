@@ -51,10 +51,26 @@ public class Buyer {
     private void printPrize(LottoResult result) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (Prize prize : Prize.values()) {
+        for (int i = Prize.values().length - 1; i >= 0; i--) {
+            Prize prize = Prize.values()[i];
+
+            // 출력할 내용들을 정리
+            int mathcing = prize.getMatching();
+            String bonusBall = bonusBallSentence(prize);
             String priceWithFormat = numberFormat.format(prize.getPrizeMoney());
-            System.out.println(prize.getMatching() + "개 일치 (" + priceWithFormat + "원) - " + "" + "개");
+            int count = result.countPrize(prize);
+
+            System.out.println(
+                    mathcing + "개 일치" + bonusBall + " (" + priceWithFormat + "원) - " + count + "개"
+            );
         }
+    }
+
+    private String bonusBallSentence(Prize prize) {
+        if (prize.getBonus()) {
+            return ", 보너스 볼 일치";
+        }
+        return "";
     }
 
     public float checkRate(int seedMoney, int lastMoney) {
