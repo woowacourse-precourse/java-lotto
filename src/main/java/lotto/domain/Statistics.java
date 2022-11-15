@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -12,7 +13,7 @@ public class Statistics {
     private static final char PERCENTAGE_MARK = '%';
     private static final int RECORD_COUNT = 1;
     private static final String EARNINGS_RATE_MARK = "%.1f";
-    private Map<Rank, Integer> rankRecord = new TreeMap<>() {{
+    private Map<Rank, Integer> rankRecord = new TreeMap<>(Collections.reverseOrder()) {{
         put(FIRST_PLACE, 0);
         put(SECOND_PLACE, 0);
         put(THIRD_PLACE, 0);
