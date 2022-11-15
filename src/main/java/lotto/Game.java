@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -65,6 +66,7 @@ public class Game {
     public List<List<Integer>> generateNumbers(int count) {
         for (int index=0; index < count; index++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, BALL_COUNT);
+            Collections.sort(numbers);
             buyingNumbers.add(numbers);
         }
         return buyingNumbers;
