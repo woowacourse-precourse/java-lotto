@@ -1,8 +1,12 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
 import java.util.List;
+import lotto.message.ErrorMessage;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -12,9 +16,22 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_SIZE.getErrorMessage());
+        }
+        if (new HashSet<>(numbers).size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_OVERLAP.getErrorMessage());
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    public static Lotto issueLottoTicket() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public static Lotto drawLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
 }
