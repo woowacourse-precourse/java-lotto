@@ -13,29 +13,33 @@ public class Application {
     private static List<Integer> winningCount = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
 
     public static void main(String[] args) {
-        System.out.println("구입금액을 입력해 주세요.");
-        int cost = inputCost(Console.readLine());
+        try {
+            System.out.println("구입금액을 입력해 주세요.");
+            int cost = inputCost(Console.readLine());
 
-        int lottoCount = PriceConfig.getLottoCountWithoutChange(cost);
+            int lottoCount = PriceConfig.getLottoCountWithoutChange(cost);
 
-        System.out.println(lottoCount + "개를 구매했습니다.");
-        publishNewLotto(lottoCount);
+            System.out.println(lottoCount + "개를 구매했습니다.");
+            publishNewLotto(lottoCount);
 
-        System.out.println("당첨 번호를 입력해 주세요.");
-        Lotto winningLotto = new Lotto(inputWinningLottoNums(Console.readLine()));
-        System.out.println("보너스 번호를 입력해 주세요.");
-        int winningBonus = inputWinningBonusNum(Console.readLine());
+            System.out.println("당첨 번호를 입력해 주세요.");
+            Lotto winningLotto = new Lotto(inputWinningLottoNums(Console.readLine()));
+            System.out.println("보너스 번호를 입력해 주세요.");
+            int winningBonus = inputWinningBonusNum(Console.readLine());
 
-        Statistics statistics = new Statistics(winningLotto, winningBonus);
+            Statistics statistics = new Statistics(winningLotto, winningBonus);
 
-        for (int i = 0; i < userLottos.size(); i++) {
-            int prize = statistics.getPrize(userLottos.get(i));
-            if (prize != -1)
-                winningCount.set(prize - 1, winningCount.get(prize - 1) + 1);
+            for (int i = 0; i < userLottos.size(); i++) {
+                int prize = statistics.getPrize(userLottos.get(i));
+                if (prize != -1)
+                    winningCount.set(prize - 1, winningCount.get(prize - 1) + 1);
+            }
+            double yield = statistics.getYield(cost, winningCount);
+
+            printResult(yield);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-        double yield = statistics.getYield(cost, winningCount);
-
-        printResult(yield);
     }
 
     public static void publishNewLotto(int lottoCount) {
