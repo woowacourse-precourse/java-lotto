@@ -72,10 +72,10 @@ public class User {
         } catch(NumberFormatException e) {
             exception.throwInvalidInputException();
         }
-
         if (winningNumber.size()!=6) {
             exception.throwInvalidSizeException();
         }
+
         this.winningNumber=winningNumber;
     }
 
