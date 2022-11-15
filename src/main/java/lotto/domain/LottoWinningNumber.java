@@ -2,7 +2,9 @@ package lotto.domain;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LottoWinningNumber {
     private final List<Integer> winningNumbers;
@@ -13,6 +15,14 @@ public class LottoWinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
     public int bonusNumberConversion(String inputBonusNumber) {
         int bonusNumber;
 
@@ -21,14 +31,6 @@ public class LottoWinningNumber {
         validOneNumberRange(bonusNumber);
 
         return bonusNumber;
-    }
-
-    public int getBonusNumber() {
-        return bonusNumber;
-    }
-
-    public List<Integer> getWinningNumbers() {
-        return winningNumbers;
     }
 
     public List<Integer> winningNumberConversion(String inputWinningNumber) {
@@ -44,6 +46,19 @@ public class LottoWinningNumber {
         validAllNumberRange(winningNumber);
 
         return winningNumber;
+    }
+
+    public void validDuplicateNumber(List<Integer> winningNumbers, int bonusNumber) {
+        Set<Integer> set = new HashSet<>();
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+        for (int i : winningNumbers) {
+            if(set.contains(i)){
+                throw new IllegalArgumentException();
+            }
+            set.add(i);
+        }
     }
 
     public void validSixNumber(String[] inputNumbers) {
