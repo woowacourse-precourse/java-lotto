@@ -17,11 +17,6 @@ public class Application {
 
         int bonusNumber = Util.inputBonusNumber();
 
-        for(int i : winNumber){
-            System.out.print(i + " ");
-        }
-
-        System.out.println("bonusNumber = " + bonusNumber);
-
+        LottoUtil.checkWin(userLottos, winNumber);
     }
 }

@@ -28,4 +28,24 @@ public class LottoUtil {
 
         return userLottos;
     }
+
+    public static void checkWin(List<Lotto> userLottos, List<Integer> winNumber) {
+        List<Integer> winStatistics = new ArrayList<>();
+
+        for(Lotto lotto : userLottos){
+            int cnt = checkWin(lotto, winNumber);
+            winStatistics.add(cnt);
+        }
+    }
+
+    public static int checkWin(Lotto lotto, List<Integer> winNumber) {
+        int cnt = 0;
+
+        for(int number : lotto.getNumbers()){
+            if(winNumber.contains(number)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 }
