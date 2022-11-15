@@ -59,4 +59,13 @@ public class InputUser {
             throw new IllegalArgumentException(ERRMSG.getErrMsg());
         }
     }
+    public static int inputBonusNumber(List<Integer> lottoNumber) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNo = Console.readLine();
+        validateValue(bonusNo);
+        int bonusNumber = Integer.parseInt(bonusNo);
+        validateRange(bonusNumber);
+        checkContainLotto(lottoNumber, bonusNumber);
+        return bonusNumber;
+    }
 }
