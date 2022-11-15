@@ -14,6 +14,12 @@ public enum Ranking {
     private final int numberCount;
     private final boolean isBonusNumber;
 
+    Ranking(int prizeMoney, int numberCount, boolean isBonusNumber) {
+        this.prizeMoney = prizeMoney;
+        this.numberCount = numberCount;
+        this.isBonusNumber = isBonusNumber;
+    }
+
     public static Ranking findOfRanking(int numberCount, boolean isBonusNumber) {
         return Arrays.stream(Ranking.values())
                 .filter(ranking -> checkNumberCountBonus(ranking, numberCount, isBonusNumber))
@@ -29,12 +35,6 @@ public enum Ranking {
             return ranking.isBonusNumber() == isBonusNumber;
         }
         return true;
-    }
-
-    Ranking(int prizeMoney, int numberCount, boolean isBonusNumber) {
-        this.prizeMoney = prizeMoney;
-        this.numberCount = numberCount;
-        this.isBonusNumber = isBonusNumber;
     }
 
     public int getNumberCount() {
