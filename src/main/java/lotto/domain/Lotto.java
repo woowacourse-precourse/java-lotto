@@ -44,4 +44,13 @@ public class Lotto {
         return builder.toString();
     }
 
+    public int compareLotto(Lotto lotto) {
+        return (int) this.numbers.stream().
+                filter(lotto.numbers::contains).count();
+    }
+
+    public boolean containBonus(int number) {
+        return this.numbers.contains(number);
+    }
+
 }
