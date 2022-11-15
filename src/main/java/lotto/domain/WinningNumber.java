@@ -39,12 +39,16 @@ public class WinningNumber {
         int temporaryNumber = initNumber;
         for(int i=0;i<string.length();i++){
             char temporaryLetter = string.charAt(i);
-            if(temporaryLetter == rest ){
+
+            if(temporaryLetter == rest){
                 numberValidate(numbers, temporaryNumber);
                 temporaryNumber = initNumber;
                 continue;
             }
             temporaryNumber = getTemporaryNumber(temporaryNumber, temporaryLetter);
+            if(i== string.length()-1){
+                numberValidate(numbers, temporaryNumber);
+            }
         }
         return numbers;
     }
