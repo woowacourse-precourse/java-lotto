@@ -23,4 +23,10 @@ public class UserInputWinningNumberService {
         }
         userInputLottoInfoException.isExistSameNumber(winningNumbers, "중복된 숫자가 존재합니다.");
     }
+    public void checkThisBonusNumberIsValid(String bonusNumber) {
+        userInputLottoInfoException.checkInputIsEmpty(bonusNumber, "입력이 null 입니다. 보너스 번호를 입력해주세요");
+        userInputLottoInfoException.verifyExistBlank(bonusNumber, "보너스 번호 입력 중 곰백이 있습니다.");
+        userInputLottoInfoException.isInputValueOnlyNumber(bonusNumber, "보너스 번호는 한 개이며, 숫자만 가능합니다.");
+        userInputLottoInfoException.checkLottoNumberRange(bonusNumber, "1 ~ 45 사이의 숫자만 입력가능합니다.");
+    }
 }
