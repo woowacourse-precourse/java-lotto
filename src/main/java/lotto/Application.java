@@ -1,9 +1,9 @@
 package lotto;
 
-import lotto.domain.LottoGenerator;
-import lotto.domain.LottoPurchaser;
-import lotto.domain.Statistics;
-import lotto.domain.WinningNumbers;
+import lotto.controller.LottoController;
+import lotto.domain.*;
+
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,14 +12,13 @@ public class Application {
 
     public static void run() {
         try {
-            LottoPurchaser lottoPurchaser = new LottoPurchaser();
-            LottoGenerator lottoGenerator = new LottoGenerator(lottoPurchaser.getPurchaseAmount());
-            WinningNumbers winningNumbers = new WinningNumbers();
-            Statistics statistics = new Statistics(winningNumbers, lottoGenerator);
-            System.out.println(statistics);
+            LottoController lottoController = new LottoController();
+            Money money = lottoController.purchase();
+            List<Lotto> lottos = lottoController.generateLottos(money);
+            WinningNumbers winningNumbers = lottoController.generateWinningNumbers();
+            lottoController.showStatistics(winningNumbers, lottos);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
     }
 }
