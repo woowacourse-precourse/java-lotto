@@ -17,13 +17,13 @@ public class Input {
             checkValidation(input);
             return input / 1000;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
     }
 
     public static void checkValidation(int input) {
         if (input % 1000 != 0) {
-            throw new IllegalArgumentException("구입금액은 1000원 단위로 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위로 입력하세요.");
         }
     }
 }
