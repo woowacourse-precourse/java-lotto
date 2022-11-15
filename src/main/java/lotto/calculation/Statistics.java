@@ -62,7 +62,7 @@ public class Statistics {
             }
         }
         winningCount.add(count);
-        if (count == 5 && matchBonusNumber(numbers, winning)) {
+        if (count == 5 && matchBonusNumber(getLottoBonusNumber(numbers), winning)) {
             winningCount.add(1);
             return winningCount;
         }
@@ -70,11 +70,15 @@ public class Statistics {
         return winningCount;
     }
 
-    public boolean matchBonusNumber(List<Integer> numbers, Winning winning) {
+    public int getLottoBonusNumber(List<Integer> numbers) {
         int bonusNumber = 0;
         do {
             bonusNumber = Randoms.pickNumberInRange(1, 45);
         } while (!IllegalArgument.isRedundancyWithNumbers(bonusNumber, numbers));
+        return bonusNumber;
+    }
+
+    public boolean matchBonusNumber(int bonusNumber, Winning winning) {
         if (bonusNumber == winning.getBonusNumber()) {
             return true;
         }
