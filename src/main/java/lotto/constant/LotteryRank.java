@@ -2,6 +2,7 @@ package lotto.constant;
 
 import lotto.domain.constant.LottoProperty;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -56,5 +57,9 @@ public enum LotteryRank {
 
     public int getReward() {
         return reward;
+    }
+
+    public String getRewardInDecimalFormat(DecimalFormat decimalFormat) {
+        return decimalFormat.format(reward);
     }
 }
