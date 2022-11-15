@@ -114,11 +114,12 @@
 총 수익률은 62.5%입니다.
 ```
 #### 실제 실행 결과 
-- 실행이 잘 되는 경우 
-![](../../../OneDrive/문서/ShareX/Screenshots/2022-11/idea64_djbXK07z5e.gif)
-- 오류가 발생하는 경우  
+- 실행이 잘 되는 경우
+  ![idea64_djbXK07z5e](https://user-images.githubusercontent.com/61807355/201936920-989ab08c-5468-4eef-a2d9-793c44500b46.gif)
 
-![](../../../OneDrive/문서/ShareX/Screenshots/2022-11/idea64_GFyIOgnFIW.gif)
+- 오류가 발생하는 경우
+
+- ![idea64_GFyIOgnFIW](https://user-images.githubusercontent.com/61807355/201936479-d9419124-902d-4feb-a36d-b458d83c9e21.gif)
 ---
 
 ## 기능 목록 📚
