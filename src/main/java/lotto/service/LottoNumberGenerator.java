@@ -1,7 +1,8 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import lotto.utils.constants.LottoConstant;
 
@@ -13,7 +14,8 @@ public class LottoNumberGenerator {
                 LottoConstant.MAX_LOTTO.getNumber(),
                 LottoConstant.LOTTO_SIZE.getNumber()
         );
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> lottoNumbers = new ArrayList<>(numbers);
+        lottoNumbers.sort(Comparator.naturalOrder());
+        return lottoNumbers;
     }
 }
