@@ -35,6 +35,14 @@ public enum Rank {
         this.count = 0;
     }
 
+    public int getCount() {
+        return this.count;
+    }
+
+    public int getReward() {
+        return this.reward;
+    }
+
     public void plus() {
         this.count++;
     }
@@ -46,4 +54,6 @@ public enum Rank {
     public String getStrCount() {
         return this.count + "개";
     }
+
+
 }

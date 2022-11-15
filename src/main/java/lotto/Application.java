@@ -20,7 +20,7 @@ public class Application {
         List<Lotto> lottoList = buyLotto(buyPrice);
 
         compareLotto(lottoList);
-
+        calculateProfit(buyPrice);
 
     }
 
@@ -68,4 +68,7 @@ public class Application {
         winningCheck.winningCheck();
     }
 
+    private static void calculateProfit(int money) {
+        ProfitCalculator.calculate(money);
+    }
 }
