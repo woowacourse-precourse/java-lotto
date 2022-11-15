@@ -1,21 +1,17 @@
 package lotto.domain;
 
 import lotto.Lotto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoBundleTest {
     LottoBundle lottoBundle;
+
     @DisplayName("1개의 로또 발행이 정상적으로 되는지 확인")
     @Test
     void createOneLottoTest() {
@@ -28,6 +24,7 @@ public class LottoBundleTest {
                 List.of(8, 21, 23, 41, 42, 43)
         );
     }
+
     @DisplayName("LottoBundle 출력 확인")
     @Test
     void createLottoListTest() {
