@@ -11,6 +11,7 @@ public class LottoGame {
     private Lotto winningNumber;
     private Integer bonusNumber;
     private List<Integer> winningCount;
+    private long earnedMoney;
 
     /* get method */
     public List<Lotto> getPurchasedLottoTickets() {
@@ -39,6 +40,10 @@ public class LottoGame {
             winningCount.add(rankLotto(ticket));
         }
         this.winningCount = winningCount;
+    }
+
+    public void setEarnedMoney(){
+        this.earnedMoney = countMoney();
     }
 
     /* validate method */
@@ -149,4 +154,13 @@ public class LottoGame {
         }
         return rank[countOfMatches - 3];
     }
+
+    private long countMoney(){
+        long money = 0;
+        for(Integer rank : winningCount){
+            money += Lotto.MONEY_OF_RANK[rank - 1];
+        }
+        return money;
+    }
+
 }

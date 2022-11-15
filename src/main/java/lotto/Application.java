@@ -15,6 +15,7 @@ public class Application {
             newGame.setWinningNumber(inputWinningNumber());
             newGame.setBonusNumber(inputBonusNumber());
             newGame.setWinningCount();
+            newGame.setEarnedMoney();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

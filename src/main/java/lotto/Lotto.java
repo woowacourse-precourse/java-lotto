@@ -9,6 +9,7 @@ public class Lotto {
     static final int MAX_NUMBER = 45;
     static final int LOTTO_SIZE = 6;
     static final int PRICE_OF_LOTTO = 1000;
+    static final long[] MONEY_OF_RANK = {2000000000, 30000000, 1500000, 50000, 5000};
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
