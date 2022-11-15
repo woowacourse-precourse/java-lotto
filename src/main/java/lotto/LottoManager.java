@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -24,13 +25,34 @@ public class LottoManager {
             throw new IllegalArgumentException("[ERROR] 1000원 단위 금액으로 입력해주십시오.");
         }
         this.inputMoney = money;
+        //lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
         makeLottos(money / 1000);
     }
     private void makeLottos(int amount){
         for (int i = 0; i < amount; i++){
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Lotto lotto = new Lotto(makeLottoNumbers());
             lottos.add(lotto);
         }
+    }
+
+    private List<Integer> makeLottoNumbers(){
+        while (true) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.sort(Comparator.naturalOrder());
+            if (!haveSameNumbers(numbers)){
+                return numbers;
+            }
+        }
+    }
+
+    private boolean haveSameNumbers(List<Integer> numbers){
+        for (Lotto lotto : lottos){
+            List<Integer> tmp = lotto.getNumbers();
+            if (tmp.equals(numbers)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void matchLottos(){
