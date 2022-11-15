@@ -1,8 +1,10 @@
 package lotto.model;
 
+import lotto.utils.Error;
 import lotto.view.Print;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -10,6 +12,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicatedNumbers(numbers);
         this.numbers = numbers;
     }
     private void validate(List<Integer> numbers) {
@@ -26,6 +29,13 @@ public class Lotto {
             Lotto lotto = new Lotto(realRandomNumbers);
             Compare.randomLottos.put(i, lotto.numbers);
             Print.getLottos(lotto.numbers);
+        }
+    }
+
+    private static void duplicatedNumbers(List<Integer> winNumbers) throws IllegalArgumentException{
+        HashSet<Integer> duplicate = new HashSet<>(winNumbers);
+        if (duplicate.size() != 6) {
+            throw new IllegalArgumentException(Error.DUPLICATED_NUMBER.getMessage());
         }
     }
 }
