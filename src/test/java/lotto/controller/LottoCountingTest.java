@@ -323,8 +323,7 @@ class LottoCountingTest {
     @Nested
     class CalculateEarningMoneyTest{
 
-
-
+        @DisplayName("1등 하나 당첨")
         @Test
         void calculateEarningMoney_case1(){
             String input = "1 0 0 0 0";
@@ -334,6 +333,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("2등 하나 당첨")
         @Test
         void calculateEarningMoney_case2(){
             String input = "0 1 0 0 0";
@@ -343,6 +343,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("3등 하나 당첨")
         @Test
         void calculateEarningMoney_case3(){
             String input = "0 0 1 0 0";
@@ -352,6 +353,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("4등 하나 당첨")
         @Test
         void calculateEarningMoney_case4(){
             String input = "0 0 0 1 0";
@@ -361,6 +363,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("5등 하나 당첨")
         @Test
         void calculateEarningMoney_case5(){
             String input = "0 0 0 0 1";
@@ -370,6 +373,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("3,4,5등 하나씩 당첨")
         @Test
         void calculateEarningMoney_case6(){
             String input = "0 0 1 1 1";
@@ -379,6 +383,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("1,2,3등 하나씩 당첨")
         @Test
         void calculateEarningMoney_case7(){
             String input = "1 1 1 0 0";
@@ -388,6 +393,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.calculateEarningMoney(winningCount)).isEqualTo(output);
         }
 
+        @DisplayName("당첨 없음")
         @Test
         void calculateEarningMoney_case8(){
             String input = "0 0 0 0 0";
@@ -401,9 +407,11 @@ class LottoCountingTest {
     @Nested
     class GetThisRankingsAmountTest{
 
+        // 1등 4개, 2등 3개, 3등 2개, 4등 1개, 5등 5개
         String input = "4 3 2 1 5";
         Map<Integer, Integer> winningCounts = getWinningCountFromInput(input);
 
+        @DisplayName("1등 4개 나오는지 테스트")
         @Test
         void getThisRankingsAmount_case1(){
             int ranking = 1;
@@ -411,6 +419,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
         }
 
+        @DisplayName("2등 3개 나오는지 테스트")
         @Test
         void getThisRankingsAmount_case2(){
             int ranking = 2;
@@ -418,6 +427,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
         }
 
+        @DisplayName("3등 2개 나오는지 테스트")
         @Test
         void getThisRankingsAmount_case3(){
             int ranking = 3;
@@ -425,6 +435,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
         }
 
+        @DisplayName("4등 1개 나오는지 테스트")
         @Test
         void getThisRankingsAmount_case4(){
             int ranking = 4;
@@ -432,6 +443,7 @@ class LottoCountingTest {
             assertThat(lottoCounter.getThisRankingsAmount(winningCounts,ranking)).isEqualTo(output);
         }
 
+        @DisplayName("5등 5개 나오는지 테스트")
         @Test
         void getThisRankingsAmount_case5(){
             int ranking = 5;
