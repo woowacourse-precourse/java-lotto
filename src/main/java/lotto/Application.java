@@ -16,8 +16,13 @@ public class Application {
         // TODO: 프로그램 구현
 
         System.out.println("구입금액을 입력해주세요.");
-
-        LottoAmount lottoAmount = new LottoAmount(readLine());
+        LottoAmount lottoAmount;
+        try {
+            lottoAmount = new LottoAmount(readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         System.out.printf("%d개를 구매했습니다.\n", lottoAmount.getAmount());
 
@@ -30,10 +35,23 @@ public class Application {
 
         // 당첨 번호 입력 받기 ( include validation )
         System.out.println("당첨 번호를 입력해 주세요.");
-        LottoWinningCreate lottoWinningCreate = new LottoWinningCreate(readLine());
+        LottoWinningCreate lottoWinningCreate;
+        try {
+            lottoWinningCreate = new LottoWinningCreate(readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+
+        }
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        lottoWinningCreate.setBonusNumber(readLine());
+        try {
+            lottoWinningCreate.setBonusNumber(readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         LottoManager lottoManager = new LottoManager(lottoWinningCreate);
 
         // Lotto create

@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.ExceptionMessage.*;
+
 public class LottoAmount {
 
     private int amount;
@@ -11,13 +13,17 @@ public class LottoAmount {
     }
 
     public void validate(String line) {
-
+        String data = "";
         for (char x : line.toCharArray()) {
-            if (!Character.isDigit(x)) throw new IllegalArgumentException(ExceptionMessage.PURCHASE_INPUT_ERROR);
+            if (!Character.isDigit(x)) {
+
+                throw new IllegalArgumentException(PURCHASE_INPUT_ERROR);
+            }
         }
 
         if ((Integer.parseInt(line)) % 1000 != 0) {
-            throw new IllegalArgumentException(ExceptionMessage.PURCHASE_ERROR);
+
+            throw new IllegalArgumentException(PURCHASE_ERROR);
         }
 
     }

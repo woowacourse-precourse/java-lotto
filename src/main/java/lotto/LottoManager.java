@@ -76,7 +76,7 @@ public class LottoManager {
             earning += prizes.get(i) * winnings.get(i);
         }
         double earningRate =(double) earning/ (double) (lottoNumber*10);
-        df.applyPattern("###,###.0");
+        df.applyPattern("###,###,###,###.0");
         System.out.println("총 수익률은 " + earningRate + "%입니다.");
 
     }
