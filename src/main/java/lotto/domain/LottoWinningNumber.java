@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoWinningNumber {
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
+
+    LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+        this.winningNumbers = winningNumbers;
+        this.bonusNumber = bonusNumber;
+    }
+
     public int bonusNumberConversion(String inputBonusNumber) {
         int bonusNumber;
 
@@ -13,6 +21,14 @@ public class LottoWinningNumber {
         validOneNumberRange(bonusNumber);
 
         return bonusNumber;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 
     public List<Integer> winningNumberConversion(String inputWinningNumber) {
