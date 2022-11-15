@@ -23,8 +23,8 @@ public class Purchase {
     public static Purchase getInstance(int numberOfGame) {
         return new Purchase(numberOfGame);
     }
-    public List<List<Integer>> getPurchasedNumbers(){
-        return this.purchasedNumbers;
+    public static List<List<Integer>> getPurchasedNumbers(){
+        return purchasedNumbers;
     }
     public void printPurchasedNumbers(){
         for(List obj:purchasedNumbers){
