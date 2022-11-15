@@ -2,8 +2,8 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static lotto.constant.Constants.*;
-import static lotto.exception.Exception.*;
+import static lotto.utils.constant.Constants.*;
+import static lotto.utils.Validator.*;
 
 import java.util.List;
 import java.util.stream.Collectors;

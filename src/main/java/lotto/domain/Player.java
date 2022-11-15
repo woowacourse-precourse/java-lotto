@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constant.Constants.*;
-import static lotto.exception.Exception.*;
+import static lotto.utils.constant.Constants.*;
+import static lotto.utils.Validator.*;
 
 public class Player {
     private final List<Lotto> lottos = new ArrayList<>();

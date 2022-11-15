@@ -3,7 +3,7 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static lotto.constant.MessageConstants.*;
+import static lotto.exception.Exception.*;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ class LottoTest {
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR + WRONG_COUNT_MESSAGE);
+                .hasMessageContaining(WRONG_COUNT.getMessage());
     }
 
     @DisplayName("로또 번호의 개수가 6보다 작으면 예외가 발생한다.")
@@ -25,7 +25,7 @@ class LottoTest {
     void createLottoByUnderSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR + WRONG_COUNT_MESSAGE);
+                .hasMessageContaining(WRONG_COUNT.getMessage());
     }
 
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
@@ -33,7 +33,7 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR + DUPLICATE_MESSAGE);
+                .hasMessageContaining(DUPLICATE.getMessage());
     }
 
     @DisplayName("로또 번호의 범위가 넘어가면 예외가 발생한다.")
@@ -41,7 +41,7 @@ class LottoTest {
     void createLottoByNumberOutOfRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 0, 5, 49)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR + WRONG_RANGE_MESSAGE);
+                .hasMessageContaining(OUT_OF_RANGE.getMessage());
     }
 
     @DisplayName("로또 번호 정렬이 잘 되는지 확인한다.")

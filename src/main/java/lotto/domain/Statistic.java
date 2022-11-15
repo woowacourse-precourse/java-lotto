@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.stream.Stream;
-import static lotto.constant.MessageConstants.*;
+import static lotto.utils.constant.Messages.*;
 
 public enum Statistic {
     FIFTH_PLACE(FIFTH_PLACE_MESSAGE, 3,5000, 0),

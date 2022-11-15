@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static lotto.constant.MessageConstants.*;
+import static lotto.exception.Exception.*;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,7 +33,7 @@ class PlayerTest extends NsTest {
         void purchaseByNonNumeric() {
             assertSimpleTest(() -> {
                 runException("asd123");
-                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+                assertThat(output()).contains(NOT_NUMBER.getMessage());
             });
         }
 
@@ -42,7 +42,7 @@ class PlayerTest extends NsTest {
         void purchaseByNonInteger() {
             assertSimpleTest(() -> {
                 runException("2000.5");
-                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+                assertThat(output()).contains(NOT_NUMBER.getMessage());
             });
         }
 
@@ -51,7 +51,7 @@ class PlayerTest extends NsTest {
         void purchaseWithChange() {
             assertSimpleTest(() -> {
                 runException("1234");
-                assertThat(output()).contains(ERROR + WRONG_PURCHASE_COST_MESSAGE);
+                assertThat(output()).contains(WRONG_PURCHASE_COST.getMessage());
             });
         }
 
@@ -60,7 +60,7 @@ class PlayerTest extends NsTest {
         void purchaseWithInsufficient() {
             assertSimpleTest(() -> {
                 runException("500");
-                assertThat(output()).contains(ERROR + WRONG_PURCHASE_COST_MESSAGE);
+                assertThat(output()).contains(WRONG_PURCHASE_COST.getMessage());
             });
         }
     }
@@ -73,7 +73,7 @@ class PlayerTest extends NsTest {
         void inputWinningNumberWithNoComma() {
             assertSimpleTest(() -> {
                 runException("3000", "1,2,3,4,5#6");
-                assertThat(output()).contains(ERROR + WRONG_DELIMITER_MESSAGE);
+                assertThat(output()).contains(WRONG_DELIMITER.getMessage());
             });
         }
 
@@ -82,7 +82,7 @@ class PlayerTest extends NsTest {
         void inputWinningNumberWithNonNumeric() {
             assertSimpleTest(() -> {
                 runException("3000", "1,2,e,3,45,kk");
-                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+                assertThat(output()).contains(NOT_NUMBER.getMessage());
             });
         }
     }
@@ -95,7 +95,7 @@ class PlayerTest extends NsTest {
         void inputBonusNumberWithNonNumeric() {
             assertSimpleTest(() -> {
                 runException("3000", "1,2,3,4,5,6", "woowacourse");
-                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+                assertThat(output()).contains(NOT_NUMBER.getMessage());
             });
         }
 
@@ -104,7 +104,7 @@ class PlayerTest extends NsTest {
         void inputBonusNumberOutOfRange() {
             assertSimpleTest(() -> {
                 runException("3000", "1,2,3,4,5,6", "58");
-                assertThat(output()).contains(ERROR + WRONG_RANGE_MESSAGE);
+                assertThat(output()).contains(OUT_OF_RANGE.getMessage());
             });
         }
 
@@ -113,7 +113,7 @@ class PlayerTest extends NsTest {
         void inputBonusNumberDuplicated() {
             assertSimpleTest(() -> {
                 runException("3000", "1,11,13,24,35,41", "35");
-                assertThat(output()).contains(ERROR + BONUS_DUPLICATE_MESSAGE);
+                assertThat(output()).contains(BONUS_DUPLICATE.getMessage());
             });
         }
     }

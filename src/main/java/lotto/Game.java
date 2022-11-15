@@ -4,9 +4,8 @@ import lotto.domain.Lotto;
 import lotto.domain.Player;
 import lotto.domain.Statistic;
 
-import static lotto.view.InputView.*;
-import static lotto.view.InputView.showBonusNumberInputMessage;
-import static lotto.view.OutputView.*;
+import static lotto.utils.view.InputView.*;
+import static lotto.utils.view.OutputView.*;
 
 public class Game {
     private final Player player;
