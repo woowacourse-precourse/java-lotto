@@ -17,5 +17,13 @@ class BonusTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 1~45 벙위를 벗언라 경우 오류가 발생한다.")
+    @Test
+    void createBonusByOverRange() {
+        assertThatThrownBy(() ->
+                BonusNumber.exceptionBonusNumber("77",List.of(1, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
