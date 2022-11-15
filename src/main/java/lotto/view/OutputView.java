@@ -36,9 +36,7 @@ public class OutputView {
     }
 
     public static void printAllPlayerNumbers(List<List<Integer>> allPlayerNumbers) {
-        for (List<Integer> playerNumbers : allPlayerNumbers) {
-            System.out.println(playerNumbers);
-        }
+        allPlayerNumbers.stream().forEach(playerNumbers -> System.out.println(playerNumbers));
     }
 
     public static void printStatistics(List<Rank> ranks) {

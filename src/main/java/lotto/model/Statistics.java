@@ -9,9 +9,7 @@ public class Statistics {
     }
 
     private static void aggregateRankingStatistics(List<Rank> rankings) {
-        for (Rank ranking : rankings) {
-            ranking.addCount(ranking);
-        }
+        rankings.stream().forEach(ranking -> ranking.addCount(ranking));
     }
 
     public List<Rank> getStatistics() {

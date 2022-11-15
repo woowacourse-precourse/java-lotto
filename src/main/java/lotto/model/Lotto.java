@@ -30,9 +30,7 @@ public class Lotto {
     }
 
     private static void validateRangeOfNumbers(List<Integer> numbers) {
-        for (Integer winningNumber : numbers) {
-            verifyRangeOfLottoNumber(winningNumber);
-        }
+        numbers.stream().forEach(winningNumber -> verifyRangeOfLottoNumber(winningNumber));
     }
 
     public List<Integer> getWinningNumbers() {
