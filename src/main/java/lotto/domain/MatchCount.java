@@ -28,7 +28,7 @@ public class MatchCount {
         if (winningCount != compareObject.winningCount) {
             return false;
         }
-        if (winningCount != 5 || bonusCount == compareObject.bonusCount) {
+        if (winningCount != FIVE_MATCH_COUNT || bonusCount == compareObject.bonusCount) {
             return true;
         }
         return false;
