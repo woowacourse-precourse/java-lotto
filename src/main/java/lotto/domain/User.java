@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.exception.Exception.validateIsNumeric;
+import static lotto.exception.Exception.validateIsThousandUnit;
 
 public class User {
     private LottoGame lottoGame;
@@ -47,6 +49,8 @@ public class User {
         try {
             String input = readLine();
             buyPrice = Integer.parseInt(input);
+            validateIsNumeric(input);
+            validateIsThousandUnit(input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
