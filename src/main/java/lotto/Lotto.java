@@ -23,7 +23,7 @@ public class Lotto {
         int sum = 0;
         for(int i :WinningNumber){
             for(int j : numbers){
-                if(i==j)sum++;
+                if(i==j)sum+=1;
             }
         }
         for(int j : numbers){

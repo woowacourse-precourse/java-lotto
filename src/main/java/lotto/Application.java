@@ -108,7 +108,7 @@ public class Application {
         }
         for(int i = 0; i < AllGame.size();i++){
             int Ranking =AllGame.get(i).Matching(WinningNumber,BonusNumber);
-            Rank.add(Ranking,Rank.get(Ranking)+1);
+            Rank.set(Ranking,Rank.get(Ranking)+1);
         }
         return Rank;
     }
@@ -122,12 +122,24 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - "+ Rank.get(5) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ Rank.get(7) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - "+ Rank.get(6) + "개");
-        System.out.println("총 수익률은" + Yield +"% 입니다.");
+        System.out.println("총 수익률은 " + Yield +"% 입니다.");
     }
 
-    public static double Calculating(List<Integer> Rank){
-        int AllMoney;
-        return 1.2;
+    public static double Calculating(List<Integer> Rank,int Amount){
+        double AllMoney=0;
+        AllMoney += Rank.get(3)*5000;
+        AllMoney += Rank.get(4)*50000;
+        AllMoney += Rank.get(5)*15000000;
+        AllMoney += Rank.get(6)*2000000000;
+        AllMoney += Rank.get(7)*30000000;
+
+        double yield = 0;
+
+        yield = AllMoney/Amount*100;
+
+        yield = Math.round(yield*100)/100.0;
+
+        return yield;
     }
 
     public static void Game(){
@@ -139,7 +151,8 @@ public class Application {
         List<Integer> Winning = setWinningNumber();
         int BonusNumber = setBonus(Winning);
         List<Integer> Rank= WinGameCheck(AllGame,Winning,BonusNumber);
-        PrintResult(Rank,3.1);
+        double Yield = Calculating(Rank,Amount);
+        PrintResult(Rank,Yield);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
