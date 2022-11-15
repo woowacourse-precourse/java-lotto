@@ -67,4 +67,11 @@ public class LottoPrizeTest {
     void getPrize_메서드는_Enum의_당첨금을_반환한다(LottoPrize lottoPrize, Long prize) {
         assertThat(lottoPrize.getPrize()).isEqualTo(prize);
     }
+
+    @Test
+    void lowestPrizeOrder_메서드는_당첨금이_낮은_순으로_LottoPrize_리스트를_반환한다() {
+        List<LottoPrize> lottoPrizes = LottoPrize.lowestPrizeOrder();
+
+        assertThat(lottoPrizes).containsExactly(_5TH_PRIZE, _4TH_PRIZE, _3RD_PRIZE, _2ND_PRIZE, _1ST_PRIZE);
+    }
 }
