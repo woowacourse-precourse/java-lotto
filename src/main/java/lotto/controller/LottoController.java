@@ -29,6 +29,7 @@ public class LottoController {
     }
 
     public static Lotto getWinningNumber() {
+        LottoView.printInputLottoWinningMessage();
         return LottoService.getWinningNumber(LottoView.getWinningNumber());
     }
 }
