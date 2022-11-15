@@ -1,22 +1,19 @@
 package lotto.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Input {
     static Scanner scanner = new Scanner(System.in);
 
-    /**
-     * 사용자에게 로또를 살 금액을 입력 요청하는 메서드
-     */
-    public static int askMoney() {
+    /** 사용자에게 로또를 살 금액을 입력 요청하는 메서드 */
+    public static int askMoney() throws NumberFormatException {
         System.out.println(Messages.ASK_MONEY);
-        int money = scanner.nextInt();
-        return money;
+        return Integer.parseInt(scanner.nextLine());
     }
 
-    /**
-     * 복권 구매 메서드
-     */
+    /** 복권 구매 */
     public static int inputMoney(int Money) {
         vaildMoney(Money);
         isZero(Money);
