@@ -26,7 +26,7 @@ class UserServiceTest {
     @Test
     @DisplayName("당첨된 복권을 입력하면 상금을 반환한다.")
     void calculateUserPrizeTest() {
-        ArrayList<Integer> numberOfWins = new ArrayList<>(Arrays.asList(0,0,1,1,1));
+        ArrayList<Integer> numberOfWins = new ArrayList<>(Arrays.asList(0, 0, 1, 1, 1));
         UserService userService = new UserService();
         assertThat(userService.calculateUserPrize(numberOfWins))
                 .isPositive()
@@ -38,9 +38,9 @@ class UserServiceTest {
     @DisplayName("구입한 로또 하나가 몇개의 숫자를 맞췄는지 반환한다.")
     void checkTheNumberOfWinsTest() {
         UserService userService = new UserService();
-        Lotto winningNumbers = new Lotto(Arrays.asList(1,2,3,4,5,6));
-        Lotto checkingNumbers = new Lotto(Arrays.asList(1,11,3,4,5,6));
-        assertThat(userService.checkTheNumberOfWinsInOne(winningNumbers,checkingNumbers))
+        Lotto winningNumbers = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto checkingNumbers = new Lotto(Arrays.asList(1, 11, 3, 4, 5, 6));
+        assertThat(userService.checkTheNumberOfWinsInOne(winningNumbers, checkingNumbers))
                 .isEqualTo(5);
     }
 

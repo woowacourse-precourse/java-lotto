@@ -17,14 +17,14 @@ public class ExceptionService {
         amountException.checkIfAmountIsPositive(purchaseAmount);
     }
 
-    public void exceptionHandlingOfWinningNumbers(String winningNumbers){
+    public void exceptionHandlingOfWinningNumbers(String winningNumbers) {
         winningNumbersException.checkIfTheWinningNumbersHasSixCharactersBasedOnTheConma(winningNumbers);
         winningNumbersException.checkForSpacesInWinningNumbers(winningNumbers);
         winningNumbersException.checkForDupliCateWinningNumbers(winningNumbers);
         winningNumbersException.checkIfTheScopeIsCorrect(winningNumbers);
     }
 
-    public void exceptionHandlingOfBonusNumber(List<Integer> winningNumbers, String bonusNumber){
+    public void exceptionHandlingOfBonusNumber(List<Integer> winningNumbers, String bonusNumber) {
         bonusNumberException.checkIfBonusNumberIsNumeric(bonusNumber);
         bonusNumberException.checkIfTheScopeIsCorrect(bonusNumber);
         bonusNumberException.checkForDuplicateBonusNumber(winningNumbers, bonusNumber);

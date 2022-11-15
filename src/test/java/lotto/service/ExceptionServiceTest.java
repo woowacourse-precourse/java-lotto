@@ -82,7 +82,7 @@ class ExceptionServiceTest {
     void checkIfTheScopeIsCorrectBonusNumberTest() {
         ExceptionService exceptionService = new ExceptionService();
         String bonusNumber = "46";
-        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfBonusNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -92,7 +92,7 @@ class ExceptionServiceTest {
     void checkIfBonusNumberIsNumericTest() {
         ExceptionService exceptionService = new ExceptionService();
         String bonusNumber = "사십오";
-        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfBonusNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -102,7 +102,7 @@ class ExceptionServiceTest {
     void checkForDuplicateBonusNumberTest() {
         ExceptionService exceptionService = new ExceptionService();
         String bonusNumber = "6";
-        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfBonusNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }

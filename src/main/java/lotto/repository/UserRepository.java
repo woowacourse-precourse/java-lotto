@@ -9,8 +9,6 @@ public class UserRepository {
 
     private User user = new User();
 
-
-
     public void setUserLotties(ArrayList<Lotto> lotties) {
         this.user.setLotties(lotties);
     }
@@ -19,19 +17,19 @@ public class UserRepository {
         this.user.setTotalNumberOflotties(numbers);
     }
 
-    public void setUserPurchaseMoney(int money){
+    public void setUserPurchaseMoney(int money) {
         this.user.setPurchaseMoney(money);
     }
 
-    public void setUserPrizeMoney(int prizeMoney){
+    public void setUserPrizeMoney(int prizeMoney) {
         this.user.setPrizeMoney(prizeMoney);
     }
 
-    public void setUserWinningNumbers(Lotto winningNumbers){
+    public void setUserWinningNumbers(Lotto winningNumbers) {
         this.user.setWinningNumbers(winningNumbers);
     }
 
-    public void setUserBonusNumber(int bonusNumber){
+    public void setUserBonusNumber(int bonusNumber) {
         this.user.setBonusNumber(bonusNumber);
     }
 

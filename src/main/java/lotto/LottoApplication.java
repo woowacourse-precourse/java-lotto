@@ -16,6 +16,7 @@ public class LottoApplication {
             userController.enterBonusNumberAndSave();
             userController.showWinningStatisticsAndSave();
             userController.showRateOfReturnAndSave();
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
     }
 }
