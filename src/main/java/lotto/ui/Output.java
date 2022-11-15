@@ -23,6 +23,6 @@ public class Output {
             Rank rank = Rank.getRank(i);
             System.out.println(rank.getMessage() + result.get(rank.getIndex()) + "개");
         }
-        System.out.println(revenueMessage + revenue + "입니다.");
+        System.out.println(revenueMessage + revenue + "%입니다.");
     }
 }
