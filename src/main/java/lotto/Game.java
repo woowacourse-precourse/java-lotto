@@ -9,7 +9,7 @@ public class Game {
         Print.inputMoney();
         int numberOfLottos = Input.inputPurchaseMoney();
         Print.outputNumberOfLotto(numberOfLottos);
-        List<Lotto> lottos = Lotto.issueLotto(numberOfLottos);
+        LottoList lottos = Lotto.issueLotto(numberOfLottos);
         Print.printLottos(lottos);
         Print.winningNumber();
         Lotto winning = Input.inputWinningNumber();
@@ -17,12 +17,13 @@ public class Game {
         int bonusNumber = Input.inputBonusNumber();
         Bonus bonus = new Bonus(winning, bonusNumber);
         Map<Numbers, Integer> ranking = rank(lottos, bonus);
+        Print.printResult(ranking);
     }
 
-    public List<Numbers> countWinNumber(List<Lotto> lottos, Bonus bonusLotto) {
+    public static List<Numbers> countWinNumber(Bonus bonusLotto, LottoList lottos) {
         List<Numbers> result = new ArrayList<>();
 
-        for (Lotto lotto : lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
             int count = bonusLotto.count(lotto);
             boolean bonus = checkBonus(count, bonusLotto, lotto);
             result.add(Numbers.findRank(count, bonus));
@@ -31,7 +32,7 @@ public class Game {
         return result;
     }
 
-    public boolean checkBonus(int count, Bonus bonus, Lotto lotto) {
+    public static boolean checkBonus(int count, Bonus bonus, Lotto lotto) {
         boolean isBonus = false;
 
         if (count == 5) {
@@ -41,12 +42,25 @@ public class Game {
         return isBonus;
     }
 
-    public Map<Numbers, Integer> rank(List<Lotto> lottos, Bonus bonus) {
-        List<Numbers> winningRanks = countWinNumber(lottos, bonus);
-        Map<Numbers, Integer> rankList = new HashMap<>();
+    public Map<Numbers, Integer> rank(LottoList lottos, Bonus bonus) {
+        List<Numbers> winningRanks = countWinNumber(bonus, lottos);
+        Map<Numbers, Integer> rankList = initRankList();
         for (Numbers rank : winningRanks) {
             rankList.put(rank, rankList.getOrDefault(rank, 0) + 1);
         }
+
+        return rankList;
+    }
+
+    private Map<Numbers, Integer> initRankList() {
+        Map<Numbers, Integer> rankList = new HashMap<>();
+
+        rankList.put(Numbers.NOTHING, 0);
+        rankList.put(Numbers.THREE, 0);
+        rankList.put(Numbers.FOUR, 0);
+        rankList.put(Numbers.FIVE, 0);
+        rankList.put(Numbers.FIVE_WITH_BONUS, 0);
+        rankList.put(Numbers.SIX, 0);
 
         return rankList;
     }

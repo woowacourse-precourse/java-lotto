@@ -45,7 +45,7 @@ class LottoTest {
             "8, 8"
     })
     void issueLotto(int number, int numberOfLottos) {
-        assertThat(Lotto.issueLotto(numberOfLottos).size()).isEqualTo(number);
+        assertThat(Lotto.issueLotto(numberOfLottos).getSize()).isEqualTo(number);
     }
 
     @ParameterizedTest

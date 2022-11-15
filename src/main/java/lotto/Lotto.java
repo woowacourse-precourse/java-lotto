@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -27,15 +28,15 @@ public class Lotto {
         }
     }
 
-    public static List<Lotto> issueLotto(int numberOfLottos) {
+    public static LottoList issueLotto(int numberOfLottos) {
         numberOfLottosValidation(numberOfLottos);
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < numberOfLottos; i++) {
-            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lotto.sort(Comparator.naturalOrder());
             lottos.add(new Lotto(lotto));
         }
-        return lottos;
+        return new LottoList(lottos);
     }
 
     private static void numberOfLottosValidation(int numberOfLottos) {
