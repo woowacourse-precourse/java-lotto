@@ -1,19 +1,24 @@
 package lotto;
 
+import static lotto.LottoRank._1st;
+import static lotto.LottoRank._2nd;
+import static lotto.LottoRank._3rd;
+import static lotto.LottoRank._4th;
+import static lotto.LottoRank._5th;
+import static lotto.LottoRank.DRAW;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.LottoRank.*;
-import static org.assertj.core.api.Assertions.*;
 
 public class LottoWinningDiscriminatorTest {
     private static final List<Integer> WINNING_NUMBER = List.of(1, 2, 3, 4, 5, 6);
     private static final Integer BONUS_NUMBER = 7;
 
-    private final LottoWinningDiscriminator discriminator = new LottoWinningDiscriminator(WINNING_NUMBER, BONUS_NUMBER);
+    private final LottoWinningDiscriminator discriminator =
+            new LottoWinningDiscriminator(WINNING_NUMBER, BONUS_NUMBER);
 
     @DisplayName("구입한 로또를 입력하면 1등이 나온다.")
     @Test

@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.random.LottoNumberGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 

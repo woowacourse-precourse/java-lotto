@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.LotteryPublisher;
 import lotto.User;
-
 import java.util.List;
 
 public class InputView {

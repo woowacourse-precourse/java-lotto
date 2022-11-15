@@ -1,12 +1,16 @@
 package lotto;
 
+import static lotto.LottoRank._1st;
+import static lotto.LottoRank._2nd;
+import static lotto.LottoRank._3rd;
+import static lotto.LottoRank._4th;
+import static lotto.LottoRank._5th;
+import static lotto.LottoRank.DRAW;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
-import static lotto.LottoRank.*;
-import static org.assertj.core.api.Assertions.*;
 
 class LottoResultTest {
     @DisplayName("로또 등수별 기록의 순서를 반대로 한다.")

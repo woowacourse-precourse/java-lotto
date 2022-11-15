@@ -1,8 +1,8 @@
 package lotto.util;
 
-import java.util.List;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
-import static java.util.stream.Collectors.*;
+import java.util.List;
 
 public class WinningNumberConverter {
     private static final String DELIMETER = ",";

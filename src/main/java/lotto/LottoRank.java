@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.Arrays;
-
 import static lotto.ErrorMessage.INVALID_CORRECT_WINNING_NUMBER_ERROR;
+
+import java.util.Arrays;
 
 public enum LottoRank {
     _1st(2_000_000_000, 6, false),

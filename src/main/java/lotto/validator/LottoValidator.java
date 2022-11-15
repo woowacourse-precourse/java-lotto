@@ -1,12 +1,16 @@
 package lotto.validator;
 
-import lotto.random.LottoNumberGenerator;
+import static lotto.ErrorMessage.INVALID_LOTTO_NUMBER_SIZE_ERROR;
+import static lotto.ErrorMessage.WINNING_NUMBER_NOT_NUMBER_INPUT_ERROR;
+import static lotto.ErrorMessage.LOTTO_NUMBER_DUPLICATE_ERROR;
+import static lotto.ErrorMessage.PURCHASE_AMOUNT_NOT_DIVIDED_BY_1000_ERROR;
+import static lotto.ErrorMessage.BONUS_NUMBER_EXIST_IN_WINNING_NUMBER_ERROR;
+import static lotto.ErrorMessage.INVALID_LOTTO_NUMBER_RANGE_ERROR;
 
+import lotto.random.LottoNumberGenerator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static lotto.ErrorMessage.*;
 
 public final class LottoValidator {
     public static <T> void validateLottoNumberSize(List<T> numbers) {

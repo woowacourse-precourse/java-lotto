@@ -1,9 +1,9 @@
 package lotto;
 
-import java.util.List;
+import static java.util.stream.Collectors.toUnmodifiableList;
+import static lotto.LottoRank.winningResult;
 
-import static java.util.stream.Collectors.*;
-import static lotto.LottoRank.*;
+import java.util.List;
 
 public class LottoWinningDiscriminator {
     private final List<Integer> winningNumber;

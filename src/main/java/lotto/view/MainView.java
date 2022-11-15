@@ -1,8 +1,12 @@
 package lotto.view;
 
-import lotto.*;
-
 import java.util.List;
+import lotto.Lotto;
+import lotto.LotteryPublisher;
+import lotto.Logger;
+import lotto.LottoRank;
+import lotto.LottoResult;
+import lotto.LottoWinningDiscriminator;
 
 public class MainView {
     private final InputView inputView;
@@ -34,7 +38,10 @@ public class MainView {
         return purchasedLotto;
     }
 
-    private List<LottoRank> discriminatePurchasedLotto(List<Lotto> purchasedLotto, List<Integer> winningNumber, int bonusNumber) {
+    private List<LottoRank> discriminatePurchasedLotto(
+            List<Lotto> purchasedLotto,
+            List<Integer> winningNumber,
+            int bonusNumber) {
         return new LottoWinningDiscriminator(winningNumber, bonusNumber)
                 .discriminate(purchasedLotto);
     }

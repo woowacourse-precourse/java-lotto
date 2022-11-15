@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.LottoRank;
 import lotto.LottoResult;
-
 import java.text.DecimalFormat;
 import java.util.Map;
 

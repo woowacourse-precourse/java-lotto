@@ -1,13 +1,18 @@
 package lotto;
 
-import lotto.input.InputReader;
-
-import java.util.List;
-
-import static lotto.ErrorMessage.*;
+import static lotto.ErrorMessage.BONUS_NUMBER_NOT_NUMBER_INPUT_ERROR;
+import static lotto.ErrorMessage.PURCHASE_AMOUNT_NOT_NUMBER_INPUT_ERROR;
 import static lotto.util.WinningNumberConverter.convertToImmutableIntegerList;
 import static lotto.util.WinningNumberConverter.convertToImmutableStringList;
-import static lotto.validator.LottoValidator.*;
+import static lotto.validator.LottoValidator.validateNumber;
+import static lotto.validator.LottoValidator.validateLottoNumberRange;
+import static lotto.validator.LottoValidator.validateNotExistInWinningNumber;
+import static lotto.validator.LottoValidator.validateLottoNumberSize;
+import static lotto.validator.LottoValidator.validateDuplicateNumber;
+import static lotto.validator.LottoValidator.validatePurchaseAmountDividedBy1000;
+
+import lotto.input.InputReader;
+import java.util.List;
 
 public class User {
     private final InputReader inputReader;

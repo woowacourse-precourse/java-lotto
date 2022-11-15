@@ -1,15 +1,14 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import lotto.util.WinningNumberConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-
 class WinningNumberConverterTest {
-
     @DisplayName("','를 기준으로 분리해 불변 String 리스트로 변환한다.")
     @Test
     void convertToImmutableStringListTest() {

@@ -1,8 +1,13 @@
 package lotto;
 
-import java.util.*;
+import static java.util.Comparator.comparingLong;
 
-import static java.util.Comparator.*;
+import java.util.Map;
+import java.util.List;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class LottoResult {
     private int purchaseAmount;
