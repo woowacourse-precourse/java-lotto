@@ -25,7 +25,7 @@ public class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또 번호 결과 저장 테스트 2등 두개")
+    @DisplayName("로또 번호 결과 저장 테스트 3등 두개")
     void saveLottoResultTest() {
 
         User user = lottoService.getUserForTest();
@@ -37,7 +37,7 @@ public class LottoServiceTest {
         lottoService.initResultLotto();
         lottoService.saveResultLotto();
 
-        Reward expectedReward = Reward.SECOND_REWARD;
+        Reward expectedReward = Reward.THIRD_REWARD;
 
         assertThat(user.getLottiesResult().get(expectedReward)).isEqualTo(2);
     }
