@@ -9,7 +9,7 @@ import lotto.domain.LottoRepository;
 import lotto.domain.Money;
 import lotto.type.Prize;
 import lotto.view.LottoDto;
-import lotto.view.LottoInputDto;
+import lotto.view.LottoInput;
 import lotto.view.PrizeDto;
 
 public class LottoService {
@@ -29,9 +29,9 @@ public class LottoService {
         return new LottoDto(numbers);
     }
 
-    public PrizeDto calcWinningResult(LottoInputDto lottoInputDto) {
-        List<Prize> prizes = confirmWinning(lottoInputDto.getWinningNumbers(), lottoInputDto.getBonusNumber());
-        Double yield = calcYield(prizes, lottoInputDto.getMoney());
+    public PrizeDto calcWinningResult(LottoInput lottoInput) {
+        List<Prize> prizes = confirmWinning(lottoInput.getWinningNumbers(), lottoInput.getBonusNumber());
+        Double yield = calcYield(prizes, lottoInput.getMoney());
         return new PrizeDto(prizes, yield);
     }
 
