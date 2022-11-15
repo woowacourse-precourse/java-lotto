@@ -16,8 +16,14 @@ public class Ui {
 
         printLottoCountAndNumbers(lottoCount);
 
+        String winNumber= inputWinNumber();
 
+    }
 
+    private String inputWinNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        //validation 있어야 하고
+        return readLine();
     }
 
     private void printLottoCountAndNumbers(int lottoCount) {
