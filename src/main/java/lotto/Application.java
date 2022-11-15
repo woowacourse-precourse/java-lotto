@@ -10,7 +10,9 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        int money = inputMoney();
+        User user = new User();
+        user.inputMoney();
+        int money = user.getMoney();
         Lotto winningLotto = inputLottoNumber();
         int bonus = inputBonusNumber(winningLotto);
         List<Integer> winningInfo;
@@ -22,31 +24,6 @@ public class Application {
         printWinnings(winningInfo);
         printYield(winningInfo, money);
 
-    }
-
-
-    public static int inputMoney() {
-        String inputMoneyString = Console.readLine();
-        int money = 0;
-
-        try {
-            money = checkInput(inputMoneyString);
-        } catch (Exception e) {
-
-            System.out.println("[ERROR] 잘못된 입력이 들어왔습니다.");
-        }
-
-        return money;
-    }
-
-    public static int checkInput(String input) {
-
-        int inputInteger = Integer.parseInt(input);
-        if (inputInteger % 1000 != 0) {
-            throw new IllegalArgumentException();
-        }
-
-        return Integer.parseInt(input);
     }
 
     public static Lotto inputLottoNumber() {
