@@ -35,10 +35,7 @@ public class Controller {
             if(isMatchNumberUnderThree(matchNumber)){
                 continue;
             }
-            if(matchNumber == 5 && server.compareBonusNumber(lottoNumber, bonusNumber)){
-                putMatchNumberCount(7);
-                continue;
-            }
+            matchNumber = matchNumberNeedBonusNumber(matchNumber, lottoNumber, bonusNumber);
             putMatchNumberCount(matchNumber);
         }
         PrintResult.printMatchDetail(matchNumberCount);
@@ -77,5 +74,12 @@ public class Controller {
 
     private Boolean isMatchNumberUnderThree(int matchNumber){
         return matchNumber < 3;
+    }
+
+    private int matchNumberNeedBonusNumber(int matchNumber, List<Integer> lottoNumber, int bonusNumber){
+        if(matchNumber == 5 && server.compareBonusNumber(lottoNumber, bonusNumber)){
+            matchNumber = 7;
+        }
+        return matchNumber;
     }
 }
