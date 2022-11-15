@@ -19,7 +19,7 @@ public class ResultGenerator {
 
     public long howManyMatch(Lotto lotto, PrizeLotto prizeLotto) {
         return lotto.getNumbers().stream()
-                .filter(number -> prizeLotto.getLotto().getNumbers().contains(number))
+                .filter(number -> prizeLotto.getLotto().contains(number))
                 .count();
     }
 
