@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoManager {
+public class LottoIssuer {
     private final int LOTTO_SIZE = 6;
     private final int amount;
     private List<Lotto> lottoList = new ArrayList<>();
 
-    public LottoManager(Price price) {
+    public LottoIssuer(Price price) {
         this.amount = calculateAmount(price.get());
         createLotteries();
     }
@@ -19,9 +19,8 @@ public class LottoManager {
         return amount;
     }
 
-    public void printLotteries() {
-        for (int i = 0; i < amount; i++)
-            System.out.println(lottoList.get(i).getNumbers());
+    public List<Lotto> get() {
+        return lottoList;
     }
 
     private int calculateAmount(int price) {
@@ -36,13 +35,14 @@ public class LottoManager {
     }
 
     private List<Integer> createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < LOTTO_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//        List<Integer> numbers = new ArrayList<>();
+//        while (numbers.size() < LOTTO_SIZE) {
+//            int randomNumber = Randoms.pickNumberInRange(1, 45);
+//            if (!numbers.contains(randomNumber)) {
+//                numbers.add(randomNumber);
+//            }
+//        }
         return numbers;
     }
 }
