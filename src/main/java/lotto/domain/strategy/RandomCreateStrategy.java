@@ -1,7 +1,10 @@
-package lotto.domain;
+package lotto.domain.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.LottoNumber;
+import lotto.domain.strategy.CreateStrategy;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +17,8 @@ public class RandomCreateStrategy implements CreateStrategy {
     public List<LottoNumber> createTempLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(MIN, MAX, LIMIT)
                 .stream()
-                .map(LottoNumber::new)
+                .map(LottoNumber::lottoNumber)
+                .sorted(Comparator.comparing(LottoNumber::getNumber))
                 .collect(Collectors.toList());
     }
 }

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import lotto.exception.LottoInputException;
 
@@ -15,7 +15,6 @@ public class Money {
             isDivided(money);
         } catch (LottoInputException e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -23,5 +22,9 @@ public class Money {
         if (money % 1000 != 0) {
             throw new LottoInputException("[ERROR] 1000단위의 금액만 입력할 수 있습니다.");
         }
+    }
+
+    public int money() {
+        return money;
     }
 }

@@ -12,13 +12,15 @@ public class LottoNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {46, 47, 51, 0})
     void if_out_range(int number) {
-        assertThrows(IllegalArgumentException.class, () -> new LottoNumber(number));
+//        assertThrows(IllegalArgumentException.class, () -> LottoNumber.lottoNumber(number));
+        LottoNumber lottoNumber = LottoNumber.lottoNumber(46);
+        System.out.println(lottoNumber);
     }
 
     @Test
     void equals(){
-        LottoNumber lottoNumber = new LottoNumber(1);
-        LottoNumber lottoNumber1 = new LottoNumber(1);
+        LottoNumber lottoNumber = LottoNumber.lottoNumber(1);
+        LottoNumber lottoNumber1 = LottoNumber.lottoNumber(1);
 
         assertTrue(lottoNumber.equals(lottoNumber1));
     }

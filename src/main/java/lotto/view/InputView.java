@@ -1,53 +1,43 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Money;
+import lotto.domain.*;
 import lotto.exception.InputException;
 
-import java.util.regex.Pattern;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class InputView {
     private static final String PURCHASE_GREETING = "구입금액을 입력해 주세요.";
 
-    private static final Pattern Non_Number = Pattern.compile("^\\D$");
+    private static final String INPUT_WinningNumber = "지난 주 당첨 번호를 입력해주세요";
 
-
-    public static Money money() {
-        String input = Console.readLine();
-        checkInput(input);
-        return new Money(convertInt(input));
-    }
-
-    private static int convertInt(String input) {
-        return Integer.parseInt(input);
-    }
+    private static final String INPUT_BONUS = "보너스 볼을 입력해주세요";
 
     public static void startGuide() {
         System.out.println(PURCHASE_GREETING);
     }
 
-    private static void checkInput(String money) {
-        try {
-            checkNonNumber(money);
-        } catch (InputException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
+    public static String inputMoney() {
+        return Console.readLine();
     }
 
-    public static void checkInput() {
-        String money = Console.readLine();
-        try {
-            checkNonNumber(money);
-        } catch (InputException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
+    public static List<String> inputWinningNumbers() {
+        System.out.println(INPUT_WinningNumber);
+        String winningString = Console.readLine();
+
+        return Arrays.stream(split(winningString)).collect(Collectors.toList());
     }
 
-    private static void checkNonNumber(String money) {
-        if (!Non_Number.matcher(money).matches()) {
-            throw new InputException("[ERROR] 숫자가 아닌 문자를 입력했습니다.");
-        }
+    public static String inputBonus() {
+        System.out.println(INPUT_BONUS);
+        return Console.readLine();
     }
+
+    private static String[] split(String winningString) {
+        return winningString.split(",");
+    }
+
 }

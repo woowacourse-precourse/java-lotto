@@ -1,28 +1,36 @@
 package lotto.domain;
 
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import lotto.domain.strategy.CreateStrategy;
+
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Lottery {
-    public Map<Rank, Integer> RankResult(WinningLotto winningLotto, List<Lotto> lottos) {
-        EnumMap<Rank, Integer> rankResult = new EnumMap<>(Rank.class);
-        List<Rank> ranks = ranks(winningLotto, lottos);
+    private final Map<Rank, Integer> rankResult = new EnumMap<>(Rank.class);
+    private final List<Lotto> lottery = new ArrayList<>();
+
+    public Map<Rank, Integer> RankResult(WinningLotto winningLotto) {
+        List<Rank> ranks = ranks(winningLotto, lottery);
 
         for (Rank rank : Rank.values()) {
             rankResult.put(rank, Collections.frequency(ranks, rank));
         }
+
         return rankResult;
     }
 
-    public List<Lotto> createLottery(int buyLottos, CreateStrategy lottoCreateStrategy) {
-        return IntStream.range(0, buyLottos)
-                .mapToObj(ticket -> lottoCreateStrategy.createTempLottoNumber())
-                .map(Lotto::new)
-                .collect(Collectors.toList());
+    public void createLottery(int buyLottos, CreateStrategy lottoCreateStrategy) {
+        for (int i = 0; i < buyLottos; i++) {
+            lottery.add(lotto(lottoCreateStrategy));
+        }
+    }
+
+    public List<Lotto> getLottery() {
+        return Collections.unmodifiableList(lottery);
+    }
+
+    private Lotto lotto(CreateStrategy lottoCreateStrategy) {
+        return new Lotto(lottoCreateStrategy.createTempLottoNumber());
     }
 
     private List<Rank> ranks(WinningLotto winningLotto, List<Lotto> lottos) {

@@ -1,24 +1,32 @@
 package lotto.domain;
 
 
-import lotto.exception.LottoInputException;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoNumber {
-    private static final int MIN = 1;
-    private static final int MAX = 45;
+    public static final int MIN = 1;
+    public static final int MAX = 45;
+
+    private static final Map<Integer, LottoNumber> lottoNumbers = new HashMap<>();
+
+    static {
+        for (int i = 1; i <= MAX; i++) {
+            lottoNumbers.put(i, new LottoNumber(i));
+        }
+    }
+
     private final int number;
 
-    public LottoNumber(int number) {
-        checkRange(number);
+    private LottoNumber(int number) {
         this.number = number;
     }
 
-    private void checkRange(int number) {
-        if (number < MIN || number > MAX) {
-            throw new LottoInputException("[ERROR]");
-        }
+    public static LottoNumber lottoNumber(int number) {
+        return lottoNumbers.get(number);
     }
 
     @Override
@@ -32,5 +40,14 @@ public class LottoNumber {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    @Override
+    public String toString() {
+        return "" + number + "";
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

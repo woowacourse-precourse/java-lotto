@@ -5,17 +5,17 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public enum Rank {
-    NONE(0, 0),
-    FIFTH(3, 5000),
-    FOURTH(4, 50_000),
-    THIRD(5, 1_500_000),
-    SECOND(5, 30_000_000),
-    FIRST(6, 2_000_000_000);
+    NONE(0, "0"),
+    FIFTH(3, "5,000"),
+    FOURTH(4, "50,000"),
+    THIRD(5, "1,500,000"),
+    SECOND(5, "30,000,000"),
+    FIRST(6, "2,000,000,000");
 
     private final Integer matchNumber;
-    private final Integer reward;
+    private final String reward;
 
-    Rank(Integer matchNumber, Integer reward) {
+    Rank(Integer matchNumber, String reward) {
         this.matchNumber = matchNumber;
         this.reward = reward;
     }
@@ -41,7 +41,7 @@ public enum Rank {
         return matchNumber;
     }
 
-    public Integer getReward() {
+    public String getReward() {
         return reward;
     }
 }

@@ -13,8 +13,8 @@ class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
-        List<LottoNumber> lottoNumbers = List.of(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3)
-                , new LottoNumber(4), new LottoNumber(5), new LottoNumber(6), new LottoNumber(7));
+        List<LottoNumber> lottoNumbers = List.of(LottoNumber.lottoNumber(1), LottoNumber.lottoNumber(2), LottoNumber.lottoNumber(3)
+                , LottoNumber.lottoNumber(4), LottoNumber.lottoNumber(5), LottoNumber.lottoNumber(6), LottoNumber.lottoNumber(7));
 
         assertThrows(LottoInputException.class, () -> new Lotto(lottoNumbers));
     }
@@ -22,8 +22,8 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        List<LottoNumber> lottoNumbers = List.of(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3)
-                , new LottoNumber(4), new LottoNumber(6), new LottoNumber(6));
+        List<LottoNumber> lottoNumbers = List.of(LottoNumber.lottoNumber(1), LottoNumber.lottoNumber(2), LottoNumber.lottoNumber(3)
+                , LottoNumber.lottoNumber(4), LottoNumber.lottoNumber(6), LottoNumber.lottoNumber(6));
 
         assertThrows(LottoInputException.class, () -> new Lotto(lottoNumbers));
     }
@@ -31,8 +31,8 @@ class LottoTest {
     @DisplayName("당첨 숫자를 받아 일치하는 개수를 센다.")
     @Test
     void matchCountLotto() {
-        List<LottoNumber> lottoNumbers = List.of(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3)
-                , new LottoNumber(23), new LottoNumber(24), new LottoNumber(25));
+        List<LottoNumber> lottoNumbers = List.of(LottoNumber.lottoNumber(1), LottoNumber.lottoNumber(2), LottoNumber.lottoNumber(3)
+                ,LottoNumber.lottoNumber(23), LottoNumber.lottoNumber(24), LottoNumber.lottoNumber(25));
         Lotto winningLotto = new Lotto(lottoNumbers);
         List<LottoNumber> tempLottoNumber = new ConstantCreateStrategy().createTempLottoNumber();
         Lotto purchaseLotto = new Lotto(tempLottoNumber);

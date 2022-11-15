@@ -9,6 +9,8 @@ public class Lotto {
     private static final int MAX = 6;
     private final List<LottoNumber> numbers;
 
+
+
     public Lotto(List<LottoNumber> numbers) {
         checkNumber(numbers);
         this.numbers = numbers;
@@ -21,7 +23,7 @@ public class Lotto {
 
     private void validate(List<LottoNumber> numbers) {
         if (numbers.size() != MAX) {
-            throw new LottoInputException("[ERROR]");
+            throw new LottoInputException("[ERROR] 최대 입력 숫자보다 많습니다.");
         }
     }
 
@@ -57,6 +59,10 @@ public class Lotto {
         return Objects.hash(numbers);
     }
 
+    @Override
+    public String toString() {
+        return "" + numbers + "";
+    }
     public List<LottoNumber> getNumbers() {
         return numbers;
     }
