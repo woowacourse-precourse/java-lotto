@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 import lotto.domain.Lotto;
+import lotto.utils.constants.DoubleCommon;
 import lotto.utils.constants.IntegerCommon;
+import lotto.utils.constants.LottoConstant;
 import lotto.utils.constants.Winning;
 
 public class WinningStatsCalculator {
@@ -17,6 +19,7 @@ public class WinningStatsCalculator {
     public WinningStatsCalculator(List<Lotto> lottoNumbers, Lotto winningNumbers,
                                   int bonusNumber, long purchaseAmount) {
         this.winningStats = getWinningStats(lottoNumbers, winningNumbers, bonusNumber);
+        this.returnRate = getReturnRate(purchaseAmount, getWinningMoney(winningStats));
     }
 
     private Map<Integer, Long> getWinningStats(List<Lotto> lottoNumbers, Lotto winningNumbers, int bonusNumber) {
@@ -28,6 +31,36 @@ public class WinningStatsCalculator {
             winningStats.merge(winningRank, 1L, Long::sum);
         }
         return winningStats;
+    }
+
+    /**
+     * 당첨 금액을 구하는 메서드
+     * 당첨금 += 해당 등수의 당첨금 * 해당 등수 당첨 개수
+     */
+    private long getWinningMoney(Map<Integer, Long> winningStats) {
+        long winningMoney = IntegerCommon.ZERO.getNumber();
+        for (int index = IntegerCommon.ZERO.getNumber(); index < Winning.values().length; index++) {
+            winningMoney +=
+                    (long) Winning.values()[index].getMoney()
+                    * winningStats.getOrDefault(index + IntegerCommon.COUNT.getNumber(),
+                    (long) IntegerCommon.ZERO.getNumber());
+        }
+        return winningMoney;
+    }
+
+    /**
+     * 구입 금액, 당첨 금액을 이용해 수익률을 구하는 메서드
+     * ((당첨 금액 / 구입 금액) * 100 * 10) / 10
+     * 10을 곱하고 나누는 것은, round 메서드를 통해 소수점 2번째 자리에서 반올림 해야하기 때문
+     */
+    private double getReturnRate(long purchaseAmount, long winningMoney) {
+        long purchaseMoney = purchaseAmount * LottoConstant.LOTTO_AMOUNT_UNIT.getNumber();
+        if (purchaseMoney == IntegerCommon.ZERO.getNumber()) {
+            return DoubleCommon.ZERO_DOUBLE.getFixer();
+        }
+        return (double) Math.round(
+                ((double) winningMoney / purchaseMoney) * IntegerCommon.MAX_PERCENTAGE.getNumber()
+                        * IntegerCommon.ROUND_MULTIPLICATION.getNumber()) / DoubleCommon.ROUND_DIVISOR.getFixer();
     }
 
     private boolean isCoincideBonusNumber(Lotto lottoNumber, int bonusNumber, int winningCount) {
