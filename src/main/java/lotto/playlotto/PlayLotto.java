@@ -10,6 +10,8 @@ import lotto.playlotto.object.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.enums.WinCondition.getIndex;
+
 
 public class PlayLotto extends Input {
 
@@ -125,7 +127,7 @@ public class PlayLotto extends Input {
     }
 
     public void check_result(int count, int bonus){
-        int index = WinCondition.getIndex(count, bonus);
+        int index = getIndex(count, bonus);
         if(index != -1){
             win_count.add(index, win_count.get(index)+1);
         }
