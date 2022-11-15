@@ -34,8 +34,8 @@ public class LottoGameController {
         discriminator.initialize(raffleNumber);
         discriminator.discriminate(lottoGenerator.getLottoOfBuyer());
     }
-    public void figureOutWinStatics(){
-
+    public void produceWinStatics(){
+        revenue.makeStatics(discriminator.getMatches());
     }
     public void noticeWinReport(){
 
