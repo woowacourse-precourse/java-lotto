@@ -14,4 +14,13 @@ class LottoSellerTest {
         int quantity = lottoSeller.calculateQuantity(new PurchasePrice("5000"));
         assertThat(quantity).isEqualTo(5);
     }
+
+    @DisplayName("5000원을 지불하면 로또 5장을 판다.")
+    @Test
+    void sellLotteriesToTest() {
+        LottoSeller lottoSeller = new LottoSeller(new LottoNumberGenerator());
+        Customer customer = new Customer(new PurchasePrice("5000"));
+        lottoSeller.sellLotteriesTo(customer);
+        assertThat(customer.getLottos().size()).isEqualTo(5);
+    }
 }
