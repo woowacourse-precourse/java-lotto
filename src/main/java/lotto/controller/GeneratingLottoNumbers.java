@@ -2,14 +2,15 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneratingLottoNumbers {
 
-    public Lotto[] generatingAllLottoPapers(int amountOfLotto){
-        Lotto[] lottoPapers = new Lotto[amountOfLotto];
+    public List<Lotto> generatingAllLottoPapers(int amountOfLotto){
+        List<Lotto> lottoPapers = new ArrayList<>();
         for(int i = 0; i < amountOfLotto; i++){
-            lottoPapers[i] = generateOneLottoPaper();
+            lottoPapers.add(generateOneLottoPaper());
         }
         return lottoPapers;
     }

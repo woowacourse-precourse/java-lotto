@@ -6,6 +6,7 @@ import lotto.controller.GeneratingLottoNumbers;
 import lotto.controller.Lotto;
 import lotto.controller.LottoCounting;
 
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -31,7 +32,7 @@ public class Application {
         int amountOfLottoPaper = inputHandler.getHowMuchTickets();
 
         outputHandler.checkHowMuchToBuy(amountOfLottoPaper);
-        Lotto[] lottoPapers = lottoNumbers.generatingAllLottoPapers(amountOfLottoPaper);
+        List<Lotto> lottoPapers = lottoNumbers.generatingAllLottoPapers(amountOfLottoPaper);
         outputHandler.printAllLottoPapers(lottoPapers);
 
         outputHandler.requestWinningNumbers();

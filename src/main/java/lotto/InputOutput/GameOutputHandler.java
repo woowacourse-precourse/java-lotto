@@ -5,6 +5,7 @@ import lotto.controller.LottoCounting;
 import lotto.controller.WinningPrize;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class GameOutputHandler {
@@ -15,7 +16,7 @@ public class GameOutputHandler {
     public void checkHowMuchToBuy(int amountOfLotto){
         System.out.printf("\n%d개를 구매했습니다.\n",amountOfLotto);
     }
-    public void printAllLottoPapers(Lotto[] allLottoPapers){
+    public void printAllLottoPapers(List<Lotto> allLottoPapers){
         for (Lotto lottoPaper : allLottoPapers) {
             printOneLottoPaper(lottoPaper);
         }

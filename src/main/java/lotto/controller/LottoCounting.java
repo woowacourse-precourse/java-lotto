@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class LottoCounting {
 
-    public Map<Lotto, Integer> countedLotto(Lotto[] lottoPapers, Lotto winningLotto){
+    public Map<Lotto, Integer> countedLotto(List<Lotto> lottoPapers, Lotto winningLotto){
         Map<Lotto, Integer> lottoBox = new HashMap<>();
         for (Lotto oneLottoPaper : lottoPapers) {
             countLottoAndStore(lottoBox, oneLottoPaper, winningLotto);

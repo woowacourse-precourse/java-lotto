@@ -4,9 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -110,12 +108,10 @@ class LottoCountingTest {
     @Nested
     class CountedLottoTest{
 
-        Lotto[] getLottoPaperInput(int size){
-            Lotto[] lottoPapers = new Lotto[size];
-            System.arraycopy(lottoPaperInput, 0, lottoPapers, 0, size);
-            return lottoPapers;
+        List<Lotto> getLottoPaperInput(int size){
+            return new ArrayList<>(Arrays.asList(lottoPaperInput).subList(0, size));
         }
-        boolean isDataAllCorrect(Lotto[] lottoPapers, Lotto winningLotto, Map<Lotto, Integer> countedLotto){
+        boolean isDataAllCorrect(List<Lotto> lottoPapers, Lotto winningLotto, Map<Lotto, Integer> countedLotto){
 
             for (Lotto lottoPaper : lottoPapers) {
                 int expectedCorrectCount = lottoCounter.compareLottoAndCount(lottoPaper, winningLotto);
@@ -128,7 +124,7 @@ class LottoCountingTest {
         }
         @DisplayName("맵에 넣은 데이터들이 모두 올바르게 들어가있는지 테스트하는 메서드.")
         void testDataIsAllCorrect(int size){
-            Lotto[] lottoPapers = getLottoPaperInput(size);
+            List<Lotto> lottoPapers = getLottoPaperInput(size);
             Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
             assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
         }
@@ -136,14 +132,14 @@ class LottoCountingTest {
 
         @Test
         void countedLotto_case1_1(){
-            Lotto[] lottoPapers = new Lotto[0];
+            List<Lotto> lottoPapers = new ArrayList<>();
             int sizeOutput = 0;
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
         @Test
         void countedLotto_case1_2(){
-            Lotto[] lottoPapers = new Lotto[0];
+            List<Lotto> lottoPapers = new ArrayList<>();
             Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
             assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
         }
@@ -152,7 +148,7 @@ class LottoCountingTest {
         void countedLotto_case2_1(){
             int size = 1;
             int sizeOutput = 1;
-            Lotto[] lottoPapers = getLottoPaperInput(size);
+            List<Lotto> lottoPapers = getLottoPaperInput(size);
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
@@ -167,7 +163,7 @@ class LottoCountingTest {
             int size = 3;
             int sizeOutput = 3;
 
-            Lotto[] lottoPapers = getLottoPaperInput(size);
+            List<Lotto> lottoPapers = getLottoPaperInput(size);
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
@@ -182,7 +178,7 @@ class LottoCountingTest {
             int size = 5;
             int sizeOutput = 5;
 
-            Lotto[] lottoPapers = getLottoPaperInput(size);
+            List<Lotto> lottoPapers = getLottoPaperInput(size);
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
@@ -197,7 +193,7 @@ class LottoCountingTest {
             int size = 8;
             int sizeOutput = 8;
 
-            Lotto[] lottoPapers = getLottoPaperInput(size);
+            List<Lotto> lottoPapers = getLottoPaperInput(size);
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
@@ -213,14 +209,12 @@ class LottoCountingTest {
 
         Map<Lotto, Integer> getCountedLotto(int size){
             Lotto winningLotto = getWinningLotto();
-            Lotto[] lottoPapers = getLottoPapersFromData(size);
+            List<Lotto> lottoPapers = getLottoPapersFromData(size);
             return lottoCounter.countedLotto(lottoPapers,winningLotto);
         }
 
-        Lotto[] getLottoPapersFromData(int size){
-            Lotto[] lottoPapers = new Lotto[size];
-            System.arraycopy(lottoPaperInput, 0, lottoPapers, 0, size);
-            return lottoPapers;
+        List<Lotto> getLottoPapersFromData(int size){
+            return new ArrayList<>(Arrays.asList(lottoPaperInput).subList(0, size));
         }
 
         // 체크해야 되는 부분 : 1등 몇개 2등 몇개 등등 잘 매칭되어 들어갔는지?

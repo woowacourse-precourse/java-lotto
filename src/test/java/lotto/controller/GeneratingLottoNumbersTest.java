@@ -57,15 +57,15 @@ class GeneratingLottoNumbersTest {
     @Test
     void generatingAllLottoPapers_case1() {
         int input = 8;
-        Lotto[] allLottoPapers = generatingLottoPaper.generatingAllLottoPapers(input);
-        assertThat(allLottoPapers.length).isEqualTo(input);
+        List<Lotto> allLottoPapers = generatingLottoPaper.generatingAllLottoPapers(input);
+        assertThat(allLottoPapers.size()).isEqualTo(input);
     }
 
     @DisplayName("로또를 주어진 수만큼 뽑을 수 있는지 보기. 예외는 한개뽑을 때 이미 처리함.")
     @Test
     void generatingAllLottoPapers_case2() {
         int input = 1000;
-        Lotto[] allLottoPapers = generatingLottoPaper.generatingAllLottoPapers(input);
-        assertThat(allLottoPapers.length).isEqualTo(input);
+        List<Lotto> allLottoPapers = generatingLottoPaper.generatingAllLottoPapers(input);
+        assertThat(allLottoPapers.size()).isEqualTo(input);
     }
 }
