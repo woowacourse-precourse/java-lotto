@@ -6,22 +6,37 @@ import java.util.List;
 import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
 import lotto.constants.message.OutputMessage;
+import lotto.domain.Lotto;
 
 public class OutputView {
     public static final int COUNT_OF_LOTTO = 0;
-    public static final int BOUGHT_RESULT_MESSAGE = 1;
+    public static final int BOUGHT_RESULT = 1;
     public static final int STATISTICS = 0;
     public static final int EARNINGS_RATE = 1;
     public static final int WIN_RESULT_COUNT = 5;
     public static final String NEXT_LINE = "\n";
     public static final int ZERO_WIN = 0;
     public static final String PRICE_FORMAT = "#,##0.0";
+    private static final int ONE = 1;
 
-
-    public void outputLottoBuyingResult(List<String> resultOfBuyingLotto) {
+    public void outputLottoBuyingResult(List<Object> resultOfBuyingLotto) {
         System.out.println();
-        System.out.println(resultOfBuyingLotto.get(COUNT_OF_LOTTO) + OutputMessage.BOUGHT_MESSAGE);
-        System.out.println(resultOfBuyingLotto.get(BOUGHT_RESULT_MESSAGE));
+        System.out.println(createBuyingLottoCountMessage((int) resultOfBuyingLotto.get(COUNT_OF_LOTTO)));
+        System.out.println(createBuyingLottoResultMessage((List<Lotto>)resultOfBuyingLotto.get(BOUGHT_RESULT)));
+    }
+
+    private String createBuyingLottoResultMessage(List<Lotto> buyingLottos) {
+        StringBuilder allLottoNumber = new StringBuilder();
+        buyingLottos.stream()
+                .map(Lotto::createMessage)
+                .forEach(lotto -> allLottoNumber.append(lotto)
+                        .append(NEXT_LINE));
+        return allLottoNumber.deleteCharAt(allLottoNumber.length() - ONE)
+                .toString();
+    }
+
+    private String createBuyingLottoCountMessage(int buyingLottoCount) {
+        return String.format(OutputMessage.BOUGHT_FORMAT, buyingLottoCount);
     }
 
     public void printLottoResult(List<Object> lottoResult) {

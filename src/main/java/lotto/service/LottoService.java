@@ -19,9 +19,9 @@ public class LottoService {
     public static final int ZERO = 0;
     private final LottoRepository lottoRepository = LottoRepository.getInstance();
 
-    public List<String> buyLottos(int inputPrice) {
+    public List<Object> buyLottos(int inputPrice) {
         lottoRepository.generateLottos(inputPrice / LOTTO_PRICE);
-        return createBuyingResultMessage();
+        return createBuyingResult();
     }
 
     public int getCountOfLotto() {
@@ -29,21 +29,8 @@ public class LottoService {
                 .size();
     }
 
-    public List<String> createBuyingResultMessage() {
-        // TODO view에서 담당하는것이 맞아보임
-        return List.of(String.valueOf(getCountOfLotto()), createBuyingLottoMessage());
-    }
-
-    private String createBuyingLottoMessage() {
-        // TODO 리팩토링 view에서 담당하는게 맞아보임
-        StringBuilder allLottoNumber = new StringBuilder();
-        lottoRepository.findAll()
-                .stream()
-                .map(Lotto::createMessage)
-                .forEach(lotto -> allLottoNumber.append(lotto)
-                        .append(NEXT_LINE));
-        return allLottoNumber.deleteCharAt(allLottoNumber.length() - ONE)
-                .toString();
+    private List<Object> createBuyingResult() {
+        return List.of(getCountOfLotto(), lottoRepository.findAll());
     }
 
     public List<WinResultStatus> createWinResults(WinningNumber winningNumber) {

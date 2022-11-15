@@ -3,7 +3,7 @@ package lotto.constants.message;
 import java.util.List;
 
 public class OutputMessage {
-    public static final String BOUGHT_MESSAGE = "개를 구매했습니다.";
+    public static final String BOUGHT_FORMAT = "%d개를 구매했습니다.";
     public static final String WINNING_STATISTICS = "당첨 통계";
     public static final String DIVIDING_LINE = "---";
     public static final List<String> STATISTICS_FORMATS = List.of(
