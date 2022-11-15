@@ -12,7 +12,7 @@ public class LottoController {
 
     public static int gameStartAndGetInput() {
         LottoView.printStartMessage();
-        String input = LottoView.getLottoPurchaseAmount();
+        String input = LottoView.readLine();
         return LottoService.amountInputToInteger(input);
     }
 
@@ -30,6 +30,6 @@ public class LottoController {
 
     public static Lotto getWinningNumber() {
         LottoView.printInputLottoWinningMessage();
-        return LottoService.getWinningNumber(LottoView.getWinningNumber());
+        return LottoService.getWinningNumber(LottoView.readLine());
     }
 }

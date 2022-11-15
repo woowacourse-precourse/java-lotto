@@ -18,17 +18,13 @@ public class LottoView {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public static String getLottoPurchaseAmount() {
+    public static String readLine() {
         return Console.readLine();
     }
 
     public static void printLottoPurchaseResult(int purchaseAmount, List<Lotto> lottoNumbers) {
         System.out.println(purchaseAmount + PURCHASE_LOTTO_COUNT_RESULT_MESSAGE);
         lottoNumbers.forEach(System.out::println);
-    }
-
-    public static String getWinningNumber() {
-        return Console.readLine();
     }
 
     public static void printInputLottoWinningMessage() {
