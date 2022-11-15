@@ -1,6 +1,6 @@
-package lotto;
+package lotto.model;
 
-import static lotto.LottoRank.RANK1;
+import static lotto.model.LottoRank.RANK1;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ class LottoReaderTest {
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Bonus bonus = new Bonus(10, winningLotto);
 
-        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto,bonus);
+        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto, bonus);
 
         // when
         double lottoYield = lottoReader.calculateYield(1000);

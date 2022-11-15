@@ -1,9 +1,9 @@
-package lotto;
+package lotto.model;
 
-import static lotto.LottoRank.RANK2;
-import static lotto.LottoRank.RANK3;
-import static lotto.LottoRank.findRank;
-import static lotto.LottoRank.values;
+import static lotto.model.LottoRank.RANK2;
+import static lotto.model.LottoRank.RANK3;
+import static lotto.model.LottoRank.findRank;
+import static lotto.model.LottoRank.values;
 
 import java.util.EnumMap;
 import java.util.HashMap;

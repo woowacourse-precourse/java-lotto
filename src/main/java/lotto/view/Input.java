@@ -2,7 +2,7 @@ package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import lotto.Validator;
+import lotto.model.Validator;
 
 public final class Input {
     private static final Validator validator = new Validator();

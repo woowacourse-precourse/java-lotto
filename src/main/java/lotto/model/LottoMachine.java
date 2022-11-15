@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import static java.lang.Integer.parseInt;
 import static lotto.utils.ConstantUtil.MIN_LOTTO_PRICE;

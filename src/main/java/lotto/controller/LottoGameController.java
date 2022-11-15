@@ -1,18 +1,23 @@
-package lotto;
+package lotto.controller;
 
 import static lotto.view.Input.inputBonusNumber;
 import static lotto.view.Input.inputPurchaseAmount;
 import static lotto.view.Input.inputWinningNumbers;
-import static lotto.view.Print.requestBonusNumberInput;
 import static lotto.view.Print.printLottoResult;
 import static lotto.view.Print.printPublishedLottoNumbers;
 import static lotto.view.Print.printPurchaseQuantity;
-import static lotto.view.Print.requestWinningNumbersInput;
 import static lotto.view.Print.printYield;
+import static lotto.view.Print.requestBonusNumberInput;
 import static lotto.view.Print.requestPurchaseAmountInput;
+import static lotto.view.Print.requestWinningNumbersInput;
 
 import java.util.List;
 import java.util.Map;
+import lotto.model.Bonus;
+import lotto.model.Lotto;
+import lotto.model.LottoMachine;
+import lotto.model.LottoRank;
+import lotto.model.LottoReader;
 
 public class LottoGameController {
     private final LottoMachine lottoMachine = new LottoMachine();

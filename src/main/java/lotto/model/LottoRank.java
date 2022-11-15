@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 public enum LottoRank {
     NONE(0, 0),

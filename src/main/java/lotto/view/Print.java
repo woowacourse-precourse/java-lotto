@@ -1,20 +1,20 @@
 package lotto.view;
 
-import static lotto.LottoRank.NONE;
-import static lotto.LottoRank.RANK2;
+import static lotto.model.LottoRank.NONE;
+import static lotto.model.LottoRank.RANK2;
 
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
-import lotto.Lotto;
-import lotto.LottoRank;
+import lotto.model.Lotto;
+import lotto.model.LottoRank;
 
 public final class Print {
     private static final String PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String PURCHASE_QUANTITY = "개를 구매했습니다.";
     private static final String WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String WINNING_STATS = "당첨 통계" ;
+    private static final String WINNING_STATS = "당첨 통계";
     private static final String DIVIDE_LINE = "---";
     private static final String WINNING_RESULT = "%d개 일치 (%s원) - %d개";
     private static final String BONUS_WINNING_RESULT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
