@@ -6,7 +6,7 @@ import lotto.domain.Lottos;
 import lotto.utils.Constants;
 
 public class LottoPurchaseView {
-    public static String purchaseLotto(){
+    public static String printPurchaseLotto(){
         System.out.println(Constants.PURCHASE_MESSAGE);
         return Console.readLine();
     }
