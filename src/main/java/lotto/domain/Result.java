@@ -34,11 +34,8 @@ public class Result {
 
     public void matchLotto(List<Integer> winningNumbers, List<Lotto> lottos, int bonusNumber) {
         for (Lotto lotto : lottos) {
-            int matchCount = (int) lotto.getNumbers()
-                    .stream()
-                    .filter(winningNumbers::contains)
-                    .count();
-            boolean isContainBonusNumber = lotto.getNumbers().contains(bonusNumber);
+            int matchCount = getMatchCount(winningNumbers, lotto);
+            boolean isContainBonusNumber = isContainBonusNumber(bonusNumber, lotto);
 
             updateRankInfo(Rank.valueOfRank(matchCount, isContainBonusNumber));
         }
@@ -50,11 +47,7 @@ public class Result {
                 .sorted(Comparator.comparingInt(r -> r.getKey().getPrize()))
                 .collect(Collectors.toList());
 
-        Map<Rank, Integer> result = new LinkedHashMap<>();
-
-        for (Entry<Rank, Integer> entry : entries) {
-            result.put(entry.getKey(), entry.getValue());
-        }
+        Map<Rank, Integer> result = convertListToMap(entries);
 
         return result;
     }
@@ -65,5 +58,25 @@ public class Result {
 
     public float getWinningAmount() {
         return winningAmount;
+    }
+
+    private boolean isContainBonusNumber(int bonusNumber, Lotto lotto) {
+        return lotto.getNumbers().contains(bonusNumber);
+    }
+
+    private int getMatchCount(List<Integer> winningNumbers, Lotto lotto) {
+        return (int) lotto.getNumbers()
+                .stream()
+                .filter(winningNumbers::contains)
+                .count();
+    }
+
+    private Map<Rank, Integer> convertListToMap(List<Entry<Rank, Integer>> entries) {
+        Map<Rank, Integer> result = new LinkedHashMap<>();
+
+        for (Entry<Rank, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
     }
 }
