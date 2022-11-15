@@ -16,4 +16,29 @@ public enum Prize {
 		this.prizeMoney = prizeMoney;
 		this.message = message;
 	}
+
+	public int getHitNumber() {
+		return hitNumber;
+	}
+
+	public int getPrizeMoney() {
+		return prizeMoney;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public static Prize computePrize(int hitNumber, boolean bonusNumber) {
+		if (SECOND.getHitNumber() == hitNumber && bonusNumber) {
+			return SECOND;
+		}
+		for (Prize prize : values()) {
+			if (prize.getHitNumber() == hitNumber && prize != SECOND) {
+				return prize;
+			}
+		}
+		throw new IllegalArgumentException("잘못된 값입니다.");
+	}
+
 }

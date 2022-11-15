@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class LottoMachine {
 
@@ -46,4 +48,15 @@ public class LottoMachine {
 		}
 		return numbers;
 	}
+
+	public int countHitNumber(Lotto userLotto) {
+		return userLotto.getNumbers().stream()
+			.filter(user -> winningLotto.getNumbers().stream().anyMatch(Predicate.isEqual(user)))
+			.collect(Collectors.toList()).size();
+	}
+
+	public boolean hitBonusNumber(Lotto userLotto) {
+		return userLotto.getNumbers().contains(bonusNumber);
+	}
+
 }

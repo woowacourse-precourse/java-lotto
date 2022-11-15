@@ -8,6 +8,7 @@ public class Application {
         user.computeLottoAmount();
         user.purchaseLotto();
         lottoMachine.inputWinningNumber();
+        user.prizeResult();
         // TODO: 프로그램 구현
     }
 }
