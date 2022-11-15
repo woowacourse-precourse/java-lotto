@@ -15,33 +15,33 @@ import static lotto.domain.InputNumber.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        // 구입금액
+        // TODO: 구입금액 입력
         Print.requestMoneyMessage();
         Money.getMoney();
         Print.howmanyLottos(numberOfLottos);
 
-        // 구매 장수만큼 로또 번호 출력
         Compare.randomLottos = new HashMap<>();
         Compare.userList = new ArrayList<>();
-        for (int i = 0; i < numberOfLottos; i++) {
-            List<Integer> createdRandomNumbers = RandomNumber.create();
-            Lotto lotto = new Lotto(createdRandomNumbers);
-            List<Integer> getRandomNumbers = lotto.getNumbers();
-            Compare.randomLottos.put(i,getRandomNumbers);
-            Print.getLottos(getRandomNumbers);
-        }
 
+        // TODO: 구매 장수만큼 로또 번호 출력
+        Lotto.getAllLottos();
+
+
+        //TODO: 사용자로부터 당첨번호 입력받기
         Print.requestWinNumbers();
+
         List<Integer> correctNumbers = InputNumber.getWinNumbers();
         for (int i = 0; i < correctNumbers.size(); i++) {
             Compare.userList.add(correctNumbers.get(i));
         }
+
         Print.winNumbers();
         Print.requestBonusNumber();
         InputNumber.getBonusNumber();
         Compare.bonusNumber = bonusNumber;
         Print.bonusNumber();
 
+        // 결과 비교
         Compare.numbers();
         Compare.getResult();
 
