@@ -2,6 +2,8 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoPurchaseMoney;
+import lotto.domain.LottoRank;
+import lotto.domain.LottoResult;
 import lotto.domain.LottoStore;
 import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
@@ -27,6 +29,9 @@ public class LottoController {
             WinningNumbers winningNumbers = getWinningNumbers();
             List<Lotto> lottoTickets = lottoStore.buyLottoTickets(lottoPurchaseMoney.get());
             outputView.outputLottoTickets(lottoTickets);
+            LottoResult lottoResult = makeLottoResult(winningNumbers, lottoTickets);
+
+
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
         }
@@ -41,6 +46,15 @@ public class LottoController {
         Lotto winningNumber = new Lotto(inputView.inputWinningNumber());
         int bonusNumber = inputView.inputBonusNumber();
         return new WinningNumbers(winningNumber, bonusNumber);
+    }
+
+    private LottoResult makeLottoResult(WinningNumbers winningNumbers, List<Lotto> lottoTickets) {
+        LottoResult lottoResult = new LottoResult();
+        for (Lotto lottoTicket : lottoTickets) {
+            LottoRank rank = LottoRank.getRank(winningNumbers.countMatchWinningNumber(lottoTicket), winningNumbers.isMatchBonusNumber(lottoTicket));
+            lottoResult.add(rank);
+        }
+        return lottoResult;
     }
 
 }
