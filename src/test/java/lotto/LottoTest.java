@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.Validator;
+import lotto.check.Validator;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -66,4 +66,6 @@ class LottoTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validator.isDuplicateLuckyNumber(input));
     }
+
+
 }

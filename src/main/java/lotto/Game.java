@@ -2,7 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.check.Check;
-import lotto.domain.Validator;
+import lotto.check.Validator;
 import lotto.domain.Lotto;
 import lotto.view.Print;
 
