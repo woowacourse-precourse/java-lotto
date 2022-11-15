@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.BonusNumber;
 import lotto.domain.Result;
 import lotto.view.FinalResult;
 
@@ -35,11 +36,13 @@ public class Compare {
         }
         return correctCount;
     }
-
 /*
     public static void getResult(){
+        HashMap<Integer, Boolean> hasBonusNumber = BonusNumber.hasBonusNumber;
         for (int i = 0; i < resultCount.size(); i++) {
+            System.out.println("aa" + Result.getResult(resultCount.get(i), hasBonusNumber.get(i)));
             Result result = Result.getResult(resultCount.get(i), hasBonusNumber.get(i));
+            System.out.println(result);
             String re = String.valueOf(result);
             System.out.println(result);
             if(re.equals("FIRST")){
@@ -61,6 +64,8 @@ public class Compare {
 
 
     }
+
  */
+
 
 }

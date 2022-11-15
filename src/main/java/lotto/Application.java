@@ -1,8 +1,9 @@
 package lotto;
 
+import lotto.domain.BonusNumber;
 import lotto.domain.Money;
 import lotto.domain.InputNumber;
-import lotto.domain.RandomNumber;
+import lotto.view.FinalResult;
 import lotto.view.Print;
 
 import java.util.ArrayList;
@@ -38,12 +39,13 @@ public class Application {
         Print.winNumbers();
         Print.requestBonusNumber();
         InputNumber.getBonusNumber();
-        Compare.bonusNumber = bonusNumber;
+        InputNumber.bonusNumber = bonusNumber;
         Print.bonusNumber();
 
         // 결과 비교
         Compare.numbers();
-        Compare.getResult();
+        BonusNumber.compare();
+        Calculate.getResult();
 
         FinalResult.printFinalResult();
 

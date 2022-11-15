@@ -8,6 +8,7 @@ public class Money {
 
     public static int getMoney() {
         String playerInput = Console.readLine();
+        playerInput = playerInput.trim();
         validateNumbers(playerInput);
         money = Integer.parseInt(playerInput);
         validate(money);
@@ -17,7 +18,7 @@ public class Money {
 
     private static void validate(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR]구입 금액은 1,000원 단위로 나누어 떨어져야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 나누어 떨어져야 합니다.");
         }
     }
 
@@ -26,7 +27,7 @@ public class Money {
             Integer.parseInt(playerInput);
             return true;
         } catch (Exception ex) {
-            throw new IllegalArgumentException("[ERROR]숫자가 아닌 값을 포함하고 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 포함하고 있습니다.");
         }
     }
 

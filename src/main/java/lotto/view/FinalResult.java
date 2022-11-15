@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 public class FinalResult {
     public static int first=0;
