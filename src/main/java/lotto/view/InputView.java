@@ -12,7 +12,14 @@ public class InputView {
     }
 
     public static String inputWinLottoNumber() {
+        System.out.println();
         System.out.printf(Message.INPUT_WIN_LOTTONUMBER.get());
+        return Console.readLine();
+    }
+
+    public static String inputBonusLottoNumber(){
+        System.out.println();
+        System.out.printf(Message.INPUT_BONUS_LOTTONUMBER.get());
         return Console.readLine();
     }
 }

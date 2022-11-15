@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoCard {
@@ -7,6 +8,7 @@ public class LottoCard {
     private long lottoCardNum;
     private List<Integer> lottoNums;
     private RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    List<List<Integer>> lottocard = new ArrayList<>();
 
     public LottoCard(long money) {
         lottoCardNum = money / 1000;
@@ -18,7 +20,12 @@ public class LottoCard {
         for (int i = 0; i < lottoCardNum; i++) {
             lottoNums = randomNumberGenerator.generateRandomNumber();
             System.out.println(lottoNums);
+            lottocard.add(lottoNums);
         }
+    }
+
+    public List<List<Integer>> getlottocard(){
+        return lottocard;
     }
 
 }
