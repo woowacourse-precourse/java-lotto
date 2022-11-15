@@ -21,7 +21,7 @@ import lotto.constant.ErrorMessage;
 import lotto.constant.WinningResult;
 
 public class WinningCalculator {
-    private List<Integer> numbers;
+    private List<Integer> winningNumbers;
     private int bonusNumber;
     private Map<Integer, WinningResult> winningTable = new HashMap<>();
 
@@ -38,7 +38,7 @@ public class WinningCalculator {
     public void setWinningNumbers(String numbersRaw) {
         validateNumbersRaw(numbersRaw);
         List<Integer> winningNumbers = convertStringToIntegerList(numbersRaw);
-        this.numbers = winningNumbers;
+        this.winningNumbers = winningNumbers;
     }
 
     public void setBonusNumber(String bonusNumberRaw) {
@@ -48,9 +48,9 @@ public class WinningCalculator {
     }
 
     public WinningResult getResultOfOneLotto(Lotto lotto) {
-        int countContainNumbers = calculateCountContainNumbers(lotto);
+        int countContainWinningNumbers = calculateCountContainWinningNumbers(lotto);
         boolean isContainBonusNumber = checkIsContainBonusNumber(lotto);
-        WinningResult winningResult = matchWinningResult(countContainNumbers, isContainBonusNumber);
+        WinningResult winningResult = matchWinningResult(countContainWinningNumbers, isContainBonusNumber);
         return winningResult;
     }
 
@@ -61,11 +61,11 @@ public class WinningCalculator {
         return numbersConverted;
     }
 
-    private int calculateCountContainNumbers(Lotto lotto) {
+    private int calculateCountContainWinningNumbers(Lotto lotto) {
         List<Integer> numbersOfLotto = lotto.getNumbers();
         int count = 0;
         for (int number: numbersOfLotto) {
-            if (this.numbers.contains(number)) {
+            if (this.winningNumbers.contains(number)) {
                 count += 1;
             }
         }
@@ -80,8 +80,7 @@ public class WinningCalculator {
 
     private WinningResult matchWinningResult(int countContainNumbers, boolean isContainBonusNumber) {
         WinningResult winningResult = this.winningTable.get(countContainNumbers);
-        boolean isClass2 = (winningResult == RANK_3) && isContainBonusNumber;
-        if (isClass2) {
+        if ((winningResult == RANK_3) && isContainBonusNumber) {
             winningResult = RANK_2;
         }
         return winningResult;
@@ -98,19 +97,19 @@ public class WinningCalculator {
     }
 
     private void validateNumbers(List<Integer> numbers) {
-        checkLengthOfNumbers(numbers);
-        checkRangeOfNumberInNumbers(numbers);
-        checkDuplicationOfNumbers(numbers);
+        validateLengthOfNumbers(numbers);
+        validateRangeOfNumbers(numbers);
+        validateDuplicationOfNumbers(numbers);
     }
 
-    private void checkLengthOfNumbers(List<Integer> numbers) {
+    private void validateLengthOfNumbers(List<Integer> numbers) {
         if (numbers.size() == COUNT_OF_NUMBERS) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_INCORRECT_COUNT);
     }
 
-    private void checkRangeOfNumberInNumbers(List<Integer> numbers) {
+    private void validateRangeOfNumbers(List<Integer> numbers) {
         for (int number: numbers) {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
@@ -119,7 +118,7 @@ public class WinningCalculator {
         }
     }
 
-    private void checkDuplicationOfNumbers(List<Integer> numbers) {
+    private void validateDuplicationOfNumbers(List<Integer> numbers) {
         Set<Integer> numbersDeletedDuplication = new HashSet<>(numbers);
         if (numbers.size() == numbersDeletedDuplication.size()) {
             return;
@@ -130,22 +129,22 @@ public class WinningCalculator {
     private void validateBonusNumberRaw(String bonusNumberRaw) {
         try {
             int bonusNumber = Integer.parseInt(bonusNumberRaw);
-            checkRangeOfBonusNumber(bonusNumber);
-            checkBonusNumberIsContainWinningNumbers(bonusNumber);
+            validateRangeOfBonusNumber(bonusNumber);
+            validateBonusNumberAlreadyInWinningNumbers(bonusNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_TOO_BIG);
         }
     }
 
-    private void checkRangeOfBonusNumber(int bonusNumber) {
+    private void validateRangeOfBonusNumber(int bonusNumber) {
         if (START_NUMBER <= bonusNumber && bonusNumber <= END_NUMBER) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_INCORRECT_RANGE);
     }
 
-    private void checkBonusNumberIsContainWinningNumbers(int bonusNumber) {
-        if (this.numbers.contains(bonusNumber)) {
+    private void validateBonusNumberAlreadyInWinningNumbers(int bonusNumber) {
+        if (this.winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_ALREADY_IN_WINNING_NUMBERS);
         }
     }
