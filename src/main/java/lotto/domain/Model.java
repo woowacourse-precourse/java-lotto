@@ -13,11 +13,10 @@ public class Model {
     private int BONUS_NUMBER;
 
     // 로또 번호 비교하는 시작점, 입력한 금액, 보너스 번호를 필드값에 입력
-    public HashMap<Integer, Integer> checkPrize(int money, int bonusNumber, List<Integer> lottoNumbers) {
+    public HashMap<Integer, Integer> checkPrize(int money, int bonusNumber, List<Integer> lottoNumbers, List<List<Integer>> userLottos) {
         this.MONEY = money;
         this.BONUS_NUMBER = bonusNumber;
-        RandomLotto randomLotto = new RandomLotto(MONEY);
-        this.USERS_LOTTOS = randomLotto.getLottos();
+        this.USERS_LOTTOS = userLottos;
         checkLottoNumber(lottoNumbers);
 
         return PRIZE_RANKINGS;
