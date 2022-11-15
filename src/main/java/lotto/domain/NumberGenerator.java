@@ -7,6 +7,9 @@ import java.util.List;
 
 public class NumberGenerator {
 
+    final private int MIN_LOTTO_NUM = 1;
+    final private int MAX_LOTTO_NUM = 45;
+    final private int COUNT_LOTTO_NUM = 6;
     public void checkValidateNumber(String money) {
         for (int i = 0; i < money.length(); i++) {
             if ((int) money.charAt(i) < 48 || (int) money.charAt(i) > 57) {
@@ -19,7 +22,7 @@ public class NumberGenerator {
     public List<List<Integer>> createRandomNumbers(int numberOfTicket) {
         List<List<Integer>> lottoList = new ArrayList<>();
         for (int i = 0; i < numberOfTicket; i++) {
-            lottoList.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            lottoList.add(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, COUNT_LOTTO_NUM));
         }
         return lottoList;
     }
