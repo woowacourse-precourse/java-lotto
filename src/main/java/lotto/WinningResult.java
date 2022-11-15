@@ -53,4 +53,8 @@ public class WinningResult {
         }
         return LottoRating.find(prizeOfMatch, bonusNumber);
     }
+
+    public Integer getCount(LottoRating lottoRating) {
+        return totalResult.getOrDefault(lottoRating, 0);
+    }
 }
