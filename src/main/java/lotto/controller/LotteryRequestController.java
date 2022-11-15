@@ -1,55 +1,54 @@
 package lotto.controller;
 
 import lotto.domain.lotteryseller.LotterySeller;
+import lotto.domain.lotteryserver.LotteryServer;
 import lotto.domain.lotterystore.LotteryStoreUi;
-import lotto.dto.lotteryseller.RandomNumbersSets;
-import lotto.dto.lotterystore.MoneyForPurchase;
-import lotto.dto.lotterystore.NumbersForWinningPrize;
+import lotto.dto.lotteryseller.LottoSetsDto;
+import lotto.dto.lotterystore.MoneyDto;
+import lotto.dto.lotterystore.WinningNumbersDto;
 
 public class LotteryRequestController {
-	private static final LotteryRequestController controller = new LotteryRequestController();
-	private final LotteryStoreUi lotteryStoreUi;
-	private final LotterySeller lotterySeller;
-	private final LottoCommittee lottoCommittee;
+	private MoneyDto money;
+	private LottoSetsDto lottoSets;
 
-
-	private LotteryRequestController() {
-		lotteryStoreUi = LotteryStoreUi.getStoreUi();
-		lotterySeller = LotterySeller.getLotterySeller();
-		lottoCommittee = LotteryCommittee.getLotteryCommittee();
+	public void receiveMoney(MoneyDto money) {
+		this.money = money;
 	}
 
-	public static LotteryRequestController getController() {
-		return controller;
+	public void sendMoneyToConsumers(LotterySeller lotterySeller, LotteryServer lotteryServer) {
+		lotterySeller.receiveMoney(money);
+		lotteryServer.receiveMoney(money);
 	}
 
-	public void receiveMoneyForPurchase(MoneyForPurchase moneyDto) {
-		sendMoneyToLotterySeller(moneyDto);
+	public void receiveLottoSets(LottoSetsDto lottoSets) {
+		this.lottoSets = lottoSets;
 	}
 
-	public void sendMoneyToLotterySeller(MoneyForPurchase moneyDto) {
-		lotterySeller.receiveInformationAboutPurchase(moneyDto);
+	public void sendLottoSetsToLotteryStoreUi(LotteryStoreUi lotteryStoreUi) {
+		lotteryStoreUi.receiveLottoSets(lottoSets);
+	}
+
+	public void sendLottoSetsToLotteryServer(LotteryServer lotteryServer) {
+		lotteryServer.receiveLottoSets(lottoSets);
 	}
 
 
-	public void receiveNumbersForWinningPrize(NumbersForWinningPrize winningNumbersDto) {
-		sendNumbersForWinningPrizeToLotto(winningNumbersDto);
+	public void receiveWinningNumbers(WinningNumbersDto winningNumbers,
+		LotteryServer lotteryServer) {
+		sendWinningNumbersToLotteryServer(winningNumbers, lotteryServer);
 	}
 
-	public void sendNumbersForWinningPrizeToLotto(NumbersForWinningPrize winningNumbersDto) {
-
+	public void sendWinningNumbersToLotteryServer(WinningNumbersDto winningNumbers,
+		LotteryServer lotteryServer) {
+		lotteryServer.receiveWinningNumbers(winningNumbers);
 	}
 
-	public void receiveRandomNumbersSets(RandomNumbersSets randomNumbersSetsDto) {
-		sendRandomNumbersSetsToLotteryCommittee(randomNumbersSetsDto);
-		sendRandomNumbersSetsToLotteryStoreUi(randomNumbersSetsDto);
+	public void receiveLottoResultMessage(String resultMessage, LotteryStoreUi lotteryStoreUi) {
+		sendResultMessageToLotteryStoreUi(resultMessage, lotteryStoreUi);
 	}
 
-	public void sendRandomNumbersSetsToLotteryStoreUi(RandomNumbersSets randomNumbersSetsDto) {
-		lotteryStoreUi.printRandomNumberSets(randomNumbersSetsDto);
-	}
-
-	private void sendRandomNumbersSetsToLotteryCommittee(RandomNumbersSets randomNumbersSetsDto) {
-		lottoCommittee.receiveRandomNumbersSets(randomNumbersSetsDto);
+	private void sendResultMessageToLotteryStoreUi(String resultMessage,
+		LotteryStoreUi lotteryStoreUi) {
+		lotteryStoreUi.receiveResultMessage(resultMessage);
 	}
 }
