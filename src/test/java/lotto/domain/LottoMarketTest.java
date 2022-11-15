@@ -15,7 +15,7 @@ public class LottoMarketTest {
         LottoMarket lottoMarket = new LottoMarket();
 
         // when & then
-        assertThatCode(() -> lottoMarket.sellLottoTickets(new Wallet(money)))
+        assertThatCode(() -> lottoMarket.buy(new Wallet(money)))
                 .doesNotThrowAnyException();
     }
 }
