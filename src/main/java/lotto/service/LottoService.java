@@ -36,4 +36,12 @@ public class LottoService {
         }
         return count;
     }
+
+    public boolean checkBonusNumber(int bonusNumber, int lottoCount, List<Integer> lottoNumbers) {
+        if (lottoCount == 5) {
+            return lottoNumbers.contains(bonusNumber);
+        }
+
+        return false;
+    }
 }
