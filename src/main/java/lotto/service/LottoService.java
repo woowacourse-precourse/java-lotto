@@ -15,11 +15,11 @@ import java.util.List;
 public class LottoService {
     public int toPurchaseAmount(String input) {
         validPurchaseAmount(input);
-        int purchaseAmount = toInteger(input);
-        return divideLottoPrice(purchaseAmount);
+        return divideLottoPrice(toInteger(input));
     }
 
     public Lotto toLotto(String input) {
+        validLottoNumbers(input);
         return new Lotto(toIntegerList(input));
     }
 
@@ -32,6 +32,11 @@ public class LottoService {
 
     private void validPurchaseAmount(String input) {
         checkNumeric(input);
+    }
+
+    private void validLottoNumbers(String input) {
+        Arrays.stream(input.split(","))
+                .forEach(this::checkNumeric);
     }
 
     private int toInteger(String input) {
