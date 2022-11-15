@@ -38,7 +38,11 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public void addCorrectCount() {
+        this.correctCount ++;
+    }
+
+    public void winBonus() {
+        this.bonus = true;
     }
 }
