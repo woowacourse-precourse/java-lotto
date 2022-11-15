@@ -1,13 +1,19 @@
 package lotto.controller;
 
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
+import lotto.domain.Result;
 import lotto.service.LottoService;
 import lotto.view.LottoView;
 
 public class LottoController {
 
     private LottoController() {
+    }
+
+    public static Map<Result, Integer> getResultPoints(List<Lotto> lottoNumber, Lotto winningNumber, int bonusNumber) {
+        return LottoService.getWinningPoint(lottoNumber, winningNumber, bonusNumber);
     }
 
     public static int gameStartAndGetInput() {
