@@ -43,7 +43,12 @@ public class Application {
     public static int getTheNumberOfLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
-        moneyValidate(money);
+        try {
+            moneyValidate(money);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println("[ERROR] 구매 금액은 1000원 단위로 입력해야 합니다.");
+            return 0;
+        }
         int numberOfLotto = Integer.parseInt(money) / 1000;
 
         return numberOfLotto;
@@ -51,7 +56,6 @@ public class Application {
 
     public static void moneyValidate(String money) {
         if (validateMoneyType(money) || validateMoneyRange(money)) {
-            System.out.println("[ERROR] 구매 금액은 1000원 단위로 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -216,11 +220,11 @@ public class Application {
         System.out.println(String.format(
                 "당첨 통계" + "\n"
                         + "---" + "\n"
-                        + "3개 일치 (5,000원) - %d" + "\n"
-                        + "4개 일치 (50,000원) - %d" + "\n"
-                        + "5개 일치 (1,500,000원) - %d" + "\n"
-                        + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d" + "\n"
-                        + "6개 일치 (2,000,000,000원) - %d"
+                        + "3개 일치 (5,000원) - %d개" + "\n"
+                        + "4개 일치 (50,000원) - %d개" + "\n"
+                        + "5개 일치 (1,500,000원) - %d개" + "\n"
+                        + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개" + "\n"
+                        + "6개 일치 (2,000,000,000원) - %d개"
                 , lottoResult.get(0),
                 lottoResult.get(1),
                 lottoResult.get(2),

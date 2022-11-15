@@ -16,9 +16,21 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        validateLottoDuplication(numbers);
     }
 
     // TODO: 추가 기능 구현
+    private void validateLottoDuplication(List<Integer> numbers) {
+        List<Integer> tempLotto = new ArrayList<>();
+
+        for (Integer i : numbers) {
+            if (tempLotto.contains(i)) {
+                throw new IllegalArgumentException();
+            }
+            tempLotto.add(i);
+        }
+    }
+
     public void printLotto() {
         String lotto = "[";
         for (int i = 0; i < numbers.size(); i++) {
