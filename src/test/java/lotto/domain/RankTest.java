@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.AppConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RankTest {
 
-    WinningNumbers winningNumbers = new WinningNumbers();
+    AppConfig appConfig = new AppConfig();
+    WinningNumbers winningNumbers = appConfig.createWinningNumbers();
 
     @DisplayName("1등")
     @Test
