@@ -14,7 +14,7 @@ public class WinningLotto extends Lotto{
     }
 
     public void validateDuplicateBonusNumber(int bonusNumber) {
-        if(hasNumber(bonusNumber)) {
+        if (hasNumber(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER.getErrorMessage());
         }
     }
@@ -22,6 +22,9 @@ public class WinningLotto extends Lotto{
     @Override
     public int countSameNumber(Lotto userLotto) {
         int numberCount = super.countSameNumber(userLotto);
+        if(numberCount < 5) {
+            return numberCount;
+        }
         boolean hasBonusNumber = userLotto.hasNumber(bonusNumber);
         if(hasBonusNumber) {
             numberCount++;
