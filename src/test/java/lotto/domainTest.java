@@ -1,6 +1,7 @@
 package lotto;
 
 import domain.LottoIssue;
+import domain.Profit;
 import domain.WinningConfirmation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,5 +50,11 @@ public class domainTest {
         assertThat(rank.getRank(5, true)).isEqualTo(Rank.SECOND);
         assertThat(rank.getRank(0, true)).isEqualTo(Rank.LOSE);
 
+    }
+    @DisplayName("수익율 확인")
+    @Test
+    void 수익율_확인_테스트(){
+        Profit profit = new Profit();
+        assertThat(profit.getProfit(5000,8000)).isEqualTo("62.5%");
     }
 }
