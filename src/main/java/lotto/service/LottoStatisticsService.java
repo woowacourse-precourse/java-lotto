@@ -52,6 +52,7 @@ public class LottoStatisticsService {
                 countOfRank.put(rank, countOfRank.get(rank) + 1);
             }
         }
+        
         return countOfRank;
     }
 
