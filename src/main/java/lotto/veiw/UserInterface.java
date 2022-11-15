@@ -44,15 +44,23 @@ public class UserInterface {
     }
 
     public int inputOnlyNumber() {
-        String input = Console.readLine();
-        validateInputOnlyNumber(input);
-        return Integer.parseInt(input);
+        try {
+            String input = Console.readLine();
+            validateInputOnlyNumber(input);
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.NULL_INPUT_ERROR.getMessage());
+        }
     }
 
     public List<Integer> inputWinningNumbers() {
-        String input = Console.readLine();
-        validateInputNumberAndComma(input);
-        return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        try {
+            String input = Console.readLine();
+            validateInputNumberAndComma(input);
+            return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.NULL_INPUT_ERROR.getMessage());
+        }
     }
 
     private void validateInputOnlyNumber(String input) {

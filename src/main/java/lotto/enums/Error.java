@@ -1,6 +1,7 @@
 package lotto.enums;
 
 public enum Error {
+    NULL_INPUT_ERROR("[ERROR] 문자를 입력해주세요."),
     ZERO_MONEY_ERROR("[ERROR] 구입 금액은 최소 1000원이어야 합니다."),
     PAY_MONEY_ERROR("[ERROR] 구입 금액은 1000원 단위여야 합니다."),
     RANGE_ERROR("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
