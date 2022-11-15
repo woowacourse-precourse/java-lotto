@@ -14,24 +14,18 @@ public class InputMoneyValidator {
     }
 
     private static final Integer ZERO = 0;
-    private static final String NUMBER_REGEXP = "^[0-9]+$";
+    private static final String NUMBER_REGEXP = "\\d+$";
 
     public static void validate(String input) {
-        try {
-            validateOnlyNumber(input);
-            validateDividedByThousand(input);
-            validateNumberBetweenZeroToNine(input);
-            validateBlank(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-
+        validateBlank(input);
+        validateOnlyNumber(input);
+        validateDividedByThousand(input);
+        validateNumberBetweenZeroToNine(input);
     }
 
     private static void validateOnlyNumber(String input) {
         if (!input.matches(NUMBER_REGEXP)) {
-//            throw new OnlyNumberConsistBetweenOneToNineInputException();
-            throw new IllegalArgumentException("[ERROR] 오직 숫자만 입력할 수 있습니다.");
+            throw new OnlyNumberConsistBetweenOneToNineInputException();
 
         }
     }

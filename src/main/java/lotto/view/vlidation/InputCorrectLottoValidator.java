@@ -15,13 +15,9 @@ public class InputCorrectLottoValidator {
     }
 
     public static void validate(List<Integer> inputNumbers) {
-        try {
             validateNumberListInRange(inputNumbers);
             validateNumbersLength(inputNumbers);
             validateNoDuplicateNumbers(inputNumbers);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     private static void validateNumberListInRange(List<Integer> inputNumbers) {

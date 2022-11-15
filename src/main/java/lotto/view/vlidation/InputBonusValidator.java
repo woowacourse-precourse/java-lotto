@@ -12,17 +12,14 @@ public class InputBonusValidator {
 
     private static final String NUMBER_REGEXP = "\\d+$";
     private static final String ZERO_AT_FIRST = "0\\d+";
+
     private InputBonusValidator() {
     }
 
     public static void validate(String input) {
-        try {
-            validateIsNumber(input);
-            validateBlank(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-
+        validateBlank(input);
+        validateIsNumber(input);
+        validateFirstNumberZero(input);
     }
 
     private static void validateIsNumber(String input) {
@@ -50,7 +47,7 @@ public class InputBonusValidator {
 
 
     private static void validateFirstNumberZero(String input) {
-        if (!input.matches(ZERO_AT_FIRST)) {
+        if (input.matches(ZERO_AT_FIRST)) {
             throw new CantFirstNumberZeroException();
         }
     }
