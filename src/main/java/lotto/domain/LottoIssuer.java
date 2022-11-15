@@ -16,20 +16,20 @@ public class LottoIssuer {
     /**
      * 사용자가 입력한 구매 금액만큼의 로또를 담은 Lottos를 return
      */
-    public static Lottos purchaseLottos(int purchasePrice) {
+    public Lottos purchaseLottos(int purchasePrice) {
         int numberOfLottos = getNumberOfLottos(purchasePrice);
         return new Lottos(createLottos(numberOfLottos));
     }
 
-    public static PrizeLotto createPrizeLotto(List<Integer> numbers, int bonusNumber) {
+    public PrizeLotto createPrizeLotto(List<Integer> numbers, int bonusNumber) {
         return new PrizeLotto(numbers, bonusNumber);
     }
 
-    private static int getNumberOfLottos(int purchasePrice) {
+    private int getNumberOfLottos(int purchasePrice) {
         return purchasePrice / LOTTO_PRICE;
     }
 
-    private static List<Lotto> createLottos(int numberOfLotto) {
+    private List<Lotto> createLottos(int numberOfLotto) {
         List<Lotto> lottos = new ArrayList<>();
         while (lottos.size() < numberOfLotto) {
             lottos.add(new Lotto(pickLottoNumbers()));
@@ -37,7 +37,7 @@ public class LottoIssuer {
         return lottos;
     }
 
-    private static List<Integer> pickLottoNumbers() {
+    private List<Integer> pickLottoNumbers() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
         Collections.sort(lottoNumbers);
         return lottoNumbers;

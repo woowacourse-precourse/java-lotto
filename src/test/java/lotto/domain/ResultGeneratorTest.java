@@ -2,7 +2,6 @@ package lotto.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +14,8 @@ public class ResultGeneratorTest {
     @MethodSource("parameters")
     @DisplayName("일치 개수에 해당하는 결과 생성 검사")
     void getResultTest(List<Integer> lottoNumbers, List<Integer> prizeLottoNumbers, int bonusNumber, Result result) {
-        Assertions.assertThat(ResultGenerator.getResult(new Lotto(lottoNumbers),
+        ResultGenerator resultGenerator = new ResultGenerator();
+        Assertions.assertThat(resultGenerator.getResult(new Lotto(lottoNumbers),
                         new PrizeLotto(prizeLottoNumbers, bonusNumber)))
                 .isEqualTo(result);
     }
