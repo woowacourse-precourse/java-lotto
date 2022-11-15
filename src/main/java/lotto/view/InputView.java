@@ -60,10 +60,11 @@ public class InputView {
 
         try {
             String[] splitInput = input.split(INPUT_REGEX);
-            for (String word : splitInput)
-                integers.add(convertStrToInt(word));
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_WINNING_MESSAGE);
+            for (String word : splitInput) {
+                int number = convertStrToInt(word);
+                validateLottoNumber(number);
+                integers.add(number);
+            }
         } catch (Exception e) {
             throw new IllegalArgumentException(ERROR_WINNING_MESSAGE);
         }
@@ -74,6 +75,11 @@ public class InputView {
     public static void validateInputMoney(int money) {
         checkOverThousand(money);
         checkModuloThousand(money);
+    }
+
+    public static void validateLottoNumber(int number) {
+        if (number < LOTTO_MIN_VALUE || number > LOTTO_MAX_VALUE)
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
     }
 
     public static void checkOverThousand(int money) {
