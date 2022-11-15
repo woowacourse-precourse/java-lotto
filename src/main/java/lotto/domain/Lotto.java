@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -9,6 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        sortAsc(numbers);
         this.numbers = numbers;
     }
 
@@ -22,5 +24,7 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void sortAsc(List<Integer> numbers) {
+        numbers.sort(Comparator.naturalOrder());
+    }
 }
