@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buy {
-    private final int price;
+    public static int price;
     private static List<Integer> randomLottos =new ArrayList<>();
 
     public Buy(int price) {

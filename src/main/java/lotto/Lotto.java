@@ -1,5 +1,7 @@
 package lotto;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.annotation.Target;
 import java.util.*;
 
@@ -39,13 +41,13 @@ public class Lotto {
     public void comapreNumbers(List<Integer> randomNumbers,List<Integer> winningNumbers){
         HashMap<Integer,Integer> result = new HashMap<>();
         int count = 0;
-        for(int i =1;i<=(randomNumbers.size() / 6)+1;i++){
+        for(int i =1;i<=(randomNumbers.size() / 6)+2;i++){
             result.put(i,0);
         }
 
         for(int i =0;i<randomNumbers.size()/6;i++){
             count = compareSixNumbers(randomNumbers,winningNumbers,i);
-            if(count == 5){
+            if(count == 4){
                 int bonus = Bonus.bonus;
                 count = compareBonus(randomNumbers,bonus,i,count);
                 result.put(count,result.get(count)+1);
@@ -53,7 +55,7 @@ public class Lotto {
             }
             if(count != 0)
             result.put(count,result.get(count)+1);
-//            System.out.println(result);
+            System.out.println(result);
         }
         printResult(result);
     }
@@ -65,9 +67,10 @@ public class Lotto {
             int target = randomNumbers.get(j);
             seperateRandomLotto.add(target);
         }
+
         for (int i = 0; i < seperateRandomLotto.size(); i++) {
             if (seperateRandomLotto.contains(bonus)) {
-                count = (randomNumbers.size()/6) + 1;
+                count = (randomNumbers.size()/6) + 2;
             }
         }
         return count;
@@ -92,14 +95,21 @@ public class Lotto {
     }
 
     public void printResult(HashMap<Integer,Integer> result){
-        System.out.println();
-        System.out.println(3+"개 일치 (5,000원) -" + result.get(2)+"개");
-        System.out.println(4+"개 일치 (50,000원) -" + result.get(3)+"개");
-        System.out.println(5+"개 일치 (1,500,000원) -" + result.get(4)+"개");
-        System.out.println(5+"개 일치, 보너스 볼 일치 (30,000,000원) -" + result.get(6)+"개");
-        System.out.println(6+"개 일치 (2,000,000,000원) -" + result.get(5)+"개");
+        System.out.println("\n당첨 통계\n---");
+        System.out.println(3+"개 일치 (5,000원) -" + result.get(3)+"개");
+        System.out.println(4+"개 일치 (50,000원) -" + result.get(4)+"개");
+        System.out.println(5+"개 일치 (1,500,000원) -" + result.get(5)+"개");
+        System.out.println(5+"개 일치, 보너스 볼 일치 (30,000,000원) -" + result.get(7)+"개");
+        System.out.println(6+"개 일치 (2,000,000,000원) -" + result.get(6)+"개");
     }
+    public void  incomeRate(){
+    //수익률 = (당첨금액 합/ 처음 투입금액) * 100
+        int inputPriec = Buy.price;
 
+    }
+    /*public void sumWinner(@NotNull HashMap<Integer,Integer> result){
+        result.get(2)
+    }*/
 }
     // TODO: 추가 기능 구현
 
