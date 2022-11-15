@@ -7,6 +7,7 @@ import static lotto.advice.ErrorMessage.LOTTO_SIZE_ERROR_MESSAGE;
 import static lotto.advice.ErrorMessage.MONEY_ERROR_MESSAGE;
 import static lotto.constant.LottoNumberConstant.COUNT;
 import static lotto.constant.LottoNumberConstant.END;
+import static lotto.constant.LottoNumberConstant.LOTTO_PRICE;
 import static lotto.constant.LottoNumberConstant.START;
 
 import java.util.Arrays;
@@ -57,7 +58,7 @@ public class Validator {
         if (!isNumber(moeny)) {
             throw new MoneyException(MONEY_ERROR_MESSAGE);
         }
-        if (Integer.parseInt(moeny) % 1000 != 0) {
+        if (Integer.parseInt(moeny) % LOTTO_PRICE != 0) {
             throw new MoneyException(MONEY_ERROR_MESSAGE);
         }
     }
