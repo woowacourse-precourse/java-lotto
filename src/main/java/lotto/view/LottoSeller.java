@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoSeller {
+    private static final String ONLY_NUMERIC = "^[0-9]*$";
     private static final String SEPARATOR = ",";
 
     public static void printMessage(String message) {
@@ -73,7 +74,7 @@ public class LottoSeller {
     }
 
     private static void validateNumber(String input) {
-        if (!input.matches("^[0-9]*$"))
+        if (!input.matches(ONLY_NUMERIC))
             Error.printException(ErrorType.NOT_NUMBER);
     }
 
