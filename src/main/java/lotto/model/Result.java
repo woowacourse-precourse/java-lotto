@@ -1,7 +1,5 @@
 package lotto.model;
 
-import lotto.util.Rank;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.model;
 
 public enum Rank {
     NONE("", 0),
