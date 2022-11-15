@@ -19,8 +19,8 @@ public class LottoMachine {
 		List<Integer> lotto = Randoms.pickUniqueNumbersInRange(Constant.FIRST_NUMBER_IN_LOTTO,
 			Constant.LAST_NUMBER_IN_LOTTO,
 			Constant.LOTTO_SIZE);
-		Collections.sort(lotto);
-		return lotto;
+
+		return lotto.stream().sorted().collect(Collectors.toList());
 	}
 
 	public void inputWinningNumber() {

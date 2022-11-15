@@ -67,7 +67,7 @@ public class User {
 		for (Prize prize : result.keySet()) {
 			int prizeMoney = prize.getPrizeMoney();
 			int winningNumber = result.get(prize);
-			totalReturn += (double) ((prizeMoney / purchaseAmount) * winningNumber * 100);
+			totalReturn +=  ((double) (prizeMoney * winningNumber * 100) / (double) purchaseAmount);
 		}
 		System.out.println("총 수익률은 "+String.format("%.1f", totalReturn)+"%입니다.");
 	}
