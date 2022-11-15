@@ -15,7 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("보너스 번호를 제외한 로또 번호는 6개를 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 제외한 로또 번호는 6개를 입력해야 합니다.");
         }
         for (int n : numbers){
             if (n < 1 || n > 45){
