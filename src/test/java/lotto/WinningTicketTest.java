@@ -38,7 +38,7 @@ public class WinningTicketTest {
     }
 
     @Test
-    @DisplayName("보너스 번호가 당첨번호 리스트에 존재하면 IllegalArgumentException 발생한다.")
+    @DisplayName("보너스 번호가 숫자범위 1 ~ 45를 벗어나면 IllegalArgumentException 발생한다.")
     void 보너스번호_1에서45_벗어나면_예외발생() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new lotto.domain.WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6), 46));
