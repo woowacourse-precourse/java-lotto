@@ -3,7 +3,6 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
@@ -32,7 +31,4 @@ public class InputView {
         String bonusNumberInput = Console.readLine();
         return bonusNumberInput;
     }
-
-
-
 }

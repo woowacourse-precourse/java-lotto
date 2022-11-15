@@ -1,14 +1,12 @@
 package lotto.service;
 
 import java.util.List;
-import java.util.Random;
 
 import lotto.domain.Lotto;
 import lotto.domain.RandomLottoNumber;
 import lotto.domain.Winner;
 import lotto.util.ParserUtil;
 import lotto.util.RandomUtil;
-import lotto.util.ValidationUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -18,18 +16,18 @@ public class LottoService {
     private List<RandomLottoNumber> randomLottoNumber;
     private Lotto winningNumber;
     private Integer bonusNumber;
-    private int numOf1stPrize=0;
-    private int numOf2ndPrize=0;
-    private int numOf3rdPrize=0;
-    private int numOf4thPrize=0;
-    private int numOf5thPrize=0;
-    private int accumulatedWinningPrize=0;
+    private int numOf1stPrize = 0;
+    private int numOf2ndPrize = 0;
+    private int numOf3rdPrize = 0;
+    private int numOf4thPrize = 0;
+    private int numOf5thPrize = 0;
+    private int accumulatedWinningPrize = 0;
 
     public LottoService() {
         OutputView.purchaseAmountMsg();
         this.inputPurchaseAmount = InputView.getInputPurchaseAmount();
         int numOfLottery = RandomUtil.getCountFromMoney(inputPurchaseAmount);
-        this.randomLottoNumber = RandomUtil.getLottoNumbers(inputPurchaseAmount);
+        this.randomLottoNumber = RandomUtil.createLottoNumberList(numOfLottery);
         OutputView.purchaseResultMsg(randomLottoNumber, numOfLottery);
     }
 
@@ -39,7 +37,7 @@ public class LottoService {
         drawForWinner();
     }
 
-    public void createWinningNumber() {
+    private void createWinningNumber() {
         OutputView.winningNumberMsg();
         String winningNumberInput = InputView.getInputWinningNumber();
         ParserUtil.parseWinningNumbersInput(winningNumberInput);
@@ -55,6 +53,14 @@ public class LottoService {
         this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
+    private void isDuplicate(String input) throws IllegalArgumentException {
+        List<Integer> winningNumbList = winningNumber.getNumbers();
+        Integer bonusNum = Integer.valueOf(input);
+        if (winningNumbList.contains(bonusNum)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복될 수 없습니다.");
+        }
+    }
+
     private void drawForWinner() {
         for (RandomLottoNumber randomNumList : randomLottoNumber) {
             int winningCount = getWinningCount(randomNumList);
@@ -62,7 +68,7 @@ public class LottoService {
             Winner grade = Winner.getWinner(winningCount, isBonus);
             randomNumList.winner = grade;
             updateNumOfPrize(randomNumList);
-            updatedWinningPrize(randomNumList);
+            updatedWinningMoney(randomNumList);
 
         }
     }
@@ -100,62 +106,54 @@ public class LottoService {
     }
 
     private void update1stPrize(int winningCount) {
-        if (winningCount==6) {
+        if (winningCount == 6) {
             this.numOf1stPrize += 1;
         }
     }
 
     private void update2ndPrize(int winningCount, boolean isBonusNum) {
-        if (winningCount==5 && isBonusNum) {
+        if (winningCount == 5 && isBonusNum) {
             this.numOf2ndPrize += 1;
         }
     }
 
     private void update3rdPrize(int winningCount, boolean isBonusNum) {
-        if (winningCount==5 && !isBonusNum) {
+        if (winningCount == 5 && !isBonusNum) {
             this.numOf3rdPrize += 1;
         }
     }
 
     private void update4thPrize(int winningCount) {
-        if (winningCount==4) {
+        if (winningCount == 4) {
             this.numOf4thPrize += 1;
         }
     }
 
     private void update5thPrize(int winningCount) {
-        if (winningCount==3) {
+        if (winningCount == 3) {
             this.numOf5thPrize += 1;
         }
     }
 
-    private void updatedWinningPrize(RandomLottoNumber randomList) {
+    private void updatedWinningMoney(RandomLottoNumber randomList) {
         Winner winningInfo = randomList.winner;
         this.accumulatedWinningPrize += winningInfo.getPrize();
     }
 
-    public void returnResult() {
+    public void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " +numOf5thPrize+"개");
-        System.out.println("4개 일치 (50,000원) - " +numOf4thPrize+"개");
-        System.out.println("5개 일치 (1,500,000원) - " +numOf3rdPrize+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " +numOf2ndPrize+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - " +numOf1stPrize+"개");
-        System.out.println("총 수익률은 "+getProfitRatio()+"%입니다.");
+        System.out.println("3개 일치 (5,000원) - " + numOf5thPrize + "개");
+        System.out.println("4개 일치 (50,000원) - " + numOf4thPrize + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + numOf3rdPrize + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + numOf2ndPrize + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + numOf1stPrize + "개");
+        System.out.println("총 수익률은 " + getProfitRatio() + "%입니다.");
     }
 
     private double getProfitRatio() {
         int purchaseAmount = Integer.valueOf(inputPurchaseAmount);
         double profitRatio = ((double) accumulatedWinningPrize / (double) purchaseAmount) * 100;
-        return Math.round(profitRatio*10)/10.0;
-    }
-
-    private void isDuplicate(String input) throws IllegalArgumentException {
-        List<Integer> winningNumbList = winningNumber.getNumbers();
-        Integer bonusNum = Integer.valueOf(input);
-        if (winningNumbList.contains(bonusNum)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복될 수 없습니다.");
-        }
+        return Math.round(profitRatio * 10) / 10.0;
     }
 }

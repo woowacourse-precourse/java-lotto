@@ -8,7 +8,7 @@ public enum Winner {
     FIFTH(3, 5000, false),
     LOSING_LOT1(2, 0, false),
     LOSING_LOT2(1, 0, false),
-    LOSING_LOT3(0,0,false);
+    LOSING_LOT3(0, 0, false);
 
 
     private int count;

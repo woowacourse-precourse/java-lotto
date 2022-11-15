@@ -1,14 +1,6 @@
 package lotto.util;
 
-import lotto.view.InputView;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class ParserUtil {
-
-    final static int MIN_PURCHASE_AMOUNT = 1000;
-    final static int SIZE_OF_LOTTO_NUMBER = 6;
 
     public static void parsePurchaseAmountInput(String input) throws IllegalArgumentException {
         if (ValidationUtil.validateEmpty(input)) {
@@ -44,7 +36,7 @@ public class ParserUtil {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력입니다.");
         }
         if (!ValidationUtil.validateIsDigit(bonusNumInput)) {
-            throw new IllegalArgumentException("[ERROR] 숫자 이외에 문자를 입력할 수 없습습니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자 이외에 문자를 입력할 수 없습니다.");
         }
 
         int bonusNum = Integer.parseInt(bonusNumInput);
@@ -52,5 +44,4 @@ public class ParserUtil {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지 숫자를 입력해주세요.");
         }
     }
-
 }

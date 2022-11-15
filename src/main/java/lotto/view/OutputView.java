@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.domain.RandomLottoNumber;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +12,7 @@ public class OutputView {
     }
 
     public static void purchaseResultMsg(List<RandomLottoNumber> lottoNumberList, int countFromMoney) {
-        System.out.println(countFromMoney+"개를 구매했습니다.");
+        System.out.println(countFromMoney + "개를 구매했습니다.");
         for (RandomLottoNumber lottoNumber : lottoNumberList) {
             List<Integer> sortedRandomNum = lottoNumber.getRandomNum().stream()
                     .sorted()

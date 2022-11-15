@@ -1,11 +1,8 @@
 package lotto.util;
 
-import java.util.List;
-
 public class ValidationUtil {
 
     final static int MIN_UNIT_OF_AMOUNT = 1000;
-    final static int LENGTH_OF_WINNING_NUM_LIST = 6;
     final static int START_NUM = 1;
     final static int END_NUM = 45;
 
@@ -14,7 +11,7 @@ public class ValidationUtil {
     }
 
     public static boolean validateIsDigit(String input) {
-        for (int i=0; i<input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             char inputChar = input.charAt(i);
             if (!Character.isDigit(inputChar)) {
                 return false;
@@ -25,7 +22,7 @@ public class ValidationUtil {
 
     public static boolean validateMinNumber(int input) {
 
-        return input >= 1000;
+        return input >= MIN_UNIT_OF_AMOUNT;
     }
 
     public static boolean validateRemainder(int input) {
@@ -33,9 +30,9 @@ public class ValidationUtil {
     }
 
     public static boolean validateIsDigitAndComma(String input) {
-        for (int i=0; i<input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             char winningNum = input.charAt(i);
-            if (!Character.isDigit(winningNum) && winningNum!=',') {
+            if (!Character.isDigit(winningNum) && winningNum != ',') {
                 return false;
             }
         }
@@ -51,8 +48,6 @@ public class ValidationUtil {
     }
 
     public static boolean validateIsInRange(int input) {
-        return input>=1 && input<=45;
+        return input >= START_NUM && input <= END_NUM;
     }
-
-
 }

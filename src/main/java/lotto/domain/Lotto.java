@@ -15,7 +15,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 6자리 숫자를 입력해주세요.");
         }
 
-        for (int i=0; i<numbers.size(); i++) {
+        for (int i = 0; i < numbers.size(); i++) {
             if (!isInRange(numbers.get(i))) {
                 throw new IllegalArgumentException("[ERROR] 1부터 45까지 숫자를 입력해주세요.");
             }
@@ -37,7 +37,7 @@ public class Lotto {
     }
 
     private static boolean isDuplicate(List<Integer> numbers, Integer num, int index) {
-        for (int j=0; j<index; j++) {
+        for (int j = 0; j < index; j++) {
             if (numbers.get(j).equals(num)) {
                 return true;
             }

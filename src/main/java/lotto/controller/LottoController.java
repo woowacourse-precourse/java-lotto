@@ -24,6 +24,6 @@ public class LottoController {
     }
 
     private void endLottery() {
-        lottoService.returnResult();
+        lottoService.printResult();
     }
 }
