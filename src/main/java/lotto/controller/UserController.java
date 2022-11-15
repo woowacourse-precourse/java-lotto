@@ -7,6 +7,8 @@ import lotto.service.UserService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.NoSuchElementException;
+
 public class UserController {
     static UserService userService = new UserService();
     static LotterySellService lotterySellService = new LotterySellService();
@@ -22,7 +24,11 @@ public class UserController {
     }
 
     public static void checkLotteryResult() {
-        lotteryCheckService.updateUserLotteryResult(user);
+        try {
+            lotteryCheckService.updateUserLotteryResult(user);
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
         OutputView.showWinningResult(
                 user.countWinningTicketsByRank(),
                 user.getNumberOfTickets(),
