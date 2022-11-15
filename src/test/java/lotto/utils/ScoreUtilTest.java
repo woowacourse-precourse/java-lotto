@@ -24,7 +24,7 @@ class ScoreUtilTest {
     }
 
     @ParameterizedTest(name = "{displayName} => {0}")
-    @DisplayName("맞힌 개수와 보너스 맞춘 개수를 통해서 등수를 가려내는 함수")
+    @DisplayName("1 2등을 가려내는 함수")
     @MethodSource("giveBonusCountAndScoreInfo")
     void isSecondOrElseTest(Integer bonusCount, ScoreInfo scoreInfo, ScoreInfo resultScoreInfo) {
         ScoreInfo secondOrElse = ScoreUtil.isSecondOrElse(bonusCount, scoreInfo);
@@ -44,7 +44,7 @@ class ScoreUtilTest {
     private static Stream<Arguments> giveCorrectCountAndBonusCountAndScoreInfo() {
         return Stream.of(
                 Arguments.of(3, 0, ScoreInfo.THREE),
-                Arguments.of(5, 1, ScoreInfo.FIVE_ALPHA),
+                Arguments.of(6, 1, ScoreInfo.FIVE_ALPHA),
                 Arguments.of(0, 0, ScoreInfo.ELSE));
     }
     private static Stream<Arguments> giveBonusCountAndScoreInfo() {
