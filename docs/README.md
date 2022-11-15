@@ -1,0 +1,22 @@
+# Solution - bunsung92
+- [x] 로또를 구매한다. - Buyer#buyLotto()
+- [x] 로또를 발행한다. - LottoPublisher#publishLotto()
+  - [x] 적합한 금액인지 검증한다. - LottoPublisher#validateCorrectAmount() 
+- [x] 로또 번호를 검증한다. - Lotto#valid()
+  - [x] 숫자 범위를 검증한다. - Lotto#validateRangeNumbers()
+  - [x] 로또 번호의 중복을 검증한다. - Lotto#validateOverlapNumbers()
+- [x] 당첨 번호를 만든다. - LottoAdmin#createWinningNumbers()
+  - [x] 당첨 번호가 유효한지 검증한다. - LottoAdmin#validateWinningNumbers()
+  - [x] 당첨 번호에 중복이 있는지 검증한다. - LottoAdmin#validateOverlapWinningNumbers()
+- [x] 보너스 번호를 만든다 - LottoAdmin#createBonusNumber()
+  - [x] 보너스 번호가 당첨 번호와 중복이 있는지 검증한다. - LottoAdmin#validateOverlapBonusNumberWithWinningNumbers()
+- [x] 당첨 결과를 산출한다. Buyer#calculateWinningResult()
+  - [x] 당첨 통계를 출력한다. Buyer#printStatics()
+- [x] 수익율을 계산한다. Buyer#calculateRateOfReturn()
+  - [x] 수익율을 출력한다. Buyer#printRateOfReturn()
+
+- [x] 같은 수가 3개면 5등이다.
+- [x] 같은 수가 4개면 4등이다.
+- [x] 같은 수가 5개면 3등이다.
+- [x] 같은 수가 5개이고 보너스 번호가 일치하면 2등이다.
+- [x] 같은 수가 6개이면 1등이다.
