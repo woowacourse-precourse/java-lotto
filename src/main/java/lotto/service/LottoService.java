@@ -4,9 +4,11 @@ import lotto.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class LottoService {
     private List<Lotto> lotteries = new ArrayList<>();
+    private List<Integer> winnings = new ArrayList<>();
 
     public LottoService() {
 
@@ -25,5 +27,12 @@ public class LottoService {
         for (Lotto lotto : lotteries) {
             System.out.println(lotto.getNumbers());
         }
+    }
+
+    private int checkWinningNumber(List<Integer> lottoNumbers) {
+        return (int) lottoNumbers.stream()
+                .filter(number -> winnings.stream()
+                        .anyMatch(Predicate.isEqual(number)))
+                .count();
     }
 }
