@@ -9,18 +9,14 @@ import java.util.stream.Collectors;
 public class Application {
 
     public static void main(String[] args) {
-        // 1.
         System.out.println(UiValue.BUY_MONEY_INPUT.getUiValue());
         String inputMoney = Console.readLine();
         int money = validateInputMoney(inputMoney);
 
-        // 2.
         List<Lotto> lottos = createLottos(money);
 
-        // 3.
         printLottos(money, lottos);
 
-        // 4.
         System.out.println(UiValue.WINNIG_NUMBERS_INPUT.getUiValue());
         String inputWinningNums = Console.readLine();
         validateInputWinningNums(inputWinningNums);
@@ -32,7 +28,6 @@ public class Application {
         List<Integer> winningNums = parseInputWinningNumsIntoInteger(inputWinningNums);
         int bonusNum = Integer.parseInt(inputBonusNum);
 
-        // 5.
         Map<String, Integer> winningCnt = checkWinningCnt(lottos, winningNums, bonusNum);
         String yield = calcurateYield(money, winningCnt);
         printYield(winningCnt, yield);
