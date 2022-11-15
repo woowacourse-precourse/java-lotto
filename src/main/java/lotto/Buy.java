@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static lotto.Constant.ASK_PRICE;
 import static lotto.Game.*;
+import static lotto.ErrorMessage.*;
 
 public class Buy {
     public static int HowMuch() {
@@ -12,21 +13,29 @@ public class Buy {
         nLottoPrice = validatePrice(price);
         validate1000(nLottoPrice);
         nLotto = nLottoPrice / 1000;
-        //Lotto exception 필요
         return nLotto;
     }
 
+    public static int validatePrice2(String price){
+        for (char c : price.toCharArray()) {
+            if (!('0' <= c && c <= '9')) {
+                throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg());
+            }
+        }
+        nLottoPrice = Integer.parseInt(price);
+        return nLottoPrice;
+    }
     public static int validatePrice(String price){
         try{
             nLottoPrice = Integer.parseInt(price);
         }catch(NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 금액(숫자)을 입력하세요");}
+            throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg());}
         return nLottoPrice;
     }
 
     public static void validate1000(int nLottoPrice){
         if (nLottoPrice % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000의 배수여야 합니다.");
+            throw new IllegalArgumentException(PURCHASE_MONEY_DIVIDABLE.getMsg());
         }
     }
 }

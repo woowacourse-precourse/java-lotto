@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Bonus.BonusNumber;
 import static lotto.Constant.*;
 import static lotto.Count.*;
 import static lotto.Count.WinningCount;
@@ -35,13 +36,7 @@ public class Game {
         PrintGeneratedLotto(nLotto, GeneratedLotto);
         JackpotNumbers = inputJackpotNum();
         Bonus.askBonusNumber();
-        //int[] countBonus = BonusCount(GeneratedLotto);
-        //List<Integer> winCounts = WinningCount(GeneratedLotto, JackpotNumbers);
         WinningCount(GeneratedLotto, JackpotNumbers);
-        //int[] WinTypeCounter = Prize(winCounts, countBonus);
-        for (int data : WinTypeCounter){
-            System.out.println(data);
-        }
         PrintWinning(WinTypeCounter);
     }
 }

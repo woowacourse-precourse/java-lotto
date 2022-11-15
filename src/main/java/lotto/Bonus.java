@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static lotto.Lotto.validateNumberRange;
+import static lotto.ErrorMessage.BONUS_NUMBER_IS_DUPLICATED;
 
 public class Bonus {
     public static int BonusNumber;
@@ -18,7 +19,7 @@ public class Bonus {
 
     private static void BonusValidate(int BonusNumber, List<Integer> numbers) {
         if (numbers.contains(BonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않아야 합니다.");
+            throw new IllegalArgumentException(BONUS_NUMBER_IS_DUPLICATED.getMsg());
         }
     }
 }

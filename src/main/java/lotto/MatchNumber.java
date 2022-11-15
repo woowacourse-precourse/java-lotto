@@ -9,10 +9,10 @@ enum MatchNumber {
     SIX(6, 2000000000,1);
 
     private final int value;
-    private final int prize;
+    private final long prize;
     private final int rank;
 
-    MatchNumber(int value, int prize, int rank) {
+    MatchNumber(int value, long prize, int rank) {
         this.value = value;
         this.prize = prize;
         this.rank = rank;
@@ -22,7 +22,7 @@ enum MatchNumber {
         return value;
     }
 
-    public int getPrize() {
+    public long getPrize() {
         return prize;
     }
 

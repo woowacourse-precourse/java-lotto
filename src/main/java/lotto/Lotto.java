@@ -3,6 +3,8 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.ErrorMessage.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -15,13 +17,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(WINNING_NUMBERS_LENGTH_IS_SIX.getMsg());
         }
     }
 
     public static void validateNumberRange(int num) {
         if (num < 1 || num > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(WINNING_NUMBERS_RANGE.getMsg());
         }
     }
     private void validateLottoRange(List<Integer> numbers) {
@@ -33,10 +35,9 @@ public class Lotto {
     private void validateDuplication(List<Integer> numbers) {
         HashSet<Integer> numberDistinct = new HashSet<>(numbers);
         if (numberDistinct.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
+            throw new IllegalArgumentException(WINNING_NUMBERS_ARE_DUPLICATED.getMsg());
         }
     }
-
     public List<Integer> getLottoNumber() {
         return numbers;
     }

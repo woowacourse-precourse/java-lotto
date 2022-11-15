@@ -6,15 +6,6 @@ import java.util.List;
 public class Count {
     private static final int counterSize = 6;
     public static int[] WinTypeCounter = new int[counterSize];
-    public static int[] BonusCount(List<List<Integer>> GeneratedLotto) {
-        int[] count = new int[GeneratedLotto.size()];
-        for (int i = 0; i < GeneratedLotto.size(); i++) {
-            if (GeneratedLotto.get(i).contains(Bonus.BonusNumber)) {
-                count[i] += 1;
-            }
-        }
-        return count;
-    }
 
     public static List<Integer> WinningCount(List<List<Integer>> GeneratedLotto, List<Integer> numbers) {
         List<Integer> counts = new ArrayList<>();
@@ -35,7 +26,7 @@ public class Count {
                 winningCount++;
             }
         }
-        if(winningCount == 5 && numbers.contains(Bonus.BonusNumber)){
+        if(winningCount == 5 && lotto.contains(Bonus.BonusNumber)){
             return MatchNumber.FIVE_BONUS;
         }
         if(winningCount >= 3) {

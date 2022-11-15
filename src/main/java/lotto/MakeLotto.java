@@ -17,7 +17,8 @@ public class MakeLotto {
     }
     public static void PrintGeneratedLotto(int nLotto, List<List<Integer>> GeneratedLotto) {
         for (int i = 0; i < nLotto; i++) {
-            System.out.println(GeneratedLotto.get(i));
+            List<Integer> lotto = GeneratedLotto.get(i);
+            System.out.println(lotto);
         }
     }
 }
