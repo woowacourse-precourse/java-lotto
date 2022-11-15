@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.enums.PrizeOfLotto;
 import lotto.model.Lotto;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -94,6 +96,21 @@ public class Machine {
         System.out.println(lottoNumbers);
         Integer remainNumber = lottoNumbers.get(0);
         return remainNumber.equals(bonusNumber);
+    }
+
+    public float calculateRatioOfWinningsToInsertMoney(Map<String, Integer> resultOfLottos, BigInteger insertMoney) {
+        BigDecimal totalPrize = calculateTotalWinPrize(resultOfLottos);
+        return totalPrize
+                .divide(new BigDecimal(insertMoney), 3, RoundingMode.HALF_UP)
+                .multiply(BigDecimal.valueOf(100))
+                .floatValue();
+    }
+    private BigDecimal calculateTotalWinPrize(Map<String, Integer> resultOfLottos) {
+        BigDecimal amount = BigDecimal.ZERO;
+        for (PrizeOfLotto rank : PrizeOfLotto.values()) {
+            amount = amount.add(BigDecimal.valueOf((long) rank.getPrize() * resultOfLottos.get(rank.getRank())));
+        }
+        return amount;
     }
 
 }

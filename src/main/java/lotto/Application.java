@@ -26,6 +26,7 @@ public class Application {
 
             Machine machine = new Machine(winningNumbers, bonusNumber);
             Map<String, Integer> resultOfLottos = machine.judge(lottos);
+            double ratio = machine.calculateRatioOfWinningsToInsertMoney(resultOfLottos, money);
 
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());

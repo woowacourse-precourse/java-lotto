@@ -17,6 +17,9 @@ public enum PrizeOfLotto {
     public String getRank() {
         return rank;
     }
+    public int getPrize() {
+        return prize;
+    }
 
     PrizeOfLotto(String criteria, String rank, int prize) {
         this.criteria = criteria;
