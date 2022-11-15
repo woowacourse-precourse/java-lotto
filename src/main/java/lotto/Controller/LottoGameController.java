@@ -11,13 +11,12 @@ public class LottoGameController {
 
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
-    PurchasingLotto purchasingLotto;
-    LottoPublisher lottoPublisher;
-    Lotto lotto;
+    LottoPublisher lottoPublisher = new LottoPublisher();
     BonusNumber bonusNumber;
     CompareLotto compareLotto;
     MatchWinning matchWinning;
 
+    private List<Integer> userInputLottoNumberList;
     List<List<Integer>> publishedLottoNumberList = new ArrayList<>();
 
     public void gameStart() {
@@ -27,23 +26,26 @@ public class LottoGameController {
     }
 
     public void purchaseLotto() {
-        System.out.println("hi");
         String purchasing = inputView.inputPurchasing();
         int purchasingAmount = translateStringToInteger(purchasing);
         outputView.printEmptyLine();
+        PurchasingLotto purchasingLotto = new PurchasingLotto(purchasingAmount);
         new PurchasingLotto(purchasingAmount);
         outputView.printTheNumberOfLotto(purchasingLotto.getAmountOfLotto());
         for (int i = 0; i < purchasingLotto.getAmountOfLotto(); i++) {
             publishedLottoNumberList.add(lottoPublisher.makeRandomLottoNumber());
         }
         outputView.printLottoNumber(publishedLottoNumberList);
+        outputView.printEmptyLine();
     }
 
     public void inputLottoNumberAndBonus() {
         String lottoNumberUserInput = inputView.inputWinningNumber();
         List<Integer> lottoNumber = translateStringToIntegerList(lottoNumberUserInput);
-        new Lotto(lottoNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        userInputLottoNumberList = lotto.getNumbers();
         outputView.printEmptyLine();
+
         String bonusNumberUserInput = inputView.inputBonusNumber();
         int bonusNumber = translateStringToInteger(bonusNumberUserInput);
         new BonusNumber(bonusNumber);
@@ -52,7 +54,11 @@ public class LottoGameController {
     public void printLottoResult() {
         int profit = 0;
         for (int i = 0; i < publishedLottoNumberList.size(); i++) {
-            new CompareLotto(publishedLottoNumberList.get(i), lotto.getNumbers(), bonusNumber.getBonusNumber());
+            System.out.println(publishedLottoNumberList.get(i));
+            System.out.println(userInputLottoNumberList);
+            // new CompareLotto(publishedLottoNumberList.get(i), lotto.getNumbers(), bonusNumber.getBonusNumber());
+            compareLotto.addTheNumberOfWins(publishedLottoNumberList.get(i), userInputLottoNumberList);
+            compareLotto.addWinningBonus(userInputLottoNumberList, bonusNumber.getBonusNumber());
             int theNumberOfWins = compareLotto.getTheNumberOfWins();
             int winningBonus = compareLotto.getWinningBonus();
             matchWinning.matchThePrice(theNumberOfWins, winningBonus);
