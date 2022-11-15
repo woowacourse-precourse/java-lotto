@@ -44,4 +44,18 @@ public class GameResultTest {
 
         assertThat(result).isEqualTo(List.of(0, 0, 1, 0, 0, 0));
     }
+
+    @DisplayName("5개가 일치하면 3등을 한다.")
+    @Test
+    void WinThirdPlaceIfFiveNumbersAreMatched() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Lotto> lottos = new ArrayList<>(List.of(lotto));
+        List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 7));
+        int bonusNumber = 8;
+
+        gameResult.calculateTotalResult(lottos, winningNumber, bonusNumber);
+        List<Integer> result = gameResult.getResult();
+
+        assertThat(result).isEqualTo(List.of(0, 0, 0, 1, 0, 0));
+    }
 }
