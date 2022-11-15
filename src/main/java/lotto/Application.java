@@ -231,6 +231,15 @@ public class Application {
         return winningStats;
     }
 
+    public static void printWinningStats(List<Integer> winningStats) {
+        System.out.println(WINNING_STATS_MESSAGE.getMessage());
+        System.out.printf(FIFTH_PLACE_MESSAGE.getMessage(), winningStats.get(0));
+        System.out.printf(FOURTH_PLACE_MESSAGE.getMessage(), winningStats.get(1));
+        System.out.printf(THIRD_PLACE_MESSAGE.getMessage(), winningStats.get(2));
+        System.out.printf(SECOND_PLACE_MESSAGE.getMessage(), winningStats.get(3));
+        System.out.printf(FIRST_PLACE_MESSAGE.getMessage(), winningStats.get(4));
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -247,5 +256,6 @@ public class Application {
             return;
         }
         List<Integer> winningStats = getWinningStats(lottery, winningNumbers, bonusNumber);
+        printWinningStats(winningStats);
     }
 }
