@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.*;
 
 public class ComparingMachine {
+    Message message = null;
     private List<Integer> containNumberList = new ArrayList<>();
     private List<Integer> containBonusNumber = new ArrayList<>();
     private Map<Integer, Integer> result = new HashMap<>();
@@ -12,6 +13,14 @@ public class ComparingMachine {
     int fifth = 0;
     int fifth_bonus = 0;
     int sixth = 0;
+
+    public void checkValidateNumber(String money) {
+        for (int i = 0; i < money.length(); i++) {
+            if ((int) money.charAt(i) < 48 || (int) money.charAt(i) > 57) {
+                throw new IllegalArgumentException(message.ERROR_MESSAGE_INVALID_INPUT_NUMBER.getMessage());
+            }
+        }
+    }
 
     public void countContainNumber(List<Integer> winningNumber, List<List<Integer>> lotto) {
         for (int i = 0; i < lotto.size(); i++) {

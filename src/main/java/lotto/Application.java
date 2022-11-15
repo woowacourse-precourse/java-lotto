@@ -32,7 +32,7 @@ public class Application {
         try {
             System.out.println(message.INPUT_MONEY.getMessage());
             inputData = Console.readLine();
-            numberGenerator.checkValidateNumber(inputData);
+            comparingMachine.checkValidateNumber(inputData);
 
             money = Integer.parseInt(inputData);
             purchasingLottoList = new PurchasingLottoList(money);
