@@ -40,6 +40,7 @@ public enum Rating {
         }
 
         return Arrays.stream(Rating.values())
+                .filter(rating -> rating.getReward() != Rating.THIRD.getReward())
                 .filter(rating -> count == rating.count)
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
