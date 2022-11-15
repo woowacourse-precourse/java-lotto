@@ -10,20 +10,6 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    static int inputPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
-        String purchaseAmount = Console.readLine();
-        return convertToNumber(purchaseAmount);
-    }
-
-    static int convertToNumber(String purchaseAmount) {
-        try {
-            return Integer.parseInt(purchaseAmount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 양의 정수여야 합니다.");
-        }
-    }
-
     static int quantityOfLotto(int purchaseAmount) {
         return purchaseAmount / 1000;
     }
@@ -37,48 +23,6 @@ public class Application {
     static void validateChangeIsZero(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 남는 금액이 존재합니다.");
-        }
-    }
-
-    static Lotto inputLottoNumbers(String numbers) {
-        System.out.println("당첨 번호를 입력해 주세요.");
-        numbers = Console.readLine();
-        return replaceSeparator(numbers);
-    }
-
-    static Lotto replaceSeparator(String numbers) {
-        String[] eachNumbers = numbers.split(",");
-        return collectLottoNumbers(eachNumbers);
-    }
-
-    static Lotto collectLottoNumbers(String[] eachNumbers) {
-        List<Integer> lottoNumbers = new ArrayList<>();
-        for (String eachNumber : eachNumbers) {
-            lottoNumbers.add(convertEachNumbers(eachNumber));
-        }
-        Lotto lotto = new Lotto(lottoNumbers);
-        return lotto;
-    }
-
-    static int convertEachNumbers(String eachNumber) {
-        try {
-            return Integer.parseInt(eachNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수여야 합니다.");
-        }
-    }
-
-    static int inputBonusNumber(String number) {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        number = Console.readLine();
-        return convertBonusNumber(number);
-    }
-
-    static int convertBonusNumber(String bonusNumber) {
-        try {
-            return Integer.parseInt(bonusNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수여야 합니다.");
         }
     }
 
