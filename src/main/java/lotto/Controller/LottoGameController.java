@@ -16,11 +16,10 @@ public class LottoGameController {
     }
 
     public void purchaseLotto() {
-        String purchasing = inputView.inputPurchasing();
-        int purchase = Integer.parseInt(purchasing);
+        int purchasing = inputView.inputPurchasing();
         outputView.printEmptyLine();
-        int NumberOfLotto = purchasingLotto.calculateNumberOfLotto(purchase);
-        outputView.printTheNumberOfLotto(NumberOfLotto);
-        outputView.printLottoNumber(NumberOfLotto);
+        new PurchasingLotto(purchasing);
+        outputView.printTheNumberOfLotto(purchasingLotto.getAmountOfLotto());
+        outputView.printLottoNumber(purchasingLotto.getPurchase());
     }
 }
