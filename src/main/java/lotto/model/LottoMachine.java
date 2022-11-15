@@ -2,13 +2,13 @@ package lotto.model;
 
 import static java.lang.Integer.parseInt;
 import static lotto.utils.ConstantUtil.ERROR;
-import static lotto.utils.ConstantUtil.MIN_LOTTO_PRICE;
 import static lotto.utils.RandomUtil.createRandomNumbers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private static final int MIN_LOTTO_PRICE = 1000;
     private static final String MIN_MONEY_ERROR_MESSAGE = ERROR + "구입금액은 1000원 이상부터 가능합니다.";
     private static final String MONEY_UNIT_ERROR_MESSAGE = ERROR + "구입금액은 1000원 단위만 가능합니다.";
 
