@@ -9,15 +9,20 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        isValidSize(numbers);
-        isDup(numbers);
+        isValid(numbers);
         Collections.sort(numbers);
         this.numbers = numbers;
     }
 
+    public void isValid(List<Integer> numbers) {
+        isValidSize(numbers);
+        isDup(numbers);
+        isValidRange(numbers);
+    }
+
     private void isValidSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 숫자 6개를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자 6개만 입력할 수 있습니다.");
         }
     }
 
@@ -25,6 +30,14 @@ public class Lotto {
         Set<Integer> dupCheck = new HashSet<>(numbers);
         if (dupCheck.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자는 중복될 수 없습니다.");
+        }
+    }
+
+    public void isValidRange(List<Integer> numbers) {
+        for(int number : numbers){
+            if(!(number >= 1 && number <= 45)){
+                throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력할 수 있습니다.");
+            }
         }
     }
 
