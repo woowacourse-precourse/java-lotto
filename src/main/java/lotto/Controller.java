@@ -10,7 +10,7 @@ import lotto.LottoEnum.LottoReward;
 public class Controller {
     /**
      * 사용자가 입력한 로또 숫자의 유효성을 검증한다.
-     * 1에서 45까지 서로 다른 임의의 수 7개인지 검증
+     * 1에서 45까지 서로 다른 임의의 수 6개인지 검증
      * @param playerNumbers 사용자가 입력한 로또 숫자
      */
     public static void ValidatePlayerNumber(HashSet<Integer> playerNumbers) {
