@@ -20,6 +20,11 @@ public class Input {
         return convertStrArr2IntList(splitWinningNumbers);
     }
 
+    public static int inputBonusNumber() {
+        String assumeBonus = readLine();
+        return convertStr2Int(assumeBonus);
+    }
+
     public static boolean isNumeric(String input) {
         return input.chars().allMatch(Character::isDigit);
     }
@@ -30,17 +35,17 @@ public class Input {
         }
     }
 
+    public static int convertStr2Int(String input) {
+        validateNumeric(input);
+        return Integer.parseInt(input);
+    }
+
     public static List<Integer> convertStrArr2IntList(String[] strArr) {
         List<Integer> numbers = new ArrayList<>();
         for (String assumeNumber : strArr) {
             numbers.add(convertStr2Int(assumeNumber));
         }
         return numbers;
-    }
-
-    public static int convertStr2Int(String input) {
-        validateNumeric(input);
-        return Integer.parseInt(input);
     }
 
     public static void validateRangeOfMoney(int money) {
