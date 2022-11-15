@@ -39,7 +39,7 @@ public class Application {
         //당첨통계
         printWinningDetails(winList);
         //수익률 출력
-
+        calcLotteryYield(winList, buyMoney);
     }
     static int countPurchaseLotto(int buyMoney) {
 
@@ -144,5 +144,8 @@ public class Application {
         System.out.println("3개 일치 (" +third+"원) - "+winList.get(2)+"개"+decFormat.format(third));
         System.out.println("3개 일치 (" +second+"원) - "+winList.get(1)+"개"+decFormat.format(second));
         System.out.println("3개 일치 (" +first+"원) - "+winList.get(0)+"개"+decFormat.format(first));
+    }
+    static void calcLotteryYield(ArrayList<Integer> winList, int buyMoney){
+
     }
 }
