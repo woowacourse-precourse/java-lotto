@@ -78,5 +78,14 @@ class LottoTest {
                 .isEqualTo(new ArrayList<>(Arrays.asList(1,0,0,0,1)));
     }
 
+    @DisplayName("당첨 내역을 활용하여 수익률을 연산하여 반환한다.")
+    @Test
+    void getRate() {
+        assertThat(service.getRate(2, new ArrayList<>(Arrays.asList(1,0,0,0,1)))).isEqualTo(1.0000025E8);
+        assertThat(service.getRate(5, new ArrayList<>(Arrays.asList(0,1,0,0,0)))).isEqualTo(1000.0);
+    }
+
+
+
 
 }
