@@ -13,7 +13,7 @@ public class User {
     public static final String PURCHASE_MONEY_MORE_THAN_ZERO = "[ERROR] 구입 금액은 양수여야 합니다.";
 
     int money;
-    List<Lotto> myLotto;
+    List<Lotto> myLotto = new ArrayList<>();
 
     public void inputPurchaseMoney() {
         System.out.println(INPUT_PURCHASE_MONEY);
