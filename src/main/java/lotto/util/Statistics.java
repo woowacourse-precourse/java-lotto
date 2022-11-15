@@ -56,7 +56,7 @@ public class Statistics {
         for (int index = 0; index < reward.size(); index++) {
             profit += cutRank.get(index) * reward.get(index);
         }
-        return new BigDecimal(Math.round((profit / (double) buyer.getBuyPrice() * 100))).setScale(1, RoundingMode.HALF_EVEN);
+        return new BigDecimal(Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0).setScale(1);
     }
 
 }
