@@ -16,9 +16,7 @@ public class WinningResultCalculator {
 
     public Map<Rank, Integer> createWinningStatus(List<Lotto> lottos, WinningNumbers winningNumbers) {
 
-        for (Rank rank : Rank.values()) {
-            winningStatus.put(rank, 0);
-        }
+        initWinningStaus();
 
         for (Lotto lotto : lottos) {
             Rank rank = Rank.calculateRank(lotto, winningNumbers);
@@ -28,6 +26,12 @@ public class WinningResultCalculator {
         calculateTotalPrizeMoney();
 
         return winningStatus;
+    }
+
+    private void initWinningStaus(){
+        for (Rank rank : Rank.values()) {
+            winningStatus.put(rank, 0);
+        }
     }
 
     private int calculateTotalPrizeMoney() {
