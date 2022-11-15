@@ -25,4 +25,8 @@ public class Output {
     public static void inputBonusNumberMessage() {
         System.out.println(OutputMessage.INPUT_BONUS_NUMBER);
     }
+
+    public static void winningStatisticsMessage() {
+        System.out.println(OutputMessage.WINNING_STATISTICS_MESSAGE);
+    }
 }
