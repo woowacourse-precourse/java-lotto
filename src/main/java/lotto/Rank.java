@@ -51,8 +51,4 @@ public enum Rank {
     public int getPrize() {
         return prize;
     }
-
-    public static void main(String[] args) {
-        System.out.println(Rank.FOURTH);
-    }
 }
