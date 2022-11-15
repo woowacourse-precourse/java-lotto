@@ -225,10 +225,11 @@ public class Application {
 
     }
 
+
     public static void main(String[] args) {
 
         error_Status = false;
         start();
-
+//        if(error_Status) throw new IllegalArgumentException();
     }
 }

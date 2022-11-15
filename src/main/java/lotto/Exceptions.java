@@ -47,9 +47,9 @@ public class Exceptions {
 
         list.remove(key);
         if(list.contains(temp)){
-            System.out.println("[ERROR] 중복되지 않는 값을 입력해주세요.");
-            error_Status = true;
-//            throw new IllegalArgumentException("[ERROR] 중복되지 않는 값을 입력해주세요.");
+//            System.out.println("[ERROR] 중복되지 않는 값을 입력해주세요.");
+//            error_Status = true;
+            throw new IllegalArgumentException("[ERROR] 중복되지 않는 값을 입력해주세요.");
         }
         list.add(temp);
     }

@@ -10,12 +10,21 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Range_Exception(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void Range_Exception(List<Integer> numbers){
+        for(int i=0; i<numbers.size(); i++){
+            if(numbers.get(i)<1 || numbers.get(i)>45) {
+                throw new IllegalArgumentException("[ERROR] 1~45사이의 정수를 입력해주세요.");
+            }
         }
     }
 
