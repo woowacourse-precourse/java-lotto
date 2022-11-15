@@ -45,7 +45,7 @@ public class OutputView {
         }
     }
 
-    public static void printYeild(float yield) {
+    public static void printYield(float yield) {
         System.out.println(YIELD + yield + PERCENTAGE);
     }
 }

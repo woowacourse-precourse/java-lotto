@@ -43,7 +43,7 @@ public class Winning {
 
         yieldPrize = calculatePrize(amount, prizeList);
 
-        OutputView.printYeild(yieldPrize);
+        OutputView.printYield(yieldPrize);
     }
 
     private static float calculatePrize(String amount, int[] prizeList) {
