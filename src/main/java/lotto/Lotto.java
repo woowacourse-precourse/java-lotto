@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,14 +14,15 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if(numbers.stream().distinct().count() != numbers.size()){
-            throw new IllegalArgumentException();
-        }
         for(int i=0; i<6; i++){
             if(numbers.get(i) < 1 || numbers.get(i) > 45){
                 throw new IllegalArgumentException();
             }
         }
+        if(numbers.stream().distinct().count() != numbers.size()){
+            throw new IllegalArgumentException();
+        }
+
     }
 
     // TODO: 추가 기능 구현
