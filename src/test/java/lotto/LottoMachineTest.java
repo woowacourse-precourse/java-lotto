@@ -34,4 +34,12 @@ class LottoMachineTest {
         int money = 1500;
         assertThat(lottoMachine.insert(money)).isEqualTo(1);
     }
+
+    @Test
+    void 로또_구입_개수가_3개인_경우_로또_3개를_생성한다() {
+        int money = 3000;
+        lottoMachine.insert(3000);
+
+        assertThat(lottoMachine.makeLottoTicket().size()).isEqualTo(3);
+    }
 }
