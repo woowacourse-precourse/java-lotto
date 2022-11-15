@@ -1,20 +1,22 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
 
         User user = new User();
+        LottoMachine lottoMachine = new LottoMachine();
+
         user.inputMoney();
         int money = user.getMoney();
-        Lotto winningLotto = inputLottoNumber();
-        int bonus = inputBonusNumber(winningLotto);
+        lottoMachine.inputWinningLotto();
+        Lotto winningLotto = lottoMachine.getWinningLotto();
+        lottoMachine.inputBonusNumber();
+        int bonus = lottoMachine.getBonus();
         List<Integer> winningInfo;
 
         List<Lotto> issuedLotto = issueLotto(money);
@@ -24,57 +26,6 @@ public class Application {
         printWinnings(winningInfo);
         printYield(winningInfo, money);
 
-    }
-
-    public static Lotto inputLottoNumber() {
-        String inputNumberString = Console.readLine();
-        String[] numbers = inputNumberString.split(",");
-        Lotto lotto;
-        boolean inputLottoError = false;
-        try {
-            lotto = createLotto(numbers);
-        } catch (Exception e) {
-            inputLottoError = true;
-            throw new IllegalArgumentException();
-        } finally {
-            if (inputLottoError) {
-                System.out.println("[ERROR] 잘못된 로또번호 입력");
-            }
-        }
-        return lotto;
-    }
-
-    public static Lotto createLotto(String[] numbers) throws IllegalArgumentException {
-        List<Integer> lottoList = new ArrayList<>();
-        Lotto lotto;
-        try {
-            for (String s : numbers) {
-                lottoList.add(Integer.parseInt(s));
-            }
-            lottoList.sort(Comparator.naturalOrder());
-            lotto = new Lotto(lottoList);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
-        return lotto;
-    }
-
-    public static int inputBonusNumber(Lotto lotto) {
-        String inputBonus = Console.readLine();
-        int bonus;
-        boolean inputBonusError = false;
-        try {
-            bonus = Integer.parseInt(inputBonus);
-            lotto.checkBonusExists(bonus);
-        } catch (Exception e) {
-            inputBonusError = true;
-            throw new IllegalArgumentException();
-        } finally {
-            if (inputBonusError) {
-                System.out.println("[ERROR] 잘못된 보너스 번호");
-            }
-        }
-        return bonus;
     }
 
     public static List<Lotto> issueLotto(int money) {
@@ -164,12 +115,12 @@ public class Application {
 
     public static void printYield(List<Integer> winningInfo, int money) {
         float profit;
-        profit = winningInfo.get(0)*5000;
-        profit += winningInfo.get(1)*50000;
-        profit += winningInfo.get(2)*1500000;
-        profit += winningInfo.get(3)*30000000;
-        profit += winningInfo.get(4)*2000000000;
-        System.out.println("총 수익률은 "+ (profit/money)*100 + "%입니다.");
+        profit = winningInfo.get(0) * 5000;
+        profit += winningInfo.get(1) * 50000;
+        profit += winningInfo.get(2) * 1500000;
+        profit += winningInfo.get(3) * 30000000;
+        profit += winningInfo.get(4) * 2000000000;
+        System.out.println("총 수익률은 " + (profit / money) * 100 + "%입니다.");
     }
 
 }
