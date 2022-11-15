@@ -50,4 +50,9 @@ public class EventController {
         Map<Prize, Integer> resultPrize =  referee.calculatePrizeOfAllTicket(tickets);
         OutputView.printPrizeResult(resultPrize);
     }
+
+    public void judgeProfit(int money) {
+        double profit = referee.calculateProfitRate(money);
+        OutputView.printProfit(profit);
+    }
 }
