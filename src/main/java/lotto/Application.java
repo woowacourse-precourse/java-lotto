@@ -38,14 +38,13 @@ public class Application {
     }
 
     public static void printProfit(long money, long totalMoney) {
-        double profit = Math.round((double) totalMoney * 100 / (double) money) / 100.0;
+        double profit = Math.round((double) totalMoney * 10000 / (double) money) / 100.0;
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 
     private static void print(Receipt receipt, List<Lotto> lottos) {
         receipt.printReceipt();
-        lottos.forEach(Lotto::sortNumbers);
-        lottos.forEach(Lotto::printNumbers);
+        lottos.forEach(Lotto::printSortedNumbers);
         System.out.println();
     }
 
