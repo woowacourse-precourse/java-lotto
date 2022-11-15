@@ -64,10 +64,10 @@ public class WinLotto {
         return (getPrizeMoney / (numberOflottos*1000.0))*100;
     }
     private void validate(String inputLotto,String bonusLotto) throws IllegalArgumentException {
-        if(inputLotto.replaceAll(",", "").length() !=6) throw new IllegalArgumentException("[ERROR] ,로 숫자를 구분해서 입력하세요");
         if (inputLotto.contains(bonusLotto)) {
             throw new IllegalArgumentException("로또번호와 보너스번호가 중복됩니다.");
         }
+        if(inputLotto.replaceAll(",", "").length() !=10) throw new IllegalArgumentException(",로 숫자를 구분해서 입력하세요");
     }
 
 
