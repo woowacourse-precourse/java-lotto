@@ -6,6 +6,7 @@ import lotto.utils.ErrorMessage;
 import lotto.utils.Validation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Input {
@@ -45,5 +46,15 @@ public class Input {
 
         validateWiningNumber(winingNumber);
         return winingNumber;
+    }
+
+    public static Integer validateBonusNumber(String bonusNumber) {
+        String[] splits = bonusNumber.split(" ");
+        Validation.checkBonusNumberLength(splits.length);
+
+        List<Integer> number = new ArrayList<>(Arrays.asList(Integer.parseInt(splits[0])));
+        Validation.checkNumberRange(number);
+
+        return number.get(0);
     }
 }

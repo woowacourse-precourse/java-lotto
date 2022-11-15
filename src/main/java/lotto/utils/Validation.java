@@ -31,4 +31,10 @@ public class Validation {
             throw new IllegalArgumentException(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR);
         }
     }
+
+    public static void checkBonusNumberLength(int length) {
+        if (length != Constant.BONUS_NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_LENGTH_ERROR);
+        }
+    }
 }
