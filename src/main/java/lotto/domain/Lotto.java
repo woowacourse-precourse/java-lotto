@@ -20,6 +20,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateNumberCount(numbers);
         validateNumberRange(numbers);
+        validateDuplicate(numbers);
     }
 
     public static Lotto generate() {

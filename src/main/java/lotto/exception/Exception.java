@@ -36,6 +36,15 @@ public class Exception {
         }
     }
 
+    public static void validateDuplicate(List<Integer> numbers) {
+        int distinctCount = (int)numbers.stream()
+                .distinct().count();
+
+        if(distinctCount != MAX_COUNT) {
+            throwException(DUPLICATE_MESSAGE);
+        }
+    }
+
     public static void throwException(String message) {
         throw new IllegalArgumentException(ERROR + message);
     }
