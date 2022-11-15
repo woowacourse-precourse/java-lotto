@@ -11,11 +11,11 @@ public enum Message {
     TOTAL_RESULT_A("총 수익률은 "),
     TOTAL_RESULT_B("%입니다."),
     CONTOUR("---"),
-    THREE_GAMES("3개 일치 (5,000원) - "),
-    FOUR_GAMES("4개 일치 (50,000원) - "),
-    FIVE_GAMES("5개 일치 (1,500,000원) - "),
-    FIVE_BONUS_GAMES("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    SIX_GAMES("6개 일치 (2,000,000,000원) - ");
+    RESULT_A("개 일치"),
+    BRACKET_LEFT("("),
+    BRACKET_RIGHT(")"),
+    WON("원"),
+    SLASH(" - ");
 
     private final String value;
 
