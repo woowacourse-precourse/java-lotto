@@ -71,7 +71,7 @@ public class LottoService {
 
 
     private void compareLottoNumber(String winNumber, String bonusNumber){
-        List<Integer> winNumbers = changeType(winNumber);
+        List<Integer> winNumbers = validateWinNumber(winNumber);
         validateBonusNumber(bonusNumber);
         for (Lotto lotto : lottos) {
             int lottoNumbersRight = findLottoNumbersRight(lotto,winNumbers, Integer.parseInt(bonusNumber));
@@ -106,9 +106,15 @@ public class LottoService {
     }
 
 
-    private List<Integer> changeType(String winNumber) {
-        return Arrays.asList(winNumber.split(COMMA)).stream().
-                map(Integer::parseInt).collect(Collectors.toList());
+    private List<Integer> validateWinNumber(String winNumber) {
+        try{
+            List<Integer> winNumbers = Arrays.asList(winNumber.split(COMMA)).stream().
+                    map(Integer::parseInt).collect(Collectors.toList());
+            Lotto lotto = new Lotto(winNumbers);
+            return winNumbers;
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Lotto> getLottos(){
