@@ -77,7 +77,7 @@ public class LottoManager {
     }
 
     private Long getResultCompensation(){
-        Long sum = 0L;
+        long sum = 0L;
         for(var kind: kindOfResult){
             sum += kind.getCompensation()*lottoResultMap.get(kind);
         }
