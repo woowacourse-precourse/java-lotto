@@ -15,5 +15,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    private List<Integer> getNumbers(){
+        return this.numbers;
+    }
+
 
 }
