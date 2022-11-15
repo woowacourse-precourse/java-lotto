@@ -5,7 +5,7 @@ import lotto.rank.Rank;
 
 public class LottoCalculator {
     private long amount;
-    private long profit;
+    private long totalWinPrize;
 
     public LottoCalculator(int amount) {
         this.amount = amount;
@@ -13,17 +13,17 @@ public class LottoCalculator {
 
 
     public double getRate() {
-        return (double) profit / amount * 100;
+        return (double) totalWinPrize / amount * 100;
     }
 
-    public void calPrizeProfit(Map<Rank, Integer> prize) {
+    public void calPrizeProfit(Map<Rank, Integer> winStats) {
         for (Rank rank : Rank.values()) {
-            profit += rank.getWinProfit() * prize.get(rank);
+            totalWinPrize += rank.getLottoPrize() * winStats.get(rank);
         }
     }
 
-    public long getProfit() {
-        return profit;
+    public long getTotalWinPrize() {
+        return totalWinPrize;
     }
 
 }

@@ -51,7 +51,7 @@ class LottoCalculatorTest {
 
             // when
             calculator.calPrizeProfit(prize);
-            long profit = calculator.getProfit();
+            long profit = calculator.getTotalWinPrize();
 
             // then
             assertThat(profit)
@@ -71,7 +71,7 @@ class LottoCalculatorTest {
 
             // when
             calculator.calPrizeProfit(prize);
-            long profit = calculator.getProfit();
+            long profit = calculator.getTotalWinPrize();
 
             // then
             assertThat(profit)
@@ -91,7 +91,7 @@ class LottoCalculatorTest {
 
             // when
             calculator.calPrizeProfit(prize);
-            long profit = calculator.getProfit();
+            long profit = calculator.getTotalWinPrize();
 
             // then
             assertThat(profit)

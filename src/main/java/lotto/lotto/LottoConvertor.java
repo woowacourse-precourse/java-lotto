@@ -12,10 +12,10 @@ public class LottoConvertor {
     }
 
     public List<Integer> convertNumbers(String[] numbers) {
-        List<Integer> prizeNumbers = new ArrayList<>();
+        List<Integer> winNumbers = new ArrayList<>();
         for (String number : numbers) {
-            prizeNumbers.add(input.convertInput(number));
+            winNumbers.add(input.convertInput(number));
         }
-        return prizeNumbers;
+        return winNumbers;
     }
 }

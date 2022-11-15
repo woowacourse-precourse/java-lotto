@@ -31,7 +31,7 @@ public class Lotto {
     }
 
     public static List<Lotto> buyLotto(int count) {
-        List<Lotto> lottos = new ArrayList<>();
+        List<Lotto> lottoes = new ArrayList<>();
 
         for (int buyCount = 0; buyCount < count; buyCount++) {
             Lotto lotto =
@@ -39,10 +39,10 @@ public class Lotto {
                             .stream()
                             .sorted()
                             .collect(Collectors.toList()));
-            lottos.add(lotto);
+            lottoes.add(lotto);
         }
 
-        return lottos;
+        return lottoes;
     }
 
     public List<Integer> getNumbers() {

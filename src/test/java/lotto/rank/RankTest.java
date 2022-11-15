@@ -151,7 +151,7 @@ class RankTest {
             long result = Amount.FIRST;
 
             // when
-            long winAmount = rank.getWinProfit();
+            long winAmount = rank.getLottoPrize();
 
             // then
             assertThat(winAmount)
@@ -167,7 +167,7 @@ class RankTest {
             long result = Amount.SECOND;
 
             // when
-            long winAmount = rank.getWinProfit();
+            long winAmount = rank.getLottoPrize();
 
             // then
             assertThat(winAmount)
@@ -182,7 +182,7 @@ class RankTest {
             long result = Amount.THIRD;
 
             // when
-            long winAmount = rank.getWinProfit();
+            long winAmount = rank.getLottoPrize();
 
             // then
             assertThat(winAmount)
@@ -197,7 +197,7 @@ class RankTest {
             long result = Amount.FOURTH;
 
             // when
-            long winAmount = rank.getWinProfit();
+            long winAmount = rank.getLottoPrize();
 
             // then
             assertThat(winAmount)
@@ -212,7 +212,7 @@ class RankTest {
             long result = Amount.FIFTH;
 
             // when
-            long winAmount = rank.getWinProfit();
+            long winAmount = rank.getLottoPrize();
 
             // then
             assertThat(winAmount)

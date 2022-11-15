@@ -7,14 +7,14 @@ import lotto.lotto.Lotto;
 import lotto.rank.Rank;
 
 public class LottoPrint {
-    DecimalFormat df = new DecimalFormat("###,###");
+    private final DecimalFormat df = new DecimalFormat("###,###");
 
     public void buyLottoPrice() {
         System.out.println(Message.BUY_LOTTO_PRICE);
     }
 
-    public void prizeNumber() {
-        System.out.println(Message.REQUEST_PRIZE_NUMBERS);
+    public void winNumber() {
+        System.out.println(Message.REQUEST_WIN_NUMBERS);
     }
 
     public void bonusNumber() {
@@ -31,22 +31,22 @@ public class LottoPrint {
         }
     }
 
-    public void stats(Map<Rank, Integer> prize) {
+    public void stats(Map<Rank, Integer> winStats) {
         System.out.println(Message.LOTTO_STATS);
         System.out.println(Message.CENTER_LINE);
         for (Rank rank : Rank.values()) {
-            long winProfit = rank.getWinProfit();
+            long winProfit = rank.getLottoPrize();
             String converterProfit = df.format(winProfit);
-            printPrizeDetails(prize, rank, converterProfit);
+            printPrizeDetails(winStats, rank, converterProfit);
         }
     }
 
-    private void printPrizeDetails(Map<Rank, Integer> prize, Rank rank, String converterProfit) {
+    private void printPrizeDetails(Map<Rank, Integer> winStats, Rank rank, String converterProfit) {
         if (rank.getNumber() == 6 && rank.getBonusYN()) {
-            System.out.printf(Message.PRIZE_DETAILS_SECOND_PLACE, rank.getNumber() - 1, converterProfit, prize.get(rank));
+            System.out.printf(Message.WIN_DETAILS_SECOND_PLACE, rank.getNumber() - 1, converterProfit, winStats.get(rank));
             return;
         }
-        System.out.printf(Message.PRIZE_DETAILS, rank.getNumber(), converterProfit, prize.get(rank));
+        System.out.printf(Message.WIN_DETAILS, rank.getNumber(), converterProfit, winStats.get(rank));
     }
 
     public void rate(double amount) {
