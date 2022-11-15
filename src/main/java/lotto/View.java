@@ -21,4 +21,10 @@ public class View {
         String msg = "보너스 번호를 입력해 주세요.";
         System.out.println(msg);
     }
+
+    public void resultInitMsg() {
+        String msg = "\n당첨 통계\n" +
+                "---";
+        System.out.println(msg);
+    }
 }

@@ -19,6 +19,9 @@ public class Application {
 
             view.registerLuckyNumberMsg();
             String luckyNumberInput = service.getLuckyNumberInput(winningNumberInput);
+
+            view.resultInitMsg();
+            List<Integer> winnerList = service.countWinner(lottoNumberList, winningNumberInput, luckyNumberInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

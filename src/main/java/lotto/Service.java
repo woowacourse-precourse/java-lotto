@@ -5,7 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static lotto.enumType.*;
+
 public class Service {
+
+    static Map<enumType, Integer> result = new HashMap<>();
 
     public String getMoneyInput() {
         String input = Console.readLine();
@@ -100,5 +104,39 @@ public class Service {
                 throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
             }
         }
+    }
+
+    public List<Integer> countWinner(List<List<Integer>> lottoNumberList, String winningNumberInput, String luckyNumberInput) {
+        for (List<Integer> lottoNumber : lottoNumberList) {
+            if (countCorrectNumber(lottoNumber, winningNumberInput) == 3) {
+                result.put(winner5st, result.getOrDefault(winner5st, 1) + 1);
+            }
+        }
+        List<Integer> resultList = new ArrayList<>();
+        for(Integer value : result.values()){
+            resultList.add(value);
+        }
+        return resultList;
+    }
+
+    private int countCorrectNumber(List<Integer> lottoNumber, String winningNumberInput) {
+        int count = 0;
+        for (int number : lottoNumber) {
+            if (correctNumber(number, winningNumberInput)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean correctNumber(int number, String winningNumberInput) {
+        boolean correct = false;
+        String[] winningNumbers = winningNumberInput.split(",");
+        for (String winningNumber : winningNumbers) {
+            if (Integer.parseInt(winningNumber) == number) {
+                correct = true;
+            }
+        }
+        return correct;
     }
 }
