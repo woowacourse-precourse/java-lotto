@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.GuideMessage.*;
 import static lotto.ErrorMessage.*;
@@ -74,6 +76,15 @@ public class Application {
         }
     }
 
+    public static List<Integer> getWinningNumbers() {
+        System.out.println(WINNING_NUMBERS_REQUEST_MESSAGE.getMessage());
+        String userInput = Console.readLine();
+        List<String> splitNumbers = Arrays.asList(userInput.split(","));
+        List<Integer> winningNumbers = splitNumbers.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        return winningNumbers;
+
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -81,5 +92,6 @@ public class Application {
         }
         List<Lotto> lottery = makeLottery(lottoPurchaseMoney);
         printLotto(lottoPurchaseMoney, lottery);
+        List<Integer> winningNumbers = getWinningNumbers();
     }
 }
