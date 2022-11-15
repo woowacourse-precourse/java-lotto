@@ -29,7 +29,7 @@ public class LuckyBonus {
 
     private void validateBonusInclude(int tempLuckyBonus, Lotto luckySix) {
         if (luckySix.isIncludeBonus(tempLuckyBonus)) {
-            throw new IllegalAccessError(ErrorMessage.SIX_CONTAIN_BONUS_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.SIX_CONTAIN_BONUS_ERROR_MESSAGE.getMessage());
         }
     }
 
