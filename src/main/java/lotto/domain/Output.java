@@ -1,10 +1,18 @@
 package lotto.domain;
 
+import lotto.view.InputMessage;
+
 import java.util.HashMap;
 import java.util.List;
 
 public class Output {
     public HashMap<Integer, Integer> countOfPrize = new HashMap<>();
+    public void outputLotteries(int pay, List<List<Integer>> lotteries){
+        System.out.println(String.valueOf(pay) + InputMessage.amoutOfLotto.getValue());
+        for (List<Integer> lottery : lotteries) {
+            System.out.println(lottery);
+        }
+    }
     public HashMap<Integer, Integer> createMakeOfPrize (List<Integer> winningTable) {
         for (int result : winningTable) {
             countOfPrize.put(result, countOfPrize.getOrDefault(result, 0) + 1);
