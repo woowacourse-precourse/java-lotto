@@ -14,12 +14,14 @@ public class ProvidNumber {
 
         this.winningNumbers = new Lotto(numberAndCommaToOnlyNumber(winningNumbers));
         this.bonusNumber = Integer.parseInt(bonusNumber);
+
+        validateBonusNumberDuplicateWinningNumber();
     }
 
     private void validateWinningNumbersOnlyNumberAndComma(String winningNumbers) {
         for (int i = 0; i < winningNumbers.length(); i++) {
-            if ((winningNumbers.charAt(i) < '0' || winningNumbers.charAt(i) > '9') || winningNumbers.charAt(i) == ',') {
-                throw new IllegalArgumentException(ErrorMessage.WINNIG_NUMBER_ONLY_NUMBER_AND_COMMA.getErrorMessage());
+            if ((winningNumbers.charAt(i) < '0' || winningNumbers.charAt(i) > '9') && winningNumbers.charAt(i) != ',') {
+                throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_ONLY_NUMBER_AND_COMMA.getErrorMessage());
             }
         }
     }

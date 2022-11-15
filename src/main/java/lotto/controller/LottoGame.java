@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCount;
 import lotto.domain.LottoMake;
+import lotto.domain.ProvidNumber;
 import lotto.view.Input;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class LottoGame {
     public void start() {
         LottoCount lottoCount = new LottoCount(input.lottoPurchaseAmount());
         List<Lotto> lottoPapers = buyLotto(lottoCount.getLottoCount());
-
+        ProvidNumber providNumber = new ProvidNumber(input.lottoWinningNumbers(), input.lottoBonusNumber());
 
         input.lottoWinningNumbers();
 
