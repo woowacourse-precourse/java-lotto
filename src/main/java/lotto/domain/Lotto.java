@@ -25,6 +25,14 @@ public class Lotto {
         }
     }
 
+    private void checkListRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 0 || number > 45) {
+                throw new IllegalArgumentException(LOTTO_ELEMENTS_RANGE_ERROR);
+            }
+        }
+    }
+
     public void printNumbers() {
         System.out.println(this.numbers.toString());
     }
