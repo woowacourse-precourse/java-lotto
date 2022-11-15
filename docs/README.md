@@ -93,6 +93,19 @@
 
 - FIRST, SECOND, THIRD, FOURTH, FIFTH
 
+#### LottoMetadata
+
+로또의 기본 정보를 나타내는 ***클래스***
+
+- 로또 숫자 범위의 처음 시작을 의미한다. 해당 숫자를 포함한다.
+  - `private final Integer startNumberInRange`
+- 로또 숫자 범위의 처음 끝을 의미한다. 해당 숫자를 포함한다.
+  - `private final Integer endNumberInRange`
+- 로또 한 장당 가격을 의미한다.
+  - `private final Integer wonPerLotto`
+- 로또 숫자의 개수를 의미한다.
+  - `private final Integer numberSize`
+
 ### 입출력 기능
 
 1. 프로그램은 사용자에게로 부터 구입 금액을 입력받는다.
