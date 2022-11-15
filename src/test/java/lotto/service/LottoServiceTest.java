@@ -116,6 +116,18 @@ class LottoServiceTest {
         }
 
         @Test
+        @DisplayName("[실패] - 입력중 같은 숫자가 있는 경우")
+        void numberHasSameNumber() {
+            // given
+            final String input = "1,2,3,1,6,7";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+        }
+
+        @Test
         @DisplayName("[성공]")
         void success() {
             // given
