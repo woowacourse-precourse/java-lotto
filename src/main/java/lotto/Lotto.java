@@ -26,7 +26,6 @@ public class Lotto {
         if (comparedNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 로또의 숫자는 중복될 수 없습니다.");
         }
-        // TODO: 중복되지 않는 숫자인지 검증
     }
 
     // 로또 한 개 발행

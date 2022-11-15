@@ -84,7 +84,14 @@ class ApplicationTest extends NsTest {
     void 당첨번호_입력_예외_테스트() {
         InputStream in = generateUserInput("132,432$#@");
         System.setIn(in);
-        assertThatThrownBy(IOUtil::moneyInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
+        assertThatThrownBy(IOUtil::answerNumberInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 보너스_입력_예외_테스트() {
+        InputStream in = generateUserInput("$");
+        System.setIn(in);
+        assertThatThrownBy(IOUtil::bonusNumberInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
     }
 
     public static InputStream generateUserInput(String input) {

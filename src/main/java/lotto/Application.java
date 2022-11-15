@@ -18,7 +18,7 @@ public class Application {
             }
             IOUtil.printLottos(lottos);
             Lotto answer = IOUtil.answerNumberInput();
-
+            int bonus = IOUtil.bonusNumberInput();
         } catch (Exception e) {
             System.out.println(e);
         }
