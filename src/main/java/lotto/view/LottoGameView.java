@@ -27,7 +27,8 @@ public class LottoGameView{
     }
 
     public void askBonusNumber(){
-        
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNumber=Console.readLine();
     }
 
     public void noticeNumberOfTickets(int numberOfTickets){
