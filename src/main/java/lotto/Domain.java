@@ -53,13 +53,13 @@ public class Domain {
             createLottoTicket();
     }
 
-    // TODO: 로또 객체 생성 후 로또 번호를 랜덤으로 생성
+    // TODO: 로또 객체 생성 후 로또 번호를 랜덤으로 생성한다.
     private static void createLottoTicket(){
         lottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(
                 MIN_VALUE_OF_LOTTO_NUMBER, MAX_VALUE_OF_LOTTO_NUMBER, LOTTO_COUNT)));
     }
 
-    // TODO: 로또 구매 개수 및 번호 출력
+    // TODO: 로또 구매 개수 및 번호를 출력한다.
     public void printLottoNumbers(){
         System.out.println(ENTER + ticketNumbers + OUTPUT_LOTTO_PURCHASE_COUNT);
         for(Lotto lottoTicket : lottoList)
