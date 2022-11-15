@@ -13,6 +13,14 @@ public class WinningAnalyzer {
         this.result = new HashMap<>();
         Arrays.stream(Rank.values()).forEach(rank -> result.put(rank, 0));
     }
+    public double calculateRate(Map<Rank,Integer> result,int inputMoney){
+        int total = 0;
+        for(Rank rank:result.keySet()){
+            total += rank.getMoney() * result.get(rank);
+        }
+        return total / (double)inputMoney * 100;
+    }
+
 
     public void compareAllLottos(WinningLotto winningLotto, List<Lotto> userlottos){
         for(Lotto lotto:userlottos){

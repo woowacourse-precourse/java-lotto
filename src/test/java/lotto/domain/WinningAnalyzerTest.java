@@ -1,21 +1,44 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class WinningAnalyzerTest {
+    private WinningAnalyzer winningAnalyzer;
+
+    @BeforeEach
+    void setUp() {
+        winningAnalyzer = new WinningAnalyzer();
+    }
+
+    @Test
+    @DisplayName("총 수익률 계산")
+    void calculateRateTest(){
+        //Given
+        Map<Rank,Integer> result  = new HashMap<>();
+        result.put(Rank.FIRST,0);
+        result.put(Rank.SECOND,0);
+        result.put(Rank.THIRD,0);
+        result.put(Rank.FOURTH,0);
+        result.put(Rank.FIFTH,1);
+        //When
+        double rate = winningAnalyzer.calculateRate(result, 8000);
+        //Then
+        assertThat(rate).isEqualTo(62.5);
+    }
 
     @Test
     @DisplayName("당첨 내역 결과 도출")
     void compareAllLottosTest(){
         //Given
-        WinningAnalyzer winningAnalyzer = new WinningAnalyzer();
         WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7);
         List<Lotto> userlottos = new ArrayList<>();
         userlottos.add(new Lotto(List.of(8, 21, 23, 41, 42, 43)));
