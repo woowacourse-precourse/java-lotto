@@ -10,12 +10,21 @@ public class LottoGame {
     private final List<Lotto> purchasedLottoTickets = new ArrayList<>();
     private Lotto winningNumber;
     private Integer bonusNumber;
-    private List<Integer> winningCount;
+    private int[] winningCount;
     private long earnedMoney;
 
     /* get method */
+
     public List<Lotto> getPurchasedLottoTickets() {
         return purchasedLottoTickets;
+    }
+
+    public double getRevenue() {
+        return ((double)this.earnedMoney / (double)this.moneyToBuy);
+    }
+
+    public int[] getWinningCount() {
+        return winningCount;
     }
 
     /* set method */
@@ -35,14 +44,14 @@ public class LottoGame {
     }
 
     public void setWinningCount() {
-        List<Integer> winningCount = new ArrayList<>();
+        List<Integer> winningRank = new ArrayList<>();
         for (Lotto ticket : this.purchasedLottoTickets) {
-            winningCount.add(rankLotto(ticket));
+            winningRank.add(rankLotto(ticket));
         }
-        this.winningCount = winningCount;
+        this.winningCount = countWinningRank(winningRank);
     }
 
-    public void setEarnedMoney(){
+    public void setEarnedMoney() {
         this.earnedMoney = countMoney();
     }
 
@@ -145,20 +154,30 @@ public class LottoGame {
     }
 
     private int makeRank(int countOfMatches, boolean correctBonusNumber) {
-        int[] rank = {5,4,3,1};
-        if (countOfMatches == 0) {
+        int[] rank = {5, 4, 3, 1};
+        if (countOfMatches < 3) {
             return 0;
         }
-        if(countOfMatches == 5 || correctBonusNumber){
+        if (countOfMatches == 5 || correctBonusNumber) {
             return rank[countOfMatches - 3] + 1;
         }
         return rank[countOfMatches - 3];
     }
 
-    private long countMoney(){
+    private int[] countWinningRank(List<Integer> winningRank) {
+        int[] winningCount = new int[Lotto.MONEY_OF_RANK.length];
+        for (Integer rank : winningRank) {
+            if (rank != 0) {
+                winningCount[rank - 1] += 1;
+            }
+        }
+        return winningCount;
+    }
+
+    private long countMoney() {
         long money = 0;
-        for(Integer rank : winningCount){
-            money += Lotto.MONEY_OF_RANK[rank - 1];
+        for (int rankIndex = 0; rankIndex < this.winningCount.length; rankIndex++) {
+            money += this.winningCount[rankIndex] * Lotto.MONEY_OF_RANK[rankIndex];
         }
         return money;
     }

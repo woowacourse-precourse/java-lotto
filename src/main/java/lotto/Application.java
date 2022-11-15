@@ -16,6 +16,8 @@ public class Application {
             newGame.setBonusNumber(inputBonusNumber());
             newGame.setWinningCount();
             newGame.setEarnedMoney();
+            outputWinningTickets(newGame);
+            outputRevenueLotto(newGame);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -44,5 +46,18 @@ public class Application {
         for (Lotto ticket : tickets) {
             System.out.println(ticket.getLottoNumbers());
         }
+    }
+
+    public static void outputWinningTickets(LottoGame lottoGame) {
+        int[] winningCount = lottoGame.getWinningCount();
+        System.out.println("3개 일치 (5,000원) - " + winningCount[4] + "개");
+        System.out.println("4개 일치 (50,000원) - " + winningCount[3] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + winningCount[2] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningCount[1] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + winningCount[0] + "개");
+    }
+
+    public static void outputRevenueLotto(LottoGame lottoGame) {
+        System.out.println("총 수익률은 " + String.format("%.1f", lottoGame.getRevenue()*100) + "%입니다.");
     }
 }
