@@ -24,13 +24,8 @@ public class LottoController {
 
     public void initWinningLotto() {
         String winningNumber = InputView.inputWinningNumber();
-
-        try {
-            lottoService.saveWinningLotto(winningNumber);
-            showUserLottoInfo();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        lottoService.saveWinningLotto(winningNumber);
+        showUserLottoInfo();
     }
 
     public void showUserLottoInfo() {
