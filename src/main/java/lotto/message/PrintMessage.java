@@ -1,35 +1,18 @@
 package lotto.message;
 
-import java.util.LinkedHashMap;
-import lotto.domain.place.MatchResult;
+public enum PrintMessage {
+    INPUT_PURCHASE_AMOUNT("구입금액을 입력해 주세요."),
+    INPUT_WINNING_LOTTO("당첨 번호를 입력해 주세요."),
+    INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요.");
 
-public class PrintMessage {
-    public static final String formatTest = "%d개를 구매했습니다.";
+    final String message;
 
-    public static String createPurchaseQuantityMsg(int quantity) {
-        return String.format(formatTest, quantity);
+    PrintMessage(String message) {
+        this.message = message;
     }
 
-    public static String createPlaceHistoryMsg(LinkedHashMap<MatchResult, Integer> matchResults) {
-        StringBuffer stringBuffer = new StringBuffer();
-
-        fillLines(matchResults, stringBuffer);
-
-        return stringBuffer.toString();
-
+    @Override
+    public String toString() {
+        return message;
     }
-
-    private static void fillLines(LinkedHashMap<MatchResult, Integer> matchResults, StringBuffer stringBuffer) {
-        matchResults.forEach((matchResult, value) -> appendLine(matchResults, stringBuffer, matchResult));
-    }
-
-    private static void appendLine(LinkedHashMap<MatchResult, Integer> matchResults, StringBuffer stringBuffer,
-                                   MatchResult matchResult) {
-        stringBuffer.append(createHistoryLine(matchResults, matchResult));
-    }
-
-    private static String createHistoryLine(LinkedHashMap<MatchResult, Integer> matchResults, MatchResult matchResult) {
-        return String.format("%s - %d개\n", matchResult, matchResults.get(matchResult));
-    }
-
 }

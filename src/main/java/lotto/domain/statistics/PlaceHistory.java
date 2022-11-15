@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import lotto.domain.place.MatchResult;
-import lotto.message.PrintMessage;
+import lotto.message.TempPrintMessage;
 
 public class PlaceHistory {
 
@@ -55,7 +55,7 @@ public class PlaceHistory {
 
     @Override
     public String toString() {
-        return PrintMessage.createPlaceHistoryMsg((LinkedHashMap<MatchResult, Integer>) matchResults);
+        return TempPrintMessage.createPlaceHistoryMsg((LinkedHashMap<MatchResult, Integer>) matchResults);
 //        StringBuffer stringBuffer = new StringBuffer();
 //
 //        fillLines(stringBuffer);

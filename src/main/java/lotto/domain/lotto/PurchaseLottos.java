@@ -1,7 +1,7 @@
 package lotto.domain.lotto;
 
 import static lotto.domain.lotto.Lotto.makeRandomLotto;
-import static lotto.message.PrintMessage.createPurchaseQuantityMsg;
+import static lotto.message.TempPrintMessage.createPurchaseQuantityMsg;
 import static lotto.value.MoneyUnit.KRW;
 
 import java.util.ArrayList;

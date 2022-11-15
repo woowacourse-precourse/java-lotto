@@ -1,22 +1,28 @@
 package lotto.domain;
 
+import static lotto.message.PrintMessage.INPUT_BONUS_NUMBER;
+import static lotto.message.PrintMessage.INPUT_PURCHASE_AMOUNT;
+import static lotto.message.PrintMessage.INPUT_WINNING_LOTTO;
+
 import java.util.List;
 import lotto.domain.lotto.PurchaseLottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.domain.statistics.WinningStatistics;
 import lotto.io.InputControl;
 import lotto.io.OutputControl;
+import lotto.message.PrintMessage;
 
 public class User {
 
     public PurchaseAmount inputPurchaseAmount() {
-        displayMessage("구입금액을 입력해 주세요.");
+        displayMessage(INPUT_PURCHASE_AMOUNT);
         return new PurchaseAmount(InputControl.readInt());
     }
 
     public WinningLotto inputLotto() {
         List<Integer> inputLottoNums = inputLottoNums();
         int lottoBonusNum = inputLottoBonusNum();
+
         return new WinningLotto(inputLottoNums, lottoBonusNum);
     }
 
@@ -24,8 +30,8 @@ public class User {
         OutputControl.println(winningStatistics.toString());
     }
 
-    public void displayMessage(String msg) {
-        OutputControl.println(msg);
+    public void displayMessage(PrintMessage printMessage) {
+        OutputControl.println(printMessage.toString());
 
     }
 
@@ -38,12 +44,12 @@ public class User {
     }
 
     private List<Integer> inputLottoNums() {
-        displayMessage("당첨 번호를 입력해 주세요.");
+        displayMessage(INPUT_WINNING_LOTTO);
         return InputControl.readInts(",");
     }
 
     public void displayPurchaseResult(PurchaseLottos purchaseLottos) {
-        displayMessage("보너스 번호를 입력해 주세요.");
+        displayMessage(INPUT_BONUS_NUMBER);
         OutputControl.println(purchaseLottos.toString());
     }
 }
