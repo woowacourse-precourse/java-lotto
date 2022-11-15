@@ -1,5 +1,6 @@
 package lotto.model;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.Constant;
 
 import java.util.HashSet;
@@ -56,5 +57,15 @@ public class input_numbers {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 정수가 아닌 문자 혹은 실수가 입력되었습니다.");
         }
+    }
+
+    public int input_Money() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String input_line = Console.readLine();
+        check_VoidOrSpace(input_line);
+        int money = change_StrToInt(input_line);
+        check_Negative(money);
+        check_divisible(money);
+        return money;
     }
 }
