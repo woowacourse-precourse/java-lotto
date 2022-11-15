@@ -1,0 +1,51 @@
+- docs: README 내용 추가
+- docs: 나만의 미션 개발 후 회고 작성
+- style(exception): 코드 컨벤션 적용
+- refactor(test): 테스트 전체 리팩토링
+- feat(main): main 메서드 내 로또 게임 동작 추가
+- test(model): 모델 생성 관련 예외 처리 동작 테스트
+- feat(ALL): 예외 처리 기능 적용
+- feat(exception): 게임 로직 내 예외 처리 기능 구현
+- test(exception): 게임 로직 내 예외 처리 테스트
+- refactor(test): 사용자 입력 관련 예외처리 테스트 리팩토링
+- feat(exception): 사용자 입력 관련 예외 처리 구현
+- test(exception): 사용자 입력 관련 예외 테스트
+- docs(exception): 예외 사항 분류 수정
+- refactor(controller): 게임 운영 기능 전체 리팩토링
+- fix(test): 로또 발행 로직 변경에 따른 테스트 수정
+- feat(controller): 게임 종료까지의 운영 기능 구현
+- refactor(view): 빈줄 출력 추가 및 메소드 이름 변경
+- feat(view): 당첨통계 및 수익률 출력 기능 추가
+- refactor(controller): 수익률 계산 기능 리팩토링
+- feat(controller): 수익률 계산 기능 구현
+- fix(test): 수익률 계산 기능 테스트 수정
+- test(controller): 수익률 계산 기능 테스트
+- refactor(controller): 로또 가격 상수로 설정
+- refactor(constants): 순위정보 열거상수 수익 필드 추가
+- refactor(test): 로또게임 예시 열거상수 이름 변경
+- refactor(controller): 로또발행, 당첨통계 클래스 분리
+- refactor(controller): 당첨 통계 기능 리팩토링
+- refactor(constants): 당첨 순위 정보 열거 상수 리팩토링
+- feat(controller): 당첨통계 기능 구현
+- docs(ALL): 개발 순서 수정
+- refactor(model): 당첨 번호 이름 변경, 기존 파일 삭제
+- refactor(model): 당첨 번호 이름 변경
+- test(controller): 테스트 리팩토링 및 당첨통계 테스트 추가
+- test(controller): 로또 게임 예시 설정
+- fix(constants): 당첨 순위 열거 상수 수정
+- feat(view): 당첨 번호 및 보너스 번호 입력 기능 추가
+- feat(controller): 로또 발행까지의 운영 기능 구현
+- feat(view): 발행된 로또 안내 기능 추가
+- refactor(controller): 로또 발행 기능 리팩토링
+- feat(controller): 로또 발행 기능 구현
+- test(controller): 로또 발행 기능 테스트 추가
+- docs(ALL): 기능 목록 및 개발 순서 수정
+- feat(view): 로또 구입금액 안내 및 입력 기능 추가
+- feat(model): 로또 및 당첨 번호 model 추가
+- feat(constants) : 안내문장 및 순위정보 열거 상수 추가
+- docs: 기능 목록 실행 예시 추가
+- docs: 기능 목록 및 나만의 임무 수정
+- docs: 기능 목록 설정
+- docs: 나만의 임무 설정
+- docs: MVC 패턴 학습 내용 정리
+- feat: setup precourse lotto project
