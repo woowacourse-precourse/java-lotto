@@ -1,5 +1,8 @@
 package lotto.exception;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import lotto.constants.Error;
 import lotto.constants.Number;
 
@@ -38,4 +41,11 @@ public class WinNumber {
         }
     }
 
+    public static void exceptionDuplication(List<Integer> winNumber) {
+        Set<Integer> winNumberSet = new HashSet<>(winNumber);
+
+        if (winNumber.size() != winNumberSet.size()) {
+            throw new IllegalArgumentException(Error.DUPLICATE_LOTTO_NUM.getMsg());
+        }
+    }
 }
