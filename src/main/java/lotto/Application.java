@@ -147,8 +147,11 @@ public class Application {
         for(int i=0; i<winList.size(); i++){
             if(i==3){
                 count -= 1;
+                System.out.println(count+"개 일치, 보너스 볼 일치 (" +decFormat.format(rewardList.get(i))+"원) - "+winList.get(winList.size()-1-i)+"개");
             }
-            System.out.println(count+"개 일치 (" +decFormat.format(rewardList.get(i))+"원) - "+winList.get(winList.size()-1-i)+"개");
+            else{
+                System.out.println(count+"개 일치 (" +decFormat.format(rewardList.get(i))+"원) - "+winList.get(winList.size()-1-i)+"개");
+            }
             count+=1;
         }
     }
