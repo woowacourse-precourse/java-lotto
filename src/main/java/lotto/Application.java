@@ -13,15 +13,15 @@ public class Application {
         int pay = inputPay();
         int lottoCount = pay/1_000;
         System.out.println(lottoCount + "개를 구매했습니다.");
+
         List<List<Integer>> lottoNumbers = pickLottoNumbers(lottoCount);
+
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winNumbers = inputWinNumbers(Console.readLine());
         Lotto lotto = new Lotto(winNumbers);
         int bonusNum = lotto.inputBonusNumber();
-        RankCount rankCount = new RankCount();
-        int result = getPrizeResult(lottoNumbers, winNumbers, bonusNum, rankCount);
-        Map<Integer, Integer> rankCounter = rankCount.getCount();
-        printOutResult(result, pay, rankCounter);
+        int result = getPrizeResult(lottoNumbers, winNumbers, bonusNum);
+        printOutResult(result, pay);
 
     }
 
@@ -57,7 +57,6 @@ public class Application {
     }
 
     public static List<Integer> inputWinNumbers(String str) {
-
         List<Integer> winNumbers;
         try {
             winNumbers = Arrays.stream(str.split(",")).map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
@@ -68,7 +67,7 @@ public class Application {
         return winNumbers;
     }
 
-    public static int getPrizeResult(List<List<Integer>> lottoNumbers, List<Integer> winNumbers, int bonusNum, RankCount rankCount) {
+    public static int getPrizeResult(List<List<Integer>> lottoNumbers, List<Integer> winNumbers, int bonusNum) {
         int result = 0;
         for (List<Integer> num : lottoNumbers) {
             int correctCount = 0;
@@ -76,8 +75,9 @@ public class Application {
             correctCount = findCorrectNum(num, winNumbers, bonusNum, correctCount);
             Rank rank = Rank.getRank(correctCount);
             result += rank.getPrize();
+
             if (correctCount == 0 || correctCount > 2 && correctCount < 8)
-                rankCount.rankCounting(correctCount);
+                rank.rankCounting(rank);
         }
         return result;
     }
@@ -92,16 +92,16 @@ public class Application {
         return correctCount;
     }
 
-    public static void printOutResult(int result, int pay, Map<Integer, Integer> rankCounter) {
+    public static void printOutResult(int result, int pay) {
         double profit = Math.round(((double) result/(double) pay) * 10000);
         BigDecimal profitPercent = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(profit/100))));
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + rankCounter.get(3) + "개");
-        System.out.println("4개 일치 (50,000원) - " + rankCounter.get(4) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + rankCounter.get(5) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankCounter.get(7) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + rankCounter.get(6) + "개");
+        System.out.println("3개 일치 (5,000원) - " + Rank.fifth.getWinCount() + "개");
+        System.out.println("4개 일치 (50,000원) - " + Rank.fourth.getWinCount() + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + Rank.third.getWinCount() + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Rank.second.getWinCount() + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Rank.first.getWinCount() + "개");
         System.out.println("총 수익률은 " + profitPercent.toPlainString() + "%입니다.");
     }
 
