@@ -16,11 +16,8 @@ public class Controller {
     private HashMap<Integer, Integer> matchNumberCount = new HashMap<>();
 
     public void checkLotto() {
-        int money = 0;
-        try {
-            money = client.getLottoMoney();
-        } catch (IllegalArgumentException e){
-            System.out.println("[ERROR] 올바른 값을 입력하세요.");
+        int money = setMoney();
+        if(money == 0) {
             return;
         }
         List<Integer> winLottoNumber = client.getWinLottoNumber();
@@ -57,6 +54,17 @@ public class Controller {
 
     public void putMatchNumberCount(int matchNumber) {
         matchNumberCount.put(matchNumber, matchNumberCount.get(matchNumber) + 1);
+    }
+
+    private int setMoney(){
+        int money = 0;
+        try {
+            money = client.getLottoMoney();
+        } catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 올바른 값을 입력하세요.");
+            return 0;
+        }
+        return money;
     }
 
     private int setBonusNumber(List<Integer> winLottoNumber){
