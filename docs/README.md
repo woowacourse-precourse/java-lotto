@@ -23,10 +23,6 @@
 - Generate lotto cases
 - return type: List<List<Integer>>
 
-#### Check number match
-
-- confirm if two number match
-- return type: int
 
 #### Get individual lotto score
 

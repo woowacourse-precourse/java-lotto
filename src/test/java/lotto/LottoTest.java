@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class LottoTest {
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -45,19 +46,6 @@ class LottoTest {
         List<List<Integer>> generatedLottoNumber = lotto.generateLottoNumber(6);
         assertThat(generatedLottoNumber.size()).isEqualTo(6);
 
-    }
-
-    @DisplayName("두 개의 숫자가 일치하는지 여부를 리턴한다.")
-    @Test
-    void checkNumbersMatch() {
-        int target = 1;
-        int matchCase = 1;
-        int notMatchCase = 2;
-
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-
-        assertThat(lotto.checkNumberMatch(target, matchCase)).isEqualTo(1);
-        assertThat(lotto.checkNumberMatch(target, notMatchCase)).isEqualTo(0);
     }
 
     @DisplayName("입력된 로또 하나의 점수를 계산하여 점수에 해당하는 인덱스를 리턴한다.")
