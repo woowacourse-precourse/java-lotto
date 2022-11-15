@@ -41,4 +41,9 @@ public class UI {
         );
     }
 
+    public void outputRateOfReturn() {
+        System.out.println(String.format(Notice.RATE_OF_RETURN.message(),
+            Game.getRateOfReturn()));
+    }
+
 }
