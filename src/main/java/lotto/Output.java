@@ -18,6 +18,9 @@ public class Output {
             System.out.println(matchLotto.getResult() + result.get(matchLotto.getMatchNumber())+ "개");
         }
     }
+    public void printRateOfReturn(double rate){
+        System.out.println("총 수익률은" + rate + "%입니다.");
+    }
 
 
 }
