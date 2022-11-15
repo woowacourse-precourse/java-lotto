@@ -71,7 +71,7 @@ public class LottoGame {
             matchPrice += entry.getKey().getPrice() * entry.getValue();
         }
 
-        return (double) 100 * (matchPrice - user.getMoney()) / user.getMoney();
+        return (double) 100 * matchPrice / user.getMoney();
     }
 
     private void printStatsResult(Rank rank, int count) {
