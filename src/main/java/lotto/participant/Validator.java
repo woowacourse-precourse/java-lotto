@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static lotto.constant.ErrorMessage.*;
+import static lotto.constant.message.ErrorMessage.*;
 
 public class Validator {
 

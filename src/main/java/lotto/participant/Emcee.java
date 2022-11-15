@@ -1,6 +1,6 @@
 package lotto.participant;
 
-import lotto.constant.GuideMessage;
+import lotto.constant.message.GuideMessage;
 import lotto.domain.Lotto;
 import lotto.constant.Rank;
 

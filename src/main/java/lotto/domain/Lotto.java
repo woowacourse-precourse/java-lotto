@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.constant.ErrorMessage;
+import lotto.constant.message.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
