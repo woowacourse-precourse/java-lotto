@@ -52,16 +52,16 @@ public class Controller {
     }
 
     public HashMap<String, Integer> createWinningResult(List<Lotto> totalNumbers, List<Integer> winningNumbers, int bonusNumber) {
-        HashMap<String, Integer> totalResult = createWinning();
+        HashMap<String, Integer> winningResult = createWinning();
         for (int i = 0; i < totalNumbers.size(); i++) {
             int key = compareWinningNumber(totalNumbers.get(i).getNumbers(), winningNumbers);
             String convertKey = Integer.toString(key);
             if (key == 5 && compareBonusNumber(totalNumbers.get(i).getNumbers(), bonusNumber))
-                totalResult.put("Bonus", totalResult.get("Bonus") + 1);
-            if (totalResult.containsKey(convertKey))
-                totalResult.put(convertKey, totalResult.get(convertKey) + 1);
+                winningResult.put("Bonus", winningResult.get("Bonus") + 1);
+            if (winningResult.containsKey(convertKey))
+                winningResult.put(convertKey, winningResult.get(convertKey) + 1);
         }
-        return totalResult;
+        return winningResult;
     }
 
     private HashMap<String, Integer> createWinning() {
