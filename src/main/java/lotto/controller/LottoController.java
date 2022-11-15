@@ -28,7 +28,7 @@ public class LottoController {
         calculateLottoResult();
     }
 
-    public void buyLotto() {
+    private void buyLotto() {
         InputView.requestAmount();
         moneyAmount = user.inputOfMoneyAmount();
         int lottoAmount = moneyAmount / 1000;
@@ -60,7 +60,7 @@ public class LottoController {
         bonusNumber = user.inputOfBonusNumber(winningLotto);
     }
 
-    public void calculateLottoResult() {
+    private void calculateLottoResult() {
         Map<Rank, Integer> lottoResult = lottoCalculator.calculateResult(lottos, winningLotto, bonusNumber);
         double profitRate = lottoCalculator.calculateProfitRate(moneyAmount);
         OutputView.printLottoResult(lottoResult, profitRate);
