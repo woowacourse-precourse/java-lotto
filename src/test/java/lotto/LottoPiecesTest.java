@@ -11,7 +11,7 @@ public class LottoPiecesTest {
 
     @DisplayName("10000원 구매 시 10장을 구매한다")
     @Test
-    void get10PiecesWhenPay10000(){
+    void get10PiecesWhenPay10000() {
         int pieces = LottoPieces.calculatePieces(new Money(10000));
         assertThat(pieces).isEqualTo(10);
     }
