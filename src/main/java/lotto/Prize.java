@@ -28,4 +28,8 @@ public enum Prize {
         List<Prize> list = new ArrayList<>(List.of(THREE, FOUR, FIVE, SIX, FIVE_AND_BONUS));
         return list;
     }
+
+    public static int sizeToInd(int size) {
+        return size-3;
+    }
 }
