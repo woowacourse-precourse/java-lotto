@@ -55,6 +55,13 @@ public class Application {
         return Integer.parseInt(input);
     }
 
+    public static void printSortedLottoList(List<Lotto> lottoList) {
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottoList) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int price;
@@ -72,5 +79,8 @@ public class Application {
             System.out.println("[ERROR] 입력이 올바르지 않습니다.");
             return;
         }
+
+        LottoGame lottoGame = new LottoGame(price, lottoList, winningNumbers, bonusNumber);
+        printSortedLottoList(lottoGame.getSortedLottoList());
     }
 }
