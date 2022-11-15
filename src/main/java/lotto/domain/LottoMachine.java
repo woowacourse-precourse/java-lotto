@@ -8,6 +8,8 @@ import java.util.List;
 
 public class LottoMachine {
 
+    InputAmountValidator validator = InputAmountValidator.getInstance();
+
     private List<Integer> generateLottoNumbers(int startFrom, int endTo, int size) {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startFrom, endTo, size);
         Collections.sort(numbers);
@@ -15,12 +17,8 @@ public class LottoMachine {
     }
 
     private int countPurchaseQuantity(int money) {
-        if (Math.floorMod(money, LottoConstant.PRICE.getValue()) != 0) {
+        if (!validator.isValidUnit(money)) {
             System.out.println(ErrorMessage.INVALID_PURCHASE_UNIT.getMessage());
-            throw new IllegalArgumentException();
-        }
-        else if (Math.floorDiv(money, LottoConstant.PRICE.getValue()) == 0) {
-            System.out.println(ErrorMessage.MINIMUM_PURCHASE_QUANTITY.getMessage());
             throw new IllegalArgumentException();
         }
         return Math.floorDiv(money, LottoConstant.PRICE.getValue());
