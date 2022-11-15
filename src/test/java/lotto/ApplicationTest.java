@@ -63,6 +63,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_구입_금액이_음수인_경우() {
+        assertSimpleTest(() -> {
+            runException("-1000");
+            assertThat(output()).contains("[ERROR] 구입 금액에 음수는 입력이 불가능합니다.");
+        });
+    }
+
+    @Test
     void 예외_테스트_구입_금액에_1000원_단위가_아닌_수_입력() {
         assertSimpleTest(() -> {
             runException("1500");
@@ -74,7 +82,7 @@ class ApplicationTest extends NsTest {
     void 예외_테스트_구입_금액에_매우_큰_수가_입력되는_경우() {
         assertSimpleTest(() -> {
             runException("100000000000");
-            assertThat(output()).contains("[ERROR] 1,000,000,000 미만의 숫자만 입력 가능합니다.");
+            assertThat(output()).contains("[ERROR] 구입 금액에 1,000,000,000 미만의 숫자만 입력 가능합니다.");
         });
     }
 
@@ -95,6 +103,27 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    // 로또 번호 입력 예외테스트
+    @Test
+    void 예외_테스트_쉼표가_아닌_특수문자를_입력하는_경우() {
+        assertSimpleTest(() -> {
+            runException("1000", "1!2,3,4,5,6");
+            assertThat(output()).contains("[ERROR] ,외의 특수문자는 입력 불가능합니다.");
+        });
+    }
+
+    @Test
+    void 예외_테스트_공백이_입력된_경우() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,,2,3,4,5");
+            assertThat(output()).contains("[ERROR] 공백은 입력 불가능합니다.");
+        });
+    }
+
+
+
+
+    // 나머지 기능
     @Test
     void 로또_값이_일치하는_개수() {
         // given

@@ -10,6 +10,7 @@ import java.util.List;
 
 import static lotto.domain.Lotto.issueLotto;
 import static lotto.domain.Statistic.*;
+import static lotto.exception.InputException.lottoNumberException;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.printLottoNumber;
 import static lotto.view.OutputView.printLottoResult;
@@ -38,6 +39,7 @@ public class LottoService {
         List<Integer> output = new ArrayList<>();
 
         for (String e : splitInput) {
+            lottoNumberException(e);
             output.add(Integer.parseInt(e));
         }
         return output;
