@@ -30,7 +30,6 @@ public class Application {
         printer.printWinning(lottoComparator.lottoStatus);
 
         Revenue revenue = new Revenue(lottoComparator.lottoStatus);
-        float percent = revenue.calculateRevenue(purchase.money);
-        printer.printRevenue(percent);
+        printer.printRevenue(revenue.calculateRevenue(purchase.money));
     }
 }
