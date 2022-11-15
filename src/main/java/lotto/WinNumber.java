@@ -8,7 +8,6 @@ import java.util.Set;
 public class WinNumber {
     private final int LOTTO_START_NUMBER = 1;
     private final int LOTTO_END_NUMBER = 45;
-    private final int LOTTO_MAX_COUNT = 7;
 
 
     private final List<Integer> winNumbers;
@@ -25,38 +24,38 @@ public class WinNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateWinNumberRange(List<Integer> numbers) {
+    private void validateWinNumberRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int judgeNumber : numbers) {
             if(judgeNumber > LOTTO_END_NUMBER && judgeNumber < LOTTO_START_NUMBER) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 숫자 범위에 없습니다");
             }
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> numbers) {
+    private void validateDuplicateNumber(List<Integer> numbers) throws IllegalArgumentException {
         Set<Integer> duplicateFindNumber = new HashSet<>(numbers);
         if(numbers.size() != duplicateFindNumber.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 개수가 다릅니다.");
         }
     }
 
-    private void validateBonusNumberRange(int bonusNumber) {
+    private void validateBonusNumberRange(int bonusNumber) throws IllegalArgumentException {
         if(bonusNumber > LOTTO_END_NUMBER && bonusNumber < LOTTO_START_NUMBER) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 범위에 없습니다");
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> numbers, int bonusNumber) {
+    private void validateDuplicateNumber(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
         numbers.add(bonusNumber);
         Set<Integer> duplicateFindNumber = new HashSet<>(numbers);
         if(numbers.size() != duplicateFindNumber.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 개수가 다릅니다.");
         }
     }
 

@@ -10,9 +10,10 @@ public class LottoShop {
         this.shopMoney = shopMoney;
     }
 
-    private void validateMoney(int shopMoney) {
+
+    private void validateMoney(int shopMoney) throws IllegalArgumentException {
         if(shopMoney % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 0으로 나눠 떨어지지 않습니다.");
         }
     }
 
