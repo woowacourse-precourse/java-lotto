@@ -4,6 +4,7 @@ import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -32,7 +33,7 @@ public class LottoController {
         System.out.println(lottoStatistic);
     }
 
-    private int costInput() {
+    public int costInput() {
         System.out.println(Message.Input_Cost.getMessage());
         String cost_str = readLine();
         return String2Int(cost_str);
@@ -81,6 +82,8 @@ public class LottoController {
             return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.Exception_NotInteger.getMessage());
-        }
+        } /*catch (NoSuchElementException e) {
+            throw new IllegalArgumentException(Message.Exception_NoInput.getMessage());
+        }*/
     }
 }

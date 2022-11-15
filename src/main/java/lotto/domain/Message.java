@@ -6,6 +6,7 @@ public enum Message {
     Input_Bonus("보너스번호를 입력해 주세요."),
     Exception_NotCorrectSize("[ERROR] 6개의 숫자를 입력해주세요."),
     Exception_NotInteger("[ERROR] 숫자를 입력해주세요."),
+    Exception_NoInput("[ERROR] 아무것도 입력되지 않았습니다."),
     Exception_Not1000unit("[ERROR] 1000원 단위만 입력 가능합니다."),
     Exception_NegativeNum("[ERROR] 양수를 입력해주세요."),
     Exception_NotInRange("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
