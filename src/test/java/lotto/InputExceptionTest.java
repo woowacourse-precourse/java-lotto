@@ -2,16 +2,18 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
+import java.util.List;
 import lotto.model.InputException;
 import org.junit.jupiter.api.Test;
 
 class InputExceptionTest {
-//    @Test
-//    void isValidNumber() {
-//        final String input = "500";
-//        assertThatThrownBy(() -> InputException.isValidNumber(input))
-//                .isInstanceOf(IllegalArgumentException.class);
-//    }
+    @Test
+    void isValidNumber() {
+        final String input = "50q0";
+        assertThatThrownBy(() -> InputException.isValidNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void isValidDivide() {
@@ -61,13 +63,14 @@ class InputExceptionTest {
                 .hasMessage("[ERROR] 숫자만 입력해 주세요.");
     }
 
-//    @Test
-//    void isValidBonusNumberOverlap() {
-//        List<Integer> input = new ArrayList<>(List.of(1, 2, 3, 4, 4, 6));
-//        assertThatThrownBy(() -> InputException.isValidBonusNumberOverlap(input, 7))
-//                .isInstanceOf(IllegalArgumentException.class)
-//                .hasMessage("[ERROR] 중복되지 않는 숫자를 입력하세요.");
-//    }
+    @Test
+    void isValidBonusNumberOverlap() {
+        final int bonusNumber = 6;
+        List<Integer> input = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> InputException.isValidBonusNumberOverlap(input, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 당첨번호와 중복되지 않는 숫자를 입력하세요.");
+    }
 
     @Test
     void isValidWBonusRange() {
