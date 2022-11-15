@@ -7,7 +7,7 @@ import java.util.List;
 import lotto.constant.WinningRating;
 import lotto.util.Converter;
 
-public class WinningStatisticsCollector {
+public class WinningStatistics {
 	private static final int INITIAL_VALUE = 0;
 	private static final int ADDED_COUNT = 1;
 
@@ -18,7 +18,7 @@ public class WinningStatisticsCollector {
 	private EnumMap<WinningRating, Integer> countsOfWins;
 	private long profit;
 
-	public WinningStatisticsCollector(List<Lotto> lotteries, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+	public WinningStatistics(List<Lotto> lotteries, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.lotteries = lotteries;
 		this.winningNumbers = winningNumbers;
 		this.bonusNumber = bonusNumber;

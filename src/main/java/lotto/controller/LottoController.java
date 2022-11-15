@@ -2,10 +2,10 @@ package lotto.controller;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotteries;
+import lotto.domain.PurchasingAmount;
 import lotto.domain.RateOfProfitCalculator;
-import lotto.domain.PurchasingAmountAndTickets;
 import lotto.domain.WinningNumbers;
-import lotto.domain.WinningStatisticsCollector;
+import lotto.domain.WinningStatistics;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,25 +15,28 @@ public class LottoController {
 
 	public void control() {
 		try {
-			PurchasingAmountAndTickets purchasingAmountAndTickets = calculateNumberOfTickets();
-			Lotteries lotteries = issueLotteries(purchasingAmountAndTickets.getNumberOfTickets());
+			PurchasingAmount purchasingAmount = receivePurchasingAmount();
+			int numberOfTickets = calculateNumberOfTickets(purchasingAmount);
+			Lotteries lotteries = issueLotteries(numberOfTickets);
 			WinningNumbers winningNumbers = receiveWinningNumbers();
 			BonusNumber bonusNumber = receiveBonusNumbers(winningNumbers);
-			WinningStatisticsCollector winningStatisticsCollector = collectWinningStatistics(lotteries, winningNumbers,
+			WinningStatistics winningStatistics = collectWinningStatistics(lotteries, winningNumbers,
 				bonusNumber);
-			calculateRateOfProfit(purchasingAmountAndTickets, winningStatisticsCollector);
+			calculateRateOfProfit(purchasingAmount, winningStatistics);
 		} catch (IllegalArgumentException e) {
 			outputView.printErrorMessage();
 		}
 	}
 
-	// TODO : receive랑 calculate로 나눌 것, numberOfTickets 변수로
-	private PurchasingAmountAndTickets calculateNumberOfTickets() {
-		PurchasingAmountAndTickets purchasingAmountAndTickets = new PurchasingAmountAndTickets(
+	private PurchasingAmount receivePurchasingAmount() {
+		return new PurchasingAmount(
 			Integer.parseInt(inputView.getPurchasingAmount()));
-		int numberOfTickets = purchasingAmountAndTickets.getNumberOfTickets();
+	}
+
+	private int calculateNumberOfTickets(PurchasingAmount purchasingAmount) {
+		int numberOfTickets = purchasingAmount.getNumberOfTickets();
 		outputView.printNumberOfTickets(numberOfTickets);
-		return purchasingAmountAndTickets;
+		return numberOfTickets;
 	}
 
 	private Lotteries issueLotteries(int numberOfTickets) {
@@ -50,20 +53,19 @@ public class LottoController {
 		return new BonusNumber(Integer.parseInt(inputView.getBonusNumber()), winningNumbers);
 	}
 
-	private WinningStatisticsCollector collectWinningStatistics(Lotteries lotteries, WinningNumbers winningNumbers,
+	private WinningStatistics collectWinningStatistics(Lotteries lotteries, WinningNumbers winningNumbers,
 		BonusNumber bonusNumber) {
-		WinningStatisticsCollector winningStatisticsCollector = new WinningStatisticsCollector(lotteries.getLotteries(),
-			winningNumbers,
-			bonusNumber);
-		outputView.printWinningStatistics(winningStatisticsCollector.getCountsOfWins());
-		return winningStatisticsCollector;
+		WinningStatistics winningStatistics = new WinningStatistics(lotteries.getLotteries(),
+			winningNumbers, bonusNumber);
+		outputView.printWinningStatistics(winningStatistics.getCountsOfWins());
+		return winningStatistics;
 	}
 
-	private void calculateRateOfProfit(PurchasingAmountAndTickets purchasingAmountAndTickets,
-		WinningStatisticsCollector winningStatisticsCollector) {
+	private void calculateRateOfProfit(PurchasingAmount purchasingAmount,
+		WinningStatistics winningStatistics) {
 		RateOfProfitCalculator rateOfProfitCalculator = new RateOfProfitCalculator();
-		float rateOfProfit = rateOfProfitCalculator.calculate(purchasingAmountAndTickets.getPurchasingAmount(),
-			winningStatisticsCollector.getProfit());
+		float rateOfProfit = rateOfProfitCalculator.calculate(purchasingAmount.getPurchasingAmount(),
+			winningStatistics.getProfit());
 		outputView.printRateOfProfit(rateOfProfit);
 	}
 
