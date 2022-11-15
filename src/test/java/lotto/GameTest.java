@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameTest {
+    Game game = new Game();
     @Test
     @DisplayName("로또 자동생성 테스트")
     void generateLottoTest(){
@@ -18,5 +19,6 @@ public class GameTest {
     void generateAwardLottoTest(){
 
     }
+
 
 }
