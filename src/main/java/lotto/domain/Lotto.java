@@ -65,6 +65,16 @@ public class Lotto {
         return result;
     }
 
+    /**
+     * 인자로 주어진 번호가 로또 번호들 안에 있는지 여부 반환
+     *
+     * @param number 로또 번호들 안에 있는지 확인할 번호
+     * @return 안에 있는지 여부
+     */
+    public boolean isContainNumber(Integer number) {
+        return numbers.contains(number);
+    }
+
     @Override
     public String toString() {
         return numbers.toString();

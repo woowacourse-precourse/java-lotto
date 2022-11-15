@@ -80,4 +80,14 @@ public class LottoAnswer {
     public int getCorrectCount(Lotto lotto) {
         return winningNumber.countCommonNumber(lotto);
     }
+
+    /**
+     * 인자로 주어진 로또 중 보너스 번호가 안에 있는지 여부 반환
+     *
+     * @param lotto 보너스 번호가 있는지 확인할 로또
+     * @return 보너스 번호 보유 여부
+     */
+    public boolean isContainBonus(Lotto lotto) {
+        return lotto.isContainNumber(bonusNumber);
+    }
 }
