@@ -134,9 +134,12 @@ public class Service {
 
     private List<Integer> createList() {
         List<Integer> resultList = new ArrayList<>();
-        for (Integer value : result.values()) {
-            resultList.add(value);
-        }
+        resultList.add(result.get(winner5st));
+        resultList.add(result.get(winner4st));
+        resultList.add(result.get(winner3st));
+        resultList.add(result.get(winner2st));
+        resultList.add(result.get(winner1st));
+
         return resultList;
     }
 
