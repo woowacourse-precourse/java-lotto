@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,12 +34,12 @@ public class ResultView {
         System.out.println("당첨 통계");
         System.out.println("---------");
         printByPrize(roundResult.getPrizes());
-        System.out.printf("총 수익률은 %.2f 입니다.%n", roundResult.getRateOfReturn());
+        System.out.printf("총 수익률은 %.2f%% 입니다.%n", roundResult.getRateOfReturn()*100);
     }
 
     private static void printByPrize(List<Prize> prizes) {
         Map<Prize, Long> prizeCountMap = prizes.stream()
-                .collect(groupingBy(p -> p, LinkedHashMap::new, counting()));
+                .collect(groupingBy(p -> p, HashMap::new, counting()));
 
 
         Arrays.stream(Prize.values())
