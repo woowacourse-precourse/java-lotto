@@ -7,68 +7,27 @@ import java.util.List;
 
 public class Input {
 
-    public static final int CHEON_WON = 1000;
+
 
     public int inputMoney(){
-        String amountOfMoney = Console.readLine();
-        int money = Integer.parseInt(amountOfMoney);
-        checkMoneyUnit(money);
-        return money;
+        System.out.println("금액을 입력해주세요");
+        String money = Console.readLine();
+        InputValidator inputValidator = new InputValidator(money);
+        return inputValidator.getLottosAmount();
     }
 
-    public String inputWinningLottosNumber(){
+    public List<Integer> inputWinningLottosNumber(){
+        System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumber = Console.readLine();
-        winningNumberValidate(winningNumber);
-        return winningNumber;
+        InputValidator inputValidator = new InputValidator(winningNumber);
+        return inputValidator.getWinningNumbers();
     }
 
-    public String inputBonusNumber(){
+    public int inputBonusNumber(){
+        System.out.println("보너스 번호를 입력 해 주세요.");
         String bonusNumber = Console.readLine();
-        bounsNumberValidate(bonusNumber);
-        return bonusNumber;
-    }
-
-    public void winningNumberValidate(String winningNumber){
-        containsComma(winningNumber);
-        checkOverlap(winningNumber);
-    }
-
-    public void bounsNumberValidate(String bonusNumber){
-        checkBonusNumberLength(bonusNumber);
-    }
-
-
-
-    public void checkMoneyUnit(int money){
-        if(!(money / CHEON_WON == 0)){
-            throw new IllegalArgumentException("[ERROR] 금액은 천원 단위로 입력해주세요");
-        }
-    }
-
-    public void containsComma(String winningNumbers){
-        if(!winningNumbers.contains(",")){
-            throw new IllegalArgumentException("[ERROR] 숫자는 ,로 구분해서 입력해주세요");
-        }
-    }
-
-    public void checkOverlap(String winningNumbers){
-        String [] numberCheck = winningNumbers.split(",");
-        numberCheck = Arrays.stream(numberCheck).distinct().toArray(String[]::new);
-        if(!(numberCheck.length == 6)){
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.");
-        }
-    }
-
-    public void bonusOverlapWithWinning(String winningNumbers, String bonusNumber){
-        if(winningNumbers.contains(bonusNumber)){
-            throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복 될 수 없습니다.");
-        }
-    }
-
-    public void checkBonusNumberLength(String bonusNumber){
-        if(!(bonusNumber.length() == 1)){
-            throw new IllegalArgumentException("[ERROR] 한개의 보너스 숫자를 입력해주세요.");
-        }
+        InputValidator inputValidator = new InputValidator(bonusNumber);
+        return inputValidator.getBonusNumbers();
     }
 
 
