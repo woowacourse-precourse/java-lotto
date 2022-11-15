@@ -30,6 +30,9 @@ public class Application {
         // 입력받은 당첨번호를 int형 리스트화 시키기
         List<Integer> winningNumberList = IntListOfTheReceivedWinningNumbers(winningNumber);
 
+        // 당첨번호를 통해 lotto 객체 생성
+        Lotto lotto = new Lotto(winningNumberList);
+
 
     }
 
