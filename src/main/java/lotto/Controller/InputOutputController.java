@@ -45,4 +45,9 @@ public class InputOutputController {
         lottoResult = logicService.checkLottoNumber(lottos,winningNumbers,bonusNumber);
         outputView.printWinnigResult(lottoResult);
     }
+
+    public void calculatedYield(){
+        String yield = calculatedService.calculatedYield(lottoResult);
+        outputView.printYield(yield);
+    }
 }
