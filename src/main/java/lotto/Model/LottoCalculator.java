@@ -1,8 +1,8 @@
-package lotto;
+package lotto.Model;
 
 public class LottoCalculator {
 
-    private static int sameNumber = 0;
+    private static int sameNumber;
 
     public static int getCountOfSameNumber(Lotto compare1, Lotto compare2) {
         sameNumber = 0;
