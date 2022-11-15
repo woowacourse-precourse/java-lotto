@@ -1,4 +1,6 @@
 package lotto;
+import lotto.Enum.Ranking;
+import lotto.Enum.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,23 +16,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import net.bytebuddy.pool.TypePool;
 
-enum ranking {
-    FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH
-}
-
-enum ErrorMessage {
-    INVALID_NOTANUMBER("Input is not a number"),
-    INVALID_INPUTARGSNUM("Invalid number of input arguments"),
-    INVALID_DUPLICATED("Input has Duplicated number"),
-    INVALID_1000X("Input value is not a multiple of 1000");
-    final private String ErrMes;
-    public String print(){
-        return ErrMes;
-    }
-    private ErrorMessage(String ErrMes){
-        this.ErrMes = "[ERROR] "+ ErrMes;
-    }
-}
 public class Application {
     static int inputmoney;
     static int lottoNum;
@@ -42,14 +27,14 @@ public class Application {
     static List<Integer> hitNumbers;
     static int bonus;
     static List<Integer> countHitList;
-    static HashMap<ranking, Integer> lottoRankInfo;
-    static final HashMap<ranking, Integer> cashPrizeInfo = new HashMap<>() {{
-        put(ranking.FIRST, 2000000000);
-        put(ranking.SECOND, 30000000);
-        put(ranking.THIRD, 1500000);
-        put(ranking.FOURTH, 50000);
-        put(ranking.FIFTH, 5000);
-        put(ranking.SIXTH, 0);
+    static HashMap<Ranking, Integer> lottoRankInfo;
+    static final HashMap<Ranking, Integer> cashPrizeInfo = new HashMap<>() {{
+        put(Ranking.FIRST, 2000000000);
+        put(Ranking.SECOND, 30000000);
+        put(Ranking.THIRD, 1500000);
+        put(Ranking.FOURTH, 50000);
+        put(Ranking.FIFTH, 5000);
+        put(Ranking.SIXTH, 0);
     }};
 
     static int castInt(String str){
@@ -101,19 +86,26 @@ public class Application {
         for (int i = 0; i < lottoLength; i++) {
             multiNumberList.add(castInt(stringParsed.get(i)));
         }
+
+        int len = multiNumberList.size();
+        for (int i = len - 1; i >= 0; i--) {
+            if (multiNumberList.indexOf(multiNumberList.get(i)) != i)
+                throw new IllegalArgumentException(ErrorMessage.INVALID_DUPLICATED.print());
+        }
+
         return multiNumberList;
     }
 
-    static HashMap<ranking, Integer> initRankInfo(){
-        HashMap<ranking, Integer> lottoRankInfo = new HashMap<>(ranking.values().length);
-        for (ranking RANK : ranking.values()){
+    static HashMap<Ranking, Integer> initRankInfo(){
+        HashMap<Ranking, Integer> lottoRankInfo = new HashMap<>(Ranking.values().length);
+        for (Ranking RANK : Ranking.values()){
             lottoRankInfo.put(RANK, 0);
         }
         return lottoRankInfo;
     }
 
-    static HashMap<ranking, Integer> getResult(HashMap<ranking, Integer> lottoRankInfo, List<Lotto> lottoList, List<Integer> hitNumber, int bonus){
-        ranking RANK;
+    static HashMap<Ranking, Integer> getResult(HashMap<Ranking, Integer> lottoRankInfo, List<Lotto> lottoList, List<Integer> hitNumber, int bonus){
+        Ranking RANK;
         for (Lotto lotto : lottoList) {
             RANK = lotto.countHit(hitNumber, bonus);
             lottoRankInfo.replace(RANK, lottoRankInfo.get(RANK) + 1);
@@ -121,20 +113,20 @@ public class Application {
         return lottoRankInfo;
     }
 
-    static void printResult(HashMap<ranking, Integer> lottoRankInfo){
+    static void printResult(HashMap<Ranking, Integer> lottoRankInfo){
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        System.out.println("3개 일치 (5,000원) - " + lottoRankInfo.get(ranking.FIFTH) + "개");
-        System.out.println("4개 일치 (50,000원) - " + lottoRankInfo.get(ranking.FOURTH) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + lottoRankInfo.get(ranking.THIRD) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoRankInfo.get(ranking.SECOND) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + lottoRankInfo.get(ranking.FIRST) + "개");
+        System.out.println("3개 일치 (5,000원) - " + lottoRankInfo.get(Ranking.FIFTH) + "개");
+        System.out.println("4개 일치 (50,000원) - " + lottoRankInfo.get(Ranking.FOURTH) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + lottoRankInfo.get(Ranking.THIRD) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoRankInfo.get(Ranking.SECOND) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + lottoRankInfo.get(Ranking.FIRST) + "개");
     }
 
-    static int howMuchPrize(HashMap<ranking, Integer> lottoRankInfo){
+    static int howMuchPrize(HashMap<Ranking, Integer> lottoRankInfo){
         int cashprize = 0;
-        for (Map.Entry<ranking, Integer> entry : lottoRankInfo.entrySet()){
+        for (Map.Entry<Ranking, Integer> entry : lottoRankInfo.entrySet()){
             cashprize += entry.getValue() * cashPrizeInfo.get(entry.getKey());
         }
         return cashprize;

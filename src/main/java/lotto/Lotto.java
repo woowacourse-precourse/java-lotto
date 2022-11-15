@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.List;
+import lotto.Enum.Ranking;
+import lotto.Enum.ErrorMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -22,7 +24,7 @@ public class Lotto {
         }
     }
 
-    public ranking countHit(List<Integer> hitNumber, int bonus){
+    public Ranking countHit(List<Integer> hitNumber, int bonus){
         int count = 0;
         boolean bonusHit = false;
         for (Integer hit : hitNumber){
@@ -33,16 +35,16 @@ public class Lotto {
             bonusHit = true;
 
         if (count == 6)
-            return ranking.FIRST;
+            return Ranking.FIRST;
         if (count == 5 && bonusHit)
-            return ranking.SECOND;
+            return Ranking.SECOND;
         if (count == 5 && !bonusHit)
-            return ranking.THIRD;
+            return Ranking.THIRD;
         if (count == 4)
-            return ranking.FOURTH;
+            return Ranking.FOURTH;
         if (count == 3)
-            return ranking.FIFTH;
-        return ranking.SIXTH;
+            return Ranking.FIFTH;
+        return Ranking.SIXTH;
     }
     public void print(){
         System.out.println(numbers);

@@ -60,6 +60,10 @@ class ApplicationTest extends NsTest {
     void 당첨번호_개수_테스트() {
         assertThatThrownBy(() -> runException("8000", "1,2,3,4,5,6,7", "8")).isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    void 중복_당첨번호_테스트() {
+        assertThatThrownBy(() -> runException("8000", "1,2,3,4,5,5", "7")).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void _1000의_배수_테스트() {
