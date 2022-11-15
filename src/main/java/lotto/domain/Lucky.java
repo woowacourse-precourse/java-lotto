@@ -76,8 +76,7 @@ public class Lucky {
         sum += compareResult.get(3)*1500000;
         sum += compareResult.get(7)*30000000;
         sum += compareResult.get(1)*2000000000;
-        result = sum/price*100;
-        result = Math.round(result*10)/10;
+        result = (sum/price)*100;
         profitResult = decimalFormat.format(result);
         return profitResult;
     }
