@@ -15,6 +15,7 @@ public enum Prize {
 
     Prize(int index, int reward) {
         this.reward = reward;
+        this.index = index;
     }
 
     public int getIndex() {
