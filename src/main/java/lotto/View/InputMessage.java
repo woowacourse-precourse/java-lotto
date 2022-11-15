@@ -1,4 +1,4 @@
-package lotto.UI;
+package lotto.View;
 
 public enum InputMessage {
     PLEASE_INPUT_BUDGET("구입금액을 입력해 주세요."),

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.UI.ErrorMessage;
+import lotto.View.ErrorMessage;
 
 public class Lotto { // 로또 번호 세트 하나에 대한 기능 클래스
     private static final int SIZE=6;

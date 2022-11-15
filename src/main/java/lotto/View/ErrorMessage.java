@@ -1,4 +1,4 @@
-package lotto.UI;
+package lotto.View;
 
 public enum ErrorMessage {
     INPUT_MULTIPLE_OF_1000("[ERROR] 로또는 1000원 단위로만 구매하실 수 있습니다."),

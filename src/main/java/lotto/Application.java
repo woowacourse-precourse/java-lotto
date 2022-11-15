@@ -1,13 +1,9 @@
 package lotto;
 
-import lotto.UI.InputMessage;
+import lotto.View.InputMessage;
 import lotto.domain.Budget;
-import lotto.domain.Lotto;
 import lotto.domain.Purchase;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Application {
     public static int numberOfGame;

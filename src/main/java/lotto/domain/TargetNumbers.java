@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import lotto.UI.ErrorMessage;
-
-import java.util.Arrays;
-import java.util.function.Predicate;
+import java.util.StringTokenizer;
 
 public class TargetNumbers {
     private TargetNumbers(String input) {
@@ -16,6 +13,7 @@ public class TargetNumbers {
     }
 
     private void isInputFormValid(String input) throws IllegalArgumentException {
+        StringTokenizer st=new StringTokenizer(input,",");
 
     }
 }

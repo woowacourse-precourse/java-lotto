@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.UI.ErrorMessage;
+import lotto.View.ErrorMessage;
 
 import java.util.function.Predicate;
 
