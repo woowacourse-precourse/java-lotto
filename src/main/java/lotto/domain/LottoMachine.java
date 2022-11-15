@@ -72,29 +72,33 @@ public class LottoMachine {
     public void getResult(List<Integer> winningNum, int bonusNum){
         result = new int[6];
         for(Lotto lotto:lottos){
-            boolean isBonusNum= false;
-            int rank =0;
-            ArrayList<Integer> numbers =  new ArrayList<>(lotto.getNumbers());
-            if(numbers.contains(bonusNum)) {
-                isBonusNum = true;
-            }
-            numbers.retainAll(winningNum);
-            if(numbers.size()<3){
-                continue;
-            }
-            rank += 8-numbers.size();
-            if(numbers.size()==5 && isBonusNum){
-                rank -=1;
-            }
-            if(numbers.size()==6){
-                rank =1;
-            }
+            List<Integer> numbers =  new ArrayList<>(lotto.getNumbers());
+            Integer rank = getRank(winningNum, bonusNum, numbers);
+            if (rank > 5) continue;
             result[rank] += 1;
         }
         calculateRevenue();
     }
 
+    private Integer getRank(List<Integer> winningNum, int bonusNum, List<Integer> numbers) {
+        boolean isBonusNum = numbers.contains(bonusNum);
+
+        numbers.retainAll(winningNum);
+        int rank = 8 - numbers.size();
+
+        if(numbers.size()==5 && isBonusNum){
+            rank -=1;
+        }
+
+        if(numbers.size()==6){
+            rank =1;
+        }
+
+        return rank;
+    }
+
     public void calculateRevenue(){
+        revenue = 0;
         for(int i=1; i<result.length; i++){
             int reward = RANKING.valueOf("RANK"+i).getReward();
             revenue += reward * result[i];
