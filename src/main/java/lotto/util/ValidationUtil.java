@@ -131,6 +131,5 @@ public class ValidationUtil {
     private boolean isNotCorrectRange(int number) {
         return number < FIRST_RANGE.getNumber() || number > LAST_RANGE.getNumber();
     }
-
 }
 

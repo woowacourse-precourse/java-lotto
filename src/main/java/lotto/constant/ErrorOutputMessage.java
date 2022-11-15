@@ -1,6 +1,7 @@
 package lotto.constant;
 
 public final class ErrorOutputMessage {
+
     private static final String ERROR = "[ERROR] ";
 
     public static final String PURCHASE_TYPE

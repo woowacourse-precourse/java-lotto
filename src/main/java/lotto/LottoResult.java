@@ -1,10 +1,15 @@
 package lotto;
 
 public class LottoResult {
+
     private int threeCount;
+
     private int fourCount;
+
     private int fiveCount;
+
     private int fiveWithBonusCount;
+
     private int sixCount;
 
     public int getThreeCount() {

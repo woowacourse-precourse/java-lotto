@@ -7,9 +7,9 @@ public enum LottoPrice {
     , FIVE_COUNT_WITH_BONUS(50, 30_000_000)
     , SIX_COUNT(6, 2_000_000_000);
 
-    private int number;
+    private final int number;
 
-    private int price;
+    private final int price;
 
     LottoPrice(int number, int price) {
         this.number = number;
