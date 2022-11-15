@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Enums.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static lotto.Utils.printResult;
 
 public class Buyer {
 
@@ -32,7 +35,8 @@ public class Buyer {
 
         System.out.println(cnt+"개를 구매했습니다.");
         for(int i=0;i<cnt;i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(numbers);
             System.out.println(numbers);
             purchasedLottos.add(new Lotto(numbers));
         }
@@ -41,11 +45,12 @@ public class Buyer {
     }
 
 
-    public void getResult(Winning winning){
+    public void calResult(Winning winning){
         for(Lotto lotto:purchasedLottos){
             int grade = compare(winning, lotto);
+            results.set(grade, results.get(grade)+1);
         }
-
+        printResult(results);
     }
 
     private int compare(Winning winning, Lotto lotto){
