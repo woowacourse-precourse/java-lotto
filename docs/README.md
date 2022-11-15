@@ -65,3 +65,22 @@
 - `getThirdRank` : 로또 번호 5개가 일치하면 3등에 해당한다.
 - `getFourthRank` : 로또 번호 4개가 일치하면 4등에 해당한다.
 - `getFifthRank` : 로또 번호 3개가 일치하면 5등에 해당한다.
+
+---
+
+## 🪜 구조
+### domain
+`Lotto` : 로또 번호 생성을 위한 클래스  
+`User` : 사용자 구입 금액 및 구입 로또 저장  
+`WinningLotto` : 당첨 번호 및 보너스 번호 저장  
+`Result` : 당첨 결과 저장  
+`Rank` : 당첨 결과를 위한 Enum 클래스  
+### service
+`LottoService` : Lotto 도메인을 위한 서비스  
+`UserService` : User 도메인을 위한 서비스  
+`WinningLottoService` : WinningLotto 도메인을 위한 서비스  
+`ResultService` : Result 도메인을 위한 서비스  
+### utils
+`CheckException` : 예외 처리
+### view
+`OutputView` : 결과 및 에러 메세지 출력
