@@ -1,4 +1,4 @@
-package lotto.vaildator;
+package lotto.uility.vaildator;
 
 import java.util.List;
 

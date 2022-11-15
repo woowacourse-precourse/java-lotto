@@ -3,7 +3,7 @@ package lotto.vo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.vaildator.WinNumberValidator;
+import lotto.uility.vaildator.WinNumberValidator;
 
 public class LottoWinNumberInfo extends WinNumberValidator {
 

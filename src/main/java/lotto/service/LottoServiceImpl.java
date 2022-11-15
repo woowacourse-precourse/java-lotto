@@ -21,7 +21,7 @@ public class LottoServiceImpl implements LottoService {
     @Override
     public LottoPurchaseInfo getLottoPurchase() {
         LottoPurchaseInfo lottoPurchaseInfo = new LottoPurchaseInfo(inputView.getPrice());
-        outputView.inputValue(String.valueOf(lottoPurchaseInfo.getLottoPrice()));
+        // outputView.inputValue(String.valueOf(lottoPurchaseInfo.getLottoPrice()));
         outputView.printPurchaseMessage(lottoPurchaseInfo.getLottoGameCount());
         return lottoPurchaseInfo;
     }
@@ -55,7 +55,6 @@ public class LottoServiceImpl implements LottoService {
         for (Lotto lotto : lottoNumbers) {
             result.add(Utility.checkLottoRank(lotto.getNumbers(), lottoWinNumberInfo));
         }
-        System.out.println(result.toString());
         return result;
     }
 }

@@ -20,20 +20,10 @@ public class LottoController {
      * Lotto 게임 동작 수행
      */
     public void runLotto() {
-        // 1. 로또 구매
         LottoPurchaseInfo lottoPurchaseInfo = getLottoPurchase();
-        // 2,3. 당첨 번호, 보너스 번호 입력
         LottoWinNumberInfo lottoWinNumberInfo = getInputWinNumbers();
-
-        // 4. 결재한 금액만큼 로또 생성
         List<Lotto> lottoNumbers = createLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
-
-        // 5. 당첨번호와 생성한 번호를 비교하여 등수를 체크한다.
         List<String> lottoScore = getLottoRank(lottoNumbers, lottoWinNumberInfo);
-
-        // 6. 총 수익률을 출력한다.
-
-
     }
 
     private LottoWinNumberInfo getInputWinNumbers() {

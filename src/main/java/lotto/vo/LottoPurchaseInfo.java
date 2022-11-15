@@ -1,6 +1,6 @@
 package lotto.vo;
 
-import lotto.vaildator.PurchaseValidator;
+import lotto.uility.vaildator.PurchaseValidator;
 
 public class LottoPurchaseInfo extends PurchaseValidator {
 

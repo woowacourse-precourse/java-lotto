@@ -16,7 +16,7 @@ public class OutputView {
     }
 
     public void inputValue(String input) {
-        System.out.print(input);
+        System.out.println(input);
     }
 
 

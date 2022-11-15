@@ -7,7 +7,12 @@ public class LottoRunner {
 
     public void lottoStarter() {
         lottoController = new LottoController();
-        lottoController.runLotto();
+        try {
+            lottoController.runLotto();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

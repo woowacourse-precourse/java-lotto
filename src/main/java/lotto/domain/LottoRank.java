@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum LottoRank {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
@@ -24,13 +26,16 @@ public enum LottoRank {
         return this.price * count;
     }
 
-    public static LottoRank getRank(int matchCount) {
+    public static LottoRank getRank(int matchCount, boolean isBonusNumber) {
         LottoRank[] ranks = values();
         for(LottoRank lottoRank : ranks) {
-            if(lottoRank.matchCount == matchCount) return lottoRank;
-            else return lottoRank.LOSE;
+            if(lottoRank.matchCount == matchCount){
+                if(matchCount == 5 && isBonusNumber) return SECOND;
+                else if (matchCount == 5 && isBonusNumber) return THIRD;
+                else return lottoRank;
+            }
         }
-        throw new IllegalArgumentException();
+        return LOSE;
     }
 
 }
