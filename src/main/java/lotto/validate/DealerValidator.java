@@ -1,12 +1,10 @@
 package lotto.validate;
 
-import lotto.log.CustomLogger;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.LottoGenerator.*;
+import static lotto.util.LottoGenerator.*;
 import static lotto.log.CustomLogger.*;
 
 public class DealerValidator extends Validator {

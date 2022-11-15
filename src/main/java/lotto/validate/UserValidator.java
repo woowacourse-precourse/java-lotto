@@ -1,6 +1,6 @@
 package lotto.validate;
 
-import lotto.LottoGenerator;
+import lotto.util.LottoGenerator;
 import lotto.log.CustomLogger;
 
 public class UserValidator extends Validator {

@@ -1,6 +1,6 @@
 package lotto.validate;
 
-import static lotto.LottoGenerator.*;
+import static lotto.util.LottoGenerator.*;
 import static lotto.log.CustomLogger.*;
 
 public class Validator {
