@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.Validation.*;
+import static lotto.printMessage.*;
 
 public class Game {
     private static List<Lotto> randomLottos;
@@ -16,7 +17,7 @@ public class Game {
 
     public void gameStart(){
         // 구매 금액 입력 및 타당성 검증
-        String money = inputString("구입금액을 입력해 주세요.");
+        String money = inputString(INPUT_MONEY);
         int convertMoney = moneyValidate(money);
 
         // 금액만큼 랜덤으로 번호 생성 및 출력
@@ -69,7 +70,7 @@ public class Game {
     }
 
     private void printRandomLottos(List<Lotto> randomLottos) {
-        System.out.println(String.format("%d개를 구매했습니다.", randomLottos.size()));
+        System.out.println(String.format(PURCHASE_COUNT, randomLottos.size()));
 
         for(Lotto lotto : randomLottos){
             lotto.printNumbers();
@@ -77,14 +78,14 @@ public class Game {
     }
 
     private Lotto inputWinningLotto(){
-        String inputLotto = inputString("당첨 번호를 입력해주세요.");
+        String inputLotto = inputString(WINNING_LOTTO_INPUT);
         Lotto WinningLotto = lottoValidate(inputLotto);
 
         return WinningLotto;
     }
 
     private int inputBonusNumber(){
-        String inputNumber = inputString("보너스 번호를 입력해 주세요.");
+        String inputNumber = inputString(BONUS_NUMBER_INPUT);
         int bonusNumber = bonusNumberValidate(inputNumber, winningLotto);
 
         return bonusNumber;
@@ -107,20 +108,19 @@ public class Game {
     }
 
     private void printResult() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(PRINT_RESULT_HEAD);
 
         for(Result result : Result.values()){
             if(result == Result.SECOND){
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
+                System.out.println(String.format(SECOND_RESULT_MESSAGE, result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
                 continue;
             }
-            System.out.println(String.format("%d개 일치 (%,d원) - %d개", result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
+            System.out.println(String.format(RESULT_MESSAGE, result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
         }
     }
 
     private void printEarningsRate(int inputMoney, int prizeMoney) {
         double earingRate = prizeMoney / (double)inputMoney * 100;
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", earingRate));
+        System.out.println(String.format(PRINT_EARNINGS_RATE, earingRate));
     }
 }
