@@ -94,4 +94,13 @@ public class BuyLotto {
         }
         return winMoney;
     }
+
+    public static double yieldOfLotto(int inputMoney,Map <Integer,Integer> winStatistics){
+        int totalMoney = totalPrice(winStatistics);
+        double totalYeild = (double)totalMoney/(double)inputMoney;
+
+        double roundTotalYeild = totalYeild*100;
+
+        return roundTotalYeild;
+    }
 }
