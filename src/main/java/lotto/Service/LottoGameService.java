@@ -17,5 +17,10 @@ public class LottoGameService {
             throw new IllegalArgumentException();
         }
     }
+    public void isValidNumber(Integer num) {
+        if (num < 1 || num > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
