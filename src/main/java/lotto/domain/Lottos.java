@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.util.RankingType;
+
 import java.util.*;
 
 import static lotto.util.Constants.*;
@@ -13,18 +15,14 @@ public class Lottos {
 
     public String getLottosString() {
         StringBuilder sb = new StringBuilder();
+
         for (Lotto lotto : lottos) {
-            sb.append(getLottoSortedNumbersString(lotto));
+            sb.append(lotto.getSortedNumbersString());
             sb.append(RESULT_SEPARATOR);
         }
         return sb.toString().trim();
     }
 
-    private String getLottoSortedNumbersString(Lotto lotto){
-        List<Integer> numbers = lotto.getNumbers();
-        Collections.sort(numbers);
-        return numbers.toString();
-    }
 
     public Map<RankingType, Integer> getRankingTypeCounts(WinningLotto winningNumber) {
         Map<RankingType, Integer> rankingTypeCounts = getInitRankingTypeCounts();
@@ -37,8 +35,8 @@ public class Lottos {
 
     private Map<RankingType, Integer> getInitRankingTypeCounts() {
         Map<RankingType, Integer> rankingTypeCounts = new HashMap<>();
-        RankingType[] values = RankingType.values();
-        for (RankingType value : values) {
+
+        for (RankingType value : RankingType.values()) {
             rankingTypeCounts.put(value, INIT_COUNT);
         }
         return rankingTypeCounts;

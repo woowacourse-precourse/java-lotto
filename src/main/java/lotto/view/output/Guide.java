@@ -1,7 +1,7 @@
 package lotto.view.output;
 
 import lotto.domain.Lottos;
-import lotto.domain.RankingType;
+import lotto.util.RankingType;
 
 import java.util.Map;
 
@@ -25,8 +25,8 @@ public class Guide {
         System.out.println(INPUT_BONUS_GUIDE);
     }
 
-    public void printLottoGroup(Lottos lottoGroup) {
-        System.out.println(lottoGroup.getLottosString());
+    public void printLottos(Lottos lottos) {
+        System.out.println(lottos.getLottosString());
     }
 
     public void printResultStartGuide() {

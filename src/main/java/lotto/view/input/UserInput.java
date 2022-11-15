@@ -18,6 +18,7 @@ public class UserInput {
 
     private int getPrice() {
         int price = getNumericPrice();
+
         Validator.validatePriceRange(price);
         Validator.validateUnit(price);
         return price;

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.util.RankingType;
 import lotto.validation.Validator;
 
 import java.util.ArrayList;
@@ -19,41 +20,60 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         Validator.validateSize(numbers, LOTTO_SIZE);
         Validator.validateNonDuplicatedList(numbers);
-        Validator.validateNumbersRange(numbers, LOTTO_START_RANGE, LOTTO_END_RANGE);
+        Validator.validateNumbersRange(numbers);
     }
 
-    public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+    public String getSortedNumbersString() {
+        List<Integer> copyNumbers = new ArrayList<>(numbers);
+        Collections.sort(copyNumbers);
+        return copyNumbers.toString();
     }
 
-    public boolean contains(int number){
+    public boolean contains(int number) {
         return numbers.contains(number);
     }
 
-    public RankingType getRankingType(WinningLotto winningLotto){
+    public RankingType getRankingType(WinningLotto winningLotto) {
         int matchingPoint = getMatchingPoint(winningLotto);
 
         RankingType rankingTypeCandidate =
                 getRankingTypeCandidate(matchingPoint);
 
-        if(rankingTypeCandidate == RankingType.SECOND || rankingTypeCandidate == RankingType.THIRD){
+        if (rankingTypeCandidate == RankingType.SECOND || rankingTypeCandidate == RankingType.THIRD) {
             rankingTypeCandidate = determineSecondOrThird(winningLotto);
         }
 
         return rankingTypeCandidate;
     }
 
-    private int getMatchingPoint(WinningLotto winningNumber) {
-        int matchingPoint = INIT_MATCHING_POINT;
+    private RankingType determineSecondOrThird(WinningLotto winningLotto) {
+        if (isMatchWithBonus(winningLotto)) {
+            return RankingType.SECOND;
+        }
+        return RankingType.THIRD;
+    }
+
+    private boolean isMatchWithBonus(WinningLotto winningLotto) {
         for (Integer number : numbers) {
-            matchingPoint += getExtraMatchingPoint(number, winningNumber);
+            if (winningLotto.isBonusEqualTo(number)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int getMatchingPoint(WinningLotto winningLotto) {
+        int matchingPoint = INIT_MATCHING_POINT;
+
+        for (Integer number : numbers) {
+            matchingPoint += getExtraMatchingPoint(number, winningLotto);
         }
         return matchingPoint;
     }
 
 
-    private int getExtraMatchingPoint(int number, WinningLotto winningLotto){
-        if(winningLotto.contains(number)){
+    private int getExtraMatchingPoint(int number, WinningLotto winningLotto) {
+        if (winningLotto.contains(number)) {
             return EXTRA_POINT_WHEN_MATCH;
         }
         return EXTRA_POINT_WHEN_MISMATCH;
@@ -61,26 +81,10 @@ public class Lotto {
 
     private static RankingType getRankingTypeCandidate(int matchingPoint) {
         for (RankingType rankingType : RankingType.values()) {
-            if(matchingPoint == rankingType.getCondition()){
+            if (matchingPoint == rankingType.getCondition()) {
                 return rankingType;
             }
         }
         return RankingType.DROP_OUT;
-    }
-
-    private RankingType determineSecondOrThird(WinningLotto winningLotto) {
-        if(isMatchWithBonus(winningLotto)){
-            return RankingType.SECOND;
-        }
-        return RankingType.THIRD;
-    }
-
-    private boolean isMatchWithBonus(WinningLotto winningLotto){
-        for (Integer number : numbers) {
-            if(winningLotto.isBonusEqualTo(number)){
-                return true;
-            }
-        }
-        return false;
     }
 }

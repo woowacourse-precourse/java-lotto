@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.util;
 
 public enum RankingType {
     DROP_OUT(0, false, 0),

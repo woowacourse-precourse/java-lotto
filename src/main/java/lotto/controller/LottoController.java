@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.*;
+import lotto.util.RankingType;
 import lotto.view.input.LottoCreator;
 import lotto.view.input.UserInput;
 import lotto.view.output.Guide;
@@ -21,7 +22,7 @@ public class LottoController {
         guide.printLottoCount(lottoCount);
 
         Lottos lottos = getLottos(lottoCount);
-        guide.printLottoGroup(lottos);
+        guide.printLottos(lottos);
 
         WinningLotto winningLotto = getWinningLotto();
 
@@ -37,11 +38,14 @@ public class LottoController {
 
     private int getLottoCount() {
         guide.printInputPriceGuide();
+
         return userInput.getLottoCount();
     }
 
     private Lottos getLottos(int lottoCount) {
-        return new Lottos(creator.createLottosCandidate(lottoCount));
+        List<Lotto> lottosCandidate =
+                creator.createLottosCandidate(lottoCount);
+        return new Lottos(lottosCandidate);
     }
 
     private WinningLotto getWinningLotto() {
@@ -59,12 +63,14 @@ public class LottoController {
     }
 
     private void printResult(Map<RankingType, Integer> rankingTypeCounts) {
-        guide.printResultStartGuide();;
+        guide.printResultStartGuide();
+
         guide.printResult(rankingTypeCounts);
     }
 
     private double getProfitRate(Map<RankingType, Integer> rankingTypeCounts, int lottoCount) {
         int investment = getInvestment(lottoCount);
+
         Profit profit = new Profit(rankingTypeCounts, investment);
         return profit.getProfitRate();
     }

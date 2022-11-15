@@ -9,7 +9,7 @@ public class WinningLotto {
     private int bonus;
 
     public WinningLotto(List<Integer> numbers){
-        lotto = new Lotto(numbers);
+        this.lotto = new Lotto(numbers);
     }
 
     public void updateBonus(int bonus){

@@ -11,10 +11,12 @@ public class Constants {
     public static final int INIT_COUNT = 0;
     public static final int VALUE_FOR_UPDATE_COUNT = 1;
     public static final int INIT_PROFIT = 0;
+    public static final int PRICE_MINIMUM = 0;
 
 
     public static final String RESULT_SEPARATOR = "\n";
     public static final String INPUT_SEPARATOR = ",";
+
 
     public static final String INPUT_PRICE_GUIDE = "구입금액을 입력해 주세요.";
     public static final String LOTTO_COUNT_GUIDE = "\n%d개를 구매했습니다.%n";
@@ -27,6 +29,9 @@ public class Constants {
     public static final String BONUS_BALL_MISMATCHING_INFORMATION_GUIDE = "";
     public static final String PRIZE_MONEY_INFORMATION_GUIDE = " (%,d원)";
     public static final String  COUNT_INFORMATION_GUIDE = " - %d개";
+
+
+    public static final String INTEGER_DISCRIMINANT_REGEX = "[+-]?\\d*(\\.\\d+)?";
 
 
     public static final String INPUT_IS_NOT_NUMBER = "[ERROR] 입력 값은 숫자여야 합니다.";

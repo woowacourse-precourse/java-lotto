@@ -9,19 +9,19 @@ import static lotto.util.Constants.*;
 public class Validator {
 
     public static void validateStringIsNumeric(String input){
-        if(!input.matches("[+-]?\\d*(\\.\\d+)?")){
+        if(!input.matches(INTEGER_DISCRIMINANT_REGEX)){
             throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER);
         }
     }
 
     public static void validatePriceRange(int price){
-        if(price < 0) {
+        if(price < PRICE_MINIMUM) {
             throw new IllegalArgumentException(INPUT_IS_NEGATIVE_NUMBER);
         }
     }
 
     public static void validateUnit(int price){
-        if(price % 1000 != 0){
+        if(price % MONETARY_UNIT != 0){
             throw new IllegalArgumentException(INVALID_MONETARY_UNIT);
         }
     }
@@ -32,7 +32,7 @@ public class Validator {
         }
     }
 
-    public static void validateNumbersRange(List<Integer> numbers, int startRange, int endRange){
+    public static void validateNumbersRange(List<Integer> numbers){
         for (Integer number : numbers) {
             validateNumberRange(number);
         }

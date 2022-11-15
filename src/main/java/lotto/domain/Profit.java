@@ -1,12 +1,14 @@
 package lotto.domain;
 
+import lotto.util.RankingType;
+
 import java.util.Map;
 
 import static lotto.util.Constants.INIT_PROFIT;
 
 public class Profit {
-    private int profit = INIT_PROFIT;
     private final int investment;
+    private int profit = INIT_PROFIT;
 
     public Profit(Map<RankingType, Integer> countByRankingType, int investment){
         for (RankingType rankingType : countByRankingType.keySet()) {
