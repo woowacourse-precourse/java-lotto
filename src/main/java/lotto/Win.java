@@ -1,16 +1,16 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Lotto {
+public class Win {
+
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
+    public Win(List<Integer> winningNumbers) {
+        validate(winningNumbers);
+        this.numbers = winningNumbers;
     }
 
     public List<Integer> getNumbers() {
@@ -23,17 +23,16 @@ public class Lotto {
         validateRange(numbers);
     }
 
-    // TODO: 추가 기능 구현
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수는 6개여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 개수는 6개여야 합니다.");
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> duplicationSet = new HashSet<>(numbers);
         if (duplicationSet.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자는 중복되어선 안됩니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 숫자는 중복되어선 안됩니다.");
         }
     }
 
@@ -45,11 +44,7 @@ public class Lotto {
 
     private void checkRangeOfNumber(Integer number) {
         if (number < 1 || 45 < number) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 숫자의 범위는 1부터 45 사이의 숫자여야 합니다.");
         }
-    }
-
-    public void printNumbers() {
-        System.out.println(numbers);
     }
 }
