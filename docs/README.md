@@ -7,8 +7,8 @@
 - [X] 당첨 번호와 보너스 번호를 입력받기 #askWinLotto
     - [X] 당첨 번호 숫자: 1~45까지, 중복되지 않는 숫자 6개 + 보너스. (그외 예외)
 - [X] 사용자가 구매한 로또 번호 1개와 당첨 번호를 비교 Analyse#containNumber
-- [  ] 당첨 내역 및 수익률을 출력 #printResult, #printProfit (enum 사용)
-- [  ] 로또 게임 종료
+- [X] 당첨 내역 및 수익률 저장 #analyseResult #printResult, #printProfit (enum 사용)
+- [X] 로또 게임 종료
 
 ## 기능 요구 사항
 기능: 금액만큼 로또를 발행하고, 이를 당첨번호+보너스 번호와 비교하여 당첨 내역 & 수입내역을 출력한다.
