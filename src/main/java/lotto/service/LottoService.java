@@ -10,34 +10,28 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class LottoService {
-    List<Lotto> history;
-    Lotto win;
-    Output output;
-    Input input;
-    Issue issue;
+    private List<Lotto> history;
+    private Lotto win;
+    private Output output;
+    private Input input;
+    private Issue issue;
     public LottoService(){
         output = new Output();
         input = new Input();
     }
 
-    //구입 금액 안내 문구 출력
-    //구입 금액 입력
     public void create(){
         output.moneyInform();
         issue = new Issue(input.money());
         history = issue.lotto();
     }
-    //구입 개수 안내 문구 출력
-    //구입 번호 출력
+
     public void showHistory(){
-        output.amount(Integer.toString(history.size()));
+        output.amount(history.size());
         output.lottoHistory(history);
     }
 
 
-
-    //당첨 번호 안내 문구 출력
-    //당첨 번호 입력
     public void createWinNum(){
         output.winningNum();
         Integer[] numbers = Stream.of(input.winningNum().split(","))
@@ -47,15 +41,12 @@ public class LottoService {
         win = new Lotto(Arrays.asList(numbers));
     }
 
-    //보너스 번호 안내 문구 출력
-    //보너스 번호 입력
     public void createBonusNum(){
         output.bonusNum();
-        win.addBonusNum(input.bounsNum());
+        win.addBonusNum(input.bonusNum());
     }
 
-    //당첨통계 출력
-    public void winStaticics(){
+    public void winStatistics(){
         for(Lotto numbers : history) {
             int count = win.compare(numbers);
             if(count == 5 && numbers.hasBonusNum(win)){
@@ -69,14 +60,14 @@ public class LottoService {
         }
         output.winStatistics();
     }
-    //수익률 출력
+
     public void revenue() {
-        int revenue = 0;
+        double revenue = 0;
         for (CoincideNumber coincideNumber : CoincideNumber.values()){
             if(coincideNumber.count()!=0) {
                 revenue = revenue + coincideNumber.calculateRevenue();
             }
         }
-        output.revenue(issue.calculate(revenue));
+        output.revenue(issue.revenue(revenue));
     }
 }
