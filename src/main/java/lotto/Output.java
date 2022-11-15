@@ -16,7 +16,7 @@ public class Output {
     private static final String LOTTO_NUMBER_DELIMITER = ", ";
     private static final String LOTTO_NUMBERS_PREFIX = "[";
     private static final String LOTTO_NUMBERS_SUFFIX = "]";
-    private static final String ERROR = "[ERROR]";
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     public void printPurchaseInfo(Lottos lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
@@ -24,7 +24,7 @@ public class Output {
     }
 
     public static void printExceptionMessage(String exceptionMessage) {
-        System.out.println(ERROR + exceptionMessage);
+        System.out.println(ERROR_MESSAGE + exceptionMessage);
     }
 
     private void printLottos(List<Lotto> lottos) {
