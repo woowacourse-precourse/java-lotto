@@ -64,4 +64,69 @@ class InputViewTest {
         }
     }
 
+    @Nested
+    @DisplayName("당첨 번호를 입력한다. 제약 조건에 맞지 않으면 예외발생를 시킨다.")
+    class inputWinningNumbers {
+
+        @Test
+        @DisplayName("comma로 구분되어있지 않으면 예외발생")
+        void validateCommaSplit() {
+            // Given
+            String input = "123456";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputWinningNumbers())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+        @Test
+        @DisplayName("중복값을 입력하면 예외발생")
+        void validateDuplicateNumber() {
+            // Given
+            String input = "1,2,2,3,4,5";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputWinningNumbers())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+
+        @Test
+        @DisplayName("숫자가 아닐때 예외발생")
+        void validateCastInteger() {
+            // Given
+            String input = "1,이,2,3,4,오";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputWinningNumbers())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+
+        }
+        @Test
+        @DisplayName("1~45 범위가 아닐때 예외발생")
+        void validateRange() {
+            // Given
+            String input = "1,2,3,4,5,88";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputWinningNumbers())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+
+        }
+    }
+
 }
