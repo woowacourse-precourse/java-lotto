@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 public enum WinningResult {
@@ -15,6 +16,8 @@ public enum WinningResult {
     private final int reward;
 
     private boolean hitBonus;
+
+    private DecimalFormat decFormat = new DecimalFormat("###,###");
 
     WinningResult(int hitCount, int reward) {
         this.hitCount = hitCount;
@@ -41,8 +44,8 @@ public enum WinningResult {
 
     @Override
     public String toString() {
-        if (this == SECOND) return hitCount+"개 일치, 보너스볼 일치 ("+reward+")";
-        return hitCount+"개 일치 ("+reward+")";
+        if (this == SECOND) return hitCount+"개 일치, 보너스 볼 일치 ("+decFormat.format(reward)+"원)";
+        return hitCount+"개 일치 ("+decFormat.format(reward)+"원)";
     }
 
     public static Optional<WinningResult> valueOf(int hitCount, boolean hitBonus) {

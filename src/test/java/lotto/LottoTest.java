@@ -70,6 +70,17 @@ class LottoTest {
         assertThatThrownBy(IOUtil::bonusNumberInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @DisplayName("5개 일치, 보너스 볼 계산 테스트")
+    @Test
+    void secondWinningResultTest() {
+        Lotto answer = new Lotto(List.of(1,2,3,4,6,8));
+        Lotto userLotto = new Lotto(List.of(1,2,3,4,5,7));
+        int bonus = 5;
+        WinningResult result = userLotto.calculate(answer, bonus).orElseThrow(() -> {throw new IllegalArgumentException("[ERROR] test error");});
+        assertThat(result).isEqualTo(WinningResult.SECOND);
+    }
+
+
     public static InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }

@@ -51,7 +51,7 @@ public class IOUtil {
 
     public static String printLottos(List<Lotto> lottos) {
         StringBuilder sb = new StringBuilder();
-        sb.append(lottos.size()).append("개 구매했습니다.\n");
+        sb.append(lottos.size()).append("개를 구매했습니다.\n");
         for (Lotto lotto : lottos) {
             sb.append(lotto).append("\n");
         }
