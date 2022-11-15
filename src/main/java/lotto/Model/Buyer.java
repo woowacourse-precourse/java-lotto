@@ -23,10 +23,10 @@ public class Buyer {
 
     /**
      * 구입 금액을 AMOUNT_PER_LOTTO 로 나눴을 때 나누어 떨어지는 않을 시 예외 처리
-     * @param amount 구매한 로또의 개수
+     * @param budget 로또 구입 금액
      */
-    private void validateBudget(int amount){
-        if (amount % 1000 != 0 || amount <= 0){
+    private void validateBudget(int budget){
+        if (budget % 1000 != 0 || budget <= 0){
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위로 입력해야 합니다.");
         }
     }
