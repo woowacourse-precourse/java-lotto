@@ -40,5 +40,7 @@ public class GameController {
             Grade grade = winningNumber.getResult(lotto);
             lottoResult.put(grade, lottoResult.getOrDefault(grade, 0) + 1);
         }
+
+        message.printResult(lottoResult);
     }
 }
