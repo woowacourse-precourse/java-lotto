@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LottoInfo {
-    private static final List<String> prize = Arrays.asList("FIRST", "THIRD", "FOURTH", "FIFTH");
+    private static final List<String> PRIZE = Arrays.asList("FIRST", "THIRD", "FOURTH", "FIFTH", "NONE", "NONE", "NONE");
     private final Lotto winNumbers;
     private final int bonusNumber;
 
@@ -27,12 +27,9 @@ public class LottoInfo {
     public PrizeCode compare(Lotto lotto) {
         int result = winNumbers.compareNumbers(lotto);
 
-        if (result < 3) {
-            return PrizeCode.NONE;
-        }
         if (result == 5 && isBonusNumberEqual(lotto)) {
             return PrizeCode.SECOND;
         }
-        return PrizeCode.valueOf(prize.get(6 - result));
+        return PrizeCode.valueOf(PRIZE.get(6 - result));
     }
 }
