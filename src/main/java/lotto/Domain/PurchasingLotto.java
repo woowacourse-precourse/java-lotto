@@ -26,4 +26,8 @@ public class PurchasingLotto {
     public int getPurchase() {
         return this.purchase;
     }
+
+    public int getAmountOfLotto() {
+        return this.amountOfLotto;
+    }
 }
