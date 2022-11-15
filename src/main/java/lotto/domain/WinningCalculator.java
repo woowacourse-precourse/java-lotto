@@ -93,7 +93,7 @@ public class WinningCalculator {
             validateNumbers(numbers);
         }
         catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_HAVE_TOO_BIG);
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_TOO_BIG);
         }
     }
 
@@ -146,7 +146,7 @@ public class WinningCalculator {
 
     private void checkBonusNumberIsContainWinningNumbers(int bonusNumber) {
         if (this.numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_IN_WINNING_NUMBERS_ALREADY);
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_ALREADY_IN_WINNING_NUMBERS);
         }
     }
 }
