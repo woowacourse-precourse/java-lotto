@@ -5,9 +5,17 @@ import java.util.List;
 public class Calculator {
 
     public double getProfitRate(List<Integer> results, int money) {
+        validateResults(results);
+
         long profit = getProfit(results);
-        double profitRate = profit / (double)money * 100;
+        double profitRate = profit / (double) money * 100;
         return profitRate;
+    }
+
+    private void validateResults(List<Integer> results) {
+        if (results.size() != 5) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private long getProfit(List<Integer> results) {
