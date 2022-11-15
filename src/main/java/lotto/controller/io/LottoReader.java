@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto.controller.io;
 
 import java.util.Set;
 
