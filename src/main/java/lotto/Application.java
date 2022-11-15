@@ -77,8 +77,29 @@ public class Application {
         int lotto = Money / 1000;
         System.out.println("\n" + lotto + "개를 구매하였습니다.\n---");
 
-        
+        int arrLotto[][] = new int[lotto][6];
+        for (int i = 0; i < lotto; i++) {
+            for (int j = 0; j < 6; j++) {
+                int num = (int) (Math.random() * 45) + 1;    // 1~46까지의 임의의 수를 받는다.
+                arrLotto[i][j] = num;
+                for (int k = 0; k < j; k++) {    // 중복된 번호가 있으면 이전 포문으로 돌아가 다시 시행한다.
+                    if (arrLotto[i][j] == arrLotto[i][k]) {
+                        j--;
+                        break;
+                    }
+                }
+            }
+
+        }
+        for (int a = 0; a < lotto; a++) {
+            System.out.printf("[");
+            for (int b = 0; b < 6; b++) {
+                System.out.print(arrLotto[lotto][b]);
+                if (b != 5)
+                    System.out.printf(", ");
+            }
+            System.out.println("]");
+        }
+
     }
-
-
 }
