@@ -33,7 +33,7 @@
         - [x]  당첨 번호 6개를 입력했는지 검증 기능 → validateSizeOfWinningNumber
         
         - [x]  당첨 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateWinningNumberBetween1And45
-        - [ ]  당첨 번호에 중복은 없는지 검증 기능 → validateDuplicateWinningNumber
+        - [x]  당첨 번호에 중복은 없는지 검증 기능 → validateDuplicateWinningNumber
     - [x]  보너스 번호 검증 기능 → validateBonusNumber
         - [x]  보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateBonusNumberBetween1And45
         - [x]  보너스 번호가 당첨 번호와 겹치지 않는지 검증 기능 → validateBonusNumberNotInWinningNumber

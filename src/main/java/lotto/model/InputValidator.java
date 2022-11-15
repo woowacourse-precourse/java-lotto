@@ -36,6 +36,7 @@ public class InputValidator {
     public void validateWinningNumber(List<Integer> winningNumber) {
         validateSizeOfWinningNumber(winningNumber);
         validateWinningNumberBetween1And45(winningNumber);
+        validateDuplicateWinningNumber(winningNumber);
     }
 
     private void validateSizeOfWinningNumber(List<Integer> winningNumber) {
@@ -50,6 +51,15 @@ public class InputValidator {
                 .collect(Collectors.toList());
         if (!filter_numbers.isEmpty()) {
             throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_WINNING_NUMBER_IS_NOT_BETWEEN_1_AND_45.getMessage());
+        }
+    }
+
+    private void validateDuplicateWinningNumber(List<Integer> winningNumber) {
+        List<Integer> distinct_WinningNumber = winningNumber.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        if (distinct_WinningNumber.size() != CORRECT_LOTTO_SIZE.getValue()) {
+            throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_WINNING_NUMBER_IS_DUPLICATED.getMessage());
         }
     }
 
