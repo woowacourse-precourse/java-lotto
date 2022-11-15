@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.service.LottoService;
 import lotto.ui.ExceptionMsg;
 
 import java.util.Comparator;
@@ -38,15 +39,20 @@ public class Lotto {
             throw new IllegalArgumentException(ExceptionMsg.LOTTO_DUPLICATE);
         }
     }
+
     private int getBonusNumbers() {
         return bonusNum;
     }
 
-    public void addBonusNum(int bonusNum) {
-        if(this.numbers.contains(bonusNum)) {
+    public void addBonusNum(String bonusNum) {
+        if (!LottoService.isOnlyNumbers(bonusNum)) {
+            throw new IllegalArgumentException(ExceptionMsg.LOTTO_NUMBER);
+        }
+        int bonusNumber = Integer.parseInt(bonusNum);
+        if (this.numbers.contains(bonusNumber) || bonusNumber < 1 || 45 < bonusNumber) {
             throw new IllegalArgumentException(ExceptionMsg.LOTTO_BONUS);
         }
-        this.bonusNum = bonusNum;
+        this.bonusNum = bonusNumber;
     }
 
     public List<Integer> getNumbers() {
