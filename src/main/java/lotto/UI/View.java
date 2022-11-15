@@ -1,8 +1,13 @@
 package lotto.UI;
 
+import java.util.List;
+
 public class View {
-    public void printMessage(Text text){
+    public void print(Text text){
         System.out.println(text.getMessage());
+    }
+    public void print(List<Integer> list) {
+        System.out.println(list);
     }
 
     public void printBuyLotto(Integer lottoCount){

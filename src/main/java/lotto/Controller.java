@@ -9,6 +9,7 @@ import lotto.domain.Rank;
 import lotto.domain.User;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Controller {
@@ -24,7 +25,7 @@ public class Controller {
 
 
     public void setBudget(){
-        view.printMessage(Text.BUDGET_INPUT);
+        view.print(Text.BUDGET_INPUT);
         String budgetInput = Console.readLine();
         user.setBudget(toInteger(budgetInput));
 
@@ -40,7 +41,7 @@ public class Controller {
     }
 
     public void setWinningNumbers(){
-        view.printMessage(Text.WINNING_NUMBER_INPUT);
+        view.print(Text.WINNING_NUMBER_INPUT);
         String winningNumbersInput = Console.readLine();
         game.setWinningNumbers(toIntegerList(split(winningNumbersInput)));
     }
@@ -69,11 +70,17 @@ public class Controller {
     }
 
     public void setBonus(){
-        view.printMessage(Text.BONUS_NUMBER_INPUT);
+        view.print(Text.BONUS_NUMBER_INPUT);
         String bonusNumberInput = Console.readLine();
         game.setBonus(toInteger(bonusNumberInput));
     }
 
+    public void buyLotto(){
+        Integer howMany = user.getBudget()/ Game.price;
+        view.printBuyLotto(howMany);
+
+
+    }
 
 
 }
