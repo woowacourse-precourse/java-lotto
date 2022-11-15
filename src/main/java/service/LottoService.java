@@ -69,4 +69,16 @@ public class LottoService {
             throw new IllegalArgumentException(Error.WINNING_NUMBERS_INCLUDE_SAME_NUMBER.getText());
         }
     }
+
+    private void validateBonusNumber(String number) {
+        checkBonusNumberFormat(number);
+    }
+
+    private void checkBonusNumberFormat(String number) {
+        Format bonusNumber = Format.BONUS_NUMBER;
+
+        if (!Pattern.matches(bonusNumber.getRegex(), number)) {
+            throw new IllegalArgumentException(Error.BONUS_NUMBER_FORMAT.getText());
+        }
+    }
 }
