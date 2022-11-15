@@ -25,16 +25,14 @@ public class OutputMessage {
         System.out.println(purchaseLotto);
     }
 
-    public void printStatistic(RankInfo rankInfo) {
+    public void printStatistic(RankInfo rankInfo, String yield) {
+        String[] separation = yield.split("\\.");
+
         System.out.println("\n" + STATISTICS + "\n" + DIVIDING_LINE);
         for (Rank rank : Rank.values()) {
             System.out.println(rank.getMatchCount() + setStatementType(rank)
                     + setWithComma(rank.getReward()) + REWARD + rankInfo.getMatchNumber(rank) + NUMBER_OF_MATCHES);
         }
-    }
-
-    public void printYield(String yield) {
-        String[] separation = yield.split("\\.");
         System.out.println(YIELD_START + setWithComma(Integer.parseInt(separation[0])) + "." + separation[1] + YIELD_END);
     }
 

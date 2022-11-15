@@ -35,7 +35,6 @@ public class GameView {
 
         RankInfo rankInfo = rankInfoController.createRankInfo();
         rankInfo = rankInfoController.getRankInfo(rankInfo, lotto, userLotto, bonus);
-        outputMessage.printStatistic(rankInfo);
-        outputMessage.printYield(rankInfoController.getYield(rankInfo, money));
+        outputMessage.printStatistic(rankInfo, rankInfoController.getYield(rankInfo, money));
     }
 }
