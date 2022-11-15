@@ -25,11 +25,11 @@ public class User {
     }
   }
 
-  private Integer getLottoPrice() {
+  private Long getLottoPrice() {
     return LottoPrice.LOTTO_PRICE.getPrice();
   }
 
   public int getTicketCount(){
-    return money / getLottoPrice();
+    return (int) (money / getLottoPrice());
   }
 }
