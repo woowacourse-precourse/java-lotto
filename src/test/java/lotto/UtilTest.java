@@ -23,4 +23,13 @@ public class UtilTest {
 
         assertThat(origin).isEqualTo(true);
     }
+
+    @DisplayName("isIntegerTest")
+    @Test
+    void isIntegerTest() {
+        boolean origin = ValidationUtil.isInteger("abc");
+
+        assertThat(origin).isEqualTo(false);
+
+    }
 }
