@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.constant.Message;
 import lotto.domain.constant.Number;
-import lotto.util.ExceptionHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,17 +8,17 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         this.numbers = new ArrayList<>(numbers);
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         try {
             isSixNumbers(numbers);
             isAllDifferentNumbers(numbers);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw ExceptionHandler.makeIllegalArgumentException(Message.NUMBER_RANGE_ERROR);
+            throw illegalArgumentException;
         }
     }
 
