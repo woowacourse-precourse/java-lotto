@@ -24,6 +24,18 @@ public class LottoManager {
         Lotto winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber();
         isValidBonusNumber(winningNumbers, bonusNumber);
+        processWinningStats(purchaseAmount, lottoNumbers, winningNumbers, bonusNumber);
+    }
+
+    private void processWinningStats(long purchaseAmount, List<Lotto> lottoNumbers,
+                                     Lotto winningNumbers, int bonusNumber) {
+        WinningStatsCalculator winningStatsCalculator =
+                new WinningStatsCalculator(lottoNumbers, winningNumbers, bonusNumber, purchaseAmount);
+
+        LottoPrinter.printWinningStats(
+                winningStatsCalculator.getWinningStats(),
+                winningStatsCalculator.getReturnRate()
+        );
     }
 
     private List<Lotto> processLottoNumbers(long purchaseAmount) {
