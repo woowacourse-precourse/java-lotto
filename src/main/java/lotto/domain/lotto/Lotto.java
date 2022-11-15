@@ -31,7 +31,7 @@ public class Lotto {
     public static Lotto makeRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER.getValue(),
                 LOTTO_END_NUMBER.getValue(), LOTTO_SIZE.getValue());
-        return new Lotto(numbers.subList(0, 6));
+        return makeLotto(numbers.subList(0, 6));
     }
 
     private static boolean isLastIndex(List<Integer> numbers, int idx) {

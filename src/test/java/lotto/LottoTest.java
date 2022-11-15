@@ -1,5 +1,6 @@
 package lotto;
 
+import static lotto.domain.lotto.Lotto.makeLotto;
 import static lotto.domain.lotto.Lotto.makeRandomLotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,31 +18,31 @@ class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> makeLotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 번호의 개수가 5개가 미만이면 예외가 발생한다.")
     @Test
     void createLottoByUnderSize() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+        assertThatThrownBy(() -> makeLotto(List.of(1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+        assertThatThrownBy(() -> makeLotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 로또번호_범위_예외_검사() {
-        assertThatThrownBy(() -> new Lotto(List.of(-1, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> makeLotto(List.of(-1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Lotto(List.of(46, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> makeLotto(List.of(46, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> makeLotto(List.of(0, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +53,7 @@ class LottoTest {
 
         @BeforeEach
         void setUp() {
-            winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            winningLotto = makeLotto(List.of(1, 2, 3, 4, 5, 6));
             bonusNum = new BonusNum(7);
         }
 
@@ -69,7 +70,7 @@ class LottoTest {
             @Test
             @DisplayName("1등 조건 검사")
             void check_1_place() {
-                Lotto purchaseLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+                Lotto purchaseLotto = makeLotto(List.of(1, 2, 3, 4, 5, 6));
                 PlaceCondition expected = PlaceCondition.FIRST_PLACE_CONDITION;
 
                 PlaceCondition placeCondition = purchaseLotto.makeCondition(winningLotto, bonusNum);
@@ -80,7 +81,7 @@ class LottoTest {
             @Test
             @DisplayName("2등 조건 검사")
             void check_2_place() {
-                Lotto purchaseLotto = new Lotto(List.of(1, 7, 3, 4, 5, 6));
+                Lotto purchaseLotto = makeLotto(List.of(1, 7, 3, 4, 5, 6));
                 PlaceCondition expected = PlaceCondition.SECOND_PLACE_CONDITION;
 
                 PlaceCondition placeCondition = purchaseLotto.makeCondition(winningLotto, bonusNum);
@@ -91,7 +92,7 @@ class LottoTest {
             @Test
             @DisplayName("3등 조건 검사")
             void check_3_place() {
-                Lotto purchaseLotto = new Lotto(List.of(1, 2, 3, 34, 5, 6));
+                Lotto purchaseLotto = makeLotto(List.of(1, 2, 3, 34, 5, 6));
                 PlaceCondition expected = PlaceCondition.THIRD_PLACE_CONDITION;
 
                 PlaceCondition placeCondition = purchaseLotto.makeCondition(winningLotto, bonusNum);
@@ -102,7 +103,7 @@ class LottoTest {
             @Test
             @DisplayName("4등 조건 검사")
             void check_4_place() {
-                Lotto purchaseLotto = new Lotto(List.of(11, 12, 3, 4, 5, 6));
+                Lotto purchaseLotto = makeLotto(List.of(11, 12, 3, 4, 5, 6));
                 PlaceCondition expected = PlaceCondition.FOURTH_PLACE_CONDITION;
 
                 PlaceCondition placeCondition = purchaseLotto.makeCondition(winningLotto, bonusNum);
@@ -113,7 +114,7 @@ class LottoTest {
             @Test
             @DisplayName("5등 조건 검사")
             void check_5_place() {
-                Lotto purchaseLotto = new Lotto(List.of(11, 12, 3, 14, 5, 6));
+                Lotto purchaseLotto = makeLotto(List.of(11, 12, 3, 14, 5, 6));
                 PlaceCondition expected = PlaceCondition.FIFTH_PLACE_CONDITION;
 
                 PlaceCondition placeCondition = purchaseLotto.makeCondition(winningLotto, bonusNum);
@@ -124,7 +125,7 @@ class LottoTest {
             @Test
             @DisplayName("그외 조건 검사")
             void check_rest_place() {
-                Lotto purchaseLotto = new Lotto(List.of(11, 12, 3, 14, 15, 6));
+                Lotto purchaseLotto = makeLotto(List.of(11, 12, 3, 14, 15, 6));
                 PlaceCondition expected = PlaceCondition.NONE_CONDITION;
 
                 PlaceCondition placeCondition = purchaseLotto.makeCondition(winningLotto, bonusNum);
@@ -138,7 +139,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("6회 매칭")
 //            void check_6() {
-//                Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+//                Lotto lotto = makeLotto(List.of(1, 2, 3, 4, 5, 6));
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);
 //
@@ -148,7 +149,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("5회 매칭")
 //            void check_5() {
-//                Lotto lotto = new Lotto(List.of(11, 2, 3, 4, 5, 6));
+//                Lotto lotto = makeLotto(List.of(11, 2, 3, 4, 5, 6));
 //                int expected = 5;
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);
@@ -159,7 +160,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("4회 매칭")
 //            void check_4() {
-//                Lotto lotto = new Lotto(List.of(11, 12, 3, 4, 5, 6));
+//                Lotto lotto = makeLotto(List.of(11, 12, 3, 4, 5, 6));
 //                int expected = 4;
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);
@@ -170,7 +171,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("3회 매칭")
 //            void check_3() {
-//                Lotto lotto = new Lotto(List.of(11, 12, 13, 4, 5, 6));
+//                Lotto lotto = makeLotto(List.of(11, 12, 13, 4, 5, 6));
 //                int expected = 3;
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);
@@ -181,7 +182,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("2회 매칭")
 //            void check_2() {
-//                Lotto lotto = new Lotto(List.of(11, 12, 13, 14, 5, 6));
+//                Lotto lotto = makeLotto(List.of(11, 12, 13, 14, 5, 6));
 //                int expected = 2;
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);
@@ -192,7 +193,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("1회 매칭")
 //            void check_1() {
-//                Lotto lotto = new Lotto(List.of(11, 12, 13, 14, 15, 6));
+//                Lotto lotto = makeLotto(List.of(11, 12, 13, 14, 15, 6));
 //                int expected = 1;
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);
@@ -203,7 +204,7 @@ class LottoTest {
 //            @Test
 //            @DisplayName("0회 매칭")
 //            void check_0() {
-//                Lotto lotto = new Lotto(List.of(11, 12, 13, 14, 15, 16));
+//                Lotto lotto = makeLotto(List.of(11, 12, 13, 14, 15, 16));
 //                int expected = 0;
 //
 //                int matchCount = purchaseLotto.matchCount(lotto);

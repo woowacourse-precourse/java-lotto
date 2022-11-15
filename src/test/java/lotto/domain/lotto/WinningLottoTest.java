@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import static lotto.domain.lotto.Lotto.makeLotto;
 import static lotto.domain.lotto.WinningLotto.makeWinningLotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -50,7 +51,7 @@ class WinningLottoTest {
         @Test
         @DisplayName("1등 검사")
         void check_1_place() {
-            Lotto purchaseLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            Lotto purchaseLotto = makeLotto(List.of(1, 2, 3, 4, 5, 6));
             MatchResult expected = MatchResult.FIRST_PLACE;
 
             MatchResult matchResult = winningLotto.makeMatchResult(purchaseLotto);
@@ -61,7 +62,7 @@ class WinningLottoTest {
         @Test
         @DisplayName("2등 검사")
         void check_2_place() {
-            Lotto purchaseLotto = new Lotto(List.of(1, 7, 3, 4, 5, 6));
+            Lotto purchaseLotto = makeLotto(List.of(1, 7, 3, 4, 5, 6));
             MatchResult expected = MatchResult.SECOND_PLACE;
 
             MatchResult matchResult = winningLotto.makeMatchResult(purchaseLotto);
@@ -72,7 +73,7 @@ class WinningLottoTest {
         @Test
         @DisplayName("3등 검사")
         void check_3_place() {
-            Lotto purchaseLotto = new Lotto(List.of(1, 2, 3, 34, 5, 6));
+            Lotto purchaseLotto = makeLotto(List.of(1, 2, 3, 34, 5, 6));
             MatchResult expected = MatchResult.THIRD_PLACE;
 
             MatchResult matchResult = winningLotto.makeMatchResult(purchaseLotto);
@@ -83,7 +84,7 @@ class WinningLottoTest {
         @Test
         @DisplayName("4등 검사")
         void check_4_place() {
-            Lotto purchaseLotto = new Lotto(List.of(11, 12, 3, 4, 5, 6));
+            Lotto purchaseLotto = makeLotto(List.of(11, 12, 3, 4, 5, 6));
             MatchResult expected = MatchResult.FOURTH_PLACE;
 
             MatchResult matchResult = winningLotto.makeMatchResult(purchaseLotto);
@@ -94,7 +95,7 @@ class WinningLottoTest {
         @Test
         @DisplayName("5등 검사")
         void check_5_place() {
-            Lotto purchaseLotto = new Lotto(List.of(11, 12, 3, 14, 5, 6));
+            Lotto purchaseLotto = makeLotto(List.of(11, 12, 3, 14, 5, 6));
             MatchResult expected = MatchResult.FIFTH_PLACE;
 
             MatchResult matchResult = winningLotto.makeMatchResult(purchaseLotto);
@@ -105,7 +106,7 @@ class WinningLottoTest {
         @Test
         @DisplayName("그외 검사")
         void check_rest_place() {
-            Lotto purchaseLotto = new Lotto(List.of(11, 12, 3, 14, 15, 6));
+            Lotto purchaseLotto = makeLotto(List.of(11, 12, 3, 14, 15, 6));
             MatchResult expected = MatchResult.NONE;
 
             MatchResult matchResult = winningLotto.makeMatchResult(purchaseLotto);

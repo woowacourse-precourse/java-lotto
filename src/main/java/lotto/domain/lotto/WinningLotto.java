@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import static lotto.domain.lotto.Lotto.makeLotto;
 import static lotto.domain.place.MatchResult.findByCondition;
 import static lotto.validation.LottoNumberValidation.validateDuplicate;
 
@@ -14,7 +15,7 @@ public class WinningLotto {
     public WinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
         validate(lottoNumbers, bonusNumber);
 
-        lotto = new Lotto(lottoNumbers);
+        lotto = makeLotto(lottoNumbers);
         bonusNum = new BonusNum(bonusNumber);
     }
 
