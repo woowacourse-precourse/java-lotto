@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.LottoController;
 import lotto.domain.LottoService;
 import lotto.model.BuyingLottoList;
 import lotto.model.Lotto;
@@ -16,21 +17,18 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
-            LottoBuyView lottoServiceView = new LottoBuyView();
+            LottoBuyView lottoBuyView = new LottoBuyView();
             WinningNumberView winningNumberView = new WinningNumberView();
             LottoResultView lottoResultView = new LottoResultView();
             LottoService lottoService = new LottoService();
 
-            int numberOfLotto = lottoServiceView.buyLotto();
-            BuyingLottoList buyingLottoList = new BuyingLottoList(lottoService.generateLottoList(numberOfLotto));
-            lottoResultView.printBuyResult(buyingLottoList);
-            Lotto winningLotto = winningNumberView.inputWinningNumber();
-            int bonusNumber = winningNumberView.inputBonusNumber(winningLotto);
-            WinningLotto winningLottoInfo = new WinningLotto(winningLotto, bonusNumber);
+            LottoController lottoController = new LottoController(lottoBuyView, winningNumberView,
+                    lottoResultView, lottoService);
 
-            LottoResult lottoResult = lottoService.checkLottoResult(buyingLottoList, winningLottoInfo);
-            lottoResultView.printResult(lottoResult);
-        } catch (IllegalArgumentException e){
+            BuyingLottoList buyingLottoList = lottoController.controlBuyingLotto();
+            WinningLotto winningLottoInfo = lottoController.controlWinningLotto();
+            lottoController.controlResult(buyingLottoList, winningLottoInfo);
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
