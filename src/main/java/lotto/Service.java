@@ -91,11 +91,13 @@ public class Service {
 
     public void printStat(List<Lotto> lottos, List<Integer> winNumbers, Integer bonus) {
         List<Integer> matches = getMatches(lottos, winNumbers, bonus); // 순서대로 [ 3개, 4개, 5개, 5개+보너스, 6개 ] 개수
+        String percent = String.format("%.1f", getRate(lottos.size(), matches));
+        percent = percent.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
         System.out.println("3개 일치 (5,000원) - " + matches.get(0) + "개");
         System.out.println("4개 일치 (50,000원) - " + matches.get(1) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + matches.get(2) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matches.get(3) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + matches.get(4) + "개");
-        System.out.println("총 수익률은 " + String.format("%.1f", getRate(lottos.size(), matches)) + "%입니다.");
+        System.out.println("총 수익률은 " + percent + "%입니다.");
     }
 }
