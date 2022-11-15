@@ -9,12 +9,13 @@ public enum LottoPrize {
     FOURTH_PRIZE("4등", "4개 일치", 50000),
     FIFTH_PRIZE("5등", "3개 일치", 5000),
     SIXTH_PRIZE("6등", "1-5등 제외", 0);
-    private final DecimalFormat decimalFormat = new DecimalFormat("###,###");
-    private String title;
-    private String condition;
-    private int prize;
+    private final DecimalFormat decimalFormat;
+    private final String title;
+    private final String condition;
+    private final int prize;
 
     LottoPrize(String title, String condition, int prize) {
+        this.decimalFormat = new DecimalFormat("###,###");
         this.title = title;
         this.condition = condition;
         this.prize = prize;
