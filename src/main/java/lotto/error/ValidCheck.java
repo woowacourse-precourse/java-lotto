@@ -1,7 +1,5 @@
 package lotto.error;
 
-import lotto.error.LottoErrorMessage;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -10,6 +8,12 @@ public class ValidCheck {
     public static void isPayUnit(int pay) {
         if (pay % 1000 != 0) {
             throw new IllegalArgumentException(LottoErrorMessage.UNIT_ERROR.getErrorMessage());
+        }
+    }
+
+    public static void isLimit(int pay) {
+        if (pay > 100000) {
+            throw new IllegalArgumentException(LottoErrorMessage.LIMIT_ERROR.getErrorMessage());
         }
     }
 
