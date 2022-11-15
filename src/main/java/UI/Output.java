@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Output {
-    private static final String INPUTPRICE = "구입금액을 입력해 주세요.";
+    private static final String INPUTPURCHASEAMOUNT = "구입금액을 입력해 주세요.";
     private static final String INPUTWINNINGNUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String INPUTBONUSNUMBER = "보너스 번호를 입력해 주세요";
     private static final String BUYINGLOTTO = "%d개를 구매했습니다.\n";
@@ -17,8 +17,8 @@ public class Output {
     private static final String PRIZEMONEY_AND_NUMBEROFWIN = " (%s원) - %d개\n";
     private static final String PROFITRATE = "총 수익률은 %.1f%%입니다.";
 
-    public void inputPrice() {
-        System.out.println(INPUTPRICE);
+    public void inputPurchaseAmount() {
+        System.out.println(INPUTPURCHASEAMOUNT);
     }
 
     public void inputWinningNumber() {

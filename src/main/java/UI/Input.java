@@ -13,11 +13,11 @@ public class Input {
     private static List<Integer> lotto;
     private Output output = new Output();
 
-    public int price() {
-        output.inputPrice();
-        String price = Console.readLine();
-        PriceException.checkException(price);
-        return Integer.valueOf(price);
+    public int purchaseAmount() {
+        output.inputPurchaseAmount();
+        String purchaseAmount = Console.readLine();
+        PriceException.checkException(purchaseAmount);
+        return Integer.valueOf(purchaseAmount);
     }
 
     public List<Integer> winningNumbers() {

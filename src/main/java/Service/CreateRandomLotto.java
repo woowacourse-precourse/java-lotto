@@ -9,8 +9,8 @@ import java.util.List;
 
 public class CreateRandomLotto {
 
-    public static List<List<Integer>> createRandomLottoNumber(int price) {
-        int numberOfLotto = price / 1000;
+    public static List<List<Integer>> createRandomLottoNumber(int purchaseAmount) {
+        int numberOfLotto = purchaseAmount / 1000;
         List<List<Integer>> randomLottoNumbers = new ArrayList<>();
 
         for (int count = 0; count < numberOfLotto; count++) {
