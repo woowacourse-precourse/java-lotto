@@ -16,8 +16,9 @@ class UserLottoTest {
     @Test
     void purchaseLottoByUnit() {
        UserLotto userLotto = new UserLotto();
-       int input = 5100;
+       int input = 100;
        assertThatThrownBy(() -> userLotto.validateUnit(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

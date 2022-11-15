@@ -68,7 +68,7 @@ public class UserLotto {
     }
 
     public void validateUnit(int amount) {
-        if (amount % UNIT != INIT && amount < UNIT) {
+        if (amount % UNIT != INIT ) {
             throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위가 아닙니다.");
         }
     }
