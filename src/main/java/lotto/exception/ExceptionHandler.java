@@ -6,10 +6,16 @@ import java.util.List;
 
 public class ExceptionHandler {
 
+    public void emptyException(String input) throws IllegalArgumentException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 입력값이 없습니다.");
+        }
+    }
+
     public void noNumberException(String input) throws IllegalArgumentException {
         for (int index = 0; index < input.length(); index++) {
             if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
-                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다");
+                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
             }
         }
     }
@@ -37,10 +43,10 @@ public class ExceptionHandler {
     public void splitResultNoNumberException(String input) throws IllegalArgumentException {
         for (String number : input.split(",")) {
             if (number.isEmpty()) {
-                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다");
+                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
             }
             if (!number.matches("[+-]?\\d*(\\.\\d+)?")) {
-                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다");
+                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
             }
         }
     }
@@ -52,6 +58,7 @@ public class ExceptionHandler {
     }
 
     public void getLottoBuyAmountException(String input) throws IllegalArgumentException {
+        emptyException(input);
         noNumberException(input);
         amountUnitException(input);
     }
@@ -62,6 +69,7 @@ public class ExceptionHandler {
     }
 
     public void getLottoWinnerNumberException(String input) throws IllegalArgumentException {
+        emptyException(input);
         splitResultNoNumberException(input);
         List<Integer> numbers = new ArrayList<>();
         for (String number : input.split(",")) {
@@ -75,6 +83,7 @@ public class ExceptionHandler {
     }
 
     public void getLottoBonusNumberException(String input) throws IllegalArgumentException {
+        emptyException(input);
         noNumberException(input);
         numberRangeException(Integer.parseInt(input));
     }

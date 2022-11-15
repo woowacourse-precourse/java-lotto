@@ -11,7 +11,7 @@ public class InputOutput {
 
     ExceptionHandler exception = new ExceptionHandler();
 
-    public int getLottoBuyAmount() {
+    public int getLottoBuyAmount() throws IllegalArgumentException {
         String input = Console.readLine();
         exception.getLottoBuyAmountException(input);
         int money = Integer.parseInt(input);
