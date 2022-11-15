@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Output {
@@ -38,12 +39,21 @@ public class Output {
         System.out.println(BONUS_NUMBER_EVENT_MESSAGE);
     }
 
-    public void winRecordEventMessage() {
+    public static void winRecordEventMessage(HashMap<String, Integer> winRecords) {
         System.out.println(WIN_RECORD_TITLE);
 
+        for (LottoWinType winType : LottoWinType.values()) {
+            String winMessage = winType.getEventMessage();
+            int winNumber = winRecords.get(winType.getKey());
+            String replaceFrom = "$";
+            replaceFrom = replaceFrom.concat(winType.getKey());
+            winMessage = winMessage.replace(replaceFrom, Integer.toString(winNumber));
+
+            System.out.println(winMessage);
+        }
     }
 
-    public void profitEventMessage(float profit) {
+    public static void profitEventMessage(float profit) {
         System.out.println(PROFIT_EVENT_MESSAGE.replace(REPLACE_PROFIT_FROM, String.format("%.1f", profit)));
     }
 }

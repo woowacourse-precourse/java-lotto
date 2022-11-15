@@ -43,6 +43,8 @@ public class Application {
             WinningNumbers winningNumbers = setWinningNumbers();
 
             Compute compute = new Compute(lottos, winningNumbers, money);
+            Output.winRecordEventMessage(compute.getWinRecords());
+            Output.profitEventMessage(compute.getProfit());
         }
         catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

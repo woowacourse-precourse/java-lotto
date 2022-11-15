@@ -14,6 +14,8 @@ import java.util.List;
 
 public class Compute {
     private final HashMap<String, Integer> winRecords;
+    private final float profit;
+
     public Compute(Lottos lottos, WinningNumbers winningNumbers, Money money) {
         HashMap<String, Integer> winRecords = initializeWinRecords();
 
@@ -25,12 +27,9 @@ public class Compute {
                     winningNumbers.getBonusNumber()
             );
         }
+
         this.winRecords = winRecords;
-
-        printWinRecords(winRecords);
-
-        float profit = computeProfit(money.getMoney(), winRecords);
-        printProfit(profit);
+        this.profit = computeProfit(money.getMoney(), winRecords);
     }
     private HashMap<String, Integer> initializeWinRecords() {
         HashMap<String, Integer> winRecords = new HashMap<>();
@@ -68,22 +67,8 @@ public class Compute {
         return winRecords;
     }
 
-    private void printWinRecords(HashMap<String, Integer> winRecords) {
-        final String TITLE = "당첨 통계";
-        final String DIVISION_LINE = "---";
-
-        System.out.println(TITLE);
-        System.out.println(DIVISION_LINE);
-
-        for (LottoWinType winType : LottoWinType.values()) {
-            String winMessage = winType.getEventMessage();
-            int winNumber = winRecords.get(winType.getKey());
-            String replaceFrom = "$";
-            replaceFrom = replaceFrom.concat(winType.getKey());
-            winMessage = winMessage.replace(replaceFrom, Integer.toString(winNumber));
-
-            System.out.println(winMessage);
-        }
+    public HashMap<String, Integer> getWinRecords() {
+        return this.winRecords;
     }
 
     private float computeProfit(int money, HashMap<String, Integer> winRecords) {
@@ -98,13 +83,8 @@ public class Compute {
         return profit;
     }
 
-    private void printProfit(float profit) {
-        String text = "총 수익률은 $profit%입니다.";
-        String replaceFrom = "$profit";
-        String rateOfProfit = String.format("%.1f", profit);
-        text = text.replace(replaceFrom, rateOfProfit);
-
-        System.out.println(text);
+    public float getProfit() {
+        return this.profit;
     }
 }
 
