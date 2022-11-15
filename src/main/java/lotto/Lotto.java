@@ -17,17 +17,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validate.length(numbers,6);
+        Validate.length(numbers, 6);
         Validate.range(numbers, 1, 45);
         Validate.duplication(numbers);
     }
 
     public Rank result(List<Integer> input, int bonusNumber) {
-        int count = (int) input.stream()
-                .filter(e -> numbers.contains(e))
-                .count();
+        int count = (int) input.stream().filter(e -> numbers.contains(e)).count();
 
-        if (count != 5){
+        if (count != 5) {
             return Rank.findByRank(new Result(count, false));
         }
 
