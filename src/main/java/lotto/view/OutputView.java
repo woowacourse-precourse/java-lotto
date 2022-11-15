@@ -1,8 +1,9 @@
 package lotto.view;
 
 import static lotto.utils.Constants.FIRST_PLACE;
-import static lotto.utils.Converter.convertToStringWithComma;
 import static lotto.utils.Constants.LAST_PLACE;
+import static lotto.utils.Converter.convertToStringWithComma;
+import static lotto.utils.Converter.convertToStringWithCommaAndDot;
 
 import lotto.domain.Lotto;
 import lotto.domain.Ranking;
@@ -45,6 +46,6 @@ public class OutputView {
     }
 
     public static void printRateOfReturn(double rateOfReturn) {
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", rateOfReturn);
+        System.out.printf("총 수익률은 %s%%입니다.\n", convertToStringWithCommaAndDot(rateOfReturn));
     }
 }
