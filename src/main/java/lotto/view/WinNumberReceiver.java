@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class WinNumberReceiver {
 
-    protected static List<Integer> receiveWinNumber() {
+    public static List<Integer> receiveWinNumber() {
         return Arrays.stream(readLine().split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());

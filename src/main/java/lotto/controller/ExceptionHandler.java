@@ -15,9 +15,8 @@ public class ExceptionHandler {
     }
 
     public static void validateWinNumber(List<Integer> winNumbers) {
-        String pattern = "^[0-9]*$";
         for(int winNumberElement : winNumbers) {
-            if(pattern.matches(Integer.toString(winNumberElement))) {
+            if(winNumberElement > MAXIMUM_NUMBER || winNumberElement < MINIMUM_NUMBER) {
                 throw new IllegalArgumentException(NUMBER_RANGE_MUST_BETWEEN_1_45);
             }
         }
@@ -27,7 +26,7 @@ public class ExceptionHandler {
     }
 
     public static void validateBonusNumber(int bonusNumber) {
-        if (pattern.matches(Integer.toString(bonusNumber))) {
+        if (bonusNumber > MAXIMUM_NUMBER || bonusNumber < MINIMUM_NUMBER) {
             throw new IllegalArgumentException(NUMBER_RANGE_MUST_BETWEEN_1_45);
         }
     }

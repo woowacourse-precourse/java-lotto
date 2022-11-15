@@ -8,4 +8,6 @@ public class Constants {
     public static final int MONEY_UNIT = 1000;
     public static final int PERCENTAGE = 100;
     public static final int LEAST_WIN_NUMBER = 3;
+    public static final int MAXIMUM_NUMBER = 45;
+    public static final int MINIMUM_NUMBER = 1;
 }

@@ -1,24 +1,24 @@
 package lotto.model;
 
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.List;
 import lotto.Lotto;
 import lotto.controller.ExceptionHandler;
+import lotto.view.WinNumberReceiver;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class WinNumberBonusNumberReceiver {
+public class WinNumberBonusNumberStorage {
 
-    protected static Lotto receiveWinNumber() {
-        Lotto lotto = new Lotto(Arrays.stream(readLine().split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList()));
+    private static List<Integer> winNumber;
+
+    public static void setWinNumber() {
+        Lotto lotto = new Lotto(WinNumberReceiver.receiveWinNumber());
         ExceptionHandler.validateWinNumber(lotto.getNumbers());
-        return lotto;
+        winNumber = lotto.getNumbers();
     }
 
-    protected static int receiveBonusNumber() {
+    public static int receiveBonusNumber() {
         int bonusNumber = Integer.parseInt(readLine());
         ExceptionHandler.validateBonusNumber(bonusNumber);
         return Integer.parseInt(readLine());
