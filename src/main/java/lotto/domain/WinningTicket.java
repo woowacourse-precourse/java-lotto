@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
-import static lotto.Message.*;
+import static lotto.util.Message.*;
 
 public class WinningTicket {
     private static final int MAX_SIZE = 6;

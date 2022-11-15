@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.Message;
-import static lotto.Message.*;
+import lotto.util.Message;
+import static lotto.util.Message.*;
 import java.util.regex.Pattern;
 
 public class Money {

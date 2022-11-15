@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum Message {
     WELCOME_MESSAGE("구입 금액을 입력해 주세요."),

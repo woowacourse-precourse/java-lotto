@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.Statistic;
+import lotto.util.Statistic;
 
 import java.util.*;
 

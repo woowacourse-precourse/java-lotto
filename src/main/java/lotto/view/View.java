@@ -1,12 +1,11 @@
 package lotto.view;
 
-import lotto.Message;
-import lotto.Statistic;
+import lotto.util.Statistic;
 import lotto.domain.Buyer;
 import lotto.domain.Lottos;
 import lotto.domain.Rank;
 
-import static lotto.Message.*;
+import static lotto.util.Message.*;
 
 public class View {
 

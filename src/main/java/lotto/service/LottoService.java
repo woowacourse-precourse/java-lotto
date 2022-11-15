@@ -1,7 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
-import static lotto.Message.*;
+import static lotto.util.Message.*;
 import lotto.domain.*;
 import lotto.view.View;
 

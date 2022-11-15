@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum Statistic {
     SAME_SIX(6), SAME_FIVE_BONUS(5), SAME_FIVE(5), SAME_FOUR(4), SAME_THREE(3),
