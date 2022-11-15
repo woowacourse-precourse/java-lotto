@@ -20,25 +20,19 @@ public class Application {
     static Map<String, Integer> map = new HashMap<>();
     static Queue<String> queue = new ArrayDeque<>();
     static double income = 0;
-
-    private static final String ERROR_MESSAGE = "[ERROR] 구입금액은 숫자만 입력 가능합니다.";
+    static String ERROR_MESSAGE = "[ERROR] 구입금액은 숫자만 입력 가능합니다.";
 
     public static int enterPurchaseAmount() {
 
         String str = "구입금액을 입력해 주세요.";
         System.out.println(str);
         String strAmount = Console.readLine();
-
         for (int i = 0; i < strAmount.length(); ++i) {
             if (!Character.isDigit(strAmount.charAt(i))) {
-                throw new IllegalReceiveException(ERROR_MESSAGE);
-
+                throw new IllegalArgumentException(ERROR_MESSAGE);
             }
         }
-
-        int amount = 0;
-
-        amount = Integer.parseInt(strAmount);
+        int amount = Integer.parseInt(strAmount);
 
         if (amount % 1000 != 0) {
             throw new NoSuchElementException("[ERROR] 1000의 배수만 입력 가능합니다.");
@@ -56,14 +50,12 @@ public class Application {
     }
 
 
-    public static int[] enterTheWinningNumber() {
+    public static int[] enterWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String strWinningNums = Console.readLine();
         String[] tmpArr = strWinningNums.split(",");
         int[] winningNums = new int[tmpArr.length];
-
         for (int i = 0; i < tmpArr.length; ++i) {
-
             for (char c : tmpArr[i].toCharArray()) {
                 if (!Character.isDigit(c)) {
                     throw new IllegalReceiveException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
@@ -71,11 +63,8 @@ public class Application {
             }
             winningNums[i] = Integer.parseInt(tmpArr[i]);
         }
-
         validateLotto(winningNums);
-
         return winningNums;
-
     }
 
     public static boolean validateLotto(int[] winningNums) {
@@ -90,6 +79,22 @@ public class Application {
     }
 
 
+    public static int enterBonusNum(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String tmp = Console.readLine();
+        for (char c : tmp.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력 가능합니다.");
+            }
+        }
+        int bonusNum = Integer.parseInt(tmp);
+        List<Integer> winningNumsList = new ArrayList<>();
+        if (winningNumsList.contains(bonusNum) || bonusNum < 1 || 45 < bonusNum) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 부터 45 사이의 숫자이며 당첨 번호와 중복될 수 없습니다.");
+        }
+        return bonusNum;
+    }
+
     public static int validateBonusNum(int[] winningNums) {
 
         List<Integer> winningNumsList = new ArrayList<>();
@@ -97,30 +102,7 @@ public class Application {
         for (int winningNum : winningNums) {
             winningNumsList.add(winningNum);
         }
-
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String tmp = Console.readLine();
-
-        if (tmp.equals("")) {       // 콤마를 연달아 입력한 경우
-            throw new IllegalReceiveException("[ERROR] 보너스 번호는 숫자만 입력 가능합니다.");
-
-        }
-
-        for (char c : tmp.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                throw new IllegalReceiveException("[ERROR] 보너스 번호는 숫자만 입력 가능합니다.");
-            }
-        }
-
-        int bonusNum = Integer.parseInt(tmp);
-
-        if (winningNumsList.contains(bonusNum)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
-        }
-
-        if (bonusNum < 1 || 45 < bonusNum) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 부터 45 사이의 숫자여야 합니다.");
-        }
+        int bonusNum = enterBonusNum();
 
         return bonusNum;
     }
@@ -239,16 +221,13 @@ public class Application {
         int amount = enterPurchaseAmount();      // 구매 금액 입력
         int numberOfTickets = printNumberOfTickets(amount);     // 로또 개수 출력
         List<Lotto> allLotto = generateAllLotto(numberOfTickets);       // 모든 로또를 개수 만큼 생성한다.
-        int[] winningNums = enterTheWinningNumber();   // 당첨 번호 입력
+        int[] winningNums = enterWinningNumber();   // 당첨 번호 입력
         int bonusNum = validateBonusNum(winningNums);   // 보너스 번호 입력
 
         insertToMapAndQueue();
 
         // 이렇게 말고 각 로또에 대해 하나씩 income구하는 방식으로 쪼갤 수 있음
         double income = income(allLotto, winningNums, bonusNum, amount);
-
-//         LottoRank rank = new LottoRank();
-
         printResult((double) (income / amount * 100));
 
     }
