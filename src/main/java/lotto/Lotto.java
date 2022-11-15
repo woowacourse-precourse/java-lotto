@@ -18,11 +18,6 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리 숫자여야 합니다.");
         }
-        for (Integer item : numbers) {
-            if (item < 1 || item > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
-        }
     }
 
     private void checkRedundancy(List<Integer> numbers) {

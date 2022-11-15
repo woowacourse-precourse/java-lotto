@@ -36,6 +36,32 @@ public class Judge {
         return (double) Math.round(rate * 1000) / 10;
     }
 
+    public static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6자리 숫자여야 합니다.");
+        }
+    }
+
+    public static void validateRange(List<Integer> numbers) {
+        for (Integer item : numbers) {
+            if (item < 1 || item > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
+
+    public static void validateBonusSize(List<Integer> numbers) {
+        if (numbers.size() != 7) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1자리 숫자여야 합니다.");
+        }
+    }
+
+    public static void validateBonusRange(List<Integer> numbers) {
+        if (numbers.get(6) < 1 || 45 < numbers.get(6)) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
 }
 
 enum rankPriceTable {

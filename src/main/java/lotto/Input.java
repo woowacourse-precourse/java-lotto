@@ -18,12 +18,15 @@ public class Input {
         for (String item : numbers) {
             winningNumbers.add(Integer.parseInt(item));
         }
-
+        Judge.validateSize(winningNumbers);
+        Judge.validateRange(winningNumbers);
     }
 
     public static void receiveBonusNumber(List<Integer> winningNumbers) {
         String number = camp.nextstep.edu.missionutils.Console.readLine();
         winningNumbers.add(Integer.parseInt(number));
+        Judge.validateBonusSize(winningNumbers);
+        Judge.validateBonusRange(winningNumbers);
     }
 
 }
