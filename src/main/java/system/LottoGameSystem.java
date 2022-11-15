@@ -6,21 +6,23 @@ import system.process.WinningLottoRegister;
 import view.StatisticsView;
 
 public class LottoGameSystem {
-    private Buying boughtLottos;
-    private WinningLottoRegister winningLotto;
+    private Buying buying;
+    private WinningLottoRegister winningLottoRegister;
     private StatisticsCalculator statisticsCalculator;
 
     public void runGame() {
-        if (!prepareLotto()) {
+        boolean preparing = prepareLotto();
+
+        if (preparing == false) {
             return;
         }
-        calculateStatistics();
+        runStatisticsCalculator();
     }
 
     private boolean prepareLotto() {
         try {
-            boughtLottos = new Buying();
-            winningLotto = new WinningLottoRegister();
+            buying = new Buying();
+            winningLottoRegister = new WinningLottoRegister();
             return true;
         } catch (IllegalArgumentException e) {
             System.out.print(e.getMessage());
@@ -28,8 +30,8 @@ public class LottoGameSystem {
         }
     }
 
-    private void calculateStatistics() {
-        statisticsCalculator = new StatisticsCalculator(boughtLottos, winningLotto);
+    private void runStatisticsCalculator() {
+        statisticsCalculator = new StatisticsCalculator(buying, winningLottoRegister);
         StatisticsView.printStatistics(statisticsCalculator.getStatistics());
     }
 }
