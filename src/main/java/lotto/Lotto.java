@@ -6,7 +6,7 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
@@ -43,5 +43,19 @@ public class Lotto {
         if (match == 4) return WinType.FOUR;
         if (match == 3) return WinType.THREE;
         return WinType.NONE;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("[");
+        for (int i = 0; i < numbers.size(); i++) {
+            stringBuffer.append(numbers.get(i));
+            if (i != numbers.size() - 1) {
+                stringBuffer.append(", ");
+            }
+        }
+        stringBuffer.append("]");
+        return stringBuffer.toString();
     }
 }
