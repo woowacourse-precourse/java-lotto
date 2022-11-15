@@ -8,9 +8,13 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class User {
-    final static String PRICE_PATTERN = "^[0-9]*$";
-    final static int WINNING_NUMBER_SIZE = 6;
-    final static int BONUS_NUMBER_SIZE = 1;
+    private final static String PRICE_PATTERN = "^[0-9]*$";
+    private final static int WINNING_NUMBER_SIZE = 6;
+    private final static int BONUS_NUMBER_SIZE = 1;
+    private final static String PURCHASE_PRICE_ERROR = "[ERROR] 로또 구입 금액은 숫자이고 1,000원 단위여야 합니다." ;
+    private final static String WINNING_NUMBER_SIZE_ERROR = "[ERROR] 당첨 번호는 6개여야 합니다." ;
+    private final static String WINNING_NUMBER_NUMERIC_ERROR = "[ERROR] 당첨 번호는 숫자여야 합니다." ;
+    private final static String BONUS_NUMBER스_NUMERIC_ERROR = "[ERROR] 보너 번호는 숫자여야 합니다." ;
 
     public int purchasePrice;
     public List<Integer> winningNumbers = new ArrayList<>();
@@ -26,7 +30,7 @@ public class User {
             this.purchasePrice = Integer.parseInt(purchasePrice);
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(PURCHASE_PRICE_ERROR);
     }
 
     private boolean isValidPurchasePrice(String purchasePrice) {
@@ -39,14 +43,14 @@ public class User {
     public void setWinningNumbers() {
         List<String> list =  Arrays.asList(Console.readLine().split(","));
         if (!isWinningNumberSize(list)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(WINNING_NUMBER_SIZE_ERROR);
         }
         for (String winningNumber : list) {
             if (isWinningNumberNumeric(winningNumber)) {
                 this.winningNumbers.add(Integer.parseInt(winningNumber));
             }
             if (!isWinningNumberNumeric(winningNumber)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(WINNING_NUMBER_NUMERIC_ERROR);
             }
         }
     }
@@ -69,7 +73,7 @@ public class User {
             this.bonusNumber = Integer.parseInt(bonusNumber);
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(BONUS_NUMBER스_NUMERIC_ERROR);
     }
 
     private boolean isValidBonusNumber(String bonusNumber) {
