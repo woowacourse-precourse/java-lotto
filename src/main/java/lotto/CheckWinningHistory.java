@@ -30,4 +30,15 @@ public class CheckWinningHistory {
         }
         return sum;
     }
+    /** 해당 로또의 당첨 내역을 반환하는 기능 */
+    private int checkPrizeMoney(List<Integer> diff, int bonusNumber){
+        if (diff.size() == 0){ this.firstPlace++; return 2000000000; }
+        if (diff.size() == 1){
+            if (diff.get(0) == bonusNumber) {this.secondPlace++; return 30000000;}
+            this.thirdPlace++; return 1500000;
+        }
+        if (diff.size() == 2){ this.fourthPlace++; return 50000; }
+        if (diff.size() == 3){ this.fifthPlace++; return 5000; }
+        return 0;
+    }
 }
