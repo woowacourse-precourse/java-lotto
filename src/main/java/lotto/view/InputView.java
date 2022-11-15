@@ -5,7 +5,7 @@ import lotto.enums.Message;
 
 public class InputView {
 
-	public static String buyInput() {
+	public static String cashInput() {
 		System.out.println(Message.BEFORE_BUY.getMessage());
 		return Console.readLine();
 	}

@@ -23,27 +23,8 @@ public class OutputView {
 		}
 	}
 
-	public static void printProfit(List<Integer> prizes) {
-		float profit = getProfit(prizes);
+	public static void printProfit(float profit) {
 		String profitMessage = String.format(Message.PROFIT.getMessage(), profit);
 		System.out.println(profitMessage);
-	}
-
-	private static float getProfit(List<Integer> prizes) {
-		Long totalPrize = getTotalPrize(prizes);
-		int totalCount = prizes.stream()
-				.reduce(Integer::sum)
-				.get();
-		return ((float) totalPrize / (Constant.LOTTO_COST.getValue() * totalCount)) * 100;
-	}
-
-	private static Long getTotalPrize(List<Integer> prizes) {
-		Long totalPrize = 0L;
-		for (int rank = Rank.FIRST.getRank(); rank <= Rank.FIFTH.getRank(); rank++) {
-			Rank prize = Rank.findByRank(rank);
-			int count = prizes.get(rank - 1);
-			totalPrize += (long) prize.getMoney() * count;
-		}
-		return totalPrize;
 	}
 }
