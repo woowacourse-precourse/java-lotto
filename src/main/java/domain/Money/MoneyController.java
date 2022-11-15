@@ -6,18 +6,18 @@ public class MoneyController {
     private final static String FORMAT = "^\\d*$";
     private final MoneyService moneyService = new MoneyService();
 
-    public Money getPurchaseAmount(String purchaseAmount) {
-        isNumber(purchaseAmount);
-        return moneyService.saveMoney(purchaseAmount);
+    public void validateFormat(String purchaseAmount) {
+        if (!Pattern.matches(FORMAT, purchaseAmount)) {
+            throw new IllegalArgumentException("구매 금액은 공백이 포함되지 않은 자연수 하나만 입력해야 합니다.");
+        }
+    }
+
+    public Money createMoney(String money) {
+        validateFormat(money);
+        return moneyService.createMoney(money);
     }
 
     public int getAvailablePurchaseNumber(Money money) {
-        return moneyService.getAvailablePurchaseNumber(money);
-    }
-
-    public void isNumber(String purchaseAmount) {
-        if (!Pattern.matches(FORMAT, purchaseAmount)) {
-            throw new IllegalArgumentException("구매 금액은 숫자여야 합니다.");
-        }
+        return moneyService.calcAvailablePurchaseNumber(money);
     }
 }

@@ -8,6 +8,6 @@ public class UserLottoController {
     }
 
     public String getUserLottoHistory(UserLotto userLotto) {
-        return userLottoService.getUserLottoHistory(userLotto);
+        return userLottoService.makeUserLottoHistory(userLotto);
     }
 }

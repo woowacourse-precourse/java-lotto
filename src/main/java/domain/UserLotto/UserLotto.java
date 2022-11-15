@@ -9,7 +9,7 @@ public class UserLotto {
         this.userLotto = userLotto;
     }
 
-    public List<Integer> getUserLottoNumbers(int index) {
+    public List<Integer> getOneOfUserLotto(int index) {
         return userLotto.get(index);
     }
 

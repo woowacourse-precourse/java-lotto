@@ -17,12 +17,13 @@ public class UserLottoService {
         return new UserLotto(randomNumbers);
     }
 
-    public String getUserLottoHistory(UserLotto userLotto) {
+    public String makeUserLottoHistory(UserLotto userLotto) {
         StringBuilder userLottoHistory = new StringBuilder();
 
-        for(int count = 0; count < userLotto.getUserLottoSize(); count++){
-            userLottoHistory.append(userLotto.getUserLottoNumbers(count)).append("\n");
+        for(int index = 0; index < userLotto.getUserLottoSize(); index++){
+            userLottoHistory.append(userLotto.getOneOfUserLotto(index)).append("\n");
         }
+
         return userLottoHistory.toString();
     }
 }

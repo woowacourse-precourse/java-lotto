@@ -6,14 +6,14 @@ public class LottoController {
     private static final String FORMAT = "^\\d*,\\d*,\\d*,\\d*,\\d*,\\d*$";
     private final LottoService lottoService = new LottoService();
 
-    public Lotto createWinningNumber(String winningNumber) {
-        isNumber(winningNumber);
-        return lottoService.createWinningNumber(winningNumber);
+    public void validateFormat(String inputNumber) {
+        if (!Pattern.matches(FORMAT, inputNumber)) {
+            throw new IllegalArgumentException("당첨 번호는 공백 없이 쉼표로 구분된 6개의 숫자여야 합니다.");
+        }
     }
 
-    public void isNumber(String winningNumber) {
-        if (!Pattern.matches(FORMAT, winningNumber)) {
-            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분된 6개의 숫자여야 합니다.");
-        }
+    public Lotto createLotto(String inputNumber) {
+        validateFormat(inputNumber);
+        return lottoService.createLotto(inputNumber);
     }
 }

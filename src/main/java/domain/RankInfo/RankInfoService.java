@@ -17,7 +17,7 @@ public class RankInfoService {
 
     public RankInfo putRankInfo(RankInfo rankInfo, Lotto lotto, UserLotto userLotto, Bonus bonus) {
         for (int index = 0; index < userLotto.getUserLottoSize(); index++) {
-            updateCount(rankInfo, lotto, userLotto.getUserLottoNumbers(index), bonus);
+            compare(rankInfo, lotto, userLotto.getOneOfUserLotto(index), bonus);
         }
         return rankInfo;
     }
@@ -32,26 +32,26 @@ public class RankInfoService {
         return profit / money.getMoney() * PERCENTAGE;
     }
 
-    public void updateCount(RankInfo rankInfo, Lotto lotto, List<Integer> userLottoNumbers, Bonus bonus) {
+    public void compare(RankInfo rankInfo, Lotto lotto, List<Integer> userLottoNumbers, Bonus bonus) {
         int count = 0;
 
         for (int index = 0; index < lotto.getLottoSize(); index++) {
             if (userLottoNumbers.contains(lotto.getLottoNumber(index))) count += 1;
         }
-        if (count == CHECK_COUNT)
-            countUpWithCheck(rankInfo, userLottoNumbers, bonus, count);
         if (count != CHECK_COUNT)
-            countUpDefault(rankInfo, userLottoNumbers, bonus, count);
+            updateMatchNumber(rankInfo, userLottoNumbers, bonus, count);
+        if (count == CHECK_COUNT)
+            updateMatchNumberWithCondition(rankInfo, userLottoNumbers, bonus, count);
     }
 
-    public void countUpDefault(RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus, int count) {
+    public void updateMatchNumber(RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus, int count) {
         for (Rank rank : Rank.values()) {
             if (rank.getMatchCount() == count && !isSecond(count, userLottoNumbers, bonus))
                 rankInfo.countUp(rank);
         }
     }
 
-    public void countUpWithCheck(RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus, int count) {
+    public void updateMatchNumberWithCondition(RankInfo rankInfo, List<Integer> userLottoNumbers, Bonus bonus, int count) {
         if (isSecond(count, userLottoNumbers, bonus))
             rankInfo.countUp(Rank.SECOND);
         if (!isSecond(count, userLottoNumbers, bonus))

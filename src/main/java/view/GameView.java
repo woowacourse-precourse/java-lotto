@@ -23,15 +23,15 @@ public class GameView {
 
 
     public void start() {
-        Money money = moneyController.getPurchaseAmount(inputMessage.inputPurchaseAmount());
+        Money money = moneyController.createMoney(inputMessage.inputPurchaseAmount());
         int purchaseNumber = moneyController.getAvailablePurchaseNumber(money);
         outputMessage.printNumberOfPurchase(purchaseNumber);
 
         UserLotto userLotto = userLottoController.createUserLotto(purchaseNumber);
         outputMessage.printPurchaseLotto(userLottoController.getUserLottoHistory(userLotto));
 
-        Lotto lotto = lottoController.createWinningNumber(inputMessage.inputWinningNumber());
-        Bonus bonus = bonusController.createBonusNumber(inputMessage.inputBonusNumber(), lotto);
+        Lotto lotto = lottoController.createLotto(inputMessage.inputWinningNumber());
+        Bonus bonus = bonusController.createBonus(inputMessage.inputBonusNumber(), lotto);
 
         RankInfo rankInfo = rankInfoController.createRankInfo();
         rankInfo = rankInfoController.getRankInfo(rankInfo, lotto, userLotto, bonus);

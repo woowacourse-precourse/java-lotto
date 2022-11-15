@@ -6,8 +6,8 @@ import java.util.stream.Stream;
 
 public class LottoService {
 
-    public Lotto createWinningNumber(String winningNumber) {
-        List<Integer> numbers = Stream.of(winningNumber.split(","))
+    public Lotto createLotto(String inputNumber) {
+        List<Integer> numbers = Stream.of(inputNumber.split(","))
                 .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         return new Lotto(numbers);
     }

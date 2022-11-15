@@ -1,7 +1,7 @@
 package domain;
 
-import MoneyController;
 import domain.Money.Money;
+import domain.Money.MoneyController;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,15 +25,15 @@ public class MoneyTest {
 
     @Test
     void 금액_형식_예외_테스트1() {
-        assertThatThrownBy(() ->  moneyController.getPurchaseAmount("1000 1000"))
+        assertThatThrownBy(() ->  moneyController.createMoney("1000 1000"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("구매 금액은 숫자여야 합니다.");
+                .hasMessageContaining("구매 금액은 공백이 포함되지 않은 자연수 하나만 입력해야 합니다.");
     }
 
     @Test
     void 금액_형식_예외_테스트2() {
-        assertThatThrownBy(() ->  moneyController.getPurchaseAmount("abc"))
+        assertThatThrownBy(() ->  moneyController.createMoney("abc"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("구매 금액은 숫자여야 합니다.");
+                .hasMessageContaining("구매 금액은 공백이 포함되지 않은 자연수 하나만 입력해야 합니다.");
     }
 }

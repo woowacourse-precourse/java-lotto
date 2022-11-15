@@ -28,7 +28,7 @@ public class OutputMessage {
     public void printStatistic(RankInfo rankInfo) {
         System.out.println("\n" + STATISTICS + "\n" + DIVIDING_LINE);
         for (Rank rank : Rank.values()) {
-            System.out.println(rank.getMatchCount() + setBonusStatement(rank)
+            System.out.println(rank.getMatchCount() + setStatementType(rank)
                     + setWithComma(rank.getReward()) + REWARD + rankInfo.getMatchNumber(rank) + NUMBER_OF_MATCHES);
         }
     }
@@ -38,7 +38,7 @@ public class OutputMessage {
         System.out.println(YIELD_START + setWithComma(Integer.parseInt(separation[0])) + "." + separation[1] + YIELD_END);
     }
 
-    public String setBonusStatement(Rank rank) {
+    public String setStatementType(Rank rank) {
         if (rank == Rank.SECOND) return MATCH_COUNT_WITH_BONUS;
         return MATCH_COUNT;
     }

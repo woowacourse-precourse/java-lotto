@@ -1,11 +1,12 @@
 package domain.Money;
 
 public class MoneyService {
-    public Money saveMoney(String purchaseMoney) {
-        return new Money(Integer.parseInt(purchaseMoney));
+    private final static int UNIT = 1000;
+    public Money createMoney(String money) {
+        return new Money(Integer.parseInt(money));
     }
 
-    public int getAvailablePurchaseNumber(Money money) {
-        return money.availablePurchases();
+    public int calcAvailablePurchaseNumber(Money money) {
+        return money.getMoney() / UNIT;
     }
 }
