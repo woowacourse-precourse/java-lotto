@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static lotto.constant.ExceptionConstants.*;
+import static lotto.constant.GameConstants.WINNING_NUMBERS_LENGTH;
 import static org.assertj.core.api.Assertions.*;
 
 public class ComputerTest extends NsTest {
@@ -34,7 +35,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfFiveWinningNumbers() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5");
-            assertThat(output()).contains(LENGTH_EXCEPTION.toString());
+            assertThat(output()).contains(String.format(LENGTH_EXCEPTION.toString(), WINNING_NUMBERS_LENGTH));
         });
     }
 
@@ -43,16 +44,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfSevenWinningNumbers() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6,7");
-            assertThat(output()).contains(LENGTH_EXCEPTION.toString());
-        });
-    }
-
-    @DisplayName("당첨 번호가 1보다 작으면 예외가 발생한다.")
-    @Test
-    void ThrowExceptionIfWinningNumbersAreUnderMin() {
-        assertSimpleTest(() -> {
-            runException("1000", "-1,1,2,3,4,5");
-            assertThat(output()).contains(RANGE_EXCEPTION.toString());
+            assertThat(output()).contains(String.format(LENGTH_EXCEPTION.toString(), WINNING_NUMBERS_LENGTH));
         });
     }
 
