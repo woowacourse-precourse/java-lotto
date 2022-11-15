@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 public class LottoService {
     private List<Lotto> lotteries = new ArrayList<>();
     private List<Integer> winnings = new ArrayList<>();
+    private int bonus;
 
     public LottoService() {
 
@@ -34,5 +35,9 @@ public class LottoService {
                 .filter(number -> winnings.stream()
                         .anyMatch(Predicate.isEqual(number)))
                 .count();
+    }
+    private boolean checkBonusNumber(List<Integer> lottoNumbers) {
+        return lottoNumbers.stream()
+                .anyMatch(number -> number.equals(bonus));
     }
 }
