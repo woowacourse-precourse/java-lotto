@@ -85,7 +85,24 @@ class LottoTest {
         assertThat(service.getRate(5, new ArrayList<>(Arrays.asList(0,1,0,0,0)))).isEqualTo(1000.0);
     }
 
+    @DisplayName("입력 값이 쉼표로 구분된 숫자 문자열이 6개의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void getWinNumbersByNotRightCount() {
+        assertThatThrownBy(() -> service.getWinNumbers("5,6,8"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @DisplayName("입력 값이 쉼표로 구분된 숫자 문자열이 아니면 예외가 발생한다.")
+    @Test
+    void getWinNumbersByNotRightRange() {
+        assertThatThrownBy(() -> service.getWinNumbers("5,68,812,12,82,93"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
-
+    @DisplayName("입력 값이 쉼표로 구분된 숫자 문자열로 당첨 번호 리스트를 반환한다.")
+    @Test
+    void getWinNumbers() {
+        assertThat(service.getWinNumbers("1,2,3,4,5,6")).isEqualTo(new ArrayList<>(Arrays.asList(1,2,3,4,5,6)));
+        assertThat(service.getWinNumbers("10,25,36,34,15,26")).isEqualTo(new ArrayList<>(Arrays.asList(10,25,36,34,15,26)));
+    }
 }
