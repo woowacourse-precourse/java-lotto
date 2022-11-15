@@ -7,7 +7,6 @@ public class Profit {
     public Profit() {
     }
 
-
     public double calProfitRate(List<Integer> winningPrices, int place) {
         int winningAmount = calWinningAmount(winningPrices);
         int purchaseAmount = calPurchaseAmount(winningPrices.size());
