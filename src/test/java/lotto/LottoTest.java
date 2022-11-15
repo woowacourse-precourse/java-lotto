@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,6 +26,18 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 정렬되는지 확인하는 테스트")
+    void checkSortedLottoNumber() throws NoSuchFieldException, IllegalAccessException {
+        Lotto lotto = lottoBot.createLotto();
+
+        List<Integer> numbers = getLottoNumbers(lotto);
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+
+        Assertions.assertThat(numbers).isEqualTo(sortedNumbers);
     }
 
     @Test
