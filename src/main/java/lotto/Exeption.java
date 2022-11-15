@@ -6,6 +6,14 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Exeption {
+
+    public static void isNotoverlapped(List<Integer> numbers) {
+        int length = numbers.size();
+        int distinctLength = (int) numbers.stream().distinct().count();
+        if (length != distinctLength) {
+            throw new IllegalArgumentException("[ERROR] 숫자 중복되었습니다.");
+        }
+    }
     // String to List<Integer>
     public static List<Integer> stringToList(String input) {
         List<String> splitInput = Arrays.asList(input.split(","));
