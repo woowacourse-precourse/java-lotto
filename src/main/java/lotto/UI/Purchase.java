@@ -22,10 +22,10 @@ public class Purchase {
         if (money == 0) {
             error.amountInput();
         }
-        else if (money % 1000 != 0) {
+        if (money % 1000 != 0) {
             error.amountInput();
         }
-        else if (money / 1000 < 1) {
+        if (money / 1000 < 1) {
             error.amountInput();
         }
     }
