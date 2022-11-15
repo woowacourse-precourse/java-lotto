@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.Lotto;
 import lotto.domain.impl.IssueImpl;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,10 +16,10 @@ class IssueTest {
 
     private final Issue issue = new IssueImpl();
 
-    @Test
-    @DisplayName("구입 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
-    void amountException() {
-        assertThatThrownBy(() -> issue.createLottos(1100))
+    @ParameterizedTest
+    @CsvSource({"1100", "0", "500"})
+    void amountException(int amount) {
+        assertThatThrownBy(() -> issue.createLottos(amount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(AMOUNT_EXCEPTION);
     }
