@@ -83,6 +83,13 @@ public class LottoGameController {
         return bonusNumber;
     }
 
+    public void countEnterNum(int bonusNum) {
+        for (int i=0; i<lottoList.size(); i++) {
+            int countNum = 0;
+            countCorrectNumbers(countNum, i, bonusNum);
+        }
+    }
+
 
 }
 
