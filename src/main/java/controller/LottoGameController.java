@@ -16,7 +16,6 @@ public class LottoGameController {
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]" + e.getMessage());
         }
-
     }
 
     private void getLottoWinningResult(List<Lotto> purchaseLottoList) {

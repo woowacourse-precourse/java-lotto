@@ -40,7 +40,6 @@ public class Lotto {
             if (i == iMax) {
                 return builder.append(']').toString();
             }
-
             builder.append(", ");
             ++i;
         }

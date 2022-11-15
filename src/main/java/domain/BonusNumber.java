@@ -14,7 +14,6 @@ public class BonusNumber {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_BONUS_IS_NUMBER);
         }
-
     }
 
     private void validation(Integer bonusNumber) {
