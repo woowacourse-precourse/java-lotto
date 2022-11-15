@@ -1,9 +1,8 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.Validation.isNumeric;
-import static lotto.response.Error.LOTTO_PURCHASE_MONETARY_UNIT_ERROR;
-import static lotto.response.Error.LOTTO_PURCHASE_TYPE_ERROR;
+import static lotto.Validation.validateAnswer;
+import static lotto.Validation.validatePurchase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +19,7 @@ public class Cli {
     System.out.println("구입금액을 입력해 주세요.");
     String amount = readLine();
 
-    validate(amount);
+    validatePurchase(amount);
     return Integer.parseInt(amount);
   }
 
@@ -32,14 +31,11 @@ public class Cli {
     System.out.println("당첨 번호를 입력해 주세요.");
     String input = readLine();
     String[] inputArray = input.split(",");
-    validate(inputArray);
+    validateAnswer(inputArray);
 
-    List<Integer> numbers = Arrays.stream(inputArray)
+    return Arrays.stream(inputArray)
         .map(Integer::parseInt)
         .collect(Collectors.toList());
-
-    Lotto.validate(numbers);
-    return numbers;
   }
 
   public static void print(List<Lotto> lottoList) {
@@ -47,23 +43,6 @@ public class Cli {
 
     for(Lotto lotto: lottoList) {
       System.out.println(lotto);
-    }
-  }
-
-  private static void validate(String amount) {
-    if (!isNumeric(amount)) {
-      throw new IllegalArgumentException(LOTTO_PURCHASE_TYPE_ERROR.toString());
-    }
-    if (Integer.parseInt(amount) % 1000 != 0) {
-      throw new IllegalArgumentException(LOTTO_PURCHASE_MONETARY_UNIT_ERROR.toString());
-    }
-  }
-
-  private static void validate(String[] numbers) {
-    for(String number: numbers) {
-      if (!isNumeric(number)) {
-        throw new IllegalArgumentException(LOTTO_PURCHASE_TYPE_ERROR.toString());
-      }
     }
   }
 }
