@@ -3,6 +3,7 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Constant;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -67,5 +68,21 @@ public class input_numbers {
         check_Negative(money);
         check_divisible(money);
         return money;
+    }
+
+    public List<Integer> input_WinNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input_line = Console.readLine();
+        check_VoidOrSpace(input_line);
+        List<Integer> winNumbers = new ArrayList<>();
+        for (String num : input_line.split(",")) {
+            check_VoidOrSpace(num);
+            int temp = change_StrToInt(num);
+            check_Range(temp);
+            winNumbers.add(temp);
+        }
+        check_Cnt(winNumbers);
+        check_Duplicate(winNumbers);
+        return winNumbers;
     }
 }
