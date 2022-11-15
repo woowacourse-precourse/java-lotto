@@ -24,6 +24,7 @@ public class WinningNumber {
     return numberInt;
   }
 
+  // 유효성 검사
   public static void isDuplicateWinningNumber(List<Integer> numberInt) {
     Set<Integer> set = new HashSet<>(numberInt);
     if (numberInt.size() != set.size()) {
@@ -36,8 +37,7 @@ public class WinningNumber {
       throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUMBERS.getMessage());
     }
   }
-  
-// 유효성 검사
+
   public void winningNumberisDigits(String num) {
     for (int i = 0; i < num.length(); i++) {
       if (!Character.isDigit(num.charAt(i))) {
