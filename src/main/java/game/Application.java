@@ -12,9 +12,8 @@ public class Application {
 
         try {
             int purchaseAmount = Invalidator.isValidPurchaseAmount(Console.readLine());
-            int lottoCount = purchaseAmount / 1000;
-            Game game = new Game();
-            game.play(lottoCount);
+            Game game = new Game(purchaseAmount);
+            game.play();
         } catch (UserInputException e) {
             System.out.println(e.getMessage());
         }
