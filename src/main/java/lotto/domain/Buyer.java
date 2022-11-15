@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.enums.ExceptionMessage;
 import lotto.domain.enums.PurchaseAmountUnit;
 import lotto.domain.enums.WinningAmount;
 
@@ -55,6 +56,7 @@ public class Buyer {
         try {
             Integer.parseInt(purchaseAmount);
         } catch (Exception e) {
+            System.out.println(ExceptionMessage.NOT_NUMBER_RANGE);
             throw new IllegalArgumentException();
         }
     }

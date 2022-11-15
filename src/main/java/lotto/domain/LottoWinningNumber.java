@@ -1,6 +1,8 @@
 package lotto.domain;
 
 
+import lotto.domain.enums.ExceptionMessage;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -54,10 +56,12 @@ public class LottoWinningNumber {
     public void validDuplicateNumber(List<Integer> winningNumbers, int bonusNumber) {
         Set<Integer> set = new HashSet<>();
         if (winningNumbers.contains(bonusNumber)) {
+            System.out.println(ExceptionMessage.DUPLICATE_NUMBER);
             throw new IllegalArgumentException();
         }
         for (int i : winningNumbers) {
             if(set.contains(i)){
+                System.out.println(ExceptionMessage.DUPLICATE_NUMBER);
                 throw new IllegalArgumentException();
             }
             set.add(i);
@@ -70,6 +74,7 @@ public class LottoWinningNumber {
 
     public void validSixNumber(List<Integer> inputNumbers) {
         if (inputNumbers.size() != Lotto.numberCount) {
+            System.out.println(ExceptionMessage.NOT_NUMBER_SIZE);
             throw new IllegalArgumentException();
         }
     }
@@ -80,6 +85,7 @@ public class LottoWinningNumber {
                 Integer.parseInt(inputNumbers[i]);
             }
         } catch (Exception e) {
+            System.out.println(ExceptionMessage.NOT_NUMBER_RANGE);
             throw new IllegalArgumentException();
         }
     }
@@ -98,12 +104,14 @@ public class LottoWinningNumber {
         try {
             Integer.parseInt(inputNumber);
         } catch (Exception e) {
+            System.out.println(ExceptionMessage.NOT_NUMBER_RANGE);
             throw new IllegalArgumentException();
         }
     }
 
     public void validOneNumberRange(int inputNumber) {
         if (inputNumber < Lotto.numberMinRage || inputNumber > Lotto.numberMaxRage) {
+            System.out.println(ExceptionMessage.NOT_NUMBER_RANGE);
             throw new IllegalArgumentException();
         }
     }
