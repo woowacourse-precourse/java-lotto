@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.domain.Lotto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,11 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest extends NsTest{
-    Lotto lotto;
-    @BeforeEach
-    void beforeEach() {
-        lotto=new Lotto(List.of(1,2,3,4,5,6,7));
-    }
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -83,12 +77,7 @@ class LottoTest extends NsTest{
                 List.of(3, 5, 7, 8, 9, 11)
         );
     }
-    @DisplayName("Lotto 기능 테스트 isUnique")
-    @Test
-    void isUniqueTest(){
-        assertThatThrownBy(() -> lotto.isUnique(List.of(1,2,2,3,4,5)))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
