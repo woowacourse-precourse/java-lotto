@@ -3,10 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Application {
     public static void Error(String ErrorType){
@@ -28,6 +25,21 @@ public class Application {
         System.out.println(NumberOfGame + "개를 구매했습니다.");
         return NumberOfGame;
     }
+
+    public static void RedundancyCheck(List<Integer> WinningNumber){
+        Set<Integer> RedundancyCheckSet = new HashSet<>(WinningNumber);
+
+        if(RedundancyCheckSet.size()!=WinningNumber.size()){
+            Error("중복된 숫자가 존재해서는 안됩니다.");
+        }
+    }
+    public static void RangeCheck(List<Integer> WinningNumber){
+        for(int i = 0; i < WinningNumber.size(); i++){
+            if(WinningNumber.get(i)>46||WinningNumber.get(i)<1){
+                Error("당첨 번호는 1~45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
     public static List<Integer> setWinningNumber(){
         System.out.println();
         System.out.println("당첨 번호를 입력해 주세요");
@@ -39,6 +51,7 @@ public class Application {
         for(String i : TempNumber){
             WinningNumber.add(Integer.parseInt(i));
         }
+        Collections.sort(WinningNumber);
         return WinningNumber;
     }
     public static List<Lotto> MakeGame(int NumberOfGame){
