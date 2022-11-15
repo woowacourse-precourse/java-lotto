@@ -30,4 +30,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    static List<Integer> getLotto(List<Integer> numbers) {
+        return new ArrayList<>(List.copyOf(numbers));
+    }
 }
