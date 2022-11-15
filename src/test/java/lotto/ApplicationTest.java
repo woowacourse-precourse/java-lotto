@@ -101,7 +101,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
+    @ParameterizedTest
+    @DisplayName("로또 승리 조건 예외 테스트(갯수)")
+    @ValueSource(strings = {"1,2,3,4,5,6,7", "1,2,3,4,5"})
+    void 승리_조건_로또_개수_테스트(String numbers) {
+        run("8000", numbers);
+        assertThat(output()).contains(
+                "[ERROR] 6개의 숫자를 입력해주세요"
+        );
+    }
 
     @Override
     public void runMain() {
