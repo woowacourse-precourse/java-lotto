@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import java.util.List;
+import java.util.Map;
 import lotto.console.Output;
 import lotto.player.Host;
 import lotto.player.Store;
@@ -21,7 +22,7 @@ public class LottoController {
     }
 
     public void showStatistics(Statistics statistics, User user) {
-        statistics.printStatistics();
+        Output.printStatistics(statistics);
         statistics.printProfit(user.getMoney());
     }
 }

@@ -8,13 +8,13 @@ import lotto.ticket.Winning;
 
 public class Statistics {
 
-    private Map<Winning, Integer> statistics;
+    private Map<Winning, Integer> statisticsResult;
     private int rewards;
 
     public Statistics(List<Winning> drawResults) {
-        this.statistics = new EnumMap<>(Winning.class);
+        this.statisticsResult = new EnumMap<>(Winning.class);
         for (Winning winning : Winning.values()) {
-            statistics.put(winning, 0);
+            statisticsResult.put(winning, 0);
         }
         this.rewards = 0;
 
@@ -23,39 +23,11 @@ public class Statistics {
 
     private void generateStatistics(List<Winning> drawResults) {
         for (Winning result : drawResults) {
-            statistics.put(result, statistics.get(result) + 1);
+            statisticsResult.put(result, statisticsResult.get(result) + 1);
         }
         calculateRewards();
     }
 
-    public void printStatistics() {
-        System.out.println();
-        System.out.println(Constants.STATISTICS_TITLE);
-        System.out.println(Constants.STATISTICS_TITLE_SUFFIX);
-
-        for (Winning winning : statistics.keySet()) {
-            int correctCount = winning.getCorrectCount();
-            int rewards = winning.getRewards();
-            int resultCount = statistics.get(winning);
-
-            printStatisticsDetail(winning, correctCount, rewards, resultCount);
-        }
-    }
-
-    private void printStatisticsDetail(Winning winning, int correctCount, int rewards,
-            int resultCount) {
-        if (winning == Winning.FAIL) {
-            return;
-        }
-
-        if (winning == Winning.BONUS) {
-            System.out.printf(Constants.STATISTICS_BONUS, correctCount, rewards,
-                    resultCount);
-            return;
-        }
-
-        System.out.printf(Constants.STATISTICS, correctCount, rewards, resultCount);
-    }
 
     public void printProfit(int moneyToBuy) {
         double profitRate = ((double) this.rewards / moneyToBuy) * 100;
@@ -64,9 +36,13 @@ public class Statistics {
     }
 
     private void calculateRewards() {
-        for (Winning winning : statistics.keySet()) {
-            addRewards(winning.getTotalRewards(statistics.get(winning)));
+        for (Winning winning : statisticsResult.keySet()) {
+            addRewards(winning.getTotalRewards(statisticsResult.get(winning)));
         }
+    }
+
+    public Map<Winning, Integer> getStatisticsResult() {
+        return statisticsResult;
     }
 
     private void addRewards(int rewards) {
