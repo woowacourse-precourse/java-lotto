@@ -4,13 +4,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.domain.LottoStringConstant.*;
-
 public class Lotto {
+    public static final String NUMBER_SEPARATOR = ",";
+    private static final int LOTTO_SIZE = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -20,23 +21,26 @@ public class Lotto {
         }
     }
 
-    public boolean isContain(Integer number){
-        if(numbers.contains(number)){
-            return true;
+    private void validateDuplicate(List<Integer> numbers) {
+        if (numbers.stream().distinct().count() != LOTTO_SIZE) {
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 
-    public int getContainValue(Integer number){
-        if(isContain(number)){
+    public boolean isContain(Integer number) {
+        return numbers.contains(number);
+    }
+
+    public int getContainValue(Integer number) {
+        if (isContain(number)) {
             return 1;
         }
         return 0;
     }
 
-    public int getMatchedCount(Lotto compareLotto){
+    public int getMatchedCount(Lotto compareLotto) {
         int matchedCount = 0;
-        for(Integer number : numbers){
+        for (Integer number : numbers) {
             matchedCount += compareLotto.getContainValue(number);
         }
         return matchedCount;
@@ -46,6 +50,6 @@ public class Lotto {
     public String toString() {
         numbers.sort(Comparator.naturalOrder());
         List<String> stringNumbers = numbers.stream().map(Object::toString).collect(Collectors.toList());
-        return FRONT_BRACKET+String.join(NUMBER_SEPARATOR,stringNumbers)+BACK_BRACKET;
+        return String.join(NUMBER_SEPARATOR, stringNumbers);
     }
 }
