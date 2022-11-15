@@ -20,7 +20,7 @@ public class Lottos {
         for (int i = 0; i < number; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto l = new Lotto(numbers);
-            l.sortElements();
+            l.sortNumbers();
             lottoTickets.add(l);
         }
 
@@ -32,7 +32,7 @@ public class Lottos {
     }
 
     public void printLottoNumbers() {
-        inputLottos.forEach(lotto -> System.out.println(lotto));
+        inputLottos.forEach(System.out::println);
     }
 
 }

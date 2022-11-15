@@ -26,11 +26,11 @@ public class Lotto {
         return String.format("[%d, %d, %d, %d, %d, %d]", numbers.get(0), numbers.get(1), numbers.get(2), numbers.get(3), numbers.get(4), numbers.get(5));
     }
 
-    public List<Integer> getElements() {
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-    public void sortElements() {
+    public void sortNumbers() {
         Collections.sort(this.numbers);
     }
 
