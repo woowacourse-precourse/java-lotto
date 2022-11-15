@@ -48,4 +48,7 @@ public class Lotto {
         System.out.println(this.numbers);
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
