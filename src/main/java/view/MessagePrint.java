@@ -41,6 +41,10 @@ public class MessagePrint {
     }
 
     public static void printYield(double yield) {
+        if(yield==0.0){
+            System.out.printf(Message.YIELD.getMessage()+"%d%%입니다.",(int)yield);
+            return;
+        }
         System.out.printf(Message.YIELD.getMessage() + "%.1f%%입니다.", yield);
     }
 
