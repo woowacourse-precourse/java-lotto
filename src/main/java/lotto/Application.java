@@ -109,6 +109,17 @@ public class Application {
         return totalWinningPrice;
     }
 
+    // 10. 수익률
+    static double getEarningsRate(int sheets, int totalWinningPrice) {
+        double earningsRate = 0;
+
+        earningsRate = (double)(totalWinningPrice) / (double)(sheets * 1000) * 100;
+        earningsRate = Math.round(earningsRate*100/100.0);
+
+        System.out.println(earningsRate);
+
+        return earningsRate;
+    }
 
     public static void main(String[] args) {
 
@@ -132,6 +143,9 @@ public class Application {
 
         // 당첨 금액
         int totalWinningPrice = getTotalWinningPrice(lottosResult);
+
+        // 수익률
+        double earningsRate = getEarningsRate(sheets,totalWinningPrice);
     }
 }
 
