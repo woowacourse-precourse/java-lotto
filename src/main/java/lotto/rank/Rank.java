@@ -14,7 +14,7 @@ public enum Rank {
     THIRD(5, false, 1_500_000) {
         public String getMessage(int count) {
             return String.format(MATCH_NO_BONUS, THIRD.winningBallMatchCount,
-                    THIRD.money.toString(),
+                    THIRD.winningMoney.toString(),
                     count);
         }
     },
@@ -24,21 +24,21 @@ public enum Rank {
 
     private int winningBallMatchCount;
     private boolean isBonusBallMustMatch;
-    private Money money;
+    private Money winningMoney;
 
-    Rank(int winningBallMatchCount, boolean isBonusBallMustMatch, int money) {
+    Rank(int winningBallMatchCount, boolean isBonusBallMustMatch, int winningMoney) {
         this.winningBallMatchCount = winningBallMatchCount;
         this.isBonusBallMustMatch = isBonusBallMustMatch;
-        this.money = new Money(money);
+        this.winningMoney = new Money(winningMoney);
     }
 
-    public Money getMoney() {
-        return money;
+    public Money getWinningMoney() {
+        return winningMoney;
     }
 
     public String getMessage(int count) {
         return String.format(MATCH, this.winningBallMatchCount,
-                money.toString(),
+                winningMoney.toString(),
                 count);
     }
 
