@@ -38,7 +38,7 @@ public class Lotto {
             int correct = calculCorrect(lotto);
             int bonus = 0;
             if (correct == 5) bonus = calculBonus(lotto);
-            gradeList.add(Grade.getGrade(correct, bonus));
+            if(Grade.getGrade(correct,bonus) != null) gradeList.add(Grade.getGrade(correct, bonus));
         }
         return gradeList;
     }
@@ -46,7 +46,7 @@ public class Lotto {
     // 로또 번호맞추기 (보너스 제외)
     public int calculCorrect(List<Integer> boughtLotto){
         int correct = 0;
-        List<Integer> correctNumbers = this.numbers.subList(0,7);
+        List<Integer> correctNumbers = this.numbers.subList(0,6);
         for (Integer lotto : boughtLotto) {
             if (correctNumbers.contains(lotto)) correct++;
         }
