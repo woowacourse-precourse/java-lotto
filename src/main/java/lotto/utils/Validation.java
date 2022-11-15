@@ -30,7 +30,6 @@ public class Validation {
         if (!hasCorrectNumberOfNumbers(winningNumber)) {
             throw new IllegalArgumentException("[ERROR] 총 6개의 당첨 번호를 입력해야 합니다.");
         }
-
         List<Integer> winningNumbers = convertToIntegerList(winningNumber);
         if (hasDuplicatedNumber(winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 중복되는 당첨 번호가 존재합니다.");
