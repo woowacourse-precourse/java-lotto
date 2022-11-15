@@ -11,7 +11,9 @@ public class Constant {
     public static final String SAME = " 일치";
     public static final String WON = "원";
     public static final String COUNT_UNIT = "%d개";
+
     public static final int MONEY_UNIT = 1000;
+
     public static final int FIFTH_PRICE = 5000;
     public static final int FOURTH_PRICE= 50000;
     public static final int THIRD_PRICE = 1500000;
