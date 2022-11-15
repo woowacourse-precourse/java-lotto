@@ -27,4 +27,8 @@ public class Printer {
         System.out.println(UiText.SIX_MATCHES.getTxt());
         System.out.println(UiText.GROSS_RETURN.getTxt());
     }
+
+    public void printErrorMessage(IllegalArgumentException exception) {
+        System.out.println(exception.getMessage());
+    }
 }
