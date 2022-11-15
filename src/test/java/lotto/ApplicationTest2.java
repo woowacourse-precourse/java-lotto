@@ -1,10 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.model.Lotto;
+import lotto.model.WinningNumbers;
 import org.junit.jupiter.api.Test;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

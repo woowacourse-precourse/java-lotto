@@ -1,4 +1,8 @@
-package lotto;
+package lotto.model;
+
+import lotto.model.Lotto;
+import lotto.model.Ranking;
+import lotto.model.WinningNumbers;
 
 import java.util.HashMap;
 import java.util.List;

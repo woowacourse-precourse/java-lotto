@@ -1,10 +1,8 @@
-package lotto;
+package lotto.model;
 
 import java.util.Map;
 
 public class Result {
-
-
     private final Map<Ranking,Integer> result;
 
     public Result(Map<Ranking, Integer> result) {

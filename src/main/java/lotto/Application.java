@@ -1,10 +1,9 @@
 package lotto;
 
-import java.lang.management.MonitorInfo;
-import java.util.ArrayList;
-import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import lotto.controller.LottoController;
+import lotto.model.LottoFactory;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class Application {
     private static final String ERROR_MESSAGE = "[ERROR] ";

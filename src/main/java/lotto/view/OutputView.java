@@ -1,9 +1,10 @@
-package lotto;
+package lotto.view;
+
+import lotto.model.Lotto;
+import lotto.model.Ranking;
 
 import java.util.List;
 import java.util.Map;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class OutputView {
 
