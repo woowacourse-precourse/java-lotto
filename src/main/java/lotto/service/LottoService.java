@@ -115,6 +115,6 @@ public class LottoService {
         for (Result result : Result.values()) {
             rate += result.calculate(resultPoints.get(result));
         }
-        return rate / amount;
+        return rate / amount * 100;
     }
 }
