@@ -18,4 +18,20 @@ public enum WinningPrice {
         this.winningBonus = winningBonus;
         this.winningMessage = winningMessage;
     }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
+    public int getTheNumberOfWins() {
+        return theNumberOfWins;
+    }
+
+    public int getWinningBonus() {
+        return winningBonus;
+    }
+
+    public String getWinningMessage() {
+        return winningMessage;
+    }
 }
