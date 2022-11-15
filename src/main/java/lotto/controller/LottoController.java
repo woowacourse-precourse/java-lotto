@@ -28,7 +28,7 @@ public class LottoController {
             LottoPurchaseMoney lottoPurchaseMoney = getLottoPurchaseMoney();
             WinningNumbers winningNumbers = getWinningNumbers();
             List<Lotto> lottoTickets = lottoStore.buyLottoTickets(lottoPurchaseMoney.get());
-            outputView.outputLottoTickets(lottoTickets);
+            outputView.printLottoTickets(lottoTickets);
             LottoResult lottoResult = makeLottoResult(winningNumbers, lottoTickets);
             outputView.printWinningHistory(lottoResult);
             outputView.printRateOfProfit(lottoResult.getRateOfProfit(lottoPurchaseMoney.get()));

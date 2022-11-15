@@ -16,7 +16,7 @@ public class OutputView {
         System.out.println(errorMessage);
     }
 
-    public void outputLottoTickets(List<Lotto> lottoTickets) {
+    public void printLottoTickets(List<Lotto> lottoTickets) {
         System.out.println(lottoTickets.size() + OUTPUT_AMOUNT_OF_LOTTO);
         for (Lotto lottoTicket : lottoTickets) {
             System.out.println(lottoTicket.getNumbers().stream().sorted().collect(Collectors.toList()));
