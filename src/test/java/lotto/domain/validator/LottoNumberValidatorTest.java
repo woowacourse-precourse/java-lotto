@@ -2,6 +2,7 @@ package lotto.domain.validator;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,6 +37,10 @@ class LottoNumberValidatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> validator.checkingSeparator(inputValue));
         assertThat(exception.getMessage()).isEqualTo(ErrorMessages.WRONG_SEPARATOR.getMessage());
+        // 피드백 문서 참고 - 새로운 테스트 방법(예외 메시지)
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> validator.checkingSeparator(inputValue))
+                .withMessage(ErrorMessages.WRONG_SEPARATOR.getMessage());
     }
 
     @Order(2)

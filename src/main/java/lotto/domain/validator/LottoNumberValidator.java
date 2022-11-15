@@ -14,6 +14,7 @@ public class LottoNumberValidator {
     }
 
     public void validateBonus(String inputValue) {
+
         checkingSingleNumber(inputValue);
         checkingNotNumber(inputValue);
         checkingRange(inputValue);
