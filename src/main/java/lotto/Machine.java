@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/** Machine class for creating lotto ticket and calculate winning of the lotto. */
+/** Machine class to manipulate lotto ticket. */
 public class Machine {
 
   /**
