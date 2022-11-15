@@ -12,44 +12,43 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            inputPrint();
-            String inputMoney = Console.readLine();
+            String inputMoney = inputPrint();
             Lotto.checkIsInt(inputMoney);
             int lottoCount = Lotto.calculate(inputMoney);
             List<Lotto> allLotto = Lotto.createLotto(lottoCount);
             countPrint(lottoCount);
 
-            numbersPrint();
-            String inputNumbers = Console.readLine();
+            String inputNumbers = numbersPrint();
             Winning.addWinning(inputNumbers);
 
-            bonusPrint();
-            String inputBonus = Console.readLine();
+            String inputBonus = bonusPrint();
             Winning.addBonus(inputBonus);
 
             int totalPrize = Report.totalPrize(allLotto);
             double returnRate = Report.returnRate(lottoCount * 1000, totalPrize);
-
             reportPrint(Report.winningCount, returnRate);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + e.getMessage());
         }
     }
 
-    public static void inputPrint() {
+    public static String inputPrint() {
         System.out.println("구입금액을 입력해 주세요.");
+        return Console.readLine();
     }
 
     public static void countPrint(int lottoCount) {
         System.out.println(lottoCount + "개를 구매했습니다.");
     }
 
-    public static void numbersPrint() {
+    public static String numbersPrint() {
         System.out.println("당첨 번호를 입력해 주세요.");
+        return Console.readLine();
     }
 
-    public static void bonusPrint() {
+    public static String bonusPrint() {
         System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
     }
 
     public static void reportPrint(Integer[] winningCount, double returnRate) {
