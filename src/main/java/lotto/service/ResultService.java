@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.ErrorHandler;
 import lotto.domain.Lotto;
 import lotto.domain.Result;
 import lotto.domain.WinningResult;
@@ -42,17 +43,17 @@ public class ResultService {
             validateNumber(number);
         }
         if (winningNumbers.size() != LOTTO_NUMBERS_SIZE) {
-            throw new IllegalArgumentException(LOTTO_NUMBERS_SIZE_IS_INVALID_ERROR_MESSAGE);
+            ErrorHandler.handle(LOTTO_NUMBERS_SIZE_IS_INVALID_ERROR_MESSAGE);
         }
     }
 
     public void validateNumber(String number) {
         if (!number.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_IS_NOT_NUMBER_ERROR_MESSAGE);
+            ErrorHandler.handle(LOTTO_NUMBER_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
         int parsed = Integer.parseInt(number);
         if (parsed < MINIMUM_LOTTO_NUMBER || parsed > MAXIMUM_LOTTO_NUMBER) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE);
+            ErrorHandler.handle(LOTTO_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
     }
 

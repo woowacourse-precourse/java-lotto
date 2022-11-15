@@ -10,6 +10,7 @@ import static lotto.Constants.PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import lotto.ErrorHandler;
 import lotto.domain.Lotto;
 import lotto.repository.UserLottoRepository;
 
@@ -31,14 +32,14 @@ public class UserLottoService {
     public void validate(String purchaseAmount) {
         boolean isNumber = purchaseAmount.chars().allMatch(Character::isDigit);
         if (!isNumber) {
-            throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE);
+            ErrorHandler.handle(PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
         long amount = Long.parseLong(purchaseAmount);
         if (amount < MINIMUM_PURCHASE_AMOUNT) {
-            throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
+            ErrorHandler.handle(PURCHASE_AMOUNT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
         if (amount % MINIMUM_PURCHASE_AMOUNT != 0) {
-            throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_NOT_DIVIDED_ERROR_MESSAGE);
+            ErrorHandler.handle(PURCHASE_AMOUNT_IS_NOT_DIVIDED_ERROR_MESSAGE);
         }
     }
 

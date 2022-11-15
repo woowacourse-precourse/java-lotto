@@ -40,4 +40,8 @@ public class OutputView {
         System.out.printf(LOTTO_EARNING_RATE_MESSAGE, earningRate);
         System.out.println();
     }
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
 }
