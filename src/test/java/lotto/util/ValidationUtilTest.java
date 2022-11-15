@@ -150,4 +150,35 @@ class ValidationUtilTest {
                     .hasMessageContaining(NUMBER_DUPLICATE);
         }
     }
+
+    @Test
+    @DisplayName("당첨 번호의 범위가 1~45를 벗어나면 예외가 발생한다.")
+    void 당첨_번호_범위_테스트() throws Exception {
+        //given
+        ValidationUtil validationUtil = new ValidationUtil();
+        Method method = validationUtil.getClass().getDeclaredMethod("validateWinningRange", String[].class);
+        method.setAccessible(true);
+
+        //when
+        String[] wrongMinNums = {"0", "2", "3", "4", "5", "6"};
+        String[] wrongMaxNums = {"1", "2", "3", "4", "46", "6"};
+
+        //then
+        try {
+            method.invoke(validationUtil, new Object[]{wrongMinNums});
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NUMBER_RANGE);
+        }
+
+        try {
+            method.invoke(validationUtil, new Object[]{wrongMaxNums});
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NUMBER_RANGE);
+        }
+
+    }
 }
