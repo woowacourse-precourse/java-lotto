@@ -13,6 +13,7 @@ public class LottoService {
     public static final int LOTTO_PRICE = 1000;
     public static final int PERCENT = 100;
     public static final double SECOND_DECIMAL_PLACE = 10.0;
+
     private final LottoRepository lottoRepository = LottoRepository.getInstance();
 
     public List<Object> buyLottos(int inputPrice) {

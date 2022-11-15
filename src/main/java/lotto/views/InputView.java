@@ -5,7 +5,6 @@ import java.util.List;
 import lotto.constants.messages.InputMessage;
 
 public class InputView {
-
     public String inputPrice() {
         System.out.println(InputMessage.INPUT_PRICE);
         return Console.readLine();

@@ -13,6 +13,7 @@ public class Lotto {
     public static final int HIT_THREE = 3;
     public static final int HIT_FIVE = 5;
     public static final int SECOND_PLACE_COUNT = 7;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
