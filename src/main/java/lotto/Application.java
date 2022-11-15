@@ -10,7 +10,6 @@ public class Application {
         } catch (IllegalArgumentException exception) {
             String message = ErrorView.getErrorMessage(exception);
             System.out.println(message);
-            throw exception;
         }
     }
 }
