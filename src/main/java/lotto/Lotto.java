@@ -1,11 +1,10 @@
 package lotto;
 
+import lotto.constant.GameConstants;
 import lotto.util.Validator;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static lotto.constant.GameConstants.*;
 
 public class Lotto {
     private final List<Integer> lottoNumbers;
@@ -16,9 +15,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> lottoNumbers) {
-        Validator.validateLength(lottoNumbers, LOTTO_NUMBERS_LENGTH);
-        Validator.validateRange(lottoNumbers, LOTTO_NUMBERS_LENGTH);
-        Validator.validateDuplication(lottoNumbers, LOTTO_NUMBERS_LENGTH);
+        Validator.validateLength(lottoNumbers, GameConstants.LOTTO_NUMBERS_LENGTH);
+        Validator.validateRange(lottoNumbers, GameConstants.LOTTO_NUMBERS_LENGTH);
+        Validator.validateDuplication(lottoNumbers, GameConstants.LOTTO_NUMBERS_LENGTH);
     }
 
     @Override
