@@ -92,4 +92,12 @@ public class GameResult {
         String message = nthPlace.getMessage();
         OutputView.printPlaceResult(String.format(message, count));
     }
+
+    public List<Integer> getResult() {
+        return result;
+    }
+
+    public float getProfitRate() {
+        return profitRate;
+    }
 }
