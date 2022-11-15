@@ -12,16 +12,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningNumberTest {
 
-  @DisplayName("당첨번호 중 중복된 숫자가 있으면 예외처리")
+  @DisplayName("당첨번호 중 중복된 숫자가 있으면 예외 발생")
   @Test
-  void duplicate_number() {
+  void redundantWinningNumbers() {
     List<Integer> test1 = List.of(1,1,3,4,5);
     assertThatThrownBy(() -> WinningNumber.isDuplicateWinningNumber(test1))
             .isInstanceOf(IllegalArgumentException.class);
   }
 
+  @DisplayName("당첨번호가 6자리가 아니라면 예외 발생")
   @Test
-  void 당첨번호_자릿수_검사_테스트() {
+  void overOrUnderSizeWinningNumbers() {
     List<Integer> test1 = List.of(1,2,3,4,5);
     List<Integer> test2 = List.of(1,2,3,4,5,6,7);
     assertThatThrownBy(() -> WinningNumber.sizeIsSix(test1))
@@ -30,8 +31,9 @@ public class WinningNumberTest {
             .isInstanceOf(IllegalArgumentException.class);
   }
 
+  @DisplayName("유효한 숫자들이 integer List로 반환되는지 테스트")
   @Test
-  void 유효한_숫자_테스트() {
+  void stringToList() {
     String test1 = "1,2,3,4,5,6";
     List<Integer> integers = List.of(1,2,3,4,5,6);
     WinningNumber winningNumber = new WinningNumber(test1);
