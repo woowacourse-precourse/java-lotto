@@ -47,7 +47,7 @@
 +[X]  Lotto Object를 생성해 List에 담기 
 
 
-+[ ]  수익률 계산
++[X]  수익률 계산
 
 #### - Rank enum class
 +[X]  당첨 금액과 기준을 담은 enum class
