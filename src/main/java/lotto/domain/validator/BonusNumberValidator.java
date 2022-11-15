@@ -2,10 +2,10 @@ package lotto.domain.validator;
 
 import lotto.domain.WinningNumbers;
 
-import static lotto.LottoConstants.MIN_LOTTO_NUMBER;
-import static lotto.LottoConstants.MAX_LOTTO_NUMBER;
-import static lotto.ErrorMessages.RANGE_ERROR_MESSAGE;
-import static lotto.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
+import static lotto.domain.LottoConstants.MIN_LOTTO_NUMBER;
+import static lotto.domain.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.domain.validator.ErrorMessages.RANGE_ERROR_MESSAGE;
+import static lotto.domain.validator.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
 
 public class BonusNumberValidator {
     private static boolean isInValidRange(int number) {

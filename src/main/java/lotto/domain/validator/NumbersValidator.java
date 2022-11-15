@@ -3,12 +3,12 @@ package lotto.domain.validator;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.LottoConstants.LOTTO_SIZE;
-import static lotto.LottoConstants.MIN_LOTTO_NUMBER;
-import static lotto.LottoConstants.MAX_LOTTO_NUMBER;
-import static lotto.ErrorMessages.RANGE_ERROR_MESSAGE;
-import static lotto.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
-import static lotto.ErrorMessages.SIZE_ERROR_MESSAGE;
+import static lotto.domain.LottoConstants.LOTTO_SIZE;
+import static lotto.domain.LottoConstants.MIN_LOTTO_NUMBER;
+import static lotto.domain.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.domain.validator.ErrorMessages.RANGE_ERROR_MESSAGE;
+import static lotto.domain.validator.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
+import static lotto.domain.validator.ErrorMessages.SIZE_ERROR_MESSAGE;
 
 public class NumbersValidator {
     private static boolean isLottoSize(List<Integer> numbers) {

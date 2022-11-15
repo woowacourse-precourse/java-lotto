@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.LottoConstants.LOTTO_PRICE;
-import static lotto.LottoConstants.MIN_LOTTO_NUMBER;
-import static lotto.LottoConstants.MAX_LOTTO_NUMBER;
-import static lotto.LottoConstants.LOTTO_SIZE;
+import static lotto.domain.LottoConstants.LOTTO_PRICE;
+import static lotto.domain.LottoConstants.MIN_LOTTO_NUMBER;
+import static lotto.domain.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.domain.LottoConstants.LOTTO_SIZE;
 
 public class LottoGenerator {
     public static List<Lotto> generateLottos(int paidMoney) {

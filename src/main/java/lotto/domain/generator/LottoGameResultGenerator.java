@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.LottoConstants.MIN_WINNING_COUNT;
+import static lotto.domain.LottoConstants.MIN_WINNING_COUNT;
 import static lotto.domain.Rank.FIFTH;
 import static lotto.domain.Rank.FOURTH;
 import static lotto.domain.Rank.THIRD;

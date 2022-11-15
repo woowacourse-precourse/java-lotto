@@ -1,8 +1,8 @@
 package lotto.domain.validator;
 
-import static lotto.LottoConstants.LOTTO_PRICE;
-import static lotto.ErrorMessages.NEMERIC_ERROR_MESSAGE;
-import static lotto.ErrorMessages.DIVIDED_ERROR_MESSAGE;
+import static lotto.domain.LottoConstants.LOTTO_PRICE;
+import static lotto.domain.validator.ErrorMessages.NEMERIC_ERROR_MESSAGE;
+import static lotto.domain.validator.ErrorMessages.DIVIDED_ERROR_MESSAGE;
 
 public class MoneyValidator extends Validator {
     private static boolean isNumeric(String moneyInput) {

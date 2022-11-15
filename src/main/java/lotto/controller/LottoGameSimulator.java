@@ -9,7 +9,7 @@ import lotto.io.Inputter;
 import lotto.io.MessagePrinter;
 import java.util.List;
 
-import static lotto.ErrorMessages.NEMERIC_ERROR_MESSAGE;
+import static lotto.domain.validator.ErrorMessages.NEMERIC_ERROR_MESSAGE;
 
 public class LottoGameSimulator {
     private LottoGameResult lottoGameResult;

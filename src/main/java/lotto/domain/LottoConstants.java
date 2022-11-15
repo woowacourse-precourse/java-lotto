@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum LottoConstants {
     LOTTO_PRICE(1000),

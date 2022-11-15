@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.ErrorMessages.INPUT_ERROR_MESSAGE;
+import static lotto.domain.validator.ErrorMessages.INPUT_ERROR_MESSAGE;
 
 public class WinningNumbersGenerator {
     public static WinningNumbers generateWinningNumbers(String winningNumbersInput) {

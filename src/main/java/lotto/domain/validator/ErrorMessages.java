@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain.validator;
 
 public enum ErrorMessages {
     INPUT_ERROR_MESSAGE("[ERROR] 오직 숫자들만 쉼표로 공백없이 구분해 입력해야 합니다"),
