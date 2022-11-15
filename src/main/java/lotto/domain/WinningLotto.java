@@ -14,12 +14,19 @@ public class WinningLotto {
 		validateLottoString(winningLottoString);
 		parseLotto(winningLottoString);
 		validateLottoNumbers(winningLotto);
+		validateDuplicate(winningLotto);
 	}
 
 	private static void validateLottoString(String winningLottoString) {
 		validateLottoStringIsNull(winningLottoString);
 		validateLottoStringSize(winningLottoString);
 		validateLottoStringIsNumber(winningLottoString);
+	}
+
+	private static void validateDuplicate(List<Integer> winningLotto) {
+		if (winningLotto.stream().distinct().count() != winningLotto.size()) {
+			throw new IllegalArgumentException(NOT_VALID_LOTTO_DUPLICATE);
+		}
 	}
 
 	private static void validateLottoStringIsNull(String winningLottoString) {
