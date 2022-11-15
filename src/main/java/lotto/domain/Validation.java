@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.HashSet;
 import java.util.List;
 
-import static lotto.error.ErrorMessage.*;
+import static lotto.message.ErrorMessage.*;
 import static lotto.instance.Setting.*;
 
 public class Validation {
