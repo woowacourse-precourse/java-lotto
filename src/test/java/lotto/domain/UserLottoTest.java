@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +21,15 @@ class UserLottoTest {
         assertThatThrownBy(() -> new UserLotto(lottoAmount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(errorMessage);
+    }
+
+    @DisplayName("복권 구입 개수 테스트")
+    @ParameterizedTest(name = "[{index}] 구입금액 : {0}, 구입개수 : {1}")
+    @CsvSource({"'5000', 5", "'123000', 123"})
+    void getLottoCountTest(String lottoAmount, int lottoCount) {
+        UserLotto user = new UserLotto(lottoAmount);
+
+        assertThat(user.getLottoCount()).isEqualTo(lottoCount);
     }
 
     @DisplayName("로또 결과 리스트 반환")

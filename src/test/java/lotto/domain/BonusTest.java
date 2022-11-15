@@ -19,14 +19,14 @@ class BonusTest {
     void bonusNumberExceptionTest(int bonusNumber, String errorMessage) {
         List<Integer> numbers = new ArrayList<Integer>(List.of(1,2,3,4,5,6));
         Lotto winningLotto = new Lotto(numbers);
-        ;
+
         assertThatThrownBy(() -> new Bonus(bonusNumber, winningLotto))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(errorMessage);
     }
 
     @DisplayName("보너스 번호 형식 예외처리 테스트")
-    @ParameterizedTest(name = "[{index}]. {0}, [ERROR] 보너스 번호는 양의 정수 형태이어야 합니다.")
+    @ParameterizedTest(name = "[{index}] {0}, [ERROR] 보너스 번호는 양의 정수 형태이어야 합니다.")
     @ValueSource(strings = {"1a", "ab", "12.0", "-12"})
     void bonusNumberExceptionTest2(String bonusNumber) {
 
