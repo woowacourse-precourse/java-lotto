@@ -73,4 +73,25 @@ public class LottoController {
         return bonus;
     }
 
+    public static void run() {
+        // TODO: 프로그램 구현
+        int money;
+        int lottosCount;
+        List<List<Integer>> lotto_nums;
+        List<Integer> winningNumber;
+        int bonus;
+
+        try {
+            money = ownMoney();
+            lottosCount = howManyLotto(money);
+            lotto_nums = buyLottery(lottosCount);
+            winningNumber = checkWinningNumber();
+            Lotto lotto = new Lotto(winningNumber);
+            bonus = inputBonus();
+            CheckNumber.checkBonusWinnerNumber(lotto,bonus);
+            CheckNumber.viewResult(lotto, lotto_nums,bonus,money);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
