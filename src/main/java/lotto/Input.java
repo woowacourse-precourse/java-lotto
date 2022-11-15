@@ -12,7 +12,7 @@ public class Input {
     public List<Integer> getNumbers() { return this.numbers; }
     public int getMoney() { return this.money; }
     public int getBonusNumber() { return this.bonusNumber; }
-
+    
     public Input() {
         System.out.println("구입 금액을 입력해 주세요.");
         String inputmoney = Console.readLine();
@@ -38,14 +38,14 @@ public class Input {
     private boolean checkBonusNumber(String inputbonusnumber) {
         int n=Integer.parseInt(inputbonusnumber);
         if(n<1 || n>45 || this.numbers.contains(n)){
-            throw new IllegalArgumentException("[Error] 보너스 번호를 잘못 입력 하셨습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 잘못 입력 하셨습니다.");
         }
         return true;
     }
     private void splitNumbers(String userInput) {
         String[] splitstring = userInput.split(",", 6);
         if(splitstring.length != 6) {
-            throw new IllegalArgumentException("[Error] 당첨 번호를 잘못 입력 하셨습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 잘못 입력 하셨습니다.");
         }
         if(checkNumbers(splitstring)) {
             for (String s : splitstring) {
@@ -56,21 +56,20 @@ public class Input {
     private boolean checkMoney(String inputmoney) {
         for(char c :inputmoney.toCharArray()){
             if(!Character.isDigit(c))
-                throw new IllegalArgumentException("[Error] 구매 금액을 잘못 입력 하셨습니다.");
+                throw new IllegalArgumentException("[ERROR] 구매 금액을 잘못 입력 하셨습니다.");
         }
         if(inputmoney.charAt(0) == '0')
-            throw new IllegalArgumentException("[Error] 구매 금액을 잘못 입력 하셨습니다.");
+            throw new IllegalArgumentException("[ERROR] 구매 금액을 잘못 입력 하셨습니다.");
         int money = Integer.parseInt(inputmoney);
         if((money % 1000) != 0)
-            throw new IllegalArgumentException("[Error] 구매 금액을 잘못 입력 하셨습니다.");
-
+            throw new IllegalArgumentException("[ERROR] 구매 금액을 잘못 입력 하셨습니다.");
         return true;
     }
     private boolean checkNumbers(String[] splitstring) {
         try{
             for(String s : splitstring) Integer.parseInt(s);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[Error] 당첨 번호를 잘못 입력 하셨습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 잘못 입력 하셨습니다.");
         }
         return true;
     }
