@@ -30,4 +30,8 @@ public class Winning {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    private boolean isInvalidNumbersSize(List<Integer> numbers, int numberSize) {
+        return numbers.size() != numberSize;
+    }
 }
