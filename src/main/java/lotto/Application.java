@@ -11,10 +11,20 @@ public class Application {
 
         LottoMachine lottoMachine = new LottoMachine();
 
-        List<List<Integer>> issueLotto = lottoMachine.issueLotto(amount);
+        List<List<Integer>> issueLottos = lottoMachine.issueLotto(amount);
 
         List<Integer> numbersOfWinner = ui.getWinningNumber();
 
-        int bunusNumber = ui.getBonusNumber();
+        int bonusNumber = ui.getBonusNumber();
+
+        int[] countOfRank = new int[6];
+
+        for (List<Integer> lottos : issueLottos) {
+            Lotto lotto = new Lotto(lottos);
+            countOfRank[lotto.compareLotto(numbersOfWinner, bonusNumber)]++;
+        }
+
+        ui.outputResult(countOfRank, amount);
+
     }
 }

@@ -138,4 +138,29 @@ public class UI {
 
         return Integer.parseInt(bonusNumber);
     }
+
+    public void outputResult(int[] countOfRank, int amount) {
+        System.out.println("당첨 통계");
+        System.out.println("===");
+        System.out.println("3개 일치 (5,000원) - " + countOfRank[5] + "개");
+        System.out.println("4개 일치 (50,000원) - " + countOfRank[4] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + countOfRank[3] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countOfRank[2] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + countOfRank[1] + "개");
+
+        calculateYield(countOfRank, amount);
+    }
+
+    public static void calculateYield(int[] countOfRank, int amount) {
+        long sum = 0;
+        sum += 5000 * countOfRank[5];
+        sum += 50000 * countOfRank[4];
+        sum += 1500000 * countOfRank[3];
+        sum += 30000000 * countOfRank[2];
+        sum += 2000000000 * countOfRank[1];
+
+        long yield = sum / amount + sum % amount;
+        System.out.println("총 수익률은 " + Math.round(yield * 100) + "%입니다.");
+
+    }
 }
