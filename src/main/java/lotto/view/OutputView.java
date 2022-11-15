@@ -24,7 +24,7 @@ public class OutputView {
     }
 
     public static void printPurchasedNumbers(List<Lotto> purchasedNumbers) {
-        
+
         for (Lotto lotto : purchasedNumbers) {
             String s = "";
             s += "[";
