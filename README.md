@@ -179,14 +179,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
@@ -225,3 +226,43 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 기능 목록 정리
+
+-[x] 당첨금을 `Enum`으로 처리
+-[x] 상수를 인터페이스에 넣어서 따로 처리
+
+### Manager class
+
+-[x] 구입 가격을 입력 받는 메서드 - `setPerchasePrice`
+-[x] 구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottos`
+-[x] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
+-[x] 수익율 계산 메서드 - `calculateYield`
+
+### Lotto class
+
+-[x] 로또 번호는 생성자를 통해서 입력 받는다.
+-[x] 보너스 번호를 입력 받는다. `setLottoBonusNumber`
+-[x] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 - `getMatchCountWithLotto`
+
+### LottoUI
+
+-[x] 구매할 금액을 입력받는 메서드 - `setPurchasePrice`
+-[x] 구매한 금액에 맞춰서 로또 발급해주는 메서드 - `publishLottos`
+-[x] 로또 번호를 입력받아서 설정하는 메서드 - `setLottoNumber`
+-[x] 로또 보너스 번호를 설정하는 메서드 - 'setBonusNumber'
+-[x] 발급받은 로또에 대한 결과를 출력해주는 메서드 - `getLottoResult`
+
+### validate class
+
+-[x] 입력을 받을 때 범위를 벗어나면 발생하는 예외 - `validateInputLength`
+-[x] 중복된 숫자가 들어오면 발생하는 예외 - `validateDuplicate`
+-[x] 숫자 범위를 넘어가면 발생하는 예외 - `validateRange`
+-[x] 숫자가 아닌 것이 들어오면 발생하는 예외 - `validateIsNumber`
+-[x] 1000으로 나눠떨어지지 않는 경우 예외 처리 - `validatePurchasePrice`
+
+## 고민하는 것들
+
+- 예외처리를 뺄까 말까?
+- `Lotto class`를 `Manager class`에 주입해서 의존성을 넣어볼까?
+- 클래스끼리 너무 강한 결합을 하고 있는 것은 아닐까?
