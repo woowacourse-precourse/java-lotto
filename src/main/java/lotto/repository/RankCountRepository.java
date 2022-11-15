@@ -8,7 +8,7 @@ public class RankCountRepository {
     private final HashMap<Rank, Integer> rankCountMap = new HashMap<>();
 
     public void save(Rank rank) {
-        rankCountMap.put(rank, rankCountMap.getOrDefault(rank, 1));
+        rankCountMap.put(rank, rankCountMap.getOrDefault(rank, 0) + 1);
     }
 
     public Integer findOne(Rank rank) {
