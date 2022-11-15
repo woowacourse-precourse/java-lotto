@@ -1,17 +1,19 @@
 package lotto;
 
+import lotto.constant.LottoConstant;
+
 import java.util.List;
 
 public class MyLottoList {
-    private int number;
+    private int count;
     private List<Lotto> lotto;
 
     public MyLottoList(int money) {
-        this.number = money / 1000;
+        this.count = money / LottoConstant.ONE_PRICE;
     }
 
-    public int getNumber() {
-        return number;
+    public int getCount() {
+        return count;
     }
 
     public List<Lotto> getLotto() {

@@ -3,9 +3,6 @@ package lotto.view;
 import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
-import lotto.PrizeLotto;
-import org.junit.jupiter.params.ParameterizedTest;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +36,7 @@ public class LottoView {
 
     public static void outputLottoList(MyLottoList myLottoList) {
         for(Lotto lotto : myLottoList.getLotto()) {
-            AppView.outputLine(String.valueOf(lotto));
+            AppView.outputLine(String.valueOf(lotto.getCounts()));
         }
     }
 

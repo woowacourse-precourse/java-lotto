@@ -5,6 +5,7 @@ import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
 import lotto.PrizeLotto;
+import lotto.constant.LottoConstant;
 import lotto.view.LottoView;
 
 import java.util.ArrayList;
@@ -12,28 +13,28 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
-    public static MyLottoList generateMyLottoInstance(int money) {
+    public static MyLottoList generateMyLottoListLotto(int money) {
         return new MyLottoList(money);
     }
 
+    public static void setMyLottoListLotto(MyLottoList myLottoList) {
+        List<Lotto> temp = new ArrayList<>();
+        for(int i=0 ; i<myLottoList.getCount() ; i++) {
+            temp.add(generateOneLotto());
+        }
+        myLottoList.setLotto(temp);
+    }
+
     public static Lotto generateOneLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoConstant.START_NUMBER, LottoConstant.END_NUMBER, LottoConstant.TOTAL_COUNT);
         sortAscendingOrder(numbers);
         return new Lotto(numbers);
     }
 
     public static void sortAscendingOrder(List<Integer> numbers) {
-        List<Integer> tempList = new ArrayList<>(numbers);
-        Collections.sort(tempList);
-        numbers = tempList;
-    }
-
-    public static void generateMyLottoList(MyLottoList myLottoList) {
-        List<Lotto> tempList = new ArrayList<>();
-        for(int i=0 ; i<myLottoList.getNumber() ; i++) {
-            tempList.add(generateOneLotto());
-        }
-        myLottoList.setLotto(tempList);
+        List<Integer> temp = new ArrayList<>(numbers);
+        Collections.sort(temp);
+        numbers = temp;
     }
 
     public static PrizeLotto generatePrizeLottoInstance() {
@@ -59,8 +60,8 @@ public class LottoController {
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {
         int correctNum = 0;
         int rank = 0;
-        for(int num : lotto.getNumbers()) {
-            if(prizeLotto.getPrizeLotto().getNumbers().contains(num)) {
+        for(int num : lotto.getCounts()) {
+            if(prizeLotto.getPrizeLotto().getCounts().contains(num)) {
                 correctNum += 1;
             }
         }
@@ -78,7 +79,7 @@ public class LottoController {
         }
 
         if(correctNum == 5) {
-            if(lotto.getNumbers().contains(BonusNum)) {
+            if(lotto.getCounts().contains(BonusNum)) {
                 return 2;
             }
 

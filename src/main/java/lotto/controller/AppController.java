@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
 import lotto.PrizeLotto;
@@ -8,19 +7,19 @@ import lotto.view.AppView;
 import lotto.view.LottoView;
 
 public class AppController {
-    MyLottoList myLottoList;
-    PrizeLotto prizeLotto;
-    MyPrize myPrize;
-    int money;
-    int bonusNum;
+    private MyLottoList myLottoList;
+    private PrizeLotto prizeLotto;
+    private MyPrize myPrize;
+    private int money;
+    private int bonusNum;
 
     private void purchaseLotto() {
         AppView.outputLine("구입금액을 입력해 주세요.");
         money = LottoView.inputMoney();
         AppView.outputLine("");
-        myLottoList = LottoController.generateMyLottoInstance(money);
-        AppView.outputLine((myLottoList.getNumber()) + "개를 구매했습니다.");
-        LottoController.generateMyLottoList(myLottoList);
+        myLottoList = LottoController.generateMyLottoListLotto(money);
+        AppView.outputLine(myLottoList.getCount() + "개를 구매했습니다.");
+        LottoController.setMyLottoListLotto(myLottoList);
         LottoView.outputLottoList(myLottoList);
         AppView.outputLine("");
     }

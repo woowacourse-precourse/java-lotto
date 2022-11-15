@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.constant.LottoConstant;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,35 +15,22 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
+    public List<Integer> getCounts() {
         return numbers;
     }
 
     // test: test/java/lotto/LottoTest/createLottoByOverSize()
     private void validateAmount(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != LottoConstant.TOTAL_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개이어야 합니다.");
         }
     }
 
     // test: test/java/lotto/LottoTest/createLottoByDuplicatedNumber()
     private void validateOverlap(List<Integer> numbers) {
-        Set<Integer> testSet = new HashSet<>(numbers);
-        if(numbers.size() != testSet.size()) {
-            throw new IllegalArgumentException();
+        Set<Integer> test = new HashSet<>(numbers);
+        if(numbers.size() != test.size()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복이 없어야 합니다.");
         }
-    }
-
-    @Override
-    public String toString() {
-        String returnString = "[";
-        for(int i=0 ; i<6 ; i++) {
-            returnString = returnString + numbers.get(i);
-            if(i != 5) {
-                returnString = returnString + ", ";
-            }
-        }
-        returnString = returnString + "]";
-        return returnString;
     }
 }
