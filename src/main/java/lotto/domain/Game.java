@@ -1,20 +1,20 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
-    public static final String notThousand =" 구입금액은 천원 단위여야합니다.";
-    public static final String notNumber =" 구입금액은 숫자여야합니다.";
-    public static final int unit = 1000;
+    private static final String notThousand =" 구입금액은 천원 단위여야합니다.";
+    private static final String notNumber =" 구입금액은 숫자여야합니다.";
+    private static final int unit = 1000;
+
     public void gameStart(){
         System.out.println(Resource.greetings);
-        String purchase = Console.readLine();
-        int lottoUnit = checkIfDivideWithThousand(purchase);
-
-        System.out.println(Resource.countOfBuying);
-        //랜덤 구매 번호 출력
-
+        showBoughtNumbers();
         System.out.println(Resource.inputOfWinningNumber);
         String winNumber = Console.readLine();
 
@@ -31,6 +31,16 @@ public class Game {
 
 
     }
+
+
+    private Lotto getLotto(List<Lotto> lottos) {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+        Lotto lotto = new Lotto(numbers);
+        lottos.add(lotto);
+        return lotto;
+    }
+
+
     public int checkIfDivideWithThousand(String purchase){
         try{
             int purchaseBill = Integer.parseInt(purchase);
