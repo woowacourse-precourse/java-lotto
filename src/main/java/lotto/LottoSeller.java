@@ -5,8 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static constants.Constant.*;
 import static constants.Message.*;
-import static constants.ErrorMessage.ERROR_INPUT_PAY_AMOUNT;
+import static constants.ErrorMessage.*;
 
 public class LottoSeller {
     int payAmount;
@@ -28,21 +29,21 @@ public class LottoSeller {
     }
 
     private void checkRange(String inputMoney) {
-        if (!inputMoney.matches("[0-9]+")) {
+        if (!inputMoney.matches(REG_EXP_NUMBER_ONLY)) {
             System.out.println(ERROR_INPUT_PAY_AMOUNT);
             throw new IllegalArgumentException();
         }
     }
 
     private void checkAmount(String inputMoney) {
-        if (Integer.parseInt(inputMoney) % 1000 != 0) {
+        if (Integer.parseInt(inputMoney) % PRICE_OF_ONE_TICKET != 0) {
             System.out.println(ERROR_INPUT_PAY_AMOUNT);
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
 
     public int countNumberOfTickets() {
-        this.numberOfTickets = payAmount / 1000;
+        this.numberOfTickets = payAmount / PRICE_OF_ONE_TICKET;
         return numberOfTickets;
     }
 

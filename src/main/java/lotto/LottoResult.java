@@ -1,5 +1,6 @@
 package lotto;
 
+import static constants.Constant.*;
 import static constants.Message.*;
 
 public class LottoResult {
@@ -26,7 +27,7 @@ public class LottoResult {
         if (sum == 0) {
             return 0;
         }
-        returnRate = (double) sum / (numberOfLottos * 1000) * 100;
+        returnRate = (double) sum / (numberOfLottos * PRICE_OF_ONE_TICKET) * 100;
 
         return returnRate;
     }

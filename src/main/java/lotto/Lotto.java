@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import static constants.Constant.*;
 import static constants.ErrorMessage.*;
 
 public class Lotto {
@@ -22,7 +23,7 @@ public class Lotto {
     }
 
     private void checkLength(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(ERROR_LENGTH);
         }
     }
@@ -36,7 +37,7 @@ public class Lotto {
     }
 
     private void checkRange(List<Integer> numbers) {
-        if (Collections.min(numbers) < 1 || Collections.max(numbers) > 45) {
+        if (Collections.min(numbers) < MIN_LOTTO_NUMBER || Collections.max(numbers) > MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException(ERROR_RANGE);
         }
     }

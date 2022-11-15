@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static constants.Constant.*;
 import static constants.ErrorMessage.*;
 
 public class LottoDrawing {
@@ -21,7 +22,7 @@ public class LottoDrawing {
     }
 
     private List<Integer> convertStringToNumberList(String input) {
-        String[] tempInputs = input.split(",");
+        String[] tempInputs = input.split(SPlIT_BY_THIS);
         List<Integer> numbers = new ArrayList<>();
         for (String number : tempInputs) {
             int temp = convertStringToInteger(number);
@@ -32,7 +33,7 @@ public class LottoDrawing {
 
     private int validateBonus(String input) {
         int bonusNumber = convertStringToInteger(input);
-        if (bonusNumber < 1 || bonusNumber > 45) {
+        if (bonusNumber < MIN_LOTTO_NUMBER || bonusNumber > MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException(ERROR_RANGE); //상수변경해야함 : 1 이상 45 이하의 숫자만 입력할 수 있습니다.
         }
         return bonusNumber;
@@ -44,7 +45,7 @@ public class LottoDrawing {
     }
 
     private void validateInteger(String input) {
-        if (!input.matches("[0-9]+")) {
+        if (!input.matches(REG_EXP_NUMBER_ONLY)) {
             throw new IllegalArgumentException(ERROR_NOT_NUMBER); //상수변경해야함 :숫자만 입력할 수 있습니다.
         }
     }

@@ -17,7 +17,6 @@ public enum PrizeEnum {
     private boolean bonusCorrect;
     private String message;
     private int count;
-    private List<Integer> ans = new ArrayList<>(List.of(2, 3, 3, 0, 4));
 
     PrizeEnum(int prize, int correctNumber, boolean bonusCorrect, String message) {
         this.prize = prize;
