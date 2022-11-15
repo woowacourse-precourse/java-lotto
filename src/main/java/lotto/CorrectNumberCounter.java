@@ -3,9 +3,11 @@ package lotto;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import lotto.EnumCreate.MatchAmount;
 
 public class CorrectNumberCounter {
-
+    MatchAmount matchFiveBouns = MatchAmount.FIVEBONUS;
+    MatchAmount matchSix = MatchAmount.SIX;
 
     public List<Integer> correctNumberList(List<List<Integer>> user, List<Integer> winNumber, int bounsNumber) {
         List<Integer> correctNumberList = new ArrayList<>();
@@ -23,7 +25,8 @@ public class CorrectNumberCounter {
         int removeDuplicationSize = new HashSet(listsCombination).size();
         int correctNumber = listsCombination.size() - removeDuplicationSize;
 
-        if (correctNumber == 6 || (correctNumber == 5 && checkBonus(listsCombination, bounsNumber))) {
+        if (correctNumber == matchSix.getNumber() || (correctNumber == matchFiveBouns.getNumber() - 1 && checkBonus(
+                listsCombination, bounsNumber))) {
             correctNumber++; // 겹치는 숫자 개수를 나중에 인덱스로 사용하기 위해, '6개 겹치는 경우'와 '5개 겹치고 1개 보너스인 경우'에 +1을 하여 구분 지었음.
         }
 

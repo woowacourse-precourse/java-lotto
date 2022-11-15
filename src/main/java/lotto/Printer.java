@@ -4,58 +4,20 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.EnumCreate.MatchAmount;
+import lotto.EnumCreate.MatchAmount.LottoMatchMoneyMessage;
 
 public class Printer {
 
-    public enum LottoMatchMoney {
-        THREE("3개 일치 (5,000원) - "),
-        FOUR("4개 일치 (50,000원) - "),
-        FIVE("5개 일치 (1,500,000원) - "),
-        FIVEBONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-        SIX("6개 일치 (2,000,000,000원) - ");
-        private String numberMessage;
-        LottoMatchMoney(String numberMessage) {
-            this.numberMessage = numberMessage;
-        }
+    MatchAmount matchThree = MatchAmount.THREE;
+    MatchAmount matchSix = MatchAmount.SIX;
+    private static final String BUY = "개를 구매했습니다.";
+    private static final String STATICS = "당첨 통계\n---";
+    private static final String REVENUE = "총 수익률은 ";
+    private static final String REVENUE2 = "%입니다.";
+    private static final String UNIT = "개";
 
-        public String getNumberMessage() {
-            return numberMessage;
-        }
-    }
-
-    public enum Message{
-        BUY("개를 구매했습니다."),
-        STATICS ( "당첨 통계\n---"),
-        REVENUE ( "총 수익률은 "),
-        REVENUE2 ( "%입니다."),
-        UNIT ( "개");
-
-        private String message;
-
-
-        Message(String message) {
-            this.message = message;
-        }
-
-        public String getOutputMessage(){
-            return message;
-        }
-    }
-    Message buyMessage = Message.BUY;
-    String buy = buyMessage.getOutputMessage();
-
-    Message staticsMessage = Message.STATICS;
-    String statics = staticsMessage.getOutputMessage();
-
-    Message revenueMessage = Message.REVENUE;
-    String revenue = revenueMessage.getOutputMessage();
-
-    Message revenueTwoMessage = Message.REVENUE2;
-    String revenue2 = revenueTwoMessage.getOutputMessage();
-
-    Message unitMessage = Message.UNIT;
-    String unit = unitMessage.getOutputMessage();
-
+    private static final int PERCENT = 100;
 
     public void printToDo(String toDo) {
         System.out.println(toDo);
@@ -65,7 +27,7 @@ public class Printer {
 
         int amountLotto = lottoInput.size();
 
-        System.out.println(amountLotto + this.buy);
+        System.out.println(amountLotto + BUY);
 
         for (int i = 0; i < amountLotto; i++) {
             System.out.println(lottoInput.get(i));
@@ -76,14 +38,14 @@ public class Printer {
     public void printWinList(List<Integer> correctNumberList) {
         List<Integer> amountEachWin = knowAmountEachWin(correctNumberList);
 
-        System.out.println(this.statics);
+        System.out.println(STATICS);
 
-        for (LottoMatchMoney matchNumber : LottoMatchMoney.values()) {
+        for (LottoMatchMoneyMessage matchNumber : LottoMatchMoneyMessage.values()) {
             int index = matchNumber.ordinal();
 
             String numberMessage = matchNumber.getNumberMessage();
 
-            System.out.println(numberMessage + amountEachWin.get(index) + this.unit);
+            System.out.println(numberMessage + amountEachWin.get(index) + UNIT);
         }
     }
 
@@ -91,10 +53,9 @@ public class Printer {
 
         List<Integer> frequencyList = new ArrayList<>();
 
-        for (int i = 3; i < 8; i++) {
+        for (int i = matchThree.getNumber(); i < matchSix.getNumber() + 1; i++) {
             int frequency = Collections.frequency(correctNumberList, i);
             frequencyList.add(frequency);
-
         }
         return frequencyList;
     }
@@ -104,9 +65,9 @@ public class Printer {
         double doubleInputMoney = inputMoney;
         double doubleRevenue = revenue;
 
-        double revenuePercent = doubleRevenue / doubleInputMoney * 100;
+        double revenuePercent = doubleRevenue / doubleInputMoney * PERCENT;
 
-        System.out.println(this.revenue + String.format("%.1f", revenuePercent) + this.revenue2);
+        System.out.println(REVENUE + String.format("%.1f", revenuePercent) + REVENUE2);
 
     }
 
