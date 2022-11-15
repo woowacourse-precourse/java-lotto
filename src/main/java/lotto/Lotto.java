@@ -17,7 +17,6 @@ public class Lotto {
     private static final Money lottoPrice = new Money(1000);
 
 
-
     public Lotto(List<Integer> numbers) {
         validate(numbers);
 
@@ -38,7 +37,7 @@ public class Lotto {
 
     public static void buy(Money money) {
         int countLottos = money.lottoAccount(lottoPrice);
-        for (int i=0; i < countLottos; i++) {
+        for (int i = 0; i < countLottos; i++) {
             lottos.add(new Lotto(generateLottoNumbers()));
         }
     }
@@ -64,12 +63,16 @@ public class Lotto {
 
     public static Map<LottoPrize, Integer> checkWinning(WinningNumbers winningNumbers) {
         Map<LottoPrize, Integer> result = new HashMap<>();
+        for (LottoPrize prize : LottoPrize.values()) {
+            result.put(prize, 0);
+        }
+
         for (Lotto lotto : lottos) {
-            LottoPrize prize = confirmWinning(winningNumbers);
+            LottoPrize prize = lotto.confirmWinning(winningNumbers);
             result.put(prize, result.get(prize) + 1);
         }
 
-        return result;
+        return Collections.unmodifiableMap(result);
     }
 
 }

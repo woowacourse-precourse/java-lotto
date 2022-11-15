@@ -17,6 +17,7 @@ public class LottoController {
         WinningNumbers winningNumbers = printWinningNumber();
         LottoResult lottoResult = lottoGame.checkWinning(winningNumbers);
 
+        printResult(lottoResult);
     }
 
     public void printLottos(List<Lotto> lottos) {

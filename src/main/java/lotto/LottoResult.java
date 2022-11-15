@@ -15,7 +15,6 @@ public class LottoResult {
     private void addKey(Map<LottoPrize, Integer> result) {
         for (LottoPrize prize : LottoPrize.values()) {
             result.put(prize, result.getOrDefault(prize, 0));
-
         }
     }
 
