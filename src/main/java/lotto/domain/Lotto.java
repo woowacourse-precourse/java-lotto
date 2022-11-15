@@ -41,6 +41,9 @@ public class Lotto {
     }
 
     public void addBonusNum(int bonusNum) {
+        if(this.numbers.contains(bonusNum)) {
+            throw new IllegalArgumentException();
+        }
         this.bonusNum = bonusNum;
     }
 
