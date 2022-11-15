@@ -4,6 +4,7 @@ import lotto.domain.lotto.PurchaseLottos;
 import lotto.domain.lotto.WinningLotto;
 
 public class WinningStatistics {
+
     private final PurchaseLottos purchaseLottos;
     private final WinningLotto winningLotto;
 
@@ -18,8 +19,6 @@ public class WinningStatistics {
         setYieldRate();
     }
 
-    // 각각 횟수 구하기
-    // 수익률 구하기
     public void fillLottoPlaceCount() {
         this.placeHistory = purchaseLottos.placeHistoryFor(winningLotto);
     }

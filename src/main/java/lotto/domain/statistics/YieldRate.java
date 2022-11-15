@@ -3,6 +3,7 @@ package lotto.domain.statistics;
 import static lotto.value.RateValue.PERCENT;
 
 public class YieldRate {
+
     private final int calculateAmount;
     private final long amountSum;
 
