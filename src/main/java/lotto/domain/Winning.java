@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.utils.Error;
+import lotto.utils.ErrorException;
+
 import java.util.List;
 
 public class Winning {
@@ -12,5 +15,11 @@ public class Winning {
 
     public Winning(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    private void isNotNumeric(String inputNumbers) {
+        if (!inputNumbers.replace(",", "").chars().allMatch(Character::isDigit)) {
+            throw new ErrorException(Error.IS_NOT_NUMERIC.toString());
+        }
     }
 }
