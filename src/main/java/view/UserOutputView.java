@@ -13,7 +13,7 @@ public class UserOutputView {
     static final String THIRD_PRIZE_RESULT = "5개 일치 (%s원) - %d개\n";
     static final String SECOND_PRIZE_RESULT = "5개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     static final String FIRST_PRIZE_RESULT = "6개 일치 (%s원) - %d개\n";
-    static final String CALCULATE_YIELD_RATE = "총 수익률은 %s%%입니다.\n";
+    static final String CALCULATE_YIELD_RATE = "총 수익률은 %.1f%%입니다.\n";
     static final String CALCULATE_PURCHASE_LOTTO = "\n%d개를 구매했습니다.\n";
 
     public static void printPurchaseLottoNumber(Lotto lotto) {

@@ -36,7 +36,7 @@ public class LottoResult {
     }
 
     public double getYield() {
-        return (double) Math.round(yield * 100) / 100;
+        return yield;
     }
 
 
