@@ -6,13 +6,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
-import lotto.domain.LottoConstant;
+import lotto.LottoConstant;
 import lotto.domain.Result;
 import lotto.domain.WinNumbers;
 
 public class LottoService {
-
-    private static final int LOTTO_PRICE = 1000;
 
     private static LottoService instance;
 
@@ -29,7 +27,7 @@ public class LottoService {
     public List<Lotto> sellLotto(long amount) {
         validateAmount(amount);
 
-        long sellableLotto = amount / LOTTO_PRICE;
+        long sellableLotto = amount / LottoConstant.PRICE.getValue();
 
         List<Lotto> lottos = new ArrayList<>();
 

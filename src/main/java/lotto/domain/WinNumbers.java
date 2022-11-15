@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.LottoConstant;
 
 public class WinNumbers {
 
