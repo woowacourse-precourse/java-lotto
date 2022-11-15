@@ -6,6 +6,7 @@ import static lotto.Message.MATCH_FOUR_NUMBERS;
 import static lotto.Message.MATCH_SIX_NUMBERS;
 import static lotto.Message.MATCH_THREE_NUMBERS;
 import static lotto.Message.STATISTICS;
+import static lotto.Message.TOTAL_RETURN_ON_INVESTMENT;
 import static lotto.Rank.FIFTH;
 import static lotto.Rank.FIRST;
 import static lotto.Rank.FOURTH;
@@ -13,6 +14,7 @@ import static lotto.Rank.SECOND;
 import static lotto.Rank.THIRD;
 import static lotto.Rank.values;
 
+import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -66,9 +68,49 @@ public class LottoStatistics {
         System.out.println(MATCH_FIVE_NUMBERS_WITHOUT_BONUS.getMessage() + countOf(THIRD) + UNIT_OF_COUNT);
         System.out.println(MATCH_FIVE_NUMBERS_WITH_BONUS.getMessage() + countOf(SECOND) + UNIT_OF_COUNT);
         System.out.println(MATCH_SIX_NUMBERS.getMessage() + countOf(FIRST) + UNIT_OF_COUNT);
+
+        System.out.println(TOTAL_RETURN_ON_INVESTMENT.getMessage() + getFormattedReturnOnInvestment() + SUFFIX);
     }
 
     private int countOf(Rank rank) {
         return statistics.get(rank);
+    }
+
+    private String getFormattedReturnOnInvestment() {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,##0.0%");
+
+        double returnOnInvestment = getReturnOnInvestment();
+
+        return decimalFormat.format(returnOnInvestment);
+    }
+
+    private double getReturnOnInvestment() {
+        double totalReturn = getTotalReturn();
+
+        double totalInvestment = getTotalInvestment();
+
+        return totalReturn / totalInvestment;
+    }
+
+    private double getTotalReturn() {
+        double totalReturn = INIT_COUNT;
+
+        for (Rank rank : values()) {
+            totalReturn += getReturnByRank(rank);
+        }
+
+        return totalReturn;
+    }
+
+    private double getReturnByRank(Rank rank) {
+        return getWinningMoneyByRank(rank) * countOf(rank);
+    }
+
+    private double getWinningMoneyByRank(Rank rank) {
+        return rank.getWinningMoney();
+    }
+
+    private int getTotalInvestment() {
+        return lottos.size() * Lotto.PRICE;
     }
 }

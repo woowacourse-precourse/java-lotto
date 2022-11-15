@@ -11,7 +11,8 @@ public enum Message {
     MATCH_FIVE_NUMBERS_WITH_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     MATCH_SIX_NUMBERS("6개 일치 (2,000,000,000원) - "),
 
-    STATISTICS("당첨 통계");
+    STATISTICS("당첨 통계"),
+    TOTAL_RETURN_ON_INVESTMENT("총 수익률은 ");
 
     private String message;
 
