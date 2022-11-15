@@ -32,4 +32,8 @@ public class LottoCalculator {
                 .filter(winningNumbers::contains)
                 .count();
     }
+
+    public double calculateProfitRate(int amount) {
+        return totalProfit / (double) amount * 100;
+    }
 }
