@@ -18,22 +18,31 @@ public class Application {
         try {
             String amount = inputAmount();
             LottoList userLotto = new LottoList(new BigInteger(amount));
+            PrintGameInfo.printNextLine();
 
             PrintGameInfo.purchaseCount(userLotto.getLottoCount());
             PrintGameInfo.lottoInfoList(userLotto);
+            PrintGameInfo.printNextLine();
 
             PrintGameInfo.winningNumberInfo();
             userLotto.setWinningLotto(inputLottoWinningNumbers());
+            PrintGameInfo.printNextLine();
 
             PrintGameInfo.bonnusNumberInfo();
             userLotto.setBonnusNumber(inputBonnusNumber());
+            PrintGameInfo.printNextLine();
+
             userLotto.checkAllLotto();
+
+            PrintGameInfo.winningTotalInfo();
+            PrintGameInfo.lottoResultInfo(userLotto);
 
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
 
     }
+
     public static String inputAmount() {
         String amount = Console.readLine();
         InputException.emptyException(amount);

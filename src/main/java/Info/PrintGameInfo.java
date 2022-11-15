@@ -11,6 +11,9 @@ public class PrintGameInfo {
     public static final String ERROR = "[ERROR] ";
     public static final String OPEN_SQUARE_BRACKETS = "[";
     public static final String CLOSE_SQUARE_BRACKETS = "]";
+    public static final String NEXT_LINE = "\n";
+    public static final String HYPHEN = " - ";
+    public static final String COUNT_UNIT = "개";
     public static final String IS_NOT_DIGIT_STRING = "숫자 이외의 값이 존재합니다.";
     public static final String IS_EMPTY_STRING = "아무 값도 입력하지 않았습니다.";
     public static final String NOT_DIVDE_THOUSAND = "최소단위"+Integer.toString(LottoList.AMOUNT_UNIT)+"로 나눠지지 않습니다.";
@@ -22,8 +25,6 @@ public class PrintGameInfo {
     public static final String DUPLICATE = "사용자의 입력 중 중복되는 값이 존재합니다.";
     public static final String BONNUS_NUMBER_EXIST = "보너스 번호의 값이 이미 당첨 번호에 선택되었습니다.";
     public static final String POINT_ERROR = "잘못된 포인트 값이 들어왔습니다. 내부 로직 에러";
-    public static final String WINNING_TOTAL = "당첨 통계";
-    public static final String BAR = "---";
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -33,6 +34,14 @@ public class PrintGameInfo {
     }
     public static void bonnusNumberInfo() {
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void winningTotalInfo() {
+        System.out.println("당첨 통계\n---");
+    }
+
+    public static void printNextLine() {
+        System.out.println(PrintGameInfo.NEXT_LINE);
     }
 
     public static void purchaseCount(BigInteger count) {
@@ -45,6 +54,19 @@ public class PrintGameInfo {
             System.out.println(OPEN_SQUARE_BRACKETS+lottoNumbers+CLOSE_SQUARE_BRACKETS);
         }
     }
+
+    public static void lottoResultInfo(LottoList userLotto) {
+        for (int winIndex=0; winIndex < LottoList.WIN_COUNT; winIndex++) {
+            WinningStatus status = WinningStatus.getWinningStatusWithIndex(winIndex);
+            long winningCount =  userLotto.getWinningCountValue(winIndex);
+            System.out.println(getResultInfo(status.getPrintInfo(), Long.toString(winningCount));
+        }
+    }
+
+    private static String getResultInfo(String statusInfo, String countInfo) {
+        return statusInfo + HYPHEN + countInfo + COUNT_UNIT;
+    }
+
 
     public static String getIsNotDigitString() {
         return ERROR + IS_NOT_DIGIT_STRING;

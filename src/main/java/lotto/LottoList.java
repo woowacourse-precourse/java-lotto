@@ -14,14 +14,14 @@ import java.util.Set;
 
 public class LottoList {
     public static final int AMOUNT_UNIT = 1000;
-
+    public static final int WIN_COUNT = 5;
     private BigInteger lottoAmount;
     private BigInteger lottoCount;
     private List<Lotto> lottos = new ArrayList<>();
     private Lotto winningLotto;
     private int bonnusNumber;
     private long totalMoney;
-    private long[] winningList = new long[5];
+    private long[] winningCount = new long[WIN_COUNT];
 
     LottoList(BigInteger amount) {
         LottoList.notDivThousand(amount);
@@ -62,6 +62,15 @@ public class LottoList {
 
     public Long getTotalMoney() {
         return totalMoney;
+    }
+
+    /**
+     * WinningCount의 값 하나를 가져오는 함수
+     * @param index 인덱스
+     * @return
+     */
+    public long getWinningCountValue(int index) {
+        return winningCount[index];
     }
 
     public void setWinningLotto(Lotto lotto) {
@@ -130,8 +139,8 @@ public class LottoList {
                 continue;
             }
 
-            WinningStatus status = WinningStatus.getWinningStatus(point);
-            winningList[status.getPointIndex()] += 1;
+            WinningStatus status = WinningStatus.getWinningStatusWithPoint(point);
+            winningCount[status.getPointIndex()] += 1;
             totalMoney += status.getWinningMoney();
         }
     }
@@ -181,5 +190,7 @@ public class LottoList {
 
         return false;
     }
+
+
 }
 
