@@ -18,7 +18,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getLottoNumbers(){
+    public List<Integer> getLottoNumbers() {
         return numbers;
     }
 
@@ -39,19 +39,19 @@ public class Lotto {
         }
     }
 
-    private void validateOverlap(List<Integer> numbers){
+    private void validateOverlap(List<Integer> numbers) {
         Set<Integer> overlapCheck = new HashSet<>();
         for (int i = 0; i < numbers.size(); i++) {
             overlapCheck.add(numbers.get(i));
         }
 
-        if(overlapCheck.size() != 6){
+        if (overlapCheck.size() != 6) {
             throw new IllegalArgumentException(NOT_NUMBER_OVERLAP);
         }
     }
 
-    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber){
-        if(numbers.contains(bonusNumber)){
+    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(NOT_NUMBER_OVERLAP);
         }
     }

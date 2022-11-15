@@ -24,10 +24,10 @@ public class PlayerLottoAmount {
         validateDivisible(amount);
     }
 
-    private static int validateNumber(String amount) throws IllegalArgumentException{
+    private static int validateNumber(String amount) throws IllegalArgumentException {
         try {
             return Integer.parseInt(amount);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println(NOT_NUMBER_ERROR);
             throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }

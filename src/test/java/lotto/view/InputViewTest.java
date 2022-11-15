@@ -19,7 +19,7 @@ class InputViewTest {
     @ValueSource(strings = {"1,2,c,d,5,6", "1.2.3.4.5.6"})
     @DisplayName("올바르지 않은 입력값")
     void failed(String inputWinningNumber) {
-        assertThatThrownBy(() -> InputView.numberList(inputWinningNumber) )
+        assertThatThrownBy(() -> InputView.numberList(inputWinningNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

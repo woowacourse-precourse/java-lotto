@@ -58,7 +58,7 @@ public enum Ranking {
 
     public void printMessage(int count) {
         if (this != MISS) {
-            OutputView.printSuccessMessage(message,count);
+            OutputView.printSuccessMessage(message, count);
         }
     }
 }

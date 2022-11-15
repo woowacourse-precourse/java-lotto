@@ -26,42 +26,43 @@ public class LottoController {
     private static WinningResult winningResult;
 
 
-    public void run(){
+    public void run() {
         try {
             start();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
-    public void start(){
+
+    public void start() {
         int ticketCount = inputPlayerAmount();
         OutputView.printTicketCount(ticketCount);
 
         lottoList = makeLottoList(ticketCount);
         winningResult = validateBonus();
 
-        lottoResult(lottoList,winningResult,ticketCount);
+        lottoResult(lottoList, winningResult, ticketCount);
 
     }
 
-    public int inputPlayerAmount(){
+    public int inputPlayerAmount() {
         playerLottoAmount = new PlayerLottoAmount(InputView.inputPlayerAmount());
         return playerLottoAmount.calculateLottoCount();
     }
 
-    public WinningResult validateBonus(){
+    public WinningResult validateBonus() {
         Lotto lotto = new Lotto(InputView.inputLottoWinningNum());
         List<Integer> winningNumber = lotto.getLottoNumbers();
 
-        int ball =InputView.inputBonusNumber();
-        lotto.validateBonusNumber(winningNumber,ball);
-        winningResult = new WinningResult(new Lotto(winningNumber),ball);
+        int ball = InputView.inputBonusNumber();
+        lotto.validateBonusNumber(winningNumber, ball);
+        winningResult = new WinningResult(new Lotto(winningNumber), ball);
 
         return winningResult;
     }
 
 
-    private static List<Lotto> makeLottoList(int ticketCount){
+    private static List<Lotto> makeLottoList(int ticketCount) {
         lottoList = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
             lottoList.add(makeLotto());
@@ -89,7 +90,7 @@ public class LottoController {
             result.put(rank, result.get(rank) + 1);
         }
         printResult(result);
-        printEarningRate(result,amount);
+        printEarningRate(result, amount);
     }
 
     private void printResult(Map<Ranking, Integer> result) {
@@ -101,7 +102,9 @@ public class LottoController {
     private void printEarningRate(Map<Ranking, Integer> result, int lottoAmount) {
         double EarningRate = 0;
         for (Ranking rank : result.keySet()) {
-            EarningRate = EarningRate + ((double)(rank.getWinningAmount()) / (lottoAmount * TICKET_PRICE) * (result.get(rank)) * (PERCENTAGE)) ;
+            EarningRate =
+                    EarningRate + ((double) (rank.getWinningAmount()) / (lottoAmount * TICKET_PRICE) * (result.get(
+                            rank)) * (PERCENTAGE));
 
         }
         OutputView.printRevenueRate(EarningRate);
