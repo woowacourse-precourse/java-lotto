@@ -16,6 +16,7 @@ public class LottoController {
     public static final String INPUT_PRIZE_NUMBER_COUNT_ERROR = "[ERROR] 당첨 번호를 6개 입력하세요.";
     public static final String INPUT_PRIZE_NUMBER_RANGE_ERROR = "[ERROR] 당첨 번호는 1~45까지 입력 가능합니다.";
     public static final String INPUT_PRIZE_NUMBER_DUPLICATION_ERROR = "[ERROR] 당첨 번호에 중복이 있습니다.";
+    public static final String INPUT_BONUS_NUMBER_DUPLICATION_ERROR = "[ERROR] 보너스 번호는 이미 당첨 번호에 존재합니다.";
 
     public void run() {
         try {
@@ -25,6 +26,7 @@ public class LottoController {
 
             List<Integer> prizeNumbers = inputPrizeNumbers();
             int bonusNumber = inputBonusNumber();
+            validateBonus(prizeNumbers, bonusNumber);
             Draw draw = new Draw();
             draw.drawLotto(lottos, prizeNumbers, bonusNumber);
             Map<Rank, Integer> result = draw.getResult();
@@ -83,5 +85,14 @@ public class LottoController {
         Output.printInputBonusNumber();
         int bonusNumber = Input.inputBonusNumber();
         return bonusNumber;
+    }
+
+    private void validateBonus(List<Integer> prizeNumbers, int bonusNumber) {
+        if(prizeNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException(INPUT_BONUS_NUMBER_DUPLICATION_ERROR);
+        }
+        if(!(bonusNumber >= 1 && bonusNumber <= 45)){
+            throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_RANGE_ERROR);
+        }
     }
 }
