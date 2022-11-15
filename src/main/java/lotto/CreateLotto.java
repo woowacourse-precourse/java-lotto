@@ -9,7 +9,7 @@ public class CreateLotto {
     final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
     public List<Integer> createRandomBall() {
-        numbers.sort(Comparator.naturalOrder());
+//        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
 }
