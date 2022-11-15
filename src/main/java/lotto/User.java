@@ -50,6 +50,34 @@ public class User {
         return fifth;
     }
 
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setLottoNumbers(List<List<Integer>> lottoNumbers) {
+        this.lottoNumbers = lottoNumbers;
+    }
+
+    public void setFirst(int first) {
+        this.first = first;
+    }
+
+    public void setSecond(int second) {
+        this.second = second;
+    }
+
+    public void setThird(int third) {
+        this.third = third;
+    }
+
+    public void setFourth(int fourth) {
+        this.fourth = fourth;
+    }
+
+    public void setFifth(int fifth) {
+        this.fifth = fifth;
+    }
+
     private void validateCost(int cost) {
         if (cost % 1000 != 0) {
             throw new IllegalArgumentException(USER_INPUT_COST.getValue());
