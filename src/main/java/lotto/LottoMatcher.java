@@ -8,12 +8,7 @@ public class LottoMatcher {
         List<Integer> lottoNumbers = lotto.getNumbers();
         List<Integer> winningNumbers = winningLotto.getNumbers();
 
-        Integer countMatch = 0;
-        for (Integer num : lottoNumbers) {
-            if (winningNumbers.contains(num)) {
-                countMatch++;
-            }
-        }
+        Integer countMatch = countMatchNumber(lottoNumbers, winningNumbers);
 
         Integer bonusNum = winningLotto.getBonusNumber();
         Boolean bonusMatch = false;
@@ -22,5 +17,16 @@ public class LottoMatcher {
         }
 
         return new MatchResult(countMatch, bonusMatch);
+    }
+
+    private static Integer countMatchNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
+        Integer countMatch = 0;
+        for (Integer num : lottoNumbers) {
+            if (winningNumbers.contains(num)) {
+                countMatch++;
+            }
+        }
+
+        return countMatch;
     }
 }
