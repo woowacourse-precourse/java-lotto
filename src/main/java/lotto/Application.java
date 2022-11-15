@@ -29,7 +29,11 @@ public class Application {
     private static long totalPrize;
 
     public static void main(String[] args) {
-        start();
+        try {
+            start();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void start() {
@@ -71,7 +75,6 @@ public class Application {
 
         for (int cnt = 0; cnt < lottoQuantity; cnt++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT));
-            lotto.sort();
             lottos.add(lotto);
             System.out.println(lotto);
         }
