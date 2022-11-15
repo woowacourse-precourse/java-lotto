@@ -14,4 +14,13 @@ public class UtilTest {
 
         assertThat(origin).isEqualTo(true);
     }
+
+    @DisplayName("haveDuplicatedNumbersTest")
+    @Test
+    void haveDuplicatedNumbersTest() {
+        boolean origin = ValidationUtil.
+                haveDuplicatedNumbers(List.of(1, 2, 3, 3));
+
+        assertThat(origin).isEqualTo(true);
+    }
 }
