@@ -27,6 +27,16 @@ public class Lotto {
         return countResult;
     }
 
+    // 7.당첨 결과 (보너스 포함)
+    public int getIncludingBonus(int bonusNum) {
+
+        if(this.numbers.contains(bonusNum)) {
+            return 1;
+        }
+
+        return 0;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
