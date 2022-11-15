@@ -8,18 +8,32 @@ public class Application {
         // TODO: 프로그램 구현
 
         System.out.println("구입금액을 입력해 주세요.");
-        int purchaseAmount = Integer.parseInt(Console.readLine());
+        String purchaseAmount = Console.readLine();
         Game game = new Game();
         game.play(isValidPurchaseAmount(purchaseAmount) / 1000);
     }
 
-    static private int isValidPurchaseAmount(int inputValue) throws IllegalArgumentException {
-        if (inputValue == 0) {
+    static private int isValidPurchaseAmount(String inputValue) throws IllegalArgumentException {
+        if(!isNumeric(inputValue)) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        int inputNumber = Integer.parseInt(inputValue);
+
+        if (inputNumber == 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 0보다 커야합니다.");
         }
-        if (inputValue % 1000 != 0) {
+        if (inputNumber % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 1000단위로 입력해야 합니다.");
         }
-        return inputValue;
+        return inputNumber;
+    }
+
+    private static boolean isNumeric(String inputValue) {
+        try {
+            Integer.parseInt(inputValue);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
