@@ -1,42 +1,27 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
 public class LottoResult {
-    enum Rank{
-        FIRST(6, 2000000000),
-        SECOND(5, 30000000),
-        THIRD(5,1500000),
-        FOURTH(4,50000),
-        FIFTH(3,5000);
+    private List<List<Integer>> results = new ArrayList<>();
 
-        final private int matches;
-        final private int price;
+    public void setResults(List<List<Integer>> lottos, Set<Integer> winningNumbers, int bonusNumber){
+        for (List<Integer> lotto: lottos){
+            int matches = measureWinningNumber(lotto, winningNumbers);
+            int bonusCount = countBonus(lotto, bonusNumber);
 
-        private Rank(int matches, int price){
-            this.matches = matches;
-            this.price = price;
-        }
-
-        public int getMatches() {
-            return matches;
-        }
-
-        public int getPrice() {
-            return price;
+            results.add(Arrays.asList(matches, bonusCount));
         }
     }
 
-    private List<Integer> scoreBoard;
-    private int winningAmount;
-
-    public void setScoreBoard(List<List<Integer>> lottos, Set<Integer> winningNumbers){
-
+    public List<List<Integer>> getResults(){
+        return results;
     }
 
-    public int compareLottoWinningNumber(List<Integer> lotto, Set<Integer> winningNumbers){
+    public int measureWinningNumber(List<Integer> lotto, Set<Integer> winningNumbers){
         int matches = 0;
 
         for (int number : lotto){
@@ -48,8 +33,10 @@ public class LottoResult {
         return matches;
     }
 
-    public boolean compareLottoBonusNumber(List<Integer> lotto, int bonusNumber){
-        return lotto.contains(bonusNumber);
+    public int countBonus(List<Integer> lotto, int bonusNumber){
+        if(lotto.contains(bonusNumber)){
+            return 1;
+        }
+        return 0;
     }
-
 }
