@@ -15,7 +15,6 @@ public class Receiver {
         Printer.requestPurchase();
         String inputMoney = Console.readLine();
         int numberOfTicket = ValidateNumber.validatePurchaseMoney(inputMoney) / 1000;
-        Printer.printNumberOfTickets(numberOfTicket);
         return numberOfTicket;
     }
 
@@ -28,6 +27,7 @@ public class Receiver {
         for (String number : winningNumberTemp) {
             winningNumber.add(Integer.parseInt(number));
         }
+        ValidateNumber.isDuplicateLotto(winningNumber);
         return winningNumber;
     }
 
@@ -35,7 +35,6 @@ public class Receiver {
         Printer.requestBonusNumber();
         String inputNumber = Console.readLine();
         Integer bonusNumber = Integer.parseInt(inputNumber);
-
         return bonusNumber;
     }
 }
