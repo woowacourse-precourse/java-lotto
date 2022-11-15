@@ -1,6 +1,8 @@
 package lotto.domain.lottery;
 
 import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
+import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
+import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class Lotto {
 
     private static final String USER_LOTTERY_NUMBERS_SIZE_ERROR = "로또 번호는 6자리여야 합니다";
     private static final String USER_LOTTERY_NUMBERS_CONFLICT_ERROR = "로또 번호에 중복이 포함될 수 없습니다";
+    private static final String USER_LOTTERY_NUMBERS_RANGE_ERROR = "로또 번호는 1부터 45까지의 수로 이루어져야 합니다";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -18,6 +21,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         checkSizeValid(numbers);
         checkConflictValid(numbers);
+        checkRangeValid(numbers);
     }
 
     public int getMatchCount(WinningLotto winningNumbers) {
@@ -43,6 +47,16 @@ public class Lotto {
                 .count() == LOTTERY_NUMBERS_SIZE;
         if (!isConflict) {
             throw new IllegalArgumentException(USER_LOTTERY_NUMBERS_CONFLICT_ERROR);
+        }
+    }
+
+    private void checkRangeValid(List<Integer> numbers) {
+        boolean isRange = numbers.stream()
+                .filter(number -> MINIMUM_LOTTERY_NUMBER <= number
+                        && number <= MAXIMUM_LOTTERY_NUMBER)
+                .count() == LOTTERY_NUMBERS_SIZE;
+        if (!isRange) {
+            throw new IllegalArgumentException(USER_LOTTERY_NUMBERS_RANGE_ERROR);
         }
     }
 
