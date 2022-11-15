@@ -15,6 +15,7 @@ public class LottoSystemService {
     private User user;
     private Lotto lotto;
     List<Integer> hit;
+    private int bonusNumber;
 
     private List<Integer> numbers = new ArrayList<>();
     private List<String> total = Arrays.asList("3개 일치 (5,000원) - ",
@@ -54,7 +55,6 @@ public class LottoSystemService {
         String inputNumbers = Console.readLine();
         String number = "";
         for (int i = 0; i < inputNumbers.length(); i++) {
-
             if (inputNumbers.charAt(i) == ',') {
                 numbers.add(Integer.parseInt(number));
                 number = "";
@@ -65,9 +65,20 @@ public class LottoSystemService {
         numbers.add(Integer.parseInt(number));
     }
 
+    public void validate(){
+        if (numbers.size() > 6){
+            System.out.println("[ERROR] 당첨 번호의 길이가 올바르지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 길이가 올바르지 않습니다.");
+        }
+    }
     public void setBonusLottoNumbers() {
         String inputNumber = Console.readLine();
-        numbers.add((int) inputNumber.charAt(0));
+        bonusNumber = Integer.parseInt(inputNumber);
+        saveBonusLottoNumbers();
+    }
+
+    private void saveBonusLottoNumbers(){
+        lotto.setBonusNumber(bonusNumber);
     }
 
     public void saveLottoNumbers() {
