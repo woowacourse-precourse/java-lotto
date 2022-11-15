@@ -84,5 +84,4 @@ public class Exception {
     }
 
     // TODO: 입력 값(보너스 번호)이 리스트(winningNumber)에 포함되어 있는 숫자일 경우 예외처리한다.
-
 }

@@ -74,4 +74,8 @@ public class Domain {
         for(Lotto lottoTicket : lottoList)
             System.out.println(lottoTicket.getNumbers());
     }
+
+    public static List<String> getWinningNumbers() {
+        return winningNumbers;
+    }
 }
