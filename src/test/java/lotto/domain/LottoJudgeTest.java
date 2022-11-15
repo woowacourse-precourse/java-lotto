@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Collections;
 import java.util.List;
-import lotto.domain.vo.BuyLottoList;
+import lotto.domain.vo.BuyLotteries;
 import lotto.domain.vo.Lotto;
 import lotto.domain.vo.LottoWithBonus;
 import lotto.veiw.InputHandler;
@@ -25,9 +25,9 @@ class LottoJudgeTest {
         InputHandler inputHandler = new InputHandler();
         List<Lotto> buyList = Collections.singletonList(
                 new Lotto(inputHandler.stringToList(inputString)));
-        BuyLottoList buyLottoList = new BuyLottoList(buyList);
+        BuyLotteries buyLotteries = new BuyLotteries(buyList);
 
-        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
-        assertThat(lottoJudge.getLottoResult().toString()).isEqualTo("{" + result + "=1}");
+        LottoJudge lottoJudge = new LottoJudge(buyLotteries, lottoWithBonus);
+        assertThat(lottoJudge.calculateResult().toString()).isEqualTo("{" + result + "=1}");
     }
 }
