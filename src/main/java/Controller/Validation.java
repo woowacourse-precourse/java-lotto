@@ -24,6 +24,7 @@ public class Validation {
         validateWinningNumbersHaveComma(readWinningNumber);
         validateWinningNumbersHaveBlank(readWinningNumber);
         validateWinningNumbersHaveNumbers(readWinningNumber);
+        validateWinningNumbersAreInRange(readWinningNumber, LOTTO_NUMBER_RANGE_START, LOTTO_NUMBER_RANGE_END);
         validateWinningNumbersIsOverlapped(readWinningNumber);
     }
 
@@ -77,6 +78,15 @@ public class Validation {
         for(String s : readWinningNumber.split(DELIMITER)){
             if(!Pattern.matches(REGEX_NUMERIC, s)){
                 throw new IllegalArgumentException(ERROR_MESSAGE + " 당첨 번호 입력에서 구분자(" + DELIMITER + ")사이에 데이터가 숫자로 이루어진 데이터가 아닙니다.");
+            }
+        }
+    }
+
+    public static void validateWinningNumbersAreInRange(String readWinningNumber, int RANGE_START, int RANGE_END) {
+        for (String s : readWinningNumber.split(DELIMITER)) {
+            int number = Integer.parseInt(s);
+            if (number < RANGE_START || number > RANGE_END) {
+                throw new IllegalArgumentException(ERROR_MESSAGE + " 입력이 " + RANGE_START + " ~ " + RANGE_END + "범위 내의 숫자가 아닙니다.");
             }
         }
     }
