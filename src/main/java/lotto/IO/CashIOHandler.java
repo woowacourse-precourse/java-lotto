@@ -35,7 +35,7 @@ public class CashIOHandler extends IOHandler {
     // 사용자가 ",000" 단위로 입력하였을 때 : [0-9] 0~3번 반복 이후 마지막에 [,000] 오는지 확인
     // 사용자가 "000" 단위로 입력하였을 때 : [1-9] 1번 이상 반복 이후 마지막에 000 오는지 확인
     public void validateInput(String input) {
-        Pattern pass = Pattern.compile("^(?:[0-9]{1,3}[,]){0,3}[0]{3}$|^[0-9]{0,}[0]{3}$");
+        Pattern pass = Pattern.compile("^(?:[0-9]{1,3},){0,3}0{3}$|^[0-9]*0{3}$");
         Matcher matcher = pass.matcher(input);
         if (!matcher.find()) {
             throw new IllegalArgumentException("[ERROR] 천원 단위로 입력해주세요");

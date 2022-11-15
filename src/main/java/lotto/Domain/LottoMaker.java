@@ -34,8 +34,7 @@ public class LottoMaker {
     // 로또의 개수만큼의 로또지 생성
     public void issueLottoTickets(){
         for(int i=0;i<lottoAmount;i++){
-            Lotto lotto = new Lotto(publishLottoTicket());
-            lotto = sortList(lotto);
+            Lotto lotto = new Lotto(sortList(publishLottoTicket()));
             this.lottoTickets.add(lotto);
         }
         this.printLottoTickets();
@@ -48,10 +47,10 @@ public class LottoMaker {
                         Constants.lastNumber, Constants.lottoLength);
     }
 
-    public Lotto sortList(Lotto lotto){
-        List<Integer> sortedLotto = lotto.getNumbers();
+    public List<Integer> sortList(List<Integer> unsortedLotto){
+        List<Integer> sortedLotto = new ArrayList<>(unsortedLotto);
         Collections.sort(sortedLotto);
-        return new Lotto(sortedLotto);
+        return sortedLotto;
     }
 
 }
