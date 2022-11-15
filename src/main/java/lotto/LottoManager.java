@@ -23,7 +23,7 @@ public class LottoManager {
             printLottoCount(count);
             printLottos(lottos);
             List<Integer> winningNumbers = inputManager.drawWinningNumbers();
-            int bonusNumber = inputManager.drawBonusNumber();
+            int bonusNumber = inputManager.drawBonusNumber(winningNumbers);
             lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
             printLottoResult(lottoResult, lottos, lottoMachine, amount);
         } catch (IllegalArgumentException exception) {

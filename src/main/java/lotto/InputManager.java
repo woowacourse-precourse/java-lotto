@@ -43,7 +43,7 @@ public class InputManager {
         return winningNumbers;
     }
 
-    public int drawBonusNumber() {
+    public int drawBonusNumber(List<Integer> winningNumbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = 0;
         try {
@@ -52,6 +52,7 @@ public class InputManager {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개여야 하고 숫자 외에 다른 문자가 포함되지 않아야 합니다.");
         }
 
+        validateBonusNumber(bonusNumber, winningNumbers);
 
         return bonusNumber;
     }
