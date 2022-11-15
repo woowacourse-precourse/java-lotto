@@ -12,7 +12,7 @@ public class LottoController {
     private LottoController() {
     }
 
-    public static void runGame() {
+    public static void runGame() throws IllegalStateException {
         long amount = gameStartAndGetInput();
         long purchaseCount = getLottoPurchaseCount(amount);
         List<Lotto> lottoNumbers = getLottoNumbers(purchaseCount);
@@ -29,11 +29,7 @@ public class LottoController {
         return LottoService.getWinningPoint(lottoNumber, winningNumber, bonusNumber);
     }
 
-    public static double getTotalRate(Map<Result, Integer> resultPoints, long amount) {
-        return LottoService.getTotalRate(resultPoints, amount);
-    }
-
-    public static long gameStartAndGetInput() {
+    public static long gameStartAndGetInput() throws IllegalStateException {
         LottoView.printStartMessage();
         String input = LottoView.readLine();
         return LottoService.amountInputToInteger(input);
@@ -51,12 +47,12 @@ public class LottoController {
         return LottoService.getLottoNumbers(purchaseAmount);
     }
 
-    public static Lotto getWinningNumber() {
+    public static Lotto getWinningNumber() throws IllegalStateException {
         LottoView.printInputLottoWinningMessage();
         return LottoService.getWinningNumber(LottoView.readLine());
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber() throws IllegalStateException {
         LottoView.printInputBonusNumberMessage();
         return LottoService.getBonusNumber(LottoView.readLine());
     }
