@@ -1,10 +1,10 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BuyLottoImplTest {
 
@@ -21,10 +21,8 @@ class BuyLottoImplTest {
     }
 
     @Test
-    void buyLotto() {
-    }
-
-    @Test
-    void getLottoNumber() {
+    void getLottos() {
+        ArrayList<Lotto> lottos = buyLotto.getLottos();
+        assertThat(lottos.size()).isEqualTo(buyLotto.getLottoCount());
     }
 }
