@@ -24,17 +24,21 @@ public class LottoStore {
 		yield = 0.0;
 	}
 
-	public void open() {
-		buy();
-		publish();
-		win();
-		bonus();
-		checkWin();
-		calcYield();
-		statistic();
+	public void open(){
+		try {
+			buy();
+			publish();
+			win();
+			bonus();
+			checkWin();
+			calcYield();
+			statistic();
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
-	private void buy() {
+	private void buy(){
 		ConsoleOut.printInputMoney();
 		moneyBuyLotto = Util.strToInt(ConsoleIn.readLine());
 		Verify.verifyMoneyUnit(moneyBuyLotto);

@@ -5,6 +5,7 @@ import java.util.List;
 public class Verify {
 
 	public static void illegalArgumentException(String message) {
+//		System.out.println(message);
 		throw new IllegalArgumentException(message);
 	}
 
@@ -17,7 +18,6 @@ public class Verify {
 	public static void verifyGoal(List<Integer> goal) {
 		verifyLottoLength(goal);
 		verifyNumberBoundary(goal);
-		verifyDupNumber(goal);
 	}
 
 	public static void verifyLottoLength(List<Integer> goal) {

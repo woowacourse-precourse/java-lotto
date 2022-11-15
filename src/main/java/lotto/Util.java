@@ -7,7 +7,6 @@ public class Util {
 
 	public static int strToInt(String word) {
 		int result = -1;
-
 		try {
 			result = Integer.parseInt(word);
 		} catch (NumberFormatException e) {
