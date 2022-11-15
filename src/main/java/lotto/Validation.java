@@ -42,6 +42,12 @@ public class Validation {
         }
     }
 
+    public void checkLottoNumberLength(List<Integer> numbers) {
+        if (numbers.size() != Constant.VALID_LOTTO_LENGTH) {
+            throw new IllegalArgumentException(Error.INVALID_NUMBER_LENGTH.message());
+        }
+    }
+
     public void checkWinningFormat(String input) throws IllegalArgumentException {
         try {
             String[] inputSplit = input.split(",");
@@ -49,9 +55,7 @@ public class Validation {
             for (int i = 0; i < inputSplit.length; i++) {
                 lottoFormat.add(Integer.parseInt(inputSplit[i]));
             }
-            if (lottoFormat.size() != Constant.VALID_LOTTO_LENGTH) {
-                throw new IllegalArgumentException(Error.OUT_OF_WINNING_FORMAT.message());
-            }
+            checkLottoNumberLength(lottoFormat);
         } catch (Exception e) {
             throw new IllegalArgumentException(Error.OUT_OF_WINNING_FORMAT.message());
         }

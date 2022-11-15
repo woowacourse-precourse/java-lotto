@@ -15,6 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         Validation validation = new Validation();
+        validation.checkLottoNumberLength(numbers);
         validation.checkDuplicate(numbers);
         for (int number : numbers) {
             validation.checkNumberInRange(number);
