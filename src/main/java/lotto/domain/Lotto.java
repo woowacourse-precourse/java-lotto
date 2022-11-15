@@ -16,6 +16,12 @@ public class Lotto {
         }
     }
 
+    public long containsResultCount(List<Integer> result) {
+        return numbers.stream()
+                .filter(result::contains)
+                .count();
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
