@@ -6,6 +6,7 @@ import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoTickets;
 import lotto.domain.Wallet;
 
+import lotto.domain.winning.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -25,6 +26,10 @@ public class LottoController {
 
     public void run() {
         LottoTickets lottoTickets = buyLottoTickets();
+
+        WinningNumbers winningNumbers = createWinningNumbers();
+        LottoResult lottoResult = createLottoResult(lottoTickets, winningNumbers);
+        displayResult(lottoResult);
     }
 
     private LottoTickets buyLottoTickets() {
@@ -41,6 +46,19 @@ public class LottoController {
 
     private Wallet createWallet() {
         return new Wallet(inputView.readInt());
+    }
+
+    private WinningNumbers createWinningNumbers() {
+        print(INPUT_MESSAGE_FOR_WINNING_NUMBERS);
+        List<Integer> winningNumbers = inputView.readWinningNumbers();
+
+        print(INPUT_MESSAGE_FOR_BONUS_NUMBER);
+        int bonusNumber = inputView.readInt();
+
+        return new WinningNumbers(winningNumbers, bonusNumber);
+    }
+
+    private LottoResult createLottoResult(LottoTickets lottoTickets, WinningNumbers winningNumbers) {
     }
 
     private void displayCount(LottoTickets lottoTickets) {
