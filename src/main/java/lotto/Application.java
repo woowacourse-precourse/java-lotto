@@ -20,6 +20,7 @@ public class Application {
         List<Lotto> lottos = new ArrayList<>();
         System.out.println("구입금액을 입력해 주세요.");
         input = Console.readLine();
+        isInt(input);
         buyMoney = Integer.parseInt(input);
         checkPayMoney(buyMoney);
         System.out.println(input + "개를 구매했습니다.");
@@ -134,6 +135,14 @@ public class Application {
         for(int i = 0; i < 5; i++){
             Rank[] values = Rank.values();
             System.out.println(values[4-i].getPrinting() + " - " + win[4-i] + "개");
+        }
+    }
+
+    public static void isInt(String str){
+        try{
+            int x = Integer.parseInt(str);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 가능합니다.");
         }
     }
 }
