@@ -14,7 +14,7 @@ public class OutputView {
 
     public static final String INPUT_MESSAGE_FOR_MONEY = "구입금액을 입력해 주세요.";
     public static final String INPUT_MESSAGE_FOR_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
-    public static final String INPUT_MESSAGE_FOR_BONUS_NUMBERS = "보너스 번호를 입력해 주세요.";
+    public static final String INPUT_MESSAGE_FOR_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String FORMAT_FOR_COUNT_OF_TICKETS = "%n%d개를 구매했습니다. %n";
 
     public static void print(String message) {
