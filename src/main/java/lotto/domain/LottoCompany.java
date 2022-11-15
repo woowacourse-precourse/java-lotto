@@ -22,9 +22,10 @@ public class LottoCompany {
         Print.askWinningNumber();
         String input = Console.readLine();
 
-        return CommonUtil.stringToNumbers(input);
+        List<Integer> numbers = CommonUtil.stringToNumbers(input);
+        CommonUtil.validateLotto(numbers);
+        return numbers;
     }
-
     private int inputBonus() {
         Print.askBonusNumber();
         String input = Console.readLine();

@@ -1,7 +1,6 @@
 package lotto;
 
-import lotto.Utils.Error;
-import lotto.Utils.Message;
+import lotto.Utils.CommonUtil;
 import lotto.domain.WinInfo;
 
 import java.util.*;
@@ -11,26 +10,12 @@ public class Lotto {
     private WinInfo winInfo;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        Collections.sort(numbers);
+        CommonUtil.validateLotto(numbers);
+        try {
+            Collections.sort(numbers);
+        } catch (UnsupportedOperationException e) {
+        }
         this.numbers = numbers;
-    }
-    private void checkDuplicated(List<Integer> numbers) {
-        HashSet<Integer> duplicatesExcluded = new HashSet<>(numbers);
-        if (duplicatesExcluded.size() != 6) {
-            Error.generate(Message.DUPLICATED);
-        }
-    }
-    private void checkRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (number < 1 || number > 45) {
-                Error.generate(Message.DUPLICATED);
-            }
-        }
-    }
-    private void validate(List<Integer> numbers) {
-        checkDuplicated(numbers);
-        checkRange(numbers);
     }
 
     public void drawLotto(List<Integer> winNumbers, int bonus) {
