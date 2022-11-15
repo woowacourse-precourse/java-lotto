@@ -44,7 +44,7 @@ public class LottoServiceTest {
 
     @DisplayName("2등 당첨시 3등과 중복 당첨되지 않는다.")
     @Test
-    void checkProfitRate() {
+    void checkDuplicateWinRank() {
         lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
 
         LottoService lottoService = new LottoService(lotteries, winnings, bonus, buyMoney);
@@ -55,5 +55,17 @@ public class LottoServiceTest {
         result.add(matches.getOrDefault(Rank.THIRD_RANK.getMatch(), 0));
 
         assertThat(result).isEqualTo(List.of(1, 0));
+    }
+
+    @DisplayName("수익률은 소수점 둘째 자리에서 반올림, 3자리씩 콤마를 찍는다.")
+    @Test
+    void checkProfitRate() {
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        buyMoney = 9000;
+
+        LottoService lottoService = new LottoService(lotteries, winnings, bonus, buyMoney);
+        String result = lottoService.getProfitRate();
+
+        assertThat(result).isEqualTo("333,388.9");
     }
 }
