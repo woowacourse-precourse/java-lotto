@@ -1,12 +1,12 @@
 package lotto;
 
+import static lotto.constant.PercentageConstant.PERCENTAGE;
+import static lotto.constant.StandardConstant.MONEY_UNIT_STANDARD;
+import static lotto.constant.StandardConstant.ROUND_STANDARD;
+
 import java.util.List;
 
 public class Profit {
-
-    private static final int UNIT_STANDARD = 1_000;
-    private static final int ROUND_STANDARD = 10;
-    private static final int PERCENTAGE = 100;
 
     private final List<WinningStat> winningStats;
 
@@ -38,16 +38,16 @@ public class Profit {
 
     public double toRate(Quantity quantity, long total) {
         int lottoQuantity = quantity.getNumber();
-        double purchaseAmount = lottoQuantity * UNIT_STANDARD;
+        double purchaseAmount = lottoQuantity * MONEY_UNIT_STANDARD.getValue();
 
         return (total / purchaseAmount);
     }
 
     public double toPercent(double rate) {
-        return rate * PERCENTAGE;
+        return rate * PERCENTAGE.getValue();
     }
 
     public double roundUpSecondDigit(double percent) {
-        return (double) Math.round(percent * ROUND_STANDARD) / ROUND_STANDARD;
+        return (double) Math.round(percent * ROUND_STANDARD.getValue()) / ROUND_STANDARD.getValue();
     }
 }
