@@ -10,7 +10,8 @@ public class Buy {
         char[] splitMoney = money.toCharArray();
         for(int i=0; i<splitMoney.length; i++) {
             if(!Character.isDigit(splitMoney[i])) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요");
+                System.out.println("[ERROR] 숫자만 입력하세요");
+                throw new IllegalArgumentException();
             }
         }
         return Integer.parseInt(money);
@@ -18,7 +19,8 @@ public class Buy {
 
     public static int buyLotto(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력되어야 합니다.");
+            System.out.println("[ERROR] 1000원 단위로 입력되어야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         int count = money / 1000;

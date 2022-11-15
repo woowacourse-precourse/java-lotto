@@ -66,11 +66,13 @@ public class Application {
         List<Integer> winNum = winLotto.getLotto();
 
         if (winNum.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자가 중복됩니다.");
+            System.out.println("[ERROR] 로또 숫자가 중복됩니다.");
+            throw new IllegalArgumentException();
         }
 
         if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위가 적절하지 않습니다.");
+            System.out.println("[ERROR] 로또 숫자의 범위가 적절하지 않습니다.");
+            throw new IllegalArgumentException();
         }
         System.out.println("winBonus:" + bonus);
         return bonus;
