@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
+
 public enum Result {
     THREE(3, false, 5000L),
     FOUR(4, false, 50000L),
@@ -32,6 +34,9 @@ public enum Result {
     }
 
     public String toString(int count) {
-        return winningPoint + "개 일치 (" + prize + "원) - " + count + "개";
+        if (bonusPoint) {
+            return winningPoint + "개 일치, 보너스 볼 일치 (" + NumberFormat.getInstance().format(prize) + "원) - " + count + "개";
+        }
+        return winningPoint + "개 일치 (" + NumberFormat.getInstance().format(prize) + "원) - " + count + "개";
     }
 }
