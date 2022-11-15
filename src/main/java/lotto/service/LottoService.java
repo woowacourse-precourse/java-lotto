@@ -36,7 +36,8 @@ public class LottoService {
         return winningResults;
     }
 
-    private void addWinningResultsOfAllBuyingLotto(WinningNumber winningNumber, List<WinningResultStatus> winningResults) {
+    private void addWinningResultsOfAllBuyingLotto(WinningNumber winningNumber,
+                                                   List<WinningResultStatus> winningResults) {
         lottoRepository.findAll()
                 .forEach(lotto -> winningResults.add(lotto.getWinningResultStatus(winningNumber)));
     }
@@ -61,9 +62,11 @@ public class LottoService {
         return statisticsCounts;
     }
 
-    private static void putWinResults(List<WinningResultStatus> winningResults, Map<WinningResultStatus, Integer> statisticsCounts) {
+    private static void putWinResults(List<WinningResultStatus> winningResults,
+                                      Map<WinningResultStatus, Integer> statisticsCounts) {
         for (WinningResultStatus winningResult : winningResults) {
-            statisticsCounts.put(winningResult, statisticsCounts.getOrDefault(winningResult, NumberUtil.ZERO) + NumberUtil.ONE);
+            statisticsCounts.put(winningResult,
+                    statisticsCounts.getOrDefault(winningResult, NumberUtil.ZERO) + NumberUtil.ONE);
         }
     }
 
