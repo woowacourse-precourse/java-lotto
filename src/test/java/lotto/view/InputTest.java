@@ -4,25 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class InputTest {
-
-    static Scanner scanner;
-
-    @BeforeEach
-    void init() {
-        scanner = new Scanner(System.in);
-    }
 
     @Test
     void inputMoney() {
@@ -50,16 +41,48 @@ class InputTest {
                 .hasMessage(Messages.ERROR_NOT_DIVDE1000);
     }
 
-    @DisplayName("입력받은 당첨 번호가 범위에 맞는가?")
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5,49"})
+    @DisplayName("입력받은 당첨 번호가 범위에 맞는가?")
     void vaildNumsRange(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
-        scanner = new Scanner(System.in);
-        assertThatThrownBy(() -> Input.askWinNums())
+        assertThatThrownBy(() -> Input.askWinLotto())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Messages.ERROR_NOT_VAILDRANGE);
+    }
+
+    @DisplayName("입력받은 당첨 번호가 6개 숫자배열이 맞는가?")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,6,9,10,45"})
+    void isSize6(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        assertThatThrownBy(() -> Input.askWinLotto())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Messages.ERROR_NOT_SIZE6);
+    }
+
+    @DisplayName("입력받은 당첨 번호가 중복되지는 않았는가?")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,1,2,3,6,9"})
+    void isDiffrentTest(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        assertThatThrownBy(() -> Input.askWinLotto())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Messages.ERROR_NOT_DIFFRENT);
+    }
+
+    @DisplayName("입력받은 당첨 번호가 모두 숫자인가?")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,1,2,3,a,10"})
+    void isInts(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        assertThatThrownBy(() -> Input.askWinLotto())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Messages.ERROR_NOT_NUMBER);
     }
 
     public static InputStream generateUserInput(String input) {
