@@ -37,6 +37,10 @@ public class Lotto {
         return numberSet.size() != FIX_SIZE;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     @Override
     public String toString() {
         return numbers + "";
