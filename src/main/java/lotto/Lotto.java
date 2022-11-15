@@ -7,13 +7,18 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        ascendingOrder(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoPublisher.lottoNum) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void ascendingOrder(List<Integer> numbers){
+        numbers.sort(Integer::compareTo);
     }
 
     // TODO: 추가 기능 구현
