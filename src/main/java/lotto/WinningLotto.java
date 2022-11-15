@@ -32,10 +32,6 @@ public class WinningLotto extends Lotto {
         }
     }
 
-    public Integer getBonusNumber() {
-        return bonusNumber;
-    }
-
     public CorrectType compareNumber(Lotto lotto) {
         List<Integer> lottoNumbers = lotto.getNumbers();
         int correct = countCorrectNumber(lottoNumbers);
