@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 // enum 사용해보자
 public class User {
@@ -23,7 +24,7 @@ public class User {
             money = Integer.parseInt(inputMoney);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 금액으로 숫자를 입력해주세요.");
-            throw new IllegalArgumentException("[ERROR] 금액으로 숫자를 입력해주세요.");
+            throw new NoSuchElementException("[ERROR] 금액으로 숫자를 입력해주세요.");
         }
     }
 
