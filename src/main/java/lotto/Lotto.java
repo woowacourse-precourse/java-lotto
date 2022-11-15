@@ -1,15 +1,19 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
     User user = new User();
+    Validator val = new Validator();
 
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplicate(numbers);
+        validateNumberRange(numbers);
         this.numbers = numbers;
     }
 
@@ -20,6 +24,23 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    public void validateDuplicate(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (Collections.frequency(numbers, number) > 1) {
+                throw new IllegalArgumentException("[Error]");
+            }
+        }
+    }
+
+    public void validateNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number > 45 || number < 0) {
+                throw new IllegalArgumentException("[Error]");
+            }
+        }
+    }
+
 
     public List<Integer> getNumbers(){
         return numbers;

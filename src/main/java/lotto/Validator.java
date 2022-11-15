@@ -17,7 +17,7 @@ public class Validator {
 
     public void ValidatorRepeatBan(List<Integer> ValidatorNumber){
         for(Integer integer : ValidatorNumber){
-            if(Collections.frequency(Collections.singleton(integer), ValidatorNumber) > 1){
+            if(Collections.frequency(ValidatorNumber, integer) > 1){
                 throw new IllegalArgumentException("[ERROR] 중복된 수는 들어올수 없습니다!");
             }
         }
@@ -46,6 +46,7 @@ public class Validator {
     }
 
     public void ValidatorLottoInputList(String NumberInput){
+        InputList(NumberInput);
         List<Integer> InputList = InputList(NumberInput);
         ValidatorSix(InputList);
         ValidatorRepeatBan(InputList);
