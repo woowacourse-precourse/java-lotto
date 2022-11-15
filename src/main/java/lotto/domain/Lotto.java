@@ -28,10 +28,10 @@ public class Lotto {
             mutualInputException();
         }
     }
-    public LottoProperties lotteryCheck(GameSet gameSet){
-        int correct = numberCheck(gameSet.getAwardLotto());
+    public LottoProperties lotteryCheck(Lotto awardLotto, int bonusNumber){
+        int correct = numberCheck(awardLotto);
         LottoProperties lottoProperties = LottoProperties.findType(correct);
-        if (lottoProperties == LottoProperties.LOTTO_THIRDWINNER && isBonusCorrect(gameSet.getBonusNumber()) == true){
+        if (lottoProperties == LottoProperties.LOTTO_THIRDWINNER && isBonusCorrect(bonusNumber) == true){
             lottoProperties = LottoProperties.LOTTO_SECONDWINNER;
         }
         return lottoProperties;

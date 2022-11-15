@@ -1,5 +1,7 @@
 package lotto.service;
 
+import java.io.IOException;
+
 public interface LottoService {
-    void play();
+    void play() throws IOException;
 }
