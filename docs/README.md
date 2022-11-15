@@ -13,8 +13,12 @@
       - [ ] 문자가 '0'~'9'사이인지 확인하는 메소드 -checkifCharIsNumber(char)
       - [ ] ','가 나온다면 숫자가 0으로 시작하는지 확인하는 메소드 - checkIfNumberStartsWithZero(int)
      
+### JudgeMent.java
+- [ ] 사용자의 로또 번호와 기존 로또 번호에서 몇개가 같은 지 돌려주는 메소드 - compareNumbers(List<integer>,List<Integer>)
+- [ ] 보너스 넘버가 포함되어있는지 확인하는 메소드 -bonusCheck(List<Integer>,int,int)
+
+
 - [ ] 중복되지 않는 6개의 숫자를 뽑아 Integer<List>를 만들어주는 메소드
 - [ ] 로또 구입 금액이 1000원 단위로 나누어 떨어지는 확인하는 메소드
-- [ ] 사용자의 로또 번호와 기존 로또 번호에서 몇개가 같은 지 돌려주는 메소드
 - [ ] 전체적으로 입력을 받고 출력을 해주는 메소드
 - [ ] 수익률을 계산해주는 메소드
