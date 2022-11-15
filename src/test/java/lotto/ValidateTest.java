@@ -102,4 +102,12 @@ class ValidateTest {
 		String bonusNumber = "a";
 		assertThat(Validate.isNotNumeric(bonusNumber)).isEqualTo(true);
 	}
+
+	@Test
+	void 보너스_숫자_여러개일때(){
+		String bonusNumber = "1,2";
+		assertThat(Validate.isInvalidSize(bonusNumber)).isEqualTo(true);
+		String bonusNumber1 = "1";
+		assertThat(Validate.isInvalidSize(bonusNumber1)).isEqualTo(false);
+	}
 }
