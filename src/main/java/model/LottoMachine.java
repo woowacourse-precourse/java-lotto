@@ -25,11 +25,11 @@ public class LottoMachine {
 			int sameNumberCount = calculateSameNumberCount(lottoNumbers, winningNumbers);
 			int rank = getRank(sameNumberCount);
 
-			if (rank == NONE) {
+			if (rank == RANK_NONE) {
 				continue;
 			}
-			if (rank == THIRD && isMatchBonusNumber(lottoNumbers, bonusNumber)) {
-				rank = SECOND;
+			if (rank == RANK_THIRD && isMatchBonusNumber(lottoNumbers, bonusNumber)) {
+				rank = RANK_SECOND;
 			}
 			lottoResult.put(rank, lottoResult.getOrDefault(rank, 0) + 1);
 		}
@@ -47,19 +47,19 @@ public class LottoMachine {
 	}
 
 	private int getRank(int sameNumberCount) {
-		if (sameNumberCount == 6) {
-			return FIRST;
+		if (sameNumberCount == LOTTO_SIX_NUMBER_SAME) {
+			return RANK_FIRST;
 		}
-		if (sameNumberCount == 5) {
-			return THIRD;
+		if (sameNumberCount == LOTTO_FIVE_NUMBER_SAME) {
+			return RANK_THIRD;
 		}
-		if (sameNumberCount == 4) {
-			return FOURTH;
+		if (sameNumberCount == LOTTO_FOUR_NUMBER_SAME) {
+			return RANK_FOURTH;
 		}
-		if (sameNumberCount == 3) {
-			return FIFTH;
+		if (sameNumberCount == LOTTO_THREE_NUMBER_SAME) {
+			return RANK_FIFTH;
 		}
-		return NONE;
+		return RANK_NONE;
 	}
 
 	private boolean isMatchBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
@@ -67,10 +67,10 @@ public class LottoMachine {
 	}
 
 	private void initlottoWinningStatistics(Map<Integer, Integer> lottoWinningStatistics) {
-		lottoWinningStatistics.put(FIRST, 0);
-		lottoWinningStatistics.put(SECOND, 0);
-		lottoWinningStatistics.put(THIRD, 0);
-		lottoWinningStatistics.put(FOURTH, 0);
-		lottoWinningStatistics.put(FIFTH, 0);
+		lottoWinningStatistics.put(RANK_FIRST, 0);
+		lottoWinningStatistics.put(RANK_SECOND, 0);
+		lottoWinningStatistics.put(RANK_THIRD, 0);
+		lottoWinningStatistics.put(RANK_FOURTH, 0);
+		lottoWinningStatistics.put(RANK_FIFTH, 0);
 	}
 }
