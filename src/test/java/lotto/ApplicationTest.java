@@ -1,16 +1,20 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import lotto.exception.Exception;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+    Exception exception = new Exception();
 
     @Test
     void 기능_테스트() {
@@ -52,6 +56,16 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 구매금액_천단위_입력_안할_때_예외테스트() {
+        String input = "1001";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exception.validateIsThousandUnit(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR]천 단위로 입력해주세요.")
+        );
     }
 
     @Override
