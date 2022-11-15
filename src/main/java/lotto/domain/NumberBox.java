@@ -31,7 +31,7 @@ public class NumberBox {
     }
 
     private static void validate(List<Integer> winningNumbers) {
-        if (winningNumbers.size() != 6) {
+        if (winningNumbers.size() != Validator.LOTTO_SIZE) {
             throw new IllegalArgumentException(WRONG_LENGTH);
         }
         if (Validator.isDuplicate(winningNumbers)) {

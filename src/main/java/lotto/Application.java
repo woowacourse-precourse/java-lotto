@@ -33,14 +33,16 @@ public class Application {
                     )
             );
 
+            int earn = Calculator.calculateEarn(
+                    user.getLottos(),
+                    numberBox.getWinningNumbers(),
+                    numberBox.getBonusNumber()
+            );
+
             Output.printYield(
                     Calculator.calculateYield(
                             money,
-                            Calculator.calculateEarn(
-                                    user.getLottos(),
-                                    numberBox.getWinningNumbers(),
-                                    numberBox.getBonusNumber()
-                            )
+                            earn
                     )
             );
         } catch (IllegalArgumentException exception) {
