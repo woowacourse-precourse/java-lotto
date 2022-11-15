@@ -33,7 +33,7 @@ class ConvertorTest {
     void winningNumbersWithoutComma(String input) {
         assertThatThrownBy(() -> Convertor.separate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_TITLE + NO_COMMAS_FOUND);
+                .hasMessageContaining(ERROR_TITLE + NON_PROPER_COMMA);
     }
 
     @DisplayName("당첨 번호 입력 시 숫자를 올바르게 쓰지 않으면 예외가 발생한다.")

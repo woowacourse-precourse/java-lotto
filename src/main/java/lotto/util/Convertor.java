@@ -6,34 +6,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Convertor {
-    private final static String COMMA = ",";
-    private final static String ONLY_NUMBER_REGEX = "^\\d+$";
+    private static final String COMMA = ",";
+    private static final String ONLY_NUMBER_REGEX = "^\\d+$";
 
-    public static Integer toPurchasePrice(String arg) {
-        Integer purchasePrice = toNumericValue(arg);
+    public static Integer toPurchasePrice(String input) {
+        final Integer purchasePrice = toNumericValue(input);
         validateIfInThousands(purchasePrice);
         return purchasePrice;
     }
 
-    public static Integer toNumericValue(String arg) {
-        validateIfNumeric(arg);
-        Integer numericValue = Integer.valueOf(arg);
+    public static Integer toNumericValue(String input) {
+        validateIfNumeric(input);
+        final Integer numericValue = Integer.valueOf(input);
         return numericValue;
     }
 
-    public static List<Integer> separate(String arg) {
-        String[] argSplitted = arg.split(COMMA);
-        validateFormat(argSplitted);
+    public static List<Integer> separate(String input) {
+        final String[] inputSplitted = input.split(COMMA);
+        validateFormat(inputSplitted);
 
-        List<Integer> numbers = new ArrayList<>();
-        for (String element : argSplitted) {
+        final List<Integer> numbers = new ArrayList<>();
+        for (String element : inputSplitted) {
             numbers.add(toNumericValue(element));
         }
         return numbers;
     }
 
-    private static void validateIfNumeric(String arg) {
-        boolean isNumber = arg.matches(ONLY_NUMBER_REGEX);
+    private static void validateIfNumeric(String input) {
+        final boolean isNumber = input.matches(ONLY_NUMBER_REGEX);
         if (!isNumber) {
             throw new IllegalArgumentException(ERROR_TITLE + NON_NUMERIC);
         }
@@ -45,9 +45,9 @@ public class Convertor {
         }
     }
 
-    private static void validateFormat(String[] args) {
-        if (args.length != LOTTO_SIZE) {
-            throw new IllegalArgumentException(ERROR_TITLE + NO_COMMAS_FOUND);
+    private static void validateFormat(String[] inputs) {
+        if (inputs.length != LOTTO_SIZE) {
+            throw new IllegalArgumentException(ERROR_TITLE + NON_PROPER_COMMA);
         }
     }
 }

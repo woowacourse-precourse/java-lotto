@@ -1,7 +1,5 @@
 package lotto.consumer;
 
-import java.util.ArrayList;
-import java.util.List;
 import lotto.machine.Ranks;
 
 public class Profit {

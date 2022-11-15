@@ -1,13 +1,8 @@
 package lotto.machine;
 
-import static lotto.Constants.DUPLICATE_NUMBERS;
-import static lotto.Constants.END_NUMBER_INCLUSIVE;
-import static lotto.Constants.ERROR_TITLE;
-import static lotto.Constants.OUT_OF_RANGE;
-import static lotto.Constants.START_NUMBER_INCLUSIVE;
+import static lotto.Constants.*;
 
 import java.util.List;
-import lotto.util.Convertor;
 
 public class Winner {
     private final Integer bonusNumber;

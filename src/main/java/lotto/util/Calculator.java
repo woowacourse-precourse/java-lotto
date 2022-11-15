@@ -2,7 +2,6 @@ package lotto.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import lotto.consumer.Profit;
 import lotto.machine.Tickets;
 import lotto.machine.Winner;
@@ -27,14 +26,18 @@ public class Calculator {
         return totalProfit;
     }
 
-    public void updateTotalProfit() {
+    private void updateTotalProfit() {
         for (List<Integer> lottoTicket : lottoTickets) {
-            Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
-            Profit profit = new Profit(
-                    matcher.getMatchingWinningNumberCount(),
-                    matcher.getMatchingBonusNumberCount()
-            );
-            totalProfit.add(profit.getProfit());
+            addPossibleProfit(lottoTicket);
         }
+    }
+
+    private void addPossibleProfit(List<Integer> lottoTicket) {
+        Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
+        Profit profit = new Profit(
+                matcher.getMatchingWinningNumberCount(),
+                matcher.getMatchingBonusNumberCount()
+        );
+        totalProfit.add(profit.getProfit());
     }
 }
