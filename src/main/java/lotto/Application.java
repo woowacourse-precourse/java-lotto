@@ -1,6 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 //예외처리
 //1.로또 숫자 갯수
@@ -31,6 +36,20 @@ public class Application {
     //4개 일치
     //3개 일치
     //3)수익률 계산
+
+    public static List<Lotto> buyLotto(List<Lotto> lottos, List<Integer> numbers, int buyCashN){
+        System.out.println(buyCashN/1000+"개를 구매했습니다.");
+        for(int i=0;i<buyCashN/1000;i++){
+            numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+
+            Collections.sort(numbers);
+            Lotto lotto = new Lotto(numbers);
+            lottos.add(lotto);
+            lotto.printNumbers();
+        }
+        return lottos;
+    }
+
     public static void main(String[] args) {
         //TODO: 프로그램 구현
         //1.입력: 로또 구입금액
@@ -49,5 +68,21 @@ public class Application {
             System.out.println("[ERROR] 로또 구입금액은 1000단위 숫자여야 합니다.");
             return;
         }
+
+
+        Float earnCash=0F;
+        Float earnPerc=0F;
+        int num3 = 0;
+        int num4 = 0;
+        int num5=0;
+        int num5Bonus=0;
+        int num6 = 0;
+        //2.로또 구매: 1개 1000원,
+        //구입금액/1000 갯수만큼 구매
+        //중복 예외처리
+        //남는 금액 예외처리
+        List<Lotto> lottos = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
+        lottos = buyLotto(lottos, numbers, buyCashN);
     }
 }
