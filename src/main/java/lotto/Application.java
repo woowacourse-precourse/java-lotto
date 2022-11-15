@@ -8,10 +8,10 @@ import java.util.List;
 
 public class Application {
 
-    public static Player player = new Player();
-    public static LottoIssuer lottoIssuer = new LottoIssuer();
-    public static DrawingMachine drawingMachine = new DrawingMachine();
-    public static Integer numberOfLottoToBuy = 0;
+    private static Player player = new Player();
+    private static LottoIssuer lottoIssuer = new LottoIssuer();
+    private static DrawingMachine drawingMachine = new DrawingMachine();
+    private static Integer numberOfLottoToBuy = 0;
 
     public static void main(String[] args) {
         // Input: Get Amount

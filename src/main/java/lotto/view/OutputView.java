@@ -32,26 +32,31 @@ public class OutputView {
     public static void printStatic(List<Integer> numbers, double yield) {
         System.out.print("당첨 통계\n---\n");
         for (int place = 5; place >= 1; place--) {
-            System.out.println(getCollectWord(place) + " " + getPrizeMoneyWord(place) + " - " + getNumberOfWin(numbers, place));
+            System.out.println(
+                    getCollectSentence(place) + " " +
+                    getPrizeMoneySentence(place) + " - " +
+                    getNumberOfWinSentence(numbers, place)
+            );
         }
-        System.out.println("총 수익률은 " + new BigDecimal(yield).toString() + "%입니다.");
+        System.out.println("총 수익률은 " + new BigDecimal(yield) + "%입니다.");
     }
 
-    private static String getCollectWord(int place) {
-        if (place >= 3) {
-            return 8 - place + "개 일치";
+    private static String getCollectSentence(int place) {
+        if (place == 1) {
+            return "6개 일치";
         }
         if (place == 2) {
             return "5개 일치, 보너스 볼 일치";
         }
-        return "6개 일치";
+        return 8 - place + "개 일치";
     }
 
-    private static String getPrizeMoneyWord(int place) {
+    private static String getPrizeMoneySentence(int place) {
         return "(" + MoneyUnit.getUnitString(place) + "원)";
     }
 
-    private static String getNumberOfWin(List<Integer> numbers, int place) {
+    private static String getNumberOfWinSentence(List<Integer> numbers, int place) {
         return numbers.get(place) + "개";
     }
+
 }
