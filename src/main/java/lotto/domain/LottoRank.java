@@ -30,11 +30,11 @@ public enum LottoRank {
                 .orElse(LOSE);
     }
 
-    public boolean correctWinningNumberCount(int winningNumberCount) {
+    private boolean correctWinningNumberCount(int winningNumberCount) {
         return this.winningNumberCount == winningNumberCount;
     }
 
-    public boolean correctBonusNumber(boolean hasBonusNumber) {
+    private boolean correctBonusNumber(boolean hasBonusNumber) {
         return this.hasBonusNumber == hasBonusNumber;
     }
 
