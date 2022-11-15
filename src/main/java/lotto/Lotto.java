@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -10,11 +11,19 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+    public List<Integer> getLottoNumbers() {
+        return numbers;
     }
 
-    // TODO: 추가 기능 구현
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자만 입력해야 합니다.");
+        }
+        if (numbers.stream().distinct().count() != 6) {
+            throw new IllegalArgumentException("[ERROR] 중복된 수를 입력하셨습니다.");
+        }
+        if (Collections.min(numbers) < 1 || 45 < Collections.max(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45의 정수만 입력해야 합니다.");
+        }
+    }
 }
