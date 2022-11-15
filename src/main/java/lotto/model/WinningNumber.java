@@ -34,19 +34,15 @@ public class WinningNumber {
         if (lotto == null) {
             throw new IllegalArgumentException();
         }
-        AtomicInteger correctNumber = new AtomicInteger();
-        AtomicBoolean bonus = new AtomicBoolean();
 
-        lotto.iterate(n -> {
-            if (numbers.contains(n)) {
-                correctNumber.getAndIncrement();
-            }
-            if (n == bonusNumber) {
-                bonus.getAndSet(true);
-            }
-        });
+        int correctNumber = (int) lotto.getNumbers().stream()
+                .filter(numbers::contains)
+                .count();
 
-        return getWinning(correctNumber.get(), bonus.get());
+        boolean bonus = lotto.getNumbers().stream()
+                .anyMatch(n -> n == bonusNumber);
+
+        return getWinning(correctNumber, bonus);
     }
 
     private Optional<Winning> getWinning(int correctNumber, boolean bonus) {
