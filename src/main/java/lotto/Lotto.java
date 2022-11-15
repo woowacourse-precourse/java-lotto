@@ -6,6 +6,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        Exeption.isNotoverlapped(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
@@ -15,6 +16,12 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    // 추가 기능
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 
     // TODO: 추가 기능 구현
+
 }
