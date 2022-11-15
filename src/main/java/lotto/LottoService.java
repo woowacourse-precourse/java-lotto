@@ -56,6 +56,7 @@ public class LottoService {
         for (Lotto lotto : lottoRepository) {
             lotto.printNumbers();
         }
+        System.out.println();
     }
 
     public void checkLottos() {
@@ -69,6 +70,8 @@ public class LottoService {
     }
 
     public void showResults() {
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + perScoreCounts.get(1) + "개");
         System.out.println("4개 일치 (50,000원) - " + perScoreCounts.get(2) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + perScoreCounts.get(3) + "개");
