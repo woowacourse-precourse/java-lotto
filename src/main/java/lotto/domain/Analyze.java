@@ -77,13 +77,14 @@ public class Analyze {
         return matchFrequency;
     }
 
-    public float profit(int lottoCount){
+    public double profit(int lottoCount){
         List<Integer> winnings = PrizeCategory.getWinnings();
-        int totalPrize = 0;
+        long totalPrize = 0;
         for (int i = 0; i < getMatchFrequency().size(); i++){
-            totalPrize += getMatchFrequency().get(i) * winnings.get(i);
+            totalPrize += (long)(getMatchFrequency().get(i) * winnings.get(i));
         }
-        return (totalPrize * 100) / (lottoCount * countingNumber);
+        double profiterate = (double)(totalPrize * 100) / (double)((lottoCount * countingNumber));
+        return profiterate;
     }
 
 }

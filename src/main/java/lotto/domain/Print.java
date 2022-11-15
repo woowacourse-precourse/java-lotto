@@ -25,7 +25,7 @@ public class Print {
         }
     }
 
-    public void profitRate(float profit){
+    public void profitRate(double profit){
         System.out.println(String.format("총 수익률은 %.1f", profit) + "%입니다.");
     }
 }
