@@ -1,6 +1,7 @@
 package lotto;
 
 import controller.Calculate;
+import controller.Compare;
 import controller.InputNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,4 +41,18 @@ public class InputNumberTest {
                 })
                 .withMessage("[ERROR] 보너스 번호는 1개여야 합니다.");
     }
+
+    @DisplayName("당첨번호와 보너스 번호 내 중복이 있는지 확인")
+    @Test
+    void 번호_중복_테스트() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+                    InputNumber.getIntegratedWinningNumber(List.of(1, 2, 3, 4, 5, 6), List.of(1));
+                })
+                .withMessage("[ERROR] 당첨번호와 보너스번호 내 중복이 있습니다.");
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+                    InputNumber.getIntegratedWinningNumber(List.of(1, 2, 3, 4, 4, 6), List.of(7));
+                })
+                .withMessage("[ERROR] 당첨번호와 보너스번호 내 중복이 있습니다.");
+    }
+
 }
