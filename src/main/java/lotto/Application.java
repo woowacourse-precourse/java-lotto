@@ -21,6 +21,7 @@ public class Application {
     static int HowManyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
+        if (!(IsNum(input))) throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
         int input_money = Integer.parseInt(input);
         int user_buy_num = input_money / 1000;
 
@@ -30,6 +31,13 @@ public class Application {
 
         System.out.println("\n" + user_buy_num + "개를 구매했습니다.");
         return user_buy_num;
+    }
+
+    static boolean IsNum(String input) {
+        for (char ch : input.toCharArray()) {
+            if (!('0' <= ch && ch <= '9')) return false;
+        }
+        return true;
     }
 
     static List<Integer> MakeNumbers() {
