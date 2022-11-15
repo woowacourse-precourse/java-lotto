@@ -7,6 +7,7 @@ public class Result {
     enum Prize {
         THREE(5_000), FOUR(50_000), FIVE(1_500_000), FIVE_BONUS(30_000_000), SIX(2_000_000_000);
         private final int value;
+
         Prize(int value) {
             this.value = value;
         }
@@ -39,13 +40,12 @@ public class Result {
     }
 
     public void print() {
-        String result = "";
-        result += "\n당첨 통계\n---\n";
-        result += "3개 일치 (5,000원) - " + three + "개\n";
-        result += "4개 일치 (50,000원) - " + four + "개\n";
-        result += "5개 일치 (1,500,000원) - " + five + "개\n";
-        result += "5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveBonus + "개\n";
-        result += "6개 일치 (2,000,000,000원) - " + six + "개";
+        String result = "\n당첨 통계\n---\n" +
+                "3개 일치 (5,000원) - " + three + "개\n" +
+                "4개 일치 (50,000원) - " + four + "개\n" +
+                "5개 일치 (1,500,000원) - " + five + "개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveBonus + "개\n" +
+                "6개 일치 (2,000,000,000원) - " + six + "개";
 
         System.out.println(result);
     }
