@@ -27,6 +27,8 @@ public class LottoGameController {
     public void LottoSystem(InputMessages inputMessages, OutputMessages outputMessages) {
         setRandomList(inputMessages, outputMessages);
         setEnterLotto(inputMessages, outputMessages);
+        countEnterNum(getBonusNum(inputMessages, outputMessages));
+        printResult(outputMessages);
     }
 
     public String getInputNumber(InputMessages inputMessages, OutputMessages outputMessages) {
