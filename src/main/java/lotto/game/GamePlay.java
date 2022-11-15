@@ -15,7 +15,8 @@ import lotto.view.PrintResult;
 import lotto.view.UserInput;
 
 public class GamePlay {
-    public static void play(){
+
+    public static void play() {
         Money money = new Money(UserInput.InputMoney());
         LottoPieces lottoPieces = generateLottoPieces(money);
         Lottos lottos = generateLottos(lottoPieces);
@@ -30,7 +31,7 @@ public class GamePlay {
 
     private static Map<Prize, Integer> generatePrizeBoard(Lottos lottos) {
         Lotto winningLotto = new Lotto(UserInput.InputWinningNums());
-        Bonus bonus = new Bonus(UserInput.InputBonusNum(),winningLotto);
+        Bonus bonus = new Bonus(UserInput.InputBonusNum(), winningLotto);
         Map<Prize, Integer> prizeBoard = LottoMachine.checkPrizes(winningLotto, lottos,
             bonus);
         PrintResult.PrintPrizeStatistic(prizeBoard);
