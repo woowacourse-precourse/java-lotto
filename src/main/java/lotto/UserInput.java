@@ -8,8 +8,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class UserInput {
     public int getMoneyInput() {
         System.out.println("구입금액을 입력해 주세요.");
-        String money = readLine();
-        return Integer.parseInt(money);
+        String input = readLine();
+        try {
+            isDigit(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        return Integer.parseInt(input);
     }
 
     public List<Integer> getLottoInput() {
@@ -28,5 +34,11 @@ public class UserInput {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusInput = readLine();
         return Integer.parseInt(bonusInput);
+    }
+
+    private static void isDigit(String input) {
+        if (!input.matches("-?\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 문자가 입력되었습니다.");
+        }
     }
 }
