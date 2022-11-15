@@ -34,7 +34,10 @@ public class Service {
     }
 
     public String getWinningNumberInput() {
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
+        if(!input.contains(",")){
+            throw new IllegalArgumentException("[ERROR] 올바른 형식이 아닙니다.");
+        }
         return input;
     }
 }
