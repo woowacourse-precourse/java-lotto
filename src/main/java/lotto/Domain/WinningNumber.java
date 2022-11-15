@@ -14,7 +14,7 @@ public class WinningNumber {
 
     private void validateWinningNum(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_LOTTO_NUMS_LENGTH);
         }
         Validator.checkIsValidWinningNums(numbers);
     }

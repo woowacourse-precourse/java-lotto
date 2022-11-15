@@ -20,8 +20,14 @@ public class Validator {
     }
 
     public static void checkIsValidWinningNums(List<Integer> winningNums) {
-        if (!checkIsValidLottoNum(winningNums) || !checkIsNotDupicateLottoNum(winningNums) || !checkWinningnumsSize(winningNums)) {
-            throw new IllegalArgumentException(Message.ERROR_WINNING_NUMS);
+        if (!checkIsValidLottoNum(winningNums)){
+            throw new IllegalArgumentException(String.format(Message.ERROR_LOTTO_NUM,MIN_NUM, MAX_NUM));
+        }
+        if(!checkIsNotDupicateLottoNum(winningNums)) {
+            throw new IllegalArgumentException(Message.ERROR_DUPLICATE_WINNING_NUMS);
+        }
+        if(!checkWinningnumsSize(winningNums)) {
+            throw new IllegalArgumentException(Message.ERROR_LOTTO_NUMS_LENGTH);
         }
     }
 
@@ -44,8 +50,11 @@ public class Validator {
 
     public static void checkIsValidBonusNum(List<Integer> winningNums, int bonusNum) {
 
-        if (winningNums.contains(bonusNum) || !checkIsInLottoRange(bonusNum)) {
-            throw new IllegalArgumentException(Message.ERROR_BONUS_NUM);
+        if (winningNums.contains(bonusNum) ) {
+            throw new IllegalArgumentException(Message.ERROR_DUPLICATE_BONUS_NUM);
+        }
+        if(!checkIsInLottoRange(bonusNum)){
+            throw new IllegalArgumentException(String.format(Message.ERROR_LOTTO_NUM, MIN_NUM,MAX_NUM));
         }
     }
 }
