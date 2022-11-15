@@ -25,4 +25,11 @@ public class UI {
         System.out.println(String.format(Notice.LOTTO_COUNT.message(), Game.getLottoCount()));
     }
 
+    public void outputLottoNumbers() {
+        for (Lotto lotto : Game.lottos) {
+            System.out.println(
+                String.format(Notice.LOTTO_NUMBER.message(), lotto.numbersToString()));
+        }
+    }
+
 }
