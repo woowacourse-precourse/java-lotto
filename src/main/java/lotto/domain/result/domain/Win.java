@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain.result.domain;
 
 public enum Win {
     FIRST(6, 2_000_000_000),

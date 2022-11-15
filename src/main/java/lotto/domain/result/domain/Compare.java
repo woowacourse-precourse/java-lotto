@@ -1,12 +1,12 @@
-package lotto;
+package lotto.domain.result.domain;
 
 import java.util.List;
 
 public class Compare {
-    final int sameNumberCnt;
-    final boolean isBonusSame;
+    public final int sameNumberCnt;
+    public final boolean isBonusSame;
 
-    Compare(List<Integer> numbers, List<Integer> lotto, int bonus) {
+    public Compare(List<Integer> numbers, List<Integer> lotto, int bonus) {
         sameNumberCnt = sameNumberCnt(numbers, lotto);
         isBonusSame = isBonusSame(numbers, bonus);
     }

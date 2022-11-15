@@ -1,13 +1,17 @@
-package lotto;
+package lotto.domain.result;
+
+import lotto.domain.result.domain.Compare;
+import lotto.domain.result.domain.PrintStatistics;
+import lotto.domain.result.domain.Win;
 
 import java.util.List;
 
 public class Result {
 
-    int[] totalWin = {0, 0, 0, 0, 0};   // totalWin[i] = i+1등인 로또 개수
-    int totalPrize;
+    public int[] totalWin = {0, 0, 0, 0, 0};   // totalWin[i] = i+1등인 로또 개수
+    public int totalPrize;
 
-    Result(List<List<Integer>> myLotto, List<Integer> winningLotto, int winningBonus) {
+    public Result(List<List<Integer>> myLotto, List<Integer> winningLotto, int winningBonus) {
         for (int i = 0; i < myLotto.size(); i++) {
             Compare compare = new Compare(myLotto.get(i), winningLotto, winningBonus);
             judgeWin(compare.sameNumberCnt, compare.isBonusSame);

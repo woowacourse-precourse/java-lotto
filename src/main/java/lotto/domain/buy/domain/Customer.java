@@ -1,12 +1,12 @@
-package lotto;
+package lotto.domain.buy.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class Customer {
-    final int count;
+    public final int count;
     final int price;
 
-    Customer() {
+    public Customer() {
         String tmp = Console.readLine();
         try {
             price = Integer.parseInt(tmp);

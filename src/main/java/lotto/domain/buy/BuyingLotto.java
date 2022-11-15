@@ -1,13 +1,16 @@
-package lotto;
+package lotto.domain.buy;
+
+import lotto.domain.buy.domain.Customer;
+import lotto.domain.buy.domain.LottoGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BuyingLotto {
     final int count;
-    List<List<Integer>> lottos = new ArrayList<>();
+    public List<List<Integer>> lottos = new ArrayList<>();
 
-    BuyingLotto() {
+    public BuyingLotto() {
         System.out.println("구매금액을 입력해 주세요.");
         count = new Customer().count;
         System.out.println(count + "개를 구매했습니다.");

@@ -1,15 +1,17 @@
-package lotto;
+package lotto.domain.getwin;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.getwin.domain.Bonus;
+import lotto.domain.getwin.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumbers {
-    final List<Integer> lotto;
-    final int bonus;
+    public final List<Integer> lotto;
+    public final int bonus;
 
-    WinningNumbers() {
+    public WinningNumbers() {
         List<Integer> tmpLotto = getLotto();
         this.lotto = new Lotto(tmpLotto).numbers;
         int tmpBonus = getBonus();

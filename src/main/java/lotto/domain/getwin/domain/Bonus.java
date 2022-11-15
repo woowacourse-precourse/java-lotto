@@ -1,9 +1,9 @@
-package lotto;
+package lotto.domain.getwin.domain;
 
 public class Bonus {
-    final int bonus;
+    public final int bonus;
 
-    Bonus(int bonus) {
+    public Bonus(int bonus) {
         validate(bonus);
         this.bonus = bonus;
     }

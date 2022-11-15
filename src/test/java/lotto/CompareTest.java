@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.result.domain.Compare;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

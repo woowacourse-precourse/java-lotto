@@ -1,10 +1,10 @@
-package lotto;
+package lotto.domain.result.domain;
 
 import java.text.DecimalFormat;
 
 public class PrintStatistics {
 
-    PrintStatistics(int myLottoCnt, int[] totalWin, int totalPrize) {
+    public PrintStatistics(int myLottoCnt, int[] totalWin, int totalPrize) {
         System.out.println("당첨 통계");
         System.out.println("---");
         printResult(totalWin);

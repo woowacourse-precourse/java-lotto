@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.result.domain.Win;
+import lotto.domain.result.domain.Yield;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

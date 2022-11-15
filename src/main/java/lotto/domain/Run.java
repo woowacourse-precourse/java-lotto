@@ -1,9 +1,13 @@
-package lotto;
+package lotto.domain;
+
+import lotto.domain.buy.BuyingLotto;
+import lotto.domain.getwin.WinningNumbers;
+import lotto.domain.result.Result;
 
 import java.util.List;
 
 public class Run {
-    Run() {
+    public Run() {
         BuyingLotto buyingLotto = new BuyingLotto();
         WinningNumbers winningNumbers = new WinningNumbers();
 

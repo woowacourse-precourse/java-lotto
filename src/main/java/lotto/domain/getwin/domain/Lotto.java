@@ -1,10 +1,10 @@
-package lotto;
+package lotto.domain.getwin.domain;
 
 import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
-    final List<Integer> numbers;
+    public final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
