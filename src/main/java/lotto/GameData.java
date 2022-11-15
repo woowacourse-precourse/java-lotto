@@ -29,5 +29,9 @@ public enum GameData {
         return this.count;
     }
 
+    public Long getIncome() {
+        return this.prizeMoney * this.count ;
+    }
+
 
 }
