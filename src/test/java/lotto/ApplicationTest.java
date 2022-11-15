@@ -68,7 +68,6 @@ class ApplicationTest extends NsTest {
 
     }
 
-    @DisplayName()
     @Override
     public void runMain() {
         Application.main(new String[]{});
