@@ -44,4 +44,21 @@ class LottoTest {
         assertThat(new Lotto(List.of(10,9,5,1,2,3))
                 .hasNumber(14)).isEqualTo(false);
     }
+
+    @DisplayName("로또 번호가 숫자 범위를 넘어가면 예외가 발생한다.")
+    @Test
+    void createLottoByOutOfRangeNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(10,9,5,47,1,2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("두 개의 로또를 통해 일치하는 번호의 개수를 확인한다")
+    @Test
+    void countNumberOfMatchingWithTwoLotto() {
+        Lotto lottoA = new Lotto(List.of(33,31,2,9,17,6));
+        Lotto lottoB = new Lotto(List.of(1,2,3,45,31,5));
+
+        assertThat(lottoA.countNumberOfMatching(lottoB))
+                .isEqualTo(2);
+    }
 }
