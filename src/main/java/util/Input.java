@@ -18,4 +18,3 @@ public class Input {
         return Console.readLine();
     }
 }
-
