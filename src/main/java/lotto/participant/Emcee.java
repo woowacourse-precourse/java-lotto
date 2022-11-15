@@ -8,8 +8,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.constant.Rank.*;
-
 public class Emcee {
 
     public void guideGame() {
@@ -40,15 +38,15 @@ public class Emcee {
         System.out.println("\n당첨 통계입니다.");
         System.out.println("=========================");
         System.out.println("3개 일치 (5,000원) - "
-                + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) + "개");
+                + tallyOfRanks.getOrDefault(Rank.FIFTH_THREE_MATCHED, 0) + "개");
         System.out.println("4개 일치 (50,000원) - "
-                + tallyOfRanks.getOrDefault(FOURTH_FOUR_MATCHED, 0) + "개");
+                + tallyOfRanks.getOrDefault(Rank.FOURTH_FOUR_MATCHED, 0) + "개");
         System.out.println("5개 일치 (1,500,000원) - "
-                + tallyOfRanks.getOrDefault(THIRD_FIVE_MATCHED, 0) + "개");
+                + tallyOfRanks.getOrDefault(Rank.THIRD_FIVE_MATCHED, 0) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "
-                + tallyOfRanks.getOrDefault(SECOND_FIVE_WITH_BONUS, 0) + "개");
+                + tallyOfRanks.getOrDefault(Rank.SECOND_FIVE_WITH_BONUS, 0) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - "
-                + tallyOfRanks.getOrDefault(FIRST_SIX_MATCHED, 0) + "개");
+                + tallyOfRanks.getOrDefault(Rank.FIRST_SIX_MATCHED, 0) + "개");
         System.out.println("=========================");
     }
 
