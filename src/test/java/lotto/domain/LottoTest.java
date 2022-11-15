@@ -42,4 +42,13 @@ class LottoTest {
         int count = lotto.countMatchNumber(new Lotto(List.of(1, 2, 3, 23, 45, 22)));
         assertThat(count).isEqualTo(3);
     }
+
+    @DisplayName("로또 번호에 특정 숫자가 포함되어있는지 확인할 수 있다. ")
+    @ParameterizedTest
+    @CsvSource({"1,true", "9,false"})
+    void 로또_번호에_숫자1이_포함되고_9가_포함되지_않게_생성(int containsNum, boolean result) {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        boolean isContains = lotto.contains(containsNum);
+        assertThat(isContains).isEqualTo(result);
+    }
 }
