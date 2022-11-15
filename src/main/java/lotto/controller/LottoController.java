@@ -31,7 +31,7 @@ public class LottoController {
             outputView.outputLottoTickets(lottoTickets);
             LottoResult lottoResult = makeLottoResult(winningNumbers, lottoTickets);
             outputView.printWinningHistory(lottoResult);
-
+            outputView.printRateOfProfit(lottoResult.getRateOfProfit(lottoPurchaseMoney.get()));
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
         }
