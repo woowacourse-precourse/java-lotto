@@ -2,8 +2,8 @@ package lotto;
 
 public class Answer {
 
-  Lotto winningLotto;
-  Integer bonusNumber;
+  private Lotto winningLotto;
+  private Integer bonusNumber;
 
   public Answer(Lotto winningLotto, Integer bonusNumber) {
     this.winningLotto = winningLotto;
