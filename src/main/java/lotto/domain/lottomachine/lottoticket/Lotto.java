@@ -5,8 +5,8 @@ import lotto.domain.lottomachine.winningnumber.WinningNumbers;
 
 import java.util.List;
 
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.LESS_THAN_SIZE_OF_SIX;
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.LOTTO_NUMBERS_DUPLICATION;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.LESS_THAN_SIZE_OF_SIX;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.LOTTO_NUMBERS_DUPLICATION;
 
 public class Lotto {
     private static final String FIVE_COUNT = "5";

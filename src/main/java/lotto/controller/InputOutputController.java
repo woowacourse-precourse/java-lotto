@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.lottomachine.lottoticket.LottoTickets;
-import lotto.domain.lottomachine.messages.InputErrorMessage;
+import lotto.domain.lottomachine.error.InputErrorMessage;
 import lotto.domain.lottomachine.payment.Payment;
 import lotto.domain.lottomachine.ranking.Frequency;
 import lotto.domain.lottomachine.ranking.Ranking;
@@ -61,8 +61,8 @@ public class InputOutputController {
         outputMessenger.printErrorMessage(error);
     }
 
-    private void validateForm(String userInput, InputErrorMessage value) {
-        if (!userInput.matches(value.getRegularExpression())) {
+    private void validateForm(String input, InputErrorMessage value) {
+        if (!input.matches(value.getRegularExpression())) {
             throw new IllegalArgumentException(value.getErrorMessage());
         }
     }

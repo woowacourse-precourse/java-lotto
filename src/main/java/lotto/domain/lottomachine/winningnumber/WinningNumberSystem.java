@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.BONUS_NUMBER_DUPLICATION;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.BONUS_NUMBER_DUPLICATION;
 
 public class WinningNumberSystem {
     private static final String COMMA = ",";

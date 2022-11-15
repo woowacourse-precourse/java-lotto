@@ -2,8 +2,7 @@ package lotto.domain.lottomachine.winningnumber;
 
 import java.util.List;
 
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.WINNING_NUMBERS_DUPLICATION;
-
+import static lotto.domain.lottomachine.error.DomainErrorMessage.WINNING_NUMBERS_DUPLICATION;
 
 public class WinningNumbers {
     private final List<WinningNumber> winningNumbers;

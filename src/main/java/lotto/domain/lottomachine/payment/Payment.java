@@ -4,9 +4,9 @@ import lotto.domain.lottomachine.lottoticket.LottoTicketSystem;
 
 import java.math.BigDecimal;
 
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.LESS_THAN_PRICE;
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.NON_MULTIPLE_OF_PRICE;
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.ZERO_DIVISOR;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.LESS_THAN_PRICE;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.NON_MULTIPLE_OF_PRICE;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.ZERO_DIVISOR;
 
 public class Payment {
     private final static int ZERO = 0;

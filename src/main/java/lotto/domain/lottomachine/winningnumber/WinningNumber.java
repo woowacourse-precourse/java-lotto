@@ -1,12 +1,11 @@
 package lotto.domain.lottomachine.winningnumber;
 
 import lotto.domain.lottomachine.lottoticket.LottoTicketSystem;
-import lotto.domain.lottomachine.lottoticket.LottoTickets;
 
 import java.util.List;
 import java.util.Objects;
 
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.WINNING_NUMBER_RANGE;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.WINNING_NUMBER_RANGE;
 
 public class WinningNumber {
     private final static String BONUS_COUNT = "B";

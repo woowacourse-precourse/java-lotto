@@ -10,11 +10,7 @@ import lotto.domain.lottomachine.winningnumber.WinningNumberSystem;
 import lotto.domain.lottomachine.winningnumber.WinningNumbers;
 
 public class LottoMachineController {
-    private final InputOutputController inputOutputController;
-
-    public LottoMachineController() {
-        this.inputOutputController = new InputOutputController();
-    }
+    private final InputOutputController inputOutputController = new InputOutputController();
 
     public void runMainLottoMachine() {
         try {

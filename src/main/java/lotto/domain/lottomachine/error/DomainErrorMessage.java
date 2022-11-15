@@ -1,4 +1,4 @@
-package lotto.domain.lottomachine.messages;
+package lotto.domain.lottomachine.error;
 
 public enum DomainErrorMessage {
     LESS_THAN_SIZE_OF_SIX("[ERROR] 로또 번호의 개수는 6개여야 합니다."),
