@@ -1,0 +1,26 @@
+- docs(README): update README
+- refactor: change file structure
+- fix: delete enum Reward, fix lottoRankResult to Map
+- fix: delete enum Reward, fix lottoRankResult to Map
+- refactor(ProgramManager): delete getLottoStatistics() method
+- add(UserManagerTest): test to check price input
+- feat(ProgramManager): add try-catch to print error messages
+- fix(LottoManager): change order of enums, fix calculation of revenueRate
+- feat(ProgramManager): add methods to print lotto statistics
+- add(LottoTest): tests to check countSameLottoNumber method
+- feat(ProgramManager): add method calculating revenueRate by lottoRankResult
+- add(LottoManagerTest): tests to check lottoRankResult
+- fix(LottoManagerTest): fix test class name
+- feat: add methods to get lottoRankResult
+- add(UserManagerTest): tests to check predictBonusLottoNumber input
+- feat(UserManager): add methods to get predictBonusLottoNumber input
+- add(UserManagerTest): tests to check predictLottoNumber input
+- feat(UserManager): add methods to get predictLottoNumber input
+- add(LottoManagerTest): tests to check generated lottos
+- feat(ProgramManager): add method printing generated lotto
+- feat(LottoManager): add method generating lottos
+- add(UserManagerTest): tests to check price input
+- feat(UserManager): add methods to get price input
+- add: set entire flow of the program
+- docs(README): add lists of Functional Requirements
+- feat: setup precourse lotto project
