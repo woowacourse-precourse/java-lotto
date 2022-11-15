@@ -75,6 +75,9 @@ public class Game {
         String winNumber = Console.readLine();
         System.out.println(Resource.inputOfBonusNumber);
         String bonusNumber = Console.readLine();
+        for(int i=0;i<bonusNumber.length();i++) {
+            checkIfCharIsNumber(bonusNumber.charAt(i));
+        }
         return new WinningNumber(winNumber, Integer.parseInt(bonusNumber));
     }
 
@@ -106,6 +109,12 @@ public class Game {
             return purchaseBill / unit;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorResource.errorStart + notNumber);
+        }
+    }
+
+    private void checkIfCharIsNumber(char c){
+        if(c<zero || c>nine){
+            throw new IllegalArgumentException(ErrorResource.errorStart+ charIsNotNumber);
         }
     }
 
