@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -91,7 +90,7 @@ public class LottoMachine {
         List<Lotto> issuedLotto = new ArrayList<>();
 
         for (int i = 0; i < numberOfLotto; i++) {
-            List<Integer> newLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> newLottoNumber = new LottoNumbers().generator();
             Lotto newLotto = new Lotto(newLottoNumber);
             issuedLotto.add(newLotto);
         }
