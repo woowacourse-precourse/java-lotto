@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class Game {
 
-    static UI ui = new UI();
     static Validation validation = new Validation();
     static int purchase;
     static Lotto winningNumber;
@@ -18,6 +17,19 @@ public class Game {
     static final int LOTTO_PRICE = 1000;
     static final int NONE = 0;
     static final int WIN = 1;
+
+    static void run() throws IllegalArgumentException {
+        UI ui = new UI();
+        Game.setPurchase(ui.inputPurchase());
+        ui.outputLottoCount();
+        Game.generateLottos();
+        ui.outputLottoNumbers();
+        Game.setWinningNumber(ui.inputWinningNumber());
+        Game.setBonusNumber(ui.inputBonusNumber());
+        Game.calculateWinningStatus();
+        ui.outputWinningStatus();
+        ui.outputRateOfReturn();
+    }
 
     static void setPurchase(String input) throws IllegalArgumentException {
         validation.checkNull(input);
