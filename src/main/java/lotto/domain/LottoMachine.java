@@ -62,6 +62,23 @@ public class LottoMachine {
         return lottoMatchs;
     }
 
+    // 로또 하나 당 당첨 결과 집계
+    private WinStatus getMatchCount(List<Integer> lotto, List<Integer> winningNumber, int bonusNumber) {
+        int matchCount = 0;
+        for (int number : lotto) {
+            if (winningNumber.contains(number)) {
+                matchCount += 1;
+            }
+        }
+        if (matchCount == 5 && winningNumber.contains(bonusNumber)) {
+            return WinStatus.FIVE_BONUS_MATCH;
+        }
+        if (matchCount >= 3) {
+            return WinStatus.getWinStatus(matchCount);
+        }
+        return WinStatus.NOTHING;
+    }
+
 
 //  당첨 수익률 반환 기능
     public double getYield() {}
