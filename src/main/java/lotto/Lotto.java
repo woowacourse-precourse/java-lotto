@@ -18,7 +18,6 @@ public class Lotto {
     }//validate
 
     public List<Integer> getLottoNumbers() {
-        Collections.sort(numbers);
         return numbers;
     }//getLottoNumbers
 }// end class
