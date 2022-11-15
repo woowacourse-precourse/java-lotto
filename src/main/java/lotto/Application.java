@@ -14,6 +14,7 @@ public class Application {
             outputTickets(newGame);
             newGame.setWinningNumber(inputWinningNumber());
             newGame.setBonusNumber(inputBonusNumber());
+            newGame.setWinningCount();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

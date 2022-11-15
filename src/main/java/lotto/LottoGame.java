@@ -10,6 +10,7 @@ public class LottoGame {
     private final List<Lotto> purchasedLottoTickets = new ArrayList<>();
     private Lotto winningNumber;
     private Integer bonusNumber;
+    private List<Integer> winningCount;
 
     /* get method */
     public List<Lotto> getPurchasedLottoTickets() {
@@ -32,8 +33,16 @@ public class LottoGame {
         this.bonusNumber = Integer.parseInt(answer);
     }
 
+    public void setWinningCount() {
+        List<Integer> winningCount = new ArrayList<>();
+        for (Lotto ticket : this.purchasedLottoTickets) {
+            winningCount.add(rankLotto(ticket));
+        }
+        this.winningCount = winningCount;
+    }
+
     /* validate method */
-    public void validateMoney(String answer) {
+    private void validateMoney(String answer) {
         if (checkOnlyNumber(answer) || checkDivisibleNumber(answer)) {
             throw new IllegalArgumentException(ErrorType.INPUT_MONEY_ERROR.getMessage());
         }
@@ -101,5 +110,43 @@ public class LottoGame {
             answerNumber.add(Integer.parseInt(number));
         }
         return new Lotto(answerNumber);
+    }
+
+    private int rankLotto(Lotto ticket) {
+        int rank;
+        int countOfMatches;
+        boolean correctBonusNumber = false;
+        countOfMatches = compareWinningNumberAndLotto(ticket);
+        if (countOfMatches == 5) {
+            correctBonusNumber = compareBonusNumberAndLotto(ticket);
+        }
+        rank = makeRank(countOfMatches, correctBonusNumber);
+        return rank;
+    }
+
+    private int compareWinningNumberAndLotto(Lotto ticket) {
+        int countOfMatches = 0;
+        List<Integer> correctNumbers = winningNumber.getLottoNumbers();
+        for (Integer number : ticket.getLottoNumbers()) {
+            if (correctNumbers.contains(number)) {
+                countOfMatches += 1;
+            }
+        }
+        return countOfMatches;
+    }
+
+    private boolean compareBonusNumberAndLotto(Lotto ticket) {
+        return ticket.getLottoNumbers().contains(this.bonusNumber);
+    }
+
+    private int makeRank(int countOfMatches, boolean correctBonusNumber) {
+        int[] rank = {5,4,3,1};
+        if (countOfMatches == 0) {
+            return 0;
+        }
+        if(countOfMatches == 5 || correctBonusNumber){
+            return rank[countOfMatches - 3] + 1;
+        }
+        return rank[countOfMatches - 3];
     }
 }
