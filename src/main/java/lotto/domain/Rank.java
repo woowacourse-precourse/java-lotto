@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public enum Rank {
@@ -27,8 +29,7 @@ public enum Rank {
 			return SECOND;
 		}
 
-		List<Rank> rankWithoutSecond = List.of(MISS, FIFTH, FOURTH, THIRD, FIRST);
-		return rankWithoutSecond.get(getListIndex(hitNumberCount));
+		return getRanksWithoutSecond().get(getListIndex(hitNumberCount));
 	}
 
 	public int getHitNumberCount() {
@@ -47,8 +48,14 @@ public enum Rank {
 		return isContainsBonusNumber && SECOND.hitNumberCount == hitNumberCount;
 	}
 
+	private static List<Rank> getRanksWithoutSecond() {
+		List<Rank> list = new ArrayList<>(List.of(Rank.values()));
+		list.remove(SECOND);
+		Collections.reverse(list);
+		return list;
+	}
+
 	private static int getListIndex(int hitNumberCount) {
 		return Math.max(hitNumberCount - 2, MISS.hitNumberCount);
 	}
-
 }

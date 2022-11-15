@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,7 @@ public class OutputView {
 	public static void printWinningResult(Map<Rank, Integer> scoreBoard) {
 		System.out.println(RESULT_HEADER_MESSAGE);
 
-		List<Rank> rankWithoutMiss = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
-		for (Rank rank : rankWithoutMiss) {
+		for (Rank rank : getRanksWithoutMiss()) {
 			System.out.printf(
 				createWinningResultMessage(rank),
 				rank.getHitNumberCount(),
@@ -45,11 +45,16 @@ public class OutputView {
 		System.out.printf(PROFIT_RATE_MESSAGE, getProfitRate);
 	}
 
+	private static List<Rank> getRanksWithoutMiss() {
+		List<Rank> list = new ArrayList<>(List.of(Rank.values()));
+		list.remove(Rank.MISS);
+		return list;
+	}
+
 	private static String createWinningResultMessage(Rank rank) {
 		if (rank == Rank.SECOND) {
 			return SECOND_RESULT_MESSAGE;
 		}
 		return WINNING_RESULT_MESSAGE;
 	}
-
 }
