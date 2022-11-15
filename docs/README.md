@@ -2,7 +2,7 @@
 
 ### 1. 로또 구입 금액을 입력받는 기능
 - [x] 1,000원 단위의 로또 구입 금액을 입력받는다
-- [ ] [예외] IllegalArgumentException
+- [x] [예외] IllegalArgumentException
   - 숫자가 아닌 경우 >> "[ERROR] 로또 구입 금액은 숫자여야 합니다."
   - 1,000원으로 나누어 떨어지지 않는 경우 >> "[ERROR] 잘못된 구입 금액입니다."
 
