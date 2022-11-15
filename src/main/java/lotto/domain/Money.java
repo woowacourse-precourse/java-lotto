@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class Money {
@@ -8,6 +9,7 @@ public class Money {
     private static final String ERROR_UNIT = String.format("금액은 %d 단위만 입력 가능합니다.", UNIT);
     private static final String ERROR_NEGATIVE = "금액은 음수 입력이 불가능합니다.";
 
+    private static final DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private final int money;
 
     public Money(int money) {
@@ -26,6 +28,10 @@ public class Money {
         if (money < 0) {
             throw new IllegalArgumentException(ERROR_NEGATIVE);
         }
+    }
+
+    public String getMoneyFormat() {
+        return decimalFormat.format(money);
     }
 
     @Override
