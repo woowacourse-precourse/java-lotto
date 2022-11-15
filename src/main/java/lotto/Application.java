@@ -7,10 +7,14 @@ import lotto.domain.Machine;
 public class Application {
     public static void main(String[] args) {
         Machine lottoMachine = new Machine();
-        int ticketCount = lottoMachine.getMoney();
-        List<Lotto> ticketList = lottoMachine.sellTicket(ticketCount);
+        try {
+            int ticketCount = lottoMachine.getMoney();
+            List<Lotto> ticketList = lottoMachine.sellTicket(ticketCount);
 
-        lottoMachine.createAnswer();
-        lottoMachine.printResult(ticketList);
+            lottoMachine.createAnswer();
+            lottoMachine.printResult(ticketList);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
     }
 }
