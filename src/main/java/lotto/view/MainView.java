@@ -5,31 +5,22 @@ import lotto.*;
 import java.util.List;
 
 public class MainView {
-    private final User user;
+    private final InputView inputView;
     private final LotteryPublisher publisher;
 
-    public MainView(User user, LotteryPublisher publisher) {
-        this.user = user;
+    public MainView(InputView inputView, LotteryPublisher publisher) {
+        this.inputView = inputView;
         this.publisher = publisher;
     }
 
-    public void run() {
+    public void start() {
         try {
-            printInputPurchaseAmountMessage();
-            Integer purchaseAmount = user.inputPurchaseAmount();
-            printPublishCountMessage(purchaseAmount);
+            int purchaseAmount = inputView.inputPurchaseAmount();
+            List<Lotto> purchasedLotto = purchaseLotto(purchaseAmount);
 
-            List<Lotto> purchasedLotto = publisher.publishByPurchaseAmount(purchaseAmount);
-            printPurchasedLotto(purchasedLotto);
-
-            printInputWinningNumberMessage();
-            List<Integer> winningNumber = user.inputWinningNumber();
-
-            printInputBonusNumber();
-            int bonusNumber = user.inputBonusNumber(winningNumber);
-
-            LottoWinningDiscriminator discriminator = new LottoWinningDiscriminator(winningNumber, bonusNumber);
-            List<LottoRank> winningResult = discriminator.discriminate(purchasedLotto);
+            List<Integer> winningNumber = inputView.inputWinningNumber();
+            int bonusNumber = inputView.inputBonusNumber(winningNumber);
+            List<LottoRank> winningResult = discriminatePurchasedLotto(purchasedLotto, winningNumber, bonusNumber);
 
             new ResultView(new LottoResult(winningResult)).printWinningStats();
         } catch (IllegalArgumentException e) {
@@ -37,27 +28,19 @@ public class MainView {
         }
     }
 
-    private void printInputBonusNumber() {
-        System.out.println();
-        System.out.println("보너스 번호를 입력해 주세요.");
+    private List<Lotto> purchaseLotto(int purchaseAmount) {
+        List<Lotto> purchasedLotto = publisher.publishByPurchaseAmount(purchaseAmount);
+        printPurchasedLotto(purchasedLotto);
+        return purchasedLotto;
     }
 
-    private void printInputWinningNumberMessage() {
-        System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요.");
+    private List<LottoRank> discriminatePurchasedLotto(List<Lotto> purchasedLotto, List<Integer> winningNumber, int bonusNumber) {
+        return new LottoWinningDiscriminator(winningNumber, bonusNumber)
+                .discriminate(purchasedLotto);
     }
 
     private void printPurchasedLotto(List<Lotto> purchasedLotto) {
         purchasedLotto.stream().forEach(this::printLottoNumber);
-    }
-
-    private void printPublishCountMessage(int purchaseAmount) {
-        System.out.println();
-        System.out.println(purchaseAmount / LotteryPublisher.LOTTO_PRICE + "개를 구매했습니다.");
-    }
-
-    private void printInputPurchaseAmountMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
     }
 
     private void printLottoNumber(Lotto lotto) {
