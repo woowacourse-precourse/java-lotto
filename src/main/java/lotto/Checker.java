@@ -94,18 +94,14 @@ public class Checker {
     }
 
     public List<Integer> checkNumbersInput(String input) {
-
         String[] inputs = input.split(",");
         List<Integer> numbers = new ArrayList<>();
-
         for (String s : inputs) {
             s = s.strip();
             int number = this.checkNumber(s);
             numbers.add(number);
         }
-
         checkValidate(numbers);
-
         return numbers;
     }
 
@@ -164,13 +160,11 @@ public class Checker {
         int winning;
         int coincideCount;
         int winningBonus;
-
         coincideCount = result.getCoincideCount();
         winningBonus = result.getBonus();
         if (winningBonus > 0 && coincideCount == 5) {
             winningBonus = 2;
         }
-
         winning = Values.WINNINGS[coincideCount + winningBonus];
         return winning;
     }

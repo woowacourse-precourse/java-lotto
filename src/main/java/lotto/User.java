@@ -3,12 +3,10 @@ package lotto;
 import static constance.Values.*;
 import static lotto.Game.*;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class User {
 

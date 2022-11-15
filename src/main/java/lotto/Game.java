@@ -5,7 +5,6 @@ import static constance.Values.Texts.*;
 import static constance.Values.Constants.*;
 
 import java.util.List;
-import java.util.function.Function;
 
 public class Game {
 
@@ -93,7 +92,7 @@ public class Game {
         winningLotto = new WinningLotto(inputNumbers(), inputBonusNumber());
 
         raffle(user);
-        printResults(user);
+
         setLotteryStat(user);
 
         printCoincideResult(user);
