@@ -25,7 +25,27 @@ public class Application {
                 result[rank]++;
             }
         }
+        printResult(result, lottos.length);
 
+    }
+
+    private static void printResult(int[] result, int count) {
+        System.out.println("당첨 통계");
+        System.out.println("---------");
+        System.out.println("3개 일치 (5000원)- " + result[5] + "개");
+        System.out.println("4개 일치 (50000원)- " + result[4] + "개");
+        System.out.println("5개 일치 (1500000원)- " + result[3] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치(30000000원)- " + result[2] + "개");
+        System.out.println("6개 일치 (2000000000원)- " + result[1] + "개");
+        System.out.println("총 수익률은 " + calculationYield(result,count
+        ) + "입니다.");
+    }
+
+    private static String calculationYield(int[] result, int count) {
+        int totalPrize = result[1]*2000000000 + result[2]*30000000 + result[3]*1500000 + result[4]*50000 + result[5]*5000;
+        int yield = (int) ((double)totalPrize / (count*1000) * 100);
+
+        return yield + "%";
     }
 
     private static List<Integer> inputWinningNumbers() {
