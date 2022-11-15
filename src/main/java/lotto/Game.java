@@ -1,25 +1,28 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
-	private static final String START_MESSAGE = "구매금액을 입력해 주세요.";
-	private static final String ERROR_MESSAGE = "[ERROR]";
-	private static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
+	static final String START_MESSAGE = "구매금액을 입력해 주세요.";
+	static final String ERROR_MESSAGE = "[ERROR]";
+	static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
+	static final String INPUTNUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+	static final int LOTTO_PRICE = 1000;
+	static final int START_RANGE = 1;
+	static final int END_RANGE = 45;
+	static final int LOTTO_SIZE = 6;
 	
-	public void start() {
-    	System.out.println(START_MESSAGE);
-    	purchase();
-    	System.out.println(purchaseLottoAmount() + PURCHASE_MESSAGE);
-	}
+	private final List<Lotto> numbers = new ArrayList<Lotto>();
 	
-	private String purchase() throws IllegalArgumentException {
-    	String input = Console.readLine();
-    	if (!purchaseValidate(input)) {
+	public void start(String input) {
+    	if(!purchaseValidate(input)) {
     		throw new IllegalArgumentException();
     	}
-    	return input;
-    }
+    	System.out.println();
+	}
     
     private boolean purchaseValidate(String input){
     	if(!checkInputNumeric(input)) {
@@ -42,21 +45,29 @@ public class Game {
     }
     
     private boolean checkInputRange(String input) {
-    	return Integer.parseInt(input) >= 1000;
+    	return Integer.parseInt(input) >= LOTTO_PRICE;
     }
     
     private boolean checkInputValue(String input) {
-    	return Integer.parseInt(input) % 1000 == 0; 
+    	return Integer.parseInt(input) % LOTTO_PRICE == 0; 
     }
     
-    private int purchaseLottoAmount() {
-    	int purchaseHowMuch = Integer.parseInt(purchase());
-    	int purchaseHowMany = purchaseHowMuch / 1000;
-    	return purchaseHowMany;
+    public int purchaseLottoAmount(String input) {
+    	return Integer.parseInt(input) / LOTTO_PRICE;
     }
     
-    public void purchaseLottoNumbers() {
-//    	purchaseLottoAmount()
-    	
+    private Lotto purchaseNumbers() {
+    	return new Lotto(Randoms.pickUniqueNumbersInRange(Game.START_RANGE, Game.END_RANGE, Game.LOTTO_SIZE));
+    }
+    
+    public void purchaseRandomNumbers(String input) {
+    	int purchaseHowMany = purchaseLottoAmount(input);
+    	for (int i = 0; i < purchaseHowMany; i++) {
+			this.numbers.add(purchaseNumbers());
+		}
+    }
+    
+    public List<Lotto> printLottoNumbers(){
+    	return numbers;
     }
 }
