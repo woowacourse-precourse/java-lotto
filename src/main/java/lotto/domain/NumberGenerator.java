@@ -36,7 +36,6 @@ public class NumberGenerator {
     private Lotto  generateByRandom() {
         List<Integer> randomNumbers = new ArrayList<>();
         randomNumbers = Randoms.pickUniqueNumbersInRange(LottoNumber.START.getValue(), LottoNumber.END.getValue(), LottoNumber.SIZE.getValue());
-        Collections.sort(randomNumbers);
         return new Lotto(randomNumbers);
     }
 }

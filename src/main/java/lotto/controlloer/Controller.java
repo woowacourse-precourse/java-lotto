@@ -6,6 +6,7 @@ import static lotto.domain.SystemMessage.MULTIPLE_THOUSAND_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.YIELD_MESSAGE;
 import static lotto.view.InputView.*;
 import static lotto.view.outputView.printLottoGroup;
+import static lotto.view.outputView.printWinningMessage;
 
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class Controller {
             AnswerLotto answerLotto = getAnswerLotto();
             Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(
                     lottoGroup, answerLotto);
+            printWinningMessage();
             printWinningInformation(winningDetails);
             calculateStatistic(winningDetails,money);
         }catch(IllegalArgumentException e){
@@ -36,8 +38,9 @@ public class Controller {
 
     private LottoGroup buyLotto(Integer money){
         NumberGenerator lottogenerator = new NumberGenerator();
-        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(money)));
-        printLottoGroup(lottoGroup, money);
+        Integer numOfLotto = getNumberOfLotto(money);
+        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(numOfLotto));
+        printLottoGroup(lottoGroup, numOfLotto);
         return lottoGroup;
     }
 

@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.domain.SystemMessage.WINNING_STATISTICS_MESSAGE;
+
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +28,8 @@ public class outputView {
 
     }
 
-    public static void printLottoGroup(LottoGroup lottos, Integer count) {
-        System.out.println(String.format(Message.NUMBER_OF_LOTTO.getValue(), count));
+    public static void printLottoGroup(LottoGroup lottos, Integer numOfLotto) {
+        System.out.println(String.format(Message.NUMBER_OF_LOTTO.getValue(), numOfLotto));
         lottos.getLottoGroup().stream()
                 .forEach(lotto -> System.out.println(lotto.getLotto().toString()));
         System.out.println();
@@ -49,5 +51,9 @@ public class outputView {
                             entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningAmount()),
                             entry.getValue());
                 });
+    }
+
+    public static void printWinningMessage(){
+        System.out.printf(WINNING_STATISTICS_MESSAGE);
     }
 }
