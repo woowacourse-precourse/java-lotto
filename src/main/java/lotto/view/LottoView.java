@@ -4,6 +4,7 @@ import lotto.domain.Lotto;
 import lotto.util.OutputMessage;
 import lotto.util.ResultMessage;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoView {
@@ -24,6 +25,7 @@ public class LottoView {
     public static void printLottoNumbers(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumbers = lotto.getNumbers();
+            lottoNumbers.sort(Comparator.naturalOrder());
             System.out.println(lottoNumbers);
         }
     }
