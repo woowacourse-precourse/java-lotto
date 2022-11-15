@@ -20,6 +20,12 @@ public class LottoWinningNumber {
         }
     }
 
+    public void validAllNumberRange(List<Integer> winningNumbers, int bonusNumber) {
+        for (int winningNumber : winningNumbers) {
+            validOneNumberRange(winningNumber);
+        }
+        validOneNumberRange(bonusNumber);
+    }
     public void validOneNumberRange(int number) {
         if (number < Lotto.numberMinRage || number > Lotto.numberMaxRage) {
             throw new IllegalArgumentException();
