@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class WinLotto {
 
-    private static final Map<String, Integer> winHistory = new HashMap<>();
+    private static Map<String, Integer> winHistory = new HashMap<>();
     private static long winning;
     private static List<Integer> numbers;
     private static int bonus;
@@ -15,7 +15,7 @@ public class WinLotto {
         numbers = winNumbers;
         bonus = bonusNumber;
         winning = 0;
-        this.setWinHistory();
+        setWinHistory();
     }
 
     public Map<String, Integer> getWinHistory() {
@@ -43,8 +43,31 @@ public class WinLotto {
     }
 
     public void updateWinHistory(String rank) {
-        winHistory.put(rank, winHistory.get(rank) + 1);
+        if (rank.equals("")) {
+            return;
+        }
+        validateRank(rank);
+        int count = winHistory.get(rank);
+        winHistory.put(rank, count + 1);
         updateWinning(moneyByRank((rank)));
+    }
+
+    private void validateRank(String rank) throws IllegalArgumentException {
+        boolean isRank = false;
+        if (rank.equals("FIRST_WIN")) {
+            isRank = true;
+        } else if (rank.equals("SECOND_WIN")) {
+            isRank = true;
+        } else if (rank.equals("THIRD_WIN")) {
+            isRank = true;
+        } else if (rank.equals("FIRTH_WIN")) {
+            isRank = true;
+        } else if (rank.equals("FIFTH_WIN")) {
+            isRank = true;
+        }
+        if (!isRank) {
+            throw new IllegalArgumentException("[ERROR] 랭크가 아닙니다.");
+        }
     }
 
     public void updateWinning(long money) {
