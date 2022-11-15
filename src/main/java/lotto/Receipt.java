@@ -14,22 +14,16 @@ public class Receipt {
     private final int money;
     private final int amount;
 
-    public Receipt(String input) {
-        validate(input);
-        money = Integer.parseInt(input);
+    public Receipt(int money) {
+        validate(money);
+        this.money = money;
         amount = money / 1000;
     }
 
-    private void validate(String input) {
-        int money;
-        try {
-            money = Integer.parseInt(input);
-            if (money > 0 && money % PRICE == 0) {
-                return;
-            }
-        } catch (NumberFormatException ignored) {
+    private void validate(int money) {
+        if (money <= 0 && money % PRICE != 0) {
+            throw new MyIllegalArgumentException(ErrorCode.MONEY_ERROR);
         }
-        throw new MyIllegalArgumentException(ErrorCode.MONEY_ERROR);
     }
 
     public List<Lotto> buy() {
