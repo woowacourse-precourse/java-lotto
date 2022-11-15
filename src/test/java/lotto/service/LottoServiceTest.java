@@ -18,7 +18,8 @@ class LottoServiceTest {
 
     @BeforeEach
     void setUp() {
-        user = new User(PurchaseAmountDto.of(8_000));
+        PurchaseAmountDto purchaseAmountDto = PurchaseAmountDto.of(8_000);
+        user = User.of(purchaseAmountDto);
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int bonusNumber = 11;
         winningLotto = new WinningLotto(winningNumbers, bonusNumber);
