@@ -26,20 +26,30 @@ public class LottoGame {
 
     // 로또 구매 함수
     public static List<Lotto> buyLotto(int money) {
-        List<Lotto> lottoes = new ArrayList<>();
-        int lottoCount = money / _lotto_price;
+        validateMoney(money);
+        return generateLotto(calcLottoCount(money));
+    }
 
+    private static List<Lotto> generateLotto(int lottoCount) {
+        List<Lotto> lotto = new ArrayList<>();
+
+        for (int i = 0; i < lottoCount; ++i) {
+            lotto.add(new Lotto(makeUniqueLottoNumber()));
+        }
+        return lotto;
+    }
+
+    private static int calcLottoCount(int money) {
+        return money / _lotto_price;
+    }
+
+    private static void validateMoney(int money) {
         if (money < _lotto_price) {
             throw new IllegalArgumentException("[ERROR] 로또의 최소 가격은 " + _lotto_price + "원 입니다.");
         }
         if (money % _lotto_price != 0) {
             throw new IllegalArgumentException("[ERROR] 로또는 천원 단위로 구매할 수 있습니다.");
         }
-
-        for (int i = 0; i < lottoCount; ++i) {
-            lottoes.add(new Lotto(makeUniqueLottoNumber()));
-        }
-        return lottoes;
     }
 
 
