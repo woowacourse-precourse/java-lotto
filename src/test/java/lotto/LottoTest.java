@@ -58,7 +58,6 @@ class LottoTest {
         Game game = new Game();
         game.compareAll(lotteries, winningNumber, bonusNumber);
 
-
         // then
         assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIRST)).isEqualTo(1);
         assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.SECOND)).isEqualTo(1);

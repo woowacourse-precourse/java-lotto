@@ -148,4 +148,14 @@ public class Game {
     return Math.round(earningsPercent * 10) / 10.0;
   }
 
+  public void playGame() {
+    setLotteries(Console.readLine());
+    OutputView.printLottoAmount(numOfLotto);
+    printLotteriesNumber();
+    inputNumber(InputView.winningNumber(), InputView.bonusNumber());
+    compareAll(lotteries, winningNumbers.getWinningNumber(), winningNumbers.getBonusNumber());
+    OutputView.printWinningStatistics(winningResult);
+    OutputView.printTotalEarningsPercent(earningsPercent(calculateWinPrize(winningResult)));
+
+  }
 }
