@@ -40,22 +40,24 @@ public class LottoMatcher {
     }
 
     private void saveResult(int numberOfMatchedLottoNumber, boolean bonus) {
-        Rank rank = null;
-
-        if (numberOfMatchedLottoNumber == 6) {
-            rank = Rank.FIRST_SIX_MATCHED;
-        } else if (numberOfMatchedLottoNumber == 5 && bonus) {
-            rank = Rank.SECOND_FIVE_WITH_BONUS;
-        } else if (numberOfMatchedLottoNumber == 5) {
-            rank = Rank.THIRD_FIVE_MATCHED;
-        } else if (numberOfMatchedLottoNumber == 4) {
-            rank = Rank.FOURTH_FOUR_MATCHED;
-        } else if (numberOfMatchedLottoNumber == 3) {
-            rank = Rank.FIFTH_THREE_MATCHED;
-        }
-
+        Rank rank = distinguishRank(numberOfMatchedLottoNumber, bonus);
         if (rank != null) {
             rankCounts.put(rank, rankCounts.getOrDefault(rank, 0) + 1);
         }
+    }
+
+    private Rank distinguishRank(int numberOfMatchedLottoNumber, boolean bonus) {
+        if (numberOfMatchedLottoNumber == 6) {
+            return Rank.FIRST_SIX_MATCHED;
+        } else if (numberOfMatchedLottoNumber == 5 && bonus) {
+            return Rank.SECOND_FIVE_WITH_BONUS;
+        } else if (numberOfMatchedLottoNumber == 5) {
+            return Rank.THIRD_FIVE_MATCHED;
+        } else if (numberOfMatchedLottoNumber == 4) {
+            return Rank.FOURTH_FOUR_MATCHED;
+        } else if (numberOfMatchedLottoNumber == 3) {
+            return Rank.FIFTH_THREE_MATCHED;
+        }
+        return null;
     }
 }
