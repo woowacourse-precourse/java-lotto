@@ -25,7 +25,11 @@ public class ValidLottoNumber {
 
     public static void validNumbers(List<Integer> numbers) {
         overSize(numbers);
+        overlapNumbers(numbers);
+    }
 
+    public static void validBonus(List<Integer> numbers, int number) {
+        overlapBonus(numbers, number);
     }
 
     private static void overSize(List<Integer> numbers) {
