@@ -9,7 +9,6 @@ public class InputUserMoney {
         String InputUserMoney = readLine();
 
         if(!JudgmentInputNumberGenerator.JudgmentInputNumber(InputUserMoney)) {
-            //숫자로 이루어져있지 않을 경우 예외 처리
             System.out.println("[ERROR] 구매금액은 숫자여야 합니다.");
 //            throw new IllegalArgumentException("[ERROR] 구매금액은 숫자여야 합니다.");
         }
