@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class LottoController {
 
-    protected final InputView inputView;
-    protected final OutputView outputView;
+    protected InputView inputView;
+    protected OutputView outputView;
 
     public LottoController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -31,7 +31,6 @@ public class LottoController {
     }
 
     private void start() {
-        // 시도해볼 거 리턴 없애고 계속 생성
         LottoAmount lottoAmount = inputAmount();
 
         List<List<Integer>> lotto = buyLotto(lottoAmount);
@@ -42,9 +41,8 @@ public class LottoController {
 
         WinningNumbers winningNumbers = resultNumbers(lottoNumber.getLottoNumber(), bonusNumber.getBonusNumber());
 
-        Statistics statistics = summingUp();
-
-        winningHistory(statistics, winningNumbers, lotto);
+        Statistics statistics = summingUp(winningNumbers, lotto);
+        winningHistory(statistics);
         calculator(statistics, lottoAmount);
     }
 
@@ -75,12 +73,13 @@ public class LottoController {
         return new WinningNumbers(lottoNumber, bonusNumber);
     }
 
-    private Statistics summingUp() {
-        return new Statistics();
+    private Statistics summingUp(WinningNumbers winningNumbers, List<List<Integer>> lottoNumber) {
+        Statistics statistics = new Statistics();
+        statistics.makeTotalResult(winningNumbers, lottoNumber);
+        return statistics;
     }
 
-    private void winningHistory(Statistics statistics, WinningNumbers winningNumbers, List<List<Integer>> lottoNumbers) {
-        statistics.makeTotalResult(winningNumbers, lottoNumbers);
+    private void winningHistory(Statistics statistics) {
         Map<Rank, Integer> totalResult = statistics.getTotalResult();
         outputView.printStatistics(totalResult);
     }
