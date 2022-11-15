@@ -47,8 +47,4 @@ public enum LottoRank {
     public int getCount() {
         return this.count;
     }
-
-    public boolean isHasBonusNumber() {
-        return this.hasBonusNumber;
-    }
 }
