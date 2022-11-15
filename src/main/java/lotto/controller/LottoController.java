@@ -17,7 +17,7 @@ public class LottoController {
     public void run() {
         try {
             start();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             message.errorMessage();
         }
     }
@@ -47,6 +47,10 @@ public class LottoController {
         }
     }
 
+    public WinningLotto setWinningLotto() {
+        return new WinningLotto(inputWinningNumber(), inputBonusNumber());
+    }
+
     public List<Integer> inputWinningNumber() {
         String inputWinningNumber = message.inputWinningNumberMessage();
         return lottoService.setWinningNumber(inputWinningNumber);
@@ -55,10 +59,6 @@ public class LottoController {
     public int inputBonusNumber() {
         String inputBonusNumber = message.inputBonusNumberMessage();
         return lottoService.setBonusNumber(inputBonusNumber);
-    }
-
-    public WinningLotto setWinningLotto() {
-        return new WinningLotto(inputWinningNumber(), inputBonusNumber());
     }
 
     public void showLottoResult() {

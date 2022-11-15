@@ -12,7 +12,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkUniqueNumbers(numbers);
-        for(Integer number : numbers){
+        for (Integer number : numbers) {
             checkNumberInRange(number);
         }
         this.numbers = numbers;

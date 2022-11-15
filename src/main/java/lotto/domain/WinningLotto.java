@@ -1,8 +1,6 @@
 package lotto.domain;
 
 import java.util.List;
-import java.util.function.Predicate;
-import lotto.util.LottoUtils;
 import lotto.view.ExceptionMessage;
 
 public class WinningLotto extends Lotto {

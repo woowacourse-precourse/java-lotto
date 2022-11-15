@@ -25,7 +25,7 @@ public class LottoUtils {
                     .sorted()
                     .collect(Collectors.toList());
             return numbers;
-        } catch (IllegalArgumentException  e) {
+        } catch (IllegalArgumentException e) {
             ExceptionMessage.inputNumberError();
             throw e;
         }
@@ -42,7 +42,7 @@ public class LottoUtils {
         try {
             int number = Integer.parseInt(input);
             return number;
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             ExceptionMessage.inputNumberError();
             throw e;
         }

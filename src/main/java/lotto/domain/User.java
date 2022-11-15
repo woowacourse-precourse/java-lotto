@@ -23,10 +23,6 @@ public class User {
         }
     }
 
-    public List<Lotto> getLottos() {
-        return this.lottos;
-    }
-
     public void getLottoResults(WinningLotto winningLotto) {
         lottoGrades = new ArrayList<>();
 
@@ -53,5 +49,9 @@ public class User {
 
     public void setLottoPayment(int lottoPayment) {
         this.lottoPayment = lottoPayment;
+    }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
     }
 }
