@@ -11,8 +11,6 @@ public class PlayLotto {
         for (int i = 0; i < ticketCount; i++) {
             CreateLotto createLotto = new CreateLotto();
             Lotto lotto = new Lotto(createLotto.createRandomBall());
-            /*밑에 두줄 lotto에 포함시킬 수 있을 듯.*/
-//            List<Integer> lottoNumber = createLotto.createRandomBall().sort(Comparator.naturalOrder());
             lotto.printLottoNumber();
             allLottoNumber.add(createLotto.createRandomBall());
         }
