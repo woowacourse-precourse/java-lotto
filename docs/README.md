@@ -3,6 +3,32 @@
 1 ~ 45의 중복되지 않은 6개의 숫자 번호를 입력 및 보너스 번호를 통해 1등 부터 5등까지 받을 수 있는 상금과, <br>
 산 로또 별로 맞춘 횟수 정보를 이용해 총 수익률을 알려줍니다. 총 수익률은 로또를 총 수익 / 구입 금액 입니다.
 
+# 패키지 목록
+``` text
+lotto
+├── domain
+│     ├── Lotto.java
+│     ├── LottoNumber.java
+│     ├── Money.java
+│     └── WinningLotto.java
+│ 
+├── layer
+│     ├── controller
+│     │     └── LottoController.java
+│     ├── db
+│     │     └── Table.java
+│     ├── service
+│     │     └── LottoService.java
+│     └── view
+│           ├── View.java
+│           ├── InputView.java
+│           └── OutputView.java
+│      
+└──  Application.java
+
+
+```
+
 # 기능 목록
 
 ## 도메인
