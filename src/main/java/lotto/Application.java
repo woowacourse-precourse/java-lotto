@@ -10,18 +10,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Application {
     static Map<WinningResult, Integer> winningBoard = new HashMap<>();
     public static void main(String[] args) {
-        initializeBoard();
-        int userMoney = IOUtil.moneyInput();
-        List<Lotto> lottos = new ArrayList<>();
-        publishLottosByUserMoney(lottos, userMoney);
-        IOUtil.printLottos(lottos);
-        Lotto answer = IOUtil.answerNumberInput();
-        int bonus = IOUtil.bonusNumberInput();
-        calculateWinningBoard(lottos, answer, bonus);
-        int sum = calculateRewardSum();
-        double yield = calculateYield(sum, userMoney);
-        IOUtil.printWinningBoard(winningBoard);
-        IOUtil.printYield(yield);
+        try{
+            initializeBoard();
+            int userMoney = IOUtil.moneyInput();
+            List<Lotto> lottos = new ArrayList<>();
+            publishLottosByUserMoney(lottos, userMoney);
+            IOUtil.printLottos(lottos);
+            Lotto answer = IOUtil.answerNumberInput();
+            int bonus = IOUtil.bonusNumberInput();
+            calculateWinningBoard(lottos, answer, bonus);
+            int sum = calculateRewardSum();
+            double yield = calculateYield(sum, userMoney);
+            IOUtil.printWinningBoard(winningBoard);
+            IOUtil.printYield(yield);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void publishLottosByUserMoney(List<Lotto> lottos, int userMoney) {
