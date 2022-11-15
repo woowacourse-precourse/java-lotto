@@ -20,12 +20,7 @@ public class LottoController {
     }
 
     private LottoAmount inputAmount() {
-        try {
-            return new LottoAmount(InputView.inputAmount());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw e;
-        }
+        return new LottoAmount(InputView.inputAmount());
     }
 
     private LottoTicket buyTickets(LottoAmount amount) {
