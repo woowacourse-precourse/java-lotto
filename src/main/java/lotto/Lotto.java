@@ -2,7 +2,6 @@ package lotto;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -53,5 +52,9 @@ public class Lotto {
         validateRangeOfNumber(number);
         validateDuplicationWithNumbers(number);
         this.bonus = number;
+    }
+
+    public int getBonus(){
+        return this.bonus;
     }
 }
