@@ -19,4 +19,7 @@ public class GameResult {
         return lotto.contains(number);
     }
 
+    public static boolean isContainedBonusNumber(List<Integer> randomLotto, Integer bonusNumber) {
+        return randomLotto.contains(bonusNumber);
+    }
 }
