@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
@@ -31,5 +32,19 @@ public class GameResult {
             return 4;
         }
         return 5;
+    }
+
+    public static List<Integer> getGameRankCount(List<Integer> ranks) {
+        List<Integer> counts = new ArrayList<>();
+
+        for (int i = 0; i < ranks.size(); i++) {
+            counts.add(0);
+        }
+
+        for (int rank : ranks) {
+            counts.set((rank - 1), counts.get(rank - 1) + 1);
+        }
+
+        return counts;
     }
 }
