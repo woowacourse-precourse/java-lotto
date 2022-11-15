@@ -16,5 +16,8 @@ public class Process {
     private static List<String> answerNumber;
     private static String bonus;
 
-
+    static void purchaseMessage() {
+        System.out.println(BUY_MESSAGE);
+        userMoney = UserInput.money();
+    }
 }
