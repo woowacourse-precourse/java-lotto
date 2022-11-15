@@ -35,6 +35,7 @@ public class Lotto {
             List<Integer> individualLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             purchasedLotteries.add(individualLotto);
         }
+
         return purchasedLotteries;
     }
 
@@ -49,9 +50,13 @@ public class Lotto {
         return winningNumbers;
     }
 
-    public static Integer getBonusNumber() {
-        //중복, 1~45 조건 필요
+    public static Integer getBonusNumber(List<Integer> winningNumbers) {
         String inputBonusNumber = Input.input();
+
+        Validator.validateInputNumber(inputBonusNumber);
+        Validator.validateDuplicateBonusNumber(winningNumbers, inputBonusNumber);
+        Validator.validateRangeBonusNumber(inputBonusNumber);
+
         return parseInt(inputBonusNumber);
     }
 }

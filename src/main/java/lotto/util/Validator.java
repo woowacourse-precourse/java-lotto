@@ -13,9 +13,9 @@ import java.util.Set;
 
 public class Validator {
 
-    public static void validateInputMoneyNumber(String inputMoney) {
+    public static void validateInputNumber(String inputNumber) {
         try {
-            parseDouble(inputMoney);
+            parseDouble(inputNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(ErrorMessage.ERROR_MONEY_UNIT.getErrorMessage());
             throw new NoSuchElementException();
@@ -23,14 +23,21 @@ public class Validator {
     }
 
     public static void validateInputMoneyUnit(String inputMoney) {
-        if (parseInt(inputMoney)%MONEY_UNIT != 0 || parseDouble(inputMoney) < 0 ) {
+        if (parseInt(inputMoney) % MONEY_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_UNIT.getErrorMessage());
         }
     }
-    public static void validateDuplicateNumbers(List<Integer> numbers) {
-        Set<Integer> numbersSet= new HashSet<>(numbers);
 
-        if(numbersSet.size() != numbers.size()) {
+    public static void validateInputNumberPositive(String inputNumber) {
+        if (parseInt(inputNumber) < 1) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_UNIT.getErrorMessage());
+        }
+    }
+
+    public static void validateDuplicateNumbers(List<Integer> numbers) {
+        Set<Integer> numbersSet = new HashSet<>(numbers);
+
+        if (numbersSet.size() != numbers.size()) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE_NUMBER.getErrorMessage());
         }
     }
@@ -52,12 +59,25 @@ public class Validator {
                 winningNumbers.add(parseInt(s));
             }
             return winningNumbers;
-        } catch (IllegalArgumentException e){
+
+        } catch (IllegalArgumentException e) {
             throw new NoSuchElementException(ErrorMessage.ERROR_NEED_COMMA.getErrorMessage());
         }
     }
-}
 
-//        if(Integer.parseInt(payMoney)%MONEY_UNIT > 0 && parseDouble(payMoney)%1 == 0){
-//            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_TYPE.getErrorMessage());
-//        }
+    public static void validateDuplicateBonusNumber(List<Integer> winningNumbers, String inputNumber) {
+        for (Integer winningNumber : winningNumbers) {
+            if (parseInt(inputNumber) == winningNumber) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE_NUMBER.getErrorMessage());
+            }
+        }
+    }
+
+    public static void validateRangeBonusNumber(String inputNumber) {
+        int inputBonusNumber = parseInt(inputNumber);
+        if (inputBonusNumber > 45 || inputBonusNumber == 0) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_TYPE.getErrorMessage());
+            }
+
+    }
+}

@@ -1,7 +1,7 @@
 package lotto;
 
+import static lotto.domain.Service.getInputMoney;
 import static lotto.domain.Service.getYield;
-import static lotto.domain.Service.inputMoney;
 
 import java.util.List;
 import lotto.domain.Lotto;
@@ -12,7 +12,7 @@ public class GameProcess {
     public static void gameStart() {
         Output.gameStart();
 
-        double payMoney = inputMoney();
+        double payMoney = getInputMoney();
         int countPurchasing = Service.countBuyLotto(payMoney);
         List<List<Integer>> purchasedLotteries = Lotto.makeLottoByRandomNumbers(countPurchasing);
         Output.informationOnPurchasedLottoNumbers(purchasedLotteries);
@@ -21,7 +21,7 @@ public class GameProcess {
         List<Integer> winningNumbers = Lotto.getWinningNumbers();
 
         Output.requestBonusNumber();
-        int bonusNumber = Lotto.getBonusNumber();
+        int bonusNumber = Lotto.getBonusNumber(winningNumbers);
 
         Output.beginAnnouncementOfResult();
         List<List<Integer>> firstResultList = Service.firstCompareLottoNumber(purchasedLotteries, winningNumbers);

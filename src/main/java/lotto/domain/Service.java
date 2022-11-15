@@ -1,11 +1,16 @@
 package lotto.domain;
 
 import static java.lang.Double.parseDouble;
-import static lotto.util.Constant.FIFTH_PLACE;
-import static lotto.util.Constant.FOURTH_PLACE;
-import static lotto.util.Constant.THIRD_PLACE;
-import static lotto.util.Constant.SECOND_PLACE;
-import static lotto.util.Constant.FIRST_PLACE;
+import static lotto.util.Constant.FIFTH_PRICE;
+import static lotto.util.Constant.FIRST_PRICE;
+import static lotto.util.Constant.FOURTH_PRICE;
+import static lotto.util.Constant.SECOND_PRICE;
+import static lotto.util.Constant.THIRD_PRICE;
+import static lotto.util.WinnerList.FIFTH_PLACE;
+import static lotto.util.WinnerList.FOURTH_PLACE;
+import static lotto.util.WinnerList.THIRD_PLACE;
+import static lotto.util.WinnerList.SECOND_PLACE;
+import static lotto.util.WinnerList.FIRST_PLACE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +21,10 @@ import lotto.view.Input;
 
 public class Service {
 
-    public static double inputMoney() {
+    public static double getInputMoney() {
         String payMoney = Input.input();
-        Validator.validateInputMoneyNumber(payMoney);
+        Validator.validateInputNumber(payMoney);
+        Validator.validateInputNumberPositive(payMoney);
         Validator.validateInputMoneyUnit(payMoney);
         return parseDouble(payMoney);
     }
@@ -61,8 +67,10 @@ public class Service {
     }
 
     public static String getYield (double payMoney) {
-        double yield = ((FIRST_PLACE * 200000000 + SECOND_PLACE * 30000000 + THIRD_PLACE * 1500000 + FOURTH_PLACE * 50000
-                + FIFTH_PLACE * 50000) /payMoney)*10;
+        double yield = (
+                (FIRST_PLACE * FIRST_PRICE + SECOND_PLACE * SECOND_PRICE + THIRD_PLACE * THIRD_PRICE + FOURTH_PLACE * FOURTH_PRICE + FIFTH_PLACE * FIFTH_PRICE)
+                        / payMoney
+        ) * 100;
         return (String.format("%.1f", yield));
     }
 }
