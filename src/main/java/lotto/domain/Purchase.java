@@ -36,12 +36,12 @@ public class Purchase {
         return lottos;
     }
 
-    public void printLottos() {
-        lottos.forEach(System.out::println);
-    }
-
     public void createBonusNumber() {
         bonusNumber =  NumberGenerator.createRandomNumber();
+    }
+
+    public void printLottos() {
+        lottos.forEach(System.out::println);
     }
 
     public void printCount() {
