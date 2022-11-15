@@ -16,7 +16,7 @@ public class Application {
             LottoGenerator lottoGenerator = new LottoGenerator(lottoPurchaser.getPurchaseAmount());
             WinningNumbers winningNumbers = new WinningNumbers();
             Statistics statistics = new Statistics(winningNumbers, lottoGenerator);
-            System.out.println(statistics.toString());
+            System.out.println(statistics);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
