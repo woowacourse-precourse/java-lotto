@@ -14,6 +14,7 @@ public class UserInterface {
     private static final String INPUT_BONUS_NUMBER_ANNOUNCEMENT = lineSeparator() + "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS_ANNOUNCEMENT = lineSeparator() + "당첨 통계\n---";
     private static final String YIELD_FORMAT_ANNOUNCEMENT = "총 수익률은 %s%%입니다.";
+    private static final String WINNING_ANNOUNCEMENT_AND_COUNT = "%s - %d개";
 
     public static String inputMoney() {
         System.out.println(INPUT_MONEY_ANNOUNCEMENT);
@@ -23,7 +24,7 @@ public class UserInterface {
     }
 
     public static void announceCountOfLottosPurchased(int countOfLottosPurchased) {
-        System.out.println(String.format(PUBLISH_LOTTOS_ANNOUNCEMENT, countOfLottosPurchased));
+        System.out.printf((PUBLISH_LOTTOS_ANNOUNCEMENT) + "%n", countOfLottosPurchased);
     }
 
     public static void printLottoNumbers(List<Integer> numbers) {
@@ -50,11 +51,13 @@ public class UserInterface {
             if (winningResult == WinningResult.RANK_NONE) {
                 continue;
             }
-            System.out.println(winningResult.getAnnouncement() + " - " + winningResultTable.get(winningResult) + "개");
-
+            String winningAnnouncement = winningResult.getAnnouncement();
+            int winningCount = winningResultTable.get(winningResult);
+            System.out.printf((WINNING_ANNOUNCEMENT_AND_COUNT) + "%n", winningAnnouncement, winningCount);
+        }
     }
 
     public static void printYield(String yield) {
-        System.out.println(String.format(YIELD_FORMAT_ANNOUNCEMENT, yield));
+        System.out.printf((YIELD_FORMAT_ANNOUNCEMENT) + "%n", yield);
     }
 }
