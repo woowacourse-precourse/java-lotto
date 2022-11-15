@@ -23,8 +23,7 @@ public class Controller {
 
     public boolean run(){
         try {
-            Integer money = inputMoney();
-            Buyer buy = new Buyer(money,getNumberOfLotto(money));
+            Buyer buy = new Buyer(inputMoney());
             LottoGroup lottoGroup = buyLotto(buy);
             AnswerLotto answerLotto = getAnswerLotto();
             Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(
@@ -53,9 +52,7 @@ public class Controller {
 
 
 
-    private int getNumberOfLotto(int money){
-        return money / 1000;
-    }
+
 
 
     private void printWinningInformation(Map<WinningRank, Integer> winningDetails) {

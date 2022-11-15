@@ -10,10 +10,10 @@ public class Buyer {
     private final Integer money;
     private final Integer NumOfLotto;
 
-    public Buyer(Integer money, Integer NumOfLotto) {
+    public Buyer(Integer money) {
         validateThousand(money);
         this.money = money;
-        this.NumOfLotto = NumOfLotto;
+        this.NumOfLotto = getNumberOfLotto(money);
     }
     public Integer getMoney(){
         return money;
@@ -34,6 +34,10 @@ public class Buyer {
     private static void validateMultipleThousand(Integer money) {
         if(money % 1000 != 0)
             throw new IllegalArgumentException(ERROR_MESSAGE + MULTIPLE_THOUSAND_ERROR_MESSAGE);
+    }
+
+    private int getNumberOfLotto(int money){
+        return money / 1000;
     }
 
 }
