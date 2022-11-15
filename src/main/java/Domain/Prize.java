@@ -29,12 +29,12 @@ public enum Prize {
                 .filter(p -> p.getCount() == count)
                 .sequential().collect(Collectors.toList());
 
-        if(prizes.size() == 1) {
+        if(prizes.size() == 1) { //상수
             Prize selectPrize = prizes.get(0);
             ranking[selectPrize.getRank()] += 1;
             return selectPrize.getPrizeMoney();
         }
-        if(prizes.size() == 2){
+        if(prizes.size() == 2){ //상수
             Prize selectPrize = prizes.stream()
                     .filter(p -> p.getBonusCheck() == compareBonus)
                     .sequential().collect(Collectors.toList())

@@ -17,7 +17,7 @@ public class Controller {
 
     public void calculateLottoResult(LottoList lottoList, Winning winning, Bonus bonus){
         int income = 0;
-        int[] ranking = new int[6];
+        int[] ranking = new int[6];  //상수
         for(Lotto eachLotto : lottoList.getLottoList()){
             int compareLotto = compareMyLottoAndWinningNumber(eachLotto.getLottoNumbers(), winning.getNumbers());
             boolean compareBonus = compareMyLottoAndBonusNumber(eachLotto.getLottoNumbers(), bonus.getBonusNumber());

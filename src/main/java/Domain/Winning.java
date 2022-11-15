@@ -17,9 +17,9 @@ public class Winning {
         InputView.printInputWinningNumberMessage();
         String readWinningNumber = InputView.readInputLine();
         Validation.validateWinningNumberInput(readWinningNumber);
-        String[] a = readWinningNumber.split(",");
+        String[] a = readWinningNumber.split(","); //상수
         List<Integer> winningNumbers = new ArrayList<>();
-        for(int i=0; i<6; i++){
+        for(int i=0; i<6; i++){ //상수
             winningNumbers.add(Integer.parseInt(a[i]));
         }
         return winningNumbers;

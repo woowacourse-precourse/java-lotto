@@ -33,8 +33,7 @@ public class LottoList {
     private List<Lotto> makeRandomLottoNumbers(int lottoPlayNumber){
         List<Lotto> lottoList = new ArrayList<>();
         for(int playLottoCount=0; playLottoCount<lottoPlayNumber; playLottoCount++){
-            List<Integer> playLotto = pickUniqueNumbersInRange(1, 45, 6);
-            //Collections.sort(playLotto);
+            List<Integer> playLotto = pickUniqueNumbersInRange(1, 45, 6); //상수
             lottoList.add(new Lotto(playLotto));
         }
         return lottoList;

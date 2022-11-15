@@ -13,18 +13,18 @@ public class OutputView {
 
     public static void printEachLottoNum(List<Lotto> lottoList){
         for(Lotto lotto : lottoList){
-            System.out.print("[");
+            System.out.print("["); //상수
             int len = lotto.getLottoNumbers().size();
             for(int i=0; i<len-1; i++){
-                System.out.print(lotto.getLottoNumbers().get(i) + ", ");
+                System.out.print(lotto.getLottoNumbers().get(i) + ", "); //상수
             }
             System.out.print(lotto.getLottoNumbers().get(len-1));
-            System.out.println("]");
+            System.out.println("]"); //상수
         }
         System.out.println();
     }
 
-    public static void printLottoResult(int[] countList, LottoList lottoList, int income){
+    public static void printLottoResult(int[] countList, LottoList lottoList, int income){ //상수
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + countList[5] + "개");
@@ -36,7 +36,7 @@ public class OutputView {
     }
 
     public static void printIncomeRate(int numberOfLotto, int income){
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", (income * 100.0) / (numberOfLotto * 1000));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (income * 100.0) / (numberOfLotto * 1000)); //상수
     }
 
 }
