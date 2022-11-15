@@ -1,7 +1,7 @@
 package lotto;
 
 public class BonusManager {
-    public void bonusNumber{
+    public void bonusNumber(){
 
     }
 }
