@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.exception.ExceptionMessage;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -16,7 +17,7 @@ public class LottoController {
             lottoProgress();
 
         } catch (NumberFormatException e) {
-            OutputView.printErrorMessage("[ERROR] 금액은 숫자만 입력 가능합니다.");
+            OutputView.printErrorMessage(ExceptionMessage.INPUT_NOT_NUMBER_ERROR.getMessage());
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
         }

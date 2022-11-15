@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.exception.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -46,13 +47,13 @@ public class User {
 
     public static void validateMoneyMinimum(int money) {
         if (money < Lotto.PRICE) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.MONEY_LOWER_BOUND_ERROR.getMessage());
         }
     }
 
     public static void validateMoneyDivided(int money) {
         if (money % Lotto.PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.MONEY_DIVIDE_ERROR.getMessage());
         }
     }
 

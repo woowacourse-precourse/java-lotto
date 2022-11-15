@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import lotto.exception.ExceptionMessage;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.LOTTO_NUMBER_COUNT_ERROR.getMessage());
         }
         validateDuplicateNumber(numbers);
         validateNumberRange(numbers);
@@ -37,14 +37,14 @@ public class Lotto {
     public void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> removeDuplicateNumber = new HashSet<>(numbers);
         if (removeDuplicateNumber.size() < numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.LOTTO_NUMBER_DUPLICATE_ERROR.getMessage());
         }
     }
 
     public void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_NUMBER || number > MAX_NUMBER) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자이어야 합니다.");
+                throw new IllegalArgumentException(ExceptionMessage.LOTTO_NUMBER_RANGE_ERROR.getMessage());
             }
         }
     }
