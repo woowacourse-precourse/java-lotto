@@ -71,4 +71,23 @@ public class Lotto {
         }
         return matchItem;
     }
+    public int bonusMatch(List<Map<Integer, List<Integer>>> result, int bonus, int count) {
+        int matchItem = 0;
+        for (Map<Integer, List<Integer>> item : result) {
+            matchItem += itemContainsKeyBonus(item, count, bonus);
+        }
+        return matchItem;
+    }
+    public int itemContainsKeyBonus(Map<Integer, List<Integer>> item, int count, int bonus) {
+        if (item.containsKey(count)) {
+            return bonusContains(item, count, bonus);
+        }
+        return 0;
+    }
+    public int bonusContains(Map<Integer, List<Integer>> item, int count, int bonus) {
+        if (numbers.contains(bonus)){
+            return 1;
+        }
+        return 0;
+    }
 }
