@@ -28,6 +28,8 @@ public class Game {
             myLotto.add(new Lotto(lottoManager.makeRandomLottoNumbers()));
         }
 
+        printMyLotto();
+
         System.out.println("당첨 번호를 입력해 주세요.");
         answerLotto = new Lotto(getAnswerNumberList());
 
