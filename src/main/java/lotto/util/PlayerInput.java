@@ -20,7 +20,7 @@ public class PlayerInput {
             throw new IllegalArgumentException();
         }
 
-        if (isPositiveInteger(input)) {
+        if (!isPositiveInteger(input)) {
             View.printNotInteger();
             throw new IllegalArgumentException();
         }
