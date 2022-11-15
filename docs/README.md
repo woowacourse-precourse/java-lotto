@@ -17,9 +17,9 @@
 - [X] 보너스 번호 입력
   - [X] [예외 처리] 보너스 번호가 범위(1~45)를 벗어나는 경우
   - [X] [예외 처리] 당첨 번호와 중복되는 경우
-- [ ] 당첨 결과 확인
-  - [ ] 당첨 숫자와 비교
-  - [ ] 보너스 숫자와 비교
+- [X] 당첨 결과 확인
+  - [X] 당첨 숫자와 비교
+  - [X] 보너스 숫자와 비교
 - [ ] 당첨 내역 출력
 - [ ] 수익률 계산 및 출력
 - [ ] 프로그램 종료
@@ -61,3 +61,6 @@
   - test: test bonus duplicate validation
   - refactor: add bonus class
   - test: bonus validation test
+  - feat: compare lottos with winning lotto and bonus
+  - test: count test
+
