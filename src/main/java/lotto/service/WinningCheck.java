@@ -44,14 +44,14 @@ public class WinningCheck {
                 count++;
             }
         }
-        if (count == FIVE && bonusNumberCheck(bonusNumber, answerNumbers)) {
+        if (count == FIVE && bonusNumberCheck(bonusNumber, userLotto)) {
             count = FIVE_POINT_FIVE;
         }
         return count;
     }
 
-    private boolean bonusNumberCheck(int bonusNumber, List<Integer> answerNumbers) {
-        return answerNumbers.contains(bonusNumber);
+    private boolean bonusNumberCheck(int bonusNumber, List<Integer> userLotto) {
+        return userLotto.contains(bonusNumber);
     }
 
     private void lottoResultCount(double count) {
