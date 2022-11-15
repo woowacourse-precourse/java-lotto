@@ -1,7 +1,7 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -24,7 +24,7 @@ class UserLottoTest {
         //when
         UserLotto userLotto = new UserLotto();
         //then
-        assertThrows(IllegalArgumentException.class, () -> userLotto.startGame());
+        assertThrows(IllegalArgumentException.class, userLotto::startGame);
     }
 
 
@@ -40,7 +40,7 @@ class UserLottoTest {
         UserLotto userLotto = new UserLotto();
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> userLotto.startGame());
+        assertThrows(IllegalArgumentException.class, userLotto::startGame);
     }
 
     @DisplayName("구입금액대로 로또를 구매한다.")
