@@ -10,7 +10,12 @@ public class LottoController {
     private Statistics statistics;
     private Judgement judgement;
 
-    public LottoController(NumberScanner numberScanner, MessagePrinter messagePrinter, Statistics statistics, Judgement judgement) {
+    public LottoController(
+            NumberScanner numberScanner,
+            MessagePrinter messagePrinter,
+            Statistics statistics,
+            Judgement judgement
+    ) {
         this.numberScanner = numberScanner;
         this.messagePrinter = messagePrinter;
         this.statistics = statistics;
