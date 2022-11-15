@@ -35,6 +35,7 @@ public class Game {
             return true;
         }
         calculator = new Calculator(money);
+        Message.BLANK_LINE.print();
         return false;
     }
 
@@ -44,6 +45,7 @@ public class Game {
             return true;
         }
         lotto = new Lotto(numbers);
+        Message.BLANK_LINE.print();
         return false;
     }
 
@@ -56,6 +58,7 @@ public class Game {
             return true;
         }
         bonusNum = bonus;
+        Message.BLANK_LINE.print();
         return false;
     }
 }

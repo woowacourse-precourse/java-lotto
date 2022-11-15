@@ -47,6 +47,8 @@ public class Calculator {
         Arrays.stream(Correct.values())
                         .forEach(s -> Message.valueOf(s.name()).printResult(placesCount[s.place]));
         double profit = (double) income / money * 100;
+        Message.STATISTICS.print();
+        Message.BOUNDARY_LINE.print();
         Message.PROFIT.printProfit(profit);
     }
 
