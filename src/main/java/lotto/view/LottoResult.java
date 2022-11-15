@@ -27,7 +27,7 @@ public class LottoResult {
     public void buyNewLottos() {
         int money = lottoView.getMoney();
         System.out.println();
-        printLottosNumbers(money / THOUSAND_WON);
+        returnLottosNumbers(money / THOUSAND_WON);
     }
 
     public void getWinningNumberAndBonusNumber() {
@@ -38,27 +38,25 @@ public class LottoResult {
     }
 
     public void lottosStatistics() {
-        System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        lottoView.printStatisticsPhrase();
         Statistics statistics = new Statistics(winningNumber, bonusNumber);
         Map<Integer, Integer> numberOfEachGrade = statistics.getNumberOfEachGrade(lottos);
-        printNumberOfEachGrade(numberOfEachGrade);
-        System.out.println("총 수익률은 " + statistics.getProfit(lottos) + "%입니다.");
+        returnNumberOfEachGrade(numberOfEachGrade);
+        lottoView.printRateOfReturn(statistics.getProfit(lottos));
     }
 
-    private void printNumberOfEachGrade(Map<Integer, Integer> numberOfEachGrade) {
+    private void returnNumberOfEachGrade(Map<Integer, Integer> numberOfEachGrade) {
         for (Prize prize : Prize.values()) {
             int countGrade = ZERO;
             if (numberOfEachGrade.containsKey(Prize.getGradeNum(prize))) {
                 countGrade = numberOfEachGrade.get(Prize.getGradeNum(prize));
             }
-            System.out.println(Prize.getPhrase(prize) + countGrade + '개');
+            lottoView.printNumberOfEachGrade(Prize.getPhrase(prize), countGrade);
         }
     }
 
-    private void printLottosNumbers(int count) {
-        System.out.println(count + "개를 구매했습니다.");
+    private void returnLottosNumbers(int count) {
+        lottoView.printLottosNumbers(count);
         LottoGenerator lottoGenerator = new LottoGenerator();
         lottos = lottoGenerator.generateLotto(count);
         for (List<Integer> lotto : lottos) {

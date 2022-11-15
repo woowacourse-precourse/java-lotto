@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domian.statistics.Prize;
 
 import java.util.Arrays;
 import java.util.List;
@@ -93,5 +94,23 @@ public class LottoView {
 
     private boolean validateNumberRange(int number) {
         return number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER;
+    }
+
+    public void printStatisticsPhrase() {
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public void printRateOfReturn(double profit) {
+        System.out.println("총 수익률은 " + profit + "%입니다.");
+    }
+
+    public void printNumberOfEachGrade(String phrase, int countGrade) {
+        System.out.println(phrase + countGrade + '개');
+    }
+
+    public void printLottosNumbers(int count) {
+        System.out.println(count + "개를 구매했습니다.");
     }
 }
