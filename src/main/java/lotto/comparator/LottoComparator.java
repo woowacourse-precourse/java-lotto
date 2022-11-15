@@ -29,18 +29,22 @@ public class LottoComparator {
         }
     }
 
-    public static Integer compareEachNumber(Lotto userLotto, Lotto winningLotto, BonusNumber BonusNumber) {
+    public static Integer compareEachNumber(Lotto userLotto, Lotto winningLotto, BonusNumber bonusNumber) {
         initCount();
         for (Integer userLottoNumber : userLotto.getNumbers()) {
-            if (winningLotto.getNumbers().contains(userLottoNumber)) {
-                luckyCount++;
-                continue;
-            }
-            if (userLottoNumber == BonusNumber.getBonusNumber()) {
-                hasBonusNumber = true;
-            }
+            checkCorrectNumber(winningLotto, userLottoNumber,bonusNumber);
         }
         return calculateLuckyCount(luckyCount, hasBonusNumber);
+    }
+
+    private static void checkCorrectNumber(Lotto winningLotto, Integer userLottoNumber,BonusNumber bonusNumber) {
+        if (winningLotto.getNumbers().contains(userLottoNumber)) {
+            luckyCount++;
+            return;
+        }
+        if (userLottoNumber == bonusNumber.getBonusNumber()) {
+            hasBonusNumber = true;
+        }
     }
 
     private static void initCount() {

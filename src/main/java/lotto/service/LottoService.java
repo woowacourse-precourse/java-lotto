@@ -9,7 +9,6 @@ import lotto.status.WinningStatus;
 import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
 
-import javax.xml.validation.Validator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
