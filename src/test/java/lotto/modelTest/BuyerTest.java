@@ -13,49 +13,55 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BuyerTest {
+    private static final String ENTER_WRONG_LETTERS_MESSAGE = "[ERROR] 금액을 잘못 입력하셨습니다.";
+
     @Test
     @DisplayName("구매 금액을 최소 금액 단위로 나누어 티켓의 수를 맞게 구하는지 확인한다.")
-    public void createTicketTest(){
+    public void createTicketTest() {
         List<Integer> purchaseAmounts = List.of(10000, 12000, 1000, 3000, 4000);
         List<Integer> resultPurchaseAmounts = new ArrayList<>();
 
-        for(int purchaseAmount:purchaseAmounts){
-            resultPurchaseAmounts.add(purchaseAmount/1000);
+        for (int purchaseAmount : purchaseAmounts) {
+            resultPurchaseAmounts.add(purchaseAmount / 1000);
         }
         assertThat(resultPurchaseAmounts).containsExactly(10, 12, 1, 3, 4);
     }
+
     @Test
     @DisplayName("최소 금액 단위 이하의 금액이 포함된 구매 금액을 최소 금액 단위로 나누어 티켓의 수를 맞게 구하는지 확인한다.")
-    public void createTicketUnderUnitAmountTest(){
+    public void createTicketUnderUnitAmountTest() {
         List<Integer> purchaseAmounts = List.of(10000, 12000, 1000, 3000, 4000, 4500, 5500);
         List<Integer> resultPurchaseAmounts = new ArrayList<>();
 
-        for(int purchaseAmount:purchaseAmounts){
-            resultPurchaseAmounts.add(purchaseAmount/1000);
+        for (int purchaseAmount : purchaseAmounts) {
+            resultPurchaseAmounts.add(purchaseAmount / 1000);
         }
         assertThat(resultPurchaseAmounts).containsExactly(10, 12, 1, 3, 4, 4, 5);
     }
+
     @ParameterizedTest
     @DisplayName("구매 금액이 최소 금액 단위인지 확인한다.")
-    @ValueSource(ints={10500, 10010, 10001})
-    public void validateProperUnitAmountTest(int purchaseAMount){
+    @ValueSource(strings = {"10500", "10010", "10001"})
+    public void validateProperUnitAmountTest(String purchaseAMount) {
         Buyer buyer = new Buyer();
-        assertThatThrownBy(()->buyer.validateProperUnitAmount(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> buyer.validateProperUnitAmount(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
     }
+
     @ParameterizedTest
     @DisplayName("구매 금액에 다른 문자가 있다면 예외가 발생한다.")
-    @ValueSource(strings={"1050e", "10010 1000", "A000["})
-    public void validateProperLettersTest(String purchaseAMount){
+    @ValueSource(strings = {"1050e", "10010 1000", "A000["})
+    public void validateProperLettersTest(String purchaseAMount) {
         Buyer buyer = new Buyer();
-        assertThatThrownBy(()->buyer.validateProperLetters(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> buyer.validateProperLetters(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
     }
+
     @Test
     @DisplayName("String 자료형인 구매 금액을 정수형으로 변환한다.")
-    public void changeTypeTest(){
+    public void changeTypeTest() {
         Buyer buyer = new Buyer();
         List<String> purchaseAmounts = List.of("10000", "30000", "12000");
         List<Integer> transformedPurchaseAmount = new ArrayList<>();
-        for(String purchaseAmount: purchaseAmounts){
+        for (String purchaseAmount : purchaseAmounts) {
             transformedPurchaseAmount.add(buyer.changeType(purchaseAmount));
         }
         assertThat(transformedPurchaseAmount).containsExactly(10000, 30000, 12000);

@@ -9,53 +9,54 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class LottoGameView{
-    
-    private static final String PERCENT="%";
+public class LottoGameView {
+
+    private static final String PERCENT = "%";
 
     private String purchaseAmount;
     private String raffleNumbers;
     private String bonusNumber;
 
-    public void askPurchaseAmount(){
+    public void askPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         purchaseAmount = Console.readLine();
     }
 
-    public void askRaffleNumbers(){
+    public void askRaffleNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        raffleNumbers= Console.readLine();
+        raffleNumbers = Console.readLine();
     }
 
-    public void askBonusNumber(){
+    public void askBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        bonusNumber=Console.readLine();
+        bonusNumber = Console.readLine();
     }
 
-    public void noticeNumberOfTickets(int numberOfTickets){
-        System.out.printf("%d개를 구매했습니다.\n",numberOfTickets);
+    public void noticeNumberOfTickets(int numberOfTickets) {
+        System.out.printf("%d개를 구매했습니다.\n", numberOfTickets);
     }
 
-    public void noticeRateOfRevenue(float rateOfRevenue){
+    public void noticeRateOfRevenue(float rateOfRevenue) {
         System.out.printf("총 수익률은 %.1f%s입니다.", rateOfRevenue, PERCENT);
     }
 
-    public void noticeLotteries(String lottoNumbers){
+    public void noticeLotteries(String lottoNumbers) {
         System.out.println(lottoNumbers);
     }
-    public void noticeReport(String winReport){
+
+    public void noticeReport(String winReport) {
         System.out.println(winReport);
     }
 
-    public String getPurchaseAmount(){
+    public String getPurchaseAmount() {
         return purchaseAmount;
     }
 
-    public String getRaffleNumbers(){
+    public String getRaffleNumbers() {
         return raffleNumbers;
     }
 
-    public String getBonusNumber(){
+    public String getBonusNumber() {
         return bonusNumber;
     }
 }

@@ -14,11 +14,12 @@ public class Discriminator {
     private List<List<Integer>> MATCHES;
     private int bonusNumber;
 
-    public void initialize(RaffleNumber raffleNumber){
-        this.raffleNumbers=raffleNumber.getRaffleNumbers();
-        this.bonusNumber=raffleNumber.getBonusNumber();
-        this.MATCHES=new ArrayList<>();
+    public void initialize(RaffleNumber raffleNumber) {
+        this.raffleNumbers = raffleNumber.getRaffleNumbers();
+        this.bonusNumber = raffleNumber.getBonusNumber();
+        this.MATCHES = new ArrayList<>();
     }
+
     public int guessLottoNumber(Lotto lotto) {
         int numberOfMatches = ZERO;
         for (int raffleNumber : raffleNumbers) {
@@ -28,13 +29,15 @@ public class Discriminator {
         }
         return numberOfMatches;
     }
+
     public boolean canSecondRank(int raffleNumberMatches) {
         return raffleNumberMatches == SECOND_RANK_CONDITION;
     }
+
     public int guessBonusNumber(Lotto lotto, int raffleNumberMatches) {
         int numberOfBonusNumberMatches = ZERO;
-        if (canSecondRank(raffleNumberMatches)&&lotto.has(bonusNumber)) {
-            numberOfBonusNumberMatches += COUNT;
+        if (canSecondRank(raffleNumberMatches) && lotto.has(bonusNumber)) {
+            numberOfBonusNumberMatches = COUNT;
         }
         return numberOfBonusNumberMatches;
     }
@@ -44,9 +47,11 @@ public class Discriminator {
             MATCHES.add(List.of(raffleNumberMatches, bonusNumberMatches));
         }
     }
+
     public List<List<Integer>> getMatches() {
         return Collections.unmodifiableList(MATCHES);
     }
+
     public void discriminate(List<Lotto> lotteries) {
         int raffleNumberMatches;
         int bonusNumberMatches;

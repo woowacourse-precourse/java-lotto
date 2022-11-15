@@ -5,27 +5,30 @@ import lotto.view.LottoGameView;
 
 public class LottoGameController {
     LottoGameView lottoGameView = new LottoGameView();
-    Buyer buyer=new Buyer();
+    Buyer buyer = new Buyer();
     LottoGenerator lottoGenerator = new LottoGenerator();
     RaffleNumber raffleNumber = new RaffleNumber();
     Discriminator discriminator = new Discriminator();
     Revenue revenue = new Revenue();
 
-    public void calculateTickets(){
+    public void calculateTickets() {
         lottoGameView.askPurchaseAmount();
         buyer.buyTickets(lottoGameView.getPurchaseAmount());
     }
 
-    public void noticeNumberOfTickets(){
+    public void noticeNumberOfTickets() {
         lottoGameView.noticeNumberOfTickets(buyer.getTickets());
     }
-    public void createLotteries(){
+
+    public void createLotteries() {
         lottoGenerator.generateLottoOfBuyer(buyer.getTickets());
     }
-    public void noticeLotteries(){
+
+    public void noticeLotteries() {
         lottoGameView.noticeLotteries(lottoGenerator.toString());
     }
-    public void checkLotteryWin(){
+
+    public void checkLotteryWin() {
         lottoGameView.askRaffleNumbers();
         lottoGameView.askBonusNumber();
 
@@ -34,19 +37,24 @@ public class LottoGameController {
         discriminator.initialize(raffleNumber);
         discriminator.discriminate(lottoGenerator.getLottoOfBuyer());
     }
-    public void produceWinStatics(){
+
+    public void produceWinStatics() {
         revenue.makeStatics(discriminator.getMatches());
     }
-    public void noticeWinReport(){
+
+    public void noticeWinReport() {
         lottoGameView.noticeReport(revenue.getRevenueStaticsReport());
     }
-    public void calculateRateOfRevenue(){
+
+    public void calculateRateOfRevenue() {
         revenue.calculateRateOfRevenue(buyer.getPurchaseAmount());
     }
-    public void noticeRateOfRevenue(){
+
+    public void noticeRateOfRevenue() {
         lottoGameView.noticeRateOfRevenue(revenue.getRateOfRevenue());
     }
-    public void start(){
+
+    public void start() {
 
         calculateTickets();
         noticeNumberOfTickets();

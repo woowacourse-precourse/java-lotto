@@ -15,24 +15,31 @@ public class RaffleNumber {
     private static final int PROPER_QUANTITY = 6;
     private static final String WRONG_QUANTITY_ERROR_MESSAGE = "[ERROR] 추첨 번호가 6개가 아닙니다. 프로그램을 종료합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "[ERROR] 숫자가 중복되었습니다. 프로그램을 종료합니다.";
-    private List<Integer> raffleNumbers=new ArrayList<>();
+    private List<Integer> raffleNumbers = new ArrayList<>();
     private int bonusNumber;
 
-    public void createRaffleNumber(String raffleNumber){
+    public RaffleNumber() {
+        this.bonusNumber = 0;
+    }
+
+    public void createRaffleNumber(String raffleNumber) {
         validateProperRaffleNumber(raffleNumber, NUMERIC_PATTERN);
-        List<String> separatedRaffleNumber=separateRaffleNumberByComma(raffleNumber);
+        List<String> separatedRaffleNumber = separateRaffleNumberByComma(raffleNumber);
         validateProperQuantity(separatedRaffleNumber);
         validateDuplicatedNumbers(separatedRaffleNumber);
-        this.raffleNumbers=transform(separatedRaffleNumber, Integer::parseInt);
+        this.raffleNumbers = transform(separatedRaffleNumber, Integer::parseInt);
     }
-    public void createBonusNumber(String bonusNumber){
+
+    public void createBonusNumber(String bonusNumber) {
         validateProperRaffleNumber(bonusNumber, NUMERIC);
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
-    public void create(String raffleNumber, String bonusNumber){
+
+    public void create(String raffleNumber, String bonusNumber) {
         createRaffleNumber(raffleNumber);
         createBonusNumber(bonusNumber);
     }
+
     public List<Integer> getRaffleNumbers() {
         return raffleNumbers;
     }
