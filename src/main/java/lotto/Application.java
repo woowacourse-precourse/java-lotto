@@ -143,18 +143,23 @@ public class Application {
         int total = 0;
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (int i = 0; i < prizeList.size(); i++) {
+        for (int i = prizeList.size() - 1; i > 0; i--) {
             int temp = prizeMap.getOrDefault(i + 1, 0);
-            int price = prizeList.get(i + 1).getPrize();
-            System.out.println(temp +"개 일치 (" + price + ")원 - " + temp + "개");
+            int winNum = prizeList.get(i).getNumOfLucky();
+            int price = prizeList.get(i).getPrize();
+            System.out.print(winNum +"개 일치");
+            if (price == 30_000_000) {
+                System.out.print(", 보너스 볼 일치");
+            }
+            System.out.println(" ("+ price + ")원 - " + temp + "개");
             total += temp * price;
         }
         return total;
     }
 
     public static float getProfit(Integer totalPrice, Integer numOfLottos) {
-        int initalPrice = numOfLottos * lottoPrice;
-        float profit = 100 * totalPrice / (float) initalPrice;
+        int initialPrice = numOfLottos * lottoPrice;
+        float profit = 100 * totalPrice / (float) initialPrice;
         profit = Math.round(profit * 10) / 10;
         return profit;
     }
@@ -162,8 +167,19 @@ public class Application {
     public static void printProfit(float profit) {
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
-    
+
+    public static void playLottos() {
+        int initialPrice = getMoney();
+        validMoney(initialPrice);
+        int numOfLottos = getNumberOfLotto(initialPrice);
+        List<Lotto> lottos = getLottos(numOfLottos);
+        Lotto luckyNumbers = getLuckyNumbers();
+        int bonusNumber = getBonusNumber(luckyNumbers);
+        getResult(lottos, luckyNumbers, bonusNumber);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        playLottos();
     }
 }
