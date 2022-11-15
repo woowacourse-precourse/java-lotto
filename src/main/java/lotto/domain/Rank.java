@@ -31,6 +31,7 @@ public enum Rank {
     public String getMessage(){
         return message;
     }
+
     public static Rank getRank(Lotto lotto, Lotto winningNumber, int bonusNumber){
         int correctCount = calculateCorrectNumber(lotto, winningNumber);
         Rank candidate = Arrays.stream(Rank.values())
@@ -40,6 +41,7 @@ public enum Rank {
         }
         return candidate;
     }
+
     public static int calculateCorrectNumber(Lotto lotto, Lotto winningLotto){
         List<Integer> lottoNumber = lotto.getLottoNumber();
         List<Integer> winningNumber = winningLotto.getLottoNumber();
