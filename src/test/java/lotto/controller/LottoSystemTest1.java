@@ -44,8 +44,6 @@ class LottoSystemTest1 extends NsTest {
 
     @Override
     protected void runMain() {
-        List<Lotto> userLottos = lottoSystem.purchaseLotto();
-        List<?> wonLottoInfo = lottoSystem.drawLotto();
-        lottoSystem.getLottoResult(userLottos, wonLottoInfo);
+        lottoSystem.purchaseLotto();
     }
 }
