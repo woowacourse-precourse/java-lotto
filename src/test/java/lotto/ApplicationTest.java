@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -47,11 +49,43 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 기능_테스트_2() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("4000", "7,9,12,14,23,28", "17");
+                    assertThat(output()).contains(
+                            "4개를 구매했습니다.",
+                            "[1, 18, 21, 25, 27, 28]",
+                            "[2, 7, 10, 11, 26, 28]",
+                            "[3, 6, 9, 17, 25, 28]",
+                            "[4, 7, 15, 18, 24, 28]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 0개",
+                            "총 수익률은 0.0%입니다."
+                    );
+                },
+                List.of(1, 18, 21, 25, 27, 28),
+                List.of(2, 7, 10, 11, 26, 28),
+                List.of(3, 6, 9, 17, 25, 28),
+                List.of(4, 7, 15, 18, 24, 28)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 예외_테스트_2() {
+        assertThatThrownBy(() -> runException("0000"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
