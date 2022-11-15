@@ -2,7 +2,6 @@ package lotto.model;
 
 import lotto.enums.ExceptionErrorType;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
