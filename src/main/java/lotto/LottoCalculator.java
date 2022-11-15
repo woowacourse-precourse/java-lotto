@@ -2,8 +2,6 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.model.Lotto;
-import lotto.model.WinningNumbers;
 
 public class LottoCalculator {
     private List<Integer> rankCount;

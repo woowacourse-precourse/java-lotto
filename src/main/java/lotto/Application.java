@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.Lottos;
 import lotto.model.WinningNumbers;
@@ -16,7 +14,6 @@ public class Application {
             lottoManager.printLottoCount(lottoCount);
             Lottos lottos = new Lottos(lottoCount);
             lottoManager.printLottoNumbers(lottos.getLottos());
-
             WinningNumbers winningNumbers = new WinningNumbers(lottoManager.inputWinningNumbers(), lottoManager.inputBonusNumber());
 
             for (Lotto lotto : lottos.getLottos()) {

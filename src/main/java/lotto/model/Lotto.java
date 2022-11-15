@@ -11,7 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkOverlap(numbers);
-        List<Integer> sortedNumbers = deepCopy(numbers);
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
         sortedNumbers.sort(Comparator.naturalOrder());
         this.numbers = sortedNumbers;
     }
@@ -30,14 +30,8 @@ public class Lotto {
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
-        validate(distinctNumbers);
-    }
-
-    public List<Integer> deepCopy(List<Integer> numbers) {
-        List<Integer> copyNumbers = new ArrayList<>();
-        for (Integer number : numbers) {
-            copyNumbers.add(number);
+        if (distinctNumbers.size() != 6) {
+            throw new IllegalArgumentException("중복되 숫자가 있습니다.");
         }
-        return copyNumbers;
     }
 }
