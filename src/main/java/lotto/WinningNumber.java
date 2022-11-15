@@ -1,46 +1,27 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class WinningNumber {
 
-    private final static String SEPARATOR = ",";
     public final static int REPEAT_INITIAL_VALUE = 0;
 
-    private final Lotto lotto;
+    private final Lotto lottoNumber;
+    private final BonusNumber bonusNumber;
 
-    public WinningNumber(String winningNumber) {
-        this.lotto = new Lotto(validate(winningNumber));
+    public WinningNumber(Lotto lottoNumber, BonusNumber bonusNumber) {
+        this.lottoNumber = lottoNumber;
+        this.bonusNumber = validateBonusNumberDuplicate(lottoNumber, bonusNumber);
     }
 
-    private List<Integer> validate(String winningNumber) {
-        List<String> winningNumbers = validateSplitWinningNumbers(winningNumber);
-        return validateWinningNumberTypeCheck(winningNumbers);
+    public Ranking calculateRanking(Lotto lottoNumbers) {
+        int matchCount = this.lottoNumber.calculateMatchCount(lottoNumbers);
+        return Ranking.findOfRanking(matchCount, lottoNumbers.contains(bonusNumber.getBonusNumber()));
     }
 
-    private List<String> validateSplitWinningNumbers(String winningNumber) {
-        return List.of(winningNumber.split(SEPARATOR));
-    }
-
-    private List<Integer> validateWinningNumberTypeCheck(List<String> tempWinningNumber) {
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (int i = REPEAT_INITIAL_VALUE; i < tempWinningNumber.size(); i++) {
-            validateWinningNumberType(i, winningNumbers, tempWinningNumber);
+    private BonusNumber validateBonusNumberDuplicate(Lotto winningNumber, BonusNumber bonusNumber) {
+        if (winningNumber.getNumbers().contains((bonusNumber.getBonusNumber()))) {
+            throw new IllegalArgumentException("[ERROR] 입력한 보너스 숫자가 담청 번호와 중복입니다.");
         }
-        return winningNumbers;
-    }
-
-    private void validateWinningNumberType(int repeatCount, List<Integer> winningNumbers, List<String> winningNumber) {
-        try {
-            winningNumbers.add(Integer.parseInt(winningNumber.get(repeatCount)));
-        } catch (IllegalArgumentException exceptionMessage) {
-            throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호가 숫자가 아닙니다.");
-        }
-    }
-
-    public Lotto getLotto() {
-        return lotto;
+        return bonusNumber;
     }
 
 }
