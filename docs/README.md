@@ -12,7 +12,7 @@
 - generateLotto : 6개의 random한 숫자를 가진 로또를 발행한다.
 
 ## 2. WinningNumber
-- Lotto를 상송받고 보너스 값을 가진다.
+- Lotto를 상속받고 보너스 값을 가진다.
 
 ## 3. Buyer
 - buyLotto : Lotto 혹은 List를 입력받는다.
