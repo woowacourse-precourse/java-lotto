@@ -8,10 +8,10 @@ import java.util.List;
 public class Output {
 
     public static void outputPurchaseLottosResult(List<Lotto> lottos) {
-        StringBuilder sb = new StringBuilder(lottos.size());
-        sb.append(Message.COUNTING_BUY.getValue()).append('\n');
+        StringBuilder sb = new StringBuilder();
+        sb.append(lottos.size()).append(Message.COUNTING_BUY.getValue()).append('\n');
 
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             sb.append(lotto.toString()).append('\n');
         }
 
