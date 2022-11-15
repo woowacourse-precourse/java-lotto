@@ -43,7 +43,7 @@ public class Controller {
     public List<Lotto> generateLottoTickets(int receivedMoney) {
         List<List<Integer>> tickets = LottoGenerator.createLottos(receivedMoney);
         for (List<Integer> value : tickets) {
-            System.out.println(value);
+            Output.printLotto(value);
             lottoTicket.add(new Lotto(value));
         }
         return lottoTicket;
