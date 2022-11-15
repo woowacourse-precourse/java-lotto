@@ -1,9 +1,9 @@
 package lotto;
 
+import static lotto.Game.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.Game.checker;
 
 public class Lotto {
     private final List<Integer> numbers;
