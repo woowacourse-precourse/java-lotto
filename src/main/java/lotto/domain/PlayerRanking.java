@@ -18,13 +18,9 @@ public class PlayerRanking {
     }
 
     private static Rank findPlayerRanking(int match, boolean hasBonus) {
-        if (match == Rank.SECOND.getMatch()) {
-            if (hasBonus) {
-                return Rank.SECOND;
-            }
-            return Rank.THIRD;
-        }
-        return Arrays.stream(Rank.values()).filter(rank -> rank.getMatch() == match).findAny().orElse(Rank.NONE);
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank.getMatch() == match && rank.getHasBonus().contains(hasBonus)).findAny()
+                .orElse(Rank.NONE);
     }
 
     public List<Rank> getPlayerRankings() {
