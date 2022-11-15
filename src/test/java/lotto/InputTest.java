@@ -90,6 +90,15 @@ public class InputTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호 입력값이 문자일 경우 예외가 발생한다.")
+    @Test
+    void createCharacterInBonusNumber() {
+        Validator validator = new Validator();
+        String bonusNumber = "hi";
+        assertThatThrownBy(() -> validator.isNumeric(bonusNumber,Error.ONE_SIZE))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
