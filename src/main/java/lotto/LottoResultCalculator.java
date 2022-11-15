@@ -3,6 +3,7 @@ package lotto;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoResultCalculator {
     private List<Integer> winningNums;
@@ -25,6 +26,17 @@ public class LottoResultCalculator {
 
     public void setBonusNum(int bonusNum) {
         this.bonusNum = bonusNum;
+    }
+
+    public long calWinningAmount(EnumMap<Rank, Integer> ranks) {
+        return ranks.entrySet()
+                .stream()
+                .mapToLong(rankIntegerEntry -> {
+                    Rank rank = rankIntegerEntry.getKey();
+                    int cnt = rankIntegerEntry.getValue();
+                    return rank.getAmount() * cnt;
+                })
+                .sum();
     }
 
     public EnumMap<Rank, Integer> calRankAll(List<Lotto> lottos) {

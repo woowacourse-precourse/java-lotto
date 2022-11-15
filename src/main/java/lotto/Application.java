@@ -23,6 +23,8 @@ public class Application {
         LottoResultCalculator lottoResultCalculator = LottoResultCalculator.getInstance();
         lottoResultCalculator.setWinningNums(winningNums);
         lottoResultCalculator.setBonusNum(bonusNum);
+
         EnumMap<Rank, Integer> ranks = lottoResultCalculator.calRankAll(lottos);
+        long winningAmount = lottoResultCalculator.calWinningAmount(ranks);
     }
 }
