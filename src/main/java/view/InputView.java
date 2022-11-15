@@ -9,10 +9,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static constant.Config.NEW_LINE;
+
 public class InputView {
     private static final String PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
-    private static final String WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
-    private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String WINNING_NUMBER = NEW_LINE + "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NUMBER = NEW_LINE + "보너스 번호를 입력해 주세요.";
     private static final String TYPE_ERROR = "숫자를 입력해야 합니다.";
 
     private InputView() {

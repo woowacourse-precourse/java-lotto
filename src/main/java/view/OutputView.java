@@ -8,13 +8,15 @@ import model.WinningResult;
 
 import java.util.List;
 
+import static constant.Config.NEW_LINE;
+
 public class OutputView {
-    public static final String LOTTOS_COUNT = "개를 구매했습니다.";
-    public static final String WINNING_STATISTICS = "당첨 통계" + System.lineSeparator() + "---" + System.lineSeparator();
-    public static final String RANK = "%d개 일치%s (%,d원) - %d개" + System.lineSeparator();
+    public static final String LOTTOS_COUNT = NEW_LINE + "%d개를 구매했습니다." + NEW_LINE;
+    public static final String WINNING_STATISTICS = NEW_LINE + "당첨 통계" + NEW_LINE + "---" + NEW_LINE;
+    public static final String RANK = "%d개 일치%s (%,d원) - %d개" + NEW_LINE;
     public static final String CONTAINS_BONUS_BALL = ", 보너스 볼 일치";
     public static final String EXCEPT_BONUS_BALL = "";
-    public static final String EARNINGS_RATE = "총 수익률은 %,.1f%%입니다." + System.lineSeparator();
+    public static final String EARNINGS_RATE = "총 수익률은 %,.1f%%입니다." + NEW_LINE;
 
     private OutputView() {
 
@@ -22,7 +24,7 @@ public class OutputView {
 
     public static void printLottos(Lottos inputLottos) {
         List<Lotto> lottos = inputLottos.getLottos();
-        System.out.println(lottos.size() + LOTTOS_COUNT);
+        System.out.printf(LOTTOS_COUNT, lottos.size());
 
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
@@ -30,7 +32,7 @@ public class OutputView {
     }
 
     public static void printWinningResult(WinningResult winningResult) {
-        System.out.println(getResultMessage(winningResult));
+        System.out.print(getResultMessage(winningResult));
     }
 
     private static String getResultMessage(WinningResult winningResult) {
