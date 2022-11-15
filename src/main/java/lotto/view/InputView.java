@@ -18,9 +18,11 @@ public class InputView {
 
     public static List<Integer> InputWinNumber() {
         System.out.println(Printer.WIN_NUMBER.getMessage());
-        String input = readLine();
-        IsNumber(input);
-        List<Integer> inputs = List.of(input.split(",")).stream()
+        List<String> input = List.of(readLine().split(","));
+        for (int i=0; i<input.size(); i++) {
+            IsNumber(input.get(i));
+        }
+        List<Integer> inputs = input.stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
         return inputs;
