@@ -26,4 +26,8 @@ public class Check {
     public boolean checkRange(int number) {
         return (number <= 45 && number >= 1);
     }
+
+    public boolean haveRest(int buyMoney) {
+        return (buyMoney % 1000 != 0);
+    }
 }
