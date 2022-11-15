@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class StatisticsBuilder {
-
     private final Map<String, Integer> winningInfo;
 
     public StatisticsBuilder() {
@@ -20,8 +19,8 @@ public class StatisticsBuilder {
     public void build(List<Integer> winningNumber, int bonusNumber, List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             String grade = WinningChecker.check(winningNumber, bonusNumber, lotto.getNumbers());
-            if(!grade.equals("null")) {
-                winningInfo.put(grade, winningInfo.get(grade)+1);
+            if (!grade.equals("null")) {
+                winningInfo.put(grade, winningInfo.get(grade) + 1);
             }
         }
     }
