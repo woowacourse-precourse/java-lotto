@@ -1,6 +1,5 @@
-package lotto.utils.validator;
+package lotto.util.validator;
 
-import lotto.util.validator.MoneyValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

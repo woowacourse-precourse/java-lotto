@@ -1,7 +1,9 @@
 package lotto.controller;
 
 import lotto.model.*;
+import lotto.util.Utils;
 import lotto.util.validator.BonusNumberValidator;
+import lotto.util.validator.LottoValidator;
 import lotto.util.validator.WinningNumbersValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -33,9 +35,10 @@ public class LottoController {
     private void pickWinningNumbers() {
         String winningNumbers = InputView.inputWinningNumbers();
         new WinningNumbersValidator(winningNumbers);
+        new LottoValidator(Utils.convertToList(winningNumbers));
 
         String winningBonus = InputView.inputWinningBonus();
-        new BonusNumberValidator(winningBonus);
+        new BonusNumberValidator(winningBonus, winningNumbers);
 
         winningNumbersService = new WinningNumbersService(winningNumbers, winningBonus);
     }
