@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import validation.Validator;
 
 public class Lotto {
     public static final int FIRST_NUMBER = 1;
@@ -17,10 +18,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+        Validator validator = new Validator();
 
-    // TODO: 추가 기능 구현
+        validator.validateGeneratedNumbers(numbers);
+    }
 }
