@@ -1,7 +1,16 @@
 package lotto;
 
+
 public class Application {
+
+    private static final LottoPlay lottoPlay = new LottoPlay();
+
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        lottoPlay.play();
+
+
     }
+
+
 }
