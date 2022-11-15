@@ -28,13 +28,7 @@ class LottoTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
-    }
 
-    // 아래에 추가 테스트 작성 가능
-    @DisplayName("금액이 1000으로 나누어지지 않으면 예외 발생")
     @Test
     void 금액입력_예외_테스트1() {
         assertSimpleTest(() -> {
@@ -42,7 +36,7 @@ class LottoTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
-    @DisplayName("금액이 정수가 아니면 예외 발생")
+
     @Test
     void 금액입력_예외_테스트2() {
         assertSimpleTest(() -> {
@@ -60,6 +54,45 @@ class LottoTest extends NsTest {
         );
     }
 
+    @Test
+    void 당첨번호_예외_테스트1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000","1,2,3,4,5,5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
 
+    @Test
+    void 당첨번호_예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000","1,2,3,4,5,46"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
+
+    @Test
+    void 당첨번호_예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000","1 2 3 4 5 6"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
+
+    @Test
+    void 당첨번호_예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000","1,2,3,4,5 45"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
+
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
+    }
 
 }
