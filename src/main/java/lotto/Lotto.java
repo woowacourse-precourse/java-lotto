@@ -21,7 +21,7 @@ public class Lotto {
 
     private void isLengthSix(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수가 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.LOTTO_NOT_SIX.getMessage());
         }
     }
 
@@ -30,7 +30,7 @@ public class Lotto {
                                         .distinct()
                                         .count();
         if (numbers.size() != distinctNumbers) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있지 않아야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.LOTTO_DUPLICATED.getMessage());
         }
     }
 
@@ -38,7 +38,7 @@ public class Lotto {
         boolean anyNumUnderOne = numbers.stream().anyMatch(i -> i < 1);
         boolean anyNumOverFortyFive = numbers.stream().anyMatch(i -> i > 45);
         if (anyNumUnderOne || anyNumOverFortyFive) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 1이상 45이하여야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.LOTTO_OUT_OF_RANGE.getMessage());
         }
     }
 

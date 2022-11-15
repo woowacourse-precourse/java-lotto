@@ -19,6 +19,16 @@ public class LottoController {
 		this.view = view;
 	}
 
+	public void run() {
+		try {
+			generateLottos();
+			registerAnswers();
+			handleAnalysis();
+		} catch (IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public List<Lotto> generateLottos() {
 		int money = getMoney();
 		List<Lotto> lottos = new ArrayList<>();
