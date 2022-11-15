@@ -2,22 +2,24 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LottoMachine {
 
-    InputAmountValidator validator = InputAmountValidator.getInstance();
-
     private List<Integer> generateLottoNumbers(int startFrom, int endTo, int size) {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startFrom, endTo, size);
+        HashSet<Integer> numberSet = new HashSet<Integer>(Randoms.pickUniqueNumbersInRange(startFrom, endTo, size));
+        List<Integer> numbers = new ArrayList<Integer>(numberSet);
         Collections.sort(numbers);
         return numbers;
     }
 
+    private boolean isValidUnit(int money) {
+        if (Math.floorMod(money, LottoConstant.PRICE.getValue()) == 0) return true;
+        return false;
+    }
+
     private int countPurchaseQuantity(int money) {
-        if (!validator.isValidUnit(money)) {
+        if (!isValidUnit(money)) {
             System.out.println(ErrorMessage.INVALID_PURCHASE_UNIT.getMessage());
             throw new IllegalArgumentException();
         }
