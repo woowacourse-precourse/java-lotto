@@ -26,7 +26,6 @@ public class Lotto {
     static Lotto creatLottoNumbers(int lottoCount) {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(numberMinRage, numberMaxRage, numberCount);
 
-
         return new Lotto(lotto);
     }
 }

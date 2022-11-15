@@ -12,7 +12,7 @@ public class Buyer {
     private int lottoAmount;
 
     Buyer(int lottoAmount) {
-        this.lottoAmount =lottoAmount;
+        this.lottoAmount = lottoAmount;
     }
 
     static void validConsistByNumber(String purchaseAmount) {
