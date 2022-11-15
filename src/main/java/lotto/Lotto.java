@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.utils.Validation;
+
 import java.util.List;
 
 public class Lotto {
@@ -14,6 +16,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Validation.validateNumberDuplicate(numbers);
     }
 
     public List<Integer> getNumbers() {
@@ -25,7 +28,7 @@ public class Lotto {
                 .filter(lotto::contains)
                 .count();
     }
-    
+
     public boolean contains(List<Integer> lottoWinningNumbers) {
         return numbers.contains(lottoWinningNumbers);
     }
