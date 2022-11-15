@@ -25,51 +25,58 @@
     - 등수, 일치하는 번호 개수, 보너스볼 일치 여부, 당첨금
     - ```getWinning``` : 당첨 개수, 보너스볼 당첨 여부를 확인해 WinningEnum을 반환
 
-### **Game 클래스**
+### **Game 클래스(객체)**
 - #### **로또 게임 시작**
     - ```start``` : 게임 시작
-    - ```myLotto``` : 구매한 로또 출력
-    - ```myLottoToWinning``` : 구매한 로또 당첨 등수 확인
-    - ```statistics``` : 당첨 현황 확인
-    - ```total``` : 당첨 수익률 계산
+    - ```inputMoney``` : 돈 객체 생성
+    - ```myLotto``` : 로또 객체 리스트로 생성
+    - ```inputWinningLotto``` : 당첨 객체 생성
+    - ```winningLottoNumbers``` : 당첨 객체 멤버변수인 LottoNumbers 입력
+    - ```winningBonusNumber``` : 당첨 객체 몀버변수인 BonusNumber 입력 
 
-### **Money 클래스**
+### **Money 클래스(객체)**
 - #### **로또 구입 금액**
-    - ```inputMoney``` : 로또 구입할 금액 입력
+    - ```getMoney``` : 입력한 돈 가져오기
+    - ```boughtLottoCount``` : 구매한 로또 개수 반환
+
+### **ValidateMoney 메서드 클래스**
+- #### **로또 구입 금액 입력값 확인**
     - ```validate``` : 입력한 금액 검증 및 예외처리
       - ```validateInputMoneyIsAllNumber``` : 2의 63승 이하 숫자인지 검증
       - ```validateInputMoneyIsRightUnit``` : 단위에 맞게 입력했는지 검증
-    - ```boughtLottoCount``` : 구매한 로또 개수 반환
+    - ```validatedMoneyToLong``` : 문자열 형태인 입력한 금액을 Long형으로 반환
 
-### **Lotto 클래스**
-- #### **구입한 로또 객체**
+### **Lotto 클래스(객체)**
+- #### **구입한 로또**
     - ```getRank``` : 로또 당첨 등수 반환
     - ```countCorrectNumbers``` : 맞춘 로또 번호 개수 반환
     - ```isCorrectBonusNumber``` : 보너스 번호를 맞췄는지 확인
 
-### **PickLotto 클래스**
-- #### **로또 번호 및 보너스 번호 입력**
-    - ```lottoNumbers``` : 당첨 로또 번호 반환
-    - ```inputLottoNumber``` : 당첨 로또 번호 입력
+### **WinningLotto 클래스(객체)**
+- #### **로또 번호와 보너스 번호**
+    - ```checkWinning``` : 당첨 등수 반환
+    - ```statistics``` : 통계 확인
+    - ```total``` : 수익률 확인
+
+### **ValidateWinningLotto 메서드 클래스**
+- #### **로또 번호와 보너스 번호 입력값 확인**
     - ```validateInputLottoNumber``` : 입력한 당첨 번호 검증 및 예외처리
+    - ```validateBonusNumberIsRightNumber``` : 입력한 보너스 번호 검증 및 예외처리
       - ```validateInputLottoNumberIsTotal``` : N개의 로또 번호 입력했는지 검증
       - ```validateInputLottoNumberIsRightSeparator``` : 쉼표를 기준으로 숫자를 입력했는지 검증 
       - ```validateInputLottoNumberIsBetween``` : 로또 추첨 번호 사이의 숫자를 입력했는지 검증
-    - ```bonusNumber``` : 보너스 로또 번호 반환
-    - ```inputBonusNumber``` : 보너스 로또 번호 입력
-    - ```validateBonusNumberIsRightNumber``` : 입력한 보너스 번호 검증 및 예외처리
 
-### **Exception 클래스**
-- #### **IllegalArgumentException 상속**
-    - prefix로 "[ERROR]" 지정
-    
 ### **Output 클래스**
 - #### **출력 기능**
-    - ```printInputMoney``` : 구입 금액 입력 멘트 출력
-    - ```printBoughtLotto``` : 로또 구매 개수 멘트 출력
-    - ```printBoughtLottoNumbers``` : 자동 구매된 로또 번호 출력
-    - ```printInputWinningNumber``` : 당첨 번호 입력 멘트 출력
-    - ```printBonusNumber``` : 보너스 번호 입력 멘트 출력
-    - ```printWinningStatistics``` : 당첨 통계 멘트 출력
-    - ```printYield``` : 총 수익률 멘트 출력 
-
+  - ```printInputMoney``` : 구입 금액 입력 멘트 출력
+  - ```printBoughtLotto``` : 로또 구매 개수 멘트 출력
+  - ```printBoughtLottoNumbers``` : 자동 구매된 로또 번호 출력
+  - ```printInputWinningNumber``` : 당첨 번호 입력 멘트 출력
+  - ```printBonusNumber``` : 보너스 번호 입력 멘트 출력
+  - ```printWinningStatistics``` : 당첨 통계 멘트 출력
+  - ```printYield``` : 총 수익률 멘트 출력
+  - 
+### **Exception 클래스**
+- #### **IllegalArgumentException 상속**
+    - 에러 출력 시, "[ERROR]" 접두사로 설정
+    
