@@ -12,13 +12,15 @@ public class WinningNumber {
     private static final int COUNT_OF_DELIMITER = 5;
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
+    private static final int NEGATIVE_SIGN = '-';
     private static final int DELIMITER = ',';
     private List<Integer> winningNumbers;
 
     public WinningNumber(String winningNumber) {
         checkNull(winningNumber);
-        validateNumbers(winningNumber);
+        validateSign(winningNumber);
         validateDelimiters(winningNumber);
+        validateNumbers(winningNumber);
         initializeWinningNumbers(winningNumber);
     }
 
@@ -32,21 +34,17 @@ public class WinningNumber {
         }
     }
 
-    private void validateNumbers(String input) {
+    private void validateSign(String input) {
         long count = input.chars()
-            .filter(Character::isDigit)
-            .map(Character::getNumericValue)
-            .filter(i -> i >= MIN_LOTTO_NUMBER)
-            .filter(i -> i <= MAX_LOTTO_NUMBER)
-            .distinct()
+            .filter(this::isSign)
             .count();
 
         try {
-            if (count != COUNT_OF_WINNING_NUMBERS) {
+            if (count != 0) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            throw new TryCatchException("[ERROR] The winning number must consists validate numbers.");
+            throw new TryCatchException("[ERROR] The winning number must be positive.");
         }
     }
 
@@ -64,8 +62,22 @@ public class WinningNumber {
         }
     }
 
-    private boolean isDelimiter(int c) {
-        return c == DELIMITER;
+    private void validateNumbers(String input) {
+        List<Integer> inputNumbers = new ArrayList<>();
+        for (String s : input.split(Character.toString(DELIMITER))) {
+            inputNumbers.add(Integer.parseInt(s));
+        }
+        long count = inputNumbers.stream()
+            .filter(i -> MIN_LOTTO_NUMBER <= i && i <= MAX_LOTTO_NUMBER)
+            .distinct()
+            .count();
+        try {
+            if (count != COUNT_OF_WINNING_NUMBERS) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            throw new TryCatchException("[ERROR] The winning number must consists validate numbers.");
+        }
     }
 
     private void initializeWinningNumbers(String winningNumber) {
@@ -73,6 +85,14 @@ public class WinningNumber {
         for (String s : winningNumber.split(Character.toString(DELIMITER))) {
             winningNumbers.add(Integer.parseInt(s));
         }
+    }
+
+    public boolean isSign(int c) {
+        return c == NEGATIVE_SIGN;
+    }
+
+    private boolean isDelimiter(int c) {
+        return c == DELIMITER;
     }
 
     public boolean contains(Integer number) {
