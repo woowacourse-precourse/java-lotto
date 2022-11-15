@@ -1,6 +1,5 @@
 package lotto.model;
 
-import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +24,6 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -48,7 +46,6 @@ class LottoTest {
                         isEqualTo(Map.of(MATCH_THREE, 1, MATCH_FOUR, 1, MATCH_FIVE, 1,
                                 MATCH_FIVE_WITH_BONUS, 1, MATCH_SIX, 1))
         );
-
     }
 
     @DisplayName("로또 금액 계산.")
@@ -72,6 +69,5 @@ class LottoTest {
 
         assertAll(()->assertThat(lotto.calculateProfitRatio(income1, expense)).isEqualTo(BigDecimal.valueOf(180.0)),
                 ()->assertThat(lotto.calculateProfitRatio(income2, expense)).isEqualTo(BigDecimal.valueOf(200.0)));
-        ;
     }
 }
