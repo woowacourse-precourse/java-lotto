@@ -1,29 +1,34 @@
 # 미션 - 로또
 
-## 기능 설명
+## MVC 모델을 적용한 기능 설명
 
 ### Model (domain)
 
 - Purchase 모델
+
     - 총 구매액`totalBudget`을 받아 구매할 로또 티켓 수`ticketNumber`를 계산한다. `Purchase#calculateTicketNumber`
     - 구매한 로또 티켓 수를 반환한다. `Purchase#getTicketNumber`
 
 - Player 모델
+
     - 구매한 티켓 수`ticketNumber`를 입력받아 그 수만큼 사용자의 로또 번호를 랜덤으로 생성한다. `Player#createAllPlayerNumbers`
     - 모든 사용자 로또 번호`allPlayerNumbers`를 반환한다. `Player#getAllPlayerNumbers`
 
 - Lotto 모델
+
     - "1,2,3,4,5,6"과 같이 쉼표로 구분된 `numbers`를 입력값으로 받는다.
     - 입력값의 유효성을 검증한다. `Lotto#validate`
     - 입력값을 통해 생성된 6개의 당첨 번호`winningNumbers`를 반환한다. `Lotto#getWinningNumbers`
 
 - Bonus 모델
+
     - 하나의 숫자`input`를 입력받는다.
     - 입력값의 유효성을 검증한다. `Bonus#validateBonusNumber`
     - `Lotto` 모델과 `Bonus` 모델을 통해 생성된 7개의 숫자 중 중복되는 숫자가 있는지 확인한다. `Bonus#validateDuplicates`
     - 입력값을 통해 생성된 1개의 보너스 번호`bonusNumber`를 반환한다. `Bonus#getBonusNumber`
 
 - LottoResult 모델
+
     - `winningNumbers`, `bonusNumber`, `allPlayerNumbers`를 입력값으로 받는다.
     - `winningNumbers`와 `allPlayerNumbers`를 비교해 일치하는 숫자의 개수`match`를 계산한다. `LottoResult#calculateMatch`
     - `bonusNumber`와 `allPlayerNumbers`를 비교해 보너스 숫자를 가지고 있는지 여부`hasBonus`를 판정한다. `LottoResult#hasBonusNumber`
@@ -32,12 +37,14 @@
     - 각 사용자 로또 번호들의 `hasBonus`의 수를 리스트`hasBonusMatches`로 만들어 반환한다. `LottoResult#getBonusMatches`
 
 - PlayerRanking 모델
+
     - `LottoResult` 모델에서 반환한 `matches`, `hasBonusMatches`를 입력값으로 받는다.
-    - 입력값을 `Rank`(Enum)의 인스턴스 변수인 `match`와 비교하고, `hasBonus`를 고려해 각 최종 순위를 찾는다. `PlayerRanking#findPlayerRanking`
+    - 입력값을 `Rank`(Enum)의 인스턴스 변수인 `match`, `hasBonus`와 비교해 각 최종 순위를 찾는다. `PlayerRanking#findPlayerRanking`
     - 최종 순위를 구매한 티켓의 개수만큼 반복해 리스트`playerRankings`에 자례대로 저장한다. `PlayerRanking#setPlayerRankings`
     - 사용자의 티켓 별 최종 순위를 저장한 리스트`playerRankings`를 반환한다. `PlayerRanking#getPlayerRankings`
 
 - Statistics 모델
+
     - 사용자의 티켓 별 최종 순위를 저장한 리스트`rankings`를 입력받는다.
     - `Rank`(Enum)의 `count` 필드를 모두 0으로 초기화한다. `Statistics#initializeCountsInRank`
     - `rankings` 리스트를 바탕으로 `Rank`(Enum)의 `count` 필드에 사용자의 당첨 통계를 집계한다. `Statistics#aggregateRankingStatistics`
@@ -46,9 +53,11 @@
 ### View
 
 - InputView
+
     - User에게 입력값을 받는다. `InputView#getInput`
 
 - OutputView
+
     - 예외 상황 발생 시 에러 문구를 출력한다. `OutputView#printErrorMessage`
     - 총 구매액`totalBudget` 입력 문구를 출력한다. `OutputView#printCashInput`
     - 구매하는 티켓의 개수`ticketNumber`를 출력한다. `OutputView#printTicketNumber`
@@ -61,11 +70,14 @@
 ### Controller
 
 - LottoController
+
     - 로또를 구매한다. `LottoController#purchaseLottoTickets`
     - 사용자의 로또 번호를 생성해 로또를 발행한다. `LottoController#publishPlayerNumbers`
     - 당첨 번호와 보너스 번호를 결정한다. `LottoController#determineWinningNumbersAndBonusNumber`
     - 사용자의 로또 당첨 결과를 집계한다. `LottoController#aggregateStatisticResults`
     - 사용자의 수익률을 계산한다. `LottoController#calculateYield`
+
+---
 
 ## 🔍 진행 방식
 
