@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,10 +47,62 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("로또 번호 오름차순 정렬한다.")
+    @Test
+    void 기능_테스트2() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("4000", "1,2,3,8,21,23", "7");
+                    assertThat(output()).contains(
+                            "4개를 구매했습니다.",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[3, 5, 11, 16, 32, 38]",
+                            "[7, 11, 16, 35, 36, 44]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "3개 일치 (5,000원) - 2개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 0개",
+                            "총 수익률은 250.0%입니다."
+                    );
+                },
+                List.of(43, 21, 8, 41, 42, 23),
+                List.of(11, 5, 3, 32, 16, 38),
+                List.of(7, 11, 16, 35, 36, 44),
+                List.of(6, 5, 4, 3, 2, 1)
+        );
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @DisplayName("로또 번호에 숫자가 아닌 게 있으면 예외가 발생한다.")
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("1000", "abc");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @DisplayName("당첨 번호와 보너스 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("보너스 번호에 숫자가 아닌 게 있으면 예외가 발생한다.")
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "1q2w3e4r");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
