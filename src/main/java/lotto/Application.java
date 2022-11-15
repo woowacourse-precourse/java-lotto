@@ -7,10 +7,10 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 enum MatchCount {
-    THREE(3, 5000,"3개 일치 ", "(5,000원) - "), FOUR(4, 50000,"4개 일치 ", "(50,000원) - "),
-    FIVE(5, 1500000,"5개 일치 ", "(1,500,000원) - "),
-    SIX(6, 2000000000,"6개 일치 ", "(2,000,000,000원) - "),
-    LUCKY_FIVE(7,30000000, "5개 일치, 보너스 볼 일치  ", "(30,000,000원) - ");
+    THREE(3, 5000, "3개 일치 ", "(5,000원) - "), FOUR(4, 50000, "4개 일치 ", "(50,000원) - "),
+    FIVE(5, 1500000, "5개 일치 ", "(1,500,000원) - "),
+    SIX(6, 2000000000, "6개 일치 ", "(2,000,000,000원) - "),
+    LUCKY_FIVE(7, 30000000, "5개 일치, 보너스 볼 일치 ", "(30,000,000원) - ");
 
     private final int key;
     private final int profit;
@@ -73,8 +73,8 @@ public class Application {
         int luckyNumber = getLuckyNumber();
 
         HashMap result = lottoResult(lottoAnswer, luckyNumber, myLottos);
-        Integer profit = calculateProfit(myPrice, result);
-        System.out.println(PROFIT_MESSAGE_PREFIX+profit+PROFIT_MESSAGE_SUFFIX);
+        double profit = calculateProfit(myPrice, result);
+        System.out.println(PROFIT_MESSAGE_PREFIX + profit + PROFIT_MESSAGE_SUFFIX);
     }
 
     public static HashMap lottoResult(Lotto answer, int luckyNum, List<List<Integer>> lottos) {
@@ -111,14 +111,17 @@ public class Application {
         return result;
     }
 
-    public static Integer calculateProfit(int price, HashMap result) {
-        int profit = 0;
-        profit = ((int) result.get(MatchCount.THREE.getKey())) * MatchCount.THREE.getProfit() +
+    public static double calculateProfit(int price, HashMap result) {
+        double profit = 0.0;
+        profit = (((int) result.get(MatchCount.THREE.getKey())) * MatchCount.THREE.getProfit() +
                 ((int) result.get(MatchCount.FOUR.getKey())) * MatchCount.FOUR.getProfit() +
                 ((int) result.get(MatchCount.FIVE.getKey())) * MatchCount.FIVE.getProfit() +
                 ((int) result.get(MatchCount.LUCKY_FIVE.getKey())) * MatchCount.LUCKY_FIVE.getProfit() +
-                ((int) result.get(MatchCount.SIX.getKey())) * MatchCount.SIX.getProfit();
-        return profit / price * 100;
+                ((int) result.get(MatchCount.SIX.getKey())) * MatchCount.SIX.getProfit());
+        profit = Math.round(profit * 10000 / price);
+        profit /= 100;
+        System.out.println("profit = " + profit);
+        return profit;
     }
 
     public static void printResult(HashMap result) {
@@ -137,7 +140,7 @@ public class Application {
             numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             isValidateNumbers(numbers);
             isDuplicated(numbers);
-            Collections.sort(numbers);
+//            Collections.sort(numbers); ??
             totalLottos.add(numbers);
         }
         return totalLottos;
@@ -150,22 +153,33 @@ public class Application {
 
     public static void validatePrice(int price) {
         if (price % 1000 != 0) {
+            System.out.println(ERROR_MESSAGE + PRICE_MESSAGE);
             throw new IllegalArgumentException(ERROR_MESSAGE + PRICE_MESSAGE);
         }
     }
-    public static void isNumber(String price){
-        for(int loop=0;loop<price.length();loop++){
-            if(!Character.isDigit(price.charAt(loop))){
-                throw new IllegalArgumentException(ERROR_MESSAGE);
-            }
+
+    public static int isNumber(String price) {
+        int priceChecked=0;
+        try {
+            priceChecked = Integer.parseInt(price);
+        } catch (NumberFormatException e) {
+            System.out.println(ERROR_MESSAGE);
+//            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
+//        for (int loop = 0; loop < price.length(); loop++) {
+//            if (!Character.isDigit(price.charAt(loop))) {
+//                System.out.println(ERROR_MESSAGE + NOT_NUMBER_MESSAGE);
+//                throw new IllegalArgumentException(ERROR_MESSAGE + NOT_NUMBER_MESSAGE);
+//            }
+//        }
+        return priceChecked;
     }
 
     public static int priceInput() {
-//        System.out.println(INPUT_MESSAGE);
+        System.out.println(INPUT_MESSAGE);
         String getPrice = Console.readLine();
-        isNumber(getPrice);
-        int price = Integer.valueOf(getPrice);
+        int price =isNumber(getPrice);
+//        int price = Integer.valueOf(getPrice);
         validatePrice(price);
         return price;
     }
@@ -178,6 +192,7 @@ public class Application {
             }
         }
         if (count != 5) {
+            System.out.println(ANSWER_MESSAGE);
             throw new IllegalArgumentException(ANSWER_MESSAGE);
         }
 
@@ -185,10 +200,10 @@ public class Application {
 
     public static List<Integer> lottoNumAnswerInput() {
         List<Integer> lottoNumbers = new ArrayList<>();
-//        System.out.println(LOTTO_ANSWER_INPUT_MESSAGE);
+        System.out.println(LOTTO_ANSWER_INPUT_MESSAGE);
         String lottoInput = Console.readLine();
         validateInputForm(lottoInput);
-        String[] tempInput = lottoInput.split(",");
+        String[] tempInput = lottoInput.replace(" ", "").split(",");
 
         for (String num : tempInput) {
             lottoNumbers.add(Integer.valueOf(num));
@@ -207,6 +222,7 @@ public class Application {
     public static void isDuplicated(List<Integer> numbers) {
         for (Integer num : numbers) {
             if (Collections.frequency(numbers, num) != 1) {
+                System.out.println(ERROR_MESSAGE + IS_DUPLICATED_MESSAGE);
                 throw new IllegalArgumentException(ERROR_MESSAGE + IS_DUPLICATED_MESSAGE);
             }
         }
@@ -214,6 +230,7 @@ public class Application {
 
     public static void isValidateNumber(int number) {
         if (number < 1 || number > 45) {
+            System.out.println(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
             throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
         }
     }
@@ -221,6 +238,7 @@ public class Application {
     public static void isValidateNumbers(List<Integer> numbers) {
         for (Integer num : numbers) {
             if (num < 1 || num > 45) {
+                System.out.println(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
                 throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
             }
         }
