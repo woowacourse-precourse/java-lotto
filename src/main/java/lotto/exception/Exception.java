@@ -1,5 +1,7 @@
 package lotto.exception;
 
+import java.util.List;
+
 import static lotto.constant.MessageConstants.*;
 import static lotto.constant.Constants.*;
 
@@ -15,6 +17,13 @@ public class Exception {
     public static void validateDivision(String purchaseCost) {
         if(Integer.parseInt(purchaseCost) % LOTTO_COST != ZERO) {
             throwException(WRONG_PURCHASE_COST_MESSAGE);
+        }
+    }
+
+    public static void validateNumberCount(List<Integer> numbers) {
+        int numberCount = numbers.size();
+        if(numberCount != MAX_COUNT) {
+            throwException(WRONG_COUNT_MESSAGE);
         }
     }
 

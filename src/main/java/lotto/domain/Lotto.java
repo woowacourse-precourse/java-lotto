@@ -1,8 +1,11 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import static lotto.constant.Constants.*;
 
+import static lotto.constant.Constants.*;
+import static lotto.exception.Exception.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -10,11 +13,12 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Arrays.sort(numbers.toArray());
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-
+        validateNumberCount(numbers);
     }
 
     public static Lotto generate() {
