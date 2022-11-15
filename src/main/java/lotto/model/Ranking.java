@@ -31,11 +31,11 @@ public class Ranking {
     }
 
     private Map<Rank, Integer> initRanking() {
-        Map<Rank, Integer> newScoreBoard = new HashMap<>();
+        Map<Rank, Integer> ranks = new HashMap<>();
         for (Rank rank : Rank.values()) {
-            newScoreBoard.put(rank, 0);
+            ranks.put(rank, 0);
         }
-        return newScoreBoard;
+        return ranks;
     }
 
     private int countNumbers(Lotto lotto, WinningNumbers winningNumbers) {
