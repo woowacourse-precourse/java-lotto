@@ -39,10 +39,15 @@ public class LottoStore {
         System.out.println("탕첨 통계");
         System.out.println("---");
         System.out.printf("3개 일치 (5,000원) - %d개",countMatchingMoney.get("3").get(1));
+        System.out.println();
         System.out.printf("4개 일치 (50,000원) - %d개",countMatchingMoney.get("4").get(1));
+        System.out.println();
         System.out.printf("5개 일치 (1,500,000원) - %d개",countMatchingMoney.get("5").get(1));
+        System.out.println();
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개",countMatchingMoney.get("bonus").get(1));
+        System.out.println();
         System.out.printf("6개 일치 (2,000,000,000원) - %d개",countMatchingMoney.get("6").get(1));
+        System.out.println();
         System.out.printf("총 수익률은 %.1f입니다.", profits);
     }
 
