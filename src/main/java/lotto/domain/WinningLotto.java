@@ -59,17 +59,14 @@ public class WinningLotto {
     }
 
     public int countEqualNumber(Lotto userLotto) {
-
         int count = 0;
         for (int number : this.getLottoNumbers())
-            if (userLotto.contains(number))
-                count++;
+            if (userLotto.contains(number)) count++;
 
         if (count != FIVE_EQUALS)
             return count;
 
-        int bonusNumber = this.getBonusNumber();
-        if (userLotto.contains(bonusNumber))
+        if (userLotto.contains(this.getBonusNumber()))
             count = SECOND_WINNING;
 
         return count;
