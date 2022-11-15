@@ -15,7 +15,8 @@ public class LottoView {
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
 
-    final String REGEX = "^[0-9]*?";
+    final String REGEX_1 = "^[0-9]*?";
+    final String REGEX_2 = "^[0-9,]*?";
 
     public int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -33,7 +34,7 @@ public class LottoView {
     }
 
     private void checkOnlyNumber(String money) {
-        if (!money.matches(REGEX)) {
+        if (!money.matches(REGEX_1)) {
             System.out.println("[ERROR] 형식에 맞는 값을 입력해야 합니다.");
             throw new NoSuchElementException();
         }
@@ -41,9 +42,18 @@ public class LottoView {
 
     public List<Integer> getWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        List<Integer> numbers = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        String winningNumber = Console.readLine();
+        checkOnlyNumberAndComma(winningNumber);
+        List<Integer> numbers = Arrays.stream(winningNumber.split(",")).map(Integer::parseInt).collect(Collectors.toList());
         validateWinningNumber(numbers);
         return numbers;
+    }
+
+    private void checkOnlyNumberAndComma(String winningNumber) {
+        if (!winningNumber.matches(REGEX_2)) {
+            System.out.println("[ERROR] 형식에 맞는 값을 입력해야 합니다.");
+            throw new NoSuchElementException();
+        }
     }
 
     private void validateWinningNumber(List<Integer> numbers) {
