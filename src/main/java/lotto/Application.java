@@ -14,7 +14,7 @@ public class Application {
 
         Integer Amount;
         Amount = Integer.parseInt(Console.readLine());
-        if(Amount%1000!=0){
+        if(Amount<1000||Amount%1000!=0){
             Error("구입금액은 1000의 배수여야 합니다.");
         }
         return Amount;
@@ -24,6 +24,12 @@ public class Application {
         System.out.println();
         System.out.println(NumberOfGame + "개를 구매했습니다.");
         return NumberOfGame;
+    }
+
+    public static void NumberCheck(List<Integer> WinningNumber){
+        if(WinningNumber.size()!=6){
+            Error("6개의 숫자를 입력하십시오.");
+        }
     }
 
     public static void RedundancyCheck(List<Integer> WinningNumber){
@@ -64,6 +70,7 @@ public class Application {
         }
         RedundancyCheck(WinningNumber);
         RangeCheck(WinningNumber);
+        NumberCheck(WinningNumber);
         Collections.sort(WinningNumber);
         return WinningNumber;
     }
@@ -102,7 +109,24 @@ public class Application {
         }
         return Rank;
     }
-    
+
+    public static void PrintResult(List<Integer> Rank,double Yield){
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - "+ Rank.get(3) + "개");
+        System.out.println("4개 일치 (50,000원) - "+ Rank.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - "+ Rank.get(5) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ Rank.get(7) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+ Rank.get(6) + "개");
+        System.out.println("총 수익률은" + Yield +"% 입니다.");
+    }
+
+    public static double Calculating(List<Integer> Rank){
+        int AllMoney;
+        return 1.2;
+    }
+
     public static void Game(){
         List<Lotto> AllGame = new ArrayList<>();
         Integer Amount = EnterAmount();
@@ -112,6 +136,7 @@ public class Application {
         List<Integer> Winning = setWinningNumber();
         int BonusNumber = setBonus(Winning);
         List<Integer> Rank= WinGameCheck(AllGame,Winning,BonusNumber);
+        //PrintResult(Rank,3.1);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
