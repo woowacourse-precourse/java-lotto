@@ -1,17 +1,24 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
-public class WinningLotto extends LottoNumberMaker {
+public class WinningLotto {
 
-    private int bonusNumber;
+    private final int bonusNumber;
 
-    public WinningLotto(List<Integer> lotto, int bonusNumber) {
-        super(lotto);
+    private final List<Integer> winningNumbers;
+
+    public WinningLotto(List<Integer> winningNumbers, int bonusNumber) {
+        this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
+     public List<Integer> getWinningNumbers(){
+        return this.winningNumbers;
+     }
 
-    public int getBonusNumber(){
+    public int getBonusNumber() {
         return this.bonusNumber;
     }
 }
