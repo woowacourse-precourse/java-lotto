@@ -41,5 +41,15 @@ public class LottoGenerator {
     public String createLottoNumberFormat(Stream<Integer> sortedLottoNumbers){
         return Arrays.toString(sortedLottoNumbers.toArray());
     }
+    @Override
+    public String toString(){
+        List<String> lottoNumbers=new ArrayList<>();
+        Stream<Integer> sortLottoNumbers;
+        for(Lotto lotto: lottoOfBuyer){
+            sortLottoNumbers=sortLottoNumbers(lotto);
+            lottoNumbers.add(createLottoNumberFormat(sortLottoNumbers));
+        }
+        return String.join(DELIMITER, lottoNumbers);
+    }
 
 }
