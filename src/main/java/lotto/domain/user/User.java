@@ -28,4 +28,8 @@ public class User {
   private Integer getLottoPrice() {
     return LottoPrice.LOTTO_PRICE.getPrice();
   }
+
+  public int getTicketCount(){
+    return money / getLottoPrice();
+  }
 }
