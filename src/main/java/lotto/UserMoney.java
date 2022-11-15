@@ -11,6 +11,9 @@ public class UserMoney {
         this.userMoney = changeToInteger(input);
     }
 
+    private int changeToInteger(String input) {
+        return Integer.parseInt(input);
+    }
 
 
     private void validate(String input) {
