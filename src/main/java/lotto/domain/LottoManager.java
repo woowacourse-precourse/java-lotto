@@ -15,6 +15,7 @@ public class LottoManager {
     private static final int LOTTOSTARTNUMBER = 1;
     private static final int LOTTOLASTNUMBER = 45;
     private static final int LOTTOCOUNT = 6;
+    private static final int LOTTOPRICE = 1000;
     public LottoManager() {
     }
 
@@ -22,7 +23,7 @@ public class LottoManager {
         int money = isNumberic(inputMoney);
         hasRestError(money);
         MinimumAmountError(money);
-        return money / 1000;
+        return money / LOTTOPRICE;
     }
 
     public int isNumberic(String inputMoney) {
@@ -34,13 +35,13 @@ public class LottoManager {
     }
 
     public void hasRestError(int money) {
-        if (money % 1000 != 0) {
+        if (money % LOTTOPRICE != 0) {
             throw new IllegalArgumentException(ERROR + RESTNUMBER);
         }
     }
 
     public void MinimumAmountError(int money) {
-        if (money < 1000) {
+        if (money < LOTTOPRICE) {
             throw new IllegalArgumentException(ERROR + NOTENOUGHMONEY);
         }
     }
