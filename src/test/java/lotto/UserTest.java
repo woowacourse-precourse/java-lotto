@@ -15,14 +15,14 @@ class UserTest {
     @DisplayName("로또 구입 금액이 1,000 원으로 나누어 떨어지지 않으면 예외 발생")
     @Test
     void createCost() {
-        assertThatThrownBy(() -> new User(1234))
+        assertThatThrownBy(() -> new User("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("1등 당첨 개수 확인하기")
     @Test
     void checkWinning_First() {
-        User user = new User(1000);
+        User user = new User("1000");
         List<List<Integer>> lottoNumbers = List.of(List.of(1, 2, 3, 4, 5, 6));
         user.setLottoNumbers(lottoNumbers);
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
@@ -36,7 +36,7 @@ class UserTest {
     @DisplayName("2등 당첨 개수 확인하기")
     @Test
     void checkWinning_Second() {
-        User user = new User(1000);
+        User user = new User("1000");
         List<List<Integer>> lottoNumbers = List.of(List.of(1, 2, 3, 4, 5, 7));
         user.setLottoNumbers(lottoNumbers);
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
@@ -50,7 +50,7 @@ class UserTest {
     @DisplayName("3등 당첨 개수 확인하기")
     @Test
     void checkWinning_Third() {
-        User user = new User(1000);
+        User user = new User("1000");
         List<List<Integer>> lottoNumbers = List.of(List.of(1, 2, 3, 4, 5, 8));
         user.setLottoNumbers(lottoNumbers);
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
@@ -64,7 +64,7 @@ class UserTest {
     @DisplayName("4등 당첨 개수 확인하기")
     @Test
     void checkWinning_Fourth() {
-        User user = new User(1000);
+        User user = new User("1000");
         List<List<Integer>> lottoNumbers = List.of(List.of(1, 2, 3, 4, 8, 9));
         user.setLottoNumbers(lottoNumbers);
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
@@ -78,7 +78,7 @@ class UserTest {
     @DisplayName("5등 당첨 개수 확인하기")
     @Test
     void checkWinning_Fifth() {
-        User user = new User(1000);
+        User user = new User("1000");
         List<List<Integer>> lottoNumbers = List.of(List.of(1, 2, 3, 8, 9, 10));
         user.setLottoNumbers(lottoNumbers);
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
@@ -92,7 +92,7 @@ class UserTest {
     @DisplayName("당첨 내역 확인하기")
     @Test
     void checkWinning() {
-        User user = new User(2000);
+        User user = new User("2000");
         List<List<Integer>> lotto = List.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6));
         user.setLottoNumbers(lotto);
         int bonus = 7;
@@ -110,7 +110,7 @@ class UserTest {
     @DisplayName("수익률 계산하기")
     @Test
     void calculateYield() {
-        User user = new User(1000);
+        User user = new User("1000");
         List<List<Integer>> lotto = List.of(List.of(1, 2, 3, 4, 5, 6));
         user.setLottoNumbers(lotto);
         List<Integer> numbers = List.of(1, 2, 3, 8, 9, 10);

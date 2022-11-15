@@ -1,13 +1,14 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 import static lotto.constants.UIConstants.*;
 
 public class UI {
-    private int cost;
+    private String cost;
     private List<Integer> winningNumbers;
     private int bonus;
 
@@ -15,7 +16,7 @@ public class UI {
         this.winningNumbers = new ArrayList<>();
     }
 
-    public int getCost() {
+    public String getCost() {
         return cost;
     }
 
@@ -29,7 +30,7 @@ public class UI {
 
     public void inputCost() {
         System.out.println(INPUT_COST.getValue());
-        this.cost = Integer.parseInt(readLine());
+        this.cost = readLine();
         System.out.println();
     }
 
@@ -49,11 +50,14 @@ public class UI {
     }
 
     public void showCostCount() {
-        System.out.print(this.cost / 1000);
+        System.out.print(Integer.parseInt(this.cost) / 1000);
         System.out.println(SHOW_COST_COUNT.getValue());
     }
 
     public void showLottoNumbers(List<List<Integer>> lottoNumbers) {
+//        for (int i = 0; i < lottoNumbers.size(); i++) {
+//            Collections.sort(lottoNumbers.get(i));
+//        }
         for (List<Integer> list : lottoNumbers) {
             System.out.println(list.toString());
         }

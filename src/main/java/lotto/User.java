@@ -1,7 +1,5 @@
 package lotto;
 
-import lotto.constants.ExceptionConstants;
-
 import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
@@ -16,9 +14,9 @@ public class User {
     private int fourth;
     private int fifth;
 
-    public User(int cost) {
+    public User(String cost) {
         validateCost(cost);
-        this.cost = cost;
+        this.cost = Integer.parseInt(cost);
         this.lottoNumbers = new ArrayList<>();
     }
 
@@ -50,44 +48,23 @@ public class User {
         return fifth;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
     public void setLottoNumbers(List<List<Integer>> lottoNumbers) {
         this.lottoNumbers = lottoNumbers;
     }
 
-    public void setFirst(int first) {
-        this.first = first;
-    }
-
-    public void setSecond(int second) {
-        this.second = second;
-    }
-
-    public void setThird(int third) {
-        this.third = third;
-    }
-
-    public void setFourth(int fourth) {
-        this.fourth = fourth;
-    }
-
-    public void setFifth(int fifth) {
-        this.fifth = fifth;
-    }
-
-    private void validateCost(int cost) {
-        if (cost % 1000 != 0) {
-            throw new IllegalArgumentException(USER_INPUT_COST.getValue());
+    private static void validateCost(String cost) {
+        try {
+            if (Integer.parseInt(cost) % 1000 != 0) {
+                throw new IllegalArgumentException(USER_INPUT_COST.getValue());
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(USER_INPUT_COST_NUMBER.getValue());
         }
     }
 
     public void makeLottoNumbers() {
         for (int i = 0; i < this.cost / 1000; i++) {
             lottoNumbers.add(pickUniqueNumbersInRange(1, 45, 6));
-            Collections.sort(lottoNumbers.get(i));
         }
     }
 

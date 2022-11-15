@@ -4,6 +4,7 @@ public enum ExceptionConstants {
 
     // user
     USER_INPUT_COST("[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다"),
+    USER_INPUT_COST_NUMBER("[ERROR] 구입 금액이 숫자가 아닙니다."),
 
     // lotto
     LOTTO_SIZE("[ERROR] 로또 번호는 6개여야 합니다."),
