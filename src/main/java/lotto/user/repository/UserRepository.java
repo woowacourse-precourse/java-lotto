@@ -1,7 +1,6 @@
 package lotto.user.repository;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Collections;
 import java.util.List;
 import lotto.lottery.domain.Lotto;
 import lotto.lottery.repository.LottoRepository;
@@ -33,7 +32,7 @@ public class UserRepository {
         if (!checkMoneyOnlyNUmber(userInputs)) {
             return Constant.INIT_ZERO;
         }
-        if (!checkMoneyMinAmount(userInputs)) {
+        if (!canMoneyDivideByUnit(userInputs)) {
             return Constant.INIT_ZERO;
         }
         return Integer.parseInt(userInputs);
@@ -49,9 +48,9 @@ public class UserRepository {
         }
     }
 
-    private static boolean checkMoneyMinAmount(String userInput) {
+    private static boolean canMoneyDivideByUnit(String userInput) {
         try {
-            ValidateUser.validateMinAmount(Integer.parseInt(userInput));
+            ValidateUser.validateDivideByUnit(Integer.parseInt(userInput));
             return true;
         } catch (IllegalArgumentException e) {
             ValidateError.printError(e);
