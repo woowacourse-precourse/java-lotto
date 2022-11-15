@@ -38,8 +38,4 @@ public class Money {
     public static float calculateProfitRate(float profit, Money money){
         return profit / money.money * RATE_UNIT;
     }
-
-    public int getMoney() {
-        return money;
-    }
 }
