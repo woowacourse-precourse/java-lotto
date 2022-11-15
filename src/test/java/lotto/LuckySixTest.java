@@ -1,16 +1,11 @@
 package lotto;
 
-import lotto.model.Lotto;
-import lotto.model.Lottos;
 import lotto.model.LuckySix;
 import lotto.model.enums.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LuckySixTest {
     @DisplayName("당첨 번호가 올바른 입력이 아닐 때")
@@ -44,6 +39,4 @@ class LuckySixTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.DUPLICATE_ERROR_MESSAGE.getMessage());
     }
-
-
 }
