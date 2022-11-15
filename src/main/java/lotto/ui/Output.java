@@ -15,42 +15,45 @@ public class Output {
         NUMBER("%d개"),
         REVENUE("총 수익률은 %.1f%%입니다.");
 
-        private String msg;
+        private final String msg;
+
         Phrases(String msg) {
             this.msg = msg;
         }
     }
 
-    public void moneyInform(){
+    public void moneyInform() {
         System.out.println(Phrases.MONEY.msg);
     }
 
-    public void amount(int amount){
-        System.out.println(String.format(Phrases.AMOUNT.msg,amount));
+    public void amount(int amount) {
+        System.out.println(String.format(Phrases.AMOUNT.msg, amount));
     }
 
-    public void lottoHistory(List<Lotto> history){
-        for(Lotto numbers : history){
+    public void lottoHistory(List<Lotto> history) {
+        for (Lotto numbers : history) {
             System.out.println(numbers.getNumbers());
         }
     }
-    public void winningNum(){
+
+    public void winningNum() {
         System.out.println(Phrases.WINNING_NUMBER.msg);
     }
-    public void bonusNum(){
+
+    public void bonusNum() {
         System.out.println(Phrases.BONUS_NUMBER.msg);
     }
 
 
-    public void winStatistics(){
+    public void winStatistics() {
         System.out.println(Phrases.WINSTATISTICS.msg);
-        for (CoincideNumber coincideNumber : CoincideNumber.values()){
-            System.out.println(coincideNumber.phrase() + String.format(Phrases.NUMBER.msg,coincideNumber.count()));
+        for (CoincideNumber coincideNumber : CoincideNumber.values()) {
+            System.out.println(coincideNumber.phrase() + String.format(Phrases.NUMBER.msg, coincideNumber.count()));
         }
     }
 
 
-    public void revenue(double revenue){
-        System.out.println(String.format(Phrases.REVENUE.msg,revenue));
+    public void revenue(double revenue) {
+        System.out.println(String.format(Phrases.REVENUE.msg, revenue));
     }
 }

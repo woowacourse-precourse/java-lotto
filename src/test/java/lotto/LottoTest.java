@@ -39,7 +39,7 @@ class LottoTest {
     @Test
     void createBonusNumByDuplicatedWinNum() {
         Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
-        assertThatThrownBy(() -> lotto.addBonusNum(6))
+        assertThatThrownBy(() -> lotto.addBonusNum("6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -55,7 +55,7 @@ class LottoTest {
     @ParameterizedTest
     @CsvSource({"900", "1100", "3", "2001"})
     void convertMoneyByWrongUnit(String input) {
-        assertThatThrownBy(() -> new Issue(Integer.parseInt(input)))
+        assertThatThrownBy(() -> new Issue(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -70,7 +70,7 @@ class LottoTest {
     @DisplayName("수익률이 정상적으로 계산되는지 확인한다")
     @Test
     void calculateRevenue() {
-        Issue issue = new Issue(5000);
+        Issue issue = new Issue("5000");
         double result = (100000/5000)*100;
         assertThat(result).isEqualTo(issue.revenue(100000));
     }
