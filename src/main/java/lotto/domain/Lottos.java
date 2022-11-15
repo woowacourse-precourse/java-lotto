@@ -1,9 +1,8 @@
-package domain;
+package lotto.domain;
 
-import dto.LottosDto;
-import dto.WinningNumberDto;
+import lotto.dto.LottosDto;
+import lotto.dto.WinningNumberDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {

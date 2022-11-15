@@ -1,17 +1,14 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import domain.LottoFactory;
-import domain.Lottos;
-import domain.Result;
-import domain.WinningNumber;
-import dto.LottosDto;
-import dto.WinningNumberDto;
-import view.InputUtil;
-import view.OutputUtil;
+import lotto.domain.LottoFactory;
+import lotto.domain.Lottos;
+import lotto.domain.Result;
+import lotto.domain.WinningNumber;
+import lotto.dto.LottosDto;
+import lotto.dto.WinningNumberDto;
+import lotto.view.InputUtil;
+import lotto.view.OutputUtil;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {

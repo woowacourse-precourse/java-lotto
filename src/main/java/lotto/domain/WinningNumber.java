@@ -1,6 +1,6 @@
-package domain;
+package lotto.domain;
 
-import dto.WinningNumberDto;
+import lotto.dto.WinningNumberDto;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -41,7 +41,6 @@ public class WinningNumber {
             System.out.println(ERROR_INVALID_INPUT);
             throw new IllegalArgumentException();
         }
-
     }
     public WinningNumberDto sendDTO(){
         return new WinningNumberDto(mainNumbers,bonusNumber);

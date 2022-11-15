@@ -1,4 +1,4 @@
-package view;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;

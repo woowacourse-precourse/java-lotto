@@ -1,12 +1,10 @@
-package view;
+package lotto.view;
 
-import domain.Lotto;
-import domain.LottoRank;
-import domain.Lottos;
-import domain.Result;
-import dto.LottoDto;
-import dto.LottosDto;
-import dto.ResultDto;
+import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.Result;
+import lotto.dto.LottoDto;
+import lotto.dto.LottosDto;
 
 import java.text.DecimalFormat;
 import java.util.List;

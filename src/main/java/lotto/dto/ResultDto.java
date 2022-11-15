@@ -1,6 +1,6 @@
-package dto;
+package lotto.dto;
 
-import domain.LottoRank;
+import lotto.domain.LottoRank;
 
 import java.util.Map;
 

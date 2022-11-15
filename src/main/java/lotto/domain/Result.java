@@ -1,10 +1,8 @@
-package domain;
+package lotto.domain;
 
-import dto.LottoDto;
-import dto.ResultDto;
+import lotto.dto.ResultDto;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 
 public class Result {

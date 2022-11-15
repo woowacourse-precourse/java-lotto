@@ -1,7 +1,7 @@
-package domain;
+package lotto.domain;
 
-import dto.LottoDto;
-import dto.WinningNumberDto;
+import lotto.dto.LottoDto;
+import lotto.dto.WinningNumberDto;
 
 import java.util.*;
 
