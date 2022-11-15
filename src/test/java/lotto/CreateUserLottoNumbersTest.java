@@ -23,11 +23,21 @@ public class CreateUserLottoNumbersTest {
     @Test
     void createUserLottoNumber(){
         //given
-
-
+        int amount = 1;
         //when
-        List<Lotto> actual = createUserLottoNumbers.createUserLottoNumber();
+        List<Lotto> actual = createUserLottoNumbers.createUserLottoNumber(amount);
         //then
         assertThat(actual.get(0).getNumbers().size()).isEqualTo(6);
+    }
+
+    @DisplayName("구매 개수 만큼 로또 번호가 생성되는지 확인")
+    @Test
+    void createUserMultipleLottoNumber(){
+        //given
+        int amount = 4;
+        //when
+        List<Lotto> actual = createUserLottoNumbers.createUserLottoNumber(amount);
+        //then
+        assertThat(actual.size()).isEqualTo(4);
     }
 }
