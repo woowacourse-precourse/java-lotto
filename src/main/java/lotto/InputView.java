@@ -17,51 +17,51 @@ public class InputView {
     private ArrayList<Integer> numbers = new ArrayList<>();
 
     public InputView() {
-        buyLottoTickets();
+        //buyLottoTickets();
         pressLottoNumbers();
     }
 
-    public void buyLottoTickets() {
-        System.out.println(LOTTO_PURCHASE_PRICE_INPUT_MESSAGE);
-        String input = Console.readLine();
-        if(checkLottoTicket(input)) {
-            this.ticketMoney = Integer.parseInt(input);
-        }
-    }
+//    public void buyLottoTickets() {
+//        System.out.println(LOTTO_PURCHASE_PRICE_INPUT_MESSAGE);
+//        String input = Console.readLine();
+//        if(checkLottoTicket(input)) {
+//            this.ticketMoney = Integer.parseInt(input);
+//        }
+//    }
+//
+//    public boolean checkLottoTicket(String input) {
+//        if(input.charAt(0) == '0') {
+//            throw new IllegalArgumentException("[ERROR] 구매 금액을 제대로 입력해 주세요.");
+//        }
+//        for(char c : input.toCharArray()) {
+//            if(!Character.isDigit(c)) {
+//                throw new IllegalArgumentException("[ERROR] 구매 금액을 제대로 입력해 주세요.");
+//            }
+//        }
+//        int temp = Integer.parseInt(input);
+//        if((temp % 1000) != 0) {
+//            throw new IllegalArgumentException("[ERROR] 구매 금액은 천원 단위로 입력해야 합니다.");
+//        }
+//        return true;
+//    }
 
-    public boolean checkLottoTicket(String input) {
-        if(input.charAt(0) == '0') {
-            throw new IllegalArgumentException("[ERROR] 구매 금액을 제대로 입력해 주세요.");
-        }
-        for(char c : input.toCharArray()) {
-            if(!Character.isDigit(c)) {
-                throw new IllegalArgumentException("[ERROR] 구매 금액을 제대로 입력해 주세요.");
-            }
-        }
-        int temp = Integer.parseInt(input);
-        if((temp % 1000) != 0) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 천원 단위로 입력해야 합니다.");
-        }
-        return true;
-    }
-
-    public void pressLottoNumbers() {
+    public String pressLottoNumbers() {
         System.out.println(USER_NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
-        checkStringToInt(input);
+        return Console.readLine();
 
     }
 
-    public void checkStringToInt(String input) {
-        String[] tempArr = input.split(",", 6);
-        if(tempArr.length!= 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개 여야 합니다.");
-        }
-        checkNumbers(tempArr);
-        for(String numbers : tempArr) {
-            this.numbers.add(Integer.parseInt(numbers));
-        }
-    }
+//    public void checkStringToInt(String input) {
+//        String[] tempArr = input.split(",", 6);
+//        if(tempArr.length!= 6) {
+//            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개 여야 합니다.");
+//        }
+//        checkNumbers(tempArr);
+//        for(String numbers : tempArr) {
+//            this.numbers.add(Integer.parseInt(numbers));
+//        }
+//    }
 
     public boolean checkNumbers(String[] tempArr) {
         try {
@@ -72,6 +72,24 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자여야 합니다.");
         }
         return true;
+    }
+
+    public Integer money(String money) {
+        MoneyInputWrongMoney(money);
+        return Integer.parseInt(money);
+    }
+
+    public void MoneyInputWrongMoney(String money) {
+        boolean isNumeric = money.chars().allMatch(Character::isDigit);
+        if(!isNumeric) {
+            System.out.println("[ERROR] 올바른 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 올바른 숫자가 아닙니다.");
+        }
+    }
+
+    public String inputMoney() {
+        System.out.println(USER_NUMBER_INPUT_MESSAGE);
+        return Console.readLine();
     }
 
     public List<Integer> getLottoNumbers() {
