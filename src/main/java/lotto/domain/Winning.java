@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Winning {
     private static final int MIN_LOTTO = 1;
     private static final int MAX_LOTTO = 45;
+    private static final int WINNING_SIZE = 6;
 
     private List<Integer> winningNumbers;
     private int bonusNumber;
@@ -20,6 +21,20 @@ public class Winning {
 
     public Winning(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validateWinningNumbers() {
+        if (isInvalidNumbersSize(winningNumbers, WINNING_SIZE)) {
+            throw new ErrorException(Error.INVALID_LOTTO_SIZE.toString());
+        }
+
+        if (includeDuplicates()) {
+            throw new ErrorException(Error.INCLUDE_DUPLICATE_VALUE.toString());
+        }
+
+        if (isInvalidNumberRange(winningNumbers)) {
+            throw new ErrorException(Error.INVALID_LOTTO_RANGE.toString());
+        }
     }
 
     private void isNotNumeric(String inputNumbers) {
