@@ -1,8 +1,7 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Scanner;
 
 public class WinLotto extends Lotto {
     int bonus;
@@ -10,6 +9,13 @@ public class WinLotto extends Lotto {
     public WinLotto(List<Integer> numbers) {
         super(numbers);
         validate(numbers);
+        String input = getBonusInputFromUser();
+    }
+
+    private String getBonusInputFromUser() {
+        System.out.println(Message.INPUT_BONUS.message);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     private void validate(List<Integer> numbers) {
