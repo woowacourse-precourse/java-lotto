@@ -18,6 +18,10 @@ public class Manager {
     public final String CLOSE_WINNING_RATE = "%입니다.";
     public final String LOTTO_UNIT = "개";
 
+    public  String Error_message;
+    public String getError_message(){
+        return this.Error_message;
+    }
     public boolean isNumber(String str){
         for(int i=0; i<str.length(); i++){
             if(str.charAt(i) >= '0' && str.charAt(i) <= '9') continue;
@@ -47,6 +51,52 @@ public class Manager {
             set.add(list.get(i));
         }
         return set.size() != LOTTO_LENGTH;
+    }
+
+    public void QuitProgram(String message){
+        this.Error_message = message;
+        throw new IllegalArgumentException();
+    }
+
+    public int checkPurchaseMoney(String input){
+        if(!isNumber(input))
+            QuitProgram("[ERROR] 금액은 숫자로만 구성된 문자열이어야 합니다.");
+        int money = Integer.parseInt(input);
+        if(money < 1000)
+            QuitProgram("[ERROR] 최소 1000원 이상의 금액을 입력해주세요.");
+        if(money % 1000 != 0)
+            QuitProgram("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+        return money;
+    }
+
+    public List<Integer> checkWinningNumber(String input){
+        String[] arr = input.split(",");
+        if(arr.length != LOTTO_LENGTH)
+            QuitProgram("[ERROR] 당첨번호는 쉼표(,)를 기준으로 6개로 구분되어야 합니다.");
+        List<String> list = Arrays.asList(arr);
+        if(!ValidityOfNumber(list))
+            QuitProgram("[ERROR] 당첨번호는 반드시 숫자로만 이루어져야 합니다.");
+        List<Integer> winnings = new ArrayList<>();
+        for(String s : list)
+            winnings.add(Integer.parseInt(s));
+        if(!ValidRangeOfLottoNumber(winnings))
+            QuitProgram("[ERROR] 당첨번호는 1 ~ 45 범위에 해당하는 숫자여야 합니다.");
+        if(OverlapOfLottoNumber(winnings))
+            QuitProgram("[ERROR] 6개의 당첨번호는 모두 다른 숫자여야 합니다.");
+        return winnings;
+    }
+
+    public int checkBonusNumber(String input, List<Integer> winning){
+        if(!isNumber(input))
+            QuitProgram("[ERROR] 보너스번호는 반드시 숫자로만 이루어져야 합니다.");
+        List<Integer> list = new ArrayList<>();
+        int bonus = Integer.parseInt(input);
+        list.add(bonus);
+        if(!ValidRangeOfLottoNumber(list))
+            QuitProgram("[ERROR] 보너스번호는 1 ~ 45 범위에 해당하는 숫자여야 합니다.");
+        if(winning.contains(bonus))
+            QuitProgram("[ERROR] 보너스 번호는 입력한 당첨 번호와 중복되서는 안됩니다.");
+        return bonus;
     }
 
     public Lotto makeLotto(){

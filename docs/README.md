@@ -14,7 +14,6 @@
 
 ### 2. Player Class
 - `LottoGamestart()` : 로또 게임을 본격적으로 시작하는 기능
-- `QuitProgram()` : IllegalArgumentException을 발생시키고, 출력할 에러 문구를 설정하는 기능
 - `InputPurchaseMoney()` : 사용자가 로또 구입 금액을 입력하는 기능
 - `calculateTotalLotto()` : 구입 금액을 기반으로 사용자가 구입하는 로또의 개수를 계산하는 기능
 - `InputWinningNumber()` : 사용자에게 당첨 번호 6개를 입력 받는 기능
@@ -27,6 +26,9 @@
 - `print()` : 로또 1개를 구성하는 6개 숫자를 출력하는 기능.
 
 ### 4. Manager Class
+- `QuitProgram()` : IllegalArgumentException을 발생시키고, 출력할 에러 문구를 설정하는 기능
+  
+
 - `isNumber()` : 주어진 문자열이 숫자인지 판단하는 기능  
   
 
