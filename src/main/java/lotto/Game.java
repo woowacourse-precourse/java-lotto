@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Game {
     public void playGame() {
-        new Print().inputMoney();
+        Print.inputMoney();
         int numberOfLottos = Input.inputPurchaseMoney();
-        new Output().outputNumberOfLotto(numberOfLottos);
+        Print.outputNumberOfLotto(numberOfLottos);
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < numberOfLottos; i++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
