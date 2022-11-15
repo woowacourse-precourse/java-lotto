@@ -46,6 +46,7 @@ public class Application {
             System.out.println(lotto);
         }
 
+        System.out.println("당첨 번호를 입력해 주세요.");
         userInput = Console.readLine();
         Set<Integer> winningNumbers = new HashSet<>();
         String[] inputNumbers = userInput.split(",");
@@ -74,6 +75,7 @@ public class Application {
             }
         }
 
+        System.out.println("보너스 번호를 입력해 주세요.");
         userInput = Console.readLine();
         int bonusNumber;
 
@@ -91,4 +93,6 @@ public class Application {
             throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_ERROR_MESSAGE);
         }
     }
+
+
 }
