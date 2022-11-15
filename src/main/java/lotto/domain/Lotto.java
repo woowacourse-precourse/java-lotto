@@ -24,10 +24,19 @@ public class Lotto {
         if (!isCorrectNumber(numbers)) {
             throw new IllegalArgumentException(ERROR.IS_NOT_CORRECT_NUMBER.getMessage());
         }
+
+        if (hasDuplicateNumber(numbers)) {
+            throw new IllegalArgumentException(ERROR.HAS_DUPLICATE_NUMBER.getMessage());
+        }
     }
 
     private boolean isCorrectNumber(List<Integer> numbers) {
         return numbers.size() == 6;
+    }
+
+    private boolean hasDuplicateNumber(List<Integer> numbers) {
+        HashSet<Integer> set = new HashSet<>(numbers);
+        return set.size() < numbers.size();
     }
 
     private void sortAsc(List<Integer> numbers) {
