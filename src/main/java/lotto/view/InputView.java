@@ -6,35 +6,21 @@ import lotto.util.Validation;
 public class InputView {
     public static String getMoney() {
         String input = Console.readLine();
-        try {
-            Validation.validateMoney(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        Validation.validateMoney(input);
 
         return input;
     }
 
     public static String getLottoNumbers() {
         String input = Console.readLine();
-
-        try {
-            Validation.validateLottoNumbers(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        Validation.validateLottoNumbers(input);
 
         return input;
     }
 
     public static String getBonusNumber() {
         String input = Console.readLine();
-
-        try {
-            Validation.validateBonusNumbers(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        Validation.validateBonusNumbers(input);
 
         return input;
     }
