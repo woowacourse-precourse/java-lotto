@@ -16,7 +16,7 @@ class StatisticsServiceTest {
     private final StatisticsService statisticsService = new StatisticsService();
     WinningLotto winningLotto = new WinningLotto(Arrays.asList(1, 2, 3, 4, 5, 6), 7);
 
-    @DisplayName("통계 계산을 확인한다.")
+    @DisplayName("통계 계산을 확인한다., 각 로또의 등수를 계산한다.")
     @ParameterizedTest
     @MethodSource("generatedData")
     void calculateRating(List<Integer> userNums, List<Integer> expect) {

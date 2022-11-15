@@ -12,7 +12,7 @@ public final class Constants {
     public static final String BLANK_BR = "\n";
 
     public static final String INPUT_NOT_INTEGER = "[ERROR] 숫자를 입력하셔야 합니다.";
-    public static final String PAY_MONEY_ERROR = "[ERROR] 구입금액은 1000원 단위로 끝나야 합니다.";
+    public static final String PAY_MONEY_ERROR = "[ERROR] 구입금액은 0원이상, 1000원 단위로 끝나야 합니다.";
     public static final String ANSWER_COUNT_LOWER_ERROR = "[ERROR] 로또 당첨 번호의 숫자 개수가 부족합니다";
     public static final String ANSWER_COUNT_OVER_ERROR = "[ERROR] 로또 당첨 번호의 숫자 개수가 6개를 초과하였습니다.";
     public static final String ANSWER_RANGE_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
