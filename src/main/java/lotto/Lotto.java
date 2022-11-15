@@ -46,7 +46,7 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
 
-    public void print() {
+    public void printNumbers() {
         System.out.print(numbers.toString());
 
     }

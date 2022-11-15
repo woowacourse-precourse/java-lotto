@@ -18,7 +18,7 @@ public class LottoService {
 
     public static void printLottoNumbers() {
         for (Lotto lotto : lottos) {
-            lotto.print();
+            lotto.printNumbers();
             System.out.print("\n");
         }
     }
