@@ -13,7 +13,7 @@ public class Bonus {
         this.bonus = bonus;
     }
 
-    private static void checkBonusInRange(int bonus) {
+    public static void checkBonusInRange(int bonus) {
         if (!bonusInRange(bonus)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
