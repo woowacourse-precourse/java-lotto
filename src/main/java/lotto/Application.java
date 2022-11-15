@@ -8,26 +8,30 @@ public class Application {
     public static int LOTTERY_PRICE = 1000;
 
     public static void main(String[] args) {
-        InputOutput inputOutput = InputOutput.getInstance();
-        LottoPublisher lottoPublisher = LottoPublisher.getInstance();
+        try {
+            InputOutput inputOutput = InputOutput.getInstance();
+            LottoPublisher lottoPublisher = LottoPublisher.getInstance();
 
-        int money = inputOutput.getMoney();
-        List<Lotto> lottos = lottoPublisher.publish(money);
+            int money = inputOutput.getMoney();
+            List<Lotto> lottos = lottoPublisher.publish(money);
 
-        inputOutput.printLottos(lottos);
+            inputOutput.printLottos(lottos);
 
-        List<Integer> winningNums = inputOutput.getWinningNums();
-        int bonusNum = inputOutput.getBonusNum();
-        inputOutput.validateBonusNum(bonusNum, winningNums);
+            List<Integer> winningNums = inputOutput.getWinningNums();
+            int bonusNum = inputOutput.getBonusNum();
+            inputOutput.validateBonusNum(bonusNum, winningNums);
 
-        LottoResultCalculator lottoResultCalculator = LottoResultCalculator.getInstance();
-        lottoResultCalculator.setWinningNums(winningNums);
-        lottoResultCalculator.setBonusNum(bonusNum);
+            LottoResultCalculator lottoResultCalculator = LottoResultCalculator.getInstance();
+            lottoResultCalculator.setWinningNums(winningNums);
+            lottoResultCalculator.setBonusNum(bonusNum);
 
-        EnumMap<Rank, Integer> ranks = lottoResultCalculator.calRankAll(lottos);
-        long winningAmount = lottoResultCalculator.calWinningAmount(ranks);
-        double rateOfReturn = lottoResultCalculator.calRateOfReturn(winningAmount, money);
+            EnumMap<Rank, Integer> ranks = lottoResultCalculator.calRankAll(lottos);
+            long winningAmount = lottoResultCalculator.calWinningAmount(ranks);
+            double rateOfReturn = lottoResultCalculator.calRateOfReturn(winningAmount, money);
 
-        inputOutput.printResult(ranks, rateOfReturn);
+            inputOutput.printResult(ranks, rateOfReturn);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
