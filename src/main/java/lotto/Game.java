@@ -8,6 +8,9 @@ import java.util.List;
 public class Game {
 
     private List<Integer> answerNumberList;
+    private List<Lotto> myLotto;
+
+    private final LottoManager lottoManager = new LottoManager();
 
     public void start(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -19,6 +22,10 @@ public class Game {
 
         int lottoCount = getCountOfLottoByCost(inputCost);
         System.out.println(lottoCount + "개를 구매했습니다.");
+
+        for (int i = 0; i < lottoCount; i++) {
+            myLotto.add(new Lotto(lottoManager.makeRandomLottoNumbers()));
+        }
 
         answerNumberList = getAnswerNumberList();
     }
@@ -38,4 +45,5 @@ public class Game {
     private int getCountOfLottoByCost(int cost){
         return cost / 1000;
     }
+    
 }
