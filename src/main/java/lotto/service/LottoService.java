@@ -28,6 +28,15 @@ public class LottoService {
 
     }
 
+    private void createMatches() {
+        for (Lotto lotto : lotteries) {
+            int win = checkWinningNumber(lotto.getNumbers());
+            boolean flag = false;
+            flag = checkBonusMatch(win, lotto.getNumbers());
+            addProfit(win, flag);
+        }
+    }
+
     private boolean checkBonusMatch(int win, List<Integer> lottoNumbers) {
         if (win == SECOND_THIRD_RANK_MATCH && checkBonusNumber(lottoNumbers)) {
             matches.put(SECOND_RANK_MATCH,
