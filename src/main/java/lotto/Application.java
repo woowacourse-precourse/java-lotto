@@ -32,4 +32,11 @@ public class Application {
         String input = Console.readLine();
         return Integer.parseInt(input);
     }
+
+    public static int getMoney(){
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = Console.readLine();
+        int input_money = Integer.parseInt(input);
+        return input_money/1000;
+    }
 }
