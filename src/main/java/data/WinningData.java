@@ -5,16 +5,16 @@ import java.util.List;
 
 public class WinningData {
     private boolean isHavingBonus;
-    private int winningNumberCount;
+    private int winningCount;
 
 
-    public WinningData() {
-        isHavingBonus = false;
-        winningNumberCount = 0;
+    public WinningData(int winningCount, boolean isHavingBonus) {
+        this.isHavingBonus = false;
+        this.winningCount = 0;
     }
 
     public void plusBonusNumberCount(){
-        winningNumberCount++;
+        winningCount++;
     }
 
     public void checkBonusNumber(){
@@ -26,6 +26,6 @@ public class WinningData {
     }
 
     public int getBonusNumberCount(){
-        return winningNumberCount;
+        return winningCount;
     }
 }

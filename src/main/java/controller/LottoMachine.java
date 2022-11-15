@@ -14,13 +14,12 @@ public class LottoMachine {
     private final NumberParser numberParser = new NumberParser();
     private List<WinningData> winningData = new ArrayList<>(); // 몇개의 숫자가 일치하고 보너스 숫자가 있는지 확인하는 리스트
     private List<Lotto> lottos = new ArrayList<>();
-
     public void start(){
         inputCash();
         inputWinningNumbers();
         inputBonusNumber();
         checkLottoNumber();
-
+        
         calculateProfitRate();
     }
 
@@ -50,8 +49,15 @@ public class LottoMachine {
      * 로또 당첨 번호 개수 계산
      */
     public void checkLottoNumber() {
-
+        int winningCount;
+        boolean isHavingBonus;
+        for(Lotto lotto : lottos){
+            winningCount = lotto.getNumberOfWins(numberParser.getWinningNumbers()); // 당첨번호와 일치하는 로또 번호 갯수 저장
+            isHavingBonus = lotto.isHavingBonusNumber(numberParser.getBonusNumber()); // 보너스번호와 일치하는지 여부 저장
+            winningData.add(new WinningData(winningCount, isHavingBonus));
+        }
     }
+
 
     /**
      * 수익률 계산
