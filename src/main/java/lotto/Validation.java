@@ -10,12 +10,14 @@ public class Validation {
     private static final int LOTTO_SIZE = 6;
 
     public void isValidNumber(int number) {
-
+        if(number < 1 || number > 45) {
+            System.out.println("[ERROR] 1 ~ 45의 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 1 ~ 45의 숫자가 아닙니다.");
+        }
     }
 
     public void isValidPrice(int price) {
-
-    }
+   }
 
     public void isValidWinningNumbers(List<Integer> numbers) {
         isValidSize(numbers);
