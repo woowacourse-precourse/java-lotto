@@ -10,4 +10,5 @@ public class Message {
     public static final String MATCH_NO_BONUS = "%d개 일치 (%s), 보너스 볼 일치 - %d개";
     public static final String RESULT_STATICS = "당첨 통계";
     public static final String DIVISION = "---";
+    public static final String YIELD_RESULT = "총 수익률은 %s입니다.";
 }

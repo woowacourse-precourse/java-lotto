@@ -6,6 +6,7 @@ import static lotto.constant.Message.INPUT_PURCHASE_MONEY;
 import static lotto.constant.Message.INPUT_WINNING_NUMBER;
 import static lotto.constant.Message.LOTTO_GENERATED;
 import static lotto.constant.Message.RESULT_STATICS;
+import static lotto.constant.Message.YIELD_RESULT;
 import static lotto.rank.Rank.NONE;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import lotto.lotto.Lotto;
+import lotto.money.Yield;
 import lotto.rank.Rank;
 
 public class OutputView {
@@ -56,6 +58,11 @@ public class OutputView {
     private static void printIndividualRank(Map<Rank, Integer> rankMap, Rank rank) {
         int count = rankMap.getOrDefault(rank, 0);
         String message = rank.getMessage(count);
+        System.out.println(message);
+    }
+
+    public static void printYield(Yield yield) {
+        String message = String.format(YIELD_RESULT, yield.toString());
         System.out.println(message);
     }
 }
