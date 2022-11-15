@@ -6,6 +6,7 @@ import lotto.model.Rank;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class OutputView {
@@ -19,7 +20,9 @@ public class OutputView {
         System.out.println();
         System.out.println(lottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getIntegerNumbers());
+            List<Integer> numbers = lotto.getIntegerNumbers();
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
     }
 
