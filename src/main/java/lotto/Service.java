@@ -45,20 +45,40 @@ public class Service {
     private void winning_stats(int[] lotteResults){
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+lotteResults[0]+"개");
-        System.out.println("4개 일치 (50,000원) - "+lotteResults[1]+"개");
-        System.out.println("5개 일치 (1,500,000원) - "+lotteResults[2]+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+lotteResults[3]+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+lotteResults[4]+"개");
+        int order=0;
+        for(Result result :Result.values()){
+            System.out.println(result.getWin()+lotteResults[order]+"개");
+            order++;
+        }
     }
     private void total_money(int[] lotteResults,int cash){
-        double money=lotteResults[0]*5000;
-        money=money+lotteResults[1]*50000;
-        money=money+lotteResults[2]*1500000;
-        money=money+lotteResults[3]*30000000;
-        money=money+lotteResults[4]*2000000000;
+        double money=0;
+        int order=0;
+        for(Result result : Result.values()){
+            money=money+lotteResults[order]*result.getReward();
+            order++;
+        }
         double moneyRate=money/cash*100;
         moneyRate = Math.round(moneyRate * 100) / 100.0;
         System.out.println("총 수익률은 "+moneyRate+"%입니다.");
+    }
+    public enum Result{
+        FIFTH("3개 일치 (5,000원) - ",5000),
+        FOURTH("4개 일치 (50,000원) - ",50000),
+        THIRD("5개 일치 (1,500,000원) - ",1500000),
+        SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - ",30000000),
+        FIRST("6개 일치 (2,000,000,000원) - ",2000000000);
+        private final String win;
+        private final int reward;
+        Result(String win, int reward) {
+            this.win=win;
+            this.reward=reward;
+        }
+        public String getWin(){
+            return win;
+        }
+        public int  getReward(){
+            return reward;
+        }
     }
 }
