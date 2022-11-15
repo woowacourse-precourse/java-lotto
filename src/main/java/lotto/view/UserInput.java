@@ -39,7 +39,6 @@ public class UserInput {
     public List<Integer> makeWinningNumbers(String userInput) {
         String[] userInputs = userInput.split(DELIMITER);
         List<Integer> winningNumbers = new ArrayList<>(WINNING_NUMBER_COUNT);
-
         for (String number : userInputs) {
             this.userInputValidation.checkWhiteSpace(number);
             this.userInputValidation.checkIsNumber(number);

@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 public class LotteryStore {
-    private static final int ONE = 1;
     private static final int LIST_SIZE = 1024;
     private static final int WINNING_NUMBER_COUNT = 6;
     private static final int ZERO = 0;
     private static final int LOTTO_PRICE = 1000;
     private static final int RATE = 100;
+    private static final double DOUBLE_ZERO = 0.0;
     private static final String ERROR_WINNING_NUMBER_DUPLICATED = "[ERROR] 당첨 번호는 서로 다른 숫자를 입력 해 주셔야 합니다.";
     private static final String ERROR_BONUS_NUMBER_DUPLICATED = "[ERROR] 당첨 번호 중 보너스 번호와 동일한 번호가 있습니다.";
     private static final String ERROR_LOTTO_COUNT = "[ERROR] 로또를 최소 1개 이상 구매 해야 합니다. 로또 금액 : 1000원";
@@ -87,7 +87,7 @@ public class LotteryStore {
 
     private double getRateOfReturn(Map<LottoRankingType, Integer> lottoRankingTypes) {
         int totalAmount = getTotalWinningAmount(lottoRankingTypes);
-        double rateOfReturn = 0.0;
+        double rateOfReturn = DOUBLE_ZERO;
         if (totalAmount != ZERO && this.lottos.size() != ZERO) {
             rateOfReturn = (double) totalAmount / (double) (this.lottos.size() * LOTTO_PRICE) * RATE;
         }

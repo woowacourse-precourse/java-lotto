@@ -6,6 +6,7 @@ public class UserInputValidation {
     private static final int ASCII_NINE = 57;
     private static final int LOTTO_PRICE = 1000;
     private static final int ZERO = 0;
+    private static final int ONE = 1;
     private static final int WINNING_NUMBER_COUNT = 6;
     private static final int LOTTO_MIN_NUMBER = 1;
     private static final int LOTTO_MAX_NUMBER = 45;
@@ -48,7 +49,7 @@ public class UserInputValidation {
     }
 
     public void checkWhiteSpace(String input) {
-        if (input.length() < 1) {
+        if (input.length() < ONE) {
             throw new IllegalArgumentException(ERROR_ONLY_WHITE_SPACE);
         }
     }

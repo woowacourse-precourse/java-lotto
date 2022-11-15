@@ -1,11 +1,9 @@
 package lotto.view;
 
-import lotto.model.Lotto;
 import lotto.model.LottoRankingType;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class UserOutput {
@@ -14,7 +12,7 @@ public class UserOutput {
     private static final String OUTPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String OUTPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String OUTPUT_WINNING_STATISTICS = "당첨 통계";
-    private static final String OUTPUT_BORDER_LINE = "---------------------------------";
+    private static final String OUTPUT_BORDER_LINE = "---";
     private static final String OUTPUT_WINNING_HISTORY = "%d개 일치 (%s원) - %d개%s";
     private static final String OUTPUT_WINNING_HISTORY_WITH_BONUS = "%d개 일치, 보너스 볼 일치 (%s원) - %d개%s";
     private static final DecimalFormat INT_DECIMAL_FORMAT_BY_KOREA_MONEY = new DecimalFormat("###,###");
