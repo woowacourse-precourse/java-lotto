@@ -42,4 +42,16 @@ public class InputUser {
         }
         return result;
     }
+    public static List<Integer> inputLottoNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String lottoNo = Console.readLine();
+        List<Integer> params = new ArrayList<>();
+        for (String lottoN : lottoNo.split(",")) {
+            validateValue(lottoN);
+            int lottoNumber = Integer.parseInt(lottoN);
+            validateRange(lottoNumber);
+            params.add(lottoNumber);
+        }
+        return params;
+    }
 }
