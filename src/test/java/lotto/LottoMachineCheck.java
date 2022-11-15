@@ -34,6 +34,17 @@ public class LottoMachineCheck {
         assertThat(winningNumber).isEqualTo(List.of(1, 2, 3, 4, 5,6));
     }
 
+    @DisplayName("두개의 리스트 합치는 로직 테스트")
+    @Test
+    void checkMergeTwoList(){
+        List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> normalLotto = List.of(6, 5, 4, 3, 2, 1);
+
+        List<Integer> mergeLottoNumbers = mergeList(winningLotto, normalLotto);
+
+        assertThat(mergeLottoNumbers.size()).isEqualTo(12);
+    }
+
     static List<Integer> mergeList(List<Integer> list1, List<Integer> list2){
         List<Integer> mergeList = new ArrayList<>();
         Collections.addAll(mergeList, list1.toArray(new Integer[0]));
