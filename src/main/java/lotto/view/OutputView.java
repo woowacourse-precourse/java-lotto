@@ -37,4 +37,7 @@ public class OutputView {
             System.out.println(price.getRankInfo() + winningInfo.getOrDefault(price, INITIAL_NUMBER) + "개");
         }
     }
+    public void printUserTotalYield(String yield) {
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
 }
