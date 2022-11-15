@@ -21,6 +21,7 @@ public class InputView {
     public WinningLotto inputLottoNumbers() {
         System.out.println(InputMessage.INPUT_WINNING_NUMBER.getMessage());
         List<Integer> lottoNumbers = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+
         System.out.println(InputMessage.INPUT_BONUS_NUMBER.getMessage());
         int bonusNumber = Integer.parseInt(Console.readLine());
         return new WinningLotto(new Lotto(lottoNumbers), bonusNumber);

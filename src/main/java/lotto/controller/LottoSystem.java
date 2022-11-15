@@ -18,14 +18,17 @@ public class LottoSystem {
     public void startLottoSystem() {
         try {
             int userMoney = Integer.parseInt(inputView.inputUserMoney());
-            int lottoQuantity = LottoQuantityCalculation(userMoney);
+            int lottoQuantity = calculationLottoQuantity(userMoney);
             outputView.printQuantity(lottoQuantity);
+
             userLotto = makeUserLottos(lottoQuantity);
             outputView.printLottoNumber(userLotto);
+
             WinningLotto winningLotto = inputView.inputLottoNumbers();
             List<LottoRanking> lottoResult = makeResult(winningLotto);
             outputView.printLottoResult(lottoResult);
-            int prizeMoney = calculatePrizeMoey(lottoResult);
+
+            int prizeMoney = calculatePrizeMoney(lottoResult);
             outputView.printYield(calculateYield(prizeMoney, userMoney));
         } catch (IllegalArgumentException e) {
             OutputView.printMessage(e.getMessage());
@@ -39,19 +42,12 @@ public class LottoSystem {
         return (((double) prizeMoney / (double) userMoney) * 100.0);
     }
 
-    public int calculatePrizeMoey(List<LottoRanking> lottoResult) {
+    public int calculatePrizeMoney(List<LottoRanking> lottoResult) {
         int prizeMoney = 0;
         for(LottoRanking ranking : lottoResult) {
             prizeMoney += ranking.getPrizeMoney();
         }
         return prizeMoney;
-    }
-
-    private LottoRanking addBonusResult(int index, int bonusNumber) {
-        if(userLotto.getLottos(index).getNumbers().contains(bonusNumber)) {
-            return LottoRanking.FIVE_AND_BONUS_RIGHT;
-        }
-        return LottoRanking.FIVE_RIGHT;
     }
 
     public List<LottoRanking> makeResult(WinningLotto winningLotto) {
@@ -71,13 +67,20 @@ public class LottoSystem {
         return lotto.compare(winningLotto.getWinningLotto());
     }
 
+    private LottoRanking addBonusResult(int index, int bonusNumber) {
+        if(userLotto.getLottos(index).getNumbers().contains(bonusNumber)) {
+            return LottoRanking.FIVE_AND_BONUS_RIGHT;
+        }
+        return LottoRanking.FIVE_RIGHT;
+    }
+
     public UserLotto makeUserLottos(int lottoQuantity) {
         UserLotto userLotto = new UserLotto();
         userLotto.setLottos(lottoQuantity);
         return userLotto;
     }
 
-    public int LottoQuantityCalculation(int userMoney) {
+    public int calculationLottoQuantity(int userMoney) {
         return userMoney / LOTTO_PRICE;
     }
 }

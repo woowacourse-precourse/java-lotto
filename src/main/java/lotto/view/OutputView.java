@@ -24,9 +24,6 @@ public class OutputView {
         System.out.println(LottoRanking.FIVE_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.FIVE_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
         System.out.println(LottoRanking.FIVE_AND_BONUS_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.FIVE_AND_BONUS_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
         System.out.println(LottoRanking.SIX_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.SIX_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
-//        StringBuilder sb = new StringBuilder();
-//            sb.append(ranking.getMessage()).append(Collections.frequency(lottoResult, ranking)).append(OutputMessage.PRINT_UNIT.getMessage()).append("\n");
-//        System.out.println(sb);
     }
     public void printYield(double yield) {
         System.out.format("총 수익률은 %.1f%%입니다.", yield);

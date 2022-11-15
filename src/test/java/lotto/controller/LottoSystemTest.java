@@ -6,7 +6,6 @@ import static lotto.domain.LottoRanking.ONE_RIGHT;
 import static lotto.domain.LottoRanking.THREE_RIGHT;
 import static lotto.domain.LottoRanking.ZERO_RIGHT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +38,7 @@ class LottoSystemTest {
         //given
         List<LottoRanking> lottoResult = Arrays.asList(FIVE_RIGHT, FIVE_AND_BONUS_RIGHT, ZERO_RIGHT, ONE_RIGHT, THREE_RIGHT);
         //when
-        int expected = lottoSystem.calculatePrizeMoey(lottoResult);
+        int expected = lottoSystem.calculatePrizeMoney(lottoResult);
         //then
         assertThat(expected).isEqualTo(31505000);
     }
@@ -62,7 +61,7 @@ class LottoSystemTest {
         //given
         int userMoney = 5000;
         //when
-        int quantity = lottoSystem.LottoQuantityCalculation(userMoney);
+        int quantity = lottoSystem.calculationLottoQuantity(userMoney);
         //then
         assertThat(quantity).isEqualTo(5);
     }
