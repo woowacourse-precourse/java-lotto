@@ -18,7 +18,7 @@ public class View {
     public static final int LOTTO_PRICE = 1000;
     public int validateIsDivisible(int money) {
         if (money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INDIVISIBLE);
         }
         return money/LOTTO_PRICE;
     }

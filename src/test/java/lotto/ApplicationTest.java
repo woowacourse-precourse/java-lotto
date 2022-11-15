@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -45,6 +46,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+    @DisplayName("보너스가 랭킹에 잘 반영되는지 확인한다")
     @Test
     void bonus_test() {
         assertRandomUniqueNumbersInRangeTest(
@@ -82,7 +84,16 @@ class ApplicationTest extends NsTest {
                 List.of(5, 16, 25, 26, 35, 45)
         );
     }
+    @DisplayName("구입 금액이 1000원의 배수가 아니면 예외가 발생한다.")
+    @Test
+    void moneyNotMultipleOf1000() {
+        assertSimpleTest(() -> {
+            runException("4500");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
 
+    @DisplayName("구입 금액에 숫자가 아닌 값이 있으면 예외가 발생한다.")
     @Test
     void noninteger_test() {
         assertSimpleTest(() -> {
@@ -90,6 +101,7 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
