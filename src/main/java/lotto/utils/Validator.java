@@ -39,7 +39,7 @@ public class Validator {
     }
 
     public boolean isThousandMultiples(int price) {
-        if (price % 1000 != 0) {
+        if (price == 0 || price % 1000 != 0) {
             return false;
         }
         return true;
