@@ -28,7 +28,6 @@ public class Printer {
         System.out.println("총 수익률은 " + margin + "%입니다.");
     }
 
-    //구매한 로또 출력
     public static void printPurchasedLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumbers = lotto.getNumbers();

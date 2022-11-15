@@ -3,6 +3,10 @@ import lotto.ui.LottoMachine;
 public class Application {
     public static void main(String[] args) {
         LottoMachine lottoMachine = new LottoMachine();
-        lottoMachine.start();
+        try {
+            lottoMachine.start();
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 }

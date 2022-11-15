@@ -16,8 +16,8 @@ public class InputScanner {
         int purchaseAmount = 0;
         try {
             purchaseAmount = validatePurchaseAmount(input);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
         return purchaseAmount / 1000;
     }
@@ -27,10 +27,10 @@ public class InputScanner {
         try {
             purchaseAmount = stringToInteger(input);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자로만 이루어져야 합니다.");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_FORMAT.getMessage());
         }
         if (purchaseAmount % 1000 > 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 천원 단위여야 합니다.");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_MONETARY_UNIT.getMessage());
         }
         return purchaseAmount;
     }
@@ -51,7 +51,7 @@ public class InputScanner {
             winningNumbers = _winningNumbers;
             return sortWinningNumbers(_winningNumbers);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
@@ -60,13 +60,13 @@ public class InputScanner {
         try {
             winningNumbers = stringToIntegerList(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호는 쉼표와 숫자만 입력가능합니다.");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_FORMAT.getMessage());
         }
         if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6자리 숫자만 입력가능합니다. ");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_WINNING_NUMBER_SIZE.getMessage());
         }
         if (Collections.min(winningNumbers) < 1 || Collections.max(winningNumbers) > 45) {
-            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다.");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_RANGE.getMessage());
         }
         return winningNumbers;
     }
@@ -93,7 +93,7 @@ public class InputScanner {
             bonusNumber = validateBonusNumber(input);
             return bonusNumber;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
@@ -102,13 +102,13 @@ public class InputScanner {
         try {
             bonusNumber = stringToInteger(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스번호는 숫자만 입력가능합니다.");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_FORMAT.getMessage());
         }
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 수를 입력해 주세요.");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_OVERLAP.getMessage());
         }
         if (bonusNumber < 0 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다. ");
+            throw new IllegalArgumentException(Messages.ERROR_PREFIX.getMessage() + Messages.ERROR_NUMBER_RANGE.getMessage());
         }
         return bonusNumber;
     }
