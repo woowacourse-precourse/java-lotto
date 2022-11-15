@@ -1,9 +1,16 @@
 package lotto.ui;
 
 public class MoneyException {
+    boolean b=false;
+    public boolean result(){
+        return b;
+    }
     public MoneyException(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+            b=false;
+        }
+        if (money%1000==0){
+            b=true;
         }
     }
 }
