@@ -14,10 +14,11 @@ public class Application {
         try {
             Printer.inputBuyAmount();
             LottoMachine machine = new LottoMachine();
-            machine.getInputMoney();
-            List<Lotto> lottos = machine.createLottoNumber();
+            User user = new User();
 
-            User user = new User(lottos);
+            machine.getInputMoney();
+            machine.createLottoNumber();
+
             user.inputWinningNumber();
             user.inputBonusNumber();
 
