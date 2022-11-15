@@ -16,6 +16,7 @@ public class NumbersReceiver {
             if (money < 0) {
                 throw new IllegalArgumentException();
             }
+            System.out.println();
 
             return money;
         } catch (Exception exception) {
@@ -27,7 +28,7 @@ public class NumbersReceiver {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] correctNumbers = Console.readLine().split(",");
         List<Integer> result = new ArrayList<>();
-
+        System.out.println();
         try {
             for (String singleNumber : correctNumbers) {
                 result.add(Integer.parseInt(singleNumber));
@@ -42,7 +43,9 @@ public class NumbersReceiver {
     public int setBonusNumber() throws IllegalArgumentException{
         System.out.println("보너스 번호를 입력해 주세요.");
         try {
-            return Integer.parseInt(Console.readLine());
+            int result = Integer.parseInt(Console.readLine());
+            System.out.println();
+            return result;
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능 합니다.");
         }

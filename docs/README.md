@@ -11,4 +11,4 @@
     [X] 총 구매 번호 출력 구현
     [X] 당첨 통계 출력 구현
     [X] 수익률 출력 구현
-[] Application.java를 컨트롤러 삼아 기능 종합
+[X] Application.java를 컨트롤러 삼아 기능 종합

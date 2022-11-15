@@ -23,6 +23,7 @@ public class OutputPrinter {
 
             System.out.println(tmp);
         }
+        System.out.println();
     }
     public void printFinalResult(Map<WinningNumbers, Long> winningCase, double rawRatio) {
         System.out.println("당첨 통계");
