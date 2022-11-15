@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 //예외처리
 //1.로또 숫자 갯수
 //2.로또 중복 숫자 포함
@@ -31,5 +33,21 @@ public class Application {
     //3)수익률 계산
     public static void main(String[] args) {
         //TODO: 프로그램 구현
+        //1.입력: 로또 구입금액
+        System.out.println("구입금액을 입력해 주세요.");
+        String buyCash = Console.readLine();
+        System.out.println(buyCash);
+        System.out.println();
+
+        int buyCashN=0;
+        try{
+            buyCashN = Integer.parseInt(buyCash);
+            if((float)buyCashN%1000 !=0){
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 로또 구입금액은 1000단위 숫자여야 합니다.");
+            return;
+        }
     }
 }
