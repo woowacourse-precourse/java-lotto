@@ -30,8 +30,10 @@ public class UserInput {
     }
 
 
-    public int getBonusNumber(int bonusNum) {
+    public int getBonusNumber(List<Integer> usersLotto, int bonusNum) {
         if (bonusNum > 45 || bonusNum < 1) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
+        if (usersLotto.contains(bonusNum)) throw new IllegalArgumentException(DUPLICATED_LOTTO.getStatus());
+
         return bonusNum;
     }
 }

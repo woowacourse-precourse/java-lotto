@@ -8,7 +8,6 @@ import user.UserInput;
 
 import java.util.List;
 
-import static message.ErrorMessage.INVALID_NUMBER;
 import static message.Message.*;
 import static message.Statistics.*;
 
@@ -39,14 +38,13 @@ public class PlayGame {
         List<Integer> usersLotto = lotto.getNumbers();
 
         System.out.println(INPUT_BONUS_NUMBER.getStatus());
-        int bonusNum = userInput.getBonusNumber(Integer.parseInt(Console.readLine()));
+
+        int bonusNum = userInput.getBonusNumber(usersLotto, Integer.parseInt(Console.readLine()));
 
         List<Integer> grades = calculate.correctLottoCount(winLottos, usersLotto, bonusNum);
         String profitRate = calculate.earningRate(grades, money);
 
         printStatistics(grades, profitRate);
-
-
     }
     public void printStatistics(List<Integer> grades, String profitRate) {
         System.out.println(MESSAGES.getMessage());
