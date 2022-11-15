@@ -44,6 +44,13 @@ public class InputValidatorImpl implements InputValidator {
     }
 
     @Override
+    public void validateWinningNumbersLengthIsSix(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(WINNING_NUMBERS_LENGTH_IS_SIX.getErrorMessage());
+        }
+    }
+
+    @Override
     public void validateWinningNumbersAreOverlapped(List<Integer> numbers) {
         Stack<Integer> stack = new Stack<>();
         for (int numberIndex = 0; numberIndex < numbers.size() - 1; numberIndex++) {
@@ -51,13 +58,6 @@ public class InputValidatorImpl implements InputValidator {
             if (stack.contains(numbers.get(numberIndex + 1))) {
                 throw new IllegalArgumentException(WINNING_NUMBERS_ARE_OVERLAPPED.getErrorMessage());
             }
-        }
-    }
-
-    @Override
-    public void validateWinningNumbersLengthIsSix(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(WINNING_NUMBERS_LENGTH_IS_SIX.getErrorMessage());
         }
     }
 

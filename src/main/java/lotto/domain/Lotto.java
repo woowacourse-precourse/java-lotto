@@ -17,8 +17,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(LOTTO_AUTO_PUBLISHER_LENGTH.getErrorMessage());
-        }
-        else if (numbers.stream().distinct().count() != 6) {
+        } else if (numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException(LOTTO_AUTO_PUBLISHER_OVERLAP.getErrorMessage());
         }
     }
