@@ -18,7 +18,7 @@ public class Output {
     public static final String THIRD_STATISTICS_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";
     public static final String FOURTH_STATISTICS_MESSAGE = "4개 일치 (50,000원) - %d개\n";
     public static final String FIFTH_STATISTICS_MESSAGE = "3개 일치 (5,000원) - %d개\n";
-    public static final String YIELD_MESSAGE = "총 수익률은 %.2f%%입니다.\n";
+    public static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
 
     public static void printInputMoney() {
