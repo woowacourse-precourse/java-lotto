@@ -1,36 +1,27 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Game {
 
-    public void generator() {
-        Lotto winningLotto = getWinningLotto();
-        System.out.println(winningLotto.getLottoNumber());
-        System.out.println("\n보너스 번호를 입력해 주세요.");
-        String bonusNumber = Console.readLine();
-        isValidBonusNumber(Integer.parseInt(bonusNumber),winningLotto.getLottoNumber());
+    public void play(int lottoCount) {
+        System.out.println("\n" + lottoCount + "개를 구매했습니다.");
+        List<Lotto> purchasedLottos = Lotto.generateLottoSet(lottoCount);
+        printPurchasedLottos(purchasedLottos);
+        WinningNumber winningNumber = new WinningNumber();
+        winningNumber.generator();
+
+        Calculator calculator = new Calculator();
+        for (Lotto purchasedLotto : purchasedLottos) {
+            calculator.calculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningLotto(), winningNumber.getBonusNumber());
+            System.out.println(calculator.getSameCmt());
+            System.out.println(calculator.getBonusCorrect());
+        }
     }
 
-    private Lotto getWinningLotto() {
-        System.out.println("\n당첨 번호를 입력해주세요.");
-        String inputValue = Console.readLine().trim();
-        List<Integer> winningLottoNumbers = new ArrayList<>();
-        for (String numberValue : inputValue.split(",")) {
-            winningLottoNumbers.add(Integer.parseInt(numberValue));
-        }
-        return new Lotto(winningLottoNumbers);
-    }
-
-    private void isValidBonusNumber(int bonusNumber, List<Integer> winningLotto) throws IllegalArgumentException{
-        if(!(bonusNumber >= 1 && bonusNumber <= 45)) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다.");
-        }
-        if(winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다.");
+    public void printPurchasedLottos(List<Lotto> purchasedLottos) {
+        for (Lotto purchasedLotto : purchasedLottos) {
+            System.out.println(purchasedLotto.getLottoNumber());
         }
     }
 }
