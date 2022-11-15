@@ -11,7 +11,7 @@ public enum Exceptions {
     private final String message;
 
     Exceptions(String message) {
-        this.message = "[ERROR] " + message;
+        this.message = "[ERROR] ".concat(message);
     }
 
     public static String getMessage(Exceptions exception) {
