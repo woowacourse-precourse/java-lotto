@@ -51,8 +51,8 @@ public class LottoController {
 	private void registerCorrectLotto() {
 		view.getCorrectNumbers();
 		String numbersString = (String)model.getAttribute("correctNumbers");
+		stringValidator.validateCorrectString(numbersString);
 		List<String> stringList = Arrays.asList(numbersString.split(","));
-		// TODO: 숫자와 쉼표로만 구성되었는지 점검 필요
 		List<Integer> intList = stringList.stream().map(Integer::parseInt).collect(Collectors.toList());
 		Lotto lotto = new Lotto(intList);
 		model.addAttribute("correctLotto", lotto);

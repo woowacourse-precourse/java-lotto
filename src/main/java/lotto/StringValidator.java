@@ -5,11 +5,11 @@ import java.util.List;
 public class StringValidator {
 
 	public void validateMoneyString(String string) {
-		checkIsNumber(string);
+		checkIsNaturalNumber(string);
 		checkIsMultipliedBy1000(string);
 	}
 
-	public void checkIsNumber(String string) {
+	public void checkIsNaturalNumber(String string) {
 		if (!string.matches("[0-9]+")) {
 			throw new IllegalArgumentException("[ERROR] 띄어쓰기 없는 자연수를 입력해야 합니다.");
 		}
@@ -28,12 +28,12 @@ public class StringValidator {
 
 	public void checkHasOnlyNumberAndComma(String string) {
 		if (!string.matches("[0-9]+(,[0-9]+)*")) {
-			throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자와 쉼표로만 구성되어야 합니다.");
+			throw new IllegalArgumentException("[ERROR] 당첨 번호는 쉼표로 구분된 숫자로만 구성되어야 합니다.");
 		}
 	}
 
 	public void validateBonusString(String string, Lotto lotto) {
-		checkIsNumber(string);
+		checkIsNaturalNumber(string);
 		checkIsInValidRange(string);
 		checkCorrectLottoContainsBonusNumber(string, lotto);
 	}
