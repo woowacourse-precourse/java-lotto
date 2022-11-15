@@ -1,10 +1,10 @@
 package lotto.console;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoPrize;
 
@@ -16,8 +16,8 @@ public class ConsoleOutput {
   public void printLotto(List<Lotto> lottos) {
     for (Lotto lotto : lottos) {
       List<Integer> numbers = lotto.getNumbers();
-      Collections.sort(numbers);
-      formattingNumbers(numbers);
+      List<Integer> sorted = numbers.stream().sorted().collect(Collectors.toList());
+      formattingNumbers(sorted);
     }
     System.out.print(stringBuilder.toString());
     stringBuilder.setLength(0);
