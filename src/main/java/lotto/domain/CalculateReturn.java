@@ -16,7 +16,7 @@ public class CalculateReturn {
         this.returnRate = String.format("%.1f", rate);
     }
 
-    public int convertMoneyToNumber(String money) {
+    private int convertMoneyToNumber(String money) {
         return Integer.parseInt(money.replaceAll(",", ""));
     }
     public String getReturnRate() {
