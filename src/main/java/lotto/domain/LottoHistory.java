@@ -36,7 +36,7 @@ public class LottoHistory {
     public long getTotal(List<LottoRanking> winningHistory) {
         long total = 0L;
         for (LottoRanking ranking : winningHistory) {
-            total += ranking.getMoney();
+            total += ranking.getWinnings();
         }
         return total;
     }

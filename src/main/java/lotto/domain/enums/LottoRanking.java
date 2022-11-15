@@ -9,12 +9,12 @@ public enum LottoRanking {
 
     private final int count;
     private final boolean bonus;
-    private final long money;
+    private final long winnings;
 
-    LottoRanking(int count, boolean bonus, long money) {
+    LottoRanking(int count, boolean bonus, long winnings) {
         this.count = count;
         this.bonus = bonus;
-        this.money = money;
+        this.winnings = winnings;
     }
 
     public int getCount() {
@@ -25,7 +25,7 @@ public enum LottoRanking {
         return bonus;
     }
 
-    public Long getMoney() {
-        return money;
+    public Long getWinnings() {
+        return winnings;
     }
 }
