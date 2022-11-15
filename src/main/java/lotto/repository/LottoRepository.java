@@ -2,7 +2,6 @@ package lotto.repository;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
 
@@ -25,7 +24,6 @@ public class LottoRepository {
         clearStore();
         for (int generateCount = 0; generateCount < countToGenerate; generateCount++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_COUNT);
-            Collections.sort(numbers);
             store.add(new Lotto(numbers));
         }
     }
