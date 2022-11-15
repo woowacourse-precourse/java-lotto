@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.util.Constant.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +12,7 @@ public class InputView {
 
     // 구입 금액을 입력하는 기능
     public static int purchaseMoney() {
+        System.out.println(INPUT_PURCHASE_MONEY_MSG);
         String money = Console.readLine();
         Validation.validatePurchaseMoneyConsistOfNum(money);
         Validation.validatePurchaseMoney(money);
@@ -18,6 +21,7 @@ public class InputView {
 
     // 당첨 번호를 입력하는 기능
     public static List<Integer> winningNumberInput() {
+        System.out.println(INPUT_WINNING_LOTTO_MSG);
         String winningNumber = Console.readLine();
         Validation.validateWinningNumberContainCommaAndNum(winningNumber);
         Validation.validateWinningNumberStartOrEndWithComma(winningNumber);
@@ -26,6 +30,7 @@ public class InputView {
 
     // 보너스 번호를 입력하는 기능
     public static int bounusNumberInput() {
+        System.out.println(INPUT_BONUS_MSG);
         String bonusNumber = Console.readLine();
         Validation.validateBonusNumberConsistOfNum(bonusNumber);
         return Integer.parseInt(bonusNumber);

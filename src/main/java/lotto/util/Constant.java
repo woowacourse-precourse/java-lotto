@@ -31,4 +31,7 @@ public class Constant {
     public static final String WINNING_STATS_RANK_SECOND_MSG = "%d개 일치, 보너스 볼 일치 (%s원) - %d개%n";
     public static final String WINNING_STATS_OTHER_RANK_MSG = "%d개 일치 (%s원) - %d개%n";
     public static final String YIELD_MSG = "총 수익률은 %s%%입니다.";
+    public static final String INPUT_PURCHASE_MONEY_MSG = "구입금액을 입력해 주세요.";
+    public static final String INPUT_WINNING_LOTTO_MSG = "\n당첨 번호를 입력해 주세요.";
+    public static final String INPUT_BONUS_MSG = "\n보너스 번호를 입력해 주세요.";
 }
