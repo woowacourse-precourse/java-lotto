@@ -15,7 +15,7 @@ public class Cashier {
         this.account = new Account(winningCalculator);
     }
 
-    public void purchaseLottos() {
+    public void sellLottos() {
         publishLottos();
         setWinningRule();
         saveResultInAccount();

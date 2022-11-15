@@ -6,7 +6,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             Cashier cashier = new Cashier();
-            cashier.purchaseLottos();
+            cashier.sellLottos();
         } catch (Exception e) {
             System.out.println(e);
         }
