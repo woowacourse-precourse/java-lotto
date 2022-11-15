@@ -12,13 +12,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.LOTTO_NOT_VALID.getMessage());
         }
         if (!isValidRange(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.LOTTO_NOT_VALID.getMessage());
         }
         if (hasSameNumber(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.LOTTO_NOT_VALID.getMessage());
         }
     }
     // TODO: 추가 기능 구현
