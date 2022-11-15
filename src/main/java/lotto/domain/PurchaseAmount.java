@@ -3,10 +3,13 @@ package lotto.domain;
 public class PurchaseAmount {
     private static final int ZERO = 0;
     private static final int LOTTO_PRICE = 1000;
+    private static final String COMMA = ",";
+    private static final String NULL = "";
     private final int amount;
     private final int numberOfLottoPurchased;
 
     public PurchaseAmount(String amount) {
+        amount = removeSeparatorChar(amount);
         validate(amount);
         this.amount = convertStringToInt(amount);
         this.numberOfLottoPurchased = calculateNumberOfLottoPurchasesByAmount(this.amount);
@@ -48,6 +51,10 @@ public class PurchaseAmount {
 
     private int convertStringToInt(String amount) {
         return Integer.parseInt(amount);
+    }
+
+    private String removeSeparatorChar(String amount) {
+        return amount.replaceAll(COMMA, NULL);
     }
 
     private int calculateNumberOfLottoPurchasesByAmount(int amount) {
