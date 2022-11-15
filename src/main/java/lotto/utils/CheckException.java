@@ -7,12 +7,8 @@ import java.util.Set;
 
 public class CheckException {
     public static void checkAmount(int amount) throws IllegalArgumentException {
-        try {
-            if (amount <= 0 || (amount % 1000) > 0) {
-                throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해주세요.");
-            }
-        } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.");
+        if (amount <= 0 || (amount % 1000) > 0) {
+            throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해주세요.");
         }
     }
 
@@ -44,12 +40,8 @@ public class CheckException {
     }
 
     private static void checkValidBoundary(int number) throws IllegalArgumentException {
-        try {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");
-            }
-        } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.");
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");
         }
     }
 }

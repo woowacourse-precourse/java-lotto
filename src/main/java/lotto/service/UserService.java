@@ -20,8 +20,12 @@ public class UserService {
     }
 
     private static int getAmount() throws IllegalArgumentException {
-        OutputView.messageAmountInput();
-        return Integer.parseInt(Console.readLine());
+        try {
+            OutputView.messageAmountInput();
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.");
+        }
     }
 
     private static List<Lotto> getlottos(int count) {
