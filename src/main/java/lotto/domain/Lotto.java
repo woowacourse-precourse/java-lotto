@@ -26,6 +26,15 @@ public class Lotto {
         this.numbers.sort(naturalOrder());
         return this.numbers;
     }
+    public int getMatchCount(Lotto otherLotto) {
+        return (int) this.numbers.stream()
+                .filter(otherLotto.numbers::contains)
+                .count();
+    }
+    public boolean hasNumber(int num){
+        return this.numbers.contains(num);
+    }
+
 
     private void validateDigit(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
