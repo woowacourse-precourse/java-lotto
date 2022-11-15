@@ -12,6 +12,9 @@ public class LottoManager {
     private final LottoList lottos = new LottoList();
     private AnswerNumberList answerNumbers;
     private final Map<LottoResult, Long> lottoResultMap = generateLottoResultMap();
+    private final List<LottoResult> kindOfResult = List.of(LottoResult.FIFTH, LottoResult.FOURTH, LottoResult.THIRD,
+            LottoResult.SECOND, LottoResult.FIRST);
+
     private Long getAmountOfMoney() {
         String amountOfMoney = Console.readLine();
         try {
@@ -47,7 +50,7 @@ public class LottoManager {
         this.answerNumbers = new AnswerNumberList(answerLongNumbers, bonusNumber);
     }
 
-    private Map<LottoResult, Long> generateLottoResultMap(){
+    private Map<LottoResult, Long> generateLottoResultMap() {
         return new java.util.HashMap<>(Map.of(
                 LottoResult.FIRST, 0L,
                 LottoResult.SECOND, 0L,
@@ -57,13 +60,22 @@ public class LottoManager {
         ));
     }
 
-    private void checkWinningsInLottoList(){
+    private void checkWinningsInLottoList() {
         List<Lotto> lottoList = lottos.getLottoList();
-        for(var lotto: lottoList){
+        for (var lotto : lottoList) {
             LottoResult lottoResult = answerNumbers.checkLottoWinning(lotto);
-            lottoResultMap.replace(lottoResult, lottoResultMap.get(lottoResult)+1);
+            lottoResultMap.replace(lottoResult, lottoResultMap.get(lottoResult) + 1);
         }
     }
+
+    private void printResultMap() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(var kind: kindOfResult){
+            System.out.println(kind.getMessage()+ " - "+lottoResultMap.get(kind)+"개");
+        }
+    }
+
     public void printStatistics() {
         checkWinningsInLottoList();
     }

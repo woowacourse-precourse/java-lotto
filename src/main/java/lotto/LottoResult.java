@@ -3,13 +3,23 @@ package lotto;
 public enum LottoResult {
 
 
-    FIRST(2000000000L),
-    SECOND(30000000L),
-    THIRD(1500000L),
-    FOURTH(50000L),
-    FIFTH(5000L),
-    NOTHING(0L);
+    FIRST(2000000000L, "6개 일치 (2,000,000,000원)"),
+    SECOND(30000000L, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
+    THIRD(1500000L, "5개 일치 (1,500,000원)"),
+    FOURTH(50000L, "4개 일치 (50,000원)"),
+    FIFTH(5000L, "3개 일치 (5,000원)"),
+    NOTHING(0L, "");
+    private Long compensation;
+    private String message;
 
-    LottoResult(Long compensation) {
+    public Long getCompensation() {
+        return compensation;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    LottoResult(Long compensation, String message) {
     }
 }
