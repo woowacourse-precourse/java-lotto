@@ -48,6 +48,12 @@ public class Exception {
         }
     }
 
+    public void checkBonusNumberOverLap(String bounsNumber,String winningNumber){
+            if(winningNumber.contains(bounsNumber)){
+               throw new IllegalArgumentException(Message.ERROR_NUMBER_OVERLAP.getMessage());
+            }
+    }
+
 
 
 
