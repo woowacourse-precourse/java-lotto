@@ -1,5 +1,14 @@
 package lotto.view;
 
+import static lotto.constant.OutputConstant.BONUS_PRIZE_MESSAGE;
+import static lotto.constant.OutputConstant.COUNT_MESSAGE;
+import static lotto.constant.OutputConstant.DIVIDING_LINE_MESSAGE;
+import static lotto.constant.OutputConstant.LOTTO_QUANTITY_MESSAGE;
+import static lotto.constant.OutputConstant.LOTTO_STAT_INTRO_MESSAGE;
+import static lotto.constant.OutputConstant.MATCH_MESSAGE;
+import static lotto.constant.OutputConstant.PRIZE_MESSAGE;
+import static lotto.constant.OutputConstant.PROFIT_MESSAGE;
+
 import java.util.List;
 import lotto.Lotto;
 import lotto.MatchingType;
@@ -10,17 +19,8 @@ import lotto.WinningStat;
 
 public class OutputView {
 
-    private static final String LOTTO_QUANTITY_MESSAGE = "\n%d개를 구매했습니다.";
-    private static final String LOTTO_STAT_INTRO_MESSAGE = "\n당첨 통계";
-    private static final String DIVIDING_LINE_MESSAGE = "---";
-    private static final String MATCH_MESSAGE = "%d개 일치";
-    private static final String PRIZE_MESSAGE = " (%s원)";
-    private static final String BONUS_PRIZE_MESSAGE = ", 보너스 볼 일치";
-    private static final String COUNT_MESSAGE = " - %d개";
-    private static final String PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다.";
-
     public static void printLottoQuantity(Quantity quantity) {
-        String result = String.format(LOTTO_QUANTITY_MESSAGE, quantity.getNumber());
+        String result = String.format(LOTTO_QUANTITY_MESSAGE.getMessage(), quantity.getNumber());
 
         System.out.println(result);
     }
@@ -30,8 +30,8 @@ public class OutputView {
     }
 
     public static void printStatistics(List<WinningStat> winningStats) {
-        System.out.println(LOTTO_STAT_INTRO_MESSAGE);
-        System.out.println(DIVIDING_LINE_MESSAGE);
+        System.out.println(LOTTO_STAT_INTRO_MESSAGE.getMessage());
+        System.out.println(DIVIDING_LINE_MESSAGE.getMessage());
 
         for (WinningStat winningStat : winningStats) {
             MatchingType matchingType = winningStat.getMatchingType();
@@ -44,14 +44,14 @@ public class OutputView {
     }
 
     private static String makeStatSentence(MatchingType matchingType, PrizeType prizeType, int count) {
-        String matchMessage = String.format(MATCH_MESSAGE, matchingType.getMatchCount());
+        String matchMessage = String.format(MATCH_MESSAGE.getMessage(), matchingType.getMatchCount());
 
-        String prizeMessage = String.format(PRIZE_MESSAGE, prizeType.getMoney());
+        String prizeMessage = String.format(PRIZE_MESSAGE.getMessage(), prizeType.getMoney());
         if (matchingType == MatchingType.FIVE_WITH_BONUS_MATCH) {
-            prizeMessage = BONUS_PRIZE_MESSAGE.concat(prizeMessage);
+            prizeMessage = BONUS_PRIZE_MESSAGE.getMessage().concat(prizeMessage);
         }
 
-        String countMessage = String.format(COUNT_MESSAGE, count);
+        String countMessage = String.format(COUNT_MESSAGE.getMessage(), count);
 
 
         return matchMessage + prizeMessage + countMessage;
@@ -59,7 +59,7 @@ public class OutputView {
 
     public static void printProfit(Profit profit, Quantity quantity) {
         double profitPercent = profit.calculate(quantity);
-        String result = String.format(PROFIT_MESSAGE, profitPercent);
+        String result = String.format(PROFIT_MESSAGE.getMessage(), profitPercent);
         System.out.println(result);
     }
 }
