@@ -45,7 +45,7 @@ public class WiningNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("당첨 번호 설정하기.")
+    @DisplayName("당첨 번호로 설정한 값이 잘 저장되는지 확인한다.")
     @Test
     void setWiningNumber() {
         //given
@@ -59,7 +59,7 @@ public class WiningNumberTest {
         assertThat(winingNumber.getWiningNumber()).isEqualTo(getLotto);
     }
 
-    @DisplayName("보너스 번호 설정하기.")
+    @DisplayName("보너스 번호로 설정한 값이 잘 저장되는지 확인한다.")
     @Test
     void setBonusNumber() {
         //given
