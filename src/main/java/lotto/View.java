@@ -37,7 +37,7 @@ public class View {
 
     void printBenfit(int input, long result) {
         double db = (double) result / input * 100;
-        DecimalFormat df = new DecimalFormat("#,###.0");
+        DecimalFormat df = new DecimalFormat("#,##0.0");
         String answer = df.format(db);
         System.out.println("총 수익률은 " + answer + "%입니다.");
     }
