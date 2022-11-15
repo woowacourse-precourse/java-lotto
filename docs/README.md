@@ -13,10 +13,11 @@
         - [테스트 숙지사항](#테스트-숙지사항)
         - [Lotto 클래스 관련 숙지사항](#lotto-클래스-관련-숙지사항)
     - [3. 첫 번째 구현 기능 리스트 💻](#3-첫-번째-구현-기능-리스트-💻)
-        - [첫번째 구현 클래스 다이어그램](#첫번째-구현-클래스-다이어그램)
+        - [첫 번째 구현 클래스 다이어그램](#첫-번째-구현-클래스-다이어그램)
     - [4. 두 번째 구현 기능 리스트 💻](#4-두-번째-구현-기능-리스트-💻-(MVC를-적용))
         - [주의 사항](#주의-사항)
         - [기능 리스트](#기능-리스트)
+        - [두 번째 구현 클래스 다이어그램](#두-번째-구현-클래스-다이어그램)
 
 <!-- TOC -->
 
@@ -83,7 +84,7 @@
 - [ ✔ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 출력한다. `User#getWinningHistory`
 - [ ✔ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 수익률을 출력한다. `User#getYield`
 
-### 첫번째 구현 클래스 다이어그램
+### 첫 번째 구현 클래스 다이어그램
 
 <p align="center">
   <img src="./resource/lotto_first_impl.PNG"/>
@@ -115,7 +116,6 @@
     - [ ✔ ] 로또 번호 리스트의 문자열을 반환한다. `Lotto#toString`
     - [ ✔ ] 유효한 로또인지 검사한다. `Lotto#validate`
 
-
 - LottoMachine 모델
     - [ ✔ ] 금액에 맞게 로또를 발행한다. `LottoMachine#publish`
     - [ ✔ ] 입력된 모든 로또를 추첨하고 로또의 기록을 반환한다. `LottoMachine#drawAll`
@@ -145,8 +145,14 @@
 
 - [ ✔ ] 로또 애플리케이션을 시작한다. `LottoController#play`
 - [ ✔ ] 로또를 구매하도록 중개한다. `LottoController#buyLotto`
-- [ ✔ ] 당첨 번호와 보너스 번호를 입력하도록 중개한다. `Lottocontroller#setAnswer`
+- [ ✔ ] 구매한 로또를 출력하도록 중개한다. `LottoController#getLottoInformation`
+- [ ✔ ] 보너스 번호를 입력하도록 중개한다. `LottoController#setBonus`
+- [ ✔ ] 당첨 번호를 입력하도록 중개한다. `LottoController#setAnswer`
 - [ ✔ ] 결과를 출력하도록 중개한다. `LottoController#getResult`
 - [ ✔ ] 입력값을 유효성검사한다. `LottoController#validateInput`
 
+### 두 번째 구현 클래스 다이어그램
 
+<p align="center">
+  <img src="./resource/lotto_second_impl.PNG"/>
+</p>
