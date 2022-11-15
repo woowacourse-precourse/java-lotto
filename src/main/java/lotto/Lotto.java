@@ -45,5 +45,9 @@ public class Lotto {
         return num;
     }
 
+    public static void statistics(){
+
+    }
+
     // TODO: 추가 기능 구현
 }
