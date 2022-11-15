@@ -17,7 +17,7 @@ public class LottoTickets {
         for (Lotto lotto : lottoTickets) {
             int count = lotto.countMatchingNumbers(bonusLotto);
             boolean bonus = checkBonus(bonusLotto, lotto, count);
-            winningRanks.add(Ranking.find(count, bonus));
+            winningRanks.add(Ranking.findRanking(count, bonus));
         }
         return winningRanks;
     }

@@ -20,7 +20,7 @@ public enum Ranking {
         this.prize = prize;
     }
 
-    public static Ranking find(int count, boolean bonus) {
+    public static Ranking findRanking(int count, boolean bonus) {
         if (checkBonus(count, bonus)) {
             return SECOND;
         }
