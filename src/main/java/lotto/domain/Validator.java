@@ -8,6 +8,26 @@ import java.util.Set;
 
 public class Validator {
 
+    private enum Messages {
+        BOUNS_NUMBER_UNIQUENESS_FAILED("입력한 보너스 번호가 이미 당첨번호에 있습니다."),
+        NUMBER_CHECK_FAILED("입력 내용이 숫자로 구성되어 있지 않습니다."),
+        AMOUNT_UNIT_FAILED_FRONT("구매금액의 단위가 "),
+        AMOUNT_UNIT_FAILED_REAR("원이 아닙니다."),
+        FORMAT_VALIDATION_FAILED("당첨번호 입력형식이 올바르지 않습니다."),
+        NUMBER_RANGE_VALIDATION_FAILED("입력한 값의 범위가 올바르지 않습니다."),
+        WINNING_NUMBER_EACH_DIGIT_UNIQUENESS_FAILED("당첨번호는 서로 다른 6개의 수로 구성되어야 합니다.");
+
+        private final String message;
+
+        Messages(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return this.message;
+        }
+    }
+
     public static void amountIsValid(String userInput, int unit) throws IllegalArgumentException {
         isNumber(userInput);
         int amount = Integer.parseInt(userInput);
@@ -31,7 +51,7 @@ public class Validator {
         int bonusNumber = Integer.parseInt(userInput);
         isValidRange(bonusNumber, 1, 45);
         if (winningNumber.contains(bonusNumber)) {
-            IOProcessor.printErrorMessage("입력한 보너스 번호가 이미 당첨번호에 있습니다.");
+            IOProcessor.printErrorMessage(Messages.BOUNS_NUMBER_UNIQUENESS_FAILED.getMessage());
             throw new IllegalArgumentException();
         }
         return bonusNumber;
@@ -40,7 +60,7 @@ public class Validator {
     private static void isNumber(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
             if (!Character.isDigit(userInput.charAt(i))) {
-                IOProcessor.printErrorMessage("입력 내용이 숫자로 구성되어 있지 않습니다.");
+                IOProcessor.printErrorMessage(Messages.NUMBER_CHECK_FAILED.getMessage());
                 throw new IllegalArgumentException();
             }
         }
@@ -48,7 +68,9 @@ public class Validator {
 
     private static void amountUnitIsValid(int amount, int unit) {
         if (amount % unit != 0) {
-            IOProcessor.printErrorMessage("구매금액의 단위가 " + unit + "원이 아닙니다.");
+            IOProcessor.printErrorMessage(Messages.AMOUNT_UNIT_FAILED_FRONT.getMessage()
+                    + unit
+                    + Messages.AMOUNT_UNIT_FAILED_REAR.getMessage());
             throw new IllegalArgumentException();
         }
     }
@@ -57,7 +79,7 @@ public class Validator {
         String[] numbers = userInput.split(",");
 
         if (numbers.length != 6) {
-            IOProcessor.printErrorMessage("당첨번호 입력형식이 올바르지 않습니다.");
+            IOProcessor.printErrorMessage(Messages.FORMAT_VALIDATION_FAILED.getMessage());
             throw new IllegalArgumentException();
         }
 
@@ -69,7 +91,7 @@ public class Validator {
 
     private static void isValidRange(int number, int start, int end) {
         if (number < start || number > end) {
-            IOProcessor.printErrorMessage("입력한 값의 범위가 올바르지 않습니다.");
+            IOProcessor.printErrorMessage(Messages.NUMBER_RANGE_VALIDATION_FAILED.getMessage());
             throw new IllegalArgumentException();
         }
     }
@@ -79,7 +101,7 @@ public class Validator {
         winningNumberPool.addAll(numbers);
 
         if (numbers.size() != winningNumberPool.size()) {
-            IOProcessor.printErrorMessage("당첨번호는 서로 다른 6개의 수로 구성되어야 합니다.");
+            IOProcessor.printErrorMessage(Messages.WINNING_NUMBER_EACH_DIGIT_UNIQUENESS_FAILED.getMessage());
             throw new IllegalArgumentException();
         }
         return numbers;
