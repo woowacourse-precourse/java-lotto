@@ -11,4 +11,8 @@ public class Lotto {
                 .sorted()
                 .collect(Collectors.toList());
     }
+
+    public boolean hasNumber(Integer number) {
+        return numbers.contains(number);
+    }
 }
