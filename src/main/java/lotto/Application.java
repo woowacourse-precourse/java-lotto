@@ -47,6 +47,8 @@ public class Application {
         String amount = Console.readLine();
         InputException.emptyException(amount);
         InputException.outOfDigitException(amount);
+        InputException.userInputZeroException(amount);
+
         return amount;
     }
 
