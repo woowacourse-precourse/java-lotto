@@ -29,6 +29,7 @@ public class UI {
     public void inputCost() {
         System.out.println("구입 금액을 입력해 주세요.");
         this.cost = Integer.parseInt(readLine());
+        System.out.println();
     }
 
     public void inputWinning() {
@@ -37,21 +38,24 @@ public class UI {
         for (int i = 0; i < winning.length; i++) {
             winningNumbers.add(Integer.parseInt(winning[i]));
         }
+        System.out.println();
     }
 
     public void inputBonus() {
         System.out.println("보너스 번호를 입력해 주세요");
         this.bonus = Integer.parseInt(readLine());
+        System.out.println();
     }
 
     public void showCostCount() {
-        System.out.println(this.cost/1000+"개를 구매했습니다.\n");
+        System.out.println(this.cost/1000+"개를 구매했습니다.");
     }
 
     public void showLottoNumbers(List<List<Integer>> lottoNumbers) {
         for (List<Integer> list : lottoNumbers) {
             System.out.println(list.toString());
         }
+        System.out.println();
     }
 
     public void showWinning(int first, int second, int third, int fourth, int fifth) {
