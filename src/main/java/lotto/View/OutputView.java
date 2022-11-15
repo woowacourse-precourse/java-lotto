@@ -14,5 +14,17 @@ public class OutputView {
             System.out.println(lottoSheet);
         }
     }
+
+    public static void printUserResultLottoMessage() {
+        ArrayList<Integer> userLottoCount = new ArrayList<>();
+        Arrays.stream(LottoWinningCriteria.values()).forEach(m -> userLottoCount.add(m.getCount()));
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        for (LottoWinningMessage lottoWinningMessage : LottoWinningMessage.values()) {
+            System.out.printf(lottoWinningMessage.getWinningMessage() + '\n', userLottoCount.remove(0));
+        }
+    }
 }
 
