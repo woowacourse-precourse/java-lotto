@@ -11,5 +11,6 @@ public final class ExceptionMessage {
     public static final String INAPPROPRIATE_SIZE_LOTTO_NUMBER = "[ERROR] 선택한 로또 번호 개수가 틀립니다.";
     public static final String DUPLICATED_NUMBERS_IN_LOTTO = "[ERROR] 로또 번호에 중복이 있습니다.";
     public static final String NULL_POINTER = "[ERROR] null값을 입력 받았습니다.";
+    public static final String NOT_VALID_MATCH = "[ERROR] MATCH 정보가 옳지 않습니다.";
 
 }

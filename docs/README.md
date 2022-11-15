@@ -52,15 +52,19 @@
   - [x] 보너스 숫자가 중복이 있는지 검증()
     - WinningNumbersImpl#validateBonusNumberDuplicate()
 
-- [ ] 입력받는 로또의 개수 만큼, 각 로또가 몇 자리씩 맞췄는지 파악할 수 있다.
+- [ ] 입력받는 로또 중 각 등수에 해당하는 로또가 몇 개 있는지 파악할 수 있다.
   - LottoChecker#checkLottos()
-- [ ] 일반 숫자 중 몇 자리 맞췄는지, 보너스 번호를 맞췄는지 파악할 수 있다.
-  - LottoChecker#checkHowManyMatches()
-  - 예외) 정답 로또(WinningNumbers)와 구매한 로또(Lotto)의 길이가 다른 경우
-- [ ] 수익률을 계산할 수 있다.
-  - LottoChecker#calculateROI()
+  - [x] 일반 숫자 중 몇 자리 맞췄는지, 보너스 번호를 맞췄는지 파악할 수 있다.
+    - LottoChecker#checkHowManyMatches()
+    - 예외) 입력값이 Null인 경우 예외 발생
+  - [x] 몇 자리 맞췄는지를 보고, 몇 등이고 상금이 얼마인지 계산할 수 있다.
+    - WaysToWinAndReward#checkRankAndReward()
+    - 예외) 메인번호 맞춘 수가 0이상 선택하는 수(ex 6)(상수로 지정해놨습니다.) 이하가 아니면 예외발생
+    - 예외) 보너스 맞춘 수가 0 또는 1이 아니면 예외 발생
+  - [ ] 수익률을 계산할 수 있다.
+    - LottoChecker#calculateROI()
 - [ ] 당첨 통계 메시지를 출력할 수 있다.
-  - LottoChecker#printLottoResult()
+  - StaffTeller#tellROI()
   
 ## 🚀 기능 요구 사항
 
