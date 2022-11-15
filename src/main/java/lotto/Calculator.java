@@ -34,13 +34,9 @@ public class Calculator {
     }
 
     public void rankCalculator() {
-        if (cnt == 6) first += 1;
-        if (cnt == 5) {
-            if (lottoSet.contains(bonus)){
-                second += 1;
-            }
-            else third += 1;
-        }
+        if (cnt == 6 && !lottoSet.contains(bonus)) first += 1;
+        if (cnt == 6 && lottoSet.contains(bonus)) second += 1;
+        if (cnt == 5) third += 1;
         if (cnt == 4) fourth += 1;
         if (cnt == 3) fifth += 1;
     }
