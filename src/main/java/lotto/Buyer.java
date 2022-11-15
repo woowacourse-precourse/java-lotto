@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class Buyer {
-    int purchaseAmount;
+    String inputPurchaseAmount;
     int lottoAmount;
     String inputWinningNum;
 
@@ -29,15 +30,32 @@ public class Buyer {
 
     }
 
-    public Buyer(int purchaseAmount) {
-        amountRange(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
+    public Buyer(String inputPurchaseAmount) {
+        vaildateNull(inputPurchaseAmount);
+        validateNumber(inputPurchaseAmount);
+        amountRange(Integer.parseInt(inputPurchaseAmount));
+        this.inputPurchaseAmount = inputPurchaseAmount;
+    }
+    private void vaildateNull(String inputPurchaseAmount){
+        if(inputPurchaseAmount == null || "0".equals(inputPurchaseAmount)) {
+            throw new IllegalArgumentException("[ERROR] 입력금액은 공백이 올수 없습니다.");
+        }
+    }
+    private int validateNumber(String inputPurchaseAmount) {
+        try {
+            return Integer.parseInt(inputPurchaseAmount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 입력은 숫자만 가능합니다.");
+        }
     }
     private void amountRange(int purchaseAmount){
         if(purchaseAmount%1000 !=0){
             throw new IllegalArgumentException("[ERROR] 입력금액의 단위는 1000입니다.");
         }
     }
+
+
+
     public void lottoAmount(int purchaseAmount){
         this.lottoAmount = purchaseAmount / 1000;
     }
@@ -46,7 +64,7 @@ public class Buyer {
     }
 
     public int getPurchaseAmount(){
-        return purchaseAmount;
+        return Integer.parseInt(inputPurchaseAmount);
     }
     public static void buyMessage(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -93,7 +111,7 @@ public class Buyer {
     }
     public int inputBonusNum(){
         bonusNum = Integer.parseInt(Console.readLine());
-        return this.bonusNum;
+        return bonusNum;
     }
     public int getBonusNum(int bonusNum){
         validateRange(bonusNum);
@@ -152,22 +170,17 @@ public class Buyer {
         YIELD = yield / (double) purchaseAmount * 100;
     }
 
-
-
-
-
-
-
     public List<List<Integer>> makeLotto (int lottoAmount){
         totalLotto = new ArrayList<>();
         for(int i =0 ; i<lottoAmount ; i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(firstBallNum, LASTBALLNUM, COUNT));
+            Collections.sort(lotto.getNumbers());
             totalLotto.add(lotto.getNumbers());
         }
         return totalLotto;
     }
     public void outPutLottoNum (List<List<Integer>> totalLotto){
-        for(Object lottoNum : totalLotto){
+        for(List<Integer> lottoNum : totalLotto){
             System.out.println(lottoNum);
         }
     }

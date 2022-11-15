@@ -27,7 +27,7 @@ class LottoTest {
     @DisplayName("로또를 사는 돈이 1000의 배수가 아니면 예외 발생")
     @Test
     void inputWrongNum(){
-        assertThatThrownBy(() -> new Buyer(15500))
+        assertThatThrownBy(() -> new Buyer("15500"))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -58,4 +58,6 @@ class LottoTest {
         assertThatThrownBy(() -> buyer.getWinningNum("0,2,3,4,5,6,46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+
 }
