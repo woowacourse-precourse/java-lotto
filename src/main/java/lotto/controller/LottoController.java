@@ -15,7 +15,7 @@ public class LottoController {
 
     UserInterface userInterface = new UserInterface();
     User user;
-    Computer auto;
+    Computer computer;
     Lotto lotto;
 
     public void gameStart() throws IllegalArgumentException {
@@ -31,7 +31,7 @@ public class LottoController {
         user.validateUserMoney(userInput);
         inputMoney = Long.parseLong(userInput);
         lottoCount = inputMoney / Resource.LOTTO_PRICE;
-        auto = new Computer(lottoCount);
+        computer = new Computer(lottoCount);
         userInterface.showAutoLottos(Computer.getAutoLottos(), lottoCount);
     }
 
@@ -39,7 +39,7 @@ public class LottoController {
         userInput = userInterface.getUserInput(Message.WINNING_ENTER);
         user = new User(Message.WINNING_NUMBER);
         user.validateUserWinningNumber(userInput);
-        auto.makeWinningNumbers(userInput);
+        computer.makeWinningNumbers(userInput);
         lotto = new Lotto(Computer.getWinningNumbers());
     }
 
@@ -50,8 +50,8 @@ public class LottoController {
     }
 
     private void resultCalculation() {
-        auto.checkWining(Integer.parseInt(userInput));
-        auto.yieldCalculation(inputMoney);
+        computer.checkWining(Integer.parseInt(userInput));
+        computer.yieldCalculation(inputMoney);
         userInterface.printResult();
     }
 

@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Computer;
+import lotto.domain.Rank;
 import lotto.domain.Resource;
 
 public final class Message {
@@ -25,5 +27,9 @@ public final class Message {
     public static final String LOTTO_NOTSIZE = "당첨번호는 " + Resource.LOTTO_SIZE + "개의 숫자를 입력하셔야 합니다.";
     public static final String LOTTO_DUPLICATE = "당첨번호는 중복번호를 입력할 수 없습니다.";
     public static final String LOTTO_NOTRANGE = "당첨번호는 " + Resource.MIN_LOTTO_NUMBER + "부터 " + Resource.MAX_LOTTO_NUMBER + "까지의 수여야 합니다.";
+
+    public static final String RESULT = "\n당첨 통계\n---\n3개 일치 (5,000원) - " + Rank.FIFTH.getCount() + "개\n4개 일치 (50,000원) - " + Rank.FOURTH.getCount() + "개\n5개 일치 (1,500,000원) - " + Rank.THIRD.getCount() + "개\n"
+            + "5개 일치, 보너스 볼 일치 (30,000,000원) - " + Rank.SECOND.getCount() + "개\n6개 일치 (2,000,000,000원) - " + Rank.FIRST.getCount() + "개\n"
+            + "총 수익률은 " + Computer.getYIELD() + "%입니다.";
 
 }

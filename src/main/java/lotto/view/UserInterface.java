@@ -28,10 +28,6 @@ public class UserInterface {
     }
 
     public void printResult() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("당첨 통계\n---\n3개 일치 (5,000원) - " + Rank.FIFTH.getCount() + "개\n4개 일치 (50,000원) - " + Rank.FOURTH.getCount() + "개\n5개 일치 (1,500,000원) - " + Rank.THIRD.getCount() + "개\n");
-        sb.append("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Rank.SECOND.getCount() + "개\n6개 일치 (2,000,000,000원) - " + Rank.FIRST.getCount() + "개\n");
-        sb.append("총 수익률은 " + Computer.getYIELD() + "%입니다.");
-        System.out.println("\n" + sb);
+        System.out.println(Message.RESULT);
     }
 }

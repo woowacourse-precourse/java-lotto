@@ -86,13 +86,13 @@ public class User {
         }
     }
 
-    private void validateRange(long userInput) {
+    private void validateRange(int userInput) {
         if (userInput < Resource.MIN_LOTTO_NUMBER || userInput > Resource.MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException(changeWord + Message.NOTRANGE);
         }
     }
 
-    private void validateDuplicate(long userInput, List<Integer> winningNumbers) {
+    private void validateDuplicate(int userInput, List<Integer> winningNumbers) {
         if (winningNumbers.contains(userInput)) {
             throw new IllegalArgumentException(changeWord + Message.ISDUPLICATE);
         }
