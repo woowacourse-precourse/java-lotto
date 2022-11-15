@@ -58,13 +58,13 @@
   - [x] get함수 테스트
     - 당첨 번호 일치 개수, 보너스번호 일치 여부가 주어지면 알맞은 WinInfo를 반환하는지
 
-- [ ] LottoUser 테스트
+- [x] LottoUser 테스트
   - [x] validation 테스트
   - [x] buyLotto 테스트
     - 돈의 양 만큼 로또를 샀는지, Lotto의 검증 형식에 맞춰서 번호를 생성했는지
   - [x] checkWin 테스트
     - 주어진 로또에 대해 알맞은 WinInfo를 가지게 되었는지, LottoSystem테스트의 테스트케이스 재활용
-  - [ ] getReturnRate 테스트
+  - [x] getReturnRate 테스트
     - 주어진 WinInfo에 대해 수익률을 잘 계산하는지
 
 - [x] Lotto 테스트

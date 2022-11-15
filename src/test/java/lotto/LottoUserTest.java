@@ -113,5 +113,109 @@ public class LottoUserTest {
         );
     }
 
+    @DisplayName("주어진 WinInfo에 대해 수익률을 잘 계산하는지")
+    @ParameterizedTest
+    @MethodSource("getReturnRateTestProvider")
+    void getReturnRateTest(long money,List<WinInfo> winInformations,double returnRate) {
+        LottoUser user = new LottoUser(money,new LottoSystem());
+        List<WinInfo> userWinInformations = user.getWinInfomations();
+        userWinInformations.clear();
+        userWinInformations.addAll(winInformations);
+        double userReturnRate = user.getReturnRate();
+
+        assertEquals(userReturnRate, returnRate);
+    }
+    private static List<Arguments> getReturnRateTestProvider(){
+        final List<Arguments> INPUTS = List.of(
+                Arguments.of(
+                        8000,
+                        List.of(
+                                WinInfo.WIN5,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN
+                        ),
+                        0.625
+                ),
+                Arguments.of(
+                        1000,
+                        List.of(
+                                WinInfo.WIN1
+                        ),
+                        2000000.0
+                ),
+                Arguments.of(
+                        1000,
+                        List.of(
+                                WinInfo.NO_WIN
+                        ),
+                        0
+                ),
+                Arguments.of(
+                        2000,
+                        List.of(
+                                WinInfo.WIN2,
+                                WinInfo.WIN3
+                        ),
+                        15750.0
+                ),
+                Arguments.of(
+                        7000,
+                        List.of(
+                                WinInfo.WIN1,
+                                WinInfo.WIN2,
+                                WinInfo.WIN3,
+                                WinInfo.WIN4,
+                                WinInfo.WIN5,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN
+                        ),
+                        290222.14285714285714285714285714
+                ),
+                Arguments.of(
+                        2000000000,
+                        List.of(
+                                WinInfo.WIN5,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN
+                        ),
+                        0.0000025
+                ),
+                Arguments.of(
+                        Long.valueOf("20000000000"),
+                        List.of(
+                                WinInfo.WIN5,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN
+                        ),
+                        0.00000025
+                ),
+                Arguments.of(
+                        Long.valueOf("2000000000000"),
+                        List.of(
+                                WinInfo.WIN5,
+                                WinInfo.NO_WIN,
+                                WinInfo.NO_WIN
+                        ),
+                        0.0000000025
+                ),
+                Arguments.of(
+                        Long.valueOf("2000000000000"),
+                        List.of(
+                                WinInfo.WIN5,
+                                WinInfo.WIN1,
+                                WinInfo.NO_WIN
+                        ),
+                        0.0010000025
+                )
+
+        );
+
+        return INPUTS;
+    }
 }
 
