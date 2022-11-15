@@ -4,11 +4,13 @@ import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import view.OutputView;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LottoServiceTest {
     LottoService lottoService = new LottoService();
@@ -25,4 +27,19 @@ public class LottoServiceTest {
         assertThat(publishedLotto.size()).isEqualTo(count);
     }
 
+    @DisplayName("당첨 번호 입력 형식 검사")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5,6,7", "0,1,2,3,4,5", "1,45,32,", "1.2.3.7.4.9", "1,2,3,4,5,46", "1, 2, 3, 4, 5, 6"})
+    public void 당첨_번호_입력_형식_예외(String numbers) {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveWinningNumbers(numbers));
+        assertThat(e.getMessage()).isEqualTo(Error.WINNING_NUMBERS_FORMAT.getText());
+    }
+
+    @DisplayName("당첨 번호 입력 중복 검사")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,1,2,3,4,5", "13,12,17,23,45,12"})
+    public void 당첨_번호_입력_중복_예외(String numbers) {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveWinningNumbers(numbers));
+        assertThat(e.getMessage()).isEqualTo(Error.WINNING_NUMBERS_INCLUDE_SAME_NUMBER.getText());
+    }
 }
