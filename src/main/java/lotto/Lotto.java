@@ -1,20 +1,37 @@
 package lotto;
 
+import static lotto.Constant.LottoValue.MAX_RANGE;
+import static lotto.Constant.LottoValue.MIN_RANGE;
+import static lotto.Constant.LottoValue.NUMBER_EA;
+
+import static lotto.Util.LottoNumberValidator.*;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
+import java.util.stream.Collectors;
+
+
 
 public class Lotto {
     private final List<Integer> numbers;
 
+
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        try {
+            validateNumbers(numbers);
+        } catch (Exception exception) {
+            throw exception;
         }
+        this.numbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
-    // TODO: 추가 기능 구현
+
+
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
