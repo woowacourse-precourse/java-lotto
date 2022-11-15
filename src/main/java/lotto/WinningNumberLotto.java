@@ -16,11 +16,13 @@ public class WinningNumberLotto extends Lotto {
     public WinningNumberLotto() {
         super(InputNumber.createNumber());
         int number = inputBonusNumber();
+        printBonusMessage();
         setBonusNumber(number);
     }
 
     public WinningNumberLotto(List<Integer> numbers, int number) {
         super(numbers);
+        printBonusMessage();
         setBonusNumber(number);
     }
 
