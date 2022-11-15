@@ -10,41 +10,61 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PrizeTest {
 
-    @DisplayName("로또 번호 비교에 따른 Prize 타입 테스트")
+    @DisplayName("로또 번호 비교에 따른 Prize 타입 테스트_3개일치")
     @Test
-    void findPrizeTypeTest() {
+    void findPrizeTypeTest_threeMatch() {
         Prize threeMatch = Prize.findPrizeType(new MatchCount(3, 0));
         Prize threeMatchAnswer = Prize.THREE_MATCH;
         Prize threeMatch2 = Prize.findPrizeType(new MatchCount(3, 1));
-        Prize threeMatch2Answer = Prize.THREE_MATCH;
 
+        assertThat(threeMatch).isEqualTo(threeMatchAnswer);
+        assertThat(threeMatch2).isEqualTo(threeMatchAnswer);
+    }
+
+    @DisplayName("로또 번호 비교에 따른 Prize 타입 테스트_4개일치")
+    @Test
+    void findPrizeTypeTest_fourMatch() {
         Prize fourMatch = Prize.findPrizeType(new MatchCount(4, 0));
-        Prize fourMatchAnswer = Prize.FOUR_MATCH;
         Prize fourMatch2 = Prize.findPrizeType(new MatchCount(4, 1));
-        Prize fourMatch2Answer = Prize.FOUR_MATCH;
+        Prize fourMatchAnswer = Prize.FOUR_MATCH;
 
+        assertThat(fourMatch).isEqualTo(fourMatchAnswer);
+        assertThat(fourMatch2).isEqualTo(fourMatchAnswer);
+    }
+
+    @DisplayName("로또 번호 비교에 따른 Prize 타입 테스트_5개일치, 5개일치+보너스1개일치")
+    @Test
+    void findPrizeTypeTest_fiveMatch() {
         Prize fiveMatch = Prize.findPrizeType(new MatchCount(5, 0));
-        Prize fiveMatchAnswer = Prize.FIVE_MATCH;
-
         Prize fiveBonusMatch = Prize.findPrizeType(new MatchCount(5, 1));
+        Prize fiveMatchAnswer = Prize.FIVE_MATCH;
         Prize fiveBonusMatchAnswer = Prize.FIVE_BONUS_MATCH;
 
+        assertThat(fiveMatch).isEqualTo(fiveMatchAnswer);
+        assertThat(fiveBonusMatch).isEqualTo(fiveBonusMatchAnswer);
+
+    }
+
+    @DisplayName("로또 번호 비교에 따른 Prize 타입 테스트_6개일치")
+    @Test
+    void findPrizeTypeTest_sixMatch() {
         Prize sixMatch = Prize.findPrizeType(new MatchCount(6, 0));
         Prize sixMatchAnswer = Prize.SIX_MATCH;
 
-        Prize noneMatch = Prize.findPrizeType(new MatchCount(2, 0));
-        Prize noneMatchAnswer = Prize.NONE;
-
-        assertThat(threeMatch).isEqualTo(threeMatchAnswer);
-        assertThat(threeMatch2).isEqualTo(threeMatch2Answer);
-        assertThat(fourMatch).isEqualTo(fourMatchAnswer);
-        assertThat(fourMatch2).isEqualTo(fourMatch2Answer);
-        assertThat(fiveMatch).isEqualTo(fiveMatchAnswer);
-        assertThat(fiveBonusMatch).isEqualTo(fiveBonusMatchAnswer);
         assertThat(sixMatch).isEqualTo(sixMatchAnswer);
-        assertThat(noneMatch).isEqualTo(noneMatchAnswer);
+
     }
 
+    @DisplayName("로또 번호 비교에 따른 Prize 타입 테스트_등수미만일치")
+    @Test
+    void findPrizeTypeTest_noneMatch() {
+        Prize noneMatch = Prize.findPrizeType(new MatchCount(2, 0));
+        Prize noneMatch2 = Prize.findPrizeType(new MatchCount(0, 0));
+        Prize noneMatchAnswer = Prize.NONE;
+
+        assertThat(noneMatch).isEqualTo(noneMatchAnswer);
+        assertThat(noneMatch2).isEqualTo(noneMatchAnswer);
+    }
 
     @DisplayName("상금 계산 테스트")
     @Test
