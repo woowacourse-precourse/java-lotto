@@ -24,7 +24,14 @@ public class InputView {
 
     public static int InputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int input = Integer.valueOf(readLine());
-        return input;
+        String input = readLine();
+        OnlyOne(input);
+        return Integer.valueOf(input);
+    }
+
+    private static void OnlyOne(String input) {
+        if (input.contains(",") || input.contains(" ")) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 1개 이상입니다.");
+        }
     }
 }
