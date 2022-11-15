@@ -8,12 +8,8 @@ import lotto.domain.WinningNumber;
 
 public class ConsoleInput {
 
-  static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
-  static final String WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
-  static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
-
   public int inputMoney() {
-    System.out.println(INPUT_MONEY_MESSAGE);
+    System.out.println(ConsoleMessage.INPUT_MONEY.getMesage());
     String money = Console.readLine();
     validateIsNumeric(money);
     return Integer.parseInt(money);
@@ -41,14 +37,14 @@ public class ConsoleInput {
 
 
   private int getBonusNumber() {
-    System.out.println(BONUS_NUMBER_MESSAGE);
+    System.out.println(ConsoleMessage.INPUT_BONUS_NUMBER.getMesage());
     String bonusNumberString = Console.readLine();
     validateLottoNumber(bonusNumberString);
     return Integer.parseInt(bonusNumberString);
   }
 
   private List<Integer> getWinningNumber() {
-    System.out.println(WINNING_NUMBER_MESSAGE);
+    System.out.println(ConsoleMessage.INPUT_WINNING_NUMBER.getMesage());
     String winningNumberString = Console.readLine();
     List<Integer> numbers = new ArrayList<>();
 
