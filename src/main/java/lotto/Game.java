@@ -74,7 +74,7 @@ public class Game {
     }
 
     public List<Integer> compareNumbers(List<Integer> predictedNumbers) {
-        List<Integer> sameNumbers = new ArrayList<>();
+        List<Integer> sameNumbers;
         List<Integer> winGames = new ArrayList<>();
         for (List<Integer> numbers : buyingNumbers) {
             sameNumbers = numbers.stream().filter(number -> predictedNumbers.stream()
@@ -83,6 +83,6 @@ public class Game {
             int size = sameNumbers.size();
             winGames.add(size);
         }
-        return sameNumbers;
+        return winGames;
     }
 }
