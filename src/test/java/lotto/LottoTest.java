@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,33 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("숫자가 1~45가 아니면 예외가 발생한다.")
+    @Test
+    void createLottoByOverRangeNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void getNumbers() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        Lotto lotto = new Lotto(numbers);
+
+        assertThat(lotto.getNumbers()).isEqualTo(numbers);
+    }
+
+    @Test
+    void setPriceDetails() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lotto.setPriceDetails(PrizeDetails.SIX_PRIZE);
+
+        assertThat(lotto.getPriceDetails()).isEqualTo(PrizeDetails.SIX_PRIZE);
+    }
+
+    @Test
+    void getPriceDetails() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(lotto.getPriceDetails()).isEqualTo(PrizeDetails.NOT_THING);
+    }
 }
