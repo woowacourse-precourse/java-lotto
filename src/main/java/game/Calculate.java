@@ -35,18 +35,16 @@ public class Calculate {
     }
 
         // TODO 수익률을 계산하는 기능 구현
-//    public String earningRate (List<List<Integer>> lottos, List<Integer> usersLotto, int bonusNum) {
-//        Calculate calculate = new Calculate();
-//        int money = lottos.size() * 1000;
-//        int result= 0;
-//
-//
-//        for (int i = 0; i < lottos.size(); i++) {
-//            int profit = calculate.checkCount(lottos.get(i), usersLotto, bonusNum);
-//            result += profit;
-//        }
-//
-//        double profitRate = (double)((result - money) / money * 100);
-//        return String.format("%.1f", profitRate);
-//    }
+    public String earningRate (List<Integer> grades, int money) {
+        long profit = 0;
+
+        profit += (long) 2_000_000_000 * grades.get(1);
+        profit += (long) 30_000_000 * grades.get(2);
+        profit += (long) 1_500_000 * grades.get(3);
+        profit += (long) 50_000 * grades.get(4);
+        profit += (long) 5_000 * grades.get(5);
+
+        double rate = (profit - money) / (double)money * 100;
+        return String.format("%.1f",rate);
+    }
 }
