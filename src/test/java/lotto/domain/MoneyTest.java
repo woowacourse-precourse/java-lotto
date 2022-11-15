@@ -55,4 +55,30 @@ class MoneyTest {
 
         assertThat(money1.divide(money2)).isEqualTo(result);
     }
+
+    @ParameterizedTest(name = "{0} % {1} = {2}")
+    @CsvSource({"1500, 500, 0", "8000, 1000, 0", "8001, 1000, 1"})
+    void calculateRemainder_메서드는_입력받은_수로_나눴을_때의_나머지를_반환한다(
+            long amount1,
+            long amount2,
+            long result
+    ) {
+        Money money1 = Money.wons(amount1);
+        Money money2 = Money.wons(amount2);
+
+        assertThat(money1.calculateRemainder(money2)).isEqualTo(Money.wons(result));
+    }
+
+    @ParameterizedTest(name = "{0} >= {1} = {2}")
+    @CsvSource({"20000, 19999, true", "20000, 20000, true", "20000, 20001, false"})
+    void isGreaterThanOrEqual_메서드는_비교금액_이상의_경우_true_미만의_경우_false를_반환한다(
+            long amount1,
+            long amount2,
+            boolean result
+    ) {
+        Money money1 = Money.wons(amount1);
+        Money money2 = Money.wons(amount2);
+
+        assertThat(money1.isGreaterThanOrEqual(money2)).isEqualTo(result);
+    }
 }

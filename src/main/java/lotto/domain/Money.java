@@ -15,16 +15,24 @@ public class Money {
         return new Money(amount);
     }
 
-    public Money plus(Money amount) {
-        return new Money(this.amount + amount.amount);
+    public Money plus(Money other) {
+        return new Money(this.amount + other.amount);
     }
 
     public Money times(long count) {
         return new Money(this.amount * count);
     }
 
-    public double divide(Money amount) {
-        return this.amount / (double) amount.amount;
+    public double divide(Money other) {
+        return this.amount / (double) other.amount;
+    }
+
+    public Money calculateRemainder(Money other) {
+        return new Money(this.amount % other.amount);
+    }
+
+    public boolean isGreaterThanOrEqual(Money other) {
+        return amount.compareTo(other.amount) >= 0;
     }
 
     public Long getAmount() {
