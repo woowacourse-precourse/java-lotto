@@ -3,6 +3,8 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import utils.Util;
 
+import java.util.List;
+
 public class Input {
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String LOTTO_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
@@ -18,4 +20,10 @@ public class Input {
         String money = Console.readLine();
         return Util.convertStringToInt(money);
     }
+
+    public static List<Integer> inputWinningLotteryNumber() {
+        System.out.println(LOTTO_NUMBER_INPUT_MESSAGE);
+        return inputLotteryNumber();
+    }
+
 }
