@@ -73,7 +73,6 @@ public class UserInterFace {
     }
     
     public int inputValidBonus(List<Integer> winningNumbers) {
-        Judgment judgment = new Judgment();
         int input = inputInteger();
         judgment.checkRange(input, 1, 45);
         
