@@ -91,17 +91,11 @@ public class WinningNumber {
         return numbers.contains(bonus);
     }
 
+    /**
+     * 해당 숫자가 당첨 번호에 속해 있는지 확인하는 메소드
+     */
     public boolean hasNumber(int number) {
         return numbers.contains(number);
     }
 
-    public int getMatchingCount(Lotto lotto) {
-        return (int) lotto.getNumbers().stream()
-                .filter(numbers::contains)
-                .count();
-    }
-
-    public boolean hasBonusNumber(Lotto lotto) {
-        return lotto.getNumbers().contains(bonus);
-    }
 }
