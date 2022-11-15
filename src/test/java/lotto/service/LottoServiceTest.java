@@ -63,6 +63,16 @@ class LottoServiceTest {
     @Nested
     @DisplayName("로또 당첨번호 입력 유효성 검증 테스트")
     class WinningNumberInputValueTest {
-        
+        @Test
+        @DisplayName("[실패] - 올바르지 않은 형식이 입력된 경우(문자열)")
+        void notNumberInput() {
+            // given
+            final String input = "INVALID";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+        }
     }
 }
