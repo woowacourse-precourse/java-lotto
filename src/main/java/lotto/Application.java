@@ -45,7 +45,7 @@ public class Application {
     }
     static int countPurchaseLotto(int buyMoney) {
 
-        return buyMoney % 1000;
+        return buyMoney / 1000;
     }
 
     static ArrayList<Lotto> buyLotto(int countPurchase){
