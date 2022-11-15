@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Collections;
 public class Application {
     static List<Lotto> lottos = new ArrayList<>();
     static HashMap<String,Integer> win_list = new HashMap<>();
@@ -43,6 +44,7 @@ public class Application {
         System.out.println(lotto_count + "개를 구매했습니다.");
         for(int i =1 ; i <= lotto_count; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(min_number, max_number, lotto_size);
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
@@ -66,24 +68,24 @@ public class Application {
         String bonus = Console.readLine();
         return Integer.valueOf(bonus);
     }
-    public static List<Integer> CompareNumber(List<Integer> lotto, List<Integer> win_number){
-
-    }
-
-    public static int CompareBonus(){
-
-    }
-
-    public static List<Integer> CountWin(){
-
-    }
-
-    public static void PrintWin(){
-
-    }
-
-    public static int CalculateMoney(){
-
-    }
+//    public static List<Integer> CompareNumber(List<Integer> lotto, List<Integer> win_number){
+//
+//    }
+//
+//    public static int CompareBonus(){
+//
+//    }
+//
+//    public static List<Integer> CountWin(){
+//
+//    }
+//
+//    public static void PrintWin(){
+//
+//    }
+//
+//    public static int CalculateMoney(){
+//
+//    }
 }
 
