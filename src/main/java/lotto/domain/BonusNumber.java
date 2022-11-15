@@ -3,7 +3,6 @@ package lotto.domain;
 import static lotto.ui.ConsoleMessage.BONUS_NUMBER_DUPLICATE;
 import static lotto.ui.ConsoleMessage.INVALID_INPUT_BONUS_NUMBER;
 import static lotto.ui.ConsoleMessage.LOTTO_NUMBER_OUT_OF_RANGE;
-import static lotto.ui.LottoConsole.printErrorMessage;
 
 public class BonusNumber {
     private static final int START_NUMBER = 1;
@@ -24,16 +23,14 @@ public class BonusNumber {
 
     private int validateInputType(String bonusNumber) {
         if (!bonusNumber.chars().allMatch(Character::isDigit)) {
-            printErrorMessage(INVALID_INPUT_BONUS_NUMBER.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_BONUS_NUMBER.toString());
         }
         return Integer.parseInt(bonusNumber);
     }
 
     private void validateNumberRange(int bonusNumber) {
         if (START_NUMBER > bonusNumber || bonusNumber > END_NUMBER) {
-            printErrorMessage(LOTTO_NUMBER_OUT_OF_RANGE.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_OUT_OF_RANGE.toString());
         }
     }
 
@@ -47,8 +44,7 @@ public class BonusNumber {
 
     private void checkforSameNumber(int winningNumber, int bonusNumber) {
         if (winningNumber == bonusNumber) {
-            printErrorMessage(BONUS_NUMBER_DUPLICATE.toString());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE.toString());
         }
     }
 
