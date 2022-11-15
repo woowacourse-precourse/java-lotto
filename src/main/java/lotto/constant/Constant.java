@@ -1,4 +1,4 @@
-package lotto;
+package lotto.constant;
 
 public class Constant {
     public static final String INT_REGEX = "^[0-9]*$";

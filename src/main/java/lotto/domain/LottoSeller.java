@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.Constant.PRICE;
+import static lotto.constant.Constant.PRICE;
 
 public class LottoSeller {
     public static final LottoSeller getInstance = new LottoSeller();

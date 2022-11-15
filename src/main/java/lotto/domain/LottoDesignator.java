@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.Constant.*;
+import static lotto.constant.Constant.*;
 
 public class LottoDesignator {
     public static final LottoDesignator getInstance = new LottoDesignator();

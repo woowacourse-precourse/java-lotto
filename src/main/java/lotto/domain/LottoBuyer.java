@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Constant;
+import lotto.constant.Constant;
 
 public class LottoBuyer {
 
