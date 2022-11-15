@@ -114,13 +114,13 @@ public class LottoService {
         publishedLotto.stream().map(Lotto::getNumbers)
                 .forEach(numbers -> {
                     int match = (int) numbers.stream().filter(winningNumbers::contains).count();
-                    if (match == Winner.SECOND_PLACE.getMatch() && numbers.contains(bonus)) {
+
+                    if (match == Winner.THIRD_PLACE.getMatch() && numbers.contains(bonus)) {
                         winners.put(Winner.SECOND_PLACE, winners.getOrDefault(Winner.SECOND_PLACE, 0) + 1);
                         return;
                     }
                     winners.put(Winner.getByMatch(match), winners.getOrDefault(Winner.getByMatch(match), 0) + 1);
                 });
-
         return winners;
     }
 
