@@ -82,6 +82,16 @@ class ApplicationTest extends NsTest {
                         .hasMessageContaining(ERROR_MESSAGE)
         );
     }
+
+    //당첨 번호에 중복된 수가 있는가?
+    @Test
+    void 예외_테스트5(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
