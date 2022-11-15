@@ -1,6 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,9 +48,22 @@ public class Application {
         return bonusNumber;
     }
 
+    public static List<Lotto> buyLottos(int count) {
+        List<Lotto> boughtLottos = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            List<Integer> selectedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(selectedNumbers);
+            Lotto newLotto = new Lotto(selectedNumbers);
+            boughtLottos.add(newLotto);
+        }
+        System.out.printf("%d개를 구매했습니다.\n", count);
+        return boughtLottos;
+    }
+
     public static void main(String[] args) {
         int payment = validatePayment();
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber();
+        List<Lotto> myLottos = buyLottos(payment);
     }
 }
