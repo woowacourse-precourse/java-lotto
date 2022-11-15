@@ -8,6 +8,7 @@ public class Statistics {
     private Map<Prize, Integer> prizeTable = new HashMap<>();
 
     public void setPrizeTable(List<List<Integer>> results){
+        initPrizeTable();
         for (List<Integer> result : results){
             Prize prize = findPrize(result.get(0), result.get(1));
             if (prize == null){
@@ -16,7 +17,12 @@ public class Statistics {
             if (prizeTable.containsKey(prize)){
                 prizeTable.put(prize, prizeTable.get(prize)+1);
             }
-            prizeTable.put(prize, 1);
+        }
+    }
+
+    public void initPrizeTable(){
+        for (Prize prize: Prize.values()){
+            prizeTable.put(prize, 0);
         }
     }
 
