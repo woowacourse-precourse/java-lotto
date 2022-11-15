@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 public enum Rank {
     FIRST(1,6, 2_000_000_000),
     SECOND(2,5,30000000),
-    THRID(3,5,1500000),
+    THIRD(3,5,1500000),
     FIRTH(4,4,50000),
     FIFTH(5,3,5000),
     NONE(6,-1,0);
@@ -21,8 +21,8 @@ public enum Rank {
     }
 
     public static Rank findRank(int equalNumber,boolean hasBonusNumber){
-        if(equalNumber== THRID.equalNumber && !hasBonusNumber){
-            return THRID;
+        if(equalNumber== THIRD.equalNumber && !hasBonusNumber){
+            return THIRD;
         }
         return Stream.of(values())
                 .filter(rank -> rank.equalNumber == equalNumber)
