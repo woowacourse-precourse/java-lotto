@@ -3,6 +3,7 @@ package lotto.util;
 import static lotto.model.Yield.calculateYield;
 import static lotto.util.Constants.LOTTO_RANGE_MAX;
 import static lotto.util.Constants.LOTTO_RANGE_MIN;
+import static lotto.util.ErrorMessage.ERROR_LOTTO_NUMBER_RANGE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,21 +22,14 @@ public class Formatter {
     }
 
     public static List<Integer> formatWinningNumbersInput(String input) {
-        return convertStringListToIntList(separateStringByComma(removeSpace(input)));
-    }
-
-    private static List<String> separateStringByComma(String input) {
-        return Arrays.asList(input.split(COMMA_REGEX));
-    }
-
-    private static List<Integer> convertStringListToIntList(List<String> list) {
-        return list.stream().map(s -> Integer.parseInt(s))
+        return Arrays.stream(removeSpace(input).split(COMMA_REGEX))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
     public static void verifyRangeOfLottoNumber(Integer number) {
         if (number < LOTTO_RANGE_MIN || number > LOTTO_RANGE_MAX) {
-            throw new IllegalArgumentException("1부터 45 사이의 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
         }
     }
 
