@@ -1,38 +1,36 @@
 package lotto.domain;
 
+import lotto.utils.GenerateLottoNumbers;
+import lotto.view.InputLotto;
+import lotto.view.InputPrintView;
+import lotto.view.OutputLotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.utils.GenerateLottoNumbers.generateLottoNumber;
-import static lotto.view.InputLotto.*;
-import static lotto.view.InputPrintView.inputView_First;
-import static lotto.view.InputPrintView.inputView_Second;
-import static lotto.view.OutputLotto.*;
-
 public class GameSet {
-    final static int PRICE_SIZE = 6;
-    Lotto awardLotto;
-    final int lottoCount;
-    private List<Lotto> generatedLotto = new ArrayList<>();
+    public final static int PRICE_SIZE = 6;
+    private final int lottoCount;
+    private Lotto awardLotto;
+    private int[] gameCount;
     private int totalPrize;
     private int bonusNumber;
-    private int[] gameCount;
+    private List<Lotto> generatedLotto = new ArrayList<>();
     public GameSet(){
         gameCount = new int[PRICE_SIZE];
         totalPrize = 0;
-        lottoCount = moneyInput();
+        lottoCount = InputLotto.moneyInput();
     }
     public void generateLotto(){
         for(int i =0;i<lottoCount;i++) {
-            generatedLotto.add(new Lotto(generateLottoNumber()));
-            numberPrint(generatedLotto.get(i).getNumbers());
+            generatedLotto.add(new Lotto(GenerateLottoNumbers.generateLottoNumber()));
+            OutputLotto.numberPrint(generatedLotto.get(i).getNumbers());
         }
     }
     public void generateAwardLotto(){
-        inputView_First();
-        awardLotto= new Lotto(getInput());
-        inputView_Second();
-        bonusNumber = getInput().get(0);
+        InputPrintView.inputView_First();
+        awardLotto= new Lotto(InputLotto.getInput());
+        InputPrintView.inputView_Second();
+        bonusNumber = InputLotto.getInput().get(0);
     }
     public void updateGameSet(LottoProperties lottoProperties){
         gameCount[lottoProperties.getIndex()]++;

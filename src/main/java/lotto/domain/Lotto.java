@@ -1,9 +1,8 @@
 package lotto.domain;
 
+import lotto.exception.ErrorHandler;
 import java.util.Arrays;
 import java.util.List;
-
-import static lotto.exception.ErrorHandler.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,17 +13,17 @@ public class Lotto {
     }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            sizeOverException();
+            ErrorHandler.sizeOverException();
         }
         for (int i = 0; i < 6; i++) {
             if (numbers.get(i) < 1 || numbers.get(i) > 45) {
-                numberUnCorrectException();
+                ErrorHandler.numberUnCorrectException();
             }
         }
     }
     public void isUnique(List<Integer> numbers) {
         if (numbers.size()!=Arrays.asList(numbers.stream().distinct().toArray()).size()){
-            mutualInputException();
+            ErrorHandler.mutualInputException();
         }
     }
     public LottoProperties lotteryCheck(Lotto awardLotto, int bonusNumber){

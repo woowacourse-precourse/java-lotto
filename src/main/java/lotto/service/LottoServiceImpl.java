@@ -3,11 +3,10 @@ package lotto.service;
 import lotto.domain.GameSet;
 import lotto.domain.Lotto;
 import lotto.domain.LottoProperties;
-
+import lotto.view.OutputLotto;
 import java.io.IOException;
 import java.util.List;
 
-import static lotto.view.OutputLotto.printResult;
 
 
 public class LottoServiceImpl implements LottoService {
@@ -22,6 +21,6 @@ public class LottoServiceImpl implements LottoService {
             LottoProperties lottoProperties = currentLotto.lotteryCheck(gameSet.getAwardLotto(),gameSet.getBonusNumber());
             gameSet.updateGameSet(lottoProperties);
         }
-        printResult(gameSet);
+        OutputLotto.printResult(gameSet);
     }
 }

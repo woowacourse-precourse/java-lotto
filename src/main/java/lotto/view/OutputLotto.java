@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.domain.GameSet;
 import lotto.domain.LottoProperties;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;

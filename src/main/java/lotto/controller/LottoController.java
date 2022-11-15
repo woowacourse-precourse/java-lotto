@@ -2,7 +2,6 @@ package lotto.controller;
 
 import lotto.service.LottoService;
 import lotto.service.LottoServiceImpl;
-
 import java.io.IOException;
 
 public class LottoController {
@@ -13,7 +12,7 @@ public class LottoController {
         try {
             lottoService.play();
         }catch (IOException e){
-            System.out.println("[ERROR]"+e.getMessage());
+            e.printStackTrace();
         }
     }
 }

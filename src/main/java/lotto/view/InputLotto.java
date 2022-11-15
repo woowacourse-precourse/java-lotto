@@ -1,13 +1,11 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.ErrorHandler;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static lotto.exception.ErrorHandler.unCorrectMoneyInputException;
-import static lotto.exception.ErrorHandler.unCorrectMoneyRangeException;
-import static lotto.view.InputPrintView.buyView;
-import static lotto.view.InputPrintView.initInput;
 
 public class InputLotto {
     public static List<Integer> getInput(){
@@ -16,21 +14,22 @@ public class InputLotto {
         for(char inputNum :input){
             inputNumber.add(inputNum-'0');
         }
+        Collections.sort(inputNumber);
         return inputNumber;
     }
     public static int moneyInput(){
         int lottoCount = 0;
-        initInput();
+        InputPrintView.initInput();
         try{
             lottoCount=Integer.parseInt(Console.readLine());
         }catch (NumberFormatException n){
-            unCorrectMoneyRangeException();
+            ErrorHandler.unCorrectMoneyRangeException();
         }
         if(lottoCount%1000!=0){
-            unCorrectMoneyInputException();
+            ErrorHandler.unCorrectMoneyInputException();
         }
         lottoCount/=1000;
-        buyView(lottoCount);
+        InputPrintView.buyView(lottoCount);
         return lottoCount;
     }
 }
