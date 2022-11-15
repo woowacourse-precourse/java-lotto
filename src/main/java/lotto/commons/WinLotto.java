@@ -22,7 +22,7 @@ public class WinLotto {
         return winHistory;
     }
 
-    public int getWinning() {
+    public long getWinning() {
         return winning;
     }
 
