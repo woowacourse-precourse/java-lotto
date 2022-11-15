@@ -11,16 +11,17 @@ public class OutputView {
         }
     }
 
-    public void showLottoPrize(List<Integer> prize, List<Integer> winCount){
+    public void showLottoPrize(List<List<Integer>> winCountByPrize){
         final int FIRSTRANK = 4, SECONDRANK = 3, THIRDRANK = 2, FOURTHRANK = 1, FIFTHRANK = 0;
+        final int PRIZE = 0, WINCOUNT = 1;
         DecimalFormat df = new DecimalFormat("###,###");
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (" + df.format(prize.get(FIFTHRANK)) + "원) - " + winCount.get(FIFTHRANK) + "개");
-        System.out.println("4개 일치 (" + df.format(prize.get(FOURTHRANK)) + "원) - " + winCount.get(FOURTHRANK) + "개");
-        System.out.println("5개 일치 (" + df.format(prize.get(THIRDRANK)) + "원) - " + winCount.get(THIRDRANK) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (" + df.format(prize.get(SECONDRANK)) + "원) - " + winCount.get(SECONDRANK) + "개");
-        System.out.println("6개 일치 (" + df.format(prize.get(FIRSTRANK)) + "원) - " + winCount.get(FIRSTRANK) + "개");
+        System.out.println("3개 일치 (" + df.format(winCountByPrize.get(FIFTHRANK).get(PRIZE)) + "원) - " + winCountByPrize.get(FIFTHRANK).get(WINCOUNT) + "개");
+        System.out.println("4개 일치 (" + df.format(winCountByPrize.get(FOURTHRANK).get(PRIZE)) + "원) - " + winCountByPrize.get(FOURTHRANK).get(WINCOUNT) + "개");
+        System.out.println("5개 일치 (" + df.format(winCountByPrize.get(THIRDRANK).get(PRIZE)) + "원) - " + winCountByPrize.get(THIRDRANK).get(WINCOUNT) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (" + df.format(winCountByPrize.get(SECONDRANK).get(PRIZE)) + "원) - " + winCountByPrize.get(SECONDRANK).get(WINCOUNT) + "개");
+        System.out.println("6개 일치 (" + df.format(winCountByPrize.get(FIRSTRANK).get(PRIZE)) + "원) - " + winCountByPrize.get(FIRSTRANK).get(WINCOUNT) + "개");
     }
 
     public void showYield(double yield){

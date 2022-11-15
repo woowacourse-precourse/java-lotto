@@ -1,104 +1,50 @@
 package lotto.Controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.DB.*;
 import lotto.Model.*;
 import lotto.View.*;
+import net.bytebuddy.pool.TypePool;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class LottoController {
     UserLotto userLotto = new UserLotto();
     WinnerLotto winnerLotto = new WinnerLotto();
+    CompareLottoNumber compareLottoNumber = new CompareLottoNumber();
     OutputView output = new OutputView();
     InputView input = new InputView();
 
     public void start(){
-        try {
-            int purchasePrice = input.purchasePrice();
-            userLotto.setLottoCount(purchasePrice);
-            userLotto.makeLottoNumber();
-            output.showPurchasedLotto(userLotto.countOfLotto(), userLotto.listOfLotto());
-            List<Integer> winnerNumber = input.winnerNumbers();
-            winnerLotto.setWinnerNumber(winnerNumber);
-            int bonusNumber = input.bonusNumber();
-            winnerLotto.setBonusNumber(bonusNumber);
-
-            inputWinnerNumber();
-            inputBonusNumber();
-            countLottoPrize();
-            printLottoPrize();
-            calculateYield();
-        }catch(IllegalArgumentException e){
-            System.out.println("[ERROR]잘못된 입력");
-        }
+        userLottoProcessing();
+        winnerLottoProcessing();
+        compareLottoProcessing();
     }
 
-    private void countLottoPrize(){
-        List<Lotto> lottoList = lottoData.getLottoList();
-        final int noPrize = 0;
-        HashMap<Integer, Integer> numberOfWins = new HashMap<Integer, Integer>();
-        initCountPrize(numberOfWins);
-        for(Lotto lotto : lottoList){
-            int lottoPrize = getLottoPrize(lotto);
-            if(lottoPrize != noPrize) numberOfWins.put(lottoPrize, numberOfWins.get(lottoPrize) + 1);
-        }
-        lottoData.setNumberOfWins(numberOfWins);
+    private void userLottoProcessing(){
+    try {
+        int purchasePrice = input.purchasePrice();
+        userLotto.setLottoCount(purchasePrice);
+        userLotto.makeLottoNumber();
+        output.showPurchasedLotto(userLotto.countOfLotto(), userLotto.listOfLotto());
+    }catch(IllegalArgumentException e) {
+        System.out.println("[ERROR]구입 가격이 잘못 입력되었습니다.");
     }
-    private void initCountPrize(HashMap<Integer, Integer> countPrize){
-        for(LottoData.LottoPrize prize : LottoData.LottoPrize.values()){
-            countPrize.put(prize.getValue(), 0);
-        }
-    }
-    private int getLottoPrize(Lotto userNumberLotto){
-        Lotto winnerNumberLotto = lottoData.getWinnerNumber();
-        int bonusNumber = lottoData.getBonusNumber();
-        int matchedNumberCount = compareWinnerNumber(userNumberLotto, winnerNumberLotto);
-        if(matchedNumberCount == 6) return LottoData.LottoPrize.FIRSTPRIZE.getValue();
-        if(matchedNumberCount == 5 && isContainsBonusNumber(userNumberLotto, bonusNumber))return LottoData.LottoPrize.SECONDPRIZE.getValue();
-        if(matchedNumberCount == 5) return LottoData.LottoPrize.THRIDPRIZE.getValue();
-        if(matchedNumberCount == 4) return LottoData.LottoPrize.FOURTHPRIZE.getValue();
-        if(matchedNumberCount == 3) return LottoData.LottoPrize.FIFTHPRIZE.getValue();
-        return 0;
-    }
-    private int compareWinnerNumber(Lotto userNumberLotto, Lotto winnerNumberLotto){
-        List<Integer> userNumber = userNumberLotto.getLottoNumber();
-        List<Integer> winnerNumber = winnerNumberLotto.getLottoNumber();
-        int matchedNumber = 0;
-        for(int number : winnerNumber){
-            if(userNumber.contains(number)){
-                matchedNumber += 1;
-            }
-        }
-        return matchedNumber;
     }
 
-    private boolean isContainsBonusNumber(Lotto userNumberLotto, int bonusNumber){
-        List<Integer> userNumber = userNumberLotto.getLottoNumber();
-        return userNumber.contains(bonusNumber);
+    private void winnerLottoProcessing(){
+    try {
+        List<Integer> winnerNumber = input.winnerNumbers();
+        winnerLotto.setWinnerNumber(winnerNumber);
+        int bonusNumber = input.bonusNumber();
+        winnerLotto.setBonusNumber(bonusNumber);
+    }catch(IllegalArgumentException e) {
+        System.out.println("[ERROR]당첨 번호 혹은 보너스 번호가 잘못 입력되었습니다.");
+    }
     }
 
-    private void printLottoPrize(){
-        List<Integer> prizeList = new ArrayList<>(lottoData.getNumberOfWins().keySet());
-        List<Integer> winCount = new ArrayList<Integer>();
-        prizeList.sort(Integer::compareTo);
-        for(int prize : prizeList){
-            winCount.add(lottoData.getNumberOfWins().get(prize));
-        }
-        output.showLottoPrize(prizeList, winCount);
-    }
-
-    private void calculateYield(){
-        HashMap<Integer, Integer> numberOfWins = lottoData.getNumberOfWins();
-        List<Integer> prizeList = new ArrayList<>(numberOfWins.keySet());
-        double yield = 0;
-        double earning = 0;
-        for(int prize : prizeList){
-            earning += (prize * numberOfWins.get(prize));
-        }
-        yield = earning/(lottoData.getCountOfLotto() * lottoData.LOTTOPRICE);
-        output.showYield(yield*100);
+    private void compareLottoProcessing(){
+        List<List<Integer>> winCountByPrize = compareLottoNumber.getWinCountByPrize();
+        output.showLottoPrize(winCountByPrize);
+        double yield = compareLottoNumber.calculateYield();
+        output.showYield(yield);
     }
 }

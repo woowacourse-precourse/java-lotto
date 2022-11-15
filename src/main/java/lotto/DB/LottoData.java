@@ -19,31 +19,31 @@ public class LottoData{
         }
         public int getValue(){return value;}
     }
-    private HashMap<Integer, Integer> numberOfWins = new HashMap<Integer, Integer>();
-    private int countOfLotto;
-    private List<Lotto> lottoList;
-    private Lotto winnerNumber;
+    private static HashMap<Integer, Integer> numberOfWins = new HashMap<Integer, Integer>();
+    private static int countOfLotto;
+    private static List<Lotto> lottoList;
+    private static Lotto winnerNumber;
 
-    private int bonusNumber;
+    private static int bonusNumber;
     public void setCountOfLotto(int numberOfLotto){
-        this.countOfLotto = numberOfLotto / LOTTOPRICE;
+        LottoData.countOfLotto = countOfLotto / LOTTOPRICE;
     }
-    public void setNumberOfWins(HashMap<Integer, Integer> numberOfWins){this.numberOfWins = numberOfWins;}
+    public void setNumberOfWins(HashMap<Integer, Integer> numberOfWins){LottoData.numberOfWins = numberOfWins;}
     public HashMap<Integer, Integer> getNumberOfWins(){return numberOfWins;}
     public int getCountOfLotto(){
         return countOfLotto;
     }
     public void setLottoList(List<Lotto> lottoList){
-        this.lottoList = lottoList;
+        LottoData.lottoList = lottoList;
     }
 
     public void setWinnerNumber(Lotto winnerNumber){
-        this.winnerNumber = winnerNumber;
+        LottoData.winnerNumber = winnerNumber;
     }
     public Lotto getWinnerNumber(){return winnerNumber;}
 
     public void setBonusNumber(int bonusNumber){
-        this.bonusNumber = bonusNumber;
+        LottoData.bonusNumber = bonusNumber;
     }
     public int getBonusNumber(){return bonusNumber;}
     public List<Lotto> getLottoList(){
