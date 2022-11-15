@@ -27,6 +27,14 @@ public class Lotto {
         return numbers.get(BONUS_NUMBER_INDEX);
     }
     public void setBonusNumber(int bonusNumber) {
+        validate(getWinningNumbers(), bonusNumber);
+
         this.numbers.add(bonusNumber);
+    }
+    private void validate(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            System.out.println(ERROR_MESSAGE + "보너스 번호가 로또 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException();
+        }
     }
 }
