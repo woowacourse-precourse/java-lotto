@@ -36,4 +36,12 @@ class LottoMachineTest {
                 .hasMessageContaining("숫자가 정렬되어 있지 않습니다.");
     }
 
+    @DisplayName("로또 번호가 범위 내에 있지 않으면 예외가 발생힌다.")
+    @Test
+    void createLottoByOutOfRangeNumber() {
+        assertThatThrownBy(() -> lottoMachine.validateLottoNumber(List.of(1,2,3,4,5,100)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 숫자중 범위 밖의 숫자가 있습니다.");
+    }
+
 }

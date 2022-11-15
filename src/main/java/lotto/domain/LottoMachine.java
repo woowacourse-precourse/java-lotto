@@ -20,6 +20,8 @@ public class LottoMachine {
         validateLottoNumbersLength(numbers);
         validateLottoNumbersDuplicated(numbers);
         validateLottoNumbersSorted(numbers);
+        validateLottoNumbersInRange(numbers);
+
     }
 
     private void validateLottoNumbersLength(List<Integer> numbers) {
@@ -42,5 +44,16 @@ public class LottoMachine {
             }
         }
     }
+
+    private void validateLottoNumbersInRange(List<Integer> numbers) {
+        boolean rangeOverFlag = numbers.stream().anyMatch(number -> number < Constants.MIN_LOTTO_NUMBER_RANGE.getValue()
+                || number > Constants.MAX_LOTTO_NUMBER_RANGE.getValue());
+
+        if (rangeOverFlag) {
+            throw new IllegalArgumentException("로또 숫자중 범위 밖의 숫자가 있습니다.");
+        }
+    }
+
+
 
 }
