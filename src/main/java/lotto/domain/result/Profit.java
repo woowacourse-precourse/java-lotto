@@ -19,7 +19,7 @@ public class Profit {
 
     public int calculateProfit(HitResult matchResults) {
         int profit = 0;
-        Map<Rank, Integer> result = matchResults.getHitResult();
+        Map<Rank, Integer> result = matchResults.getHitResultExceptNone();
         for (Entry<Rank, Integer> entry : result.entrySet()) {
             profit += entry.getKey().getPrize() * entry.getValue();
         }

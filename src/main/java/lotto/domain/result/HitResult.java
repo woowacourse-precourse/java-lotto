@@ -2,6 +2,7 @@ package lotto.domain.result;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.lottery.BonusNumber;
@@ -42,7 +43,8 @@ public class HitResult {
         }
     }
 
-    public Map<Rank, Integer> getHitResult() {
+    public Map<Rank, Integer> getHitResultExceptNone() {
+        result.remove(Rank.NONE);
         return result;
     }
 }

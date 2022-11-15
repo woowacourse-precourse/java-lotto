@@ -32,17 +32,13 @@ public class Output {
     }
 
     public static void printWinningStatistics(HitResult result) {
-        Map<Rank, Integer> matchResult = result.getHitResult();
+        Map<Rank, Integer> matchResult = result.getHitResultExceptNone();
         System.out.println(WINNING_STATISTICS);
         System.out.println(THREE_MATCHES.getMessage(matchResult.get(THREE_MATCHES)));
         System.out.println(FOUR_MATCHES.getMessage(matchResult.get(FOUR_MATCHES)));
         System.out.println(FIVE_MATCHES_WITHOUT_BONUS.getMessage(matchResult.get(FIVE_MATCHES_WITHOUT_BONUS)));
         System.out.println(FIVE_MATCHES_WITH_BONUS.getMessage(matchResult.get(FIVE_MATCHES_WITH_BONUS)));
         System.out.println(SIX_MATCHES.getMessage(matchResult.get(SIX_MATCHES)));
-    }
-
-    public static void printLotteryNumbers(List<Integer> lotteryNumbers) {
-        System.out.println(lotteryNumbers.toString());
     }
 
     public static void purchaseCountNotification(int purchaseCount) {
