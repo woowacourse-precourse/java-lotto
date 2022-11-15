@@ -18,6 +18,7 @@ public class Application {
         }
         printLottos(lottos);
 
+        List<Integer> myLotto = getMyBonusNumbers(getMyLottoNumbers());
 
     }
 
@@ -75,6 +76,16 @@ public class Application {
         for (String l : lotto) {
             myLotto.add(Integer.parseInt(l));
         }
+
+        return myLotto;
+    }
+
+    public static List<Integer> getMyBonusNumbers(List<Integer> myLotto) {
+        String bonus = Console.readLine();
+
+        int bonusNumber = Integer.parseInt(bonus);
+
+        myLotto.add(bonusNumber);
 
         return myLotto;
     }
