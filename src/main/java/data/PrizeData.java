@@ -1,20 +1,18 @@
 package data;
 
 public enum PrizeData {
-    FIFTH(5000, "5,000", 3, false),
-    FOURTH(50000, "50,000", 4, false),
-    THIRD(1500000, "1,500,000", 5, false),
-    SECOND(30000000, "30,000,000", 5, true),
-    FIRST(2000000000, "2,000,000,000", 6, false);
+    FIFTH(5000, 3, false),
+    FOURTH(50000, 4, false),
+    THIRD(1500000, 5, false),
+    SECOND(30000000, 5, true),
+    FIRST(2000000000, 6, false);
 
     private final int prizeMoney;
-    private final String printingMoney;
     private final int winningCount;
     private final boolean isHavingBonus;
 
-    PrizeData(int prizeMoney, String printingMoney, int winningCount, boolean isHavingBonus){
+    PrizeData(int prizeMoney, int winningCount, boolean isHavingBonus){
         this.prizeMoney = prizeMoney;
-        this.printingMoney = printingMoney;
         this.winningCount = winningCount;
         this.isHavingBonus = isHavingBonus;
     }
