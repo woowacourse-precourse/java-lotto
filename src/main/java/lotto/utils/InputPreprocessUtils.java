@@ -13,15 +13,24 @@ public class InputPreprocessUtils {
         return list.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
+    public static int stringToInteger(String input){
+        validateNumber(input);
+        return Integer.parseInt(input);
+    }
+
     private static String[] splitByComma(String input){
         return input.replace(" ", "").split(",");
     }
 
     private static void isInteger(String[] inputs){
         for(String input: inputs){
-            if(!ValidateUtils.isNumber(input)){
-                ValidateUtils.throwIllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
-            }
+            validateNumber(input);
+        }
+    }
+
+    private static void validateNumber(String input){
+        if(!ValidateUtils.isNumber(input)){
+            ValidateUtils.throwIllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
         }
     }
 }
