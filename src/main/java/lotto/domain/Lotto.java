@@ -29,7 +29,7 @@ public class Lotto {
     public LottoProperties lotteryCheck(Lotto awardLotto, int bonusNumber){
         int correct = numberCheck(awardLotto);
         LottoProperties lottoProperties = LottoProperties.findType(correct);
-        if (lottoProperties == LottoProperties.LOTTO_THIRDWINNER && isBonusCorrect(bonusNumber) == true){
+        if (lottoProperties == LottoProperties.LOTTO_THIRDWINNER && isBonusCorrect(bonusNumber)){
             lottoProperties = LottoProperties.LOTTO_SECONDWINNER;
         }
         return lottoProperties;
@@ -38,20 +38,16 @@ public class Lotto {
         int correct = 0;
         int i =0;
         int j =0;
-        int inputNumber;
-        int awardNumber;
         while (i<numbers.size() && j<awardLotto.getNumbers().size()) {
-            inputNumber = numbers.get(i);
-            awardNumber = awardLotto.getNumbers().get(j);
-            if (inputNumber == awardNumber) {
+            if (numbers.get(i) == awardLotto.getNumbers().get(j)) {
                 correct++;
                 i++;
                 j++;
             }
-            if (inputNumber < awardNumber) {
+            if (numbers.get(i) < awardLotto.getNumbers().get(j)) {
                 i++;
             }
-            if (awardNumber < inputNumber) {
+            if (numbers.get(i) > awardLotto.getNumbers().get(j)) {
                 j++;
             }
         }
