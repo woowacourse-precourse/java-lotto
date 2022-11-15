@@ -21,6 +21,8 @@ public class Manager {
         List<List<Integer>> purchaseLottos = new ArrayList<>();
         int publishCount = purchasePrice / LottoConst.PURCHASE_UNIT;
 
+        System.out.println(publishCount+"개를 구매했습니다.");
+
         for (int i = 0; i < publishCount; i++) {
             List<Integer> publishLotto = Randoms.pickUniqueNumbersInRange(LottoConst.START_RANGE, LottoConst.END_RANGE, LottoConst.LOTTO_LENGTH);
             System.out.println(publishLotto);
