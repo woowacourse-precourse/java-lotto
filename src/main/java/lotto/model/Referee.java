@@ -46,4 +46,14 @@ public class Referee {
         }
         return score;
     }
+
+    public int sumTotalProfit() {
+        int totalProfit = 0;
+        for (Map.Entry<Prize, Integer> entrySet : result.entrySet()) {
+            Prize prize = entrySet.getKey();
+            int prizeCount = entrySet.getValue();
+            totalProfit +=  prize.calculate(prizeCount);
+        }
+        return totalProfit;
+    }
 }
