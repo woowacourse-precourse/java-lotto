@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumbers {
+    static final String ERROR_ONLY_NUMBER = "[ERROR] 숫자만 입력 가능합니다.";
+    static final String ERROR_NO_DUPLICATE_BETWEEN_LOTTO_AND_BONUS = "[ERROR] 보너스 번호는 로또 번호와 중복되면 안 됩니다.";
+    static final String ERROR_ONLY_ONE_BONUS = "[ERROR] 보너스 번호는 1개입니다.";
+
     public final List<Integer> lotto;
     public final int bonus;
 
@@ -29,7 +33,7 @@ public class WinningNumbers {
             try {
                 lotto.add(Integer.parseInt(tmp[i]));
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException(ERROR_ONLY_NUMBER);
             }
         }
         return lotto;
@@ -41,18 +45,18 @@ public class WinningNumbers {
         String bonusNumber = Console.readLine();
         String[] tmp = bonusNumber.split(",");
         if (tmp.length != 1)
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개입니다.");
+            throw new IllegalArgumentException(ERROR_ONLY_ONE_BONUS);
         try {
             bonus = Integer.parseInt(tmp[0]);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ERROR_ONLY_NUMBER);
         }
         return bonus;
     }
 
     private void validate(List<Integer> lotto, int bonus) {
         if (lotto.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되면 안 됩니다.");
+            throw new IllegalArgumentException(ERROR_NO_DUPLICATE_BETWEEN_LOTTO_AND_BONUS);
         }
     }
 }
