@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Validation {
 
     public void checkNumeric(String input) throws IllegalArgumentException {
@@ -23,6 +26,12 @@ public class Validation {
     public void checkNull(String input) throws IllegalArgumentException {
         if (input.isBlank()) {
             throw new IllegalArgumentException(Error.IS_NULL.message());
+        }
+    }
+
+    public void checkDuplicate(List<Integer> list) throws IllegalArgumentException {
+        if (list.stream().distinct().collect(Collectors.toList()).size() != list.size()) {
+            throw new IllegalArgumentException(Error.DUPLICATE_IN_WINNING.message());
         }
     }
 
