@@ -77,7 +77,7 @@ public class LottoStatisticsTest {
 
             LottoStatistics statistics = generator.generate(lottoResults);
 
-            String result = "총 수익률은 381.9%입니다.";
+            String result = "총 수익률은 38,187.5%입니다.";
             assertThat(statistics.getReturnRateDescription()).isEqualTo(result);
         });
     }

@@ -39,7 +39,7 @@ public class LottoStatistics {
     public String getReturnRateDescription() {
         AtomicInteger totalPrize = new AtomicInteger();
         resultMap.forEach((lottoResult, count) -> totalPrize.addAndGet(lottoResult.getPrize() * count));
-        float returnRate = (totalPrize.floatValue() / (float) payment.getAmount());
+        float returnRate = 100 * (totalPrize.floatValue() / (float) payment.getAmount());
 
         return "총 수익률은 " + decimalFormatter.format(returnRate) + "%입니다.";
     }
