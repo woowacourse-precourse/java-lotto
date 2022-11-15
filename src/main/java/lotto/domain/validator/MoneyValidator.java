@@ -4,7 +4,7 @@ import static lotto.domain.LottoConstants.LOTTO_PRICE;
 import static lotto.domain.validator.ErrorMessages.NEMERIC_ERROR_MESSAGE;
 import static lotto.domain.validator.ErrorMessages.DIVIDED_ERROR_MESSAGE;
 
-public class MoneyValidator extends Validator {
+public class MoneyValidator {
     private static boolean isNumeric(String moneyInput) {
         for (int index = 0; index < moneyInput.length(); index++) {
             if (!Character.isDigit(moneyInput.charAt(index))) {

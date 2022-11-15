@@ -46,7 +46,7 @@ public class LottoGameResultGenerator {
         }
     }
 
-    private int calculateWinningCount(Lotto lotto, WinningNumbers winningNumbers) {
+    public int calculateWinningCount(Lotto lotto, WinningNumbers winningNumbers) {
         int winningCount = 0;
         for (int number : winningNumbers.getNumbers()) {
             if (lotto.contains(number)) {
@@ -56,7 +56,7 @@ public class LottoGameResultGenerator {
         return winningCount;
     }
 
-    private void updateWinningDetails(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
+    public void updateWinningDetails(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
         if (winningCount < MIN_WINNING_COUNT.getValue()) {
             return;
         }
@@ -67,7 +67,7 @@ public class LottoGameResultGenerator {
         winningDetails.put(prizeMoney, newValue);
     }
 
-    private int getPrizeMoneyByWinningCount(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
+    public int getPrizeMoneyByWinningCount(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
         int bonusNumber = winningNumbers.getBonusNumber();
         if (winningCount == FIRST.winningCount()) {
             return FIRST.prizeMoney();
@@ -84,12 +84,12 @@ public class LottoGameResultGenerator {
         return THIRD.prizeMoney();
     }
 
-    private void calculateEarningRate(int paidMoney) {
+    public void calculateEarningRate(int paidMoney) {
         int profits = calculateProfits();
         earningRate = (profits / (double)paidMoney) * 100;
     }
 
-    private int calculateProfits() {
+    public int calculateProfits() {
         int profits = 0;
         for (int prizeMoney : winningDetails.keySet()) {
             profits += prizeMoney * winningDetails.get(prizeMoney);
