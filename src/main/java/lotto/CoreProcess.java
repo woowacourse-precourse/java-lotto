@@ -55,5 +55,23 @@ public class CoreProcess {
         return null;
     }
 
+    public int earningRatio(int money, int earning) {
+        int earningRatio = (earning / money) * 100;
+
+        return earningRatio;
+
+    }
+
+    public int earningLotto(int moneyChance, List<Integer> pickedNumber, int bonus) {
+        int earning = 0;
+        for (int i = 0; i < moneyChance; i++) {
+            int count = compareNumber(setLottoNumber(), pickedNumber);
+
+            earning = earning + setResult(count, checkBonus(setLottoNumber(), bonus)).prize;
+
+        }
+        return earning;
+    }
+
 }
 
