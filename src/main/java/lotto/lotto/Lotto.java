@@ -1,6 +1,9 @@
 package lotto.lotto;
 
 import java.util.List;
+import lotto.exception.DuplicatedLottoNumberException;
+import lotto.exception.IllegalLottoLengthException;
+import lotto.exception.IllegalLottoNumberRangeException;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,7 +15,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalLottoLengthException();
+        }
+        boolean outOfRange = numbers.stream().anyMatch(number -> number > 45 || number < 1);
+        if (outOfRange) {
+            throw new IllegalLottoNumberRangeException();
+        }
+        boolean duplicated = numbers.stream()
+                .anyMatch(number -> numbers.stream().filter(number::equals).count() > 1);
+        if (duplicated) {
+            throw new DuplicatedLottoNumberException();
         }
     }
 
