@@ -1,8 +1,5 @@
 package lotto.domain;
 
-
-import java.util.List;
-
 public enum Rank {
     THREE(3, 5000, "3개 일치 (5,000원)", 0),
     FOUR(4, 50_000, "4개 일치 (50,000원)", 1),
