@@ -59,5 +59,9 @@ public class Input {
         }
     }
 
-
+    public void checkSameNumber(int number1, int number2){
+        if(number1==number2){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복되지 않은 6개 숫자여야 합니다.");
+        }
+    }
 }
