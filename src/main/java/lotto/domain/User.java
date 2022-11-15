@@ -1,16 +1,17 @@
 package lotto.domain;
 
+import static lotto.constant.Constant.ERROR_MESSAGE;
+import static lotto.constant.Constant.FIRST_COUNT;
+import static lotto.constant.Constant.LOTTO_COST;
+import static lotto.constant.Constant.NUMBER_FORMS;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.exception.IllegalArgumentException;
 
 public class User {
 
-    private static final String NUMBER_FORMS = "^[0-9]*$";
-    private static final char FIRST_COUNT = '0';
-    private static final int LOTTO_COST = 1000;
     private static int buyAmount;
-    private static final String ERROR_MESSAGE = "[ERROR] ";
     private List<Lotto> myLotto = new ArrayList<>();
 
     public void setMyLotto(Lotto lotto) {

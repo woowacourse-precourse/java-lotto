@@ -1,14 +1,15 @@
 package lotto.util;
 
+import static lotto.constant.Constant.LOTTO_SIZE;
+import static lotto.constant.Constant.MAX_LOTTO_NUMBER;
+import static lotto.constant.Constant.MIN_LOTTO_NUMBER;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class CreateLottoNumber {
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private static final int LOTTO_SIZE = 6;
 
     public List<Integer> createLottoNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);

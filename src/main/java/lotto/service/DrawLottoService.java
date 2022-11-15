@@ -1,5 +1,12 @@
 package lotto.service;
 
+import static lotto.constant.Constant.FIFTH_WINING_COUNT;
+import static lotto.constant.Constant.FIRST_WINING_COUNT;
+import static lotto.constant.Constant.FIVE_NUMBER_MATCHES;
+import static lotto.constant.Constant.LOTTO_COST;
+import static lotto.constant.Constant.PERCENTILE;
+import static lotto.constant.Constant.SIX_NUMBER_MATCHES;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,14 +16,6 @@ import lotto.domain.Rank;
 import lotto.util.ConversionArrayToList;
 
 public class DrawLottoService {
-    private static final int LOTTO_COST = 1000;
-    private static final int FIVE_NUMBER_MATCHES = 5;
-    private static final int SIX_NUMBER_MATCHES = 6;
-    private static final int FIFTH_WINING_COUNT = 3;
-    private static final int FIRST_WINING_COUNT = 7;
-
-    private static final int PERCENTILE = 100;
-
     Map<Integer, Integer> correctNumberCount = new HashMap<>();
     ConversionArrayToList conversionArrayToList = new ConversionArrayToList();
 

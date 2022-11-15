@@ -1,12 +1,13 @@
 package lotto.domain;
 
+import static lotto.constant.Constant.ERROR_MESSAGE;
+import static lotto.constant.Constant.LOTTO_SIZE;
+import static lotto.constant.Constant.MAX_LOTTO_NUMBER;
+import static lotto.constant.Constant.MIN_LOTTO_NUMBER;
+
 import java.util.List;
 
 public class WiningNumber {
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private static final int LOTTO_SIZE = 6;
-    private static final String ERROR_MESSAGE = "[ERROR] ";
     private final List<Integer> winingNumber;
 
     private int bonusNumber;
