@@ -48,4 +48,50 @@ class AnswerTest {
         assertThatThrownBy(() -> new Answer("1,2,널,3,9,11"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스를 생성할 수 있다.")
+    @Test
+    void canCreateBonus() {
+        String str = "1,2,19,8,14,45";
+        Answer answer = new Answer(str);
+        answer.createBonus("4");
+
+        assertThat(answer.getBonus()).isEqualTo(4);
+    }
+
+    @DisplayName("숫자 이외의 것으로 보너스를 생성할 수 없다.")
+    @Test
+    void createBonusByNotDigit() {
+        Answer answer = new Answer("1,2,3,4,5,6");
+
+        assertThatThrownBy(() -> answer.createBonus("일"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("널로 보너스를 생성할 수 없다.")
+    @Test
+    void createBonusByNull() {
+        Answer answer = new Answer("1,2,3,4,5,6");
+
+        assertThatThrownBy(() -> answer.createBonus(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("범위 밖의 수로 보너스를 생성할 수 없다.")
+    @Test
+    void createBonusByNotInRange() {
+        Answer answer = new Answer("1,2,3,4,5,6");
+
+        assertThatThrownBy(() -> answer.createBonus("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정답에 있는 숫자로 보너스를 만들 수 없다.")
+    @Test
+    void createBonusByAnswerElement() {
+        Answer answer = new Answer("1,2,3,4,5,6");
+
+        assertThatThrownBy(() -> answer.createBonus("6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
