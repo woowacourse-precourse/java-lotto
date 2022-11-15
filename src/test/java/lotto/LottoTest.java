@@ -36,4 +36,11 @@ class LottoTest {
         assertThatThrownBy(() -> LottoStore.getInstance().buy(1800))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 금액이 양수가 아니면 예외가 발생한다.")
+    @Test
+    void buyLottoByNegativeMoney() {
+        assertThatThrownBy(() -> LottoStore.getInstance().buy(-10000))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
