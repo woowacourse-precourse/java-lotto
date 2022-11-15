@@ -30,9 +30,13 @@ public class Application {
 
     private static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        List<String> temp = Arrays.asList(Console.readLine().split(","));
+        String[] numbers = Console.readLine().split(",");
+        return typeChange(numbers);
+    }
+
+    private static List<Integer> typeChange(String[] numbers) {
         List<Integer> winningNumbers = new ArrayList<>();
-        for (String number : temp) {
+        for (String number : numbers) {
             winningNumbers.add(parseInt(number));
         }
         return winningNumbers;
