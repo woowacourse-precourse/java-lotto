@@ -29,6 +29,9 @@ public enum Rank {
                 .orElseThrow(() -> new IllegalArgumentException());
     }
 
+    public Integer getSameCount(){
+        return sameCount;
+    }
     public Integer getPrize() {
         return prize;
     }
