@@ -22,14 +22,4 @@ public class Lottos {
             lottos.add(oneLotto);
         }
     }
-
-    public void printLottos() {
-        for (int oneLotto = 0; oneLotto < lottos.size(); oneLotto++) {
-            System.out.println(lottos.get(oneLotto).getLotto());
-        }
-    }
-
-    public Lotto getLottos(int index) {
-        return lottos.get(index);
-    }
 }
