@@ -21,7 +21,7 @@ public class Printer {
         this.money = money;
     }
 
-    public void Result() {
+    public void result() {
         System.out.printf("당첨 통계\n" +
                 "---\n" +
                 "3개 일치 (5,000원) : %d개\n" +
