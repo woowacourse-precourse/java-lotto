@@ -54,6 +54,9 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] input = Console.readLine().split(",");
         for (String s : input) {
+            if(Integer.parseInt(s) < 1 || Integer.parseInt(s) > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
             winningNumber.add(Integer.parseInt(s));
         }
         System.out.println("보너스 번호을 입력해 주세요.");
@@ -64,14 +67,24 @@ public class Application {
     private static int numberOfLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         String inputStringMoney = Console.readLine();
+        if(!isNumeric(inputStringMoney)){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+        }
         int money = Integer.parseInt(inputStringMoney);
         if(money < 0 || money%1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
         }
         System.out.println((money/1000) + "개를 구매했습니다.");
         return money/1000;
     }
-
+    private static boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     private static List<Integer> makeRandomNumbers() {
         List<Integer> numberList = Randoms.pickUniqueNumbersInRange(1, 45,6);
         List<Integer> newList = new ArrayList<>();
