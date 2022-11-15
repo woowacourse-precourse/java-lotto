@@ -8,10 +8,9 @@ import java.util.stream.Collectors;
 public class Lotto {
 
     // 인스턴스 변수는 추가하면 안되지만 클래스 변수는 추가 가능함
-    public final static String ERROR_LOTTO_NUMBER_SIZE = "[ERROR] 입력 받을 수 있는 로또의 크기는 6입니다.";
+    public static final String ERROR_LOTTO_NUMBER_SIZE = "[ERROR] 입력 받을 수 있는 로또의 크기는 6입니다.";
     public static final String ERROR_LOTTO_NUMBER_DUPLICATED = "[ERROR] 로또 번호는 중복될 수 없습니다.";
-    private final static Integer FIX_SIZE = 6;
-
+    private static final Integer FIX_SIZE = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
