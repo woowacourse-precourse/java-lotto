@@ -50,7 +50,7 @@ public class Validator {
     public static int validateBonusNumber(String bonusNumber) {
         isNumeric(bonusNumber, Error.NUMBER);
         isCorrectRange(bonusNumber,Error.RANGE);
-        InputOnlyOne(bonusNumber, Error.ONE_SIZE);
+        inputOnlyOne(bonusNumber, Error.ONE_SIZE);
         return Integer.parseInt(bonusNumber);
     }
 
@@ -75,7 +75,7 @@ public class Validator {
         }
     }
 
-    public static void InputOnlyOne(String number, Error error) {
+    public static void inputOnlyOne(String number, Error error) {
         if (number.length() != BONUS_SIZE) {
             throw new IllegalArgumentException(error.getMsg());
         }
