@@ -12,7 +12,7 @@ public class OutputView {
     private static final String PURCHASE_OUTPUT = "개를 구매했습니다.";
     private static final String STATISTICS_MESSAGE = "당첨 통계\n" + "---";
     private static final String WINNING_STATISTICS = "%d개 일치 (%,d원) - %d개\n";
-    private static final String BONUS_STATISTICS = "5개 일치, 보너스 볼 일치 - %d개\n";
+    private static final String BONUS_STATISTICS = "5개 일치, 보너스 볼 일치 (%,d원) - %d개\n";
     private static final String PROFIT_MESSAGE = "총 수익률은 %,.1f%%입니다.";
 
     public static void lottoTicketsOut(int tickets, List<Lotto> newLotto) {
@@ -28,7 +28,7 @@ public class OutputView {
         System.out.println(STATISTICS_MESSAGE);
         for(Rank rank: Rank.values()) {
             if(rank == Rank.SECOND) {
-                System.out.printf((BONUS_STATISTICS), ranking.get(rank));
+                System.out.printf((BONUS_STATISTICS), rank.getRank().get(1), ranking.get(rank));
                 continue;
             }
             System.out.printf((WINNING_STATISTICS),
