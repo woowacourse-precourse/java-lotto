@@ -28,26 +28,22 @@ class LottoCalculatorTest {
     }
 
     @Test
-    void addRankCount() {
+    void 등수_더하기_테스트() {
         int input = 1;
         int input2 = 4;
         lottoCalculator.addRankCount(input);
         lottoCalculator.addRankCount(input2);
         lottoCalculator.addRankCount(input2);
+        List<Integer> expected = lottoCalculator.getRankCount();
 
-        assertThat(lottoCalculator.getRankCount()).isEqualTo(Arrays.asList(0, 1, 0, 0, 2));
+        assertThat(expected).isEqualTo(Arrays.asList(0, 1, 0, 0, 2));
     }
 
-    @Test
-    void sumOfPrizeMoney() {
-        lottoCalculator.addRankCount(0);
-        lottoCalculator.addRankCount(1);
-        lottoCalculator.addRankCount(2);
-        lottoCalculator.addRankCount(3);
-        lottoCalculator.addRankCount(4);
+    @ParameterizedTest
+    @CsvSource({"0,5000", "1,50000", "2,1500000", "3,30000000", "4,2000000000"})
+    void 상금_합산_테스트(int rank, double money) {
+        lottoCalculator.addRankCount(rank);
 
-        double expected = 2031555000;
-
-        assertThat(lottoCalculator.sumOfPrizeMoney()).isEqualTo(expected);
+        assertThat(lottoCalculator.sumOfPrizeMoney()).isEqualTo(money);
     }
 }
