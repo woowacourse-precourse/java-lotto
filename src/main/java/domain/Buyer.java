@@ -19,6 +19,7 @@ public class Buyer {
     private void validateDigit(String inputNum) {
         for (int index = 0; index < inputNum.length(); index++) {
             if (!Character.isDigit(inputNum.charAt(index))) {
+                System.out.println(ErrorMessage.DATA_TYPE_ERR_MESSAGE.getErrorMessage());
                 throw new IllegalArgumentException(ErrorMessage.DATA_TYPE_ERR_MESSAGE.getErrorMessage());
             }
         }
@@ -26,6 +27,7 @@ public class Buyer {
 
     private void validateDiv(int price) {
         if (price % 1000 != 0) {
+            System.out.println(ErrorMessage.PRICE_ERROR_MESSAGE.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR_MESSAGE.getErrorMessage());
         }
     }

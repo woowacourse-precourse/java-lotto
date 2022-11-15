@@ -16,9 +16,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println(ErrorMessage.NUMBER_SIZE_ERR_MESSAGE.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.NUMBER_SIZE_ERR_MESSAGE.getErrorMessage());
         }
         if (numbers.size() != numbers.stream().distinct().count()) {
+            System.out.println(ErrorMessage.NUMBER_DUPLICATE_ERR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE_ERR.getErrorMessage());
         }
         for (Integer number : numbers) {
@@ -28,6 +30,7 @@ public class Lotto {
 
     private void validateNumberRange(int number) {
         if (number < MIN_NUM || number > MAX_NUM) {
+            System.out.println(NUMBER_RANGE_ERR);
             throw new IllegalArgumentException(NUMBER_RANGE_ERR);
         }
     }

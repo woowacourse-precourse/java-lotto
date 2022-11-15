@@ -25,18 +25,21 @@ public class PickBonusNum {
         try {
             Integer.parseInt(pickBonusNum);
         } catch (Exception e) {
+            System.out.println(ErrorMessage.DATA_TYPE_ERR_MESSAGE.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.DATA_TYPE_ERR_MESSAGE.getErrorMessage());
         }
     }
 
     private void validateNumberRange(int bonusNum) {
         if (bonusNum < MIN_NUM || bonusNum > MAX_NUM) {
+            System.out.println(NUMBER_RANGE_ERR);
             throw new IllegalArgumentException(NUMBER_RANGE_ERR);
         }
     }
 
     private void validateDuplicateNumber(Lotto pickLottoNum, int bonusNum) {
         if (pickLottoNum.checkBounsInclude(bonusNum)) {
+            System.out.println(ErrorMessage.NUMBER_DUPLICATE_ERR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATE_ERR.getErrorMessage());
         }
     }
