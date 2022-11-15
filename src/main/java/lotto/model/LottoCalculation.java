@@ -1,7 +1,6 @@
 package lotto.model;
 
 import java.util.List;
-import java.util.Map;
 
 public class LottoCalculation {
     private StatisticsResult result;
@@ -20,37 +19,35 @@ public class LottoCalculation {
 
     public double computeRateOfReturn(int purchaseAmount) {
         double totalAmount = 0;
-
-        for (Map.Entry<WinningScore, Integer> score : result.getWinningScoreResult().entrySet()) {
-            int count = score.getValue();
-            totalAmount += score.getKey().getMoney() * count;
+        for (WinningScore score : result.getAllScore()) {
+            totalAmount += score.getMoney() * result.getCount(score);
         }
-
         return totalAmount / purchaseAmount * 100;
     }
 
-    public void computeWinningScore(Lotto userLotto) {
-        WinningScore winningScore = compareNumber(userLotto.getNumbers());
-        if (winningScore == WinningScore.NONE) {
+    public void computeWinningResult(Lotto userLotto) {
+        int count = countSameNumber(userLotto.getNumbers());
+        if (!isWinning(count)) {
             return;
         }
-        if (isBonusScore(winningScore, userLotto.getNumbers())) {
-            result.addScoreCount(WinningScore.BONUS, result.getScoreCount(WinningScore.BONUS) + 1);
-            return;
-        }
-        result.addScoreCount(winningScore, result.getScoreCount(winningScore) + 1);
-    }
-
-    public WinningScore compareNumber(List<Integer> userNumber) {
-        int count = countSameNumber(userNumber);
-        if (count < WinningScore.THREE.getScore()) {
-            return WinningScore.NONE;
-        }
-        return WinningScore.getScore(count);
+        computeWinningScore(count, userLotto.getNumbers());
     }
 
     public int countSameNumber(List<Integer> userNumber) {
         return (int) userNumber.stream().filter(num -> winningLotto.getNumbers().contains(num)).count();
+    }
+
+    public boolean isWinning(int count) {
+        return count >= WinningScore.THREE.getScore();
+    }
+
+    public void computeWinningScore(int count, List<Integer> userNumber) {
+        WinningScore winningScore = WinningScore.getScore(count);
+        if (isBonusScore(winningScore, userNumber)) {
+            result.addScoreCount(WinningScore.BONUS, result.getCount(WinningScore.BONUS) + 1);
+            return;
+        }
+        result.addScoreCount(winningScore, result.getCount(winningScore) + 1);
     }
 
     public boolean isBonusScore(WinningScore winningScore, List<Integer> userNumber) {

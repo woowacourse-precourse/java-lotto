@@ -28,7 +28,7 @@ public class LottoService {
 
     public StatisticsResult computeWinningResult() {
         for (Lotto userLotto : lottoMachine.getLottoTickets()) {
-            lottoCalculation.computeWinningScore(userLotto);
+            lottoCalculation.computeWinningResult(userLotto);
         }
         return lottoCalculation.getStatisticsResult();
     }

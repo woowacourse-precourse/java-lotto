@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class StatisticsResult {
 
@@ -21,11 +22,15 @@ public class StatisticsResult {
         return winningScoreResult;
     }
 
+    public Set<WinningScore> getAllScore() {
+        return winningScoreResult.keySet();
+    }
+
     public void addScoreCount(WinningScore winningScore, int count) {
         winningScoreResult.put(winningScore, count);
     }
 
-    public int getScoreCount(WinningScore winningScore) {
+    public int getCount(WinningScore winningScore) {
         return winningScoreResult.getOrDefault(winningScore, 0);
     }
 
