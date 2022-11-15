@@ -22,15 +22,15 @@ public class UserIO {
 
     public static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        Integer[] numbers = Arrays.stream(Console.readLine().split(","))
-            .map(Integer::parseInt)
-            .toArray(Integer[]::new);
-        return new ArrayList<>(List.of(numbers));
+        String input = Console.readLine();
+
+        return Validaor.validateWinningNumbers(input);
     }
 
-    public static Integer inputBonusNumber() {
+    public static Integer inputBonusNumber(List<Integer> winningNumbers) {
         System.out.println("보너스 번호를 입력해주세요.");
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        return Validaor.validateBonusNumber(input, winningNumbers);
     }
 
     public static void printWinStat(Map<Rank, Integer> map, Double yield) {

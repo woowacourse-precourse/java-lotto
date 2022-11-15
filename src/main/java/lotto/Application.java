@@ -24,7 +24,7 @@ public class Application {
         List<Lotto> lottos = buyLottos(purchaseAmount);
         UserIO.printLottoNumbers(lottos);
         List<Integer> winningNumbers = UserIO.inputWinningNumber();
-        Integer bonusNumber = UserIO.inputBonusNumber();
+        Integer bonusNumber = UserIO.inputBonusNumber(winningNumbers);
 
         Map<Rank, Integer> resultMap = getResultOfAll(lottos, winningNumbers, bonusNumber);
         UserIO.printWinStat(resultMap, calculateYield(resultMap, purchaseAmount));
