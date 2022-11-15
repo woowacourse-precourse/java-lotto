@@ -19,7 +19,7 @@ public class LottoGameController {
     public String inputCash;
 
     public void LottoSystem(InputMessages inputMessages, OutputMessages outputMessages) {
-
+        setRandomList(inputMessages, outputMessages);
     }
 
     public String getInputNumber(InputMessages inputMessages, OutputMessages outputMessages) {
@@ -44,6 +44,15 @@ public class LottoGameController {
 
     public List<Integer> getRandomNumList() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    public void setRandomList(InputMessages inputMessages, OutputMessages outputMessages) {
+        int count = CountEnter(inputMessages, outputMessages);
+        for (int i=0; i<count; i++) {
+            List<Integer> list = getRandomNumList();
+            lottoList.add(i, list);
+            outputMessages.printLottoList(lottoList.get(i));
+        }
     }
 
 
