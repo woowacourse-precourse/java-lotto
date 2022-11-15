@@ -36,7 +36,7 @@ public class WinningNumber {
     public List<Integer> getNumbers(){
         return this.numbers;
     }
-    private List<Integer> StringToIntegerList(String string){
+    public List<Integer> StringToIntegerList(String string){
         List<Integer> numbers = new ArrayList<>();
         int temporaryNumber = initNumber;
         for(int i=0;i<string.length();i++){
@@ -55,43 +55,43 @@ public class WinningNumber {
         return numbers;
     }
 
-    private void numberValidate(List<Integer> numbers, int temporaryNumber) {
+    public void numberValidate(List<Integer> numbers, int temporaryNumber) {
         checkIfNumberInRange(temporaryNumber);
         ifNumberAlreadyExist(numbers, temporaryNumber);
         numbers.add(temporaryNumber);
     }
 
-    private int getTemporaryNumber(int temporaryNumber, char temporaryLetter) {
+    public int getTemporaryNumber(int temporaryNumber, char temporaryLetter) {
         checkIfCharIsNumber(temporaryLetter);
         checkIfNumberStartsWithZero(temporaryNumber, temporaryLetter);
         temporaryNumber = temporaryNumber *mulNum + (temporaryLetter -zero);
         return temporaryNumber;
     }
 
-    private void ifNumberAlreadyExist(List<Integer> numbers,int newNumber){
+    public void ifNumberAlreadyExist(List<Integer> numbers,int newNumber){
         if(numbers.contains(newNumber)){
             throw new IllegalArgumentException(ErrorResource.errorStart+NumberIsMulti);
         }
     }
 
-    private void checkIfNumberInRange(int i){
+    public void checkIfNumberInRange(int i){
         if(i<minNum || i>maxNum){
             throw new IllegalArgumentException(ErrorResource.errorStart+NumberNotInRange +i);
         }
     }
-    private void checkIfNumberStartsWithZero(int temporaryNumber, char newNumber ){
+    public void checkIfNumberStartsWithZero(int temporaryNumber, char newNumber ){
         if(temporaryNumber == initNumber && newNumber == zero){
             throw new IllegalArgumentException(ErrorResource.errorStart+ NumberStartWithZero);
         }
     }
 
-    private void checkIfCharIsNumber(char c){
+    public void checkIfCharIsNumber(char c){
         if(c<zero || c>nine){
             throw new IllegalArgumentException(ErrorResource.errorStart+ ErrorResource.charIsNotNumber);
         }
     }
 
-    private void validate(List<Integer> numbers){
+    public void validate(List<Integer> numbers){
         if(numbers.size() != Resource.numberSize){
             throw new IllegalArgumentException(ErrorResource.errorStart+ ErrorResource.numberCountNotFit);
         }

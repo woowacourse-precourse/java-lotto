@@ -111,6 +111,7 @@ public class Game {
             }
             return purchaseBill / unit;
         } catch (NumberFormatException e) {
+            System.out.println(ErrorResource.errorStart+notNumber);
             throw new IllegalArgumentException(ErrorResource.errorStart + notNumber);
         }
     }
