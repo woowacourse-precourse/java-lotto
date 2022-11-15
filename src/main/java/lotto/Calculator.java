@@ -22,7 +22,7 @@ public class Calculator {
             for (Integer winningNumber : winningLotto) {
                 countCalculator(lottoNumber, winningNumber);
             }
-            rankCalculator();
+            rankCalculator(lottoNumber);
         }
         return List.of(first, second, third, fourth, fifth);
     }
@@ -33,10 +33,10 @@ public class Calculator {
         }
     }
 
-    public void rankCalculator() {
-        if (cnt == 6 && !lottoSet.contains(bonus)) first += 1;
-        if (cnt == 6 && lottoSet.contains(bonus)) second += 1;
-        if (cnt == 5) third += 1;
+    public void rankCalculator(List<Integer> lottoNumber) {
+        if (cnt == 6) first += 1;
+        if (cnt == 5 && lottoNumber.contains(bonus)) second += 1;
+        if (cnt == 5 && !lottoNumber.contains(bonus)) third += 1;
         if (cnt == 4) fourth += 1;
         if (cnt == 3) fifth += 1;
     }
