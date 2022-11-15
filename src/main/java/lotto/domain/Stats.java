@@ -32,7 +32,7 @@ public enum Stats {
     public static void compare(List<Lotto> lottos, List<Integer> winLottoNumbers, int bonusNumber) {
         lottos.forEach(lotto -> {
             boolean hasBonusNumber = lotto.isContainsBonusNumber(bonusNumber);
-            List<Integer> lottoNumbers = lotto.deleteWinLottoNumbers(winLottoNumbers);
+            List<Integer> lottoNumbers = lotto.deleteNotWinLottoNumbers(winLottoNumbers);
             Stats stats = valueOfName(lottoNumbers);
             addCount(stats, hasBonusNumber);
         });

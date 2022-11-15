@@ -29,7 +29,7 @@ public class Lotto {
         return this.numbers.contains(bonusNumber);
     }
 
-    public List<Integer> deleteWinLottoNumbers(List<Integer> winLottoNumbers) {
+    public List<Integer> deleteNotWinLottoNumbers(List<Integer> winLottoNumbers) {
         List<Integer> tempLottoGetNumbers = new ArrayList<>(this.numbers);
         tempLottoGetNumbers.retainAll(winLottoNumbers);
         return tempLottoGetNumbers;

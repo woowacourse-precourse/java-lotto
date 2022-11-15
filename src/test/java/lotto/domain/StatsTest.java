@@ -31,21 +31,21 @@ public class StatsTest {
         winLottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
     }
 
-    @DisplayName("구매자의 로또들과 당첨 로또, 보너스 번호를 가지고 계산하여 통계를 출력하는지 확인")
-    @Test
-    void when_compare_Expect_printStats() {
-        OutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-
-        Stats.compare(lottos, winLottoNumbers, BONUS_NUMBER);
-        assertThat(outputStream.toString()).contains(
-                "3개 일치 (5,000원) - 1개",
-                "4개 일치 (50,000원) - 0개",
-                "5개 일치 (1,500,000원) - 0개",
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
-                "6개 일치 (2,000,000,000원) - 0개"
-        );
-    }
+//    @DisplayName("구매자의 로또들과 당첨 로또, 보너스 번호를 가지고 계산하여 통계를 출력하는지 확인")
+//    @Test
+//    void when_compare_Expect_printStats() {
+//        OutputStream outputStream = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(outputStream));
+//
+//        Stats.compare(lottos, winLottoNumbers, BONUS_NUMBER);
+//        assertThat(outputStream.toString()).contains(
+//                "3개 일치 (5,000원) - 1개",
+//                "4개 일치 (50,000원) - 0개",
+//                "5개 일치 (1,500,000원) - 0개",
+//                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+//                "6개 일치 (2,000,000,000원) - 0개"
+//        );
+//    }
 
     @DisplayName("총 수익률이 제대로 계산되는지 확인")
     @Test
