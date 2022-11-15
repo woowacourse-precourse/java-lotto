@@ -1,15 +1,14 @@
 package Domain;
 
 import Controller.Validation;
-import View.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winning {
+public class WinningNumbers {
     private List<Integer> numbers;
 
-    public Winning(String readWinningNumbers){
+    public WinningNumbers(String readWinningNumbers){
         Validation.validateWinningNumberInput(readWinningNumbers);
         this.numbers = getWinningNumbers(readWinningNumbers);
     }

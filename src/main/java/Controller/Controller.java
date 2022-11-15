@@ -8,16 +8,16 @@ import java.util.List;
 
 public class Controller {
     private LottoList lottoList;
-    private Winning winning;
-    private Bonus bonus;
+    private WinningNumbers winningNumbers;
+    private BonusNumber bonusNumber;
     public void run(){
         setLottoList();
         setWinning();
         setBonus();
 
-        calculateLottoResult(lottoList, winning, bonus);
+        calculateLottoResult(lottoList, winningNumbers, bonusNumber);
     }
-    
+
     public void setLottoList(){
         InputView.printBuyingLottoMessage();
         String readMoneyValue = InputView.readInputLine();
@@ -28,22 +28,22 @@ public class Controller {
     public void setWinning(){
         InputView.printInputWinningNumberMessage();
         String readWinningNumber = InputView.readInputLine();
-        this.winning = new Winning(readWinningNumber);
+        this.winningNumbers = new WinningNumbers(readWinningNumber);
     }
 
     public void setBonus(){
         InputView.printInputBonusNumberMessage();
         String readBonusNumber = InputView.readInputLine();
-        this.bonus = new Bonus(readBonusNumber, winning);
+        this.bonusNumber = new BonusNumber(readBonusNumber, winningNumbers);
     }
 
 
-    public void calculateLottoResult(LottoList lottoList, Winning winning, Bonus bonus){
+    public void calculateLottoResult(LottoList lottoList, WinningNumbers winningNumbers, BonusNumber bonusNumber){
         int income = 0;
         int[] ranking = new int[6];  //상수
         for(Lotto eachLotto : lottoList.getLottoList()){
-            int compareLotto = compareMyLottoAndWinningNumber(eachLotto.getLottoNumbers(), winning.getNumbers());
-            boolean compareBonus = compareMyLottoAndBonusNumber(eachLotto.getLottoNumbers(), bonus.getBonusNumber());
+            int compareLotto = compareMyLottoAndWinningNumber(eachLotto.getLottoNumbers(), winningNumbers.getNumbers());
+            boolean compareBonus = compareMyLottoAndBonusNumber(eachLotto.getLottoNumbers(), bonusNumber.getBonusNumber());
             int getPrizeMoney = Prize.convertCountToPrizeMoney(compareLotto, ranking, compareBonus);
             income += getPrizeMoney;
         }

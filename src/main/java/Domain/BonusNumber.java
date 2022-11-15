@@ -1,13 +1,12 @@
 package Domain;
 
 import Controller.Validation;
-import View.InputView;
 
-public class Bonus {
+public class BonusNumber {
     private int number;
 
-    public Bonus(String readBonusNumber, Winning winning){
-        Validation.validateBonusNumberInput(readBonusNumber, winning.getNumbers());
+    public BonusNumber(String readBonusNumber, WinningNumbers winningNumbers){
+        Validation.validateBonusNumberInput(readBonusNumber, winningNumbers.getNumbers());
         this.number = Integer.parseInt(readBonusNumber);
     }
 
