@@ -50,4 +50,24 @@ public class LottoStoreTest {
         assertThatThrownBy(() -> lottoStore.confirmWinningNumbers("1,2,3,4,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("올바른 보너스 번호를 입력하면 리스트와 일치해야 한다.")
+    void inputBonusNumberSuccess() {
+        assertThat(lottoStore.confirmBonusNumber("42")).isEqualTo(42);
+    }
+
+    @Test
+    @DisplayName("정수가 아닐 시 예외처리 해야한다.")
+    void inputBonusNumberNotDigit() {
+        assertThatThrownBy(() -> lottoStore.confirmBonusNumber("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("범위 안에 없을 시 예외처리 해야한다.")
+    void inputBonusNumberNotInRange() {
+        assertThatThrownBy(() -> lottoStore.confirmBonusNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
