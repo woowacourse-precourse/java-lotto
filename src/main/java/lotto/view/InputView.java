@@ -23,9 +23,11 @@ public class InputView {
         return Validation.bonusNumberCheck(winNumber,userInput);
     }
 
-    public List<List<Integer>> getLottoNumbers(int number){
+    public static List<List<Integer>> getLottoNumbers(int number){
         int count = number/ LOTTO_PRICE;
         return LottoGenerator.lottoGeterator(count);
     }
+
+
 
 }
