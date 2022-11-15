@@ -11,6 +11,8 @@ public class LottoCalculator {
 
     public LottoCalculator(Input input) {
         this.input = input;
+        LottoGenerator lottoGenerator = new LottoGenerator(input.countingLotto());
+        lottos = lottoGenerator.getLottos();
     }
 
 

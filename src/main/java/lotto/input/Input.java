@@ -20,8 +20,8 @@ public class Input {
         }
     }
 
-    public int getPurchaseAmount() {
-        return purchaseAmount;
+    public int countingLotto() {
+        return purchaseAmount / 1000;
     }
 
     public List<Integer> getWinningNumber() {
