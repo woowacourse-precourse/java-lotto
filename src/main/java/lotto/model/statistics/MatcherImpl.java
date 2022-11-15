@@ -31,9 +31,7 @@ public class MatcherImpl implements Matcher{
             Integer sameCount = getCorrectMatch(winningNumbers, lotto);
             Boolean bonusMatch = getBonusMatch(winningNumbers, lotto);
             Rank rank = Rank.of(sameCount, bonusMatch);
-            if(!rank.equals(Rank.FAIL)) {
-                statistics.update(rank);
-            }
+            statistics.update(rank);
         }
         statistics.calculateYield(money);
     }

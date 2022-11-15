@@ -14,11 +14,12 @@ public class Statistics {
     private BigDecimal yield = new BigDecimal(0);
 
     public Statistics(){
-        this.rankCount.put(Rank.FIFTH,BigDecimal.ZERO);
-        this.rankCount.put(Rank.FOURTH,BigDecimal.ZERO);
-        this.rankCount.put(Rank.THIRD,BigDecimal.ZERO);
-        this.rankCount.put(Rank.SECOND,BigDecimal.ZERO);
         this.rankCount.put(Rank.FIRST,BigDecimal.ZERO);
+        this.rankCount.put(Rank.SECOND,BigDecimal.ZERO);
+        this.rankCount.put(Rank.THIRD,BigDecimal.ZERO);
+        this.rankCount.put(Rank.FOURTH,BigDecimal.ZERO);
+        this.rankCount.put(Rank.FIFTH,BigDecimal.ZERO);
+        this.rankCount.put(Rank.FAIL,BigDecimal.ZERO);
     }
 
     public void update(Rank rank){
