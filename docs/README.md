@@ -2,9 +2,11 @@
 
 #### [구체화 및 구현 과정](./PROCESS.md)
 
+### ◎ Package: lotto
 - LottoShop
     - [x] 금액을 받아 로또를 자동으로 생성
       - 금액이 나누어 떨어지지 않으면 `IllegalArgumentException`을 발생
+    - [x] Lotto들을 받아 해당 정보들을 출력함
 
 
 - Lotto
@@ -47,6 +49,9 @@
     - 로또 번호 자동으로 생성 및 내용 출력
     - 당첨 번호 입력 받음
     - 당첨 결과 출력
+
+
+### ◎ Package: device
 
 - ConsoleInput
   - [x] console을 통해 입력값을 받아 Integer 값으로 변환함

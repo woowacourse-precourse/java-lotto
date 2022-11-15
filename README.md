@@ -1,39 +1,57 @@
-# 미션 - 로또
+# 미션 - 로또 (이충안) 
 
-## 🔍 진행 방식
+- [과제 내용(우테코 Github Repository)](https://github.com/woowacourse-precourse/java-lotto)
+- [공부한 내용(Notion)](https://brass-thrush-37b.notion.site/3-93d904c592964d0b88a233b7b2e5a54d)
+- [회고록(velog)](https://velog.io/@gwichanlee/%EC%9A%B0%ED%85%8C%EC%BD%94-4%EA%B8%B0-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-3%EC%A3%BC%EC%B0%A8-%ED%9A%8C%EA%B3%A0)
 
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
 
-## 📮 미션 제출 방법
+## 🔍 설계 및 구현에서 신경쓴 점
 
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+### 확장성 고려
+- 로또 한 장당 가격 변경 가능
+- 총 공의 개수, 뽑는 공의 개수 변경 가능하게 설정
+- 로또 당첨 조건 변경 가능, 해당 금액 변경 가능
+    - ex) 5등 : 3개 일치 (5,000원) > 5등 : 3개 일치, 보너스 볼 일치 (10,000원)
+- 등수 개수 변경 가능
+    - ex) 6등 : 2개 일치 (1,000원) (추가)
 
-## 🚨 과제 제출 전 체크 리스트 - 0점 방지
+### 도메인 분리 및 설계
+- 출력(ConsoleOutput), 입력(ConsoleInput), 기능(그 외) 를 나누려고 노력함
+- Lotto, WinningNumber 등으로 나누어 각각 자신의 담당하는 역할을 배정하고 구현함
+- LottoSetting에서 여러 값들을 지정하고, 이 값을 이용하여 여러 객체들을 생성할 수 있게 함
 
-- 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
-- **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
+### 유닛 테스트
+- 각 Class마다 public method에 대해 Unit Test를 진행함
+- 다른 객체의 결과 값에 영향을 받지 않기 위해 Mockito를 사용
+  - 각 테스트마다 이용하는 다른 객체가 어떤 값을 제공할 지 설정해줌
+- 매 티팩토링 후에는 해당 기능에 맞추어 유닛 테스트를 변경하고 통과를 확인함
 
-### 테스트 실행 가이드
+### Convention
+- 아래에서 제공한 컨벤션을 지키려 노력하였음
+- Convention 정리 자료
+  - [Coding Convention](https://brass-thrush-37b.notion.site/Coding-Convention-5a9263bc5e5c4f1c880712c7c224aad8)
+  - [Git Convention](https://brass-thrush-37b.notion.site/Git-Convention-4bc3385abd144cefbee6fad436fa3171)
 
-- 터미널에서 `java -version`을 실행하여 Java 버전이 11인지 확인한다. 또는 Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 11로 실행되는지 확인한다.
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,   
-  Windows 사용자의 경우  `gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+## 아쉬웠던 점
+- 책임 중심으로 생각했어야 했는데 변경할 수 있는 값들을 LottoApplicationSetting으로 다 모아 놓는 것을 우선시 생각함
+  - 관련 객체들을 전부 LottoApplicationSetting으로 만들어야 했다.
+  - 변경할 수 있는 값들을 한눈에 보았으면 좋았을 텐데 LottoApplicationSetting 안에 여러 field 인자들을 전부 enum으로 구성하여 한눈에 보기 힘들었다.
+  - 해당 방법대로 진행해도 되나라는 생각이 많이 들었다.
 
-```
-BUILD SUCCESSFUL in 0s
-```
+
+- lotto.LottoApplication runApplication() 부분이 서로 연관된 데이터가 많아 메서드 분리하기가 어렵다.
+  - 메서드를 분리하자니 서로 넘겨주는 인자가 많아 알아보기가 어려울 것 같았다.
+  - 이것을 필드값으로 가지고 있자니 다시 덮어씌워질 수 있는 값을 가지고 있는 것이 부담스러웠다.
+  - 결국에는 필드값으로 분리하였으나 내가 하는 방법이 더 보기 쉬운 방법인지 잘 모르겠고, 더 좋은 방법이 있는지 궁금하다.
+
+## 기능 구현하며 작성한 문서
+- [설계 및 구현 과정](./docs/PROCESS.md)
+- [Class 별 구현 기능 목록](./docs/README.md)
 
 ---
 
 ## 🚀 기능 요구 사항
+- 아래의 요구 사항을 최대한 지키기 위해 노력하였음
 
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
 
@@ -224,4 +242,3 @@ public class Lotto {
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
