@@ -9,4 +9,5 @@ public class Message {
 	public static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
 	public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 	public static final String DUPLICATE_IN_LOTTO_NUMBER_ERROR = "[ERROR]당첨 번호에 중복이 있어서는 안됩니다.";
+	public static final String WRONG_SIZE_LOTTO_ERROR = "[ERROR]로또 번호는 6개의 번호여야 합니다.";
 }

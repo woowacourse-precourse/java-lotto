@@ -51,6 +51,13 @@ public class Valid {
 		}
 	}
 
+	public static void hasCorrectSizeLotto(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			System.out.println(Message.WRONG_SIZE_LOTTO_ERROR);
+			throw new IllegalArgumentException(Message.WRONG_SIZE_LOTTO_ERROR);
+		}
+	}
+
 	private static boolean isNumeric(String str) {
 		return str.chars().allMatch(Character::isDigit);
 	}
