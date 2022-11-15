@@ -5,10 +5,12 @@ import static util.validation.ValidationUtil.areValidNumbers;
 import static util.validation.ValidationUtil.checkSize;
 import static util.validation.ValidationUtil.haveDuplicatedNumbers;
 import static util.validation.ValidationUtil.haveUndefinedNumber;
+import static util.validation.ValidationUtil.isDuplicatedWithWinningNumbers;
 import static util.validation.ValidationUtil.isInteger;
 import static util.validation.ValidationUtil.isUnitsOf1000Won;
 import static util.validation.ValidationUtil.isWithinValidRange;
 
+import exception.InvalidBonusNumberException;
 import exception.InvalidBonusNumberSizeException;
 import exception.InvalidLottoException;
 import exception.InvalidLottoSizeException;
@@ -68,6 +70,10 @@ public class Validator {
 
         if (!isWithinValidRange(bonusNumber)) {
             throw new InvalidRangeException();
+        }
+
+        if (!isDuplicatedWithWinningNumbers(bonusNumber, winningNumbers)) {
+            throw new InvalidBonusNumberException();
         }
     }
 }

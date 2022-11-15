@@ -6,6 +6,10 @@ import java.util.List;
 import lotto.Lotto;
 
 public class ValidationUtil {
+
+    private static final String BLANK = "";
+    private static final int ZERO = 0;
+
     public static boolean checkSize(List<Integer> numbers) {
         return numbers.size() != Lotto.SIZE;
     }
@@ -25,12 +29,12 @@ public class ValidationUtil {
     }
 
     public static boolean isUnitsOf1000Won(String purchasePrice) {
-        return Integer.parseInt(purchasePrice) % Lotto.PRICE == 0;
+        return Integer.parseInt(purchasePrice) % Lotto.PRICE == ZERO;
     }
 
     public static boolean haveUndefinedNumber(List<String> numbers) {
         int sizeOfFiltered = numbers.stream()
-                .filter(i -> !(i.equals("")))
+                .filter(i -> !(i.equals(BLANK)))
                 .collect(toList())
                 .size();
 
@@ -81,5 +85,15 @@ public class ValidationUtil {
         int number = Integer.parseInt(input);
 
         return (number >= Lotto.FIRST_NUMBER) && (number <= Lotto.LAST_NUMBER);
+    }
+
+    public static boolean isDuplicatedWithWinningNumbers(String bonusNumber, Lotto winningNumbers) {
+        int number = Integer.parseInt(bonusNumber);
+
+        if (winningNumbers.contains(number)) {
+            return false;
+        }
+
+        return true;
     }
 }
