@@ -14,6 +14,7 @@ public class OutputView {
     private static final String SHOW_STATISTICS = "\n당첨 통계\n---";
     private static final String SHOW_YIELD = "총 수익률은 %.1f%%입니다.\n";
     private static final String WINNING_RESULT = "%d개 일치%s (%s원) - %d개\n";
+    private static final String HAS_BONUS_BALL = ", 보너스 볼 일치";
     private static final String OPEN_BRACKET = "[";
     private static final String CLOSE_BRACKET = "]";
     private static final String SEPARATOR = ", ";
@@ -48,7 +49,7 @@ public class OutputView {
                     String bonusBall = "";
                     String reward = new DecimalFormat("###,###").format(rankEntry.getKey().getReward());
                     if (rankEntry.getKey().isBonusBall()) {
-                        bonusBall = ", 보너스 볼 일치";
+                        bonusBall = HAS_BONUS_BALL;
                     }
                     System.out.printf(WINNING_RESULT, rankEntry.getKey().getMatchingCnt(), bonusBall, reward, rankEntry.getValue());
                 });
