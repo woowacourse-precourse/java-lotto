@@ -5,6 +5,8 @@ import static lotto.LottoConstant.INPUT_BONUS_NUMBER_MESSAGE;
 import static lotto.LottoConstant.INPUT_WINNING_LOTTO_NUMBER_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_LOTTO_COUNT_RESULT_MESSAGE;
 import static lotto.LottoConstant.STATISTICS_PRINT_MESSAGE;
+import static lotto.LottoConstant.TOTAL_RATE_MESSAGE_1;
+import static lotto.LottoConstant.TOTAL_RATE_MESSAGE_2;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -14,6 +16,8 @@ import lotto.domain.Lotto;
 import lotto.domain.Result;
 
 public class LottoView {
+
+    private static final String totalRateFormat = "%.1f";
 
     private LottoView() {
     }
@@ -26,7 +30,7 @@ public class LottoView {
         return Console.readLine();
     }
 
-    public static void printLottoPurchaseResult(int purchaseAmount, List<Lotto> lottoNumbers) {
+    public static void printLottoPurchaseResult(long purchaseAmount, List<Lotto> lottoNumbers) {
         System.out.println("\n" + purchaseAmount + PURCHASE_LOTTO_COUNT_RESULT_MESSAGE);
         lottoNumbers.forEach(System.out::println);
     }
@@ -44,5 +48,6 @@ public class LottoView {
         Arrays.stream(Result.values()).forEach(result -> System.out.println(
                 result.toString(resultPoints.get(result))
         ));
+        System.out.println(TOTAL_RATE_MESSAGE_1 + String.format(totalRateFormat, rate) + TOTAL_RATE_MESSAGE_2);
     }
 }
