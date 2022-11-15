@@ -32,8 +32,8 @@ public class OutPutView {
         System.out.println("---");
     }
     public void printUserScoreResult(Map<Score, Integer> ScoreBoard) {
-        for (int i = Score.THREE.ordinal(); i < Score.SIX.ordinal(); i++) {
-            System.out.println(Score.values()[i].getMessage()+(ScoreBoard.get(Score.values()[i])));
+        for (int i = Score.THREE.ordinal(); i <= Score.SIX.ordinal(); i++) {
+            System.out.println(Score.values()[i].getMessage()+(ScoreBoard.get(Score.values()[i]))+"개");
         }
     }
 
