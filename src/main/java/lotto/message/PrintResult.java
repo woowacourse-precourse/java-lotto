@@ -20,6 +20,6 @@ public enum PrintResult {
     }
 
     public void printIncome (double income) {
-        System.out.println(this.statement + income + "%입니다.");
+        System.out.printf(this.statement + "%.1f%%입니다.", income);
     }
 }
