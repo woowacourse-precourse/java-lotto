@@ -34,9 +34,9 @@ public class Lotto {
                 .collect(Collectors.toList());
     }
 
-    public RankUtil compare(Winning winning) {
-        int count = correctCount(winning.getWinningNumbers());
-        boolean isBonusMatch = isMatchBonusNumber(winning.getBonusNumber());
+    public RankUtil compare(List<Integer> winningNumbers, int bonusNumber) {
+        int count = correctCount(winningNumbers);
+        boolean isBonusMatch = isMatchBonusNumber(bonusNumber);
 
         return getRank(count, isBonusMatch);
     }
@@ -56,7 +56,7 @@ public class Lotto {
         return RankUtil.MISS;
     }
 
-    public int correctCount(List<Integer> winningLottoNumbers) {
+    private int correctCount(List<Integer> winningLottoNumbers) {
         int count = 0;
 
         for (Integer winningLottoNumber : winningLottoNumbers) {
@@ -68,7 +68,7 @@ public class Lotto {
         return count;
     }
 
-    public boolean isMatchBonusNumber(int bonusNumber) {
+    private boolean isMatchBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 

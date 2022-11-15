@@ -85,8 +85,11 @@ public class User {
     }
 
     private void showWinningResult(Winning winning) {
+        List<Integer> winningNumbers = winning.getWinningNumbers();
+        int bonusNumber = winning.getBonusNumber();
+
         for (Lotto lotto : lottos) {
-            RankUtil rank = lotto.compare(winning);
+            RankUtil rank = lotto.compare(winningNumbers, bonusNumber);
             result.addRank(rank);
         }
 
