@@ -9,6 +9,7 @@ import static lotto.view.controller.BonusNumberView.inputBonusNumber;
 import static lotto.view.controller.LottoNumberView.inputLottoNumbers;
 import static lotto.view.controller.LottoNumberView.printScoreBoard;
 import static lotto.view.controller.MoneyView.printRateOfReturn;
+import static lotto.view.vlidation.InputBonusValidator.validateDuplicateNumberInWinnerLottoNumbers;
 
 public class LottoManager {
 
@@ -49,5 +50,6 @@ public class LottoManager {
 
     private void registerWinnerBonus() {
         winnerBonusNumber = inputBonusNumber();
+        validateDuplicateNumberInWinnerLottoNumbers(winnerLottoNumbers ,winnerBonusNumber);
     }
 }
