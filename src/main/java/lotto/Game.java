@@ -14,8 +14,7 @@ public class Game {
     private static final int MAX = 45;
 
     private static final String NUMBER_RANGE_ERROR = "로또 숫자는 " + MIN + " 이상 " + MAX + " 이하의 숫자만 가능합니다.";
-
-
+    private ValidLotto win;
 
 
     protected String input() {
@@ -30,21 +29,21 @@ public class Game {
 
     public void run(){
         List<Lotto> users;
-        ValidLotto Win;
+        ValidLotto win;
 
-        int Amount = PurchaseAmount();
+        int Amount = PurchaseAmount()/1000;
         users= makeLotto(Amount);
         showuser(users);
-        Win = new ValidLotto(WinNumber(), BonusNumber());
+        win = new ValidLotto(WinNumber(), BonusNumber());
 
         Map<Prize, Integer> records = new HashMap<>();
         initRecords(records);
 
         for (Lotto user : users) {
-            Prize results = Win.lottoPlace(user);
+            Prize results = win.lottoPlace(user);
             records.put(results, records.get(results) + 1);
         }
-        showresults(records, Margin(records));
+        showscore(records, Margin(records));
 
     }
 
@@ -80,24 +79,21 @@ public class Game {
         List<Lotto> ran_lotto = new ArrayList<>();
         for (int index = 0; index < Amount; ++index) {
             List<Integer> lottoCandidate = Randoms.pickUniqueNumbersInRange(MIN, MAX, 6);
+            Collections.sort(lottoCandidate);
             ran_lotto.add(new Lotto(lottoCandidate));
         }
         return ran_lotto;
     }
 
-    public void showresults(Map<Prize, Integer> records, double marginRate) {
-        List<Prize> result = List.of(Prize.values()).stream()
-                .sorted(Comparator.comparing(Prize::getPrizeMoney))
-                .collect(Collectors.toList());
+    public void showscore(Map<Prize, Integer> records, double Margin) {
+        List<Prize> result = List.of(Prize.values()).stream().sorted(Comparator.comparing(Prize::getPrizeMoney)).collect(Collectors.toList());
         System.out.println("당첨 통계\n----");
 
         for (Prize place : result) {
-            if (place.equals(Prize.NONE)) {
-                continue;
-            }
+            if (place.equals(Prize.NONE)) {continue;}
             System.out.println(MessageFormat.format("{0} ({1}원) - {2}개", place.getInfo(), place.getPrizeMoney(), records.get(place)));
         }
-        System.out.println("총 수익률은"+marginRate+"% 입니다");
+        System.out.println("총 수익률은"+Margin+"% 입니다");
     }
 
     public double Margin(Map<Prize, Integer> winningRecords) {

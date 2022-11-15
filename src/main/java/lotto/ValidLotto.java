@@ -6,6 +6,7 @@ public class ValidLotto {
 
     private final Lotto matching;
     private final LottoNum bonus;
+    private int matchingCount;
 
     public ValidLotto(List<Integer> matching, int bonus) {
         validate(matching, bonus);
@@ -21,23 +22,23 @@ public class ValidLotto {
     }
 
     public Prize lottoPlace(Lotto user) {
-        int matcherCount = countByMatcher(user);
+        matchingCount = countByMatcher(user);
         boolean isContainBonus = checkByBonus(user);
 
-        if (matcherCount == Prize.FIRST.getMatchCount()) {
+        if (matchingCount == Prize.FIRST.getMatchCount()) {
             return Prize.FIRST;
         }
-        if (matcherCount == Prize.SECOND.getMatchCount()
+        if (matchingCount == Prize.SECOND.getMatchCount()
                 && isContainBonus == Prize.SECOND.isBonusCheck()) {
             return Prize.SECOND;
         }
-        if (matcherCount == Prize.THIRD.getMatchCount()) {
+        if (matchingCount == Prize.THIRD.getMatchCount()) {
             return Prize.THIRD;
         }
-        if (matcherCount == Prize.FORTH.getMatchCount()){
+        if (matchingCount == Prize.FORTH.getMatchCount()){
             return Prize.FORTH;
         }
-        if (matcherCount == Prize.FIFTH.getMatchCount()){
+        if (matchingCount == Prize.FIFTH.getMatchCount()){
             return Prize.FIFTH;
         }
         return Prize.NONE;
