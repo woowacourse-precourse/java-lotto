@@ -10,4 +10,11 @@ public class LottoValidator {
             throw new IllegalArgumentException(ErrorMessage.WRONG_SIZE_MSG);
         }
     }
+
+    public static void validateLottoValues(List<Integer> lottoNumbers) {
+        if (lottoNumbers.stream().anyMatch(number ->
+                number < Constant.MIN_LOTTO_NUMBER || number > Constant.MAX_LOTTO_NUMBER)) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_VALUE_MSG);
+        }
+    }
 }
