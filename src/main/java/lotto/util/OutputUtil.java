@@ -24,7 +24,7 @@ public class OutputUtil {
     }
 
     public static void printInputWinningNumbers() {
-        System.out.println(Message.INPUT_WINNING_NUMBERS_MESSAGE.getMessage());
+        System.out.println(Message.INPUT_WINNING_NUMBERS_MESSAGE);
     }
 
     public static void printInputWinningNumbersError() {
@@ -32,7 +32,7 @@ public class OutputUtil {
     }
 
     public static void printInputBonusNumber() {
-        System.out.println(Message.INPUT_BONUS_NUMBER_MESSAGE.getMessage());
+        System.out.println(Message.INPUT_BONUS_NUMBER_MESSAGE);
     }
 
     public static void printInputBonusNumberError() {
