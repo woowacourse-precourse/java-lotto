@@ -17,14 +17,10 @@ public class Controller {
     List<Lotto> lottoTicket = new ArrayList<>();
 
     public void playLotto() {
-        try {
-            getPlayerInput();
-            Map<String, Integer> prizeSet = calculatePrizeQuantity();
-            float stat = statistics.myStat(cashier.getReceivedMoney());
-            printResult(prizeSet, stat);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        getPlayerInput();
+        Map<String, Integer> prizeSet = calculatePrizeQuantity();
+        float stat = statistics.myStat(cashier.getReceivedMoney());
+        printResult(prizeSet, stat);
     }
 
     private Map<String, Integer> calculatePrizeQuantity() {
