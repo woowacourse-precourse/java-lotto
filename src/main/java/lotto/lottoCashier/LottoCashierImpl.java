@@ -2,7 +2,8 @@ package lotto.lottoCashier;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static lotto.constants.Constants.PRICE_OF_LOTTO;
+import static lotto.constants.ExceptionMessage.*;
+import static lotto.constants.LottoConstants.PRICE_OF_LOTTO;
 
 public class LottoCashierImpl implements LottoCashier{
     @Override
@@ -19,17 +20,17 @@ public class LottoCashierImpl implements LottoCashier{
         try {
             moneyAsInt = Integer.parseInt(inputMoney);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 정수를 입력해야합니다.");
+            throw new IllegalArgumentException(NOT_INTEGER);
         }
         if(moneyAsInt <= 0) {
-            throw new IllegalArgumentException("[ERROR] 0보다 큰 값을 입력해야합니다.");
+            throw new IllegalArgumentException(NOT_OVER_0);
         }
     }
 
     @Override
     public int calculateNumberOfLottos(int money) {
         if(money % PRICE_OF_LOTTO != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 가격으로 정확히 나눠떨어지는 값을 입력하세요. 로또 가격: " + PRICE_OF_LOTTO);
+            throw new IllegalArgumentException(NOT_DIVIDED_BY_LOTTO_PRICE);
         }
         return money / PRICE_OF_LOTTO;
     }

@@ -5,6 +5,8 @@ import lotto.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.constants.ExceptionMessage.SHOULD_BY_ATLEAST_ONE;
+
 public class LottoGeneratorImpl implements LottoGenerator{
     private RandomNumbersGenerator randomNumbersGenerator;
 
@@ -15,7 +17,7 @@ public class LottoGeneratorImpl implements LottoGenerator{
     @Override
     public List<Lotto> issueLottosByInputAmount(int numberOfLottos) {
         if(numberOfLottos < 1) {
-            throw new IllegalArgumentException("[ERROR] 로또 발급은 1개 이상만 가능합니다.");
+            throw new IllegalArgumentException(SHOULD_BY_ATLEAST_ONE);
         }
         List<Lotto> lottos = new ArrayList<>();
         for(int i = 0; i < numberOfLottos; i++) {

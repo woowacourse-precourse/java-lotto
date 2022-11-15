@@ -3,9 +3,9 @@ package lotto.lottoGenerator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
-import java.util.PrimitiveIterator;
 
-import static lotto.constants.Constants.*;
+import static lotto.constants.ExceptionMessage.NOT_VALID_LOTTO_GENERATED;
+import static lotto.constants.LottoConstants.*;
 
 public class RandomNumbersGeneratorWithMissionUtils implements RandomNumbersGenerator{
     @Override
@@ -18,11 +18,8 @@ public class RandomNumbersGeneratorWithMissionUtils implements RandomNumbersGene
     private void validate(List<Integer> numbers) {
         boolean[] isVisited = new boolean[END_NUMBER_OF_LOTTO + 1];
         for(int i : numbers) {
-            if(i < 1 || i > END_NUMBER_OF_LOTTO) {
-                throw new IllegalArgumentException("[ERROR] 랜덤생성된 로또번호에 에러가 발생했습니다.");
-            }
-            if(isVisited[i]) {
-                throw new IllegalArgumentException("[ERROR] 랜덤생성된 로또번호에 에러가 발생했습니다.");
+            if(i < 1 || i > END_NUMBER_OF_LOTTO || isVisited[i]) {
+                throw new IllegalArgumentException(NOT_VALID_LOTTO_GENERATED);
             }
             isVisited[i] = true;
         }
