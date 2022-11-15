@@ -14,11 +14,13 @@ public class Controller {
     private InputConsole input = new InputConsole();
     private OutputConsole output = new OutputConsole();
     private LottoManager lottoManager = new LottoManager();
+    private CompareNumber compareNumber;
 
     private Lotto lotto;
+    private String inputMoney;
 
     public int findLottoCount() {
-        String inputMoney = input.Money();
+        inputMoney = input.Money();
         int lottoCount = lottoManager.countLotto(inputMoney);
         output.lottoCount(lottoCount);
         return lottoCount;
@@ -48,10 +50,15 @@ public class Controller {
     }
 
     public void compareNumber(List<List<Integer>> lottoNumber, List<Integer> winingNumber, int bonusNumber){
-        CompareNumber compareNumber = new CompareNumber(lottoNumber, winingNumber, bonusNumber);
+        compareNumber = new CompareNumber(lottoNumber, winingNumber, bonusNumber);
         compareNumber.compareLotto();
         List<Integer> lottoResult = compareNumber.getLottoResult();
         output.lottoRank(lottoResult);
+    }
+
+    public void calculationYield(){
+        float yield = compareNumber.calculationYield(inputMoney);
+        output.yield(yield);
     }
 
 }
