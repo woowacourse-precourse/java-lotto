@@ -53,6 +53,16 @@ public class LottoConsoleTest {
     }
 
     @Test
+    @DisplayName("당첨 번호 입력 프롬프트 출력")
+    public void promptAskBonusNumbersMessage() {
+        final var sut = new LottoConsole();
+
+        final String winningNumbersMessage = sut.bonusNumbersAskMessage();
+
+        assertEquals("보너스 번호를 입력해 주세요.", winningNumbersMessage);
+    }
+
+    @Test
     @DisplayName("당첨 통계 메시지 출력")
     public void printWinningStatisticsHeaderMessage() {
         final var sut = new LottoConsole();

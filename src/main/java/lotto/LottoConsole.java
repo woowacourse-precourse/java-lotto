@@ -49,6 +49,10 @@ public class LottoConsole {
         return "당첨 번호를 입력해 주세요.";
     }
 
+    public String bonusNumbersAskMessage() {
+        return "보너스 번호를 입력해 주세요.";
+    }
+
     public String messageOfNumbersWhetherItWonOrNot(
         int numberOfCorrectDigits,
         boolean bonusMatched,
