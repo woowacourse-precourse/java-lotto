@@ -1,9 +1,9 @@
-package lotto.domain;
+package lotto.model;
 
-import static lotto.domain.Validator.validateBonusNumber;
-import static lotto.domain.Validator.validateDuplication;
-import static lotto.domain.Validator.validatePurchase;
-import static lotto.domain.Validator.validateWinningNumbers;
+import static lotto.model.Validator.validateBonusNumber;
+import static lotto.model.Validator.validateDuplication;
+import static lotto.model.Validator.validatePurchase;
+import static lotto.model.Validator.validateWinningNumbers;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import static lotto.constants.ErrorConstants.DUPLICATE_NUMBER_ERROR_MESSAGE;
 import static lotto.constants.ErrorConstants.IN_RANGE_NUMBER_ERROR_MESSAGE;

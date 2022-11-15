@@ -1,18 +1,19 @@
-package lotto;
+package lotto.controller;
 
 import java.util.List;
-import lotto.domain.Result;
-import lotto.domain.User;
-import lotto.domain.Validator;
+import lotto.model.Result;
+import lotto.model.User;
+import lotto.model.Validator;
+import lotto.view.GameView;
 
-public class Game {
+public class GameController {
 
-    private GameConsole gameConsole;
+    private GameView gameConsole;
     private User user;
     private Result result = new Result();
 
-    public Game() {
-        gameConsole = new GameConsole();
+    public GameController() {
+        gameConsole = new GameView();
     }
 
     public void run() {
@@ -25,9 +26,10 @@ public class Game {
         int bonusNumber = gameConsole.inputBonusNumber();
 
         Validator.validateDuplication(winningNumbers, bonusNumber);
+        
         result.matchLotto(winningNumbers, user.getLottos(), bonusNumber);
-
         result.initWinningAmount(purchase);
+
         gameConsole.printResult(result);
     }
 }

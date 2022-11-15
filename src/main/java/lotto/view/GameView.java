@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 import static lotto.constants.ConsoleConstants.INPUT_BONUS_NUMBER_MESSAGE;
 import static lotto.constants.ConsoleConstants.INPUT_PURCHASE_MESSAGE;
@@ -16,12 +16,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.domain.Lotto;
+import lotto.model.Lotto;
 import lotto.constants.Rank;
-import lotto.domain.Result;
-import lotto.domain.Validator;
+import lotto.model.Result;
+import lotto.model.Validator;
 
-public class GameConsole {
+public class GameView {
 
     public int inputPurchase() {
         notice(INPUT_PURCHASE_MESSAGE);
