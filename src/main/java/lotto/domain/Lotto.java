@@ -8,10 +8,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Lotto {
-    private final List<Integer> numbers;        // 접근 제어자 수정 금지
+    private final List<Integer> numbers;
 
-    // 필드 추가 금지
-    public Lotto(List<Integer> numbers) {       // 디폴트 생성자 사용 금지
+    public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
