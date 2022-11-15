@@ -3,6 +3,7 @@ package lotto.exception;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -41,5 +42,10 @@ public class IllegalArgumentTest {
     @Test
     void 중복_없는_리스트() {
         assertThat(IllegalArgument.isRedundancy(Arrays.asList(1, 2, 3, 4, 5, 6))).isFalse();
+    }
+
+    @Test
+    void 당첨_번호와_중복되는_보너스_번호() {
+        assertThat(IllegalArgument.isRedundancyWithNumbers(3, List.of(3, 4, 5, 6, 7, 9))).isTrue();
     }
 }
