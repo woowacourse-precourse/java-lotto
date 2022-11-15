@@ -30,7 +30,7 @@ public class Lotto {
         if (checkDuplicated(numbers)) {
             error.duplicated();
         }
-        else if (!checkRange(numbers)) {
+        if (!checkRange(numbers)) {
             error.outOfRange();
         }
     }
