@@ -6,19 +6,28 @@ import java.util.List;
 
 public class Calculator {
     private Integer ticketNumber;
-    private HashMap<Integer, Integer> numberForMatches = new HashMap();
+    private HashMap<Integer, Integer> gradeStorage = new HashMap();
     private Integer totalEarning;
 
-    Calculator() {};
+    public Calculator() {};
 
     public Calculator(Integer ticketNumber, List<Lotto> lottos) {
         this.ticketNumber = ticketNumber;
 
         for (Lotto lotto : lottos) {
-            Win win = getWin(lotto.matchWinNumbers(), lotto.matchBonusNumber());
-
-            // do something with numberForMatches
+            storeGrade(lotto);
         }
+    }
+
+    public void storeGrade(Lotto lotto) {
+        Win win = getWin(lotto.matchWinNumbers(), lotto.matchBonusNumber());
+
+        this.gradeStorage.put(win.grade, this.gradeStorage.get(win.grade) + 1);
+        addEarning(win);
+    }
+
+    public void addEarning(Win win) {
+        this.totalEarning += win.earning;
     }
 
     public void printStatistic() {
