@@ -8,7 +8,7 @@ public class ExceptionHandler {
 
     public final static String WRONG_NUMBERS_COUNT = "당첨 번호의 갯수는 6개여야만 합니다.";
 
-    public final static String DUPLICATED_WIN_NUMBERS = "당첨 번호의 중복은 불허합니다";
+    public final static String DUPLICATED_LOTTO_NUMBERS = "당첨 번호의 중복은 불허합니다";
 
 
 }
