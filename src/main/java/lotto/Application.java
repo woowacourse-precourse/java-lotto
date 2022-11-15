@@ -8,5 +8,14 @@ public class Application {
         game.buyLotto();
         game.drawLotto();
         game.getResult();
+
+        /*boolean a_true = true;
+        boolean b_true = true;
+        boolean b_false = false;
+
+        if(a_true == b_false){
+            System.out.println("ddd");
+        }*/
+
     }
 }

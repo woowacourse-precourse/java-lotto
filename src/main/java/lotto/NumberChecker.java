@@ -26,7 +26,7 @@ public class NumberChecker {
     }
 
     public static boolean checkBonus(List<Integer> numbers) {
-        if (numbers.contains(bonusNumber)) {
+        if (numbers.contains(bonusNumber) && countCorrectNumbers(numbers) == 5) {
             return true;
         }
         return false;
