@@ -21,7 +21,7 @@ public class Printer {
         this.money = money;
     }
 
-    public void printResult() {
+    public void Result() {
         System.out.printf("당첨 통계\n" +
                 "---\n" +
                 "3개 일치 (5,000원) : %d개\n" +
@@ -37,7 +37,7 @@ public class Printer {
                 );
     }
 
-    public void printallLottos(List<Lotto> lottoList) {
+    public void allLottos(List<Lotto> lottoList) {
         for(Lotto lotto : lottoList) {
             System.out.println(lotto.getNumbers());
         }
