@@ -1,17 +1,19 @@
 package lotto.rank;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.lotto.Lotto;
 import lotto.lotto.LottoNumber;
 import lotto.lotto.WinningLotto;
 
 public class RankChecker {
 
-    public static List<Rank> checkRank(List<Lotto> lottos, WinningLotto winningLotto) {
-        List<Rank> ranks = new ArrayList<>();
+    public static Map<Rank, Integer> checkRank(List<Lotto> lottos, WinningLotto winningLotto) {
+        Map<Rank, Integer> ranks = new HashMap<>();
         for (Lotto lotto : lottos) {
-            ranks.add(checkIndividualRank(lotto, winningLotto));
+            Rank rank = checkIndividualRank(lotto, winningLotto);
+            ranks.merge(rank, 1, (k, v) -> ranks.get(rank) + 1);
         }
         return ranks;
     }
