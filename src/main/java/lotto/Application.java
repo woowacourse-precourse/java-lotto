@@ -15,7 +15,22 @@ import lotto.ui.LottoWin;
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoShop lottoShop = new LottoShop();
+
+        int purchaseAmount = askPurchaseAmount();
+        List<Lotto> lottos = lottoShop.buy(purchaseAmount);
+
+        List<Integer> winningNumbers = askWinningNumbers();
+        Integer bonusNumber = askBonusNumber();
+
+        LinkedHashMap<LottoWin, Integer> result = lottoShop.compare(
+            lottos, winningNumbers, bonusNumber
+        );
+
+        printWinningDetails(result);
+
+        double yield = getYield(result, purchaseAmount);
+        printYield(yield);
     }
 
     private static int askPurchaseAmount() {
