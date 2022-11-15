@@ -17,7 +17,7 @@ public class Input {
 
     public static int inputBonusNumber() {
         String bonusNumber = Console.readLine();
-        Validator.isCorrectBonusNumberPattern(bonusNumber);
+        Validator.isCorrectNumberPattern(bonusNumber);
         return Integer.parseInt(bonusNumber);
     }
 }
