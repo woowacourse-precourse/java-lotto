@@ -38,15 +38,7 @@ class LottoTest{
     }
 
 
-    @Test
-    void createWrongBonus(){
-        assertThatThrownBy(()-> Buyer.validatePrice(1500)).isInstanceOf(IllegalArgumentException.class);
-    }
 
-    @Test
-    void createBonuswithChar(){
-        assertThatThrownBy(()->Buyer.getIntPrice("150a")).isInstanceOf(IllegalArgumentException.class);
-    }
 
 
 }
