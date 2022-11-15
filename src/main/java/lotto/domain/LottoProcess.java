@@ -43,11 +43,11 @@ public class LottoProcess {
         return countMachingNumber;
     }
 
-    public List<Integer> decideRanks(List<List<Integer>> lottos, List<Integer> winningNumbers){
+    public List<Integer> decideRanks(){
         List<Integer> ranks = new ArrayList<>();
 
-        for(List<Integer> lotto : lottos){
-            ranks.add(decideRank(compareWinningNumbers(lotto,winningNumbers),lotto));
+        for(List<Integer> lotto : this.lottos){
+            ranks.add(decideRank(compareWinningNumbers(lotto,this.winningNumbers),lotto));
         }
 
         return ranks;
@@ -55,7 +55,7 @@ public class LottoProcess {
 
     public int decideRank(int countMachingNumber, List<Integer> lotto){
         if(countMachingNumber == SIX_CORRECT) return FIRST;
-        if(countMachingNumber == FIVE_CORRECT && lotto.contains(bonusNumber)) return SECOND;
+        if(countMachingNumber == FIVE_CORRECT && lotto.contains(this.bonusNumber)) return SECOND;
         if(countMachingNumber == FIVE_CORRECT) return THIRD;
         if(countMachingNumber == FOUR_CORRECT) return FOURTH;
         if(countMachingNumber == THREE_CORRECT) return FIFTH;
