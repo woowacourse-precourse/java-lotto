@@ -1,5 +1,7 @@
 package lotto.service;
 
+import static lotto.util.PrintService.printWinningStatistic;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,27 +19,10 @@ public class WinningStatisticService {
         this.rankCountRepository = rankCountRepository;
     }
 
-    public void saveRankCount(List<Lotto> lottos, WinningLotto winningLotto) {
-        lottos.forEach(lotto -> {
-            int matchedNumber = getMatchedNumber(lotto, winningLotto.getLotto().getNumbers());
-            boolean hasBonusNumber = hasBonusNumber(lotto, winningLotto.getBonusNumber());
-            Rank.of(matchedNumber, hasBonusNumber).ifPresent(rankCountRepository::save);
-        });
-    }
-
-    private Integer getMatchedNumber(Lotto lotto, List<Integer> winningLottoNumbers) {
-        List<Integer> lottoNumbers = new ArrayList<>(lotto.getNumbers());
-        lottoNumbers.retainAll(winningLottoNumbers);
-        return lottoNumbers.size();
-    }
-
-    private boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
-        return lotto.getNumbers().contains(bonusNumber);
-    }
-
     public void showWinningStatistic(int purchasedPrice) {
         Map<Rank, Integer> rankCountMap = getRankCountMap();
         double yield = getYield(getTotalAmount(rankCountMap), purchasedPrice);
+        printWinningStatistic(rankCountMap, yield);
     }
 
     private Map<Rank, Integer> getRankCountMap() {
@@ -57,5 +42,23 @@ public class WinningStatisticService {
 
     private double getYield(long totalAmount, int purchasedPrice) {
         return ((double) totalAmount / purchasedPrice) * 100;
+    }
+
+    public void saveRankCount(List<Lotto> lottos, WinningLotto winningLotto) {
+        lottos.forEach(lotto -> {
+            int matchedNumber = getMatchedNumber(lotto, winningLotto.getLotto().getNumbers());
+            boolean hasBonusNumber = hasBonusNumber(lotto, winningLotto.getBonusNumber());
+            Rank.of(matchedNumber, hasBonusNumber).ifPresent(rankCountRepository::save);
+        });
+    }
+
+    private Integer getMatchedNumber(Lotto lotto, List<Integer> winningLottoNumbers) {
+        List<Integer> lottoNumbers = new ArrayList<>(lotto.getNumbers());
+        lottoNumbers.retainAll(winningLottoNumbers);
+        return lottoNumbers.size();
+    }
+
+    private boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
+        return lotto.getNumbers().contains(bonusNumber);
     }
 }
