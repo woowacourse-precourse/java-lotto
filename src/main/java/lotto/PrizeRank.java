@@ -30,6 +30,10 @@ public enum PrizeRank {
     this.prizeCount++;
   }
 
+  public int getPrizeMoney() {
+    return this.prizeMoney;
+  }
+
   public boolean isSamePrizeRank(int correctCount, boolean isBonusNumberMatch) {
     return this.correctCount == correctCount && this.isBonusNumberMatch == isBonusNumberMatch;
   }

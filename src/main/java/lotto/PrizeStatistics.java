@@ -13,6 +13,14 @@ public class PrizeStatistics {
     this.bonusNumber = bonusNumber;
   }
 
+  public int calculatePrizeMoney() {
+    int prizeMoney = 0;
+    for (PrizeRank prizeRank : prizeRankArray) {
+      prizeMoney += prizeRank.getPrizeCount() * prizeRank.getPrizeMoney();
+    }
+    return prizeMoney;
+  }
+
   public void setPrizeRankArrayByLottoList(List<Lotto> myLottoList) {
     for (Lotto lotto : myLottoList) {
       updatePrizeRankArray(lotto.getLottoNumbers());
