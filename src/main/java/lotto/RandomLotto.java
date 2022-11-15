@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class RandomLotto {
-    private List<List<Integer>> randomLottos = new ArrayList<>();
+    private List<Lotto> randomLottos = new ArrayList<>();
 
-    public List<List<Integer>> getRandomLottos(int count) {
+    public List<Lotto> getRandomLottos(int count) {
         setRandomLottos(count);
         printRandomLottos();
         return randomLottos;
@@ -19,13 +19,7 @@ public class RandomLotto {
         for(int i = 0; i < count; i++) {
             List<Integer> integers = new ArrayList<Integer>(setRandomLotto());
             sortNumbers(integers);
-            randomLottos.add(integers);
-        }
-    }
-
-    private void printRandomLottos() {
-        for (List<Integer> randomLotto : randomLottos) {
-            System.out.println(randomLotto);
+            randomLottos.add(new Lotto(integers));
         }
     }
 
@@ -36,5 +30,11 @@ public class RandomLotto {
 
     private static void sortNumbers(List<Integer> numbers) {
         Collections.sort(numbers);
+    }
+
+    private void printRandomLottos() {
+        for (Lotto randomLotto : randomLottos) {
+            System.out.println(randomLotto.getNumbers());
+        }
     }
 }

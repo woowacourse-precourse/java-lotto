@@ -15,7 +15,7 @@ class RandomLottoTest {
     @Test
     public void lottoCountTest() {
         RandomLotto randomLotto = new RandomLotto();
-        List<List<Integer>> randomLottos = randomLotto.getRandomLottos(10);
+        List<Lotto> randomLottos = randomLotto.getRandomLottos(10);
 
         assertThat(randomLottos.size()).isEqualTo(10);
     }

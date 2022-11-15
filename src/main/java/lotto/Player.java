@@ -7,9 +7,14 @@ import java.util.List;
 
 public class Player {
 
+    private int payMoney;
     private int lottoCount;
     private Lotto lotto;
     private Integer bonus;
+
+    public int getPayMoney() {
+        return payMoney;
+    }
 
     public int getLottoCount() {
         return lottoCount;
@@ -27,6 +32,7 @@ public class Player {
         System.out.println("구입금액을 입력해 주세요.");
         String pay = Console.readLine();
         payValidate(pay);
+        payMoney = Integer.parseInt(pay);
         lottoCount = Integer.parseInt(pay) / 1000;
         printCount();
     }
