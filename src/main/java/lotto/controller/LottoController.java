@@ -12,6 +12,7 @@ import static lotto.domain.Preset.LOTTO_LENGTH;
 import static lotto.domain.Preset.LOTTO_PRICE;
 import static lotto.domain.WinningType.getWinningType;
 import static lotto.view.InputView.*;
+import static lotto.view.OutputView.printEarning;
 import static lotto.view.OutputView.printPurchaseNum;
 
 public class LottoController {
@@ -29,7 +30,6 @@ public class LottoController {
         int bonusNumber = readBonusNumber();
         WinningLotto lotto = new WinningLotto(winningNumbers, bonusNumber);
 
-        // 당첨 통계를 구하는 메서드 호출
         printResult(lotto, purchasedLottos, inputMoney);
     }
 
@@ -115,7 +115,6 @@ public class LottoController {
             earning += (double) type.getWinnings() * (double) winningResults.get(type);
         }
         earning /= inputMoney;
-
-        System.out.println("총 수익률은 " + String.format("%.1f", earning * 100) + "%입니다.");
+        printEarning(earning);
     }
 }
