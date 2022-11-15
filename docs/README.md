@@ -49,7 +49,7 @@
   - 4등: 4개 번호 일치 / 50,000원
   - 5등: 3개 번호 일치 / 5,000원
 
----
+<br>
 
 ### < 프로그램 요구사항 체크리스트 >
 
@@ -62,7 +62,7 @@
 - [ ] Java Enum을 적용.
 - [x] 도메인 로직에 단위 테스트를 구현. UI(System.out, System.in, Scanner) 로직은 제외.
 
----
+<br>
 
 ### < 폴더 구조 >
 
@@ -163,4 +163,23 @@ public List<Integer> generateRandomNumbers() {
 2️⃣ **예외 처리**
 
 이번 미션의 가장 험난한 트러블 슈팅이었다. 주어진 요구사항 문서를 제대로 파악하는 것에 중요성을 깨달았고 여러 디버깅을 해보면서 문제를 결국 해결해내는 뿌듯함을 얻었다.
+주어진 테스트 코드를 뜯어보니 output()에 [ERROR]가 포함되었는지로 테스트 성공 여부를 판단하고 있다.
+
+그래서 output()이 어떤 값이 넘어오고 있는지 출력해봤다. output()에 아무 값도 넘어오지 않는다. 이유를 곰곰이 생각해보며 위에 다른 케이스에도 output()을 출력해보았다. Application에서 로직을 실행시켜 출력된 값들이 output()에 전부 담겨있었다.
+
+그리고 Application.java에서 에러가 나왔을 때 그 에러 메세지 출력을 Application.java에서 해줘야 하는 것을 깨달았다.
+
+```java
+public class Application {
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        try {
+            LottoGame lottoGame = new LottoGame();
+            lottoGame.startLottoGame();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+```
 
