@@ -32,28 +32,32 @@ public class Application {
     private static void printResult(int[] result, int count) {
         System.out.println("당첨 통계");
         System.out.println("---------");
-        System.out.println("3개 일치 (5000원)- " + result[5] + "개");
-        System.out.println("4개 일치 (50000원)- " + result[4] + "개");
-        System.out.println("5개 일치 (1500000원)- " + result[3] + "개");
-        System.out.println("5개 일치, 보너스 볼 일치(30000000원)- " + result[2] + "개");
-        System.out.println("6개 일치 (2000000000원)- " + result[1] + "개");
+        System.out.println("3개 일치 (5,000원) - " + result[5] + "개");
+        System.out.println("4개 일치 (50,000원) - " + result[4] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + result[3] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result[2] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + result[1] + "개");
         System.out.println("총 수익률은 " + calculationYield(result,count
         ) + "입니다.");
     }
 
     private static String calculationYield(int[] result, int count) {
-        int totalPrize = result[1]*2000000000 + result[2]*30000000 + result[3]*1500000 + result[4]*50000 + result[5]*5000;
-        int yield = (int) ((double)totalPrize / (count*1000) * 100);
+        long totalPrize = result[1]*2000000000 + result[2]*30000000 + result[3]*1500000 + result[4]*50000 + result[5]*5000;
 
-        return yield + "%";
+
+
+        return String.format("%.1f",(float)totalPrize/(count*10)) + "%";
     }
 
     private static List<Integer> inputWinningNumbers() {
         List<Integer> winningNumber = new ArrayList<>();
+        System.out.println("당첨 번호를 입력해 주세요.");
         String[] input = Console.readLine().split(",");
         for (String s : input) {
             winningNumber.add(Integer.parseInt(s));
         }
+        System.out.println("보너스 번호을 입력해 주세요.");
+        winningNumber.add(Integer.parseInt(Console.readLine()));
         return winningNumber;
     }
 
