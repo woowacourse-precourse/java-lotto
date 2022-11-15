@@ -7,7 +7,7 @@ public class Result {
     private final Map<Rating, Integer> result;
 
     public Result() {
-        result = new EnumMap<Rating, Integer>(Rating.class);
+        result = new EnumMap<>(Rating.class);
 
         for (Rating rating : Rating.values()) {
             result.put(rating, 0);
