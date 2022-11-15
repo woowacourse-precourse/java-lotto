@@ -27,4 +27,9 @@ public class UserInterface {
 
         System.out.printf(format, counts[0], counts[1], counts[2], counts[3], counts[4], counts[5]);
     }
+
+    public static void writeEarningRate(double earningRate) {
+        System.out.printf(InformMessage.EARNING_RATE
+                .toString(), earningRate);
+    }
 }
