@@ -4,30 +4,32 @@ import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.Rank;
 import lotto.service.LottoService;
-import lotto.service.MoneyService;
 import lotto.service.RankService;
+import lotto.view.LottoUi;
 
 import java.util.List;
 
-import static lotto.view.LottoUi.*;
-import static lotto.view.MoneyUi.*;
-import static lotto.view.RankUi.*;
+import static lotto.view.LottoUi.printTotalProfitMessage;
+import static lotto.view.MoneyUi.inputMoney;
+import static lotto.view.RankUi.printRanking;
 
 public class LottoUtils {
-    private static LottoUtils lottoUtils = new LottoUtils();
-    RankService rankService = RankService.getRankService();
-    MoneyService moneyService = MoneyService.getMoneyService();
-    LottoService lottoService = LottoService.getLottoService();
+    private static final LottoUtils lottoUtils = new LottoUtils();
 
     public static LottoUtils getLottoUtils() {
         return lottoUtils;
     }
 
+    private final RankService rankService = RankService.getRankService();
+    private final LottoService lottoService = LottoService.getLottoService();
+    private final LottoUi lottoUi = LottoUi.getLottoUi();
+
+
     public void start() {
         Money money = inputMoney();
-        List<Lotto> lottos = purchaseLotto(money);
-        Lotto winningLotto = inputWinningLotto();
-        int bonusNumber = inputBonusNumber();
+        List<Lotto> lottos = lottoUi.purchaseLotto(money);
+        Lotto winningLotto = lottoUi.inputWinningLotto();
+        int bonusNumber = lottoUi.inputBonusNumber();
         Rank rank = rankService.getLottoDrawResult(lottos, winningLotto, bonusNumber);
         String profitPercentage = lottoService.getProfitPercentage(rank, money.getMoney());
 

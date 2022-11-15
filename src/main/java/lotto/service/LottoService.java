@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.Rank;
-import lotto.util.LottoUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -20,8 +19,9 @@ import static lotto.values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
 public class LottoService {
     private static final LottoService lottoService = new LottoService();
+    private final RankService rankService = RankService.getRankService();
 
-    public static LottoService getLottoService(){
+    public static LottoService getLottoService() {
         return lottoService;
     }
 
@@ -78,7 +78,6 @@ public class LottoService {
 
     private int calculateProfit(LinkedHashMap<Integer, Integer> rankData) {
         int totalProfit = 0;
-        RankService rankService = RankService.getRankService();
         Set<Integer> ranking = rankData.keySet();
 
         for (Integer rank : ranking) {
