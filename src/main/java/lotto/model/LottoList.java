@@ -15,6 +15,12 @@ public class LottoList {
             lottoList.add(lotto);
         }
     }
+    public void printLottoList(){
+        for(int i=0;i<lottoList.size();i++){
+            lottoList.get(i).printLotto();
+            System.out.println('\n');
+        }
+    }
 
 
 }
