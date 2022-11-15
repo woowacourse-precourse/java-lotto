@@ -8,6 +8,8 @@ import java.util.Map;
 
 public class LottoStatistics {
 
+	public static final int EMPTY_COUNT = 0;
+	public static final int HUNDRED = 100;
 	WinningNumber winningNumber;
 
 	public LottoStatistics(WinningNumber winningNumber) {
@@ -18,7 +20,7 @@ public class LottoStatistics {
 		Map<LottoRanking, Integer> result = new HashMap<>();
 		for (Lotto userLotto : lottos) {
 			LottoRanking ranking = winningNumber.checkWinning(userLotto);
-			result.put(ranking, result.getOrDefault(ranking, 0) + 1);
+			result.put(ranking, result.getOrDefault(ranking, EMPTY_COUNT) + 1);
 		}
 		return result;
 	}
@@ -26,7 +28,7 @@ public class LottoStatistics {
 	public Double calculateYield(List<Lotto> lottos, Map<LottoRanking, Integer> result) {
 		double totalPrice = getTotalPrice(lottos);
 		double totalReward = getTotalReward(result);
-		return totalReward / totalPrice * 100;
+		return totalReward / totalPrice * HUNDRED;
 	}
 
 	private int getTotalPrice(List<Lotto> lottos) {
@@ -36,8 +38,8 @@ public class LottoStatistics {
 	private int getTotalReward(Map<LottoRanking, Integer> result) {
 		return result.keySet()
 			.stream()
-			.mapToInt(ranking -> ranking.getReward() * result.getOrDefault(ranking, 0))
+			.mapToInt(ranking -> ranking.getReward() * result.getOrDefault(ranking, EMPTY_COUNT))
 			.reduce(Integer::sum)
-			.orElse(0);
+			.orElse(EMPTY_COUNT);
 	}
 }
