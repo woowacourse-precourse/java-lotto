@@ -10,11 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
     private final List<Integer> dummyLotto = new ArrayList<>(List.of(1, 3, 4, 6, 12, 15));
-    final List<List<Integer>> bouguhtLotto = new ArrayList<>();
-    final List<Integer> dummyLotto1 = new ArrayList<>(List.of(3, 4, 6, 12, 15, 34));
-    final List<Integer> dummyLotto2 = new ArrayList<>(List.of(1, 6, 15, 24, 45));
-    final List<Integer> dummyLotto3 = new ArrayList<>(List.of(15, 22, 26, 33, 37, 42));
-
 
     private final Lotto lotto = new Lotto(dummyLotto);
 
