@@ -68,7 +68,7 @@ public class CheckInput {
         return checkWinningNumberValid(input);
     }
 
-    public static List<Integer> checkWinningNumberValid(String input) {
+    public List<Integer> checkWinningNumberValid(String input) {
         List<Integer> result = new ArrayList<>();
 
         checkWinningNumberPattern(input);
@@ -85,46 +85,46 @@ public class CheckInput {
         return result;
     }
 
-    public static void checkWinningNumberPattern(String input) {
+    public void checkWinningNumberPattern(String input) {
         Pattern pattern = Pattern.compile(WINNING_NUMBER_PATTERN);
         if (!pattern.matcher(input).matches()) {
             throw new IllegalArgumentException(WINNING_NUMBER_TYPE_ERROR);
         }
     }
 
-    public static void checkWinningNumberSize(String[] winningNumbers) {
+    public void checkWinningNumberSize(String[] winningNumbers) {
         if (winningNumbers.length != 6) {
             throw new IllegalArgumentException(WINNING_NUMBER_SIZE_ERROR);
         }
     }
 
-    public static void checkWinningNumberRange(int winningNumber) {
+    public void checkWinningNumberRange(int winningNumber) {
         if (winningNumber < 1 || winningNumber > 45) {
             throw new IllegalArgumentException(WINNING_NUMBER_RANGE_ERROR);
         }
     }
 
-    public static int readBonusNumber() {
+    public int readBonusNumber() {
         System.out.println(PLEASE_WRITE_BONUS_NUMBER);
         String input = Console.readLine();
         return checkBonusNumberValid(input);
     }
 
-    public static int checkBonusNumberValid(String input) {
+    public int checkBonusNumberValid(String input) {
         checkBonusNumberPattern(input);
         int bonusNumber = Integer.parseInt(input);
         checkBonusNumberRange(bonusNumber);
         return bonusNumber;
     }
 
-    public static void checkBonusNumberPattern(String input) {
+    public void checkBonusNumberPattern(String input) {
         Pattern pattern = Pattern.compile(BONUS_NUMBER_PATTERN);
         if (!pattern.matcher(input).matches()) {
             throw new IllegalArgumentException(BONUS_NUMBER_TYPE_ERROR);
         }
     }
 
-    public static void checkBonusNumberRange(int bonusNumber) {
+    public void checkBonusNumberRange(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException(BONUS_NUMBER_SIZE_ERROR);
         }

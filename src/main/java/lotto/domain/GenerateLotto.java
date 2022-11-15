@@ -4,8 +4,8 @@ import static lotto.constant.OutputMessage.PRINT_PURCHASE_AMOUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GenerateLotto {
     public List<Lotto> buyLotto(int purchaseAmount) {
@@ -15,9 +15,10 @@ public class GenerateLotto {
 
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
 
-            Lotto lotto = new Lotto(numbers);
+            List<Integer> sortedNumbers = numbers.stream().sorted().collect(Collectors.toList());
+
+            Lotto lotto = new Lotto(sortedNumbers);
             lottos.add(lotto);
             lotto.printNumbers();
         }
