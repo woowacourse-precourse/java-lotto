@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import controller.LotteryController;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
+        LotteryController.create();
         // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();

@@ -2,7 +2,11 @@ package controller;
 
 public class LotteryController {
 
-    private static LotteryController create() {
+    private LotteryController() {
+
+    }
+
+    public static LotteryController create() {
         return new LotteryController();
     }
 
