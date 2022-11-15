@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lotto.lotto.Lotto;
 import lotto.lotto.LottoNumber;
@@ -91,7 +92,7 @@ public class RankTest {
         LottoNumber bonusNumber = new LottoNumber(7);
         WinningLotto winningLotto = new WinningLotto(winningNumber, bonusNumber);
         assertThat(RankChecker.checkRank(lottos, winningLotto)).isEqualTo(
-                List.of(FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE, NONE));
+                Map.of(FIRST, 1, SECOND, 1, THIRD, 1, FOURTH, 1, FIFTH, 1, NONE, 2));
     }
 
     private Lotto generateLottoByIntegerList(List<Integer> numbers) {
