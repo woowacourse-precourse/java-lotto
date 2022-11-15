@@ -14,7 +14,7 @@ public class StartLotto {
     public static List<Lotto> lotto;
     public static List<Integer> winNums;
     public static List<WinCheck> winChecks;
-    public static Result result;
+    public static TotalResult totalResult;
 
     public static void startLotto() throws IllegalArgumentException {
         paymentInput();
@@ -25,7 +25,7 @@ public class StartLotto {
         bonusNumInput();
         winChecks = new ArrayList<>();
         checkSave();
-        result = new Result();
+        totalResult = new TotalResult();
         printResult();
     }
 }

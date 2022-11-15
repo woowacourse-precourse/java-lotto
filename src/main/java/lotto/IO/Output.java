@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.domain.Result.calculate;
-import static lotto.domain.Result.getCount;
+import static lotto.domain.TotalResult.calculate;
+import static lotto.domain.TotalResult.getCount;
 
 
 public class Output {

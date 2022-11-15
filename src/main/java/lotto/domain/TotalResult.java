@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-public class Result {
+public class TotalResult {
     public static int first;
     public static int second;
     public static int third;
     public static int fourth;
     public static int fifth;
 
-    public Result() {
+    public TotalResult() {
         first = 0;
         second = 0;
         third = 0;
