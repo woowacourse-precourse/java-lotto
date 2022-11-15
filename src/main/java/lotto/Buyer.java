@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Enums.ErrorMessage;
+import lotto.Enums.Reward;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +22,7 @@ public class Buyer {
         validate(purchase);
         this.purchase = purchase;
         this.purchasedLottos = putchaseLottos(purchase/1000);
+        this.reward = 0;
         this.results = new ArrayList<>(List.of(0,0,0,0,0,0));
     }
 
@@ -51,6 +53,7 @@ public class Buyer {
             results.set(grade, results.get(grade)+1);
         }
         printResult(results);
+        calReward();
     }
 
     private int compare(Winning winning, Lotto lotto){
@@ -87,7 +90,11 @@ public class Buyer {
     }
 
     private void calReward(){
-        this.reward = 0;
+        reward += Reward.FIRST.getReward() * results.get(1);
+        reward += Reward.SECOND.getReward() * results.get(2);
+        reward += Reward.THIRD.getReward() * results.get(3);
+        reward += Reward.FORTH.getReward() * results.get(4);
+        reward += Reward.FIFTH.getReward() * results.get(5);
     }
 
 }
