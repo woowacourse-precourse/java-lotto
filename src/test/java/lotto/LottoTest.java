@@ -117,4 +117,11 @@ class LottoTest {
 
         Assertions.assertThat(game.correctLottoCount(lottoList, user, bonus)).isEqualTo(result);
     }
+
+    @DisplayName("수익률을 계산한다.")
+    @Test
+    void calculateProfit() {
+        List<Integer> result = List.of(0, 0, 0, 0, 0, 1);
+        Assertions.assertThat(game.getRate(result, 6000)).isEqualTo("83.3%");
+    }
 }
