@@ -5,8 +5,9 @@ import lotto.io.Message;
 import lotto.io.Output;
 
 import lotto.model.lucky.BonusNumber;
-import lotto.model.machine.TicketMachine;
 import lotto.model.lucky.WinningNumber;
+
+import lotto.model.machine.TicketMachine;
 
 public class Game {
 

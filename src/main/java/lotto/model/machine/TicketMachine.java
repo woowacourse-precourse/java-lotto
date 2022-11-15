@@ -8,6 +8,7 @@ import lotto.io.Output;
 import lotto.io.Message;
 
 import lotto.model.Money;
+
 import lotto.model.lucky.BonusNumber;
 import lotto.model.lucky.WinningNumber;
 

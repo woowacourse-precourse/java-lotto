@@ -4,7 +4,9 @@ import java.text.DecimalFormat;
 
 import java.util.List;
 import java.util.HashMap;
+
 import java.util.stream.IntStream;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 import lotto.io.Message;

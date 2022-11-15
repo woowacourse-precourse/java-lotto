@@ -1,8 +1,8 @@
 package lotto.model.lucky;
 
+import java.util.List;
 import java.util.ArrayList;
 
-import java.util.List;
 import lotto.TryCatchException;
 
 public class WinningNumber {
