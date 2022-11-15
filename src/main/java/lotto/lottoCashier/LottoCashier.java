@@ -3,7 +3,6 @@ package lotto.lottoCashier;
 import java.util.List;
 
 public interface LottoCashier {
-    public int receiveMoney();
+    public void validateReceivedMoney(String money);
     public int calculateNumberOfLottos(int money);
-    public void printNumberPurchased(int numberOfLottoBought);
 }

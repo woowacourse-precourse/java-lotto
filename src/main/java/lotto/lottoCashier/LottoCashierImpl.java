@@ -1,21 +1,12 @@
 package lotto.lottoCashier;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static lotto.constants.ExceptionMessage.*;
 import static lotto.constants.LottoConstants.PRICE_OF_LOTTO;
 
 public class LottoCashierImpl implements LottoCashier{
-    @Override
-    public int receiveMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
-        String moneyAsString = Console.readLine();
-        validateMoney(moneyAsString);
-        int moneyAsInt = Integer.parseInt(moneyAsString);
-        return moneyAsInt;
-    }
 
-    private void validateMoney(String inputMoney) {
+    @Override
+    public void validateReceivedMoney(String inputMoney) {
         int moneyAsInt;
         try {
             moneyAsInt = Integer.parseInt(inputMoney);
@@ -33,10 +24,5 @@ public class LottoCashierImpl implements LottoCashier{
             throw new IllegalArgumentException(NOT_DIVIDED_BY_LOTTO_PRICE);
         }
         return money / PRICE_OF_LOTTO;
-    }
-
-    @Override
-    public void printNumberPurchased(int numberOfLottoBought) {
-        System.out.printf("%d개를 구매했습니다.%n", numberOfLottoBought);
     }
 }

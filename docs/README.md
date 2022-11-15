@@ -3,14 +3,16 @@
 ## 🚀 기능 목록
 
 - [x] 구입 금액을 입력을 입력받을 수 있다.
-  - LottoCashier#receiveMoney()
+    - StaffListener#receiveMoney()
+- [x] 적절한 금액인지 확인할 수 있다.
+  - LottoCashier#validateReceivedMoney()
   - 예외) 받은 금액이 숫자가 아니면 예외 발생
   - 예외) 0과 같거나 보다 작다면 예외 발생
 - [x] 구입 가능한 로또의 수를 도출할 수 있다.
   - LottoCashier#calculateNumberOfLottos()
   - 예외) 받은 금액 로또 가격으로 나눠 떨어지지 않으면 예외 발생
 - [x] 구입한 로또의 개수를 출력한다.
-  - LottoCashier#printNumberPurchased()
+  - StaffTeller#tellPurchasedNumberOfLotto()
   
 - [x] 랜덤 숫자를 생성할 수 있다.
   - RandomNumberGenerator#gernerateRandomNumbers()
