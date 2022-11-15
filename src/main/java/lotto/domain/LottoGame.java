@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.dto.ResponseRankAggregation;
-import lotto.dto.WinningLottoNumber;
+import lotto.dto.RankAggregationDto;
+import lotto.dto.WinningLottoNumberDto;
 import lotto.service.LottoRankAggregation;
 import lotto.view.ConsumerLottoNumberView;
 import lotto.view.InputView;
@@ -11,32 +11,34 @@ import java.util.List;
 
 public class LottoGame {
 
+    private final LottoRankAggregation lottoRankAggregation = new LottoRankAggregation();
+    private final InputView inputView = new InputView();
+
     public void start() {
         LottoShop lottoShop = new LottoShop();
-        InputView inputView = new InputView();
+        Money money = getMoney();
+        List<Lotto> lottos = getLottosForMoney(lottoShop, money);
 
-        String payment = inputView.push();
-        Money money = new Money(payment);
+        WinningLottoNumberDto winningLottoNumberDto = getWinningLottoNumber(lottoShop);
+        RankAggregationDto rankAggregationDto = lottoRankAggregation.rankAggregation(lottos, winningLottoNumberDto);
 
-        List<Lotto> lottos = lottoForPayment(lottoShop, money);
-        WinningLottoNumber winningLottoNumberFor = getWinningLottoNumber(lottoShop, inputView);
-
-        LottoRankAggregation lottoRankCombine = new LottoRankAggregation();
-        ResponseRankAggregation responseRankAggregation = lottoRankCombine.rankAggregation(lottos, winningLottoNumberFor);
-
-        WinningHistoryView.showRankAggregation(responseRankAggregation, payment);
+        WinningHistoryView.showRankAggregation(rankAggregationDto, money.getPayment());
     }
 
-    private WinningLottoNumber getWinningLottoNumber(LottoShop lottoShop, InputView inputView) {
-        String winningNumberData = inputView.push2();
-        String bonusNumberData = inputView.push3();
-        WinningLottoNumber winningLottoNumberFor = lottoShop.createWinningLottoNumberFor(winningNumberData, bonusNumberData);
-        return winningLottoNumberFor;
+    private Money getMoney() {
+        String payment = inputView.requestMoney();
+        return Money.of(payment);
     }
 
-    private List<Lotto> lottoForPayment(LottoShop lottoShop, Money money) {
-        List<Lotto> lottos = lottoShop.createLottoForPayment(money);
+    private List<Lotto> getLottosForMoney(LottoShop lottoShop, Money money) {
+        List<Lotto> lottos = lottoShop.createLottoForMoney(money);
         ConsumerLottoNumberView.show(lottos);
         return lottos;
+    }
+
+    private WinningLottoNumberDto getWinningLottoNumber(LottoShop lottoShop) {
+        String winningNumberData = inputView.requestWinningNumbers();
+        String bonusNumberData = inputView.requestBonusNumber();
+        return lottoShop.createWinningLottoNumberFor(winningNumberData, bonusNumberData);
     }
 }
