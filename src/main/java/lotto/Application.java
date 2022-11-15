@@ -39,5 +39,14 @@ public class Application {
     public static int MakeBonus() {
         return Integer.parseInt(Console.readLine());
     }
-    
+
+    public static List<Integer> get_Rank(Lotto answer, List<Lotto> MyLotto, Integer bonus) {
+        List<Integer> winning = new ArrayList<>();
+        for(int i = 0; i < MyLotto.size(); i++){
+            int rank = MyLotto.get(i).get_CorrectNumbers(answer,bonus);
+            winning.add(rank);
+        }
+        return winning;
+    }
+
 }
