@@ -11,7 +11,7 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateDuplicate(Lotto lotto,BonusNumber bonusNumber) {
+    private void validateDuplicate(Lotto lotto, BonusNumber bonusNumber) {
         if (bonusNumber.isContain(lotto)) {
             throw new IllegalArgumentException("보너스 번호는 중복될 수 없습니다");
         }

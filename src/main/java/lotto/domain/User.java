@@ -12,7 +12,7 @@ public class User {
     }
 
     public void buyLotto() {
-        this.lottos = createLottoByCount();;
+        this.lottos = createLottoByCount();
     }
 
     public Money getMoney() {

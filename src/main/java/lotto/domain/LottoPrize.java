@@ -28,8 +28,8 @@ public enum LottoPrize {
         return reward;
     }
 
-    public int getSum(int countOfMatchedLottoNumbers) {
-        return reward * countOfMatchedLottoNumbers;
+    public int getSum(int count) {
+        return reward * count;
     }
 
     public static LottoPrize getPrize(int matchCount, boolean isMatchBonusNumber) {
