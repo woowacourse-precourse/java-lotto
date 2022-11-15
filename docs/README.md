@@ -3,24 +3,23 @@
 ### 예외처리 - IllegalArgumentException
 - [X] 모든 예외 메시지의 "[ERROR]" 를 앞에 붙여 출력. - ExceptionUtil.class
 
-### LottoServiceUseCase - Lotto 관련 기능 정의 인터페이스.
-- [X] 받은 금액을 통해 로또 티켓 생성. - LottoService.class
-- [ ] 당첨로또번호와 몇개 일치 하는지 확인 -  
-
 ### 어플리케이션 (비즈니스 로직)
-- [X] buyLotto 구현 - LottoService.class
-- []
+#### Lotto 관련 서비스 - LottoServiceUseCase
+- [X] buyLotto 구현 
+- [X] matchWinningNumber 구현
+- [X] ConvertLotto 구현
+
+#### Lotto 결과 분석 관련 서비스 - LottoWinningStatisticsUseCase
+- [X] analyzeRevenue 구현
 
 ### 도메인 
 #### Money
-- 유효성 검사.(1000원 으로 나누어 떨어지는지.)
+- [X] 유효성 검사
 
 #### Bonus
-- 유효성 검사
+- [X] 유효성 검사
 
 #### Lotto
-#### ResultTable
-- 유효성 검사
 
 ### View - 화면에 보여지는 것을 담당하는 클래스.
 - [X] 로또 거래 View - BuyLottoView
@@ -33,6 +32,6 @@
   - [X] 당첨 번호 View
   - [X] 보너스 번호 View
 
-- [ ] 당첨 결과에 대한 View - ResultView
-  - [ ] 당첨 결과에 대한 View
-  - [ ] 수익률에 대한 View
+- [X] 당첨 결과에 대한 View - ResultView
+  - [X] 당첨 결과에 대한 View
+  - [X] 수익률에 대한 View

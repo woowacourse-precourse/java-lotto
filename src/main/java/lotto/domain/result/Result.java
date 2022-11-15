@@ -34,6 +34,6 @@ public class Result {
             }
             return Optional.of(Reward.THIRD);
         }
-        return Optional.of(Reward.FIRST);
-    }
+        return Optional.of(Reward.FIRST);}
+
 }

@@ -1,6 +1,6 @@
 package lotto.application.port.in.dto;
 
-import lotto.exception.MoneyIllegalArgumentException;
+import lotto.exception.ErrorPrefix;
 
 public class RequestBuyLottoDto {
     private String money;
@@ -16,10 +16,12 @@ public class RequestBuyLottoDto {
     }
 
     private void validate(String money) {
-        System.out.println(money);
         for (int i = 0; i < money.length(); i++) {
             if (!Character.isDigit(money.charAt(i))) {
-                throw new MoneyIllegalArgumentException("숫자여야합니다.");
+                String message = ErrorPrefix.IllegalArgumentException.getPrefix()
+                        + "숫자여야합니다.";
+                System.out.println(message);
+                throw new IllegalArgumentException(message);
             }
         }
     }

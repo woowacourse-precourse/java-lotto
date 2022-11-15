@@ -1,6 +1,6 @@
 package lotto.domain.lotto;
 
-import lotto.exception.LottoIllegalArgumentException;
+import lotto.exception.ErrorPrefix;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,8 +23,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new LottoIllegalArgumentException("로또는 6개의 숫자여야합니다.");
+            String message = ErrorPrefix.IllegalArgumentException.getPrefix()
+                    + "로또는 6개의 숫자여야합니다.";
+            System.out.println(message);
+            throw new IllegalArgumentException(message);
         }
+
     }
 
     // TODO: 추가 기능 구현
@@ -36,7 +40,11 @@ public class Lotto {
     private void validateDuplication(List<Integer> numbers) {
         int size = numbers.stream().collect(Collectors.toSet()).size();
         if (size != 6) {
-            throw new LottoIllegalArgumentException("로또숫자는 중복되지 않아야합니다.");
+            String message = ErrorPrefix.IllegalArgumentException.getPrefix()
+                    + "로또숫자는 중복되지 않아야합니다.";
+            System.out.println(message);
+            throw new IllegalArgumentException(message);
         }
+
     }
 }

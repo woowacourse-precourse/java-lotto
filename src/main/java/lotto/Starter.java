@@ -9,8 +9,6 @@ import lotto.view.BuyLottoView;
 import lotto.view.LottoAnswerView;
 import lotto.view.ResultView;
 
-import javax.swing.text.View;
-
 public class Starter {
     LottoController lottoController;
 
