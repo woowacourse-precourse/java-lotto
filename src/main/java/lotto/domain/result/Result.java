@@ -5,20 +5,12 @@ import lotto.domain.reward.Reward;
 import java.util.Optional;
 
 public class Result {
-    int matchedCount;
-    boolean isMatchedBonus;
+    private int matchedCount;
+    private boolean isMatchedBonus;
 
     public Result(long matchedCount, boolean isMatchedBonus) {
         this.matchedCount = (int) matchedCount;
         this.isMatchedBonus = isMatchedBonus;
-    }
-
-    public int getMatchedCount() {
-        return matchedCount;
-    }
-
-    public boolean isMatchedBonus() {
-        return isMatchedBonus;
     }
 
     public Optional<Reward> matchReward() {
