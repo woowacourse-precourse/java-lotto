@@ -36,8 +36,9 @@
     - [x] 잘못된 번호 혹은 중복된 번호인 경우 `IllegalArgumentException`- User#validateLottoNum(), validateBonusNum()
     - [x] 잘못된 개수 입력한 경우 `IllegalArgumentException` - User#validateLottoNum(), validateBonusNum()
 
-  - [ ] 구매한 로또 번호와 당첨 번호를 비교
-    - [ ] 당첨 내역을 출력한다.
+    - [x] 당첨 내역을 출력한다.
+      - [x] 당첨된 로또 수를 계산한다.
+      - [x] 5등부터 1등까지 당첨된 수를 보여준다.
 
   - [ ] 당첨 내역 및 수익률을 출력
     - [ ] 수익률은 소수점 둘째 자리에서 반올림한다.
