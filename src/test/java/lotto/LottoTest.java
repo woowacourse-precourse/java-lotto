@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +33,19 @@ class LottoTest {
         assertThat(LottoUtil.numberOfLottoAvailableCount(5000)).isEqualTo(5);
         assertThat(LottoUtil.numberOfLottoAvailableCount(13000)).isEqualTo(13);
         assertThat(LottoUtil.numberOfLottoAvailableCount(7000)).isEqualTo(7);
+    }
+
+    @DisplayName("로또 번호는 오름차순이여야 한다.")
+    @Test
+    void createLottoAsc() {
+
+        List<Lotto> lottos = LottoUtil.getLottos(1);
+
+        Lotto lotto = lottos.get(0);
+
+        for(int i = 1 ; i < lotto.getNumbers().size(); i++){
+            assertThat(lotto.getNumbers().get(i) > lotto.getNumbers().get(i-1)).isTrue();
+        }
+
     }
 }
