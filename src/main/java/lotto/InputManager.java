@@ -35,7 +35,7 @@ public class InputManager {
                 winningNumbers.add(Integer.parseInt(winningNumber));
             }
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("로또 번호는 쉼표를 기준으로 구분해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 쉼표를 기준으로 구분해야 합니다.");
         }
         validateWinningNumbers(winningNumbers);
 
