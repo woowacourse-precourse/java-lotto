@@ -60,8 +60,8 @@ public class Calculation {
         return rank;
     }
 
-    public static void calculateWinningStatistics(List<Lotto> lottoBundle, List<Integer> prizeNumber,int bonusNumber,
-                                                  int purchaseMoney){
+    public static List<Integer> calculateWinningStatistics(List<Lotto> lottoBundle, List<Integer> prizeNumber,
+                                                           int bonusNumber){
         List<Integer> eachNumberOfRank = List.of(0,0,0,0,0);
         int totalPrizeMoney = 0;
         float yeild = 0;
@@ -72,7 +72,8 @@ public class Calculation {
             eachNumberOfRank.set(rank.rank-1,rankCount+1);
             totalPrizeMoney += rank.prizeMoney;
         }
-        yeild = calculateYield(totalPrizeMoney,)
+        eachNumberOfRank.add(totalPrizeMoney);
+        return eachNumberOfRank;
     }
 
     public static float calculateYield(int totalPrizeMoney,int purchasedMoney){
