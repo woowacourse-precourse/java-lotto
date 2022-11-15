@@ -20,6 +20,7 @@ public class Player {
         checkDivideBy1000(totalPayment);
         return (int)totalPayment/1000;
     }
+
     public void checkDivideBy1000(int totalPayment) {
         if(totalPayment % 1000 !=0){
             throw new IllegalArgumentException(ERROR_MESSAGE+ERROR_BY1000);

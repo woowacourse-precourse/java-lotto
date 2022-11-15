@@ -46,7 +46,7 @@ public class LottoService {
 
 
         for(Lotto l : lottos){
-            int matchCnt=findMathrank(l, player);
+            int matchCnt= findMatchrank(l, player);
             if(matchCnt>=3) {
                 match[matchCnt] +=1;
             }
@@ -55,7 +55,7 @@ public class LottoService {
         printWinnningRatio();
     }
 
-    private int findMathrank(Lotto l, Player player) {
+    public int findMatchrank(Lotto l, Player player) {
         int matchCnt = lottoCalculator.countMatchNumber(l, player.getWinningNumber());
         if(matchCnt<3) return 0;
 
