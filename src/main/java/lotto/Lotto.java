@@ -109,7 +109,47 @@ public class Lotto {
         return result;
     }
     
-    public void compare(List<Integer> win, List<List> purchased){
+    public void loop(List<Integer> win, List<List> purchased){
+        int first = 0, second = 0 , third = 0, fourth = 0, fifth = 0;
+        for(List l : purchased){
+            boolean bonus = false;
+            int common = compare(win, l);
+            if(win.contains(bonusNum)){
+                bonus = true;
+            }
+            winnings ticketWin = winAmount(common, bonus);
+            if(ticketWin == winnings.FIRST){
+                first++;
+            }
+            if(ticketWin == winnings.SECOND){
+                second++;
+            }
+            if(ticketWin == winnings.THIRD){
+                third++;
+            }
+            if(ticketWin == winnings.FOURTH){
+                fourth++;
+            }
+            if(ticketWin == winnings.FIFTH){
+                fifth++;
+            }
+        }
+        System.out.println("3개 일치 (5,000원) - "+ fifth + "개");
+        System.out.println("4개 일치 (50,000원) - " + fourth +"0개");
+        System.out.println("5개 일치 (1,500,000원) - " + third +"0개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second +"0개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + first +"0개");
+        
+    }
+    
+    public int compare(List<Integer> win, List<Object> ticket){
+        int result = 0;
+        for(Object o : ticket){
+            if(win.contains(o)){
+                result++;
+            }
+        }
+        return  result;
     }
     
     public winnings winAmount(int count, boolean bonus){
