@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printLottoResult(Map<Rank, Integer> lottoResult, float profitRate) {
+    public static void printLottoResult(Map<Rank, Integer> lottoResult, double profitRate) {
         System.out.println(RESULT_OF_LOTTO);
         System.out.println(String.format(RESULT_CORRECT_THREE_NUMBERS, lottoResult.get(Rank.FIFTH)));
         System.out.println(String.format(RESULT_CORRECT_FOUR_NUMBERS, lottoResult.get(Rank.FOURTH)));
