@@ -49,4 +49,11 @@ public class GeneratorTest {
         expectSummary.put("bonusCount", 1);
         assertThat(winningSummary).isEqualTo(expectSummary);
     }
+
+    @Test
+    void calculateProfitTest() {
+        double result = Generator.calculateProfit(3000, 2_030_000_000);
+        assertThat(result).isEqualTo(67666666.7);
+
+    }
 }
