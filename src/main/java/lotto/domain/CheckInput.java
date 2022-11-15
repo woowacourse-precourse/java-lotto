@@ -67,4 +67,10 @@ public class CheckInput {
         }
     }
 
+    public static void checkWinningNumberRange(int winningNumber) {
+        if (winningNumber < 1 || winningNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1 ~ 45 사이의 양수입니다.");
+        }
+    }
+
 }
