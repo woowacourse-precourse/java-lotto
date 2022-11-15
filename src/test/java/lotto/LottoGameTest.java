@@ -73,7 +73,7 @@ public class LottoGameTest {
     void calcRateOfReturnFunctionalTest() {
         int[] matches = {0, 0, 0, 0, 1};
 
-        BigDecimal result = LottoGame.calcRateOfReturn(matches, 8000);
+        BigDecimal result = LottoGame.getROR(matches, 8000);
         BigDecimal expected = new BigDecimal("62.5");
 
         Assertions.assertThat(result).isEqualTo(expected);

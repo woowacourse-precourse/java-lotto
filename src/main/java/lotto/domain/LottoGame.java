@@ -51,8 +51,7 @@ public class LottoGame {
             throw new IllegalArgumentException("[ERROR] 로또는 천원 단위로 구매할 수 있습니다.");
         }
     }
-
-
+    
     private static List<Integer> makeUniqueLottoNumber() {
         return (Randoms.pickUniqueNumbersInRange(Lotto._min_lotto_number, Lotto._max_lotto_number,
                 Lotto._lotto_length));
@@ -116,13 +115,17 @@ public class LottoGame {
     }
 
     // 수익률 계산 함수
-    public static BigDecimal calcRateOfReturn(int[] matchTable, int money) {
-        BigDecimal rateOfReturn = new BigDecimal(sumReward(matchTable));
+    public static BigDecimal getROR(int[] matchTable, int money) {
+        BigDecimal reward = new BigDecimal(sumReward(matchTable));
 
-        rateOfReturn = rateOfReturn.divide(new BigDecimal(String.valueOf(money)), 3, RoundingMode.CEILING);
-        rateOfReturn = rateOfReturn.multiply(new BigDecimal("100"));
+        return calcROR(money, reward);
+    }
 
-        return rateOfReturn.setScale(1, RoundingMode.HALF_UP);
+    private static BigDecimal calcROR(int money, BigDecimal reward) {
+        reward = reward.divide(new BigDecimal(String.valueOf(money)), 3, RoundingMode.CEILING);
+        reward = reward.multiply(new BigDecimal("100"));
+
+        return reward.setScale(1, RoundingMode.HALF_UP);
     }
 
     private static BigInteger sumReward(int[] matchTable) {
@@ -132,7 +135,6 @@ public class LottoGame {
         for (int i = 0; i < matchTable.length; ++i) {
             BigInteger nowReward = new BigInteger(rewardTable[i]);
             BigInteger count = new BigInteger(String.valueOf(matchTable[i]));
-
             nowReward = nowReward.multiply(count);
             reward = reward.add(nowReward);
         }

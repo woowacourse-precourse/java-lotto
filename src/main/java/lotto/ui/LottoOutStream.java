@@ -16,9 +16,9 @@ public class LottoOutStream {
         System.out.print("6개 일치 (2,000,000,000원) - " + matches[LottoGame._1st_index] + "개\n");
     }
 
-    public static void showRateOfReturn(BigDecimal rateOfReturn) {
+    public static void showROR(BigDecimal ror) {
         DecimalFormat df = new DecimalFormat("###,##0.0");
-        String format = df.format(rateOfReturn);
+        String format = df.format(ror);
 
         System.out.print("총 수익률은 " + format + "%입니다.");
     }
