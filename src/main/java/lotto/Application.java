@@ -57,6 +57,7 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         printResults.total(result);
-        System.out.println(WinningRate.calculateYeild(result, customerMoney));
+        double yeild = WinningRate.calculateYeild(result, customerMoney);
+        System.out.println("총 수익률은 " + yeild +"%입니다.");
     }
 }
