@@ -5,6 +5,7 @@ import view.OutputView;
 
 import static view.InputView.*;
 import static view.OutputView.printLottoCollection;
+import static view.OutputView.printWinningResult;
 
 public class LottoProgram {
     public void run() {
@@ -23,6 +24,7 @@ public class LottoProgram {
         // 등수 만들기
         LottoRank lottoRank = makeRank(lottoCollection, winningNumber);
         // 출력하기
+        printWinningResult(lottoRank);
     }
     private LottoMoney ReceiveMoney() {
         return new LottoMoney(inputMoneyView());

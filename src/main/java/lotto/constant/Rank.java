@@ -27,4 +27,11 @@ public enum Rank {
         return NOT_WINNING;
     }
 
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public int getReward() {
+        return reward;
+    }
 }
