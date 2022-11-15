@@ -1,7 +1,11 @@
 package lotto.view;
 
+import lotto.model.Rank;
+
 import java.util.List;
 import java.util.Map;
+
+import static lotto.model.Rank.*;
 
 public class Output {
     public static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
@@ -14,7 +18,7 @@ public class Output {
     public static final String THIRD_STATISTICS_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";
     public static final String FOURTH_STATISTICS_MESSAGE = "4개 일치 (50,000원) - %d개\n";
     public static final String FIFTH_STATISTICS_MESSAGE = "3개 일치 (5,000원) - %d개\n";
-    public static final String YIELD_MESSAGE = "총 수익률은 %f%%입니다.\n";
+    public static final String YIELD_MESSAGE = "총 수익률은 %.2f%%입니다.\n";
 
 
     public static void printInputMoney() {
@@ -37,14 +41,14 @@ public class Output {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
     }
 
-    public static void printWinStatistics(Map<String, Integer> winStatistics) {
+    public static void printWinStatistics(Map<Rank, Integer> winStatistics) {
         System.out.println(WIN_STATISTICS_MESSAGE);
 
-        System.out.printf(FIRST_STATISTICS_MESSAGE, winStatistics.get("1"));
-        System.out.printf(SECOND_STATISTICS_MESSAGE, winStatistics.get("2"));
-        System.out.printf(THIRD_STATISTICS_MESSAGE, winStatistics.get("3"));
-        System.out.printf(FOURTH_STATISTICS_MESSAGE, winStatistics.get("4"));
-        System.out.printf(FIFTH_STATISTICS_MESSAGE, winStatistics.get("5"));
+        System.out.printf(FIFTH_STATISTICS_MESSAGE, winStatistics.get(FIFTH));
+        System.out.printf(FOURTH_STATISTICS_MESSAGE, winStatistics.get(FOURTH));
+        System.out.printf(THIRD_STATISTICS_MESSAGE, winStatistics.get(THIRD));
+        System.out.printf(SECOND_STATISTICS_MESSAGE, winStatistics.get(SECOND));
+        System.out.printf(FIRST_STATISTICS_MESSAGE, winStatistics.get(FIRST));
     }
 
     public static void printYield(double yield){
