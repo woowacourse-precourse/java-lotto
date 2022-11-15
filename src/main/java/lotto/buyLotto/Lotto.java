@@ -38,4 +38,18 @@ public class Lotto {
 
         return count;
     }
+
+    public int compareNumberWithBonus(int[] prizeNumbers, int bonusNumber) {
+        int count = 0;
+
+        for (int n : prizeNumbers) {
+            count += Collections.frequency(numbers, n);
+        }
+        if (count == 6) {
+            return 0;
+        }
+        count += Collections.frequency(numbers, bonusNumber);
+
+        return count;
+    }
 }
