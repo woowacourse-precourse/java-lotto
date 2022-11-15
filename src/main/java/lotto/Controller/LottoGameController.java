@@ -17,6 +17,11 @@ public class LottoGameController {
     public List<List<Integer>> lottoList=new ArrayList<>();
     public List<Integer> countEqualNumberList = new ArrayList<>();
     public String inputCash;
+    int third = 0;
+    int fifth = 0;
+    int fourth = 0;
+    int second = 0;
+    int first = 0;
 
     public void LottoSystem(InputMessages inputMessages, OutputMessages outputMessages) {
         setRandomList(inputMessages, outputMessages);
@@ -94,6 +99,26 @@ public class LottoGameController {
         int count = lotto.countCorrectNums(lottoList, countNum, index);
         countEqualNumberList.add(count);
         setRank(index, bonusNum);
+    }
+
+    public void setRank(int index, int bonusNum) {
+        for (Integer countNums: countEqualNumberList) {
+            if (countNums == 3) {
+                fifth++;
+            }
+            if (countNums == 4) {
+                fourth++;
+            }
+            if (countNums==5 && !lottoList.get(index).contains(bonusNum)) {
+                third++;
+            }
+            if (countNums==5 && lottoList.get(index).contains(bonusNum)) {
+                second++;
+            }
+            if (countNums == 6) {
+                first++;
+            }
+        }
     }
 
 
