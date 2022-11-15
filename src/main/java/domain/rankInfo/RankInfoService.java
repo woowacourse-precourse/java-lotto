@@ -1,9 +1,9 @@
-package domain.RankInfo;
+package domain.rankInfo;
 
-import domain.Bonus.Bonus;
-import domain.Lotto.Lotto;
-import domain.Money.Money;
-import domain.UserLotto.UserLotto;
+import domain.bonus.Bonus;
+import domain.lotto.Lotto;
+import domain.money.Money;
+import domain.userLotto.UserLotto;
 
 import java.util.List;
 

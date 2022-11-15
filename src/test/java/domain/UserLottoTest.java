@@ -1,9 +1,9 @@
 package domain;
 
-import domain.Money.Money;
-import domain.Money.MoneyController;
-import domain.UserLotto.UserLotto;
-import domain.UserLotto.UserLottoController;
+import domain.money.Money;
+import domain.money.MoneyController;
+import domain.userLotto.UserLotto;
+import domain.userLotto.UserLottoController;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

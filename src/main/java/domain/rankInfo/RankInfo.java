@@ -1,4 +1,4 @@
-package domain.RankInfo;
+package domain.rankInfo;
 
 import java.util.HashMap;
 import java.util.Map;

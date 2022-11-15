@@ -1,4 +1,4 @@
-package domain.Money;
+package domain.money;
 
 import java.util.regex.Pattern;
 

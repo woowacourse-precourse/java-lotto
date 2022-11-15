@@ -1,4 +1,4 @@
-package domain.Money;
+package domain.money;
 
 public class Money {
     private final static int ZERO = 0;

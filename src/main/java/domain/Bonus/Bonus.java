@@ -1,6 +1,6 @@
-package domain.Bonus;
+package domain.bonus;
 
-import domain.Lotto.Lotto;
+import domain.lotto.Lotto;
 
 public class Bonus {
     private final int bonusNumber;

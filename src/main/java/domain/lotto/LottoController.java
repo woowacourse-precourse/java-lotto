@@ -1,4 +1,4 @@
-package domain.Lotto;
+package domain.lotto;
 
 import java.util.regex.Pattern;
 

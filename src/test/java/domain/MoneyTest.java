@@ -1,7 +1,7 @@
 package domain;
 
-import domain.Money.Money;
-import domain.Money.MoneyController;
+import domain.money.Money;
+import domain.money.MoneyController;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

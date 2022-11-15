@@ -1,4 +1,4 @@
-package domain.UserLotto;
+package domain.userLotto;
 
 public class UserLottoController {
     private final UserLottoService userLottoService = new UserLottoService();

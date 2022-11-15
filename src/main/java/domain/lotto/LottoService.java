@@ -1,4 +1,4 @@
-package domain.Lotto;
+package domain.lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
