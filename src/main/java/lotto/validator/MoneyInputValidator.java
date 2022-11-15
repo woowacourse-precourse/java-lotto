@@ -7,11 +7,16 @@ import java.util.regex.Pattern;
 public class MoneyInputValidator {
 	private static final Pattern pattern = Pattern.compile("[0-9]+");
 
-	public int runMoneyInputValidator(String inputMoney) throws IllegalArgumentException {
+	public int runMoneyInputValidator(String inputMoney) {
 		int money;
 		if (isNotConsistNumber(inputMoney)) {
-			throw new IllegalArgumentException(NOT_NUMBER.getErrorMessage());
+			try {
+				throw new IllegalArgumentException(NOT_NUMBER.getErrorMessage());
+			} catch (IllegalArgumentException e) {
+				System.out.println(NOT_NUMBER.getErrorMessage());
+			}
 		}
+
 		money = Integer.parseInt(inputMoney);
 		if (isNotDivided(money)) {
 			throw new IllegalArgumentException(NOT_DIVIDED.getErrorMessage());

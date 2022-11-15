@@ -6,8 +6,6 @@ import lotto.controller.WinStatisticsStatus;
 
 public class YieldCalculator {
 	private static final int PERCENTAGE = 100;
-	private static final int ROUND_OFF = 100;
-	private static final double DIVISION_ROUND_OFF = 100.0;
 
 	private final Map<Integer, Integer> matchResult;
 	private final int money;
@@ -33,7 +31,7 @@ public class YieldCalculator {
 	}
 
 	private void calculateYield() {
-		yield = ((double)profit / (double)money) * 100;
+		yield = ((double)profit / (double)money) * PERCENTAGE;
 	}
 
 	public double getYield() {

@@ -27,7 +27,7 @@ public class WinningNumberValidatorTest {
 
 		//	then
 		// System.out.println(winningNumberValidator.runWinningNumberValidator(outRangeNumber));
-		assertThatThrownBy(() -> winningNumberValidator.runWinningNumberValidator(correct))
+		assertThatThrownBy(() -> winningNumberValidator.runWinningNumberValidator(noUseComma))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(COMMA_CLASSIFICATION.getErrorMessage());
 	}

@@ -16,8 +16,8 @@ public class LottoController {
 	private final InputView inputView;
 	private int money;
 	private List<List<Integer>> lotteryTickets;
-	private List<Integer> winningNumbers;
 	private Map<Integer, Integer> result;
+	Lotto lotto;
 
 	public LottoController(InputView inputView) {
 		this.inputView = inputView;
@@ -27,6 +27,7 @@ public class LottoController {
 		depositMoney();
 		publishLotteryTickets(money);
 		drawWinningNumbers();
+		drawBonusNumber();
 
 		getWinStatistics();
 		getYield(result, money);
@@ -49,22 +50,18 @@ public class LottoController {
 	private void drawWinningNumbers() {
 		OutputView.printProgress(WINNING_NUMBER);
 		String inputWinningNumbers = inputView.inputNumbers();
-		Lotto lotto = new Lotto(inputWinningNumbers);
+		lotto = new Lotto(inputWinningNumbers);
+	}
 
+	private void drawBonusNumber() {
 		OutputView.printProgress(BONUS_NUMBER);
 		String inputBonusNumber = inputView.inputNumbers();
 		lotto.drawBonusNumber(inputBonusNumber);
-
-		winningNumbers = lotto.getWinningNumbers();
 	}
 
-	// 생성자에서 유효성검사로 고친후 함수 분리하기
-	/*private void drawBonusNumber() {
-
-	}*/
-
 	private void getWinStatistics() {
-		WinStatisticsCalculator winStatisticsCalculator = new WinStatisticsCalculator(lotteryTickets, winningNumbers);
+		WinStatisticsCalculator winStatisticsCalculator = new WinStatisticsCalculator(lotteryTickets,
+			lotto.getWinningNumbers());
 		winStatisticsCalculator.calculateWinningStatus();
 		result = winStatisticsCalculator.getMatchResult();
 

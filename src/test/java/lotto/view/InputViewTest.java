@@ -1,19 +1,6 @@
-package lotto.view;
+// package lotto.view;
 
-import static lotto.validator.ErrorMessage.*;
-import static org.assertj.core.api.AssertionsForClassTypes.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import lotto.validator.MoneyInputValidator;
+/*
 
 public class InputViewTest {
 	private static InputView inputView;
@@ -48,7 +35,8 @@ public class InputViewTest {
 			.hasMessageContaining(NOT_DIVIDED.getErrorMessage());
 	}
 
-	/*@Test
+	*/
+/*@Test
 	void 유효성거친_보너스번호_올바른_반환여부확인() {
 		//	given
 		String input = "1,2,3,4,5,6";
@@ -61,5 +49,7 @@ public class InputViewTest {
 		inputView.inputWinningNumbers()
 		//	when
 		//	then
-	}*/
+	}*//*
+
 }
+*/
