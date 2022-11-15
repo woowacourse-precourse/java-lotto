@@ -19,8 +19,9 @@ public class Game {
         String money = inputString("구입금액을 입력해 주세요.");
         int convertMoney = moneyValidate(money);
 
-        // 금액만큼 랜덤으로 번호 생성
+        // 금액만큼 랜덤으로 번호 생성 및 출력
         randomLottos = makeLottosList(money);
+        printRandomLottos(randomLottos);
     }
 
     private String inputString(String message){
@@ -50,5 +51,13 @@ public class Game {
     private List<Integer> makeNumbers(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    private void printRandomLottos(List<Lotto> randomLottos) {
+        System.out.println(String.format("%d개를 구매했습니다.", randomLottos.size()));
+
+        for(Lotto lotto : randomLottos){
+            lotto.printNumbers();
+        }
     }
 }
