@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -16,13 +18,16 @@ public class Store {
             lotto = makeLotto();
             saveLotto(lotto);
         }
+
     }
 
     public int countLotto(){
         return customer.getMoney()/Money.MOD;
     }
     public Lotto makeLotto(){
-        List<Integer> numbers = camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange(1,45,6);
+        List<Integer> numbers =
+                new ArrayList<>(camp.nextstep.edu.missionutils.
+                        Randoms.pickUniqueNumbersInRange(1,45,6));
         numbers.sort(Comparator.naturalOrder());
         return new Lotto(numbers);
     }

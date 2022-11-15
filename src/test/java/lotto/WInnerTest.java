@@ -12,7 +12,7 @@ public class WInnerTest {
         assertThat(Winner.getPrize(3)).isEqualTo(5000);
         assertThat(Winner.getPrize(4)).isEqualTo(50000);
         assertThat(Winner.getPrize(5)).isEqualTo(1500000);
-        assertThat(Winner.getPrize(50)).isEqualTo(3000000);
+        assertThat(Winner.getPrize(50)).isEqualTo(30000000);
         assertThat(Winner.getPrize(6)).isEqualTo(2000000000);
     }
 }

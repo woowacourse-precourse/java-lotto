@@ -24,12 +24,12 @@ public class Saturday {
 
 
     public void validateStrInput(String win,String bonus)throws IllegalArgumentException{
-        if(!isWinRegex(win)) throw new IllegalArgumentException();
-        if(!isBonusRegex(bonus)) throw new IllegalArgumentException();
+        if(!isWinRegex(win)) throw new IllegalArgumentException("[ERROR] 올바른 형식으로 입력해 주세요");
+        if(!isBonusRegex(bonus)) throw new IllegalArgumentException("[ERROR] 올바른 형식으로 입력해 주세요");
     }
     public void validateIntInput(List<Integer> win,int bonus) throws IllegalArgumentException{
-        if(isOut(win,bonus)) throw new IllegalArgumentException();
-        if(isAlready(win,bonus)) throw new IllegalArgumentException();
+        if(isOut(win,bonus)) throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        if(isAlready(win,bonus)) throw new IllegalArgumentException("[ERROR] 이미 있는 당첨 번호 입니다.");
     }
     public boolean isWinRegex(String win){
         return win.matches(Numbers.Win.regex);
@@ -66,7 +66,7 @@ public class Saturday {
     }
     public int checkLottoAt(int i){
         Lotto lotto = DB.selectAt(i);
-        List<Integer> numbers = lotto.getNumbers();
+        ArrayList<Integer> numbers = new ArrayList<>(lotto.getNumbers());
         int count=0;
         int flag=0;
         for(int j=0; j<6; j++){
@@ -78,8 +78,8 @@ public class Saturday {
 
         return count;
     }
-    public List<Integer> makeStatistics(){
-        List<Integer> statistics = new ArrayList<>(List.of(0,0,0,0,0));
+    public void makeStatistics(){
+        List<Integer> statistics = DB.getStatistics();
         int size = DB.getTableSize();
         int count,index,prize;
         for(int i=0; i<size; i++){
@@ -91,12 +91,9 @@ public class Saturday {
                 DB.updatePrizeSum(prize);
             }
         }
-        return statistics;
     }
 
-    public double calYeild(){
-        System.out.println("DB.getPrizeSum() = " + DB.getPrizeSum());
-        System.out.println("DB.getTableSize() = " + DB.getTableSize());
-        return (double)DB.getPrizeSum()*100/(DB.getTableSize()*1000);
+    public void calYeild(){
+        DB.setYeild( (double)DB.getPrizeSum()*100/(DB.getTableSize()*1000));
     }
 }

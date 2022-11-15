@@ -10,15 +10,15 @@ public class Customer {
 
     private int validate(String input)throws IllegalArgumentException{
         int cash=0;
-        if(isBitcoin(input))throw new IllegalArgumentException();
+        if(isBitcoin(input))throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
         try{
             cash=Integer.parseInt(input);
         }catch (Exception e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 너무 큰 숫자를 입력하였습니다.");
         }
-        if(isntMod(cash))throw new IllegalArgumentException();
-        if(isPoor(cash))throw new IllegalArgumentException();
-        if(isElonMusk(cash))throw new IllegalArgumentException();
+        if(isntMod(cash))throw new IllegalArgumentException("[ERROR] 1000단위로 입려해 주세요.");
+        if(isPoor(cash))throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력해 주세요");
+        if(isElonMusk(cash))throw new IllegalArgumentException("[ERROR] 1,000,000,000원 이하의 금액을 입력해주세요.");
         return cash;
     }
 

@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -74,8 +75,8 @@ public class SaturdayTest {
         DB.insert(new Lotto(List.of(1,2,3,4,5,7))); // 5+b
         DB.insert(new Lotto(List.of(1,2,3,4,7,10))); // 5
         DB.insert(new Lotto(List.of(1,2,3,4,11,45))); //4
-
-        assertThat(saturday.makeStatistics()).isEqualTo(List.of(0,1,1,1,1));
+        saturday.makeStatistics();
+        assertThat(DB.getStatistics()).isEqualTo(new ArrayList<Integer>(List.of(0,1,1,1,1)));
 
     }
     @DisplayName("기대한 우승 상금이 나오면 통과")
@@ -101,7 +102,8 @@ public class SaturdayTest {
         DB.insert(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
 
         saturday.makeStatistics();
-        assertThat(saturday.calYeild()).isEqualTo(62.5);
+        saturday.calYeild();
+        assertThat(DB.getYeild()).isEqualTo(62.5);
     }
 
 
