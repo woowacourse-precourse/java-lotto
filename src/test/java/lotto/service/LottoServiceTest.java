@@ -4,10 +4,8 @@ import lotto.domain.Reward;
 import lotto.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.api.Assertions;
 
 public class LottoServiceTest {
 
@@ -21,7 +19,7 @@ public class LottoServiceTest {
 
         int matchCount = lottoService.matchLottoCount(winningNumbers, lottoNumbers);
 
-        assertThat(matchCount).isEqualTo(5);
+        Assertions.assertThat(matchCount).isEqualTo(5);
     }
 
     @Test
@@ -39,7 +37,7 @@ public class LottoServiceTest {
 
         Reward expectedReward = Reward.THIRD_REWARD;
 
-        assertThat(user.getLottiesResult().get(expectedReward)).isEqualTo(2);
+        Assertions.assertThat(user.getLottiesResult().get(expectedReward)).isEqualTo(2);
     }
 
     @Test
@@ -60,8 +58,26 @@ public class LottoServiceTest {
         Reward expectedRewardOne = Reward.THIRD_REWARD;
         Reward expectedRewardTwo = Reward.SECOND_REWARD;
 
-        assertThat(user.getLottiesResult().get(expectedRewardOne)).isEqualTo(1);
-        assertThat(user.getLottiesResult().get(expectedRewardTwo)).isEqualTo(1);
+        Assertions.assertThat(user.getLottiesResult().get(expectedRewardOne)).isEqualTo(1);
+        Assertions.assertThat(user.getLottiesResult().get(expectedRewardTwo)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("로또 번호 결과 저장 테스트 1등 하나")
+    void saveLottoResultTestWithOneReward() {
+
+        User user = lottoService.getUserForTest();
+
+        user.addLottoForTest(List.of(30, 24, 13, 4, 1, 6));
+
+        lottoService.saveWinningLotto("30,24,13,4,1,6");
+        lottoService.saveBonusNumber("7");
+        lottoService.initResultLotto();
+        lottoService.saveResultLotto();
+
+        Reward expectedReward = Reward.FIRST_REWARD;
+
+        Assertions.assertThat(user.getLottiesResult().get(expectedReward)).isEqualTo(1);
     }
 
     @Test
@@ -83,7 +99,7 @@ public class LottoServiceTest {
 
         double profitRate = lottoService.getProfitRate();
 
-        assertThat(profitRate).isEqualTo(333.3);
+        Assertions.assertThat(profitRate).isEqualTo(333.3);
     }
 
     @Test
@@ -105,7 +121,7 @@ public class LottoServiceTest {
 
         double profitRate = lottoService.getProfitRate();
 
-        assertThat(profitRate).isEqualTo(166.7);
+        Assertions.assertThat(profitRate).isEqualTo(166.7);
     }
 
     @Test
@@ -127,7 +143,7 @@ public class LottoServiceTest {
 
         double profitRate = lottoService.getProfitRate();
 
-        assertThat(profitRate).isEqualTo(62.5);
+        Assertions.assertThat(profitRate).isEqualTo(62.5);
     }
 
 }
