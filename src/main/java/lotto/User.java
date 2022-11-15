@@ -62,12 +62,12 @@ public class User {
 	}
 
 	private void printTotalReturn(HashMap<Prize, Integer> result) {
-		double totalReturn = 0D;
+		double totalReturn = 0;
 
 		for (Prize prize : result.keySet()) {
 			int prizeMoney = prize.getPrizeMoney();
 			int winningNumber = result.get(prize);
-			totalReturn +=  ((double) (prizeMoney * winningNumber * 100) / (double) purchaseAmount);
+			totalReturn +=  ((double) prizeMoney / (double) (purchaseAmount / 100)) * winningNumber ;
 		}
 		System.out.println("총 수익률은 "+String.format("%.1f", totalReturn)+"%입니다.");
 	}
