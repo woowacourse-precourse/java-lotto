@@ -26,9 +26,9 @@ public class ViewValidator {
         }
     }
 
-    public void validateMoneyIsZero(String money) {
-        if (Long.parseLong(money) == 0L) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
+    public void validatePrefixZero(String money) {
+        if (money.charAt(0) == '0') {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PREFIX_ZERO.getMessage());
         }
     }
 
