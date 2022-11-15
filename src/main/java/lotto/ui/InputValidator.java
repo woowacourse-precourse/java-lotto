@@ -26,11 +26,11 @@ public class InputValidator {
     }
 
     public static void checkInputBonusNumber(String bonusNumberRaw) {
-        checkIsMatchInputBonusPattern(bonusNumberRaw);
+        checkIsMatchInputBonusWithPattern(bonusNumberRaw);
         checkIsOver9digits(bonusNumberRaw);
     }
 
-    private static void checkIsMatchInputBonusPattern(String bonusNumberRaw) {
+    private static void checkIsMatchInputBonusWithPattern(String bonusNumberRaw) {
         boolean isMatch = Pattern.matches(INPUT_BONUS_NUMBER_PATTERN, bonusNumberRaw);
         if (isMatch) {
             return;
