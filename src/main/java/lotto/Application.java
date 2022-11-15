@@ -15,7 +15,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             User user = userService.buyLotto();
-            userService.printBoughtLotto(user);
+            userService.printBoughtLottos(user);
             WinningLotto winningLotto = winningLottoService.scanWinningNums();
             Statistics statistics = staticsService.calculateRating(user, winningLotto);
             staticsService.printTotality(statistics);

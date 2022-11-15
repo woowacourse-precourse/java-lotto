@@ -26,31 +26,12 @@ public class UserService {
         return money;
     }
 
-    public List<Lotto> issueLotto(int purchaseLottoNum) {
-        List<Lotto> tempGeneratedLotto = new ArrayList<>();
-        for (int buy = 0; buy < purchaseLottoNum; buy++) {
-            Lotto issuedLotto = lottoService.issueLotto();
-            tempGeneratedLotto.add(issuedLotto);
-        }
-        return tempGeneratedLotto;
-    }
-
-    public void printBoughtLotto(User user) {
-        StringBuilder printString = new StringBuilder();
-        printString.append(BLANK_BR); //한줄 공백
-        printString.append(user.getPurchaseLottoPiece()).append(PURCHASE_MSG).append("\n");
-        for (Lotto now : user.getPurchaseLotto()) {
-            printString.append(now).append("\n");
-        }
-        System.out.println(printString);
-    }
-
     public int stringToInter(String scanNum) {
         int money;
         try {
             money = Integer.parseInt(scanNum);
         } catch (Exception NumberFormatException) {
-            throw new IllegalArgumentException(INPUT_NOT_INTEGER);
+            throw new IllegalArgumentException(INPUT_NOT_INTEGER_ERROR);
         }
         return money;
     }
@@ -60,6 +41,25 @@ public class UserService {
             return;
         }
         throw new IllegalArgumentException(PAY_MONEY_ERROR);
+    }
+
+    public List<Lotto> issueLotto(int purchaseLottoPiece) {
+        List<Lotto> tempIssuedLottos = new ArrayList<>();
+        for (int buy = 0; buy < purchaseLottoPiece; buy++) {
+            Lotto issuedLotto = lottoService.issueLotto();
+            tempIssuedLottos.add(issuedLotto);
+        }
+        return tempIssuedLottos;
+    }
+
+    public void printBoughtLottos(User user) {
+        StringBuilder printBoughtLotto = new StringBuilder();
+        printBoughtLotto.append(BLANK_BR); //한줄 공백
+        printBoughtLotto.append(user.getPurchaseLottoPiece()).append(PURCHASE_CNT_MSG).append("\n");
+        for (Lotto lotto : user.getPurchaseLotto()) {
+            printBoughtLotto.append(lotto).append("\n");
+        }
+        System.out.println(printBoughtLotto);
     }
 
 }

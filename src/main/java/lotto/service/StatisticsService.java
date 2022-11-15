@@ -24,7 +24,7 @@ public class StatisticsService {
         return new Statistics(prizeMap);
     }
 
-    private int matchCount(List<Integer> numbers, List<Integer> winnings) {
+    public int matchCount(List<Integer> numbers, List<Integer> winnings) {
         int matchCnt = 0;
         for (int nowNum : numbers) {
             if (winnings.contains(nowNum)) {
@@ -49,14 +49,15 @@ public class StatisticsService {
     }
 
     private String printEachCount(Prize prize, int cnt) {
+        //2등과 같이 보너스 볼을 맞추는 경우
         if (prize.isBonusCatchPoint()) {
-            return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH, prize.getMoney(), cnt);
+            return String.format(PRINT_RANK_FORMAT, prize.getCatchPoint(), PRINT_BONUS_MATCH, prize.getMoney(), cnt);
         }
-        return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), "", prize.getMoney(), cnt);
+        return String.format(PRINT_RANK_FORMAT, prize.getCatchPoint(), "", prize.getMoney(), cnt);
     }
 
     public void printProfit(Statistics statistic, User user) {
         double profit = statistic.getTotal() / user.getPurchaseMoney() * 100;
-        System.out.printf(PROFIT_MSG + "\n", profit);
+        System.out.printf(PRINT_PROFIT_FORMAT + "\n", profit);
     }
 }

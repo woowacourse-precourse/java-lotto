@@ -14,7 +14,7 @@ class LottoServiceTest {
     LottoService lottoService = new LottoService();
 
     @Test
-    @DisplayName("로또 숫자 범위 확인 ")
+    @DisplayName("발행된 로또 숫자의 범위를 확인 한다.")
     void generateNumsRangeTest() {
         Lotto lotto = lottoService.issueLotto();
         List<Integer> result = lotto.getNumbers().stream()
@@ -24,7 +24,7 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또 숫자 중복 확인 ")
+    @DisplayName("발행된 로또 숫자의 중복을 확인한다. ")
     void generateNumsDistinctTest() {
         Lotto lotto = lottoService.issueLotto();
         List<Integer> result = lotto.getNumbers().stream()
@@ -33,7 +33,7 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또 숫자 개수 확인 ")
+    @DisplayName("발행된 로또 숫자의 개수를 확인한다. ")
     void generateNumsSizeTest() {
         Lotto lotto = lottoService.issueLotto();
         assertThat(lotto.getNumbers().size()).isEqualTo(LOTTO_NUMS_SIZE);

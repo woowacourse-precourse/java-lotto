@@ -21,7 +21,7 @@ public enum Prize {
     }
 
     public static Prize find(int catchPoint, boolean bonusPoint) {
-        //2등과 3증 차이 구분
+        //2등과 3증등 차이 구분
         if (catchPoint == 5) {
             if (bonusPoint) {
                 return second;
