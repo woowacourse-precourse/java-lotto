@@ -23,11 +23,22 @@ public class JudgeMent {
         return countCorrect;
     }
 
-    public boolean bonusCheck(List<Integer> numbers,int bonusNumber) {
+    public boolean bonusCheck(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)){
             return true;
         }
         return false;
+    }
+
+    public void setCorrectResult(List<Lotto> lottoNumbers,WinningNumber winningNumber){
+        Reward[] rewards = Reward.values();
+        for(Reward reward:rewards){
+            correctResult.put(reward,initNumber);
+        }
+        for(int i=0;i<lottoNumbers.size();i++) {
+            Reward result = getReward(lottoNumbers.get(i).getNumbers(), winningNumber);
+            correctResult.put(result,correctResult.get(result)+1);
+        }
     }
     private Reward getReward(List<Integer> numbers, WinningNumber winningNumber) {
         int correctCount = compareNumbers(winningNumber.getNumbers(), numbers);
