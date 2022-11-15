@@ -11,13 +11,13 @@ import java.util.List;
 
 public class OutputViewImpl implements OutputView {
 
-	public static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s\n";
-	public static final String BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.\n";
-	public static final String SCORE_MESSAGE_PREFIX = "당첨 통계\n" +
-			"---";
+	public static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s%n";
+	public static final String BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.%n";
+	public static final String SCORE_MESSAGE_PREFIX = String.format("당첨 통계%n" +
+			"---");
 	public static final String SCORE_MESSAGE_FORMAT = "%s (%s원) - %d개";
 	public static final String MONEY_DECIMAL_PATTERN = "###,###";
-	public static final String PROFIT_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.\n";
+	public static final String PROFIT_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.%n";
 
 	@Override
 	public void printLottoBuyingInfo(LottoBuyingInfo lottoBuyingInfo) {

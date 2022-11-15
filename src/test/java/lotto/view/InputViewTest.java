@@ -31,7 +31,7 @@ class InputViewTest {
 			inputView.getMoney();
 
 			//then
-			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_MONEY_MESSAGE + "\n\n");
+			assertThat(out.toString()).isEqualTo(String.format("%s%n%n", InputViewImpl.INPUT_MONEY_MESSAGE));
 		}
 
 		@Test
@@ -61,7 +61,7 @@ class InputViewTest {
 			inputView.getWinningNumbers();
 
 			//then
-			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_WINNING_NUMBERS_MESSAGE + "\n\n");
+			assertThat(out.toString()).isEqualTo(String.format("%s%n%n", InputViewImpl.INPUT_WINNING_NUMBERS_MESSAGE));
 		}
 
 		@Test
@@ -90,7 +90,7 @@ class InputViewTest {
 			inputView.getBonus();
 
 			//then
-			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_BONUS_MESSAGE + "\n\n");
+			assertThat(out.toString()).isEqualTo(String.format("%s%n%n", InputViewImpl.INPUT_BONUS_MESSAGE));
 		}
 
 		@Test
