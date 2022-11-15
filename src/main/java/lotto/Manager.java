@@ -28,6 +28,8 @@ public class Manager {
 	}
 
 	public void printLottos() {
-		System.out.println(lottos.toString());
+		for(Lotto lotto: lottos){
+			System.out.println(lotto.getNumbers().toString());
+		}
 	}
 }
