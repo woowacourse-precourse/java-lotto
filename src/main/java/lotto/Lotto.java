@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.ErrorMessage.*;
+import static resource.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -42,8 +42,4 @@ public class Lotto {
             throw new IllegalArgumentException(DUPLICATE_ERROR);
         }
     }
-
-
-
-
 }
