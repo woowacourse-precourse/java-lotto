@@ -1,6 +1,33 @@
 # 로또 게임
 
-## 기능 목록
+## 📁 디렉토리 구조
+```bash
+├── constant
+│   └── SystemValue : 시스템 상수를 저장한다.
+├── controller
+│   └── LottoController
+└── domain
+│   ├── generator
+│   |   ├── NumberGenerator : 인터페이스
+│   |   ├── FixedNumberGenerator : NumberGenerator 의 구현체 (고정된 값을 반환한다.)
+│   |   └── RandomNumberGenerator : NumberGenerator 의 구현체 (랜덤 값을 반환한다.)
+│   ├── lottery
+│   |   ├── BonusNumber : 보너스 번호
+│   |   ├── Lotto : 개별적인 번호 6개로 이루어진 하나의 로또
+│   |   ├── LottoGroup : 여러 개의 로또들의 묶음
+│   |   └── WinningLotto : 개별적인 번호 6개로 이루어진 당첨 번호
+│   ├── result
+│   |   ├── HitResult : LottoGroup 의 매칭 결과를 저장한다. (3개 부터 6개까지 매칭된 것이 각각 몇 개씩 있는지)
+│   |   ├── Profit : 총 수익과 수익률을 저장한다.
+│   |   └── Rank : 3개 매칭부터 6개 매칭까지 타입을 저장한다.
+│   └── Cost : 사용자의 로또 구입 금액을 저장한다.
+└── view
+│   ├── Input : 입력을 담당한다.
+│   └── Output : 출력을 담당한다.
+└── Application
+``` 
+
+## ✅ 기능 목록
 - [x] 1부터 45까지의 서로 다른 임의의 수 6개를 랜덤으로 생성한다. - RandomNumberGenerator#generateNumbers()
 - [x] 로또 번호를 정렬하여 반환한다. - RandomNumberGenerator#getSortedNumbers()
 - [x] 테스트를 위해 고정적인 수 6개를 생성한다. - FixedNumberGenerator#generateNumbers()
@@ -30,7 +57,7 @@
   - [x] 보너스 번호에 문자가 존재하는 경우 예외 처리한다.
   - [x] 보너스 번호에 당첨 번호와 중복되는 수가 존재하는 경우 예외 처리한다.
 
-## 기능 요구사항
+## 🖍 기능 요구사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
 
 ```
