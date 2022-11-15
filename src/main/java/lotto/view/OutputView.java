@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.util.Formatter.formatCashPrize;
+
 import java.util.List;
 import lotto.model.Rank;
 
@@ -40,7 +42,7 @@ public class OutputView {
             if (rank == Rank.NONE) {
                 continue;
             }
-            System.out.printf(rank.getPrintMessage(), rank.getCount());
+            System.out.printf(rank.getPrintMessage(), formatCashPrize(rank.getCashPrize()), rank.getCount());
         }
     }
 

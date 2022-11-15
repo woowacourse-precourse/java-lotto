@@ -7,12 +7,15 @@ import static lotto.util.Constants.LOTTO_RANGE_MIN;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.model.Rank;
 
 public class Formatter {
     public static final String PERCENT_FORMAT = "%.1f";
     public static final String SPACE_REGEX = "\\s";
     public static final String NO_SPACE = "";
     public static final String COMMA_REGEX = ",";
+    public static final String CASH_PRIZE_REGEX = "\\B(?=(\\d{3})+(?!\\d))";
+
 
     public static String removeSpace(String input) {
         return input.replaceAll(SPACE_REGEX, NO_SPACE);
@@ -39,5 +42,9 @@ public class Formatter {
 
     public static String formatYield(double totalPurchase, double totalRevenue) {
         return String.format(PERCENT_FORMAT, calculateYield(totalPurchase, totalRevenue));
+    }
+
+    public static String formatCashPrize(int cashPrize) {
+        return String.valueOf(cashPrize).replaceAll(CASH_PRIZE_REGEX, COMMA_REGEX);
     }
 }
