@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
-
 public enum LottoRank {
     FIFTH_PRIZE(3, 5000, false),
     FOURTH_PRIZE(4, 50000, false),

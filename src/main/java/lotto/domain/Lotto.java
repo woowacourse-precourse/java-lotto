@@ -5,18 +5,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Lotto {
+    static final String LOTTO_NUMBERS_COUNT_ERROR_MESSAGE = "[ERROR] 로또 번호 개수가 6개가 아닙니다.";
+    static final String LOTTO_NUMBERS_DUPLICATE_ERROR_MESSAGE = "[ERROR] 중복된 로또 번호가 있습니다.";
+    static final int MIN_NUM = 1;
+    static final int MAX_NUM = 45;
+    static final int LOTTO_NUMBERS_COUNT = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        checkLottoNumbersCount(numbers);
         checkLottoNumbersDuplicate(numbers);
 
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호 개수가 6개가 아닙니다.");
+    private void checkLottoNumbersCount(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_NUMBERS_COUNT) {
+            throw new IllegalArgumentException(LOTTO_NUMBERS_COUNT_ERROR_MESSAGE);
         }
     }
 
@@ -24,12 +29,12 @@ public class Lotto {
         Set<Integer> notDuplicateNumbers = new HashSet<>(numbers);
 
         if (notDuplicateNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 로또 번호가 있습니다.");
+            throw new IllegalArgumentException(LOTTO_NUMBERS_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     public static List<Integer> pickLottoNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, LOTTO_NUMBERS_COUNT);
 
         List<Integer> unmodifiableNumbers = Collections.unmodifiableList(numbers);
 
