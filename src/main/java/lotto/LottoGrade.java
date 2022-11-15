@@ -1,23 +1,17 @@
 package lotto;
 
 public enum LottoGrade {
-    FIVE(3, 5_000L),
-    FOUR(4, 50_000L),
-    THREE(5, 1_500_000L),
-    TWO(5, 30_000_000L),
-    ONE(6, 2_000_000_000L),
-    MISS(0, 0L);
+    FIVE( 5_000L),
+    FOUR(50_000L),
+    THREE(1_500_000L),
+    TWO(30_000_000L),
+    ONE(2_000_000_000L),
+    MISS(0L);
 
-    private int count;
-    private Long price;
+    private final Long price;
 
-    LottoGrade(int count, Long price) {
-        this.count = count;
+    LottoGrade(Long price) {
         this.price = price;
-    }
-
-    public int getCount() {
-        return count;
     }
 
     public Long getPrice() {
