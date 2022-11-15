@@ -83,4 +83,15 @@ public class BuyLotto {
         }
         return allNumberOfMatch;
     }
+
+    public static int totalPrice(Map <Integer,Integer> winStatistics){
+        int winMoney = 0;
+        int noPrice = 4; // 0,1,2 개 맞춘 것 + rank는 1부터 있으므로 0 비워둠
+        int [] priceMoney = {2000000000,30000000,1500000,50000,5000};
+
+        for(int i = 1; i <= winStatistics.size()-noPrice; i++){
+            winMoney+= priceMoney[i-1] * winStatistics.get(i);
+        }
+        return winMoney;
+    }
 }
