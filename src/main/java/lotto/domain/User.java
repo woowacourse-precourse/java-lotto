@@ -95,6 +95,13 @@ public class User {
         return lottiesResult;
     }
 
+    public void saveTotalReward() {
+        for (Map.Entry<Reward, Integer> eachReward : lottiesResult.entrySet()) {
+            Reward reward = eachReward.getKey();
+            rewardMoney += reward.getReward() * eachReward.getValue();
+        }
+    }
+
     // 테스트를 위한 메서드
     public void addLottoForTest(List<Integer> numbers) {
         lotties.add(new Lotto(numbers));
