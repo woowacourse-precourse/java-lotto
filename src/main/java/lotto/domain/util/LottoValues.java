@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.util;
 
 public enum LottoValues {
     LOTTO_AMOUNT(1_000),

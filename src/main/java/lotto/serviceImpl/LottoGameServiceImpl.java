@@ -3,9 +3,9 @@ package lotto.serviceImpl;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
-import lotto.domain.LottoValues;
+import lotto.domain.util.LottoValues;
 import lotto.domain.User;
-import lotto.domain.Winning;
+import lotto.domain.util.Winning;
 import lotto.service.GameService;
 
 import java.util.ArrayList;

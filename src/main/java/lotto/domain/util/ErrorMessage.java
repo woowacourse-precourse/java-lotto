@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.util;
 
 public enum ErrorMessage {
     AMOUNT_ERROR("[ERROR] 금액은 1,000의 배수여야 합니다."),

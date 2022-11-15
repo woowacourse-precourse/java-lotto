@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.domain.util.ErrorMessage;
+import lotto.domain.util.LottoValues;
+
 import java.util.List;
 
 public class User {
