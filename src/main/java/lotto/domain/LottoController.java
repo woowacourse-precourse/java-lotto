@@ -42,7 +42,7 @@ public class LottoController {
         int count = cost / 1000;
         if (cost % 1000 != 0)
             throw new IllegalArgumentException(Message.Exception_Not1000unit.getMessage());
-        if (count <= 0)
+        if (count < 0)
             throw new IllegalArgumentException(Message.Exception_NegativeNum.getMessage());
         System.out.println("\n" + count + "개를 구매했습니다.");
         return count;

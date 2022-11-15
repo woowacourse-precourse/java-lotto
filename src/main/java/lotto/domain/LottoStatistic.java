@@ -27,19 +27,16 @@ public class LottoStatistic {
     @Override
     public String toString() {
 
-        String print = "\n당첨 통계\n---\n";
+        String print = "\n당첨 통계\n";
+        print += "---\n";
         for (Rank rank : Rank.values()) {
-            print+=summarizeRank(rank);
-//            print += rank.getCounts() + "개 일치";
-//            if (rank == Rank.Second_Place)
-//                print += ", 보너스 볼 일치";
-//            print += " (" + df.format(rank.getPrice()) + "원) - ";
-//            print += rankMap.getOrDefault(rank, 0) + "개\n";
+            print += summarizeRank(rank);
         }
         print += "총 수익률은 " + String.format("%.1f", profitRate) + "%입니다.";
         return print;
     }
-    private String summarizeRank(Rank rank){
+
+    private String summarizeRank(Rank rank) {
         DecimalFormat df = new DecimalFormat("###,###");
         int count = rank.getCounts();
         String price = df.format(rank.getPrice());
@@ -60,7 +57,8 @@ public class LottoStatistic {
             Integer value = entry.getValue();
             profitRate += rank.getPrice() * value;
         }
-        profitRate /= cost;
+        if (cost != 0)
+            profitRate /= cost;
         profitRate *= 100;
     }
 
@@ -68,16 +66,18 @@ public class LottoStatistic {
         for (Lotto lotto : lottoBundle.getLottoList()) {
             int count = compareWin_lotto(lotto);
             boolean bonus = compareBonusNum(lotto);
-            putResultToMap(count,bonus);
+            putResultToMap(count, bonus);
         }
     }
-    private void putResultToMap(int count, boolean bonus){
-        for(Rank rank : Rank.values()){
-            if(count == rank.getCounts() && bonus == rank.isBonus()){
-                rankMap.put(rank,rankMap.getOrDefault(rank,0)+1);
+
+    private void putResultToMap(int count, boolean bonus) {
+        for (Rank rank : Rank.values()) {
+            if (count == rank.getCounts() && bonus == rank.isBonus()) {
+                rankMap.put(rank, rankMap.getOrDefault(rank, 0) + 1);
             }
         }
     }
+
     private int compareWin_lotto(Lotto lotto) {
         int count = 0;
         for (int user_num : lotto.getNumbers()) {

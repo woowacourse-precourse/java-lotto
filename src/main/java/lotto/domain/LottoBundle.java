@@ -20,13 +20,7 @@ public class LottoBundle {
     public String toString() {
         String print = "";
         for (Lotto lotto : this.lottoList) {
-            print += "[";
-            for (int lotto_num : lotto.getNumbers()) {
-                print += lotto_num;
-                print += ", ";
-            }
-            print = print.substring(0, print.length() - 2);
-            print += "]\n";
+            print += lotto.getNumbers() + "\n";
         }
         return print;
     }
