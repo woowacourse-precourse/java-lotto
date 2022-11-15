@@ -50,5 +50,10 @@ public class ExceptionHandler {
         }
     }
 
+    public void getLottoBuyAmountException(String input) throws IllegalArgumentException {
+        noNumberException(input);
+        amountUnitException(input);
+    }
+
 
 }
