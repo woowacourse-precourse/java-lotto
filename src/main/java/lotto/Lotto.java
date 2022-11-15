@@ -19,7 +19,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(String.valueOf(LENGTH_MUST_BE_SIX));
+            throw new IllegalArgumentException(LENGTH_MUST_BE_SIX.getMessage());
         }
     }
     public static void validateNotDuplicate(List<Integer> numbers) {
@@ -27,7 +27,7 @@ public class Lotto {
         for (int index = 0; index < 6; index++){
             int tmpNum = numbers.get(index);
             if (appearedNumList.contains(tmpNum))
-                throw new IllegalArgumentException(String.valueOf(LENGTH_CANNOT_DUPLICATE));
+                throw new IllegalArgumentException(LENGTH_CANNOT_DUPLICATE.getMessage());
             appearedNumList.add(tmpNum);
         }
     }

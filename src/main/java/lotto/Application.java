@@ -16,22 +16,20 @@ public class Application {
     public static void main(String[] args) {
 
         // phase 1) 사용자로부터 구매 금액을 입력받기
-        System.out.println(GET_MONEY);
-        int payedMoney = getSingleInput();
-        validateMoneyCanDivideBy1000(payedMoney);
+        int payedMoney = getPurchaseAmount();
 
         // phase 2) 구매 개수 & 발행한 로또 번호를 출력하기
         int lottoCount = payedMoney/1000;
-        System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT);
+        System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT.getMessage());
         List<Lotto> candidateLotto = printSeveralLotto(lottoCount);
 
         // phase 3) 당첨 번호 입력받기
-        System.out.println("\n" + GET_WINNING_LOTTO);
+        System.out.println("\n" + GET_WINNING_LOTTO.getMessage());
         Lotto winningLotto = new Lotto(getSixInput());
         validateNumberVariation(winningLotto);
 
         // phase 4) 보너스 번호 입력받기
-        System.out.println("\n" + GET_BONUS_NUMBER);
+        System.out.println("\n" + GET_BONUS_NUMBER.getMessage());
         int bonusNumber = getSingleInput();
         validateOneTo45(List.of(bonusNumber));
 
@@ -44,7 +42,12 @@ public class Application {
 
     public static int getSingleInput() {
         String singleInput = Console.readLine();
-        return Integer.parseInt(singleInput);
+        try {
+            return Integer.parseInt(singleInput);
+        } catch (IllegalArgumentException e){
+            System.out.println(NO_INTEGER.getMessage());
+        }
+        return 0;
     }
     public static List<Integer> getSixInput() {
         List<Integer> winningLotto = new ArrayList<>();
@@ -58,15 +61,22 @@ public class Application {
         return winningLotto;
     }
 
+    public static void validateStringIsInteger(String input){
+        char arr[] = input.toCharArray();
+        for (int i = 0; i<arr.length; i++){
+            if (Character.isDigit(arr[i]) == false)
+                throw new IllegalArgumentException(NO_INTEGER.getMessage());
+        }
+    }
     public static void validateMoneyCanDivideBy1000(int money){
         if (money/1000 != 0)
-            throw new IllegalArgumentException(String.valueOf(NO_DIVIDE_BY_1000));
+            throw new IllegalArgumentException(NO_DIVIDE_BY_1000.getMessage());
     }
     public static void validateOneTo45(List<Integer> numbers){
         for (int index = 0; index < 6; index++){
             int tmpNum = numbers.get(index);
             if (tmpNum >= 1 || tmpNum <= 45)
-                throw new IllegalArgumentException(String.valueOf(NUMBER_VARIATION));
+                throw new IllegalArgumentException(NUMBER_VARIATION.getMessage());
         }
     }
 
@@ -111,4 +121,10 @@ public class Application {
         return score;
     }
 
+    public static int getPurchaseAmount(){
+        System.out.println(GET_MONEY.getMessage());
+        int payedMoney = getSingleInput();
+        validateMoneyCanDivideBy1000(payedMoney);
+        return payedMoney;
+    }
 }
