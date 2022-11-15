@@ -66,14 +66,18 @@ public class LottoController {
 		model.addAttribute("bonusNumber", Integer.parseInt(bonusNumber));
 	}
 
-	private void handleAnalysis() {
+	public void handleAnalysis() {
 		List<Lotto> lottos = (List<Lotto>)model.getAttribute("Lottos");
 		Lotto correctLotto = (Lotto)model.getAttribute("correctLotto");
 		int bonusNumber = (int)model.getAttribute("bonusNumber");
+		List<Integer> analysis = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
 		for (Lotto lotto : lottos) {
 			int corrections = getCorrections(lotto, correctLotto);
 			boolean hasBonus = isThereBonus(lotto, bonusNumber);
+			addToAnalysis(analysis, corrections, hasBonus);
 		}
+		model.addAttribute("analysis", analysis);
+		view.printAnalysis();
 	}
 
 	public int getCorrections(Lotto lotto, Lotto correctLotto) {
@@ -85,5 +89,19 @@ public class LottoController {
 	public boolean isThereBonus(Lotto lotto, int bonusNumber) {
 		List<Integer> input = lotto.getLotto();
 		return input.contains(bonusNumber);
+	}
+
+	public void addToAnalysis(List<Integer> analysis, int corrections, boolean hasBonus) {
+		if (corrections == 3 || corrections == 4 || corrections == 6) {
+			analysis.set(corrections-3, analysis.get(corrections-3)+1);
+			return;
+		}
+		if (corrections == 5 || !hasBonus) {
+			analysis.set(3, analysis.get(3)+1);
+			return;
+		}
+		if (corrections == 5 || hasBonus) {
+			analysis.set(4, analysis.get(4)+1);
+		}
 	}
 }

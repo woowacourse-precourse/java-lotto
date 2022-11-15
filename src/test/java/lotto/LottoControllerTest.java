@@ -2,6 +2,7 @@ package lotto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,5 +40,20 @@ class LottoControllerTest {
 		int bonus2 = 7;
 		assertTrue(controller.isThereBonus(input, bonus1));
 		assertFalse(controller.isThereBonus(input, bonus2));
+	}
+
+	@DisplayName("정답에 따른 통계를 저장해야 한다.")
+	@Test
+	void addToAnalysisTest() {
+		List<Integer> analysis = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+		int corrections = 3;
+		boolean hasBonus = false;
+		controller.addToAnalysis(analysis, corrections, hasBonus);
+		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 0, 0, 0, 0));
+
+		corrections = 5;
+		hasBonus = true;
+		controller.addToAnalysis(analysis, corrections, hasBonus);
+		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 0, 0, 1, 0));
 	}
 }

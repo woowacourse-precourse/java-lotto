@@ -10,6 +10,6 @@ public class Application {
         LottoController controller = new LottoController(model, view);
         controller.generateLottos();
         controller.registerAnswers();
-
+        controller.handleAnalysis();
     }
 }
