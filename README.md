@@ -65,6 +65,12 @@
     - `rankings` 리스트를 바탕으로 `Rank`(Enum)의 `count` 필드에 사용자의 당첨 통계를 집계한다. `Statistics#aggregateRankingStatistics`
     - 당첨 통계를 반영한 `Rank`를 리스트 형태로 반환한다. `Statistics#getStatistics`
 
+- Yield 모델
+
+    - `totalBudget`, `Rank.values()`를 입력받아 총수익을 계산한다. `Yield#calculateTotalRevenue`
+    - `totalBudget`과 `totalRevenue`로 수익률을 계산한다. `Yield#calculateYield`
+    - 수익률을 반환한다. `Yield#getYield`
+
 ### View
 
 - InputView
