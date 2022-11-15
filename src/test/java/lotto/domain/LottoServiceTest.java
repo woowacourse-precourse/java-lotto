@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.model.Lotto;
+import lotto.model.LottoResult;
 import lotto.model.WinningLotto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +27,23 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @Test
+    @DisplayName("수익률 계산하여 리턴하는 메서드 단위 테스트")
+    void calculateProfitTest() {
+
+        LottoResult lottoResult = new LottoResult();
+        lottoResult.refreshResult(WinningRank.FOURTH); //50000dnjs
+        lottoResult.refreshResult(WinningRank.FIFTH); //5000원
+        lottoResult.refreshResult(WinningRank.FIFTH); //5000원
+        lottoResult.refreshResult(WinningRank.FIFTH); //5000원 => 총합 65000원
+        int numberOfLotto = 400;
+
+        double expected = 16.3; // 65000 / 400000 -> 둘쨰자리 반올림
+        double result = lottoService.calculateProfit(lottoResult, numberOfLotto);
+
+        assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
