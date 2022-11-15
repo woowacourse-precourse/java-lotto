@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -52,6 +52,36 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2, 3,4,5,6");
+            assertThat(output().contains(ERROR_MESSAGE));
+        });
+    }
+
+    @Test
+    void 일등_로또당첨_테스트() {
+        Domain domain = new Domain();
+        Integer[] number = {1, 2, 3, 4, 5, 6, 7};
+        List<Integer> list1 = new ArrayList<>(List.of(number));
+        List<Integer> list2 = new ArrayList<>(List.of(number));
+        assertThat(domain.findWinningCount(list1, list2)).isEqualTo(7);
+    }
+
+    @Test
+    void 당첨금액_테스트_1등과5등당첨() {
+        Domain domain = new Domain();
+        EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
+        String[] Ranking = {"first", "second", "third", "fourth", "fifth"};
+        map.put(Money.valueOf(Ranking[0]), 1);
+        map.put(Money.valueOf(Ranking[1]), 0);
+        map.put(Money.valueOf(Ranking[2]), 0);
+        map.put(Money.valueOf(Ranking[3]), 0);
+        map.put(Money.valueOf(Ranking[4]), 1);
+        assertThat(domain.calWinningMoney(map)).isEqualTo(2000005000);
     }
 
     @Override
