@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 class RateCalculatorTest {
     @DisplayName("수익율 계산한다.")
     @Test
-    public void CalculateReturnOfRate(){
+    public void CalculateReturnOfRate() {
         RateCalculator rateCalculator = new RateCalculator();
         double rateMoney = rateCalculator.calculateReturnOfRate(8000, 5000);
         assertThat(rateMoney).isEqualTo(62.5);
@@ -22,7 +22,7 @@ class RateCalculatorTest {
     @Test
     void calculateWinningMoney() {
         RateCalculator rateCalculator = new RateCalculator();
-        int totalMoney = rateCalculator.calculateWinningMoney(Map.of(1000,2,3000,4,5000,6));
+        int totalMoney = rateCalculator.calculateWinningMoney(Map.of(1000, 2, 3000, 4, 5000, 6));
         assertThat(totalMoney).isEqualTo(9000);
     }
 }

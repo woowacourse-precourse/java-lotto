@@ -18,15 +18,15 @@ public class Lotto {
         }
     }
 
-    private void checkDuplication(List<Integer> numbers){
-        if(numbers.size() != numbers.stream().distinct().count()){
+    private void checkDuplication(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 수가 입력되었습니다.");
         }
     }
 
-    private void checkOverRange(List<Integer> numbers){
-        for(int numbersValue : numbers){
-            if(numbersValue > 45 || numbersValue < 1){
+    private void checkOverRange(List<Integer> numbers) {
+        for (int numbersValue : numbers) {
+            if (numbersValue > 45 || numbersValue < 1) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }

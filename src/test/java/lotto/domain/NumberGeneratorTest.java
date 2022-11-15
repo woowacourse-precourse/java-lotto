@@ -11,7 +11,7 @@ class NumberGeneratorTest {
 
     @DisplayName("복권번호 생성")
     @Test
-    void createLottoNumber(){
+    void createLottoNumber() {
         NumberGenerator numberGenerator = new NumberGenerator();
         List<List<Integer>> lottoNumber = numberGenerator.createRandomNumbers(2);
         assertThat(lottoNumber).isNotEmpty();
@@ -19,7 +19,7 @@ class NumberGeneratorTest {
 
     @DisplayName("생성된 로또번호 사이즈 확인")
     @Test
-    void checkCreateLottoNumberSize(){
+    void checkCreateLottoNumberSize() {
         NumberGenerator numberGenerator = new NumberGenerator();
         List<List<Integer>> lottoNumber = numberGenerator.createRandomNumbers(2);
         assertThat(lottoNumber.size()).isEqualTo(2);

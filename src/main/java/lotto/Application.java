@@ -14,7 +14,7 @@ public class Application {
         ComparingMachine comparingMachine = new ComparingMachine();
         RateCalculator rateCalculator = new RateCalculator();
         NumberGenerator numberGenerator = new NumberGenerator();
-        Map<Integer,Integer> result = comparingMachine.getResult();
+        Map<Integer, Integer> result = comparingMachine.getResult();
         List<Integer> winningNumber;
         PurchasingLottoList purchasingLottoList;
         Lotto lotto;
@@ -80,7 +80,7 @@ public class Application {
             rateOfReturn = rateCalculator.calculateReturnOfRate(money, totalWinningMoney);
             System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
