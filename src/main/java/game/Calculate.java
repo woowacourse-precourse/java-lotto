@@ -44,7 +44,7 @@ public class Calculate {
         profit += (long) 50_000 * grades.get(4);
         profit += (long) 5_000 * grades.get(5);
 
-        double rate = (profit - money) / (double)money * 100;
-        return String.format("%.1f",rate);
+        double result = profit / (double) money * 100;
+        return String.format("%.1f",result)+"%";
     }
 }
