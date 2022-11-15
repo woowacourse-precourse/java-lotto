@@ -16,23 +16,27 @@ public class Calculator {
                     commonNumbers.add(winningNumbers.get(i));
                 }
             }
-            if (commonNumbers.size() == 3) {
-                answerNumbers[0] += 1;
-            }
-            if (commonNumbers.size() == 4) {
-                answerNumbers[1] += 1;
-            }
-            if (commonNumbers.size() == 5) {
-                answerNumbers[2] += 1;
-            }
-            if (commonNumbers.size() == 6 && commonNumbers.contains(bonusNumber)) {
-                answerNumbers[3] += 1;
-            }
-            if (commonNumbers.size() == 6 && !commonNumbers.contains(bonusNumber)) {
-                answerNumbers[4] += 1;
-            }
+            countCorrectNumber(bonusNumber, commonNumbers, answerNumbers);
         }
         return answerNumbers;
+    }
+
+    private static void countCorrectNumber(int bonusNumber, List<Integer> commonNumbers, Integer[] answerNumbers) {
+        if (commonNumbers.size() == 3) {
+            answerNumbers[0] += 1;
+        }
+        if (commonNumbers.size() == 4) {
+            answerNumbers[1] += 1;
+        }
+        if (commonNumbers.size() == 5) {
+            answerNumbers[2] += 1;
+        }
+        if (commonNumbers.size() == 6 && commonNumbers.contains(bonusNumber)) {
+            answerNumbers[3] += 1;
+        }
+        if (commonNumbers.size() == 6 && !commonNumbers.contains(bonusNumber)) {
+            answerNumbers[4] += 1;
+        }
     }
 
     public int sumPrize(Integer[] answerNumber) {
