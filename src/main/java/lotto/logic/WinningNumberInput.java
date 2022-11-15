@@ -2,6 +2,7 @@ package lotto.logic;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.ExceptionValidation;
+import lotto.message.InputForm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +13,7 @@ public class WinningNumberInput {
     private int BonusNum;
 
     private String inputWinningNum() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(InputForm.INPUT_WINNING_NUM);
         String winningnum = Console.readLine();
         return winningnum;
     }
@@ -41,7 +42,7 @@ public class WinningNumberInput {
     }
 
     private int inputBonusNum() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(InputForm.INPUT_BONUSNUM);
         String input = Console.readLine();
         BonusNum = Integer.parseInt(input);
         return BonusNum;

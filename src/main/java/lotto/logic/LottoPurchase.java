@@ -3,6 +3,7 @@ package lotto.logic;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.ExceptionValidation;
 import lotto.message.Constant;
+import lotto.message.InputForm;
 
 public class LottoPurchase {
 
@@ -14,7 +15,7 @@ public class LottoPurchase {
     }
 
     private int inputAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(InputForm.INPUT_PRICE);
         String input = Console.readLine();
         return ExceptionValidation.isNumber(input);
     }
