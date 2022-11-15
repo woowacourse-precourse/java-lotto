@@ -37,17 +37,18 @@ public class LottoWinningNumber {
         List<Integer> winningNumber = new ArrayList<>();
         String[] separate = separateByComma(inputWinningNumber);
 
-        validSixNumber(separate);
         validConsistNumbers(separate);
 
         for (int i = 0; i < separate.length; i++) {
             winningNumber.add(Integer.parseInt(separate[i]));
         }
-        validAllNumberRange(winningNumber);
 
         return winningNumber;
     }
-
+    public void validAllWinningNumber(List<Integer> winningNumbers){
+        validSixNumber(winningNumbers);
+        validAllNumberRange(winningNumbers);
+    }
     public void validDuplicateNumber(List<Integer> winningNumbers, int bonusNumber) {
         Set<Integer> set = new HashSet<>();
         if (winningNumbers.contains(bonusNumber)) {
@@ -61,8 +62,8 @@ public class LottoWinningNumber {
         }
     }
 
-    public void validSixNumber(String[] inputNumbers) {
-        if (inputNumbers.length != Lotto.numberCount) {
+    public void validSixNumber(List<Integer> inputNumbers) {
+        if (inputNumbers.size() != Lotto.numberCount) {
             throw new IllegalArgumentException();
         }
     }
