@@ -19,7 +19,7 @@ public class WinningNumber {
 
     private BonusNumber validateBonusNumberDuplicate(Lotto winningNumber, BonusNumber bonusNumber) {
         if (winningNumber.getNumbers().contains((bonusNumber.getBonusNumber()))) {
-            throw new IllegalArgumentException("[ERROR] 입력한 보너스 숫자가 담청 번호와 중복입니다.");
+            throw new IllegalArgumentException("[ERROR] 입력한 보너스 숫자가 당첨 번호와 중복입니다.");
         }
         return bonusNumber;
     }
