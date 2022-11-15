@@ -5,6 +5,7 @@ import static lotto.domain.place.MatchResult.FIRST_PLACE;
 import static lotto.domain.place.MatchResult.FOURTH_PLACE;
 import static lotto.domain.place.MatchResult.SECOND_PLACE;
 import static lotto.domain.place.MatchResult.THIRD_PLACE;
+import static lotto.view.PlaceHistoryMessage.makePlaceHistoryMessage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -50,7 +51,7 @@ class PlaceHistoryTest {
 
     @Test
     void 문자열화_테스트() {
-        String actual = placeHistory.toString();
+        String actual = makePlaceHistoryMessage(placeHistory).getMessage();
         String expected = "3개 일치 (5,000원) - 5개\n"
                 + "4개 일치 (50,000원) - 4개\n"
                 + "5개 일치 (1,500,000원) - 3개\n"
