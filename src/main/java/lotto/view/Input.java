@@ -22,7 +22,7 @@ public class Input {
         }
     }
 
-    public static int getIntPrice() {
+    private static int getIntPrice() {
         String price = Console.readLine();
         validatePrice(price);
         return Integer.parseInt(price);
