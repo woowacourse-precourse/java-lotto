@@ -26,4 +26,8 @@ public enum Rank {
     public String getResultText(){
         return this.resultText;
     }
+
+    public boolean getBonusCount(){
+        return this.bonus;
+    }
 }

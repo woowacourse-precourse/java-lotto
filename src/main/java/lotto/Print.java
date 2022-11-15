@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class Print {
     public void infoLottos(List<Lotto> lottos){
@@ -11,4 +12,12 @@ public class Print {
         }
     }
 
+    public void infoRank(Map<Rank, Integer> totalRank){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Rank[] ranks = Rank.values();
+        for (Rank rank : ranks){
+            System.out.println(String.format("%s%d개", rank.getResultText(), totalRank.get(rank)));
+        }
+    }
 }
