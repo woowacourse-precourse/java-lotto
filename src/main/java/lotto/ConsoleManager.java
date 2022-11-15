@@ -20,5 +20,13 @@ public class ConsoleManager {
         }
         return Integer.parseInt(money);
     }
+    public static void printLotties(int count, HashMap<Integer, List<Integer>> lotties){
+        System.out.println(count + "개를 구매했습니다.");
+        for (int i = 0; i < count; i++) {
+            System.out.println(lotties.get(i));
+        }
+    }
+
+
 
 }
