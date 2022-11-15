@@ -41,7 +41,28 @@ class ModelTest {
         result.put(4,1);
         result.put(5,1);
 
-        assertThat(model.checkPrize(3, bonusNumber, lotto)).isEqualTo(result);
+        assertThat(model.checkPrize(7, bonusNumber, lotto)).isEqualTo(result);
+    }
+
+    @Test
+    void 보너스_번호_비교_확인() {
+        Model model = new Model();
+        final List<List<Integer>> lottos = List.of(
+                List.of(1,2,3,4,5,8),
+                List.of(1,2,3,4,5,7)
+        );
+        final List<Integer>lotto = List.of(1,2,3,4,5,6);
+        final int bonusNumber = 7;
+        model.USERS_LOTTOS = lottos;
+
+        final HashMap<Integer, Integer> result = new HashMap<>();
+        result.put(1,0);
+        result.put(2,1);
+        result.put(3,1);
+        result.put(4,0);
+        result.put(5,0);
+
+        assertThat(model.checkPrize(2, bonusNumber, lotto)).isEqualTo(result);
     }
 
     @Test
