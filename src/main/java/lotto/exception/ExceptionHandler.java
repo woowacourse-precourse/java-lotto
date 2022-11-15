@@ -10,4 +10,10 @@ public class ExceptionHandler {
         }
     }
 
+    public void amountUnitException(String money) throws IllegalArgumentException {
+        if (Integer.parseInt(money) % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위입니다.");
+        }
+    }
+
 }
