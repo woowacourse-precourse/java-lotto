@@ -11,9 +11,13 @@ public class UserInterface {
     Validation validation = new Validation();
 
     public int getPrice() {
+        int price = Integer.parseInt(Console.readLine());
+        validation.isValidPrice(price);
+        return price;
     }
 
     public List<Integer> getWinningNumbers() {
+
     }
 
     public int getBonusNumber() {
