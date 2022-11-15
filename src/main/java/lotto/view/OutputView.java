@@ -17,6 +17,7 @@ public class OutputView {
 	private static final String OUTPUT_LOTTO_COUNT_MESSAGE = "%d개를 구매했습니다.\n";
 	private static final String OUTPUT_WINNING_STATISTICS = "당첨 통계\n---";
 	private static final String OUTPUT_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
+	private static final String ERROR_LOG_PREFIX = "[ERROR] ";
 	private static final Map<LottoRanking, String> LOTTO_RANKING_STRING_MAP = Map.of(
 		FIRST, "6개 일치 (2,000,000,000원) - %d개\n",
 		SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",
@@ -60,7 +61,7 @@ public class OutputView {
 		System.out.println();
 	}
 
-	public void printErrorMessage(String errorMessage) {
-		System.out.println(errorMessage);
+	public void logErrorMessage(String errorMessage) {
+		System.out.println(ERROR_LOG_PREFIX + errorMessage);
 	}
 }

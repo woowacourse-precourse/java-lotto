@@ -24,7 +24,7 @@ public class RunController {
 			WinningNumber winningNumber = inputWinningNumber(inputView, outputView);
 			printStatistics(outputView, lottos, winningNumber);
 		} catch (IllegalArgumentException error) {
-			outputView.printErrorMessage(error.getMessage());
+			outputView.logErrorMessage(error.getMessage());
 		}
 	}
 
