@@ -3,27 +3,23 @@ package lotto.shell;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ShellTest {
 
-    @BeforeEach
-    void setter() {
+    @Test
+    public void 사용자_입력_정상동작(){
+        //given
+        List<String> consoleReadLine = List.of("8000", "1,2,3,4,5,6", "7");
+        Shell shell = new Shell();
 
-        ArrayList<String> userInjectionList = new ArrayList<>();
+        //when
+        shell.injectInOrder();
 
-        userInjectionList.add("8000");
-        userInjectionList.add("13,14,16,38,42,45");
-        userInjectionList.add("7");
-
-        for (String injection : userInjectionList) {
-            new Shell();
-        }
+        //then
+        assertEquals();
     }
 
     @Test
@@ -48,7 +44,7 @@ class ShellTest {
 
         //when
         List<Integer> result;
-        result = new WinningNumber().addWinningNumber();
+        result = new WinningNumber().buildWinningNumberList();
 
         //then
         assertEquals(assertList, result);
@@ -66,9 +62,6 @@ class ShellTest {
         int bonusNumber;
 
 
-        for (String iterator : stringList) {
-            Shell shell = new Shell();
-        }
 
         //then
 

@@ -2,37 +2,39 @@ package lotto.controller;
 
 
 import java.util.List;
+import java.util.Map;
 import lotto.abstraction.BuildHistory;
-import lotto.domain.LottoTicket;
 import lotto.domain.WinningAmount;
-import lotto.shell.Shell;
+import lotto.shell.Amount;
+import lotto.shell.BonusNumber;
 
 // 결과 생성
 public class HistoryBuilder implements BuildHistory {
 
-    private int bonusNumber;
-    private List<Integer> lottoNumberList;
-    private double yield;
-    private int winningAmount;
-    private int matchCount;
+
+    private final int matchCount;
+    private final int winningAmount;
+    private final double yield;
     private String matchHistory;
     private String yieldHistory;
+    private final int bonusNumber;
 
     public HistoryBuilder() {
+
         this.matchCount = new Matcher().countMatcher();
         this.winningAmount = new WinningAmount().setWinningAmount();
-        this.bonusNumber = new Shell().addBonusNumber();
-//        this.lottoNumberList = new LottoTicket().publishLottoTicket();
+        this.bonusNumber = new BonusNumber().buildBonusNumber();
         this.matchHistory = buildMatchHistory();
         this.yieldHistory = buildYieldHistory();
-        this.yield = (winningAmount / new Shell().addAmount()) * 100;
-    }
+        this.yield = (winningAmount / new Amount().buildAmount()) * 100;
 
+    }
 
 
     public boolean winningBonus() {
 
-        return buildMatchCount() == 5 && buildLottoNumberList().contains(buildBonusNumber());
+        return buildMatchCount() == 5 && new MatchBuilder().
+                buildLottoNumbers.containsValue(buildBonusNumber());
     }
 
 
@@ -42,9 +44,10 @@ public class HistoryBuilder implements BuildHistory {
     }
 
     @Override
-    public List<Integer> buildLottoNumberList() {
-        return lottoNumberList;
+    public Map<Integer, List<Integer>> buildLottoNumbers() {
+        return null;
     }
+
 
     @Override
     public int buildMatchCount() {

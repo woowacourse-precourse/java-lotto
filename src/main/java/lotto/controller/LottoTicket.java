@@ -1,7 +1,7 @@
-package lotto.domain;
+package lotto.controller;
 
 
-import lotto.shell.Shell;
+import lotto.shell.Amount;
 
 public class LottoTicket {
 
@@ -14,10 +14,9 @@ public class LottoTicket {
     // 구매액만큼 로또를 발행하는 기능
     public int publishLottoTicket() {
 
-        int lotteryTicket = new Shell().addAmount() % 1000;
+        int lotteryTicket = new Amount().buildAmount() % 1000;
 
         return lotteryTicket;
     }
-
 
 }

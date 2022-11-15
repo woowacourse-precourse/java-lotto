@@ -1,6 +1,5 @@
 package lotto.shell;
 
-import static java.lang.Integer.parseInt;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.abstraction.ShellInterface;
 
@@ -29,42 +28,29 @@ public class Shell implements ShellInterface {
 
         // 당첨 번호 주입하기
         if (injection.contains(",")) {
-            new WinningNumber().addWinningNumber();
+            new WinningNumber().buildWinningNumberList();
         }
 
         // 구입 금액 주입하기
         if (injection.contains("0")) {
-            addAmount();
+            new Amount().buildAmount();
         }
 
         // 보너스 번호 주입하기
         if (injection.length() <= 2) {
-            addBonusNumber();
+            new BonusNumber().buildBonusNumber();
         }
-
     }
 
+    // 정수 검별
     @Override
     public void receivedInteger() {
 
-        String onlyInteger = injection.replaceAll("[^0-9]", "");
+        boolean invalidValue = injection.replaceAll("[^0-9]", "").equals("");
 
-        if (onlyInteger.equals("")) {
+        if (invalidValue) {
             new Exception().invalidException();
         }
 
-    }
-
-
-    public int addAmount() {
-        int amount = parseInt(injection);
-        return amount;
-    }
-
-
-    public int addBonusNumber() {
-
-        int bonusNumber = parseInt(injection);
-        return bonusNumber;
     }
 }

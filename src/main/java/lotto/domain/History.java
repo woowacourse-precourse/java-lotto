@@ -25,6 +25,7 @@ public class History extends HistoryBuilder {
     public String getMatchResult() {
 
         return new History().historyList.get(0);
+
     }
 
     public String getYieldResult() {

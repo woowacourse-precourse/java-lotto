@@ -1,27 +1,31 @@
 package lotto.controller;
 
 
-import lotto.abstraction.PrintInterface;
-import lotto.abstraction.ResultRepository;
+import static java.lang.String.valueOf;
 import lotto.domain.MatchResult;
 import lotto.domain.YieldResult;
 
 // 전략 패턴 도전
 // 로또 결과 출력기
-public class Printer implements ResultRepository {
+public class Printer{
 
-    private PrintInterface printResult;
     private String printMatchResult;
     private String printYieldResult;
 
-    public Printer(PrintInterface printResult) {
-        this.printMatchResult = String.valueOf(new MatchResult());
-        this.printYieldResult = String.valueOf(new YieldResult());
-    }
+    public Printer() {
 
-
-    @Override
-    public void keepHistory() {
+        this.printMatchResult = printMatchResult();
+        this.printYieldResult = printYieldResult();
 
     }
+
+
+    public String printMatchResult() {
+        return valueOf(new MatchResult());
+    }
+
+    public String printYieldResult() {
+        return valueOf(new YieldResult());
+    }
+
 }

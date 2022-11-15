@@ -13,11 +13,11 @@ public class WinningNumber  {
 
     public WinningNumber() {
 
-        this.winningNumberList = addWinningNumber();
+        this.winningNumberList = buildWinningNumberList();
 
     }
 
-    public List<Integer> addWinningNumber() {
+    public List<Integer> buildWinningNumberList() {
 
         String injection = new Shell().toString();
 
