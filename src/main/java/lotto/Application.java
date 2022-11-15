@@ -2,8 +2,11 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Application {
@@ -27,12 +30,19 @@ public class Application {
         winLotto.validateBonusInput(bonusInput);
         winLotto.setBonus(Integer.parseInt(bonusInput));
 
-        calculateNumberOfWins(lotteries, winLotto);
+        printWins(lotteries, winLotto);
 
     }
 
-    private static void calculateNumberOfWins(List<Lotto> lotteries, WinLotto winLotto) {
-
+    private static void printWins(List<Lotto> lotteries, WinLotto winLotto) {
+        Map<Result, Integer> matches = new HashMap<>();
+        for (Lotto lotto : lotteries) {
+            winLotto.matches(lotto, matches);
+        }
+        Result[] results = Result.values();
+        for (Result result : results) {
+            System.out.println(result.message + " - " + matches.get(result) + "개");
+        }
     }
 
 

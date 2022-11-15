@@ -2,7 +2,9 @@ package lotto;
 
 import static lotto.Application.isInteger;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class WinLotto extends Lotto {
@@ -49,37 +51,57 @@ public class WinLotto extends Lotto {
         }
     }
 
-    public String matches(Lotto lotto) {
-        int matchCount = 0;
-        boolean bonusMatch = false;
-
+    public Map<Result, Integer> matches(Lotto lotto, Map<Result, Integer> matchMap) {
         List<Integer> lottoNumbers = lotto.getNumbers();
+        initializeMatchMap(matchMap);
+        boolean bonusMatch = isBonusMatch(lottoNumbers);
+        numbersMatch(lottoNumbers, matchMap, bonusMatch);
+        return matchMap;
+    }
+
+    private void numbersMatch(List<Integer> lottoNumbers, Map<Result, Integer> matchMap, boolean bonusMatch) {
+        int matchCount = 0;
         for (Integer number : lottoNumbers) {
             if (getNumbers().contains(number)) {
                 matchCount++;
             }
         }
-        if (matchCount == 5 && lottoNumbers.contains(bonus)) {
-            bonusMatch = true;
+        Result result = interpretMatchCountAndBonusMatch(matchCount, bonusMatch);
+        if (result != null) {
+            matchMap.put(result, matchMap.get(result) + 1);
         }
-        return interpretMatchCountAndBonusMatch(matchCount, bonusMatch);
     }
 
-    private String interpretMatchCountAndBonusMatch(int matchCount, boolean bonusMatch) {
+    private boolean isBonusMatch(List<Integer> lottoNumbers) {
+        boolean bonusMatch = false;
+        if (lottoNumbers.contains(bonus)) {
+            bonusMatch = true;
+        }
+        return bonusMatch;
+    }
+
+    private void initializeMatchMap(Map<Result, Integer> matchMap) {
+        Result[] results = Result.values();
+        for (Result result : results) {
+            matchMap.put(result, matchMap.getOrDefault(result, 0));
+        }
+    }
+
+    private Result interpretMatchCountAndBonusMatch(int matchCount, boolean bonusMatch) {
         if (matchCount == 3) {
-            return Result.Three.message;
+            return Result.Three;
         }
         if (matchCount == 4) {
-            return Result.Four.message;
+            return Result.Four;
         }
         if (matchCount == 5 && bonusMatch == false) {
-            return Result.Five.message;
+            return Result.Five;
         }
         if (matchCount == 5 && bonusMatch == true) {
-            return Result.FiveBonus.message;
+            return Result.FiveBonus;
         }
         if (matchCount == 6) {
-            return Result.Six.message;
+            return Result.Six;
         }
         return null;
     }
