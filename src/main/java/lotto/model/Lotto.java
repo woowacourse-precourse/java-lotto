@@ -33,6 +33,5 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 1보다 작아 범위를 벗어났습니다.");
         }
     }
-
     // TODO: 추가 기능 구현
 }
