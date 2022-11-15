@@ -13,18 +13,30 @@ public class LottoController {
     private final LottoService lottoService = new LottoService();
     private final LottoMessage lottoMessage = new LottoMessage();
 
-    public void purchase() {
+    public void run() {
+        try {
+            purchase();
+            showPurchaseLotteries();
+            inputWinningNumber();
+            showWinningResult();
+            showWinningProfitPercentage();
+        } catch (IllegalArgumentException ex) {
+            lottoMessage.printErrorMessage(ex.getMessage());
+        }
+    }
+
+    private void purchase() {
         lottoMessage.printPurchaseMessage();
         Money money = new Money(Console.readLine());
         lottoService.purchase(money);
     }
 
-    public void showPurchaseLotteries() {
+    private void showPurchaseLotteries() {
         List<Lotto> purchaseLotteries = lottoService.getPurchaseLotteries();
         lottoMessage.printPurchasedLotteries(purchaseLotteries);
     }
 
-    public void inputWinningNumber() {
+    private void inputWinningNumber() {
         lottoMessage.printInputWinningNumber();
         String winningNumber = Console.readLine();
         lottoMessage.printInputBonusNumber();
@@ -33,12 +45,12 @@ public class LottoController {
         lottoService.setWinningNumber(winningNumber, bonusNumber);
     }
 
-    public void showWinningResult() {
+    private void showWinningResult() {
         WinningResult winningResult = lottoService.calculateResult();
         lottoMessage.printWinningResult(winningResult);
     }
 
-    public void showWinningProfitPercentage() {
+    private void showWinningProfitPercentage() {
         double profitPercentage = lottoService.calculateProfitPercentage();
         lottoMessage.printProfitPercentage(profitPercentage);
     }

@@ -23,13 +23,13 @@ public class Lotto {
             duplicateCheck.add(number.getLottoNumber());
         }
         if (duplicateCheck.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호는 중복될 수 없습니다.");
         }
     }
 
     private void validateSize(List<Number> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호 개수는 총 6개여야 합니다.");
         }
     }
 

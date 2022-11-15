@@ -18,6 +18,7 @@ public class LottoMessage {
     private static final String SECOND_WINNING_FORMAT = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
     private static final String PROFIT_PERCENTAGE =  "총 수익률은 %.1f%%입니다.";
 
+    private static final String ERROR = "[ERROR] ";
 
     public void printPurchaseMessage() {
         System.out.println(PURCHASE_MESSAGE);
@@ -59,5 +60,9 @@ public class LottoMessage {
 
     public void printProfitPercentage(double profitPercentage) {
         System.out.format(PROFIT_PERCENTAGE, profitPercentage);
+    }
+
+    public void printErrorMessage(String message) {
+        System.out.println(ERROR + message);
     }
 }

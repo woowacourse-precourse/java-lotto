@@ -65,18 +65,18 @@ public class LottoService {
     }
 
     private Stream<String> splitByComma(String input) {
-        try {
-            return Arrays.stream(input.split(","));
-        } catch (RuntimeException ex) {
-            throw new IllegalArgumentException();
+        String[] splitNumbers = input.split(",");
+        if (splitNumbers.length != 6) {
+            throw new IllegalArgumentException("콤마를 올바르게 입력해 주세요.");
         }
+        return Arrays.stream(splitNumbers);
     }
 
     private static Number convertToNumber(String inputBonusNumber) {
         try {
             return new Number(Integer.parseInt(inputBonusNumber));
-        } catch (RuntimeException ex) {
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("올바른 숫자 형식으로 입력해 주세요.");
         }
     }
 }

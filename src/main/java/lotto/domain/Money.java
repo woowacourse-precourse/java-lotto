@@ -17,10 +17,10 @@ public class Money {
 
     private int validateUnit(int money) {
         if (money / 1000 < 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 구매 금액은 최소 1,000원 이상이어야 합니다.");
         }
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 구매 금액은 1,000원 단위어야 합니다.");
         }
 
         return money;
@@ -30,7 +30,7 @@ public class Money {
         try {
             return Integer.parseInt(won);
         } catch (RuntimeException ex) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 구매 금액은 숫자로만 입력해 주세요.");
         }
     }
 }
