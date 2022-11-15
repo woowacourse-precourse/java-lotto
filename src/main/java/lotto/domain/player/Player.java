@@ -18,11 +18,13 @@ public class Player {
 
     public Player(long insertedMoney) {
         this.money = insertedMoney;
+        this.insertedMoney = insertedMoney;
         this.lotteries = new ArrayList<>();
     }
 
     public Player(long insertedMoney, List<Lotto> lottoList) {
         this.money = insertedMoney;
+        this.insertedMoney = insertedMoney;
         this.lotteries = lottoList;
     }
 
@@ -33,7 +35,6 @@ public class Player {
             lotteries.add(LottoGenerator.generate());
         }
 
-        insertedMoney = money;
         money = 0;
     }
 
@@ -45,7 +46,6 @@ public class Player {
 
                     earningMoney += reward * count;
                 });
-        System.out.println(earningMoney);
     }
 
     public List<Lotto> getLotteries() {
@@ -61,7 +61,7 @@ public class Player {
         if (obj instanceof Player) {
             Player player = (Player) obj;
 
-            if (player.insertedMoney == insertedMoney && Objects.equals(player.lotteries, lotteries)) {
+            if (player.money == money && Objects.equals(player.lotteries, lotteries)) {
                 return true;
             }
         }
@@ -70,7 +70,7 @@ public class Player {
 
     @Override
     public int hashCode() {
-        return Objects.hash(insertedMoney, lotteries);
+        return Objects.hash(money, lotteries);
     }
 
 }
