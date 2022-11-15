@@ -39,4 +39,31 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또를 서로 비교했을 때 매칭되는 숫자의 수를 올바르게 반환하는지 확인.")
+    @Test
+    void lottoMatchingCountTest() {
+        // given
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto2 = new Lotto(List.of(2, 3, 6, 10, 40, 45));
+
+        // when
+        int matchingNumberCount = lotto1.getMatchingNumberCount(lotto2);
+        
+        // then
+        assertEquals(3, matchingNumberCount);
+    }
+
+    @DisplayName("로또 번호에 특정 숫자가 포함되는지 여부를 올바르게 반환하는지 확인.")
+    @Test
+    void lottoExistsMatchingNumber() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 6;
+
+        // when
+        boolean exists = lotto.existsMatchingNumber(bonusNumber);
+
+        // then
+        assertEquals(true, exists);
+    }
 }
