@@ -1,5 +1,8 @@
 package lotto.lotterymachine.service;
 
+import static lotto.util.Constant.NEXT_INDEX;
+import static lotto.util.Constant.PERCENTAGE_HUNDRED;
+
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +48,7 @@ public class LotteryMachineService {
         }
 
         if (count == Score.FIVE_BONUS.ordinal()) {
-            featScoreBoardPlusOne(count + 1);
+            featScoreBoardPlusOne(count + NEXT_INDEX);
             return;
         }
         featScoreBoardPlusOne(count);
@@ -53,7 +56,7 @@ public class LotteryMachineService {
 
     public int checkBonusNumber(List<Integer> userLottery, int targetBonusNumber, int count) {
         if (userLottery.contains(targetBonusNumber)) {
-            count = count + 1;
+            count = count + NEXT_INDEX;
             return count;
         }
         return count;
@@ -61,11 +64,11 @@ public class LotteryMachineService {
 
     public void featScoreBoardPlusOne(int index) {
         Score score = Score.values()[index];
-        ScoreBoard.put(score, ScoreBoard.get(score) + 1);
+        ScoreBoard.put(score, ScoreBoard.get(score) + NEXT_INDEX);
     }
 
     public float getIncome(int inputMoney) {
-        return ((getMoneyToLottery() / inputMoney) * 100);
+        return ((getMoneyToLottery() / inputMoney) * PERCENTAGE_HUNDRED);
     }
 
     public float getMoneyToLottery() {

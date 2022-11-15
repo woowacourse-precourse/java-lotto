@@ -1,8 +1,5 @@
 package lotto.view;
 
-
-import java.util.List;
-
 public class InputView {
     public void printIntro() {
         System.out.println("구입금액을 입력해 주세요.");

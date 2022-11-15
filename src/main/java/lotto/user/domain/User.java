@@ -10,7 +10,6 @@ public class User {
     private int ticketAmount; // 롯도 장수
     private List<List<Integer>> lottos;
 
-
     public User() {
         this.inputMoney = Constant.INIT_ZERO;
         this.ticketAmount = Constant.INIT_ZERO;
@@ -40,10 +39,6 @@ public class User {
 
     public void setInputMoney(int money) {
         this.inputMoney = money;
-    }
-
-    public int getPurchaseAmount() {
-        return purchaseAmount;
     }
 
     public int getTicketAmount() {
