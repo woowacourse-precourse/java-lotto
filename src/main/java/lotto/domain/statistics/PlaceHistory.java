@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import lotto.domain.place.MatchResult;
+import lotto.message.PrintMessage;
 
 public class PlaceHistory {
 
@@ -34,13 +35,8 @@ public class PlaceHistory {
 
     }
 
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-
-        fillLines(stringBuffer);
-
-        return stringBuffer.toString();
+    private long amountFor(Entry<MatchResult, Integer> entity) {
+        return entity.getKey().getAmount(entity.getValue());
     }
 
     private void fillMatchResults() {
@@ -57,19 +53,13 @@ public class PlaceHistory {
         matchResults.merge(matchResult, ONCE.getValue(), Integer::sum);
     }
 
-    private long amountFor(Entry<MatchResult, Integer> entity) {
-        return entity.getKey().getAmount(entity.getValue());
-    }
-
-    private void fillLines(StringBuffer stringBuffer) {
-        matchResults.forEach((matchResult, value) -> appendLine(stringBuffer, matchResult));
-    }
-
-    private void appendLine(StringBuffer stringBuffer, MatchResult matchResult) {
-        stringBuffer.append(createHistoryLine(matchResult));
-    }
-
-    private String createHistoryLine(MatchResult matchResult) {
-        return String.format("%s - %d개\n", matchResult, matchResults.get(matchResult));
+    @Override
+    public String toString() {
+        return PrintMessage.createPlaceHistoryMsg((LinkedHashMap<MatchResult, Integer>) matchResults);
+//        StringBuffer stringBuffer = new StringBuffer();
+//
+//        fillLines(stringBuffer);
+//
+//        return stringBuffer.toString();
     }
 }
