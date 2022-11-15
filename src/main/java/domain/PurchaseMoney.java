@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 public class PurchaseMoney {
     static final String ERROR_MESSAGE_FOR_PURCHASE_PRICE = "구매하시는 가격은 1000의 배수여야 합니다.";

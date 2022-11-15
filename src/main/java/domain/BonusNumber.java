@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 public class BonusNumber {
     static final String ERROR_MESSAGE_FOR_BONUS_IS_NUMBER = "보너스 번호는 숫자를 입력하셔야 합니다.";

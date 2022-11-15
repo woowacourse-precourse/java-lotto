@@ -1,9 +1,9 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.BonusNumber;
-import lotto.Lotto;
-import lotto.PurchaseMoney;
+import domain.BonusNumber;
+import domain.Lotto;
+import domain.PurchaseMoney;
 
 import java.util.Arrays;
 import java.util.List;

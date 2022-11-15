@@ -1,8 +1,8 @@
 package view;
 
-import lotto.Lotto;
-import lotto.LottoResult;
-import lotto.PurchaseMoney;
+import domain.Lotto;
+import domain.LottoResult;
+import domain.PurchaseMoney;
 
 public class UserOutputView {
 

@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 public enum WinningPrize {
     FIRST_PRIZE (2000000000),

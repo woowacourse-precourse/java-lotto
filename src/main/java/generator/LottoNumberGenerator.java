@@ -1,7 +1,7 @@
 package generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import domain.Lotto;
 
 import java.util.List;
 
