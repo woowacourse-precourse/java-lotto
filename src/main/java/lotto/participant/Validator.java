@@ -1,5 +1,7 @@
 package lotto.participant;
 
+import lotto.constant.MatchingForm;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +18,7 @@ public class Validator {
     }
 
     private boolean isPositiveInteger(String string) {
-        return string.matches("[1-9][0-9]+");
+        return string.matches(MatchingForm.POSITIVE_INTEGER_FORM.getForm());
     }
 
     private boolean isAvailablePayment(String payment) {
@@ -31,7 +33,7 @@ public class Validator {
     }
 
     private void validateFormOfWinningNumbers(String winningNumbers) {
-        if (!winningNumbers.matches("[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*")) {
+        if (!winningNumbers.matches(MatchingForm.SIX_POSITIVE_INTEGER_DIVIDED_BY_COMMA.getForm())) {
             throw new IllegalArgumentException(FORM_OF_WINNING_NUMBERS_IS_WRONG.getErrorMessage());
         }
     }
@@ -51,7 +53,7 @@ public class Validator {
     }
 
     private void validateFormOfBonusNumber(String bonusNumber) {
-        if (!bonusNumber.matches("[1-9][0-9]*") || !(Integer.parseInt(bonusNumber) <= 45)) {
+        if (!bonusNumber.matches(MatchingForm.POSITIVE_INTEGER_FORM.getForm()) || !(Integer.parseInt(bonusNumber) <= 45)) {
             throw new IllegalArgumentException(FORM_OF_BONUS_NUMBER_IS_WRONG.getErrorMessage());
         }
     }
