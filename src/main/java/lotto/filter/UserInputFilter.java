@@ -38,7 +38,7 @@ public class UserInputFilter {
 	}
 
 	private String[] splitUserInputs(String userInputs, int size) {
-		if (userInputs == null) {
+		if (userInputs == null || userInputs.length() != 2 * size - 1) {
 			throw new IllegalArgumentException(USER_INPUT_ERROR_MESSAGE);
 		}
 		String[] splitUserInput = userInputs.split(DELIMITER);
