@@ -20,7 +20,6 @@ public class LottoGame {
             buyLotto();
             showUserLotto();
             getWinningNumber();
-            showWinningNumber();
             getBonusNumber();
             showStatistics();
         } catch (IllegalArgumentException exception) {
@@ -30,11 +29,9 @@ public class LottoGame {
     }
 
     public void getAmount() {
-        OutputView.askMoney();
-        String input = InputView.getInput();
+        String input = InputView.getMoney();
         MoneyValidator.validateMoney(input);
         int count = LottoMachine.calculateAmount(input);
-        OutputView.printAmount(count);
         this.amount = count;
     }
 
@@ -44,21 +41,18 @@ public class LottoGame {
 
     public void showUserLotto() {
         OutputView.printUserLotto(userLotto);
+        System.out.println();
     }
 
     public void getWinningNumber() {
-        String input = InputView.getInput();
+        String input = InputView.getNumbers();
         Lotto lotto = LottoMachine.calculateWinningNumber(input);
         LottoValidator.validateWinningNumber(lotto);
         winningNumber = lotto;
     }
 
-    public void showWinningNumber() {
-        OutputView.printWinningNumber();
-    }
-
     public void getBonusNumber() {
-        int input = Integer.parseInt(InputView.getInput());
+        int input = Integer.parseInt(InputView.getNumber());
         LottoValidator.validateBonusNumber(winningNumber, input);
         bonusNumber = input;
     }
