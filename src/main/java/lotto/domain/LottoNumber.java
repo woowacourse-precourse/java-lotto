@@ -10,12 +10,12 @@ public class LottoNumber {
     public final List<Integer> winningNumbers;
     public final int bonusNumber;
 
-    public LottoNumber(String winningNumbers, String bonusNumber) {
-        List<Integer> winningNumbersInteger = convertStringToInteger(winningNumbers);
-        Validation.validLotto(winningNumbersInteger);
-        validBonusNumber(bonusNumber);
-        this.winningNumbers = winningNumbersInteger;
-        this.bonusNumber = Integer.parseInt(bonusNumber);
+    public LottoNumber(String inputWinning, String inputBonus) {
+        List<Integer> winningNumbers = convertStringToInteger(inputWinning);
+        Validation.validLotto(winningNumbers);
+        validBonusNumber(inputBonus);
+        this.winningNumbers = winningNumbers;
+        this.bonusNumber = Integer.parseInt(inputBonus);
     }
 
     private void validBonusNumber(String number) {

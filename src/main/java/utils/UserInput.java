@@ -20,11 +20,11 @@ public class UserInput {
 
     public static LottoNumber inputLottoNumbers() {
         System.out.println(INPUT_WINNING_NUM_MESSAGE);
-        String winningNumbers = Console.readLine();
+        String inputWinning = Console.readLine();
 
         System.out.println(INPUT_BONUS_NUM_MESSAGE);
-        String bonusNumber = Console.readLine();
-        return new LottoNumber(winningNumbers, bonusNumber);
+        String inputBonus = Console.readLine();
+        return new LottoNumber(inputWinning, inputBonus);
     }
 
     private static void validMoneyUnit(int price) {
