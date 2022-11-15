@@ -1,11 +1,11 @@
 package utils;
 
+import model.Errors;
 import model.Game;
 import model.Lotto;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 public class UserInputValidator {
     private static Game game;
@@ -18,7 +18,7 @@ public class UserInputValidator {
         try {
             Integer.parseInt(userInput);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자 혹은 형식에 맞게 입력해주세요.");
+            throw new IllegalArgumentException(Errors.NUMBER.getErrorMsg());
         }
     }
 
@@ -26,32 +26,16 @@ public class UserInputValidator {
         int userInputMoney = Integer.parseInt(userInput);
 
         if (userInputMoney % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위로만 입력해주세요.");
+            throw new IllegalArgumentException(Errors.MONEY.getErrorMsg());
         }
     }
 
     public static void validateInputLottoNumbers(String userInput) {
-        StringTokenizer st = new StringTokenizer(userInput, ",");
-        int tokenCount = st.countTokens();
+        final String lottoRegex = "^([1-9]?[0-9]\\,){1,5}([1-9]?[0-9])$";
 
-        while (st.hasMoreTokens()) {
-            validateInputIsNum(st.nextToken());
+        if (!Pattern.matches(lottoRegex, userInput)) {
+            throw new IllegalArgumentException(Errors.LOTTO_NUMBER_FORMAT.getErrorMsg());
         }
-
-        if (tokenCount != 6) {
-            throw new IllegalArgumentException("[ERROR] 형식에 맞게 입력해주세요. 번호는 쉼표(,)를 기준으로 구분합니다.");
-        }
-    }
-
-    public static List<Integer> inputLottoNumberToList(String userInput) {
-        StringTokenizer st = new StringTokenizer(userInput, ",");
-        List<Integer> lottoNumbers = new ArrayList<>();
-
-        while (st.hasMoreTokens()) {
-            lottoNumbers.add(Integer.parseInt(st.nextToken()));
-        }
-
-        return lottoNumbers;
     }
 
     public static void validateDuplicateBonusNumber(String userInput) {
@@ -61,7 +45,7 @@ public class UserInputValidator {
 
         for (Integer lottoNumber : lottoNumbers) {
             if (lottoNumber == userInputBonusNumber) {
-                throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 보너스번호를 입력해주세요.");
+                throw new IllegalArgumentException(Errors.DUPLICATE_BONUS_NUMBER.getErrorMsg());
             }
         }
     }
@@ -70,7 +54,7 @@ public class UserInputValidator {
         int userInputNumber = Integer.parseInt(userInput);
 
         if (userInputNumber < 1 || userInputNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력해주세요.");
+            throw new IllegalArgumentException(Errors.NUMBER_RANGE.getErrorMsg());
         }
     }
 }

@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import model.Lotto;
 import model.Game;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class UserInput {
     private static Game game;
@@ -35,10 +37,21 @@ public class UserInput {
         String userInputLottoNumbers = Console.readLine();
 
         userInputValidator.validateInputLottoNumbers(userInputLottoNumbers);
-        List<Integer> lottoNumbers = userInputValidator.inputLottoNumberToList(userInputLottoNumbers);
+        List<Integer> lottoNumbers = inputLottoNumberToList(userInputLottoNumbers);
         Lotto lotto = new Lotto(lottoNumbers);
 
         game.setLotto(lotto);
+    }
+
+    public static List<Integer> inputLottoNumberToList(String userInput) {
+        StringTokenizer st = new StringTokenizer(userInput, ",");
+        List<Integer> lottoNumbers = new ArrayList<>();
+
+        while (st.hasMoreTokens()) {
+            lottoNumbers.add(Integer.parseInt(st.nextToken()));
+        }
+
+        return lottoNumbers;
     }
 
     public static void inputBonusNumber() {

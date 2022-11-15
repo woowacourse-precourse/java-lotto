@@ -26,14 +26,14 @@ public class Lotto {
         int lottoNumbersCount = getLottoNumbersSet(numbers).size();
 
         if (lottoNumbersCount != 6) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 중복되지 않게 입력해주세요.");
+            throw new IllegalArgumentException(Errors.DUPLICATE_LOTTO_NUMBER.getErrorMsg());
         }
     }
 
     private void validateInputLottoNumbersRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력해주세요.");
+                throw new IllegalArgumentException(Errors.NUMBER_RANGE.getErrorMsg());
             }
         }
     }
