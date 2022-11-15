@@ -28,7 +28,7 @@ class LottoManagerTest {
     }
 
     @Test
-    void 천원_단위_확인_메서드() {
+    void 천원_단위_확인_테스트() {
         try {
             lottoManager.checkAdequateMoney(5500);
         } catch (IllegalArgumentException e) {

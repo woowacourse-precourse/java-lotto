@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
+    private static final int MIN = 1;
+    private static final int MAX = 45;
+    private static final int COUNT = 6;
+
     public List<Integer> createWinningNumbers(List<String> inputNumbers) {
         List<Integer> winningNumbers = new ArrayList<>();
         for (String number : inputNumbers) {
@@ -28,7 +32,7 @@ public class NumberGenerator {
     }
 
     public void checkScope(int number) {
-        if (number < 1 || number > 45) {
+        if (number < MIN || number > MAX) {
             throw new IllegalArgumentException("1부터 45 사이 숫자를 입력하세요.");
         }
     }
@@ -40,7 +44,7 @@ public class NumberGenerator {
     }
 
     public List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(MIN, MAX, COUNT);
     }
 
 }
