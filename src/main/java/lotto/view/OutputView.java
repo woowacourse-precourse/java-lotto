@@ -14,4 +14,8 @@ public class OutputView {
         System.out.println();
         System.out.println(lottoQuantity + "개를 구매했습니다.");
     }
+    public void printUserLottoNumbers(User user) {
+        user.getUserLottoNumbers()
+          .forEach(userSingleLottoNumber -> System.out.println(userSingleLottoNumber.getLottoNumbers()));
+    }
 }
