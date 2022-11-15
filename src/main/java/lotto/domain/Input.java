@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.view.InputMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +11,12 @@ public class Input {
     public List<Integer> numbers = new ArrayList<>();
     public int bonus = 0;
     public String payForLotto() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(InputMessage.inputPay.getValue());
         pay = Console.readLine();
         return pay;
     }
     public List<Integer> winningNumber () {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(InputMessage.inputWinningNumber.getValue());
         String input = Console.readLine();
         for (String number : input.split(",")){
             numbers.add(Integer.valueOf(number));
@@ -23,7 +24,7 @@ public class Input {
         return numbers;
     }
     public int bonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(InputMessage.inputBonus.getValue());
         bonus = Integer.valueOf(Console.readLine());
         return bonus;
     }
