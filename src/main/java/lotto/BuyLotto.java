@@ -35,4 +35,13 @@ public class BuyLotto {
 
         return eachLottoNumbers;
     }
+
+    public static void winStatisticDefault(Map <Integer,Integer> winStatistics){
+        int numberOfCasesPrize = 9;
+
+        for(int i = 0 ; i < numberOfCasesPrize; i++){
+            winStatistics.put(i,0);
+        }
+    }
+
 }
