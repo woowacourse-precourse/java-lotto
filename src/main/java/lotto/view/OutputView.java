@@ -53,7 +53,6 @@ public class OutputView {
 
         String countMessage = String.format(COUNT_MESSAGE.getMessage(), count);
 
-
         return matchMessage + prizeMessage + countMessage;
     }
 

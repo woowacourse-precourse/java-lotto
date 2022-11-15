@@ -23,7 +23,8 @@ public class Validator {
     }
 
     public static void validateUnitStandard(int purchaseAmount) {
-        boolean isPurchaseAmountNotFollowUnitStandard = purchaseAmount % MONEY_UNIT_STANDARD.getValue() != ZERO.getValue();
+        boolean isPurchaseAmountNotFollowUnitStandard =
+                purchaseAmount % MONEY_UNIT_STANDARD.getValue() != ZERO.getValue();
         if (isPurchaseAmountNotFollowUnitStandard) {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_UNIT_ERROR.getMessage());
         }
