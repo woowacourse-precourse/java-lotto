@@ -3,6 +3,7 @@ package lotto.ui;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.reward.Reward;
 
 public class Ui {
     public String inputBalance() {
@@ -34,11 +35,10 @@ public class Ui {
     }
 
     public void printInfo(int[] result) {
-        System.out.printf("3개 일치 (5,000원) - %d개\n", result[0]);
-        System.out.printf("4개 일치 (50,000원) - %d개\n", result[1]);
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", result[2]);
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", result[3]);
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", result[4]);
+        Reward[] rewards = Reward.values();
+        for (int i = 0; i < 5; i++) {
+            System.out.printf("%s - %d개\n", rewards[i].getRewardName(), result[i]);
+        }
     }
 
     public void printProfitRate(double profitRate) {

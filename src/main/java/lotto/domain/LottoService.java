@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import lotto.reward.Reward;
 
 public class LottoService {
     public int getLottoAmount(String number) {
@@ -121,9 +122,10 @@ public class LottoService {
 
     public double getProfitRate(int[] rewards, int lottoAmount) {
         long result = 0L;
-        long[] rewardAmount = {5_000L, 50_000L, 1_500_000L, 30_000_000L, 2_000_000_000L};
+        Reward[] rewardAmount = Reward.values();
+
         for (int i = 0; i < 5; i++) {
-            result += rewardAmount[i] * rewards[i];
+            result += rewardAmount[i].getValue() * rewards[i];
         }
 
         return result / (double) (lottoAmount * 1000);
