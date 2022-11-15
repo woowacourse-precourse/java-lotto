@@ -81,4 +81,28 @@ public class Application {
         }
     }
 
+    //4.보너스 번호 입력
+    public static int winBonusLotto() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String n = Console.readLine();
+        exception_winBonusLotto(n);
+        int bonusNum = Integer.parseInt(n);
+        return bonusNum;
+    }
+
+    //4.보너스 번호 입력 예외 처리
+    private static void exception_winBonusLotto(String n) {
+        int bonus = 0;
+        try{
+            bonus = Integer.parseInt(n);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하여야 합니다.");
+        }
+        if(bonus>45 || bonus<1){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+
+
 }
