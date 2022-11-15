@@ -7,14 +7,19 @@
 
 
 ### 도메인 요구사항
-### User
+## Enum 정의
+### LottoNumber
+- 로또 시작 번호 / 로또 마지막 번호 / 로또 번호 개수 명시
+
+
+## User
 - [X] 1. 로또 구입 전, 금액 입력 메세지 출력한다.
 - [X] 2. 로또 구입 금액을 입력한다.
 - [X] 3. 사용자가 잘못된 값을 입력할 경우 (즉, 구입 금액이 1000원으로 나누어 떨어지지 않는 경우),
   `IllegalArgumentException` 과 [ERROR] 로 시작하는 에러메세지를 출력한다.
 
   
-### Machine
+## Machine
 - [ ] 1. 중복되지 않는 6개의 숫자를 뽑는다.
 - [ ] 2. 로또 번호는 오름차순으로 정렬한다.
   
@@ -36,7 +41,7 @@
 ### LottoBonusNumber
 
 
-### Winner
+## Winner
 - [ ] 1. 당첨은 1등부터 5등까지 있다.
 - [ ] 2. 당첨 기준과 금액은 다음과 같다.
 
@@ -48,21 +53,21 @@
     5등: 3개 번호 일치 / 5,000원
   ```
 
-### Score
+## Score
 - [ ] 1. 로또 번호와 당첨 번호를 비교하여 당첨 내역을 계산한다.
 - [ ] 2. 수익률은 소수점 둘째 자리에서 반올림한다.
 
-### Result
+## Result
 - [ ] 1. 당첨 내역을 출력한다.
   
-### LottoGame
+## LottoGame
 - [ ] 1. PurchaseUserLotteryTickets (유저 복권 구입 단계)
 - [ ] 2. AutomaticLotteryNumberGeneration(각 복권 별 로또 번호 자동 생성 단계)
 - [ ] 3. EnterWinningAndBonusNumber(당첨 번호와 보너스 번호 입력 단계)
 - [ ] 4. WinStatisticsAndProfitCalculation(당첨 통계 및 수익률 계산)
 - [ ] 5. ReturnLotteryResults(당첨 및 수익률 결과 반환)
 
-### Utils
+## Utils
 ### Number 
 (로또 번호 검증 메소드 구현)
 - [X] 1. 로또 번호의 숫자 범위는 1 ~ 45 까지이다.
