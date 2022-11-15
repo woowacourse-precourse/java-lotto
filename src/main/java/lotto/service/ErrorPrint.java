@@ -8,7 +8,8 @@ public enum ErrorPrint {
     ERROR_MONEY_0(" 돈을 내세요"),
     ERROR_WIN_DUPLICATE(" 중복인 숫자가 있습니다."),
     ERROR_WIN_SIX(" 6개의 숫자를 입력하세여"),
-    ERROR("[ERROR]");
+    ERROR("[ERROR]"),
+    REGEX("[0-9]+");
 
     private final String value;
 
