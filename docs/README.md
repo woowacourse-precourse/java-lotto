@@ -7,6 +7,7 @@
   - [x] 중복되지 않는 숫자 6개 뽑기 - `generateLottoNumbers`
   - [x] 구입 개수만큼 반복
     - 발행 - `publishLottos`
+  - [x] 구입한 로또 정보 출력 - `showLottos`
 - [x] 당첨 번호 추첨
   - [x] 중복되지 않는 숫자 6개 입력 받기 - `getWinningNumbers`
     - [x] 쉼표를 기준으로 입력 - `convertToList`

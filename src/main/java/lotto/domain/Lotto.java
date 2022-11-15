@@ -55,4 +55,8 @@ public class Lotto {
         }
         return Score.FIVE;
     }
+
+    public void printNumbers(){
+        System.out.println(numbers);
+    }
 }
