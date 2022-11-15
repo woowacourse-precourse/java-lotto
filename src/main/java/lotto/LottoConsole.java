@@ -13,11 +13,13 @@ public class LottoConsole {
     public void inputMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        int money = stringToInt(input);
-        if (money == -1){
-            throw new IllegalArgumentException("[ERROR] 구입금액 입력이 올바르지 않습니다.");
+        try{
+            int money = stringToInt(input);
+            lottoManager.InputMoney(money);
         }
-        lottoManager.InputMoney(money);
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e.getMessage());
+        }
 
         System.out.println();
     }
@@ -115,17 +117,17 @@ public class LottoConsole {
         return false;
     }
 
-    private int stringToInt(String input){
+    private int stringToInt(String input) throws IllegalArgumentException{
         long val = 0;
 
         for (int i = 0; i < input.length(); i++){
             if (!(input.charAt(i) >= '0' && input.charAt(i) <= '9')){
-                return -1;
+                throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
             }
             val *= 10;
             val += input.charAt(i) - '0';
             if (val > MAX_INT){
-                return -1;
+                throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
             }
         }
         return (int)val;

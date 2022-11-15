@@ -22,7 +22,7 @@ public class LottoManager {
 
     public void InputMoney(int money) throws IllegalArgumentException{
         if (money % 1000 != 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1000원 단위 금액으로 입력해주십시오.");
         }
         this.inputMoney = money;
         makeLottos(money / 1000);
