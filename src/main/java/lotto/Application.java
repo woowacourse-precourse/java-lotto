@@ -4,6 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static lotto.Winning.*;
+import static lotto.Winning.FirstPlace;
 
 public class Application {
     Lotto lotto;
@@ -29,6 +34,7 @@ public class Application {
         int bonusNumber = Integer.parseInt(Console.readLine());
 
         // 당첨 확인
+        ConfirmationOfTheWinner(userLottoList, lottoNums, bonusNumber);
         // 당첨 통계 출력
 
         // 일치 항목 출력
@@ -83,6 +89,42 @@ public class Application {
         lottoNums.sort(Integer::compareTo);
         return lottoNums;
     }
+
+    private void ConfirmationOfTheWinner(List<User> userLottoList, List<Integer> lottoNums, int bonusNumber) {
+        // 몇 개나 일치하는지 확인
+        for (User user : userLottoList) {
+            List<Integer> userNumber = user.userNumber;
+            List<Integer> matchNumber = userNumber.stream()
+                    .filter(number -> lottoNums.stream()
+                            .anyMatch(Predicate.isEqual(number)))
+                    .collect(Collectors.toList());
+            int match = matchNumber.size();
+            //System.out.println("MatchNumber = " + matchNumber.toString() );
+            setWinningCount(bonusNumber, userNumber, match);
+        }
+    }
+
+    private void setWinningCount(int bonusNumber, List<Integer> userNumber, int match) {
+        if (match == 3) {
+            FifthPlace.setCount(+1);
+        }
+
+        if (match == 4) {
+            FourthPlace.setCount(FourthPlace.getCount() + 1);
+        }
+        if (match == 5) {
+            if (userNumber.contains(bonusNumber)) {
+                SecondPlace.setCount(SecondPlace.getCount() + 1);
+                return;
+            }
+            ThirdPlace.setCount(ThirdPlace.getCount() + 1);
+            return;
+        }
+        if (match == 6) {
+            FirstPlace.setCount(FirstPlace.getCount() + 1);
+        }
+    }
+
     public static void main(String[] args) {
         Application app = new Application();
         // TODO: 프로그램 구현
