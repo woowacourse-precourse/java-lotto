@@ -1,4 +1,4 @@
-package lotto.domain.service;
+package lotto.service;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,19 +17,21 @@ public class LottoService {
 
 	private final Map<WinningRule, Integer> winningRuleStatus;
 
-	private List<Lotto> tickets;
+	private List<Lotto> lottos;
 
 	public LottoService() {
 		winningRuleStatus = new HashMap<>();
 	}
 
-	public void publishTickets(final int numberOfTickets) {
-		tickets = LottoGenerator.publish(numberOfTickets);
-		tickets.forEach(System.out::println);
+	public List<String> publishTickets(final int numberOfTickets) {
+		lottos = LottoGenerator.publish(numberOfTickets);
+		return lottos.stream()
+			.map(Lotto::toString)
+			.collect(Collectors.toList());
 	}
 
 	public List<String> getWinningStatistics(List<Integer> winningNumbers, int bonus) {
-		for (Lotto lotto : tickets) {
+		for (Lotto lotto : lottos) {
 			CompareResult result = lotto.compareTo(winningNumbers, bonus);
 			winningRuleStatus.merge(WinningRule.of(result), 1, Integer::sum);
 		}

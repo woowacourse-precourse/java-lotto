@@ -1,8 +1,10 @@
-package lotto.domain.controller;
+package lotto.controller;
 
-import lotto.domain.service.LottoService;
-import lotto.domain.view.InputView;
-import lotto.domain.view.OutputView;
+import java.util.List;
+
+import lotto.service.LottoService;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -16,8 +18,8 @@ public class LottoController {
 		int money = InputView.getPrice();
 		int numberOfTickets = money / 1_000;
 
-		OutputView.displayNumberOfTickets(numberOfTickets);
-		lottoService.publishTickets(numberOfTickets);
+		List<String> tickets = lottoService.publishTickets(numberOfTickets);
+		OutputView.displayNumberOfTickets(numberOfTickets, tickets);
 
 		OutputView.displayStatistics(
 			lottoService.getWinningStatistics(

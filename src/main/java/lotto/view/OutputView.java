@@ -1,10 +1,11 @@
-package lotto.domain.view;
+package lotto.view;
 
 import java.util.List;
 
 public class OutputView {
-	public static void displayNumberOfTickets(int numberOfTickets) {
+	public static void displayNumberOfTickets(int numberOfTickets, List<String> tickets) {
 		System.out.println("\n" + numberOfTickets + "개를 구매했습니다.");
+		tickets.forEach(System.out::println);
 	}
 
 	public static void displayStatistics(List<String> winningStatistics) {
