@@ -13,13 +13,13 @@ import domain.UserLotto.UserLottoController;
 
 public class GameView {
 
-    MoneyController moneyController = new MoneyController();
-    UserLottoController userLottoController = new UserLottoController();
-    LottoController lottoController = new LottoController();
-    BonusController bonusController = new BonusController();
-    RankInfoController rankInfoController = new RankInfoController();
-    InputMessage inputMessage = new InputMessage();
-    OutputMessage outputMessage = new OutputMessage();
+    private final MoneyController moneyController = new MoneyController();
+    private final UserLottoController userLottoController = new UserLottoController();
+    private final LottoController lottoController = new LottoController();
+    private final BonusController bonusController = new BonusController();
+    private final RankInfoController rankInfoController = new RankInfoController();
+    private final InputMessage inputMessage = new InputMessage();
+    private final OutputMessage outputMessage = new OutputMessage();
 
 
     public void start() {

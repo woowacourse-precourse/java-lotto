@@ -1,7 +1,7 @@
 package domain.UserLotto;
 
 public class UserLottoController {
-    UserLottoService userLottoService = new UserLottoService();
+    private final UserLottoService userLottoService = new UserLottoService();
 
     public UserLotto createUserLotto(int purchaseNumber) {
         return userLottoService.createUserLotto(purchaseNumber);
