@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static java.lang.Integer.parseInt;
+import static lotto.utils.ConstantUtil.ERROR;
 import static lotto.utils.ConstantUtil.MIN_LOTTO_PRICE;
 import static lotto.utils.RandomUtil.createRandomNumbers;
 
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private static final String MIN_MONEY_ERROR_MESSAGE = ERROR + "구입금액은 1000원 이상부터 가능합니다.";
+    private static final String MONEY_UNIT_ERROR_MESSAGE = ERROR + "구입금액은 1000원 단위만 가능합니다.";
+
     private int money;
 
     public void inputMoney(int money) {
@@ -53,9 +57,23 @@ public class LottoMachine {
     }
 
     private void validate(int money) {
-        Validator validator = new Validator();
+        validateMinMoney(money);
+        validateMoneyUnit(money);
+    }
 
-        validator.validateMinMoney(money);
-        validator.validateMoneyUnit(money);
+    private void validateMinMoney(int money) {
+        if (money < MIN_LOTTO_PRICE) {
+            throw new IllegalArgumentException(MIN_MONEY_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateMoneyUnit(int money) {
+        if (isNotValidMoneyUnit(money)) {
+            throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isNotValidMoneyUnit(int money) {
+        return money % MIN_LOTTO_PRICE != 0;
     }
 }
