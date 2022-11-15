@@ -11,9 +11,28 @@ public class Ticket {
         this.ticket=ticket;
     }
 
+    public Map<Ranking,Integer> checkRankingCount(WinningNumbers winningNumbers){
+        HashMap<Ranking, Integer> results = initializeRanking();
+        List<Integer> winningNumber = winningNumbers.getWinningNumbers();
+        int bonusNumber = winningNumbers.getBonusNumber();
+
+        for(Lotto lotto: ticket){
+            Ranking ranking = lotto.checkResult(winningNumber,bonusNumber);
+            rankingCount(results,ranking);
+        }
+        return results;
+    }
+
+    private static void rankingCount(Map <Ranking, Integer> winningResult, Ranking rank) {
+        if (rank == Ranking.FAIL) {
+            return;
+        }
+        winningResult.put(rank, winningResult.getOrDefault(rank, 0) + 1);
+    }
 
 
-    private Map<Ranking, Integer> initializeRanking() {
+
+    private HashMap<Ranking, Integer> initializeRanking() {
         return new HashMap<>(Map.ofEntries(
                 Map.entry(Ranking.FIRST, 0),
                 Map.entry(Ranking.SECOND, 0),
