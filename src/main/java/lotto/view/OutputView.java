@@ -20,7 +20,30 @@ public class OutputView {
         });
     }
 
+    public void printAskLottoNumbersMessage() {
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 
+    public void printAskBonusNumberMessage() {
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public void printTotalResultMessage(Map<Rank, Integer> countPrize) {
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + countPrize.getOrDefault(Rank.THIRD, 0) + "개");
+        System.out.println("4개 일치 (50,000원) - " + countPrize.getOrDefault(Rank.FOURTH, 0) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + countPrize.getOrDefault(Rank.FIVE, 0) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countPrize.getOrDefault(Rank.FIVE_WITH_BONUS, 0) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + countPrize.getOrDefault(Rank.SIX, 0) + "개");
+    }
+
+    public void printEarningRateOfLottoMessage(String earningRate) {
+        System.out.println("총 수익률은 " + earningRate + "%입니다.");
+    }
 
 
 }
