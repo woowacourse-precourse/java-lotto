@@ -34,24 +34,16 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호 출력 기능을 테스트한다.")
+    @DisplayName("로또 번호가 오름차순으로 출력되는지 테스트한다.")
     @Test
     void printNumbers() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        lotto.printNumbers();
+        Lotto lotto = new Lotto(Arrays.asList(3, 2, 1, 5, 4, 6));
+        lotto.printSortedNumbers();
 
         Assertions.assertThat(output.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]\n");
-    }
-
-    @DisplayName("로또 번호 정렬 기능을 테스트한다.")
-    @Test
-    void sortNumbers() {
-        Lotto lotto = new Lotto(Arrays.asList(3, 2, 1, 5, 4, 6));
-        lotto.sortNumbers();
-        Assertions.assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @DisplayName("다른 로또와 같은 수만을 뽑아내는 기능을 테스트한다.")
