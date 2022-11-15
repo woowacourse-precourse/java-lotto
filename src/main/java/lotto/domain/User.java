@@ -16,24 +16,24 @@ public class User {
         judgeIsDigitOfString(input);
 
         lottoCost = Integer.parseInt(input);
-        judgeCostValidate();
+        judgeCostValidate(lottoCost);
     }
 
-    private void judgeIsDigitOfString(String sentence) {
+    public void judgeIsDigitOfString(String sentence) {
         for (int i = 0; i < sentence.length(); i++) {
             char l = sentence.charAt(i);
             judgeIsDigitOfChar(l);
         }
     }
 
-    private void judgeIsDigitOfChar(char word) {
+    public void judgeIsDigitOfChar(char word) {
         if (!Character.isDigit(word)) {
             throw new IllegalArgumentException("[ERROR] 입력은 자연수만 가능합니다.");
         }
     }
 
-    private void judgeCostValidate() {
-        if (lottoCost % EACH_LOTTO_COST != 0) {
+    public void judgeCostValidate(int cost) {
+        if (cost % EACH_LOTTO_COST != 0) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력해야 합니다.");
         }
     }
