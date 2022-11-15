@@ -24,4 +24,10 @@ public class Game {
         }
         return lottoBuckets;
     }
+    private static void printLottoBuckets(List<Lotto> lottoBuckets){
+        for(Lotto lotto : lottoBuckets){
+            lotto.printNumbers();
+        }
+    }
+
 }
