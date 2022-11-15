@@ -16,7 +16,7 @@ public class PlayerTest extends NsTest {
     void ThrowExceptionIfPurchaseAmountIsNotNaturalNumber() {
         assertSimpleTest(() -> {
             runException("a");
-            assertThat(output()).contains(NOT_NATURAL_NUMBER_EXCEPTION.toString());
+            assertThat(output()).contains(NOT_NATURAL_NUMBER.toString());
         });
     }
 
@@ -25,7 +25,7 @@ public class PlayerTest extends NsTest {
     void ThrowExceptionIfPurchaseAmountWithLeadingZero() {
         assertSimpleTest(() -> {
             runException("01000");
-            assertThat(output()).contains(LEADING_ZERO_EXCEPTION.toString());
+            assertThat(output()).contains(LEADING_ZERO.toString());
         });
     }
 
@@ -34,7 +34,7 @@ public class PlayerTest extends NsTest {
     void ThrowExceptionIfPurchaseAmountIndivisible() {
         assertSimpleTest(() -> {
             runException("1500");
-            assertThat(output()).contains(PURCHASE_AMOUNT_INDIVISIBILITY_EXCEPTION.toString());
+            assertThat(output()).contains(INDIVISIBLE_PURCHASE_AMOUNT.toString());
         });
     }
 

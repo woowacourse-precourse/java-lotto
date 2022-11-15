@@ -31,7 +31,7 @@ public class Player {
 
     private void validateDivisibility(int purchaseAmount) {
         if (purchaseAmount % GameConstants.LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(ExceptionConstants.PURCHASE_AMOUNT_INDIVISIBILITY_EXCEPTION.toString());
+            throw new IllegalArgumentException(ExceptionConstants.INDIVISIBLE_PURCHASE_AMOUNT.toString());
         }
     }
 

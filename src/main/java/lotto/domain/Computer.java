@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.constant.ExceptionConstants.DUPLICATED_EXCEPTION;
+import static lotto.constant.ExceptionConstants.DUPLICATION;
 import static lotto.constant.GameConstants.*;
 
 public class Computer {
@@ -50,7 +50,7 @@ public class Computer {
 
     private void validateDuplication(int bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(DUPLICATED_EXCEPTION.toString());
+            throw new IllegalArgumentException(DUPLICATION.toString());
         }
     }
 
