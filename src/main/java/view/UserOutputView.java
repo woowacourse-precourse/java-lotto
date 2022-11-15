@@ -34,7 +34,6 @@ public class UserOutputView {
     }
 
     public static void printPurchaseNumber(PurchaseMoney purchaseMoney) {
-        System.out.printf(CALCULATE_PURCHASE_LOTTO,purchaseMoney.getNumberLotteryPurchasesAvailable());
+        System.out.printf(CALCULATE_PURCHASE_LOTTO, purchaseMoney.getNumberLotteryPurchasesAvailable());
     }
-
 }

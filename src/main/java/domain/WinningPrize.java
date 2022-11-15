@@ -3,7 +3,7 @@ package domain;
 import java.text.DecimalFormat;
 
 public enum WinningPrize {
-    FIRST_PRIZE (2000000000),
+    FIRST_PRIZE(2000000000),
     SECOND_PRIZE(30000000),
     THIRD_PRIZE(1500000),
     FOURTH_PRIZE(50000),
@@ -19,7 +19,7 @@ public enum WinningPrize {
         return prize;
     }
 
-    public String getStringPrize(){
+    public String getStringPrize() {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         return decimalFormat.format(this.prize);
     }
