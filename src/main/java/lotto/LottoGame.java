@@ -86,9 +86,18 @@ public class LottoGame {
 
     private Lotto createLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBERS_SIZE);
-        Collections.sort(lottoNumbers);
+
+        printLottoNumbers(lottoNumbers);
 
         return new Lotto(lottoNumbers);
+    }
+
+    private void printLottoNumbers(List<Integer> lottoNumbers) {
+        System.out.print("[");
+        for(int idx = 0; idx < lottoNumbers.size() - 1; idx++){
+            System.out.print(lottoNumbers.get(idx) + ", ");
+        }
+        System.out.println(lottoNumbers.get(lottoNumbers.size() - 1) + "]");
     }
 
     private WinningLotto createWinningLotto() {
