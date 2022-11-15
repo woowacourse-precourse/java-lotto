@@ -6,6 +6,13 @@ public class ValidateNumber {
     private static final String NOT_1000_UNIT_MESSAGE = "[ERROR] 구매 금액은 1000원 단위여야 합니다.";
     private static final Integer STANDARD_MONEY = 1000;
 
+    public void validatePurchaseMoney(String purchaseMoney) {
+        Integer money = Integer.valueOf(purchaseMoney);
+        isOverStandardMoney(money);
+        isUnitStandardMoney(money);
+        isNumeric(purchaseMoney);
+    }
+
     private void isOverStandardMoney(Integer purchaseMoney) {
         if (purchaseMoney < 1000) {
             throw new IllegalArgumentException(UNDER_1000_MESSAGE);
@@ -23,7 +30,7 @@ public class ValidateNumber {
         try {
             Double.parseDouble(purchaseMoney);
             return;
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_NUMERIC_MESSAGE);
         }
     }
