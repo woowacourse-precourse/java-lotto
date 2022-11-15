@@ -13,16 +13,22 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
 
     public enum lottoResult {
-        FIRST(6), SECOND(0), THIRD(5), FOURTH(4), FIFTH(3);
+        SIX(1, 2000000000), BONUS(2, 30000000), FIVE(3, 1500000), FOUR(4, 50000), THREE(5, 5000);
 
-        private final int score;
+        private final int rank;
+        private final int reward;
 
-        lottoResult(int score) {
-            this.score = score;
+        lottoResult(int rank, int reward) {
+            this.rank = rank;
+            this.reward = reward;
         }
 
-        public int score() {
-            return score;
+        public int getRank() {
+            return this.rank;
+        }
+
+        public int getReward() {
+            return this.reward;
         }
     }
 
@@ -84,13 +90,44 @@ public class Application {
         System.out.println();
     }
 
-    public static void printResult(List<Integer> lottoWinnings, String percentage) {
+    public static List<Integer> calculateResult(List<Lotto> boughtLottos, List<Integer> winningNumbers, int bonusNumber) {
+        List<Integer> calculatedResult = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
+        int totalReward = 0;
+        for (Lotto boughtLotto: boughtLottos) {
+            int score = boughtLotto.calculateLotto(winningNumbers, bonusNumber);
+            if (score == 7) {
+                calculatedResult.add(lottoResult.BONUS.getRank(), 1);
+                totalReward += lottoResult.BONUS.getReward();
+            }
+            if (score == 6) {
+                calculatedResult.add(lottoResult.SIX.getRank(), 1);
+                totalReward += lottoResult.SIX.getReward();
+            }
+            if (score == 5) {
+                calculatedResult.add(lottoResult.FIVE.getRank(), 1);
+                totalReward += lottoResult.FIVE.getReward();
+            }
+            if (score == 4) {
+                calculatedResult.add(lottoResult.FOUR.getRank(), 1);
+                totalReward += lottoResult.FOUR.getReward();
+            }
+            if (score == 3) {
+                calculatedResult.add(lottoResult.THREE.getRank(), 1);
+                totalReward += lottoResult.THREE.getReward();
+            }
+        }
+        calculatedResult.set(0, totalReward);
+        return calculatedResult;
+    }
+
+    public static void printResult(List<Integer> lottoWinnings) {
+        String percentage = lottoWinnings.get(0).toString();
         System.out.println("당첨 통계\n---");
-        System.out.printf("3개 일치 (5,000원) - %d개\n", lottoWinnings.get(4));
-        System.out.printf("4개 일치 (50,000원) - %d개\n", lottoWinnings.get(3));
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoWinnings.get(2));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoWinnings.get(1));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoWinnings.get(0));
+        System.out.printf("3개 일치 (5,000원) - %d개\n", lottoWinnings.get(5));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", lottoWinnings.get(4));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoWinnings.get(3));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoWinnings.get(2));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoWinnings.get(1));
         System.out.printf("총 수익률은 %s입니다.\n", percentage);
     }
 
@@ -100,5 +137,7 @@ public class Application {
         printBoughtLottos(boughtLottos);
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber();
+        List<Integer> lottoWinnings = calculateResult(boughtLottos, winningNumbers, bonusNumber);
+        printResult(lottoWinnings);
     }
 }
