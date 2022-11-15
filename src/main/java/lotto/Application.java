@@ -24,6 +24,7 @@ public class Application {
 
     private static void print(Receipt receipt, List<Lotto> lottos) {
         receipt.printReceipt();
+        lottos.forEach(Lotto::sortNumbers);
         lottos.forEach(Lotto::printNumbers);
     }
 
