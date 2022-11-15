@@ -18,10 +18,17 @@ public class WinningNumber {
 	}
 
 	private void validateLastCharacter(String winningNumbers) {
-		if (winningNumbers.charAt(winningNumbers.length() - 1) == ',') {
-			System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
-			throw new IllegalArgumentException("마지막 문자 쉼표");
+		try {
+			if (winningNumbers.charAt(winningNumbers.length() - 1) == ',') {
+				System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
+				throw new IllegalArgumentException("마지막 문자 쉼표");
+			}
 		}
+		catch (StringIndexOutOfBoundsException exception){
+			System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
+			throw new IllegalArgumentException("값 이상");
+		}
+
 	}
 
 	private void validateOverlap(List<Integer> winningNumbers) {
