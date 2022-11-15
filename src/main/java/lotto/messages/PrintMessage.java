@@ -18,7 +18,7 @@ public class PrintMessage {
         for (List<Integer> ticket : tickets) {
             ticketMessage.append("[");
 
-            numberMessage(ticket);
+            ticketMessage.append(numberMessage(ticket));
 
             ticketMessage.append("]\n");
         }
