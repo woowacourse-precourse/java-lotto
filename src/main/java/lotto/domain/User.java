@@ -30,7 +30,7 @@ public class User {
     }
 
     public List<Integer> makeLotto() {
-        List<Integer> makeLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> makeLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(makeLotto);
         return makeLotto;
     }
