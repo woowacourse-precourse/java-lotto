@@ -104,14 +104,21 @@ public class CheckInput {
         }
     }
 
-    private static void checkBonusNumberPattern(String input) {
+    public static int checkBonusNumberValid(String input) {
+        checkBonusNumberPattern(input);
+        int bonusNumber = Integer.parseInt(input);
+        checkBonusNumberRange(bonusNumber);
+        return bonusNumber;
+    }
+
+    public static void checkBonusNumberPattern(String input) {
         Pattern pattern = Pattern.compile(BONUS_NUMBER_PATTERN);
         if (!pattern.matcher(input).matches()) {
             throw new IllegalArgumentException(BONUS_NUMBER_TYPE_ERROR);
         }
     }
 
-    private static void checkBonusNumberRange(int bonusNumber) {
+    public static void checkBonusNumberRange(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException(BONUS_NUMBER_SIZE_ERROR);
         }
