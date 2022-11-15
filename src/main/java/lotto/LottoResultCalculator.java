@@ -3,6 +3,7 @@ package lotto;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class LottoResultCalculator {
@@ -44,31 +45,32 @@ public class LottoResultCalculator {
     }
 
     public EnumMap<Rank, Integer> calRankAll(List<Lotto> lottos) {
-        EnumMap<Rank, Integer> ranks = new EnumMap<Rank, Integer>(Rank.class);
+        EnumMap<Rank, Integer> ranks = new EnumMap<>(Rank.class);
         Arrays.stream(Rank.values())
                 .forEach(rank -> ranks.put(rank, 0));
 
         lottos.forEach(lotto -> {
-            Rank rank = calRank(lotto);
-            ranks.put(rank, ranks.get(rank) + 1);
+            calRank(lotto).ifPresent(rank -> {
+                ranks.put(rank, ranks.get(rank) + 1);
+            });
         });
 
         return ranks;
     }
 
-    private Rank calRank(Lotto lotto) {
+    private Optional<Rank> calRank(Lotto lotto) {
         int matchedWinningNumCnt = compareWithWinningNums(lotto);
         int matchedBonusNumCnt = compareWithBonusNum(lotto);
         int rankOffset = 6;
         if (matchedBonusNumCnt == 1 && matchedWinningNumCnt == 5) {
-            return Rank.SECOND_PRIZE;
+            return Optional.of(Rank.SECOND_PRIZE);
         }
 
         if (matchedWinningNumCnt < 3) {
-            return Rank.NOTHING;
+            return Optional.empty();
         }
 
-        return Rank.values()[rankOffset - matchedWinningNumCnt];
+        return Optional.of(Rank.values()[rankOffset - matchedWinningNumCnt]);
     }
 
 

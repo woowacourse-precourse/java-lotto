@@ -29,21 +29,20 @@ class LottoResultCalculatorTest {
                 Map.entry(Rank.SECOND_PRIZE, values.get(1)),
                 Map.entry(Rank.THIRD_PRIZE, values.get(2)),
                 Map.entry(Rank.FOURTH_PRIZE, values.get(3)),
-                Map.entry(Rank.FIFTH_PRIZE, values.get(4)),
-                Map.entry(Rank.NOTHING, values.get(5))
+                Map.entry(Rank.FIFTH_PRIZE, values.get(4))
         ));
     }
 
     static Stream<Arguments> parameterProvider() {
         List<Lotto> lottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 7, 8)));
-        EnumMap<Rank, Integer> expected = ranksConstructor(List.of(1, 0, 0, 1, 0, 0));
+        EnumMap<Rank, Integer> expected = ranksConstructor(List.of(1, 0, 0, 1, 0));
 
         List<Lotto> lottos1 = List.of(new Lotto(List.of(8, 9, 10, 11, 12, 13)),
                 new Lotto(List.of(1, 2, 3, 21, 22, 23)));
-        EnumMap<Rank, Integer> expected1 = ranksConstructor(List.of(0, 0, 0, 0, 1, 1));
+        EnumMap<Rank, Integer> expected1 = ranksConstructor(List.of(0, 0, 0, 0, 1));
 
         List<Lotto> lottos2 = List.of(new Lotto(List.of(1, 9, 10, 11, 12, 13)), new Lotto(List.of(1, 2, 3, 4, 5, 7)));
-        EnumMap<Rank, Integer> expected2 = ranksConstructor(List.of(0, 1, 0, 0, 0, 1));
+        EnumMap<Rank, Integer> expected2 = ranksConstructor(List.of(0, 1, 0, 0, 0));
 
         return Stream.of(
                 arguments(lottos, expected),
