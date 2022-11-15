@@ -3,7 +3,6 @@ package lotto.domain;
 public class Money {
     private static final int PRICE_PER_LOTTO = 1_000;
     private static final String ERROR_INDIVISIBLE_NUMBER = "[ERROR] 1000으로 나누어 떨어지는 수를 입력해 주세요.";
-
     private static final String ERROR_MINIMUM_NUMBER = "[ERROR] 최소 1000원부터 입력할 수 있습니다.";
 
     private final int inputMoney;
@@ -24,5 +23,9 @@ public class Money {
         if (inputMoney < PRICE_PER_LOTTO) {
             throw new IllegalArgumentException(ERROR_MINIMUM_NUMBER);
         }
+    }
+
+    public int calculateQuantity() {
+        return this.inputMoney / PRICE_PER_LOTTO;
     }
 }
