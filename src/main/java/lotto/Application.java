@@ -2,7 +2,7 @@ package lotto;
 
 import UserInterface.InputValues;
 import UserInterface.OutputValues;
-import camp.nextstep.edu.missionutils.Console;
+import domain.Generator;
 import domain.Lotto;
 
 import java.util.List;
@@ -10,16 +10,17 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        final Generator generator = new Generator();
         final InputValues inputValues = new InputValues();
         final OutputValues outputValues = new OutputValues();
 
         try {
             int totalPayment = inputValues.inputTotalPayment();
 
-            List<List<Integer>> generatedLotto = Lotto.generateLottoNumber(totalPayment);
+            List<List<Integer>> generatedLotto = generator.generateLottoNumber(totalPayment);
             outputValues.showLottoPaymentReceipt(totalPayment, generatedLotto);
 
-            List<Integer> winningLottoNumbers = inputValues.inputLottoNumber(Console.readLine());
+            List<Integer> winningLottoNumbers = inputValues.inputLottoNumber();
             int bonusNumber = inputValues.inputBonusNumber();
 
             Lotto lotto = new Lotto(winningLottoNumbers);
@@ -31,8 +32,8 @@ public class Application {
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
-//        catch (Exception exception) {
-//            System.out.println(exception.getMessage());
-//        }
+        catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 }
