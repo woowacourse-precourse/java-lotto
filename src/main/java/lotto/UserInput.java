@@ -25,4 +25,9 @@ public class UserInput {
         }
     }
 
+    static int coin(String money) {
+        validateMoney(money);
+        return Integer.parseInt(money)/1000;
+    }
+
 }
