@@ -84,6 +84,15 @@ public class ComputerTest extends NsTest {
         });
     }
 
+    @DisplayName("보너스 번호가 45보다 크면 예외가 발생한다.")
+    @Test
+    void ThrowExceptionIfBonusNumberIsOverMax() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains(RANGE_EXCEPTION.toString());
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
