@@ -7,12 +7,20 @@ import java.util.List;
 public class LottoAnswer extends Lotto{
     private final int bonusNumber;
 
-    public LottoAnswer(List<Integer> numbers, int bonusNumber) {
+    public LottoAnswer(List<Integer> numbers, String bonusNumber) {
         super(numbers);
-        bonusNumberValidate(numbers, bonusNumber);
-        this.bonusNumber = bonusNumber;
+        bonusNumberCheck(bonusNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
+        bonusNumberValidate(numbers, this.bonusNumber);
     }
 
+    private void bonusNumberCheck(String bonusNumber) {
+        for (char ch : bonusNumber.toCharArray()) {
+            if (!Character.isDigit(ch)) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getErrorMessage());
+            }
+        }
+    }
     public int getBonusNumber() {
         return bonusNumber;
     }

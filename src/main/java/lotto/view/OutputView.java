@@ -19,9 +19,9 @@ public class OutputView {
         return InputView.convertToList();
     }
 
-    public int outputEnterBonusNumber() {
+    public String outputEnterBonusNumber() {
         System.out.println(OutputMessage.OUTPUT_ENTER_BONUS_NUMBER.getOutput());
-        return InputView.convertToNumber();
+        return InputView.inputToQuestion();
     }
 
     public void outputPurchaseSuccess(List<Lotto> userLottos) {

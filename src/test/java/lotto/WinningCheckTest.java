@@ -17,7 +17,7 @@ public class WinningCheckTest {
         List<Lotto> userLottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        LottoAnswer lottoAnswer = new LottoAnswer(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoAnswer lottoAnswer = new LottoAnswer(List.of(1, 2, 3, 4, 5, 6), "7");
         WinningCheck winningCheck = new WinningCheck(userLottos, lottoAnswer);
         AssertionsForClassTypes.assertThat(winningCheck.getLottoResult().get(Ranking.rank1)).isEqualTo(3);
     }
@@ -28,7 +28,7 @@ public class WinningCheckTest {
         List<Lotto> userLottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        LottoAnswer lottoAnswer = new LottoAnswer(List.of(1, 2, 3, 4, 5, 10), 6);
+        LottoAnswer lottoAnswer = new LottoAnswer(List.of(1, 2, 3, 4, 5, 10), "6");
         WinningCheck winningCheck = new WinningCheck(userLottos, lottoAnswer);
         AssertionsForClassTypes.assertThat(winningCheck.getLottoResult().get(Ranking.rank2)).isEqualTo(3);
     }

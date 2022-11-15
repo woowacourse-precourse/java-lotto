@@ -13,16 +13,6 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int convertToNumber() {
-        try {
-            return Integer.parseInt(inputToQuestion());
-        }
-        catch(NumberFormatException e) {
-
-            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getErrorMessage());
-        }
-    }
-
     public static List<Integer> convertToList() {
         try {
             return Arrays.stream(inputToQuestion().split(SPLIT_COMMA))

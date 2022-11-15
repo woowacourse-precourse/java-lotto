@@ -3,7 +3,6 @@ package lotto.controller;
 import lotto.domain.LottoAnswer;
 import lotto.domain.User;
 import lotto.domain.vo.BuyLotto;
-import lotto.enums.ErrorMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.service.WinningCheck;

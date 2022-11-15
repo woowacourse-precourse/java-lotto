@@ -5,11 +5,11 @@ import lotto.enums.ErrorMessage;
 public class BuyLotto {
     private static final int LOTTO_PRICE = 1000;
     private static final int ZERO = 0;
+    private static final int ONE = -1;
     private final int money;
 
     public BuyLotto(String money) {
         this.money = moneyValidate(money);
-//        this.money = Integer.parseInt(money);
         moneyUnitValidate(this.money);
     }
 
@@ -18,7 +18,7 @@ public class BuyLotto {
     }
 
     private void moneyUnitValidate(int money) {
-        if (money != -1 && money % LOTTO_PRICE != ZERO) {
+        if (money != ONE && money % LOTTO_PRICE != ZERO) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_UNIT_MONEY.getErrorMessage());
         }
     }
@@ -30,7 +30,7 @@ public class BuyLotto {
         }
         catch(IllegalArgumentException e) {
             System.out.println(ErrorMessage.ERROR_NOT_NUMBER.getErrorMessage());
-            return -1;
+            return ONE;
         }
     }
 
