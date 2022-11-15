@@ -9,7 +9,9 @@ import static java.util.stream.Collectors.toList;
 
 public class Money {
 
-    private static final DecimalFormat FORMAT = new DecimalFormat("###,###");
+    private static final String MONEY_FORMAT = "###,###";
+    private static final String DIVIDE_ERROR_MESSAGE_FORMAT = "%d원은 %d원으로 나누어 떨어지지 않습니다.";
+    private static final DecimalFormat FORMAT = new DecimalFormat(MONEY_FORMAT);
 
     private final int value;
 
@@ -41,7 +43,7 @@ public class Money {
     private void exchangeValidate(final Money exchanged) {
         if (this.value % exchanged.value != 0) {
             throw new IllegalArgumentException(
-                    format("%d원은 %d원으로 나누어 떨어지지 않습니다.", this.value, exchanged.value)
+                    format(DIVIDE_ERROR_MESSAGE_FORMAT, this.value, exchanged.value)
             );
         }
     }

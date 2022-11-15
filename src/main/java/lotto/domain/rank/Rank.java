@@ -15,6 +15,8 @@ public enum Rank {
     UNWINNABLE(0, 0, (matchCount, matchBonus) -> matchCount < 3),
     ;
 
+    private static final String MATCH_COUNT_ILLEGAL_ERROR_MESSAGE = "matchCount는 6 이하의 숫자여야 합니다.";
+
     private final Money reward;
     private final int matchCount;
     private final BiPredicate<Integer, Boolean> match;
@@ -29,7 +31,7 @@ public enum Rank {
         return Arrays.stream(Rank.values())
                 .filter(r -> r.match.test(matchCount, matchBonus))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("matchCount는 6 이하의 숫자여야 합니다."));
+                .orElseThrow(() -> new IllegalArgumentException(MATCH_COUNT_ILLEGAL_ERROR_MESSAGE));
     }
 
     public Money getReward() {

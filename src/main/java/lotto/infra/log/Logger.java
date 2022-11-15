@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 public class Logger {
 
     public static final String ERROR_PREFIX = "[ERROR]";
+    public static final String ERROR_MESSAGE_FORMAT = "%s %s";
 
     public void error(
             final String message,
@@ -27,7 +28,7 @@ public class Logger {
     }
 
     public void error(final String message) {
-        String log = String.format("%s %s", ERROR_PREFIX, message);
+        String log = String.format(ERROR_MESSAGE_FORMAT, ERROR_PREFIX, message);
         StandardOutput.println(log);
     }
 }
