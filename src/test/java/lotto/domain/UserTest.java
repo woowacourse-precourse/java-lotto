@@ -22,7 +22,7 @@ class UserTest {
     public void profitRateTest(){
         User user = new User();
         user.setBudget(1000);
-        user.buyLotto();
+        user.buyLotto(1);
         Lotto lotto = user.getLottos().get(0);
         List<Integer> winningNumbers = lotto.getNumbers();
         user.confirmWinning(winningNumbers, 0);

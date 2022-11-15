@@ -27,8 +27,10 @@ public class User {
         return budget;
     }
 
-    public void buyLotto(){
-        lottos.add(new Lotto(generateLottoNumbers()));
+    public void buyLotto(Integer maximum){
+        while (lottos.size() < maximum){
+            lottos.add(new Lotto(generateLottoNumbers()));
+        }
     }
 
     public List<Lotto> getLottos(){
