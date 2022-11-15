@@ -8,8 +8,10 @@ import lotto.service.LottoService;
 
 public class LottoApplicationConfig {
 
+    public static final int LOTTO_PRICE = 1000;
+
     public Money pricePerLotto() {
-        return Money.valueOf(1000);
+        return Money.valueOf(LOTTO_PRICE);
     }
 
     public LottoGenerator lottoGenerator() {

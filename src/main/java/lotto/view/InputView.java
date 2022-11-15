@@ -4,7 +4,6 @@ import lotto.domain.lotto.Lotto;
 import lotto.domain.money.Money;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.stream;
@@ -14,29 +13,36 @@ import static lotto.infra.port.outbound.StandardOutput.println;
 
 public class InputView {
 
+    private static final String INPUT_PURCHASE_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String ONLY_NUMBER_ERROR_MESSAGE = "숫자만을 입력하실 수 있습니다.";
+    private static final String EMPTY_STRING = "";
+    private static final String SPLITTER = ",";
+
     public static Money inputPurchaseMoney() {
-        println("구입금액을 입력해 주세요.");
+        println(INPUT_PURCHASE_MONEY_MESSAGE);
 
         int input = inputNumber();
-        println("");
+        println(EMPTY_STRING);
 
         return Money.valueOf(input);
     }
 
     public static Lotto inputWinningLottoNumber() {
-        println("당첨 번호를 입력해 주세요.");
+        println(INPUT_WINNING_NUMBER_MESSAGE);
 
         List<Integer> inputNumbers = toIntegers(readLine());
-        println("");
+        println(EMPTY_STRING);
 
         return new Lotto(inputNumbers);
     }
 
     public static int inputBonusNumber() {
-        println("보너스 번호를 입력해 주세요.");
+        println(INPUT_BONUS_NUMBER_MESSAGE);
 
         int bonusNumber = inputNumber();
-        println("");
+        println(EMPTY_STRING);
 
         return bonusNumber;
     }
@@ -45,12 +51,12 @@ public class InputView {
         try {
             return parseInt(readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만을 입력하실 수 있습니다.");
+            throw new IllegalArgumentException(ONLY_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private static List<Integer> toIntegers(final String input) {
-        return stream(input.split(","))
+        return stream(input.split(SPLITTER))
                 .map(Integer::parseInt)
                 .collect(toList());
     }
