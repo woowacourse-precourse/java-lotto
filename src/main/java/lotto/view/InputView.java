@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.Constant;
 import lotto.constant.ExceptionMessage;
+import lotto.constant.PrintMessage;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAnswer;
 
@@ -13,16 +14,12 @@ public class InputView {
     private List<Integer> lottoAnswerNumbers = new ArrayList<>();
     private int bonusNumber;
 
-    private static final String INPUT_PRICE_STR = "구입금액을 입력해 주세요.\n";
-    private static final String INPUT_ANSWER_STR = "당첨 번호를 입력해 주세요.\n";
-    private static final String INPUT_BONUS_STR = "보너스 번호를 입력해 주세요.\n";
-
     public int getPrice() throws Exception {
         return inputPrice();
     }
 
     private int inputPrice() throws Exception {
-        System.out.print(INPUT_PRICE_STR);
+        System.out.print(PrintMessage.INPUT_PRICE.getString());
         String userInputPrice = Console.readLine();
         validateInputPrice(userInputPrice);
         price = Integer.parseInt(userInputPrice);
@@ -44,7 +41,7 @@ public class InputView {
     }
 
     public LottoAnswer getLottoAnswer() throws Exception {
-        System.out.print(INPUT_ANSWER_STR);
+        System.out.print(PrintMessage.INPUT_ANSWER.getString());
         String userInputAnswer = Console.readLine();
         String[] inputAnswer = userInputAnswer.split(",");
         validateAnswerType(inputAnswer);
@@ -54,7 +51,7 @@ public class InputView {
         }
         Lotto lottoAnswer = new Lotto(lottoAnswerNumbers);
 
-        System.out.print(INPUT_BONUS_STR);
+        System.out.print(PrintMessage.INPUT_BONUS.getString());
         String userInputBonus = Console.readLine();
         validateBonusType(userInputBonus);
         bonusNumber = Integer.parseInt(userInputBonus);

@@ -20,6 +20,7 @@ public enum ExceptionMessage {
 
 
     private final String message;
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     private ExceptionMessage(String message) {
         this.message = message;
