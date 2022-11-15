@@ -3,72 +3,108 @@ package lotto.domain;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Grade 클래스")
 class GradeTest {
-	@Test
-	@DisplayName("1등일때 FIRST를 반환한다.")
-	void findGradeTest1() {
-		int winningNumberCount = 6;
-		boolean hasBonusNumber = false;
-		Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
-		Grade result = Grade.FIRST;
+	@Nested
+	@DisplayName("findGrade 메소드는")
+	class Describe_findGarde {
+		@Nested
+		@DisplayName("만약 당첨번호 6개를 맞춘다면")
+		class Context_winning_number_count_six {
+			private final int winningNumberCount = 6;
+			private final boolean hasBonusNumber = false;
 
-		assertThat(grade).isEqualTo(result);
-	}
+			@Test
+			@DisplayName("FIRST를 반환한다.")
+			void it_returns_first() {
+				Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
+				Grade result = Grade.FIRST;
 
-	@Test
-	@DisplayName("2등일때 SECOND를 반환한다.")
-	void findGradeTest2() {
-		int winningNumberCount = 5;
-		boolean hasBonusNumber = true;
-		Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
-		Grade result = Grade.SECOND;
+				assertThat(grade).isEqualTo(result);
+			}
+		}
 
-		assertThat(grade).isEqualTo(result);
-	}
+		@Nested
+		@DisplayName("만약 당첨번호 5개와 보너스 번호를 맞춘다면")
+		class Context_winning_number_count_five_and_has_bonus_number {
+			private final int winningNumberCount = 5;
+			private final boolean hasBonusNumber = true;
 
-	@Test
-	@DisplayName("3등일때 THIRD를 반환한다.")
-	void findGradeTest3() {
-		int winningNumberCount = 5;
-		boolean hasBonusNumber = false;
-		Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
-		Grade result = Grade.THIRD;
+			@Test
+			@DisplayName("SECOND를 반환한다.")
+			void it_returns_second() {
+				Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
+				Grade result = Grade.SECOND;
 
-		assertThat(grade).isEqualTo(result);
-	}
+				assertThat(grade).isEqualTo(result);
+			}
+		}
 
-	@Test
-	@DisplayName("4등일때(보너스 당첨번호 있을때) FORTH를 반환한다.")
-	void findGradeTest4() {
-		int winningNumberCount = 4;
-		boolean hasBonusNumber = true;
-		Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
-		Grade result = Grade.FORTH;
+		@Nested
+		@DisplayName("만약 당첨번호 5개를 맞춘다면")
+		class Context_winning_number_count_five {
+			private final int winningNumberCount = 5;
+			private final boolean hasBonusNumber = false;
 
-		assertThat(grade).isEqualTo(result);
-	}
+			@Test
+			@DisplayName("THIRD를 반환한다.")
+			void it_returns_third() {
+				Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
+				Grade result = Grade.THIRD;
 
-	@Test
-	@DisplayName("5등일때 FIFTH를 반환한다.")
-	void findGradeTest5() {
-		int winningNumberCount = 3;
-		boolean hasBonusNumber = false;
-		Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
-		Grade result = Grade.FIFTH;
+				assertThat(grade).isEqualTo(result);
+			}
+		}
 
-		assertThat(grade).isEqualTo(result);
-	}
+		@Nested
+		@DisplayName("만약 당첨번호 4개를 맞춘다면")
+		class Context_winning_number_count_four {
+			private final int winningNumberCount = 4;
+			private final boolean hasBonusNumber = false;
 
-	@Test
-	@DisplayName("아무것도 당첨되지 않았을때 DEFAULT를 반환한다.")
-	void findGradeTest6() {
-		int winningNumberCount = 2;
-		boolean hasBonusNumber = false;
-		Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
-		Grade result = Grade.DEFAULT;
+			@Test
+			@DisplayName("FORTH를 반환한다.")
+			void it_returns_forth() {
+				Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
+				Grade result = Grade.FORTH;
 
-		assertThat(grade).isEqualTo(result);
+				assertThat(grade).isEqualTo(result);
+			}
+		}
+
+		@Nested
+		@DisplayName("만약 당첨번호 3개를 맞춘다면")
+		class Context_winning_number_count_three {
+			private final int winningNumberCount = 3;
+			private final boolean hasBonusNumber = false;
+
+			@Test
+			@DisplayName("FIFTH를 반환한다.")
+			void it_returns_fifth() {
+				Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
+				Grade result = Grade.FIFTH;
+
+				assertThat(grade).isEqualTo(result);
+			}
+		}
+
+		@Nested
+		@DisplayName("만약 당첨번호를 2개이하로 맞춘다면")
+		class Context_winning_number_count_under_two {
+			private final int winningNumberCount = 2;
+			private final boolean hasBonusNumber = false;
+
+			@Test
+			@DisplayName("DEFAULT를 반환한다.")
+			void it_returns_default() {
+				Grade grade = Grade.findGrade(winningNumberCount, hasBonusNumber);
+				Grade result = Grade.DEFAULT;
+
+				assertThat(grade).isEqualTo(result);
+			}
+		}
 	}
 }

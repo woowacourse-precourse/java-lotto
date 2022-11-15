@@ -6,8 +6,8 @@ public class Money extends Number {
 	private final String UNDER_MIN_MONEY = "[ERROR] 구매금액은 1.000이상으로 입력해 주시기 바랍니다.";
 	private final long MAX_MONEY = 2_000_000_000;
 	private final long MIN_MONEY = 1_000;
-	private final int DEFAULT_UNIT = 1_000;
-	private final int REST_ZERO = 0;
+	private final long DEFAULT_UNIT = 1_000;
+	private final long REST_ZERO = 0;
 	private long money;
 
 	public Money(String money) {
