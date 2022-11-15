@@ -18,9 +18,13 @@ public class Application {
 
         List<Integer> winningNumber = inputWinningNumbers();
 
-
-
-
+        int[] result = new int[6];
+        for(int i=0; i<lottos.length; i++) {
+            int rank = lottos[i].result(winningNumber);
+            if(rank != 6) {
+                result[rank]++;
+            }
+        }
 
     }
 
