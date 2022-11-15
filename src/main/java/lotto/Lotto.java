@@ -18,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != NUMBER_CNT) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 너무 많습니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호가 너무 많거나 적습니다.");
         }
 
         for (int i : numbers) {
