@@ -7,13 +7,17 @@ import java.util.List;
 
 public class Lotto {
 
+    private final List<Integer> numbers;
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        this.numbers = numbers;
     }
 
     public Lotto(String str) {
         List<Integer> numbers = change(str);
          checkInput(numbers);
+         this.numbers = numbers;
 
     }
 
