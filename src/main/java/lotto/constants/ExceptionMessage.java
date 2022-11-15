@@ -11,6 +11,4 @@ public final class ExceptionMessage {
     static final String draftMessages1 = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String draftMessages2 = "[ERROR] 중복되는 값을 입력하였습니다.";
 
-    static final String DRAFT_MESSAGES_7 = "특수 문자를 입력 하였습니다.";
-    static final String DRAFT_MESSAGES_8 = "보너스 번호는 1개만 입력하여야 합니다.";
 }

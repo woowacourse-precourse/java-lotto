@@ -15,8 +15,8 @@ public class RandomLottoGenerator {
         List<List<Integer>> randomLotto = new ArrayList<>();
 
         for (int ticket = 0; ticket < ticketsCount; ticket++) {
-            randomLotto.add(Randoms.pickUniqueNumbersInRange(LOTTO_START_NUM, LOTTO_END_NUM,
-                    LOTTO_SIZE_NUM));
+            randomLotto.add(Randoms.pickUniqueNumbersInRange(LOTTO_START_NUM,
+                    LOTTO_END_NUM, LOTTO_SIZE_NUM));
         }
 
         List<List<Integer>> randomLottoTicket = lottoTheorem(randomLotto);

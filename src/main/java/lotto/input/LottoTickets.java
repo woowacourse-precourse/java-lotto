@@ -10,10 +10,12 @@ public class LottoTickets {
     public int getPaid() {
         AmountPaymentException amountPaymentException = new AmountPaymentException();
         String input = getInput(amountPaymentException);
+
         int money = Integer.parseInt(input);
 
         amountPaymentException.inputVerification(money);
         saveAmount(money);
+
         return sizeLottos(money);
     }
 

@@ -4,14 +4,8 @@ import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.subaction.WinningNumberPlace;
 
 public class WinningNumberAndLotto {
-    private final WinningNumberPlace winningNumberPlace;
-
-    public WinningNumberAndLotto(WinningNumberPlace winningNumberPlace) {
-        this.winningNumberPlace = winningNumberPlace;
-    }
 
     public List<Integer> comparison(List<List<Integer>> randomLotto, Lotto answer) {
         List<Integer> winningNumbers = answer.getNumbers();
@@ -21,10 +15,19 @@ public class WinningNumberAndLotto {
             int countLotto = 0;
 
             for (int correctLotto : winningNumbers) {
-                countLotto = winningNumberPlace.judgement(random, countLotto, correctLotto);
+                countLotto = judgement(random, countLotto, correctLotto);
             }
             result.add(countLotto);
         }
         return result;
+    }
+
+    public int judgement(List<Integer> random, int countLotto, int correctLotto) {
+        for (Integer integer : random) {
+            if (correctLotto == integer) {
+                countLotto++;
+            }
+        }
+        return countLotto;
     }
 }

@@ -35,6 +35,13 @@ public class RankingWinner {
         systemConsole.grossYields(revenue);
     }
 
+    private SystemConsole getSystemConsole(List<Integer> winningRanking) {
+        SystemConsole systemConsole = new SystemConsole();
+        systemConsole.winningStatistics();
+        systemConsole(winningRanking, systemConsole);
+        return systemConsole;
+    }
+
     private void systemConsole(List<Integer> winningRanking, SystemConsole systemConsole) {
         for (Rank rank : Rank.values()) {
             int rankIndex = rank.ordinal();

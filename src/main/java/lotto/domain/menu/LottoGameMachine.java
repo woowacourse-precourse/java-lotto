@@ -4,7 +4,6 @@ import lotto.Lotto;
 import lotto.constants.SystemConsole;
 import lotto.domain.RandomLottoGenerator;
 import lotto.domain.WinningNumberAndLotto;
-import lotto.domain.subaction.WinningNumberPlace;
 import lotto.input.AdditionalNumber;
 import lotto.input.LottoTickets;
 import lotto.input.WinningNumber;
@@ -25,15 +24,9 @@ public class LottoGameMachine {
     }
 
     public void run() {
-        systemConsole.gameStartMessage();
-        LottoTickets lottoTickets = new LottoTickets();
-        int lottos = lottoTickets.getPaid();
-
-        systemConsole.completedPurchase(lottos);
-        List<List<Integer>> randomLotto = randomLottoGenerator.createTicket(lottos);
-
-        systemConsole.winningNumbers();
-        Lotto lottoAnswer = winningNumber.getCorrect();
+        int lottos = getLottos();
+        List<List<Integer>> randomLotto = getRandomLotto(lottos);
+        Lotto lottoAnswer = getCorrectLottoNumber();
 
         List<Integer> sameNumberCount = getSameNumberCount(randomLotto, lottoAnswer);
         LottoGameManagement lottoGameManagement = new LottoGameManagement(
@@ -42,10 +35,24 @@ public class LottoGameMachine {
         lottoGameManagement.bonusConfirmation(randomLotto, lottoAnswer, sameNumberCount);
     }
 
-    private List<Integer> getSameNumberCount(List<List<Integer>> randomLotto, Lotto lottoAnswer) {
-        WinningNumberAndLotto winningNumberAndLotto = new WinningNumberAndLotto(
-                new WinningNumberPlace());
+    private Lotto getCorrectLottoNumber() {
+        systemConsole.winningNumbers();
+        return winningNumber.getCorrect();
+    }
 
+    private List<List<Integer>> getRandomLotto(int lottos) {
+        systemConsole.completedPurchase(lottos);
+        return randomLottoGenerator.createTicket(lottos);
+    }
+
+    private int getLottos() {
+        systemConsole.gameStartMessage();
+        LottoTickets lottoTickets = new LottoTickets();
+        return lottoTickets.getPaid();
+    }
+
+    private List<Integer> getSameNumberCount(List<List<Integer>> randomLotto, Lotto lottoAnswer) {
+        WinningNumberAndLotto winningNumberAndLotto = new WinningNumberAndLotto();
         return winningNumberAndLotto.comparison(randomLotto, lottoAnswer);
     }
 }

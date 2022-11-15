@@ -7,7 +7,6 @@ import lotto.domain.subaction.BonusNumberCase;
 
 public class BonusBallAndLotto {
     private static final int BONUS_CONDITIONS = 5;
-
     private final BonusNumberCase bonusNumberCase;
 
     public BonusBallAndLotto(BonusNumberCase bonusNumberCase) {

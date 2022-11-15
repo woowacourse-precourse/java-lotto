@@ -11,8 +11,8 @@ public class WinnerRemainingCase {
 
     public List<Integer> caseCount(List<Integer> sameNumberCount, List<Integer> secondCaseCount) {
         int currentIndex = 0;
-        for (int rankIndex = START_WINNING_RANKING; rankIndex <= LAST_WINNING_RANKING;
-                rankIndex++) {
+
+        for (int rankIndex = START_WINNING_RANKING; rankIndex <= LAST_WINNING_RANKING; rankIndex++) {
 
             int caseCount = 0;
             currentIndex = getCurrentIndex(currentIndex, rankIndex);
