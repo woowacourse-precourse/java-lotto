@@ -3,16 +3,10 @@ package lotto.domain;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import java.util.Collections;
 import java.util.HashMap;
-
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Model {
 
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
-    private static final int LOTTO_SIZE = 6;
     public List<List<Integer>> USERS_LOTTOS;
     public HashMap <Integer, Integer> PRIZE_RANKINGS;
     private int MONEY;
@@ -22,6 +16,8 @@ public class Model {
     public HashMap<Integer, Integer> checkPrize(int money, int bonusNumber, List<Integer> lottoNumbers) {
         this.MONEY = money;
         this.BONUS_NUMBER = bonusNumber;
+        RandomLotto randomLotto = new RandomLotto(MONEY);
+        this.USERS_LOTTOS = randomLotto.getLottos();
         checkLottoNumber(lottoNumbers);
 
         return PRIZE_RANKINGS;
@@ -32,9 +28,7 @@ public class Model {
         return calculateRateOfIncome(MONEY);
     }
 
-    public List<List<Integer>> getUsersLottos (int money) {
-        repeatGettingLottoNumber(money);
-
+    public List<List<Integer>> getUsersLottos () {
         return this.USERS_LOTTOS;
     }
 
@@ -140,25 +134,6 @@ public class Model {
         return 0;
     }
 
-    // 1~45 사이의 랜덤 숫자들로 로또 번호 6개를 만드는 메서드
-    private List<Integer> getLottoNumber() {
-        List<Integer> lottoNumbers = new ArrayList<>
-                (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE));
-        Collections.sort(lottoNumbers);
-
-        return lottoNumbers;
-    }
-
-    // 로또 번호 만드는 메서드를 입력한 돈의 크기 만큼 반복하는 메서드
-    public void repeatGettingLottoNumber(int moneyNumber) {
-        List<List<Integer>> usersLottos = new ArrayList<>();
-
-        for (int temp = 0; temp < moneyNumber; temp++) {
-            usersLottos.add(getLottoNumber());
-        }
-
-        USERS_LOTTOS = usersLottos;
-    }
 
     // 순위 별 당첨금액이 저장된 enum클래스
     private enum Prize {
