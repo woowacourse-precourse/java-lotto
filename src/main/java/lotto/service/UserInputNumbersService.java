@@ -18,6 +18,11 @@ public class UserInputNumbersService {
         return user;
     }
 
+    public int parsingPrice(String price) {
+        int lottoPrice = Integer.parseInt(price);
+        return lottoPrice;
+    }
+
 
 
 }
