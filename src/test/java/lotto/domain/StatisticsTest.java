@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,8 +16,7 @@ public class StatisticsTest {
         statistics = new Statistics();
     }
 
-    @DisplayName("기록 전, 1등부터 5등까지 모두 0으로 초기화 상태이다.")
-    @ParameterizedTest
+    @ParameterizedTest(name = "기록 전, 1등부터 5등까지 모두 0으로 초기화 상태이다. (로또 등수 : {0}, 등수 별 카운트 : {1})")
     @CsvSource(value = {
             "FIRST_PLACE, 0",
             "SECOND_PLACE, 0",
@@ -31,8 +29,7 @@ public class StatisticsTest {
         assertThat(rankRecord.get(rank)).isEqualTo(initValue);
     }
 
-    @DisplayName("각 등수 별로 몇 번씩 당첨됐는지 기록한다.")
-    @ParameterizedTest
+    @ParameterizedTest(name = "각 등수 별로 한 번씩 당첨됐을 때 기록 상황 확인 (로또 등수 : {0}, 등수 별 카운트 : {1})")
     @CsvSource(value = {
             "FIRST_PLACE, 1",
             "SECOND_PLACE, 1",
