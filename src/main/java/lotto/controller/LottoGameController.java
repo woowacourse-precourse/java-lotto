@@ -11,5 +11,12 @@ public class LottoGameController {
     static int[] winningStats;
     static double rateOfReturn;
 
+    public static void startGame(){
+        purchaseAmount = UserController.getPurchaseAmount();
+        purchaseNumber = UserController.getPurchaseNumber(purchaseAmount);
+        lottos = LottoMachineController.operateLottoMachine(purchaseNumber);
+        winNumber = UserController.getWinNumber();
+        bonusNumber = UserController.getBonusNumber(winNumber);
+    }
 
 }
