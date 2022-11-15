@@ -32,7 +32,11 @@ public class Buyer {
     public void calculateTotalRate() {
         totalRate = Math.round((double) totalMoney / lottoAmount);
     }
-
+    public void sortAllLottoNumber(){
+        for (int i = 0; i < purchaseLotto.size(); i++) {
+            purchaseLotto.get(i).sortByNumber();
+        }
+    }
     static void validConsistByNumber(String purchaseAmount) {
         try {
             Integer.parseInt(purchaseAmount);

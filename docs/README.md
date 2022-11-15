@@ -30,7 +30,9 @@
 - [x] 당첨 금액을 계산한다. - Judgment#calculatePrizeMoney() 
 - [x] 로또 구입 금액과 당첨 금액을 토대로 수익률을 계산한다. - Buyer#calculateRate()  
   - [x] 수익률은 소수 둘째 자리에서 반올림 한다. 
-- [ ] 발행한 로또 수량 및 번호를 오름차순 정렬후 출력한다. - Judgment#printLotto()  
+- [ ] 발행한 로또 수량 및 번호를 출력한다. - Judgment#printLotto()  
+- [x] 구매자가 발행한 로또 번호 를 오름 차순으로 정렬한다. - Buyer#sortAllLottoNumber()
+- [x] 로또 번호 를 오름 차순으로 정렬한다. - Lotto#sortByNumber()
 - [ ] 당첨 내역을 출력한다. - Judgment#printResult()
 ---
 ## 기능 요구 사항

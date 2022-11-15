@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -31,5 +32,8 @@ public class Lotto {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(numberMinRage, numberMaxRage, numberCount);
 
         return new Lotto(lotto);
+    }
+    public void sortByNumber(){
+        Collections.sort(numbers);
     }
 }
