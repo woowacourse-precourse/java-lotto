@@ -35,6 +35,9 @@ class PlayLottoTest {
     @DisplayName("로또 리스트 중에 로또 숫자들을 6자리 한번 맞췄을 때")
     @Test
     void compare_lottery() {
+        game.compare_lottery(user);
+        int win = game.getWin_count().get(4); //6자리 모두 맞은 횟수를 가져옴
+        assertThat(win).isEqualTo(1);
     }
 
     @Test
