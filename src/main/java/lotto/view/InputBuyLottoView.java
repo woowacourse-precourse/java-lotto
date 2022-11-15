@@ -10,6 +10,7 @@ public final class InputBuyLottoView extends InputView {
     public Integer getValue() {
         System.out.println(INPUT_MESSAGE);
         String result = inputValue();
+        System.out.println();
         validate(result);
         return Integer.parseInt(result);
     }

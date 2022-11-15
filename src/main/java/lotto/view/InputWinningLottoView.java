@@ -14,6 +14,7 @@ public class InputWinningLottoView extends InputView {
     public List<Integer> getValue() {
         System.out.println(INPUT_MESSAGE);
         String result = inputValue();
+        System.out.println();
         validate(result);
         return Stream.of(result.split(","))
                 .map(Integer::parseInt)
