@@ -1,13 +1,12 @@
 package lotto;
 
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private static final int vic_number = 6; // 뽑는 갯수 및 당첨 갯수 확인
-    private static final int vic_bonus_number = 1; // 뽑는 갯수 및 당첨 갯수 확인
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;
@@ -17,8 +16,8 @@ public class Lotto {
     }
     // 6자리 아닌 값 확인
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != vic_number) {
-            throw new IllegalArgumentException("[ERROR]" + vic_number  +" 자리 숫자를 입력해주세요");
+        if (numbers.size() != 6){
+            throw new IllegalArgumentException("[ERROR] 6자리 숫자를 입력해주세요");
         }
     }
     // 중복된 숫자 확인

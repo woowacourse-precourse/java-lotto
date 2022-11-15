@@ -32,12 +32,12 @@ public class statistic {
       int cnt_bonus_number = 0;
       //
       if(line.contains(new_normal_number_table[0])) cnt_normal_number++;
-      else if(line.contains(new_normal_number_table[1])) cnt_normal_number++;
-      else if(line.contains(new_normal_number_table[2])) cnt_normal_number++;
-      else if(line.contains(new_normal_number_table[3])) cnt_normal_number++;
-      else if(line.contains(new_normal_number_table[4])) cnt_normal_number++;
-      else if(line.contains(new_normal_number_table[5])) cnt_normal_number++;
-      else if(line.contains(new_bonus_number)) cnt_bonus_number++;
+      if(line.contains(new_normal_number_table[1])) cnt_normal_number++;
+      if(line.contains(new_normal_number_table[2])) cnt_normal_number++;
+      if(line.contains(new_normal_number_table[3])) cnt_normal_number++;
+      if(line.contains(new_normal_number_table[4])) cnt_normal_number++;
+      if(line.contains(new_normal_number_table[5])) cnt_normal_number++;
+      if(line.contains(new_bonus_number)) cnt_bonus_number++;
       //
       medal(cnt_normal_number, cnt_bonus_number);
     }

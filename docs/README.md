@@ -85,13 +85,19 @@
            - medal() : 등수별 개수 세기
            - medal_result() : 등수별 당첨 수 및 총 수익률 출력
        g) Lotto.java(로또 번호 검수)
-           - Lotto // 메인, 숫자가 6자리라면 
-               - validate // 6자리 인가 확인
-               - validate // 숫자 이외의 값이 포함되어 있는지 확인
-               - validate // 각 숫자가 0 ~ 45인가 확인
-               - validate // 각 숫자가 서로 다른 숫자인가 확인
-           - computer // 6자리 숫자 뽑기
-
+           - validate // 6자리 인가 확인
+           - repeated // 반복값 확인
+           - Over // 0미만 45초과 확인
+        h) LottoTest.java(입력 번호 검수)
+           - enum을 통해 입력값 관리
+           - createLottoByOverSize // 뽑는 자리수 확인
+           - createLottoByDuplicatedNumber // 중복 수 확인
+           - createLottoByOverNumber // 0 ~ 45인지 확인
+        i) ApplicationTest.java(메인 검사)
+           - 기능_테스트 // 이상적인 값을 통한 정상 작동 확인
+           - 예외_테스트 // 숫자가 아닌 문자 확인
+           - 예외_테스트 // 1000원 미만의 구매 불능 확인
+   
    2) 대략적인 구성(자동 로또 *줄과 시스템 담당자가 입력한 정답)
       - "구매금액을 입력해 주세요"
       - 구매 금액 입력
@@ -113,3 +119,6 @@
       - 당첨 통계 각 줄에 출력
       - 수익률 출력(총 수익률은 62.5%입니다.)
       - 게임 종료
+      
+    3) 구현 불필요
+        - 램덤 생성번호는 정수 0 ~ 45와 6개로 명령어에서 제어됨

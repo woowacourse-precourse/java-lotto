@@ -1,5 +1,6 @@
 package lotto;
 
+
 public class quantity {
 
   private final String price;
