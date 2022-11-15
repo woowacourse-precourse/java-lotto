@@ -1,15 +1,19 @@
 package lotto.util;
 
 
-import static lotto.util.Constant.MONEYUNIT;
+import static java.lang.Integer.parseInt;
 
 public class Validator {
+
     public static void validatePayMoney(String payMoney) {
-        if(Integer.parseInt(payMoney) % MONEYUNIT > 0){
-            throw new IllegalArgumentException("잘못된 입력값입니다");
-//            throw new IllegalArgumentException(Exception.WRONG_UNIT.getExceptionMessage());
+        try {
+            Double.parseDouble(payMoney);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_UNIT.getErrorMessage());
         }
     }
-
-
 }
+
+//        if(Integer.parseInt(payMoney)%MONEY_UNIT > 0 && parseDouble(payMoney)%1 == 0){
+//            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_TYPE.getErrorMessage());
+//        }

@@ -1,16 +1,16 @@
 package lotto.domain;
 
 import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
-import static lotto.util.Constant.FIFTHPLACE;
-import static lotto.util.Constant.FIRSTPLACE;
-import static lotto.util.Constant.FOURTHPLACE;
-import static lotto.util.Constant.SECONDPLACE;
-import static lotto.util.Constant.THIRDPLACE;
+import static lotto.util.Constant.FIFTH_PLACE;
+import static lotto.util.Constant.FOURTH_PLACE;
+import static lotto.util.Constant.THIRD_PLACE;
+import static lotto.util.Constant.SECOND_PLACE;
+import static lotto.util.Constant.FIRST_PLACE;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.util.Constant;
 import lotto.util.Validator;
 import lotto.view.Input;
 
@@ -20,6 +20,10 @@ public class Service {
         String payMoney = Input.input();
         Validator.validatePayMoney(payMoney);
         return parseDouble(payMoney);
+    }
+
+    public static double countBuyLotto(double payMoney) {
+        return payMoney / (Constant.MONEY_UNIT);
     }
 
     public static List<List<Integer>> firstCompareLottoNumber (List<List<Integer>> purchasedLotteries, List<Integer> winningNumbers) {
@@ -37,27 +41,27 @@ public class Service {
     public static void scoreLotteries (List<List<Integer>> firstResultList, int bonusNumber) {
         for (List<Integer> integers : firstResultList) {
             if (integers.size() == 0) {
-                FIRSTPLACE++;
+                FIRST_PLACE++;
             }
             if (integers.size() == 1 && integers.get(0) == bonusNumber) {
                 System.out.println(integers.get(0));
-                SECONDPLACE++;
+                SECOND_PLACE++;
             }
             if (integers.size() == 1) {
-                THIRDPLACE++;
+                THIRD_PLACE++;
             }
             if (integers.size() == 2) {
-                FOURTHPLACE++;
+                FOURTH_PLACE++;
             }
             if (integers.size() == 3) {
-                FIFTHPLACE++;
+                FIFTH_PLACE++;
             }
         }
     }
 
     public static String getYield (double payMoney) {
-        double yield = ((FIRSTPLACE * 200000000 + SECONDPLACE * 30000000 + THIRDPLACE * 1500000 + FOURTHPLACE * 50000
-                + FIFTHPLACE * 50000) /payMoney)*10;
+        double yield = ((FIRST_PLACE * 200000000 + SECOND_PLACE * 30000000 + THIRD_PLACE * 1500000 + FOURTH_PLACE * 50000
+                + FIFTH_PLACE * 50000) /payMoney)*10;
         return (String.format("%.1f", yield));
     }
 }

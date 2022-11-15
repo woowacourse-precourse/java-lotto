@@ -1,12 +1,13 @@
 package lotto.domain;
 
 import static java.lang.Integer.parseInt;
-import static java.util.Collections.sort;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import lotto.util.ErrorMessage;
 import lotto.view.Input;
 
 public class Lotto {
@@ -15,17 +16,16 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-//        ascendingSort(numbers);
         this.numbers = numbers;
     }
 
-//    private void ascendingSort(List<Integer>numbers) {
-//        sort(numbers);
-//    }
-
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_DIGIT.getErrorMessage());
+        }
+        Set<Integer> numbersSet= new HashSet<>(numbers);
+        if(numbersSet.size() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE_NUMBER.getErrorMessage());
         }
     }
 
@@ -47,13 +47,14 @@ public class Lotto {
         List<Integer> winningNumbers = new ArrayList<>();
 
         String[] inputNumbersArray = inputWinningNumbers.split(",");
+
         for (String s : inputNumbersArray) {
             winningNumbers.add(parseInt(s));
         }
-
         new Lotto(winningNumbers);
 
         return winningNumbers;
+
     }
 
     public static Integer getBonusNumber() {
