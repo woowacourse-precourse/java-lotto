@@ -3,6 +3,9 @@ package lotto.domain;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_RANGE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_TYPE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_UNIT_ERROR;
+import static lotto.constant.ErrorMessage.WINNING_NUMBER_RANGE_ERROR;
+import static lotto.constant.ErrorMessage.WINNING_NUMBER_SIZE_ERROR;
+import static lotto.constant.ErrorMessage.WINNING_NUMBER_TYPE_ERROR;
 import static lotto.constant.InputPattern.PURCHASE_AMOUNT_PATTERN;
 import static lotto.constant.InputPattern.WINNING_NUMBER_PATTERN;
 import static lotto.constant.OutputMessage.PLEASE_WRITE_PURCHASE_AMOUNT;
@@ -54,6 +57,13 @@ public class CheckInput {
         }
     }
 
+    public List<Integer> readWinningNumber() {
+        System.out.println(PLEASE_WRITE_WINNING_NUMBERS);
+        String input = Console.readLine();
+
+        return checkWinningNumberValid(input);
+    }
+
     public static List<Integer> checkWinningNumberValid(String input) {
         List<Integer> result = new ArrayList<>();
 
@@ -74,19 +84,19 @@ public class CheckInput {
     public static void checkWinningNumberPattern(String input) {
         Pattern pattern = Pattern.compile(WINNING_NUMBER_PATTERN);
         if (!pattern.matcher(input).matches()) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자와 콤마(,)로 이루어져야 합니다.");
+            throw new IllegalArgumentException(WINNING_NUMBER_TYPE_ERROR);
         }
     }
 
     public static void checkWinningNumberSize(String[] winningNumbers) {
         if (winningNumbers.length != 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개를 입력해야 합니다.");
+            throw new IllegalArgumentException(WINNING_NUMBER_SIZE_ERROR);
         }
     }
 
     public static void checkWinningNumberRange(int winningNumber) {
         if (winningNumber < 1 || winningNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1 ~ 45 사이의 양수입니다.");
+            throw new IllegalArgumentException(WINNING_NUMBER_RANGE_ERROR);
         }
     }
 
