@@ -8,7 +8,7 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         int user_buy_num = HowManyLotto();
-        List<Integer>[] user_lotto = UserLotto(user_buy_num);
+        Lotto[] user_lotto = UserLotto(user_buy_num);
         PrintUserLotto(user_lotto);
         List<Integer> answer = MakeAnswer();
         int bonus_num = MakeBonus(answer);
@@ -34,20 +34,20 @@ public class Application {
         return numbers;
     }
 
-    static List<Integer>[] UserLotto(int user_buy_num) {
-        List<Integer>[] user_lotto = new List[user_buy_num];
+    static Lotto[] UserLotto(int user_buy_num) {
+        Lotto[] user_lotto = new Lotto[user_buy_num];
 
         for (int i=0; i < user_buy_num; i++) {
             Lotto lotto = new Lotto(MakeNumbers());
-            user_lotto[i] = lotto.GetNumbers();
+            user_lotto[i] = lotto;
         }
 
         return user_lotto;
     }
 
-    static void PrintUserLotto(List<Integer>[] user_lotto) {
+    static void PrintUserLotto(Lotto[] user_lotto) {
         for (int i=0; i < user_lotto.length; i++) {
-            System.out.println(user_lotto[i]);
+            System.out.println(user_lotto[i].GetNumbers());
         }
     }
 
