@@ -1,5 +1,12 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoResult;
+import lotto.domain.UserLottos;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class OutputView {
     private final String MESSAGE_TO_PRINT_COUNT = "개를 구매했습니다.";
     private final String MESSAGE_TO_PRINT_RESULT = "\n당첨 통계\n---";
@@ -22,10 +29,13 @@ public class OutputView {
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
     }
+    public void printSortedLottos(UserLottos userLottos) {
+        Set<Lotto> lottoSet = userLottos.getUserLottos();
 
-
-
-
-
-
+        for (Lotto lotto : lottoSet) {
+            List<Integer> copyLotto = new ArrayList<>(lotto.getNumbers());
+            copyLotto.sort(Integer::compareTo);
+            System.out.println(copyLotto);
+        }
+    }
 }
