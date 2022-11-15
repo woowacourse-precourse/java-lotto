@@ -93,7 +93,7 @@ class ApplicationTest extends NsTest {
                             "총 수익률은 200,000,000.0%입니다."
                     );
                 },
-                List.of(1,2,3,4,5,6)
+                List.of(1, 2, 3, 4, 5, 6)
         );
     }
 
