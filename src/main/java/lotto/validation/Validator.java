@@ -67,8 +67,8 @@ public class Validator {
         }
     }
 
-    public static void isCorrectBonusNumberPattern(String bonusNumber) {
-        if (!bonusNumber.matches(PATTERN)) {
+    public static void isCorrectNumberPattern(String number) {
+        if (!number.matches(PATTERN)) {
             throw new IllegalArgumentException(INPUT_NUMBER);
         }
     }
