@@ -13,12 +13,22 @@ public class Application {
     public static int BuyLotto(int money){
         CheckSmallMoney(money);
         int paper = money / 1000;
-        System.out.println(paper);
         return paper;
+    }
+    public static ArrayList<Integer> GetWinningNumbers(){
+        ArrayList<Integer> winningNumbers = new ArrayList<>();
+        String[] input = Console.readLine().split(",");
+
+        for(int i=0; i<6;i++){
+            winningNumbers.add(i, Integer.valueOf(input[i]));
+        }
+        return winningNumbers;
     }
     public static void main(String[] args) {
         int customerMoney = Integer.parseInt(Console.readLine());
         int numberOfLottos = BuyLotto(customerMoney);
+
+        ArrayList<Integer> winningNumbers = GetWinningNumbers();
 
     }
 }
