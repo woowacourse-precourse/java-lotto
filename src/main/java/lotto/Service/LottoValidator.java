@@ -13,7 +13,7 @@ public class LottoValidator {
     private static final String ERROR_HEADER = "[ERROR]";
     private static final String SIZE_ERROR_MESSAGE = ERROR_HEADER + " 6개의 숫자만 입력해주십시오.";
     private static final String DUPLICATION_ERROR_MESSAGE = ERROR_HEADER + " 중복되는 숫자는 입력할 수 없습니다.";
-    private static final String RANGE_ERROR_MESSAGE = ERROR_HEADER + " 1~45 사이의 숫자만 입력해주십시오.";
+    private static final String RANGE_ERROR_MESSAGE = ERROR_HEADER + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 
     public void validate(List<Integer> numbers) {
         checkLottoSize(numbers);
@@ -25,20 +25,17 @@ public class LottoValidator {
         validate(numbers);
 
         if (bonusNumber > MAX_LOTTO_RANGE || bonusNumber < MIN_LOTTO_RANGE) {
-            System.out.print(RANGE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
 
         if (numbers.contains(bonusNumber)) {
-            System.out.print(DUPLICATION_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
         }
     }
 
     public void checkLottoSize(List<Integer> numbers) {
         if (numbers.size() != MAX_LOTTO_SIZE) {
-            System.out.print(SIZE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
     }
 
@@ -48,8 +45,7 @@ public class LottoValidator {
                 .count() != numbers.size();
 
         if (isDuplicated) {
-            System.out.print(DUPLICATION_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
         }
     }
 
@@ -59,8 +55,7 @@ public class LottoValidator {
                 .count();
 
         if (invalidCount > 0) {
-            System.out.print(RANGE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 }

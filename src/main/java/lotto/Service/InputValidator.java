@@ -18,8 +18,7 @@ public class InputValidator {
         int money = returnValidatedSingleNumber(input);
 
         if (money % MIN_COST != 0) {
-            System.out.print(COST_EXCEPTION_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(COST_EXCEPTION_MESSAGE);
         }
     }
 
@@ -28,9 +27,8 @@ public class InputValidator {
             Stream.of(input.split("\\s*,\\s*"))
                     .map(n -> (Integer.parseInt(n)))
                     .collect(Collectors.toList());
-        } catch (Exception e) {
-            System.out.print(LOTTO_FORMAT_MESSAGE);
-            throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(LOTTO_FORMAT_MESSAGE);
         }
     }
 
@@ -38,9 +36,8 @@ public class InputValidator {
         int num = 0;
         try {
             num = Integer.parseInt(input);
-        } catch (NumberFormatException ne) {
-            System.out.print(NUMBER_FORMAT_MESSAGE);
-            throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_MESSAGE);
         }
 
         return num;
