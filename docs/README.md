@@ -8,7 +8,7 @@ Lotto 클래스
 
 LottoMachine 클래스
 
-- [ ] 로또를 여러 장 생성해 저장한다
+- [x] 로또를 여러 장 생성해 저장한다
 
 InputManager 클래스
 
