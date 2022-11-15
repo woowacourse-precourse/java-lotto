@@ -28,6 +28,10 @@ public enum Result {
         return money;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public static Result computeScore(int score) {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)

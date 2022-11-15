@@ -23,10 +23,9 @@ public class Lotto {
     public Result computeResult(Set<Integer> winningNumbers, int bonusNumber) {
         int score = (int) numbers.stream()
                 .filter(winningNumbers::contains)
-                .count();
+                .count() * 10;
 
-        score *= 10;
-        if (score == 50 && numbers.contains(bonusNumber)) {
+        if (score == Result.FIVE.getScore() && numbers.contains(bonusNumber)) {
             score++;
         }
 
