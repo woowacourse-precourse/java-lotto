@@ -30,7 +30,8 @@ public class Counter {
         try {
             Double.parseDouble(inputMoney);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.IsNotNumberMessage);
+            System.out.println(Message.IsNotNumberMessage);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -47,5 +48,9 @@ public class Counter {
     public int getNumberOfLotto() {
         System.out.println(numberOfLotto + Message.PurchaseMessage);
         return numberOfLotto;
+    }
+
+    public int getMoney() {
+        return money;
     }
 }
