@@ -49,7 +49,6 @@ public class Lotto {
 	}
 
 	private void validLottoNumberRange(List<Integer> numbers) {
-		//범위 1부터 45 까지
 		int count = (int)numbers.stream()
 			.filter(i -> ValidConst.LOTTO_MIN_NUMBER <= i && i <= ValidConst.LOTTO_MAX_NUMBER)
 			.count();
@@ -59,7 +58,6 @@ public class Lotto {
 	}
 
 	private void validDuplicated(List<Integer> numbers) {
-		//중복되지 않는 숫자
 		Set<Integer> numbersSet = Set.copyOf(numbers);
 		if (numbers.size() != numbersSet.size()) {
 			throw new IllegalArgumentException(ErrorConst.DUPLICATED_ERROR);
