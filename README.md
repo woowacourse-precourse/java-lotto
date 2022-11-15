@@ -225,3 +225,57 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 기능 목록
+
+NumberGenerator
+- [x] 난수 생성(6자리)
+  - [x] 유효성 검사
+  - [x] 오름차순 정렬
+
+
+Printer
+- [x] 구매 금액 입력 요청
+- [x] 구매 갯수 출력
+- [x] 발권된 로또 번호 출력
+- [x] 당첨 번호 입력 요청
+- [x] 보너스 번호 입력 요청
+- [x] 당첨 통계 출력
+
+
+Receiver
+- [x] 사용자 입력
+
+
+Lotto
+- [x] 로또 번호 유효성 검사
+  - [x] 로또 번호가 숫자가 아닐 경우
+  - [x] 로또 번호 갯수가 6이 아닐 경우
+  - [x] 로또 번호가 1~45 사이가 아닐 경우
+  - [x] 겹치는 번호가 있을 경우
+
+
+BonusNumber
+- [x] 보너스 번호 유효성 검사
+  - [x] 보너스 번호가 숫자가 아닐 경우
+  - [x] 보너스 번호가 1~45 사이가 아닐 경우
+
+
+
+
+Account
+- [x] 구매 금액 유효성 검사
+  - [x] 구매 금액이 숫자가 아닐 경우
+  - [x] 구매 금액이 1000원 미만일 경우
+  - [x] 구매 금액이 1000원 단위가 아닐 경우
+
+
+LottoPlayer
+- [x] 로또 실행
+  - [x] 로또 발권
+
+EarningRateCalculator
+- [x] 로또 일치 검사
+  - [x] 5개 일치일 경우 보너스 검사
+- [x] 수익률 계산
