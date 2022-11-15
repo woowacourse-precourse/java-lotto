@@ -7,6 +7,7 @@ public class ValidationUtils {
     private static final String WINNING_NUMBER_FORMAT = "^\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2}$";
     private static final String INPUT_NUMBER_FORMAT = "[ERROR] 숫자 형식을 입력해주세요.";
     public static final String INPUT_RIGHT_FORMAT = "[ERROR] 콤마(,)로 구분되는 숫자 6개를 입력해 주세요.";
+
     private ValidationUtils() {
     }
 
