@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static lotto.domain.Preset.ERROR_FORMAT_MESSAGE;
-import static lotto.domain.Preset.INPUT_REGEX;
+import static lotto.domain.Preset.*;
 import static lotto.view.OutputView.*;
 
 public class InputView {
@@ -24,7 +23,7 @@ public class InputView {
     }
 
     public static List<Integer> readWinningNumbers() {
-        System.out.println(READ_WINNING_NUMBERS_MESSAGE);
+        System.out.println(LINE_FEED + READ_WINNING_NUMBERS_MESSAGE);
 
         try {
             return convertStrToIntList(Console.readLine());
@@ -35,7 +34,7 @@ public class InputView {
     }
 
     public static int readBonusNumber() {
-        System.out.println(READ_BONUS_NUMBER_MESSAGE);
+        System.out.println(LINE_FEED + READ_BONUS_NUMBER_MESSAGE);
 
         try {
             return convertStrToInt(Console.readLine());

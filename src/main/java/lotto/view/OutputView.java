@@ -43,7 +43,7 @@ public class OutputView {
     }
 
     public static void printResultMainMessage() {
-        System.out.println(PRINT_RESULT_MAIN_MESSAGE);
+        System.out.println(LINE_FEED + PRINT_RESULT_MAIN_MESSAGE);
     }
 
     public static void printEachWinningResult(WinningType type, Map<WinningType, Integer> winningResults) {
