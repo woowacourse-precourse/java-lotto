@@ -7,7 +7,6 @@ public class OutputConsole implements Output {
         System.out.print(message.getMessage());
     }
 
-
     @Override
     public void print(Message message, Long number) {
         System.out.printf((message.getMessage()) + "%n", number);
@@ -17,7 +16,6 @@ public class OutputConsole implements Output {
     public void print(String string) {
         System.out.println(string);
     }
-
 
     @Override
     public void print(String yield, String format) {

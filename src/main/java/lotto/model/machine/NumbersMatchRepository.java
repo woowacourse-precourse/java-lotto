@@ -57,19 +57,11 @@ public class NumbersMatchRepository {
     }
 
     public void showWinningHistory(Output output) {
-//        ticketMatchTable.keySet()
-//            .stream()
-//            .filter(Rank::isMatchCount)
-//            .forEach(matchCount -> output.print(Message.getResultMessage(matchCount), ticketMatchTable.get(matchCount)));
-//        output.print(Message.LOTTO_RESULT,
-//            matchCount, Rank.getRankMoney(matchCount),ticketMatchTable.get(matchCount))
-
         output.print(Message.FIFTH_RESULT, ticketMatchTable.get(3));
         output.print(Message.FOURTH_RESULT, ticketMatchTable.get(4));
         output.print(Message.THIRD_RESULT, ticketMatchTable.get(5));
         output.print(Message.SECOND_RESULT, ticketMatchTable.get(LUCKY));
         output.print(Message.FIRST_RESULT, ticketMatchTable.get(6));
-
     }
 
     public void showYield(Output output, Money money) {
