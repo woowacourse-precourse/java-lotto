@@ -32,5 +32,14 @@ public class CalculateUserCorrectLottoInfoService {
         user.addUserWinningPrice(winning.getPrice());
         countWinning.put(winning, countWinning.getOrDefault(winning, INITIAL_NUMBER) + INCREASE_COUNT_NUMBER);
     }
+    public int compareWinningNumbers(Lotto lotto, List<Integer> lottoNumbers) {
+        int count = INITIAL_NUMBER;
+        for (Integer lottoNumber : lottoNumbers) {
+            if (lotto.getWinningNumbers().contains(lottoNumber)) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 }
