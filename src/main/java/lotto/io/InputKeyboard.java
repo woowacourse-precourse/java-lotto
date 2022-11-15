@@ -1,4 +1,4 @@
-package io;
+package lotto.io;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
