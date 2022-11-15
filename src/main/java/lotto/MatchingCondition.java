@@ -5,38 +5,34 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MatchCondition {
+public class MatchingCondition {
 
 
-    public List<Integer> getMatchResult(List<Lotto> userLottoGroup, List<Integer> winningNumber, int bounsNumber){
+    public List<Integer> getMatchResult(List<Lotto> userLottoGroup, List<Integer> winningNumber, int bonusNumber){
         List<Integer> matchResult = new ArrayList<>(Arrays.asList(0,0,0,0,0));
 
         for(int i = 0; i<userLottoGroup.size(); i++){
-            int placeCount = matchWithWinningNumbers(userLottoGroup.get(i).getNumbers(), winningNumber);
-            boolean bonus = matchBonusNumber(bounsNumber,userLottoGroup);
+            int placeCount = usersOneLottoMatchWithWinningNumbers(userLottoGroup.get(i).getNumbers(), winningNumber);
+            boolean bonus = matchBonusNumber(bonusNumber,userLottoGroup);
             if(placeCount >= 3 ){
-                int index = resultPlace(placeCount,bonus);
+                int index = sortOutWinningPlace(placeCount,bonus);
                 matchResult.add(index, matchResult.get(index)+1 );
             }
         }
         return matchResult;
     }
 
-
-
-    public int matchWithWinningNumbers(List<Integer> userLottos, List<Integer> winning){
+    public int usersOneLottoMatchWithWinningNumbers(List<Integer> userLotto, List<Integer> winningNumbers){
         int matchPlace = 0;
-        for(Integer number : userLottos){
-            if(winning.contains(number)){
+        for(Integer number : userLotto){
+            if(winningNumbers.contains(number)){
                 matchPlace++;
             }
         }
         return matchPlace;
     }
 
-
-
-    public int resultPlace(int count, boolean bonus){
+    public int sortOutWinningPlace(int count, boolean bonus){
         if(count == 6){
             return 0;
         }
@@ -52,7 +48,6 @@ public class MatchCondition {
         return 4;
     }
 
-
     public boolean matchBonusNumber(int bonusNumber, List<Lotto> userLottosNumber){
         int count = 0;
         for(int i = 0; i<userLottosNumber.size(); i++){
@@ -64,8 +59,7 @@ public class MatchCondition {
         return count != 0;
     }
 
-
-    public Double calculRateOfReturn(int money, List<Integer> placeResult){
+    public Double calculateRateOfReturn(int money, List<Integer> placeResult){
         double profit = 0;
 
         for(MatchLotto result : MatchLotto.values()){
