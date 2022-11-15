@@ -8,9 +8,14 @@ public class Lotto {
     private static final int price = 1000;
     private static final ExceptionHandler exceptionHandler = new ExceptionHandler();
 
-    public static int numberOfLottosQuantity(int amountPaid) {
-        int lottoQuantity = amountPaid/price;
-        if (amountPaid%price != 0) {
+    public static int numberOfLottosQuantity(String amountPaid) {
+        int amount = Integer.parseInt(amountPaid);
+        int lottoQuantity = amount/price;
+        String pattern = "^[0-9]*$";
+        if (!pattern.matches(amountPaid)) {
+            exceptionHandler.foolExceaption("onlyNumber");
+        }
+        if (amount%price != 0) {
             exceptionHandler.foolExceaption("amount");
         }
         return lottoQuantity;
