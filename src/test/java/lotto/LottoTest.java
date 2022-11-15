@@ -1,5 +1,6 @@
 package lotto;
 
+import Utils.Validator;
 import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,8 @@ class LottoTest {
         String inValidPayment = "14123";
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThatThrownBy(() -> lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
+        Validator validator = new Validator();
+        assertThatThrownBy(() -> validator.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
 
     }
 
