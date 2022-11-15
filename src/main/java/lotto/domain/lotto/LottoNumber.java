@@ -1,5 +1,0 @@
-package lotto.domain.lotto;
-
-public class LottoNumber {
-
-}
