@@ -47,7 +47,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트_모두_당첨_일때(){
+    void 기능_테스트_모두_당첨_일때() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "45");
