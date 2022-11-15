@@ -11,6 +11,7 @@ import java.util.List;
 
 public class LottoController {
     UserLotto userLotto = new UserLotto();
+    WinnerLotto winnerLotto = new WinnerLotto();
     OutputView output = new OutputView();
     InputView input = new InputView();
 
@@ -20,6 +21,10 @@ public class LottoController {
             userLotto.setLottoCount(purchasePrice);
             userLotto.makeLottoNumber();
             output.showPurchasedLotto(userLotto.countOfLotto(), userLotto.listOfLotto());
+            List<Integer> winnerNumber = input.winnerNumbers();
+            winnerLotto.setWinnerNumber(winnerNumber);
+            int bonusNumber = input.bonusNumber();
+            winnerLotto.setBonusNumber(bonusNumber);
 
             inputWinnerNumber();
             inputBonusNumber();
@@ -29,15 +34,6 @@ public class LottoController {
         }catch(IllegalArgumentException e){
             System.out.println("[ERROR]잘못된 입력");
         }
-    }
-
-    private void inputWinnerNumber(){
-        Lotto winnerNumberLotto = new Lotto(input.winnerNumbers());
-        lottoData.setWinnerNumber(winnerNumberLotto);
-    }
-
-    private void inputBonusNumber(){
-        lottoData.setBonusNumber(input.bonusNumber());
     }
 
     private void countLottoPrize(){
