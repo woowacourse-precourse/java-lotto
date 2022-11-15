@@ -1,25 +1,32 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LottoProgram {
     private final int LOTTO_PRICE = 1000;
 
+    private int numberOfLotto = 0;
+    // private List<Lotto> lottos;
+
     public void progress() {
-        int numberOfLotto = buyLotto();
+        buyLotto();
+        // makeLotto();
+
     }
 
-    private int buyLotto() {
+    public void buyLotto() {
         OutputView.printInputMoneyMessage();
 
         String input = InputView.getMoney();
         int money = Integer.parseInt(input);
-        int numberOfLotto = countLottoQuantity(money);
+        this.numberOfLotto = countLottoQuantity(money);
 
-        OutputView.printNumberOfLottoMessage(numberOfLotto);
-
-        return numberOfLotto;
+        OutputView.printNumberOfLottoMessage(this.numberOfLotto);
     }
 
     public int countLottoQuantity(int money) {
