@@ -83,10 +83,13 @@ public class LottoManager {
         }
         return sum;
     }
+
+    private Double getBenefitRatio(){
+        return input.getRatio(benefit);
+    }
     public void printStatistics() {
         checkWinningsInLottoList();
         printResultMap();
-        Long resultCompensation = getResultCompensation();
-
+        benefit = new Money(getResultCompensation());
     }
 }
