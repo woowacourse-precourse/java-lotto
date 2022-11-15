@@ -2,7 +2,7 @@
 
 ## 📄 기능 목록
 - [x] 로또 구입 금액을 입력 받는다. - InputOutput#getLottoBuyAmount()
-- [ ] 1부터 45까지의 서로 다른 수 6개를 생성한다. - NumberGenerator#()
+- [x] 1부터 45까지의 서로 다른 수 6개를 생성한다. - NumberGenerator#createRandomNumbers()
 - [ ] 로또 번호는 오름차순으로 정렬한다. - NumberGenerator#sortAscendingOrder()
 - [ ] 로또 당첨 번호 6개를 입력 받는다. - InputOutput#getLottoNumbers()
 - [ ] 로또 보너스 번호 1개를 입력 받는다. - InputOutput#getLottoBonusNumber()
