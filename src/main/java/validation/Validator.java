@@ -11,6 +11,7 @@ import static util.validation.ValidationUtil.isWithinValidRange;
 
 import exception.InvalidLottoSizeException;
 import exception.LottoNumberDuplicatedException;
+import exception.NotInUnitsOf1000WonException;
 import exception.NotIntegerException;
 import java.util.List;
 import lotto.Lotto;
@@ -34,7 +35,7 @@ public class Validator {
         }
 
         if (!isUnitsOf1000Won(purchasePrice)) {
-            throw new IllegalArgumentException();
+            throw new NotInUnitsOf1000WonException();
         }
     }
 
