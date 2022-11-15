@@ -18,4 +18,13 @@ public class WinningLottoTest {
         assertThat(winningLotto.match(userLotto)).isEqualTo(Rank.SECOND);
     }
 
+    @DisplayName("당첨 로또 숫자와 중복인 보너스 번호를 입력받으면 에러를 반환한다.")
+    @Test
+    void createWinningLottoWithDuplicatedBonusNumber() {
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        LottoNumber bonusNo = new LottoNumber(2);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new WinningLotto(winLotto, bonusNo);
+        });
+    }
 }

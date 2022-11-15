@@ -58,16 +58,7 @@ public class LotteryShop {
     }
 
     private WinningLotto getWinningLotto() {
-        Lotto winningLotto = new Lotto(getWinningLottoNumbers());
-        LottoNumber bonusNo = new LottoNumber(getBonusNo());
-        validateLottoNumbersContainBonusNumber(winningLotto, bonusNo);
-        return new WinningLotto(winningLotto, bonusNo);
-    }
-
-    private void validateLottoNumbersContainBonusNumber(Lotto winningLotto, LottoNumber bonusNo) {
-        if (winningLotto.isContains(bonusNo)) {
-            throw new IllegalArgumentException(ALREADY_PICKED_BONUS_NUMBER);
-        }
+        return new WinningLotto(new Lotto(getWinningLottoNumbers()), new LottoNumber(getBonusNo()));
     }
 
     private List<Integer> getWinningLottoNumbers() {
