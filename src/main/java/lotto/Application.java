@@ -7,8 +7,8 @@ public class Application {
        try {
            lottoController.startLotto();
        }
-       catch (IllegalArgumentException e){
-           System.out.println(e.getMessage());
+       catch (IllegalArgumentException error){
+           System.out.println(error.getMessage());
        }
     }
 }
