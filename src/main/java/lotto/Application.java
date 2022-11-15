@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import static java.lang.Integer.parseInt;
 
+import java.util.NoSuchElementException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -44,9 +45,9 @@ public class Application {
         try{
             moneyInt = parseInt(moneyString);
         }
-        catch(NumberFormatException e){
+        catch(Exception e){
             System.out.println("[ERROR] 금액을 다시 확인해주세요.");
-            throw new IllegalArgumentException("[ERROR] 금액을 다시 확인해주세요.");
+            throw new NoSuchElementException("[ERROR] 금액을 다시 확인해주세요.");
         }
         if(moneyInt%1000!=0){
             System.out.println("[ERROR] 금액을 1000원 단위로 입력해주세요.");
