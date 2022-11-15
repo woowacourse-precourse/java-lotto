@@ -1,6 +1,6 @@
-package lotto;
+package lotto.output;
 
-import lotto.View.*;
+import lotto.output.View.*;
 
 import java.util.Collections;
 import java.util.List;

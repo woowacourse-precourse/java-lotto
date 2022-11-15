@@ -1,11 +1,11 @@
-package lotto;
+package lotto.input;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class Exception {
+public class CheckInput {
     public enum ErrorMessage {
         ERROR_MESSAGE("[ERROR] "),
         SIZE_ERROR("로또의 당첨 번호는 6개여야 합니다."),
@@ -22,25 +22,25 @@ public class Exception {
 
     private boolean validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Exception.ErrorMessage.SIZE_ERROR.print());
+            throw new IllegalArgumentException(CheckInput.ErrorMessage.SIZE_ERROR.print());
         }
         return true;
     }
     public static boolean checkMoney(String Money){
         if(Integer.valueOf(Money)%1000 != 0){
-            throw new IllegalArgumentException(Exception.ErrorMessage.WRONG_INPUT_ERROR.print());
+            throw new IllegalArgumentException(CheckInput.ErrorMessage.WRONG_INPUT_ERROR.print());
         }
         return true;
     }
     public static void checkWinNumber(List<Integer> winNumber){
         Set<Integer> numSet = new HashSet<>(winNumber);
         if(numSet.size() != winNumber.size()){
-            throw new IllegalArgumentException(Exception.ErrorMessage.NO_DUPLICATED.print());
+            throw new IllegalArgumentException(CheckInput.ErrorMessage.NO_DUPLICATED.print());
         }
     }
     public static boolean checkChar(char n){
         if( !(n>='0'&& n<='9')){
-            System.out.println(Exception.ErrorMessage.WRONG_INPUT_ERROR.print());
+            System.out.println(CheckInput.ErrorMessage.WRONG_INPUT_ERROR.print());
             throw new NoSuchElementException();
         }
         return true;

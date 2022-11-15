@@ -1,4 +1,4 @@
-package lotto;
+package lotto.output;
 
 public class View {
     public enum ValidateMessage {

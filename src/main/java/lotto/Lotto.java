@@ -3,14 +3,15 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.Exception.*;
-import static lotto.FinalOutput.calculate;
-import static lotto.FinalOutput.calculateEarn;
+import static lotto.input.CheckInput.*;
+import static lotto.output.FinalOutput.calculate;
+import static lotto.output.FinalOutput.calculateEarn;
+import static lotto.input.Input.bonusNum;
+import static lotto.input.Input.winner;
+import static lotto.output.PrintMilestone.*;
 
-import lotto.View.*;
+import lotto.output.View.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,16 +31,6 @@ public class Lotto {
             checkChar(Money.charAt(i));
         }
         return Integer.parseInt(Money);
-    }
-    public static int buyLotto(){
-        System.out.println(InputMessage.MONEY_PAY.print());
-        String Money = readLine();
-        int numBuy = checkString(Money)/1000;
-        checkMoney(Money);
-        return numBuy;
-    }
-    public static void printLotto(List<Integer> Lotto){
-        System.out.println(Lotto);
     }
     public static String checkBonus(List<Integer> wnum){
         if(getBonus(bonusNum(),wnum)){
@@ -63,10 +54,6 @@ public class Lotto {
         calculate(winCheck);
         calculateEarn(winCheck);
     }
-    public static void printBuy(int i){
-        System.out.println("");
-        System.out.println((i)+InputMessage.BUY_NUM.print());
-    }
     public static List<String> getWinCheck(List<String> winCheck, List<List<Integer>> lotto){
         List<Integer> winNum = winner();
         for(List<Integer> wnum : lotto){
@@ -85,21 +72,6 @@ public class Lotto {
         Lotto.addAll(Randoms.pickUniqueNumbersInRange(1,45,6));
         Lotto.sort(null);
         return Lotto;
-    }
-    public static List<Integer> winner(){
-        System.out.println("");
-        System.out.println(InputMessage.WIN_NUM.print());
-        String winNum = readLine();
-        List<String> winner = Arrays.asList(winNum.split(","));
-        List<Integer> winNumber = winner.stream().map(s-> Integer.parseInt(s)).collect(Collectors.toList());
-        new Lotto(winNumber);
-        return winNumber;
-    }
-    public static int bonusNum(){
-        System.out.println("");
-        System.out.println(InputMessage.BONUS_NUM.print());
-        int bonus = Integer.parseInt(readLine());
-        return bonus;
     }
     public static int getWin(List<Integer> LottoNum,List<Integer> winNum){
         int checkWin = 0;
