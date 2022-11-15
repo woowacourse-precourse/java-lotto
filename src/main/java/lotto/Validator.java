@@ -21,6 +21,7 @@ public class Validator {
         String WinningMoneys[] = Input.split(",");
         try {
             for (String WinningMoney : WinningMoneys) {
+               // System.out.println(WinningMoney);
                 isValidateInteger(WinningMoney);
                 isValidateNumberRange(WinningMoney);
                 isValidateNumberLength(WinningMoneys);

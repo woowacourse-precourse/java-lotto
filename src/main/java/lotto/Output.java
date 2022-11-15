@@ -2,17 +2,17 @@ package lotto;
 
 public class Output {
 
-    private static final String INPUT_MONEY = "구입금액을 입력해 주세요.\n";
+    private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     private static final String WRITE_PURCHASE_COUNT = "개를 구매했습니다.";
-    private static final String INPUT_WINNING_NUM = "당첨 번호를 입력해 주세요.\n";
-    private static final String INPUT_BONUS_NUM = "보너스 번호를 입력해 주세요.\n";
-    private static final String STATISTIC_OUTPUT = "당첨 통계\n" + "---\n";
+    private static final String INPUT_WINNING_NUM = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUM = "보너스 번호를 입력해 주세요.";
+    private static final String STATISTIC_OUTPUT = "당첨 통계\n" + "---";
 
     public static void printPurchaseMoneyMessage() {
         System.out.println(INPUT_MONEY);
     }
     public static void printPurchaseCount(int num) {
-        System.out.println(num + WRITE_PURCHASE_COUNT);
+        System.out.println("\n"+ num + WRITE_PURCHASE_COUNT);
     }
 
     public static void printWinningNumMessage() {

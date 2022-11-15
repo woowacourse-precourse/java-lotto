@@ -6,6 +6,7 @@ public class Input {
         String purchasedMoney = Console.readLine();
         if (!isValidatePurchaseMoney(purchasedMoney))
             purchasedMoney = getPurchaseMoney();
+        int purchaseMoney= Integer.parseInt(purchasedMoney);
         return purchasedMoney;
     }
     public static String getWinningNumber(){
