@@ -17,14 +17,14 @@ public class Lotto {
         }
 
         for (int i = 0; i < numbers.size() - 1; i++) {
-            if (hasNumber(i, numbers.get(i), numbers)) {
+            if (hasDuplicatedNumber(i, numbers.get(i), numbers)) {
                 throw new IllegalArgumentException("[ERROR]");
             }
         }
     }
 
     /* 중복검사 */
-    private boolean hasNumber(int indexNumber, int number, List<Integer> numbers) {
+    private boolean hasDuplicatedNumber(int indexNumber, int number, List<Integer> numbers) {
         for (int j = indexNumber + 1; j < numbers.size(); j++) {
             if (numbers.get(j) == number) {
                 return true;
@@ -33,5 +33,10 @@ public class Lotto {
         return false;
     }
 
-    // TODO: 추가 기능 구현
+    public void hasDuplicatedLottoNumberWithBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
+
 }

@@ -41,12 +41,13 @@ public class LottoGame {
     
     // 몇 천원어치 살 꺼야?
     private void payMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        Message.printMoneyMessage();
         result = Console.readLine();
         if (result.length() != 4) {
             throw new IllegalArgumentException("[ERROR]");
         } // 클래스 만들어서 리팩토링 해야 됨
-        System.out.println(Integer.parseInt(result)/1000 + "개를 구매했습니다.");
+        int lottoCount = Integer.parseInt(result) / 1000;
+        Message.printPurchaseMessage(lottoCount);
     }
     
     // 내가 입력한 금액에 맞게 로또 생성
@@ -64,20 +65,21 @@ public class LottoGame {
 
     // 승리 숫자가 입력하는 메서드,
     private void createWinNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        Message.printWinNumber();
         str = Console.readLine().split(",");
         winNumber = new ArrayList<>();
         for (int i = 0; i < str.length; i++) {
             winNumber.add(Integer.parseInt(str[i]));
         }
         Lotto lotto = new Lotto(winNumber); // Exception 체큰
-
     }
 
     // 보너스 번호 입력하는 메서드
     private void createBonusNumber() {
-        System.out.println("보너스 번호를 입력해주세요.");
+        Message.printBonusNumber();
         bonusBall = Integer.parseInt(Console.readLine());
+        Lotto lotto = new Lotto(winNumber);
+        lotto.hasDuplicatedLottoNumberWithBonusNumber(winNumber, bonusBall);
     }
 
     // 로또 번호, 승리 숫자를 비교하는 메서드
