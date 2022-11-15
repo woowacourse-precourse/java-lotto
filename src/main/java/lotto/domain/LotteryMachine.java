@@ -33,14 +33,16 @@ public class LotteryMachine {
 
     public int calculateNumOfLotteries(int money) {
         int numberOfLotteries = money / LotteryNumber.LOTTERY_PRICE.getNumber();
-        System.out.println(numberOfLotteries + LotteryMachineMessage.PURCHASED_LOTTERY_NUMBER_MESSAGE.getMessage());
+        System.out.println(numberOfLotteries
+                + LotteryMachineMessage.PURCHASED_LOTTERY_NUMBER_MESSAGE.getMessage());
         return numberOfLotteries;
     }
 
     public List<Lotto> generateLotteries(int numberOfLotteries) {
         List<Lotto> lotteries = new ArrayList<>();
         for (int i = 0; i < numberOfLotteries; ++i) {
-            List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lotteryNumbers =
+                    Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lotteryNumbers = sortNumbersByAscendingOrder(lotteryNumbers);
             Lotto lotto = new Lotto(lotteryNumbers);
             System.out.println(lotteryNumbers);
@@ -63,7 +65,8 @@ public class LotteryMachine {
         String[] winningNumbersInput = getWinningNumbersInput();
 
         if (!NumberValidator.isValidWinningNumbers(winningNumbersInput)) {
-            throw new IllegalArgumentException(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage
+                    .DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
         }
         List<Integer> winningNumbers = transformFormatOfWinningNumbers(winningNumbersInput);
         this.winningLotto = new Lotto(winningNumbers);
@@ -94,7 +97,8 @@ public class LotteryMachine {
         System.out.println();
 
         if (!NumberValidator.isValidBonusNumber(bonusNumberInput, winningLotto.getNumbers())) {
-            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException(
+                    ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
         }
         return Integer.parseInt(bonusNumberInput);
     }
@@ -111,7 +115,8 @@ public class LotteryMachine {
         printRateOfReturn(rateOfReturn);
     }
 
-    private void aggregateResult(List<Lotto> userLotteries, Map<Result, Integer> userWinningLotteryCounts) {
+    private void aggregateResult(List<Lotto> userLotteries,
+                                 Map<Result, Integer> userWinningLotteryCounts) {
         for (Lotto userLottery : userLotteries) {
             int count = countMatchNumbers(userLottery);
             if (count < LotteryNumber.MINIMUM_MATCH_NUMBER.getNumber()) {
