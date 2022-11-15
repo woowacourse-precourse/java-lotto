@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoView {
@@ -77,7 +75,9 @@ public class LottoView {
         System.out.println("---");
         user.setCountRanking(lotto);
         Map<LottoRanking, Integer> countRanking = user.getCountRanking();
-        for (LottoRanking lottoRanking : LottoRanking.values()) {
+        List<LottoRanking> lottoRankings = new ArrayList<>(List.of(LottoRanking.values()));
+        Collections.reverse(lottoRankings);
+        for (LottoRanking lottoRanking : lottoRankings) {
             int count = countRanking.get(lottoRanking);
             System.out.printf("%s - %d개%n", lottoRanking, count);
         }

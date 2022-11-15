@@ -4,6 +4,8 @@ package lotto;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import java.lang.Object;
+
 public enum LottoRanking {
     FIRST("6개 일치", 2000000000, 6, 0),
     SECOND("5개 일치, 보너스 볼 일치", 30000000, 5, 1),
@@ -68,7 +70,6 @@ public enum LottoRanking {
 
         return null;
     }
-
 
 
     public String toString(){
