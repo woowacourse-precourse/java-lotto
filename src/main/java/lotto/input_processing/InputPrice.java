@@ -12,6 +12,11 @@ public class InputPrice {
 
     public InputPrice(){}
 
+    /** 구입금액 입력받기, 로또 구매 개수 계산 및 예외처리 후 로또 개수 반환 */
+    private static int buyingLotto() {
+        return countingLottoCounts(inputPurchasingAmount());
+    }
+
     /** 구입금액 입력받기 기능 */
     private static int inputPurchasingAmount() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -30,7 +35,7 @@ public class InputPrice {
         System.out.println(purchasingAmount / 1000 + "개를 구매했습니다.");
         return purchasingAmount / 1000;
     }
-    /** 구매한 로또 개수에 따라 각 6개의 서로 다른 로또 번호 랜덤 생성 기능 */
+    /** 각 6개의 서로 다른 로또 번호 랜덤 생성 기능 */
     public static ArrayList<Lotto> createLottoNumbers(){
         int countOfLotto = buyingLotto();
         ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
