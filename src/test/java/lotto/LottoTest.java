@@ -1,5 +1,6 @@
 package lotto;
 
+import model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +25,25 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또 번호에 1~45인 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createLottoByNotCorrectNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호에 음수가 들어가면 예외가 발생한다.")
+    @Test
+    void createLottoByMinusNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, -1)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("빈 값을 입력한 경우 예외가 발생한다.")
+    @Test
+    void 공백_입력_예외_테스트() {
+        assertThatThrownBy(() -> new Lotto(List.of()))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
