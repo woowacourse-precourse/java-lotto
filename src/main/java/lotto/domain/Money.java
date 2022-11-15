@@ -16,7 +16,7 @@ public class Money {
         this.money = money;
     }
 
-    public void validateMoney(int money) {
+    private void validateMoney(int money) {
         if (money % UNIT != 0 || money == 0) {
             throw new IllegalArgumentException(ERROR_UNIT);
         }
