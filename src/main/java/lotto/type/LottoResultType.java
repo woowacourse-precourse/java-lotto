@@ -67,12 +67,4 @@ public enum LottoResultType {
         }
         return selectedWinNumber.get();
     }
-
-    public static void main(String[] args) {
-        System.out.println(FIRST.getViewMessage());
-        System.out.println(SECOND.getViewMessage());
-        System.out.println(THIRD.getViewMessage());
-        System.out.println(FOURTH.getViewMessage());
-        System.out.println(FIFTH.getViewMessage());
-    }
 }
