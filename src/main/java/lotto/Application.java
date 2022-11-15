@@ -120,15 +120,15 @@ public class Application {
         return calculatedResult;
     }
 
-    public static void printResult(List<Integer> lottoWinnings) {
-        String percentage = lottoWinnings.get(0).toString();
+    public static void printResult(List<Integer> lottoWinnings, float percentage) {
+        String percentageResult = String.valueOf(percentage);
         System.out.println("당첨 통계\n---");
         System.out.printf("3개 일치 (5,000원) - %d개\n", lottoWinnings.get(5));
         System.out.printf("4개 일치 (50,000원) - %d개\n", lottoWinnings.get(4));
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoWinnings.get(3));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoWinnings.get(2));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoWinnings.get(1));
-        System.out.printf("총 수익률은 %s입니다.\n", percentage);
+        System.out.printf("총 수익률은 %s입니다.\n", percentageResult);
     }
 
     public static void main(String[] args) {
@@ -138,6 +138,7 @@ public class Application {
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber();
         List<Integer> lottoWinnings = calculateResult(boughtLottos, winningNumbers, bonusNumber);
-        printResult(lottoWinnings);
+        float percentage = (float) lottoWinnings.get(0) / (float) (payment * 1000) * 100;
+        printResult(lottoWinnings, (float) (Math.round(percentage * 100) / 100.0));
     }
 }
