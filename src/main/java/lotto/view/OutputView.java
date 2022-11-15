@@ -17,7 +17,7 @@ public class OutputView {
     private static final String ENTER_WINNING_NUMBER_MESSAGE = NEW_LINE + "당첨 번호를 입력해 주세요.";
     private static final String ENTER_BONUS_NUMBER_MESSAGE = NEW_LINE + "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS = NEW_LINE + "당첨 통계" + NEW_LINE + "---" + NEW_LINE;
-    private static final String PROFIT_FORMAT = "#,###.0";
+    private static final String PROFIT_FORMAT = "#,##0.0";
     private static final String PROFIT_RATE = "총 수익률은 {0}%입니다.";
 
     public static void printErrorMessage(String message) {
