@@ -19,17 +19,9 @@ public enum Rank {
         this.prize = prize;
     }
 
-    public int getMatchNumbers() {
-        return this.matchNumbers;
-    }
-
-    public int getPrize() {
-        return this.prize;
-    }
-
     public static Rank valueOf(int matchCount, boolean matchBonus) {
-        if(matchCount == 5 && matchBonus){
-            if(matchBonus){
+        if (matchCount == 5 && matchBonus) {
+            if (matchBonus) {
                 return Rank.Two;
             }
             return Rank.Three;
@@ -38,5 +30,13 @@ public enum Rank {
                 .filter(rank -> rank.getMatchNumbers() == matchCount)
                 .findFirst()
                 .orElse(None);
+    }
+
+    public int getMatchNumbers() {
+        return this.matchNumbers;
+    }
+
+    public int getPrize() {
+        return this.prize;
     }
 }

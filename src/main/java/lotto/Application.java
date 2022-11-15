@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Report;
 import lotto.domain.View;
@@ -9,8 +8,8 @@ import lotto.domain.Winning;
 import java.util.List;
 
 public class Application {
-    static View view = new View();
     private static final String ERROR_MESSAGE = "[ERROR] ";
+    static View view = new View();
 
     public static void main(String[] args) {
         try {
