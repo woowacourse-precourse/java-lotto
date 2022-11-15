@@ -1,9 +1,6 @@
 package controller;
 
-import lotto.LottoBank;
-import lotto.LottoMachine;
-import lotto.LottoStore;
-import lotto.WinningLotto;
+import lotto.*;
 import view.InputView;
 import view.OutputView;
 
@@ -22,7 +19,14 @@ public class MainController {
     }
 
     public void moneyController() {
-        inputMoney = InputView.inputMoney();
+        LottoException lottoException = new LottoException();
+        try {
+            inputMoney = InputView.inputMoney();
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.");
+            lottoException.inputException(inputMoney);
+        }
         lottoCount = new LottoStore().calculateLottoCount(inputMoney);
         OutputView.printLottoCount(lottoCount);
         makeLottoController();
