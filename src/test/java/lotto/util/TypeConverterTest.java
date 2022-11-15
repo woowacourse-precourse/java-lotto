@@ -1,7 +1,5 @@
 package lotto.util;
 
-import lotto.domain.WinningLotto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -9,7 +7,6 @@ import java.util.List;
 
 import static lotto.LottoService.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TypeConverterTest {
     @Test

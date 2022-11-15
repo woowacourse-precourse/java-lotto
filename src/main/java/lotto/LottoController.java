@@ -1,8 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lottos;
-import lotto.domain.WinningLotto;
+import lotto.model.Lottos;
+import lotto.model.WinningLotto;
 import lotto.validator.LottoNumberValidator;
 import lotto.validator.MoneyValidator;
 

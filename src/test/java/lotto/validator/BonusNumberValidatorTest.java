@@ -1,6 +1,6 @@
 package lotto.validator;
 
-import lotto.domain.Lotto;
+import lotto.model.Lotto;
 import lotto.exception.ExceptionType;
 import org.junit.jupiter.api.Test;
 

@@ -1,9 +1,9 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.WinningLotto;
-import lotto.domain.WinningType;
+import lotto.model.Lotto;
+import lotto.model.Lottos;
+import lotto.model.WinningLotto;
+import lotto.model.WinningType;
 import lotto.util.RandomNumberGenerator;
 import lotto.util.TypeConverter;
 

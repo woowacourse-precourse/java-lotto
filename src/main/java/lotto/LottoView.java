@@ -1,8 +1,8 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.WinningType;
+import lotto.model.Lotto;
+import lotto.model.Lottos;
+import lotto.model.WinningType;
 
 import java.text.MessageFormat;
 import java.util.List;
