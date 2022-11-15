@@ -12,4 +12,6 @@ public interface ValidatorProcessor {
     List<Integer> validateLottoNumberInput(String input);
 
     void validateLottoSize(Integer size, LottoEnum lottoEnum);
+
+    void validateLottoNumber(List<Integer> number, LottoEnum lottoEnum);
 }

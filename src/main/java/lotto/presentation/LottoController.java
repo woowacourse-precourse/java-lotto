@@ -4,10 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.application.LottoFacade;
 import lotto.application.LottoFacadeImpl;
 import lotto.domain.Lotto;
+import lotto.domain.enummodel.ErrorMessageEnum;
+import lotto.domain.enummodel.LottoEnum;
 import lotto.domain.enummodel.PriceEnum;
 import lotto.domain.enummodel.RankEnum;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class LottoController {
 
@@ -24,9 +27,9 @@ public class LottoController {
 
 
     private List<Lotto> buyLotto() {
-        String moneyInput = getInput(ViewValue.BUY_INFO_MESSAGE.getValue());
+        String moneyInput = inputWithMessage(ViewValue.BUY_INFO_MESSAGE.getValue());
 
-        List<Lotto> clientLotto = lottoFacade.buyLotto(Integer.valueOf(moneyInput));
+        List<Lotto> clientLotto = lottoFacade.buyLotto(parseNumber(moneyInput));
 
         System.out.println(clientLotto.size()+ViewValue.BUY_INFO_DONE.getValue());
 
@@ -34,19 +37,37 @@ public class LottoController {
         return clientLotto;
     }
 
-    private String getInput(String message) {
+    private Integer parseNumber(String stringInput) {
+        try{
+            return Integer.valueOf(stringInput);
+        } catch (Exception e) {
+            System.out.println(ErrorMessageEnum.ERROR_MESSAGE_VALIDATE.getValue());
+            throw new NoSuchElementException();
+        }
+    }
+
+    private String inputWithMessage(String message) {
         System.out.println(message);
         return Console.readLine();
     }
 
     private Lotto inputWinLotto() {
-        String lottoNumberInput = getInput(ViewValue.INSERT_NUMBER_INFO.getValue());
+        String lottoNumberInput = inputWithMessage(ViewValue.INSERT_NUMBER_INFO.getValue());
         return lottoFacade.registerWinLotto(lottoNumberInput);
     }
 
     private int inputBonusNum() {
-        String bonusInput = getInput(ViewValue.INSERT_BONUS_INFO.getValue());
-        return Integer.parseInt(bonusInput);
+        String bonusInput = inputWithMessage(ViewValue.INSERT_BONUS_INFO.getValue());
+        int parseInput = parseNumber(bonusInput);
+        validateNumberRange(parseInput);
+        return parseInput;
+    }
+
+    private void validateNumberRange(int parseInput) {
+        if (LottoEnum.LOTTO.getMinNum() > parseInput |
+                LottoEnum.LOTTO.getMaxNum() < parseInput) {
+            throw new IllegalArgumentException(ErrorMessageEnum.ERROR_MESSAGE_NUMBER_RANGE.getValue());
+        }
     }
 
     private List<Integer> viewResult(List<Lotto> clientLotto, Lotto winLotto, int bonusNum) {

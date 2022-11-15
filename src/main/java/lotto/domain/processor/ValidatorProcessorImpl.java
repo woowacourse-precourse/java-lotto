@@ -1,5 +1,6 @@
 package lotto.domain.processor;
 
+import lotto.domain.enummodel.ErrorMessageEnum;
 import lotto.domain.enummodel.LottoEnum;
 import lotto.domain.enummodel.PriceEnum;
 
@@ -12,7 +13,7 @@ public class ValidatorProcessorImpl implements ValidatorProcessor{
     @Override
     public void validateMoney(Integer money, PriceEnum priceEnum) {
         if (money % priceEnum.getValue() != 0) {
-            throw new IllegalArgumentException("금액 단위를 일치시켜야 합니다.");
+            throw new IllegalArgumentException(ErrorMessageEnum.ERROR_MESSAGE_NOT_MATCH.getValue());
         }
     }
 
@@ -23,14 +24,25 @@ public class ValidatorProcessorImpl implements ValidatorProcessor{
                     .map(Integer::valueOf)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException("잘못된 입력값 입니다.");
+            throw new IllegalArgumentException(ErrorMessageEnum.ERROR_MESSAGE_VALIDATE.getValue());
         }
     }
 
     @Override
     public void validateLottoSize(Integer size, LottoEnum lottoEnum) {
         if (size != lottoEnum.getSize()){
-            throw new IllegalArgumentException("입력 길이가 다릅니다.");
+            throw new IllegalArgumentException(ErrorMessageEnum.ERROR_MESSAGE_INPUT_SIZE.getValue());
+        }
+    }
+
+    @Override
+    public void validateLottoNumber(List<Integer> number, LottoEnum lottoEnum) {
+        List<Integer> validatedNumber = number.stream()
+                .filter(i -> lottoEnum.getMinNum()<= i)
+                .filter(i -> i <= lottoEnum.getMaxNum())
+                .collect(Collectors.toList());
+        if (validatedNumber.size() != lottoEnum.getSize()) {
+            throw new IllegalArgumentException(ErrorMessageEnum.ERROR_MESSAGE_NUMBER_RANGE.getValue());
         }
     }
 }
