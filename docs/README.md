@@ -27,4 +27,4 @@
 - [x] Lotto 클래스 내에서도 numbers 에 대해서 검증을 해준다.
 - [x] 검증 기능이 중복되는 곳이 많아, LottoValidator 클래스를 통해서 기능 분리를 해준다.
 - [x] Lotto 숫자들을 오름차순으로 정렬해서 출력해준다.
-- [x] 검증 기능을 Lotto 가 아닌 LottoGenerator 에서 정렬 후 넣어준다.
+- [x] 정렬 기능을 Lotto 가 아닌 LottoGenerator 에서 정렬 후 넣어준다.
