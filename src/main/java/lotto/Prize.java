@@ -36,4 +36,17 @@ public enum Prize {
             Prize.FIFTH.plusNumsOfWinner();
         }
     }
+
+    public static int computeIncome() {
+        int totalIncome = 0;
+        for (Prize rank : Prize.values()) {
+            totalIncome += rank.numsOfWinner * rank.prize;
+        }
+        return totalIncome;
+    }
+
+    public static float computeIncomeRate(int seedMoney){
+        int totalIncome = computeIncome();
+        return totalIncome / (float)seedMoney;
+    }
 }
