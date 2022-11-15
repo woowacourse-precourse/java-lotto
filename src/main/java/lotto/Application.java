@@ -1,8 +1,6 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
-import lotto.view.InputMessage;
 
 import java.util.*;
 
@@ -15,27 +13,26 @@ public class Application {
         Output output = new Output();
         try {
             int pay = askPay();
-            generator.createLottoByPay(pay); //로또n개 생성
-            output.outputLotteries(pay, generator.lotteries); //로또 목록 출력
+            List<List<Integer>> lotteries = generator.createLottoByPay(pay); //로또 구입
+            output.outputLotteries(pay, generator.lotteries);
 
-            List<Integer> firstPrize = input.winningNumber(); // 당첨 로또 입력받기
-            Lotto lotto = new Lotto(firstPrize); //로또 검사
+            List<Integer> firstPrize = input.winningNumber(); //당첨 로또
+            Lotto lotto = new Lotto(firstPrize);
 
-            int bonusNumber = input.bonusNumber(); // 보너스 번호 입력받기
-            Bonus bonus = new Bonus(firstPrize, bonusNumber); //보너스 번호 검사
+            String bonusNumber = input.bonusNumber(); //보너스 번호
+            Bonus bonus = new Bonus(firstPrize, bonusNumber);
+            int bonusNum = Integer.parseInt(bonusNumber);
 
-            judgement.makeWinningTable(generator.lotteries, input.numbers, input.bonus); //당첨 갯수 저장
-            calculator.sumJackpot(judgement.winningTable); //당첨 금액 저장
-            calculator.calculateEarningRate(pay); //수익률저장
+            List<Integer> winningTable = judgement.makeWinningTable(lotteries, firstPrize, bonusNum); //당첨 갯수
+            double earningRate = calculator.calculateEarningRate(winningTable, pay); //수익률
 
-            output.createMakeOfPrize(judgement.winningTable); //당첨 등수 저장
-            output.writeDown(calculator.earningRate); //당첨 결과 출력
+            output.writeDown(winningTable, earningRate);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
     public static int askPay() {
-        Input input = new Input();
+        Input input = new Input(); //구입 금액
         String payment = input.payForLotto();
         Pay pay = new Pay(payment);
         int payNum = Integer.parseInt(payment) / 1000;
