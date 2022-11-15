@@ -66,9 +66,7 @@ public class Verification {
 
 	public static void verifyNumber(Integer bonusNumber, List<Integer> winningNumbers) {
 
-		List<Integer> transformedNumber = new ArrayList<Integer>(1);
-		transformedNumber.add(bonusNumber);
-		verifyRange(transformedNumber);
+		verifyRange(new ArrayList<Integer>(bonusNumber));
 
 		boolean isOverlap = winningNumbers.contains(bonusNumber);
 		if (isOverlap) {

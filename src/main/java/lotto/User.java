@@ -27,9 +27,9 @@ public class User {
 	public static List<Integer> getWinningNumbers() {
 
 		System.out.println("\n당첨 번호를 입력해 주세요.");
-		String[] numbers = Console.readLine().split(",");
+		String[] inputNumbers = Console.readLine().split(",");
 
-		List<Integer> winningNumbers = transformNumbers(numbers);
+		List<Integer> winningNumbers = transformNumbers(inputNumbers);
 
 		Verification.verifyNumbers(winningNumbers);
 		return winningNumbers;
