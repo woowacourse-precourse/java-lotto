@@ -2,6 +2,8 @@ package lotto.util;
 
 import lotto.domain.Result;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,6 +14,7 @@ public class Output {
     private static final String INPUT_WINNINGS = "\n당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS = "\n보너스 번호를 입력해 주세요.";
     private static final String STATISTICS = "\n당첨 통계\n---";
+    private static final NumberFormat numberFormat = new DecimalFormat("###,###.0");
 
     private Output() {}
 
@@ -49,7 +52,7 @@ public class Output {
     }
 
     public static void printYield(double yield) {
-        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+        System.out.println("총 수익률은 " + numberFormat.format(yield) + "%입니다.");
     }
 
     public static void printException(String exceptionMessage) {
