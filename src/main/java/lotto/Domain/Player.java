@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class Player {
     private int money;
     private int lottoCount;
-    private Lotto playerLotto;
-    private int playerBonusNumber;
+    private Lotto winningNumber;
+    private int bonusNumber;
     private List<Lotto> lottos;
 
     public int getMoney() {
@@ -21,20 +21,20 @@ public class Player {
         this.money = money;
     }
 
-    public List<Integer> getPlayerLotto() {
-        return this.playerLotto.getLottoNumbers();
+    public List<Integer> getWinningNumber() {
+        return this.winningNumber.getLottoNumbers();
     }
 
-    public void setPlayerLotto(List<Integer> playerLotto) {
-        this.playerLotto = new Lotto(playerLotto);
+    public void setWinningNumber(List<Integer> lotto) {
+        this.winningNumber = new Lotto(lotto);
     }
 
-    public int getPlayerBonusNumber() {
-        return this.playerBonusNumber;
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 
-    public void setPlayerBonusNumber(int bonusBall) {
-        this.playerBonusNumber = bonusBall;
+    public void setBonusNumber(int bonusBall) {
+        this.bonusNumber = bonusBall;
     }
 
     public int getLottoCount() {
@@ -45,6 +45,9 @@ public class Player {
         final int THOUSAND_WON = 1000;
         this.lottoCount = money / THOUSAND_WON;
     }
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
 
     public void setLottos(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
@@ -54,13 +57,9 @@ public class Player {
         this.lottos = lottos;
     }
 
-    public List<String> getLottosList() {
+    public List<String> getLottosToOutput() {
         return this.lottos.stream()
                 .map(value -> value.getLottoNumbers().toString())
                 .collect(Collectors.toList());
-    }
-
-    public List<Lotto> getLottos() {
-        return this.lottos;
     }
 }

@@ -27,13 +27,13 @@ public class PlayerService {
         isValidWinningNumber(winnerNumbers);
         List<String> numbers = isValidRangeNumber(winnerNumbers);
         List<Integer> lotto = numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
-        player.setPlayerLotto(lotto);
+        player.setWinningNumber(lotto);
     }
 
     public void getBonusNumber() {
         String bonusBall = InputView.requestBonusNumber();
-        isValidBonusNumber(bonusBall, player.getPlayerLotto());
-        player.setPlayerBonusNumber(Integer.parseInt(bonusBall));
+        isValidBonusNumber(bonusBall, player.getWinningNumber());
+        player.setBonusNumber(Integer.parseInt(bonusBall));
     }
 
     public void isValidWinningNumber(String input) {

@@ -23,7 +23,7 @@ public class LottoService {
         player.setLottoCount(Integer.parseInt(lottoMoney));
         int lottoCount = player.getLottoCount();
         player.setLottos(lottoCount);
-        OutputView.printPurchaseLotto(lottoCount, player.getLottosList());
+        OutputView.printPurchaseLotto(lottoCount, player.getLottosToOutput());
     }
 
     public void isValidateLottoMoney(String money) {
