@@ -33,4 +33,12 @@ public enum MatchMoney {
         }
         return matchMoney = THREE;
     }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public int getMoney() {
+        return money;
+    }
 }
