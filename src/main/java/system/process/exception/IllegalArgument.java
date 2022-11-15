@@ -12,7 +12,7 @@ public enum IllegalArgument {
     // Input
     NOT_DIGIT_OR_COMMA_TEXT("올바른 입력이 아닙니다."),
     NOT_DIGIT_TEXT("쉼표 없이 금액을 입력해주세요."),
-    OUT_OF_AMOUNT_PAID(String.format("최소 %,d원 부터 최대 %,d원어치만큼만 구매가 가능합니다"
+    OUT_OF_AMOUNT_PAID(String.format("최소 %,d원 부터 최대 %,d원어치만큼만 구매가 가능합니다."
             , LottoConstant.LOTTO_PRICE, LottoConstant.MAX_AMOUNT_PAID)),
     NOT_DIVISION("입력한 금액에 맞춰 로또를 구매할 수 없습니다."),
     OUT_OF_NUMBERS_LENGTH(String.format("%d개의 당첨 번호 입력이 길이가 %d를 넘어갑니다."
