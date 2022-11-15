@@ -1,39 +1,19 @@
-package lotto.view;
+package lotto.Input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.ArrayList;
-import java.util.List;
+import lotto.Output.ErrorMessage;
+import lotto.Output.Message;
 
-import lotto.domain.ErrorMessage;
-import lotto.domain.Lotto;
-
-public class LottoBuyer {
-    public static long purchaseAmount;
+public class PurchaseInput {
     private static final int LOTTO_PRICE = 1000;
+    public static String inputPrice;
 
-    public static List<List<Integer>> purchaseLotto() {
-        List<List<Integer>> lottos = new ArrayList<>();
-        getPurchaseAmount();
-        printLottos(lottos);
-        return lottos;
-    }
-
-    private static void getPurchaseAmount() {
+    public static void inputPurchasePrice() {
         System.out.println(Message.PURCHASE_PRICE.getMessage());
-        String inputPrice = readLine();
+        inputPrice = readLine();
         validateInputPrice(inputPrice);
         validateDivideNumber(inputPrice);
-        System.out.println();
-        purchaseAmount = Integer.parseInt(inputPrice) / LOTTO_PRICE;
-        System.out.println(purchaseAmount + Message.PURCHASE_COUNT.getMessage());
-    }
-
-    private static void printLottos(List<List<Integer>> lottos) {
-        for (int i = 0; i < purchaseAmount; i++) {
-            lottos.add(Lotto.createLotto().getNumbers());
-            System.out.println(lottos.get(i));
-        }
         System.out.println();
     }
 
