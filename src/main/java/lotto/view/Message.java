@@ -41,4 +41,14 @@ public class Message {
         System.out.printf("5개 일치, 보너스 볼 일치 (%s원) - %d개%n", numberFormat.format(Grade.SECOND_PRIZE.getReward()), lottoResult.getOrDefault(Grade.SECOND_PRIZE, 0));
         System.out.printf("6개 일치 (%s원) - %d개%n", numberFormat.format(Grade.FIRST_PRIZE.getReward()), lottoResult.getOrDefault(Grade.FIRST_PRIZE, 0));
     }
+
+    public void printRatio(Map<Grade, Integer> lottoResult) {
+        int ratio = 0;
+        int count = 0;
+        for (Map.Entry<Grade, Integer> entry : lottoResult.entrySet()) {
+            ratio += entry.getKey().getReward() * entry.getValue();
+            count += entry.getValue();
+        }
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", (double) ratio / (count * 1000) * 100);
+    }
 }

@@ -42,5 +42,6 @@ public class GameController {
         }
 
         message.printResult(lottoResult);
+        message.printRatio(lottoResult);
     }
 }
