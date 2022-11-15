@@ -4,6 +4,9 @@ import lotto.boundary.Console;
 import lotto.boundary.Randoms;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
@@ -54,8 +57,26 @@ public class LottoMachine extends AbstractLottoMachine {
     }
 
     @Override
-    protected Statistic generateStatistic(String winningNumbers, List<Lotto> lotteries, long amount) {
-        return null;
+    protected Statistic generateStatistic(
+            String winningNumbers,
+            List<Lotto> lotteries,
+            long amount
+    ) {
+        WinningLotto winningLotto = new WinningLotto(winningNumbers);
+        Map<Prize, Long> prizeTable = generatePrizeTable(winningLotto, lotteries);
+
+        return Statistic.of(prizeTable, amount);
+    }
+
+    private Map<Prize, Long> generatePrizeTable(
+            WinningLotto winningLotto,
+            List<Lotto> lotteries
+    ) {
+        return lotteries.stream()
+                .map(winningLotto::evaluateTo)
+                .flatMap(Optional::stream)
+                .collect(Collectors.groupingBy(Function.identity(),
+                        Collectors.counting()));
     }
 
     @Override
