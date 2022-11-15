@@ -1,7 +1,9 @@
-package lotto;
+package Winning;
 
 import OutputView.Print;
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
+
 import static Exception.Invalidator.*;
 
 import java.util.ArrayList;

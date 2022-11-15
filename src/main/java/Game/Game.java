@@ -1,6 +1,11 @@
-package lotto;
+package Game;
 
 import OutputView.Print;
+import Winning.WinningHistory;
+import Winning.WinningNumber;
+import Utills.Calculator;
+import Utills.Earning;
+import lotto.Lotto;
 
 import java.util.List;
 
@@ -24,4 +29,5 @@ public class Game {
         winningHistory.print();
         Print.earningRateMsg(earning.rateCalculate(lottoCount * 1000, earningAmount));
     }
+
 }

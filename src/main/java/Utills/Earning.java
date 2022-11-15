@@ -1,4 +1,6 @@
-package lotto;
+package Utills;
+
+import Winning.WinningHistory;
 
 public class Earning {
 
