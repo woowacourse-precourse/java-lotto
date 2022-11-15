@@ -13,7 +13,7 @@ ___
   - 등수 출력
   - 수익률 출력
 ___
-- Controller class (핵심 로직1)
+- LottoMachine class (핵심 로직1)
   - 구매한 로또 번호 생성
 ___
 - Exception class (핵심 로직2)
@@ -29,7 +29,7 @@ ___
   - winLottoCase enum에 등수를 기록
   - 수익률 계산
 ___
-- WinLottoCase enum (데이터 저장 로직)
+- GameData enum (데이터 저장 로직)
   - enum으로 구현
   - 등수 출력 문자와 각 등수 횟수를 저장
 
