@@ -11,6 +11,7 @@ public class Lotto {
         Collections.sort(this.numbers);
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -22,5 +23,46 @@ public class Lotto {
         sb.append("]");
 
         return sb.toString();
+    }
+
+    public int checkWin(boolean[] goal, int bonusNumber) {
+        int numMatch = checkGoal(goal);
+        boolean checkBonus = checkBonus(bonusNumber);
+
+        return checkRank(numMatch, checkBonus);
+    }
+
+    private int checkGoal(boolean[] goal) {
+        int numMatch = 0;
+        for (Integer number : numbers) {
+            if (goal[number]) {
+                numMatch += 1;
+            }
+        }
+        return numMatch;
+    }
+
+    private boolean checkBonus(int bonusNumber) {
+        for (Integer number : numbers) {
+            if (number == bonusNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int checkRank(int numMatch, boolean checkBonus) {
+        int result = 0;
+        for (Rank rank : Rank.values()) {
+            if (numMatch == rank.getMatch()) {
+                result = rank.getRanking();
+                break;
+            }
+        }
+
+        if (checkBonus && result == 1) {
+            result = Rank.RANK2.getRanking();
+        }
+        return result;
     }
 }

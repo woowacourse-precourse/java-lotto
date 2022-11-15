@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -10,11 +11,13 @@ public class LottoStore {
 	private List<Lotto> lottos;
 	private boolean[] goal;
 	private int bonusNumber;
+	private int[] winLotto;
 
 	public LottoStore() {
 		moneyBuyLotto = 0;
 		lottos = new ArrayList<>();
 		bonusNumber = 0;
+		winLotto = new int[Constants.LOTTO_MINIMUM_RANK + 1];
 	}
 
 	public void open() {
@@ -71,7 +74,7 @@ public class LottoStore {
 
 	private void checkWin() {
 		for (Lotto lotto : lottos) {
-//			checkLotto(lotto);
+			winLotto[lotto.checkWin(goal, bonusNumber)] += 1;
 		}
 	}
 }

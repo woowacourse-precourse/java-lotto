@@ -6,6 +6,7 @@ public class Constants {
 	public static final int LOTTO_UNDER_BOUNDARY = 1;
 	public static final int LOTTO_UPPER_BOUNDARY = 45;
 	public static final int LOTTO_LENGTH = 6;
+	public static final int LOTTO_MINIMUM_RANK = 5;
 
 	public static final String PRINT_INPUT_MONEY = "구입금액을 입력해 주세요.";
 	public static final String PRINT_LOTTO_HISTORY = "개를 구매했습니다.";
