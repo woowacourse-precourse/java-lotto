@@ -28,8 +28,10 @@ public class Output {
         System.out.println(STATS_TITLE);
         System.out.println(HORIZONTAL_RULE);
 
-        Statistics statistics = new Statistics(calculator.getTotalProfit());
-        for (Map.Entry<Integer, Integer> history : statistics.getStatistics().entrySet()) {
+        final List<Integer> totalProfit = calculator.getTotalProfit();
+        final Map<Integer, Integer> statistics = Statistics.getStatisticsBy(totalProfit);
+
+        for (Map.Entry<Integer, Integer> history : statistics.entrySet()) {
             // key: a set of prize money for from 3 winning numbers to 6 winning numbers
             // values: counts of winning each prize money
             printHistory(history.getKey(), history.getValue());
@@ -67,18 +69,15 @@ public class Output {
     }
 
     private static class Statistics {
-        private final Map<Integer, Integer> statistics;
+        private static Map<Integer, Integer> statistics;
 
-        public Statistics(List<Integer> totalProfit) {
+        private static Map<Integer, Integer> getStatisticsBy(List<Integer> totalProfit) {
             statistics = createStatistics();
             updateStatistics(totalProfit);
-        }
-
-        public Map<Integer, Integer> getStatistics() {
             return statistics;
         }
 
-        private Map<Integer, Integer> createStatistics() {
+        private static Map<Integer, Integer> createStatistics() {
             int initialWinCount = INITIAL_COUNT;
             final Map<Integer, Integer> initialStatistics = new LinkedHashMap<>();
 
@@ -88,13 +87,13 @@ public class Output {
             return initialStatistics;
         }
 
-        private void updateStatistics(List<Integer> totalProfit) {
+        private static void updateStatistics(List<Integer> totalProfit) {
             for (Integer profit : totalProfit) {
                 updateWinCount(profit);
             }
         }
 
-        private void updateWinCount(Integer profit) {
+        private static void updateWinCount(Integer profit) {
             if (statistics.containsKey(profit)) {
                 int winCount = statistics.get(profit);
                 statistics.replace(profit, winCount + 1);
