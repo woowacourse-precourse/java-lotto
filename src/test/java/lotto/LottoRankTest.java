@@ -26,7 +26,7 @@ public class LottoRankTest {
         lottos.addLotto(new Lotto(List.of(1,2,3,4,5,6)));
 
         LottoStatistic result = new LottoStatistic(lottos, lottoWinNumbers);
-        result.checkLottosWin();
+        result.computeLottoRank();
 
         assertThat(LottoRank.FIRST.getWinCount()).isEqualTo(1);
     }
@@ -42,7 +42,7 @@ public class LottoRankTest {
         lottos.addLotto(new Lotto(List.of(1,2,3,4,5,7)));
 
         LottoStatistic result = new LottoStatistic(lottos, lottoWinNumbers);
-        result.checkLottosWin();
+        result.computeLottoRank();
 
         assertThat(LottoRank.FIRST.getWinCount()).isEqualTo(1);
         assertThat(LottoRank.SECOND.getWinCount()).isEqualTo(1);

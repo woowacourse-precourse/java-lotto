@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class LottoStatistic {
     private Lottos lottos;
     private LottoWinNumbers winLottoNumber;
-
     public LottoStatistic(Lottos lottos, LottoWinNumbers winLottoNumber){
         setStatistic(lottos, winLottoNumber);
     }
@@ -15,14 +14,14 @@ public class LottoStatistic {
         this.winLottoNumber = winLottoNumber;
     }
 
-    public void checkLottosWin(){
+    public void computeLottoRank(){
         for(Lotto lotto: lottos.getLottos()){
-            LottoRank rank = checkLottoWin(computeMatchCount(lotto), hasBonusNumber(lotto));
+            LottoRank rank = getRank(computeMatchCount(lotto), hasBonusNumber(lotto));
             rank.addWinCount();
         }
     }
 
-    private LottoRank checkLottoWin(int match, boolean hasBonus){
+    private LottoRank getRank(int match, boolean hasBonus){
         return Arrays.stream(LottoRank.values())
                 .filter(rank -> (rank.getMatchCount() == match && hasBonus == rank.getIsBonus()))
                 .findAny()
