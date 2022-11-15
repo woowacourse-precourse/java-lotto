@@ -64,8 +64,9 @@ public class LottoController {
     }
 
     private void isDuplicate(List<Integer> WinLotto, int bonus) {
-        if (WinLotto.contains(bonus))
+        if (WinLotto.contains(bonus)){
             System.out.println(ERROR_DUPLICATION_MESSAGE);
-        throw new IllegalArgumentException();
+            throw new IllegalArgumentException();
+        }
     }
 }
