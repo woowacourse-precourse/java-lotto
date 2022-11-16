@@ -31,7 +31,7 @@ public class LottoController {
 
         // 당첨 내역 출력
         displayStatistics(lottoService.getWinningStatistics(
-            InputView.getNumbers(),
+            InputView.getWinningNumbers(),
             InputView.getBonusNumber()));
 
         // 수익률 출력

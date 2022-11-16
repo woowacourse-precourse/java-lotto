@@ -29,7 +29,7 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
-    public static List<Integer> getNumbers() {
+    public static List<Integer> getWinningNumbers() {
         System.out.println("\n당첨번호를 입력해 주세요.");
         String[] numbers = readLine().split(",");
         validateNumbers(numbers);
