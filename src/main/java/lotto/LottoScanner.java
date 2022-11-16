@@ -66,7 +66,7 @@ public class LottoScanner {
         Long input;
         try {
             input = Long.parseLong(Console.readLine());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(REQUIRE_NUMERIC_VALUE);
         }
         return input;
