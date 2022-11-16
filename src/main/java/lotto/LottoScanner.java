@@ -96,14 +96,18 @@ public class LottoScanner {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(DO_NOT_INCLUDE_NUMERIC_VALUE);
+            throw new IllegalArgumentException(DO_NOT_INCLUDE_INVALID_CHARACTER);
         }
     }
 
 
     private static int readBonusNumber() {
         System.out.println(READ_BONUS_NUMBER_PROMPT);
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(REQUIRE_NUMERIC_VALUE);
+        }
     }
 
 }

@@ -74,13 +74,22 @@ public class LottoScannerTest {
             }).isInstanceOf(IllegalArgumentException.class);
         }
 
-        @DisplayName("숫자와 구분자 외의 다른 문자가 들어오면 예외가 발생한다.")
+        @DisplayName("당첨번호에 숫자와 구분자 외의 다른 문자가 들어오면 예외가 발생한다.")
         @Test
-        public void throwExceptionWhenOtherCharacterExists() {
+        public void throwExceptionWhenOtherCharacterExistsInWinningNumbers() {
             assertThatThrownBy(() -> {
                 run("12.23,4,2,5,6");
             }).isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(LottoScanner.DO_NOT_INCLUDE_INVALID_CHARACTER);
+        }
+
+        @DisplayName("보너스 번호에 숫자 외의 다른 문자가 들어오면 예외가 발생한다.")
+        @Test
+        public void throwExceptionWhenBonusNumberIsOtherCharacter() {
+            assertThatThrownBy(() -> {
+                run("12,23,4,2,5,6", "r");
+            }).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(LottoScanner.REQUIRE_NUMERIC_VALUE);
         }
 
         @Override
