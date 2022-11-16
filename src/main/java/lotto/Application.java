@@ -37,6 +37,7 @@ public class Application {
     private static List<Integer> convertTrueNum(String tmp) {
         ArrayList<Integer> res = new ArrayList<>();
         List<String> tmpli = List.of(tmp.split(","));
+        if(tmpli.size() != 6) throw new IllegalArgumentException();
         for(int i = 0; i < tmpli.size(); i++){
             int cur = Integer.parseInt(tmpli.get(i));
             if(cur < 0 || cur > 45) throw new IllegalArgumentException();
@@ -87,7 +88,12 @@ public class Application {
         printAllLottos();
         //당첨 번호
         //보너스 번호
-        allocateInitial();
+        try {
+            allocateInitial();
+        }catch(Exception e){
+            System.out.println("[ERROR]");
+            return;
+        }
         //계산
         res = calcFinal();
         //당첨 통계 출력
