@@ -3,36 +3,42 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 public class LottoSystem {
     public static final int LOTTO_PRICE = 1_000;
 
-    public int purchaseAmount;
-    private final List<Lotto> generatedLottos = new ArrayList<>();
-    private WinningNumber winningNumber;
-
     public void execute() {
-        purchaseAmount = LottoScanner.readPurchaseAmount();
-        generateLottosForPurchaseAmount();
-        LottoPrinter.printLotto(generatedLottos);
+        int lottoCount = calculateLottoCountForPurchasedAmount();
+        List<Lotto> generatedLottos = generateRandomLottos(lottoCount);
+        printGeneratedLottosCountAndNumbers(generatedLottos);
 
-        winningNumber = LottoScanner.readWinningNumber();
-        calculateAndPrintStatistics();
+        WinningNumber winningNumber = LottoScanner.readWinningNumber();
+        calculateAndPrintStatistics(generatedLottos, winningNumber);
     }
 
-    private void generateLottosForPurchaseAmount() {
-        int purchasedLottoCount = purchaseAmount / LOTTO_PRICE;
+    private int calculateLottoCountForPurchasedAmount() {
+        int purchaseAmount = LottoScanner.readPurchaseAmount();
+        return purchaseAmount / LOTTO_PRICE;
+    }
 
+    private void printGeneratedLottosCountAndNumbers(List<Lotto> generatedLottos) {
+        LottoPrinter.printPurchasedLottoCount(generatedLottos.size());
+        generatedLottos.forEach(LottoPrinter::joinNumbersWithDelimiterAndPrint);
+    }
+
+    private List<Lotto> generateRandomLottos(int purchasedLottoCount) {
+        List<Lotto> newLottos = new ArrayList<>();
         for (int i = 0; i < purchasedLottoCount; i++) {
-            generatedLottos.add(LottoGenerator.generateRandomly());
+            newLottos.add(LottoGenerator.generateRandomly());
         }
+        return newLottos;
     }
 
-    private void calculateAndPrintStatistics() {
+    private void calculateAndPrintStatistics(List<Lotto> generatedLottos, WinningNumber winningNumber) {
         Map<LottoPrize, Integer> statistics = StatisticsCalculator.calculateStatistics(generatedLottos, winningNumber);
-        double rateOfReturn = StatisticsCalculator.calculateRateOfReturn(purchaseAmount, statistics);
-
         LottoPrinter.printStatistics(statistics);
+
+        int purchaseAmount = generatedLottos.size() * LOTTO_PRICE;
+        double rateOfReturn = StatisticsCalculator.calculateRateOfReturn(purchaseAmount, statistics);
         LottoPrinter.printRateOfReturn(rateOfReturn);
     }
 }
