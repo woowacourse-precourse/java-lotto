@@ -44,10 +44,6 @@ public class LottoMachine {
         return winningStatics;
     }
 
-    public List<Lotto> getLottos() {
-        return lottos;
-    }
-
     @Override
     public String toString() {
         return String.format(OUTPUT_MESSAGE_TICKET_QUANTITY, purchaseMoney / LOTTO_TICKET_PRICE) +
