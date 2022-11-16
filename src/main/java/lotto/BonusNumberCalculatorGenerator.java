@@ -9,14 +9,12 @@ public class BonusNumberCalculatorGenerator {
 
         for(int i=0; i<InputMoney; i++) {
             int returnNumber = CompareNumber.jugementNumber(correctNumberList.get(i), correctNumber);
-            if(returnNumber == 5) {
-                returnNumber = JudgmentBonusNumberGenerator.JudgmentBonusNumber(correctNumberList, bonusNumber, returnNumber, i);
-                resultNumber.add(returnNumber);
+
+            if(BonusNumberFiveCalculatorGenerator.BonusNumberFivetoSixCalculator(returnNumber, correctNumberList, bonusNumber, resultNumber, i)) {
                 continue;
             }
-            if(returnNumber == 6) {
-                returnNumber = 7;
-            }
+
+            BonusNumberSixCalculatorGenerator.BonusNumberSixtoSevenCalculator(returnNumber);
             resultNumber.add(returnNumber);
         }
         return resultNumber;

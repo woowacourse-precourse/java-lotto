@@ -2,6 +2,24 @@
 
 <br>
 
+## 피어리뷰 ([JerryK026](https://github.com/JerryK026)님)
+
+<br>
+
+- BonusNumberCalculatorGenerator
+  - [O] 12-19 line 이 부분을 메서드로 분리해 보는건 어떨까요?
+  - > returnNumber == 5가 의미하는 내용에 대해서 이해할 필요가 없어집니다!
+    지금 사고 : returNumber == 5 => 5가 이 역할을 할 때의 비즈니스 요구사항이 무엇이지? => 아하 이러한 상황이구나
+    메서드로 분리했을 때 : 이름만 보고 아하 이러한 상황이구나!
+    이렇게 만들 수 있습니다...!
+  
+- BonusNumberGenerator
+  - [] while을 사용하면 indent가 하나 더 생겨 가독성이 떨어지니 재귀를 사용해 보는건 어떨까요?
+
+- InputCorrectNumberGenerator
+  - [] 6이라는 숫자가 왜 등장했는지 모를 수도 있으니 그보다는 상수로 명시해서 사용하는 것도 좋아 보입니다! NUMBER_LENGTH = 6라던지요!
+
+
 ## 기능 목록
 
 <br>
