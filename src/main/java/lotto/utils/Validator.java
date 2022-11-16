@@ -14,7 +14,7 @@ public class Validator {
     }
 
     public static void validatePurchaseAmount(Integer purchaseAmount) {
-        if (purchaseAmount == ZERO || purchaseAmount % Lotto.LOTTO_UNIT != 0) {
+        if (purchaseAmount <= ZERO || purchaseAmount % Lotto.LOTTO_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT_MESSAGE.toString());
         }
     }
