@@ -17,6 +17,13 @@ public class LottoValidator {
 
     private static final int MAX_NUMBERS_SIZE = 6;
 
+    public static void validateWinningAttributes(final int bonus,
+        final List<Integer> winningNumbers) throws IllegalArgumentException {
+
+        validateWinningNumber(winningNumbers);
+        validateBonusNumber(bonus, winningNumbers);
+    }
+
     public static void validateWinningNumber(final List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);

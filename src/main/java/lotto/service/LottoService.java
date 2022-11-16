@@ -1,7 +1,6 @@
 package lotto.service;
 
-import static lotto.validator.LottoValidator.validateBonusNumber;
-import static lotto.validator.LottoValidator.validateWinningNumber;
+import static lotto.validator.LottoValidator.validateWinningAttributes;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,6 +17,8 @@ public class LottoService {
 
     private final String WINNING_STATISTICS_FORMAT = "%s (%,d원) - %d개";
 
+    private final int LOTTO_PER_PRICE = 1_000;
+
     private final Map<WinningRule, Integer> winningRuleStatus;
 
     private List<Lotto> lottos;
@@ -27,7 +28,7 @@ public class LottoService {
     }
 
     public List<String> publishTickets(final int price) {
-        lottos = LottoGenerator.publish(price / 1_000);
+        lottos = LottoGenerator.publish(price / LOTTO_PER_PRICE);
         return lottos.stream()
             .map(Lotto::toString)
             .collect(Collectors.toList());
@@ -36,8 +37,7 @@ public class LottoService {
     public List<String> getWinningStatistics(final List<Integer> winningNumbers,
         final int bonus) {
 
-        validateWinningNumber(winningNumbers);
-        validateBonusNumber(bonus, winningNumbers);
+        validateWinningAttributes(bonus, winningNumbers);
         initWinningStatus(winningNumbers, bonus);
 
         return Arrays.stream(WinningRule.values())
