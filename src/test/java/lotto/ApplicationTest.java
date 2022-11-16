@@ -99,6 +99,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_보너스중복() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6","6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
