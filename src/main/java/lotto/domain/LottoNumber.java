@@ -14,6 +14,7 @@ public class LottoNumber {
         List<Integer> winningNumbers = convertStringToInteger(inputWinning);
         Validation.validLotto(winningNumbers);
         validBonusNumber(inputBonus);
+        Validation.validBonusNumberDuplicated(winningNumbers, inputBonus);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = Integer.parseInt(inputBonus);
     }
@@ -22,7 +23,7 @@ public class LottoNumber {
         Validation.validIsDigit(number);
         Validation.validNumberRange(Integer.parseInt(number));
     }
-
+    
     private List<Integer> convertStringToInteger(String numbers) {
         return Stream.of(numbers.split(","))
                 .map(num -> num.replaceAll(" ", ""))

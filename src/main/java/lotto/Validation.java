@@ -58,4 +58,11 @@ public class Validation {
             throw new IllegalArgumentException(NOT_PRICE_RANGE);
         }
     }
+
+    public static void validBonusNumberDuplicated(List<Integer> winningNumbers, String bonusNumber) {
+        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+            System.out.println(DUPLICATE_BONUS_NUMBER);
+            throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER);
+        }
+    }
 }
