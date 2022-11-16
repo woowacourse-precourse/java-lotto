@@ -66,11 +66,11 @@ public class Lotto {
                 .count();
     }
 
-    public LottoResult getResult(Lotto winningLotto, int bonusNumber) {
+    public Rank getResult(Lotto winningLotto, int bonusNumber) {
         int sameCount = countMatchingNumbers(winningLotto);
         boolean containsBonusNumber = contains(bonusNumber);
 
-        return LottoResult.of(sameCount, containsBonusNumber);
+        return Rank.of(sameCount, containsBonusNumber);
     }
 
     @Override

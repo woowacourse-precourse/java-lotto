@@ -2,7 +2,7 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
-import lotto.domain.LottoResult;
+import lotto.domain.Rank;
 import lotto.utils.ErrorMessage;
 import lotto.utils.Numbers;
 
@@ -30,7 +30,7 @@ public class OutputView {
     }
 
     public static void printWinningOverview(Lottos lottos, Lotto winningLotto, int bonusNumber) {
-        Map<LottoResult, Integer> totalResult = lottos.getWinningCounts(winningLotto, bonusNumber);
+        Map<Rank, Integer> totalResult = lottos.getWinningCounts(winningLotto, bonusNumber);
         double profit = lottos.calculateProfit(winningLotto, bonusNumber);
 
         printOverViewIntro();
@@ -42,24 +42,24 @@ public class OutputView {
         System.out.print(String.format(INFORM_PROFIT, profit));
     }
     
-    private static void printTotalResults(Map<LottoResult, Integer> winningCounts) {
-        Arrays.stream(LottoResult.values())
+    private static void printTotalResults(Map<Rank, Integer> winningCounts) {
+        Arrays.stream(Rank.values())
                 .filter(result -> result.win())
                 .forEach(result -> printResult(winningCounts, result));
     }
 
-    private static void printResult(Map<LottoResult, Integer> winningCounts, LottoResult result) {
+    private static void printResult(Map<Rank, Integer> winningCounts, Rank result) {
         System.out.println(getResultMessage(winningCounts, result));
     }
 
-    private static String getResultMessage(Map<LottoResult, Integer> winningCounts, LottoResult result) {
+    private static String getResultMessage(Map<Rank, Integer> winningCounts, Rank result) {
         StringBuilder message = new StringBuilder();
 
-        message.append(String.format(INFORM_MATCHING_COUNT, result.getMatchingCount()));
-        if (result.equals(LottoResult.SECOND_PLACE)) {
+        message.append(String.format(INFORM_MATCHING_COUNT, result.getCountOfMatches()));
+        if (result.equals(Rank.SECOND)) {
             message.append(INFORM_SAME_BONUS_NUMBER);
         }
-        message.append(String.format(INFORM_WINNING_AMOUNT, Numbers.getNumbersWithComma(result.getAmount())))
+        message.append(String.format(INFORM_WINNING_AMOUNT, Numbers.getNumbersWithComma(result.getWinningMoney())))
                 .append(STATISTIC_SEPARATOR)
                 .append(String.format(INFORM_WINNING_COUNTS, winningCounts.get(result)));
 

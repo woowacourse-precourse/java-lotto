@@ -57,7 +57,7 @@ class LottoTest {
     @DisplayName("맞춘 번호의 갯수에 따라 당첨 결과를 반환한다.")
     @ParameterizedTest(name = "로또 번호 : {0}, 보너스 번호: {1}, 결과 : {2}")
     @MethodSource("lottoResultSources")
-    void createLottoResultTest(Lotto purchasedLotto, int bonusNumber, LottoResult result) {
+    void createLottoResultTest(Lotto purchasedLotto, int bonusNumber, Rank result) {
         Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
 
         assertThat(purchasedLotto.getResult(winningLotto, bonusNumber)).isEqualTo(result);
@@ -65,12 +65,12 @@ class LottoTest {
 
     public static Stream<Arguments> lottoResultSources() {
         return Stream.of(
-                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 6)), 7, LottoResult.FIRST_PLACE),
-                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 7)), 7, LottoResult.SECOND_PLACE),
-                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 8)), 7, LottoResult.THIRD_PLACE),
-                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 7, 8)), 7, LottoResult.FOURTH_PLACE),
-                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 7, 8, 9)), 7, LottoResult.FIFTH_PLACE),
-                Arguments.arguments(Lotto.of(List.of(1, 2, 7, 8, 9, 10)), 7, LottoResult.LAST_PLACE)
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 6)), 7, Rank.FIRST),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 7)), 7, Rank.SECOND),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 5, 8)), 7, Rank.THIRD),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 4, 7, 8)), 7, Rank.FOURTH),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 3, 7, 8, 9)), 7, Rank.FIFTH),
+                Arguments.arguments(Lotto.of(List.of(1, 2, 7, 8, 9, 10)), 7, Rank.MISS)
         );
     }
 

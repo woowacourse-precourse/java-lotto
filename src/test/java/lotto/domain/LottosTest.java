@@ -59,9 +59,9 @@ class LottosTest {
         Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
 
-        Map<LottoResult, Integer> winningCounts = lottos.getWinningCounts(winningLotto, bonusNumber);
+        Map<Rank, Integer> winningCounts = lottos.getWinningCounts(winningLotto, bonusNumber);
 
-        assertThat(winningCounts.get(LottoResult.FOURTH_PLACE)).isEqualTo(1);
-        assertThat(winningCounts.get(LottoResult.FIRST_PLACE)).isEqualTo(0);
+        assertThat(winningCounts.get(Rank.FOURTH)).isEqualTo(1);
+        assertThat(winningCounts.get(Rank.FIRST)).isEqualTo(0);
     }
 }

@@ -64,8 +64,8 @@ public class Lottos {
     private int getWinningAmount(Lotto winningLotto, int bonusNumber) {
         int winningAmount = NO_AMOUNT;
         for (Lotto lotto : lottos) {
-            LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
-            winningAmount += lottoResult.getAmount();
+            Rank rank = lotto.getResult(winningLotto, bonusNumber);
+            winningAmount += rank.getWinningMoney();
         }
         return winningAmount;
     }
@@ -74,20 +74,20 @@ public class Lottos {
         return LOTTO_PRICE * lottos.size();
     }
 
-    public Map<LottoResult, Integer> getWinningCounts(Lotto winningLotto, int bonusNumber) {
-        HashMap<LottoResult, Integer> winningCounts = getEmptyWinningCounts();
+    public Map<Rank, Integer> getWinningCounts(Lotto winningLotto, int bonusNumber) {
+        HashMap<Rank, Integer> winningCounts = getEmptyWinningCounts();
         for (Lotto lotto : lottos) {
-            LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
-            Integer winningCount = winningCounts.getOrDefault(lottoResult, DEFAULT_COUNT) + ADD_COUNT;
-            winningCounts.put(lottoResult, winningCount);
+            Rank rank = lotto.getResult(winningLotto, bonusNumber);
+            Integer winningCount = winningCounts.getOrDefault(rank, DEFAULT_COUNT) + ADD_COUNT;
+            winningCounts.put(rank, winningCount);
         }
         return winningCounts;
     }
 
-    private HashMap<LottoResult, Integer> getEmptyWinningCounts() {
-        HashMap<LottoResult, Integer> emptyWinningCounts = new HashMap<>();
-        for (LottoResult lottoResult : LottoResult.values()) {
-            emptyWinningCounts.put(lottoResult, DEFAULT_COUNT);
+    private HashMap<Rank, Integer> getEmptyWinningCounts() {
+        HashMap<Rank, Integer> emptyWinningCounts = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            emptyWinningCounts.put(rank, DEFAULT_COUNT);
         }
         return emptyWinningCounts;
     }
