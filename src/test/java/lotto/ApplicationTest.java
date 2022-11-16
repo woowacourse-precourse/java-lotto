@@ -56,11 +56,24 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트2() {
         assertSimpleTest(() -> {
-            runException("1000","1,2,3,4,5,6");
+            runException("1000","1,2,3,4,5");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
-
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("1000","1,2,3,4,5,446,7","8");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() -> {
+            runException("1000","1,2,3,4,5,6","74");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
 
     @Override
     public void runMain() {
