@@ -18,7 +18,7 @@ public class LottoResult {
 
         int proceeds = calculateProceeds();
 
-        return Math.floor(((double) proceeds / money) * 100);
+        return (double) proceeds / money * 100;
     }
 
     private int calculateProceeds() {
