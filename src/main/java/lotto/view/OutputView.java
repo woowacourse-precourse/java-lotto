@@ -16,10 +16,20 @@ public class OutputView {
     public static final String SUFFIX_LETTER_FOR_DISPLAY = "]";
     public static final String DELIMITER = ", ";
 
+    public static final String BREAK_LINE = System.lineSeparator();
+    public static final String RESULT_MESSAGE = BREAK_LINE + "당첨 통계" + BREAK_LINE + "---";
+
+    private static final String RESULT_THREE_MATCH = "3개 일치 (5,000원) - %d개";
+    private static final String RESULT_FOUR_MATCH = BREAK_LINE + "4개 일치 (50,000원) - %d개";
+    private static final String RESULT_FIVE_MATCH = BREAK_LINE + "5개 일치 (1,500,000원) - %d개";
+    private static final String RESULT_FIVE_MATCH_ONE_BONUS = BREAK_LINE + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
+    private static final String RESULT_SIX_MATCH = BREAK_LINE + "6개 일치 (2,000,000,000원) - %d개";
+
     public static final String INPUT_MESSAGE_FOR_MONEY = "구입금액을 입력해 주세요.";
     public static final String INPUT_MESSAGE_FOR_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     public static final String INPUT_MESSAGE_FOR_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String FORMAT_FOR_COUNT_OF_TICKETS = "%n%d개를 구매했습니다. %n";
+    public static final String FORMAT_FOR_YIELD = BREAK_LINE + "총 수익률은 %.1f%%입니다.";
 
     public static void print(String message) {
         System.out.println(message);
@@ -45,19 +55,14 @@ public class OutputView {
         return PREFIX_LETTER_FOR_DISPLAY + String.join(DELIMITER, status) + SUFFIX_LETTER_FOR_DISPLAY;
     }
 
-    public void printLottoResultMessage() {
-        System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("---------");
-    }
-
     public void printResult(Map<WinningRank, Integer> ranks, double yield) {
-        System.out.println("3개 일치 (" + FIFTH.getPrize() + "원)-" + ranks.getOrDefault(FIFTH, 0) + "개");
-        System.out.println("4개 일치 (" + FOURTH.getPrize() + "원)-" + ranks.getOrDefault(FOURTH, 0) + "개");
-        System.out.println("5개 일치 (" + THIRD.getPrize() + "원)-" + ranks.getOrDefault(THIRD, 0) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치(" + SECOND.getPrize() + "원)-" + ranks.getOrDefault(SECOND, 0) + "개");
-        System.out.println("6개 일치 (" + FIRST.getPrize() + "원)-" + ranks.getOrDefault(FIRST, 0) + "개");
+        System.out.println(RESULT_MESSAGE);
+        System.out.printf(RESULT_THREE_MATCH, ranks.getOrDefault(FIFTH, 0));
+        System.out.printf(RESULT_FOUR_MATCH, ranks.getOrDefault(FOURTH, 0));
+        System.out.printf(RESULT_FIVE_MATCH, ranks.getOrDefault(THIRD, 0));
+        System.out.printf(RESULT_FIVE_MATCH_ONE_BONUS, ranks.getOrDefault(SECOND, 0));
+        System.out.printf(RESULT_SIX_MATCH, ranks.getOrDefault(FIRST, 0));
 
-        System.out.printf("총 수익률은 %.2f 입니다.", yield);
+        System.out.printf(FORMAT_FOR_YIELD, yield);
     }
 }
