@@ -1,8 +1,11 @@
 package lotto.controller;
 
+import static lotto.view.OutputView.displayIncomeRatio;
+import static lotto.view.OutputView.displayNumberOfTickets;
+import static lotto.view.OutputView.displayStatistics;
+
 import lotto.service.LottoService;
 import lotto.view.InputView;
-import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -23,17 +26,15 @@ public class LottoController {
     private void process() {
         int price = InputView.getPrice();
 
-        OutputView.displayNumberOfTickets(
-            lottoService.publishTickets(price)
-        );
+        // 티켓 발행 내역 출력
+        displayNumberOfTickets(lottoService.publishTickets(price));
 
-        OutputView.displayStatistics(
-            lottoService.getWinningStatistics(
-                InputView.getNumbers(),
-                InputView.getBonusNumber()));
+        // 당첨 내역 출력
+        displayStatistics(lottoService.getWinningStatistics(
+            InputView.getNumbers(),
+            InputView.getBonusNumber()));
 
-        OutputView.displayIncomeRatio(
-            lottoService.getRateOfReturn(price)
-        );
+        // 수익률 출력
+        displayIncomeRatio(lottoService.getRateOfReturn(price));
     }
 }
