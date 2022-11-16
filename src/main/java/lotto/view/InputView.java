@@ -12,13 +12,11 @@ public class InputView {
 
     public static int inputPrice() {
         System.out.println("구입금액을 입력해 주세요.");
-        int input = 0;
         try {
-            input = Integer.parseInt(Console.readLine());
-        } catch (IllegalArgumentException e) {
-            System.out.println(NUMBER_FORMAT_ERROR.getMessage());
+            return Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_ERROR.getMessage());
         }
-        return input;
     }
 
     public static List<Integer> inputWinNumbers() {
@@ -32,6 +30,10 @@ public class InputView {
     public static int inputBonusNumber() {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_ERROR.getMessage());
+        }
     }
 }
