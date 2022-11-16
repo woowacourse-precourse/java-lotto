@@ -13,7 +13,6 @@ public class Result {
 
     private final LottoNumber lottoNumber;
     private HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
-    private long totalPrizeMoney = 0;
 
     public Result(List<Lotto> lottoTickets, LottoNumber lottoNumber) {
         this.lottoNumber = lottoNumber;
@@ -29,14 +28,17 @@ public class Result {
         }
     }
 
-    private void sumPrizeMoney() {
+    private long sumPrizeMoney() {
+        long totalPrizeMoney = 0;
         for (Prize prize : totalMatchResult.keySet()) {
             int count = totalMatchResult.get(prize);
             totalPrizeMoney += Prize.calculatePrizeMoney(prize, count);
         }
+        return totalPrizeMoney;
     }
 
     public void calculateReturnOfRate(int price) {
+        long totalPrizeMoney = sumPrizeMoney();
         double returnOfRate = (double) totalPrizeMoney / price * PERCENT;
         Output.showReturnOfRate(returnOfRate);
     }
