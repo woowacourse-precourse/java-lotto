@@ -17,13 +17,14 @@ public class Service {
     BonusNumber bonusNumber;
     Result result;
 
-    public void generateLottoList(String lottoPrice) {
+    public boolean generateLottoList(String lottoPrice) {
         try {
             int lottoPriceNumber = Converter.toIntFromString(lottoPrice);
             generateLotteries(lottoPriceNumber);
+            return true;
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
-            throw new NoSuchElementException();
+            return false;
         }
     }
 

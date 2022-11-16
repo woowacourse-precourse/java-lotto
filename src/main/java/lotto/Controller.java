@@ -10,17 +10,19 @@ public class Controller {
     Service service = new Service();
 
     public void run() {
-        purchaseLotto();
-        printPurchaseResult();
-        setWinningNumber();
-        setBonusNumber();
-        printResult();
-        printProfitRate();
+        boolean purchaseSuccess = purchaseLotto();
+        if (purchaseSuccess) {
+            printPurchaseResult();
+            setWinningNumber();
+            setBonusNumber();
+            printResult();
+            printProfitRate();
+        }
     }
 
-    private void purchaseLotto() {
+    private boolean purchaseLotto() {
         String lottoPrice = InputView.getLottoPrice();
-        service.generateLottoList(lottoPrice);
+        return service.generateLottoList(lottoPrice);
     }
 
     private void printPurchaseResult() {
