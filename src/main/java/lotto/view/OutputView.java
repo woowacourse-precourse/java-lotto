@@ -2,6 +2,7 @@ package lotto.view;
 
 import static java.text.MessageFormat.*;
 
+import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
@@ -41,7 +42,9 @@ public enum OutputView {
     }
 
     private static void printProfitResultMessage(Double profit) {
-        System.out.print(format(LOTTO_PROFIT_MESSAGE.toString(), profit));
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.0");
+        String formattedProfit = decimalFormat.format(profit);
+        System.out.print(format(LOTTO_PROFIT_MESSAGE.toString(), formattedProfit));
     }
 
     private static void printLottoResultMessage(List<Ranking> rankings) {
