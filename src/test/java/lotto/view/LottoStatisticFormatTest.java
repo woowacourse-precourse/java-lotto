@@ -8,6 +8,6 @@ class LottoStatisticFormatTest {
     @Test
     void decimalFormatTest() {
         String result = LottoStatisticFormat.addWinningMoney(100000L);
-        Assertions.assertThat(result).isEqualTo("(100,000원)");
+        Assertions.assertThat(result).isEqualTo(" (100,000원)");
     }
 }

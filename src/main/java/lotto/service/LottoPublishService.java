@@ -26,7 +26,7 @@ public class LottoPublishService {
     }
 
     private void validate(Long money) {
-        if (money % LOTTO_PRICE != 0) {
+        if (money % LOTTO_PRICE != 0 || money == 0) {
             throw new IllegalArgumentException(MONEY_ERROR.getErrorMessage());
         }
     }
