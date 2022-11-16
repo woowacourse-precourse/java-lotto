@@ -1,3 +1,4 @@
+# [3주차 회고](https://zerotodev.tistory.com/4)
 # ⚙️ 구현할 기능 목록
 
 - Game 시작 메서드
