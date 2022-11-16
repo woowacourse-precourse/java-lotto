@@ -26,7 +26,6 @@ class LottoPrinterTest {
                     () -> {
                         run();
                         assertThat(output()).contains(
-                                "8개를 구매했습니다.",
                                 "[8, 21, 23, 41, 42, 43]",
                                 "[3, 5, 11, 16, 32, 38]",
                                 "[7, 11, 16, 35, 36, 44]",
@@ -55,7 +54,6 @@ class LottoPrinterTest {
                     () -> {
                         run();
                         assertThat(output()).contains(
-                                "8개를 구매했습니다.",
                                 "[8, 21, 23, 41, 42, 43]",
                                 "[3, 5, 11, 16, 32, 38]",
                                 "[7, 11, 16, 35, 36, 44]",
@@ -82,7 +80,9 @@ class LottoPrinterTest {
             for (int i = 0; i < 8; i++) {
                 mockLotto.add(LottoGenerator.generateRandomly());
             }
-            LottoPrinter.printLotto(mockLotto);
+            for (Lotto lotto : mockLotto) {
+                LottoPrinter.joinNumbersWithDelimiterAndPrint(lotto);
+            }
         }
     }
 

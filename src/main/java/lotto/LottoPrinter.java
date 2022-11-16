@@ -1,8 +1,6 @@
 package lotto;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,17 +13,16 @@ public class LottoPrinter {
     private static final String DECIMAL_PATTERN = "###,###";
     private static final String BRACKET_FORMAT = "[%s]\n";
 
-    public static void printLotto(List<Lotto> lottos) {
-        System.out.printf(PURCHASED_ALERT_FORMAT, lottos.size());
+    public static void printPurchasedLottoCount(int count) {
+        System.out.printf(PURCHASED_ALERT_FORMAT, count);
+    }
 
-        lottos.forEach(lotto -> {
-            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
-            Collections.sort(numbers);
-            String lottoNumbersJoinByDelimiter = numbers.stream().map(String::valueOf)
-                    .collect(Collectors.joining(", "));
+    public static void joinNumbersWithDelimiterAndPrint(Lotto lotto) {
+        String lottoNumbersJoinByDelimiter = lotto.sortedNumbers().stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
 
-            System.out.printf(BRACKET_FORMAT, lottoNumbersJoinByDelimiter);
-        });
+        System.out.printf(BRACKET_FORMAT, lottoNumbersJoinByDelimiter);
     }
 
     public static void printStatistics(Map<LottoPrize, Integer> statistics) {

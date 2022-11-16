@@ -21,6 +21,6 @@ class LottoGeneratorTest {
     public void generateLottoByNumbers() {
         List<Integer> manualNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Lotto lotto = LottoGenerator.generateByNumberList(manualNumbers);
-        assertThat(lotto.getNumbers()).contains(manualNumbers.toArray(Integer[]::new));
+        assertThat(lotto.sortedNumbers()).contains(manualNumbers.toArray(Integer[]::new));
     }
 }
