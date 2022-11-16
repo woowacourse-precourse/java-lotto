@@ -8,34 +8,42 @@ import lotto.view.OutputManager;
 import java.util.List;
 
 public class LottoSystem {
-    InputManager inputManager;
-    LottoPile lottoPile;
+    private final InputManager inputManager;
+    private final LottoPile lottoPile;
+    private final OutputManager outputManager;
+    private final WinningStatistic winningStatistic;
 
     public LottoSystem() {
+        inputManager = new InputManager();
+        lottoPile = new LottoPile();
+        outputManager = new OutputManager();
+        winningStatistic = new WinningStatistic();
     }
 
     public void startProgram() {
-        inputManager = new InputManager();
+        int amount = purchaseLotto();
+        List<Integer> winningResult = getWinningResult();
+        getRevenue(amount, winningResult);
+    }
 
+    private int purchaseLotto() {
         int amount = inputManager.readPurchaseAmount();
-
-        lottoPile = new LottoPile();
         lottoPile.issueLottos(amount);
-
-        OutputManager outputManager = new OutputManager();
         outputManager.printLottos(lottoPile);
+        return amount;
+    }
 
+    private List<Integer> getWinningResult() {
         List<Integer> winningNumber = inputManager.readWinningNumber();
         int bonusNumber = inputManager.readBonusNumber();
 
-        WinningStatistic winningStatistic = new WinningStatistic();
-
         List<Integer> winningResult = winningStatistic.calcWinningResult(lottoPile, winningNumber, bonusNumber);
         outputManager.printWinningResult(winningResult);
+        return winningResult;
+    }
 
+    private void getRevenue(int amount, List<Integer> winningResult) {
         double revenue = winningStatistic.calcRevenue(winningResult, amount);
         outputManager.printRevenue(revenue);
-
-        return;
     }
 }
