@@ -30,6 +30,7 @@
     - enums
         - ErrorMessage
         - GameMessage
+        - Prize
     - Lotto
     - Lottos
     - LuckySix
@@ -40,6 +41,4 @@
 - view
     - InputView
     - OutputView
-- validator
-    - validator
 - Application
