@@ -48,10 +48,15 @@ public class InputValidationUtils {
     public static void validateFormat(final String input)
         throws IllegalArgumentException {
 
-        if (!isNumber(input)) {
+        if (!isNumber(input) || isOutOfRange(input)) {
             throw new IllegalArgumentException(
                 INVALID_FORMAT.message());
         }
+    }
+
+    private static boolean isOutOfRange(final String input) {
+        long number = Long.parseLong(input);
+        return number < 0L || number > Integer.MAX_VALUE;
     }
 
     private static boolean isNumber(final String input) {
