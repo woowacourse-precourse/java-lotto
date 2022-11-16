@@ -72,13 +72,13 @@ public class Controller {
         return amount;
     }
 
-    public void isValidatePurchase(int userInput) {
+    private void isValidatePurchase(int userInput) {
         if (userInput % 1000 == 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE + NOT_INSEPARABLE_ERROR);
         }
     }
 
-    public void isValidateNumber(String userInput) {
+    private void isValidateNumber(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
@@ -87,7 +87,7 @@ public class Controller {
         }
     }
 
-    public int stringToIntegerConvert(String userInput) {
+    private int stringToIntegerConvert(String userInput) {
         int ticket = Integer.parseInt(userInput);
         ticket /= 1000;
 
