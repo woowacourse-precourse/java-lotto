@@ -8,12 +8,13 @@ import lotto.domain.Lotto;
 import lotto.exception.ErrorMessage;
 
 public class Validator {
+    private static final int ZERO = 0;
 
     private Validator() {
     }
 
     public static void validatePurchaseAmount(Integer purchaseAmount) {
-        if (purchaseAmount % Lotto.LOTTO_UNIT != 0) {
+        if (purchaseAmount == ZERO || purchaseAmount % Lotto.LOTTO_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT_MESSAGE.toString());
         }
     }
