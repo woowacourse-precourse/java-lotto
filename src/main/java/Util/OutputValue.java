@@ -3,6 +3,7 @@ package Util;
 import domain.Rank;
 import lotto.Lotto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -27,8 +28,9 @@ public class OutputValue {
     }
 
     public static void printProfit(Map<Rank, Integer> count, int money){
-        String format = String.format(PROFIT_FORMAT, (double) getTotalProfit(count) / money * PERCENT);
-        System.out.println("총 수익률은 "+ format +"%입니다.");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###.#");
+        double round = Double.parseDouble(String.format(PROFIT_FORMAT, (double) getTotalProfit(count) / money * PERCENT));
+        System.out.println("총 수익률은 "+ decimalFormat.format(round) +"%입니다.");
     }
 
     private static long getTotalProfit(Map<Rank, Integer> count) {
