@@ -16,9 +16,8 @@ public class ResultBuilder {
 	}
 
 	public static String getPrizeMoney(Rank rank) {
-		DecimalFormat numberFormatter = new DecimalFormat("###,###");
-		String money = numberFormatter.format(rank.getPrizeMoney());
-		return Messages.getLeftPair() + money + Messages.getRightPair();
+		String formattedMoney = ResultBuilder.decimalFormatter(rank);
+		return Messages.getLeftPair() + formattedMoney + Messages.getRightPair();
 	}
 
 	public static String getCountedNumber(RankInfo rankInfo, Rank rank) {
@@ -26,10 +25,26 @@ public class ResultBuilder {
 	}
 
 	public static String getProfit(String profit) {
-		return Messages.getTotalInfo() + profit + Messages.getPERCENT();
+		String formattedProfit = ResultBuilder.decimalFormatter(profit);
+		return Messages.getTotalInfo() + formattedProfit + Messages.getPERCENT();
 	}
 
 	public static String getNewLine() {
 		return "\n";
+	}
+
+
+	// 당첨금액과 퍼센트출력형식을 제네릭을 사용해서 반복코드를 제거
+	private static <T> String decimalFormatter(T originalValue) {
+		String format = "#,##0.0";
+		DecimalFormat numberFormatter = new DecimalFormat(format);
+
+		if (originalValue instanceof Rank) {
+			format = "###,###";
+			numberFormatter = new DecimalFormat(format);
+			return numberFormatter.format(((Rank) originalValue).getPrizeMoney());
+		}
+
+		return numberFormatter.format(Float.parseFloat((String) originalValue));
 	}
 }

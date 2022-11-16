@@ -47,7 +47,10 @@ public class UIExceptions {
 	}
 
 	private static boolean isInWinningPrizeAlready(String bonusNumber, String winningPrizeNumbers) {
-		return winningPrizeNumbers.contains(bonusNumber);
+		// 11.16) todo<debug> String으로 contains를 처리하게 되면... 숫자단위로 하는 것이 아니라 글자 단위로 판단한다... ㅠㅠ
+		// return winningPrizeNumbers.contains(bonusNumber);
+		String[] separation = winningPrizeNumbers.split(",");
+		return Arrays.stream(separation).anyMatch(elem -> Integer.parseInt(elem) == Integer.parseInt(bonusNumber));
 	}
 
 	private static boolean isNotValidLength(String[] separation) {
