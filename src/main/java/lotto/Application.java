@@ -1,7 +1,30 @@
 package lotto;
 
+import lotto.domain.LottoMachine;
+import lotto.domain.User;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoMachine machine = new LottoMachine();
+        User user = new User();
+
+        try {
+            lottoGame(machine, user);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void lottoGame(LottoMachine machine, User user) {
+        machine.getInputMoney();
+        machine.createLottoNumber();
+        machine.printLottos();
+
+        user.inputWinningNumber();
+        user.inputBonusNumber();
+
+        machine.getResult(user.getWinningNumber(), user.getBonusNumber());
+        machine.printResult();
     }
 }
