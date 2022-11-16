@@ -33,8 +33,7 @@ public enum Rank {
     }
 
     private static Rank getResultByMatchingCount(int matchingCount) {
-        Rank[] results = values();
-        return Arrays.stream(results)
+        return Arrays.stream(values())
                 .filter(result -> result.hasSameMatchingCount(matchingCount))
                 .findFirst()
                 .orElse(MISS);

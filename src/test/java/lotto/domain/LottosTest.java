@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -40,28 +39,32 @@ class LottosTest {
                 Lotto.of(List.of(7, 8, 9, 10, 11, 12)),
                 Lotto.of(List.of(1, 2, 7, 8, 9, 10))
         );
-        Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
-        int bonusNumber = 7;
+        WinningLotto winningLotto = WinningLotto.of(
+                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
+                7
+        );
 
-        double profit = lottos.calculateProfit(winningLotto, bonusNumber);
+        LottoResult lottoResult = lottos.countNumberOfWins(winningLotto);
+        double profit = lottoResult.calculateProfitRate();
 
         assertThat(String.format("%.1f%%", profit)).isEqualTo("1666.7%");
     }
 
     @DisplayName("등수별 당첨 횟수를 세는 기능")
     @Test
-    void countWinningPirzes() {
+    void countWinning() {
         Lottos lottos = new Lottos(
                 Lotto.of(List.of(1, 2, 3, 4, 44, 45)),
                 Lotto.of(List.of(7, 8, 9, 10, 11, 12)),
                 Lotto.of(List.of(1, 2, 7, 8, 9, 10))
         );
-        Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
-        int bonusNumber = 7;
 
-        Map<Rank, Integer> winningCounts = lottos.getWinningCounts(winningLotto, bonusNumber);
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        WinningLotto winningLotto = WinningLotto.of(Lotto.of(winningNumbers), 7);
 
-        assertThat(winningCounts.get(Rank.FOURTH)).isEqualTo(1);
-        assertThat(winningCounts.get(Rank.FIRST)).isEqualTo(0);
+        LottoResult lottoResult = lottos.countNumberOfWins(winningLotto);
+
+        assertThat(lottoResult.winningCountsOf(Rank.FOURTH)).isEqualTo(1);
+        assertThat(lottoResult.winningCountsOf(Rank.FIRST)).isEqualTo(0);
     }
 }

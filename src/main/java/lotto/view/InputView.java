@@ -73,7 +73,7 @@ public class InputView {
     private static List<Integer> getWinningNumbers(String numbersWithSeparator) {
         String[] winningNumbers = numbersWithSeparator.split(SEPARATOR);
         return Arrays.stream(winningNumbers)
-                .map(number -> Integer.parseInt(number))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 }
