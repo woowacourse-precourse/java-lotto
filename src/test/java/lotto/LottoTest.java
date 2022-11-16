@@ -24,11 +24,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @DisplayName("적은 숫자면 에러 발생.")
     @Test
     void createLottoByLowerSize() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("범위가 벗어나는 숫자 -> 에러 발생")
+    @Test
+    void createLottoByOutOfRange() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(List.of(1, 233, 35, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
