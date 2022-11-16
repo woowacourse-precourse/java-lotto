@@ -15,24 +15,35 @@ public class LottoScannerTest {
     @Nested
     @DisplayName("구입금액 입력 테스트")
     class ReadMoneyTest extends NsTest {
-        @DisplayName("1000원 미만의 금액을 입력하면 예외를 던져야한다.")
+        @DisplayName("1개 가격 미만의 금액을 입력하면 예외를 던져야한다.")
         @ParameterizedTest
         @ValueSource(strings = {"-1000", "0", "200"})
-        public void throwExceptionWhenPurchaseAmountIsLessThan1_000(String purchaseAmount) {
+        public void throwExceptionWhenPurchaseAmountIsLessThanPrice(String purchaseAmount) {
             assertSimpleTest(() -> {
                 assertThatThrownBy(() ->
                         run(purchaseAmount)).isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(LottoScanner.LESS_THAN_MIN_PURCHASE_AMOUNT);
+                        .hasMessageContaining(LottoScanner.INVALID_RANGE_OF_PURCHASE_AMOUNT);
             });
         }
 
-        @DisplayName("1000원으로 나누어떨어지지 않으면 예외를 던져야한다.")
+        @DisplayName("최대 가격 초과 금액을 입력하면 예외를 던져야한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"2000000001", "10000000000000"})
+        public void throwExceptionWhenPurchaseAmountIsMoreThanMaxAmount(String purchaseAmount) {
+            assertSimpleTest(() -> {
+                assertThatThrownBy(() ->
+                        run(purchaseAmount)).isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(LottoScanner.INVALID_RANGE_OF_PURCHASE_AMOUNT);
+            });
+        }
+
+        @DisplayName("가격으로 나누어떨어지지 않으면 예외를 던져야한다.")
         @Test
         public void throwExceptionWhen1000DoesNotDivideMoney() {
             assertSimpleTest(() -> {
                 assertThatThrownBy(() ->
                         run("25200")).isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(LottoScanner.SHOULD_BE_DIVIDED_INTO_1000);
+                        .hasMessageContaining(LottoScanner.SHOULD_BE_DIVIDED_INTO_PRICE);
             });
         }
 

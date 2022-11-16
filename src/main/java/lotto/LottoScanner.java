@@ -11,8 +11,8 @@ public class LottoScanner {
     private static final String READ_BONUS_NUMBER_PROMPT = "보너스 번호를 입력해 주세요.";
     private static final String DELIMITER = ",";
     public static final String REQUIRE_NUMERIC_VALUE = "숫자를 입력해주세요.";
-    public static final String SHOULD_BE_DIVIDED_INTO_1000 = "구입금액은 1000으로 나누어 떨어져야합니다.";
-    public static final String LESS_THAN_MIN_PURCHASE_AMOUNT = "구입금액은 1000원 이상이어야합니다.";
+    public static final String SHOULD_BE_DIVIDED_INTO_PRICE = "구입금액은 가격으로 나누어 떨어져야합니다.";
+    public static final String INVALID_RANGE_OF_PURCHASE_AMOUNT = "구입금액은 가격 이상이어야합니다.";
     public static final String DO_NOT_INCLUDE_NUMERIC_VALUE = "숫자가 아닌 문자가 있습니다.";
 
     public static int readPurchaseAmount() {
@@ -23,30 +23,53 @@ public class LottoScanner {
     }
 
     private static void validate(int purchaseAmount) {
-        validateNotLessThan1_000(purchaseAmount);
-        validateDivideInto1_000(purchaseAmount);
+        validateRangeOf(purchaseAmount);
+        validateDivideIntoPrice(purchaseAmount);
     }
 
-    private static void validateDivideInto1_000(int purchaseAmount) {
-        if ((purchaseAmount % 1000) != 0) {
-            throw new IllegalArgumentException(SHOULD_BE_DIVIDED_INTO_1000);
+    private static void validateDivideIntoPrice(int purchaseAmount) {
+        if (divideIntoPrice(purchaseAmount)) {
+            throw new IllegalArgumentException(SHOULD_BE_DIVIDED_INTO_PRICE);
         }
     }
 
-    private static void validateNotLessThan1_000(int purchaseAmount) {
-        if (purchaseAmount < 1000) {
-            throw new IllegalArgumentException(LESS_THAN_MIN_PURCHASE_AMOUNT);
+    private static boolean divideIntoPrice(int purchaseAmount) {
+        return (purchaseAmount % LottoSystem.LOTTO_PRICE) != 0;
+    }
+
+    private static void validateRangeOf(int purchaseAmount) {
+        if (outOfRange(purchaseAmount)) {
+            throw new IllegalArgumentException(INVALID_RANGE_OF_PURCHASE_AMOUNT);
         }
+    }
+
+    private static boolean outOfRange(int purchaseAmount) {
+        return purchaseAmount < LottoSystem.MIN_PURCHASE_AMOUNT || purchaseAmount > LottoSystem.MAX_PURCHASE_AMOUNT;
     }
 
     private static int readLineAsInteger() {
+        Long PurchaseAmountInput = readPurchaseAmountAsNumber();
+        return convertToInteger(PurchaseAmountInput);
+    }
+
+    private static int convertToInteger(Long input) {
         int purchaseAmount;
         try {
-            purchaseAmount = Integer.parseInt(Console.readLine());
+            purchaseAmount = Math.toIntExact(input);
+        } catch (ArithmeticException e) {
+            throw new IllegalArgumentException(INVALID_RANGE_OF_PURCHASE_AMOUNT);
+        }
+        return purchaseAmount;
+    }
+
+    private static Long readPurchaseAmountAsNumber() {
+        Long input;
+        try {
+            input = Long.parseLong(Console.readLine());
         } catch (Exception e) {
             throw new IllegalArgumentException(REQUIRE_NUMERIC_VALUE);
         }
-        return purchaseAmount;
+        return input;
     }
 
     public static WinningNumber readWinningNumber() {
