@@ -96,8 +96,4 @@ class LottoTest {
         }
         System.out.println(Prize.getComputeIncomeRate(money)+"% 입니다");
     }
-
-    public static void main(String[] args) {
-
-    }
 }
