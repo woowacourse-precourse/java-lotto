@@ -11,7 +11,10 @@ public class InputCorrectNumberGenerator {
 
         String[] InputUserNumber = readLine().split(",");
         List<Integer> CorrectNumber = new ArrayList<>();
-        for(int i=0; i<6; i++) {
+
+        int LOTTO_NUMBER_LENGTH = 6;
+
+        for(int i=0; i<LOTTO_NUMBER_LENGTH; i++) {
             CorrectNumber.add(Integer.valueOf(InputUserNumber[i]));
         }
         return CorrectNumber;

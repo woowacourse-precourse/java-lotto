@@ -7,7 +7,7 @@ public class BonusNumberFiveCalculatorGenerator {
         if(returnNumber == 5) {
             returnNumber = JudgmentBonusNumberGenerator.JudgmentBonusNumber(correctNumberList, bonusNumber, returnNumber, i);
             resultNumber.add(returnNumber);
-        }
-        return true;
+            return true;
+        } return false;
     }
 }
