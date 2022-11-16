@@ -1,6 +1,8 @@
 package lotto;
 
+
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.app.Application;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-
+//예기치 못한 오류 테스트 커밋
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
