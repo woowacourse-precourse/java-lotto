@@ -32,24 +32,26 @@ public class Service {
         return lotteries.getLotteries();
     }
 
-    public void setWinningNumber(String winningNumberInput) {
+    public boolean setWinningNumber(String winningNumberInput) {
         try {
             List<Integer> winningNumberInputs = Converter.toIntList(winningNumberInput);
             winningNumbers = new WinningNumbers(winningNumberInputs);
+            return true;
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 
-    public void setBonusNumber(String bonusInput) {
+    public boolean setBonusNumber(String bonusInput) {
         try {
             int bonusNumberInput = Converter.toIntFromString(bonusInput);
             winningNumbers.checkBonusNumber(bonusNumberInput);
             bonusNumber = new BonusNumber(bonusNumberInput);
+            return true;
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 

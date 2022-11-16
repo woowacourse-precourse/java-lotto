@@ -10,14 +10,22 @@ public class Controller {
     Service service = new Service();
 
     public void run() {
-        boolean purchaseSuccess = purchaseLotto();
-        if (purchaseSuccess) {
-            printPurchaseResult();
-            setWinningNumber();
-            setBonusNumber();
-            printResult();
-            printProfitRate();
+        if (!purchaseLotto()) {
+            return;
         }
+
+        printPurchaseResult();
+
+        if(!setWinningNumber()) {
+            return;
+        }
+
+        if(!setBonusNumber()) {
+            return;
+        }
+
+        printResult();
+        printProfitRate();
     }
 
     private boolean purchaseLotto() {
@@ -30,14 +38,14 @@ public class Controller {
         OutputView.printPurchaseResult(purchaseResult);
     }
 
-    private void setWinningNumber() {
+    private boolean setWinningNumber() {
         String winningNumberInput = InputView.getWinningNumberInput();
-        service.setWinningNumber(winningNumberInput);
+        return service.setWinningNumber(winningNumberInput);
     }
 
-    private void setBonusNumber() {
+    private boolean setBonusNumber() {
         String bonusNumber = InputView.getBonusNumberInput();
-        service.setBonusNumber(bonusNumber);
+        return service.setBonusNumber(bonusNumber);
     }
 
     private void printResult() {
