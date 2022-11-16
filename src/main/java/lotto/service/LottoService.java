@@ -1,6 +1,7 @@
 package lotto.service;
 
-import static lotto.validator.LottoValidator.validateWinningAttributes;
+import static lotto.validator.LottoValidator.validateWinningNumber;
+import static lotto.validator.LottoValidator.validateBonusDuplicated;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +38,8 @@ public class LottoService {
     public List<String> getWinningStatistics(final List<Integer> winningNumbers,
         final int bonus) {
 
-        validateWinningAttributes(bonus, winningNumbers);
+        validateWinningNumber(winningNumbers);
+        validateBonusDuplicated(bonus, winningNumbers);
         initWinningStatus(winningNumbers, bonus);
 
         return Arrays.stream(WinningRule.values())
@@ -62,8 +64,12 @@ public class LottoService {
     public double getRateOfReturn(final int totalInvestment) {
         double winningAmount = winningRuleStatus.keySet()
             .stream()
-            .map(WinningRule::getPrice)
+            .map(this::getWinningAmount)
             .reduce(0L, Long::sum);
         return (winningAmount / totalInvestment) * 100;
+    }
+
+    private long getWinningAmount(final WinningRule rule) {
+        return winningRuleStatus.getOrDefault(rule, 0) * rule.getPrice();
     }
 }

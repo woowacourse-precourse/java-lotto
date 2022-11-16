@@ -37,7 +37,7 @@ public class LottoValidatorTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int bonus = 2;
         Assertions.assertThatThrownBy(
-                () -> LottoValidator.validateBonusNumber(bonus, winningNumbers)
+                () -> LottoValidator.validateBonusDuplicated(bonus, winningNumbers)
             ).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ERROR_MESSAGE);
     }
