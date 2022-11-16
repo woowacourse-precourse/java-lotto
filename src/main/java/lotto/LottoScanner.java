@@ -13,7 +13,7 @@ public class LottoScanner {
     public static final String REQUIRE_NUMERIC_VALUE = "숫자를 입력해주세요.";
     public static final String SHOULD_BE_DIVIDED_INTO_PRICE = "구입금액은 가격으로 나누어 떨어져야합니다.";
     public static final String INVALID_RANGE_OF_PURCHASE_AMOUNT = "구입금액은 가격 이상이어야합니다.";
-    public static final String DO_NOT_INCLUDE_NUMERIC_VALUE = "숫자가 아닌 문자가 있습니다.";
+    public static final String DO_NOT_INCLUDE_INVALID_CHARACTER = "유효하지 않은 문자가 있습니다.";
 
     public static int readPurchaseAmount() {
         System.out.println(READ_MONEY_PROMPT);
