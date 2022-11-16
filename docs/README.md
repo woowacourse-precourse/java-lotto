@@ -21,7 +21,7 @@
     - [x] 당첨번호를 받는다.
     - [x] 보너스번호를 받는다.
 
-- [x] 입력받은 값을 이용해 로또를 - play
+- [x] 입력받은 값을 이용해 로또프로그램을 실행한다. - play
     - [x] 로또 결과 정보를 가지고 있다. - `Lotto`
     - [x] 주어진 금액에 대해 로또를 발행한다. - `Publisher`
     - [x] 당첨 통계를 구한다. - `Checker`
@@ -68,7 +68,7 @@
             - [x] 2, 3등의 경우 보너스 번호를 포함하는지 구분한다. - setSecondOrThird
             - [x] 보너스 점수를 포함하는지 여부 확인 - isContainBonusNumber
 
-## 💰 MoneyManger
+## 💰 수익률 관리 - MoneyManger
 
 - [x] 수익률을 구한다. - getMoneyReturn
     - [x] 수익률은 소수점 둘째자리에서 반올림한다. - getRoundPrice
