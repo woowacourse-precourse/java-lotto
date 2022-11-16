@@ -64,6 +64,9 @@ public class InputUtils {
         if (money % ConstantNumber.VALID_MONEY.getNumber() != 0) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_MONEY_ERROR.getMessage());
         }
+        if (money == ConstantNumber.ZERO.getNumber()) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_MONEY_ERROR.getMessage());
+        }
     }
 
     private void isNumber(String input) {
