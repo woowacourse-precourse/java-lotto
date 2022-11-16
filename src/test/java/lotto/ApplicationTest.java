@@ -1,14 +1,21 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
@@ -47,11 +54,77 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 기능_테스트2() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("9000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "9개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[2, 3, 4, 5, 6, 7]",
+                            "[3, 4, 5, 6, 7, 8]",
+                            "[4, 5, 6, 7, 8, 9]",
+                            "[5, 6, 7, 8, 9, 10]",
+                            "[6, 7, 8, 9, 10, 11]",
+                            "[7, 8, 9, 10, 11, 12]",
+                            "[8, 9, 10, 11, 12, 13]",
+                            "[11, 12, 13, 14, 15, 16]",
+                            "3개 일치 (5,000원) - 1개",
+                            "4개 일치 (50,000원) - 1개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 22,556,166.7%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(2, 3, 4, 5, 6, 7),
+                List.of(3, 4, 5, 6, 7, 8),
+                List.of(4, 5, 6, 7, 8, 9),
+                List.of(5, 6, 7, 8, 9, 10),
+                List.of(6, 7, 8, 9, 10, 11),
+                List.of(7, 8, 9, 10, 11, 12),
+                List.of(8, 9, 10, 11, 12, 13),
+                List.of(11, 12, 13, 14, 15, 16)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1, 7, 8, 9, 10, 11:0:0:0:0:0:0.0",
+            "1, 2, 3, 9, 10, 11:1:0:0:0:0:500.0",
+            "1, 2, 3, 4, 10, 11:0:1:0:0:0:5,000.0",
+            "1, 2, 3, 4, 5, 11:0:0:1:0:0:150,000.0",
+            "1, 2, 3, 4, 5, 7:0:0:0:1:0:3,000,000.0",
+            "1, 2, 3, 4, 5, 6:0:0:0:0:1:200,000,000.0",
+    }, delimiter = ':')
+    void 각_순위_별_테스트(String lottoNumber, int fifth, int fourth, int third, int second, int first, String yield) {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "1개를 구매했습니다.",
+                            String.format("[%s]", lottoNumber),
+                            String.format("3개 일치 (5,000원) - %d개", fifth),
+                            String.format("4개 일치 (50,000원) - %d개", fourth),
+                            String.format("5개 일치 (1,500,000원) - %d개", third),
+                            String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개", second),
+                            String.format("6개 일치 (2,000,000,000원) - %d개", first),
+                            String.format("총 수익률은 %s%%입니다.", yield)
+                    );
+                },
+                Arrays.stream(lottoNumber.split(", "))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList())
+        );
     }
 
     @Override
