@@ -10,6 +10,7 @@ public class InputView {
         String input = Console.readLine();
 
         validateNonNumeric(input);
+        validateAmountRange(input);
         validateUnit(input);
         return Integer.parseInt(input);
     }
