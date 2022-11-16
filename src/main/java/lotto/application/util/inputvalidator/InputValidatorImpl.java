@@ -27,7 +27,7 @@ public class InputValidatorImpl implements InputValidator {
 
     @Override
     public void validatePurchaseMoneyDividable(String lottoPurchaseMoney) {
-        if (Integer.parseInt(lottoPurchaseMoney) % 1000 != 0 || Integer.parseInt(lottoPurchaseMoney) == 0) {
+        if (Integer.parseInt(lottoPurchaseMoney) % 1000 != 0 || Integer.parseInt(lottoPurchaseMoney) < 1) {
             throw new IllegalArgumentException(PURCHASE_MONEY_DIVIDABLE.getErrorMessage());
         }
     }
