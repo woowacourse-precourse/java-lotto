@@ -1,5 +1,6 @@
 package lotto.view.print;
 
+import java.text.DecimalFormat;
 import lotto.domain.LottoHistory;
 import lotto.domain.enums.LottoRanking;
 import lotto.view.print.enums.WinningHistoryMessage;
@@ -15,6 +16,7 @@ public class PrintHistory {
     }
 
     public static void printYield(String yield) {
-        System.out.printf(YIELD_MESSAGE, yield);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.0");
+        System.out.printf(YIELD_MESSAGE, decimalFormat.format(Double.parseDouble(yield)));
     }
 }
