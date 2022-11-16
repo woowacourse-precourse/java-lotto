@@ -70,57 +70,61 @@ public class Controller {
     }
 
     public static void Solution() {
-        // 로또 구입 금액 입력
-        View.OutputString("구입금액을 입력해 주세요.");
-        String inputLottoAmount = View.Input();
-        Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
+        try {
+            // 로또 구입 금액 입력
+            View.OutputString("구입금액을 입력해 주세요.");
+            String inputLottoAmount = View.Input();
+            Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
 
-        // 로또 구입 금액 검증
-        ValidatePurchaseAmount(lottoAmount);
+            // 로또 구입 금액 검증
+            ValidatePurchaseAmount(lottoAmount);
 
-        // 로또 개수 계산
-        Integer lottoCount = Model.CountLottoAmount(lottoAmount);
+            // 로또 개수 계산
+            Integer lottoCount = Model.CountLottoAmount(lottoAmount);
 
-        // 로또 발행
-        final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
+            // 로또 발행
+            final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
 
-        // 로또 발행 출력
-        View.OutputString(inputLottoAmount);
-        View.OutputString(lottoCount+"개를 구매했습니다.");
-        View.OutputListIntegerInList(publishedLottoArray);
+            // 로또 발행 출력
+            View.OutputString(inputLottoAmount);
+            View.OutputString(lottoCount + "개를 구매했습니다.");
+            View.OutputListIntegerInList(publishedLottoArray);
 
-        // 로또 당첨 번호 입력
-        View.OutputString("당첨 번호를 입력해 주세요.");
-        String inputRealLottoNumber = View.Input();
-        View.OutputString(inputRealLottoNumber);
-        String[] splittedRealLottoNumbers = View.SplitInput(inputRealLottoNumber);
-        List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
-        realLottoNumbers = Model.SortArrayList(realLottoNumbers);
+            // 로또 당첨 번호 입력
+            View.OutputString("당첨 번호를 입력해 주세요.");
+            String inputRealLottoNumber = View.Input();
+            View.OutputString(inputRealLottoNumber);
+            String[] splittedRealLottoNumbers = View.SplitInput(inputRealLottoNumber);
+            List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
+            realLottoNumbers = Model.SortArrayList(realLottoNumbers);
 
-        // 로또 보너스 번호 입력
-        View.OutputString("보너스 번호를 입력해 주세요.");
-        String inputRealLottoBonusNumber = View.Input();
-        View.OutputString(inputRealLottoBonusNumber);
-        Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
+            // 로또 보너스 번호 입력
+            View.OutputString("보너스 번호를 입력해 주세요.");
+            String inputRealLottoBonusNumber = View.Input();
+            View.OutputString(inputRealLottoBonusNumber);
+            Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
-        // Lotto 클래스 생성
-        Lotto lotto = new Lotto(realLottoNumbers);
+            // Lotto 클래스 생성
+            Lotto lotto = new Lotto(realLottoNumbers);
 
-        // 로또 보너스 번호 추가
-        realLottoNumbers.add(realLottoBonusNumber);
+            // 로또 보너스 번호 추가
+            realLottoNumbers.add(realLottoBonusNumber);
 
-        // 로또 번호 분석
-        LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
-                (realLottoNumbers, publishedLottoArray);
+            // 로또 번호 분석
+            LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
+                    (realLottoNumbers, publishedLottoArray);
 
-        // 로또 당첨 결과 통계 출력
-        View.OutputString("당첨 통계");
-        View.OutputString("---");
-        View.PrintResult(lottoResult);
+            // 로또 당첨 결과 통계 출력
+            View.OutputString("당첨 통계");
+            View.OutputString("---");
+            View.PrintResult(lottoResult);
 
-        // 총 수익률 출력
-        Integer incomeSum = Model.CalculateEarningSum(lottoResult);
-        String earningRate = Model.CalculateEarningRate(lottoAmount, incomeSum);
-        View.OutputString("총 수익률은 "+earningRate+"%입니다.");
+            // 총 수익률 출력
+            Integer incomeSum = Model.CalculateEarningSum(lottoResult);
+            String earningRate = Model.CalculateEarningRate(lottoAmount, incomeSum);
+            View.OutputString("총 수익률은 " + earningRate + "%입니다.");
+        } catch (IllegalArgumentException e) {
+
+        }
     }
 }
