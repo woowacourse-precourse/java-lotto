@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lotto.util.ValidationUtil;
@@ -8,6 +9,28 @@ import org.junit.jupiter.api.Test;
 
 
 class ValidationUtilTest {
+
+    @Test
+    @DisplayName("입력 값 공백 여부 검증")
+
+    void isEmpty() {
+        String input1 = "";
+        String input2 = " ";
+
+        assertThat(ValidationUtil.validateEmpty(input1)).isTrue();
+        assertThat(ValidationUtil.validateEmpty(input2)).isFalse();
+    }
+
+    @Test
+    @DisplayName("입력 문자열의 정수 여부 검증")
+
+    void isDigit() {
+        String input1 = "123";
+        String input2 = "abc";
+
+        assertThat(ValidationUtil.validateIsDigit(input1)).isTrue();
+        assertThat(ValidationUtil.validateIsDigit(input2)).isFalse();
+    }
 
     @Test
     @DisplayName("로또 구입 금액 입력값 정적성 검토")
@@ -34,16 +57,15 @@ class ValidationUtilTest {
     }
 
     @Test
-    @DisplayName("입력값의 정수 여부 검토")
-    void validateIsDigit() {
-        String input = "17";
-        String input2 = "a";
+    @DisplayName("당첨 번호 입력 시 적절하지 않은 콤마(,) 사용 검증")
+    void invalidComma() {
+        String input1 = ",1,2,3,4,5,6";
+        String input2 = "1,2,3,4,5,6,";
+        String input3 = "1,,2,3,4,5,6";
 
-        boolean isDigit = ValidationUtil.validateIsDigit(input);
-        boolean isDigit2 = ValidationUtil.validateIsDigit(input2);
-
-        assertThat(isDigit).isTrue();
-        assertThat(isDigit2).isFalse();
+        assertThat(ValidationUtil.invalidComma(input1));
+        assertThat(ValidationUtil.invalidComma(input2));
+        assertThat(ValidationUtil.invalidComma(input3));
     }
 
     @Test

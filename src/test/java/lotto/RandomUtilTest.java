@@ -12,6 +12,16 @@ import java.util.List;
 class RandomUtilTest {
 
     @Test
+    @DisplayName("로또 구입 금액 입력시 로또 개수 반환의 적정성 테스트")
+    void getCountFromMoney() {
+        String purchasingAmount = "5000";
+
+        int numberOfLottery = RandomUtil.getCountFromMoney(purchasingAmount);
+
+        assertThat(5).isEqualTo(numberOfLottery);
+    }
+
+    @Test
     @DisplayName("로또번호가 금액에 맞는 개수만큼 생성되는지 테스트")
     void countOfLottoNumbers() {
         String inputMoney = "8000";
