@@ -214,10 +214,45 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 }
-```
 
----
+###구현할 기능
 
+InputView
+ 사용할 금액을 입력받는다.
+ 당첨 번호를 입력받는다. 각 번호는 쉼표(',')로 구분한다.
+ 대화형 입력
+
+ResultView
+ 발급된 로또를 한 줄 씩 출력한다.
+ 형식은 대괄호 안에 번호를 쉼표로 구분하여 출력한다.
+ 당첨 통계를 출력한다.
+ 구입 금액 대비 당첨 금액을 비교하여 총 수익률을 출력한다.
+
+Lotto
+ 금액만큼 로또 번호를 임의로 생성한다.
+ 입력된 당첨 번호를 발급된 로또 번호와 비교한다.
+ 비교 후, 통계를 생성한다.
+
+LottoShop
+ 입력받은 돈만큼 티켓을 구매
+ 티켓수만큼 랜덤 6자리 로또번호를 생성하여 리스트로 변경
+ 로또번호로 이루어진 로또 티켓 생성
+
+LottoTicket
+ 로또번호로 이루어진 로또 티켓을 리스트로 변경 
+
+WinningLotto
+ 당첨 번호와 보너스 점수를 받아 Prize에 전달
+
+Prize
+ 당첨 갯수와 보너스 점수를 비교하여 같은지 확인후 맞는 등수를 출력
+
+LottoNumbersDTO
+ Integer List로 변경
+
+RoundResult
+ 우승 등수와 반환값 출력
+ 
 ## ✏️ 과제 진행 요구 사항
 
 - 미션은 [java-lotto](https://github.com/woowacourse-precourse/java-lotto) 저장소를 Fork & Clone해 시작한다.
