@@ -45,8 +45,9 @@ public enum Prize {
                 .orElse(NONE);
     }
 
-    public static int calculatePrizeMoney(Prize prize, int count) {
-        return prize.getPrizeMoney() * count;
+    public static long calculatePrizeMoney(Prize prize, int count) {
+        long a = (long) prize.getPrizeMoney() * count;
+        return (long) prize.getPrizeMoney() * count;
     }
 
     public static List<String> makeResultMessage(HashMap<Prize, Integer> totalMatchResult) {

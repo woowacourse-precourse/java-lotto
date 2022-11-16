@@ -13,7 +13,7 @@ public class Result {
 
     private final LottoNumber lottoNumber;
     private HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
-    private int totalPrizeMoney = 0;
+    private long totalPrizeMoney = 0;
 
     public Result(List<Lotto> lottoTickets, LottoNumber lottoNumber) {
         this.lottoNumber = lottoNumber;

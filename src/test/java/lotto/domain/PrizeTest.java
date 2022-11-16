@@ -40,10 +40,10 @@ class PrizeTest {
     @Test
     void getPrizeMoneyTest() {
         int count = 2;
-        int threeMatch = Prize.calculatePrizeMoney(Prize.THREE_MATCH, count);
+        long threeMatch = Prize.calculatePrizeMoney(Prize.THREE_MATCH, count);
         int answer = 5000 * count;
 
-        int fiveBonusMatch = Prize.calculatePrizeMoney(Prize.FIVE_BONUS_MATCH, count);
+        long fiveBonusMatch = Prize.calculatePrizeMoney(Prize.FIVE_BONUS_MATCH, count);
         int answer2 = 30000000 * count;
 
         assertThat(threeMatch).isEqualTo(answer);
