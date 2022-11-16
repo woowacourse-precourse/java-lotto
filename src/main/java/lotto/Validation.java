@@ -43,11 +43,19 @@ public class Validation {
 
     public static boolean validIsDigit(String number) {
         try {
-            Integer.parseInt(number);
+            Long.parseLong(number);
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(NOT_NUMBER);
             throw new IllegalArgumentException(NOT_NUMBER);
+        }
+    }
+
+    public static void validPriceRange(String number) {
+        long num = Long.parseLong(number);
+        if (num <= PRICE_MIN || num > PRICE_MAX) {
+            System.out.println(NOT_PRICE_RANGE);
+            throw new IllegalArgumentException(NOT_PRICE_RANGE);
         }
     }
 }

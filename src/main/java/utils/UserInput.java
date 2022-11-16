@@ -14,6 +14,7 @@ public class UserInput {
         System.out.println(INPUT_PRICE_MESSAGE);
         String price = Console.readLine();
         Validation.validIsDigit(price);
+        Validation.validPriceRange(price);
         validMoneyUnit(Integer.parseInt(price));
         return Integer.parseInt(price);
     }

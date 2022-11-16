@@ -9,4 +9,6 @@ public class Constant {
     public static final int MONEY_UNIT = 1000;
     public static final int REMAINDER_ZERO = 0;
     public static final int FIVE_MATCH_COUNT = 5;
+    public static final int PRICE_MIN = 0;
+    public static final int PRICE_MAX = 2000000000;
 }
