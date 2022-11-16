@@ -37,7 +37,6 @@ public class InputValidate {
     public void validateBonusNumberNotDuplicate(List<Integer> winningNums, String bonusNumber) {
         int num = Integer.valueOf(bonusNumber);
         if (winningNums.contains(bonusNumber)) {
-            System.out.println(ERROR_MESSAGE_DUPLICATE_WITH_WINNING);
             throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATE_WITH_WINNING);
         }
     }
@@ -45,7 +44,6 @@ public class InputValidate {
     private void validateElementCount(String input) {
         String[] inputNums = input.split(",");
         if (inputNums.length != 6) {
-            System.out.println(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
         }
     }
@@ -55,7 +53,6 @@ public class InputValidate {
 
         for (String num : inputNums) {
             if (!isNumber(num)) {
-                System.out.println(ERROR_MESSAGE_NOT_INT_BETWEEN_COMMA);
                 throw new IllegalArgumentException(ERROR_MESSAGE_NOT_INT_BETWEEN_COMMA);
             }
         }
@@ -68,7 +65,6 @@ public class InputValidate {
         Collections.addAll(set, inputNums);
 
         if (set.size() != 6) {
-            System.out.println(ERROR_MESSAGE_NUMBER_DUPLICATE);
             throw new IllegalArgumentException(ERROR_MESSAGE_NUMBER_DUPLICATE);
         }
     }
@@ -84,14 +80,12 @@ public class InputValidate {
     private void validateNumberRange(String input) {
         int number = Integer.parseInt(input);
         if (!(number >= 1 && number <= 45)) {
-            System.out.println(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
         }
     }
 
     private void validateIsNumber(String input) {
         if (!isNumber(input)) {
-            System.out.println(ERROR_MESSAGE_NOT_INT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_INT);
         }
     }
@@ -99,11 +93,9 @@ public class InputValidate {
     private void validateIsProperAmount(String input) {
         int amount = Integer.parseInt(input);
         if (amount < 1000) {
-            System.out.println(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
         }
         if (amount % 1000 != 0) {
-            System.out.println(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
         }
     }

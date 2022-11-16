@@ -24,7 +24,6 @@ public class Lotto {
 
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
         }
     }
@@ -32,7 +31,6 @@ public class Lotto {
         HashSet set = new HashSet();
         set.addAll(numbers);
         if (set.size() != 6) {
-            System.out.println(ERROR_MESSAGE_NUMBER_DUPLICATE);
             throw new IllegalArgumentException(ERROR_MESSAGE_NUMBER_DUPLICATE);
         }
     }
