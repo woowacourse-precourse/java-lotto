@@ -1,10 +1,9 @@
 package lotto;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static java.util.Map.entry;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;

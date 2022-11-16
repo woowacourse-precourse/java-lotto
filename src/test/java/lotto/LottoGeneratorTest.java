@@ -1,7 +1,7 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;

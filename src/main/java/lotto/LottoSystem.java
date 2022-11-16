@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 public class LottoSystem {
     public static final int LOTTO_PRICE = 1_000;
 
