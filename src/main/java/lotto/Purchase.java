@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Purchase {
-    private final int payment;
-    private final int pricePerTicket = 1_000;
-    public int ticketAmount;
-    public List<List<Integer>> ticketList;
+    private final int PRICE_PER_TICKET = 1_000;
+    public final int payment;
+    public final int ticketAmount;
+    public final List<List<Integer>> ticketList;
 
     public Purchase(int payment) {
         validate(payment);
@@ -26,7 +26,7 @@ public class Purchase {
     }
 
     private int getTicketAmount(int payment) {
-        ticketAmount = payment / this.pricePerTicket;
+        int ticketAmount = payment / this.PRICE_PER_TICKET;
         return ticketAmount;
     }
 
