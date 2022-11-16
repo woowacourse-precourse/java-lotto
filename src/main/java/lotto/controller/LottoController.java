@@ -13,19 +13,23 @@ public class LottoController {
     }
 
     public void start() {
-        int price = InputView.getPrice();
+        try {
+            int price = InputView.getPrice();
 
-        OutputView.displayNumberOfTickets(
-            lottoService.publishTickets(price)
-        );
+            OutputView.displayNumberOfTickets(
+                lottoService.publishTickets(price)
+            );
 
-        OutputView.displayStatistics(
-            lottoService.getWinningStatistics(
-                InputView.getNumbers(),
-                InputView.getBonusNumber()));
+            OutputView.displayStatistics(
+                lottoService.getWinningStatistics(
+                    InputView.getNumbers(),
+                    InputView.getBonusNumber()));
 
-        OutputView.displayIncomeRatio(
-            lottoService.getRateOfReturn(price)
-        );
+            OutputView.displayIncomeRatio(
+                lottoService.getRateOfReturn(price)
+            );
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

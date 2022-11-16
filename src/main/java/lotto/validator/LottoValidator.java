@@ -23,31 +23,31 @@ public class LottoValidator {
         numbers.forEach(LottoValidator::validateNumber);
     }
 
-    private static void validateSize(final List<Integer> numbers) {
+    private static void validateSize(final List<Integer> numbers)
+        throws IllegalArgumentException {
+
         if (numbers.size() != MAX_NUMBERS_SIZE) {
-            System.out.println(INVALID_SIZE.message());
             throw new IllegalArgumentException(
                 INVALID_SIZE.message());
         }
     }
 
-    private static void validateDuplicate(final List<Integer> numbers) {
-        Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
+    private static void validateDuplicate(final List<Integer> numbers)
+        throws IllegalArgumentException {
 
+        Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
         if (nonDuplicateNumbers.size() != numbers.size()) {
-            System.out.println(DUPLICATED_NUMBERS.message());
             throw new IllegalArgumentException(
-                DUPLICATED_NUMBERS.message()
-            );
+                DUPLICATED_NUMBERS.message());
         }
     }
 
-    static void validateNumber(final int number) {
+    static void validateNumber(final int number)
+        throws IllegalArgumentException {
+
         if (isOutOfBound(number)) {
-            System.out.println(INVALID_RANGE.message());
             throw new IllegalArgumentException(
-                INVALID_RANGE.message()
-            );
+                INVALID_RANGE.message());
         }
     }
 
@@ -56,14 +56,12 @@ public class LottoValidator {
     }
 
     public static void validateBonusNumber(final int bonus,
-        final List<Integer> winningNumbers) {
+        final List<Integer> winningNumbers) throws IllegalArgumentException {
 
         validateNumber(bonus);
         if (winningNumbers.contains(bonus)) {
-            System.out.println(DUPLICATE_BONUS.message());
             throw new IllegalArgumentException(
-                DUPLICATE_BONUS.message()
-            );
+                DUPLICATE_BONUS.message());
         }
     }
 }

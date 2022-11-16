@@ -4,24 +4,21 @@ import static lotto.validator.ErrorMessage.DIVISIBLE_WITH_THOUSAND;
 import static lotto.validator.ErrorMessage.NOT_ENOUGH_MONEY;
 import static lotto.validator.ErrorMessage.INVALID_FORMAT;
 
-import java.util.NoSuchElementException;
-
-
 public class InputValidationUtils {
 
     private static final int MIN_PRICE = 1000;
 
     public static void validatePrice(final int price) {
-        validateDivisible(price);
         validateRange(price);
+        validateDivisible(price);
     }
 
-    private static void validateDivisible(final int price) {
+    private static void validateDivisible(final int price)
+        throws IllegalArgumentException {
+
         if (!isDivisibleWithThousand(price)) {
-            System.out.println(DIVISIBLE_WITH_THOUSAND.message());
             throw new IllegalArgumentException(
-                DIVISIBLE_WITH_THOUSAND.message()
-            );
+                DIVISIBLE_WITH_THOUSAND.message());
         }
     }
 
@@ -29,12 +26,17 @@ public class InputValidationUtils {
         return price != 0 && price % MIN_PRICE == 0;
     }
 
-    private static void validateRange(final int price) {
-        if (price < MIN_PRICE) {
-            System.out.println(NOT_ENOUGH_MONEY.message());
+    private static void validateRange(final int price)
+        throws IllegalArgumentException {
+
+        if (isOutOfLowerBound(price)) {
             throw new IllegalArgumentException(
                 NOT_ENOUGH_MONEY.message());
         }
+    }
+
+    private static boolean isOutOfLowerBound(final int price) {
+        return price < MIN_PRICE;
     }
 
     public static void validateNumbers(final String[] splitNumbers) {
@@ -43,10 +45,12 @@ public class InputValidationUtils {
         }
     }
 
-    public static void validateFormat(final String input) {
+    public static void validateFormat(final String input)
+        throws IllegalArgumentException {
+
         if (!isNumber(input)) {
-            System.out.println(INVALID_FORMAT.message());
-            throw new NoSuchElementException();
+            throw new IllegalArgumentException(
+                INVALID_FORMAT.message());
         }
     }
 

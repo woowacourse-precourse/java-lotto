@@ -1,6 +1,5 @@
 package lotto.utils;
 
-import java.util.NoSuchElementException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,7 +25,7 @@ public class InputValidationUtilsTest {
     void validateFormat_입력된_문자열이_숫자로만_이루어져_있는지_검증(final String input) {
         Assertions.assertThatThrownBy(
             () -> InputValidationUtils.validateFormat(input)
-        ).isInstanceOf(NoSuchElementException.class);
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력된 당첨 번호가 유효한지 검증할 수 있다.")
@@ -37,6 +36,6 @@ public class InputValidationUtilsTest {
 
         Assertions.assertThatThrownBy(
             () -> InputValidationUtils.validateNumbers(splitNumbers)
-        ).isInstanceOf(NoSuchElementException.class);
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 }
