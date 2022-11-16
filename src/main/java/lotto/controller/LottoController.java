@@ -25,12 +25,16 @@ public class LottoController {
     }
 
     public void run() {
-        Wallet wallet = createWallet();
-        LottoTickets lottoTickets = buyLottoTickets(wallet);
+        try {
+            Wallet wallet = createWallet();
+            LottoTickets lottoTickets = buyLottoTickets(wallet);
 
-        WinningNumbers winningNumbers = createWinningNumbers();
-        LottoResult lottoResult = createLottoResult(lottoTickets, winningNumbers);
-        displayResult(lottoResult, wallet);
+            WinningNumbers winningNumbers = createWinningNumbers();
+            LottoResult lottoResult = createLottoResult(lottoTickets, winningNumbers);
+            displayResult(lottoResult, wallet);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private LottoTickets buyLottoTickets(Wallet wallet) {
@@ -60,8 +64,6 @@ public class LottoController {
     }
 
     private LottoResult createLottoResult(LottoTickets lottoTickets, WinningNumbers winningNumbers) {
-        outputView.printLottoResultMessage();
-
         LottoResult lottoResult = lottoTickets.makeResult(winningNumbers);
 
         return lottoResult;
@@ -78,7 +80,6 @@ public class LottoController {
     }
 
     private void displayResult(LottoResult lottoResult, Wallet wallet) {
-        outputView.printLottoResultMessage();
         outputView.printResult(lottoResult.getResult(), lottoResult.calculateYield(wallet));
     }
 
