@@ -1,5 +1,11 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import Controller.GameController;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +20,29 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static Lotto get() {
+        ArrayList<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(lotto);
     }
 
-    // TODO: 추가 기능 구현
+    public int get_hitCount(List<Integer> winning_numbers) {
+        int hit_Count = 0;
+        for (int checkNumber : numbers) {
+            if (winning_numbers.contains(checkNumber)) hit_Count++;
+        }
+        return hit_Count;
+    }
+
+    public boolean bonus_hit(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    public void printNumbers() {
+        System.out.print(numbers.toString());
+
+    }
 }
