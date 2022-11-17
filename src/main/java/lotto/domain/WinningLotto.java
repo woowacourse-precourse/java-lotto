@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static lotto.common.exception.ErrorMessage.*;
 import static lotto.domain.Lotto.*;
+import static lotto.domain.constant.LottoConstant.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,13 +14,19 @@ public class WinningLotto {
 	public static void createWinningLotto(String winningLottoString) {
 		validateLottoString(winningLottoString);
 		parseLotto(winningLottoString);
+		validateLottoSize(winningLotto);
 		validateLottoNumbers(winningLotto);
 		validateDuplicate(winningLotto);
 	}
 
+	private static void validateLottoSize(List<Integer> winningLotto) {
+		if (winningLotto.size() != VALID_LOTTO_NUMBER_SIZE) {
+			throw new IllegalArgumentException(NOT_VALID_WINNING_LOTTO_SIZE);
+		}
+	}
+
 	private static void validateLottoString(String winningLottoString) {
 		validateLottoStringIsNull(winningLottoString);
-		validateLottoStringSize(winningLottoString);
 		validateLottoStringIsNumber(winningLottoString);
 	}
 
@@ -35,11 +42,12 @@ public class WinningLotto {
 		}
 	}
 
-	private static void validateLottoStringSize(String winningLottoString) {
-		if (winningLottoString.split(",").length != 6) {
-			throw new IllegalArgumentException(NOT_VALID_WINNING_LOTTO_SIZE);
-		}
-	}
+	//@deprecated
+	// private static void validateLottoStringSize(String winningLottoString) {
+	// 	if (winningLottoString.split(",").length != 6) {
+	// 		throw new IllegalArgumentException(NOT_VALID_WINNING_LOTTO_SIZE);
+	// 	}
+	// }
 
 	private static void validateLottoStringIsNumber(String winningLottoString) {
 		for (String number : winningLottoString.split(",")) {
