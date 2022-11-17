@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -50,6 +51,70 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 구입금액_숫자테스트() {
+        assertSimpleTest(() -> {
+            runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 구입금액_1000원단위테스트() {
+        assertSimpleTest(() -> {
+            runException("1100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 구입금액_0원테스트() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_중복테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_길이테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_범위테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "0,1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스번호_중복테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스번호_범위테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "0");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

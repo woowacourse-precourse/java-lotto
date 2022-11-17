@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -11,9 +13,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        Valid.hasCorrectRangeNumber(numbers);
+        Valid.hasDuplicateNumber(numbers);
+        Valid.hasCorrectSizeLotto(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     // TODO: 추가 기능 구현
