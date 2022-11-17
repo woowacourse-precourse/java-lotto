@@ -10,12 +10,14 @@ public class LottoMachine {
     public static final int MAX_LOTTO_NUM = 45;
     public static final int QUANTITY_OF_LOTTO_DIGITS = 6;
 
-    public Lotto generateLotto() {
-        List<Integer> winningNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, QUANTITY_OF_LOTTO_DIGITS);
-
+    public Lotto generateLotto(List<Integer> winningNumbers) {
         OutputView outputView = new OutputView();
         outputView.printWinningNumbers(winningNumbers);
 
         return new Lotto(winningNumbers);
+    }
+
+    public List<Integer> generateLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, QUANTITY_OF_LOTTO_DIGITS);
     }
 }

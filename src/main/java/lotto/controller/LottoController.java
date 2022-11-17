@@ -67,7 +67,8 @@ public class LottoController {
         LottoMachine lottoMachine = new LottoMachine();
 
         for (int repeatCnt = 0; repeatCnt < amountOfLotto; repeatCnt++) {
-            Lotto lotto = lottoMachine.generateLotto();
+            List<Integer> lottoNumbers = lottoMachine.generateLottoNumbers();
+            Lotto lotto = lottoMachine.generateLotto(lottoNumbers);
             lottos.add(lotto);
         }
     }
