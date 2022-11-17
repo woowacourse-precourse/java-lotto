@@ -43,7 +43,7 @@ public class UserService {
             double money = Double.parseDouble(input);
             user.setMoney(money);
         } catch (IllegalArgumentException illegalArgumentException) {
-            OutputUtil.printInputWinningNumbersError();
+            OutputUtil.printInputPurchaseAmountError();
             throw illegalArgumentException;
         }
     }

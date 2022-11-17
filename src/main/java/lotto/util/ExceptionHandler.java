@@ -13,7 +13,14 @@ public class ExceptionHandler {
         try {
             int inputNumber = Integer.parseInt(input);
             checkThousandUnit(inputNumber);
+            checkOverThousand(inputNumber);
         } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkOverThousand(int input) throws IllegalArgumentException {
+        if (input < ConstantValue.THOUSAND) {
             throw new IllegalArgumentException();
         }
     }
