@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoResult {
-    public static final int PERCENTAGE_CONVERTER = 100;
-    public static final int NO_AMOUNT = 0;
-    public static final int DEFAULT_COUNT = 0;
-    public static final int ADD_COUNT = 1;
+    private static final int PERCENTAGE_CONVERTER = 100;
+    private static final int NO_AMOUNT = 0;
+    private static final int DEFAULT_COUNT = 0;
+    private static final int ADD_COUNT = 1;
 
     private final Map<Rank, Integer> lottoResult;
 
@@ -40,7 +40,7 @@ public class LottoResult {
     }
 
     private int getPayment() {
-        return calculateQuantity() * Price.lotto;
+        return calculateQuantity() * Lotto.PRICE;
     }
 
     private int calculateQuantity() {

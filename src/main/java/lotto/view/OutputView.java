@@ -20,16 +20,16 @@ public class OutputView {
     public static final String INFORM_SAME_BONUS_NUMBER = ", 보너스 볼 일치";
     public static final String STATISTIC_SEPARATOR = " - ";
 
-    public static void informPurchaseCount(Lottos lottos) {
+    public void informPurchaseCount(Lottos lottos) {
         int count = lottos.countTotal();
         System.out.println(String.format(INFORM_PURCHASE_COUNT, count));
     }
 
-    public static void printIssuedLottos(Lottos lottos) {
+    public void printIssuedLottos(Lottos lottos) {
         System.out.println(lottos);
     }
 
-    public static void printWinningOverview(Lottos lottos, WinningLotto winningLotto) {
+    public void printWinningOverview(Lottos lottos, WinningLotto winningLotto) {
         LottoResult lottoResult = lottos.countNumberOfWins(winningLotto);
         double profit = lottoResult.calculateProfitRate();
 
@@ -38,21 +38,22 @@ public class OutputView {
         printProfit(profit);
     }
 
-    private static void printProfit(double profit) {
-        System.out.print(String.format(INFORM_PROFIT, profit));
+    private void printOverViewIntro() {
+        System.out.println(WINNING_OVERVIEW_INTRO);
+        System.out.println(DIVIDING_LINE);
     }
-    
-    private static void printTotalResults(LottoResult lottoResult) {
+
+    private void printTotalResults(LottoResult lottoResult) {
         Arrays.stream(Rank.values())
-                .filter(rank -> rank.win())
+                .filter(Rank::win)
                 .forEach(rank -> printResult(lottoResult, rank));
     }
 
-    private static void printResult(LottoResult lottoResult, Rank rank) {
+    private void printResult(LottoResult lottoResult, Rank rank) {
         System.out.println(getResultMessage(lottoResult, rank));
     }
 
-    private static String getResultMessage(LottoResult lottoResult, Rank rank) {
+    private String getResultMessage(LottoResult lottoResult, Rank rank) {
         StringBuilder message = new StringBuilder();
 
         message.append(String.format(INFORM_MATCHING_COUNT, rank.getCountOfMatches()));
@@ -66,9 +67,8 @@ public class OutputView {
         return message.toString();
     }
 
-    private static void printOverViewIntro() {
-        System.out.println(WINNING_OVERVIEW_INTRO);
-        System.out.println(DIVIDING_LINE);
+    private void printProfit(double profit) {
+        System.out.printf(INFORM_PROFIT, profit);
     }
 
     public static void printErrorMessage(IllegalArgumentException error) {

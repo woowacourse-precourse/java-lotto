@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Money;
 import lotto.utils.ErrorMessage;
 
 import java.util.Arrays;
@@ -11,17 +12,17 @@ public class InputView {
     public static final String SEPARATOR = ",";
     public static final int VALID_SIZE = 6;
 
-    public static int insertMoney() {
+    public static Money insertMoney() {
         GuidanceMessage.informToInsertMoney();
         String money = Console.readLine();
         validateMoney(money);
 
-        return Integer.parseInt(money);
+        return new Money(Integer.parseInt(money));
     }
 
     private static void validateMoney(String money) {
-        if (money.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.IS_EMPTY);
+        if (money.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_BLANK);
         }
         if (containsNonNumeric(money)) {
             throw new IllegalArgumentException(ErrorMessage.CONTAINS_NON_NUMERIC_VALUES);
@@ -41,8 +42,8 @@ public class InputView {
     }
 
     private static void validateWinningNumbers(String numbersWithSeparator) {
-        if (numbersWithSeparator.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.IS_EMPTY);
+        if (numbersWithSeparator.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_BLANK);
         }
         if (hasInvalidSize(numbersWithSeparator.split(SEPARATOR))) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE);

@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.Money;
 import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -9,17 +10,19 @@ import lotto.view.OutputView;
 import java.util.List;
 
 public class LottoMachine {
+    private final OutputView outputView;
+
+    public LottoMachine() {
+        outputView = new OutputView();
+    }
+
     public void run() {
         Lottos purchasedLotto = purchaseLottos();
         printInformationOf(purchasedLotto);
 
         WinningLotto winningLotto = getWinningLotto();
 
-        OutputView.printWinningOverview(purchasedLotto, winningLotto);
-    }
-
-    private static int getBonusNumber() {
-        return InputView.insertBonusNumber();
+        outputView.printWinningOverview(purchasedLotto, winningLotto);
     }
 
     private static WinningLotto getWinningLotto() {
@@ -30,13 +33,13 @@ public class LottoMachine {
         return WinningLotto.of(lotto, bonusNumber);
     }
 
-    private static void printInformationOf(Lottos lottos) {
-        OutputView.informPurchaseCount(lottos);
-        OutputView.printIssuedLottos(lottos);
+    private void printInformationOf(Lottos lottos) {
+        outputView.informPurchaseCount(lottos);
+        outputView.printIssuedLottos(lottos);
     }
 
     private static Lottos purchaseLottos() {
-        int money = InputView.insertMoney();
+        Money money = InputView.insertMoney();
 
         return Lottos.purchaseFor(money);
     }
