@@ -25,7 +25,7 @@ public class LottoMachine {
         outputView.printWinningOverview(purchasedLotto, winningLotto);
     }
 
-    private static Lottos purchaseLottos() {
+    private Lottos purchaseLottos() {
         Money money = InputView.insertMoney();
 
         return Lottos.purchaseFor(money);
@@ -36,7 +36,7 @@ public class LottoMachine {
         outputView.printIssuedLottos(lottos);
     }
 
-    private static WinningLotto getWinningLotto() {
+    private WinningLotto getWinningLotto() {
         List<Integer> winningNumbers = InputView.insertWinningNumbers();
         Lotto lotto = Lotto.of(winningNumbers);
         int bonusNumber = InputView.insertBonusNumber();
