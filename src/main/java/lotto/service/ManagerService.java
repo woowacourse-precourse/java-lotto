@@ -10,7 +10,9 @@ import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class ManagerService {
 
@@ -63,22 +65,20 @@ public class ManagerService {
     }
 
     public Rank judgeRank(int correctCount, boolean isCorrectBonus) {
-        if (correctCount == ConstantValue.THREE) {
-            return Rank.FIFTH;
+        if (correctCount <= 2) {
+            return Rank.MISS;
         }
-        if (correctCount == ConstantValue.FOUR) {
-            return Rank.FOURTH;
+
+        Rank[] rankValues = Rank.values();
+        Rank result = Arrays.stream(rankValues)
+                .filter(rank -> rank.getCorrectCount() == correctCount)
+                .findFirst()
+                .get();
+
+        if (result == Rank.THIRD && isCorrectBonus) {
+            return Rank.SECOND;
         }
-        if (correctCount == ConstantValue.FIVE) {
-            if (isCorrectBonus) {
-                return Rank.SECOND;
-            }
-            return Rank.THIRD;
-        }
-        if (correctCount == ConstantValue.SIX) {
-            return Rank.FIRST;
-        }
-        return Rank.ZERO;
+        return result;
     }
 
 }

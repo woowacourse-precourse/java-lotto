@@ -60,9 +60,9 @@ class ManagerServiceTest {
     @Test
     void judgeRankTest() {
         assertAll(
-            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(Rank.ZERO),
-            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(Rank.ZERO),
-            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(Rank.ZERO),
+            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(Rank.MISS),
+            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(Rank.MISS),
+            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(Rank.MISS),
             () -> assertThat(managerService.judgeRank(3, true)).isEqualTo(Rank.FIFTH),
             () -> assertThat(managerService.judgeRank(4, true)).isEqualTo(Rank.FOURTH),
             () -> assertThat(managerService.judgeRank(5, false)).isEqualTo(Rank.THIRD),
