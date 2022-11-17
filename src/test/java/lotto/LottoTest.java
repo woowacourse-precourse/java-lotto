@@ -48,6 +48,16 @@ class LottoTest {
         assertThat(Comparison.compareNumbers(winningNumbers, myLottos, bonusNumber).equals(result));
     }
     
+    @DisplayName("intializeResult()")
+    @Test
+    void intializeResult() {
+    	
+    	int numberOfTimes = Constant.LOTTO_NUMBERS_LENGTH.value + 2;
+    	List<Integer> result = new ArrayList<Integer>(Arrays.asList(numberOfTimes));
+    	
+        assertThat(Comparison.intializeResult().equals(result));
+    }
+    
     @DisplayName("countCorrectNumbers()")
     @Test
     void countCorrectNumbers() {
@@ -58,15 +68,15 @@ class LottoTest {
         assertThat(Comparison.countCorrectNumbers(winningNumbers, myLotto) == 6);
     }
     
-    @DisplayName("updateLottoResult()")
+    @DisplayName("increaseNumberOfTimes()")
     @Test
-    void updateLottoResult() {
+    void increaseNumberOfTimes() {
     	
     	int index = 7;
     	List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
     	List<Integer> _result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 1));
     	
-        assertThat(Comparison.updateLottoResult(result, index).equals(_result));
+        assertThat(Comparison.increaseNumberOfTimes(result, index).equals(_result));
     }
     
     @DisplayName("getLottoResultMessage()")
