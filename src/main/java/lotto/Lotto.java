@@ -29,9 +29,9 @@ public class Lotto {
     }
 
     public List<Integer> sortedNumbers() {
-        List<Integer> copiedList = new ArrayList<>(numbers);
-        Collections.sort(copiedList);
-        return copiedList;
+        List<Integer> copiedNumbers = new ArrayList<>(numbers);
+        Collections.sort(copiedNumbers);
+        return copiedNumbers;
     }
 
     private void validate(List<Integer> numbers) {
