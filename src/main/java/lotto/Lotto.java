@@ -49,10 +49,14 @@ public class Lotto {
 
     private void validateRangeOfNumbers(List<Integer> numbers) {
         numbers.forEach(number -> {
-            if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            if (isOutOfRange(number)) {
                 throw new IllegalArgumentException(NUMBERS_OUT_OF_RANGE);
             }
         });
+    }
+
+    private boolean isOutOfRange(Integer number) {
+        return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 
     private void validateInputSize(List<Integer> numbers) {
