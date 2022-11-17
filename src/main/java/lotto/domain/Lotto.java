@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Lotto {
-	public static final Map<Integer, Integer> numberCache = new HashMap<>();
+	public static final Map<Integer, Integer> validNumberChecker = new HashMap<>();
 	private final List<Integer> numbers;
 
 	static {
 		for (int i = MIN_LOTTO_NUMBER; i <= MAX_LOTTO_NUMBER; i++) {
-			numberCache.put(i, i);
+			validNumberChecker.put(i, i);
 		}
 	}
 
@@ -40,7 +40,7 @@ public class Lotto {
 
 	public static void validateLottoNumbers(List<Integer> numbers) {
 		for (int number : numbers) {
-			if (!numberCache.containsKey(number)) {
+			if (!validNumberChecker.containsKey(number)) {
 				throw new IllegalArgumentException(NOT_VALID_NUMBER);
 			}
 		}

@@ -95,7 +95,7 @@ public class WinningLotto {
 	}
 
 	private static void validateInputRange(int number) {
-		if (!numberCache.containsKey(number)) {
+		if (!validNumberChecker.containsKey(number)) {
 			throw new IllegalArgumentException(NOT_VALID_NUMBER);
 		}
 	}
