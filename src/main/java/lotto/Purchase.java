@@ -40,8 +40,7 @@ public class Purchase {
     }
 
     private static List<Integer> getTicket() {
-        List<Integer> ticket;
-        ticket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> ticket = new ArrayList<Integer>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         ticket.sort(Comparator.naturalOrder());
         return ticket;
     }
