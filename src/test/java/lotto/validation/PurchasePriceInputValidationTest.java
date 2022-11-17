@@ -27,4 +27,11 @@ public class PurchasePriceInputValidationTest {
         assertThatThrownBy(() -> purchasePriceInputValidation.validateDividedByThousand(8500))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입금액이 1000원 이하일 경우, 예외가 발생한다.")
+    @Test
+    void validateAmountOverThousandTest() {
+        assertThatThrownBy(() -> purchasePriceInputValidation.validateAmountOverThousand(800))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
