@@ -12,15 +12,16 @@ public class IOController {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int buyingMoney;
-        try {
-            buyingMoney = Integer.parseInt(input);
+        try { buyingMoney = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("로또 구입 금액은 숫자입니다.");
+        }
+        if(buyingMoney < 0 || buyingMoney > MoneyConstant.MAX_LOTTO_PRIC.getValue()){
+            throw new IllegalArgumentException("로또 구입 금액은 0원이상 2,000,000,000원 이하입니다.");
         }
         if (buyingMoney % 1000 != 0) {
             throw new IllegalArgumentException("로또 구입 금액은 1000원 단위입니다.");
         }
-        if(buyingMoney >= 0 && buyingMoney <= MoneyConstant.MAX_LOTTO_PRIC.getValue())
         return buyingMoney / 1000;
     }
 
