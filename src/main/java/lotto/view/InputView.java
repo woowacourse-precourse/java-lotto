@@ -24,6 +24,7 @@ public class InputView {
         purchasePriceInputValidation.validateConsistedOnlyOfNumbers(inputPurchasePrice);
 
         int purchasePrice = Integer.parseInt(inputPurchasePrice);
+        purchasePriceInputValidation.validate(purchasePrice);
         return purchasePrice;
     }
 

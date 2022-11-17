@@ -3,6 +3,7 @@ package lotto.validation;
 public enum ErrorMessage {
     INPUT_PURCHASE_PRICE_IN_INTEGERS("구입금액은 숫자로만 입력해야 합니다."),
     PURCHASE_PRICE_DIVIDED_BY_THOUSAND("구입금액은 1000으로 나누어떨어져야 합니다."),
+    PURCHASE_PRICE_OVER_THOUSAND("구입금액은 1000원 이상이여야 합니다."),
     QUANTITY_OF_DIGITS_SIX("번호의 개수는 6개여야 합니다."),
     NO_DUPLICATE_NUMBERS("중복된 번호는 입력할 수 없습니다."),
     NUMBERS_RANGE_BETWEEN_ONE_AND_FOURTYFIVE("번호의 범위는 1이상 45이하여야 합니다."),

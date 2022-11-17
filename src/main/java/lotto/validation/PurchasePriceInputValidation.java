@@ -13,9 +13,20 @@ public class PurchasePriceInputValidation {
         }
     }
 
+    public void validate(int purchasePrice) {
+        validateDividedByThousand(purchasePrice);
+        validateAmountOverThousand(purchasePrice);
+    }
+
     public void validateDividedByThousand(int purchasePrice) {
         if (purchasePrice % PRICE_OF_LOTTO != 0) {
             throw new IllegalArgumentException(PURCHASE_PRICE_DIVIDED_BY_THOUSAND.getMessage());
+        }
+    }
+
+    public void validateAmountOverThousand(int purchasePrice) {
+        if (purchasePrice < 1000) {
+            throw new IllegalArgumentException(PURCHASE_PRICE_OVER_THOUSAND.getMessage());
         }
     }
 }
