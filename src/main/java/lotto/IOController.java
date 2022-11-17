@@ -20,6 +20,7 @@ public class IOController {
         if (buyingMoney % 1000 != 0) {
             throw new IllegalArgumentException("로또 구입 금액은 1000원 단위입니다.");
         }
+        if(buyingMoney >= 0 && buyingMoney <= MoneyConstant.MAX_LOTTO_PRIC.getValue())
         return buyingMoney / 1000;
     }
 
