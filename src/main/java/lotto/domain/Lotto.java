@@ -28,7 +28,7 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		validateLength(numbers);
-		validateLottoNumbers(numbers);
+		validateIsValidLottoNumbers(numbers);
 		validateDuplicate(numbers);
 	}
 
@@ -38,7 +38,7 @@ public class Lotto {
 		}
 	}
 
-	public static void validateLottoNumbers(List<Integer> numbers) {
+	public static void validateIsValidLottoNumbers(List<Integer> numbers) {
 		for (int number : numbers) {
 			if (!validNumberChecker.containsKey(number)) {
 				throw new IllegalArgumentException(NOT_VALID_NUMBER);
