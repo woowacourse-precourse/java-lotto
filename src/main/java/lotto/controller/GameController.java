@@ -4,32 +4,31 @@ import java.util.List;
 import lotto.model.Result;
 import lotto.model.User;
 import lotto.model.Validator;
-import lotto.view.GameView;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class GameController {
 
-    private GameView gameConsole;
     private User user;
-    private Result result = new Result();
+    private Result result;
 
     public GameController() {
-        gameConsole = new GameView();
+        result = new Result();
     }
 
     public void run() {
-        int purchase = gameConsole.inputPurchase();
+        int purchase = InputView.inputPurchase();
         user = new User(purchase);
 
-        gameConsole.printLottos(user.getLottoCount(), user.getLottos());
+        OutputView.printLottos(user.getLottoCount(), user.getLottos());
 
-        List<Integer> winningNumbers = gameConsole.inputWinningNumber();
-        int bonusNumber = gameConsole.inputBonusNumber();
+        List<Integer> winningNumber = InputView.inputWinningNumber();
+        int bonusNumber = InputView.inputBonusNumber();
 
-        Validator.validateDuplication(winningNumbers, bonusNumber);
-        
-        result.matchLotto(winningNumbers, user.getLottos(), bonusNumber);
-        result.initWinningAmount(purchase);
+        Validator.validateDuplication(winningNumber, bonusNumber);
 
-        gameConsole.printResult(result);
+        result.matchLotto(winningNumber, user.getLottos(), bonusNumber);
+
+        OutputView.printResult(result);
     }
 }
