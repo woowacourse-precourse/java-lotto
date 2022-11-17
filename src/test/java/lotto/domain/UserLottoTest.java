@@ -20,7 +20,8 @@ class UserLottoTest {
     @ParameterizedTest(name = "[{index}] {0}, {1}")
     @CsvSource({"1000a,'[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.'",
             "-1000, '[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.'",
-            "1200, '[ERROR] 복권 구입 금액은 1000 으로 나누어 떨어져야 합니다.'"})
+            "1200, '[ERROR] 복권 구입 금액은 1000 으로 나누어 떨어져야 합니다.'",
+            "0, '[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.'"})
     void lottoAmountExceptionTest(String lottoAmount, String errorMessage) {
         assertThatThrownBy(() -> new UserLotto(lottoAmount))
                 .isInstanceOf(IllegalArgumentException.class)

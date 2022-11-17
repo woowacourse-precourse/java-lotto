@@ -19,7 +19,7 @@ public class UserLotto {
 
     private void validateIsNumeric(String lottoAmount) throws IllegalArgumentException {
         for (char c : lottoAmount.toCharArray()) {
-            if (!(0 <= c - '0' && c - '0' <= 9)) {
+            if (!(0 <= c - '0' && c - '0' <= 9) || lottoAmount.charAt(0) == '0') {
                 throw new IllegalArgumentException("[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.");
             }
         }
