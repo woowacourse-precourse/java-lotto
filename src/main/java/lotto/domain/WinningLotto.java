@@ -15,7 +15,7 @@ public class WinningLotto {
 		validateLottoString(winningLottoString);
 		parseLotto(winningLottoString);
 		validateLottoSize(winningLotto);
-		validateLottoNumbers(winningLotto);
+		validateIsValidLottoNumbers(winningLotto);
 		validateDuplicate(winningLotto);
 	}
 
