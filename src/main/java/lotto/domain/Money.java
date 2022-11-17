@@ -9,11 +9,11 @@ public class Money {
 	private static int money;
 
 	public static void from(String moneyString) {
-		validateMoney(moneyString);
-		setPurchaseAmount(Integer.parseInt(moneyString));
+		int money = validateMoney(moneyString);
+		setPurchaseAmount(money);
 	}
 
-	private static void validateMoney(String moneyString) {
+	private static int validateMoney(String moneyString) {
 		validateIsNull(moneyString);
 		validateIsNumber(moneyString);
 
@@ -21,6 +21,8 @@ public class Money {
 
 		validateMoneyRange(money);
 		validateUnitOfMoney(money);
+
+		return money;
 	}
 
 	private static void setPurchaseAmount(int money) {
