@@ -13,7 +13,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) throws IllegalArgumentException {
-        validate(numbers);
+        validateNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -21,20 +21,8 @@ public class Lotto {
         return numbers;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[");
-        for (int index = 0; index < this.numbers.size() - 1; index++) {
-            stringBuilder.append(numbers.get(index));
-            stringBuilder.append(", ");
-        }
-        stringBuilder.append(numbers.get(numbers.size() - 1));
-        stringBuilder.append("]");
-        return stringBuilder.toString();
-    }
 
-    private void validate(List<Integer> numbers) throws IllegalArgumentException {
+    private void validateNumbers(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("로또 번호는 6개이여야 합니다.");
         }
@@ -63,4 +51,19 @@ public class Lotto {
         boolean matchBonusNumber = this.numbers.contains(winningLotto.getBonusNumber());
         return new MatchPair(matchNumbers, matchBonusNumber);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for (int index = 0; index < this.numbers.size() - 1; index++) {
+            stringBuilder.append(numbers.get(index));
+            stringBuilder.append(", ");
+        }
+        stringBuilder.append(numbers.get(numbers.size() - 1));
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+    }
+
+
 }
