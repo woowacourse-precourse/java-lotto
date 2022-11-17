@@ -6,15 +6,23 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        Validation.validateNumbers(numbers);
         this.numbers = numbers;
     }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    public void compareLotto(List<Integer> lotteries, int bonus) {
+        long count = 0;
+        boolean isBonus = numbers.contains(bonus);
+        for (int number : lotteries) {
+            if (numbers.contains(number)) {
+                count++;
+            }
         }
+        Calculator.calculateLottos(count, isBonus);
     }
 
-    // TODO: 추가 기능 구현
+    public void isBonusDuplicate(int bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException(ErrorMessage.INPUT_DUPLICATE.printError());
+        }
+    }
 }
