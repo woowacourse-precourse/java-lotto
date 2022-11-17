@@ -25,12 +25,10 @@ public class LottoMachine {
         outputView.printWinningOverview(purchasedLotto, winningLotto);
     }
 
-    private static WinningLotto getWinningLotto() {
-        List<Integer> winningNumbers = InputView.insertWinningNumbers();
-        Lotto lotto = Lotto.of(winningNumbers);
-        int bonusNumber = InputView.insertBonusNumber();
+    private static Lottos purchaseLottos() {
+        Money money = InputView.insertMoney();
 
-        return WinningLotto.of(lotto, bonusNumber);
+        return Lottos.purchaseFor(money);
     }
 
     private void printInformationOf(Lottos lottos) {
@@ -38,9 +36,11 @@ public class LottoMachine {
         outputView.printIssuedLottos(lottos);
     }
 
-    private static Lottos purchaseLottos() {
-        Money money = InputView.insertMoney();
+    private static WinningLotto getWinningLotto() {
+        List<Integer> winningNumbers = InputView.insertWinningNumbers();
+        Lotto lotto = Lotto.of(winningNumbers);
+        int bonusNumber = InputView.insertBonusNumber();
 
-        return Lottos.purchaseFor(money);
+        return WinningLotto.of(lotto, bonusNumber);
     }
 }
