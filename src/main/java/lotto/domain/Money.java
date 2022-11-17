@@ -3,6 +3,9 @@ package lotto.domain;
 import static lotto.common.exception.ErrorMessage.*;
 
 public class Money {
+	private static final int UNIT_OF_MONEY = 1000;
+	private static final int MIN_LOTTO_PRICE = 1000;
+
 	private static int money;
 
 	public static void from(String moneyString) {
@@ -39,13 +42,13 @@ public class Money {
 	}
 
 	private static void validateMoneyRange(int userInput) {
-		if (userInput < 1000) {
+		if (userInput < MIN_LOTTO_PRICE) {
 			throw new IllegalArgumentException(NOT_VALID_MONEY_RANGE);
 		}
 	}
 
 	private static void validateUnitOfMoney(int money) {
-		if (money % 1000 != 0) {
+		if (money % UNIT_OF_MONEY != 0) {
 			throw new IllegalArgumentException(NOT_VALID_UNIT_OF_MONEY);
 		}
 	}
