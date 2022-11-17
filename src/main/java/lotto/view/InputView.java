@@ -21,7 +21,7 @@ public class InputView {
         String inputPurchasePrice = Console.readLine();
 
         PurchasePriceInputValidation purchasePriceInputValidation = new PurchasePriceInputValidation();
-        purchasePriceInputValidation.validate(inputPurchasePrice);
+        purchasePriceInputValidation.validateConsistedOnlyOfNumbers(inputPurchasePrice);
 
         int purchasePrice = Integer.parseInt(inputPurchasePrice);
         return purchasePrice;
