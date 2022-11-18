@@ -19,11 +19,11 @@ public class WinningConsole {
     }
 
     private List<Integer> toIntegerList(String input) throws IllegalArgumentException {
-        String[] arr = input.split(",");
+        String[] inputArr = input.split(",");
         List<Integer> list = new ArrayList<>();
-        for (String s : arr) {
+        for (String each : inputArr) {
             try {
-                list.add(Integer.parseInt(s));
+                list.add(Integer.parseInt(each));
             } catch (Exception e) {
                 throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
             }
