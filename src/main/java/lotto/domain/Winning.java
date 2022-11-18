@@ -1,26 +1,34 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import lotto.constants.ErrorMessages;
+
 import java.util.List;
 
 public class Winning {
+    List<Integer> winningNumbers;
+    int bonus;
 
-    public WinningTable calMyScore(Lotto lotto, WinningLotto winningLotto) {
-        int correctedCount = compareNumbers(lotto, winningLotto);
-        boolean containsBonus = containsBonus(lotto, winningLotto);
+    public Winning(List<Integer> winningNumbers, int bonus) {
+        this.winningNumbers = winningNumbers;
+        this.bonus = bonus;
+        validateBonus();
+    }
+
+    public WinningTable calMyScore(Lotto lotto) {
+        int correctedCount = lotto.matchCount(winningNumbers);
+        boolean containsBonus = lotto.containsBonus(bonus);
 
         return WinningTable.getRank(correctedCount, containsBonus);
     }
 
-    private int compareNumbers(Lotto lotto, WinningLotto winningLotto) {
-        List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
-        List<Integer> winningNumbers = winningLotto.getNumbers();
-        numbers.retainAll(winningNumbers);
-        return numbers.size();
+
+    private void validateBonus() {
+        if (checkBonusDuplicate(winningNumbers, bonus)) {
+            throw new IllegalArgumentException(ErrorMessages.BONUS_DUPLICATE);
+        }
     }
 
-    private boolean containsBonus(Lotto lotto, WinningLotto winningLotto) {
-        int bonusNumber = winningLotto.getBonusNumber();
-        return lotto.getNumbers().contains(bonusNumber);
+    private boolean checkBonusDuplicate(List<Integer> numbers, int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }

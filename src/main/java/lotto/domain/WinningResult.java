@@ -7,33 +7,26 @@ import java.util.Map;
 
 public class WinningResult {
 
-    private final Map<WinningTable, Integer> map;
-    private final List<Integer> winningPrices;
+    List<Integer> winningNumbers;
+    int bonus;
 
-    public Map<WinningTable, Integer> getMap() {
-        return map;
+    public WinningResult(List<Integer> winningNumbers, int bonus) {
+        this.winningNumbers = winningNumbers;
+        this.bonus = bonus;
     }
 
-    public List<Integer> getWinningPrices() {
-        return winningPrices;
-    }
-
-    public WinningResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        List<WinningTable> winningInfo = calWinningInfo(lottos, winningLotto);
-        winningPrices = calWinningPrices(winningInfo);
-        map = setMapFromwinningTables(winningInfo);
-    }
-
-    private List<Integer> calWinningPrices(List<WinningTable> winningInfo) {
+    public List<Integer> getWinningPrices(List<Lotto> lottos) {
+        List<WinningTable> winningInfo = calWinningInfo(lottos);
         List<Integer> list = new ArrayList<>();
-        for (WinningTable wt : winningInfo) {
-            list.add(wt.getPrice());
+        for (WinningTable winningTable : winningInfo) {
+            list.add(winningTable.getPrice());
         }
 
         return list;
     }
 
-    private Map<WinningTable, Integer> setMapFromwinningTables(List<WinningTable> winningInfo) {
+    public Map<WinningTable, Integer> getMap(List<Lotto> lottos) {
+        List<WinningTable> winningInfo = calWinningInfo(lottos);
         Map<WinningTable, Integer> map = new HashMap<>();
 
         for (WinningTable winningTable : WinningTable.values()) {
@@ -46,11 +39,11 @@ public class WinningResult {
         return map;
     }
 
-    private List<WinningTable> calWinningInfo(List<Lotto> lottos, WinningLotto winningLotto) {
-        Winning winning = new Winning();
+    private List<WinningTable> calWinningInfo(List<Lotto> lottos) {
+        Winning winning = new Winning(winningNumbers, bonus);
         List<WinningTable> winningInfo = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            WinningTable wt = winning.calMyScore(lotto, winningLotto);
+            WinningTable wt = winning.calMyScore(lotto);
             winningInfo.add(wt);
         }
         return winningInfo;

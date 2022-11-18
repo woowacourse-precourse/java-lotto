@@ -45,8 +45,17 @@ public class Lotto {
         return false;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public int matchCount(List<Integer> winningNumbers) {
+        List<Integer> correct = new ArrayList<>(winningNumbers);
+        correct.retainAll(numbers);
+        return correct.size();
     }
 
+    public boolean containsBonus(int bonus) {
+        return numbers.contains(bonus);
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
 }

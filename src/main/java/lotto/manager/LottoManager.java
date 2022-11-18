@@ -10,8 +10,9 @@ import java.util.Map;
 
 public class LottoManager {
     private List<Lotto> lottos;
-    private WinningLotto winningLotto;
     private List<Integer> winningPrices;
+    private List<Integer> winningNumbers;
+    private int bonus;
 
     public void run() {
         try {
@@ -25,7 +26,7 @@ public class LottoManager {
     }
 
     private void runPrintStatistics() {
-        Map<WinningTable, Integer> winningMap = getResult(lottos, winningLotto);
+        Map<WinningTable, Integer> winningMap = getResult(lottos, winningNumbers, bonus);
         double profitRate = getProfitRate();
         StatisticsConsole statisticsConsole = new StatisticsConsole();
         statisticsConsole.print(winningMap, profitRate);// UI 당첨통계 출력
@@ -33,9 +34,9 @@ public class LottoManager {
 
     private void runInputWinningNumbers() {
         WinningConsole winningConsole = new WinningConsole();
-        List<Integer> winningNumber = winningConsole.inputNumbers(); // inputUI실행
-        int bonus = winningConsole.inputBonus();
-        setWinningLotto(winningNumber, bonus);
+        winningNumbers = winningConsole.inputNumbers(); // inputUI실행
+        bonus = winningConsole.inputBonus();
+
     }
 
     private void runBuy() {
@@ -51,14 +52,10 @@ public class LottoManager {
         lottos = buyLotto.getLottos();
     }
 
-    private void setWinningLotto(List<Integer> winningNumbers, int bonus) {
-        winningLotto = new WinningLotto(winningNumbers, bonus);
-    }
-
-    private Map<WinningTable, Integer> getResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        WinningResult winningResult = new WinningResult(lottos, winningLotto);
-        winningPrices = winningResult.getWinningPrices();
-        return winningResult.getMap();
+    private Map<WinningTable, Integer> getResult(List<Lotto> lottos, List<Integer> winningNumbers, int bonus) {
+        WinningResult winningResult = new WinningResult(winningNumbers, bonus);
+        winningPrices = winningResult.getWinningPrices(lottos);
+        return winningResult.getMap(lottos);
     }
 
     private double getProfitRate() {

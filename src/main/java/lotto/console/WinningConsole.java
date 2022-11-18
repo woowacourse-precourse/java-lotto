@@ -42,4 +42,5 @@ public class WinningConsole {
             throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
         }
     }
+
 }
