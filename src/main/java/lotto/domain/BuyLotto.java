@@ -15,14 +15,15 @@ public class BuyLotto {
         this.price = price;
     }
 
-    private List<Integer> drawLotto() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    private Lotto drawLotto(LottoNumberGenerator lottoNumberGenerator) {
+        return new Lotto(lottoNumberGenerator.generate());
     }
 
     private List<Lotto> drawLottos(int count) {
+        LottoNumberGenerator lottoNumberGenerator = new LottoRandomNumberGenerator();
         List<Lotto> list = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Lotto lotto = new Lotto(drawLotto());
+            Lotto lotto = drawLotto(lottoNumberGenerator);
             list.add(lotto);
         }
         return list;
