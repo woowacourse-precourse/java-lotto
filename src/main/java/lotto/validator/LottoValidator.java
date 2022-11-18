@@ -23,18 +23,14 @@ public class LottoValidator {
         numbers.forEach(LottoValidator::validateNumber);
     }
 
-    private static void validateSize(final List<Integer> numbers)
-        throws IllegalArgumentException {
-
+    private static void validateSize(final List<Integer> numbers) {
         if (numbers.size() != MAX_NUMBERS_SIZE) {
             throw new IllegalArgumentException(
                 INVALID_SIZE.message());
         }
     }
 
-    private static void validateDuplicate(final List<Integer> numbers)
-        throws IllegalArgumentException {
-
+    private static void validateDuplicate(final List<Integer> numbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
         if (nonDuplicateNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException(
@@ -42,9 +38,7 @@ public class LottoValidator {
         }
     }
 
-    static void validateNumber(final int number)
-        throws IllegalArgumentException {
-
+    static void validateNumber(final int number) {
         if (isOutOfBound(number)) {
             throw new IllegalArgumentException(
                 INVALID_RANGE.message());
@@ -56,7 +50,7 @@ public class LottoValidator {
     }
 
     public static void validateBonusDuplicated(final int bonus,
-        final List<Integer> winningNumbers) throws IllegalArgumentException {
+        final List<Integer> winningNumbers) {
 
         validateNumber(bonus);
         if (winningNumbers.contains(bonus)) {

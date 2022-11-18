@@ -13,9 +13,7 @@ public class InputValidationUtils {
         validateDivisible(price);
     }
 
-    private static void validateDivisible(final int price)
-        throws IllegalArgumentException {
-
+    private static void validateDivisible(final int price) {
         if (!isDivisibleWithThousand(price)) {
             throw new IllegalArgumentException(
                 DIVISIBLE_WITH_THOUSAND.message());
@@ -26,9 +24,7 @@ public class InputValidationUtils {
         return price != 0 && price % MIN_PRICE == 0;
     }
 
-    private static void validateRange(final int price)
-        throws IllegalArgumentException {
-
+    private static void validateRange(final int price) {
         if (isOutOfLowerBound(price)) {
             throw new IllegalArgumentException(
                 NOT_ENOUGH_MONEY.message());
@@ -45,9 +41,7 @@ public class InputValidationUtils {
         }
     }
 
-    public static void validateFormat(final String input)
-        throws IllegalArgumentException {
-
+    public static void validateFormat(final String input) {
         if (!isNumber(input) || isOutOfRange(input)) {
             throw new IllegalArgumentException(
                 INVALID_FORMAT.message());
