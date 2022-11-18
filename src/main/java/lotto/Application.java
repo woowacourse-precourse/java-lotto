@@ -1,7 +1,16 @@
 package lotto;
 
+import lotto.controller.LottoShop;
+import lotto.domain.*;
+import lotto.utils.StringToIntConverter;
+import lotto.view.ProjectView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Seller seller = new Seller(new StringToIntConverter());
+        ProjectView projectView = new ProjectView();
+
+        LottoShop lottoShop = new LottoShop(seller, projectView);
+        lottoShop.open();
     }
 }
