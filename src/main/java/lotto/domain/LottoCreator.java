@@ -21,7 +21,26 @@ public class LottoCreator {
     }
 
     private static Lotto createLotto() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER, LOTTO_SIZE);
-        return new Lotto(lottoNumbers);
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER, LOTTO_SIZE));
+
+        List<Integer> sortedNumbers = sortLottoNumbers(lottoNumbers);
+        return new Lotto(sortedNumbers);
+    }
+
+    private static List<Integer> sortLottoNumbers(List<Integer> lottoNumbers) {
+        for(int index = 0; index < lottoNumbers.size(); index++) {
+            for(int anotherIndex = index + 1; anotherIndex < lottoNumbers.size(); ++anotherIndex) {
+                sortTwoNumbers(lottoNumbers, index, anotherIndex);
+            }
+        }
+        return lottoNumbers;
+    }
+
+    private static void sortTwoNumbers(List<Integer> lottoNumbers, int index, int anotherIndex) {
+        if(lottoNumbers.get(index) > lottoNumbers.get(anotherIndex)) {
+            Integer temp = lottoNumbers.get(index);
+            lottoNumbers.set(index, lottoNumbers.get(anotherIndex));
+            lottoNumbers.set(anotherIndex, temp);
+        }
     }
 }
