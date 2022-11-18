@@ -25,8 +25,8 @@ public class BuyConsole {
 
     public void printLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + PURCHASE);
-        for (Lotto l : lottos) {
-            System.out.println(l.getNumbers());
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
         }
         System.out.println();
     }
