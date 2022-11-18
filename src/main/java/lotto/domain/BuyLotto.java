@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BuyLotto {
     public static final int LOTTO_PRICE = 1000;
-    private int price;
+    private final int price;
 
     public BuyLotto(int price) {
         validatePrice(price);
