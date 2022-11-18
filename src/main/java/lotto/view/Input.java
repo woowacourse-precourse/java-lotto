@@ -39,7 +39,7 @@ public class Input {
 
     private static List<Integer> convertStringToIntegerList(String winningNumber) throws IllegalArgumentException {
         try {
-            return Arrays.stream(winningNumber.split(", "))
+            return Arrays.stream(winningNumber.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception exception) {

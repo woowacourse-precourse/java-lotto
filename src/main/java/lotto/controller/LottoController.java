@@ -4,7 +4,6 @@ import lotto.domain.*;
 import lotto.view.Input;
 import lotto.view.Output;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
