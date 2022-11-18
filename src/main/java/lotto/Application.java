@@ -33,17 +33,17 @@ public class Application {
         }
     }
 
-    public static UserLotto createUserLotto() throws IllegalArgumentException {
+    public static UserLotto createUserLotto()  {
         printGetMoney();
         return new UserLotto(readLine());
     }
 
-    public static List<Lotto> getLottoList(int lottoCount) throws IllegalArgumentException {
+    public static List<Lotto> getLottoList(int lottoCount) {
         printLottoCount(lottoCount);
         return createLottoList(lottoCount);
     }
 
-    public static Lotto createWinningNumbers() throws IllegalArgumentException {
+    public static Lotto createWinningNumbers() {
         printGetWinningNumber();
         String winningNumber = readLine();
 
@@ -52,7 +52,7 @@ public class Application {
         return new Lotto(convertStringListToIntegerList(winningNumbers));
     }
 
-    public static Bonus createBonusNumber(Lotto winningNumbers) throws IllegalArgumentException {
+    public static Bonus createBonusNumber(Lotto winningNumbers) {
         printGetBonusNumber();
         String bonusNumber = readLine();
 

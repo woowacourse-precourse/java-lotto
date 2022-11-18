@@ -10,14 +10,14 @@ import static lotto.domain.Preprocessor.convertStringToInt;
 public class UserLotto {
     private final int lottoAmount;
 
-    public UserLotto(String lottoAmount) throws IllegalArgumentException {
+    public UserLotto(String lottoAmount) {
         validateIsNumeric(lottoAmount);
         int tmpLottoAmount = convertStringToInt(lottoAmount);
         validateCanDivideThousand(tmpLottoAmount);
         this.lottoAmount = tmpLottoAmount;
     }
 
-    private void validateIsNumeric(String lottoAmount) throws IllegalArgumentException {
+    private void validateIsNumeric(String lottoAmount) {
         for (char c : lottoAmount.toCharArray()) {
             if (!(0 <= c - '0' && c - '0' <= 9) || lottoAmount.charAt(0) == '0') {
                 throw new IllegalArgumentException("[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.");
