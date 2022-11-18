@@ -9,18 +9,10 @@ import java.util.List;
 public class BuyLotto {
     public static final int LOTTO_PRICE = 1000;
     private int price;
-    private int count;
-    List<Lotto> lottos;
 
     public BuyLotto(int price) {
         validatePrice(price);
         this.price = price;
-        count = numberOfLotto();
-        lottos = drawLottos(count);
-    }
-
-    private int numberOfLotto() {
-        return price / LOTTO_PRICE;
     }
 
     private List<Integer> drawLotto() {
@@ -43,10 +35,10 @@ public class BuyLotto {
     }
 
     public List<Lotto> getLottos() {
-        return lottos;
+        return drawLottos(getCount());
     }
 
     public int getCount() {
-        return count;
+        return price / LOTTO_PRICE;
     }
 }
