@@ -15,6 +15,8 @@ class WinningResultTest {
 
     List<Lotto> lottos;
     WinningResult winningResult;
+    List<Integer> winningNumbers;
+    int bonus;
 
     @BeforeEach
     void setUp() {
@@ -28,17 +30,16 @@ class WinningResultTest {
 
         lottos = List.of(lotto1, lotto2, lotto3);
 
-        WinningLotto winningLotto = mock(WinningLotto.class);
-        when(winningLotto.getNumbers()).thenReturn(List.of(1, 2, 3, 4, 5, 6));
-        when(winningLotto.getBonusNumber()).thenReturn(7);
+        winningNumbers = List.of(1,2,3,4,5,6);
+        bonus = 7;
 
-        winningResult = new WinningResult(lottos, winningLotto);
+        winningResult = new WinningResult(winningNumbers, bonus);
     }
 
     @DisplayName("당첨 결과 맵<등수, 개수> 생성")
     @Test
     void getMap() {
-        Map<WinningTable, Integer> map = winningResult.getMap();
+        Map<WinningTable, Integer> map = winningResult.getMap(lottos);
         assertThat(map.get(WinningTable.FIRST)).isEqualTo(1);
         assertThat(map.get(WinningTable.SECOND)).isEqualTo(1);
         assertThat(map.get(WinningTable.THIRD)).isEqualTo(0);
@@ -50,7 +51,7 @@ class WinningResultTest {
     @DisplayName("당첨 결과 가격 리스트 생성")
     @Test
     void getWinningPrices() {
-        List<Integer> winningPrices = winningResult.getWinningPrices();
+        List<Integer> winningPrices = winningResult.getWinningPrices(lottos);
 
         assertThat(winningPrices.contains(WinningTable.FIRST.getPrice())).isTrue();
         assertThat(winningPrices.contains(WinningTable.SECOND.getPrice())).isTrue();
