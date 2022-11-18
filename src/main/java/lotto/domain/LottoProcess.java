@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.lang.reflect.MalformedParameterizedTypeException;
 import java.util.ArrayList;
 import java.util.List;
 
