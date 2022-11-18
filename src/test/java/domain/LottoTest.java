@@ -1,5 +1,6 @@
-package lotto;
+package domain;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 각 숫자의 범위가 1부터 45까지인지 비교")
+    @Test
+    void validateLottoNumberRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 45, 56, 9)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("6개의 로또 번호 중 중복 여부가 있는지 검증")
+    @Test
+    void validateLottoDuplication() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
