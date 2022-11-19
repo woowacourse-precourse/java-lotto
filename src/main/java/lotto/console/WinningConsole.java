@@ -18,7 +18,7 @@ public class WinningConsole {
         return toIntegerList(input);
     }
 
-    private List<Integer> toIntegerList(String input) throws IllegalArgumentException {
+    private List<Integer> toIntegerList(String input) {
         String[] inputArr = input.split(",");
         List<Integer> list = new ArrayList<>();
         for (String each : inputArr) {
