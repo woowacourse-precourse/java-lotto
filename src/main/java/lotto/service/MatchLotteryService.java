@@ -5,12 +5,9 @@ import lotto.domain.Lotto;
 import lotto.model.Computer;
 import lotto.model.Player;
 
-public class MatchLotteryService {
+import static lotto.Ranking.*;
 
-    private static final int THREE_MATCH = 3;
-    private static final int FOUR_MATCH = 4;
-    private static final int FIVE_MATCH = 5;
-    private static final int SIX_MATCH = 6;
+public class MatchLotteryService {
 
     private final Player player;
     private final Computer computer;
@@ -45,15 +42,15 @@ public class MatchLotteryService {
     }
 
     private Ranking convertCountToRanking(Lotto lottoEach, int equalCount){
-        if(equalCount == SIX_MATCH) return Ranking.SIX_MATCH;
-        if(equalCount == FIVE_MATCH) return separateByBonusNumber(lottoEach);
-        if(equalCount == FOUR_MATCH) return Ranking.FOUR_MATCH;
-        if(equalCount == THREE_MATCH) return Ranking.THREE_MATCH;
+        if(equalCount == SIX_MATCH.getCountOfMatch()) return SIX_MATCH;
+        if(equalCount == FIVE_MATCH.getCountOfMatch()) return separateByBonusNumber(lottoEach);
+        if(equalCount == FOUR_MATCH.getCountOfMatch()) return FOUR_MATCH;
+        if(equalCount == THREE_MATCH.getCountOfMatch()) return THREE_MATCH;
         return Ranking.NOTHING;
     }
 
     private Ranking separateByBonusNumber(Lotto lottoEach){
-        if(lottoEach.getNumbers().contains(computer.getBonusNumber())) return Ranking.FIVE_MATCH_WITH_BONUS;
-        return Ranking.FIVE_MATCH;
+        if(lottoEach.getNumbers().contains(computer.getBonusNumber())) return FIVE_MATCH_WITH_BONUS;
+        return FIVE_MATCH;
     }
 }
