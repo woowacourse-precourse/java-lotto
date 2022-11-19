@@ -17,12 +17,12 @@ public class WinningResult {
 
     public List<Integer> getWinningPrices(List<Lotto> lottos) {
         List<WinningTable> winningInfo = calWinningInfo(lottos);
-        List<Integer> list = new ArrayList<>();
+        List<Integer> winningPrices = new ArrayList<>();
         for (WinningTable winningTable : winningInfo) {
-            list.add(winningTable.getPrice());
+            winningPrices.add(winningTable.getPrice());
         }
 
-        return list;
+        return winningPrices;
     }
 
     public Map<WinningTable, Integer> getMap(List<Lotto> lottos) {
