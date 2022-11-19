@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constants.ErrorMessages;
+import lotto.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +11,10 @@ public class Winning {
     int bonus;
 
     public Winning(List<Integer> winningNumbers, int bonus) {
+        validateNumbers(winningNumbers);
         this.winningNumbers = winningNumbers;
+        validateBonus(bonus);
         this.bonus = bonus;
-        validateBonus();
     }
 
     public List<WinningTable> getWinningInfo(List<Lotto> lottos) {
@@ -31,14 +33,23 @@ public class Winning {
         return WinningTable.getRank(correctedCount, containsBonus);
     }
 
+    private void validateNumbers(List<Integer> winningNumbers) {
+        if (Validator.checkSize(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessages.SIZE);
+        }
 
-    private void validateBonus() {
-        if (checkBonusDuplicate(winningNumbers, bonus)) {
+        if (Validator.hasDuplicate(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessages.DUPLICATE);
+        }
+
+        if (Validator.checkRange(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessages.RANGE);
+        }
+    }
+    private void validateBonus(int bonus) {
+        if (Validator.hasDuplicate(winningNumbers, bonus)) {
             throw new IllegalArgumentException(ErrorMessages.BONUS_DUPLICATE);
         }
     }
 
-    private boolean checkBonusDuplicate(List<Integer> numbers, int bonusNumber) {
-        return numbers.contains(bonusNumber);
-    }
 }

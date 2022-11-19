@@ -1,13 +1,15 @@
 package lotto.domain;
 
 import lotto.constants.ErrorMessages;
+import lotto.util.Validator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
-    private static final int LOTTO_SIZE = 6;
+    public static final int LOTTO_SIZE = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -17,33 +19,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
+        if (Validator.checkSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessages.SIZE);
         }
 
-        if (checkDuplicate(numbers)) {
+        if (Validator.hasDuplicate(numbers)) {
             throw new IllegalArgumentException(ErrorMessages.DUPLICATE);
         }
 
-        if (checkRange(numbers)) {
+        if (Validator.checkRange(numbers)) {
             throw new IllegalArgumentException(ErrorMessages.RANGE);
         }
-    }
-
-    private boolean checkDuplicate(List<Integer> numbers) {
-        long distinctSize = numbers.stream()
-                .distinct()
-                .count();
-        return numbers.size() != distinctSize;
-    }
-
-    private boolean checkRange(List<Integer> numbers) {
-        for (Integer i : numbers) {
-            if (i < 1 || i > 45) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public int matchCount(List<Integer> winningNumbers) {

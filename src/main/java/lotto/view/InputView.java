@@ -37,12 +37,12 @@ public class InputView {
         return list;
     }
 
-    public int inputBonus() throws IllegalArgumentException {
+    public int inputBonus() {
         String input = Console.readLine();
 
         try {
             return Integer.parseInt(input);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
         }
     }
