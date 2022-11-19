@@ -3,15 +3,17 @@ package lotto.manager;
 import lotto.console.BuyConsole;
 import lotto.console.StatisticsConsole;
 import lotto.console.WinningConsole;
-import lotto.domain.*;
+import lotto.domain.BuyingLotto;
+import lotto.domain.Lotto;
+import lotto.domain.Winning;
+import lotto.domain.WinningTable;
 import lotto.util.Statistics;
 
 import java.util.List;
 import java.util.Map;
 
 public class LottoManager {
-    private static final int ROUND_POSITION = 2;
-
+    private int original;
     public void run() {
         try {
             List<Lotto> lottos = buy();
@@ -39,8 +41,8 @@ public class LottoManager {
     private List<Lotto> buy() {
         BuyConsole buyConsole = new BuyConsole();
         buyConsole.printInputMessage();
-        int input = buyConsole.inputPrice();
-        BuyingLotto buyingLotto = new BuyingLotto(input);
+        original = buyConsole.inputPrice();
+        BuyingLotto buyingLotto = new BuyingLotto(original);
         List<Lotto> lottos = buyingLotto.getLottos();
         buyConsole.printLottos(lottos);
 
@@ -49,7 +51,8 @@ public class LottoManager {
 
     private double calProfitRate(List<WinningTable> winningInfo) {
         List<Integer> winningPrices = Statistics.calWinningPricesFromWinningInfo(winningInfo);
-        Profit profit = new Profit();
-        return profit.calProfitRate(winningPrices, ROUND_POSITION);
+        int profit = Statistics.sum(winningPrices);
+        return Statistics.calProfitRate(original, profit);
     }
+
 }

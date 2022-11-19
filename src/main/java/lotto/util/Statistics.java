@@ -32,4 +32,15 @@ public class Statistics {
 
         return winningPrices;
     }
+
+    public static int sum(List<Integer> list) {
+        return list
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+    public static double calProfitRate(int original, int profit) {
+        return (double) profit / original * 100;
+    }
 }
