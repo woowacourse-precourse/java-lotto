@@ -23,10 +23,11 @@ public class PurchaseLotto {
     }
 
     private static void printLottos(List<List<Integer>> lottos) {
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < purchaseAmount; i++) {
             lottos.add(Lotto.createLotto().getNumbers());
-            System.out.println(lottos.get(i));
+            stringBuilder.append(lottos.get(i)).append("\n");
         }
-        System.out.println();
+        System.out.println(stringBuilder.toString().trim());
     }
 }
