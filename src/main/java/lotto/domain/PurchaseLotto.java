@@ -12,12 +12,12 @@ public class PurchaseLotto {
 
     public static List<List<Integer>> printPurchaseLottos() {
         List<List<Integer>> lottos = new ArrayList<>();
-        getPurchaseAmount(inputPrice);
+        getLottoAmount(inputPrice);
         printLottos(lottos);
         return lottos;
     }
 
-    private static void getPurchaseAmount(String inputPrice) {
+    private static void getLottoAmount(String inputPrice) {
         purchaseAmount = Integer.parseInt(inputPrice) / LOTTO_PRICE;
         System.out.println(purchaseAmount + Message.PURCHASE_COUNT.getMessage());
     }
