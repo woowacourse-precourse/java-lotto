@@ -1,11 +1,10 @@
 package lotto.util;
 
+import lotto.constants.LottoStandard;
+
 import java.util.List;
 
 public class Validator {
-    private static final int NUMBER_START = 1;
-    private static final int NUMBER_END = 45;
-    private static final int LOTTO_SIZE = 6;
 
     public static boolean hasDuplicate(List<Integer> numbers) {
         long distinctSize = numbers.stream()
@@ -20,7 +19,8 @@ public class Validator {
 
     public static boolean checkRange(List<Integer> numbers) {
         for (Integer i : numbers) {
-            if (i < NUMBER_START || i > NUMBER_END) {
+            if (i < LottoStandard.NUMBER_START.getValue()
+                    || i > LottoStandard.NUMBER_END.getValue()) {
                 return true;
             }
         }
@@ -28,7 +28,7 @@ public class Validator {
     }
 
     public static boolean checkSize(List<Integer> numbers) {
-        return numbers.size() != LOTTO_SIZE;
+        return numbers.size() != LottoStandard.SIZE.getValue();
     }
 
 
