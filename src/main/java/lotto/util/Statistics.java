@@ -17,6 +17,13 @@ public class Statistics {
         return map;
     }
 
+    private static int matchCount(List<WinningTable> winningInfo, WinningTable winningTable) {
+        return (int) winningInfo
+                .stream()
+                .filter(element -> element == winningTable)
+                .count();
+    }
+
     public static List<Integer> calWinningPricesFromWinningInfo(List<WinningTable> winningInfo) {
         List<Integer> winningPrices = new ArrayList<>();
         for (WinningTable winningTable : winningInfo) {
@@ -24,13 +31,5 @@ public class Statistics {
         }
 
         return winningPrices;
-
-    }
-
-    private static int matchCount(List<WinningTable> winningInfo, WinningTable winningTable) {
-        return (int) winningInfo
-                .stream()
-                .filter(element -> element == winningTable)
-                .count();
     }
 }
