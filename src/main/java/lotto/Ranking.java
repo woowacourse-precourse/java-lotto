@@ -20,7 +20,7 @@ public enum Ranking {
         return countOfMatch;
     }
 
-    public long getWinningMoney(Ranking ranking){
+    public long getWinningMoney(){
         return winningMoney;
     }
 }
