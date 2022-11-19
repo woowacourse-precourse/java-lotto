@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import lotto.output.LottoRank;
 import lotto.domain.Lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -47,9 +48,10 @@ class LottoTest {
     @Test
     void createLottoTestByRange() {
         List<Integer> number = lotto.getNumbers();
-        for (int i = 0; i < lotto.getNumbers().size(); i++) {
-            assertThat(number.get(i) > 0 && number.get(i) < 46).isTrue();
-        }
+        number.forEach(num -> Assertions.assertThat(num)
+                .isGreaterThanOrEqualTo(1)
+                .isLessThanOrEqualTo(45)
+        );
     }
 
     @DisplayName("로또 번호와 일치하는 숫자 개수를 카운팅")
