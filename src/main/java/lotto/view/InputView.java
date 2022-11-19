@@ -1,18 +1,23 @@
-package lotto.console;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constants.ConsoleMessages.INPUT_BONUS;
-import static lotto.constants.ConsoleMessages.INPUT_NUMBERS;
 import static lotto.constants.ErrorMessages.INPUT_NUMBER_ERROR;
 
-public class WinningConsole {
+public class InputView {
+    public int inputPrice() throws IllegalArgumentException {
+        String input = Console.readLine();
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
+        }
+    }
 
     public List<Integer> inputNumbers() {
-        System.out.println(INPUT_NUMBERS);
         String input = Console.readLine();
 
         return toIntegerList(input);
@@ -33,7 +38,6 @@ public class WinningConsole {
     }
 
     public int inputBonus() throws IllegalArgumentException {
-        System.out.println(INPUT_BONUS);
         String input = Console.readLine();
 
         try {
@@ -42,5 +46,4 @@ public class WinningConsole {
             throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
         }
     }
-
 }

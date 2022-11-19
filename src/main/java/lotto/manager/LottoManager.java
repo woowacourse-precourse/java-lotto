@@ -1,8 +1,6 @@
 package lotto.manager;
 
-import lotto.console.BuyConsole;
-import lotto.console.StatisticsConsole;
-import lotto.console.WinningConsole;
+import lotto.view.*;
 import lotto.domain.BuyingLotto;
 import lotto.domain.Lotto;
 import lotto.domain.Winning;
@@ -14,37 +12,41 @@ import java.util.Map;
 
 public class LottoManager {
     private int original;
+    private InputView inputView;
+    private OutputView outputView;
+
     public void run() {
         try {
+            inputView = new InputView();
+            outputView = new OutputView();
             List<Lotto> lottos = buy();
-            Winning winning = inputWinningNumbers();
+            Winning winning = inputWinning();
             printStatistics(winning.getWinningInfo(lottos));
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            outputView.printException(e.getMessage());
         }
     }
 
     private void printStatistics(List<WinningTable> winningInfo) {
         Map<WinningTable, Integer> winningMap = Statistics.winningTableListToMap(winningInfo);
-        StatisticsConsole statisticsConsole = new StatisticsConsole();
-        statisticsConsole.print(winningMap, calProfitRate(winningInfo));
+        outputView.printStatistics(winningMap,calProfitRate(winningInfo));
     }
 
-    private Winning inputWinningNumbers() {
-        WinningConsole winningConsole = new WinningConsole();
-        List<Integer> winningNumbers = winningConsole.inputNumbers();
-        int bonus = winningConsole.inputBonus();
+    private Winning inputWinning() {
+        outputView.printWinningInput();
+        List<Integer> winningNumbers = inputView.inputNumbers();
+        outputView.printBonusInput();
+        int bonus = inputView.inputBonus();
         return new Winning(winningNumbers, bonus);
     }
 
     private List<Lotto> buy() {
-        BuyConsole buyConsole = new BuyConsole();
-        buyConsole.printInputMessage();
-        original = buyConsole.inputPrice();
+        outputView.printInputPrice();
+        original = inputView.inputPrice();
         BuyingLotto buyingLotto = new BuyingLotto(original);
         List<Lotto> lottos = buyingLotto.getLottos();
-        buyConsole.printLottos(lottos);
+        outputView.printLottos(lottos);
 
         return lottos;
     }
