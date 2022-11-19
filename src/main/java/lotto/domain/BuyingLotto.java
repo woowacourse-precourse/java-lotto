@@ -1,16 +1,15 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.constants.ErrorMessages;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyLotto {
+public class BuyingLotto {
     public static final int LOTTO_PRICE = 1000;
     private final int price;
 
-    public BuyLotto(int price) {
+    public BuyingLotto(int price) {
         validatePrice(price);
         this.price = price;
     }

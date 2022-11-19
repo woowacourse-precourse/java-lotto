@@ -21,7 +21,7 @@ public class Profit {
     }
 
     private int calPurchaseAmount(int size) {
-        return BuyLotto.LOTTO_PRICE * size;
+        return BuyingLotto.LOTTO_PRICE * size;
     }
 
     private int calWinningAmount(List<Integer> winningPrices) {

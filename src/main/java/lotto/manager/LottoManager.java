@@ -40,8 +40,8 @@ public class LottoManager {
         BuyConsole buyConsole = new BuyConsole();
         buyConsole.printInputMessage();
         int input = buyConsole.inputPrice();
-        BuyLotto buyLotto = new BuyLotto(input);
-        List<Lotto> lottos = buyLotto.getLottos();
+        BuyingLotto buyingLotto = new BuyingLotto(input);
+        List<Lotto> lottos = buyingLotto.getLottos();
         buyConsole.printLottos(lottos);
 
         return lottos;
