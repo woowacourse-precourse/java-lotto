@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constants.ErrorMessages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Winning {
@@ -14,7 +15,16 @@ public class Winning {
         validateBonus();
     }
 
-    public WinningTable calMyScore(Lotto lotto) {
+    public List<WinningTable> getWinningInfo(List<Lotto> lottos) {
+        List<WinningTable> winningInfo = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            WinningTable winningTable = calMyScore(lotto);
+            winningInfo.add(winningTable);
+        }
+        return winningInfo;
+    }
+
+    private WinningTable calMyScore(Lotto lotto) {
         int correctedCount = lotto.matchCount(winningNumbers);
         boolean containsBonus = lotto.containsBonus(bonus);
 

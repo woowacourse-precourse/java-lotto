@@ -4,13 +4,13 @@ import lotto.console.BuyConsole;
 import lotto.console.StatisticsConsole;
 import lotto.console.WinningConsole;
 import lotto.domain.*;
+import lotto.util.Statistics;
 
 import java.util.List;
 import java.util.Map;
 
 public class LottoManager {
     private List<Lotto> lottos;
-    private List<Integer> winningPrices;
     private List<Integer> winningNumbers;
     private int bonus;
 
@@ -53,9 +53,9 @@ public class LottoManager {
     }
 
     private Map<WinningTable, Integer> getResult(List<Lotto> lottos, List<Integer> winningNumbers, int bonus) {
-        WinningResult winningResult = new WinningResult(winningNumbers, bonus);
-        winningPrices = winningResult.getWinningPrices(lottos);
-        return winningResult.getMap(lottos);
+        Winning winning = new Winning(winningNumbers, bonus);
+        List<WinningTable> winningInfo = winning.getWinningInfo(lottos);
+        return Statistics.winningTableListToMap(winningInfo);
     }
 
     private double getProfitRate() {
