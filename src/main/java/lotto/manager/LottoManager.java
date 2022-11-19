@@ -29,12 +29,12 @@ public class LottoManager {
         Map<WinningTable, Integer> winningMap = getResult(lottos, winningNumbers, bonus);
         double profitRate = getProfitRate();
         StatisticsConsole statisticsConsole = new StatisticsConsole();
-        statisticsConsole.print(winningMap, profitRate);// UI 당첨통계 출력
+        statisticsConsole.print(winningMap, profitRate);
     }
 
     private void inputWinningNumbers() {
         WinningConsole winningConsole = new WinningConsole();
-        winningNumbers = winningConsole.inputNumbers(); // inputUI실행
+        winningNumbers = winningConsole.inputNumbers();
         bonus = winningConsole.inputBonus();
 
     }
