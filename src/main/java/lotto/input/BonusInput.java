@@ -13,6 +13,7 @@ public class BonusInput {
     public static void inputBonusNumber() {
         System.out.println(Message.BONUS_NUMBER_INPUT.getMessage());
         bonusInput = readLine();
+        validateInputBonusNumberString(bonusInput);
         validateInputBonusNumber(bonusInput);
         System.out.println();
     }
@@ -24,6 +25,15 @@ public class BonusInput {
                 .toArray(Integer[]::new);
         if (bonusNumberArr[0] < 1 || bonusNumberArr[0] > 45) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NUMBER.getErrorMessage());
+        }
+    }
+
+    private static void validateInputBonusNumberString(String bonusInput) {
+        char[] charInput = bonusInput.toCharArray();
+        for (char character : charInput) {
+            if (character < '0' || character > '9') {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_PRICE.getErrorMessage());
+            }
         }
     }
 }
