@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.constants.WinningMessage;
 import lotto.domain.Lotto;
 import lotto.domain.WinningTable;
 
@@ -32,11 +33,11 @@ public class OutputView {
 
     public void printStatistics(Map<WinningTable, Integer> map, double profitRate) {
         System.out.println(STATISTICS);
-        System.out.printf(FIFTH, map.get(WinningTable.FIFTH));
-        System.out.printf(FORTH, map.get(WinningTable.FORTH));
-        System.out.printf(THIRD, map.get(WinningTable.THIRD));
-        System.out.printf(SECOND, map.get(WinningTable.SECOND));
-        System.out.printf(FIRST, map.get(WinningTable.FIRST));
+        System.out.printf(WinningMessage.FIFTH.getMessage(), map.get(WinningTable.FIFTH));
+        System.out.printf(WinningMessage.FORTH.getMessage(), map.get(WinningTable.FORTH));
+        System.out.printf(WinningMessage.THIRD.getMessage(), map.get(WinningTable.THIRD));
+        System.out.printf(WinningMessage.SECOND.getMessage(), map.get(WinningTable.SECOND));
+        System.out.printf(WinningMessage.FIRST.getMessage(), map.get(WinningTable.FIRST));
         System.out.printf(PROFIT, profitRate);
     }
 
