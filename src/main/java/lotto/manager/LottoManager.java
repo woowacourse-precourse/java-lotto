@@ -10,56 +10,46 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoManager {
-    private List<Lotto> lottos;
-    private List<Integer> winningNumbers;
-    private int bonus;
+    private static final int ROUND_POSITION = 2;
 
     public void run() {
         try {
-            buy();
-            inputWinningNumbers();
-            printStatistics();
+            List<Lotto> lottos = buy();
+            Winning winning = inputWinningNumbers();
+            printStatistics(winning.getWinningInfo(lottos));
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
     }
 
-    private void printStatistics() {
-        Map<WinningTable, Integer> winningMap = getResult(lottos, winningNumbers, bonus);
-        double profitRate = getProfitRate();
+    private void printStatistics(List<WinningTable> winningInfo) {
+        Map<WinningTable, Integer> winningMap = Statistics.winningTableListToMap(winningInfo);
         StatisticsConsole statisticsConsole = new StatisticsConsole();
-        statisticsConsole.print(winningMap, profitRate);
+        statisticsConsole.print(winningMap, calProfitRate(winningInfo));
     }
 
-    private void inputWinningNumbers() {
+    private Winning inputWinningNumbers() {
         WinningConsole winningConsole = new WinningConsole();
-        winningNumbers = winningConsole.inputNumbers();
-        bonus = winningConsole.inputBonus();
-
+        List<Integer> winningNumbers = winningConsole.inputNumbers();
+        int bonus = winningConsole.inputBonus();
+        return new Winning(winningNumbers, bonus);
     }
 
-    private void buy() {
-        BuyConsole buy = new BuyConsole();
-        buy.printInputMessage();
-        int input = buy.inputPrice();
-        buyLotto(input);
-        buy.printLottos(lottos);
+    private List<Lotto> buy() {
+        BuyConsole buyConsole = new BuyConsole();
+        buyConsole.printInputMessage();
+        int input = buyConsole.inputPrice();
+        BuyLotto buyLotto = new BuyLotto(input);
+        List<Lotto> lottos = buyLotto.getLottos();
+        buyConsole.printLottos(lottos);
+
+        return lottos;
     }
 
-    private void buyLotto(int price) {
-        BuyLotto buyLotto = new BuyLotto(price);
-        lottos = buyLotto.getLottos();
-    }
-
-    private Map<WinningTable, Integer> getResult(List<Lotto> lottos, List<Integer> winningNumbers, int bonus) {
-        Winning winning = new Winning(winningNumbers, bonus);
-        List<WinningTable> winningInfo = winning.getWinningInfo(lottos);
-        return Statistics.winningTableListToMap(winningInfo);
-    }
-
-    private double getProfitRate() {
+    private double calProfitRate(List<WinningTable> winningInfo) {
+        List<Integer> winningPrices = Statistics.calWinningPricesFromWinningInfo(winningInfo);
         Profit profit = new Profit();
-        return profit.calProfitRate(winningPrices, 2);
+        return profit.calProfitRate(winningPrices, ROUND_POSITION);
     }
 }
