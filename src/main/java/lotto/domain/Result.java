@@ -44,10 +44,11 @@ public class Result {
     }
 
     public boolean compareBonus(Lotto lotto, String bonus){
-        if(lotto.getLotto().contains(Integer.parseInt(bonus))){
-            return true;
-        }
-        return false;
+//        if(lotto.getLotto().contains(Integer.parseInt(bonus))){
+//            return true;
+//        }
+//        return false;
+        return lotto.getLotto().contains(Integer.parseInt(bonus));
     }
 
     public double calculateProfit(int purchase, int win){
