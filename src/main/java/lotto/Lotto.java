@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,9 +13,14 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자가 입력되어야 합니다.");
+        }
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
