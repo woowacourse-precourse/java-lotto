@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.game.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +25,19 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    @DisplayName("로또 번호에 0이 있으면 예외가 발생한다.")
+    void createLottoByContain0Number() {
+        // expect
+        assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("로또 번호에 46이 있으면 예외가 발생한다.")
+    void createLottoByContain46Number() {
+        // expect
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
