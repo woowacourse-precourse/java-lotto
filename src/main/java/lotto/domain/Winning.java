@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Winning {
 
-    public void score(List<Lotto> userNum, List<Integer> winNum, int bonusNum) {
+    public void score(List<Lotto> userNum, Lotto winNum, int bonusNum) {
         for (int i=0; i<userNum.size(); i++) {
             int count = sameCount(userNum.get(i), winNum);
 
@@ -24,20 +24,16 @@ public class Winning {
         }
     }
 
-    public int sameCount(Lotto userNum, List<Integer> winNum) {
+    public int sameCount(Lotto userNum, Lotto winNum) {
         int count = 0;
 
-        for (int i=0; i<userNum.getNumbers().size(); i++) {
-            if(winNum.contains(userNum.getNumbers().get(i))) {
-                count++;
-            }
-        }
+        count = userNum.matchCount(winNum);
 
         return count;
     }
 
     public void bonusCount(Lotto userNum, int bonusNum) {
-        if (userNum.getNumbers().contains(bonusNum)) {
+        if (userNum.contains(bonusNum)) {
             Rank.WIN2.addMatchCount();
             return;
         }

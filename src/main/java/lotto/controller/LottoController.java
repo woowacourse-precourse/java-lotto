@@ -38,7 +38,7 @@ public class LottoController {
     }
 
     public void printScore() {
-        winning.score(userLotto, lotto.getNumbers(), user.getBonusNum());
+        winning.score(userLotto, lotto, user.getBonusNum());
         double rate = winning.rate(money * 1000);
         System.out.println();
         lottoView.winView(winning, rate);
