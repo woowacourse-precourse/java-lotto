@@ -10,17 +10,30 @@ public class Winning {
         for (int i=0; i<userNum.size(); i++) {
             int count = sameCount(userNum.get(i), winNum);
 
-            switch (count) {
-                case 3 : Rank.WIN5.addMatchCount();
-                break;
-                case 4 : Rank.WIN4.addMatchCount();
-                break;
-                case 5 : bonusCount(userNum.get(i), bonusNum);
-                break;
-                case 6 : Rank.WIN1.addMatchCount();
-                break;
-                default: break;
+            if (count==5) {
+                bonusCount(userNum.get(i), bonusNum);
+                continue;
             }
+
+            if (count>2) {
+                rank(count);
+                continue;
+            }
+        }
+    }
+
+    public void rank(int count) {
+        if (count==3) {
+            Rank.WIN5.addMatchCount();
+            return;
+        }
+        if (count==4) {
+            Rank.WIN4.addMatchCount();
+            return;
+        }
+        if (count==6) {
+            Rank.WIN1.addMatchCount();
+            return;
         }
     }
 
