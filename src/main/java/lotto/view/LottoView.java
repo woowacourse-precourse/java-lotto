@@ -9,7 +9,7 @@ import lotto.domain.Winning;
 import java.util.List;
 
 public class LottoView {
-    public static int lottoPurchase() {
+    public int lottoPurchase() {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = Console.readLine();
         int number = 0;
@@ -29,13 +29,13 @@ public class LottoView {
         return number;
     }
 
-    public static void lottoPublish(List<Lotto> list) {
+    public void lottoPublish(List<Lotto> list) {
         for (int i=0; i<list.size(); i++) {
             System.out.println(list.get(i).getNumbers());
         }
     }
 
-    public static String winNum() {
+    public String winNum() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String win = Console.readLine();
         return win;
