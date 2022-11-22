@@ -19,8 +19,9 @@ class WinningTest {
         Winning winning = new Winning();
         List<Lotto> list = new ArrayList<>();
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        Lotto lotto2 = new Lotto(Arrays.asList(1,2,3,4,5,8));
         list.add(lotto);
-        winning.score(list, Arrays.asList(1,2,3,4,5,8), 6);
+        winning.score(list, lotto2, 6);
         assertThat(Rank.WIN2.getMatchCount()).isEqualTo(1);
     }
 
@@ -29,7 +30,8 @@ class WinningTest {
     void sameCount() {
         Winning winning = new Winning();
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
-        int count = winning.sameCount(lotto, Arrays.asList(6,7,8,9,10,11));
+        Lotto lotto2 = new Lotto(Arrays.asList(6,7,8,9,10,11));
+        int count = winning.sameCount(lotto, lotto2);
         assertThat(count).isEqualTo(1);
     }
 
