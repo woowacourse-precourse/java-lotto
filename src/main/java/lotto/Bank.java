@@ -11,7 +11,7 @@ public class Bank {
     private final static int WIN_SIZE = 6;
     private final Lotto winLotto;
     private final int bonusNumber;
-    private int payment[];
+    private final int[] payment;
 
     public Bank(Lotto winLotto, int bonusNumber) {
         validate(winLotto, bonusNumber);
@@ -27,20 +27,11 @@ public class Bank {
     }
 
     private int payMoney(Lotto userLotto) {
-        int commonNumberCount = userLotto.getCommonNumbers(winLotto).size();
-        if (commonNumberCount == WIN_SIZE) { // 1등
-            payment[WIN_SIZE + 1 - commonNumberCount]++;
-            return MONEY[WIN_SIZE + 1 - commonNumberCount];
-        }
-        if (userLotto.contains(bonusNumber) && commonNumberCount == WIN_SIZE - 1) { // 2등
-            payment[WIN_SIZE + 1 - commonNumberCount]++;
-            return MONEY[WIN_SIZE + 1 - commonNumberCount];
-        }
-        if (commonNumberCount >= 3) { // 3~5등
-            payment[WIN_SIZE + 2 - commonNumberCount]++;
-            return MONEY[WIN_SIZE + 2 - commonNumberCount];
-        }
-        return 0;
+        int countOfMatch = userLotto.getCommonNumbers(winLotto).size();
+        boolean bonusMatch = userLotto.contains(bonusNumber);
+        Rank rank = Rank.getRank(countOfMatch, bonusMatch);
+        payment[rank.ordinal()]++;
+        return rank.getWinningMoney();
     }
 
     public long getTotalMoney(List<Lotto> lottos) {
