@@ -38,7 +38,7 @@ public class NumbersValidator extends NumberValidator {
     }
 
     public static void validateAlreadyExist(Lotto numbers, int number) {
-        if (numbers.contains(number)) {
+        if (numbers.containsLottoNumber(number)) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }

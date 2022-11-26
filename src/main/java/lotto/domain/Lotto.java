@@ -26,7 +26,7 @@ public class Lotto {
     public int getMatchingLottoNumberCount(Lotto lottoNumbers) {
         int matchingNumber = 0;
         for (int i = 0; i < LOTTO_COUNT; i++) {
-            if (lottoNumbers.contains(numbers.get(i))) {
+            if (lottoNumbers.containsLottoNumber(numbers.get(i))) {
                 matchingNumber++;
             }
         }
@@ -37,12 +37,8 @@ public class Lotto {
         return numbers.contains(bonus);
     }
 
-    public boolean contains(Object value) {
+    public boolean containsLottoNumber(Object value) {
         return numbers.contains(value);
-    }
-
-    public int get(Object index) {
-        return numbers.get((Integer) index);
     }
 
     @Override
