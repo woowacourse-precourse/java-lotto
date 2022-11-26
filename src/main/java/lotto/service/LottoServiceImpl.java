@@ -56,4 +56,9 @@ public class LottoServiceImpl implements LottoService {
         }
         return result;
     }
+
+    @Override
+    public void printResult(List<String> lottoScore, int lottoPrice) {
+
+    }
 }

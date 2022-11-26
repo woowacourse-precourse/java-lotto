@@ -16,4 +16,6 @@ public interface LottoService {
     List<Lotto> createLottoNumbers(int lottoGameCount);
 
     List<String> getLottoRank(List<Lotto> lottoNumbers, LottoWinNumberInfo lottoWinNumberInfo);
+
+    void printResult(List<String> lottoScore, int lottoPrice);
 }

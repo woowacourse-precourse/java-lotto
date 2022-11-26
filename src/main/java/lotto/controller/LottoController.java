@@ -28,9 +28,10 @@ public class LottoController {
     }
 
     private void printResult(List<String> lottoScore, int lottoPrice) {
-        /*
+        /*r
            로또 통계 구현
          */
+        service.printResult(lottoScore, lottoPrice);
     }
 
     private LottoWinNumberInfo getInputWinNumbers() {
