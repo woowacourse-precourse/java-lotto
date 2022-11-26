@@ -25,10 +25,9 @@ public class LottoResult {
     }
 
     public void checkMatchCount(List<Lotto> purchaseLotto, Lotto lottoNumbers, int bonusNumber) {
-        CompareLotto compareLotto = new CompareLotto();
         for (Lotto lotto : purchaseLotto) {
-            int count = compareLotto.getMatchingLottoNumberCount(lotto, lottoNumbers);
-            boolean bonusMatch = compareLotto.checkMatchingBonusNumber(lotto, bonusNumber);
+            int count = lotto.getMatchingLottoNumberCount(lottoNumbers);
+            boolean bonusMatch = lotto.checkMatchingBonusNumber(bonusNumber);
             if (count == 3) THREE_MATCHES++;
             if (count == 4) FOUR_MATCHES++;
             if (count == 5 && !bonusMatch) FIVE_MATCHES++;

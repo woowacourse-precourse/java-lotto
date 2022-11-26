@@ -5,6 +5,7 @@ import java.util.List;
 import static lotto.validator.NumbersValidator.*;
 
 public class Lotto {
+    private final static int LOTTO_COUNT = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,6 +22,20 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    public int getMatchingLottoNumberCount(Lotto lottoNumbers) {
+        int matchingNumber = 0;
+        for (int i = 0; i < LOTTO_COUNT; i++) {
+            if (lottoNumbers.contains(numbers.get(i))) {
+                matchingNumber++;
+            }
+        }
+        return matchingNumber;
+    }
+
+    public boolean checkMatchingBonusNumber(int bonus) {
+        return numbers.contains(bonus);
+    }
 
     public boolean contains(Object value) {
         return numbers.contains(value);
