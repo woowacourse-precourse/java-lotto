@@ -13,28 +13,23 @@ import java.util.ArrayList;
 import static lotto.validator.NumbersValidator.*;
 
 public class LottoGame {
-    private List<Lotto> purchaseLotto;
     private Lotto lottoNumbers;
-    private int bonusNumber;
 
     public void startLottoGame() {
         int quantity = getLottoPurchaseAmount();
-        OutputView.printLottoPurchaseCompleteAmount(quantity);
-
-        purchaseLotto = buyLotto(quantity);
-        OutputView.printLottoFormatting(purchaseLotto);
+        List<Lotto> purchaseLotto = buyLotto(quantity);
         lottoNumbers = setLottoNumbers();
-        bonusNumber = setBonusNumber();
+        int bonusNumber = setBonusNumber();
 
-        LottoResult lottoResult = new LottoResult(purchaseLotto, lottoNumbers, bonusNumber);
+        LottoResult lottoResult = getResult(purchaseLotto, lottoNumbers, bonusNumber);
         List<Integer> result = lottoResult.getResult();
-        OutputView.printWinningHistory(result);
 
-        OutputView.printGrossProfit(result, quantity * 1000);
+        printResult(result, quantity);
     }
 
     private int getLottoPurchaseAmount() {
         int quantity = Integer.parseInt(InputView.inputLottoPurchaseAmount()) / 1000;
+        OutputView.printLottoPurchaseCompleteAmount(quantity);
         return quantity;
     }
 
@@ -47,6 +42,7 @@ public class LottoGame {
             Lotto lotto = new Lotto(numbers);
             purchaseLotto.add(lotto);
         }
+        OutputView.printLottoFormatting(purchaseLotto);
         return purchaseLotto;
     }
 
@@ -70,5 +66,14 @@ public class LottoGame {
         int bonus = Integer.parseInt(InputView.inputBonusNumber());
         validateAlreadyExist(lottoNumbers, bonus);
         return bonus;
+    }
+
+    private LottoResult getResult(List<Lotto> purchaseLotto, Lotto lottoNumbers, int bonusNumber) {
+        return new LottoResult(purchaseLotto, lottoNumbers, bonusNumber);
+    }
+
+    private void printResult(List<Integer> result, int quantity) {
+        OutputView.printWinningHistory(result);
+        OutputView.printGrossProfit(result, quantity * 1000);
     }
 }
