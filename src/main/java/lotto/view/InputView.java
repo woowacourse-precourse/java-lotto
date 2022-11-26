@@ -5,14 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 import static lotto.validator.NumberValidator.*;
 
 public class InputView {
-    public static int inputLottoPurchaseAmount() {
+    public static String inputLottoPurchaseAmount() {
         OutputView.printLottoPurchaseAmount();
         String input = Console.readLine();
 
         validateNonNumeric(input);
         validateAmountRange(input);
         validateUnit(input);
-        return Integer.parseInt(input);
+        return input;
     }
 
     public static String inputLottoNumbers() {
@@ -21,12 +21,12 @@ public class InputView {
         return input;
     }
 
-    public static int inputBonusNumber() {
+    public static String inputBonusNumber() {
         OutputView.printLottoBonusNumber();
         String input = Console.readLine();
 
         validateNonNumeric(input);
         validateRange(Integer.parseInt(input));
-        return Integer.parseInt(input);
+        return input;
     }
 }

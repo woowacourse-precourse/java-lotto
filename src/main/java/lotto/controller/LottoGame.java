@@ -34,7 +34,7 @@ public class LottoGame {
     }
 
     private int getLottoPurchaseAmount() {
-        int quantity = InputView.inputLottoPurchaseAmount() / 1000;
+        int quantity = Integer.parseInt(InputView.inputLottoPurchaseAmount()) / 1000;
         return quantity;
     }
 
@@ -67,7 +67,7 @@ public class LottoGame {
     }
 
     private int setBonusNumber() {
-        int bonus = InputView.inputBonusNumber();
+        int bonus = Integer.parseInt(InputView.inputBonusNumber());
         validateAlreadyExist(lottoNumbers, bonus);
         return bonus;
     }
