@@ -12,7 +12,7 @@ public class LottoWinNumberInfo extends WinNumberValidator {
 
     public LottoWinNumberInfo(String inputWinNumbers, int bonusNumber) {
         List<Integer> winNumbers = lottoNumberToList(inputWinNumbers);
-        validateNumbers(winNumbers);
+        validateNumbers(winNumbers, bonusNumber);
         this.lottoWinNumbers = winNumbers;
         this.bonusNumber = bonusNumber;
     }
