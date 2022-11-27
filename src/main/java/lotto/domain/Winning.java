@@ -7,7 +7,6 @@ import static lotto.messages.ERR_MSG.*;
 public class Winning {
     private List<Integer> winningNumbers;
     private Integer bonusNumber;
-    private final Set<Integer> duplicateInspector = new HashSet<>();
 
     public void setWinningNumbers(String winningNumbersInput) {
         validateWinningNumbers(winningNumbersInput);
@@ -39,26 +38,28 @@ public class Winning {
     }
 
     private void validateWinningNumbers(String winningNumbersInput) {
-        String unit = "[1-9]|[1-3][0-9]|[4][0-5]"; //1~45
-        String format = String.format("%s,%s,%s,%s,%s,%s", unit, unit, unit, unit, unit, unit);
-        if (!winningNumbersInput.matches(format)) {
+        String format = "[1-9]|[1-3][0-9]|[4][0-5]"; //1~45
+        long count = Arrays.stream(winningNumbersInput.split(","))
+                .filter(x -> x.matches(format))
+                .count();
+        if (count != 6) {
             throw new IllegalArgumentException(INVALID_WINNING_NUMBER.getMsg());
         }
     }
 
     private void validateHasDuplicatedNumber(List<Integer> winningNumbers) {
-        duplicateInspector.addAll(winningNumbers);
-        if (duplicateInspector.size() != 6) {
+        Set<Integer> set = new HashSet<>(winningNumbers);
+        if (set.size() != 6) {
             throw new IllegalArgumentException(INVALID_NUMBER_UNIQUE.getMsg());
         }
     }
 
     private void validateBonusNumber(String bonusNumberInput) {
-        String unit = "[1-9]|[1-3][0-9]|[4][0-5]"; //1~45
-        if (!bonusNumberInput.matches(unit)) {
+        String format = "[1-9]|[1-3][0-9]|[4][0-5]"; //1~45
+        if (!bonusNumberInput.matches(format)) {
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMsg());
         }
-        if (duplicateInspector.contains(bonusNumber)) {
+        if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(INVALID_NUMBER_UNIQUE.getMsg());
         }
     }
