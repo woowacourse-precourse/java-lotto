@@ -42,7 +42,7 @@ public class Lotto {
         numbers.stream()
                 .filter(x -> x < 1 || x > 45)
                 .findAny()
-                .ifPresent(x -> raiseException(ERR_NUMBER_RANGE.getMsg()));
+                .ifPresent(x -> raiseException(INVALID_NUMBER_RANGE.getMsg()));
     }
 
     private void raiseException(String errorMessage) {

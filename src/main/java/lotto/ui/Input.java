@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static lotto.messages.UI_MSG.*;
 
-public class input {
+public class Input {
 
     static String inputPurchaseAmount() {
         System.out.println(INPUT_PURCHASE.getMsg());

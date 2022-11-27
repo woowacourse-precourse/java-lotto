@@ -7,7 +7,6 @@ import static lotto.messages.ERR_MSG.*;
 public class Winning {
     private List<Integer> winningNumbers;
     private Integer bonusNumber;
-
     private final Set<Integer> duplicateInspector = new HashSet<>();
 
     public void setWinningNumbers(String winningNumbersInput) {
@@ -29,6 +28,8 @@ public class Winning {
     public Integer getBonusNumber() {
         return bonusNumber;
     }
+
+
 
     private List<Integer> transformToList(String winningNumbersInput) {
         String[] split = winningNumbersInput.split(",");
