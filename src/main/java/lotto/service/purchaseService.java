@@ -9,11 +9,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class LottoPurchaseService {
+public class purchaseService {
 
     private final Integer purchaseQuantities;
 
-    public LottoPurchaseService(String purchaseAmount) {
+    public purchaseService(String purchaseAmount) {
         validateAmount(purchaseAmount);
         this.purchaseQuantities = calculatePurchaseQuantity(purchaseAmount);
     }

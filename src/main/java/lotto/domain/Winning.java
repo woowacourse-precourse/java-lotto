@@ -1,84 +1,64 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.*;
 
+import static lotto.messages.ERR_MSG.*;
+
 public class Winning {
-    private final List<Integer> winningNumber;
-    private final int bonusNumber;
+    private List<Integer> winningNumbers;
+    private Integer bonusNumber;
 
-    private static Set<String> forDuplicateCheck = new HashSet<>();
+    private final Set<Integer> duplicateInspector = new HashSet<>();
 
-    public Winning(String winningNumberInput, String bonusNumberInput) {
-        this.winningNumber = new ArrayList<>();
-        Arrays.stream(winningNumberInput.split(",")).
-                mapToInt(Integer::parseInt).forEach(winningNumber::add);
+    public void setWinningNumbers(String winningNumbersInput) {
+        validateWinningNumbers(winningNumbersInput);
+        List<Integer> winningNumbers = transformToList(winningNumbersInput);
+        validateHasDuplicatedNumber(winningNumbers);
+        this.winningNumbers = winningNumbers;
+    }
+
+    public void setBonusNumber(String bonusNumberInput) {
+        validateBonusNumber(bonusNumberInput);
         this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
-    public List<Integer> getWinningNumber() {
-        return winningNumber;
+    public List<Integer> getWinning() {
+        return winningNumbers;
     }
-    public int getBonusNumber() {
+
+    public Integer getBonusNumber() {
         return bonusNumber;
     }
 
-    // For UI with winning number input
-    public static String winningNumberInput() {
-        String winningNumberInput = Console.readLine();
-        System.out.println();
-        validateWinningNumberInput(winningNumberInput);
-        return winningNumberInput;
+    private List<Integer> transformToList(String winningNumbersInput) {
+        String[] split = winningNumbersInput.split(",");
+        List<Integer> list = new ArrayList<>();
+        Arrays.stream(split).mapToInt(Integer::parseInt).forEach(list::add);
+        return list;
     }
 
-    // For UI with bonus number input
-    public static String bonusNumberInput() {
-        String bonusNumberInput = Console.readLine();
-        System.out.println();
-        validate(bonusNumberInput);
-        return bonusNumberInput;
-    }
-
-    // Under Methods : for validate
-    public static void validateWinningNumberInput(final String winningNumber) {
-        String[] splitWinningNumber = winningNumber.split(",");
-
-        if (splitWinningNumber.length != 6) {
-            throw new IllegalArgumentException();
-        }
-
-        for (String i : splitWinningNumber){
-            validate(i);
+    private void validateWinningNumbers(String winningNumbersInput) {
+        String unit = "[1-9]|[1-3][0-9]|[4][0-5]"; //1~45
+        String format = String.format("%s,%s,%s,%s,%s,%s", unit, unit, unit, unit, unit, unit);
+        if (!winningNumbersInput.matches(format)) {
+            throw new IllegalArgumentException(INVALID_WINNING_NUMBER.getMsg());
         }
     }
 
-    public static void validate(final String input) {
-        validateStringToInteger(input);
-        validateRange(input);
-        validateUniqueNumber(input);
-    }
-
-    public static  void validateStringToInteger(final String input) {
-        try {
-            Integer.parseInt(input);
-        }catch (Exception e) {
-            throw new IllegalArgumentException();
+    private void validateHasDuplicatedNumber(List<Integer> winningNumbers) {
+        duplicateInspector.addAll(winningNumbers);
+        if (duplicateInspector.size() != 6) {
+            throw new IllegalArgumentException(INVALID_NUMBER_UNIQUE.getMsg());
         }
     }
 
-    public static void validateRange(final String input) {
-        int intInput = Integer.parseInt(input);
-        if (intInput < 1 || intInput > 45) {
-            throw new IllegalArgumentException();
+    private void validateBonusNumber(String bonusNumberInput) {
+        String unit = "[1-9]|[1-3][0-9]|[4][0-5]"; //1~45
+        if (!bonusNumberInput.matches(unit)) {
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMsg());
         }
-    }
-
-    public static void validateUniqueNumber(final String input) {
-        if (forDuplicateCheck.contains(input)) {
-            System.out.println();
-            throw new IllegalArgumentException();
+        if (duplicateInspector.contains(bonusNumber)) {
+            throw new IllegalArgumentException(INVALID_NUMBER_UNIQUE.getMsg());
         }
-        forDuplicateCheck.add(input);
     }
 }
