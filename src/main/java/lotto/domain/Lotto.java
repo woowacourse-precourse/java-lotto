@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static lotto.messages.ERR_MSG.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,32 +17,36 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            System.out.println("[ERROR] 로또의 번호 개수는 6개여야 합니다.");
-            throw new IllegalArgumentException();
-        }
-        validateDuplicatedNumber(numbers);
+        validateLength(numbers);
+        validateHavingDuplicatedNumber(numbers);
         validateNumberRange(numbers);
     }
 
-    private void validateDuplicatedNumber(List<Integer> numbers) {
-        Map<Integer, Integer> duplicateChecker = new HashMap<>();
-        numbers.forEach(x -> duplicateChecker.put(x, duplicateChecker.getOrDefault(x,0)+1));
+    private void validateLength(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            raiseException(INVALID_LENGTH.getMsg());
+        }
+    }
 
-        for(int x : duplicateChecker.values()) {
-            if (x > 1) {
-                System.out.println("[ERROR] 로또의 번호는 중복될 수 없습니다.");
-                throw new IllegalArgumentException();
-            }
+    private void validateHavingDuplicatedNumber(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>();
+        numbers.stream()
+                .filter(x -> !set.contains(x))
+                .forEach(set::add);
+        if (set.size() != 6) {
+            raiseException(INVALID_NUMBER_UNIQUE.getMsg());
         }
     }
 
     private void validateNumberRange(List<Integer> numbers) {
-        long countsOfRangeOut = numbers.stream().filter(x -> x < 1 || x > 45).count();
-        if (countsOfRangeOut > 0) {
-            System.out.println("[ERROR] 로또의 숫자 범위는 1에서 45까지 가능합니다.");
-            throw new IllegalArgumentException();
-        }
+        numbers.stream()
+                .filter(x -> x < 1 || x > 45)
+                .findAny()
+                .ifPresent(x -> raiseException(ERR_NUMBER_RANGE.getMsg()));
+    }
+
+    private void raiseException(String errorMessage) {
+        throw new IllegalArgumentException(errorMessage);
     }
 
     public void printLotto() {
