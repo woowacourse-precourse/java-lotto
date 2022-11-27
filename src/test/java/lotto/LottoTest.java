@@ -1,8 +1,6 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.Purchase;
-import lotto.domain.Winning;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
