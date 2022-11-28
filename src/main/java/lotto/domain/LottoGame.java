@@ -1,42 +1,22 @@
 package lotto.domain;
 
-import lotto.dto.RankAggregationDto;
-import lotto.dto.WinningLottoNumberDto;
-import lotto.service.LottoRankAggregation;
-import lotto.view.ConsumerLottoNumberView;
-import lotto.view.InputView;
-import lotto.view.WinningHistoryView;
-
-import java.util.List;
+import lotto.view.OutPutView;
 
 public class LottoGame {
 
-    private final LottoRankAggregation lottoRankAggregation = new LottoRankAggregation();
+    private LottoShop lottoShop;
+    private WinningLotto winningLotto;
 
-    public void start() {
-        LottoShop lottoShop = new LottoShop();
-        Money money = getMoney();
-        List<Lotto> lottos = getLottosForMoney(lottoShop, money);
-
-        WinningLottoNumberDto winningLottoNumberDto = getWinningLottoNumber(lottoShop);
-        RankAggregationDto rankAggregationDto = lottoRankAggregation.getRankAggregation(lottos, winningLottoNumberDto);
-        WinningHistoryView.showRankAggregation(rankAggregationDto, money.getPayment());
+    public LottoGame(LottoShop lottoShop, WinningLotto winningLotto) {
+        this.lottoShop = lottoShop;
+        this.winningLotto = winningLotto;
     }
 
-    private Money getMoney() {
-        String payment = InputView.requestMoney();
-        return Money.of(payment);
+    public void start(Customer customer, int amount) {
+        lottoShop.sellTo(customer, amount);
     }
 
-    private List<Lotto> getLottosForMoney(LottoShop lottoShop, Money money) {
-        List<Lotto> lottos = lottoShop.createLottoForMoney(money);
-        ConsumerLottoNumberView.show(lottos);
-        return lottos;
-    }
-
-    private WinningLottoNumberDto getWinningLottoNumber(LottoShop lottoShop) {
-        String winningNumberData = InputView.requestWinningNumbers();
-        String bonusNumberData = InputView.requestBonusNumber();
-        return lottoShop.createWinningLottoNumberFor(winningNumberData, bonusNumberData);
+    public void winningHistory(Customer customer, int amount) {
+        OutPutView.showRankAggregation(winningLotto.compareTo(customer), amount);
     }
 }

@@ -1,22 +1,31 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import lotto.domain.Rank;
-import lotto.dto.RankAggregationDto;
+import lotto.dto.ResponseRankAggregationDto;
 import lotto.service.YieldService;
 
 import java.text.DecimalFormat;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
-public class WinningHistoryView {
+public class OutPutView {
 
     private static DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private static YieldService yieldService = new YieldService();
 
-    public static void showRankAggregation(RankAggregationDto rankAggregationDto, int payment) {
+    public static void showCustomerLotto(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
+    public static void showRankAggregation(ResponseRankAggregationDto responseRankAggregationDto, int payment) {
         showAggregationForm();
-        showRankAggregationCount(rankAggregationDto);
-        showYield(rankAggregationDto, payment);
+        showRankAggregationCount(responseRankAggregationDto);
+        showYield(responseRankAggregationDto, payment);
     }
 
     private static void showAggregationForm() {
@@ -24,7 +33,7 @@ public class WinningHistoryView {
         System.out.println("---");
     }
 
-    private static void showRankAggregationCount(RankAggregationDto rankAggregationDto) {
+    private static void showRankAggregationCount(ResponseRankAggregationDto rankAggregationDto) {
         rankAggregationDto.getRankAggregationMap()
                 .entrySet()
                 .stream()
@@ -58,7 +67,7 @@ public class WinningHistoryView {
                 entry.getValue());
     }
 
-    private static void showYield(RankAggregationDto rankAggregationDto, int payment) {
+    private static void showYield(ResponseRankAggregationDto rankAggregationDto, int payment) {
         String calculate = yieldService.calculate(rankAggregationDto, payment);
         System.out.println("총 수익률은 " + calculate + "%입니다.");
     }

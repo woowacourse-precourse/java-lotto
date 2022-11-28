@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.Rank;
-import lotto.dto.RankAggregationDto;
+import lotto.dto.ResponseRankAggregationDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +20,7 @@ class YieldServiceTest {
             put(Rank.FIFTH, 1);
         }};
 
-        RankAggregationDto rankAggregationDto = RankAggregationDto.of(map);
+        ResponseRankAggregationDto rankAggregationDto = ResponseRankAggregationDto.of(map);
         int payment = 8000;
         String expectedValue = "62.5";
 

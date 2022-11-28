@@ -1,29 +1,34 @@
 package lotto.domain;
 
-import lotto.dto.WinningLottoNumberDto;
-import lotto.exception.PayMoneyException;
-import lotto.service.LottoShopService;
+import lotto.exception.ErrorCode;
 
-import java.util.Collections;
-import java.util.List;
-
+/**
+ * 로또를 판매하는 역할
+ * 1. 구매 금액에 대한 수량 계산 책임
+ * 2. 로또를 판매하는 책임
+ */
 public class LottoShop {
 
-    private final LottoShopService lottoShopService = new LottoShopService();
+    private static final int LOTTO_PRICE = 1000;
+    private Lotto lotto;
 
-    public List<Lotto> createLottoForMoney(Money money) {
+    public LottoShop(Lotto lotto) {
+        this.lotto = lotto;
+    }
+
+    public void sellTo(Customer customer, int amount) {
         try {
-            int quantity = Lotto.moneyOfQuantity(money.getPayment());
-
-            return Lotto.createLottoNumbers(quantity);
-        } catch (PayMoneyException e) {
+            customer.buy(lotto.createBuyLotto(calculateQuantity(amount)));
+        } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
-            return Collections.emptyList();
         }
     }
 
-    public WinningLottoNumberDto createWinningLottoNumberFor(String writeLottoNumber, String writeBonusNumber) {
-        return lottoShopService.getWinningLottoNumber(writeLottoNumber, writeBonusNumber);
-    }
+    private int calculateQuantity(int amount) {
+        if (amount % LOTTO_PRICE != 0) {
+            throw new IllegalStateException(ErrorCode.ERROR.getMessage());
+        }
 
+        return amount / LOTTO_PRICE;
+    }
 }

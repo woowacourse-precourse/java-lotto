@@ -18,7 +18,7 @@ class RankAggregationDtoTest {
         Map<Rank, Integer> rankIntegerMap = new EnumMap<>(Rank.class);
 
         // when
-        RankAggregationDto result = RankAggregationDto.of(rankIntegerMap);
+        ResponseRankAggregationDto result = ResponseRankAggregationDto.of(rankIntegerMap);
 
         // then
         assertThat(rankIntegerMap).isEqualTo(result.getRankAggregationMap());

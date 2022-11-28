@@ -4,19 +4,19 @@ import lotto.domain.Rank;
 
 import java.util.Map;
 
-public class RankAggregationDto {
+public class ResponseRankAggregationDto {
 
     private final Map<Rank, Integer> rankAggregationMap;
 
-    public RankAggregationDto(Map<Rank, Integer> rankAggregationMap) {
+    public ResponseRankAggregationDto(Map<Rank, Integer> rankAggregationMap) {
         this.rankAggregationMap = rankAggregationMap;
-    }
-
-    public static RankAggregationDto of(Map<Rank, Integer> rankAggregationMap) {
-        return new RankAggregationDto(rankAggregationMap);
     }
 
     public Map<Rank, Integer> getRankAggregationMap() {
         return rankAggregationMap;
+    }
+
+    public static ResponseRankAggregationDto of(Map<Rank, Integer> rankAggregationMap) {
+        return new ResponseRankAggregationDto(rankAggregationMap);
     }
 }

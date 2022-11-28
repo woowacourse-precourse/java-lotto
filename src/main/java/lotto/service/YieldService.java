@@ -1,15 +1,15 @@
 package lotto.service;
 
-import lotto.dto.RankAggregationDto;
+import lotto.dto.ResponseRankAggregationDto;
 
 public class YieldService {
-    public String calculate(RankAggregationDto rankAggregationDto, int payment) {
+    public String calculate(ResponseRankAggregationDto rankAggregationDto, int payment) {
         double totalWinningMoney = getTotalWinningMoney(rankAggregationDto);
         double yield = getYield(payment, totalWinningMoney);
         return String.format("%.1f", yield);
     }
 
-    private double getTotalWinningMoney(RankAggregationDto rankAggregationDto) {
+    private double getTotalWinningMoney(ResponseRankAggregationDto rankAggregationDto) {
         return rankAggregationDto.getRankAggregationMap()
                 .entrySet()
                 .stream()
