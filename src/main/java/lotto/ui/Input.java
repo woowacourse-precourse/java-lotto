@@ -6,17 +6,17 @@ import static lotto.messages.UI_MSG.*;
 
 public class Input {
 
-    static String inputPurchaseAmount() {
+    public static String inputPurchaseAmount() {
         System.out.println(INPUT_PURCHASE.getMsg());
         return Console.readLine();
     }
 
-    static String inputWinningNumbers() {
+    public static String inputWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS.getMsg());
         return Console.readLine();
     }
 
-    static String inputBonusNumber() {
+    public static String inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER.getMsg());
         return Console.readLine();
     }

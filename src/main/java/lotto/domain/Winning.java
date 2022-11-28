@@ -20,7 +20,7 @@ public class Winning {
         this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
-    public List<Integer> getWinning() {
+    public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
 

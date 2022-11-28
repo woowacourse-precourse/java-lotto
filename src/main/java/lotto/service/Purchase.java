@@ -6,6 +6,7 @@ import lotto.messages.ERR_MSG;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -41,8 +42,8 @@ public class Purchase {
     }
 
     private List<Integer> lottoNumbersCreator() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45, 6);
-        Collections.sort(numbers);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45, 6));
+        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
 }

@@ -22,7 +22,7 @@ public class WinningTest {
         @Test
         void 당첨번호_정상입력() {
             assertDoesNotThrow(() -> winning.setWinningNumbers("1,44,21,28,19,4"));
-            assertEquals(List.of(1,44,21,28,19,4), winning.getWinning());
+            assertEquals(List.of(1,44,21,28,19,4), winning.getWinningNumbers());
         }
 
         @DisplayName("당첨 번호 문자 입력시 예외 발생")
