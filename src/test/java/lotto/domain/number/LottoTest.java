@@ -1,17 +1,21 @@
-package lotto;
+package lotto.domain.number;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import lotto.domain.number.Lotto;
-import lotto.domain.number.LottoNumber;
+import java.util.stream.IntStream;
+import lotto.domain.game.LottoRanking;
+import lotto.utils.consts.LottoConst;
 import lotto.utils.message.ExceptionMessageUtil;
+import lotto.utils.number.LottoNumberFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -178,9 +182,55 @@ class LottoTest {
         @DisplayName("만약 플레이어가 구매한 로또와 보너스 번호가 주어지면")
         class ContextWithPlayerLottoAndBonusNumberTest {
 
-            @DisplayName("당첨 등수를 반환한다")
-            void it_returns_lottoRanking() {
+            private final Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
+            @ParameterizedTest
+            @MethodSource("lotto.domain.number.arguments.LottoTestArgument#calculateLottoRankingArgument")
+            @DisplayName("당첨 등수를 반환한다")
+            void it_returns_lottoRanking(String winningNumbers, int bonusNumber, LottoRanking expectedLottoRanking) {
+                Lotto winningLotto = new Lotto(winningNumbers);
+
+                LottoRanking actualLottoRanking = winningLotto
+                        .calculateLottoRanking(playerLotto, LottoNumberFactory.numberOf(bonusNumber));
+
+                assertThat(actualLottoRanking).isSameAs(expectedLottoRanking);
+            }
+        }
+    }
+
+    @Nested
+    @DisplayName("getLottoNumbers 메소드는")
+    class DescribeGetLottoNumbersMethodTest {
+
+        @Nested
+        @DisplayName("만약 호출하면")
+        class ContextWithoutParameterTest {
+
+            private static final String LOTTO_PRINT_SEPARATOR = ", ";
+
+            @RepeatedTest(10)
+            @DisplayName("해당 Lotto의 LottoNumber를 오름차순으로 정렬한 문자열을 반환한다")
+            void it_return_sortedLottoNumbersLogMessage() {
+                List<Integer> uniqueNumbers = createUniqueNumbers();
+                String lottoNumbersLogMessage = new Lotto(uniqueNumbers).getSortedLottoNumbers();
+
+                List<Integer> numbers = mapToNumbers(lottoNumbersLogMessage);
+
+                IntStream.range(0, numbers.size() - 1)
+                        .forEach(i -> assertThat(numbers.get(i)).isLessThan(numbers.get(i + 1)));
+            }
+
+            private List<Integer> createUniqueNumbers() {
+                return Randoms.pickUniqueNumbersInRange(
+                        LottoConst.MIN_NUMBER_VALUE,
+                        LottoConst.MAX_NUMBER_VALUE,
+                        LottoConst.NUMBER_SIZE);
+            }
+
+            private List<Integer> mapToNumbers(String lottoNumbersLogMessage) {
+                return Arrays.stream(lottoNumbersLogMessage.split(LOTTO_PRINT_SEPARATOR))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList());
             }
         }
     }
