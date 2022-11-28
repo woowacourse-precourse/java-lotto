@@ -6,8 +6,8 @@ public enum ExceptionMessageUtil {
     WRONG_NUMBER_FORMAT("입력한 값을 숫자로 치환할 수 없습니다."),
 
     WRONG_NUMBER_RANGE("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.",
-            LottoConst.MIN_NUMBER_INT_VALUE,
-            LottoConst.MAX_NUMBER_INT_VALUE),
+            LottoConst.MIN_NUMBER_VALUE,
+            LottoConst.MAX_NUMBER_VALUE),
 
     WRONG_NUMBER_SIZE("유효한 숫자는 총 %d개여야만 합니다.",
             LottoConst.NUMBER_SIZE),

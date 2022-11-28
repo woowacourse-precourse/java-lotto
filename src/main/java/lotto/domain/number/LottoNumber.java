@@ -22,7 +22,7 @@ public class LottoNumber {
     }
 
     private boolean isValidNumberRange(int number) {
-        return LottoConst.MIN_NUMBER_INT_VALUE <= number && number <= LottoConst.MAX_NUMBER_INT_VALUE;
+        return LottoConst.MIN_NUMBER_VALUE <= number && number <= LottoConst.MAX_NUMBER_VALUE;
     }
 
     @Override
