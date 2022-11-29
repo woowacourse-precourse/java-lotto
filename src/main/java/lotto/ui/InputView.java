@@ -7,7 +7,7 @@ public class InputView {
     Message message = new Message();
 
     public String getPrice() {
-        message.INPUT_PRCIE_MESSAGE();
+        message.INPUT_PRICE_MESSAGE();
         return Console.readLine();
     }
 
@@ -20,5 +20,7 @@ public class InputView {
         message.INPUT_BONUS_NUMBER_MESSAGE();
         return Console.readLine();
     }
+
+
 
 }
