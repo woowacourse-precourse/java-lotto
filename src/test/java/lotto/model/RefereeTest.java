@@ -62,9 +62,9 @@ class RefereeTest {
     @DisplayName("현재 로또 티켓의 점수 계산하기.")
     @Test
     void countPrizeOfTicket() {
-        Assertions.assertEquals(referee.calculatePrizeOfEachTicket(strikeSix), 6.0);
-        Assertions.assertEquals(referee.calculatePrizeOfEachTicket(strikeZero), 0.0);
-        Assertions.assertEquals(referee.calculatePrizeOfEachTicket(strikeThree), 3.0);
+        Assertions.assertEquals(referee.judgePrizeOfEachTicket(strikeSix), 6.0);
+        Assertions.assertEquals(referee.judgePrizeOfEachTicket(strikeZero), 0.0);
+        Assertions.assertEquals(referee.judgePrizeOfEachTicket(strikeThree), 3.0);
     }
 
     @DisplayName("수익률 계산하기")

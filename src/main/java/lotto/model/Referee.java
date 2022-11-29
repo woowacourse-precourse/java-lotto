@@ -29,22 +29,19 @@ public class Referee {
 
     public Map<Prize, Integer> calculatePrizeOfAllTicket(List<List<Integer>> userTickets) {
         for (List<Integer> ticketNumbers : userTickets) {
-            double score = calculatePrizeOfEachTicket(ticketNumbers);
-            Prize findPrize = Prize.getPrizeByScore(score);
+            Prize prize = judgePrizeOfEachTicket(ticketNumbers);
 
-            if (findPrize == null) continue;
-            int count = result.get(findPrize);
-            result.put(findPrize, count + 1);
+            if (prize == null) continue;
+            int prizeCount = result.get(prize);
+            result.put(prize, prizeCount + 1);
         }
         return this.result;
     }
 
-    public double calculatePrizeOfEachTicket(List<Integer> ticketNumbers) {
-        Double score = lotto.countWinLotto(ticketNumbers).doubleValue();
-        if (score == 5.0 && bonusLotto.isBonusLotto(ticketNumbers)) {
-            score += Score.BONUS.getScore();
-        }
-        return score;
+    public Prize judgePrizeOfEachTicket(List<Integer> ticketNumbers) {
+        Integer matchCount = lotto.countWinLotto(ticketNumbers);
+        Boolean isBonus = bonusLotto.isBonusLotto(ticketNumbers);
+        return Prize.getPrizeByMatchCountAndBonus(matchCount, isBonus);
     }
 
     public double calculateProfitRate(int inputMoney) {

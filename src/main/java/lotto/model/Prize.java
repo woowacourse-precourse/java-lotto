@@ -1,26 +1,22 @@
 package lotto.model;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public enum Prize {
-    THREE_STRIKE(3.0, "3개 일치 (5,000원)",  5_000),
-    FOUR_STRIKE(4.0, "4개 일치 (50,000원)",  50_000),
-    FIVE_STRIKE(5.0, "5개 일치 (1,500,000원)", 1_500_000),
-    FIVE_STRIKE_WITH_BONUS(5.5, "5개 일치, 보너스 볼 일치 (30,000,000원)", 30_000_000),
-    SIX_STRIKE(6.0, "6개 일치 (2,000,000,000원)",  2_000_000_000);
+    THREE_STRIKE(3, false,5_000),
+    FOUR_STRIKE(4,false,   50_000),
+    FIVE_STRIKE(5, false, 1_500_000),
+    FIVE_STRIKE_WITH_BONUS(5,true,  30_000_000),
+    SIX_STRIKE(6,  false,2_000_000_000);
 
-    private Double prize;
-    private String message;
+    private Integer prize;
+    private Boolean isBonus;
     private Integer money;
 
-    Prize(Double prize, String message, Integer money) {
+    Prize(Integer prize, Boolean isBonus, Integer money) {
         this.prize = prize;
-        this.message = message;
+        this.isBonus = isBonus;
         this.money = money;
     }
 
@@ -28,26 +24,31 @@ public enum Prize {
         return money * count;
     }
 
-    public static Prize getPrizeByScore(Double score) {
+    public static Prize getPrizeByMatchCountAndBonus(Integer matchCount, Boolean isBonus) {
         return Arrays.stream(values())
-                .filter(value -> score.equals(value.prize))
-                .findAny()
+                .filter(i -> i.prize.equals(matchCount))
+                .filter(i -> i.isBonus == isBonus)
+                .findFirst()
                 .orElse(null);
     }
 
-    public static List<Double> getPrizeCandidates() {
-        List<Double> counts = Stream.of(Prize.values())
-                .map(Prize::getPrize)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
-        return counts;
-    }
-
-    public Double getPrize() {
-        return prize;
-    }
-
     public String getMessage() {
-        return message;
+        String prefixMessage = getPrizeMessage();
+        String suffixMessage = getMoneyMessage(money);
+        return prefixMessage + suffixMessage;
+    }
+
+    public String getPrizeMessage() {
+        String prizeMessage = prize + "개 일치";
+        if (isBonus) {
+            prizeMessage += ", 보너스 볼 일치";
+        }
+        return prizeMessage;
+    }
+
+    public String getMoneyMessage(int money) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        String moneyByDecimalFormat = decFormat.format(money);
+        return " (" + moneyByDecimalFormat + "원)";
     }
 }

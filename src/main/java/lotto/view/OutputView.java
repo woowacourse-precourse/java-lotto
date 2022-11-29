@@ -45,11 +45,9 @@ public class OutputView {
     }
 
     private static void printEachCountOfPrize(Map<Prize, Integer> prizeCountResult) {
-        List<Double> prizeCandidates = Prize.getPrizeCandidates();
-        Collections.sort(prizeCandidates);
-        for(Double key : prizeCandidates ){
-            Prize prize = Prize.getPrizeByScore(key);
-            printLottoResult(prize, prizeCountResult.get(prize));
+        for(Prize prize : prizeCountResult.keySet()){
+            Integer count = prizeCountResult.get(prize);
+            printLottoResult(prize, count);
         }
     }
 
