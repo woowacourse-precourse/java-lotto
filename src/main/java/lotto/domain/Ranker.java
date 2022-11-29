@@ -24,9 +24,18 @@ public class Ranker {
     }
 
     public WinningResult rank(Lotto lotto) {
-        NumberMatcher matcher = new NumberMatcher();
         List<Integer> numbers = lotto.getNumbers();
-        int count = matcher.winningNumberCount(numbers, winningNumber);
+        int count = winningNumberCount(numbers, winningNumber);
         return WinningResult.match(count, numbers.contains(bonusNumber));
+    }
+
+    private int winningNumberCount(List<Integer> buyer, List<Integer> winningNumber) {
+        int count = 0;
+        for (Integer number: buyer) {
+            if(winningNumber.contains(number)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
