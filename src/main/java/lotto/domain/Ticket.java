@@ -7,7 +7,7 @@ public class Ticket {
 
     public Ticket(String userInput) {
         validate(userInput);
-        count = Integer.parseInt(userInput) / LottoConstants.TICKET_PRICE.getValue();
+        count = Integer.parseInt(userInput) / LottoConstants.TICKET_PRICE;
     }
 
     private void validate(String userInput) {

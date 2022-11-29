@@ -62,7 +62,7 @@ public class LottoController {
         RateOfReturnUI ui = new RateOfReturnUI();
 
         double currentValue = evaluator.evaluate(result);
-        double initialValue = ticket.getCount() * LottoConstants.TICKET_PRICE.getValue();
+        double initialValue = ticket.getCount() * LottoConstants.TICKET_PRICE;
         ui.print(currentValue, initialValue);
     }
 }

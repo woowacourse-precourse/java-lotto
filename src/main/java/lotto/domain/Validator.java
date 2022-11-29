@@ -15,7 +15,7 @@ public class Validator {
     private static final String INPUT_FORMAT_ERROR_MESSAGE = ",로 구분되는 6개의 숫자여야 합니다.";
     private static final String CONTAINS_ERROR_MESSAGE = "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
     public static void sizeCheck(List<Integer> numbers) {
-        if (numbers.size() != LottoConstants.LENGTH.getValue()) {
+        if (numbers.size() != LottoConstants.LENGTH) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
     }
@@ -29,8 +29,8 @@ public class Validator {
 
 
     public static void rangeCheck(List<Integer> numbers) {
-        final int start = LottoConstants.START_NUMBER.getValue();
-        final int end = LottoConstants.END_NUMBER.getValue();
+        final int start = LottoConstants.START_NUMBER;
+        final int end = LottoConstants.END_NUMBER;
         for (Integer number : numbers) {
             if (number < start || number > end) {
                 throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
@@ -49,14 +49,14 @@ public class Validator {
     }
 
     public static void multipleOfTicketPriceCheck(int money) {
-        if (money % LottoConstants.TICKET_PRICE.getValue() != 0) {
+        if (money % LottoConstants.TICKET_PRICE != 0) {
             throw new IllegalArgumentException(MULTIPLE_OF_PRICE_ERROR_MESSAGE);
         }
     }
 
     public static String[] inputFormatCheck(String userInput) {
         String[] elements = userInput.split(",");
-        if (elements.length != LottoConstants.LENGTH.getValue()) {
+        if (elements.length != LottoConstants.LENGTH) {
             throw new IllegalArgumentException(INPUT_FORMAT_ERROR_MESSAGE);
         }
         return elements;
