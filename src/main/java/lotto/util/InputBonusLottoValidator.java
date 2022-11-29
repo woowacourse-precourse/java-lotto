@@ -6,6 +6,7 @@ public class InputBonusLottoValidator {
 
     public static void validateInputBonusLotto(List<Integer> lotto, String bonusLotto) {
         LottoNumberFormatValidator.validateInteger(bonusLotto);
+
         Integer bonusLottoNumber = Integer.parseInt(bonusLotto);
         LottoNumberFormatValidator.validateLottoNumberFormat(bonusLottoNumber);
         validateDuplicate(lotto, bonusLottoNumber);
