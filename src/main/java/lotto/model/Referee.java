@@ -1,7 +1,7 @@
 package lotto.model;
 
-import lotto.model.Lotto.BonusLotto;
-import lotto.model.Lotto.Lotto;
+import lotto.model.Answer.BonusLotto;
+import lotto.model.Answer.Lotto;
 
 import java.util.HashMap;
 import java.util.List;

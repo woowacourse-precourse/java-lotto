@@ -1,4 +1,4 @@
-package lotto.model.Lotto;
+package lotto.model.Answer;
 
 import lotto.util.InputLottoValidator;
 import lotto.util.LottoNumberFormatValidator;

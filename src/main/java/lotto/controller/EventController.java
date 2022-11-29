@@ -2,8 +2,8 @@ package lotto.controller;
 
 import lotto.model.Prize;
 import lotto.model.Referee;
-import lotto.model.Lotto.BonusLotto;
-import lotto.model.Lotto.Lotto;
+import lotto.model.Answer.BonusLotto;
+import lotto.model.Answer.Lotto;
 import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
