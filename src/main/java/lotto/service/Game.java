@@ -1,5 +1,6 @@
 package lotto.service;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.constant.LottoConstant;
 import lotto.domain.Lotto;
 import lotto.domain.Player;
