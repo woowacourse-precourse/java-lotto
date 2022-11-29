@@ -19,7 +19,7 @@ public class InputMoneyValidator {
     }
 
     public static void validateMoneyRange(Integer money) {
-        if (money < 0 ) {
+        if (money <= 0 ) {
             throw new IllegalArgumentException("입력 금액이 양수이어야 합니다.");
         }
     }
