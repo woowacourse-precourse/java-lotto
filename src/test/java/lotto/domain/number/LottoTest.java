@@ -96,34 +96,6 @@ class LottoTest {
         }
 
         @Nested
-        @DisplayName("만약 길이가 11에서 17 사이의 유효하지 않은 입력이 주어지면")
-        class ContextWithInvalidNumbersLengthTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"1,2,3,4,5", "12,23,34,21,24,123", "123,234,345,456,567,678"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다.")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Lotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_LENGTH.findFullMessage());
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 유효한 구분자가 아닌 입력이 주어지면")
-        class ContextWithInvalidSeparatorTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"1:2:3:4:5:6", "111213141516", "1.2.3.4.5.6", "1@2@3@4@5@6"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다.")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Lotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_SEPARATOR.findFullMessage());
-            }
-        }
-
-        @Nested
         @DisplayName("만약 숫자로 변경이 불가능한 입력이 주어지면")
         class ContextWithInvalidNumberFormatTest {
 
