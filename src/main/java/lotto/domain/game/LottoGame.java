@@ -24,10 +24,6 @@ public class LottoGame {
         return new LottoResult(player, winningLotto, bonusNumber);
     }
 
-    public BigDecimal calculateRevenuePercent(BigDecimal totalReward) {
-        return player.calculateRevenuePercent(totalReward);
-    }
-
     public List<String> getPlayerPurchaseLottos() {
         return player.getPurchaseLottos();
     }
