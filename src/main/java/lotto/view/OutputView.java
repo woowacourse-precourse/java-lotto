@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.view.Constants.*;
-
 public class OutputView {
     final String BOUGHT_NOTICE = "%d개를 구매했습니다.";
     final String WIN_STAT = "당첨 통계\n---";
