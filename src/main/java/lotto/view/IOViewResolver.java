@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import lotto.dto.input.ReadBonusNumberDto;
 import lotto.dto.input.ReadPlayerPurchaseAmountDto;
 import lotto.dto.input.ReadWinningLottoDto;
+import lotto.dto.output.PrintExceptionMessageDto;
 import lotto.dto.output.PrintLottoDto;
 import lotto.dto.output.PrintLottoResultDto;
 import lotto.view.exception.NotFoundViewException;
@@ -29,11 +30,13 @@ public class IOViewResolver {
 
     private void initOutputViewMappings(final OutputView outputView) {
         outputViewMappings.put(PrintLottoDto.class, dto -> outputView.printLotto((PrintLottoDto) dto));
+        outputViewMappings.put(PrintExceptionMessageDto.class, dto -> outputView
+                .printExceptionMessage((PrintExceptionMessageDto) dto));
         outputViewMappings.put(PrintLottoResultDto.class, dto -> outputView
                 .printLottoResult((PrintLottoResultDto) dto));
     }
 
-    public <T> T inputViewResolve(final Class<T> type) {
+    public <T> T resolveInputView(final Class<T> type) {
         try {
             return type.cast(inputViewMappings.get(type).get());
         } catch (NullPointerException e) {
@@ -41,10 +44,11 @@ public class IOViewResolver {
         }
     }
 
-    public void outputViewResolve(final Object dto) {
+    public void resolveOutputView(final Object dto) {
         try {
             outputViewMappings.get(dto.getClass()).accept(dto);
         } catch (NullPointerException e) {
+            e.printStackTrace();
             throw new NotFoundViewException();
         }
     }
