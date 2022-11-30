@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
+import lotto.dto.output.PrintExceptionMessageDto;
 import lotto.dto.output.PrintLottoDto;
 import lotto.dto.output.PrintLottoResultDto;
 
@@ -28,6 +30,13 @@ public class OutputView {
     public void printLottoResult(PrintLottoResultDto printLottoResultDto) {
         print(LINE_FEED);
         printLottoResultDto.getLottoRankingLog().forEach(this::print);
+        DecimalFormat rewardFormat = new DecimalFormat("###,###");
+        print(OutputViewMessage.REVENUE_PERCENT
+                .getFullMessage(rewardFormat.format(printLottoResultDto.getRevenuePercent().toString())));
+    }
+
+    public void printExceptionMessage(PrintExceptionMessageDto printExceptionMessageDto) {
+        print(OutputViewMessage.EXCEPTION.getFullMessage(printExceptionMessageDto.getMessage()));
     }
 
     private void print(String message) {
@@ -39,6 +48,7 @@ public class OutputView {
         LOTTO("[%s]"),
         GUIDE_RESULT("당첨 통계"),
         GUIDE_CONTOUR("---"),
+        REVENUE_PERCENT("총 수익률은 %s%%입니다."),
         EXCEPTION("[ERROR] %s");
 
         private final String baseMessage;
