@@ -8,39 +8,47 @@ import static lotto.view.Constants.*;
 
 public class Validator {
     public Integer validateMoney(String input) {
-        validateNumeric(input);
-        return stringToInteger(input);
+        int money = validateNumeric(input);
+        validateNoMoney(money);
+        validateWrongMoney(money);
+        return money;
     }
 
     public List<Integer> validateWinningNumbers(String input) {
         List<Integer> numbers = new ArrayList<>();
         List<String> splitForm = splitInput(input);
         for (String piece: splitForm) {
-            validateNumeric(piece);
-            int number = stringToInteger(piece);
+            int number = validateNumeric(piece);
             validateRange(number);
             numbers.add(number);
         }
         return numbers;
     }
 
-    public int validateBonusNumber(String input) {
-        validateNumeric(input);
-        int number = stringToInteger(input);
+    public Integer validateBonusNumber(String input) {
+        int number = validateNumeric(input);
         validateRange(number);
         return number;
     }
 
-    private void validateNumeric(String input) {
+    private Integer validateNumeric(String input) {
         try {
-            Integer.parseInt(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_NUMERIC);
         }
     }
 
-    private int stringToInteger(String input) {
-        return Integer.parseInt(input);
+    private void validateNoMoney(int paidMoney) {
+        if (paidMoney == 0) {
+            throw new IllegalArgumentException(BOUGHT_NOTHING);
+        }
+    }
+
+    private void validateWrongMoney(int paidMoney) {
+        if (paidMoney % 1000 != 0) {
+            throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
+        }
     }
 
     private void validateRange(int number) {

@@ -10,7 +10,6 @@ import java.util.List;
 public class LottoService {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final Validator validator = new Validator();
 
     public void start() {
         int paidMoney = payTicket();
@@ -22,8 +21,7 @@ public class LottoService {
     }
 
     private int payTicket() {
-        String moneyInput = inputView.inputMoney();
-        int money = validator.validateMoney(moneyInput);
+        Integer money = inputView.inputMoney();
         new PaidMoney(money);
         return money;
     }
@@ -38,15 +36,13 @@ public class LottoService {
     }
 
     private List<Integer> announceWinningNumbers() {
-        String numbersInput = inputView.inputWinningNumbers();
-        List<Integer> winningNumbers = validator.validateWinningNumbers(numbersInput);
+        List<Integer> winningNumbers = inputView.inputWinningNumbers();
         new Lotto(winningNumbers);
         return winningNumbers;
     }
 
     private int announceBonusNumber(List<Integer> winningNumbers) {
-        String bonusInput = inputView.inputBonusNumber();
-        int bonusNumber = validator.validateBonusNumber(bonusInput);
+        int bonusNumber = inputView.inputBonusNumber();
         new Bonus(winningNumbers, bonusNumber);
         return bonusNumber;
     }
