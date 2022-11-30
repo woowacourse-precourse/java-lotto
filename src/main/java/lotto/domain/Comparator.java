@@ -6,12 +6,10 @@ import java.util.List;
 
 public class Comparator {
     private float winningMoney = 0;
-    private final List<List<Integer>> lottoTickets;
-    private final List<Integer> winningNumbers;
     private final int bonusNumber;
-//    private final LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
+    private final List<Integer> winningNumbers;
+    private final List<List<Integer>> lottoTickets;
     private final LinkedHashMap<Rank, Integer> winningTickets = new LinkedHashMap<>();
-
 
     public Comparator(
             List<List<Integer>> lottoTickets,
@@ -22,9 +20,6 @@ public class Comparator {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
 
-//        for (Prize prize: Prize.values()) {
-//            this.winningTickets.put(prize, 0);
-//        }
         for (Rank rank: Rank.values()) {
             this.winningTickets.put(rank, 0);
         }

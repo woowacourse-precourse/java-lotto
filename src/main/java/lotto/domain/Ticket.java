@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
@@ -14,10 +13,6 @@ public class Ticket {
 
     public Ticket(int paidMoney) {
         this.numOfTicket = paidMoney / 1000;
-//        for (Prize prize: Prize.values()) {
-//            LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
-//            winningTickets.put(prize, 0);
-//        }
     }
 
     public int getNumOfTicket() {
