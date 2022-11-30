@@ -21,9 +21,8 @@ public class LottoService {
     }
 
     private int payTicket() {
-        Integer money = inputView.inputMoney();
-        new PaidMoney(money);
-        return money;
+        outputView.printInputMoney();
+        return inputView.inputMoney();
     }
 
     private List<List<Integer>> userTicket(int paidMoney) {
@@ -36,12 +35,14 @@ public class LottoService {
     }
 
     private List<Integer> announceWinningNumbers() {
+        outputView.printInputWinningNumbers();
         List<Integer> winningNumbers = inputView.inputWinningNumbers();
         new Lotto(winningNumbers);
         return winningNumbers;
     }
 
     private int announceBonusNumber(List<Integer> winningNumbers) {
+        outputView.printInputBonusNumber();
         int bonusNumber = inputView.inputBonusNumber();
         new Bonus(winningNumbers, bonusNumber);
         return bonusNumber;
