@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
-import lotto.domain.MatchCount;
+import lotto.domain.Rank;
 
 import java.util.List;
 
@@ -40,17 +40,17 @@ public class OutputView {
         System.out.println(START_WINNING_STATISTICS_MESSAGE);
         System.out.println("---");
         int i = 3;
-        for (MatchCount matchCount : MatchCount.values()) {
+        for (Rank rank : Rank.values()) {
             if (i == 6) {
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", i - 1, matchCount.getPrizeMoney(), result.get(i - 3)));
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", i - 1, rank.getPrize(), result.get(i - 3)));
                 i++;
                 continue;
             }
             if (i == 7) {
-                System.out.println(String.format("%d개 일치 (%,d원) - %d개", i - 1, matchCount.getPrizeMoney(), result.get(i - 3)));
+                System.out.println(String.format("%d개 일치 (%,d원) - %d개", i - 1, rank.getPrize(), result.get(i - 3)));
                 continue;
             }
-            System.out.println(String.format("%d개 일치 (%,d원) - %d개", i, matchCount.getPrizeMoney(), result.get(i - 3)));
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개", i, rank.getPrize(), result.get(i - 3)));
             i++;
         }
     }
