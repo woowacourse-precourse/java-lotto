@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.view.Constants.*;
-
 public enum Rank {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -26,12 +24,6 @@ public enum Rank {
     public int getCountOfMatch() { return countOfMatch; }
     public boolean getAcceptBonus() { return acceptBonus; }
     public int getWinningMoney() { return winningMoney; }
-
-    public static List<Integer> getCountOfMatchValues() {
-        return Stream.of(Rank.values())
-                .map(Rank::getCountOfMatch)
-                .collect(Collectors.toList());
-    }
 
     public static List<Integer> getWinningMoneyValues() {
         return Stream.of(Rank.values())
