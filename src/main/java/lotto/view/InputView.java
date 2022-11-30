@@ -9,6 +9,7 @@ import lotto.utils.message.ExceptionMessageUtil;
 
 public class InputView {
 
+    private final String LINE_FEED = "";
     private static final String NUMBER_INPUT_SEPARATOR = ",";
 
     private static final int MIN_INPUT_NUMBER_LENGTH = 11;
@@ -37,6 +38,7 @@ public class InputView {
     }
 
     public ReadWinningLottoDto readWinningLotto() {
+        print(LINE_FEED);
         print(InputViewMessage.WINNING_LOTTO.message);
         String winningNumbers = processPlayerInput();
 
@@ -45,6 +47,7 @@ public class InputView {
     }
 
     public ReadBonusNumberDto readBonusNumber() {
+        print(LINE_FEED);
         print(InputViewMessage.BONUS_NUMBER.message);
         String bonusNumber = processPlayerInput();
 
