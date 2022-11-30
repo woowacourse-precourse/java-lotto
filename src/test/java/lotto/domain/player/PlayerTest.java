@@ -43,22 +43,8 @@ class PlayerTest {
             @Test
             @DisplayName("PlayerPurchaseAmount를 초기화한 Player를 생성한다")
             void it_returns_Player() {
-                assertThatCode(() -> new Player("1000", generator))
+                assertThatCode(() -> new Player(new BigDecimal("1000"), generator))
                         .doesNotThrowAnyException();
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 숫자가 아닌 로또 금액 입력 amountInput와 유효한 로또 숫자 생성 전략을 전달하면")
-        class ContextWithInvalidNumberFormatAndGeneratorTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"a", "a00", "@", " 123"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Player(invalidInput, generator))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage());
             }
         }
 
@@ -70,7 +56,7 @@ class PlayerTest {
             @ValueSource(strings = {"10001", "10010", "10100"})
             @DisplayName("IllegalArgumentException 예외가 발생한다")
             void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Player(invalidInput, generator))
+                assertThatThrownBy(() -> new Player(new BigDecimal(invalidInput), generator))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_UNIT.findFullMessage());
             }
@@ -84,7 +70,7 @@ class PlayerTest {
             @ValueSource(strings = {"900", "80", "1", "-1000"})
             @DisplayName("IllegalArgumentException 예외가 발생한다")
             void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Player(invalidInput, generator))
+                assertThatThrownBy(() -> new Player(new BigDecimal(invalidInput), generator))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_VALUE.findFullMessage());
             }
@@ -99,7 +85,7 @@ class PlayerTest {
             @Test
             @DisplayName("WrongGeneratorException 예외가 발생한다")
             void it_throws_exception() {
-                assertThatThrownBy(() -> new Player("1000", wrongGenerator))
+                assertThatThrownBy(() -> new Player(new BigDecimal("1000"), wrongGenerator))
                         .isInstanceOf(WrongGeneratorException.class)
                         .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_RANGE.findFullMessage());
             }
@@ -120,7 +106,7 @@ class PlayerTest {
             @MethodSource("lotto.domain.player.arguments.PlayerTestArgument#calculateLottoRankingArgument")
             @DisplayName("로또 당첨 등수 LottoRanking을 반환한다")
             void it_returns_lottoRanking(List<LottoRanking> rankings, String input) {
-                Player player = new Player(input, generator);
+                Player player = new Player(new BigDecimal(input), generator);
                 Lotto winningLotto = new StubLotto(rankings);
 
                 List<LottoRanking> actualRankings = player.calculateLottoRanking(winningLotto, bonusNumber);
@@ -153,7 +139,7 @@ class PlayerTest {
             )
             @DisplayName("수익률을 반환한다")
             void it_returns_revenuePercent(String input, String expected) {
-                Player player = new Player(input, generator);
+                Player player = new Player(new BigDecimal(input), generator);
 
                 BigDecimal actualRevenue = player.calculateRevenuePercent(BigDecimal.valueOf(5000L));
 
@@ -184,7 +170,7 @@ class PlayerTest {
             )
             @DisplayName("플레이어가 구매한 로또 묶음을 오름차순으로 반환한다")
             void it_returns_sortedLottos(String input, int expectedSize) {
-                Player player = new Player(input, generator);
+                Player player = new Player(new BigDecimal(input), generator);
 
                 List<String> purchaseLottos = player.getPurchaseLottos();
 

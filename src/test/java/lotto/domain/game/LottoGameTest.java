@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import lotto.domain.number.LottoNumber;
 import lotto.domain.player.Player;
+import lotto.domain.player.PlayerPurchaseAmount;
 import lotto.domain.player.exception.WrongGeneratorException;
 import lotto.helper.stub.StubNumbersGenerator;
 import lotto.helper.stub.WrongNumbersGenerator;
@@ -49,25 +50,11 @@ class LottoGameTest {
             )
             @DisplayName("Player를 초기화한 LottoGame을 생성한다")
             void it_returns_lottoGame(String input, int expected) {
-                LottoGame lottoGame = new LottoGame(input, generator);
+                LottoGame lottoGame = new LottoGame(new BigDecimal(input), generator);
 
                 List<String> playerPurchaseLottos = lottoGame.getPlayerPurchaseLottos();
 
                 assertThat(playerPurchaseLottos.size()).isSameAs(expected);
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 숫자가 아닌 로또 금액 입력 amountInput와 유효한 로또 숫자 생성 전략을 전달하면")
-        class ContextWithInvalidNumberFormatAndGeneratorTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"a", "a00", "@", " 123"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Player(invalidInput, generator))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage());
             }
         }
 
@@ -79,9 +66,9 @@ class LottoGameTest {
             @ValueSource(strings = {"10001", "10010", "10100"})
             @DisplayName("IllegalArgumentException 예외가 발생한다")
             void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Player(invalidInput, generator))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_UNIT.findFullMessage());
+                assertThatThrownBy(() -> new Player(new BigDecimal(invalidInput), generator))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_UNIT.findFullMessage());
             }
         }
 
@@ -93,9 +80,9 @@ class LottoGameTest {
             @ValueSource(strings = {"900", "80", "1", "-1000"})
             @DisplayName("IllegalArgumentException 예외가 발생한다")
             void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new Player(invalidInput, generator))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_VALUE.findFullMessage());
+                assertThatThrownBy(() -> new Player(new BigDecimal(invalidInput), generator))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_VALUE.findFullMessage());
             }
         }
 
@@ -108,9 +95,9 @@ class LottoGameTest {
             @Test
             @DisplayName("WrongGeneratorException 예외가 발생한다")
             void it_throws_exception() {
-                assertThatThrownBy(() -> new Player("1000", wrongGenerator))
-                    .isInstanceOf(WrongGeneratorException.class)
-                    .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_RANGE.findFullMessage());
+                assertThatThrownBy(() -> new Player(new BigDecimal("1000"), wrongGenerator))
+                        .isInstanceOf(WrongGeneratorException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_RANGE.findFullMessage());
             }
         }
     }
@@ -128,56 +115,6 @@ class LottoGameTest {
             @DisplayName("winningLotto를 초기화한다")
             void it_init_winningLotto(String input) {
                 assertThatCode(() -> lottoGame.createWinningLotto(input)).doesNotThrowAnyException();
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 길이가 11에서 17 사이의 유효하지 않은 입력이 주어지면")
-        class ContextWithInvalidNumbersLengthTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"1,2,3,4,5", "12,23,34,21,24,123", "123,234,345,456,567,678"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다.")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> lottoGame.createWinningLotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_LENGTH.findFullMessage());
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 유효한 구분자가 아닌 입력이 주어지면")
-        class ContextWithInvalidSeparatorTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"1:2:3:4:5:6", "111213141516", "1.2.3.4.5.6", "1@2@3@4@5@6"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다.")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> lottoGame.createWinningLotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_SEPARATOR.findFullMessage());
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 숫자로 변경이 불가능한 입력이 주어지면")
-        class ContextWithInvalidNumberFormatTest {
-
-            @ParameterizedTest
-            @ValueSource(
-                strings = {
-                    "1, 2, 3, 4, 5, 6",
-                    "1,a,3,4,5,6",
-                    " ,2,3,4,5,6",
-                    "1, 2,3,4,5,6",
-                    "@,2,3,4,5,6"
-                }
-            )
-            @DisplayName("IllegalArgumentException 예외가 발생한다")
-            void invalid_number_format_exception_test(String invalidInput) {
-                assertThatThrownBy(() -> lottoGame.createWinningLotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage());
             }
         }
 
@@ -215,12 +152,12 @@ class LottoGameTest {
     class DescribeCalculateLottoResultMethodTest {
 
         private final LottoNumbersGenerator generator = new StubNumbersGenerator();
-        private LottoGame lottoGame = new LottoGame("1000", generator);
+        private LottoGame lottoGame = new LottoGame(new BigDecimal("1000"), generator);
 
         @BeforeEach
         void initLottoGame() {
             LottoNumbersGenerator generator = new StubNumbersGenerator();
-            lottoGame = new LottoGame("1000", generator);
+            lottoGame = new LottoGame(new BigDecimal("1000"), generator);
             lottoGame.createWinningLotto("1,2,3,4,5,6");
         }
 
@@ -287,6 +224,6 @@ class LottoGameTest {
 
     private class CommonLottoGameField extends CommonGeneratorField {
 
-        protected final LottoGame lottoGame = new LottoGame("1000", generator);
+        protected final LottoGame lottoGame = new LottoGame(new BigDecimal("1000"), generator);
     }
 }

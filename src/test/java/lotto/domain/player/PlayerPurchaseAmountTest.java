@@ -27,7 +27,7 @@ class PlayerPurchaseAmountTest {
             @ValueSource(strings = {"1000", "15000", "250000"})
             @DisplayName("PlayerPurchaseAmount를 생성한다")
             void it_returns_PlayerPurchaseAmount(String input) {
-                assertThatCode(() -> new PlayerPurchaseAmount(input)).doesNotThrowAnyException();
+                assertThatCode(() -> new PlayerPurchaseAmount(new BigDecimal(input))).doesNotThrowAnyException();
             }
         }
 
@@ -39,23 +39,9 @@ class PlayerPurchaseAmountTest {
             @ValueSource(strings = {"10001", "10010", "10100"})
             @DisplayName("IllegalArgumentException 예외가 발생한다")
             void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new PlayerPurchaseAmount(invalidInput))
+                assertThatThrownBy(() -> new PlayerPurchaseAmount(new BigDecimal(invalidInput)))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_UNIT.findFullMessage());
-            }
-        }
-
-        @Nested
-        @DisplayName("만약 숫자가 아닌 값을 전달하면")
-        class ContextWithInvalidNumberFormatTest {
-
-            @ParameterizedTest
-            @ValueSource(strings = {"a0000", " 0000", "@0000"})
-            @DisplayName("IllegalArgumentException 예외가 발생한다")
-            void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new PlayerPurchaseAmount(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage());
             }
         }
 
@@ -67,7 +53,7 @@ class PlayerPurchaseAmountTest {
             @ValueSource(strings = {"900", "80", "1", "-1000"})
             @DisplayName("IllegalArgumentException 예외가 발생한다")
             void it_throws_exception(String invalidInput) {
-                assertThatThrownBy(() -> new PlayerPurchaseAmount(invalidInput))
+                assertThatThrownBy(() -> new PlayerPurchaseAmount(new BigDecimal(invalidInput)))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_VALUE.findFullMessage());
             }
@@ -93,7 +79,7 @@ class PlayerPurchaseAmountTest {
             )
             @DisplayName("로또 구매 장수를 반환한다")
             void it_returns_purchaseAmount(String playerInput, long amountCount) {
-                PlayerPurchaseAmount lottoPurchaseAmount = new PlayerPurchaseAmount(playerInput);
+                PlayerPurchaseAmount lottoPurchaseAmount = new PlayerPurchaseAmount(new BigDecimal(playerInput));
 
                 BigInteger result = lottoPurchaseAmount.calculatePurchaseLottoAmount();
 
@@ -123,7 +109,7 @@ class PlayerPurchaseAmountTest {
             )
             @DisplayName("수익률을 반환한다")
             void it_returns_revenuePercent(String input, String expected) {
-                PlayerPurchaseAmount lottoPurchaseAmount = new PlayerPurchaseAmount(input);
+                PlayerPurchaseAmount lottoPurchaseAmount = new PlayerPurchaseAmount(new BigDecimal(input));
 
                 BigDecimal actualRevenue = lottoPurchaseAmount.calculateRevenuePercent(BigDecimal.valueOf(5000L));
 
