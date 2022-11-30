@@ -23,23 +23,16 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public boolean isContain(int number) {
+        return numbers.contains(number);
+    }
 
-    public int getMatchingLottoNumberCount(Lotto lottoNumbers) {
-        int matchingNumber = 0;
-        for (int i = 0; i < LOTTO_COUNT; i++) {
-            if (lottoNumbers.containsLottoNumber(numbers.get(i))) {
-                matchingNumber++;
-            }
+    public int matchCount(Lotto other) {
+        int count = 0;
+        for (int number : numbers) {
+            if (other.isContain(number)) count++;
         }
-        return matchingNumber;
-    }
-
-    public boolean checkMatchingBonusNumber(int bonus) {
-        return numbers.contains(bonus);
-    }
-
-    public boolean containsLottoNumber(Object value) {
-        return numbers.contains(value);
+        return count;
     }
 
     @Override
