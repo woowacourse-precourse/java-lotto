@@ -25,7 +25,9 @@ public enum ExceptionMessageUtil {
 
     WRONG_RANKING("존재하지 않는 등수입니다."),
 
-    WRONG_BONUS_NUMBER("당첨 번호와 보너스 번호는 중복될 수 없습니다.");
+    WRONG_BONUS_NUMBER("당첨 번호와 보너스 번호는 중복될 수 없습니다."),
+
+    NOT_FOUND_VIEW("지정한 타입에 맞는 View를 찾을 수 없습니다.");
 
     private final String message;
 
