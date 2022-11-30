@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import lotto.domain.game.LottoRanking;
 import lotto.domain.number.Lotto;
 import lotto.domain.number.LottoNumber;
+import lotto.domain.player.exception.WrongGeneratorException;
 import lotto.utils.consts.LottoConst;
 import lotto.utils.number.LottoNumbersGenerator;
 
@@ -28,10 +29,22 @@ public class Player {
 
         while (isBiggerThanZero(lottoAmount)) {
             List<Integer> uniqueRandomNumbers = generator.generate(LottoConst.NUMBER_SIZE);
+            validateGenerateNumbers(uniqueRandomNumbers);
             lottos.add(new Lotto(uniqueRandomNumbers));
             lottoAmount = lottoAmount.subtract(BigInteger.ONE);
         }
         return Collections.unmodifiableList(lottos);
+    }
+
+    private void validateGenerateNumbers(List<Integer> uniqueRandomNumbers) {
+        uniqueRandomNumbers.forEach(number -> {
+            if (!isValidNumberRange(number)) {
+                throw new WrongGeneratorException();
+            }});
+    }
+
+    private boolean isValidNumberRange(int number) {
+        return (LottoConst.MIN_NUMBER_VALUE <= number && number <= LottoConst.MAX_NUMBER_VALUE);
     }
 
     private boolean isBiggerThanZero(BigInteger lottoAmount) {
