@@ -14,28 +14,15 @@ public class PlayerPurchaseAmount {
 
     private final BigDecimal playerPurchaseAmount;
 
-    public PlayerPurchaseAmount(String amountInput) {
-        this.playerPurchaseAmount = calculatePlayerPurchaseAmount(amountInput);
-    }
+    public PlayerPurchaseAmount(BigDecimal amountInput) {
+        validatePlayerInputAmount(amountInput);
 
-    private BigDecimal calculatePlayerPurchaseAmount(String amountInput) {
-        BigDecimal playerPurchaseAmount = mapToNumber(amountInput);
-
-        validatePlayerInputAmount(playerPurchaseAmount);
-        return playerPurchaseAmount;
+        this.playerPurchaseAmount = amountInput;
     }
 
     private void validatePlayerInputAmount(BigDecimal playerPurchaseAmount) {
         validateMinAmount(playerPurchaseAmount);
         validateAmountUnit(playerPurchaseAmount);
-    }
-
-    private BigDecimal mapToNumber(String amountInput) {
-        try {
-            return new BigDecimal(amountInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage(), e);
-        }
     }
 
     private void validateMinAmount(BigDecimal playerPurchaseAmount) {

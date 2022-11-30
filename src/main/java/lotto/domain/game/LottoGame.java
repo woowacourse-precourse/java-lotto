@@ -12,7 +12,7 @@ public class LottoGame {
     private final Player player;
     private Lotto winningLotto;
 
-    public LottoGame(String amountInput, LottoNumbersGenerator generator) {
+    public LottoGame(BigDecimal amountInput, LottoNumbersGenerator generator) {
         this.player = new Player(amountInput, generator);
     }
 

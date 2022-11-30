@@ -18,7 +18,7 @@ public class Player {
     private final PlayerPurchaseAmount lottoPurchaseAmount;
     private final List<Lotto> myLottos;
 
-    public Player(String amountInput, LottoNumbersGenerator generator) {
+    public Player(BigDecimal amountInput, LottoNumbersGenerator generator) {
         this.lottoPurchaseAmount = new PlayerPurchaseAmount(amountInput);
         this.myLottos = initLottos(generator);
     }
