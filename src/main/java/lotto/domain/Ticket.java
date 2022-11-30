@@ -14,10 +14,10 @@ public class Ticket {
 
     public Ticket(int paidMoney) {
         this.numOfTicket = paidMoney / 1000;
-        for (Prize prize: Prize.values()) {
-            LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
-            winningTickets.put(prize, 0);
-        }
+//        for (Prize prize: Prize.values()) {
+//            LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
+//            winningTickets.put(prize, 0);
+//        }
     }
 
     public int getNumOfTicket() {

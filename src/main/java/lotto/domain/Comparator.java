@@ -9,7 +9,8 @@ public class Comparator {
     private final List<List<Integer>> lottoTickets;
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
-    private final LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
+//    private final LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
+    private final LinkedHashMap<Rank, Integer> winningTickets = new LinkedHashMap<>();
 
 
     public Comparator(
@@ -21,12 +22,15 @@ public class Comparator {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
 
-        for (Prize prize: Prize.values()) {
-            this.winningTickets.put(prize, 0);
+//        for (Prize prize: Prize.values()) {
+//            this.winningTickets.put(prize, 0);
+//        }
+        for (Rank rank: Rank.values()) {
+            this.winningTickets.put(rank, 0);
         }
     }
 
-    public LinkedHashMap<Prize, Integer> countWinningTickets() {
+    public LinkedHashMap<Rank, Integer> countWinningTickets() {
         for (List<Integer> ticket: this.lottoTickets) {
             compareNumbers(ticket, this.winningNumbers, this.bonusNumber);
         }
@@ -40,6 +44,7 @@ public class Comparator {
         for (int number: ticket) {
             if (number == bonusNumber) {
                 bonus = true;
+                same += 1;
                 continue;
             }
             if (winningNumbers.contains(number)) {
@@ -50,13 +55,10 @@ public class Comparator {
     }
 
     private void countSameNumber(int same, boolean bonus) {
-        List<Prize> ranks = new ArrayList<>(List.of(Prize.values()));
-        List<Integer> sameCount = new ArrayList<>(Prize.getSameValues());
-        List<Boolean> acceptBonus = new ArrayList<>(Prize.getBonusValues());
+        List<Rank> ranks = new ArrayList<>(List.of(Rank.values()));
 
-        for (int i = 0; i < ranks.size(); i++) {
-            if (same == sameCount.get(i) && bonus == acceptBonus.get(i)) {
-                Prize rank = ranks.get(i);
+        for (Rank rank: ranks) {
+            if (same == rank.getCountOfMatch() && bonus == rank.getAcceptBonus()) {
                 int count = winningTickets.get(rank);
                 winningTickets.put(rank, count + 1);
             }
@@ -69,7 +71,7 @@ public class Comparator {
     }
 
     private void calculateEarnedMoney() {
-        List<Integer> prizeMoney = Prize.getMoneyValues();
+        List<Integer> prizeMoney = Rank.getWinningMoneyValues();
         List<Integer> earnedCount = new ArrayList<>(this.winningTickets.values());
 
         for (int i = 0; i < prizeMoney.size(); i++) {

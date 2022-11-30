@@ -54,7 +54,7 @@ public class LottoService {
             int bonusNumber
     ) {
         Comparator comparator = new Comparator(lottoTickets, winningNumbers, bonusNumber);
-        LinkedHashMap<Prize, Integer> winningTickets = comparator.countWinningTickets();
+        LinkedHashMap<Rank, Integer> winningTickets = comparator.countWinningTickets();
         outputView.printPrize(winningTickets);
         return comparator;
     }

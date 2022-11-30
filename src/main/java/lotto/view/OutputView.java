@@ -1,10 +1,13 @@
 package lotto.view;
 
-import lotto.domain.Prize;
+import lotto.domain.Rank;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import static lotto.view.Constants.TOTAL_WIN_STAT;
 
 public class OutputView {
     final String BOUGHT_NOTICE = "%d개를 구매했습니다.";
@@ -38,16 +41,13 @@ public class OutputView {
         }
     }
 
-    public void printPrize(LinkedHashMap<Prize, Integer> winningTickets) {
-        List<String> winningNotice = Prize.getNoticeValues();
+    public void printPrize(LinkedHashMap<Rank, Integer> winningTickets) {
         List<Integer> winningCount = new ArrayList<>(winningTickets.values());
 
         System.out.println();
         System.out.println(WIN_STAT);
-        for (int i = 0; i < winningCount.size(); i++) {
-            String notice = String.format(winningNotice.get(i), winningCount.get(i));
-            System.out.println(notice);
-        }
+        String notice = String.format(TOTAL_WIN_STAT, winningCount.toArray());
+        System.out.println(notice);
     }
 
     public void printRate(float earnedRate) {
