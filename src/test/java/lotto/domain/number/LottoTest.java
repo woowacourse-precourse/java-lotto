@@ -179,13 +179,13 @@ class LottoTest {
     class DescribeCalculateLottoRankingMethodTest {
 
         @Nested
-        @DisplayName("만약 플레이어가 구매한 로또와 보너스 번호가 주어지면")
+        @DisplayName("만약 플레이어가 구매한 로또와 유효한 보너스 번호가 주어지면")
         class ContextWithPlayerLottoAndBonusNumberTest {
 
             private final Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
             @ParameterizedTest
-            @MethodSource("lotto.domain.number.arguments.LottoTestArgument#calculateLottoRankingArgument")
+            @MethodSource("lotto.domain.number.arguments.LottoTestArgument#lottoRankingArgument")
             @DisplayName("당첨 등수를 반환한다")
             void it_returns_lottoRanking(String winningNumbers, int bonusNumber, LottoRanking expectedLottoRanking) {
                 Lotto winningLotto = new Lotto(winningNumbers);
@@ -194,6 +194,25 @@ class LottoTest {
                         .calculateLottoRanking(playerLotto, LottoNumberFactory.numberOf(bonusNumber));
 
                 assertThat(actualLottoRanking).isSameAs(expectedLottoRanking);
+            }
+        }
+
+        @Nested
+        @DisplayName("만약 플레이어가 구매한 로또와 유효하지 않은 보너스 번호가 주어지면")
+        class ContextWithPlayerLottoAndInvalidBonusNumberTest {
+
+            private final Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+            @ParameterizedTest
+            @MethodSource("lotto.domain.number.arguments.LottoTestArgument#lottoRankingInvalidBonusNumberArgument")
+            @DisplayName("당첨 등수를 반환한다")
+            void it_throws_exception(String winningNumbers, int bonusNumber) {
+                Lotto winningLotto = new Lotto(winningNumbers);
+
+                assertThatThrownBy(() -> winningLotto.calculateLottoRanking(playerLotto, LottoNumberFactory
+                        .numberOf(bonusNumber)))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_BONUS_NUMBER.findFullMessage());
             }
         }
     }
