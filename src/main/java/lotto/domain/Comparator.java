@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Comparator {
     private float winningMoney = 0;
-    private float earnedRate;
     private final List<List<Integer>> lottoTickets;
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
@@ -66,8 +65,7 @@ public class Comparator {
 
     public float calculateEarnedRate(int paidMoney) {
         calculateEarnedMoney();
-        this.earnedRate = (this.winningMoney / paidMoney) * 100;
-        return this.earnedRate;
+        return (this.winningMoney / paidMoney) * 100;
     }
 
     private void calculateEarnedMoney() {
