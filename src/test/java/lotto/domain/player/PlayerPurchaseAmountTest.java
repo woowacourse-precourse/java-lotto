@@ -58,6 +58,20 @@ class PlayerPurchaseAmountTest {
                         .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage());
             }
         }
+
+        @Nested
+        @DisplayName("만약 1000원 이하의 값을 전달하면")
+        class ContextWithInvalidMinAmountTest {
+
+            @ParameterizedTest
+            @ValueSource(strings = {"900", "80", "1", "-1000"})
+            @DisplayName("IllegalArgumentException 예외가 발생한다")
+            void it_throws_exception(String invalidInput) {
+                assertThatThrownBy(() -> new PlayerPurchaseAmount(invalidInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_VALUE.findFullMessage());
+            }
+        }
     }
 
     @Nested
