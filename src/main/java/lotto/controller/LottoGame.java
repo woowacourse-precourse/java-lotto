@@ -50,7 +50,7 @@ public class LottoGame {
         Transform transform = new Transform();
 
         String rawInputValue = InputView.inputLottoNumbers();
-        List<String> splitedNumbers = transform.splitLottoNumbers(rawInputValue);
+        List<String> splitedNumbers = transform.splitedNumbers(rawInputValue);
         validateNonNumericElements(splitedNumbers);
         validateSize(splitedNumbers);
 

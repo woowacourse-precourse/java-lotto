@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Transform {
-    public List<String> splitLottoNumbers(String input) {
+    public List<String> splitedNumbers(String input) {
         String[] splitedInput = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .toArray(String[]::new);
