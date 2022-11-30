@@ -2,6 +2,7 @@ package lotto.domain.player;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,8 +10,11 @@ import java.util.stream.IntStream;
 import lotto.domain.game.LottoRanking;
 import lotto.domain.number.Lotto;
 import lotto.domain.number.LottoNumber;
+import lotto.domain.player.exception.WrongGeneratorException;
 import lotto.helper.stub.StubLotto;
+import lotto.helper.stub.WrongNumbersGenerator;
 import lotto.utils.consts.LottoConst;
+import lotto.utils.message.ExceptionMessageUtil;
 import lotto.utils.number.LottoNumberFactory;
 import lotto.utils.number.LottoNumbersGenerator;
 import lotto.utils.number.LottoUniqueNumbersGenerator;
@@ -20,33 +24,91 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class PlayerTest {
+
+    private final LottoNumbersGenerator generator = new LottoUniqueNumbersGenerator(
+            LottoConst.MIN_NUMBER_VALUE,
+            LottoConst.MAX_NUMBER_VALUE);
 
     @Nested
     @DisplayName("String amountInput를 매개변수로 받는 생성자는")
     class DescribePlayerPurchaseAmountConstructorTest {
 
         @Nested
-        @DisplayName("만약 로또 구매 금액 amountInput을 전달하면")
-        class ContextWithPlayerPurchaseAmountTest {
+        @DisplayName("만약 유효한 로또 구매 금액 amountInput와 유효한 로또 숫자 생성 전략을 전달하면")
+        class ContextWithPlayerPurchaseAmountAndGeneratorTest {
 
             @Test
-            @DisplayName("Player를 생성한다")
+            @DisplayName("PlayerPurchaseAmount를 초기화한 Player를 생성한다")
             void it_returns_Player() {
-                LottoNumbersGenerator generator = new LottoUniqueNumbersGenerator(
-                        LottoConst.MIN_NUMBER_VALUE,
-                        LottoConst.MAX_NUMBER_VALUE);
-
                 assertThatCode(() -> new Player("1000", generator))
                         .doesNotThrowAnyException();
+            }
+        }
+
+        @Nested
+        @DisplayName("만약 숫자가 아닌 로또 금액 입력 amountInput와 유효한 로또 숫자 생성 전략을 전달하면")
+        class ContextWithInvalidNumberFormatAndGeneratorTest {
+
+            @ParameterizedTest
+            @ValueSource(strings = {"a", "a00", "@", " 123"})
+            @DisplayName("IllegalArgumentException 예외가 발생한다")
+            void it_throws_exception(String invalidInput) {
+                assertThatThrownBy(() -> new Player(invalidInput, generator))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_FORMAT.findFullMessage());
+            }
+        }
+
+        @Nested
+        @DisplayName("만약 1000원 단위가 아닌 값과 유효한 로또 숫자 생성 전략을 전달하면")
+        class ContextWithInvalidUnitAmountAndGeneratorTest {
+
+            @ParameterizedTest
+            @ValueSource(strings = {"10001", "10010", "10100"})
+            @DisplayName("IllegalArgumentException 예외가 발생한다")
+            void it_throws_exception(String invalidInput) {
+                assertThatThrownBy(() -> new Player(invalidInput, generator))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_UNIT.findFullMessage());
+            }
+        }
+
+        @Nested
+        @DisplayName("만약 1000원 이하의 값과 유효한 로또 숫자 생성 전략을 전달하면")
+        class ContextWithInvalidMinAmountAndGeneratorTest {
+
+            @ParameterizedTest
+            @ValueSource(strings = {"900", "80", "1", "-1000"})
+            @DisplayName("IllegalArgumentException 예외가 발생한다")
+            void it_throws_exception(String invalidInput) {
+                assertThatThrownBy(() -> new Player(invalidInput, generator))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_PURCHASE_AMOUNT_VALUE.findFullMessage());
+            }
+        }
+
+        @Nested
+        @DisplayName("만약 유효한 구매 금액과 유효하지 않은 로또 숫자 생성 전략을 전달하면")
+        class ContextWithAmountAndInvalidGeneratorTest {
+
+            private final LottoNumbersGenerator wrongGenerator = new WrongNumbersGenerator();
+
+            @Test
+            @DisplayName("WrongGeneratorException 예외가 발생한다")
+            void it_throws_exception() {
+                assertThatThrownBy(() -> new Player("1000", wrongGenerator))
+                        .isInstanceOf(WrongGeneratorException.class)
+                        .hasMessageContaining(ExceptionMessageUtil.WRONG_NUMBER_RANGE.findFullMessage());
             }
         }
     }
 
     @Nested
     @DisplayName("calculateLottoRanking 메소드는")
-    class DescribeCalculateLottoRankingMethodTest extends CommonGeneratorField {
+    class DescribeCalculateLottoRankingMethodTest {
 
         @Nested
         @DisplayName("만약 당첨 번호와 보너스 번호가 주어지면")
@@ -72,7 +134,7 @@ class PlayerTest {
 
     @Nested
     @DisplayName("calculateRevenuePercent 메소드는")
-    class DescribeCalculateRevenuePercentMethodTest extends CommonGeneratorField {
+    class DescribeCalculateRevenuePercentMethodTest {
 
         @Nested
         @DisplayName("당첨된 총 상금 TotalReward가 주어지면")
@@ -102,7 +164,7 @@ class PlayerTest {
 
     @Nested
     @DisplayName("getPurchaseLottos 메소드는")
-    class DescribeGetPurchaseLottosMethodTest extends CommonGeneratorField {
+    class DescribeGetPurchaseLottosMethodTest {
 
         @Nested
         @DisplayName("만약 호출하면")
@@ -141,12 +203,5 @@ class PlayerTest {
                         });
             }
         }
-    }
-
-    private class CommonGeneratorField {
-
-        protected final LottoNumbersGenerator generator = new LottoUniqueNumbersGenerator(
-                LottoConst.MIN_NUMBER_VALUE,
-                LottoConst.MAX_NUMBER_VALUE);
     }
 }
