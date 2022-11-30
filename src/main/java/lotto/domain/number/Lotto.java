@@ -79,12 +79,20 @@ public class Lotto {
     }
 
     public LottoRanking calculateLottoRanking(Lotto playerLotto, LottoNumber bonusNumber) {
+        validateBonusNumber(playerLotto, bonusNumber);
+
         long numberOfWins = this.numbers
                 .stream()
                 .filter(playerLotto.numbers::contains)
                 .count();
 
         return LottoRanking.findLottoRanking(numberOfWins, numbers.contains(bonusNumber));
+    }
+
+    private void validateBonusNumber(Lotto playerLotto, LottoNumber bonusNumber) {
+        if (playerLotto.numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ExceptionMessageUtil.WRONG_BONUS_NUMBER.findFullMessage());
+        }
     }
 
     public String getSortedLottoNumbers() {
