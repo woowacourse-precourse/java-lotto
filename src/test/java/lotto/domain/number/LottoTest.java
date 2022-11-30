@@ -96,7 +96,7 @@ class LottoTest {
         }
 
         @Nested
-        @DisplayName("만약 길이가 11에서 17 사이의 유효한 입력이 주어지면")
+        @DisplayName("만약 길이가 11에서 17 사이의 유효하지 않은 입력이 주어지면")
         class ContextWithInvalidNumbersLengthTest {
 
             @ParameterizedTest
@@ -151,7 +151,7 @@ class LottoTest {
 
             @ParameterizedTest
             @ValueSource(strings = {"0,1,2,3,4,5", "1,2,3,4,5,46"})
-            @DisplayName("만약 입력한 숫자의 범위가 1 ~ 45 사이가 아니라면 IllegalArgumentException 예외가 발생한다.")
+            @DisplayName("IllegalArgumentException 예외가 발생한다.")
             void invalid_number_range_exception_test(String invalidInput) {
                 assertThatThrownBy(() -> new Lotto(invalidInput))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -165,7 +165,7 @@ class LottoTest {
 
             @ParameterizedTest
             @ValueSource(strings = {"11,22,31,42,21", "1,4,2,7,3,9,5"})
-            @DisplayName("만약 중복되지 않는 유효한 숫자가 6개가 아니라면 IllegalArgumentException 예외가 발생한다.")
+            @DisplayName("IllegalArgumentException 예외가 발생한다.")
             void invalid_number_count_exception_test(String invalidInput) {
                 assertThatThrownBy(() -> new Lotto(invalidInput))
                         .isInstanceOf(IllegalArgumentException.class)
