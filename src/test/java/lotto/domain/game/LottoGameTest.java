@@ -190,31 +190,6 @@ class LottoGameTest {
         }
     }
 
-    @Nested
-    @DisplayName("calculateRevenuePercent 메소드는")
-    class DescribeCalculateRevenuePercentMethodTest extends CommonLottoGameField {
-
-        @Nested
-        @DisplayName("만약 총 당첨 상금 totalReward가 주어지면")
-        class ContextWithBigDecimalTest {
-
-            @ParameterizedTest
-            @CsvSource(
-                    value = {
-                        "50000:5000.0",
-                        "10000:1000.0"
-                    },
-                    delimiter = ':'
-            )
-            @DisplayName("수익률을 계산해 반환한다")
-            void it_returns_revenuePercent(String totalReward, String expected) {
-                BigDecimal actual = lottoGame.calculateRevenuePercent(new BigDecimal(totalReward));
-
-                assertThat(actual.toString()).contains(expected);
-            }
-        }
-    }
-
     private class CommonGeneratorField {
 
         protected final LottoNumbersGenerator generator = new LottoUniqueNumbersGenerator(
