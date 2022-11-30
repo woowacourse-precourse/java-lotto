@@ -5,6 +5,7 @@ import java.util.List;
 import static lotto.validator.NumbersValidator.*;
 
 public class Lotto {
+    private final static String OVER_SIZE_ERROR_MESSAGE = "[ERROR] 로또 번호는 6개입니다.";
     private final static int LOTTO_COUNT = 6;
     private final List<Integer> numbers;
 
@@ -17,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개입니다.");
+            throw new IllegalArgumentException(OVER_SIZE_ERROR_MESSAGE);
         }
     }
 
