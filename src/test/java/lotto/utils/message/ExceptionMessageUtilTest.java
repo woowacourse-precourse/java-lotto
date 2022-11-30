@@ -60,7 +60,8 @@ class ExceptionMessageUtilTest {
                     value = {
                         "WRONG_NUMBER_FORMAT:입력한 값을 숫자로 치환할 수 없습니다.",
                         "WRONG_NUMBER_LENGTH:유효하지 않은 길이입니다.",
-                        "WRONG_RANKING:존재하지 않는 등수입니다."
+                        "WRONG_RANKING:존재하지 않는 등수입니다.",
+                        "WRONG_BONUS_NUMBER:당첨 번호와 보너스 번호는 중복될 수 없습니다."
                     },
                     delimiter = ':'
             )
