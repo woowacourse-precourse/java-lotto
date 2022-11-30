@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Transform {
-    public List<String> splitedNumbers(String input) {
+    public static List<String> splitedNumbers(String input) {
         String[] splitedInput = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .toArray(String[]::new);
@@ -13,7 +13,7 @@ public class Transform {
         return numbers;
     }
 
-    public List<Integer> transformType(List<String> input) {
+    public static List<Integer> convertType(List<String> input) {
         List<Integer> numbers = new ArrayList<>();
         for (String number : input) {
             numbers.add(Integer.parseInt(number));

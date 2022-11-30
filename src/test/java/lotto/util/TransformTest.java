@@ -13,11 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class TransformTest {
     private Transform transform;
 
-    @BeforeEach
-    void setup() {
-        transform = new Transform();
-    }
-
     @DisplayName("1,2,3으로 공백 없이 들어온 문자열을 리스트로 생성하기")
     @Test
     void splitLottoNumbers() {
@@ -43,6 +38,6 @@ class TransformTest {
     @Test
     void transformType() {
         List<String> input = Arrays.asList("1", "2", "3", "4", "5", "6");
-        assertThat(transform.transformType(input)).contains(1, 2, 3, 4, 5, 6);
+        assertThat(transform.convertType(input)).contains(1, 2, 3, 4, 5, 6);
     }
 }

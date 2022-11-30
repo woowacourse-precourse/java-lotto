@@ -1,68 +1,23 @@
 package lotto.controller;
 
 import lotto.domain.*;
-import lotto.util.Transform;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import static lotto.validator.NumbersValidator.*;
+import static lotto.util.Transform.convertType;
+import static lotto.util.Transform.splitedNumbers;
+import static lotto.validator.LottoValidator.*;
 
 public class LottoGame {
-    private Lotto lottoNumbers;
+    private int amount;
 
     public void startLottoGame() {
-        int quantity = getLottoPurchaseAmount();
-        List<Lotto> purchaseLotto = buyLotto(quantity);
-        lottoNumbers = setLottoNumbers();
-        int bonusNumber = setBonusNumber();
-
-        WinningLotto winningLotto = new WinningLotto(lottoNumbers, bonusNumber);
-
-        result(winningLotto, new Lottos(purchaseLotto));
-    }
-
-    private int getLottoPurchaseAmount() {
-        int quantity = Integer.parseInt(InputView.inputLottoPurchaseAmount()) / 1000;
-        OutputView.printLottoPurchaseCompleteAmount(quantity);
-        return quantity;
-    }
-
-    private List<Lotto> buyLotto(int quantity) {
-        List<Lotto> purchaseLotto = new ArrayList<>();
-        RandomNumbers randomNumbers = new RandomNumbers();
-
-        for (int i = 0; i < quantity; i++) {
-            List<Integer> numbers = randomNumbers.generateRandomNumbers();
-            Lotto lotto = new Lotto(numbers);
-            purchaseLotto.add(lotto);
-        }
-        OutputView.printLottoFormatting(purchaseLotto);
-        return purchaseLotto;
-    }
-
-    private Lotto setLottoNumbers() {
-        Transform transform = new Transform();
-
-        String rawInputValue = InputView.inputLottoNumbers();
-        List<String> splitedNumbers = transform.splitedNumbers(rawInputValue);
-        validateNonNumericElements(splitedNumbers);
-        validateSize(splitedNumbers);
-
-        List<Integer> numbers = transform.transformType(splitedNumbers);
-        validateDuplicateNumber(numbers);
-        validateRangeNumbers(numbers);
-
-        Lotto lotto = new Lotto(numbers);
-        return lotto;
-    }
-
-    private int setBonusNumber() {
-        int bonus = Integer.parseInt(InputView.inputBonusNumber());
-        validateAlreadyExist(lottoNumbers, bonus);
-        return bonus;
+        Lottos purchaseLotto = initPurchaseLotto();
+        WinningLotto winningLotto = new WinningLotto(initWinningLotto(), initBonus());
+        result(winningLotto, purchaseLotto);
     }
 
     private void result(WinningLotto winningLotto, Lottos purchaseLotto) {
@@ -70,6 +25,53 @@ public class LottoGame {
         lottoResult.getResult(winningLotto, purchaseLotto);
 
         lottoResult.printResult();
-//        getProfit(lottoResult);
+        getProfit(lottoResult);
+    }
+
+    private void getProfit(LottoResult lottoResult) {
+        double profit = lottoResult.calculateProfitRate(amount);
+        OutputView.printProfit(profit);
+    }
+
+    private int initLottoQuantity() {
+        amount = Integer.parseInt(InputView.readPurchaseAmount());
+
+        validateAmountRange(amount);
+        validateUnit(amount);
+        return amount / 1000;
+    }
+
+    private Lottos initPurchaseLotto() {
+        GenerateRandomNumbersImpl generateRandomNumbers = new GenerateRandomNumbersImpl();
+        List<Lotto> lottos = new ArrayList<>();
+
+        int quantity = initLottoQuantity();
+        for (int i = 0; i < quantity; i++) {
+            lottos.add(new Lotto(generateRandomNumbers.generate()));
+        }
+        Lottos purchaseLottos = new Lottos(lottos);
+
+        OutputView.printPurchaseQuantityMessage(quantity);
+        OutputView.printPurchaseLotto(purchaseLottos.toString());
+        return purchaseLottos;
+    }
+
+    private Lotto initWinningLotto() {
+        String winning = InputView.readWinningNumbers();
+        return new Lotto(transformInputNumbers(winning));
+    }
+
+    private List<Integer> transformInputNumbers(String winningLotto) {
+        List<String> numbers = splitedNumbers(winningLotto);
+
+        validateNonNumericNumbers(numbers);
+        return convertType(numbers);
+    }
+
+    private int initBonus() {
+        int bonus = Integer.parseInt(InputView.readBonusNumber());
+
+        validateLottoNumberRange(bonus);
+        return bonus;
     }
 }

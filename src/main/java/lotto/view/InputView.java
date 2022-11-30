@@ -2,31 +2,27 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static lotto.validator.NumberValidator.*;
+import static lotto.validator.NumberValidator.validateNonNumeric;
 
 public class InputView {
-    public static String inputLottoPurchaseAmount() {
-        OutputView.printLottoPurchaseAmount();
-        String input = Console.readLine();
+    public static String readPurchaseAmount() {
+        OutputView.printPurchaseAmountMessage();
+        String amount = Console.readLine();
 
-        validateNonNumeric(input);
-        validateAmountRange(input);
-        validateUnit(input);
-        return input;
+        validateNonNumeric(amount);
+        return amount;
     }
 
-    public static String inputLottoNumbers() {
-        OutputView.printLottoNumbers();
-        String input = Console.readLine();
-        return input;
+    public static String readWinningNumbers() {
+        OutputView.printWinningLottoInputMessage();
+        return Console.readLine();
     }
 
-    public static String inputBonusNumber() {
-        OutputView.printLottoBonusNumber();
-        String input = Console.readLine();
+    public static String readBonusNumber() {
+        OutputView.printBonusInputMessage();
+        String bonus = Console.readLine();
 
-        validateNonNumeric(input);
-        validateRange(Integer.parseInt(input));
-        return input;
+        validateNonNumeric(bonus);
+        return bonus;
     }
 }

@@ -2,17 +2,18 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.validator.NumbersValidator.*;
+import static lotto.validator.LottoValidator.validateDuplicate;
+import static lotto.validator.LottoValidator.validateRange;
+
 
 public class Lotto {
     private final static String OVER_SIZE_ERROR_MESSAGE = "[ERROR] 로또 번호는 6개입니다.";
-    private final static int LOTTO_COUNT = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        validateDuplicateNumber(numbers);
-        validateRangeNumbers(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 

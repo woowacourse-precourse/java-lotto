@@ -22,4 +22,24 @@ public class LottoResult {
     public void printResult() {
         OutputView.printLottoResult(result);
     }
+
+    public int calculateTotalPrize() {
+        int totalPrize = 0;
+        for (Rank rank : result.keySet()) {
+            totalPrize += rank.getPrize();
+        }
+        return totalPrize;
+    }
+
+    public double calculateProfitRate(int amount) {
+        int totalPrize = calculateTotalPrize();
+        return (totalPrize / (amount * 1.0)) * 100;
+    }
+
+    @Override
+    public String toString() {
+        return "LottoResult{" +
+                "result=" + result +
+                '}';
+    }
 }

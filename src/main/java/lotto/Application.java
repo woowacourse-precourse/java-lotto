@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.controller.LottoGame;
+import lotto.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,7 +10,7 @@ public class Application {
             LottoGame lottoGame = new LottoGame();
             lottoGame.startLottoGame();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.printErrorMessage(e.getMessage());
         }
     }
 }
