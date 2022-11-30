@@ -14,9 +14,6 @@ public class Lotto {
     private static final String NUMBER_INPUT_SEPARATOR = ",";
     private static final String LOTTO_MESSAGE_SEPARATOR = ", ";
 
-    private static final int MIN_INPUT_NUMBER_LENGTH = 11;
-    private static final int MAX_INPUT_NUMBER_LENGTH = 17;
-
     private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> inputNumbers) {
@@ -34,8 +31,6 @@ public class Lotto {
     }
 
     private List<LottoNumber> createWinningLottoNumbers(String winningNumbers) {
-        validateWinningNumbers(winningNumbers);
-
         return Arrays.stream(winningNumbers.split(NUMBER_INPUT_SEPARATOR))
                 .distinct()
                 .map(LottoNumberFactory::numberOf)
@@ -47,23 +42,6 @@ public class Lotto {
                 .map(LottoNumberFactory::numberOf)
                 .distinct()
                 .collect(Collectors.toList());
-    }
-
-    private void validateWinningNumbers(String winningNumbers) {
-        validateWinningNumbersLength(winningNumbers);
-        validateWinningNumbersSeparator(winningNumbers);
-    }
-
-    private void validateWinningNumbersLength(String winningNumbers) {
-        int inputLength = winningNumbers.length();
-
-        if (!isValidNumberLength(inputLength)) {
-            throw new IllegalArgumentException(ExceptionMessageUtil.WRONG_NUMBER_LENGTH.findFullMessage());
-        }
-    }
-
-    private boolean isValidNumberLength(int inputLength) {
-        return MIN_INPUT_NUMBER_LENGTH <= inputLength && inputLength <= MAX_INPUT_NUMBER_LENGTH;
     }
 
     private void validateWinningNumbersSeparator(String winningNumbers) {
