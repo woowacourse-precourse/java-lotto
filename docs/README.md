@@ -74,23 +74,25 @@
 ├─main
 │  └─java
 │      └─lotto
-│          │  Application.java        -  로또 게임 애플리케이션 실행 
+│          │  Application.java        - 로또 게임 애플리케이션 실행 
 │          │
 │          ├─controller
-│          │      LottoGame.java      -  domain-view를 연결하여 게임 순서 결정
+│          │      LottoGame.java      - domain-view를 연결하여 게임 순서 결정
 │          │
 │          ├─domain
-│          │      CompareLotto.java   -  구매한 로또 번호와 당첨 번호를 비교
-│          │      Lotto.java          - 로또 클래스
+│          │      GenerateNumbers.java   - 랜덤 6개 숫자 리스트를 만드는 객체 (구현체)
+│          │      GenerateRandomNumbersImpl.java   - 랜덤 6개 숫자 리스트를 만드는 객체의 인터페이스
+│          │      Lotto.java          - 로또 객체
 │          │      LottoResult.java    - 당첨 내역
-│          │      MatchCount.java     - 당첨 개수와 상금 enum 클래스
-│          │      RandomNumbers.java  - 랜덤 6개 숫자 리스트를 만드는 클래스 
+│          │      Lottos.java         - 구매한 로또 객체
+│          │      Rank.java           - 순위에 따른 당첨 개수, 보너스 일치 여부, 상금 enum 객체
+│          │      WinningLotto.java   - 당첨 번호를 가지고 있는 객체 
 │          │
 │          ├─util
 │          │      Transform.java      - data의 형태를 변환하고 형변환하는 util 함수
 │          │
 │          ├─validator
-│          │      NumbersValidator.java   - 여러개 숫자에 대한 예외 처리
+│          │      LottoValidator.java     - 로또 숫자에 대한 예외 처리
 │          │      NumberValidator.java    - 한 개 숫자에 대한 예외 처리
 │          │
 │          └─view
@@ -104,7 +106,7 @@
             │  LottoTest.java
             │
             ├─domain
-            │      CompareLottoTest.java
+            │      WinningLottoTest.java
             │
             └─util
                     TransformTest.java
