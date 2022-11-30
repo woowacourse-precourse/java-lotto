@@ -19,11 +19,9 @@ public class LottoGame {
         lottoNumbers = setLottoNumbers();
         int bonusNumber = setBonusNumber();
 
-        LottoResult lottoResult = getResult(purchaseLotto, lottoNumbers, bonusNumber);
         WinningLotto winningLotto = new WinningLotto(lottoNumbers, bonusNumber);
-        lottoResult.getResult(winningLotto, new Lottos(purchaseLotto));
 
-//        printResult(result, quantity);
+        result(winningLotto, new Lottos(purchaseLotto));
     }
 
     private int getLottoPurchaseAmount() {
@@ -67,12 +65,11 @@ public class LottoGame {
         return bonus;
     }
 
-    private LottoResult getResult(List<Lotto> purchaseLotto, Lotto lottoNumbers, int bonusNumber) {
-//        return new LottoResult(purchaseLotto, lottoNumbers, bonusNumber);
-    }
+    private void result(WinningLotto winningLotto, Lottos purchaseLotto) {
+        LottoResult lottoResult = new LottoResult();
+        lottoResult.getResult(winningLotto, purchaseLotto);
 
-    private void printResult(List<Integer> result, int quantity) {
-        OutputView.printWinningHistory(result);
-        OutputView.printGrossProfit(result, quantity * 1000);
+        lottoResult.printResult();
+//        getProfit(lottoResult);
     }
 }

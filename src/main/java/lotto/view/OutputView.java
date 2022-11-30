@@ -4,6 +4,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Rank;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private final static String LOTTO_PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
@@ -11,6 +12,9 @@ public class OutputView {
     private final static String LOTTO_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private final static String LOTTO_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private final static String START_WINNING_STATISTICS_MESSAGE = "당첨 통계";
+    private final static String DIVIDING_LINE = "---";
+    private final static String RESULT = "%d개 일치 (%,d원) - %d개";
+    private final static String SECOND_RESULT = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
     private final static int[] PRIZE_MONEY = {5000, 50000, 1500000, 30000000, 2000000000};
 
 
@@ -36,22 +40,23 @@ public class OutputView {
         System.out.println(LOTTO_BONUS_NUMBER_MESSAGE);
     }
 
-    public static void printWinningHistory(List<Integer> result) {
+    private static void printWinStatisticsMessage() {
         System.out.println(START_WINNING_STATISTICS_MESSAGE);
-        System.out.println("---");
-        int i = 3;
-        for (Rank rank : Rank.values()) {
-            if (i == 6) {
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", i - 1, rank.getPrize(), result.get(i - 3)));
-                i++;
+        System.out.println(DIVIDING_LINE);
+    }
+
+    public static void printLottoResult(Map<Rank, Integer> result) {
+        printWinStatisticsMessage();
+        Rank[] rank = Rank.values();
+        for (int i = rank.length - 2; i >= 0; i--) {
+            int count = 0;
+            if (result.containsKey(rank[i])) count = result.get(rank[i]);
+
+            if (i == 1) {
+                System.out.println(String.format(SECOND_RESULT, rank[i].getMatchCount(), rank[i].getPrize(), count));
                 continue;
             }
-            if (i == 7) {
-                System.out.println(String.format("%d개 일치 (%,d원) - %d개", i - 1, rank.getPrize(), result.get(i - 3)));
-                continue;
-            }
-            System.out.println(String.format("%d개 일치 (%,d원) - %d개", i, rank.getPrize(), result.get(i - 3)));
-            i++;
+            System.out.println(String.format(RESULT, rank[i].getMatchCount(), rank[i].getPrize(), count));
         }
     }
 

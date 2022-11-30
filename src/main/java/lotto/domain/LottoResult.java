@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.OutputView;
+
 import java.util.*;
 
 public class LottoResult {
@@ -15,5 +17,9 @@ public class LottoResult {
             }
             result.put(rank, 1);
         }
+    }
+
+    public void printResult() {
+        OutputView.printLottoResult(result);
     }
 }
