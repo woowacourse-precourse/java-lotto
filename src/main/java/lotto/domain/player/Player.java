@@ -18,8 +18,8 @@ public class Player {
     private final PlayerPurchaseAmount lottoPurchaseAmount;
     private final List<Lotto> myLottos;
 
-    public Player(PlayerPurchaseAmount lottoPurchaseAmount, LottoNumbersGenerator generator) {
-        this.lottoPurchaseAmount = lottoPurchaseAmount;
+    public Player(String amountInput, LottoNumbersGenerator generator) {
+        this.lottoPurchaseAmount = new PlayerPurchaseAmount(amountInput);
         this.myLottos = initLottos(generator);
     }
 
