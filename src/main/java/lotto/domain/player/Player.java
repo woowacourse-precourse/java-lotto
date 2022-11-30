@@ -3,6 +3,7 @@ package lotto.domain.player;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.game.LottoRanking;
@@ -30,7 +31,7 @@ public class Player {
             lottos.add(new Lotto(uniqueRandomNumbers));
             lottoAmount = lottoAmount.subtract(BigInteger.ONE);
         }
-        return lottos;
+        return Collections.unmodifiableList(lottos);
     }
 
     private boolean isBiggerThanZero(BigInteger lottoAmount) {
@@ -38,10 +39,10 @@ public class Player {
     }
 
     public List<LottoRanking> calculateLottoRanking(Lotto winningLotto, LottoNumber bonusNumber) {
-        final List<LottoRanking> rankings = new ArrayList<>();
+        List<LottoRanking> rankings = new ArrayList<>();
 
         myLottos.forEach(lotto -> rankings.add(winningLotto.calculateLottoRanking(lotto, bonusNumber)));
-        return rankings;
+        return Collections.unmodifiableList(rankings);
     }
 
     public BigDecimal calculateRevenuePercent(BigDecimal totalReward) {
