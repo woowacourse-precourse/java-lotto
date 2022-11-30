@@ -24,11 +24,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 class PlayerTest {
 
     @Nested
-    @DisplayName("PlayerPurchaseAmount playerPurchaseAmount를 매개변수로 받는 생성자는")
+    @DisplayName("String amountInput를 매개변수로 받는 생성자는")
     class DescribePlayerPurchaseAmountConstructorTest {
 
         @Nested
-        @DisplayName("만약 PlayerPurchaseAmount를 전달하면")
+        @DisplayName("만약 로또 구매 금액 amountInput을 전달하면")
         class ContextWithPlayerPurchaseAmountTest {
 
             @Test
@@ -38,7 +38,7 @@ class PlayerTest {
                         LottoConst.MIN_NUMBER_VALUE,
                         LottoConst.MAX_NUMBER_VALUE);
 
-                assertThatCode(() -> new Player(new PlayerPurchaseAmount("1000"), generator))
+                assertThatCode(() -> new Player("1000", generator))
                         .doesNotThrowAnyException();
             }
         }
@@ -58,7 +58,7 @@ class PlayerTest {
             @MethodSource("lotto.domain.player.arguments.PlayerTestArgument#calculateLottoRankingArgument")
             @DisplayName("로또 당첨 등수 LottoRanking을 반환한다")
             void it_returns_lottoRanking(List<LottoRanking> rankings, String input) {
-                Player player = new Player(new PlayerPurchaseAmount(input), generator);
+                Player player = new Player(input, generator);
                 Lotto winningLotto = new StubLotto(rankings);
 
                 List<LottoRanking> actualRankings = player.calculateLottoRanking(winningLotto, bonusNumber);
@@ -91,7 +91,7 @@ class PlayerTest {
             )
             @DisplayName("수익률을 반환한다")
             void it_returns_revenuePercent(String input, String expected) {
-                Player player = new Player(new PlayerPurchaseAmount(input), generator);
+                Player player = new Player(input, generator);
 
                 BigDecimal actualRevenue = player.calculateRevenuePercent(BigDecimal.valueOf(5000L));
 
@@ -122,7 +122,7 @@ class PlayerTest {
             )
             @DisplayName("플레이어가 구매한 로또 묶음을 오름차순으로 반환한다")
             void it_returns_sortedLottos(String input, int expectedSize) {
-                Player player = new Player(new PlayerPurchaseAmount(input), generator);
+                Player player = new Player(input, generator);
 
                 List<String> purchaseLottos = player.getPurchaseLottos();
 

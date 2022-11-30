@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import lotto.domain.number.LottoNumber;
 import lotto.domain.player.Player;
-import lotto.domain.player.PlayerPurchaseAmount;
 import lotto.helper.stub.StubLotto;
 import lotto.utils.consts.LottoConst;
 import lotto.utils.number.LottoNumberFactory;
@@ -39,7 +38,7 @@ class LottoResultTest {
             @DisplayName("당첨 결과와 수익률을 계산해 LottoResult를 생성한다")
             void it_returns_lottoResult(List<LottoRanking> rankings,
                     Map<LottoRanking, Integer> expectedRankingResult, String revenuePercent) {
-                Player player = new Player(new PlayerPurchaseAmount("10000"), generator);
+                Player player = new Player("10000", generator);
                 StubLotto winningLotto = new StubLotto(rankings);
                 LottoResult lottoResult = new LottoResult(player, winningLotto, bonusNumber);
 
