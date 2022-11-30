@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.Iterator;
 
+import static lotto.validator.NumberValidator.validateLottoNumberRange;
+
 public class WinningLotto {
     private final static String DUPLICATE_ERROR_MESSAGE = "[ERROR] 중복된 숫자는 입력할 수 없습니다.";
 
@@ -10,6 +12,8 @@ public class WinningLotto {
 
     public WinningLotto(Lotto winningLotto, int bonus) {
         validateDuplicateBonus(winningLotto, bonus);
+        validateLottoNumberRange(bonus);
+
         this.winningLotto = winningLotto;
         this.bonus = bonus;
     }
