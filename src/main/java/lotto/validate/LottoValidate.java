@@ -1,6 +1,6 @@
 package lotto.validate;
 
-import lotto.enums.IntEnum;
+import lotto.enums.LottoEum;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class LottoValidate {
         lottoRangeValidate(numbers);
     }
     private void lottoSizeValidate(List<Integer> numbers) {
-        if (numbers.size() != IntEnum.LOTTO_SIZE.getValue()) {
+        if (numbers.size() != LottoEum.LOTTO_SIZE.getValue()) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호가 여섯 자리가 아닙니다.");
         }
     }
@@ -22,7 +22,7 @@ public class LottoValidate {
     }
     private void lottoRangeValidate(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < IntEnum.START_NUMBER.getValue() || number > IntEnum.LAST_NUMBER.getValue()) {
+            if (!LottoEum.isRangeIn(number)) {
                 throw new IllegalArgumentException("[ERROR] 당첨 번호가 범위 밖의 숫자입니다.");
             }
         }

@@ -1,10 +1,8 @@
 package lotto.domain;
 
-import lotto.enums.IntEnum;
 import lotto.validate.BuyerValidate;
 
-import static lotto.enums.IntEnum.*;
-import static lotto.enums.IntEnum.LOTTO_PRICE;
+import static lotto.enums.LottoEum.LOTTO_PRICE;
 
 public class Buyer {
     private final int buyPrice;

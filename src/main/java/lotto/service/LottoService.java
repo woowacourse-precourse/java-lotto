@@ -2,27 +2,26 @@ package lotto.service;
 
 import lotto.domain.Buyer;
 import lotto.domain.WinLotto;
-import lotto.generate.BuyerGenerate;
-import lotto.generate.WinLottoGenerate;
-import lotto.ouput.RandomPeekOutput;
-import lotto.ouput.StatisticsOutput;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 import lotto.util.LottoRandomPeek;
 import lotto.util.Statistics;
 
+import static lotto.view.OutputView.*;
+
 public class LottoService {
+    private final InputView inputView = new InputView();
+    private final Statistics statistics = new Statistics();
+    private final LottoRandomPeek lottoRandomPeek = new LottoRandomPeek();
     public void play() throws IllegalArgumentException {
 
-        Buyer buyer = new BuyerGenerate().generate();
-        LottoRandomPeek lottoRandomPeek = new LottoRandomPeek();
+        Buyer buyer = inputView.makeBuyer();
         lottoRandomPeek.generateRandom(buyer.getBuyLottoCount());
-        new RandomPeekOutput().output(lottoRandomPeek.getRandomLottos());
-
-        WinLotto winLotto = new WinLottoGenerate().generate();
-
-        Statistics statistics = new Statistics();
+        printObjectState(lottoRandomPeek.toString());
+        WinLotto winLotto = inputView.makeWinLotto();
         statistics.compareNumber(lottoRandomPeek.getRandomLottos(), winLotto);
         statistics.calculateProfitRate(buyer);
-        System.out.println(statistics);
+        printObjectState(statistics.toString());
 
     }
 }

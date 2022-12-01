@@ -1,11 +1,8 @@
 package lotto.validate;
 
-import lotto.domain.Lotto;
-import lotto.enums.IntEnum;
-
 import java.util.List;
 
-import static lotto.enums.IntEnum.*;
+import static lotto.enums.LottoEum.*;
 
 public class WinLottoValidate {
     public void validate(List<Integer> numbers, int bonus) {

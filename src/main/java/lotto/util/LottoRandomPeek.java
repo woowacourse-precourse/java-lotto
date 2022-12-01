@@ -1,16 +1,13 @@
 package lotto.util;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
-import lotto.enums.IntEnum;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.*;
-import static lotto.enums.IntEnum.*;
+import static lotto.enums.LottoEum.*;
 
 public class LottoRandomPeek {
     private final List<Lotto> randomLottos = new ArrayList<>();
@@ -37,4 +34,13 @@ public class LottoRandomPeek {
         return newRandomNumbers;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder printLottos = new StringBuilder();
+        printLottos.append(randomLottos.size()+"개를 구매했습니다.\n");
+        for(Lotto nowLotto : randomLottos){
+            printLottos.append(nowLotto.toString()+"\n");
+        }
+        return printLottos.toString();
+    }
 }

@@ -1,7 +1,7 @@
-package lotto.generate;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lotto;
+import lotto.domain.Buyer;
 import lotto.domain.WinLotto;
 import lotto.enums.StringEnum;
 
@@ -11,17 +11,30 @@ import java.util.stream.Collectors;
 
 import static lotto.enums.StringEnum.*;
 
-public class WinLottoGenerate {
-    public void askWinNumberPrint() {
-        System.out.println(WIN_NUMBER.getMessage());
+public class InputView {
+    public void askBuyPricePrint() {
+        System.out.println(PRICE.getMessage());
     }
 
-    public void askBonusNumberPrint() {
-        System.out.println(StringEnum.BONUS_NUMBER.getMessage());
+    public Buyer makeBuyer() {
+        askBuyPricePrint();
+        String input = Console.readLine();
+        digitValidate(input);
+        int buyPrice = Integer.parseInt(input);
+        return new Buyer(buyPrice);
     }
+
+    public void digitValidate(String input) {
+        String inputValidate = input.replaceAll("[0-9]", "");
+        if (inputValidate.length() > 0) {
+            throw new IllegalArgumentException("[ERROR] 입력값이 유효하지 않습니다.");
+        }
+    }
+
+
 
     private List<Integer> askWinNumber() {
-        askWinNumberPrint();
+        OutputView.askWinNumberPrint();
         String winNumberInput = Console.readLine();
         winNumberValidate(winNumberInput);
         String[] winNumber = winNumberInput.split(",");
@@ -37,7 +50,7 @@ public class WinLottoGenerate {
     }
 
     private Integer askBonus() {
-        askBonusNumberPrint();
+        OutputView.askBonusNumberPrint();
         String bonus = Console.readLine();
         bonusValidate(bonus);
         return Integer.parseInt(bonus);
@@ -49,10 +62,9 @@ public class WinLottoGenerate {
         }
     }
 
-    public WinLotto generate() {
+    public WinLotto makeWinLotto() {
         List<Integer> winNumber = askWinNumber();
         Integer bonusInteger = askBonus();
         return new WinLotto(winNumber, bonusInteger);
     }
-
 }
