@@ -1,8 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.exception.MyIllegalArgumentException;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -53,6 +63,74 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @Test
+    @DisplayName("음수인 금액이 입력되었을 때 예외처리하는지 확인한다.")
+    void askAmountByNegativeValue() {
+        assertSimpleTest(() -> {
+            runException("-1000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("1000으로 나눠지지 않는 금액이 입력되었을 때 예외처리하는지 확인한다.")
+    void askAmountByNotDevidedValue() {
+        assertSimpleTest(() -> {
+            runException("1400");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"가,나,다,라,마,바", "가나다라마바"})
+    @DisplayName("당첨 번호를 규칙에 어긋나게 입력했을 때 예외처리하는지 확인한다.")
+    void askWinNumbersByErrorInput(String input) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        Assertions.assertThatThrownBy(Application::askWinNumbers)
+                .isInstanceOf(MyIllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("당첨 번호를 올바르게 입력했을 때 리스트를 반환하는지 확인한다.")
+    void askWinNumbers() {
+        String input = "1,2,3,4,5,6";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        List<Integer> numbers = Application.askWinNumbers();
+        Assertions.assertThat(numbers).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
+    }
+
+    @Test
+    @DisplayName("보너스 번호를 잘못 입력했을 때 예외 처리하는지 확인한다.")
+    void askBonusNumberByErrorInput() {
+        String input = "가";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        Assertions.assertThatThrownBy(Application::askBonusNumber)
+                .isInstanceOf(MyIllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("보너스 번호를 올바르게 입력했을 때 숫자를 반환하는지 확인한다.")
+    void askBonusNumber() {
+        String input = "10";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+        System.setIn(in);
+        Assertions.assertThat(Application.askBonusNumber()).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2000,4000000000,200000000.0", "8000,5000,62.5"})
+    @DisplayName("보너스 번호를 올바르게 입력했을 때 숫자를 반환하는지 확인한다.")
+    void printProfit(long money, long totalMoney, double profit) {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        Application.printProfit(money, totalMoney);
+        Assertions.assertThat(output.toString()).isEqualTo("총 수익률은 " + profit + "%입니다.\n");
+    }
+
 
     @Override
     public void runMain() {
