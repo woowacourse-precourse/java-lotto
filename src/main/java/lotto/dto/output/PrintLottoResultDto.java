@@ -1,6 +1,7 @@
 package lotto.dto.output;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,15 +19,16 @@ public class PrintLottoResultDto {
         this.revenuePercent = lottoResult.getRevenuePercent();
     }
 
-    public List<String> getLottoRankingLog() {
-        return lottoRankingResult.keySet().stream()
+    public List<String> getLottoRankingMessage() {
+        return Arrays.stream(LottoRanking.values())
                 .filter(lottoRanking -> lottoRanking != LottoRanking.NOTHING)
                 .map(this::mapToResultMessage)
                 .collect(Collectors.toList());
     }
 
     private String mapToResultMessage(LottoRanking lottoRanking) {
-        return LottoRankingMessageUtil.findLottoRankingMessage(lottoRanking, lottoRankingResult.get(lottoRanking));
+        return LottoRankingMessageUtil.findLottoRankingMessage(lottoRanking,
+                lottoRankingResult.getOrDefault(lottoRanking, 0));
     }
 
     public BigDecimal getRevenuePercent() {

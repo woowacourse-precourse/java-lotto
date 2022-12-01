@@ -31,7 +31,7 @@ public class OutputView {
     public void printLottoResult(PrintLottoResultDto printLottoResultDto) {
         print(LINE_FEED);
 
-        printLottoResultDto.getLottoRankingLog().forEach(this::print);
+        printLottoResultDto.getLottoRankingMessage().forEach(this::print);
 
         DecimalFormat rewardFormat = new DecimalFormat(REVENUE_PERCENT_FORMAT);
         print(OutputViewMessage.REVENUE_PERCENT
