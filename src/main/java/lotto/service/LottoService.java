@@ -21,8 +21,8 @@ public class LottoService {
 
         Statistics statistics = new Statistics();
         statistics.compareNumber(lottoRandomPeek.getRandomLottos(), winLotto);
-        StatisticsOutput output = new StatisticsOutput();
-        output.outputWiningHistory(statistics.getRank());
-        output.outputProfit(statistics.calculateProfitRate(buyer));
+        statistics.calculateProfitRate(buyer);
+        System.out.println(statistics);
+
     }
 }

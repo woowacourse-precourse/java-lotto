@@ -16,12 +16,7 @@ class WinLottoValidateTest {
     public void beforeEach() {
         winLottoValidate = new WinLottoValidate();
     }
-    @Test
-    public void lottoBonusDuplicateTest() throws Exception {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThatThrownBy(() -> winLottoValidate.validate(lotto, 6))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+
     @Test
     public void bonusValidateTest() throws Exception {
         assertThatThrownBy(() -> winLottoValidate.bonusRangeValidate(0))

@@ -17,4 +17,9 @@ public enum IntEnum {
     public int getValue() {
         return this.value;
     }
+
+    public static boolean isRangeIn(int number){
+        if(number < START_NUMBER.value || number > LAST_NUMBER.value)return false;
+        return true;
+    }
 }

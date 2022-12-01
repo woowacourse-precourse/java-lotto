@@ -14,7 +14,7 @@ public class RandomPeekOutput {
         int size = buyLottos.size();
         System.out.println(size + CHECK_LOTTO.getMessage());
         for (Lotto tempLotto : buyLottos) {
-            System.out.println(tempLotto.getNumbers());
+            System.out.println(tempLotto);
         }
         System.out.println();
     }

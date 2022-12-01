@@ -3,60 +3,74 @@ package lotto.util;
 import lotto.domain.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
-import lotto.enums.IntEnum;
+import lotto.enums.Rank;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
-import static lotto.enums.IntEnum.*;
+import static lotto.enums.Rank.*;
+import static lotto.enums.Rank.SECOND;
 
 public class Statistics {
-    private final List<Integer> reward = List.of(5000, 50000, 1500000, 2000000000, 30000000);
-    private final List<Integer> rank = new ArrayList<>(Collections.nCopies(BONUS_SIZE.getValue(), 0));
+
+    private final Map<Rank, Integer> rank = setMap();
+    private int reward = 0;
+    private double profitRate = 0;
+    public Map<Rank, Integer> setMap(){
+        Map<Rank, Integer> map = new HashMap<>();
+        map.put(FIRST, 0);
+        map.put(SECOND, 0);
+        map.put(THIRD, 0);
+        map.put(FOURTH, 0);
+        map.put(FIFTH, 0);
+        map.put(MISS, 0);
+        return map;
+    }
 
     public void compareNumber(List<Lotto> randomLottos, WinLotto winLotto) {
-        List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(LOTTO_SIZE.getValue()).collect(Collectors.toList());
-        int bonus = winLotto.getWinNumbers().get(LOTTO_SIZE.getValue());
         for (Lotto tmpLotto : randomLottos) {
-            List<Integer> tmpNumber = tmpLotto.getNumbers();
-            int countMatch = countCalculate(winNumbers, tmpNumber);
-            if (countMatch == 5) checkHasBonus(bonus, countMatch, tmpNumber);
-            if (countMatch != 5) rank.set(countMatch, rank.get(countMatch) + 1);
+            int countMatch = tmpLotto.matchCount(winLotto);
+            boolean checkBonus = false;
+            if (countMatch == SECOND.getCountOfMatch()) {
+               checkBonus = checkBonusMatch(tmpLotto, winLotto);
+            }
+            Rank matchRank = Rank.getMatch(countMatch, checkBonus);
+            rank.put(matchRank, rank.get(matchRank)+1);
         }
     }
 
-    private int countCalculate(List<Integer> winNumbers, List<Integer> tmpNumber) {
-        int countMatch = 0;
-        for (int winNumber : winNumbers) {
-            if (tmpNumber.contains(winNumber)) countMatch++;
-        }
-        return countMatch;
+    public boolean checkBonusMatch(Lotto other, WinLotto winLotto){
+        if(winLotto.contains(other))return true;
+        return false;
     }
 
-    private void checkHasBonus(int bonus, int count, List<Integer> tmpNumber) {
-        if (tmpNumber.contains(bonus)) {
-            rank.set(BONUS_SIZE.getValue(), rank.get(BONUS_SIZE.getValue()) + 1);
-        }
-        if (!tmpNumber.contains(bonus)) {
-            rank.set(count, rank.get(count) + 1);
-        }
-    }
 
-    public List<Integer> getRank() {
-        return rank.stream().skip(3).collect(Collectors.toList());
-    }
-
-    public double calculateProfitRate(Buyer buyer) {
+    public void calculateProfitRate(Buyer buyer) {
         int profit = 0;
-        List<Integer> cutRank = rank.stream().skip(3).collect(Collectors.toList());
-        for (int index = 0; index < reward.size(); index++) {
-            profit += cutRank.get(index) * reward.get(index);
+        for(Rank match: rank.keySet()){
+            profit += rank.get(match)*match.getWinningMoney();
         }
-        return Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0;
+        profitRate =Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder printStatistics = new StringBuilder();
+        printStatistics.append("당첨통계\n");
+        printStatistics.append("---\n");
+        printStatistics.append("3개 일치 (5,000원) - ");
+        printStatistics.append(rank.get(FIFTH)+"개\n");
+        printStatistics.append("4개 일치 (50,000원) - ");
+        printStatistics.append(rank.get(FOURTH)+"개\n");
+        printStatistics.append("5개 일치 (1,500,000원) - ");
+        printStatistics.append(rank.get(THIRD)+"개\n");
+        printStatistics.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ");
+        printStatistics.append(rank.get(SECOND)+"개\n");
+        printStatistics.append("6개 일치 (2,000,000,000원) - ");
+        printStatistics.append(rank.get(FIRST)+"개\n");
+        printStatistics.append("총 수익률은 "+ new DecimalFormat("###,###.0").format(profitRate)+"%입니다.");
+        return printStatistics.toString();
+    }
 }

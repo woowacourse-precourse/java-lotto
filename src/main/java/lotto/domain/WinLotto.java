@@ -5,20 +5,23 @@ import lotto.validate.WinLottoValidate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinLotto {
-    private final List<Integer> winNumbers;
+public class WinLotto extends Lotto{
 
-    public WinLotto(Lotto winLotto, int bonus) {
-        validate(winLotto, bonus);
-        winNumbers = new ArrayList<>(winLotto.getNumbers());
-        winNumbers.add(bonus);
+    private final int bonusNumber;
+
+    public WinLotto(List<Integer> numbers, int bonus) {
+        super(numbers);
+        validate(numbers, bonus);
+        this.bonusNumber = bonus;
     }
 
-    private void validate(Lotto winLotto, int bonus) {
-        new WinLottoValidate().validate(winLotto, bonus);
+    private void validate(List<Integer> numbers, int bonus) {
+        new WinLottoValidate().validate(numbers, bonus);
     }
 
-    public List<Integer> getWinNumbers() {
-        return winNumbers;
+    public boolean contains(Lotto other) {
+        return other.contains(bonusNumber);
     }
+
+
 }

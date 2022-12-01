@@ -20,13 +20,13 @@ public class WinLottoGenerate {
         System.out.println(StringEnum.BONUS_NUMBER.getMessage());
     }
 
-    private Lotto askWinNumber() {
+    private List<Integer> askWinNumber() {
         askWinNumberPrint();
         String winNumberInput = Console.readLine();
         winNumberValidate(winNumberInput);
         String[] winNumber = winNumberInput.split(",");
         List<Integer> numbers = Arrays.stream(winNumber).map(Integer::parseInt).collect(Collectors.toList());
-        return new Lotto(numbers);
+        return numbers;
     }
 
     public void winNumberValidate(String winNumber) {
@@ -50,9 +50,9 @@ public class WinLottoGenerate {
     }
 
     public WinLotto generate() {
-        Lotto winLotto = askWinNumber();
+        List<Integer> winNumber = askWinNumber();
         Integer bonusInteger = askBonus();
-        return new WinLotto(winLotto, bonusInteger);
+        return new WinLotto(winNumber, bonusInteger);
     }
 
 }
