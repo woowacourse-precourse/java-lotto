@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 
 public enum Rank {
     NONE(0, 0),
@@ -29,5 +30,15 @@ public enum Rank {
 
     public String getPrizeWithComma() {
         return NUMBER_FORMAT.format(prize);
+    }
+
+    public static Rank convertRank(int count, boolean isSecond) {
+        if (count == SECOND.getCorrectCount() && isSecond) {
+            return SECOND;
+        }
+        return Arrays.stream(values())
+                .filter(rank -> rank.getCorrectCount() == count)
+                .findFirst()
+                .orElse(NONE);
     }
 }
