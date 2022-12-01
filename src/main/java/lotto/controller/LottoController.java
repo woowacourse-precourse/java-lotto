@@ -10,13 +10,17 @@ public class LottoController {
 
     public void start() {
         try {
-            LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
-            List<Lotto> lottoTickets = makeLotto(lottoMachine.getRound());
-            UserNumber userNumber = new UserNumber(InputView.inputWinNumbers(), InputView.inputBonusNumbers());
-            calculateResult(lottoTickets, userNumber, lottoMachine.getPurchasePrice());
+            playLotto();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private void playLotto() {
+        LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
+        List<Lotto> lottoTickets = makeLotto(lottoMachine.getRound());
+        UserNumber userNumber = new UserNumber(InputView.inputWinNumbers(), InputView.inputBonusNumbers());
+        calculateResult(lottoTickets, userNumber, lottoMachine.getPurchasePrice());
     }
 
     private List<Lotto> makeLotto(int round) {
