@@ -19,6 +19,7 @@ public class LottoController {
             int ticketNumber = LottoStore.buyTicketsByBudget(inputView.readBudget()).getTicketNumber();
             outputView.printTicketNumber(ticketNumber);
             PlayerNumbers playerNumbers = PlayerNumbers.issueLottoByTickets(ticketNumber);
+            outputView.printPlayerNumbers(playerNumbers);
 
 
         } catch (IllegalArgumentException exception) {

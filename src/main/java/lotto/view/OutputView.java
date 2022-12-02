@@ -1,9 +1,12 @@
 package lotto.view;
 
+import lotto.model.PlayerNumber;
+import lotto.model.PlayerNumbers;
+
 public class OutputView {
 
     private enum ConsoleMessage {
-        TICKET_NUMBER("%d개를 구매했습니다.");
+        TICKET_NUMBER("%d개를 구매했습니다.\n");
         private final String message;
 
         ConsoleMessage(String message) {
@@ -18,5 +21,11 @@ public class OutputView {
 
     public void printTicketNumber(int ticketNumber) {
         System.out.printf(ConsoleMessage.TICKET_NUMBER.message, ticketNumber);
+    }
+
+    public void printPlayerNumbers(PlayerNumbers playerNumbers) {
+        for (PlayerNumber playerNumber : playerNumbers.getPlayerNumbers()) {
+            System.out.println(playerNumber.toString());
+        }
     }
 }

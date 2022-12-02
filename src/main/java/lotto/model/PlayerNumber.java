@@ -34,7 +34,8 @@ public class PlayerNumber {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public List<Integer> addPlayerNumber() {
-        return playerNumber;
+    @Override
+    public String toString() {
+        return playerNumber.toString();
     }
 }

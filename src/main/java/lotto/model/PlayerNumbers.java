@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PlayerNumbers {
@@ -16,7 +17,7 @@ public class PlayerNumbers {
         return new PlayerNumbers(ticketNumber);
     }
 
-    private static List<PlayerNumber> collectPlayerNumbers(int ticketNumber) {
+    private List<PlayerNumber> collectPlayerNumbers(int ticketNumber) {
         List<PlayerNumber> playerNumbers = new ArrayList<>();
         for (int i = 0; i < ticketNumber; i++) {
             playerNumbers.add(PlayerNumber.createAutoLotto());
@@ -24,4 +25,7 @@ public class PlayerNumbers {
         return playerNumbers;
     }
 
+    public List<PlayerNumber> getPlayerNumbers() {
+        return Collections.unmodifiableList(playerNumbers);
+    }
 }
