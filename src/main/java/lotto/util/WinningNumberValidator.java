@@ -13,6 +13,9 @@ public class WinningNumberValidator extends Validator {
         if(winningNumbers.size()!=NUMBER_COUNT){
             throw new IllegalArgumentException(ExceptionMessage.INVALID_WINNING_NUMBER_SIZE.getMessage());
         }
+        for(String winningNumber: winningNumbers) {
+            validateNumber(winningNumber);
+        }
     }
 
     private static List<String> splitByComma(String input) {
