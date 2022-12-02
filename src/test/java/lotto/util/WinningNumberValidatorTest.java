@@ -37,5 +37,14 @@ class WinningNumberValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INVALID_NOT_NUMERIC.getMessage());
         }
+
+        @DisplayName("1에서 45 사이의 자연수가 아닌 입력의 경우 예외 처리한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"1,2,3,4,5,66"})
+        void 로또_범위_테스트(String input) {
+            assertThatThrownBy(() -> winningNumberValidator.validate(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ExceptionMessage.INVALID_WINNING_NUMBER_LOTTO_RANGE.getMessage());
+        }
     }
 }
