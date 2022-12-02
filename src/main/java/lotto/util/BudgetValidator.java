@@ -2,8 +2,6 @@ package lotto.util;
 
 import static lotto.util.Constants.LOTTO_PRICE;
 
-import java.util.regex.Pattern;
-
 public class BudgetValidator extends Validator {
 
     @Override

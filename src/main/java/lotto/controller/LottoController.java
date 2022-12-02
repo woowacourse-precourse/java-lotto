@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.Bonus;
 import lotto.model.Lotto;
 import lotto.model.LottoStore;
 import lotto.model.PlayerNumbers;
@@ -23,6 +24,7 @@ public class LottoController {
             outputView.printPlayerNumbers(playerNumbers);
 
             Lotto winningNumbers = new Lotto(inputView.readWinningNumbers());
+            Bonus bonusNumber = new Bonus(inputView.readBonusNumber());
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
