@@ -23,8 +23,7 @@ public class LottoController {
             PlayerNumbers playerNumbers = PlayerNumbers.issueLottoByTickets(ticketNumber);
             outputView.printPlayerNumbers(playerNumbers);
 
-            Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-
+            Lotto winningNumber = new Lotto(inputView.readWinningNumber());
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);

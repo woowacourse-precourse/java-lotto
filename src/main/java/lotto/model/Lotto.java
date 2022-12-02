@@ -6,6 +6,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        System.out.println(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
