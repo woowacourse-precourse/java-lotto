@@ -14,7 +14,7 @@ public class LottoController {
 
     public void play() {
         try {
-
+            int budget = inputView.readBudget();
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
