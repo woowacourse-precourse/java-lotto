@@ -30,4 +30,12 @@ public enum WinningRank {
                 .findAny()
                 .orElse(NONE);
     }
+
+    public int getMatch() {
+        return match;
+    }
+
+    public int getCashPrize() {
+        return cashPrize;
+    }
 }
