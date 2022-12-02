@@ -20,6 +20,11 @@ public class BudgetValidator implements Validator {
     }
 
     private void validateInputRange(String budget) {
+        try {
+            Integer.parseInt(budget);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException(ExceptionMessage.NOT_IN_RANGE_OF_INT.getMessage());
+        }
     }
 
     private void validateLottoRange(String budget) {
