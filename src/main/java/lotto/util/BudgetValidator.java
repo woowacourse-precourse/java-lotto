@@ -5,7 +5,6 @@ import static lotto.util.Constants.LOTTO_PRICE;
 import java.util.regex.Pattern;
 
 public class BudgetValidator extends Validator {
-    private static final Pattern BUDGET_REGEX = Pattern.compile("^[0-9]*$");
 
     @Override
     public void validate(String input) throws IllegalArgumentException {
@@ -13,12 +12,6 @@ public class BudgetValidator extends Validator {
         validateNumber(budget);
         validateInputRange(budget);
         validateInputUnit(budget);
-    }
-
-    private void validateNumber(String budget) {
-        if (!BUDGET_REGEX.matcher(budget).matches()) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_NUMERIC.getMessage());
-        }
     }
 
     private void validateInputRange(String budget) {

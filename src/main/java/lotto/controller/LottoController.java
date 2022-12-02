@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.LottoStore;
 import lotto.model.PlayerNumbers;
@@ -23,7 +22,7 @@ public class LottoController {
             PlayerNumbers playerNumbers = PlayerNumbers.issueLottoByTickets(ticketNumber);
             outputView.printPlayerNumbers(playerNumbers);
 
-            Lotto winningNumber = new Lotto(inputView.readWinningNumber());
+            Lotto winningNumbers = new Lotto(inputView.readWinningNumbers());
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
