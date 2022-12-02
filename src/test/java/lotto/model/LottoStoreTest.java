@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.model.numbers.LottoStore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;

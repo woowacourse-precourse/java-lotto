@@ -1,7 +1,7 @@
 package lotto.view;
 
-import lotto.model.PlayerNumber;
-import lotto.model.PlayerNumbers;
+import lotto.model.numbers.PlayerNumber;
+import lotto.model.numbers.PlayerNumbers;
 
 public class OutputView {
 

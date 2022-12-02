@@ -3,7 +3,7 @@ package lotto.util;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import java.util.List;
-import lotto.model.Lotto;
+import lotto.model.numbers.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -2,7 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.model.Lotto;
+import lotto.model.numbers.Lotto;
 import lotto.util.BonusNumberValidator;
 import lotto.util.BudgetValidator;
 import lotto.util.WinningNumberValidator;

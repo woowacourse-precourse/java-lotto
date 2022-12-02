@@ -1,6 +1,6 @@
 package lotto.util;
 
-import lotto.model.Lotto;
+import lotto.model.numbers.Lotto;
 
 public class BonusNumberValidator extends Validator {
 
