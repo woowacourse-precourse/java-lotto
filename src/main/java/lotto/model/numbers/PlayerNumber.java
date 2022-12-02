@@ -5,6 +5,7 @@ import static lotto.util.Constants.MIN_RANGE;
 import static lotto.util.Constants.NUMBER_COUNT;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,5 +38,9 @@ public class PlayerNumber {
     @Override
     public String toString() {
         return playerNumber.toString();
+    }
+
+    public List<Integer> getPlayerNumber() {
+        return playerNumber;
     }
 }

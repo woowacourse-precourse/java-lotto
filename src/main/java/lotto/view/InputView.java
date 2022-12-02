@@ -1,7 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.model.numbers.Lotto;
 import lotto.util.BonusNumberValidator;
 import lotto.util.BudgetValidator;
@@ -10,7 +12,8 @@ import lotto.util.WinningNumberValidator;
 public class InputView {
     private enum ConsoleMessage {
         INPUT_BUDGET("구입금액을 입력해 주세요."),
-        INPUT_WINNING_NUMBER("당첨 번호를 입력해 주세요.");
+        INPUT_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
+        INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요.");
         private final String message;
 
         ConsoleMessage(String message) {
@@ -29,10 +32,11 @@ public class InputView {
         System.out.println(ConsoleMessage.INPUT_WINNING_NUMBER.message);
         String input = Console.readLine();
         new WinningNumberValidator().validate(input);
-        return List.of(0, 0);
+        return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public int readBonusNumber() {
+        System.out.println(ConsoleMessage.INPUT_BONUS_NUMBER.message);
         String bonusNumber = Console.readLine();
         BonusNumberValidator bonusNumberValidator = new BonusNumberValidator();
         bonusNumberValidator.validate(bonusNumber);

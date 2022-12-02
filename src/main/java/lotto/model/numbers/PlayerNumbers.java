@@ -26,6 +26,6 @@ public class PlayerNumbers {
     }
 
     public List<PlayerNumber> getPlayerNumbers() {
-        return Collections.unmodifiableList(playerNumbers);
+        return playerNumbers;
     }
 }

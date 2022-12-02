@@ -1,5 +1,7 @@
 package lotto.model.numbers;
 
+import java.util.Collections;
+import java.util.List;
 import lotto.util.ExceptionMessage;
 
 public class LottoDraw {
@@ -12,6 +14,7 @@ public class LottoDraw {
         this.lotto = lotto;
         this.bonus = bonus;
     }
+
     public static LottoDraw by(Lotto lotto, Bonus bonus) {
         return new LottoDraw(lotto, bonus);
     }
@@ -22,4 +25,11 @@ public class LottoDraw {
         }
     }
 
+    public List<Integer> getWinningNumbers() {
+        return lotto.getNumbers();
+    }
+
+    public int getBonusNumber() {
+        return bonus.getBonusNumber();
+    }
 }
