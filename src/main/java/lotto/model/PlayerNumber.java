@@ -26,10 +26,15 @@ public class PlayerNumber {
         while (playerNumber.size() < NUMBER_COUNT) {
             playerNumber.add((int) (Math.random() * MAX_RANGE) + MIN_RANGE);
         }
-        return playerNumber.stream().sorted().collect(Collectors.toCollection(ArrayList::new));
+        return sort(playerNumber);
     }
 
-    public List<Integer> getPlayerNumber() {
+    private static ArrayList<Integer> sort(Set<Integer> playerNumber) {
+        return playerNumber.stream().sorted()
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public List<Integer> addPlayerNumber() {
         return playerNumber;
     }
 }

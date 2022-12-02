@@ -18,7 +18,7 @@ public class LottoStore {
         this.ticketNumber = calculateTicketNumber(budget);
     }
 
-    public  static LottoStore buyTicketsByBudget(int budget) {
+    public static LottoStore buyTicketsByBudget(int budget) {
         return new LottoStore(budget);
     }
 
