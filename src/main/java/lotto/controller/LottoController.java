@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.LottoStore;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,8 +15,8 @@ public class LottoController {
 
     public void play() {
         try {
-            int budget = inputView.readBudget();
-
+            LottoStore lottoStore = LottoStore.buyTicketsByBudget(inputView.readBudget());
+            outputView.printTicketNumber(lottoStore.getTicketNumber());
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
         }
