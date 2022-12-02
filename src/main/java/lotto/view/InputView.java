@@ -32,11 +32,10 @@ public class InputView {
         return List.of(0, 0);
     }
 
-    public int readBonusNumber(Lotto winningNumbers) {
+    public int readBonusNumber() {
         String bonusNumber = Console.readLine();
         BonusNumberValidator bonusNumberValidator = new BonusNumberValidator();
         bonusNumberValidator.validate(bonusNumber);
-        bonusNumberValidator.validateDuplicates(bonusNumber, winningNumbers);
         return Integer.parseInt(bonusNumber);
     }
 }
