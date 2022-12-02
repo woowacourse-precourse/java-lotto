@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.util.BudgetValidator;
 
 public class InputView {
 
@@ -17,6 +18,7 @@ public class InputView {
     public int readBudget() {
         System.out.println(ConsoleMessage.INPUT_BUDGET.message);
         String input = Console.readLine();
+        new BudgetValidator().validate(input);
         return Integer.parseInt(input);
     }
 }
