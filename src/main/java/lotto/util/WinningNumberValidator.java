@@ -10,10 +10,10 @@ public class WinningNumberValidator extends Validator {
     @Override
     public void validate(String input) throws IllegalArgumentException {
         List<String> winningNumbers = splitByComma(input);
-        if(winningNumbers.size()!=NUMBER_COUNT){
+        if (winningNumbers.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_WINNING_NUMBER_SIZE.getMessage());
         }
-        for(String winningNumber: winningNumbers) {
+        for (String winningNumber : winningNumbers) {
             validateNumber(winningNumber);
             validateInputRange(winningNumber);
             validateLottoNumberRange(winningNumber);

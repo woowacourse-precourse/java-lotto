@@ -13,7 +13,6 @@ public class BudgetValidator extends Validator {
     }
 
 
-
     private void validateInputUnit(String budget) {
         if (Integer.parseInt(budget) % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_UNIT_OF_BUDGET.getMessage());

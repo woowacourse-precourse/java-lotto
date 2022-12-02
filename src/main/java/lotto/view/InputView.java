@@ -2,18 +2,12 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import lotto.model.Lotto;
 import lotto.util.BonusNumberValidator;
 import lotto.util.BudgetValidator;
 import lotto.util.WinningNumberValidator;
 
 public class InputView {
-
-    public int readBonusNumber() {
-        String input = Console.readLine();
-        new BonusNumberValidator().validate(input);
-        return Integer.parseInt(input);
-    }
-
     private enum ConsoleMessage {
         INPUT_BUDGET("구입금액을 입력해 주세요."),
         INPUT_WINNING_NUMBER("당첨 번호를 입력해 주세요.");
@@ -36,5 +30,13 @@ public class InputView {
         String input = Console.readLine();
         new WinningNumberValidator().validate(input);
         return List.of(0, 0);
+    }
+
+    public int readBonusNumber(Lotto winningNumbers) {
+        String bonusNumber = Console.readLine();
+        BonusNumberValidator bonusNumberValidator = new BonusNumberValidator();
+        bonusNumberValidator.validate(bonusNumber);
+        bonusNumberValidator.validateDuplicates(bonusNumber, winningNumbers);
+        return Integer.parseInt(bonusNumber);
     }
 }

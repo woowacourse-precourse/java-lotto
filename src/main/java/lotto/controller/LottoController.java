@@ -24,7 +24,7 @@ public class LottoController {
             outputView.printPlayerNumbers(playerNumbers);
 
             Lotto winningNumbers = new Lotto(inputView.readWinningNumbers());
-            Bonus bonusNumber = new Bonus(inputView.readBonusNumber());
+            Bonus bonusNumber = new Bonus(inputView.readBonusNumber(winningNumbers));
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);

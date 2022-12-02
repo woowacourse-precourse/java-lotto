@@ -1,6 +1,8 @@
 package lotto.util;
 
-public class BonusNumberValidator extends Validator{
+import lotto.model.Lotto;
+
+public class BonusNumberValidator extends Validator {
 
     @Override
     public void validate(String input) throws IllegalArgumentException {
@@ -8,4 +10,11 @@ public class BonusNumberValidator extends Validator{
         validateNumber(bonusNumber);
         validateInputRange(bonusNumber);
     }
+
+    public void validateDuplicates(String bonusNumber, Lotto lotto) {
+        if (lotto.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ExceptionMessage.BONUS_NUMBER_DUPLICATED.getMessage());
+        }
+    }
+
 }
