@@ -15,6 +15,8 @@ public class WinningNumberValidator extends Validator {
         }
         for(String winningNumber: winningNumbers) {
             validateNumber(winningNumber);
+            validateInputRange(winningNumber);
+            validateLottoNumberRange(winningNumber);
         }
     }
 

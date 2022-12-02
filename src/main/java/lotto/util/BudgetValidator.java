@@ -14,13 +14,7 @@ public class BudgetValidator extends Validator {
         validateInputUnit(budget);
     }
 
-    private void validateInputRange(String budget) {
-        try {
-            Integer.parseInt(budget);
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_OUT_OF_INT_RANGE.getMessage());
-        }
-    }
+
 
     private void validateInputUnit(String budget) {
         if (Integer.parseInt(budget) % LOTTO_PRICE != 0) {
