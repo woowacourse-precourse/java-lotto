@@ -4,7 +4,7 @@ import static lotto.util.Constants.LOTTO_PRICE;
 
 import java.util.regex.Pattern;
 
-public class BudgetValidator implements Validator {
+public class BudgetValidator extends Validator {
     private static final Pattern BUDGET_REGEX = Pattern.compile("^[0-9]*$");
 
     @Override
@@ -35,7 +35,4 @@ public class BudgetValidator implements Validator {
         }
     }
 
-    private static String removeSpace(String input) {
-        return input.replaceAll(" ", "");
-    }
 }

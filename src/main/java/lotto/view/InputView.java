@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.util.BudgetValidator;
+import lotto.util.ExceptionMessage;
+import lotto.util.WinningNumberValidator;
 
 public class InputView {
 
@@ -28,9 +30,13 @@ public class InputView {
     public List<Integer> readWinningNumber() {
         System.out.println(ConsoleMessage.INPUT_WINNING_NUMBER.message);
         String input = Console.readLine();
-        // validation
-        return Arrays.stream(input.split(","))
+        List<Integer> winningNumbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_WINNING_NUMBER_SIZE.getMessage());
+        }
+        new WinningNumberValidator().validate(input);
+
     }
 }
