@@ -1,10 +1,12 @@
 package lotto.util;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -45,6 +47,16 @@ class WinningNumberValidatorTest {
             assertThatThrownBy(() -> winningNumberValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INVALID_WINNING_NUMBER_LOTTO_RANGE.getMessage());
+        }
+    }
+
+    @Nested
+    class validInput {
+
+        @Test
+        void 정상_입력() {
+            assertThatCode(() -> winningNumberValidator.validate("1,2,3,4,5,6"))
+                    .doesNotThrowAnyException();
         }
     }
 }
