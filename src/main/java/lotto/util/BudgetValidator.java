@@ -1,5 +1,7 @@
 package lotto.util;
 
+import static lotto.util.Constants.LOTTO_PRICE;
+
 import java.util.regex.Pattern;
 
 public class BudgetValidator implements Validator {
@@ -10,12 +12,12 @@ public class BudgetValidator implements Validator {
         String budget = removeSpace(input);
         validateNumber(budget);
         validateInputRange(budget);
-        validateLottoRange(budget);
+        validateInputUnit(budget);
     }
 
     private void validateNumber(String budget) {
         if (!BUDGET_REGEX.matcher(budget).matches()) {
-            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_NUMERIC.getMessage());
         }
     }
 
@@ -23,12 +25,14 @@ public class BudgetValidator implements Validator {
         try {
             Integer.parseInt(budget);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(ExceptionMessage.NOT_IN_RANGE_OF_INT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_OUT_OF_INT_RANGE.getMessage());
         }
     }
 
-    private void validateLottoRange(String budget) {
-
+    private void validateInputUnit(String budget) {
+        if (Integer.parseInt(budget) % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_UNIT_OF_BUDGET.getMessage());
+        }
     }
 
     private static String removeSpace(String input) {

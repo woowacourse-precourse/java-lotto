@@ -1,10 +1,12 @@
 package lotto.util;
 
+import static lotto.util.Constants.LOTTO_PRICE;
+
 public enum ExceptionMessage {
 
-    NOT_NUMERIC("숫자만 입력 가능합니다."),
-    NOT_IN_RANGE_OF_INT("입력 범위를 초과하였습니다."),
-    NOT_IN_RANGE("1부터 45까지의 숫자만 입력 가능합니다.");
+    INVALID_NOT_NUMERIC("숫자만 입력 가능합니다."),
+    INVALID_OUT_OF_INT_RANGE("입력 범위를 초과하였습니다."),
+    INVALID_UNIT_OF_BUDGET(String.format("%d원 단위로 구매 가능합니다.", LOTTO_PRICE));
     public static final String BASE_MESSAGE = "[ERROR] %s";
     private final String message;
 
