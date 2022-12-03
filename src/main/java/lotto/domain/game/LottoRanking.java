@@ -6,33 +6,27 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 
 public enum LottoRanking {
-    NOTHING(
-            new BigDecimal(0L),
+    NOTHING(new BigDecimal(0L),
             0L,
             correctBonus -> true),
 
-    FIFTH(
-            new BigDecimal(5_000L),
+    FIFTH(new BigDecimal(5_000L),
             3L,
             correctBonus -> true),
 
-    FOURTH(
-            new BigDecimal(50_000L),
+    FOURTH(new BigDecimal(50_000L),
             4L,
             correctBonus -> true),
 
-    THIRD(
-            new BigDecimal(1_500_000L),
+    THIRD(new BigDecimal(1_500_000L),
             5L,
             correctBonus -> !correctBonus),
 
-    SECOND(
-            new BigDecimal(30_000_000L),
+    SECOND(new BigDecimal(30_000_000L),
             5L,
             correctBonus -> correctBonus),
 
-    FIRST(
-            new BigDecimal(2_000_000_000L),
+    FIRST(new BigDecimal(2_000_000_000L),
             6L,
             correctBonus -> true);
 
@@ -40,13 +34,13 @@ public enum LottoRanking {
 
     private final BigDecimal lottoRankingReward;
     private final long correctNumberCount;
-    private final Predicate<Boolean> correctBonusNumberPredicate;
+    private final Predicate<Boolean> bonusNumberPredicate;
 
     LottoRanking(BigDecimal lottoRankingReward, long correctNumberCount,
-            Predicate<Boolean> correctBonusNumberPredicate) {
+            Predicate<Boolean> bonusNumberPredicate) {
         this.lottoRankingReward = lottoRankingReward;
         this.correctNumberCount = correctNumberCount;
-        this.correctBonusNumberPredicate = correctBonusNumberPredicate;
+        this.bonusNumberPredicate = bonusNumberPredicate;
     }
 
     public String findRewardMessage() {
@@ -57,10 +51,14 @@ public enum LottoRanking {
         return lottoRankingReward.multiply(new BigDecimal(numberOfWins));
     }
 
+    public boolean hasReward() {
+        return this != NOTHING;
+    }
+
     public static LottoRanking findLottoRanking(long correctNumberCount, boolean isCorrectBonusNumber) {
         return Arrays.stream(LottoRanking.values())
                 .filter(lottoRanking -> lottoRanking.correctNumberCount == correctNumberCount)
-                .filter(lottoRanking -> lottoRanking.correctBonusNumberPredicate.test(isCorrectBonusNumber))
+                .filter(lottoRanking -> lottoRanking.bonusNumberPredicate.test(isCorrectBonusNumber))
                 .findAny()
                 .orElse(LottoRanking.NOTHING);
     }

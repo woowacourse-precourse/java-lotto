@@ -33,7 +33,7 @@ public class LottoResult {
     private BigDecimal calculateTotalReward() {
         return lottoRankingResult.keySet()
                 .stream()
-                .filter(lottoRanking -> lottoRanking != LottoRanking.NOTHING)
+                .filter(LottoRanking::hasReward)
                 .map(this::calculateTargetLottoRankingTotalReward)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
