@@ -4,6 +4,7 @@ import static lotto.util.Constants.LOTTO_PRICE;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -14,7 +15,6 @@ import java.util.stream.Collectors;
 import lotto.model.numbers.LottoDraw;
 import lotto.model.numbers.PlayerNumber;
 import lotto.model.numbers.PlayerNumbers;
-import net.bytebuddy.pool.TypePool.Resolution.NoSuchTypeException;
 
 public class WinningStatistics {
 
@@ -58,11 +58,11 @@ public class WinningStatistics {
     }
 
     private String getRewardRate() {
-        return String.valueOf(formatRewardRate());
+        return formatRewardRate();
     }
 
-    private BigDecimal formatRewardRate() {
-        return rewardRate.setScale(1, RoundingMode.HALF_EVEN);
+    private String formatRewardRate() {
+        return new DecimalFormat("#,##0.0").format(rewardRate.setScale(1, RoundingMode.HALF_EVEN));
     }
 
     @Override
