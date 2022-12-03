@@ -105,4 +105,33 @@ class LottoRankingTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("hasReward 메소드는")
+    class DescribeHasRewardMethodTest {
+
+        @Nested
+        @DisplayName("만약 호출하면")
+        class ContextWithoutParameterTest {
+
+            @ParameterizedTest
+            @CsvSource(
+                    value = {
+                        "NOTHING:false",
+                        "FIFTH:true",
+                        "FOURTH:true",
+                        "THIRD:true",
+                        "SECOND:true",
+                        "FIRST:true"
+                    },
+                    delimiter = ':'
+            )
+            @DisplayName("상금이 있는 로또 등수인지 여부를 반환한다")
+            void it_returns_hasReward(LottoRanking lottoRanking, boolean expected) {
+                boolean actual = lottoRanking.hasReward();
+
+                assertThat(actual).isSameAs(expected);
+            }
+        }
+    }
 }
