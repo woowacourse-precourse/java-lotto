@@ -4,6 +4,7 @@ import static lotto.util.Constants.MAX_RANGE;
 import static lotto.util.Constants.MIN_RANGE;
 import static lotto.util.Constants.NUMBER_COUNT;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -23,14 +24,10 @@ public class PlayerNumber {
     }
 
     private List<Integer> generateLottoNumber() {
-        Set<Integer> playerNumber = new LinkedHashSet();
-        while (playerNumber.size() < NUMBER_COUNT) {
-            playerNumber.add((int) (Math.random() * MAX_RANGE) + MIN_RANGE);
-        }
-        return sort(playerNumber);
+        return sort(Randoms.pickUniqueNumbersInRange(MIN_RANGE,MAX_RANGE,NUMBER_COUNT));
     }
 
-    private static ArrayList<Integer> sort(Set<Integer> playerNumber) {
+    private static ArrayList<Integer> sort(List<Integer> playerNumber) {
         return playerNumber.stream().sorted()
                 .collect(Collectors.toCollection(ArrayList::new));
     }
