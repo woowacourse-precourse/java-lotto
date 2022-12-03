@@ -30,6 +30,7 @@ public class LottoController {
             LottoDraw lottoDraw = LottoDraw.by(winningNumbers, bonusNumber);
 
             WinningStatistics statistics = WinningStatistics.from(lottoDraw, playerNumbers);
+            outputView.printWinningStatistics(statistics);
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);

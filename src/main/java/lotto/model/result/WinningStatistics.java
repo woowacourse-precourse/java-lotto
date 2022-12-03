@@ -1,10 +1,13 @@
 package lotto.model.result;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 import lotto.model.numbers.LottoDraw;
 import lotto.model.numbers.PlayerNumber;
 import lotto.model.numbers.PlayerNumbers;
@@ -13,21 +16,20 @@ public class WinningStatistics {
 
     private final LottoDraw lottoDraw;
     private final PlayerNumbers playerNumbers;
-    private final Map<WinningRank, Integer> winningStatistics;
+    private Map<WinningRank, Integer> winningStatistics = new HashMap<>();
 
     private WinningStatistics(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
         this.lottoDraw = lottoDraw;
         this.playerNumbers = playerNumbers;
-        this.winningStatistics = drawWinningStatistics(playerNumbers);
+        initializeStatistics();
+        drawWinningStatistics();
     }
 
-    private Map<WinningRank, Integer> drawWinningStatistics(PlayerNumbers playerNumbers) {
-        initializeStatistics();
+    private void drawWinningStatistics() {
         for (PlayerNumber player : playerNumbers.getPlayerNumbers()) {
             WinningRank winningRank = WinningRank.from(calculateMatch(player), hasBonus(player));
             winningStatistics.put(winningRank, winningStatistics.get(winningRank) + 1);
         }
-        return new HashMap<>(winningStatistics);
     }
 
     private void initializeStatistics() {
@@ -52,9 +54,18 @@ public class WinningStatistics {
 
     @Override
     public String toString() {
-        StringJoiner result = new StringJoiner();
-        for (WinningRank winningRank : WinningRank.values()) {
-            String matchDisplay = String.format("%d개 일치", winningRank.getMatch());
+        List<WinningRank> ranks = Arrays.stream(WinningRank.values())
+                .filter(rank -> rank != WinningRank.NONE)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+        System.out.println(ranks);
+        StringBuilder result = new StringBuilder();
+        for (WinningRank rank : ranks) {
+            result.append(
+                    String.format("%s (%d) - %d개\n",
+                            rank.getDisplay(),
+                            rank.getCashPrize(),
+                            winningStatistics.get(rank)));
         }
         return result.toString();
     }

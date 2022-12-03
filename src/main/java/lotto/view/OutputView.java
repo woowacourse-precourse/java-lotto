@@ -31,6 +31,6 @@ public class OutputView {
     }
 
     public void printWinningStatistics(WinningStatistics winningStatistics) {
-
+        System.out.println(winningStatistics.toString());
     }
 }
