@@ -64,7 +64,7 @@ public class Lotto {
                 .filter(playerLotto.numbers::contains)
                 .count();
 
-        return LottoRanking.findLottoRanking(numberOfWins, numbers.contains(bonusNumber));
+        return LottoRanking.findLottoRanking(numberOfWins, playerLotto.numbers.contains(bonusNumber));
     }
 
     private void validateBonusNumber(LottoNumber bonusNumber) {
