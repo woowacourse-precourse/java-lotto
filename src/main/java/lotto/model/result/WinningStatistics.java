@@ -1,20 +1,20 @@
 package lotto.model.result;
 
 import static lotto.util.Constants.LOTTO_PRICE;
+import static lotto.util.ResultFormatter.formatResult;
+import static lotto.util.ResultFormatter.formatRewardRate;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import lotto.model.numbers.LottoDraw;
 import lotto.model.numbers.PlayerNumber;
 import lotto.model.numbers.PlayerNumbers;
+import lotto.util.ResultFormatter;
 
 public class WinningStatistics {
 
@@ -22,29 +22,46 @@ public class WinningStatistics {
     private final PlayerNumbers playerNumbers;
     private Map<WinningRank, Integer> winningStatistics = new HashMap<>();
     private BigDecimal rewardRate = BigDecimal.ZERO;
-    public static final String CASH_PRIZE_REGEX = "\\B(?=(\\d{3})+(?!\\d))";
 
     private WinningStatistics(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
         this.lottoDraw = lottoDraw;
         this.playerNumbers = playerNumbers;
-        setStatistics();
+        setWinningStatistics();
+        setRewardRate();
     }
 
     public static WinningStatistics from(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
         return new WinningStatistics(lottoDraw, playerNumbers);
     }
 
-    private void setStatistics() {
-        BigDecimal ticketBudget = new BigDecimal("0");
-        BigDecimal totalCashPrize = new BigDecimal("0");
+    private void setWinningStatistics() {
         for (PlayerNumber player : playerNumbers.getPlayerNumbers()) {
             WinningRank winningRank = WinningRank.from(calculateMatch(player), hasBonus(player));
-            winningStatistics.put(winningRank, winningStatistics.getOrDefault(winningRank, 0) + 1);
+            updateWinningStatistics(winningRank);
+        }
+    }
+
+    private void setRewardRate() {
+        BigDecimal ticketBudget = BigDecimal.ZERO;
+        BigDecimal totalCashPrize = BigDecimal.ZERO;
+        for (PlayerNumber player : playerNumbers.getPlayerNumbers()) {
+            WinningRank winningRank = WinningRank.from(calculateMatch(player), hasBonus(player));
             ticketBudget = ticketBudget.add(new BigDecimal(String.valueOf(LOTTO_PRICE)));
             totalCashPrize = totalCashPrize.add(new BigDecimal(String.valueOf(winningRank.getCashPrize())));
         }
-        rewardRate = totalCashPrize.divide(ticketBudget).multiply(BigDecimal.valueOf(100));
-        System.out.println(rewardRate);
+        rewardRate = calculateRewardRate(ticketBudget, totalCashPrize);
+    }
+
+    private static BigDecimal calculateRewardRate(BigDecimal ticketBudget, BigDecimal totalCashPrize) {
+        return totalCashPrize.divide(ticketBudget).multiply(BigDecimal.valueOf(100));
+    }
+
+    private void updateWinningStatistics(WinningRank winningRank) {
+        winningStatistics.put(winningRank, winningStatistics.getOrDefault(winningRank, 0) + 1);
+    }
+
+    public int getWinningStatistics(WinningRank winningRank) {
+        return winningStatistics.getOrDefault(winningRank, 0);
     }
 
     private boolean hasBonus(PlayerNumber player) {
@@ -57,34 +74,15 @@ public class WinningStatistics {
         return intersection.size();
     }
 
-    private String getRewardRate() {
-        return formatRewardRate();
+    public String getRewardRate() {
+        return ResultFormatter.formatRewardRate(rewardRate);
     }
 
-    private String formatRewardRate() {
-        return new DecimalFormat("#,##0.0").format(rewardRate.setScale(1, RoundingMode.HALF_EVEN));
-    }
 
     @Override
     public String toString() {
-        List<WinningRank> ranks = Arrays.stream(WinningRank.values())
-                .filter(rank -> rank != WinningRank.NONE)
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
-        StringBuilder result = new StringBuilder();
-        for (WinningRank rank : ranks) {
-            result.append(
-                    String.format("%s (%s원) - %d개\n",
-                            rank.getDisplay(),
-                            formatCashPrize(rank.getCashPrize()),
-                            winningStatistics.getOrDefault(rank, 0)));
-        }
-        result.append(String.format("총 수익률은 %s%%입니다.", getRewardRate()));
-        return result.toString();
+        return formatResult(this);
     }
 
 
-    public static String formatCashPrize(int cashPrize) {
-        return String.valueOf(cashPrize).replaceAll(CASH_PRIZE_REGEX, ",");
-    }
 }
