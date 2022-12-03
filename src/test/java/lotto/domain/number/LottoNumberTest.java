@@ -77,8 +77,8 @@ class LottoNumberTest {
     }
 
     @Nested
-    @DisplayName("toString 메소드는")
-    class DescribeToStringMethodTest {
+    @DisplayName("getNumber 메소드는")
+    class DescribeGetNumberMethodTest {
 
         @Nested
         @DisplayName("만약 호출하면")
@@ -89,8 +89,8 @@ class LottoNumberTest {
             void it_returns_number() {
                 IntStream.rangeClosed(LottoConst.MIN_NUMBER_VALUE, LottoConst.MAX_NUMBER_VALUE)
                         .forEach(number -> {
-                            String actual = new LottoNumber(number).toString();
-                            assertThat(actual).contains(String.valueOf(number));
+                            int actual = new LottoNumber(number).getNumber();
+                            assertThat(actual).isSameAs(number);
                         });
             }
         }
