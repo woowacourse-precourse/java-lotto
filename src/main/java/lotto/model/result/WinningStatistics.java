@@ -17,12 +17,18 @@ public class WinningStatistics {
     private final LottoDraw lottoDraw;
     private final PlayerNumbers playerNumbers;
     private Map<WinningRank, Integer> winningStatistics = new HashMap<>();
+    public static final String CASH_PRIZE_REGEX = "\\B(?=(\\d{3})+(?!\\d))";
 
     private WinningStatistics(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
         this.lottoDraw = lottoDraw;
         this.playerNumbers = playerNumbers;
         initializeStatistics();
         drawWinningStatistics();
+        System.out.println(winningStatistics);
+    }
+
+    public static WinningStatistics from(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
+        return new WinningStatistics(lottoDraw, playerNumbers);
     }
 
     private void drawWinningStatistics() {
@@ -38,9 +44,6 @@ public class WinningStatistics {
         }
     }
 
-    public static WinningStatistics from(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
-        return new WinningStatistics(lottoDraw, playerNumbers);
-    }
 
     private boolean hasBonus(PlayerNumber player) {
         return player.getPlayerNumber().contains(lottoDraw.getBonusNumber());
@@ -58,15 +61,19 @@ public class WinningStatistics {
                 .filter(rank -> rank != WinningRank.NONE)
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
-        System.out.println(ranks);
         StringBuilder result = new StringBuilder();
         for (WinningRank rank : ranks) {
             result.append(
-                    String.format("%s (%d) - %d개\n",
+                    String.format("%s (%s원) - %d개\n",
                             rank.getDisplay(),
-                            rank.getCashPrize(),
+                            formatCashPrize(rank.getCashPrize()),
                             winningStatistics.get(rank)));
         }
         return result.toString();
+    }
+
+
+    public static String formatCashPrize(int cashPrize) {
+        return String.valueOf(cashPrize).replaceAll(CASH_PRIZE_REGEX, ",");
     }
 }
