@@ -1,7 +1,10 @@
 package lotto;
 
+import lotto.utils.game.GameStatus;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameRunner.run(GameStatus.PURCHASE_AMOUNT);
     }
 }
