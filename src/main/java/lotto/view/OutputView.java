@@ -8,7 +8,7 @@ import lotto.dto.output.PrintLottoResultDto;
 public class OutputView {
 
     private static final String LINE_FEED = "";
-    private static final String REVENUE_PERCENT_FORMAT = "###,##0.0";
+    private static final DecimalFormat REVENUE_PERCENT_FORMATTER = new DecimalFormat("###,##0.0");
 
     private OutputView() {
     }
@@ -33,9 +33,8 @@ public class OutputView {
 
         printLottoResultDto.getLottoRankingMessage().forEach(this::print);
 
-        DecimalFormat rewardFormat = new DecimalFormat(REVENUE_PERCENT_FORMAT);
-        print(OutputViewMessage.REVENUE_PERCENT
-                .getFullMessage(rewardFormat.format(printLottoResultDto.getRevenuePercent().doubleValue())));
+        print(OutputViewMessage.REVENUE_PERCENT.getFullMessage(
+                REVENUE_PERCENT_FORMATTER.format(printLottoResultDto.getRevenuePercent().doubleValue())));
     }
 
     public void printExceptionMessage(PrintExceptionMessageDto printExceptionMessageDto) {
