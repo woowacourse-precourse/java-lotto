@@ -1,6 +1,8 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
+import lotto.domain.LottoStats;
+import lotto.domain.Purchase;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 

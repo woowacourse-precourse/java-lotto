@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 /**
  * 하나를 맞춘 경우에 +10점

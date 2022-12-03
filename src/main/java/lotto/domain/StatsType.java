@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum StatsType {
     first(StatsConst.FIRST_SCORE,StatsConst.FIRST_MONEY),

@@ -1,12 +1,13 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.StatsConst;
+import lotto.domain.StatsType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoStatsTest {
     @Test

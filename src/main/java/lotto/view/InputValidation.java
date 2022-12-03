@@ -1,12 +1,9 @@
-package lotto;
+package lotto.view;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
+import lotto.domain.LottoValidation;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputValidation {

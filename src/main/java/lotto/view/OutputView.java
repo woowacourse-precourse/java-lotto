@@ -1,7 +1,7 @@
 package lotto.view;
 
-import lotto.Lotto;
-import lotto.StatsType;
+import lotto.domain.Lotto;
+import lotto.domain.StatsType;
 
 import java.text.DecimalFormat;
 import java.util.List;
