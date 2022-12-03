@@ -1,20 +1,22 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class Application {
+    private static final InputView inputView = new InputView();
     public static void main(String[] args) {
         try {
             programStart();
-            Integer cost = inputCost();
+            Integer cost = inputView.inputCost();
             Purchase purchase = new Purchase();
             purchase.lotto(cost);
 
             OutputView.purchaseLottoResultPrint(purchase.getMyLotto());
 
-            Lotto winningNumber = inputWinningNumber();
-            Integer bonus = inputBonusNumber(winningNumber);
+            Lotto winningNumber = inputView.inputWinningNumber();
+            Integer bonus = inputView.inputBonusNumber(winningNumber);
 
             LottoStats lottoStats = new LottoStats();
             lottoStats.calculationStats(purchase, winningNumber, bonus);
@@ -28,16 +30,4 @@ public class Application {
     public static void programStart(){
         System.out.print("구입금액을 입력해주세요.");
     }
-    public static Integer inputCost() {
-        return Convert.costConvert(Console.readLine());
-    }
-    public static Lotto inputWinningNumber(){
-        System.out.println("당첨 번호를 입력해 주세요.");
-        return Convert.winningConvert(Console.readLine());
-    }
-    public static Integer inputBonusNumber(Lotto winningNumber){
-        System.out.println("보너스 번호를 입력해 주세요.");
-        return Convert.bonusConvert(Console.readLine(),winningNumber);
-    }
-
 }
