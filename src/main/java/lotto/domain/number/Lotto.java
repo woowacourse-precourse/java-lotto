@@ -57,7 +57,7 @@ public class Lotto {
     }
 
     public LottoRanking calculateLottoRanking(Lotto playerLotto, LottoNumber bonusNumber) {
-        validateBonusNumber(playerLotto, bonusNumber);
+        validateBonusNumber(bonusNumber);
 
         long numberOfWins = this.numbers
                 .stream()
@@ -67,8 +67,8 @@ public class Lotto {
         return LottoRanking.findLottoRanking(numberOfWins, numbers.contains(bonusNumber));
     }
 
-    private void validateBonusNumber(Lotto playerLotto, LottoNumber bonusNumber) {
-        if (playerLotto.numbers.contains(bonusNumber)) {
+    private void validateBonusNumber(LottoNumber bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ExceptionMessageUtil.WRONG_BONUS_NUMBER.findFullMessage());
         }
     }
