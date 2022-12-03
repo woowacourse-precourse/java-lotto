@@ -1,10 +1,13 @@
-package lotto;
+package lotto.view;
+
+import lotto.Lotto;
+import lotto.StatsType;
 
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
-public class Render {
+public class OutputView {
     private final static DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private final static String stringFormat = "%d개 일치 (%s원) - %d개\n";
     private final static String stringFormatBonus= "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";

@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,7 +11,7 @@ public class Application {
             Purchase purchase = new Purchase();
             purchase.lotto(cost);
 
-            Render.purchaseLottoResultPrint(purchase.getMyLotto());
+            OutputView.purchaseLottoResultPrint(purchase.getMyLotto());
 
             Lotto winningNumber = inputWinningNumber();
             Integer bonus = inputBonusNumber(winningNumber);
@@ -18,7 +19,7 @@ public class Application {
             LottoStats lottoStats = new LottoStats();
             lottoStats.calculationStats(purchase, winningNumber, bonus);
 
-            Render.StatsResultPrint(lottoStats.statistics(), lottoStats.getEarning());
+            OutputView.StatsResultPrint(lottoStats.statistics(), lottoStats.getEarning());
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
