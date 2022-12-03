@@ -75,8 +75,9 @@ public class Lotto {
 
     public String getSortedLottoNumbers() {
         return numbers.stream()
-                .map(LottoNumber::toString)
-                .sorted(Comparator.comparingInt(Integer::parseInt))
+                .map(LottoNumber::getNumber)
+                .sorted(Comparator.naturalOrder())
+                .map(String::valueOf)
                 .collect(Collectors.joining(LOTTO_MESSAGE_SEPARATOR));
     }
 }
