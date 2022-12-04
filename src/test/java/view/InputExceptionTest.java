@@ -13,7 +13,7 @@ public class InputExceptionTest {
     @ValueSource(strings = {"", " ", "  "})
     public void null_test(String userInput) {
         assertThatThrownBy(()->{
-            InputException.nullException(userInput)
+            InputException.nullException(userInput);
         }).isInstanceOf(IllegalArgumentException.class) ;
     }
 
@@ -21,7 +21,7 @@ public class InputExceptionTest {
     @ValueSource(strings = {"1r", "r1", "rr"})
     public void isNumber_test(String userInput) {
         assertThatThrownBy(()->{
-            InputException.notNumberException(userInput)
+            InputException.notNumberException(userInput);
         }).isInstanceOf(IllegalArgumentException.class) ;
     }
 
@@ -29,15 +29,9 @@ public class InputExceptionTest {
     @ValueSource(ints = {14300, 800, 1100})
     public void isNotDividedThousand_test(int userInput) {
         assertThatThrownBy(()->{
-            InputException.notDividedThousandException(userInput)
+            InputException.notDividedThousandException(userInput);
         }).isInstanceOf(IllegalArgumentException.class) ;
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"1,", ",", " ,", ", ", "1,2,3", ",,,,,"})
-    public void notWinningInput_test(String userInput) {
-        assertThatThrownBy(()->{
-            InputException.notWinningInputException(userInput)
-        }).isInstanceOf(IllegalArgumentException.class) ;
-    }
+
 }

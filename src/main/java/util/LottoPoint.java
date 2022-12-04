@@ -1,4 +1,4 @@
-package Info;
+package util;
 
 public enum LottoPoint {
     BONNUS_POINT(10),

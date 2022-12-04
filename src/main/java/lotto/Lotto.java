@@ -1,49 +1,28 @@
 package lotto;
 
-import Info.InputException;
-import Info.PrintGameInfo;
+import util.ExceptionPharse;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Lotto {
-    public static final int LOTTO_MAX_NUMBER = 45; // 로또 최대 숫자
-    public static final int LOTTO_MIN_NUMBER = 1; // 로또 최소 숫자
-    public static final int LOTTO_NUMBER_COUNT = 6; // 로또 숫자 갯수
     private final List<Integer> numbers;
-
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        outOfRangeExceptioin(numbers);
-        checkNoDuplicateWinnningLotto(numbers);
-        List<Integer> numbersCopy = deepCopy(numbers);
-        this.numbers = numbersCopy;
+        LottoException.checkListOutOfRangeExceptioin(numbers);
+        LottoException.checkNoDuplicateWinnningLotto(numbers);
+
+        this.numbers = sortedDeepCopy(numbers);;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(PrintGameInfo.getOverLottoCount());
+            throw new IllegalArgumentException(ExceptionPharse.OUT_OF_LOTTO_SIZE.getExceptionMsg());
         }
     }
 
     // TODO: 추가 기능 구현
-    public static void isOutOfRangeException(Integer number) {
-        if (number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER) {
-            throw new IllegalArgumentException(PrintGameInfo.getOutOfRange());
-        }
-    }
-
-    /**
-     * 로또 당첨 번호 자체 중복 여부 확인
-     * @param numbers
-     */
-    private void checkNoDuplicateWinnningLotto(List<Integer> numbers) {
-        Set<Integer> checkList = new HashSet<>(numbers);
-        if (checkList.size() != numbers.size()) {
-            throw new IllegalArgumentException(PrintGameInfo.getDuplicate());
-        }
-    }
 
     /**
      * Random Test환경에서 실행시 UnsupportedOperationError가 났다
@@ -51,13 +30,19 @@ public class Lotto {
      * @param numbers
      * @return
      */
-    public List<Integer> deepCopy(List<Integer> numbers) {
+    public List<Integer> sortedDeepCopy(List<Integer> numbers) {
         List<Integer> numbersCopy = new ArrayList<>();
         for (Integer number : numbers) {
             numbersCopy.add(number);
         }
         numbersCopy.sort(Comparator.naturalOrder());
         return numbersCopy;
+    }
+
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 
     public static List<Integer> getIntNumbers(List<String> userInput) {
@@ -77,11 +62,7 @@ public class Lotto {
         return numbers;
     }
 
-    private void outOfRangeExceptioin(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            isOutOfRangeException(number);
-        }
-    }
+
 
     public String numbersToString() {
         List<String> numberList = getStringNumbers();

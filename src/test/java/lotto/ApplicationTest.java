@@ -1,10 +1,10 @@
 package lotto;
 
-import Info.InputException;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import view.InputException;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
                             "총 수익률은 62.5%입니다."
                     );
                 },
-                List.of(21, 8, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
                 List.of(3, 5, 11, 16, 32, 38),
                 List.of(7, 11, 16, 35, 36, 44),
                 List.of(1, 8, 11, 31, 41, 42),
@@ -79,41 +79,6 @@ class ApplicationTest extends NsTest {
 
             assertThat(output()).contains(ERROR_MESSAGE);
         });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"4,000", "15,000", "hello", "123,0", "8000 "})
-    void 로또금액_숫자이외예외처리_테스트(String userInput) {
-        assertThatThrownBy(() -> {
-            InputException.outOfDigitException(userInput);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"", " ", "8000 "})
-    void 사용자입력_빈문자확인_테스트(String userInput) {
-        assertThatThrownBy(() -> {
-            InputException.emptyException(userInput);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @ParameterizedTest
-    @ValueSource(longs = {1000, 10000, 0L, 50L, 8000L})
-    void 최소단위로나눠떨어지지않는경우_테스트(long userInput) {
-        assertThatThrownBy(() -> {
-            LottoList.notDivThousand(userInput);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1,2,3,4,5", "1,,3,6", ""})
-    void 당첨번호규격_테스트(String userInput) {
-        assertThatThrownBy(() -> {
-            InputException.wrongWinningNumberFormat(userInput);
-        }).isInstanceOf(IllegalArgumentException.class);
-
     }
 
     @Override

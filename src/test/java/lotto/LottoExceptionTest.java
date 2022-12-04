@@ -9,8 +9,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoExceptionTest {
     @ParameterizedTest
-    @ValueSource(ints = {0, 46})
-    public void notLottoNumberRange_test(int userInput) {
+    @ValueSource(strings = {"0", "-1", "46"})
+    public void notLottoNumberRange_test(String userInput) {
         assertThatThrownBy(()-> {
             LottoException.notLottoNumberRangeException(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
