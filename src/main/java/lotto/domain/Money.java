@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class Money {
 
-    private int money;
+    private final int money;
 
     public Money(int money) {
         validate(money);
@@ -10,7 +10,17 @@ public class Money {
     }
 
     private void validate(int money) {
-        if (!isDividedByLottoPrice(money)) throw new IllegalArgumentException("[ERROR] 구입 금액은 로또 금액의 배수여야 합니다.");
+        if (!isNaturalNumber(money)) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 양수여야 합니다.");
+        }
+
+        if (!isDividedByLottoPrice(money)) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 로또 금액의 배수여야 합니다.");
+        }
+    }
+
+    private boolean isNaturalNumber(int money) {
+        return money > 0;
     }
 
     private boolean isDividedByLottoPrice(int money) {
