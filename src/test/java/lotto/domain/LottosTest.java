@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.EnumMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,23 +24,6 @@ class LottosTest {
 
         // then
         assertThat(lottos.size()).isEqualTo(givenLottos.size());
-    }
-
-    @DisplayName("출력용 로또 묶음 문자열을 반환한다.")
-    @Test
-    void returnString() {
-        // given
-        List<Integer> list = List.of(1, 2, 3, 4, 5, 6);
-        Lotto lotto = new Lotto(list);
-        List<Lotto> givenLottos = List.of(lotto);
-
-        // when
-        Lottos lottos = new Lottos(givenLottos);
-
-        // then
-        assertThat(lottos.toString()).isEqualTo(givenLottos.stream()
-                .map(Lotto::toString)
-                .collect(Collectors.joining("\n")));
     }
 
     @DisplayName("각 로또의 등수를 알 수 있다.")

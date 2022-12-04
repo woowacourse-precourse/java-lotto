@@ -17,12 +17,8 @@ public class LottoGameService {
         this.lottos = new Lottos(factory.generateLottos(this.money));
     }
 
-    public int showLottosSize() {
-        return lottos.size();
-    }
-
-    public String showLottosToString() {
-        return lottos.toString();
+    public Lottos findLottos() {
+        return lottos;
     }
 
     public void checkWinningNumbers(Lotto winningLotto, int bonusNumber) {

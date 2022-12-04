@@ -5,6 +5,7 @@ import lotto.controller.LottoController;
 import lotto.controller.dto.MoneyDto;
 import lotto.controller.dto.WinningNumbersDto;
 import lotto.domain.LottoRank;
+import lotto.domain.Lottos;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -49,11 +50,8 @@ public class DefaultView implements View {
     }
 
     private void renderLottos() {
-        String lottosSize = controller.outputLottoSize();
-        System.out.println(Views.LOTTOS_COUNT.render(lottosSize));
-
-        String lottos = controller.outputLottos();
-        System.out.println(lottos);
+        Lottos lottos = controller.outputLottos();
+        System.out.println(LottosView.LOTTOS_COUNT.render(lottos));
     }
 
     private void renderStatics() {

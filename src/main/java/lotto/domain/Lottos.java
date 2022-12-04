@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.EnumMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Lottos {
 
@@ -39,10 +38,7 @@ public class Lottos {
         return lottoRanks;
     }
 
-    @Override
-    public String toString() {
-        return lottos.stream()
-                .map(Lotto::toString)
-                .collect(Collectors.joining(DELIMITER));
+    public List<Lotto> getLottos() {
+        return this.lottos;
     }
 }

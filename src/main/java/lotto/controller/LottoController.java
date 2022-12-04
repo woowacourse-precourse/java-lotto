@@ -4,6 +4,7 @@ import lotto.controller.dto.MoneyDto;
 import lotto.controller.dto.WinningNumbersDto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
+import lotto.domain.Lottos;
 import lotto.service.LottoGameService;
 
 import java.util.EnumMap;
@@ -23,12 +24,8 @@ public class LottoController {
         service.buyLottos(money);
     }
 
-    public String outputLottoSize() {
-        return String.valueOf(service.showLottosSize());
-    }
-
-    public String outputLottos() {
-        return service.showLottosToString();
+    public Lottos outputLottos() {
+        return service.findLottos();
     }
 
     public void inputWinningNumbers(WinningNumbersDto dto) {
