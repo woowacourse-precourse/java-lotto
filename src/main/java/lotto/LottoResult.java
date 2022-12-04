@@ -1,5 +1,13 @@
 package lotto;
 
+import static lotto.LottoOperator.FIVE;
+import static lotto.LottoOperator.FIVE_BONUS;
+import static lotto.LottoOperator.FOUR;
+import static lotto.LottoOperator.NO_LUCK;
+import static lotto.LottoOperator.SIX;
+import static lotto.LottoOperator.THREE;
+
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +36,7 @@ public class LottoResult {
         int lottoAmount = lottoTickets * MINIMUM_LOTTO_AMOUNT;
         double prizeMoney = 0;
         for (LottoOperator lottoOperator : result.keySet()) {
-            if (lottoOperator == LottoOperator.NO_LUCK) {
+            if (lottoOperator == NO_LUCK) {
                 continue;
             }
             prizeMoney += lottoOperator.calculateWinningAmount(result.get(lottoOperator));
@@ -37,17 +45,15 @@ public class LottoResult {
     }
 
     private void validate(List<LottoOperator> rankCounts) {
-        if (rankCounts.size() < 1) {
+        if (rankCounts.isEmpty()) {
             throw new IllegalArgumentException(MINIMUM_STATISTICS_ERROR);
         }
     }
 
     private void init() {
-        result.put(LottoOperator.NO_LUCK, 0);
-        result.put(LottoOperator.THREE, 0);
-        result.put(LottoOperator.FOUR, 0);
-        result.put(LottoOperator.FIVE, 0);
-        result.put(LottoOperator.FIVE_BONUS, 0);
-        result.put(LottoOperator.SIX, 0);
+        List<LottoOperator> operators = Arrays.asList(NO_LUCK, THREE, FOUR, FIVE, FIVE_BONUS, SIX);
+        for (LottoOperator operator : operators) {
+            result.put(operator, 0);
+        }
     }
 }
