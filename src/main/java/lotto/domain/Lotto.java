@@ -3,8 +3,6 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -57,13 +55,6 @@ public class Lotto {
     }
 
     @Override
-    public String toString() {
-        return numbers.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(DELIMITER, PREFIX, SUFFIX));
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -73,11 +64,6 @@ public class Lotto {
         }
 
         Lotto lotto = (Lotto) o;
-        return Objects.equals(this.toString(), lotto.toString());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.toString());
+        return this.numbers.containsAll(lotto.numbers);
     }
 }
