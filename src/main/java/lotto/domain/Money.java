@@ -31,7 +31,7 @@ public class Money {
         return money / Config.LOTTO_PRICE;
     }
 
-    public float getProfitRate(float profit) {
+    public double getProfitRate(double profit) {
         return profit / money;
     }
 }

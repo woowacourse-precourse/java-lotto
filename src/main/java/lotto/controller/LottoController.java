@@ -41,7 +41,7 @@ public class LottoController {
         return service.showLottosRank();
     }
 
-    public float getProfitRate(EnumMap<LottoRank, Integer> lottoRanks) {
+    public double getProfitRate(EnumMap<LottoRank, Integer> lottoRanks) {
         return service.showProfitRate(lottoRanks) * PERCENT;
     }
 }

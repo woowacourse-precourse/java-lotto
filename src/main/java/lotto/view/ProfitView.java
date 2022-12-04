@@ -11,7 +11,7 @@ public enum ProfitView {
         this.format = format;
     }
 
-    public String render(float data) {
+    public String render(double data) {
         return String.format(format, data);
     }
 }

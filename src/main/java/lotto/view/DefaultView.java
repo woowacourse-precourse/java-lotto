@@ -61,7 +61,7 @@ public class DefaultView implements View {
         System.out.println(Views.DIVIDER.render());
         EnumMap<LottoRank, Integer> lottoRanks = controller.outputRanks();
         renderRanks(lottoRanks);
-        float profitRate = controller.getProfitRate(lottoRanks);
+        double profitRate = controller.getProfitRate(lottoRanks);
         System.out.println(ProfitView.PROFIT_RATE.render(profitRate));
     }
 
