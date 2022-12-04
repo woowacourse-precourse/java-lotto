@@ -26,7 +26,7 @@ public class LottoGameService {
         this.bonusNumber = bonusNumber;
     }
 
-    public EnumMap<LottoRank, Integer> showLottosRank() {
+    public EnumMap<LottoRank, Integer> calculateLottosRank() {
         return lottos.getLottoRanks(winningLotto, bonusNumber);
     }
 

@@ -35,7 +35,7 @@ public class LottoController {
     }
 
     public EnumMap<LottoRank, Integer> outputRanks() {
-        return service.showLottosRank();
+        return service.calculateLottosRank();
     }
 
     public double getProfitRate(EnumMap<LottoRank, Integer> lottoRanks) {

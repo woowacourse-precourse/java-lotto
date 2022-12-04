@@ -8,7 +8,6 @@ import lotto.domain.LottoRank;
 import lotto.domain.Lottos;
 
 import java.util.EnumMap;
-import java.util.Map;
 
 public class DefaultView implements View {
 
@@ -57,22 +56,12 @@ public class DefaultView implements View {
     private void renderStatics() {
         System.out.println(Views.STATICS.render());
         System.out.println(Views.DIVIDER.render());
+
         EnumMap<LottoRank, Integer> lottoRanks = controller.outputRanks();
-        renderRanks(lottoRanks);
+        System.out.println(RankView.render(lottoRanks));
+        
         double profitRate = controller.getProfitRate(lottoRanks);
         System.out.println(ProfitView.PROFIT_RATE.render(profitRate));
-    }
-
-    private void renderRanks(EnumMap<LottoRank, Integer> lottoRanks) {
-        for (Map.Entry<LottoRank, Integer> entry : lottoRanks.entrySet()) {
-            LottoRank rank = entry.getKey();
-            int count = entry.getValue();
-
-            if (rank.getMatchCount() == 0) continue;
-
-            RankView view = RankView.getView(rank.isHasBonusNumber());
-            System.out.println(view.render(rank, count));
-        }
     }
 
 }
