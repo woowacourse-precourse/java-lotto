@@ -18,7 +18,8 @@ public class Application {
         try {
             startLotto();
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
+            //System.out.println(exception.getMessage());
         }
     }
     public static void startLotto() {

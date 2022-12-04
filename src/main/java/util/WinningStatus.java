@@ -1,4 +1,6 @@
-package Info;
+package util;
+
+import Info.PrintGameInfo;
 
 public enum WinningStatus {
     THREE(0,3, 5_000L, "3개 일치 (5,000원)"),

@@ -2,11 +2,10 @@ package lotto;
 
 import Info.LottoPoint;
 import Info.PrintGameInfo;
-import Info.WinningStatus;
+import util.WinningStatus;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.util.Sets;
 
-import java.math.BigInteger;
 import java.util.*;
 
 public class LottoList {

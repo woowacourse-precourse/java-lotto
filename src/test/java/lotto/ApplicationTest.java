@@ -1,15 +1,11 @@
 package lotto;
 
 import Info.InputException;
-import Info.PrintGameInfo;
-import Info.WinningStatus;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -79,6 +75,8 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            System.out.println("결과:"+output());
+
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

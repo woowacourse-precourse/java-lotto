@@ -2,11 +2,7 @@ package Info;
 
 import lotto.Lotto;
 import lotto.LottoList;
-
-import java.math.BigInteger;
-import java.text.DecimalFormat;
-import java.util.Comparator;
-import java.util.List;
+import util.WinningStatus;
 
 public class PrintGameInfo {
     public static final char ZERO = '0';
