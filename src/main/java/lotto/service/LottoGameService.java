@@ -30,8 +30,8 @@ public class LottoGameService {
         return lottos.getLottoRanks(winningLotto, bonusNumber);
     }
 
-    public double showProfitRate(EnumMap<LottoRank, Integer> lottoRanks) {
-        int profit = lottoRanks.entrySet().stream()
+    public double calculateProfitRate(EnumMap<LottoRank, Integer> lottoRanks) {
+        double profit = lottoRanks.entrySet().stream()
                 .filter(e -> e.getValue() > 0)
                 .map(e -> e.getKey().getPrizeMoney() * e.getValue())
                 .reduce(Integer::sum)
