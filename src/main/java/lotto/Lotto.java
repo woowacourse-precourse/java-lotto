@@ -17,7 +17,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
         this.numbers = sortedNumbers;
     }
