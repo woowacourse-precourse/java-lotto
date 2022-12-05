@@ -12,6 +12,9 @@ import lotto.view.print.PrintGuideMessage;
 import lotto.view.print.PrintHistory;
 
 public class LottoGameController {
+    private static String amount;
+    private static List<Lotto> tickets;
+
     private final LottoGame game;
 
     public LottoGameController(LottoGame game) {
@@ -20,17 +23,25 @@ public class LottoGameController {
 
     public void startGame() {
         try {
-            String amount = getAmount();
-            List<Lotto> tickets = game.createLottoTickets(amount);
-            printTickets(amount, tickets);
-            List<Integer> winningNumbers = getWinningNumbers();
-            int bonus = Integer.parseInt(getBonus(winningNumbers));
-            List<String> checkResult = game.compare(winningNumbers, tickets, bonus);
-            LottoHistory history = game.createHistory(checkResult, amount);
-            printStatistics(history, amount);
+            init();
+            lottoRaffle();
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
+    }
+
+    public void init() {
+        amount = getAmount();
+        tickets = game.createLottoTickets(amount);
+        printTickets(amount, tickets);
+    }
+
+    public void lottoRaffle() {
+        List<Integer> winningNumbers = getWinningNumbers();
+        int bonus = Integer.parseInt(getBonus(winningNumbers));
+        List<String> checkResult = game.compare(winningNumbers, tickets, bonus);
+        LottoHistory history = game.createHistory(checkResult, amount);
+        printStatistics(history, amount);
     }
 
     public String getAmount() {

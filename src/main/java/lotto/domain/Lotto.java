@@ -15,7 +15,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
