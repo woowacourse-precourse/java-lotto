@@ -53,6 +53,9 @@ public class WinningStatistics {
     }
 
     private static BigDecimal calculateRewardRate(BigDecimal ticketBudget, BigDecimal totalCashPrize) {
+        if (totalCashPrize.equals(BigDecimal.ZERO)) {
+            return BigDecimal.ZERO;
+        }
         return totalCashPrize.divide(ticketBudget).multiply(BigDecimal.valueOf(100));
     }
 
