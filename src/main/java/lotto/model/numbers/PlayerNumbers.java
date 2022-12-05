@@ -3,6 +3,9 @@ package lotto.model.numbers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class PlayerNumbers {
 
@@ -18,11 +21,7 @@ public class PlayerNumbers {
     }
 
     private List<PlayerNumber> collectPlayerNumbers(int ticketNumber) {
-        List<PlayerNumber> playerNumbers = new ArrayList<>();
-        for (int i = 0; i < ticketNumber; i++) {
-            playerNumbers.add(PlayerNumber.createAutoLotto());
-        }
-        return playerNumbers;
+        return Stream.generate(PlayerNumber::createAutoLotto).limit(ticketNumber).collect(Collectors.toList());
     }
 
     public List<PlayerNumber> getPlayerNumbers() {
