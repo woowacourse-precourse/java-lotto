@@ -24,7 +24,7 @@ public abstract class Validator {
         try {
             Integer.parseInt(budget);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_OUT_OF_INT_RANGE.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_OUT_OF_INT_RANGE.getMessage(), exception);
         }
     }
 
