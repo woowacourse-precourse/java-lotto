@@ -16,20 +16,10 @@ public class LottoHistory {
     }
 
     public void saveHistory(String ranking) {
-        if (LottoRanking.FIRST.name().equals(ranking)) {
-            this.winningHistory.add(LottoRanking.valueOf(ranking));
-        }
-        if (LottoRanking.SECOND.name().equals(ranking)) {
-            this.winningHistory.add(LottoRanking.valueOf(ranking));
-        }
-        if (LottoRanking.THIRD.name().equals(ranking)) {
-            this.winningHistory.add(LottoRanking.valueOf(ranking));
-        }
-        if (LottoRanking.FOURTH.name().equals(ranking)) {
-            this.winningHistory.add(LottoRanking.valueOf(ranking));
-        }
-        if (LottoRanking.FIFTH.name().equals(ranking)) {
-            this.winningHistory.add(LottoRanking.valueOf(ranking));
+        for (LottoRanking lottoRanking : LottoRanking.values()) {
+            if (lottoRanking.name().equals(ranking)) {
+                this.winningHistory.add(lottoRanking);
+            }
         }
     }
 
