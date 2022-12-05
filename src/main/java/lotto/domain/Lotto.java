@@ -2,22 +2,30 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.util.NumericProperties.MAX_NUM;
+import static lotto.util.NumericProperties.MIN_NUM;
+import static lotto.util.NumericProperties.SIZE;
+import static lotto.util.message.ExceptionMessage.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("6개의 숫자를 입력해야 합니다.");
+    private void validate(List<Integer> numbers) throws IllegalArgumentException{
+        if (numbers.size() != SIZE.get()) {
+            throw new IllegalArgumentException(WRONG_SIZE.get());
         }
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException("로또 번호의 숫자 범위는 1~45까지입니다.");
+        for (Integer num : numbers) {
+            if (num < MIN_NUM.get() || num > MAX_NUM.get()) {
+                throw new IllegalArgumentException(OUT_OF_SCOPE.get());
             }
+        }
+        if(numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException(DUPLICATED.get());
         }
     }
 
