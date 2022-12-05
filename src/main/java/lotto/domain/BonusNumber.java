@@ -3,14 +3,10 @@ package lotto.domain;
 import java.util.List;
 
 public class BonusNumber {
-    private int bonusNumber;
+    private static int bonusNumber;
 
-    public BonusNumber(int bonusNumber, Lotto winningLotto) {
-        validate(bonusNumber,winningLotto);
-        this.bonusNumber = bonusNumber;
-    }
-
-    private void validate(int bonusNumber, Lotto winningLotto) {
+    public static void validate(int bonusNumber1, Lotto winningLotto) {
+        bonusNumber = bonusNumber1;
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException("보너스 번호의 숫자 범위는 1~45까지입니다.");
         }

@@ -1,23 +1,24 @@
 package lotto.domain;
 
+import lotto.util.Prize;
+
 import java.util.*;
 
 public class Calculator {
 
-    private List<List<Integer>> myLotto;
-    private Lotto winningLotto;
-    private BonusNumber bonusNumber;
+    private static List<List<Integer>> myLotto;
+    private static Lotto winningLotto;
+    private static BonusNumber bonusNumber;
+    private static EnumMap<Prize, Integer> result;
 
-    private EnumMap<Prize, Integer> result;
-
-    public Calculator(List<List<Integer>> myLotto, Lotto winningLotto, BonusNumber bonusNumber) {
-        this.myLotto = myLotto;
-        this.winningLotto = winningLotto;
-        this.bonusNumber = bonusNumber;
+    public static void setCalculator(List<List<Integer>> myLotto1, Lotto winningLotto1, BonusNumber bonusNumber1) {
+        myLotto = myLotto1;
+        winningLotto = winningLotto1;
+        bonusNumber = bonusNumber1;
         result = new EnumMap<>(Prize.class);
     }
 
-    public EnumMap<Prize, Integer> saveResult() {
+    public static EnumMap<Prize, Integer> saveResult() {
         int[] count = {0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < myLotto.size(); i++) {
             if (compareNumbers(i) != null) {
@@ -34,7 +35,7 @@ public class Calculator {
         return result;
     }
 
-    public Prize compareNumbers(int index) {
+    public static Prize compareNumbers(int index) {
         int count = 0;
         for (int j = 0; j < 6; j++) {
             if (winningLotto.contains(myLotto.get(index).get(j))) {
@@ -53,7 +54,7 @@ public class Calculator {
         return null;
     }
 
-    public float caculateRate(PurchaseAmount purchaseAmount) {
+    public static float calculateRate(PurchaseAmount purchaseAmount) {
         int sum = 0;
         Prize[] allPrize = Prize.values();
         for (Prize prize : allPrize) {
