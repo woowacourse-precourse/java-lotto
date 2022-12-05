@@ -24,11 +24,10 @@ public class PlayerNumber {
     }
 
     private List<Integer> generateLottoNumber() {
-        return sort(Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, NUMBER_COUNT));
-    }
-
-    private static List<Integer> sort(List<Integer> playerNumber) {
-        return playerNumber.stream().sorted().collect(Collectors.toList());
+        List<Integer> randomNumbers = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, NUMBER_COUNT));
+        Collections.sort(randomNumbers);
+        return randomNumbers;
     }
 
     @Override
