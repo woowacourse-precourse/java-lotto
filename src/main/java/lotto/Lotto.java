@@ -1,6 +1,8 @@
 package lotto;
 
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,7 +16,27 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> temp = new HashSet<>();
+        for (int elem : numbers) {
+            if (!temp.add(elem)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
-    // TODO: 추가 기능 구현
+    public static Lotto generateRandomSixNumbers() {
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(lottoNumbers);
+        return new Lotto(lottoNumbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public boolean containsTheNumber(int number) {
+        return numbers.contains(number);
+    }
+
+    public static void main(String[] strings) {}
 }
