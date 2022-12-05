@@ -21,4 +21,8 @@ public class PurchaseAmount {
     public int getNumberOfLotto(){
         return purchaseAmount/1000;
     }
+
+    public float calculateRate(int sum) {
+        return sum/(float)purchaseAmount*100;
+    }
 }
