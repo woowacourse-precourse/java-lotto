@@ -27,14 +27,18 @@ public class LottoService {
     public int getSum(Map<WinningLotto, Integer> winningLottoCount) {
         int sum = 0;
         for (WinningLotto winningLotto : winningLottoCount.keySet()) {
-            if (winningLotto.equals(WinningLotto.NOTHING)) {
+            if (WinningLotto.isNothing(winningLotto)) {
                 continue;
             }
-            if (winningLottoCount.get(winningLotto) > 0) {
+            if (isWinningLotto(winningLottoCount, winningLotto)) {
                 sum += winningLotto.getWinningPrice() * winningLottoCount.get(winningLotto);
             }
         }
         return sum;
+    }
+
+    private static boolean isWinningLotto(Map<WinningLotto, Integer> winningLottoCount, WinningLotto winningLotto) {
+        return winningLottoCount.get(winningLotto) > 0;
     }
 
     public static float calculateProfit(User user, float sum) {
