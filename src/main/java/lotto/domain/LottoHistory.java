@@ -12,7 +12,7 @@ public class LottoHistory {
     }
 
     public List<LottoRanking> getWinningHistory() {
-        return winningHistory;
+        return Collections.unmodifiableList(winningHistory);
     }
 
     public void saveHistory(String ranking) {

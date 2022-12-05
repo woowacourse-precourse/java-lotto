@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.enums.NumbersType;
 
@@ -23,6 +24,6 @@ public class LottoAutomaton {
     public List<Integer> createNumbers() {
         numbers = Randoms.pickUniqueNumbersInRange(NumbersType.START_INCLUSIVE.getValue(),
                 NumbersType.END_INCLUSIVE.getValue(), NumbersType.NUMBERS_SIZE.getValue());
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 }
