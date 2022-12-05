@@ -6,13 +6,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.util.NumericProperties.MAX_NUM;
+import static lotto.util.NumericProperties.MIN_NUM;
+import static lotto.util.NumericProperties.SIZE;
+
 public class LottoGenerator {
 
     static List<List<Integer>> myLotto = new ArrayList<>();
 
-    public static List<List<Integer>> generateLotto(PurchaseAmount purchaseAmount){
-        for(int i=0;i<purchaseAmount.getNumberOfLotto();i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    public static List<List<Integer>> generateLotto() {
+        for (int i = 0; i < PurchaseAmount.getNumberOfLotto(); i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUM.get(), MAX_NUM.get(), SIZE.get());
             List<Integer> copiedNumbers = new ArrayList<>(numbers);
             Collections.sort(copiedNumbers);
             myLotto.add(copiedNumbers);

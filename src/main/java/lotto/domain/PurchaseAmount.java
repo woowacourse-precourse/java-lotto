@@ -1,26 +1,28 @@
 package lotto.domain;
 
-import lotto.view.InputView;
+import static lotto.util.message.ExceptionMessage.IS_NEGATIVE;
+import static lotto.util.message.ExceptionMessage.WRONG_FORMAT;
+import static lotto.util.NumericProperties.ONE_THOUSAND;
 
 public class PurchaseAmount {
 
     private static int purchaseAmount;
 
     public static void validate(int purchaseAmount1) {
-        purchaseAmount=purchaseAmount1;
+        purchaseAmount = purchaseAmount1;
         if (purchaseAmount < 0) {
-            throw new IllegalArgumentException("구입금액은 음수가 아닙니다.");
+            throw new IllegalArgumentException(IS_NEGATIVE.get());
         }
-        if (purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException("구입금액은 1,000원 단위로 입력해야 합니다.");
+        if (purchaseAmount % ONE_THOUSAND.get() != 0) {
+            throw new IllegalArgumentException(WRONG_FORMAT.get());
         }
     }
 
-    public int getNumberOfLotto() {
-        return purchaseAmount / 1000;
+    public static int getNumberOfLotto() {
+        return purchaseAmount / ONE_THOUSAND.get();
     }
 
-    public float calculateRate(int sum) {
+    public static float calculateRate(int sum) {
         return sum / (float) purchaseAmount * 100;
     }
 }
