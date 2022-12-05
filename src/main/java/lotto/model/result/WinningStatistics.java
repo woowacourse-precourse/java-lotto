@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class WinningStatistics {
 
     private final LottoDraw lottoDraw;
     private final PlayerNumbers playerNumbers;
-    private Map<WinningRank, Integer> winningStatistics = new HashMap<>();
+    private Map<WinningRank, Integer> winningStatistics = new EnumMap<>(WinningRank.class);
     private BigDecimal rewardRate = BigDecimal.ZERO;
 
     private WinningStatistics(LottoDraw lottoDraw, PlayerNumbers playerNumbers) {
