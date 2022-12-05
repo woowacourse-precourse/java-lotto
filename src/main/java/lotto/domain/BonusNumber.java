@@ -18,4 +18,8 @@ public class BonusNumber {
             throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
+
+    public boolean isIn(List<Integer> myLotto) {
+        return myLotto.contains(bonusNumber);
+    }
 }
