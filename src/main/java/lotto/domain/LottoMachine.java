@@ -26,10 +26,9 @@ public class LottoMachine {
 
     public WinningLottoTicket createLottoTicket(LottoList lottoList) {
         WinningLottoTicket winningLottoTicket = new WinningLottoTicket();
-        for (Lotto lotto : lottoList.getLottoList()) {
-            WinningLotto winningLotto = isWinningLotto(lotto);
-            winningLottoTicket.countWinningLotto(winningLotto);
-        }
+        lottoList.getLottoList().stream()
+                .map(this::isWinningLotto)
+                .forEach(winningLottoTicket::countWinningLotto);
 
         return winningLottoTicket;
     }
