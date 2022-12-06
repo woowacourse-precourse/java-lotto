@@ -12,9 +12,10 @@ import static lotto.util.NumericProperties.SIZE;
 
 public class LottoGenerator {
 
-    static List<List<Integer>> myLotto = new ArrayList<>();
+    static List<List<Integer>> myLotto;
 
     public static List<List<Integer>> generateLotto() {
+        myLotto = new ArrayList<>();
         for (int i = 0; i < PurchaseAmount.getNumberOfLotto(); i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUM.get(), MAX_NUM.get(), SIZE.get());
             List<Integer> copiedNumbers = new ArrayList<>(numbers);
