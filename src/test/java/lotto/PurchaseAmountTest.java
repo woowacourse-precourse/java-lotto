@@ -14,7 +14,7 @@ public class PurchaseAmountTest {
     @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings={"s","-5","1300"})
-    void createLottoByDuplicatedNumber(String input) {
+    void createWrongPurchaseAmountInput(String input) {
         assertThatThrownBy(() ->
                 PurchaseAmount.validate(InputValidator.validate(input)))
                 .isInstanceOf(IllegalArgumentException.class);
