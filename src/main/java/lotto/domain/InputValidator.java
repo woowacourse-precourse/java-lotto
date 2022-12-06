@@ -1,10 +1,10 @@
-package lotto.view;
+package lotto.domain;
 
 import static lotto.util.message.ExceptionMessage.NOT_NUMBER;
 
 public class InputValidator {
 
-    static int validate(String input) throws IllegalArgumentException {
+    public static int validate(String input) throws IllegalArgumentException {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
