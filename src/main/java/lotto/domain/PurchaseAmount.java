@@ -8,8 +8,8 @@ public class PurchaseAmount {
 
     private static int purchaseAmount;
 
-    public static void validate(int purchaseAmount1) {
-        purchaseAmount = purchaseAmount1;
+    public static void validate(int tmpPurchaseAmount) {
+        purchaseAmount = tmpPurchaseAmount;
         if (purchaseAmount < 0) {
             throw new IllegalArgumentException(IS_NEGATIVE.get());
         }
