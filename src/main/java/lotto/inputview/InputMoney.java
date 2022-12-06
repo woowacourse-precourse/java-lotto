@@ -3,8 +3,8 @@ package lotto.inputview;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Exception.Exception;
 
-public class Input {
-    public String inputMoney() {
+public class InputMoney {
+    public String input() {
         String money;
         System.out.println("구입금액을 입력해 주세요.");
         money = Console.readLine();
