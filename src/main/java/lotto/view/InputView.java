@@ -6,8 +6,7 @@ import lotto.domain.InputValidator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.util.message.OutputMessage.INPUT_PURCHASE_AMOUNT;
-import static lotto.util.message.OutputMessage.INPUT_WINNING_LOTTO;
+import static lotto.util.message.OutputMessage.*;
 
 public class InputView {
     public static int purchaseMoney(){
@@ -22,6 +21,12 @@ public class InputView {
         List<Integer> winningLotto = listNumbersCheck(input);
         return winningLotto;
     }
+
+    public static int bonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER.get());
+        return numberCheck(Console.readLine());
+    }
+
     public static int numberCheck(String number){
         return InputValidator.validate(number);
     }
