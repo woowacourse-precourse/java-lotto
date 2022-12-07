@@ -1,12 +1,14 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.view.Error;
+import lotto.util.Rank;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
-import static lotto.LottoConst.LOTTO_PRICE;
+import static lotto.util.LottoConst.LOTTO_NUMBER_COUNT;
+import static lotto.util.LottoConst.LOTTO_PRICE;
 
 public class LottoMachine {
     static int userMoney;

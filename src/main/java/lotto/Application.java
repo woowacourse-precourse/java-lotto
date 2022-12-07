@@ -1,5 +1,10 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.view.Error;
+import lotto.view.UserInterface;
+
 import java.util.List;
 
 public class Application {

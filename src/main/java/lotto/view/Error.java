@@ -1,11 +1,13 @@
-package lotto;
+package lotto.view;
+
+import lotto.util.LottoConst;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import static lotto.LottoConst.LOTTO_MIN_NUMBER;
-import static lotto.LottoConst.LOTTO_MAX_NUMBER;
-import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
-import static lotto.LottoConst.LOTTO_PRICE;
+import static lotto.util.LottoConst.LOTTO_MIN_NUMBER;
+import static lotto.util.LottoConst.LOTTO_MAX_NUMBER;
+import static lotto.util.LottoConst.LOTTO_NUMBER_COUNT;
+import static lotto.util.LottoConst.LOTTO_PRICE;
 
 public class Error {
     static void purchasePrice(int purchasePrice) {

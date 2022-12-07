@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public class LottoConst {
     final static int LOTTO_PRICE = 1000;

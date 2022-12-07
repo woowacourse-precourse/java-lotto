@@ -1,6 +1,8 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.*;
+import lotto.domain.Lotto;
+import lotto.util.Rank;
 
 import java.util.Arrays;
 import java.util.Comparator;
