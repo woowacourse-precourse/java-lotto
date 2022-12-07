@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.utils.IntegerConvertor;
+
 import java.util.List;
 
 import static lotto.utils.ErrorMessages.*;
@@ -10,19 +12,18 @@ public class BonusNumber {
     private final int number;
 
     public BonusNumber(String number, WinningLotto winningLotto) {
-        validateInteger(number);
-        int bonusNumber = Integer.parseInt(number);
-        validateRange(bonusNumber);
-        validateDuplicatedByWinningNumbers(bonusNumber, winningLotto);
+        int bonusNumber = toInteger(number);
+        validate(bonusNumber, winningLotto);
         this.number = bonusNumber;
     }
 
-    private void validateInteger(String number) {
-        try {
-            Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(BONUS_NUMBER_NOT_INTEGER);
-        }
+    private int toInteger(String number) {
+        return IntegerConvertor.toInteger(number, BONUS_NUMBER_NOT_INTEGER);
+    }
+
+    private void validate(int number, WinningLotto winningLotto) {
+        validateRange(number);
+        validateDuplicatedByWinningNumbers(number, winningLotto);
     }
 
     private void validateRange(int number) {
@@ -32,21 +33,12 @@ public class BonusNumber {
     }
 
     private void validateDuplicatedByWinningNumbers(int number, WinningLotto winningLotto) {
-        List<Integer> winningNumbers = getLotto(winningLotto).getNumbers();
-        if (winningNumbers.contains(number)) {
+        if (winningLotto.contain(number)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATED);
         }
     }
 
-    private Lotto getLotto(WinningLotto winningNumbers) {
-        return winningNumbers.getWinningNumbers();
-    }
-
     public boolean isMatchBonusNumber(List<Integer> lottoNumbers) {
         return lottoNumbers.contains(number);
-    }
-
-    public int getNumber() {
-        return this.number;
     }
 }

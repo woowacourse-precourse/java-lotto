@@ -10,16 +10,21 @@ public class Lotto {
     private static final int NUMBERS_SIZE = 6;
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 45;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        validateDuplicate(numbers);
-        validateRange(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_OVER_SIZE);
         }
@@ -42,6 +47,10 @@ public class Lotto {
         if (number < MIN_RANGE || number > MAX_RANGE) {
             throw new IllegalArgumentException(LOTTO_NUMBERS_OUT_OF_RANGE);
         }
+    }
+
+    public boolean contain(Integer number) {
+        return numbers.contains(number);
     }
 
     public List<Integer> getNumbers() {

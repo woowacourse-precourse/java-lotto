@@ -1,68 +1,83 @@
 package lotto.view;
 
-import lotto.domain.LottoQuantity;
-import lotto.domain.RateOfReturn;
-import lotto.domain.LottoResults;
-import lotto.domain.Lottos;
-import lotto.domain.enums.LottoResult;
+import lotto.domain.*;
+import lotto.dto.LottoGameResultDto;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.List;
 
+import static java.text.MessageFormat.format;
 import static lotto.utils.ViewMessages.*;
 
 public class OutputView {
-    static DecimalFormat decimalFormat = new DecimalFormat("###,###");
+    private static final DecimalFormat amountFormat = new DecimalFormat("###,###");
+    private static final DecimalFormat profitFormat = new DecimalFormat("#,##0.0");
 
     private OutputView() {
     }
 
-    public static void printLottoQuantity(LottoQuantity lottoQuantity) {
-        System.out.printf(OUTPUT_LOTTO_QUANTITY, lottoQuantity.getCount());
+    public static void printLottoQuantity(int lottoQuantity) {
+        printLine();
+        System.out.println(format(OUTPUT_LOTTO_QUANTITY, lottoQuantity));
     }
 
-    public static void printLottoNumbers(Lottos lottos) {
-        lottos.getLottos().forEach(lotto ->
-                System.out.println(lotto.getNumbers())
-        );
+    public static void printLottoNumbers(LottoTicket lottoTicket) {
+        for (Lotto lotto : lottoTicket.get()) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
-    public static void printLottoResult(LottoResults results) {
+    public static void printLottoGameResult(LottoGameResultDto lottoGameResultDto) {
         printLottoDone();
-        Arrays.stream(LottoResult.values())
-            .filter(result -> result.getMatchCount() != 0)
-            .forEach(result -> {
-                int count = getLottoMatchCount(results, result);
-                printResult(result, count);
-            });
-    }
-
-    private static int getLottoMatchCount(LottoResults results, LottoResult result) {
-        return (int) results.getResults().stream()
-                .filter(result::equals)
-                .count();
-    }
-
-    private static void printResult(LottoResult result, int count) {
-        int lottoMatchCount = result.getMatchCount();
-        String lottoAmount = decimalFormat.format(result.getAmount());
-
-        if (result.hasBonusNumber()) {
-            System.out.printf(OUTPUT_BONUS_MATCH_RESULT, lottoMatchCount, lottoAmount, count);
-        }
-        if (!result.hasBonusNumber()) {
-            System.out.printf(OUTPUT_MATCH_RESULT, lottoMatchCount, lottoAmount, count);
-        }
+        printLottoResults(lottoGameResultDto.getResults());
+        printProfit(lottoGameResultDto.getProfit());
     }
 
     private static void printLottoDone() {
+        printLine();
         System.out.println(OUTPUT_LOTTO_DONE);
         System.out.println(OUTPUT_LINE);
     }
 
-    public static void printRateOfReturn(RateOfReturn rateOfReturn) {
-        double rate = rateOfReturn.getRateOfReturn();
-        System.out.printf(OUTPUT_RATE_OF_RETURN, String.format("%.1f", rate));
+    public static void printLottoResults(List<LottoResult> results) {
+        Arrays.stream(LottoResult.values())
+            .filter(result -> result != LottoResult.NONE)
+            .forEach(result -> System.out.println(getLottoResultMessage(results, result)));
+    }
+
+    private static String getLottoResultMessage(List<LottoResult> results, LottoResult lottoResult) {
+        if (lottoResult == LottoResult.FIVE_AND_BONUS_MATCH) {
+            return toStringLottoResult(results, lottoResult, OUTPUT_BONUS_MATCH_RESULT);
+        }
+        return toStringLottoResult(results, lottoResult, OUTPUT_MATCH_RESULT);
+    }
+
+    private static String toStringLottoResult(
+            List<LottoResult> results,
+            LottoResult lottoResult,
+            String messageFormat
+    ) {
+        return format(messageFormat,
+                lottoResult.getMatchCount(),
+                amountFormat.format(lottoResult.getAmount()),
+                getLottoMatchCount(results, lottoResult)
+        );
+    }
+
+    private static int getLottoMatchCount(List<LottoResult> results, LottoResult lottoResult) {
+        return (int) results.stream()
+                .filter(lottoResult::equals)
+                .count();
+    }
+
+    private static void printProfit(double profit) {
+        String ProfitMessage = format(OUTPUT_RATE_OF_RETURN, profitFormat.format(profit));
+        System.out.println(ProfitMessage);
+    }
+
+    public static void printLine() {
+        System.out.println();
     }
 
     public static void printErrorMessage(String message) {

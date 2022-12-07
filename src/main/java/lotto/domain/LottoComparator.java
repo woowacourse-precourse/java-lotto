@@ -1,49 +1,39 @@
 package lotto.domain;
 
-import lotto.domain.enums.LottoResult;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoComparator {
-    private final Lottos lottos;
+    private final LottoTicket lottoTicket;
     private final WinningLotto winningLotto;
     private final BonusNumber bonusNumber;
-    private final List<LottoResult> results;
 
     public LottoComparator(
-            Lottos lottos,
+            LottoTicket lottoTicket,
             WinningLotto winningLotto,
             BonusNumber bonusNumber
     ) {
-        this.lottos = lottos;
+        this.lottoTicket = lottoTicket;
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
-        this.results = new ArrayList<>();
     }
 
-    public LottoResults compare() {
-        for (Lotto lotto : lottos.getLottos()) {
-            List<Integer> lottoNumbers = lotto.getNumbers();
-            int matchCount = getMatchCount(lottoNumbers);
-            boolean isMatchBonus = isMatchBonusNumber(lottoNumbers);
-            addLottoResult(matchCount, isMatchBonus);
-        }
-        return new LottoResults(results);
+    public LottoTicketsResult compare() {
+        List<LottoResult> results = lottoTicket.get().stream()
+                .map(this::getLottoResult)
+                .collect(Collectors.toList());
+        return new LottoTicketsResult(results);
     }
 
-    private int getMatchCount(List<Integer> lottoNumbers) {
-        return winningLotto.getMatchCount(lottoNumbers);
+    private LottoResult getLottoResult(Lotto lotto) {
+        return LottoResult.of(getMatchCount(lotto), isMatchBonusNumber(lotto));
     }
 
-    private boolean isMatchBonusNumber(List<Integer> lottoNumbers) {
-        return bonusNumber.isMatchBonusNumber(lottoNumbers);
+    private int getMatchCount(Lotto lotto) {
+        return winningLotto.getMatchCount(lotto.getNumbers());
     }
 
-    private void addLottoResult(
-            int matchCount,
-            boolean isMatchBonus
-    ) {
-        results.add(LottoResult.of(matchCount, isMatchBonus));
+    private boolean isMatchBonusNumber(Lotto lotto) {
+        return bonusNumber.isMatchBonusNumber(lotto.getNumbers());
     }
 }

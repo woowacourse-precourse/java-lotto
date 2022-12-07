@@ -7,20 +7,14 @@ public class Money {
     private static final int MONEY_PRICE = 1000;
     private final int money;
 
-    public Money(String inputMoney) {
-        validateInteger(inputMoney);
-        int money = Integer.parseInt(inputMoney);
-        validateRange(money);
-        validateDivideUnit(money);
+    public Money(int money) {
+        validate(money);
         this.money = money;
     }
 
-    private void validateInteger(String money) {
-        try {
-            Integer.parseInt(money);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(MONEY_NOT_INTEGER);
-        }
+    private void validate(int money) {
+        validateRange(money);
+        validateDivideUnit(money);
     }
 
     private void validateRange(int money) {
