@@ -12,7 +12,6 @@ public enum Rank {
 
     private final int numberOfRight;
     private final int prizeMoney;
-
     private static int MINIMAL_RIGHT = 3;
     private Rank(int numberOfRight, int prizeMoney) {
         this.numberOfRight = numberOfRight;
