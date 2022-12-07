@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class ResultView {
     private static final DecimalFormat numberFormat = new DecimalFormat("###,###");
-    private static final DecimalFormat totalReturnRatioFormat = new DecimalFormat("###,###.0");
+    private static final DecimalFormat totalReturnRatioFormat = new DecimalFormat("###,##0.0");
 
     private final LottoResult lottoResult;
 
