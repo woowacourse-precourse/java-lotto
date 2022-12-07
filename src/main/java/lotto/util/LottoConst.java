@@ -1,8 +1,18 @@
 package lotto.util;
 
-public class LottoConst {
-    final static int LOTTO_PRICE = 1000;
-    final static int LOTTO_NUMBER_COUNT = 6;
-    final static int LOTTO_MIN_NUMBER = 1;
-    final static int LOTTO_MAX_NUMBER = 45;
+public enum LottoConst {
+    SIZE(6),
+    MIN_NUM(1),
+    MAX_NUM(45),
+    ONE_THOUSAND(1000);
+
+    private final int value;
+
+    LottoConst(int value){
+        this.value = value;
+    }
+
+    public int get(){
+        return value;
+    }
 }
