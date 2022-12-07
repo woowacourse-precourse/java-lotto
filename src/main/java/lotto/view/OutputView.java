@@ -46,23 +46,22 @@ public class OutputView {
             .forEach(result -> System.out.println(getLottoResultMessage(results, result)));
     }
 
-    private static String getLottoResultMessage(List<LottoResult> results, LottoResult lottoResult) {
-        if (lottoResult == LottoResult.FIVE_AND_BONUS_MATCH) {
-            return toStringLottoResult(results, lottoResult, OUTPUT_BONUS_MATCH_RESULT);
-        }
-        return toStringLottoResult(results, lottoResult, OUTPUT_MATCH_RESULT);
-    }
-
-    private static String toStringLottoResult(
+    private static String getLottoResultMessage(
             List<LottoResult> results,
-            LottoResult lottoResult,
-            String messageFormat
+            LottoResult lottoResult
     ) {
-        return format(messageFormat,
+        return format(getMessageFormat(lottoResult),
                 lottoResult.getMatchCount(),
                 amountFormat.format(lottoResult.getAmount()),
                 getLottoMatchCount(results, lottoResult)
         );
+    }
+
+    private static String getMessageFormat(LottoResult lottoResult) {
+        if (lottoResult == LottoResult.FIVE_AND_BONUS_MATCH) {
+            return OUTPUT_BONUS_MATCH_RESULT;
+        }
+        return OUTPUT_MATCH_RESULT;
     }
 
     private static int getLottoMatchCount(List<LottoResult> results, LottoResult lottoResult) {
