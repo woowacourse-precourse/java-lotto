@@ -1,95 +1,40 @@
-## 정리
+## 로또 게임
 
-### 게임
-- #### 로또 번호의 맞춘 개수에 대한 등수
-    - 1등부터 5등까지 있다.
-    - 각 등급에 맞춰서 상금이 있다.
-    - 보너스 번호는 2등인지 확인 할 때만 유효
-
-- #### 등수에 대한 상금 획득
-    - 5000 ~ 2,000,000,000원
-
-- #### 수익률 계산
-    - 수익률 계산
-    - 소수점 2번쨰 자리에서 반올림
-
-
-### 입력
-- #### 구입금액 입력
-
-- #### 당첨 번호 입력
-    - 당첨 번호 입력
-    - 쉼표로 구분되어 6개의 숫자로 이루어져 있다.
-
-- #### 보너스 번호 입력
-    - 당첨 번호 입력
-    - 하나의 숫자
-
-
-### 출력을 위한 함수
-- #### 로또 수량 및 번호
-    - 발행한 로또 수량 및 번호를 출력
-    - 로또 번호는 오름차순으로 정렬하여 보여준다.
-    - 형식 : [숫자,숫자,..]
-
-- #### 당첨 내역
-    - 당첨 내역 출력
-
-- #### 수익률
-    - 수익률 출력
-    - 소수점 둘째 자리에서 반올림한다.
-
-- #### 에러
-    - 예외 상황 시 에러 문구 출력
-    - "[ERROR]" 로 시작해야 한다.
-
-
-### 에러
-- #### 모든 에러시
-    - IllegalArgumentException발생
-
-- #### 구입금액 입력
-    - 숫자여야 한다.
-    - 1000원 단위로 나누어 떨어져야 한다.
-    - 오류 발생 시 "[ERROR]" 출력 후 종료
-
-- #### 당첨 번호 입력
-    - 쉽표로 구분되어서 6개의 숫자인지 확인
-    - 중복 확인
-    - 각 숫자가 1~45 사이의 숫자인지 확인
-
-- #### 보너스 번호
-    - 하나의 숫자
-    - 각 숫자가 1~45 사이의 숫자인지 확인
-
-- #### 당첨 번호와 보너스 번호의 중복
-    - 당첨 번호와 보너스 번호의 중복 확인
-
-
-
-## 로직
-- #### Application class
+### class 및 package 로직
+1. Application class
     - 로또 게임 실행
     - 사용자 입력 오류시 종료
 
-- #### Lotto class
-    - 로또 한장에 대한 객체
+2. domain package
+    - Lotto class : 로또 객체 클래스
+    - LottoMachine class : 로또 생성과 검사를 위한 클래스
+    - LottoGenerater class : 로또 생성기  클래스
+    - Calculator class : 계산기 클래스(로또의 맞춘 갯수 파악 및 게임 결과 반환)
 
-- #### LottoMachine class
-    - 구입금액 만큼 로또 생성
-    - 각 로또에 대해서 랭크 계산
-    - 랭크 반환
-    - 수익 반환
+3. util package
+    - message package
+        + ExceptionMessage enum : 오류에 대한 출력 메시지 모음
+        + OutputMessage enum : 출력 메시지 모음
+    - LottoConst enum : Lotto 게임에 필요한 상수 모음
+    - Rank enum : Lotto 결과의 랭크
 
-- #### LottoConst class
-    - 로또 번호에 관련한 상수 저장
+4. view package
+    - InputView class : input 처리
+    - OutputView class : output 처리
 
-- #### UserInterface class
-    - 출력 및 입력 관리
 
-- #### Error class
-    - 게임 진행에서 일어날 수 있는 에러 관리
+### 게임 진행 로직
+1. 구입 급액 입력(InputView) -> 입력 값 오류 확인(InputView) 
+2. 구입 금액에 맞게 로또 생성(LottoMachine->LottoGenerator) -> 출력(OutputView)
+3. 당첨 번호 입력(InputView) -> 당첨 번호 값과 중복 오류 확인(InputView & Lotto)
+4. 보너스 번호 입력(InputView) -> 보너스 번호 오류 확인(InputView)
+5. 생성한 로또와 당첨 번호를 확인(LottoMachine -> Calculator)
+6. 당첨 통계 출력(LottoMachine -> OutputView)
 
-- #### Rank enum
-    - 로또의 등수 정리
+
+
+
+
+
+
  
