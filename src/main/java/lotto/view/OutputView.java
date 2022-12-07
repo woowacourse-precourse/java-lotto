@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import lotto.controller.WinStatisticsStatus;
+import lotto.model.Lotto;
 
 public class OutputView {
 	public static void printErrorMessage(String error) {
@@ -22,9 +23,9 @@ public class OutputView {
 		System.out.println(ticketQuantity + statement.getProgress());
 	}
 
-	public static void printLotteryTickets(List<List<Integer>> tickets) {
-		for (List<Integer> ticket : tickets) {
-			System.out.println(ticket);
+	public static void printLotteryTickets(List<Lotto> tickets) {
+		for (Lotto ticket : tickets) {
+			System.out.println(ticket.getNumbers());
 		}
 	}
 

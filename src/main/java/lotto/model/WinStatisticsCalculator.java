@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class WinStatisticsCalculator {
-	private final List<List<Integer>> lotteryTickets;
-	private final List<Integer> winningNumbers;
+	private final List<Lotto> lotteryTickets;
+	private final Lotto winningNumbers;
 	private final int bonusNumber;
 	private final Map<Integer, Integer> matchResult = new HashMap<>();
 
-	public WinStatisticsCalculator(List<List<Integer>> lotteryTickets, List<Integer> winningNumbers) {
+	public WinStatisticsCalculator(List<Lotto> lotteryTickets, Lotto winningNumbers) {
 		this.lotteryTickets = lotteryTickets;
 		this.winningNumbers = winningNumbers;
-		this.bonusNumber = winningNumbers.get(BONUS_NUMBER_DIGIT.getCode());
+		this.bonusNumber = winningNumbers.getBonusNumber();
 		initMatchResult();
 	}
 
@@ -29,8 +29,9 @@ public class WinStatisticsCalculator {
 	}
 
 	public void calculateWinningStatus() {
-		for (List<Integer> ticket : lotteryTickets) {
-			List<Integer> combinationNumbers = Stream.concat(ticket.stream(), winningNumbers.stream())
+		for (Lotto ticket : lotteryTickets) {
+			List<Integer> combinationNumbers = Stream.concat(ticket.getNumbers().stream(),
+					winningNumbers.getNumbers().stream())
 				.collect(Collectors.toList());
 			List<Integer> deduplicationNumbers = combinationNumbers.stream().distinct().collect(Collectors.toList());
 			int matchNumber = combinationNumbers.size() - deduplicationNumbers.size();
@@ -45,7 +46,7 @@ public class WinStatisticsCalculator {
 	}
 
 	private boolean checkBonusMatching() {
-		return winningNumbers.contains(bonusNumber);
+		return winningNumbers.getNumbers().contains(bonusNumber);
 	}
 
 	private void updateMatchResult(int matchNumber) {

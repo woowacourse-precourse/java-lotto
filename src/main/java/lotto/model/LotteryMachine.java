@@ -3,14 +3,14 @@ package lotto.model;
 import static lotto.model.LotteryInformation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LotteryMachine {
 	private final int ticketQuantity;
-	private final List<List<Integer>> lotteryTickets = new ArrayList<>();
+	// private final List<List<Integer>> lotteryTickets = new ArrayList<>();
+	private final List<Lotto> lotteryTickets = new ArrayList<>();
 
 	public LotteryMachine(int money) {
 		this.ticketQuantity = exchangeMoneyToLottery(money);
@@ -22,10 +22,16 @@ public class LotteryMachine {
 	}
 
 	private void publishLotteryTickets() {
+		// for (int i = 0; i < ticketQuantity; i++) {
+		// 	List<Integer> numbers = new ArrayList<>(
+		// 		Randoms.pickUniqueNumbersInRange(START_NUMBER.getCode(), END_NUMBER.getCode(), TOTAL_NUMBER.getCode()));
+		// 	Collections.sort(numbers);
+		// 	lotteryTickets.add(numbers);
+		// }
 		for (int i = 0; i < ticketQuantity; i++) {
-			List<Integer> numbers = new ArrayList<>(
-				Randoms.pickUniqueNumbersInRange(START_NUMBER.getCode(), END_NUMBER.getCode(), TOTAL_NUMBER.getCode()));
-			Collections.sort(numbers);
+			Lotto numbers = new Lotto(new ArrayList<>(
+				Randoms.pickUniqueNumbersInRange(START_NUMBER.getCode(), END_NUMBER.getCode(),
+					TOTAL_NUMBER.getCode())));
 			lotteryTickets.add(numbers);
 		}
 	}
@@ -34,7 +40,7 @@ public class LotteryMachine {
 		return ticketQuantity;
 	}
 
-	public List<List<Integer>> getLotteryTickets() {
+	public List<Lotto> getLotteryTickets() {
 		return lotteryTickets;
 	}
 

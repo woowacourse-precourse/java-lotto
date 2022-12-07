@@ -25,7 +25,7 @@ public class BonusNumberValidatorTest {
 			.hasMessageContaining(NOT_DUPLICATED.getErrorMessage());*/
 
 		// 중복되지않은 올바른 보너스번호
-		assertThat(bonusNumberValidator.runBonusNumberValidator("7", List.of(1, 2, 3, 4, 5, 6))).isEqualTo(
+		assertThat(bonusNumberValidator.runBonusNumberValidator(7, List.of(1, 2, 3, 4, 5, 6))).isEqualTo(
 			expectedMoney);
 	}
 }

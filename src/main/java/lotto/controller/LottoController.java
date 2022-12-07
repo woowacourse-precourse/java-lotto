@@ -15,9 +15,9 @@ import lotto.view.OutputView;
 public class LottoController {
 	private final InputView inputView;
 	private int money;
-	private List<List<Integer>> lotteryTickets;
+	private List<Lotto> lotteryTickets;
 	private Map<Integer, Integer> result;
-	Lotto lotto;
+	// Lotto lotto;
 
 	public LottoController(InputView inputView) {
 		this.inputView = inputView;
@@ -26,10 +26,11 @@ public class LottoController {
 	public void playLotto() {
 		depositMoney();
 		publishLotteryTickets(money);
-		drawWinningNumbers();
-		drawBonusNumber();
 
-		getWinStatistics();
+		Lotto winningNumbers = drawWinningNumbers();
+		drawBonusNumber(winningNumbers);
+
+		getWinStatistics(winningNumbers);
 		getYield(result, money);
 	}
 
@@ -47,21 +48,33 @@ public class LottoController {
 		OutputView.printLotteryTickets(lotteryTickets);
 	}
 
-	private void drawWinningNumbers() {
+	private Lotto drawWinningNumbers() {
 		OutputView.printProgress(WINNING_NUMBER);
-		String inputWinningNumbers = inputView.inputNumbers();
-		lotto = new Lotto(inputWinningNumbers);
+		List<Integer> inputWinningNumbers = null;
+		try {
+			inputWinningNumbers = inputView.inputWinningNumbers();
+		} catch (IllegalArgumentException e) {
+			OutputView.printErrorMessage(e.getMessage());
+			// 게임 종료하기
+		}
+		System.out.println("inputWinningNumbers = " + inputWinningNumbers);
+		return new Lotto(inputWinningNumbers);
 	}
 
-	private void drawBonusNumber() {
+	private void drawBonusNumber(Lotto winningNumbers) {
 		OutputView.printProgress(BONUS_NUMBER);
-		String inputBonusNumber = inputView.inputNumbers();
-		lotto.drawBonusNumber(inputBonusNumber);
+		Integer bonusNumber = null;
+		try {
+			bonusNumber = inputView.inputBonusNumber();
+		} catch (IllegalArgumentException e) {
+			OutputView.printErrorMessage(e.getMessage());
+		}
+		winningNumbers.drawBonusNumber(bonusNumber);
 	}
 
-	private void getWinStatistics() {
+	private void getWinStatistics(Lotto winningNumbers) {
 		WinStatisticsCalculator winStatisticsCalculator = new WinStatisticsCalculator(lotteryTickets,
-			lotto.getWinningNumbers());
+			winningNumbers);
 		winStatisticsCalculator.calculateWinningStatus();
 		result = winStatisticsCalculator.getMatchResult();
 
