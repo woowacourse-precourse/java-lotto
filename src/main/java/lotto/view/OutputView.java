@@ -40,7 +40,7 @@ public class OutputView {
         System.out.println(OUTPUT_LINE);
     }
 
-    public static void printLottoResults(List<LottoResult> results) {
+    private static void printLottoResults(List<LottoResult> results) {
         Arrays.stream(LottoResult.values())
             .filter(result -> result != LottoResult.NONE)
             .forEach(result -> System.out.println(getLottoResultMessage(results, result)));
