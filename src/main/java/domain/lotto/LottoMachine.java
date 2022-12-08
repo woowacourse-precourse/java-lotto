@@ -1,6 +1,7 @@
-package lotto;
+package domain.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import domain.Money;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,21 +10,14 @@ public class LottoMachine {
 
     private final int MONEY_UNIT = 1000;
 
-    LottoCompany lottoCompany = new LottoCompany();
-    Printer printer = new Printer();
-
-    public void makeLottos(int money) {
-        List<Lotto> lottos = new ArrayList<>();
-
-        int sheets = money / MONEY_UNIT;
+    public Lottos makeLotteries(Money money) {
+        List<Lotto> lotteries = new ArrayList<>();
+        int sheets = money.getMoney() / MONEY_UNIT;
         for (int times = 0; times < sheets; times++) {
             Lotto lotto = makeRandomNumbers();
-            lottos.add(lotto);
+            lotteries.add(lotto);
         }
-        Lottos allLottos = new Lottos(lottos);
-
-        printer.printLottoNumbers(allLottos);
-        lottoCompany.inputWinningNumbers(allLottos);
+        return new Lottos(lotteries);
     }
 
     private Lotto makeRandomNumbers() {
