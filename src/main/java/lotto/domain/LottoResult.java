@@ -19,8 +19,9 @@ public class LottoResult {
         }
     }
 
-    public void printResult() {
-        OutputView.printLottoResult(result);
+    // OutputView에서만 꺼내기
+    public Map<Rank, Integer> getResult() {
+        return result;
     }
 
     public int calculateTotalPrize() {
