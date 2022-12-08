@@ -1,4 +1,4 @@
-package lotto;
+package lotto.inputtool;
 
 import lotto.Exception.Exception;
 

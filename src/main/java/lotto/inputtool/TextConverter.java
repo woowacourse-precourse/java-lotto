@@ -1,4 +1,4 @@
-package lotto;
+package lotto.inputtool;
 
 public class TextConverter {
     public static String[] splitComma(String text) {
