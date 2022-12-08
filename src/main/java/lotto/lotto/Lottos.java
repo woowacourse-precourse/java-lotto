@@ -3,6 +3,7 @@ package lotto;
 import lotto.lottonumber.LottoNumber;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lottos {
@@ -10,8 +11,9 @@ public class Lottos {
 
     public void issuedLottos(int amount) {
         for (int i = 0; i < amount; i++) {
-            List lottonumbers = LottoNumber.generate();
-            Lotto lotto = new Lotto(lottonumbers);
+            List<Integer> lottoNumbers = new ArrayList<>(LottoNumber.generate()); // 어레이 리스트 생성할 때 new 써주지않으면 예외발생
+            Collections.sort(lottoNumbers);
+            Lotto lotto = new Lotto(lottoNumbers);
             lottos.add(lotto);
         }
     }

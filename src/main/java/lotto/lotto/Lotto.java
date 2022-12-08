@@ -2,17 +2,13 @@ package lotto;
 
 import lotto.Exception.Exception;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         isValid(numbers);
-        sortNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -32,10 +28,6 @@ public class Lotto {
 
     private void isValidRange(List<Integer> numbers) {
         Exception.checkRange(numbers);
-    }
-
-    private void sortNumbers(List<Integer> numbers) {
-        Collections.sort(numbers);
     }
 
     public List<Integer> getNumbers() {
