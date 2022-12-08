@@ -1,8 +1,7 @@
-package lotto;
+package lotto.lotto;
 
 import lotto.Exception.Exception;
-
-import java.util.List;
+import lotto.lotto.Lotto;
 
 public class WinningLotto {
     private Lotto lotto;
