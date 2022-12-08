@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.LottoResult;
 import lotto.domain.Rank;
 
 import java.util.Map;
@@ -36,7 +37,9 @@ public class OutputView {
         System.out.println(DIVIDING_LINE);
     }
 
-    public static void printLottoResult(Map<Rank, Integer> result) {
+    public static void printLottoResult(LottoResult lottoResult) {
+        Map<Rank, Integer> result = lottoResult.getResult();
+
         printWinStatisticsMessage();
         Rank[] rank = Rank.values();
         for (int i = rank.length - 2; i >= 0; i--) {

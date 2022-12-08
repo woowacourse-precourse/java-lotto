@@ -24,7 +24,7 @@ public class LottoGame {
         LottoResult lottoResult = new LottoResult();
         lottoResult.getResult(winningLotto, purchaseLotto);
 
-        lottoResult.printResult();
+        OutputView.printLottoResult(lottoResult);
         getProfit(lottoResult);
     }
 
