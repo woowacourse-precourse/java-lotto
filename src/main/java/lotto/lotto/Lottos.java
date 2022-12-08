@@ -1,5 +1,6 @@
-package lotto;
+package lotto.lotto;
 
+import lotto.lotto.Lotto;
 import lotto.lottonumber.LottoNumber;
 
 import java.util.ArrayList;
