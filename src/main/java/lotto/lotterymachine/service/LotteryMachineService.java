@@ -23,9 +23,7 @@ public class LotteryMachineService {
 
     public Map<Score, Integer> checkNumbers(User user, LotteryMachine lotteryMachine) {
         List<List<Integer>> userLottos = user.getLottos();
-        for (List<Integer> userLottory : userLottos) {
-            checkTargetNumbers(userLottory, lotteryMachine);
-        }
+        userLottos.forEach(i->checkTargetNumbers(i, lotteryMachine));
         return ScoreBoard;
     }
 

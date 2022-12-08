@@ -28,11 +28,10 @@ public class UserRepository {
         return  list;
     }
 
-    public static void buyLotteryTickets(User user) {
+    public static void buyLotteryTickets(User user) {   // under doimain con ?
         int inputMoney = user.getInputMoney();
         int ticketAmount = inputMoney / Constant.UNIT_MONEY;
         user.setTicketAmount(ticketAmount);
-        user.setpurchaseAmount(ticketAmount * Constant.UNIT_MONEY);
     }
 
     public static int inputMoney() {

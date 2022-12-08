@@ -6,14 +6,13 @@ import lotto.util.Constant;
 
 public class User {
     private int inputMoney;
-    private int purchaseAmount;
-    private int ticketAmount; // 롯도 장수
+
+    private int ticketAmount;
     private List<List<Integer>> lottos;
 
     public User() {
         this.inputMoney = Constant.INIT_ZERO;
         this.ticketAmount = Constant.INIT_ZERO;
-        this.purchaseAmount = Constant.INIT_ZERO;
         this.lottos = new ArrayList<>();
     }
 
@@ -27,10 +26,6 @@ public class User {
 
     public int getInputMoney() {
         return inputMoney;
-    }
-
-    public void setpurchaseAmount(int amount) {
-        this.purchaseAmount = amount;
     }
 
     public void setTicketAmount(int amount) {

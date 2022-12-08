@@ -1,7 +1,9 @@
 package lotto.lotterymachine.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.stream;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import lotto.util.Constant;
@@ -28,6 +30,19 @@ class LotteryMachineServiceTest {
         float result = lotteryMachineService.getMoneyToLottery();
 
         assertThat(target).isEqualTo(result);
+    }
+    @Test
+    void stream_test_for(){
+      List<Integer>  arr = new ArrayList<>(List.of(1,2,3,4));
+
+      for(Integer a : arr){
+          System.out.println(a);
+      }
+
+      arr.stream().forEach(i->{
+          System.out.println(i);
+      });
+
     }
 
     @Test
