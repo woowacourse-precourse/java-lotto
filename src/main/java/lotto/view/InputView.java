@@ -33,7 +33,6 @@ public class InputView {
 
 	public List<Integer> inputWinningNumbers() throws IllegalArgumentException {
 		String inputNumber = readLine();
-		System.out.println("inputNumber = " + inputNumber);
 		if (!winningNumberPattern.matcher(inputNumber).matches()) {
 			throw new IllegalArgumentException(COMMA_CLASSIFICATION.getErrorMessage());
 		}

@@ -28,18 +28,17 @@ public class Lotto {
 	}
 
 	public void drawBonusNumber(Integer bonusNumber) {
-		// Integer bonusNumber = lottoValidator.validateBonusNumber(inputBonusNumber);
 		BonusNumberValidator bonusNumberValidator = new BonusNumberValidator();
 		try {
 			bonusNumber = bonusNumberValidator.runBonusNumberValidator(bonusNumber, numbers);
 		} catch (IllegalArgumentException e) {
 			OutputView.printErrorMessage(e.getMessage());
+			// 게임종료
 		}
 		numbers.add(BONUS_NUMBER_DIGIT.getCode(), bonusNumber);
 	}
 
 	public List<Integer> getNumbers() {
-		// Collections.sort(numbers);
 		return numbers;
 	}
 

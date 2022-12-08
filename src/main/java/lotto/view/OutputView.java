@@ -14,13 +14,11 @@ public class OutputView {
 	}
 
 	public static void printProgress(ProgressStatement statement) {
-		newLine();
 		System.out.println(statement.getProgress());
 	}
 
 	public static void printDetails(int ticketQuantity, ProgressStatement statement) {
-		newLine();
-		System.out.println(ticketQuantity + statement.getProgress());
+		System.out.println("\n" + ticketQuantity + statement.getProgress());
 	}
 
 	public static void printLotteryTickets(List<Lotto> tickets) {
@@ -40,9 +38,5 @@ public class OutputView {
 	public static void printYield(double yield) {
 		System.out.println(
 			START_GROSS_PROFIT.getProgress() + String.format("%.1f", yield) + END_GROSS_PROFIT.getProgress());
-	}
-
-	public static void newLine() {
-		System.out.println();
 	}
 }

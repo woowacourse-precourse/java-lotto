@@ -35,7 +35,7 @@ public class WinStatisticsCalculator {
 				.collect(Collectors.toList());
 			List<Integer> deduplicationNumbers = combinationNumbers.stream().distinct().collect(Collectors.toList());
 			int matchNumber = combinationNumbers.size() - deduplicationNumbers.size();
-			if (matchNumber == 5 && checkBonusMatching()) {
+			if (matchNumber == 5 && checkBonusMatching(ticket)) {
 				updateMatchResult(CHECK_BONUS.getCode());
 				continue;
 			}
@@ -45,8 +45,8 @@ public class WinStatisticsCalculator {
 		}
 	}
 
-	private boolean checkBonusMatching() {
-		return winningNumbers.getNumbers().contains(bonusNumber);
+	private boolean checkBonusMatching(Lotto ticket) {
+		return ticket.getNumbers().contains(bonusNumber);
 	}
 
 	private void updateMatchResult(int matchNumber) {

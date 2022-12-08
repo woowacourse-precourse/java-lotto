@@ -17,7 +17,6 @@ public class LottoController {
 	private int money;
 	private List<Lotto> lotteryTickets;
 	private Map<Integer, Integer> result;
-	// Lotto lotto;
 
 	public LottoController(InputView inputView) {
 		this.inputView = inputView;
@@ -57,7 +56,6 @@ public class LottoController {
 			OutputView.printErrorMessage(e.getMessage());
 			// 게임 종료하기
 		}
-		System.out.println("inputWinningNumbers = " + inputWinningNumbers);
 		return new Lotto(inputWinningNumbers);
 	}
 
