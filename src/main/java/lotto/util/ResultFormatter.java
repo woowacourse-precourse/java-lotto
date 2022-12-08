@@ -68,6 +68,6 @@ public class ResultFormatter {
     }
 
     public static String formatRewardRate(BigDecimal rewardRate) {
-        return new DecimalFormat(Regex.DECIMAL_FORMAT.regex).format(rewardRate.setScale(1, RoundingMode.HALF_EVEN));
+        return new DecimalFormat(Regex.DECIMAL_FORMAT.regex).format(rewardRate);
     }
 }

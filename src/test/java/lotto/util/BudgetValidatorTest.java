@@ -2,8 +2,8 @@ package lotto.util;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
+import lotto.util.validator.BudgetValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -20,7 +20,7 @@ class BudgetValidatorTest {
     }
 
     @Nested
-    class invalidInput {
+    class invalidInputTest {
 
         @DisplayName("자연수가 아닌 입력의 경우 예외 처리한다.")
         @ParameterizedTest
@@ -54,7 +54,7 @@ class BudgetValidatorTest {
     }
 
     @Nested
-    class validInput {
+    class validInputTest {
         @ParameterizedTest
         @ValueSource(strings = {"222000", "22222000", " 1   0    0  0   "})
         void 정상_입력(String input) {

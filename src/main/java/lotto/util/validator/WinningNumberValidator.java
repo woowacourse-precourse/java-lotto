@@ -1,6 +1,4 @@
-package lotto.util;
-
-import static lotto.util.Constants.NUMBER_COUNT;
+package lotto.util.validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +9,8 @@ public class WinningNumberValidator extends Validator {
     public void validate(String input) throws IllegalArgumentException {
         List<String> winningNumbers = splitByComma(input);
         for (String winningNumber : winningNumbers) {
-            validateNumber(winningNumber);
-            validateInputRange(winningNumber);
+            validateNumeric(winningNumber);
+            validateRange(winningNumber);
             validateLottoNumberRange(winningNumber);
         }
     }

@@ -2,14 +2,11 @@ package lotto.model.result;
 
 import static lotto.util.Constants.LOTTO_PRICE;
 import static lotto.util.ResultFormatter.formatResult;
-import static lotto.util.ResultFormatter.formatRewardRate;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.model.numbers.LottoDraw;
@@ -50,14 +47,14 @@ public class WinningStatistics {
             ticketBudget = ticketBudget.add(new BigDecimal(String.valueOf(LOTTO_PRICE)));
             totalCashPrize = totalCashPrize.add(new BigDecimal(String.valueOf(winningRank.getCashPrize())));
         }
-        rewardRate = calculateRewardRate(ticketBudget, totalCashPrize);
+        rewardRate = calculateRewardRate(totalCashPrize, ticketBudget);
     }
 
-    private static BigDecimal calculateRewardRate(BigDecimal ticketBudget, BigDecimal totalCashPrize) {
-        if (totalCashPrize.equals(BigDecimal.ZERO)) {
+    private static BigDecimal calculateRewardRate(BigDecimal totalCashPrize, BigDecimal ticketBudget) {
+        if (ticketBudget.equals(BigDecimal.ZERO)) {
             return BigDecimal.ZERO;
         }
-        return totalCashPrize.divide(ticketBudget).multiply(BigDecimal.valueOf(100));
+        return totalCashPrize.multiply(new BigDecimal("100")).divide(ticketBudget, 1, RoundingMode.HALF_EVEN);
     }
 
     private void updateWinningStatistics(WinningRank winningRank) {

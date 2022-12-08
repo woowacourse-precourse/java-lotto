@@ -1,9 +1,10 @@
-package lotto.util;
+package lotto.util.validator;
 
 import static lotto.util.Constants.MAX_RANGE;
 import static lotto.util.Constants.MIN_RANGE;
 
 import java.util.regex.Pattern;
+import lotto.util.ExceptionMessage;
 
 public abstract class Validator {
     private static final Pattern NUMBER_REGEX = Pattern.compile("^[0-9]*$");
@@ -14,13 +15,13 @@ public abstract class Validator {
         return input.replaceAll(" ", "");
     }
 
-    void validateNumber(String budget) {
+    void validateNumeric(String budget) {
         if (!NUMBER_REGEX.matcher(budget).matches()) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_NUMERIC.getMessage());
         }
     }
 
-    void validateInputRange(String budget) {
+    void validateRange(String budget) {
         try {
             Integer.parseInt(budget);
         } catch (NumberFormatException exception) {

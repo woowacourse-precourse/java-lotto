@@ -4,10 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.model.numbers.Lotto;
-import lotto.util.BonusNumberValidator;
-import lotto.util.BudgetValidator;
-import lotto.util.WinningNumberValidator;
+import lotto.util.validator.BonusNumberValidator;
+import lotto.util.validator.BudgetValidator;
+import lotto.util.validator.WinningNumberValidator;
 
 public class InputView {
     private enum ConsoleMessage {

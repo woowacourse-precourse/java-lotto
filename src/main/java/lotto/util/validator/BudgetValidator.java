@@ -1,14 +1,16 @@
-package lotto.util;
+package lotto.util.validator;
 
 import static lotto.util.Constants.LOTTO_PRICE;
+
+import lotto.util.ExceptionMessage;
 
 public class BudgetValidator extends Validator {
 
     @Override
     public void validate(String input) throws IllegalArgumentException {
         String budget = removeSpace(input);
-        validateNumber(budget);
-        validateInputRange(budget);
+        validateNumeric(budget);
+        validateRange(budget);
         validateInputUnit(budget);
     }
 
