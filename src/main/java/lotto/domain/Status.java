@@ -23,7 +23,6 @@ public class Status {
     }
 
     public void findMatch(List<Lotto> lottoList, WinningNumber winningNumber) {
-
         for (Lotto lotto : lottoList) {
             makeCount(Rank.findRank(lotto.findMatchNumber(winningNumber),
                     lotto.hasBonusNumber(winningNumber.getBonusNumber())));
