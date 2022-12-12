@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class InputView {
         List<Integer> winningNumbers = Arrays.stream(splitNumbers)
                 .map(InputView::convertInteger)
                 .collect(Collectors.toList());
-        return winningNumbers;
+        return Collections.unmodifiableList(winningNumbers);
     }
 
     public static int readBonusNumber() {
