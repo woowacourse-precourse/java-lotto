@@ -15,4 +15,8 @@ public class LottoPurchaseAmount {
             throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
     }
+
+    public int getNumberOfAvailableBuyLotto() {
+        return amount / LOTTO_PRICE;
+    }
 }
