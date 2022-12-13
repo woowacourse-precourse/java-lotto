@@ -46,9 +46,10 @@ public class OutputMessageGenerator {
         }
     }
 
-    private String fillMessageFormat(int winResultIndex,
-                                     WinningResultStatus winningResult,
-                                     Map<WinningResultStatus, Integer> statisticsCounts) {
+    private String fillMessageFormat(
+            int winResultIndex,
+            WinningResultStatus winningResult,
+            Map<WinningResultStatus, Integer> statisticsCounts) {
         if (statisticsCounts.containsKey(winningResult)) {
             return String.format(getStatisticsFormat(winResultIndex), statisticsCounts.get(winningResult));
         }
