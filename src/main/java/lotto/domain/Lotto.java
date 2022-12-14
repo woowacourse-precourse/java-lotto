@@ -5,6 +5,8 @@ import lotto.message.ErrorMessage;
 
 public class Lotto {
     public static final int LOTTO_COUNT = 6;
+    public static final int MAX_NUMBER = 45;
+    public static final int MIN_NUMBER = 1;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -25,13 +27,13 @@ public class Lotto {
     }
 
     private boolean isDuplicated(final List<Integer> numbers) {
-        return LOTTO_COUNT == numbers.stream()
+        return LOTTO_COUNT > numbers.stream()
                 .distinct()
                 .count();
     }
 
     private boolean isOutOfBound(final List<Integer> numbers) {
-        return numbers.stream().max(Integer::compareTo).get() <= 45
-                && numbers.stream().min(Integer::compareTo).get() >= 1;
+        return numbers.stream().max(Integer::compareTo).get() > MAX_NUMBER
+                || numbers.stream().min(Integer::compareTo).get() < MIN_NUMBER;
     }
 }
