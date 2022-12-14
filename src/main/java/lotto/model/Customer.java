@@ -8,7 +8,6 @@ public class Customer {
 
     public Customer(int purchaseAmount) {
         this.purchaseAmount = new PurchaseAmount(purchaseAmount);
-        List<Lotto> purchasedLottoTickets = LottoMachine.buy(this.purchaseAmount);
-        this.lottoTickets = new LottoTickets(purchasedLottoTickets);
+        this.lottoTickets = LottoMachine.buy(this.purchaseAmount);
     }
 }
