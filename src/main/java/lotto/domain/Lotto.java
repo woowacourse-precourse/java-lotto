@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.message.ErrorMessage;
 
 public class Lotto {
@@ -35,5 +36,13 @@ public class Lotto {
     private boolean isOutOfBound(final List<Integer> numbers) {
         return numbers.stream().max(Integer::compareTo).get() > MAX_NUMBER
                 || numbers.stream().min(Integer::compareTo).get() < MIN_NUMBER;
+    }
+
+    @Override
+    public String toString() {
+        return numbers.stream()
+                .sorted(Integer::compareTo)
+                .collect(Collectors.toList())
+                .toString();
     }
 }
