@@ -13,4 +13,8 @@ public class BonusNumber {
     private void validate(final int bonusNumber) {
         LottoNumberStatus.validateLottoNumber(bonusNumber);
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }

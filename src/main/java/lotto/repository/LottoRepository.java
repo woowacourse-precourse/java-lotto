@@ -23,15 +23,19 @@ public class LottoRepository {
         return instance;
     }
 
-    public TotalLotto generateLotto(final int validatedPrice) {
+    public List<Lotto> generateLotto(final int validatedPrice) {
         int lottoCount = calculateLottoCount(validatedPrice);
         for (int count = 1; count <= lottoCount; count++) {
             store.add(new Lotto(Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, NUMBER_COUNT)));
         }
-        return new TotalLotto(Collections.unmodifiableList(store));
+        return Collections.unmodifiableList(store);
     }
 
     private int calculateLottoCount(final int validatedPrice) {
         return validatedPrice / LOTTO_PRICE;
+    }
+
+    public List<Lotto> findAll() {
+        return Collections.unmodifiableList(store);
     }
 }

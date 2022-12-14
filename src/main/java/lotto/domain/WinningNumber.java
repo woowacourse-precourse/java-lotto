@@ -15,4 +15,11 @@ public class WinningNumber {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_LOTTO_NUMBER_ERROR);
         }
     }
+
+    public int getEqualCount(final List<Integer> numbers) {
+        List<Integer> winningNumbers = winningNumber.getNumbers();
+        return (int) numbers.stream()
+                .filter(winningNumbers::contains)
+                .count();
+    }
 }

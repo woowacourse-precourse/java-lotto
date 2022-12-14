@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.TotalLotto;
 import lotto.service.LottoService;
+import lotto.util.Calculate;
 import lotto.util.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -16,9 +17,15 @@ public class LottoController {
             requestBuyingLottos();
             requestWinningNumber();
             requestBonusNumber();
+            requestResult();
         } catch (IllegalArgumentException exception) {
             outputView.printMessage(exception.getMessage());
         }
+    }
+
+    private void requestResult() {
+//        Calculate.getRatio(lottoService.gene)
+        outputView.printWinningResult(lottoService.generateWinningResult(), lottoService.findLottoCount());
     }
 
     private void requestBonusNumber() {

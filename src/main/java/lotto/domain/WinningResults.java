@@ -6,7 +6,6 @@ import lotto.domain.dto.TotalWinningLottoDto;
 import lotto.domain.enums.WinResultStatus;
 
 public class WinningResults {
-    public static final int NOTHING = -1;
     private final List<WinningResult> winningResults;
 
     public WinningResults(final List<WinningResult> winningResults) {
@@ -20,10 +19,17 @@ public class WinningResults {
 
     private List<Integer> getValidIndexList(final List<WinResultStatus> buyingLottoResults) {
         return buyingLottoResults.stream()
-                .map(winningResults::indexOf)
-                .collect(Collectors.toList())
-                .stream()
-                .filter(index -> index != NOTHING)
+                .map(winResultStatus -> winningResults.indexOf(new WinningResult(winResultStatus)))
                 .collect(Collectors.toList());
+    }
+
+    public List<WinningResult> getWinningResults() {
+        return winningResults;
+    }
+
+    public long getTotalWinningPrice() {
+        return winningResults.stream()
+                .mapToLong(WinningResult::getWinningPrice)
+                .sum();
     }
 }

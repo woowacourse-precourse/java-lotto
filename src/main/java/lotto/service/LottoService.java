@@ -1,9 +1,15 @@
 package lotto.service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.BonusNumber;
 import lotto.domain.TotalLotto;
+import lotto.domain.dto.TotalWinningLottoDto;
 import lotto.domain.WinningNumber;
+import lotto.domain.WinningResult;
+import lotto.domain.WinningResults;
+import lotto.domain.enums.WinResultStatus;
 import lotto.repository.BonusNumberRepository;
 import lotto.repository.LottoRepository;
 import lotto.repository.WinningNumberRepository;
@@ -14,7 +20,7 @@ public class LottoService {
     private final BonusNumberRepository bonusNumberRepository = BonusNumberRepository.getInstance();
 
     public TotalLotto buyLottos(final int validatedPrice) {
-        return lottoRepository.generateLotto(validatedPrice);
+        return new TotalLotto(lottoRepository.generateLotto(validatedPrice));
     }
 
     public void saveWinningNumber(final List<Integer> winningNumber) {
@@ -28,4 +34,23 @@ public class LottoService {
     }
 
 
+    public WinningResults generateWinningResult() {
+        WinningResults winningResults = createDefaultWinningResults();
+        winningResults.generate(
+                new TotalLotto(lottoRepository.findAll()),
+                new TotalWinningLottoDto(winningNumberRepository.find(), bonusNumberRepository.find())
+        );
+        return winningResults;
+    }
+
+    private WinningResults createDefaultWinningResults() {
+        return new WinningResults(Arrays.stream(WinResultStatus.values())
+                .map(WinningResult::new)
+                .collect(Collectors.toList()));
+    }
+
+    public int findLottoCount() {
+        return lottoRepository.findAll()
+                .size();
+    }
 }

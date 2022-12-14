@@ -21,7 +21,7 @@ public class BonusNumberRepository {
         return find();
     }
 
-    private BonusNumber find() {
+    public BonusNumber find() {
         return store.get(BONUS_NUMBER_INDEX);
     }
 

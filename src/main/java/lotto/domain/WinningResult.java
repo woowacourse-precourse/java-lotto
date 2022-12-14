@@ -31,4 +31,17 @@ public class WinningResult {
     public int hashCode() {
         return Objects.hash(winResultStatus);
     }
+
+    @Override
+    public String toString() {
+        return String.format(winResultStatus.getMessage(), winCount);
+    }
+
+    public boolean isNothing() {
+        return winResultStatus == WinResultStatus.NOTHING;
+    }
+
+    public long getWinningPrice() {
+        return winResultStatus.getWinPrice() * winCount;
+    }
 }

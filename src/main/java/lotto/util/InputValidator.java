@@ -44,7 +44,7 @@ public class InputValidator {
     }
 
     public static int validateBonusNumber(final String userInput) {
-        if (isNumeric(userInput)) {
+        if (!isNumeric(userInput)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMERIC_ERROR);
         }
         return Integer.parseInt(userInput);
