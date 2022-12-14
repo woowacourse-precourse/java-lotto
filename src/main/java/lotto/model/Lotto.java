@@ -35,5 +35,14 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int countMatch(Lotto lotto) {
+        return (int) numbers
+                .stream()
+                .filter(lottoNumber -> lotto.containLottoNumber(lottoNumber))
+                .count();
+    }
+
+    public boolean containLottoNumber(LottoNumber number) {
+        return numbers.contains(number);
+    }
 }
