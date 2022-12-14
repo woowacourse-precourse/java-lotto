@@ -9,6 +9,9 @@ public class WinningNumberRepository {
     private static final List<WinningNumber> store = new ArrayList<>();
     public static final int WINNING_NUMBER_INDEX = 0;
 
+    private WinningNumberRepository() {
+    }
+
     public static WinningNumberRepository getInstance() {
         return instance;
     }

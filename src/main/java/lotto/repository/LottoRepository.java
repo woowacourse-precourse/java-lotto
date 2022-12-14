@@ -16,6 +16,9 @@ public class LottoRepository {
     private static final LottoRepository instance = new LottoRepository();
     private static final List<Lotto> store = new ArrayList<>();
 
+    private LottoRepository() {
+    }
+
     public static LottoRepository getInstance() {
         return instance;
     }
