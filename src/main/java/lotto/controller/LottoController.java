@@ -2,7 +2,6 @@ package lotto.controller;
 
 import lotto.domain.TotalLotto;
 import lotto.service.LottoService;
-import lotto.util.Calculate;
 import lotto.util.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;

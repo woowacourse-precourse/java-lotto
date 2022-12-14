@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.domain.TotalLotto;
 
 public class LottoRepository {
     public static final int LOTTO_PRICE = 1000;
