@@ -14,14 +14,18 @@ public class LottoController {
     public void run() {
         try {
             requestBuyingLottos();
-
+            requestWinningNumber();
         } catch (IllegalArgumentException exception) {
             outputView.printMessage(exception.getMessage());
         }
     }
 
+    private void requestWinningNumber() {
+        lottoService.saveWinningNumber(InputValidator.validateWinningNumber(inputView.inputWinningNumber()));
+    }
+
     private void requestBuyingLottos() {
-        TotalLotto totalLotto = lottoService.buyLottos(InputValidator.validateInputPrice(inputView.inputPrice()));
+        TotalLotto totalLotto = lottoService.buyLottos(InputValidator.validateBuyingPrice(inputView.inputPrice()));
         outputView.printBuyingLottos(totalLotto);
     }
 }
