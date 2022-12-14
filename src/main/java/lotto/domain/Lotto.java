@@ -45,4 +45,8 @@ public class Lotto {
                 .collect(Collectors.toList())
                 .toString();
     }
+
+    public boolean contains(final int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }

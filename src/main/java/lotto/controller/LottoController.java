@@ -15,9 +15,14 @@ public class LottoController {
         try {
             requestBuyingLottos();
             requestWinningNumber();
+            requestBonusNumber();
         } catch (IllegalArgumentException exception) {
             outputView.printMessage(exception.getMessage());
         }
+    }
+
+    private void requestBonusNumber() {
+        lottoService.saveBonusNumber(InputValidator.validateBonusNumber(inputView.inputBonusNumber()));
     }
 
     private void requestWinningNumber() {

@@ -42,4 +42,11 @@ public class InputValidator {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static int validateBonusNumber(final String userInput) {
+        if (isNumeric(userInput)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMERIC_ERROR);
+        }
+        return Integer.parseInt(userInput);
+    }
 }
