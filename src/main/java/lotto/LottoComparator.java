@@ -9,9 +9,6 @@ import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
 
 public class LottoComparator {
-	private static final int MIN_WINNER_MATCH_COUNT = 3;
-	private static final int FIRST_WINNER_MATCH_COUNT = 6;
-	private static final int SECOND_WINNER_MATCH_COUNT = 5;
 	private static final int INIT = 0;
 	private static List<Lotto> winner;
 
@@ -29,7 +26,6 @@ public class LottoComparator {
 
 			addWinner(lotto);
 		}
-
 	}
 
 	public static void addWinner(Lotto lotto) {
@@ -39,7 +35,7 @@ public class LottoComparator {
 	}
 
 	private static boolean isWinner(Lotto lotto) {
-		return lotto.getCountMatchNumber() >= MIN_WINNER_MATCH_COUNT;
+		return lotto.getCountMatchNumber() >= WinnerCount.MIN_WINNER_MATCH_COUNT.getMatchCount();
 	}
 
 	public static int calculateCountMatchNumber(Lotto lotto, int countMatchNumber, List<String> winningNumber,
@@ -58,7 +54,8 @@ public class LottoComparator {
 	}
 
 	public static void checkMatchBonusNumber(Lotto lotto, String bonusNumber, int matchNumberCount) {
-		if (matchNumberCount == SECOND_WINNER_MATCH_COUNT && isContainsNumber(lotto.getNumbers(), bonusNumber)) {
+		if (matchNumberCount == WinnerCount.SECOND_WINNER_MATCH_COUNT.getMatchCount()
+			&& isContainsNumber(lotto.getNumbers(), bonusNumber)) {
 			lotto.setMatchBonusNumber(true);
 		}
 	}
@@ -68,26 +65,26 @@ public class LottoComparator {
 	}
 
 	public static void calculatePrizeCount() {
-
 		for (Lotto lotto : winner) {
 			int matchCount = lotto.getCountMatchNumber();
-
 			boolean isFirstWinner = checkFirstWinner(lotto, matchCount);
 			boolean isSecondWinner = checkSecondWinner(lotto, matchCount);
 
-			if (!isFirstWinner && !isSecondWinner) {
-				for (Prize prize : Prize.values()) {
-					if (matchCount == prize.getMatchCount()) {
-						prize.enhancePrizeCount();
-					}
+			calculatePrizeCount(matchCount, isFirstWinner, isSecondWinner);
+		}
+	}
+
+	private static void calculatePrizeCount(int matchCount, boolean isFirstWinner, boolean isSecondWinner) {
+		if (!isFirstWinner && !isSecondWinner) {
+			for (Prize prize : Prize.values()) {
+				if (matchCount == prize.getMatchCount()) {
+					prize.enhancePrizeCount();
 				}
 			}
 		}
-
 	}
 
 	private static boolean checkSecondWinner(Lotto lotto, int matchCount) {
-
 		if (isSecondWinner(lotto, matchCount)) {
 			Prize.SECOND_PRIZE.enhancePrizeCount();
 
@@ -98,7 +95,6 @@ public class LottoComparator {
 	}
 
 	private static boolean checkFirstWinner(Lotto lotto, int matchCount) {
-
 		if (isFirstWinner(lotto, matchCount)) {
 			Prize.FIRST_PRIZE.enhancePrizeCount();
 
@@ -109,11 +105,13 @@ public class LottoComparator {
 	}
 
 	private static boolean isSecondWinner(Lotto lotto, int matchCount) {
-		return matchCount == SECOND_WINNER_MATCH_COUNT && lotto.getIsMatchBonusNumber();
+		return matchCount == WinnerCount.SECOND_WINNER_MATCH_COUNT.getMatchCount()
+			&& lotto.getIsMatchBonusNumber();
 	}
 
 	private static boolean isFirstWinner(Lotto lotto, int matchCount) {
-		return matchCount == FIRST_WINNER_MATCH_COUNT && !lotto.getIsMatchBonusNumber();
+		return matchCount == WinnerCount.FIRST_WINNER_MATCH_COUNT.getMatchCount()
+			&& !lotto.getIsMatchBonusNumber();
 	}
 
 	public static int calculateTotalPrize() {

@@ -6,10 +6,10 @@ import lotto.exception.Exception;
 
 public class Lotto {
 	private final Set<Integer> numbers;
-	private final int NUMBERS_SIZE = 6;
-	private final int INIT = 0;
-	private boolean isMatchBonusNumber;
-	private int countMatchNumber;
+	private static final int NUMBERS_COUNT = 6;
+	private static final int INIT = 0;
+	private static boolean isMatchBonusNumber;
+	private static int countMatchNumber;
 
 	public Lotto(Set<Integer> numbers) {
 		validate(numbers);
@@ -20,7 +20,7 @@ public class Lotto {
 	}
 
 	private void validate(Set<Integer> numbers) {
-		if (numbers.size() != NUMBERS_SIZE) {
+		if (numbers.size() != NUMBERS_COUNT) {
 			throw Exception.LENGTH_EXCEPTION.getException();
 		}
 	}

@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.checker.Validation;
+import lotto.validation.Validation;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
