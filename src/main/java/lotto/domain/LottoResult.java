@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.view.OutputView;
-
 import java.util.*;
 
 public class LottoResult {
