@@ -1,4 +1,4 @@
-package lotto;
+package Model;
 
 public enum Rank {
     THREE(3, 5_000),
