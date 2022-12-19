@@ -1,4 +1,4 @@
-package lotto;
+package Utils;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ public class Exceptions {
     private static final int LOTTO_LENGTH = 6;
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    public static void excludeUnderThousand(String readLine) {
-        getOutExcludingNumbers(readLine);
-        if (!readLine.matches("^[0-9]*?")) {
+    public static void ExcludeUnderThousand(String readLine) {
+        if (!readLine.matches("^[0-9]*?") && readLine.equals("") && readLine.isBlank()) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 숫자만 입력가능합니다.");
         }
         if (Integer.parseInt(readLine) % 1000 > 0) {
@@ -39,12 +38,6 @@ public class Exceptions {
         }
         if (Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 로또 번호는 1부터 45사이의 숫자여야 합니다.");
-        }
-    }
-
-    public static void getOutExcludingNumbers(String readLine) {
-        if (readLine.equals("") && readLine.isBlank()) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 공백입니다.");
         }
     }
 
