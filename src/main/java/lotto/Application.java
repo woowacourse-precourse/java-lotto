@@ -1,15 +1,21 @@
 package lotto;
 
+import Model.Rank;
+import Utils.Exceptions;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static Views.InputView.INPUT_VIEW;
+import static Views.OutputView.OUTPUT_VIEW;
+
 
 public class Application {
     public static void main(String[] args) {
         try {
-            printResult(Referee.Compare(LottoMachine.pickLottoNumbers(inputCash()), inputWinningNumbers()));
+            Play();
+//            printResult(Referee.Compare(LottoMachine.pickLottoNumbers(inputCash()), inputWinningNumbers()));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -55,6 +61,11 @@ public class Application {
     public static String printEarningsRate(List<Integer> cashResult, double prize) {
         double sumPrize = (prize / (cashResult.get(0) * 1000)) * 100;
         return "총 수익률은 " + sumPrize + "%입니다.";
+    }
+
+    public static void Play() {
+        OUTPUT_VIEW.PrintPurchaseAmount();
+        OUTPUT_VIEW.PrintCountPurchasingLotto(INPUT_VIEW.InputCash(Console.readLine()));
     }
 
 }
