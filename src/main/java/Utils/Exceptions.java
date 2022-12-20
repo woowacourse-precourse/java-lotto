@@ -7,8 +7,8 @@ public class Exceptions {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     public static void ExcludeUnderThousand(String readLine) {
-        if (!readLine.matches("^[0-9]*?") && readLine.equals("") && readLine.isBlank()) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 숫자만 입력가능합니다.");
+        if (!readLine.matches("^[0-9]*?") || readLine.equals("") || readLine.isBlank() || Integer.parseInt(readLine) <= 0) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 양의 정수만 입력가능합니다.");
         }
         if (Integer.parseInt(readLine) % 1000 > 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 1000원 단위로 입력해야 합니다.");
