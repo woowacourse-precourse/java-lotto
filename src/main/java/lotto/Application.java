@@ -64,7 +64,7 @@ public class Application {
     }
 
     public static void Play() {
-        OUTPUT_VIEW.PrintPurchaseAmount();
+        OUTPUT_VIEW.PrintInputPurchaseAmount();
         OUTPUT_VIEW.PrintCountPurchasingLotto(INPUT_VIEW.InputCash(Console.readLine()));
     }
 
