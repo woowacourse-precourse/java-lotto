@@ -15,7 +15,7 @@ public class Exceptions {
         }
     }
 
-    public static void excludeNoLottoNumbers(List<String> winningNumbers) {
+    public static void ExcludeNoLottoNumbers(List<String> winningNumbers) {
         if (winningNumbers.size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 양의 정수 6개를 입력해야 합니다.");
         }
@@ -32,7 +32,7 @@ public class Exceptions {
         }
     }
 
-    public static void excludeNoBonusNumber(String bonusNumber) {
+    public static void ExcludeNoBonusNumber(String bonusNumber) {
         if (!bonusNumber.matches("-?\\d+")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 1~45사이의 정수를 입력해야 합니다.");
         }
@@ -41,7 +41,7 @@ public class Exceptions {
         }
     }
 
-    public static void compareWinningNumbersWithBonusNumbers(List<List<String>> winningNumbers) {
+    public static void ValidateNumbersDuplication(List<List<String>> winningNumbers) {
         if (winningNumbers.get(0).contains(winningNumbers.get(1).get(0))) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 당첨 번호와 보너스 번호가 중복되었습니다.");
         }
