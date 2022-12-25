@@ -1,12 +1,13 @@
 package lotto;
 
 import Model.Rank;
-import Utils.Exceptions;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static Controller.LottoController.LOTTO_CONTROLLER;
+import static Utils.Exceptions.EXCEPTIONS;
 import static Views.InputView.INPUT_VIEW;
 import static Views.OutputView.OUTPUT_VIEW;
 
@@ -31,12 +32,11 @@ public class Application {
 
     public static List<List<String>> inputWinningNumbers() {
         List<List<String>> winningNumbers = new ArrayList<>();
-
-        System.out.println("당첨 번호를 입력해 주세요.");
-        winningNumbers.add(LottoMachine.getWinningNumbers(Console.readLine()));
-        System.out.println("보너스 번호를 입력해 주세요.");
-        winningNumbers.add(LottoMachine.getBonusNumber(Console.readLine()));
-        Exceptions.compareWinningNumbersWithBonusNumbers(winningNumbers);
+        OUTPUT_VIEW.PrintInputWinningNumbers();
+        winningNumbers.add(INPUT_VIEW.InputWinningNumbers(Console.readLine()));
+        OUTPUT_VIEW.PrintInputBonusNumber();
+        winningNumbers.add(INPUT_VIEW.InputBonusNumber(Console.readLine()));
+        EXCEPTIONS.ValidateNumbersDuplication(winningNumbers);
         return winningNumbers;
     }
 
@@ -66,6 +66,7 @@ public class Application {
     public static void Play() {
         OUTPUT_VIEW.PrintInputPurchaseAmount();
         OUTPUT_VIEW.PrintCountPurchasingLotto(INPUT_VIEW.InputCash(Console.readLine()));
+        LOTTO_CONTROLLER.CompareWinningNumbersWithBonusNumbers();
     }
 
 }
