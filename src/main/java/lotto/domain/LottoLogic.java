@@ -93,20 +93,13 @@ public class LottoLogic {
 
     public void logic(String lottoMoneyInput){
         LottoInput lottoInput = new LottoInput();
-        validation(lottoMoneyInput);
+
         this.lottoCount = lottoInput.lottoCount(lottoMoneyInput); // 로또 개수
         buyLottos(this.lottoCount);
 
     }
 
-    private final static String ERROR_MESSAGE = "[ERROR]";
-    public void validation(String Money){
-        try {
-            Integer.parseInt(Money);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 숫자가 아닙니다.");
-        }
-    }
+
 
 
     public int getLottoCount(){
