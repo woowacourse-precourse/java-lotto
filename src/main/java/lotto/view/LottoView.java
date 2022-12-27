@@ -41,4 +41,7 @@ public class LottoView {
         System.out.println();
         System.out.println(OutputMessage.INPUT_BONUS_NUMBER.printMessage());
     }
+    
+    // 당첨 통계 출력
+
 }

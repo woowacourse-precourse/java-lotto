@@ -8,9 +8,12 @@ import java.util.List;
 
 public class InputNumber {
     // 입력받은 번호 가져오기
-    public static void getInputNumbers() {
+    public static List<Object> getInputNumbers() {
         List<Integer> winningNumbers = inputWinningNumber();
         Integer bonusNumber = inputBonusNumber();
+
+        List<Object> inputNumbers = List.of(winningNumbers, bonusNumber);
+        return inputNumbers;
     }
 
     public static List<Integer> inputWinningNumber() {
