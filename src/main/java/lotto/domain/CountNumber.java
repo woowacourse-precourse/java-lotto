@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.LottoView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,7 @@ public class CountNumber {
         lottoNumbers = lotto;
         Map<String, Integer> correctCount = correctNumberCount(winningNumbers, bonusNumber, lottoNumbers);
         // 당첨 통계 출력
-
+        LottoView.printResultCorrect(correctCount);
     }
     // 당첨 번호와 발행 로또 번호 비교
     public static int compareLottoWinning(List<Integer> winningNumbers, List<Integer> lottoNumbers) {
@@ -59,7 +61,6 @@ public class CountNumber {
             correctNumberCnt = resultCorrectCount(winnerPerRank ,correctWinningCnt, winningNumbers, lottos, bonusNumber);
 
         }
-        System.out.println(correctNumberCnt);
         return correctNumberCnt;
     }
 
@@ -75,17 +76,14 @@ public class CountNumber {
     public static Map<String, Integer> resultCorrectCount(Map<String, Integer> winnerPerRank, int correctWinningCnt, List<Integer> winningNumbers, List<Integer> lottos, int bonusNumber) {
         if (correctWinningCnt == 3) {
             int cnt = winnerPerRank.get("3");
-            System.out.println("3===>" + cnt);
             winnerPerRank.put("3", cnt+1);
         }
         if (correctWinningCnt == 4) {
             int cnt = winnerPerRank.get("4");
-            System.out.println("4===>" + cnt);
             winnerPerRank.put("4", cnt+1);
         }
         if (correctWinningCnt == 5) {
             int correctBonusCnt = compareLottoBonus(bonusNumber, lottos);
-            System.out.println("5===>" + correctBonusCnt);
             if (correctBonusCnt == 0) {
                 int cnt = winnerPerRank.get("5");
                 winnerPerRank.put("5", cnt+1);
@@ -97,7 +95,6 @@ public class CountNumber {
         }
         if (correctWinningCnt == 6) {
             int cnt = winnerPerRank.get("6");
-            System.out.println("6===>" + cnt);
             winnerPerRank.put("6", cnt+1);
         }
         return winnerPerRank;
