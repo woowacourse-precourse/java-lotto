@@ -13,7 +13,7 @@ class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
-    void 기능_테스트() {
+    void 기능_테스트1() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -43,6 +43,30 @@ class ApplicationTest extends NsTest {
                 List.of(7, 11, 30, 40, 42, 43),
                 List.of(2, 13, 22, 32, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45)
+        );
+    }
+
+    @Test
+    void 기능_테스트2() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("3000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "3개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 8, 9, 10, 11]",
+                            "[3, 4, 5, 6, 7, 8]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 1개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 0개",
+                            "총 수익률은 1001666.7%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 8, 9, 10, 11),
+                List.of(4, 6, 7, 8, 3, 5)
         );
     }
 
