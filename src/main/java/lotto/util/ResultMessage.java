@@ -7,7 +7,7 @@ public enum ResultMessage {
     THIRD_CORRECT_FIVE("5개 일치 (1,500,000원) - %d개%n"),
     SECOND_CORRECT_FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n"),
     FIRST_CORRECT_SIX("6개 일치 (2,000,000,000원) - %d개%n"),
-    RATE_OF_RETURN("총 수익률은 %.1f" + "입니다.");
+    RATE_OF_RETURN("총 수익률은 %.1f" + "%%입니다.");
 
     private final String message;
 

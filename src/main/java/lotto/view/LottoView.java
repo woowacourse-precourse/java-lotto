@@ -54,4 +54,9 @@ public class LottoView {
         System.out.printf(ResultMessage.SECOND_CORRECT_FIVE_BONUS.printMessage(), correctCount.get("5+b") );
         System.out.printf(ResultMessage.FIRST_CORRECT_SIX.printMessage(), correctCount.get("6") );
     }
+
+    // 수익률 출력
+    public static void printRateOfReturn(double reateOfReturn) {
+        System.out.printf(ResultMessage.RATE_OF_RETURN.printMessage(), reateOfReturn);
+    }
 }

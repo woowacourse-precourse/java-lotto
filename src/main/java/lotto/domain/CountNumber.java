@@ -97,6 +97,8 @@ public class CountNumber {
             int cnt = winnerPerRank.get("6");
             winnerPerRank.put("6", cnt+1);
         }
+
+        RateOfReturnCalculator.getWinningNumberMap(winnerPerRank);
         return winnerPerRank;
     }
 }

@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.domain.CountNumber;
-import lotto.domain.InputNumber;
-import lotto.domain.Lotto;
-import lotto.domain.PurchaseLotto;
+import lotto.domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +19,9 @@ public class Application {
         CountNumber countNumber = new CountNumber();
         countNumber.compare(winningBonusNumbers, lottoNumbers);
 
-
+        // 수익률 계산
+        RateOfReturnCalculator rateOfReturnCalculator = new RateOfReturnCalculator();
+        rateOfReturnCalculator.rateOfReturn();
 
     }
 }

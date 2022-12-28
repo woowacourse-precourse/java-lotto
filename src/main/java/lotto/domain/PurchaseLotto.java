@@ -11,7 +11,9 @@ public class PurchaseLotto {
     public static List<Lotto> inputAmount() {
         LottoView.inputLottoAmount();
         String amount = Console.readLine();
-        int lottoCnt = Validator.validateMoney(amount) / 1000;
+        int amountInt = Validator.validateMoney(amount);
+        int lottoCnt = amountInt / 1000;
+        RateOfReturnCalculator.getAmount(amountInt);
         return generateLottoWithCount(lottoCnt);
     }
 
