@@ -53,9 +53,9 @@ public class IOController {
         return Integer.parseInt(input);
     }
 
-    public static void printLottos(List<Lotto> lottos) {
+    public static void printLottos(List<String> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
-        for (Lotto lotto : lottos) {
+        for (String lotto : lottos) {
             System.out.println(lotto);
         }
     }

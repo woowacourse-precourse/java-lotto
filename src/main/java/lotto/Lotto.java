@@ -17,11 +17,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-
     private void validateNumbers(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("로또 번호는 6개이여야 합니다.");
@@ -46,9 +41,14 @@ public class Lotto {
 
     public MatchPair calculateMatchNumber(WinningLotto winningLotto) {
         int matchNumbers = (int) this.numbers.stream()
-                .filter(lotto -> winningLotto.getNumbers().stream()
-                        .anyMatch(Predicate.isEqual(lotto))).count();
-        boolean matchBonusNumber = this.numbers.contains(winningLotto.getBonusNumber());
+                .filter(lotto -> winningLotto.toStream().anyMatch(Predicate.isEqual(lotto))).count();
+        boolean matchBonusNumber = false;
+        for(Integer number : this.numbers){
+            if(winningLotto.isMatchBonusNumber(number)){
+                matchBonusNumber = true;
+                break;
+            }
+        }
         return new MatchPair(matchNumbers, matchBonusNumber);
     }
 

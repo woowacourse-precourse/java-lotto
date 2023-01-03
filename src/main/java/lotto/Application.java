@@ -8,7 +8,7 @@ public class Application {
             LottoService lottoService = new LottoService();
             int buyinglottoNumber = IOController.readBuyingMoney();
             lottoService.makeRandomLottos(buyinglottoNumber);
-            IOController.printLottos(lottoService.getLottos());
+            IOController.printLottos(lottoService.makeLottosString());
             List<Integer> winningNumbers = IOController.readWinningNumbers();
             int bonusNumber = IOController.readBonusNumber();
             WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);

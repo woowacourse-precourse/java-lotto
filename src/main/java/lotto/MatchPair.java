@@ -13,11 +13,6 @@ public class MatchPair {
         return matchBonusNumber;
     }
 
-    public int getMatchNumbers() {
-        return matchNumbers;
-    }
-
-
     public int calculateRanking() {
         if (this.matchNumbers == 6) {
             return 1;
