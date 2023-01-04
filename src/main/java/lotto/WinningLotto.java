@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class WinningLotto {
@@ -19,6 +20,12 @@ public class WinningLotto {
         return this.numbers.stream();
     }
 
+    public int calculateSameNumber(List<Integer> lottoNumbers){
+        int sameNumber = (int) this.numbers.stream()
+                .filter(lotto -> lottoNumbers.stream().anyMatch(Predicate.isEqual(lotto))).count();
+
+        return sameNumber;
+    }
     public boolean isMatchBonusNumber(int comparedMumber){
         return comparedMumber == this.bonusNumber;
     }

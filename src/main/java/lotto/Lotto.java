@@ -40,8 +40,7 @@ public class Lotto {
     }
 
     public MatchPair calculateMatchNumber(WinningLotto winningLotto) {
-        int matchNumbers = (int) this.numbers.stream()
-                .filter(lotto -> winningLotto.toStream().anyMatch(Predicate.isEqual(lotto))).count();
+        int matchNumbers = winningLotto.calculateSameNumber(numbers);
         boolean matchBonusNumber = false;
         for(Integer number : this.numbers){
             if(winningLotto.isMatchBonusNumber(number)){
